@@ -41,7 +41,7 @@ structured reduction, not necessarily a full closure.
 F1 (\Cref{v4-arith:conj:F1-global-AG}) asserts
 \begin{equation}
 \label{v4-arith:cl:eq:F1-statement}
-\mathrm{D}([GL_{2}])^{\mathrm{sph\text{-}fin}}\;\simeq\;\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}\bigr),
+\mathrm{D}([GL_{2}])^{\mathrm{sph\text{-}fin}}\;\simeq\;\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\bigr),
 \end{equation}
 the global categorical arithmetic Langlands equivalence for
 $GL_{2}/\mathbb{Q}$, with $\mathcal{V}^{\mathrm{prim}}$
@@ -139,15 +139,22 @@ Weil 1967, Jacquet--Langlands 1970 for the representation-level
 statement; the categorical lift is conjectural, cf.~Gan--Savin
 arXiv:2207.14275 for partial progress).
 \item[\textbf{(F1.c)}] \emph{Spectral-side global assembly.}
-The global Emerton--Gee stack satisfies
+The spectral side is the Selmer-derived global deformation stack
 \begin{equation}
-\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}\;\simeq\;\varinjlim_{S\text{ finite}}\prod_{p\in S}\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}
+\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}
+\;:=\;
+\mathrm{Map}_{\det,\bar\rho}(G_{\mathbb{Q},S},GL_{2})
+\times^{\mathbf{R}}_{\prod_{v\in S}\mathrm{Map}(G_{\mathbb{Q}_{v}},GL_{2})}
+\prod_{v\in S}\mathcal{X}^{\mathcal{L}_{v}}_{v},
 \end{equation}
-as an ind-Noetherian formal algebraic stack, with the inductive
-system indexed by finite sets of primes $S$.
-\textbf{Status: Theorem} (Emerton--Gee arXiv:1908.07185 constructs
-local stacks; the global inductive limit is immediate from the
-definition).
+with $\mathcal{X}^{\mathcal{L}_{v}}_{v}$ the prescribed local
+condition inside the full Weil/$(\varphi,\Gamma)$ local parameter
+stack. This derived fibre product imposes the global Galois
+relation and Selmer conditions; it is not a product or colimit of
+local Emerton--Gee stacks.
+\textbf{Status: Definitional here; derived and Noetherian
+properties are theorem-waiting/conditional on the local deformation
+conditions and the chosen Selmer problem.}
 \item[\textbf{(F1.d)}] \emph{Local-global compatibility under the
 equivalence.} For each finite set $S$ of primes, the diagram
 \begin{equation}
@@ -162,8 +169,10 @@ and push-forward on the spectral side.
 \textbf{Status: Conjectural.}
 \end{itemize}
 Under this reduction, F1 closes given (F1.a) + (F1.b) + (F1.c) +
-(F1.d); (F1.c) is a theorem; (F1.a), (F1.b), and (F1.d) are
-the residual obstructions.
+(F1.d); (F1.c) supplies the correct spectral target but does not
+itself prove the categorical equivalence. The residual obstructions
+are local comparison, adelic descent, derived Selmer Noetherianity,
+and local-global compatibility.
 \end{theorem}
 
 \begin{proof}
@@ -177,21 +186,26 @@ explicit description of the Emerton--Gee stack. Compatibility
 inclusion of prime sets.
 
 Reverse direction: assume (F1.a)+(F1.b)+(F1.c)+(F1.d). By (F1.c),
-$\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}=\varinjlim_{S}\prod_{p\in S}\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}$,
-so $\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG,glob}})=\varinjlim_{S}\bigotimes_{p\in S}\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p})$
-(continuity of $\mathrm{IndCoh}$ under formal-stack inductive limits;
-Gaitsgory--Rozenblyum's AMS DAG monographs). By (F1.a), each factor
-matches $\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}(\mathbb{Q}_{p})])$.
-By (F1.d), the resulting family assembles compatibly. By (F1.b),
-the restricted tensor product of local automorphic categories is
-the global automorphic category. Composing gives (\ref{v4-arith:cl:eq:F1-statement}).
+the spectral target is the derived Selmer fibre product imposing
+the fixed residual representation, determinant, local conditions,
+and global Galois relation. The expected local comparison (F1.a)
+identifies each local automorphic category with the corresponding
+local spectral factor, while (F1.d) asserts that these local
+comparisons respect the derived Selmer pullback rather than a
+naive product of local stacks. By (F1.b), the restricted tensor
+product of local automorphic categories is the global automorphic
+category. Composing these conditional identifications gives
+(\ref{v4-arith:cl:eq:F1-statement}).
 \end{proof}
 
 \begin{remark}[status of the reduction]
 \label{v4-arith:cl:rem:F1-status}
 \Cref{v4-arith:thm:F1-reduction} converts F1 from a single conjecture
-to a conjunction of four items, one of which is a theorem and three of
-which are strictly narrower theorem-waiting or conjectural inputs.
+to a conjunction of four items: a local categorical comparison,
+adelic descent, a Selmer-derived spectral target, and local-global
+compatibility. The spectral target is now correctly formulated, but
+the equivalence still depends on theorem-waiting or conjectural
+inputs.
 The reduction does not
 close F1 but moves the open content from ``global categorical
 Langlands'' to ``adelic categorical descent plus local-global
@@ -219,8 +233,9 @@ comparisons.
 
 \begin{proof}
 $\mathrm{L}_{\mathrm{ACD}}$ packages (F1.b) and (F1.d) into a single
-statement; (F1.c) is already a theorem and (F1.a) is a named local
-comparison input. Applying \Cref{v4-arith:thm:F1-reduction} reduces F1
+statement; (F1.c) supplies the correct Selmer-derived spectral
+target and (F1.a) is a named local comparison input. Applying
+\Cref{v4-arith:thm:F1-reduction} reduces F1
 to (F1.a) plus $\mathrm{L}_{\mathrm{ACD}}$.
 \end{proof}
 
@@ -323,7 +338,7 @@ inherits a canonical $E_{2}$-monoidal structure.
 plausibly follows from Lurie HA~4.8 + 5.1 but the explicit
 compatibility check is not in the literature).
 \end{itemize}
-Under this reduction, F2 closes given (F2.a) + (F2.b) + (F2.c);
+Under this reduction, F2 would close given (F2.a) + (F2.b) + (F2.c);
 (F2.a) is theorem-grade local input, (F2.b) is theorem-waiting in
 mixed characteristic, and (F2.c) is the open $\infty$-categorical
 restricted-tensor lemma.
@@ -377,12 +392,12 @@ Ben-Zvi--Nadler compatibility.}
 
 \paragraph{Attack 6.} Ben-Zvi--Nadler over $\mathbb{C}$ is a theorem.
 The arithmetic extension requires replacing the complex inertia
-circle $S^{1}=B\mathbb{Z}$ by an arithmetic inertia circle. The
-natural candidate is $B\widehat{\mathbb{Z}}=B\prod_{p}\mathbb{Z}_{p}$
-(profinite $S^{1}$), which matches the MKR dictionary
-(Mazur--Kapranov--Reznikov) identifying $\overline{\mathrm{Spec}\,\mathbb{Z}}$
-with an arithmetic 3-manifold. \textbf{Residual: arithmetic
-Ben-Zvi--Nadler extension.}
+circle $S^{1}=B\mathbb{Z}$ by an arithmetic target. The
+inertia-only candidate $B\widehat{\mathbb{Z}}=B\prod_{p}\mathbb{Z}_{p}$
+records only the procyclic shadow and loses Frobenius, Weil-group,
+and $(\varphi,\Gamma)$ data. \textbf{Residual: arithmetic
+Ben-Zvi--Nadler extension for the full Weil/$(\varphi,\Gamma)$
+target.}
 
 \paragraph{Attack 7.} No compute engine. \textbf{Pass.}
 
@@ -416,7 +431,7 @@ Given F1 + F2, the Hochschild trace of
 $\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},\mathrm{glob}}$ is an
 $E_{1}$-algebra (via Dunn additivity applied to the $E_{2}$-structure
 from F2). By F1, the global Hecke category matches
-$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}})$.
+$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})$.
 The Hochschild trace of
 $\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X})$ for a derived stack
 $\mathcal{X}$ is classically $\mathcal{O}(L\mathcal{X})$ where
@@ -427,11 +442,11 @@ Frobenius and the Weil quotient are carried by the strengthened
 Weil/$(\varphi,\Gamma)$ target
 $\mathrm{LocSys}^{W,\varphi\Gamma}_{GL_{2}}$.
 
-The identification with $\mathcal{V}^{\mathrm{prim}}$ follows from
-the six-window equivalence
+The comparison with $\mathcal{V}^{\mathrm{prim}}$ is controlled by
+the six conditional windows of
 (\Cref{v4-arith:thm:six-window-placement}): $\mathcal{V}^{\mathrm{prim}}$
-is defined as the Hochschild trace class, and its six presentations
-are extensional characterisations.
+is defined as the Hochschild trace class, while the other windows are
+conditional characterisations pending F1--F3.
 
 What remains open is precisely (F3.BZN$^{\mathrm{Ar}}$): that the
 Hochschild trace of an arithmetic derived stack matches functions

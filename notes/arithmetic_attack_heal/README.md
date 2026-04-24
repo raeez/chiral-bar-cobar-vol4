@@ -42,7 +42,7 @@ This directory preserves the adversarial transcripts. The LaTeX inscription in `
 
 The fifteen voices independently falsified nine naive claims and healed to a common object:
 
-**Load-bearing object.** $\mathcal{V}^{\mathrm{prim}}$ is the Hochschild trace class of the identity on the global arithmetic Iwahori Hecke category of $GL_2$, equivalently the boundary of Kim arithmetic Chern-Simons on $\overline{\mathrm{Spec}\,\mathbb{Z}}$ at level 1 with gauge group $\mathbb{G}_m$, equivalently a factorization algebra on $\mathbb{C}_\infty$ with $\widehat{\mathbb{Z}}$-module coefficients carrying commuting Adams operations.
+**Load-bearing object.** $\mathcal{V}^{\mathrm{prim}}$ is the Hochschild trace class of the identity on the global arithmetic Iwahori Hecke category of $GL_2$. Kim arithmetic Chern-Simons supplies a classical torsor/action-line window, and the factorization window lives on $\mathbb{C}_\infty$ with $\widehat{\mathbb{Z}}$-module coefficients carrying commuting Adams operations.
 
 **Load-bearing theorem (Theorem-waiting).**
 $$\kappa^{\mathrm{Ar}}_{\mathsf{G}} + (\kappa^{!})^{\mathrm{Ar}}_{\mathsf{G}} = 0 \iff \xi(s) = \xi(1-s).$$
@@ -53,7 +53,7 @@ Arithmetic Heisenberg Koszul duality implies the Riemann functional equation.
 - F2: perfectoid $E_2$-enhancement via Scholze diamonds
 - F3: arithmetic Ben-Zvi-Nadler $\mathrm{HH}_\bullet(\mathrm{Hk}^{\mathrm{Iw}}_{\mathrm{glob}}) = \mathcal{V}^{\mathrm{prim}}$ as $E_1$-algebras.
 
-All three: theorem locally, conjecture globally.
+All three: theorem-grade local inputs, with the displayed arithmetic equivalences still theorem-waiting or conjectural.
 
 ## Raw Transcripts
 
@@ -97,7 +97,7 @@ The technical convergence of the protocol:
 
 - **Nine** naive claims falsified by at least one voice each.
 - **Five** structural corrections agreed upon by multiple independent voices.
-- **Six** equivalent presentations of the surviving object (Langlands, TQFT, categorical, integrability, statistical mechanics, factorization), each identified by at least one voice.
+- **Six** conditional windows on the Hochschild-trace candidate (Langlands, TQFT, categorical, integrability, statistical mechanics, factorization), each identified by at least one voice.
 - **Three** closing conjectures isolated by the protocol (F1, F2, F3), each with explicit local theorems and global gaps.
 - **One** load-bearing theorem-waiting: the $\mathsf{G}$-row complementarity $\Leftrightarrow$ Riemann functional equation.
 

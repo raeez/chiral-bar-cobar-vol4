@@ -283,14 +283,15 @@ product expansion forces the weight system to satisfy an
 infinite-hierarchy equation.
 \paragraph{lens:} Hadamard factorisation of $\xi(s)$; Mellin
 inversion; Bost--Connes KMS partition function.
-\paragraph{target:} check that any candidate weight $\lambda(m)$
-produces $\mathrm{tr}(e^{-tL_{0}^{\mathrm{Ar}}})=\sum_{\rho}e^{-t\rho}$
-under the Friedrichs construction.
+\paragraph{target:} check whether any candidate weight $\lambda(m)$
+can turn the Friedrichs Fock/BC Hamiltonian into the zero
+distribution required by H-P$^{\mathrm{Ar}}$.
 \paragraph{claim under attack:} the Berry--Keating
 $\lambda(p^{k})=k\log p$ reproduces the trace identity.
 \paragraph{broken step:} the Berry--Keating partition function
 $\sum_{n\geq 1}e^{-t\log n}=\sum_{n\geq 1}n^{-t}=\zeta(t)$, multiplied
-by the Dedekind-eta inverse, does \emph{not} equal $\sum_{\rho}e^{-t\rho}$;
+by the Dedekind-eta inverse, does \emph{not} equal the zero
+wave-kernel distribution;
 the two sides match only after the archimedean Euler factor is
 subtracted and the logarithmic-derivative expansion is inverted.
 \paragraph{evidence type:} direct Mellin-transform computation.
@@ -312,12 +313,12 @@ test family is supplied.
 Weil/Connes trace formula for the nonstandard heat-test family; it is
 equivalent to the Connes absorption-spectrum condition only after this
 admissibility and regularisation bridge is proved.
-\paragraph{deciding evidence:} by Mellin inversion, the trace identity
-$\mathrm{tr}(e^{-tL_{0}^{\mathrm{Ar}}})=\sum_{\rho}e^{-t\rho}$ is
-equivalent to the identity of meromorphic functions
-$\det_{\infty}(s\cdot\mathrm{id}-L_{0}^{\mathrm{Ar}})=\xi(s)$ via
-$\mathrm{tr}(e^{-tL_{0}^{\mathrm{Ar}}})=-\partial_{t}\sum_{\rho}e^{-t\rho}/(\ldots)$
-Bost--Connes regularised.
+\paragraph{deciding evidence:} by Mellin inversion, the repaired
+trace identity is an equality of distributions for the normal zero
+operator \(\Theta_{\xi}\), equivalently
+\(\det_{\infty}(s\mathrm{id}-\Theta_{\xi})=\xi_{\mathbb R}(s)\). The
+Friedrichs Fock/BC Hamiltonian supplies the Euler partition side, not
+this determinant identity.
 
 \subsection{Cycle 4 (B, Hamburger determinacy reductions)}
 \label{v4-arith:hpar-det:cycle-4}
@@ -648,9 +649,59 @@ spectral matching problem.
 \subsection{The Hierarchy Condition}
 \label{v4-arith:hpar-det:hierarchy}
 
+\begin{lemma}[admissible Weil--Connes wave-kernel regularisation]
+\label{v4-arith:hpar-det:lem:PW-wave-regularisation}
+\ClaimStatusProvedHere. Let \(\xi=\xi_{\mathbb R}\) and write each
+non-trivial zero as \(\rho=1/2+i\gamma_{\rho}\). Use the Fourier
+convention
+\[
+h(r)=\int_{\mathbb R}\widehat h(u)e^{-iru}\,du .
+\]
+Let
+\[
+\mathsf{PW}:=\{h=\mathcal F^{-1}\psi:\psi\in C_c^\infty(\mathbb R)\}
+\]
+with the LF topology transported from \(C_c^\infty(\mathbb R)\). For
+\(h\in\mathsf{PW}\), the Weil--Connes explicit formula gives
+\begin{equation}
+\label{v4-arith:hpar-det:eq:PW-weil}
+\sum_{\rho}h(\gamma_{\rho})
+=\int_{\mathbb R}h(r)\,dW_{\infty}(r)
+-2\sum_{n\geq1}\frac{\Lambda(n)}{\sqrt n}\widehat h(\log n),
+\end{equation}
+in the normalisation of \eqref{v4-arith:hpar-det:eq:weil-explicit};
+the prime sum is finite because \(\widehat h\) has compact support.
+
+For \(\phi\in C_c^\infty((0,\infty))\), set
+\[
+h_{\phi}(r):=\int_0^\infty e^{-u/2}\phi(u)e^{-iru}\,du .
+\]
+Then \(h_{\phi}\in\mathsf{PW}\), and
+\[
+\langle\mathcal W_{\xi},\phi\rangle
+:=\sum_{\rho}h_{\phi}(\gamma_{\rho})
+\]
+defines a distribution \(\mathcal W_{\xi}\in\mathcal D'((0,\infty))\).
+Consequently the symbolic kernel \(\sum_{\rho}e^{-t\rho}\) is a
+distributional wave kernel, not an ordinary heat trace.
+\end{lemma}
+
+\begin{proof}
+This is the standard Paley--Wiener form of the Weil explicit formula:
+compact support of \(\widehat h\) makes the prime sum finite and the
+archimedean term is the distribution \(W_{\infty}\). The second
+statement is obtained by substituting the compactly supported function
+\(u\mapsto e^{-u/2}\phi(u)\) into the same formula. Approximation of
+the point kernel uses mollifiers
+\(\widehat h_{t,\epsilon}(u)=e^{-u/2}\epsilon^{-1}\eta((u-t)/\epsilon)\);
+the convergence is in \(\mathcal D'((0,\infty))\), not pointwise heat
+trace convergence.
+\end{proof}
+
 \begin{theorem}[trace-compatibility as regularised Weil/Connes hierarchy]
 \label{v4-arith:hpar-det:thm:hierarchy-condition}
-\ClaimStatusProvedHere. Let \(\lambda=\lambda_{\mathrm{BK}}\) be the
+\ClaimStatusProvedHere \emph{(conditional on the H-P$^{\mathrm{Ar}}$
+trace realisation)}. Let \(\lambda=\lambda_{\mathrm{BK}}\) be the
 Berry--Keating weight of
 \Cref{v4-arith:hpar-det:def:candidate-weights}. The
 trace-compatibility condition
@@ -663,12 +714,12 @@ Weil/Connes trace hierarchy
 \,-\,2\sum_{n\geq 1}\frac{\Lambda(n)}{\sqrt{n}}
 \widehat{h}_{t}(\log n)
 \end{equation}
-for the heat/Laplace test family associated to
-\(e^{-tL_{0}^{\mathrm{Ar}}}\), after the required admissible
-regularisation is supplied. This is not an unconditional application
-of the classical Weil formula to compactly supported Fourier-test
-functions; it is precisely the regularisation bridge needed for
-H-P$^{\mathrm{Ar}}$.
+for the wave-kernel test family associated to
+\(e^{-t\Theta_{\xi}}\), after the admissible regularisation of
+\Cref{v4-arith:hpar-det:lem:PW-wave-regularisation} is supplied. This
+is not an unconditional application of the classical Weil formula to
+an inadmissible heat kernel; it is precisely the trace-realisation
+bridge needed for H-P$^{\mathrm{Ar}}$.
 \end{theorem}
 
 \begin{proof}
@@ -680,37 +731,38 @@ for $t>1$ and meromorphically continued.
 
 Combining with the archimedean Dedekind-eta inverse product
 $\prod_{i\geq 1}(1-e^{-ti})^{-1}$ and subtracting the archimedean
-descendant contribution (trivial zeros of $\xi$) via the
+descendant contribution (Tate-pole and archimedean terms) via the
 Bost--Connes regularisation
 (\Cref{v4-arith:hpvbconv:prop:BC-trace-compatibility}), one obtains
 \begin{equation*}
 \mathrm{tr}_{\mathrm{BC}}(e^{-tL_{0}^{\mathrm{Ar}}})
 =\zeta(t)\cdot\eta(it)^{-1}\cdot(\text{regularisation}),
 \end{equation*}
-with the trivial-zero and archimedean terms removed by the
-Bost--Connes/Dedekind-eta prescription. The Hadamard product for
-\(\xi\) rewrites the zero side as a regularised zero trace. The
-classical Weil explicit formula supplies this identity for its
-standard admissible test spaces; the Vol~IV condition is exactly the
-additional assertion that the heat/Laplace family for
-\(L_{0}^{\mathrm{Ar}}\) lies in the admissible regularised extension
-and that the BC trace equals that extension. Therefore the theorem is
-a reformulation of the trace-compatibility hierarchy, not a proof of
-the hierarchy.
+with the archimedean terms removed by the Bost--Connes/Dedekind-eta
+prescription. The Hadamard product for \(\xi_{\mathbb R}\) rewrites
+the zero side as a regularised zero trace. The classical Weil explicit
+formula supplies this identity for the admissible Paley--Wiener test
+spaces of \Cref{v4-arith:hpar-det:lem:PW-wave-regularisation}. The
+Vol~IV condition is the additional assertion that the
+Bost--Connes/Fock trace is carried to that distributional extension.
+Therefore the theorem is a reformulation of the trace-compatibility
+hierarchy under H-P$^{\mathrm{Ar}}$, not a proof of
+H-P$^{\mathrm{Ar}}$.
 \end{proof}
 
 \begin{corollary}[the hierarchy is the Connes absorption-spectrum bridge]
 \label{v4-arith:hpar-det:cor:hierarchy-is-weil}
-\ClaimStatusProvedHere. Under the BK weight selection, the
+\ClaimStatusProvedHere \emph{(conditional on the H-P$^{\mathrm{Ar}}$
+trace realisation)}. Under the BK weight selection, the
 H-P$^{\mathrm{Ar}}$ trace-compatibility condition is the
 Connes--Meyer--Weil absorption-spectrum bridge for the
-Bost--Connes heat-trace family. It is not discharged by citing the
-classical Weil explicit formula alone.
+Bost--Connes/Weil wave-distribution family. It is not discharged by
+citing the classical Weil explicit formula alone.
 \end{corollary}
 
 \begin{proof}
 The previous theorem identifies the needed equality with the
-regularised explicit-formula extension for the BC heat-trace family.
+regularised explicit-formula extension for the BC/Weil wave family.
 By \Cref{v4-arith:hpvbconv:cor:HPAr-connes-equivalence}, this is the
 same structural condition as the Connes absorption-spectrum
 realisation. Since the admissibility and trace-identification step is
@@ -742,7 +794,7 @@ We recall the object of study and its precise moment sequence.
 \label{v4-arith:hpar-det:def:shifted-moments}
 \ClaimStatusDefinitional. Let $\rho=1/2+i\gamma_{\rho}$ denote a
 non-trivial zero of $\xi$, written with $\gamma_{\rho}\in\mathbb{C}$
-(purely imaginary iff RH). The \emph{symmetrised shifted-zero moment
+(real for every zero iff RH). The \emph{symmetrised shifted-zero moment
 sequence} is
 \begin{equation}
 \label{v4-arith:hpar-det:eq:mu-2n}

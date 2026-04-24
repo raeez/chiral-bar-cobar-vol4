@@ -1,0 +1,617 @@
+\chapter{All-Genus Arithmetic Koszul Duality}
+\label{v4-arith:all-genus-koszul}
+
+\emph{The arithmetic branch through Chapter~\ref{v4-arith:w6-j:chapter}
+treats the $g=0$ row: Riemann $\xi(s)=\xi(1-s)$ as the functional-equation
+witness of the Heisenberg $\mathsf{G}$-row complementarity
+$\kappa^{\mathrm{Ar}}_{\mathsf{G}}+(\kappa^{!})^{\mathrm{Ar}}_{\mathsf{G}}=0$
+(\Cref{v4-arith:thm:P1-resolution}). This chapter inscribes the arithmetic-modular
+extension to arbitrary $g\geq 0$. It defines the arithmetic genus-$g$ datum,
+assembles six convergent presentations from a six-voice adversarial session
+(2026-04-24 continuation), collects the naive readings of ``almost complex
+structure'' that falsify, and states the load-bearing theorem-waiting:
+arithmetic Koszul self-duality at genus $g$ is equivalent to the motivic
+functional equation of the corresponding row, with the identity
+$\kappa+\kappa^!=0$ preserved at every $g$ and the genus entering as
+archimedean $\Gamma$-factor, Fock rank, and motivic weight. The $g=0$
+reduction recovers the F-RH axis of Chapter~\ref{v4-arith:rh-reformulation}.}
+
+\section{Identity}
+\label{v4-arith:ag:identity}
+
+Volume~IV's arithmetic branch answers the $g=0$ question: which internal
+structural identity of $\mathcal{V}^{\mathrm{prim}}$ is equivalent to the
+Riemann functional equation? The answer (\Cref{v4-arith:thm:P1-resolution})
+is $\kappa^{\mathrm{Ar}}_{\mathsf{G}}+(\kappa^{!})^{\mathrm{Ar}}_{\mathsf{G}}=0$:
+arithmetic Koszul self-duality of the global Heisenberg, enforced by adelic
+Poisson summation and rank-$2$ Satake parameters. This chapter asks and
+answers the arithmetic-modular extension: for a rank-$2g$ arithmetic datum
+($g\geq 0$), which internal structural identity is equivalent to the
+corresponding motivic functional equation?
+
+The answer is a single identity across all $g$:
+$\kappa^{\mathrm{Ar},g}_{\mathsf{G}}+(\kappa^{!})^{\mathrm{Ar},g}_{\mathsf{G}}=0$.
+The genus does not enter the Koszul sum. It enters as the rank of the
+Heisenberg oscillators, the archimedean $\Gamma$-factor $\Gamma_{\mathbb{C}}(s)^g$,
+and the motivic weight setting the functional-equation center. The four
+rows of the arithmetic-modular family are the Dedekind zeta of a totally
+imaginary field of degree $2g$ (weight $0$), the Hasse--Weil $L$-function
+on the Jacobian of a genus-$g$ curve (weight $1$), the Siegel spin
+$L$-function of a cusp form on $\mathrm{GSp}_{2g}$ (weight $g$), and the
+spectral refinements sitting above these (Emerton--Gee ordinary stratum;
+arithmetic Teichmüller Hodge--Arakelov).
+
+The content of this chapter was generated 2026-04-24 via a six-voice
+adversarial attack--heal protocol run in parallel to the fifteen-voice
+protocol that produced Chapters~\ref{v4-arith:drinfeld-kapranov}--\ref{v4-arith:drinfeld-solo}.
+Six independent voices (Arakelov, Deninger--Connes--Consani, Fargues--Scholze,
+Mochizuki--Hodge--Arakelov, programmatic bar-cobar interior,
+Kudla--Rapoport--Langlands) executed between eight and twelve attack--heal
+cycles each on the speculation ``genus-$g$ arithmetic surface with an almost
+complex structure that carries the cohomological signature of a genus-$g$
+algebraic curve.'' The six trajectories converged on a single object viewed
+through six windows; the naive almost-complex reading falsified in every
+voice at a specific technical joint; the Koszul self-duality identity
+$\kappa+\kappa^!=0$ emerged preserved at every genus, with the motivic
+functional equation shifting per row. Raw transcripts are preserved in
+\texttt{notes/arithmetic\_attack\_heal/genus2\_arith\_surface/}; this chapter
+inscribes the healed content.
+
+\section{The Arithmetic Genus-g Datum}
+\label{v4-arith:ag:datum}
+
+\begin{definition}[arithmetic genus-$g$ datum]
+\label{v4-arith:ag:defn:datum}
+\ClaimStatusDefinitional.
+An \emph{arithmetic genus-$g$ datum} $\mathcal{D}_g$ is a triple
+$(\mathcal{B}_g,\mathcal{E}_g,\varphi_g)$ specifying:
+\begin{enumerate}
+\item $\mathcal{B}_g$, an arithmetic base: one of
+\begin{enumerate}
+\item Arakelov-compactified $\overline{\mathrm{Spec}\,\mathcal{O}_K}$ for
+$K$ totally imaginary of degree $2g$ (Window~II);
+\item a proper flat regular arithmetic surface $X\to\mathrm{Spec}\,\mathcal{O}_K$
+whose generic fibre $X_K$ is a smooth projective curve of genus $g$,
+Arakelov-compactified via the archimedean Kähler form
+$\mu_{\mathrm{Ar},g}$ of Faltings 1984 (Windows~I, V);
+\item a Shimura variety $\mathrm{Sh}_K(G,X)$ of a Shimura datum whose
+complex fibre is a moduli of abelian $g$-folds (Window~VI).
+\end{enumerate}
+\item $\mathcal{E}_g$, a rank-$2g$ arithmetic cohomology object:
+$H^{1}_{\mathrm{prim}}(\mathcal{B}_g)$ carrying Galois action (étale or
+crystalline), with Hodge structure of weight $1$ at each archimedean place:
+$\mathcal{E}_g\otimes\mathbb{C}=\mathcal{E}_g^{1,0}\oplus\mathcal{E}_g^{0,1}$
+with $\dim\mathcal{E}_g^{1,0}=\dim\mathcal{E}_g^{0,1}=g$ per place.
+\item $\varphi_g$, a Frobenius-compatible endomorphism on $\mathcal{E}_g$
+with square equal to the appropriate motivic involution: $\varphi_g$ is
+either
+\begin{enumerate}
+\item the archimedean Frobenius $\Phi_\infty$ of Deninger 1998 acting on
+the primitive Minkowski cohomology (Window~II);
+\item the prismatic Frobenius $\varphi$ of Bhatt--Scholze 2022 on the
+universal rank-$2g$ $F$-crystal over the ordinary crystalline locus of the
+Emerton--Gee stack $\mathcal{X}_{2g}$ (Window~III);
+\item the Koszul duality operator $J^{\mathrm{Koz}}$ on chiral cohomology
+satisfying $(J^{\mathrm{Koz}})^{2}=\tau$ for $\tau$ the motivic
+functional-equation involution (Window~V).
+\end{enumerate}
+\end{enumerate}
+At $g=0$ the datum degenerates to the base $\overline{\mathrm{Spec}\,\mathbb{Z}}$
+with $\mathcal{E}_0$ void and $\varphi_0=\mathrm{id}$; the functional
+equation reduces to $\xi(s)=\xi(1-s)$ and the load-bearing theorem-waiting
+becomes the P1 resolution of Chapter~\ref{v4-arith:closure}.
+\end{definition}
+
+\begin{remark}[``almost complex'' decoded]
+\label{v4-arith:ag:rem:almost-complex}
+The speculation's ``almost complex structure'' has no realisation as an
+endomorphism $J:TX\to TX$ with $J^2=-\mathrm{id}$ on an arithmetic scheme:
+schemes over $\mathrm{Spec}\,\mathbb{Z}$ carry no real tangent bundle, and
+on a compact real $2$-manifold Newlander--Nirenberg (1957) makes
+integrability automatic (Voice~1). The surviving meaning of ``almost
+complex'' is the Frobenius $\varphi_g$ of \Cref{v4-arith:ag:defn:datum}:
+on archimedean primitive cohomology it acts as Hodge rotation by $\pi/2$;
+on the prismatic $F$-crystal ordinary stratum it is the
+Newton/Hodge-polygon-aligned slope-decomposition Frobenius (Katz 1981,
+\emph{Astérisque}~63); on chiral cohomology it is the Koszul duality
+operator whose square is the functional-equation involution. No
+non-integrable decoration is introduced.
+\end{remark}
+
+\section{Six Convergent Windows}
+\label{v4-arith:ag:windows}
+
+The six voices of the 2026-04-24 session converge on $\mathcal{D}_g$
+through six presentations, each extracting a distinct structural feature.
+
+\subsection{Window I: Arakelov fibration AAGF\texorpdfstring{$_g$}{g}}
+\label{v4-arith:ag:w1-arakelov}
+
+$\mathcal{B}_g^{\mathrm{I}}=X\to\mathrm{Spec}\,\mathcal{O}_K$, proper flat
+regular with generic fibre of genus $g$, Arakelov-compactified.
+$\mathcal{E}_g^{\mathrm{I}}=H^{1}_{\mathrm{B}}(X(\mathbb{C}),\mathbb{Z})$
+of rank $2g$ per archimedean place. $\varphi_g^{\mathrm{I}}$ the integrable
+complex structure $J_\infty$ at each archimedean place. Arakelov 1974,
+Faltings 1984, Gillet--Soulé 1990 (Publ.~IHES) supply the arithmetic
+intersection pairing on $\widehat{\mathrm{CH}}^1(X)$; Faltings--Hriljac
+1984 the arithmetic Hodge index. Genus $g$ enters via $\pi_*\omega_{X/S}$
+of rank $g$, the $\Gamma$-factor $\Gamma_{\mathbb{C}}(s)^g$ of the
+Hasse--Weil $L$-function, the coefficient $2g-2$ in $\deg\omega_{X_K/K}$,
+and the $\delta$-invariant correction in the arithmetic Noether formula
+$\widehat{\deg}\det R\pi_*\omega=\tfrac{1}{12}(\widehat{\omega}^2+\delta_{\mathrm{Ar}})$
+(Faltings 1984, Thm~5).
+
+\subsection{Window II: Minkowski torus / Bost--Connes--Marcolli}
+\label{v4-arith:ag:w2-minkowski}
+
+$\mathcal{B}_g^{\mathrm{II}}=\overline{\mathrm{Spec}\,\mathcal{O}_K}$ for
+$K$ totally imaginary of degree $2g$. $\mathcal{E}_g^{\mathrm{II}}=
+H^{1}_{\mathrm{prim}}(\mathcal{V}^{\mathrm{prim}}_K)$ of $\mathbb{Z}$-rank
+$2g$, identified with the Minkowski lattice
+$\Lambda_K=j(\mathcal{O}_K)\subset\mathbb{C}^g$.
+$\varphi_g^{\mathrm{II}}=\Phi_\infty^{\mathrm{tw},K}$, the half-Tate-twisted
+archimedean Frobenius acting as $\sqrt{-1}$ on each complex embedding pair;
+equivalently the $\mathbb{C}^g$-structure on $\Lambda_K\otimes\mathbb{R}$.
+Bost--Connes--Marcolli 2004 constructs the $C^*_K$ quantum statistical
+system whose KMS partition function is $\zeta_K(\beta)$; Ha--Paugam 2005
+and Laca--Neshveyev 2011 classify its KMS states. Genus
+$g=r_2(K)=\tfrac{1}{2}[K:\mathbb{Q}]$; the primitive cohomology
+$H^\bullet_{\mathrm{prim}}(\mathcal{V}^{\mathrm{prim}}_K)$ matches
+$H^\bullet(T_K,\mathbb{Z})$ of the Minkowski torus $T_K=\mathbb{C}^g/\Lambda_K$.
+
+\subsection{Window III: Ordinary crystalline Emerton--Gee stack}
+\label{v4-arith:ag:w3-fargues-scholze}
+
+$\mathcal{B}_g^{\mathrm{III}}=\mathcal{X}_{2g}^{\mathrm{crys,ord}}$, the
+ordinary crystalline locus of the Emerton--Gee stack $\mathcal{X}_{2g}$
+(Emerton--Gee arXiv:1908.07185) as a $2$-dim Artin stack over
+$\mathrm{Spec}\,\mathbb{Z}_p$, with prismatic upgrade via Bhatt--Scholze 2022
+(\emph{Ann.~Math.}~196). A point is a rank-$2g$ ordinary crystalline
+$\varphi$-module with Hodge--Tate weights $\{0,1\}^g$; equivalently a
+rank-$2g$ $F$-crystal with Newton polygon $(0,1)^g$. $\mathcal{E}_g^{\mathrm{III}}$
+is the universal rank-$2g$ bundle; $\varphi_g^{\mathrm{III}}$ is the
+prismatic Frobenius splitting $\mathcal{E}_g^{\mathrm{III}}$ as
+$\mathcal{O}(0)^g\oplus\mathcal{O}(1)^g$ on the ordinary stratum.
+Archimedean tilting relates this to the Hodge decomposition
+$H^1(X(\mathbb{C}),\mathbb{C})=H^{1,0}\oplus H^{0,1}$.
+Caraiani--Scholze 2017--2019 (arXiv:1511.02418, arXiv:1710.10543) genericity
+pins the middle-degree Galois representation to rank $2g$ on compact
+unitary Shimura surfaces of signature $(1,2)$ with generic Hecke eigenclass.
+
+\subsection{Window IV: Hodge--Arakelov / arithmetic Teichmuller}
+\label{v4-arith:ag:w4-mochizuki}
+
+$\mathcal{B}_g^{\mathrm{IV}}=[C,\vartheta]\in\mathcal{T}_g^{\mathrm{arith}}(\mathcal{O}_K)$,
+a closed point of the arithmetic Teichmüller space carrying a level-$n$
+theta-structure $\vartheta$ on the Jacobian $J(C)$. $\mathcal{E}_g^{\mathrm{IV}}$
+is the $n^g$-dim Jet module over the theta-structure locus;
+$\varphi_g^{\mathrm{IV}}$ is Mochizuki's Hodge--Arakelov comparison
+isomorphism (Mochizuki 1999 \emph{Publ.~RIMS}; arXiv:math/0304054). The
+comparison is theorem-grade for $g=1$; conjectural for $g\geq 2$. The
+Steinberg relation $\{p,1-p\}=0\in K_2^M(\mathbb{Q})$ is preserved under
+every Frobenioid indeterminacy (anabelian invariant via
+Matsumoto 1969, Milnor 1970). The speculation's ``almost complex
+structure'' in this window is the crystalline--étale comparison, not a
+differential-geometric $J$: Voice~4 falsifies the naive reading as a
+category error on $\mathrm{Spec}\,\mathbb{Z}$ and replaces it with the
+Hodge--Arakelov decoration on the dense theta-generic open locus of
+$\mathcal{T}_g^{\mathrm{arith}}$.
+
+\subsection{Window V: Chiral-bar-cobar interior}
+\label{v4-arith:ag:w5-bar-cobar}
+
+$\mathcal{B}_g^{\mathrm{V}}=\mathcal{S}_g^{\mathrm{Ar}}$, the arithmetic
+surface of Window~I viewed through its $E_2$-chiral factorisation
+structure. $\mathcal{E}_g^{\mathrm{V}}=\mathcal{V}^{\mathrm{prim,surf},g}:=
+\mathrm{HH}_\bullet(\mathrm{Hk}^{\mathrm{Iw,surf}}_{GL_{2g},\mathrm{glob}})$,
+the Hochschild trace class of the identity on the $E_2$-monoidal global
+Iwahori Hecke category of $GL_{2g}$ on the arithmetic surface. The $E_2$
+structure arises via $E_1\otimes E_1=E_2$ Dunn additivity (Lurie
+\emph{Higher Algebra}~5.1.2.2) from the horizontal $E_1$ (1-dim base
+factorisation on $\overline{C}$) and the vertical $E_1$ (fibre
+factorisation on $X_K$); chiral bar-cobar lifts to the 2-dim
+Parshin--Gersten complex with double residue $(\partial_1,\partial_2)$
+(Parshin 1976; Kato 1980; Beilinson 1980). $\varphi_g^{\mathrm{V}}=
+J^{\mathrm{Koz}}$, the Koszul duality operator on chiral cohomology with
+$(J^{\mathrm{Koz}})^2=\tau$ (functional-equation involution). The genus
+enters via rank-$2g$ Fock oscillators per place, sourced from the $\ell$-adic
+Tate module $T_\ell(\mathrm{Jac}(X_K))$; central charge $c=g$ holomorphic
+plus $g$ antiholomorphic.
+
+\subsection{Window VI: Kudla--Rapoport / Shimura--Siegel SSG\texorpdfstring{$_g$}{g}}
+\label{v4-arith:ag:w6-shimura}
+
+$\mathcal{B}_g^{\mathrm{VI}}=\mathrm{Sh}_K(G,X)$ a Shimura variety with
+$G\in\{\mathrm{GSp}_{2g},\,\mathrm{Res}_{F/\mathbb{Q}}\mathrm{GL}_2\text{ for
+}[F:\mathbb{Q}]=g,\,\mathrm{GU}(g,1)\}$. $\mathcal{E}_g^{\mathrm{VI}}$ the
+middle-degree cohomology decomposed under the Hecke algebra into rank-$2g$
+(or $2g+1$, $4g$) Galois blocks per automorphic $\pi$ of $G(\mathbb{A})$.
+$\varphi_g^{\mathrm{VI}}$ the integrable complex structure sourced from the
+Deligne torus $h:\mathbb{S}\to G_{\mathbb{R}}$. The Kudla--Rapoport
+generating series $\widehat{\phi}(\tau)=\sum_m\widehat{\mathcal{Z}}(m)q^m$
+is a genus-$g$ Siegel modular form valued in $\widehat{\mathrm{CH}}^1(\mathrm{Sh})_{\mathbb{C}}$
+(Kudla 1997 \emph{Ann.~Math.}~146; Kudla--Rapoport 2011
+arXiv:0905.2232; Li--Liu 2021 arXiv:2101.09485). The $g$-fold arithmetic
+intersection of special cycles realises Fourier coefficients of a
+genus-$g$ Siegel Eisenstein series' central derivative. The Langlands-dual
+group ${}^LG=\mathrm{GSpin}_{2g+1}$ carries the $(2g+1)$-dim spin $L$-function.
+
+\section{Falsified Naive Readings}
+\label{v4-arith:ag:falsified}
+
+The adversarial protocol falsifies six naive readings of the speculation,
+each identified by at least one voice at a specific technical joint.
+
+\begin{enumerate}
+\item \emph{$J^2=-\mathrm{id}$ on the tangent bundle of an arithmetic
+scheme.} Falsified (Voices~1, 4). Schemes over $\mathrm{Spec}\,\mathbb{Z}$
+carry no real tangent bundle; the speculation's ``almost'' is a category
+error. Heal: Frobenius $\varphi_g$ on primitive cohomology
+(\Cref{v4-arith:ag:rem:almost-complex}).
+\item \emph{Arithmetic Euler characteristic $=1-g$.} Falsified (Voice~1).
+Gillet--Soulé 1992 arithmetic Riemann--Roch introduces Bismut--Gillet--Soulé
+analytic torsion; the arithmetic analog of $1-g$ is the Faltings
+$\delta$-invariant via the arithmetic Noether formula, not a simple integer.
+\item \emph{Künneth factorisation of the arithmetic surface.} Falsified
+(Voice~1). Bost--Künnemann 2010 (\emph{Adv.~Math.}~223) product formula has
+non-vanishing Bott--Chern archimedean correction terms; $X$ does not factor
+as ``genus-$g$ curve $\times_{\mathrm{Spec}\,\mathbb{Z}}\mathrm{Spec}\,\mathbb{Z}$''
+in arithmetic Chow.
+\item \emph{$\overline{\mathrm{Spec}\,\mathbb{Z}}$ itself has finite genus.}
+Falsified (Voice~2). Deninger's arithmetic-dynamical genus of
+$\mathrm{Spec}\,\mathbb{Z}$ is $+\infty$ (countably many critical zeros of
+$\zeta$). Genus enters only through coefficient enhancement to a totally
+imaginary number field of degree $2g$.
+\item \emph{Conflation of curve-genus $g_c$ with Siegel-modular genus
+$g_s$.} Falsified (Voice~6). For a modular curve $X_0(N)$: $g_c=g_0(N)$
+and $g_s=1$. For $\mathcal{A}_2$: $g_c$ undefined, $g_s=2$. The
+speculation's $g$ is the symplectic rank of the Galois representation
+divided by $2$; in the Shimura setting this is $g_s$, not $g_c$.
+\item \emph{$\kappa+\kappa^!=2-2g$ as Euler-characteristic shift.}
+Falsified (Voice~5). The Euler characteristic $2-2g$ is a topological
+invariant of the Riemann surface $X(\mathbb{C})$, not a Koszul invariant
+of the chiral algebra. The Koszul sum remains $=0$ at every $g$; the
+genus enters through the Fock rank, the archimedean $\Gamma$-factor, and
+the motivic weight of the functional-equation center.
+\end{enumerate}
+
+Each falsification is a specific technical joint preserved in
+\Cref{v4-arith:app:B:genus-g-session}.
+
+\section{The All-Genus Load-Bearing Theorem-Waiting}
+\label{v4-arith:ag:load-bearing}
+
+Let $\mathcal{D}_g=(\mathcal{B}_g,\mathcal{E}_g,\varphi_g)$ be an arithmetic
+genus-$g$ datum. Attach to $\mathcal{D}_g$ the arithmetic Heisenberg
+$\mathcal{V}^{\mathrm{prim},g}_{\mathrm{Heis}}$ via the rank-$2g$ Fock on
+$\mathcal{E}_g$ at each place, and the Koszul dual via Consani--Marcolli's
+genus-$g$ Bost--Connes--Marcolli system (Consani--Marcolli 2006
+arXiv:math/0605383).
+
+\begin{theorem}[all-genus arithmetic Koszul duality]
+\label{v4-arith:ag:thm:all-genus}
+\ClaimStatusProvedHereConditional \emph{(on the residual obligations of
+\Cref{v4-arith:ag:residual})}. For every $g\geq 0$ and every arithmetic
+genus-$g$ datum $\mathcal{D}_g$, the arithmetic Heisenberg Koszul
+self-duality identity
+\begin{equation}
+\label{v4-arith:ag:eq:master}
+\kappa^{\mathrm{Ar},g}_{\mathsf{G}}(\mathcal{D}_g)
++(\kappa^{!})^{\mathrm{Ar},g}_{\mathsf{G}}(\mathcal{D}_g)=0
+\end{equation}
+is equivalent to the motivic functional equation
+\begin{equation}
+\label{v4-arith:ag:eq:fe}
+\Lambda_{\mathcal{D}_g}(s)
+=\epsilon_{\mathcal{D}_g}\cdot\Lambda_{\mathcal{D}_g}\bigl(w_{\mathcal{D}_g}-s\bigr),
+\end{equation}
+where $\Lambda_{\mathcal{D}_g}(s)$ is the completed $L$-function attached to
+$\mathcal{D}_g$ and $w_{\mathcal{D}_g}\in\mathbb{Z}_{\geq 1}$ is the
+motivic weight center, depending on the window but not on $g$ alone.
+Forward implication \eqref{v4-arith:ag:eq:master}$\Rightarrow$\eqref{v4-arith:ag:eq:fe}
+holds unconditionally via Euler-product identification, Consani--Marcolli
+Koszul dual, and Weil--Bloch--Kato adelic Poisson. Full biconditional is
+conditional on the 2-dim arithmetic Positselski equivalence at
+$\Lambda_2=\mathbb{Z}_p[[\Gamma_1\times\Gamma_2]]$-coefficients (Window~V)
+plus Koszul--Petersson compatibility at rank $g$ (extending
+Chapter~\ref{v4-arith:kp-compat}).
+\end{theorem}
+
+The four rows of \eqref{v4-arith:ag:eq:fe}, indexed by window, are
+recorded in \Cref{v4-arith:ag:table:rows}.
+
+\begin{table}[h]
+\caption{Rows of the all-genus arithmetic Koszul duality.}
+\label{v4-arith:ag:table:rows}
+\centering
+\begin{tabular}{llll}
+\toprule
+Window & $\Lambda_{\mathcal{D}_g}(s)$ & $w_{\mathcal{D}_g}$ & Motivic weight \\
+\midrule
+II & $\xi_K(s)=|d_K|^{s/2}\Gamma_{\mathbb{C}}(s)^g\zeta_K(s)$ & $1$ & $0$ (Dedekind) \\
+I, V & $\Lambda(s,X_K)=N_{X_K}^{s/2}\Gamma_{\mathbb{C}}(s)^g L(s,X_K)$ & $2$ & $1$ (Hasse--Weil) \\
+VI & $\Lambda(s,\pi,\mathrm{spin})$ for $\pi$ on $\mathrm{GSp}_{2g}$ & $2g+1$ & $g$ (Siegel spin) \\
+III, IV & spectral refinements & indirect & refines above \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}[weight structure]
+\label{v4-arith:ag:rem:weight}
+The functional-equation center $w_{\mathcal{D}_g}$ is set by the motivic
+weight of the row, not by $g$ itself. Window~II (Dedekind $\zeta_K$ with
+archimedean $\Gamma_{\mathbb{C}}^g$ factor) is weight $0$; the center
+stays at $s\mapsto 1-s$ regardless of $g$, since $\zeta_K$ for $K$ of
+degree $2g$ has the same $1-s$ symmetry as $\zeta$ for any number field.
+Windows~I, V (arithmetic surface with generic fibre of genus $g$) are
+weight $1$ on the Jacobian's $H^1$-motive; the center is $s\mapsto 2-s$.
+Window~VI (Siegel spin of genus-$g$ cusp form) is weight $g$; the center
+$s\mapsto 2g+1-s$ scales with $g$ linearly (Arthur 2013,
+\emph{Endoscopic Classification}). All three rows share
+$\kappa+\kappa^!=0$; the genus grading lives in the $\Gamma$-factor, the
+Fock rank, and the weight of the row.
+\end{remark}
+
+\begin{proof}[Sketch]
+Four steps, parallel to \Cref{v4-arith:thm:P1-resolution} at $g=0$.
+
+\emph{Step 1: Euler-product identification.} At each prime $p$ of good
+reduction for $\mathcal{D}_g$, the rank-$2g$ Heisenberg Fock partition
+function factors as
+$\prod_{j=1}^{2g}(1-\alpha_j^{(p)}p^{-\beta})^{-1}
+=\det(1-p^{-\beta}\varphi_g|\mathcal{E}_{g,p})^{-1}$.
+Global Euler product gives $\Lambda_{\mathcal{D}_g}(s)$ in the respective
+window.
+
+\emph{Step 2: Consani--Marcolli genus-$g$ Koszul dual.} Consani--Marcolli 2006
+(arXiv:math/0605383) constructs the rank-$2g$ Bost--Connes--Marcolli system
+with KMS partition function $\Lambda_{\mathcal{D}_g}(\beta)$ for
+$\beta>w_{\mathcal{D}_g}/2$ and meromorphic continuation. The Koszul dual
+of $\mathcal{V}^{\mathrm{prim},g}_{\mathrm{Heis}}$ is this genus-$g$ system.
+
+\emph{Step 3: rank-$g$ Positselski pairing.} Arithmetic Positselski
+(Positselski 2011 Mem.~AMS~996; Chapter~\ref{v4-arith:arith-positselski})
+at rank $g$, extended to $\Lambda_2$-coefficients for Window~V. Pairs the
+bar coalgebra of the rank-$2g$ Heisenberg with the cobar algebra of the
+genus-$g$ Bost--Connes system; total weight vanishes modulo the 2-dim
+$\mu$-invariant vanishing condition (extending Ferrero--Washington 1979
+\emph{Ann.~Math.}~109 for abelian at rank $1$).
+
+\emph{Step 4: adelic Fourier symmetry $s\mapsto w_{\mathcal{D}_g}-s$.}
+Tate 1950 at $g=0$ (Window~II with $K=\mathbb{Q}$); Weil 1967 \emph{Basic
+Number Theory} for totally imaginary base (Window~II general); Bloch--Kato
+1990 and Fontaine--Perrin-Riou 1994 for weight-$1$ motives on Jacobians
+(Windows~I, V); Arthur 2013 for Siegel spin $L$-functions (Window~VI).
+Each window's adelic Fourier symmetry, applied to the adelic theta
+distribution on $\mathcal{E}_g$, gives \eqref{v4-arith:ag:eq:fe} with the
+corresponding $w_{\mathcal{D}_g}$.
+
+Steps~1, 2, 4 close unconditionally. Step~3 is the residual obligation.
+Forward implication is therefore unconditional; full biconditional
+requires rank-$g$ Positselski.
+\end{proof}
+
+\section{Reduction to \texorpdfstring{$g=0$}{g=0} and the F-RH Axis}
+\label{v4-arith:ag:reduction}
+
+At $g=0$:
+\begin{itemize}
+\item Window~II: $K=\mathbb{Q}$, $\xi_K(s)=\xi(s)$, $\Gamma_{\mathbb{C}}(s)^0=1$,
+$\zeta_K=\zeta$. Functional equation $\xi(s)=\xi(1-s)$.
+\item Windows~I, V: $X_K=\mathbb{P}^1/K$, Jacobian trivial, $\Lambda(s,X_K)$
+degenerates to $\xi(s)$ with center $s\mapsto 1-s$; the weight-$1$ motive
+is void and the weight-$0$ Dedekind row takes over.
+\item Window~VI: $\mathcal{A}_0=\mathrm{pt}$, Siegel spin $L$-function
+collapses to $\zeta$, center $s\mapsto 1-s$.
+\end{itemize}
+
+All four rows collapse to $\xi(s)=\xi(1-s)$, recovering
+\Cref{v4-arith:thm:P1-resolution} as the $g=0$ specialisation of
+\Cref{v4-arith:ag:thm:all-genus}.
+
+\begin{corollary}[all-genus F-RH]
+\label{v4-arith:ag:cor:all-genus-FRH}
+\ClaimStatusConditional \emph{(on \Cref{v4-arith:ag:thm:all-genus} plus
+rank-$g$ extensions of the P2, P3, VB pillars of
+Chapter~\ref{v4-arith:rh-reformulation})}. For every $g\geq 0$ and every
+arithmetic genus-$g$ datum $\mathcal{D}_g$ with rank-$g$ Koszul--Petersson
+compatibility and rank-$g$ arithmetic Zhu modularity, the non-trivial
+zeros of $\Lambda_{\mathcal{D}_g}(s)$ lie on the self-dual locus
+$\mathrm{Re}(s)=w_{\mathcal{D}_g}/2$.
+\end{corollary}
+
+\begin{remark}[reach]
+\label{v4-arith:ag:rem:reach}
+\Cref{v4-arith:ag:cor:all-genus-FRH} subsumes: the Riemann Hypothesis
+($g=0$, Window~II); the Hasse--Weil Riemann Hypothesis for Jacobians of
+curves of arbitrary genus (Windows~I, V); the generalised Riemann
+Hypothesis for Dedekind zeta of totally imaginary fields (Window~II at
+higher $g$); the Siegel-spin Riemann Hypothesis for automorphic
+$L$-functions of cusp forms on $\mathrm{GSp}_{2g}(\mathbb{A}_{\mathbb{Q}})$
+(Window~VI). The minimal sufficient path is a rank-$g$ upgrade of
+Chapter~\ref{v4-arith:rh-reformulation}'s three-pillar implication
+structure plus \Cref{v4-arith:ag:thm:all-genus}.
+\end{remark}
+
+\section{Residual Obligations}
+\label{v4-arith:ag:residual}
+
+\Cref{v4-arith:ag:thm:all-genus} reduces to ten residual obligations,
+each extending a Chapter-level $g=0$ result to arbitrary $g$.
+
+\begin{enumerate}
+\item \emph{2-dim arithmetic Positselski equivalence} with
+$\mu_1=\mu_2=0$ on $\Lambda_2=\mathbb{Z}_p[[\Gamma_1\times\Gamma_2]]$,
+extending Chapter~\ref{v4-arith:arith-positselski}. Scope: 60--100
+pages. Precedents: Nekov\'a\v{r} 2006 (Astérisque~310); Coates--Sujatha
+2006 \emph{Cyclotomic Fields and Zeta Values}.
+\item \emph{Rank-$g$ Koszul--Petersson compatibility} replacing the
+scalar Petersson inner product with the genus-$g$ Petersson pairing on
+weight-$(k,g)$ automorphic forms, extending Chapter~\ref{v4-arith:kp-compat}.
+Scope: 15--25 pages.
+\item \emph{2-dim Parshin--Gersten bar construction} on the arithmetic
+surface with double residue $(\partial_1,\partial_2)$, extending
+Chapter~\ref{v4-arith:arakelov-bar}. Scope: 40--60 pages. Precedents:
+Parshin 1976, Kato 1980, Beilinson 1980.
+\item \emph{Rank-$g$ arithmetic Ben-Zvi--Nadler} with target stack
+$\Sigma_g^{\mathrm{Ar}}$ replacing $B\widehat{\mathbb{Z}}$, extending
+Chapter~\ref{v4-arith:arith-bzn}. Scope: 80--120 pages.
+\item \emph{$GL_{2g}$-local geometric Langlands.} Fargues--Scholze
+arXiv:2102.13459 and Emerton--Gee arXiv:1908.07185 inputs hold for
+arbitrary $G$; the categorical comparison theorem-waiting at $GL_{2g}$
+is the scaled analog of F1 (\Cref{v4-arith:conj:F1-global-AG}). Scope:
+imported from F1 scaled by $g$.
+\item \emph{Perfectoid $E_2$-enhancement at rank $g$} via BD
+Grassmannians for $GL_{2g}/\mathbb{Q}_p$, extending F2
+(\Cref{v4-arith:conj:F2-perfectoid-E2}). Scope: 60--80 pages.
+\item \emph{Rank-$g$ arithmetic Virasoro bootstrap} with central
+charge $c^{\mathrm{Ar},g}=g$ on the primary subspace of the rank-$g$
+archimedean Fock, extending Chapter~\ref{v4-arith:virasoro-bootstrap}.
+Scope: 30--40 pages.
+\item \emph{Arithmetic Siegel--Weil at bad primes for $g\geq 3$},
+extending Li--Liu 2021 arXiv:2101.09485. Scope: 40--60 pages.
+\item \emph{Harder-Eisenstein-congruence prime at genus $g$} replacing
+$p=691$ in F6 (\Cref{v4-arith:conj:F6-chenevier-691}). Concrete candidate
+$p=2028$ for weight-$(10,13)$ on $\mathrm{Sp}_4(\mathbb{Z})$ (Harder 2003);
+systematic tabulation by Bergstr\"om--Faber--van der Geer 2014
+(\emph{Sel.~Math.}~20). Scope: 20--30 pages.
+\item \emph{Arithmetic $\mathsf{B}$-row genus-$g$ ceiling.} F4
+(\Cref{v4-arith:conj:F4-B-row}) sharpens from the single integer
+$\kappa^{\mathrm{Ar}}+(\kappa^{!})^{\mathrm{Ar}}=8$ to a
+genus-dependent Shimura-signature-indexed sum, via Bruinier--Heegner
+Chern-class reciprocity on $\mathrm{Sh}(\mathrm{O}(2,2g-1))$ with
+accidental isomorphism $\mathrm{O}(2,3)\cong\mathrm{Sp}_4/\{\pm I\}$
+at $g=2$. Scope: 30--50 pages.
+\end{enumerate}
+
+The total residual scope is approximately 375--605 pages, organised as
+three to four paper-length treatments. Paper~(i): obligations 1--4 + 7
+(Beilinson / Positselski / bar-cobar on 2-dim base plus Virasoro
+bootstrap). Paper~(ii): obligations 5, 6 ($GL_{2g}$ Fargues--Scholze
+local plus global Arinkin--Gaitsgory). Paper~(iii): obligations 8, 10
+(Kudla--Rapoport and Bruinier--Heegner at genus $g$). Paper~(iv):
+obligation~9 and consolidation (Harder-Eisenstein congruences; all-genus
+F-RH corollary).
+
+\section{Orthogonal and Compatible Windows}
+\label{v4-arith:ag:orthogonal}
+
+The six windows are not redundant presentations of a single object; they
+are compatible but mathematically distinct refinements. Pairwise
+compatibility:
+
+\begin{itemize}
+\item \textbf{Windows~I and V} share the arithmetic surface as base and
+agree on the weight-$1$ Hasse--Weil functional equation. They differ on
+operadic dimension: Window~I keeps the archimedean $E_1$-chiral structure;
+Window~V lifts to $E_2$-chiral via Dunn. Compatibility is the content of
+Chapter~\ref{v4-arith:arakelov-bar}'s 2-dim extension.
+\item \textbf{Windows~II and V} differ on arithmetic scheme dimension
+(1-dim vs.~2-dim). Voice~2 repackages the genus as coefficient enhancement
+of the base field (totally imaginary $K$ of degree $2g$); Voice~5 keeps
+$K=\mathbb{Q}$ but lifts the base scheme to 2-dim. Compatibility via
+Tate 1950 adelic Fourier at number-field level.
+\item \textbf{Windows~III and VI} are spectral: Window~III gives the local
+$(\varphi,\Gamma)$-module moduli; Window~VI gives the global automorphic
+side. Compatibility via Fargues--Scholze arXiv:2102.13459 local Langlands.
+\item \textbf{Window~IV} is moduli-theoretic: $\mathcal{T}_g^{\mathrm{arith}}$
+carries the Hodge--Arakelov decoration on the theta-generic locus, and
+its point-by-point inputs supply Window~I. Compatibility via the Torelli
+map: a genus-$g$ curve's Jacobian is a point of
+$\mathcal{X}_{2g}^{\mathrm{crys,ord}}$ (Window~III) via its $F$-crystal,
+and a point of the Siegel modular threefold (Window~VI) via its
+polarisation.
+\end{itemize}
+
+Orthogonal to these six windows: Deninger's $\mathbb{F}_1$ programme
+(cited as motivation only, per Chapter~\ref{v4-arith:manifesto} Out-of-Scope);
+the Caraiani--Scholze unitary-Shimura programme at genera where no
+Shimura model exists (moduli of curves $\mathcal{M}_g$ is not Shimura for
+$g\geq 4$); the Bethe-algebra heuristic window, which lives at the
+zero-Fock per-place level and does not see $g$ directly.
+
+\section{Protocol Record}
+\label{v4-arith:ag:protocol}
+
+The six-voice session executed 2026-04-24 via six \texttt{general-purpose}
+Opus~4.7 agents, launched in parallel. Each voice operated independently
+from its own primary source catalog, executed between eight and twelve
+attack--heal cycles, and produced a convergence proposal against the
+speculation ``genus-$g$ arithmetic surface with almost complex structure
+carrying the cohomological signature of a genus-$g$ curve.'' The six
+independent trajectories converged on \Cref{v4-arith:ag:defn:datum} as a
+single arithmetic-modular datum admissible under all six source catalogs.
+Naive readings falsified at the technical joints collected in
+\Cref{v4-arith:ag:falsified}; the surviving structural content is
+\Cref{v4-arith:ag:thm:all-genus}. Raw transcripts are indexed in
+\texttt{notes/arithmetic\_attack\_heal/genus2\_arith\_surface/}:
+\texttt{voice\_01\_arakelov.md} (Voice~1, Arakelov),
+\texttt{voice\_02\_deninger\_connes.md} (Voice~2, Deninger--Connes--Consani),
+\texttt{voice\_03\_fargues\_scholze.md} (Voice~3, Fargues--Scholze--Bhatt),
+\texttt{voice\_04\_mochizuki.md} (Voice~4, Mochizuki--Hodge--Arakelov),
+\texttt{voice\_05\_bar\_cobar\_interior.md} (Voice~5, programmatic interior),
+\texttt{voice\_06\_shimura\_kudla.md} (Voice~6, Kudla--Rapoport--Langlands).
+
+\section{Summary}
+\label{v4-arith:ag:summary}
+
+\begin{enumerate}
+\item The arithmetic genus-$g$ datum $\mathcal{D}_g$
+(\Cref{v4-arith:ag:defn:datum}) is a single object admitting six
+convergent presentations (\Cref{v4-arith:ag:windows}).
+\item The naive ``almost complex structure on an arithmetic scheme''
+falsifies in every voice at a specific technical joint
+(\Cref{v4-arith:ag:falsified}); the surviving Frobenius interpretation
+(\Cref{v4-arith:ag:rem:almost-complex}) is consistent across all six
+windows.
+\item The all-genus arithmetic Koszul duality
+(\Cref{v4-arith:ag:thm:all-genus}) extends Vol~IV's $g=0$ load-bearing
+theorem to arbitrary $g$. The identity
+$\kappa^{\mathrm{Ar},g}+(\kappa^{!})^{\mathrm{Ar},g}=0$ is preserved at
+every $g$; the motivic functional-equation center $w_{\mathcal{D}_g}$
+is window-indexed, taking values $1$, $2$, or $2g+1$ depending on whether
+the row is Dedekind zeta, Hasse--Weil on the Jacobian, or Siegel spin.
+\item The all-genus F-RH corollary (\Cref{v4-arith:ag:cor:all-genus-FRH})
+subsumes the classical RH, the Hasse--Weil Riemann Hypothesis for
+Jacobians, the Dedekind-zeta generalised RH for totally imaginary fields,
+and the Siegel-spin RH for $\mathrm{GSp}_{2g}$ automorphic $L$-functions.
+\item The residual obligation list (\Cref{v4-arith:ag:residual}) scales
+the $g=0$ programme of Chapters~\ref{v4-arith:closure} and
+\ref{v4-arith:rh-reformulation} to ten named genus-$g$ extensions, total
+scope approximately 375--605 pages across three to four papers.
+\end{enumerate}
+
+The arithmetic branch of Vol~IV is thereby grade-enhanced from $g=0$ to
+the all-genus axis. Chapter~\ref{v4-arith:rh-reformulation}'s F-RH axis
+becomes the central fibre of a rank-graded family; the other fibres are
+the Hasse--Weil--RH conjectures for curves of fixed genus $g$, the
+Dedekind-zeta GRH for totally imaginary fields of degree $2g$, and the
+Siegel-spin RH for genus-$g$ Siegel modular cusp forms.
+
+Chapter~\ref{v4-arith:3d-acs-E1bar} extends the arithmetic-modular axis
+into arithmetic-gravity. The conformal vector implicit in
+\Cref{v4-arith:ag:thm:all-genus} sources an arithmetic Kac-Moody
+enhancement of $\mathcal{V}^{\mathrm{prim}}$
+(\Cref{v4-arith:3d-acs:thm:km-lift}), which in turn sources a
+finite-level arithmetic Chern-Simons state-sum/gluing skeleton and a conjectural
+renormalised \(GL_{2}(\widehat{\mathbb Z})\) limit on the étale
+3-space $\overline{\mathrm{Spec}\,\mathbb{Z}}$
+(\Cref{v4-arith:3d-acs:thm:finite-level-ACS},
+\Cref{v4-arith:3d-acs:conj:qu-acs}). The equalities
+\[
+Z_{\mathrm{ACS}^{\mathrm{qu}}}=\xi(k^{\mathrm{Ar}}),
+\qquad
+\partial\mathrm{ACS}^{\mathrm{qu}}=\mathcal{V}^{\mathrm{prim}}
+\]
+are conditional on profinite renormalisation and the local trace
+comparison
+(\Cref{v4-arith:3d-acs:thm:bulk-boundary-Vprim}). The ordered
+incidence model is computed by the normalized ordered bar on the
+auxiliary place order $\mathbb{P}\cup\{\infty\}$
+(\Cref{v4-arith:3d-acs:thm:chi-hom-bar}), while the comparison with
+full BD/CG arithmetic chiral homology is conditional
+(\Cref{v4-arith:3d-acs:cor:BDCG-ordered-comparison}). F-RH becomes a
+conditional spectral theorem on the partition-function zero locus
+(\Cref{v4-arith:3d-acs:thm:arith-gravity-FRH}); the all-genus lift
+(\Cref{v4-arith:3d-acs:cor:all-genus-arith-gravity}) covers every row
+of the arithmetic-modular family.

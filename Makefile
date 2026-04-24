@@ -6,6 +6,7 @@
 #    make            Full converging build → out/main.pdf
 #    make fast       Quick build (up to 4 passes) → out/main.pdf
 #    make release    Full rebuild → out/ + iCloud
+#    make standalone Build standalone documents → out/
 #    make icloud     Copy latest PDFs to iCloud Drive
 #    make clean      Remove LaTeX build artifacts (preserves stamp)
 #    make veryclean  Remove artifacts AND out/ (forces rebuild)
@@ -52,6 +53,11 @@ SOURCES   := $(wildcard *.tex) \
 # Output -- everything goes to out/
 OUT_DIR   := out
 PDF       := $(OUT_DIR)/main.pdf
+ICLOUD_MAIN_PREREQ := $(if $(wildcard $(PDF)),,$(PDF))
+
+# Standalone documents
+STANDALONE_TEX := determinant_of_an_operator.tex $(wildcard standalone/*.tex)
+STANDALONE_PASSES := 3
 
 STAMP     := .build_stamp
 
@@ -68,10 +74,12 @@ AUX_EXTS  := aux log out toc synctex.gz fdb_latexmk fls bbl blg \
 #  Targets
 # ============================================================================
 
-.PHONY: all fast clean veryclean clean-builds count check test help release icloud
+.DEFAULT_GOAL := all
+
+.PHONY: all fast clean veryclean clean-builds count check test help release standalone icloud
 
 ## icloud: Copy latest PDFs to iCloud Drive (subject-organised)
-icloud: $(PDF)
+icloud: $(ICLOUD_MAIN_PREREQ) standalone
 	@echo "  -- Copying Vol IV to iCloud (subject-organised) --"
 	@mkdir -p "$(ICLOUD_DIR)/volumes"
 	@mkdir -p "$(ICLOUD_DIR)/vol4_realization"
@@ -102,13 +110,16 @@ $(STAMP): $(SOURCES) $(BUILD_SCRIPT)
 	@echo "  $(PDF) built successfully."
 	@echo ""
 
+$(PDF): $(STAMP)
+	@true
+
 ## fast: Bounded quick build for rapid iteration → out/main.pdf
 ## Convention: invoke at session end (CLAUDE.md "Do not run pdflatex after every edit").
 fast:
 	@echo "  -- Fast build (up to $(FAST_PASSES) passes) --"
 	@$(BUILD_SCRIPT) $(FAST_PASSES)
 
-## release: Full rebuild → out/ + iCloud
+## release: Full rebuild → out/ + standalones + iCloud
 release:
 	@rm -f $(STAMP)
 	@rm -rf $(OUT_DIR)
@@ -118,7 +129,7 @@ release:
 	@echo "  -- RELEASE BUILD (Vol IV) --"
 	@echo "  =========================================="
 	@echo ""
-	@echo "  [1/1] Main manuscript"
+	@echo "  [1/2] Main manuscript"
 	@$(BUILD_SCRIPT) $(PASSES)
 	@if [ -f $(PDF) ]; then \
 		echo "  ok  $(PDF)"; \
@@ -126,12 +137,58 @@ release:
 		echo "  fail  manuscript build failed."; exit 1; \
 	fi
 	@echo ""
+	@echo "  [2/2] Standalone documents and iCloud"
 	@$(MAKE) --no-print-directory icloud
 	@echo ""
 	@echo "  =========================================="
 	@echo "  Release complete. All output in out/:"
 	@ls -1 $(OUT_DIR)/*.pdf 2>/dev/null | sed 's/^/    /'
 	@echo "  =========================================="
+
+## standalone: Build standalone documents → out/
+standalone:
+	@echo "  -- Building standalone documents --"
+	@mkdir -p $(OUT_DIR) $(LOG_DIR)
+	@if [ -z "$(strip $(STANDALONE_TEX))" ]; then \
+		echo "  (no standalone documents found)"; \
+	else \
+		failures=0; \
+		for tex in $(STANDALONE_TEX); do \
+			if [ ! -f "$$tex" ]; then continue; fi; \
+			base=$$(basename "$$tex" .tex); \
+			if [ -f "$(OUT_DIR)/$$base.pdf" ] && [ "$(OUT_DIR)/$$base.pdf" -nt "$$tex" ]; then \
+				echo "  ok  $(OUT_DIR)/$$base.pdf (up to date)"; \
+				continue; \
+			fi; \
+			tmpdir=$$(mktemp -d "/tmp/mkd-$$(basename "$$(pwd)")-standalone-$$base.XXXXXX"); \
+			echo "  [standalone] $$tex -> $(OUT_DIR)/$$base.pdf"; \
+			for pass in $$(seq 1 $(STANDALONE_PASSES)); do \
+				TEXINPUTS="$$tmpdir:$$(pwd):$$(pwd)/standalone:" $(TEX) $(TEXFLAGS) -output-directory="$$tmpdir" "$$tex" >"$(LOG_DIR)/standalone-$$base-pass$$pass.log" 2>&1; rc=$$?; \
+				if [ -f "$$tmpdir/$$base.idx" ]; then makeindex -q "$$tmpdir/$$base.idx" >/dev/null 2>&1 || true; fi; \
+				if [ $$rc -ne 0 ]; then \
+					if grep -aE '^! |Emergency stop|Runaway argument|Fatal error|Undefined control sequence|File ended while scanning|No pages of output' "$(LOG_DIR)/standalone-$$base-pass$$pass.log" >/dev/null 2>&1; then \
+						echo "  fail  $$tex (pass $$pass). See $(LOG_DIR)/standalone-$$base-pass$$pass.log"; \
+						grep -aE '^! |Emergency stop|Runaway argument|Fatal error|Undefined control sequence|File ended while scanning|No pages of output' "$(LOG_DIR)/standalone-$$base-pass$$pass.log" | head -n 20 || tail -n 40 "$(LOG_DIR)/standalone-$$base-pass$$pass.log"; \
+						failures=$$((failures + 1)); \
+						break; \
+					else \
+						echo "  warn  $$tex returned $$rc on pass $$pass; continuing."; \
+					fi; \
+				fi; \
+			done; \
+			if [ -f "$$tmpdir/$$base.pdf" ]; then \
+				cp "$$tmpdir/$$base.pdf" "$(OUT_DIR)/$$base.pdf"; \
+				echo "  ok  $(OUT_DIR)/$$base.pdf"; \
+			elif [ $$failures -eq 0 ]; then \
+				echo "  fail  no PDF produced for $$tex"; \
+				failures=$$((failures + 1)); \
+			fi; \
+		done; \
+		if [ $$failures -ne 0 ]; then \
+			echo "  fail  $$failures standalone document(s) failed."; \
+			exit 1; \
+		fi; \
+	fi
 
 ## check: Halt-on-error validation
 check:
@@ -214,7 +271,8 @@ help:
 	@echo ""
 	@echo "  make            Full converging build → out/main.pdf"
 	@echo "  make fast       Quick build (up to $(FAST_PASSES) passes) → out/main.pdf"
-	@echo "  make release    Full rebuild → out/ + iCloud"
+	@echo "  make release    Full rebuild → out/ + standalones + iCloud"
+	@echo "  make standalone Build standalone documents → out/"
 	@echo "  make icloud     Copy latest PDFs to iCloud Drive"
 	@echo "  make check      Halt-on-error validation"
 	@echo "  make test       Run compute tests (realization decorators)"

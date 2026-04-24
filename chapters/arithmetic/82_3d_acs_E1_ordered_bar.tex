@@ -1,0 +1,1043 @@
+\chapter{3D Arithmetic Chern-Simons on Etale Spec(Z) and the Ordered Incidence Bar}
+\label{v4-arith:3d-acs-E1bar}
+
+\emph{The all-genus arithmetic conformal vector of
+Chapter~\ref{v4-arith:all-genus-koszul} suggests an arithmetic
+Kac--Moody enhancement of \(\mathcal{V}^{\mathrm{prim}}\). This chapter
+records the honest downstream package. Finite arithmetic Chern--Simons
+state sums follow from finite étale local-system groupoids. The
+profinite \(GL_{2}(\widehat{\mathbb Z})\) quantum theory, its boundary
+identification with \(\mathcal{V}^{\mathrm{prim}}\), and its zeta
+partition function remain conditional. The ordered \(E_{1}\)-bar below
+is a defined incidence model; identifying it with
+Beilinson--Drinfeld/Costello--Gwilliam arithmetic chiral homology is a
+separate comparison theorem. The Deninger construction obtained from
+this model is therefore a prime-orbit skeleton plus a
+Hilbert--P\'olya-strength spectral-flow hypothesis, not an independent
+construction of the zero-side cohomology.}
+
+\section{Spec(Z) as Etale 3-Space}
+\label{v4-arith:3d-acs:spec-z}
+
+Mazur 1973 (\emph{Notes on étale cohomology of number fields},
+Ann.~Sci.~ENS~6) observed that $\mathrm{Spec}\,\mathcal{O}_K$ has étale
+cohomological dimension $3$ for $K$ a number field, with Artin--Verdier
+duality supplying a fundamental class
+$[\mathrm{Spec}\,\mathcal{O}_K]\in H^{3}_{\mathrm{\acute{e}t}}(\mathrm{Spec}\,\mathcal{O}_K,\widehat{\mathbb{Z}})$
+analogous to a 3-manifold's orientation class. Morishita 2012
+\emph{Knots and Primes} (arXiv:0904.3399) systematizes the dictionary:
+primes $\mathfrak{p}\subset\mathcal{O}_K$ behave as knots in a closed
+$3$-manifold; $\mathrm{Spec}\,\mathcal{O}_{K,\mathfrak{p}}$ is the
+tubular neighborhood; the inertia subgroup $I_{\mathfrak{p}}\subset\mathrm{Gal}(\overline{K}/K)$
+is the meridian; linking numbers become Legendre symbols; the
+Alexander--Fox module becomes the Iwasawa module. For $K=\mathbb{Q}$,
+Arakelov compactification $\overline{\mathrm{Spec}\,\mathbb{Z}}$ closes
+the 3-space by adding the archimedean boundary component at $\infty$.
+
+\begin{remark}[cohomological 3-dimensionality]
+\label{v4-arith:3d-acs:rem:cohom-3dim}
+$\mathrm{Spec}\,\mathbb{Z}$ is not a smooth real 3-manifold. Its
+3-dimensionality is cohomological: the étale site supports non-trivial
+$H^1,H^2,H^3$ computable via global class-field theory and
+Artin--Verdier. The Chern-Simons action functional below takes values
+in étale cohomology classes rather than in differential forms; its
+quantization is in Galois-representation-theoretic terms rather than
+path-integral terms in the differential-geometric sense.
+\end{remark}
+
+\section{Kim Classical Arithmetic Chern-Simons}
+\label{v4-arith:3d-acs:kim}
+
+Kim 2015 \emph{Arithmetic Chern-Simons Theory I} (arXiv:1510.05818), and
+the non-abelian extension Chern-Dan-Kim-Park 2018 (arXiv:1609.03012),
+define the classical action
+\begin{equation}
+\label{v4-arith:3d-acs:eq:kim-action}
+\mathrm{CS}^{\mathrm{Ar}}_{M,c}(\rho):=\langle\rho^{*}c,[M]\rangle\in\mathbb{Q}/\mathbb{Z},
+\end{equation}
+for $M=\mathrm{Spec}\,\mathcal{O}_K$, $\rho:\pi_{1}^{\mathrm{\acute{e}t}}(M)\to G$
+a continuous representation into a finite group $G$, $c\in H^{3}(BG,\mathbb{Q}/\mathbb{Z})$
+a level class, and $[M]$ the Artin--Verdier fundamental class. Summation
+over $\rho$ gives the classical partition function
+$Z^{\mathrm{cl,Ar}}_{\mathrm{CS},c}(M)=\sum_{\rho}\frac{e^{2\pi i\mathrm{CS}^{\mathrm{Ar}}_{M,c}(\rho)}}{|\mathrm{Aut}(\rho)|}$.
+Chapter~\ref{v4-arith:gaiotto} already uses this classical torsor as a
+boundary action-line input for $\mathcal{V}^{\mathrm{prim}}$; the present
+chapter upgrades first to finite state sums and then states the
+profinite quantum-TQFT problem.
+
+\section{The Arithmetic Kac-Moody Lift}
+\label{v4-arith:3d-acs:km-lift}
+
+Chapter~\ref{v4-arith:virasoro-bootstrap} equips $\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}$
+with a Virasoro-type operator and central charge $c^{\mathrm{Ar}}=2$;
+Chapter~\ref{v4-arith:all-genus-koszul} upgrades per-window to
+$c^{\mathrm{Ar},g}=g$ from the rank-$g$ archimedean Fock. The presence
+of a conformal vector places $\mathcal{V}^{\mathrm{prim}}$ inside the
+universal affinisation bucket.
+
+\begin{theorem}[arithmetic Kac-Moody enhancement]
+\label{v4-arith:3d-acs:thm:km-lift}
+\ClaimStatusConditional \emph{(on the $\mathsf{G}$-row resolution
+\Cref{v4-arith:thm:P1-resolution} and rank-$2g$ Satake structure of
+Chapter~\ref{v4-arith:all-genus-koszul})}. The arithmetic Heisenberg
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}$ admits an arithmetic
+Kac-Moody enhancement
+\begin{equation}
+\label{v4-arith:3d-acs:eq:km-enh}
+\widehat{\mathcal{V}}^{\mathrm{Ar}}_{k^{\mathrm{Ar}}}
+:=\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}\otimes\mathrm{Ind}_{k^{\mathrm{Ar}}}\bigl(L\mathfrak{gl}_{2}^{\mathrm{Ar}}\bigr),
+\end{equation}
+at level $k^{\mathrm{Ar}}=\kappa^{\mathrm{Ar}}_{\mathsf{G}}$, where
+$L\mathfrak{gl}_{2}^{\mathrm{Ar}}:=\bigotimes'_{p}L\mathfrak{gl}_{2}^{(p)}$
+is the global arithmetic loop algebra assembled from the per-prime
+Satake current algebras generated by $(\alpha_p,\beta_p)$. On the
+semisimple \(\mathfrak{sl}_{2}\)-summand, the usual Sugawara
+construction has denominator \(k^{\mathrm{Ar}}+2\). The central
+\(\mathfrak u(1)\)-summand contributes as a free Heisenberg current.
+With this split convention, the induced Virasoro operator is the
+formal Fock operator of Chapter~\ref{v4-arith:virasoro-bootstrap}. The
+rank-\(2g\) extension scales linearly per
+Chapter~\ref{v4-arith:all-genus-koszul}.
+\end{theorem}
+
+\begin{remark}[critical level evasion]
+\label{v4-arith:3d-acs:rem:critical-level}
+Feigin--Frenkel duality at the complex level identifies $k=-h^{\vee}$
+with the centre of $\widehat{\mathfrak{g}}$; the Sugawara construction
+diverges there. The arithmetic branch's Koszul-self-duality
+$\kappa^{\mathrm{Ar}}_{\mathsf{G}}+(\kappa^{!})^{\mathrm{Ar}}_{\mathsf{G}}=0$
+(\Cref{v4-arith:thm:P1-resolution}) places $k^{\mathrm{Ar}}$ at the
+self-dual level, distinct from the critical level. The Sugawara
+closes; the arithmetic Kac-Moody is non-critical by construction.
+\end{remark}
+
+\section{3D Quantum Arithmetic Chern-Simons}
+\label{v4-arith:3d-acs:qu-acs}
+
+\begin{definition}[finite arithmetic field groupoid]
+\label{v4-arith:3d-acs:def:finite-field-groupoid}
+\ClaimStatusDefinitional. Let \(M\) be an arithmetic 3-space in the
+Mazur--Artin--Verdier sense, for example
+\(\overline{\mathrm{Spec}\,\mathcal O_{K}}\) with its compact-support
+fundamental class. Let \(G\) be a finite group and let
+\(\alpha\in H^{3}(BG,\mathbb C^{\times})\) be a level. The finite
+arithmetic field groupoid is
+\[
+\mathcal F_{G}(M):=\operatorname{Map}_{\mathrm{cont}}
+\bigl(\Pi^{\mathrm{\acute et}}_{1}(M),BG\bigr),
+\]
+the groupoid of continuous \(G\)-local systems on the etale homotopy
+type of \(M\). For a field \(\rho\in\mathcal F_{G}(M)\), the action is
+\[
+S_{\alpha}^{\mathrm{Ar}}(\rho):=
+\left\langle \rho^{*}\alpha,[M]\right\rangle\in\mathbb C^{\times}.
+\]
+\end{definition}
+
+\begin{theorem}[finite-level arithmetic state sum and gluing]
+\label{v4-arith:3d-acs:thm:finite-level-ACS}
+\ClaimStatusProvedHere. For a closed arithmetic \(3\)-space \(M\) for
+which \(\mathcal F_G(M)\) is a finite groupoid, the assignment
+\[
+Z^{\mathrm{Ar}}_{G,\alpha}(M)
+:=\int_{\mathcal F_{G}(M)}S_{\alpha}^{\mathrm{Ar}}
+=\sum_{[\rho]\in\pi_{0}\mathcal F_{G}(M)}
+\frac{\langle\rho^{*}\alpha,[M]\rangle}{|\operatorname{Aut}(\rho)|}
+\]
+is Kim's arithmetic Chern--Simons partition sum for the class
+\(\alpha\). If an arithmetic gluing \(M=M_{1}\cup_{\Sigma}M_{2}\)
+has finite field groupoids and satisfies étale descent
+\[
+\mathcal F_G(M)\simeq
+\mathcal F_G(M_1)\times_{\mathcal F_G(\Sigma)}\mathcal F_G(M_2),
+\]
+then \(Z^{\mathrm{Ar}}_{G,\alpha}\) satisfies the corresponding
+finite-groupoid gluing formula.
+\end{theorem}
+
+\begin{proof}
+The construction uses only finite homotopy types. To a closed
+arithmetic 3-space \(M\), assign the finite groupoid
+\(\mathcal F_{G}(M)\) and integrate the locally constant function
+\(S_{\alpha}^{\mathrm{Ar}}\) by groupoid cardinality. If
+\[
+M=M_{1}\cup_{\Sigma}M_{2}
+\]
+is a gluing along an arithmetic boundary, then etale descent for
+local systems gives a homotopy pullback
+\[
+\mathcal F_{G}(M)\simeq
+\mathcal F_{G}(M_{1})\times_{\mathcal F_{G}(\Sigma)}
+\mathcal F_{G}(M_{2}).
+\]
+The fundamental class is additive under gluing, so the action
+multiplies:
+\[
+\langle\rho^{*}\alpha,[M]\rangle
+=
+\langle\rho_{1}^{*}\alpha,[M_{1}]\rangle
+\langle\rho_{2}^{*}\alpha,[M_{2}]\rangle .
+\]
+Fubini for finite groupoid cardinality then gives the displayed gluing
+formula. Kim's action is exactly the same evaluation of a pulled-back
+degree-3 class on the Artin--Verdier fundamental class, written in
+\(\mathbb Q/\mathbb Z\) and exponentiated here into
+\(\mathbb C^{\times}\).
+\end{proof}
+
+\begin{definition}[finite-level boundary category]
+\label{v4-arith:3d-acs:def:finite-boundary-category}
+\ClaimStatusDefinitional. For an arithmetic boundary \(\Sigma\), let
+\(\tau_{\Sigma}(\alpha)\) be the transgression of
+\(\alpha\in H^{3}(BG,\mathbb C^{\times})\) to a \(2\)-cocycle on the
+field groupoid \(\mathcal F_{G}(\Sigma)\). The finite-level boundary
+category is
+\[
+\mathcal B_{G,\alpha}(\Sigma):=
+\operatorname{Sh}_{\tau_{\Sigma}(\alpha)}
+\bigl(\mathcal F_{G}(\Sigma)\bigr),
+\]
+the category of finite-dimensional \(\tau_{\Sigma}(\alpha)\)-twisted
+local systems on \(\mathcal F_{G}(\Sigma)\).
+\end{definition}
+
+\begin{theorem}[finite-level bulk-boundary span]
+\label{v4-arith:3d-acs:thm:finite-bulk-boundary}
+\ClaimStatusConditional \emph{(on a finite arithmetic cobordism
+category whose morphisms satisfy the gluing hypothesis of
+\Cref{v4-arith:3d-acs:thm:finite-level-ACS})}. The finite-level theory
+\(Z^{\mathrm{Ar}}_{G,\alpha}\) assigns
+\(\mathcal B_{G,\alpha}(\Sigma)\) to the arithmetic boundary
+\(\Sigma\). If \(M\) is a cobordism from \(\Sigma_{0}\) to
+\(\Sigma_{1}\), then \(M\) acts by the integral transform
+\[
+\operatorname{Sh}_{\tau_{\Sigma_{0}}(\alpha)}
+\bigl(\mathcal F_{G}(\Sigma_{0})\bigr)
+\longrightarrow
+\operatorname{Sh}_{\tau_{\Sigma_{1}}(\alpha)}
+\bigl(\mathcal F_{G}(\Sigma_{1})\bigr)
+\]
+whose kernel is the action local system on \(\mathcal F_{G}(M)\).
+For a closed \(M\), the categorical trace of this transform is
+\(Z^{\mathrm{Ar}}_{G,\alpha}(M)\).
+\end{theorem}
+
+\begin{proof}
+Restriction of local systems gives a span
+\[
+\mathcal F_{G}(\Sigma_{0})\leftarrow \mathcal F_{G}(M)
+\rightarrow \mathcal F_{G}(\Sigma_{1}).
+\]
+The transgressed cocycle records the boundary anomaly of the
+degree-3 class \(\alpha\); tensoring by the action local system and
+then pushing forward along the right leg gives the displayed integral
+transform. Composition of cobordisms is composition of spans. The
+homotopy-pullback formula from
+\Cref{v4-arith:3d-acs:thm:finite-level-ACS} makes the two composite
+kernels canonically isomorphic. When the boundary is empty, the
+trace reduces to groupoid-cardinality integration over
+\(\mathcal F_{G}(M)\), which is precisely
+\(Z^{\mathrm{Ar}}_{G,\alpha}(M)\).
+\end{proof}
+
+\begin{proposition}[finite boundary Hochschild trace]
+\label{v4-arith:3d-acs:prop:finite-boundary-HH}
+\ClaimStatusProvedHere. Assume \(\mathcal F_G(\Sigma)\) is a finite
+groupoid and work over \(\mathbb C\). Then the finite boundary category
+\[
+\mathcal B_{G,\alpha}(\Sigma)=
+\operatorname{Sh}_{\tau_\Sigma(\alpha)}(\mathcal F_G(\Sigma))
+\]
+has Hochschild trace equal to the twisted inertia trace of
+\(\mathcal F_G(\Sigma)\):
+\[
+\operatorname{HH}_{0}\bigl(\mathcal B_{G,\alpha}(\Sigma)\bigr)
+\cong
+\Gamma\bigl(\pi_0 I\mathcal F_G(\Sigma),
+L_{\tau_\Sigma(\alpha)}\bigr),
+\qquad
+\operatorname{HH}_{n>0}\bigl(\mathcal B_{G,\alpha}(\Sigma)\bigr)=0.
+\]
+Here \(I\mathcal F_G(\Sigma)\) is the inertia groupoid, and
+\(L_{\tau_\Sigma(\alpha)}\) is the transgressed local system on
+inertia.
+\end{proposition}
+
+\begin{proof}
+A finite twisted sheaf category on a finite groupoid is Morita
+equivalent to modules over the corresponding finite-dimensional
+twisted groupoid algebra. Over \(\mathbb C\) this algebra is separable:
+it is a finite product of twisted finite group algebras, hence
+semisimple. Hochschild homology of a separable algebra with coefficients
+in itself vanishes in positive degrees. Degree zero is the algebra
+modulo commutators, which is the space of twisted class functions on
+conjugacy classes, equivalently sections of the transgressed local
+system on the inertia groupoid.
+\end{proof}
+
+\begin{corollary}[Wilson lines at finite level]
+\label{v4-arith:3d-acs:cor:finite-wilson}
+\ClaimStatusProvedHere. A prime \(p\) viewed as a knot in the
+Morishita dictionary supports Wilson defects labelled by
+representations of the local stabiliser group of a point of
+\(\mathcal F_{G}(\mathrm{Spec}\,\mathbb Q_{p})\). For a
+one-dimensional label \(\chi\), the Wilson expectation is the
+corresponding Frobenius trace \(\chi(\mathrm{Frob}_{p})\).
+\end{corollary}
+
+\begin{proof}
+Removing the prime \(p\) and fixing monodromy around the meridian is
+the arithmetic analog of prescribing a conjugacy class around a knot.
+The defect category is the module category of the stabiliser of that
+local monodromy. A one-dimensional module evaluates a loop by its
+character, hence the meridian/Frobenius loop contributes
+\(\chi(\mathrm{Frob}_{p})\).
+\end{proof}
+
+\begin{conjecture}[renormalised \(GL_{2}(\widehat{\mathbb Z})\) quantum arithmetic CS]
+\label{v4-arith:3d-acs:conj:qu-acs}
+\ClaimStatusConjectured. Let \(G_{N}=GL_{2}(\mathbb Z/N\mathbb Z)\),
+and let \(\alpha_{N}\in H^{3}(BG_{N},\mathbb C^{\times})\) be a
+compatible tower of finite levels whose inverse-limit class is
+the arithmetic level \(k^{\mathrm{Ar}}=\kappa^{\mathrm{Ar}}_{\mathsf G}\).
+The finite theories \(Z^{\mathrm{Ar}}_{G_{N},\alpha_{N}}\) admit a
+renormalised profinite limit
+\[
+\mathrm{ACS}^{\mathrm{qu}}_{k^{\mathrm{Ar}}}
+:=\varprojlim_{N}^{\mathrm{ren}} Z^{\mathrm{Ar}}_{G_{N},\alpha_{N}}
+\]
+on the etale 3-space
+\(\overline{\mathrm{Spec}\,\mathbb Z}\). This limit satisfies three
+bulk-boundary axioms:
+\begin{enumerate}
+\item (Boundary WZW.) The 2D factorization algebra on the archimedean
+fibre $\{\infty\}$ produced by canonical quantisation of
+$\mathrm{ACS}^{\mathrm{qu}}_{k^{\mathrm{Ar}}}$ coincides with
+$\mathcal{V}^{\mathrm{prim}}$:
+$\partial\,\mathrm{ACS}^{\mathrm{qu}}_{k^{\mathrm{Ar}}}=\mathcal{V}^{\mathrm{prim}}$.
+\item (Partition function.) The bulk partition function equals the
+completed zeta character at the level:
+$Z_{\mathrm{ACS}^{\mathrm{qu}}}(\overline{\mathrm{Spec}\,\mathbb{Z}};k^{\mathrm{Ar}})=\xi(k^{\mathrm{Ar}})$.
+\item (Wilson lines as Frobenius traces.) For a prime $p\in\mathbb{P}$
+viewed as a knot in the Morishita dictionary, the Wilson-line observable
+in representation $\rho:\pi_{1}^{\mathrm{\acute{e}t}}\to GL_{2}$ reproduces
+the Frobenius trace:
+$\langle W_{\rho}(K_{p})\rangle_{\mathrm{ACS}^{\mathrm{qu}}}=\mathrm{tr}\,\rho(\mathrm{Frob}_{p})$.
+\end{enumerate}
+\end{conjecture}
+
+\begin{remark}[status]
+\label{v4-arith:3d-acs:rem:qu-acs-status}
+The closed finite-level state sum is theorem-grade:
+\Cref{v4-arith:3d-acs:thm:finite-level-ACS} constructs it from étale
+local systems, the Artin--Verdier fundamental class, and finite
+groupoid cardinality. Functorial finite-level TQFT language still
+requires a specified arithmetic cobordism category. The larger
+residual is the renormalised profinite limit
+\(G_{N}\to GL_{2}(\widehat{\mathbb Z})\), the comparison of its
+archimedean boundary category with \(\mathcal V^{\mathrm{prim}}\), and
+the identification of its renormalised partition function with
+\(\xi(k^{\mathrm{Ar}})\).
+
+There is a concrete obstruction to treating the closed finite tower as
+the zeta partition function. On the closed base
+\(\overline{\mathrm{Spec}\,\mathbb Z}\), finite etale local systems are
+trivial by Hermite--Minkowski, so the bare finite state sum for
+\(G_N=GL_2(\mathbb Z/N\mathbb Z)\) is the groupoid-cardinality scalar
+\(|G_N|^{-1}\), or \(1\) after finite-gauge normalisation. This scalar
+does not contain prime weights \(p^{-s}\), the archimedean
+\(\Gamma_{\mathbb R}\)-factor, or the polar correction. A zeta-valued
+profinite ACS theory therefore requires extra data: compatible
+continuous level classes, a counterterm or measure system on the
+congruence tower, a profinite boundary category, a Morita comparison
+with the local Iwahori trace factors, and a regularised character map.
+\end{remark}
+
+\begin{theorem}[bulk-boundary comparison with \(\mathcal V^{\mathrm{prim}}\)]
+\label{v4-arith:3d-acs:thm:bulk-boundary-Vprim}
+\ClaimStatusConditional \emph{(on the renormalised profinite limit in
+\Cref{v4-arith:3d-acs:conj:qu-acs} and on the local Satake/Iwahori
+trace identifications of Chapters~\ref{v4-arith:tate-tensor} and
+\ref{v4-arith:hochschild-trace})}. Let
+\[
+\mathcal B_{\infty}^{\mathrm{Ar}}
+:=\varprojlim_{N}^{\mathrm{ren}}
+\mathcal B_{G_{N},\alpha_{N}}(\{\infty\})
+\]
+be the renormalised archimedean boundary category of the profinite
+ACS tower. If its finite-place compact generators identify with the
+local Iwahori Hecke generators and its archimedean vacuum sector
+identifies with the rank-\(2\) Heisenberg Kac-Moody vacuum, then
+\[
+\operatorname{HH}_{\bullet}(\mathcal B_{\infty}^{\mathrm{Ar}})
+\simeq \mathcal V^{\mathrm{prim}}.
+\]
+Equivalently, the boundary factorization algebra of
+\(\mathrm{ACS}^{\mathrm{qu}}_{k^{\mathrm{Ar}}}\) is
+\(\mathcal V^{\mathrm{prim}}\).
+\end{theorem}
+
+\begin{proof}
+At finite level,
+\Cref{v4-arith:3d-acs:thm:finite-bulk-boundary} identifies the
+boundary state category with twisted sheaves on the boundary field
+groupoid. Passing through the congruence tower gives a renormalised
+inverse system of such categories. The stated compact-generation
+hypothesis is exactly the assertion that the local factors of this
+system are the Iwahori Hecke categories used in the definition of
+\(\mathcal V^{\mathrm{prim}}\). Hochschild trace is local for the
+restricted tensor product under the compact-generation and spherical
+unit hypotheses of Chapter~\ref{v4-arith:tate-tensor}. Thus the
+finite places contribute the local trace factors
+\(\mathcal H^{(p)}\), while the archimedean vacuum contributes
+\(\mathcal H^{(\infty)}\). Their restricted tensor product is the
+Hochschild trace class \(\mathcal V^{\mathrm{prim}}\) by
+Chapter~\ref{v4-arith:hochschild-trace}. This proves the displayed
+boundary identification, conditional precisely on the profinite
+renormalisation and the local trace comparison.
+\end{proof}
+
+\begin{remark}[boundary trace status]
+\label{v4-arith:3d-acs:rem:boundary-trace-status}
+The finite boundary trace of
+\Cref{v4-arith:3d-acs:prop:finite-boundary-HH} is theorem-grade, but it
+does not identify the boundary with
+\(\mathcal V^{\mathrm{prim}}\). The comparison
+\[
+\operatorname{HH}_{\bullet}(\mathcal B_\infty^{\mathrm{Ar}})
+\simeq \mathcal V^{\mathrm{prim}}
+\]
+requires an independent profinite Morita equivalence
+\[
+\mathcal B_\infty^{\mathrm{Ar}}
+\simeq_{\mathrm{Morita}}
+\mathrm{Hk}^{\mathrm{Iw}}_{GL_2,\mathrm{glob}},
+\]
+compatible with the chosen topology, completion, restricted tensor
+product, local Satake/Iwahori generators, archimedean vacuum, and the
+arithmetic Ben-Zvi--Nadler and wild-prime hypotheses. Until these data
+are proved, \Cref{v4-arith:3d-acs:thm:bulk-boundary-Vprim} is only a
+conditional implication.
+\end{remark}
+
+\begin{remark}[Vol~II cross-volume bridge]
+\label{v4-arith:3d-acs:rem:vol2-bridge}
+Vol~II Part~VI inscribes a 3D holomorphic-twist QFT on $C\times\mathbb{R}$
+whose boundary factorization algebra on $C$ is the complex
+$\mathcal{V}$. The arithmetic analog replaces the holomorphic twist by
+the Chern-Simons sector: the arithmetic base
+$\overline{\mathrm{Spec}\,\mathbb{Z}}$ has étale cohomological dimension
+$3$ without a holomorphic structure in the differential-geometric sense.
+The 3D topological gauge theory over the arithmetic base is therefore
+Chern-Simons, not holomorphic twist. The complex $(HT)_{C\times\mathbb{R}}\to
+\partial=\mathcal{V}$ adjunction becomes the arithmetic
+$\mathrm{ACS}^{\mathrm{qu}}_{\overline{\mathrm{Spec}\,\mathbb{Z}}}\to\partial=\mathcal{V}^{\mathrm{prim}}$
+adjunction.
+\end{remark}
+
+\section{The Ordered Incidence Bar}
+\label{v4-arith:3d-acs:E1-bar}
+
+The primes of \(\mathbb Z\) carry the auxiliary total order
+\(2<3<5<7<\cdots<\infty\), with the archimedean place placed last.
+This order is not geometric structure on
+\(\overline{\mathrm{Spec}\,\mathbb Z}\). It defines an incidence model
+whose comparison with genuine arithmetic factorization homology is
+kept separate below.
+
+\begin{definition}[ordered incidence category]
+\label{v4-arith:3d-acs:def:ordered-incidence-category}
+\ClaimStatusDefinitional. Put \(V=\mathbb P\cup\{\infty\}\), with
+the order \(2<3<5<\cdots<\infty\). Let
+\(\mathsf{Inc}_{<}(V)\) be the category whose objects are finite
+ordered block decompositions of finite ordered subsets of \(V\).
+A singleton block is written \(v\), and the merge of two adjacent
+blocks is written by concatenation. Morphisms are generated by
+order-preserving adjacent contractions
+\[
+\{v_{1}<\cdots<v_{i}<v_{i+1}<\cdots<v_{n}\}
+\longrightarrow
+\{v_{1}<\cdots<(v_{i}v_{i+1})<\cdots<v_{n}\},
+\]
+where \(v_{i}v_{i+1}\) denotes the formal merged block carrying the
+product operation of the coefficient system, not a new arithmetic
+place. The simplicial nerve of
+\(\mathsf{Inc}_{<}(V)\) is the one-dimensional ordered collision
+model for the arithmetic Ran space.
+\end{definition}
+
+\begin{definition}[ordered incidence homology]
+\label{v4-arith:3d-acs:def:ordered-chiral-homology}
+\ClaimStatusDefinitional. Let
+\(\mathcal H=\{\mathcal H^{(v)}\}_{v\in V}\) be the per-place
+coefficient system of \(\mathcal V^{\mathrm{prim}}\), with adjacent
+products
+\[
+m_{v,w}\colon \mathcal H^{(v)}\otimes \mathcal H^{(w)}
+\longrightarrow \mathcal H^{(vw)}
+\qquad (v<w).
+\]
+Here \(\mathcal H^{(vw)}\) means the coefficient assigned to the
+merged block \(vw\).
+Let \(F_{\mathcal H}\colon\mathsf{Inc}_{<}(V)\to\mathrm{Ch}_{\mathbb C}\)
+send an ordered block decomposition \(B_{1}|\cdots|B_{r}\) to
+\[
+F_{\mathcal H}(B_{1}|\cdots|B_{r})
+:=\mathcal H^{(B_{1})}\otimes\cdots\otimes\mathcal H^{(B_{r})},
+\]
+with contractions acting by the corresponding adjacent products. The
+ordered incidence homology is the derived colimit
+\[
+\int_{\overline{\mathrm{Spec}\,\mathbb Z}}^{\mathrm{ord}}
+\mathcal V^{\mathrm{prim}}
+:=
+\operatorname*{L\,colim}_{\mathsf{Inc}_{<}(V)}F_{\mathcal H}.
+\]
+\end{definition}
+
+\begin{definition}[ordered incidence bar]
+\label{v4-arith:3d-acs:defn:E1-bar}
+\ClaimStatusDefinitional. Let $\mathcal{V}^{\mathrm{prim}}$ be the
+arithmetic Heisenberg with per-place factors $\mathcal{H}^{(p)}$ (finite
+primes, $E_0$ in the sense of Drinfeld--Kapranov,
+Ch.~\ref{v4-arith:drinfeld-kapranov}) and $\mathcal{H}^{(\infty)}$
+(archimedean, $E_1$-chiral). The \emph{ordered incidence bar} is the
+normalized chain complex of the simplicial replacement of
+\(F_{\mathcal H}\):
+\begin{equation}
+\label{v4-arith:3d-acs:eq:E1-bar}
+B^{\mathrm{ord}}_{\bullet}(\mathcal{V}^{\mathrm{prim}})
+:=
+N_{\bullet}\operatorname{srep}_{\mathsf{Inc}_{<}(V)}(F_{\mathcal H}).
+\end{equation}
+In degree \(n\), this is the direct sum over \(n\)-simplices
+\(C_{0}\to\cdots\to C_{n}\) of \(\mathsf{Inc}_{<}(V)\) of
+\(F_{\mathcal H}(C_{0})\), modulo degeneracies. Faces are induced by
+composition in \(\mathsf{Inc}_{<}(V)\), hence by adjacent contractions.
+Thus all targets are coefficients of formal merged blocks, not new
+arithmetic places.
+\end{definition}
+
+\begin{theorem}[ordered incidence homology via normalized bar]
+\label{v4-arith:3d-acs:thm:chi-hom-bar}
+\ClaimStatusProvedHere. The ordered incidence homology of
+\(\mathcal{V}^{\mathrm{prim}}\) is computed by the ordered incidence
+bar:
+\begin{equation}
+\label{v4-arith:3d-acs:eq:chi-hom-bar}
+\int_{\overline{\mathrm{Spec}\,\mathbb{Z}}}^{\mathrm{ord}}\mathcal{V}^{\mathrm{prim}}
+\;\simeq\;
+H_{\bullet}\bigl(B^{\mathrm{ord}}_{\bullet}(\mathcal{V}^{\mathrm{prim}})\bigr).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+This is the standard computation of a derived colimit by the
+normalized chain complex of the simplicial replacement of the
+coefficient functor \(F_{\mathcal H}\). The incidence category was
+defined so that its generating morphisms are adjacent contractions;
+therefore the normalized differential is the alternating sum of the
+corresponding contraction maps.
+\end{proof}
+
+\begin{corollary}[comparison with BD/CG chiral homology]
+\label{v4-arith:3d-acs:cor:BDCG-ordered-comparison}
+\ClaimStatusConditional \emph{(on constructing an arithmetic
+Beilinson--Drinfeld/Costello--Gwilliam Ran model for
+\(\overline{\mathrm{Spec}\,\mathbb Z}\), finite-place collision
+thickenings, constructible descent, ordered-to-unordered descent, and
+completion exactness identifying the arithmetic chiral homology of
+Chapters~\ref{v4-arith:arakelov-bar} and
+\ref{v4-arith:costello-gwilliam} with the ordered incidence model)}.
+One has
+\[
+\int_{\overline{\mathrm{Spec}\,\mathbb Z}}\mathcal V^{\mathrm{prim}}
+\simeq
+H_{\bullet}\bigl(B^{\mathrm{ord}}_{\bullet}(\mathcal V^{\mathrm{prim}})\bigr).
+\]
+\end{corollary}
+
+\begin{proof}
+The ordered theorem computes
+\(\int^{\mathrm{ord}}\mathcal V^{\mathrm{prim}}\). The stated
+comparison hypothesis identifies the ordered incidence model with
+the BD/CG arithmetic chiral-homology functor. Substitution gives the
+displayed equivalence.
+\end{proof}
+
+\begin{remark}[status of the BD/CG comparison]
+\label{v4-arith:3d-acs:rem:BDCG-status}
+The ordered incidence bar computes the derived colimit over
+\(\mathsf{Inc}_{<}(\mathbb P\cup\{\infty\})\) by
+\Cref{v4-arith:3d-acs:thm:chi-hom-bar}. This is not full
+Beilinson--Drinfeld/Costello--Gwilliam arithmetic chiral homology. The
+comparison requires a non-terminal arithmetic Ran object, finite-place
+diagonal or collision thickenings, BD/CG descent, constructibility with
+an exit category homotopy-finally reached from the ordered incidence
+category, ordered-to-unordered descent, and exactness of the restricted
+products and completions used in the derived colimit. Until these
+hypotheses are supplied,
+\Cref{v4-arith:3d-acs:cor:BDCG-ordered-comparison} remains conditional.
+\end{remark}
+
+\begin{corollary}[regularised character from the ordered bar]
+\label{v4-arith:3d-acs:cor:partition-bar}
+\ClaimStatusConditional \emph{(on \Cref{v4-arith:3d-acs:conj:qu-acs}(1--2)
+and \Cref{v4-arith:3d-acs:cor:BDCG-ordered-comparison}, and on a
+regularised character map
+\(\operatorname{ch}_{\mathrm{reg}}\) from arithmetic chiral homology
+to scalar partition functions)}. The partition function of the
+conjectural 3D quantum arithmetic Chern--Simons is the regularised
+character of the ordered-bar homology:
+\begin{equation}
+\label{v4-arith:3d-acs:eq:Z-bar}
+Z_{\mathrm{ACS}^{\mathrm{qu}}}\bigl(\overline{\mathrm{Spec}\,\mathbb{Z}};k^{\mathrm{Ar}}\bigr)
+=
+\operatorname{ch}_{\mathrm{reg}}
+H_{\bullet}\bigl(B^{\mathrm{ord}}_{\bullet}(\mathcal{V}^{\mathrm{prim}})\bigr)
+=\xi(k^{\mathrm{Ar}}).
+\end{equation}
+The character map is the missing type conversion: a scalar partition
+function is not identified with a homology object before applying
+\(\operatorname{ch}_{\mathrm{reg}}\).
+\end{corollary}
+
+\section{Deninger Skeleton from Arithmetic Chiral Homology}
+\label{v4-arith:3d-acs:deninger-chiral}
+
+We now isolate the strongest construction honestly supplied by the
+ordered-bar framework. The bare arithmetic \(u(1)\) data supplies the
+Bost--Connes prime skeleton. Deninger's missing cohomology requires an
+additional \(\mathbb R_{+}^{\times}\)-flow whose infinitesimal
+generator has the zeta zeros as regularised spectrum. That additional
+flow is precisely the Hilbert--P\'olya/Connes--Deninger obstruction; it
+is not produced by the Bost--Connes heat flow.
+
+\begin{definition}[pre-Deninger arithmetic coefficient package]
+\label{v4-arith:3d-acs:def:deninger-enhanced-algebra}
+\ClaimStatusDefinitional. The \emph{pre-Deninger arithmetic
+coefficient package} is the datum
+\[
+\mathcal A_{\mathrm{Den}}
+:=
+\Bigl(\mathcal A_{\mathrm{fin}}\otimes
+\mathcal A_{\infty}^{\mathrm{Tate}}\Bigr)\otimes \mathsf P^{\bullet}
+\]
+with:
+\begin{enumerate}
+\item finite Bost--Connes zero modes
+\[
+\mathcal A_{\mathrm{fin}}
+:=\bigotimes_{p}^{\prime}\mathcal H_{p}^{\mathrm{BC}},
+\qquad
+\mathcal H_{p}^{\mathrm{BC}}
+:=\bigoplus_{r\geq0}\mathbb C\delta_{p^{r}},
+\]
+with \(N_{p}\delta_{p^{r}}=r(\log p)\delta_{p^{r}}\) and
+\(N_{\mathrm{BC}}=\sum_{p}N_{p}\) on the restricted tensor product;
+\item the archimedean Tate-Gaussian sector
+\(\mathcal A_{\infty}^{\mathrm{Tate}}\), whose Mellin character is
+\(\Gamma_{\mathbb R}(s)\);
+\item a polar Tate complex
+\(\mathsf P^{\bullet}=\mathbb C_{0}[0]\oplus\mathbb C_{1}[2]\),
+where the indicated subscripts record the formal Frobenius weights
+\(0\) and \(1\);
+\item the Bost--Connes Euler flow
+\(\phi_{\mathrm{BC}}^{t}:=\exp(-tN_{\mathrm{BC}})\) on the finite
+zero modes, tensored with the usual Tate scaling on
+\(\mathcal A_{\infty}^{\mathrm{Tate}}\).
+\end{enumerate}
+The last flow records closed-orbit lengths \(\log p\). It is not the
+Deninger Frobenius flow on the conjectural middle cohomology.
+\end{definition}
+
+\begin{definition}[candidate chiral Deninger complex]
+\label{v4-arith:3d-acs:def:chiral-deninger-complex}
+\ClaimStatusDefinitional. Work in a fixed complete nuclear dg category
+where the restricted tensor products below and compactly supported
+continuous duals are defined. Put
+\[
+C_{\mathrm{core},\chi}^{\bullet}
+:=
+\operatorname{Hom}_{\mathrm{cont},c}\!\left(
+B^{\mathrm{ord}}_{\bullet}(\mathcal A_{\mathrm{fin}}\widehat{\otimes}
+\mathcal A_{\infty}^{\mathrm{Tate}}),\,\mathbb C\right).
+\]
+The \emph{candidate chiral Deninger complex} is the total direct sum
+\[
+C_{\mathrm{Den},\chi}^{\bullet}
+:=
+\operatorname{Tot}\!\left(
+C_{\mathrm{core},\chi}^{\bullet}\oplus\mathsf P^{\bullet}\right),
+\]
+where \(\mathsf P^{\bullet}\) has zero differential and contributes
+formal Tate lines in degrees \(0\) and \(2\).
+Its cohomology is denoted
+\[
+H_{\mathrm{Den},\chi}^{\bullet}
+:=H^{\bullet}(C_{\mathrm{Den},\chi}^{\bullet}).
+\]
+The primitive middle part \(H_{\mathrm{Den},\chi,\mathrm{prim}}^{1}\)
+is \(H^{1}(C_{\mathrm{core},\chi}^{\bullet})\). No theorem is asserted
+here that the full complex has only the Deninger degrees \(0,1,2\), or
+that this dual agrees with compactly supported Artin--Verdier
+cohomology.
+\end{definition}
+
+\begin{proposition}[unconditional Bost--Connes Euler skeleton]
+\label{v4-arith:3d-acs:prop:deninger-prime-side}
+\ClaimStatusProvedHere. The finite Bost--Connes zero-mode sector has
+ordinary KMS character
+\[
+\mathrm{Tr}\bigl(e^{-sN_{\mathrm{BC}}}\mid\mathcal A_{\mathrm{fin}}\bigr)
+=\prod_{p}\sum_{r\geq0}p^{-rs}
+=\prod_{p}(1-p^{-s})^{-1}
+=\zeta(s)
+\qquad(\mathrm{Re}\,s>1),
+\]
+and logarithmic differentiation gives the prime-orbit sum
+\[
+-\frac{\zeta'}{\zeta}(s)
+=\sum_{p}\sum_{r\geq1}(\log p)\,p^{-rs}.
+\]
+This is the raw non-archimedean Euler/log-prime skeleton in the
+half-plane of absolute convergence.
+\end{proposition}
+
+\begin{proof}
+On \(\mathcal H_{p}^{\mathrm{BC}}\),
+\(\mathrm{Tr}(e^{-sN_{p}})=\sum_{r\geq0}e^{-sr\log p}\). The
+restricted tensor product multiplies these traces over primes, giving
+the Euler product for \(\zeta(s)\) in the half-plane of convergence.
+Logarithmic differentiation turns each local factor into the Dirichlet
+series over iterates of the closed orbit at \(p\), with length
+\(\log p\).
+\end{proof}
+
+\begin{remark}[what is not proved by the Euler skeleton]
+\label{v4-arith:3d-acs:rem:euler-skeleton-not-trace}
+\Cref{v4-arith:3d-acs:prop:deninger-prime-side} is not yet the
+Weil--Guinand distribution. Passing from
+\(-\zeta'/\zeta(s)\) in \(\mathrm{Re}\,s>1\) to the finite-place term
+on critical-line test functions requires a separate contour shift,
+Fourier/Mellin convention, the \(n^{-1/2}\) weight, the sign and factor
+\(2\), plus the archimedean and polar terms. Those analytic
+normalisations are part of the trace-formula residual, not part of the
+ordered-bar computation.
+\end{remark}
+
+\begin{conjecture}[Deninger spectral-flow / Hilbert--P\'olya hypothesis]
+\label{v4-arith:3d-acs:conj:spectral-flow}
+\ClaimStatusConjectured. There exists a Hilbert completion of
+\(H_{\mathrm{Den},\chi,\mathrm{prim}}^{1}\) and a closed operator
+\[
+\Theta_{\mathrm{Den}}
+=\frac12\mathrm{id}+iH_{\mathrm{Den}}
+\]
+with \(H_{\mathrm{Den}}\) self-adjoint in the Petersson/GNS inner
+product, such that:
+\begin{enumerate}
+\item regularised determinant:
+\[
+\det_{\infty}\!\left(s\mathrm{id}-\Theta_{\mathrm{Den}}
+\mid H_{\mathrm{Den},\chi,\mathrm{prim}}^{1}\right)
+=\xi_{\mathbb R}(s);
+\]
+\item Weil--Connes trace distribution:
+\[
+\mathrm{Tr}_{\mathrm{reg}}\bigl(h(H_{\mathrm{Den}})\bigr)
+=\sum_{\rho}h(\gamma_{\rho}),
+\qquad \rho=\frac12+i\gamma_{\rho},
+\]
+for every admissible Paley--Wiener test function \(h\);
+\item Lefschetz compatibility: the trace distribution in (2), after
+moving the contour across \(\xi'/\xi\), equals the prime-orbit sum of
+\Cref{v4-arith:3d-acs:prop:deninger-prime-side}, the archimedean
+Tate-Gamma correction, and the two polar terms from
+\(\mathsf P^{\bullet}\).
+\end{enumerate}
+This hypothesis is exactly the Hilbert--P\'olya/Connes--Deninger
+spectral realisation in the present chiral-homology language. In
+particular, self-adjointness of \(H_{\mathrm{Den}}\) together with the
+determinant identity is already RH-strength zero-placement for
+\(\xi_{\mathbb R}\).
+\end{conjecture}
+
+\begin{proposition}[conditional formal Deninger package]
+\label{v4-arith:3d-acs:thm:conditional-deninger-cohomology}
+\ClaimStatusConditional \emph{(on
+\Cref{v4-arith:3d-acs:conj:spectral-flow} and on the topological-dual
+choices in \Cref{v4-arith:3d-acs:def:chiral-deninger-complex})}. The
+candidate cohomology
+\(H_{\mathrm{Den},\chi}^{\bullet}\), equipped with
+\(\Theta_{\mathrm{Den}}\) on its primitive middle part and with the
+two Tate polar lines in degrees \(0\) and \(2\), packages Deninger's
+formal regularised-determinant and Lefschetz-trace identities for
+\(\overline{\mathrm{Spec}\,\mathbb Z}\).
+\end{proposition}
+
+\begin{proof}
+The finite sector gives only the Euler/log-prime skeleton of
+\Cref{v4-arith:3d-acs:prop:deninger-prime-side}. The archimedean and
+polar entries specify where the Tate-Gamma and \(s=0,1\) terms would
+live in a cohomological Lefschetz formula. The spectral-flow
+hypothesis supplies the missing middle operator, its determinant, its
+zero-side trace distribution, and the Lefschetz comparison. Thus the
+claim is a packaging statement: once the spectral-flow data is assumed,
+the displayed cohomological object carries the formal slots required by
+Deninger's axioms. It is not an independent construction of
+\(\Theta_{\mathrm{Den}}\).
+\end{proof}
+
+\begin{proposition}[what the construction does not prove]
+\label{v4-arith:3d-acs:prop:deninger-gap}
+\ClaimStatusProvedHere. The ordered-bar construction of
+\(C_{\mathrm{Den},\chi}^{\bullet}\) does not by itself construct
+\(\Theta_{\mathrm{Den}}\), prove the determinant identity, prove the
+Weil--Guinand trace formula, fix the cohomological superdeterminant
+signs of the polar lines, or prove positivity/purity. These
+requirements are exactly the Hilbert--P\'olya/Connes--Deninger
+obstruction of \Cref{v4-arith:rh:hyp:HPAr} plus the analytic
+trace-formula normalization.
+\end{proposition}
+
+\begin{proof}
+The ordered bar is determined by the local factors
+\(\{\mathcal H_{p}^{\mathrm{BC}}\}_{p}\), the archimedean Tate sector,
+and the polar complex. This data gives the Euler product and hence the
+prime side in \(\mathrm{Re}\,s>1\). The zero-side operator requires a
+self-adjoint spectral realisation whose determinant is
+\(\xi_{\mathbb R}\). Chapter~\ref{v4-arith:rh-reformulation} names
+that assertion H-P\(^{\mathrm{Ar}}\) and records that it is not
+derivable from the character identity, the formal Virasoro action, or
+the Petersson form alone. Thus the chiral construction supplies a
+candidate complex and the prime-side Euler skeleton. The spectral-flow
+hypothesis is the remaining load-bearing input and has RH-level
+strength.
+\end{proof}
+
+\section{Arithmetic-Gravity Route to F-RH}
+\label{v4-arith:3d-acs:arith-gravity}
+
+Witten 2007 (\emph{Three-Dimensional Gravity Revisited},
+arXiv:0706.3359) proposed that 3D quantum gravity admits a
+Chern-Simons formulation whose partition function's spectrum controls
+the zeros of arithmetically significant $L$-functions. Vol~II Part~VI
+inscribes this as the complex-side 3D quantum gravity climax. The
+arithmetic analog is now available.
+
+\begin{theorem}[arithmetic-gravity F-RH]
+\label{v4-arith:3d-acs:thm:arith-gravity-FRH}
+\ClaimStatusConditional \emph{(on \Cref{v4-arith:3d-acs:conj:qu-acs},
+\Cref{v4-arith:3d-acs:thm:bulk-boundary-Vprim},
+\Cref{v4-arith:3d-acs:cor:BDCG-ordered-comparison}, and
+Chapter~\ref{v4-arith:rh-reformulation}'s three-pillar + VB structure,
+including a holomorphic complex-level partition function)}.
+The zeros of
+$Z_{\mathrm{ACS}^{\mathrm{qu}}}(\overline{\mathrm{Spec}\,\mathbb{Z}};k^{\mathrm{Ar}})$
+as a function of the level $k^{\mathrm{Ar}}\in\mathbb{C}$ coincide with
+the non-trivial zeros of $\xi(k^{\mathrm{Ar}})$. The zero-placement
+claim is RH-level: these zeros lie on the self-dual locus
+\(\mathrm{Re}(k^{\mathrm{Ar}})=1/2\) exactly when the corresponding
+Riemann-hypothesis zero-placement statement holds. The stronger F-RH
+package still includes the positive Hilbert--P\'olya trace inputs of
+Chapter~\ref{v4-arith:rh-reformulation}.
+\end{theorem}
+
+\begin{remark}[three-step route]
+\label{v4-arith:3d-acs:rem:three-step}
+The route proceeds in three steps.
+\begin{enumerate}
+\item \emph{Bulk construction.} Finite-level ACS is constructed in
+\Cref{v4-arith:3d-acs:thm:finite-level-ACS}. The open bulk step is
+the renormalised profinite limit
+\(\varprojlim_{N}^{\mathrm{ren}}Z^{\mathrm{Ar}}_{G_{N},\alpha_{N}}\)
+and its zeta partition function, as stated in
+\Cref{v4-arith:3d-acs:conj:qu-acs}.
+\item \emph{Boundary identification and ordered-model computation.}
+Finite-level boundary categories are constructed in
+\Cref{v4-arith:3d-acs:thm:finite-bulk-boundary} after choosing the
+finite arithmetic cobordism category. The comparison with
+\(\mathcal V^{\mathrm{prim}}\) is
+\Cref{v4-arith:3d-acs:thm:bulk-boundary-Vprim}. The ordered-bar
+calculation is theorem-grade for the ordered incidence model by
+\Cref{v4-arith:3d-acs:thm:chi-hom-bar}; the remaining comparison to
+BD/CG arithmetic chiral homology is
+\Cref{v4-arith:3d-acs:cor:BDCG-ordered-comparison}.
+\item \emph{Positivity bootstrap.} Apply the VB pillar of
+Chapter~\ref{v4-arith:rh-reformulation}. The ordered model and
+arithmetic Zhu modularity do not by themselves supply positivity; the
+missing input is the positive Hilbert--P\'olya trace/VB statement.
+\end{enumerate}
+\end{remark}
+
+\section{Genus-\texorpdfstring{$g$}{g} Extension}
+\label{v4-arith:3d-acs:genus-g}
+
+At genus $g$, the arithmetic Kac-Moody of
+\Cref{v4-arith:3d-acs:thm:km-lift} becomes rank-$2g$ sourced by the
+all-genus conformal vector of Chapter~\ref{v4-arith:all-genus-koszul}.
+The quantum CS becomes a family
+$\mathrm{ACS}^{\mathrm{qu},g}_{k^{\mathrm{Ar},g}}$ parameterized by the
+genus-$g$ datum $\mathcal{D}_g$ (\Cref{v4-arith:ag:defn:datum}); the
+gauge group is $GL_{2g}(\widehat{\mathbb{Z}})$; the boundary WZW is
+$\mathcal{V}^{\mathrm{prim},g}$; the ordered bar is built on
+$\mathbb{P}\cup\{\infty\}$ with rank-$2g$ Fock factors per place. The
+partition function is conjecturally
+\(\Lambda_{\mathcal{D}_g}(k^{\mathrm{Ar},g})\) per
+\Cref{v4-arith:ag:table:rows}: Dedekind
+$\xi_{K}(k^{\mathrm{Ar},g})$ for Window~II, Hasse--Weil
+$\Lambda(k^{\mathrm{Ar},g},X_{K})$ for Windows~I/V, Siegel spin
+$\Lambda(k^{\mathrm{Ar},g},\pi,\mathrm{spin})$ for Window~VI.
+
+\begin{corollary}[all-genus arithmetic-gravity F-RH]
+\label{v4-arith:3d-acs:cor:all-genus-arith-gravity}
+\ClaimStatusConditional \emph{(on the genus-$g$ extensions of
+\Cref{v4-arith:3d-acs:conj:qu-acs},
+\Cref{v4-arith:3d-acs:thm:bulk-boundary-Vprim},
+\Cref{v4-arith:3d-acs:cor:BDCG-ordered-comparison},
+plus \Cref{v4-arith:ag:cor:all-genus-FRH})}. The zeros of
+$Z_{\mathrm{ACS}^{\mathrm{qu},g}}(\overline{\mathrm{Spec}\,\mathbb{Z}};k^{\mathrm{Ar},g})$
+coincide with the non-trivial zeros of $\Lambda_{\mathcal{D}_g}(s)$,
+and lie on the self-dual locus
+$\mathrm{Re}(k^{\mathrm{Ar},g})=w_{\mathcal{D}_g}/2$ for
+$w_{\mathcal{D}_g}\in\{1,2,2g+1\}$ the motivic weight center of the
+relevant window.
+\end{corollary}
+
+\section{Residual Obligations}
+\label{v4-arith:3d-acs:residual}
+
+Six obligations specific to the arithmetic-gravity route, additive to
+Chapter~\ref{v4-arith:all-genus-koszul}'s residual list.
+
+\begin{enumerate}
+\item \emph{Finite arithmetic cobordism category.}
+\ClaimStatusConditional. The closed finite-level state sum, gluing
+formula, and finite boundary trace are
+\Cref{v4-arith:3d-acs:thm:finite-level-ACS} and
+\Cref{v4-arith:3d-acs:prop:finite-boundary-HH}. A full finite-level
+TQFT still needs the arithmetic cobordism category and its finiteness
+hypotheses written explicitly.
+\item \emph{Profinite ACS renormalisation.}
+\ClaimStatusConjectured. Construct a canonical renormalised limit of
+the \(GL_2(\mathbb Z/N\mathbb Z)\) arithmetic CS tower, with compatible
+continuous level classes, counterterms, and scalar partition
+\[
+Z_{\mathrm{ACS}^{\mathrm{qu}}}(\overline{\mathrm{Spec}\,\mathbb Z};k^{\mathrm{Ar}})
+=\xi(k^{\mathrm{Ar}}).
+\]
+Finite closed state sums do not supply this data.
+\item \emph{Boundary trace comparison.}
+\ClaimStatusConditional. Construct an independent Morita equivalence
+\[
+\mathcal B_\infty^{\mathrm{Ar}}\simeq_{\mathrm{Morita}}
+\mathsf{Hk}^{\mathrm{Iw}}_{GL_2,\mathrm{glob}},
+\]
+compatible with restricted tensor products, spherical units, local
+Satake/Iwahori generators, and the archimedean vacuum.
+\item \emph{BD/CG ordered-model comparison.}
+\ClaimStatusConditional. Construct arithmetic Ran/BD--CG descent whose
+exit or disk category is homotopy-finally computed by
+\(\mathsf{Inc}_{<}(\mathbb P\cup\{\infty\})\), including finite-place
+collision thickenings, ordered-to-unordered descent, and completion
+exactness.
+\item \emph{Positive trace/VB core.}
+\ClaimStatusConjectured. Prove the full positive Hilbert--P\'olya
+trace, equivalently the full A-TP/VB input on the complete
+Paley--Wiener cone. The ordered model, Bost--Connes Euler skeleton, and
+formal Fock positivity away from the zero-mode sector do not supply
+this RH-strength positivity input.
+\item \emph{Deninger spectral-flow hypothesis.}
+\ClaimStatusConjectured. Upgrade the ordered-bar prime skeleton of
+\Cref{v4-arith:3d-acs:def:chiral-deninger-complex} to a genuine
+middle cohomology Hilbert completion, with dense invariant core and a
+self-adjoint \(H_{\mathrm{HP}}\) such that
+\(\Theta_\xi=\frac12\mathrm{id}+iH_{\mathrm{HP}}\) has determinant
+\(\xi_{\mathbb R}\) and the Weil--Connes trace distribution. This is
+the Hilbert--P\'olya/Connes--Deninger spectral matching problem in
+chiral-homology form.
+\end{enumerate}
+
+Combined with the all-genus list of
+Chapter~\ref{v4-arith:all-genus-koszul}
+(\Cref{v4-arith:ag:residual}), the arithmetic-gravity route now has
+two closed first-principles components: closed finite-level state sums
+and the ordered incidence-bar calculation. The remaining hard inputs
+are finite cobordism functoriality, profinite renormalisation, local
+trace comparison, BD/CG comparison, positivity, and spectral flow.
+
+\section{Summary}
+\label{v4-arith:3d-acs:summary}
+
+\begin{enumerate}
+\item $\mathrm{Spec}\,\mathbb{Z}$ is étale 3-dimensional via Mazur 1973
+and Artin--Verdier; Arakelov compactification
+$\overline{\mathrm{Spec}\,\mathbb{Z}}$ closes the 3-space with
+archimedean boundary (\Cref{v4-arith:3d-acs:spec-z}).
+\item The all-genus arithmetic conformal vector of
+Chapter~\ref{v4-arith:all-genus-koszul} sources an arithmetic Kac-Moody
+enhancement of $\mathcal{V}^{\mathrm{prim}}$
+(\Cref{v4-arith:3d-acs:thm:km-lift}), non-critical by construction
+(\Cref{v4-arith:3d-acs:rem:critical-level}).
+\item Closed finite-level arithmetic Chern--Simons state sums are
+constructed from etale local-system groupoids and Artin--Verdier
+integration (\Cref{v4-arith:3d-acs:thm:finite-level-ACS}). Full
+finite-level TQFT functoriality needs a specified arithmetic cobordism
+category. The profinite
+\(GL_{2}(\widehat{\mathbb Z})\) theory remains conditional on
+renormalisation (\Cref{v4-arith:3d-acs:conj:qu-acs}). The 3D
+topological gauge theory over the arithmetic base is Chern-Simons
+rather than holomorphic twist, since the arithmetic base carries
+étale cohomological dimension $3$ without a differential-geometric
+holomorphic structure (\Cref{v4-arith:3d-acs:rem:vol2-bridge}).
+\item Finite-level boundary spans are conditional on that cobordism
+category and are expressed by transgression and integral transforms
+(\Cref{v4-arith:3d-acs:thm:finite-bulk-boundary}). The comparison with
+the boundary WZW \(\mathcal V^{\mathrm{prim}}\) is conditional on the
+profinite local trace identification
+(\Cref{v4-arith:3d-acs:thm:bulk-boundary-Vprim}).
+\item The ordered incidence model is computed by the normalized
+ordered bar on the auxiliary ordered place set
+\(\mathbb P\cup\{\infty\}\)
+(\Cref{v4-arith:3d-acs:thm:chi-hom-bar}). The comparison with genuine
+BD/CG arithmetic chiral homology remains conditional
+(\Cref{v4-arith:3d-acs:cor:BDCG-ordered-comparison}).
+\item Under the profinite ACS axiom, BD/CG comparison, and a
+regularised character map, the bulk partition function is
+\(\xi(k^{\mathrm{Ar}})\) (\Cref{v4-arith:3d-acs:cor:partition-bar});
+zero-placement becomes a spectral statement on the self-dual locus of
+the level
+(\Cref{v4-arith:3d-acs:thm:arith-gravity-FRH}). The genus-$g$ extension
+runs in parallel (\Cref{v4-arith:3d-acs:cor:all-genus-arith-gravity})
+with partition function
+$\Lambda_{\mathcal{D}_g}(k^{\mathrm{Ar},g})$ per
+\Cref{v4-arith:ag:table:rows}.
+\item The pre-Deninger coefficient package
+\(\mathcal A_{\mathrm{Den}}\) gives a first-principles candidate
+skeleton for Deninger's missing cohomology:
+\[
+H_{\mathrm{Den},\chi}^{\bullet}
+=
+H^{\bullet}\operatorname{Tot}\!\left(
+C_{\mathrm{core},\chi}^{\bullet}\oplus\mathsf P^{\bullet}\right),
+\]
+with finite Bost--Connes zero modes, an archimedean Tate sector, and
+polar Tate lines. It proves the Euler/log-prime skeleton
+unconditionally and leaves the trace formula, positivity, and
+zero-side cohomology to the spectral-flow hypothesis
+\Cref{v4-arith:3d-acs:conj:spectral-flow}.
+\item Residual obligations: finite arithmetic cobordism category,
+profinite ACS renormalisation, boundary trace comparison, BD/CG
+ordered-model comparison, positivity bootstrap, and the Deninger
+spectral-flow hypothesis
+(\Cref{v4-arith:3d-acs:residual}).
+\end{enumerate}
+
+The arithmetic-gravity route conditionally reformulates the
+analytic-number-theoretic F-RH question as a 3D
+topological-gauge-theoretic question on the étale 3-space
+\(\overline{\mathrm{Spec}\,\mathbb{Z}}\). The reformulation is useful
+only after the named residuals are supplied; in particular the
+Deninger spectral-flow hypothesis carries the full Hilbert--P\'olya
+weight.

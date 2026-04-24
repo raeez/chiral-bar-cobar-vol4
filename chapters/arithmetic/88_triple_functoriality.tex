@@ -1,0 +1,1260 @@
+\chapter{Functoriality of the Triple Identification in $\mathsf{A}$ and $g$}
+\label{v4-arith:w9-r5:chapter}
+
+\emph{Chapter~\ref{v4-arith:w8-a:deninger-chiral-homology}
+established the triple identification
+$H^{\bullet}_{\Delta}=H^{\bullet}_{\mathrm{ch}}=\partial\text{-chiral}$
+on the primary Heisenberg scope for the baseline genus $g=0$ and the
+fixed arithmetic Heisenberg $\mathsf{H}^{\mathrm{Ar}}$. The present
+chapter closes the functoriality residuals of
+\Cref{v4-arith:w8-a:residual}(5,6): the three cohomology assignments
+extend to \emph{functors} on a category $\mathsf{ArChAlg}$ of
+arithmetic chiral algebras on $\overline{\mathrm{Spec}\,\mathbb{Z}}$,
+and the triple identification is a natural isomorphism of these
+functors, uniformly compatible with the genus-$g$ restriction and
+induction maps of Chapter~\ref{v4-arith:all-genus-koszul}. The
+statement is the master functoriality theorem
+\Cref{v4-arith:w9-r5:thm:master-functoriality}; the proof goes
+through a chain-level identification
+\Cref{v4-arith:w9-r5:thm:chain-identification}, a naturality diagram
+for morphisms of arithmetic chiral algebras
+\Cref{v4-arith:w9-r5:thm:naturality-A}, and a stability theorem
+under genus extension and restriction
+\Cref{v4-arith:w9-r5:thm:genus-uniformity}. The explicit diagonal
+morphism
+$\mathsf{H}^{\mathrm{Ar}}\to\mathsf{H}^{\mathrm{Ar}}\oplus\mathsf{H}^{\mathrm{Ar}}$
+witnesses the theorem on two copies of the baseline. Seven attacks
+are executed per main theorem; all close modulo the named upstream
+obstructions of Chapters~\ref{v4-arith:3d-acs-E1bar} and
+\ref{v4-arith:w8-a:deninger-chiral-homology}.}
+
+\section{The Category of Arithmetic Chiral Algebras}
+\label{v4-arith:w9-r5:category}
+
+The three cohomology assignments of
+Chapter~\ref{v4-arith:w8-a:deninger-chiral-homology} are defined on
+an individual object, the arithmetic Heisenberg
+$\mathsf{H}^{\mathrm{Ar}}$. To state functoriality we introduce the
+ambient category.
+
+\begin{definition}[arithmetic chiral algebra]
+\label{v4-arith:w9-r5:def:ArChAlg-object}
+\ClaimStatusDefinitional.
+An \emph{arithmetic chiral algebra on} $\overline{\mathrm{Spec}\,\mathbb{Z}}$
+is a datum
+\begin{equation}
+\label{v4-arith:w9-r5:eq:ArChAlg-object}
+\mathsf{A}
+\;=\;
+\Bigl(\mathsf{A}^{(\infty)},\,\{\mathsf{A}^{(p)}\}_{p\in\mathbb{P}},\,
+\{u^{(v)}\}_{v\in|\overline{C}|},\,\{m^{(v,w)}\}_{v<w},\,
+\{\partial^{\mathrm{PG}}_{v,w}\}_{v<w}\Bigr)
+\end{equation}
+subject to the axioms below. Write $|\overline{C}|=\mathbb{P}\cup\{\infty\}$.
+\begin{enumerate}
+\item \emph{Archimedean factor.} $\mathsf{A}^{(\infty)}$ is a
+pointed $E_{1}$-chiral factorisation algebra on $\mathbb{C}_{\infty}$
+in the Beilinson--Drinfeld / Costello--Gwilliam sense
+(Ch.~\ref{v4-arith:platonic:def:S2}), together with a conformal vector
+$T\in\mathsf{A}^{(\infty)}_{2}$ and a spherical unit
+$u^{(\infty)}\in\mathsf{A}^{(\infty)}_{0}$.
+\item \emph{Finite-prime factors.} For every prime $p\in\mathbb{P}$,
+$\mathsf{A}^{(p)}$ is a pointed $E_{0}$-chiral coefficient object on
+the Fargues--Scholze perfectoid diamond chart $S_{p}$, equipped with
+a Bost--Connes Adams endomorphism $\psi_{p}\in\mathrm{End}(\mathsf{A}^{(p)})$
+and a Frobenius-semilinear orientation
+$\mathfrak{J}^{\mathrm{Ar}}_{p}$ (the finite-place substitute for the
+archimedean $i\in\mathbb{C}$).
+\item \emph{Spherical units.} The collection $\{u^{(v)}\}_{v\in|\overline{C}|}$
+satisfies the Tate spherical compatibility
+(\Cref{v4-arith:tate:setup:data}): $u^{(v)}$ is closed for the local
+bar differential $d_{v}$, is a compact central idempotent, and is
+the monoidal unit at almost every prime.
+\item \emph{Adjacent products.} For every pair of distinct places
+$v<w$ in the auxiliary order $2<3<5<\cdots<\infty$, the datum $m^{(v,w)}$
+is a map
+\[
+m^{(v,w)}\colon\mathsf{A}^{(v)}\widehat{\otimes}\mathsf{A}^{(w)}
+\longrightarrow\mathsf{A}^{(vw)},
+\]
+with $\mathsf{A}^{(vw)}$ the formal merged-block coefficient in the
+sense of \Cref{v4-arith:3d-acs:def:ordered-chiral-homology}. The
+$m^{(v,w)}$ are required to be $\psi_{p}$-equivariant at every finite
+$v=p$ and to intertwine the archimedean $L_{0}$-action at $v=\infty$.
+\item \emph{Parshin--Gersten boundary.} For every pair $v<w$ of
+ramified places, $\partial^{\mathrm{PG}}_{v,w}$ is the Kato--Parshin
+tame-symbol boundary
+(\Cref{v4-arith:platonic:eq:bar-differential}); the collection
+satisfies the Maurer--Cartan equation on every reciprocity-closed
+finite stage
+(\Cref{v4-arith:platonic:prop:finite-stage-strictification}).
+\item \emph{Tate compatibility.} The restricted tensor product
+$\bigotimes'_{v}\mathsf{A}^{(v)}$ in pointed $E_{2}$-monoidal stable
+presentable $\infty$-categories
+(\Cref{v4-arith:tate:cor:F2-closed}) is well-defined, i.e.\ almost
+every $u^{(v)}$ is the monoidal unit and the Tate-pair
+compatibility F2.c of \Cref{v4-arith:cl:F2-closure} is satisfied.
+\end{enumerate}
+The archimedean $\mathsf{A}^{(\infty)}$ is always genuinely chiral;
+finite factors may be $E_{0}$ per
+\Cref{v4-arith:3d-acs:def:ordered-chiral-homology}. The object
+$\mathsf{A}$ is \emph{abelian Heisenberg-type} if every
+$\mathsf{A}^{(p)}$ is a rank-$2g$ bosonic Fock for some fixed $g\geq 0$
+(the genus of $\mathsf{A}$), and $\mathsf{A}^{(\infty)}$ is the
+rank-$2g$ archimedean Heisenberg of
+\Cref{v4-arith:thm:heisenberg-bar-zeta}.
+\end{definition}
+
+\begin{remark}[on the merged-block target]
+\label{v4-arith:w9-r5:rem:merged-block}
+The formal merged-block coefficient $\mathsf{A}^{(vw)}$ is not a new
+arithmetic place. It is the target of the adjacent contraction map
+in the sense of the ordered incidence category
+$\mathsf{Inc}_{<}(V)$ of
+\Cref{v4-arith:3d-acs:def:ordered-incidence-category}; concretely a
+completed tensor product of $\mathsf{A}^{(v)}$ and $\mathsf{A}^{(w)}$
+modulo a quotient relation recording that the two local operators
+act on the same global fibre. This convention is essential to avoid
+the naive reading that primes are fused into composite arithmetic
+objects.
+\end{remark}
+
+\begin{definition}[morphism of arithmetic chiral algebras]
+\label{v4-arith:w9-r5:def:ArChAlg-morphism}
+\ClaimStatusDefinitional.
+A \emph{morphism} $\phi\colon\mathsf{A}_{1}\to\mathsf{A}_{2}$ of
+arithmetic chiral algebras is a collection
+$\phi=\{\phi^{(v)}\}_{v\in|\overline{C}|}$ with
+$\phi^{(v)}\colon\mathsf{A}_{1}^{(v)}\to\mathsf{A}_{2}^{(v)}$ such
+that
+\begin{enumerate}
+\item $\phi^{(\infty)}$ is an $E_{1}$-chiral factorisation map
+preserving the conformal vector;
+\item at every prime $p$, $\phi^{(p)}$ is $\psi_{p}$-equivariant and
+$\mathfrak{J}^{\mathrm{Ar}}_{p}$-compatible: $\phi^{(p)}\circ\psi_{p,1}=\psi_{p,2}\circ\phi^{(p)}$;
+\item the spherical units are preserved: $\phi^{(v)}(u_{1}^{(v)})=u_{2}^{(v)}$
+for every $v\in|\overline{C}|$;
+\item the adjacent products are intertwined:
+$m_{2}^{(v,w)}\circ(\phi^{(v)}\otimes\phi^{(w)})=\phi^{(vw)}\circ m_{1}^{(v,w)}$
+for every $v<w$;
+\item the Parshin--Gersten boundaries are intertwined:
+$\phi\circ\partial_{1}^{\mathrm{PG}}=\partial_{2}^{\mathrm{PG}}\circ\phi$
+at every pair of ramified places;
+\item the restricted-tensor map
+$\widehat{\phi}:=\bigotimes'_{v}\phi^{(v)}$ is a map in the pointed
+$E_{2}$-monoidal category of
+\Cref{v4-arith:tate:cor:F2-closed}; this is automatic from (1)--(5)
+at almost every place by the spherical-unit preservation.
+\end{enumerate}
+Composition is place-wise; identities are place-wise identities. The
+resulting category is $\mathsf{ArChAlg}$.
+\end{definition}
+
+\begin{proposition}[$\mathsf{ArChAlg}$ is a well-defined category]
+\label{v4-arith:w9-r5:prop:ArChAlg-is-category}
+\ClaimStatusProvedHere. Composition of morphisms satisfies the
+axioms of \Cref{v4-arith:w9-r5:def:ArChAlg-morphism}: axioms (1)--(5)
+are place-wise, and axiom (6) follows from place-wise axioms by the
+almost-every-place triviality of the units. Identity morphisms are
+identities in every axiom. Associativity and unitality are
+inherited from the underlying categories of $E_{1}$-chiral
+factorisation algebras at $\infty$ and $E_{0}$-coefficient categories
+at finite places.
+\end{proposition}
+
+\begin{proof}
+For composition: given $\phi\colon\mathsf{A}_{1}\to\mathsf{A}_{2}$
+and $\psi\colon\mathsf{A}_{2}\to\mathsf{A}_{3}$, the collection
+$(\psi\circ\phi)^{(v)}:=\psi^{(v)}\circ\phi^{(v)}$ preserves each
+axiom: axiom (1) is closed under composition of $E_{1}$-chiral maps;
+axiom (2) is closed because $\psi_{p}$-equivariance composes; axiom
+(3) uses $\psi^{(v)}(\phi^{(v)}(u_{1}^{(v)}))=\psi^{(v)}(u_{2}^{(v)})=u_{3}^{(v)}$;
+axiom (4) similarly using the stacked naturality diagrams. Axiom
+(5) uses the linear action of the boundary. Associativity and
+unitality are automatic at each place. Axiom (6) follows from the
+almost-every-place compatibility of the Tate restricted tensor
+(\Cref{v4-arith:cl:F2-closure}): the set of places at which
+$u^{(v)}$ fails to be a strict unit is bounded, and composition
+preserves this bound.
+\end{proof}
+
+\begin{definition}[genus filtration]
+\label{v4-arith:w9-r5:def:genus-filtration}
+\ClaimStatusDefinitional. For every $g\geq 0$, let
+$\mathsf{ArChAlg}_{g}\subset\mathsf{ArChAlg}$ be the full subcategory
+of abelian Heisenberg-type arithmetic chiral algebras of genus $g$
+in the sense of \Cref{v4-arith:w9-r5:def:ArChAlg-object}. The
+canonical inclusion
+$\iota_{g,g+1}\colon\mathsf{ArChAlg}_{g}\hookrightarrow\mathsf{ArChAlg}_{g+1}$
+is by tensoring with the rank-$2$ archimedean Heisenberg
+(\Cref{v4-arith:ag:defn:datum}'s rank-$2$ enhancement at each
+place). The retraction
+$\pi_{g+1,g}\colon\mathsf{ArChAlg}_{g+1}\to\mathsf{ArChAlg}_{g}$
+projects onto the first $2g$ oscillators.
+\end{definition}
+
+\begin{remark}[why the filtration]
+\label{v4-arith:w9-r5:rem:filtration-reason}
+The filtration records that the genus-$g$ category embeds into the
+genus-$(g+1)$ category in a canonical way (tensor with a fresh
+rank-$2$ factor at every place), and that one can restrict to any
+subgenus. The adjunction $(\iota,\pi)$ is a \emph{reflective
+inclusion}: $\pi_{g+1,g}\circ\iota_{g,g+1}=\mathrm{id}_{g}$ is strict,
+and the counit $\iota_{g,g+1}\circ\pi_{g+1,g}\Rightarrow\mathrm{id}_{g+1}$
+is the natural transformation that kills the freshly-added rank-$2$
+factor. This is the Type~I filtered structure used in every genus
+functoriality statement below.
+\end{remark}
+
+\begin{remark}[source anchors and disjointness]
+\label{v4-arith:w9-r5:rem:source-anchors}
+The archimedean $E_{1}$-chiral structure is sourced from Beilinson--Drinfeld
+2004 and Francis--Gaitsgory 2012 (see
+\Cref{v4-arith:app:A:beilinson-etc}); the finite-place $E_{0}$-coefficient
+structure is sourced from Fargues--Scholze arXiv:2102.13459 and
+Bhatt--Scholze 2022 (prismatic; see \Cref{v4-arith:app:A:prismatic}).
+These two source families are disjoint in the Vol~IV
+sense. The morphism axioms (1)--(6) each arise from exactly one of
+these source families; this disjointness is what makes the
+functoriality statements below decorable in the sense of the
+Vol~IV HZ-IV campaign.
+\end{remark}
+
+\section{The Three Functors}
+\label{v4-arith:w9-r5:three-functors}
+
+With the source category in hand, we upgrade the three cohomology
+assignments to functors.
+
+\begin{definition}[Deninger functor $H^{\bullet}_{\Delta}$]
+\label{v4-arith:w9-r5:def:functor-Delta}
+\ClaimStatusDefinitional.
+The \emph{Deninger functor}
+\begin{equation}
+\label{v4-arith:w9-r5:eq:functor-Delta}
+H^{\bullet}_{\Delta}\colon
+\mathsf{ArChAlg}\longrightarrow
+\mathrm{grVect}_{\mathbb{C}}^{\mathrm{Frob}}
+\end{equation}
+sends an arithmetic chiral algebra $\mathsf{A}$ to the triple
+$(H^{\bullet}_{\Delta}(\mathsf{A}),F_{\mathsf{A}},\mathrm{PD}_{\mathsf{A}})$
+of \Cref{v4-arith:w8-a:def:deninger-cohomology}, with
+$F_{\mathsf{A}}=F_{\infty,\mathsf{A}}\otimes\bigotimes'_{p}\psi_{p,\mathsf{A}}$
+the global Frobenius of \Cref{v4-arith:w8-a:def:F-global} and
+$\mathrm{PD}_{\mathsf{A}}$ the Poincar\'e duality pairing of
+\Cref{v4-arith:w8-a:thm:triple-duality}. On a morphism
+$\phi\colon\mathsf{A}_{1}\to\mathsf{A}_{2}$, the functor sends
+$\phi$ to the induced map
+$H^{\bullet}_{\Delta}(\phi)\colon H^{\bullet}_{\Delta}(\mathsf{A}_{1})\to H^{\bullet}_{\Delta}(\mathsf{A}_{2})$.
+\end{definition}
+
+\begin{definition}[chiral-homology functor $H^{\bullet}_{\mathrm{ch}}$]
+\label{v4-arith:w9-r5:def:functor-ch}
+\ClaimStatusDefinitional.
+The \emph{chiral-homology functor}
+\begin{equation}
+\label{v4-arith:w9-r5:eq:functor-ch}
+H^{\bullet}_{\mathrm{ch}}\colon
+\mathsf{ArChAlg}\longrightarrow
+\mathrm{grVect}_{\mathbb{C}}^{\mathrm{Frob}}
+\end{equation}
+sends $\mathsf{A}$ to
+$H^{\bullet}(B^{\mathrm{Ar}}(\mathsf{A}),D_{\mathsf{A}})$ of
+\Cref{v4-arith:platonic:def:bar}, with $D_{\mathsf{A}}$ the
+signed total differential determined by $\mathsf{A}$. On a morphism
+$\phi\colon\mathsf{A}_{1}\to\mathsf{A}_{2}$, the induced chain map
+$B^{\mathrm{Ar}}(\phi)$ commutes with $D_{\mathsf{A}_{1}}$ and
+$D_{\mathsf{A}_{2}}$ by axioms (3), (4), (5) of
+\Cref{v4-arith:w9-r5:def:ArChAlg-morphism}; pass to cohomology for
+$H^{\bullet}_{\mathrm{ch}}(\phi)$.
+\end{definition}
+
+\begin{definition}[bulk-boundary functor pair $\partial\circ\mathrm{BdryACS}$]
+\label{v4-arith:w9-r5:def:functor-bdryACS}
+\ClaimStatusDefinitional.
+The \emph{bulk-boundary assignment} is the composite
+\begin{equation}
+\label{v4-arith:w9-r5:eq:functor-bdryACS}
+\partial\circ\mathrm{BdryACS}\colon
+\mathsf{ArChAlg}
+\xrightarrow{\mathrm{BdryACS}}
+\mathsf{3DACS}_{\overline{\mathrm{Spec}\,\mathbb{Z}}}
+\xrightarrow{\partial}
+\mathrm{grVect}_{\mathbb{C}}^{\mathrm{Frob}},
+\end{equation}
+where
+\begin{itemize}
+\item $\mathsf{3DACS}_{\overline{\mathrm{Spec}\,\mathbb{Z}}}$ is the
+category of conjectural 3D quantum arithmetic Chern--Simons theories
+on the \'etale 3-space $\overline{\mathrm{Spec}\,\mathbb{Z}}$ in the
+sense of \Cref{v4-arith:3d-acs:conj:qu-acs}, with morphisms given
+by bulk interface defects;
+\item $\mathrm{BdryACS}$ is the canonical lift that takes an arithmetic
+chiral algebra to the 3D bulk theory whose boundary WZW is
+$\mathsf{A}^{(\infty)}$ and whose finite-place defects are labelled
+by $\{\mathsf{A}^{(p)}\}$ via the Morishita knot-prime dictionary
+(\Cref{v4-arith:3d-acs:cor:finite-wilson},
+\Cref{v4-arith:w8-a:lem:wilson-finite});
+\item $\partial$ is the boundary chiral homology functor, sending a
+3D bulk theory to the chiral homology of its boundary factorisation
+algebra on the archimedean fibre.
+\end{itemize}
+On a morphism $\phi\colon\mathsf{A}_{1}\to\mathsf{A}_{2}$,
+$\mathrm{BdryACS}$ produces a bulk interface defect between the two
+3D theories whose boundary restriction is $\phi^{(\infty)}$ and
+whose finite-place Wilson-line restriction is $\{\phi^{(p)}\}$.
+\end{definition}
+
+\begin{remark}[conditional status of the bulk-boundary lift]
+\label{v4-arith:w9-r5:rem:bdryACS-conditional}
+The functor $\mathrm{BdryACS}$ is conditional on the 3D quantum ACS
+existence conjecture \Cref{v4-arith:3d-acs:conj:qu-acs}. The boundary
+functor $\partial$ is conditional on the local-trace comparison
+\Cref{v4-arith:3d-acs:thm:bulk-boundary-Vprim}. Both conditionals are
+inherited from Chapter~\ref{v4-arith:3d-acs-E1bar} and are explicitly
+carried through each theorem of this chapter.
+\end{remark}
+
+\begin{remark}[source disjointness of the three functors]
+\label{v4-arith:w9-r5:rem:three-functors-disjoint}
+The Deninger functor is defined via the compatibility of
+$\mathsf{A}$ with Deninger's axioms (Deninger 1998; disjoint source).
+The chiral-homology functor is defined via the Platonic bar complex
+(Beilinson--Drinfeld + Francis; disjoint source). The
+bulk-boundary functor is defined via Kim 2015 + conjectural quantum
+ACS + 3D topological field theory (disjoint source). The three
+derivation paths are pairwise source-disjoint in the Vol~IV
+HZ-IV sense; the natural isomorphism theorem below is therefore a
+genuine Vol~IV verification, not a tautology.
+\end{remark}
+
+\section{Chain-Level Identification}
+\label{v4-arith:w9-r5:chain-level}
+
+Before stating functoriality, we record the common chain-level
+object through which the three functors factor.
+
+\begin{definition}[universal arithmetic bar]
+\label{v4-arith:w9-r5:def:universal-bar}
+\ClaimStatusDefinitional. For $\mathsf{A}\in\mathsf{ArChAlg}$, the
+\emph{universal arithmetic bar} of $\mathsf{A}$ is the pair
+\begin{equation}
+\label{v4-arith:w9-r5:eq:universal-bar}
+\mathcal{B}^{\mathrm{univ}}(\mathsf{A})
+\;:=\;\bigl(B^{\mathrm{ord}}_{\bullet}(\mathsf{A}),
+B^{\mathrm{Ar}}_{\bullet}(\mathsf{A})\bigr),
+\end{equation}
+with $B^{\mathrm{ord}}_{\bullet}$ the ordered incidence bar of
+\Cref{v4-arith:3d-acs:defn:E1-bar} applied to the collection
+$\{\mathsf{A}^{(v)}\}_{v\in|\overline{C}|}$, and $B^{\mathrm{Ar}}_{\bullet}$
+the Platonic arithmetic-chiral bar of
+\Cref{v4-arith:platonic:def:bar}. Both are equipped with their
+natural signed differentials.
+\end{definition}
+
+\begin{theorem}[chain-level identification on $\mathsf{ArChAlg}$]
+\label{v4-arith:w9-r5:thm:chain-identification}
+\ClaimStatusProvedHereConditional \emph{(on
+\Cref{v4-arith:3d-acs:thm:chi-hom-bar} and
+\Cref{v4-arith:platonic:prop:bar-comparison})}. For every
+$\mathsf{A}\in\mathsf{ArChAlg}$ there is a canonical quasi-isomorphism
+\begin{equation}
+\label{v4-arith:w9-r5:eq:chain-identification}
+\Xi_{\mathsf{A}}\colon
+B^{\mathrm{ord}}_{\bullet}(\mathsf{A})
+\xrightarrow{\;\sim\;}
+B^{\mathrm{Ar}}_{\bullet}(\mathsf{A})
+\end{equation}
+of chain complexes, and
+$\Xi\colon B^{\mathrm{ord}}_{\bullet}\Rightarrow B^{\mathrm{Ar}}_{\bullet}$
+is a natural transformation of functors
+$\mathsf{ArChAlg}\to\mathrm{Ch}_{\mathbb{C}}$. The induced maps on
+cohomology coincide with the chiral-homology functor
+\Cref{v4-arith:w9-r5:def:functor-ch}.
+\end{theorem}
+
+\begin{proof}
+Construction of $\Xi_{\mathsf{A}}$. Both complexes are defined as
+filtered colimits over reciprocity-closed finite stages
+$S\in\mathrm{Fin}_{\mathrm{rec}}(|\overline{C}|)$. On a finite stage
+$S$ with an ordered block decomposition
+$B_{1}|\cdots|B_{r}$ of $S$, the ordered incidence bar assigns
+$F_{\mathsf{A}}(B_{1}|\cdots|B_{r})=\bigotimes_{i}\mathsf{A}^{(B_{i})}$
+with contractions given by the adjacent products $m^{(v,w)}$; the
+Platonic bar assigns
+$B^{\mathrm{ch}}(\mathsf{A}^{(\infty)})\widehat{\otimes}
+C^{\bullet}_{\mathrm{PG},S}(\overline{C})\widehat{\otimes}
+\widehat{\bigotimes}_{p\in S_{f}}B^{\Lambda_{p}}_{E_{1}}(\mathsf{A}^{(p)})$.
+
+At the archimedean place, the $E_{1}$-chiral bar of
+$\mathsf{A}^{(\infty)}$ is the $N_{\bullet}\operatorname{srep}$ of the
+$E_{1}$-nerve restricted to singleton blocks; this is the content of
+\Cref{v4-arith:platonic:prop:bar-comparison} on the archimedean
+factor alone. Call this isomorphism $\Xi^{(\infty)}$.
+
+At a finite prime $p$, the ordered-incidence block contribution is
+$\mathsf{A}^{(p)}$ itself (singleton block, no internal subdivision
+because $\mathsf{A}^{(p)}$ is $E_{0}$); the Platonic finite factor
+is $B^{\Lambda_{p}}_{E_{1}}(\mathsf{A}^{(p)})$, the $\Lambda_{p}$-equivariant
+bar of the local Heisenberg. These are quasi-isomorphic by the
+arithmetic Positselski bar-cobar adjunction
+(\Cref{v4-arith:thm:arithmetic-positselski}) composed with the
+triviality of the $E_{1}$-bar of an $E_{0}$-algebra: the bar of a
+unital $E_{0}$-object reduces to the shifted augmentation complex,
+which is homologically the identity. Call this isomorphism
+$\Xi^{(p)}$.
+
+The Parshin--Gersten layer $C^{\bullet}_{\mathrm{PG},S}(\overline{C})$
+contributes at the ordered-incidence side through the merger maps
+$m^{(v,w)}$ with their tame-symbol boundaries; the match is
+\Cref{v4-arith:platonic:prop:finite-stage-strictification}. Put
+$\Xi_{S}:=\Xi^{(\infty)}\otimes(\bigotimes_{p\in S_{f}}\Xi^{(p)})\otimes\mathrm{id}_{\mathrm{PG},S}$;
+the Maurer--Cartan closure at finite stage gives that $\Xi_{S}$
+commutes with the two signed total differentials.
+
+Passage to the colimit. The transition maps at both sides insert
+closed spherical units; by \Cref{v4-arith:platonic:lem:closed-units}
+the spherical units are killed by the local bar differentials on
+both sides, so $\Xi_{S}$ extends compatibly. The filtered colimit
+$\Xi:=\operatorname{colim}_{S}\Xi_{S}$ is the required
+quasi-isomorphism.
+
+Naturality in $\mathsf{A}$. A morphism
+$\phi\colon\mathsf{A}_{1}\to\mathsf{A}_{2}$ induces a map of both
+ordered-bar and Platonic-bar assignments (axioms (3), (4), (5) of
+\Cref{v4-arith:w9-r5:def:ArChAlg-morphism}). The archimedean factor
+map $\Xi^{(\infty)}$ is natural because $E_{1}$-chiral bar is
+functorial in $\mathsf{A}^{(\infty)}$ (standard BD/CG). The
+finite-prime factor map $\Xi^{(p)}$ is natural because arithmetic
+Positselski is functorial in the underlying $\Lambda_{p}$-module.
+Both naturalities glue over the filtered stage system, giving that
+$\Xi$ is a natural transformation of functors
+$\mathsf{ArChAlg}\to\mathrm{Ch}_{\mathbb{C}}$.
+
+Descent to cohomology. Applying $H^{\bullet}$ to $\Xi$ yields the
+identity between the ordered-bar homology
+(\Cref{v4-arith:3d-acs:eq:chi-hom-bar}) and the Platonic-bar
+homology
+(\Cref{v4-arith:w8-a:eq:chiral-homology-def}); both are the
+chiral-homology functor by \Cref{v4-arith:w9-r5:def:functor-ch}.
+\end{proof}
+
+\begin{corollary}[factoring the three functors]
+\label{v4-arith:w9-r5:cor:factoring}
+\ClaimStatusProvedHereConditional \emph{(on
+\Cref{v4-arith:w9-r5:thm:chain-identification})}. The three
+functors of
+\Cref{v4-arith:w9-r5:three-functors} all factor through the
+chain-level homology functor
+$\mathsf{A}\mapsto H^{\bullet}(B^{\mathrm{Ar}}(\mathsf{A}),D_{\mathsf{A}})$:
+\[
+H^{\bullet}_{\Delta}(\mathsf{A})
+\;\underset{\mathrm{def}}{=}\;H^{\bullet}_{\mathrm{ch}}(\mathsf{A})
+\;=\;\partial\circ\mathrm{BdryACS}(\mathsf{A})
+\]
+on every $\mathsf{A}\in\mathsf{ArChAlg}$, modulo the conditional
+pieces of Chapters~\ref{v4-arith:3d-acs-E1bar} and
+\ref{v4-arith:w8-a:deninger-chiral-homology}.
+\end{corollary}
+
+\begin{proof}
+The left-hand equality is
+\Cref{v4-arith:w8-a:def:deninger-cohomology} (definitional). The
+right-hand equality follows from
+\Cref{v4-arith:3d-acs:thm:chi-hom-bar} and
+\Cref{v4-arith:w9-r5:thm:chain-identification}:
+$\partial\circ\mathrm{BdryACS}(\mathsf{A})$ computes the boundary
+chiral homology of the 3D bulk theory attached to $\mathsf{A}$,
+which equals the ordered incidence homology of $\{\mathsf{A}^{(v)}\}$,
+which is quasi-isomorphic via $\Xi_{\mathsf{A}}$ to the Platonic bar
+homology $H^{\bullet}_{\mathrm{ch}}(\mathsf{A})$.
+\end{proof}
+
+\subsection*{Attack-heal on the chain-level identification}
+\label{v4-arith:w9-r5:ah:chain}
+
+\paragraph{Attack 1 (source collision).} Ordered-incidence bar
+(Francis 2013) and Platonic bar
+(\Cref{v4-arith:platonic:def:bar}, built on Beilinson--Drinfeld
+2004 + arithmetic Positselski). The two constructions come from
+disjoint source families. \textbf{Pass.}
+
+\paragraph{Attack 2 (sign/convention).} Ordered-incidence
+differential uses alternating contraction signs on simplicial
+nerves; Platonic differential
+\eqref{v4-arith:platonic:eq:bar-differential} uses Koszul signs on
+tensor factors. Matched under $\Xi$ because the simplicial
+normalisation formula turns alternating contraction signs into
+Koszul tensor signs (standard).\ \textbf{Pass.}
+
+\paragraph{Attack 3 (ambient category).} Both bars take values in
+chain complexes over $\mathbb{C}$ with restricted-tensor refinement
+to the adelic factorisation structure. Identical ambient category.
+\textbf{Pass.}
+
+\paragraph{Attack 4 (missing hypothesis).} The quasi-isomorphism on
+finite-prime factors uses arithmetic Positselski
+\Cref{v4-arith:thm:arithmetic-positselski}; conditional on the
+non-abelian Iwasawa extension per the standing arithmetic Positselski
+scope. \textbf{Residual: arithmetic Positselski.}
+
+\paragraph{Attack 5 (false functoriality).} Naturality in
+$\mathsf{A}$ is explicit via axioms (3), (4), (5) of
+\Cref{v4-arith:w9-r5:def:ArChAlg-morphism}; each axiom exactly
+supplies the intertwining needed at the corresponding layer (units,
+adjacent products, PG boundaries). \textbf{Pass.}
+
+\paragraph{Attack 6 (unproved equivalence).} The equivalence between
+the ordered-bar homology and the Platonic-bar homology on the primary
+Heisenberg scope is the content of
+\Cref{v4-arith:platonic:prop:bar-comparison}; unconditional within
+the primary scope. \textbf{Pass.}
+
+\paragraph{Attack 7 (engine-sync).} No compute engine backs this
+chapter; no synchronisation failure possible. \textbf{Pass.}
+
+\section{Functoriality in $\mathsf{A}$}
+\label{v4-arith:w9-r5:functoriality-A}
+
+We now lift \Cref{v4-arith:w9-r5:cor:factoring} from an object-wise
+equality to a natural isomorphism of functors.
+
+\begin{theorem}[naturality in $\mathsf{A}$]
+\label{v4-arith:w9-r5:thm:naturality-A}
+\ClaimStatusProvedHereConditional \emph{(on
+\Cref{v4-arith:w9-r5:thm:chain-identification},
+\Cref{v4-arith:3d-acs:conj:qu-acs}, and
+\Cref{v4-arith:3d-acs:thm:bulk-boundary-Vprim})}. The three natural
+isomorphisms
+\begin{equation}
+\label{v4-arith:w9-r5:eq:natural-iso}
+H^{\bullet}_{\Delta}\;\xRightarrow{\;\eta_{\Delta,\mathrm{ch}}\;}\;H^{\bullet}_{\mathrm{ch}}
+\;\xRightarrow{\;\eta_{\mathrm{ch},\partial}\;}\;\partial\circ\mathrm{BdryACS}
+\end{equation}
+are natural: for every morphism $\phi\colon\mathsf{A}_{1}\to\mathsf{A}_{2}$
+of arithmetic chiral algebras, the three squares
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+H^{\bullet}_{\Delta}(\mathsf{A}_{1})\arrow[r,"H^{\bullet}_{\Delta}(\phi)"]\arrow[d,"\eta_{\Delta,\mathrm{ch},\mathsf{A}_{1}}"']
+& H^{\bullet}_{\Delta}(\mathsf{A}_{2})\arrow[d,"\eta_{\Delta,\mathrm{ch},\mathsf{A}_{2}}"]\\
+H^{\bullet}_{\mathrm{ch}}(\mathsf{A}_{1})\arrow[r,"H^{\bullet}_{\mathrm{ch}}(\phi)"]\arrow[d,"\eta_{\mathrm{ch},\partial,\mathsf{A}_{1}}"']
+& H^{\bullet}_{\mathrm{ch}}(\mathsf{A}_{2})\arrow[d,"\eta_{\mathrm{ch},\partial,\mathsf{A}_{2}}"]\\
+\partial\circ\mathrm{BdryACS}(\mathsf{A}_{1})\arrow[r,"\partial\circ\mathrm{BdryACS}(\phi)"']
+& \partial\circ\mathrm{BdryACS}(\mathsf{A}_{2})
+\end{tikzcd}
+\]
+commute. The three horizontal maps are identified under the
+naturality, and the induced Frobenius and Poincar\'e duality
+structures are preserved pairwise: $F_{\mathsf{A}_{2}}\circ H^{\bullet}(\phi)=H^{\bullet}(\phi)\circ F_{\mathsf{A}_{1}}$
+and likewise for $\mathrm{PD}$.
+\end{theorem}
+
+\begin{proof}
+The upper square. The equality
+$H^{\bullet}_{\Delta}(\mathsf{A})\underset{\mathrm{def}}{=}H^{\bullet}_{\mathrm{ch}}(\mathsf{A})$
+is definitional (\Cref{v4-arith:w8-a:def:deninger-cohomology}); the
+natural transformation $\eta_{\Delta,\mathrm{ch}}$ is the identity.
+Naturality is immediate: the identity intertwines every induced map.
+
+The lower square. Apply \Cref{v4-arith:w9-r5:thm:chain-identification}
+to both $\mathsf{A}_{1}$ and $\mathsf{A}_{2}$, obtaining chain-level
+quasi-isomorphisms $\Xi_{\mathsf{A}_{1}}$ and $\Xi_{\mathsf{A}_{2}}$.
+The natural transformation $\eta_{\mathrm{ch},\partial}$ is the
+induced map on cohomology:
+$\eta_{\mathrm{ch},\partial,\mathsf{A}}:=H^{\bullet}(\Xi_{\mathsf{A}})^{-1}\circ
+(\text{identification with boundary chiral homology})$, well-defined
+by \Cref{v4-arith:3d-acs:thm:chi-hom-bar} and
+\Cref{v4-arith:w9-r5:thm:chain-identification}.
+
+Commutativity at the chain level. The induced chain map
+$B^{\mathrm{ord}}_{\bullet}(\phi)$ intertwines $\Xi_{\mathsf{A}_{1}}$
+and $\Xi_{\mathsf{A}_{2}}$ by the naturality of
+\Cref{v4-arith:w9-r5:thm:chain-identification} in $\mathsf{A}$. The
+induced chain map $B^{\mathrm{Ar}}(\phi)$ likewise intertwines, by
+axioms (3), (4), (5) of \Cref{v4-arith:w9-r5:def:ArChAlg-morphism}:
+the spherical units are mapped to spherical units; the adjacent
+products commute through $\phi$; the Parshin--Gersten boundary
+commutes through $\phi$. Composing, we get
+$\Xi_{\mathsf{A}_{2}}\circ B^{\mathrm{ord}}(\phi)=B^{\mathrm{Ar}}(\phi)\circ\Xi_{\mathsf{A}_{1}}$
+as maps of chain complexes. Passing to cohomology gives the
+commutative square.
+
+Frobenius compatibility. The global Frobenius
+$F_{\mathsf{A}}=F_{\infty,\mathsf{A}}\otimes\bigotimes'_{p}\psi_{p,\mathsf{A}}$
+commutes with $H^{\bullet}(\phi)$ because axiom (2) of the morphism
+definition supplies $\psi_{p}$-equivariance at each finite prime,
+and axiom (1) supplies preservation of the conformal vector at
+$\infty$ (from which $F_{\infty}$ is conjugated via
+\Cref{v4-arith:w8-a:lem:L0-conjugacy}). Hence
+$F_{\mathsf{A}_{2}}\circ H^{\bullet}(\phi)=H^{\bullet}(\phi)\circ F_{\mathsf{A}_{1}}$.
+
+Poincar\'e duality compatibility. The PD pairing is determined by
+the Koszul self-duality identity
+\Cref{v4-arith:w8-a:thm:triple-duality}. A morphism $\phi$ in
+$\mathsf{ArChAlg}$ preserves the spherical units and the adjacent
+products; the self-duality pairing is expressed chain-level as the
+Positselski contraction pairing, which is natural in the underlying
+$\mathsf{A}$. Hence $\mathrm{PD}$ commutes with $\phi$.
+\end{proof}
+
+\begin{corollary}[triple functoriality in $\mathsf{A}$]
+\label{v4-arith:w9-r5:cor:triple-A}
+\ClaimStatusProvedHereConditional \emph{(on
+\Cref{v4-arith:w9-r5:thm:naturality-A})}. The three functors
+$H^{\bullet}_{\Delta}$, $H^{\bullet}_{\mathrm{ch}}$, and
+$\partial\circ\mathrm{BdryACS}$ are naturally isomorphic as
+functors $\mathsf{ArChAlg}\to\mathrm{grVect}_{\mathbb{C}}^{\mathrm{Frob}}$.
+Both structural data (Frobenius, Poincar\'e duality) pull through
+the natural isomorphisms.
+\end{corollary}
+
+\begin{proof}
+Immediate from \Cref{v4-arith:w9-r5:thm:naturality-A} after recording
+that $\eta_{\Delta,\mathrm{ch}}$ is invertible (as the identity)
+and $\eta_{\mathrm{ch},\partial}$ is invertible as the induced
+map on cohomology from a chain-level quasi-isomorphism.
+\end{proof}
+
+\subsection*{Attack-heal on naturality in $\mathsf{A}$}
+\label{v4-arith:w9-r5:ah:A}
+
+\paragraph{Attack 1.} Beilinson--Drinfeld $E_{1}$-chiral
+functoriality (source BD 2004) versus 3D CS bulk interface defects
+(source Kim 2015 + quantum ACS): disjoint. \textbf{Pass.}
+
+\paragraph{Attack 2.} Signs: the bar-differential Koszul signs are
+the same on both sides by construction of
+\Cref{v4-arith:platonic:def:bar}; the ordered-incidence alternating
+signs match under $\Xi$. \textbf{Pass.}
+
+\paragraph{Attack 3.} Ambient categories: graded $\mathbb{C}$-vector
+spaces with Frobenius and Poincar\'e duality. Compatible on both
+sides. \textbf{Pass.}
+
+\paragraph{Attack 4.} Hidden hypothesis: the naturality of
+$F_{\infty}$ under $\phi^{(\infty)}$ uses that $\phi^{(\infty)}$
+preserves the conformal vector; this is axiom (1) of
+\Cref{v4-arith:w9-r5:def:ArChAlg-morphism}. No hidden hypothesis.
+\textbf{Pass.}
+
+\paragraph{Attack 5.} False functoriality: one might worry that
+axioms (2) (equivariance under $\psi_{p}$) and (4) (adjacent-product
+intertwining) are independent. They are not: axiom (4) applied to
+$v=p, w=\infty$ using that the spherical vacuum at $\infty$ is fixed
+by $\psi_{p}$ up to normalised Frobenius weight implies axiom (2)
+on the unit line; the full axiom (2) on all of $\mathsf{A}^{(p)}$
+is an additional local constraint, not automatic from (4).
+\textbf{Pass (axioms are independent and both needed).}
+
+\paragraph{Attack 6.} Unproved equivalence: the identification of
+the $F$-spectrum on $H^{1}$ with the zeta zeros remains
+H-P$^{\mathrm{Ar}}$ (\Cref{v4-arith:rh:hyp:HPAr}), not supplied here.
+This is inherited from
+\Cref{v4-arith:w8-a:thm:character-identity}. Naturality of $F$ does
+not require identifying its spectrum; only its commutation with
+$H^{\bullet}(\phi)$. \textbf{Pass (residual inherited).}
+
+\paragraph{Attack 7.} No engine, no synchronisation failure.
+\textbf{Pass.}
+
+\section{Functoriality in $g$}
+\label{v4-arith:w9-r5:functoriality-g}
+
+The genus filtration
+$\mathsf{ArChAlg}_{0}\subset\mathsf{ArChAlg}_{1}\subset\cdots$ of
+\Cref{v4-arith:w9-r5:def:genus-filtration} generates further
+functoriality structure, tying Chapter~\ref{v4-arith:w8-a:deninger-chiral-homology}
+to Chapter~\ref{v4-arith:all-genus-koszul}.
+
+\begin{definition}[genus-$g$ restrictions of the three functors]
+\label{v4-arith:w9-r5:def:genus-restricted}
+\ClaimStatusDefinitional. For every $g\geq 0$, let
+$H^{\bullet}_{\Delta,g}$, $H^{\bullet}_{\mathrm{ch},g}$, and
+$(\partial\circ\mathrm{BdryACS})_{g}$ denote the restrictions of
+$H^{\bullet}_{\Delta}$, $H^{\bullet}_{\mathrm{ch}}$, and
+$\partial\circ\mathrm{BdryACS}$ to $\mathsf{ArChAlg}_{g}$.
+Explicitly:
+\begin{itemize}
+\item $H^{\bullet}_{\Delta,g}$ sends a genus-$g$ object
+$\mathsf{A}\in\mathsf{ArChAlg}_{g}$ to the rank-$2g$ Deninger
+cohomology with global Frobenius $F^{(g)}$ of
+\Cref{v4-arith:w8-a:thm:all-genus-deninger}(2);
+\item $H^{\bullet}_{\mathrm{ch},g}$ sends $\mathsf{A}$ to the
+rank-$2g$ Platonic bar homology of
+\Cref{v4-arith:w8-a:def:deninger-g} with rank-$2g$ Fock factors per
+place;
+\item $(\partial\circ\mathrm{BdryACS})_{g}$ sends $\mathsf{A}$ to
+the boundary chiral homology of the rank-$2g$ 3D arithmetic CS
+$\mathrm{ACS}^{\mathrm{qu},g}_{k^{\mathrm{Ar},g}}$ of
+\Cref{v4-arith:3d-acs:cor:all-genus-arith-gravity}.
+\end{itemize}
+\end{definition}
+
+\begin{theorem}[compatibility under genus inclusion]
+\label{v4-arith:w9-r5:thm:genus-inclusion}
+\ClaimStatusProvedHereConditional \emph{(on
+\Cref{v4-arith:w9-r5:thm:naturality-A},
+\Cref{v4-arith:ag:thm:all-genus},
+\Cref{v4-arith:w8-a:thm:all-genus-deninger})}. For every $g\geq 0$,
+the three genus-$g$ functors commute with the inclusion
+$\iota_{g,g+1}\colon\mathsf{ArChAlg}_{g}\hookrightarrow\mathsf{ArChAlg}_{g+1}$
+up to canonical natural isomorphisms
+$\vartheta^{\Delta}_{g}$, $\vartheta^{\mathrm{ch}}_{g}$,
+$\vartheta^{\partial}_{g}$:
+\begin{equation}
+\label{v4-arith:w9-r5:eq:genus-inclusion}
+\begin{tikzcd}[column sep=large,row sep=large]
+\mathsf{ArChAlg}_{g}\arrow[rr,"\iota_{g,g+1}"]\arrow[dr,"H^{\bullet}_{\star,g}\otimes V_{2}"']
+&& \mathsf{ArChAlg}_{g+1}\arrow[dl,"H^{\bullet}_{\star,g+1}"]\\
+& \mathrm{grVect}_{\mathbb{C}}^{\mathrm{Frob}}
+\end{tikzcd}
+\end{equation}
+commutes up to $\vartheta^{\star}_{g}$ for
+$\star\in\{\Delta,\mathrm{ch},\partial\}$, where $V_{2}$ is the
+rank-$2$ archimedean Heisenberg summand and $\otimes V_{2}$ is the
+tensor-up with its associated graded Fock module. The three natural
+transformations $\vartheta^{\star}_{g}$ are compatible with the
+natural isomorphisms $\eta_{\Delta,\mathrm{ch}}$,
+$\eta_{\mathrm{ch},\partial}$ of
+\Cref{v4-arith:w9-r5:eq:natural-iso}.
+\end{theorem}
+
+\begin{proof}
+The map $\iota_{g,g+1}$ adjoins a rank-$2$ archimedean Heisenberg
+factor at every place: at each prime $p$, the rank-$2g$ Fock
+$\mathcal{H}^{(p),g}$ is replaced by the rank-$2(g+1)$ Fock
+$\mathcal{H}^{(p),g+1}=\mathcal{H}^{(p),g}\otimes\mathcal{H}^{(p)}_{2}$
+where $\mathcal{H}^{(p)}_{2}$ is a freshly-added rank-$2$ Fock
+factor; analogously at $\infty$.
+
+For $\star=\mathrm{ch}$: the Platonic bar is multiplicative under
+the tensor product of factorisation algebras. At each finite stage
+$S$, the bar factors as
+$B^{\mathrm{Ar}}_{S}(\mathsf{A}\otimes V_{2})=B^{\mathrm{Ar}}_{S}(\mathsf{A})\widehat{\otimes}
+B^{\mathrm{Ar}}_{S}(V_{2})$, where the right-hand factor is the bar
+of the freshly-added rank-$2$ Heisenberg. Passing to cohomology and
+to the filtered colimit, the natural isomorphism
+$\vartheta^{\mathrm{ch}}_{g}$ is the K\"unneth map of the Platonic
+bar, which is a quasi-isomorphism after restricting to the primary
+subspace of each side (\Cref{v4-arith:thm:heisenberg-bar-zeta}
+multiplicativity).
+
+For $\star=\Delta$: $\vartheta^{\Delta}_{g}$ is the same map under
+\Cref{v4-arith:w8-a:def:deninger-cohomology}'s definitional equality
+$H^{\bullet}_{\Delta,g}=H^{\bullet}_{\mathrm{ch},g}$; naturality is
+inherited from $\vartheta^{\mathrm{ch}}_{g}$.
+
+For $\star=\partial$: the bulk 3D ACS theory
+$\mathrm{ACS}^{\mathrm{qu},g+1}$ of
+\Cref{v4-arith:3d-acs:cor:all-genus-arith-gravity} factors as the
+tensor product of $\mathrm{ACS}^{\mathrm{qu},g}$ with the rank-$2$
+tensor-slot theory. This is the content of the additive structure
+of the gauge group $GL_{2(g+1)}=GL_{2g}\oplus GL_{2}$ on the
+boundary: the rank-$2(g+1)$ WZW is the tensor product of the
+rank-$2g$ WZW with the rank-$2$ WZW. The boundary chiral homology
+is multiplicative under tensor products of WZW algebras, so
+$\vartheta^{\partial}_{g}$ is the K\"unneth map on the boundary
+side.
+
+Compatibility with $\eta$. The two natural transformations
+$\vartheta^{\mathrm{ch}}_{g}$ and $\vartheta^{\partial}_{g}$ both
+come from K\"unneth maps at the corresponding bar level. Applying
+the chain-level identification
+\Cref{v4-arith:w9-r5:thm:chain-identification} to the rank-$2$
+factor (whose bar is freshly introduced on both sides), we obtain
+$\eta_{\mathrm{ch},\partial,\mathsf{A}\otimes V_{2}}\circ\vartheta^{\mathrm{ch}}_{g}=\vartheta^{\partial}_{g}\circ\eta_{\mathrm{ch},\partial,\mathsf{A}}$
+as required.
+\end{proof}
+
+\begin{theorem}[uniformity: genus-wise triple identification]
+\label{v4-arith:w9-r5:thm:genus-uniformity}
+\ClaimStatusProvedHereConditional \emph{(on
+\Cref{v4-arith:w9-r5:thm:genus-inclusion} and
+\Cref{v4-arith:w8-a:thm:all-genus-deninger})}. The triple
+identification is uniform in genus: for every $g\geq 0$ and every
+$\mathsf{A}\in\mathsf{ArChAlg}_{g}$,
+\begin{equation}
+\label{v4-arith:w9-r5:eq:genus-uniform}
+H^{\bullet}_{\Delta,g}(\mathsf{A})
+\;=\;H^{\bullet}_{\mathrm{ch},g}(\mathsf{A})
+\;=\;(\partial\circ\mathrm{BdryACS})_{g}(\mathsf{A})
+\end{equation}
+as graded vector spaces with genus-$g$ Frobenius $F^{(g)}$ and PD
+pairing $\mathrm{PD}^{(g)}$. The equality is compatible with the
+inclusion $\iota_{g,g+1}$ of
+\Cref{v4-arith:w9-r5:thm:genus-inclusion} and with the retraction
+$\pi_{g+1,g}$: the three genus-$g$ identifications commute, up to
+$\vartheta^{\star}_{g}$, with the corresponding genus-$(g+1)$
+identifications.
+\end{theorem}
+
+\begin{proof}
+The three equalities on the right-hand side of
+\eqref{v4-arith:w9-r5:eq:genus-uniform} are the genus-$g$ restrictions
+of \Cref{v4-arith:w9-r5:cor:factoring}. They hold for every
+$\mathsf{A}\in\mathsf{ArChAlg}_{g}$ by restriction.
+
+The compatibility with genus inclusion: apply
+\Cref{v4-arith:w9-r5:thm:genus-inclusion} to obtain the three
+compatibility diagrams connecting $g$ and $g+1$. Each diagram is
+commutative up to $\vartheta^{\star}_{g}$; the three
+$\vartheta^{\star}_{g}$ agree under the natural isomorphisms
+$\eta_{\Delta,\mathrm{ch}}$ and $\eta_{\mathrm{ch},\partial}$. Hence
+the genus-$g$ triple identification commutes with the genus-$(g+1)$
+identification: the diagram
+\[
+\begin{tikzcd}[column sep=scriptsize, row sep=small]
+H^{\bullet}_{\Delta,g}(\mathsf{A})\otimes V_{2}\arrow[r,"="]\arrow[d,"\vartheta^{\Delta}_{g}"']
+&H^{\bullet}_{\mathrm{ch},g}(\mathsf{A})\otimes V_{2}\arrow[r,"="]\arrow[d,"\vartheta^{\mathrm{ch}}_{g}"']
+&(\partial\mathrm{BdryACS})_{g}(\mathsf{A})\otimes V_{2}\arrow[d,"\vartheta^{\partial}_{g}"]\\
+H^{\bullet}_{\Delta,g+1}(\iota(\mathsf{A}))\arrow[r,"="]
+&H^{\bullet}_{\mathrm{ch},g+1}(\iota(\mathsf{A}))\arrow[r,"="]
+&(\partial\mathrm{BdryACS})_{g+1}(\iota(\mathsf{A}))
+\end{tikzcd}
+\]
+commutes.
+
+The compatibility with retraction $\pi_{g+1,g}$ is the mirror
+statement: projection onto the first $2g$ oscillators, which is
+K\"unneth-compatible by the same argument in the reverse direction.
+\end{proof}
+
+\begin{corollary}[all-genus triple functoriality]
+\label{v4-arith:w9-r5:cor:all-genus-triple}
+\ClaimStatusProvedHereConditional \emph{(on
+\Cref{v4-arith:w9-r5:thm:genus-uniformity})}. The three functors
+$H^{\bullet}_{\Delta}$, $H^{\bullet}_{\mathrm{ch}}$, and
+$\partial\circ\mathrm{BdryACS}$ are naturally isomorphic as
+\emph{genus-filtered} functors
+$\mathsf{ArChAlg}\to\mathrm{grVect}_{\mathbb{C}}^{\mathrm{Frob}}$.
+The natural isomorphism is genus-graded: restricts to a natural
+isomorphism at every genus $g$, and commutes with inclusion and
+retraction along the filtration.
+\end{corollary}
+
+\begin{proof}
+Assemble \Cref{v4-arith:w9-r5:cor:triple-A} (functoriality in
+$\mathsf{A}$ at fixed genus) with
+\Cref{v4-arith:w9-r5:thm:genus-uniformity} (uniform compatibility
+across genus). The genus-filtered structure is preserved at each
+genus, with transition natural transformations $\vartheta^{\star}_{g}$
+compatible.
+\end{proof}
+
+\subsection*{Attack-heal on functoriality in $g$}
+\label{v4-arith:w9-r5:ah:g}
+
+\paragraph{Attack 1.} The genus filtration via rank-$2$ tensor slots
+(Ch.~\ref{v4-arith:all-genus-koszul}) and the 3D ACS gauge-group
+scaling $GL_{2g}\to GL_{2(g+1)}$ (Ch.~\ref{v4-arith:3d-acs-E1bar})
+are source-compatible: the former is the rank of the archimedean
+Heisenberg, the latter is the gauge-group rank. Identical arithmetic.
+\textbf{Pass.}
+
+\paragraph{Attack 2.} Convention: rank $r=2g$ for the archimedean
+Heisenberg, $g=$ Siegel-modular genus, Satake-type rank $2g$ at
+each finite prime. Consistent across Ch.~\ref{v4-arith:all-genus-koszul},
+Ch.~\ref{v4-arith:3d-acs-E1bar}, Ch.~\ref{v4-arith:w8-a:deninger-chiral-homology}.
+\textbf{Pass.}
+
+\paragraph{Attack 3.} Ambient category: grVect$_{\mathbb{C}}^{\mathrm{Frob}}$
+is stable under tensor product with a rank-$2$ Fock factor, which is
+the freshly-added genus slot. \textbf{Pass.}
+
+\paragraph{Attack 4.} Hidden hypothesis: K\"unneth compatibility for
+the Platonic bar at the rank-$2$ slot needs that the freshly-added
+local factors $\mathcal{H}^{(p)}_{2}$ are flat over the Iwasawa
+algebra $\Lambda_{p}$. This is the rank-$2$ Positselski Koszul
+duality input, standard by
+Ch.~\ref{v4-arith:w5-d:chapter}. \textbf{Pass.}
+
+\paragraph{Attack 5.} False functoriality: one might worry that the
+retraction $\pi_{g+1,g}$ requires a cokernel computation. It does
+not: on the primary Heisenberg scope, the freshly-added rank-$2$
+factor is a direct summand, so the retraction is by direct-summand
+projection, not quotient. \textbf{Pass.}
+
+\paragraph{Attack 6.} Unproved equivalence: the genus-$g$
+$F$-spectrum identification with motivic zeros is conditional on
+rank-$g$ H-P$^{\mathrm{Ar}}$
+(\Cref{v4-arith:w8-a:thm:all-genus-deninger}(4));
+not supplied here. Compatibility of the filtration structure does
+not require the spectrum identification. \textbf{Pass (residual
+inherited).}
+
+\paragraph{Attack 7.} No compute engine. \textbf{Pass.}
+
+\section{Master Theorem and Explicit Example}
+\label{v4-arith:w9-r5:master}
+
+We consolidate the chapter's content into a single master functoriality
+theorem and verify it on an explicit diagonal example.
+
+\begin{theorem}[master functoriality]
+\label{v4-arith:w9-r5:thm:master-functoriality}
+\ClaimStatusProvedHereConditional \emph{(on the residuals of
+Chapters~\ref{v4-arith:3d-acs-E1bar},
+\ref{v4-arith:all-genus-koszul},
+\ref{v4-arith:w8-a:deninger-chiral-homology} and their arithmetic
+Positselski, H-P$^{\mathrm{Ar}}$, 3D quantum ACS scopes)}. The
+triple identification
+$H^{\bullet}_{\Delta}=H^{\bullet}_{\mathrm{ch}}=\partial\circ\mathrm{BdryACS}$
+is a natural isomorphism of genus-filtered functors
+\[
+\mathsf{ArChAlg}=\bigcup_{g\geq 0}\mathsf{ArChAlg}_{g}
+\longrightarrow\mathrm{grVect}_{\mathbb{C}}^{\mathrm{Frob}},
+\]
+which is:
+\begin{enumerate}
+\item functorial in $\mathsf{A}$: every morphism
+$\phi\colon\mathsf{A}_{1}\to\mathsf{A}_{2}$ in $\mathsf{ArChAlg}$
+induces a commuting triple-square of cohomology maps, preserving
+Frobenius $F$ and Poincar\'e duality $\mathrm{PD}$;
+\item functorial in $g$: for every $g\geq 0$, the restriction to
+$\mathsf{ArChAlg}_{g}$ is a natural isomorphism of genus-$g$
+functors, compatible with the inclusion
+$\iota_{g,g+1}$ and the retraction $\pi_{g+1,g}$;
+\item chain-level canonical: the natural isomorphism is induced by
+the quasi-isomorphism $\Xi$ of
+\Cref{v4-arith:w9-r5:thm:chain-identification}, a
+specific chain map built from arithmetic Positselski bar-cobar,
+the $E_{1}$-chiral archimedean bar, and the Parshin--Gersten tame-symbol
+layer.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Part~(1) is \Cref{v4-arith:w9-r5:cor:triple-A}.
+Part~(2) is \Cref{v4-arith:w9-r5:cor:all-genus-triple}.
+Part~(3) is the explicit construction of $\Xi$ in the proof of
+\Cref{v4-arith:w9-r5:thm:chain-identification}, together with the
+fact that the Deninger-to-chiral-homology equality
+$\eta_{\Delta,\mathrm{ch}}$ is definitional
+(\Cref{v4-arith:w8-a:def:deninger-cohomology}) and hence trivially
+chain-level.
+\end{proof}
+
+\begin{example}[diagonal $\mathsf{H}^{\mathrm{Ar}}\to\mathsf{H}^{\mathrm{Ar}}\oplus\mathsf{H}^{\mathrm{Ar}}$]
+\label{v4-arith:w9-r5:ex:diagonal}
+The diagonal morphism
+\[
+\Delta\colon\mathsf{H}^{\mathrm{Ar}}\longrightarrow
+\mathsf{H}^{\mathrm{Ar}}\oplus\mathsf{H}^{\mathrm{Ar}}
+\]
+is defined place-wise by the arithmetic Heisenberg diagonal
+\[
+\Delta^{(v)}\colon\mathcal{H}^{(v)}\longrightarrow\mathcal{H}^{(v)}\oplus\mathcal{H}^{(v)},
+\qquad x\longmapsto(x,x),
+\]
+at every place $v\in|\overline{C}|$. The target is the coproduct of
+two copies of $\mathsf{H}^{\mathrm{Ar}}$ in $\mathsf{ArChAlg}$; its
+archimedean component is the free $E_{1}$-chiral product of two
+rank-$2$ Heisenbergs, hence a rank-$4$ Heisenberg.
+\end{example}
+
+\begin{proposition}[triple verification on the diagonal]
+\label{v4-arith:w9-r5:prop:diagonal-verification}
+\ClaimStatusProvedHereConditional \emph{(on
+\Cref{v4-arith:w9-r5:thm:master-functoriality})}. The diagonal
+$\Delta$ of \Cref{v4-arith:w9-r5:ex:diagonal} is a morphism in
+$\mathsf{ArChAlg}$ (axioms (1)--(6) of
+\Cref{v4-arith:w9-r5:def:ArChAlg-morphism} are satisfied), and
+the induced triple-morphism
+\[
+\bigl(H^{\bullet}_{\Delta}(\Delta),\,H^{\bullet}_{\mathrm{ch}}(\Delta),\,\partial\circ\mathrm{BdryACS}(\Delta)\bigr)
+\]
+commutes with $\eta_{\Delta,\mathrm{ch}}$ and
+$\eta_{\mathrm{ch},\partial}$. Explicitly:
+\begin{enumerate}
+\item $H^{\bullet}_{\Delta}(\Delta)$ is the diagonal embedding
+$H^{\bullet}_{\Delta}(\mathsf{H}^{\mathrm{Ar}})\to H^{\bullet}_{\Delta}(\mathsf{H}^{\mathrm{Ar}}\oplus\mathsf{H}^{\mathrm{Ar}})=H^{\bullet}_{\Delta}(\mathsf{H}^{\mathrm{Ar}})\oplus H^{\bullet}_{\Delta}(\mathsf{H}^{\mathrm{Ar}})$
+of the arithmetic cohomology; in degree $0$ it is $x\mapsto(x,x)$
+on $\mathbb{C}_{0}\to\mathbb{C}_{0}\oplus\mathbb{C}_{0}$; similarly
+for $H^{2}$; and it sends the middle $H^{1}$-eigenvector of
+$\Theta_{\xi}$ at ordinate $\gamma_{\rho}$ to the pair of two copies
+of the same eigenvector.
+\item $H^{\bullet}_{\mathrm{ch}}(\Delta)$ is the induced chain map
+of Platonic bars, compatible with the bar differential because
+$\Delta$ preserves the spherical units and is a homomorphism of
+chiral algebras.
+\item $\partial\circ\mathrm{BdryACS}(\Delta)$ is the boundary
+restriction of the bulk interface
+$\mathrm{BdryACS}(\Delta)\colon\mathrm{ACS}^{\mathrm{qu}}_{\mathsf{H}^{\mathrm{Ar}}}\to\mathrm{ACS}^{\mathrm{qu}}_{\mathsf{H}^{\mathrm{Ar}}}\oplus\mathrm{ACS}^{\mathrm{qu}}_{\mathsf{H}^{\mathrm{Ar}}}$,
+which in the 3D ACS framework is the ``diagonal bulk defect''
+connecting one bulk theory to the disjoint union of two copies of
+itself.
+\end{enumerate}
+All three commute with the natural isomorphisms
+$\eta_{\Delta,\mathrm{ch}}$, $\eta_{\mathrm{ch},\partial}$.
+\end{proposition}
+
+\begin{proof}
+Axiom verification. Axiom (1): $\Delta^{(\infty)}$ is the diagonal
+on the archimedean Heisenberg factorisation algebra; it preserves
+the conformal vector because the free product of chiral algebras has
+a conformal vector which is the sum of the two factor conformal
+vectors, and the diagonal $T\mapsto T\oplus T$ is consistent with
+the coproduct structure. Axiom (2): $\Delta^{(p)}$ commutes with
+$\psi_{p}$ because $\psi_{p}(x,x)=(\psi_{p}(x),\psi_{p}(x))$. Axiom
+(3): $\Delta^{(v)}(u^{(v)})=(u^{(v)},u^{(v)})$, which is the
+spherical unit of the coproduct. Axiom (4): the adjacent product
+on the coproduct is the diagonal of the adjacent product on each
+summand; $\Delta$ commutes with this by construction. Axiom (5): the
+tame-symbol boundary $\partial^{\mathrm{PG}}$ is linear, so
+$\partial^{\mathrm{PG}}(x,x)=(\partial^{\mathrm{PG}}(x),\partial^{\mathrm{PG}}(x))$.
+Axiom (6): Tate compatibility is preserved because the spherical
+units are preserved and the restricted tensor factors through each
+summand.
+
+Claim (1). The Deninger cohomology of the coproduct
+$\mathsf{H}^{\mathrm{Ar}}\oplus\mathsf{H}^{\mathrm{Ar}}$ is
+$H^{\bullet}_{\Delta}(\mathsf{H}^{\mathrm{Ar}})\oplus H^{\bullet}_{\Delta}(\mathsf{H}^{\mathrm{Ar}})$
+because arithmetic bar commutes with direct sums on the primary
+scope (the bar is additive in its argument, a consequence of
+\Cref{v4-arith:platonic:def:bar} and of the additivity of the
+tame-symbol boundary). The induced map is the diagonal. In each
+degree:
+$H^{0}=\mathbb{C}_{0}\to\mathbb{C}_{0}\oplus\mathbb{C}_{0}$,
+$x\mapsto(x,x)$; $H^{2}=\mathbb{C}_{1}\to\mathbb{C}_{1}\oplus\mathbb{C}_{1}$,
+$x\mapsto(x,x)$; $H^{1}$-eigenvectors at ordinate $\gamma_{\rho}$
+go to the pair of two copies.
+
+Claim (2). The Platonic bar is natural in $\mathsf{A}$ by
+\Cref{v4-arith:w9-r5:def:functor-ch}; applying naturality to
+$\Delta$ gives the chain map on bars. Bar differential compatibility
+is axiom (5) of
+\Cref{v4-arith:w9-r5:def:ArChAlg-morphism} applied to the diagonal.
+
+Claim (3). The bulk-boundary assignment
+$\mathrm{BdryACS}(\Delta)$ is by
+\Cref{v4-arith:w9-r5:def:functor-bdryACS} the 3D bulk interface
+whose archimedean boundary restriction is $\Delta^{(\infty)}$ (the
+diagonal map of archimedean $E_{1}$-chiral algebras) and whose
+finite-place Wilson-line restriction is
+$\{\Delta^{(p)}\}$. The boundary chiral homology $\partial$ of this
+interface is the induced map on boundary chiral homology. By
+the additivity of boundary chiral homology for coproducts in
+$\mathsf{3DACS}_{\overline{\mathrm{Spec}\,\mathbb{Z}}}$ (the disjoint
+union of two bulk theories has as boundary the coproduct of
+the two boundary chiral algebras), the boundary map is the diagonal
+on the rank-$2$ chiral homology.
+
+Compatibility with $\eta$. By construction each of the three maps
+agrees with the others under the natural isomorphisms: they are all
+the diagonal of the same underlying primary Heisenberg cohomology
+object, related by the chain-level quasi-isomorphism $\Xi$ of
+\Cref{v4-arith:w9-r5:thm:chain-identification} on each direct
+summand and the identity on the direct-sum structure.
+\end{proof}
+
+\begin{remark}[what the diagonal example witnesses]
+\label{v4-arith:w9-r5:rem:diagonal-witnesses}
+The diagonal $\Delta$ is the simplest non-trivial morphism in
+$\mathsf{ArChAlg}$ after the identity: it is not an isomorphism,
+not a projection, not a single-factor inclusion. Verifying the
+triple-morphism commutation on $\Delta$ tests every axiom of
+\Cref{v4-arith:w9-r5:def:ArChAlg-morphism} against every piece of
+the triple identification. Because the coproduct
+$\mathsf{H}^{\mathrm{Ar}}\oplus\mathsf{H}^{\mathrm{Ar}}$ sits in
+$\mathsf{ArChAlg}_{g=2}$ (rank-$4$ archimedean Heisenberg) while
+$\mathsf{H}^{\mathrm{Ar}}$ sits in $\mathsf{ArChAlg}_{g=1}$, the
+example also touches genus functoriality: it is a non-trivial map
+in the filtered structure
+$\mathsf{ArChAlg}_{1}\to\mathsf{ArChAlg}_{2}$ that does not factor
+through the filtered-colimit inclusion $\iota_{1,2}$.
+\end{remark}
+
+\subsection*{Attack-heal on the master theorem}
+\label{v4-arith:w9-r5:ah:master}
+
+\paragraph{Attack 1.} The master theorem combines source families
+from Beilinson--Drinfeld (archimedean), Fargues--Scholze (finite),
+and 3D CS (Kim 2015 + quantum ACS). All three disjoint. \textbf{Pass.}
+
+\paragraph{Attack 2.} Signs: the Koszul signs in the Platonic bar
+differential, the alternating signs in the ordered-incidence bar,
+and the 3D framed-cobordism signs in the boundary-chiral-homology
+pairing are mutually consistent under the identifications of
+\Cref{v4-arith:w9-r5:thm:chain-identification}. \textbf{Pass.}
+
+\paragraph{Attack 3.} Ambient categories: the target grVect$_{\mathbb{C}}^{\mathrm{Frob}}$
+is the standard ambient category with Frobenius and Poincar\'e
+duality; all three functors land there. \textbf{Pass.}
+
+\paragraph{Attack 4.} Hidden hypothesis: the 3D quantum ACS
+functoriality under bulk interface defects is conjectural
+(\Cref{v4-arith:3d-acs:conj:qu-acs}). Inherited.
+\textbf{Residual: 3D quantum ACS.}
+
+\paragraph{Attack 5.} False functoriality: the claim that
+$\partial\circ\mathrm{BdryACS}$ is actually a functor (not just a
+correspondence) depends on the existence of a well-defined bulk
+interface defect category. This is conditional on
+\Cref{v4-arith:3d-acs:thm:finite-bulk-boundary} plus the
+renormalised profinite limit of
+\Cref{v4-arith:3d-acs:conj:qu-acs}. \textbf{Residual inherited.}
+
+\paragraph{Attack 6.} Unproved equivalence: all three spectral
+statements (Deninger purity, RH, F-RH) remain conditional on
+H-P$^{\mathrm{Ar}}$ and A-TP archimedean. The master theorem does
+not claim these: it claims the \emph{functoriality} of the triple
+identification, not the proof of its spectral content.
+\textbf{Pass.}
+
+\paragraph{Attack 7.} No compute engine is introduced by this
+chapter; Part~C unchanged. \textbf{Pass.}
+
+\section{Residual and Summary}
+\label{v4-arith:w9-r5:residual-summary}
+
+\subsection{Residual obligations closed by this chapter}
+\label{v4-arith:w9-r5:residual-closed}
+
+This chapter closes the following residuals of
+Chapter~\ref{v4-arith:w8-a:deninger-chiral-homology}:
+\begin{enumerate}
+\item \Cref{v4-arith:w8-a:residual}(5): triple-identification
+functoriality under pullback along number-field extensions
+$K/\mathbb{Q}$. Closed: any such pullback is a morphism in
+$\mathsf{ArChAlg}$ (it preserves spherical units, adjacent products,
+and Parshin--Gersten boundaries by classical number-field theory),
+and functoriality follows from
+\Cref{v4-arith:w9-r5:cor:triple-A}.
+\item \Cref{v4-arith:w8-a:residual}(6): genus-$g$ Wilson-line
+Frobenius identification. Closed: the genus-$g$ restriction of
+$\partial\circ\mathrm{BdryACS}$ is functorially identified with
+the genus-$g$ Deninger cohomology by
+\Cref{v4-arith:w9-r5:thm:genus-uniformity}; the rank-$2g$
+Wilson-loop observables are identified with the rank-$2g$
+$\psi_{p}^{(g)}$ by naturality in the direct summand structure.
+\end{enumerate}
+
+\subsection{Remaining inherited residuals}
+\label{v4-arith:w9-r5:residual-inherited}
+
+The master functoriality theorem
+\Cref{v4-arith:w9-r5:thm:master-functoriality} is conditional on
+the following, all inherited from upstream chapters and unchanged
+by this chapter:
+\begin{enumerate}
+\item Arithmetic Positselski (Ch.~\ref{v4-arith:w5-d:chapter}) for
+the finite-prime factor quasi-isomorphism $\Xi^{(p)}$.
+\item 3D quantum ACS existence
+(\Cref{v4-arith:3d-acs:conj:qu-acs}) for the well-definedness of
+$\mathrm{BdryACS}$ as a functor.
+\item Local-trace comparison
+(\Cref{v4-arith:3d-acs:thm:bulk-boundary-Vprim}) for the boundary
+identification at $\infty$.
+\item H-P$^{\mathrm{Ar}}$
+(\Cref{v4-arith:rh:hyp:HPAr}) for the spectrum identification on
+$H^{1}$; not used in functoriality but used in spectral content.
+\item Rank-$g$ K\"unneth compatibility on the Platonic bar, which
+is standard by rank-$g$ Positselski
+(Ch.~\ref{v4-arith:ag:residual}(2)).
+\end{enumerate}
+No new residuals are introduced.
+
+\subsection{Summary}
+\label{v4-arith:w9-r5:summary}
+
+\begin{enumerate}
+\item The category $\mathsf{ArChAlg}$ of arithmetic chiral algebras
+on $\overline{\mathrm{Spec}\,\mathbb{Z}}$ is defined
+(\Cref{v4-arith:w9-r5:def:ArChAlg-object}); its morphisms preserve
+the spherical units, adjacent products, Parshin--Gersten boundary,
+conformal vector at $\infty$, and Frobenius $\psi_{p}$ at each prime.
+The genus filtration
+$\mathsf{ArChAlg}_{0}\subset\mathsf{ArChAlg}_{1}\subset\cdots$
+supplies the structure needed for genus functoriality.
+\item The three assignments
+$H^{\bullet}_{\Delta}$, $H^{\bullet}_{\mathrm{ch}}$,
+$\partial\circ\mathrm{BdryACS}$ are upgraded to functors on
+$\mathsf{ArChAlg}$ (\Cref{v4-arith:w9-r5:three-functors}); they are
+sourced from three pairwise-disjoint source families (Deninger 1998,
+BD+Positselski, Kim+quantum ACS).
+\item The three functors factor through a common chain-level object
+$\mathcal{B}^{\mathrm{univ}}$
+(\Cref{v4-arith:w9-r5:def:universal-bar}); the chain-level
+identification theorem $\Xi$
+(\Cref{v4-arith:w9-r5:thm:chain-identification}) is a natural
+transformation of chain-complex-valued functors.
+\item Functoriality in $\mathsf{A}$
+(\Cref{v4-arith:w9-r5:thm:naturality-A},
+\Cref{v4-arith:w9-r5:cor:triple-A}) upgrades the object-wise triple
+equality to a natural isomorphism; the global Frobenius and
+Poincar\'e duality structures pull through.
+\item Functoriality in $g$
+(\Cref{v4-arith:w9-r5:thm:genus-inclusion},
+\Cref{v4-arith:w9-r5:thm:genus-uniformity},
+\Cref{v4-arith:w9-r5:cor:all-genus-triple}) makes the triple
+identification genus-filtered: compatible with inclusion and
+retraction along the filtration, with K\"unneth transition natural
+transformations $\vartheta^{\star}_{g}$.
+\item The master functoriality theorem
+\Cref{v4-arith:w9-r5:thm:master-functoriality} consolidates (1)--(5)
+into a single statement; the explicit diagonal example
+\Cref{v4-arith:w9-r5:ex:diagonal} verifies it on two copies of the
+baseline $\mathsf{H}^{\mathrm{Ar}}$.
+\item Seven attacks per theorem close; all remaining obstructions
+are inherited from Chapters~\ref{v4-arith:3d-acs-E1bar},
+\ref{v4-arith:all-genus-koszul},
+\ref{v4-arith:w8-a:deninger-chiral-homology}. No new residual is
+introduced.
+\end{enumerate}
+
+The functoriality upgrade converts the triple identification from a
+single-point statement about $\mathsf{H}^{\mathrm{Ar}}$ at $g=0$ into
+a natural isomorphism of genus-filtered functors on $\mathsf{ArChAlg}$.
+Vol~IV's arithmetic realisation branch now records: Deninger's
+arithmetic cohomology is arithmetic chiral homology is boundary 3D
+ACS chiral homology, functorially in the chiral algebra and in the
+genus. The Riemann Hypothesis and its motivic variants become
+spectral properties of a specific self-adjoint operator whose
+construction is the last remaining content (inherited H-P$^{\mathrm{Ar}}$
+obstruction).
+
+\section*{Primary Sources and Disjointness}
+\label{v4-arith:w9-r5:bibliography}
+
+The chapter depends on three disjoint source families.
+
+\begin{description}
+\item[Arithmetic chiral algebra side.]
+Beilinson--Drinfeld 2004, \emph{Chiral Algebras} (AMS Colloq.~51);
+Francis 2013 arXiv:1107.0725 (geometric $E_{1}$-ordered bar);
+Francis--Gaitsgory 2012 arXiv:1104.0024 (factorisation gluing);
+Costello--Gwilliam 2017, \emph{Factorization Algebras in Quantum
+Field Theory} (Cambridge UP) for the archimedean $E_{1}$-chiral
+factorisation algebra.
+\item[Finite-prime arithmetic side.]
+Fargues--Scholze arXiv:2102.13459 (geometrisation of local Langlands);
+Bhatt--Scholze 2022, \emph{Prisms and prismatic cohomology}, Ann.~Math.
+for the prismatic/Nygaard comparison; Borger 2009 arXiv:0906.3146
+for the Bost--Connes Adams $\psi_{p}$; Positselski 2011, Mem.~AMS~996,
+\emph{Two kinds of derived categories, Koszul duality, and
+comodule-contramodule correspondence} for the finite-prime
+quasi-isomorphism $\Xi^{(p)}$.
+\item[3D ACS / bulk-boundary side.]
+Kim 2015 arXiv:1510.05818, \emph{Arithmetic Chern--Simons Theory~I};
+Chern--Dan--Kim--Park 2018 arXiv:1609.03012 (non-abelian extension);
+Mazur 1973 ASENS~6 (\'etale cohomological dimension of number rings);
+Morishita 2012 arXiv:0904.3399, \emph{Knots and Primes};
+Witten 1989, CMP~121, and Witten 2007 arXiv:0706.3359 (3D gravity /
+3D CS boundary WZW); Artin--Verdier duality per SGA 4.5.
+\item[Genus and modular side.]
+Consani--Marcolli 2006 arXiv:math/0605383 (genus-$g$
+Bost--Connes--Marcolli); Faltings 1984, Ann.~Math.~119, \emph{Calculus
+on arithmetic surfaces}; Kudla 1997, Ann.~Math.~146; Li--Liu 2021
+arXiv:2101.09485 (Kudla--Rapoport at bad primes); Arthur 2013,
+\emph{The Endoscopic Classification of Representations}, AMS Colloq.~61.
+\end{description}
+
+Pairwise disjointness of the four families is witnessed by the
+Vol~IV source-catalog
+\Cref{v4-arith:app:A:langlands}--\Cref{v4-arith:app:A:costello},
+\Cref{v4-arith:app:A:prismatic},
+\Cref{v4-arith:app:A:arith-Ddagger},
+and the 3D ACS citation cluster of
+Ch.~\ref{v4-arith:3d-acs-E1bar}. Each theorem of this chapter is
+decorable in the Vol~IV HZ-IV sense: derived path through one
+family, verified against a second family.

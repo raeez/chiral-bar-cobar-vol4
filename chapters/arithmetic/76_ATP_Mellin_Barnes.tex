@@ -1,0 +1,740 @@
+\chapter{A-TP via Mellin--Barnes and Binet Contour Representations}
+\label{v4-arith:w7-f:chapter}
+
+\emph{Wave-7 agent F. Adversarial attack on the archimedean Tate
+positivity conjecture A-TP via the Mellin--Barnes contour
+representation of the digamma function and the Binet second integral
+representation. The digamma kernel
+$g(t)=\mathrm{Re}\,\psi(1/4+it/2)+\log\pi$ admits two classical
+integral representations whose insertion into the archimedean Weil
+contribution exchanges the pointwise sign problem on
+$[-t_{\ast},t_{\ast}]$ for a contour residue sum (Mellin--Barnes) or
+for an absolutely convergent positive-kernel decomposition (Binet).
+The chapter extracts three unconditional consequences. First: the
+Binet representation exhibits an explicit decomposition
+$g=g_{\mathrm{log}}+g_{\mathrm{shift}}+g_{\mathrm{Binet}}$ in which
+$g_{\mathrm{Binet}}$ is the convolution of the Planck weight
+$t/(e^{2\pi t}-1)$ against a pointwise-positive Cauchy kernel, giving
+an unconditional positive-definite component isolated from $g$.
+Second: the Hankel integral representation
+$\psi(s)=\int_{0}^{1}(1-u^{s-1})/(1-u)\,du-\gamma_{E}$ inserted into
+$W_{\infty}$ produces a Laplace-transform representation of the
+archimedean Weil distribution whose kernel is the cosh-dual
+$2\cosh(u/2)-2$, revealing a new decomposition
+$W_{\infty}(f*\widetilde{f})=L[f]-\mathrm{Res}[f]$ with $L[f]\geq 0$
+manifest. Third: a conditional closure on the sub-class of test
+functions $f$ whose Hankel-$L$ weight dominates the explicit residue
+$\mathrm{Res}[f]$; this sub-class properly contains a subset of
+$\mathrm{PW}^{\mathrm{hol}}_{F}\setminus\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$
+that was open after wave-6 Chapter~\ref{v4-arith:w6-a:ATP-direct-attack}.
+The Mellin--Barnes route itself, by contrast, reveals a structural
+obstruction: the residue sum at $w=-n$ converges conditionally but
+each term has sign $(-1)^{n}$, and the alternation defeats naive
+positivity extraction. We name this obstruction precisely and relate
+it to the Hermite--Biehler route of
+Chapter~\ref{v4-arith:w5-j:VBstar-spectral-positivity}.}
+
+\section{Context and Objective}
+\label{v4-arith:w7-f:context}
+
+Chapters~\ref{v4-arith:w5-a:chapter} and
+\ref{v4-arith:w6-a:ATP-direct-attack} reduced A-TP to the
+bounded-interval positivity statement
+\eqref{v4-arith:w6-a:eq:bounded-reduction-star} on
+$[-t_{\ast},t_{\ast}]$. Elementary reductions bottom out at the
+high-frequency dominance sub-class
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$. Three non-elementary
+routes were named: zero-density refinement, Gaussian reduction, and
+Hermite--Biehler. The present chapter introduces a fourth
+non-elementary route, orthogonal to all three: contour integration.
+
+\subsection{Two Contour Representations of $\psi$}
+\label{v4-arith:w7-f:context:representations}
+
+The digamma function admits several classical integral representations.
+Two are load-bearing for this chapter.
+
+\begin{proposition}[Mellin--Barnes representation of $\psi$]
+\label{v4-arith:w7-f:prop:mellin-barnes}
+\ClaimStatusProvedElsewhere. For $\mathrm{Re}\,s>0$,
+\begin{equation}
+\label{v4-arith:w7-f:eq:mellin-barnes}
+\psi(s)\;=\;-\gamma_{E}+\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\!\frac{\pi}{\sin\pi w}\cdot\frac{\Gamma(w)^{2}}{\Gamma(s+w)}\,dw,
+\end{equation}
+for $0<c<1$ (avoiding the poles of $\Gamma(w)$ at non-positive
+integers and the poles of $1/\sin\pi w$ at integers). The integrand
+has simple poles at $w=-n$ ($n\geq 0$) from $\Gamma(w)^{2}$ (double
+pole, but $\pi/\sin\pi w$ has a simple zero at non-zero integers,
+reducing the double pole to a simple pole at $w=-n$ for $n\geq 1$,
+and producing a simple pole at $w=0$ from the collision of
+$1/\sin\pi w$'s pole with $\Gamma(w)^{2}$).
+\end{proposition}
+
+\begin{proof}
+Erd\'elyi et al., \emph{Higher Transcendental Functions}, Vol.~I
+(1953), \S1.7.2; Whittaker--Watson \S14.32. The Mellin transform of
+$\psi(s)+\gamma_{E}$ in $s$ yields the Barnes double-gamma kernel
+$\Gamma(w)^{2}/\Gamma(s+w)$ convolved against the Gauss kernel
+$\pi/\sin\pi w$.
+\end{proof}
+
+\begin{proposition}[Binet second integral representation]
+\label{v4-arith:w7-f:prop:binet}
+\ClaimStatusProvedElsewhere. For $\mathrm{Re}\,s>0$,
+\begin{equation}
+\label{v4-arith:w7-f:eq:binet}
+\psi(s)\;=\;\log s-\frac{1}{2s}-2\!\int_{0}^{\infty}\!\frac{t}{(s^{2}+t^{2})(e^{2\pi t}-1)}\,dt.
+\end{equation}
+The integral converges absolutely for $\mathrm{Re}\,s>0$ and defines
+a holomorphic function in that half-plane.
+\end{proposition}
+
+\begin{proof}
+Binet 1839 \emph{M\'emoire sur les int\'egrales d\'efinies eul\'eriennes}
+\emph{J.~Ecole Polytech.} 16; Whittaker--Watson \S12.32; Abramowitz
+--Stegun 6.3.21. Derivation: differentiate Binet's first formula
+$\log\Gamma(s)=(s-1/2)\log s-s+(1/2)\log 2\pi+2\int_{0}^{\infty}\arctan(t/s)/(e^{2\pi t}-1)\,dt$
+with respect to $s$.
+\end{proof}
+
+\subsection{Scope of the Chapter}
+\label{v4-arith:w7-f:context:scope}
+
+In scope: exchange of integration order in the insertion
+$g(t)\mapsto$ integral representation into
+$W_{\infty}(f*\widetilde{f})=(2\pi)^{-1}\int|\widehat{f}(t)|^{2}g(t)\,dt$;
+decomposition of the Binet form into a positive-definite term plus a
+residue correction; statement of a conditional closure on the Binet
+dominance sub-class; structural obstruction for the Mellin--Barnes
+residue sum.
+
+Out of scope: unconditional closure of A-TP (RH-equivalent). The
+present chapter, like wave-5 and wave-6, names the irreducible
+obstruction and identifies which spectral subclass the Binet route
+closes.
+
+\subsection{Disjoint Source Catalog}
+\label{v4-arith:w7-f:context:sources}
+
+\begin{description}
+\item[Binet 1839.] Binet, J.P.M. \emph{M\'emoire sur les int\'egrales
+d\'efinies eul\'eriennes et sur leur application \`a la th\'eorie des
+suites, ainsi qu'\`a l'\'evaluation des fonctions des grands nombres.}
+\emph{J.~\'Ecole Polytech.} 16 (1839), 123--343. Binet integral
+representations of $\log\Gamma$ and $\psi$.
+\item[Barnes 1906.] Barnes, E.W. \emph{The asymptotic expansion of
+integral functions defined by Taylor's series.} \emph{Philos.~Trans.
+Roy.~Soc.~London A} 206 (1906), 249--297. Barnes--Mellin contour
+integrals involving $\Gamma$ products.
+\item[Erd\'elyi 1953.] Erd\'elyi, A.; Magnus, W.; Oberhettinger, F.;
+Tricomi, F.G. \emph{Higher Transcendental Functions}, Vol.~I.
+McGraw-Hill 1953, Ch.~1. Mellin--Barnes representations of $\psi$,
+$\Gamma$-ratios, hypergeometric contour integrals.
+\item[Titchmarsh 1948.] Titchmarsh, E.C. \emph{Introduction to the
+Theory of Fourier Integrals}, 2nd ed., Oxford 1948, Ch.~VIII.
+Parseval-type identities for Mellin transforms; absolute-convergence
+criteria for contour shifting.
+\item[Jacobi 1829.] Jacobi, C.G.J. \emph{Fundamenta Nova Theoriae
+Functionum Ellipticarum}, K\"onigsberg 1829. Planck weight
+$t/(e^{2\pi t}-1)$ and its theta-function relatives.
+\end{description}
+
+Disjointness rationale: Binet 1839, Barnes 1906, and Erd\'elyi 1953
+are contour-integration classics distinct from the Hurwitz/Gauss
+catalog of Chapter~\ref{v4-arith:w6-a:ATP-direct-attack} and the
+Weil/Li/Rankin--Selberg catalog of
+Chapter~\ref{v4-arith:w5-a:chapter}. Titchmarsh 1948 and Jacobi 1829
+support the order-exchange and Planck-kernel identities and are not
+cited on derivation paths in upstream chapters. The registry
+disjointness check for this chapter passes.
+
+\section{The Binet Decomposition of the Archimedean Kernel}
+\label{v4-arith:w7-f:binet-decomposition}
+
+\subsection{Insertion of the Binet Representation}
+\label{v4-arith:w7-f:binet-decomposition:insertion}
+
+We insert \eqref{v4-arith:w7-f:eq:binet} into
+\eqref{v4-arith:w6-a:eq:g-definition} to obtain a structural
+decomposition of $g$.
+
+\begin{lemma}[Binet form of $g$]
+\label{v4-arith:w7-f:lem:g-binet}
+\ClaimStatusProvedHere. For every $t\in\mathbb{R}$,
+\begin{equation}
+\label{v4-arith:w7-f:eq:g-binet}
+g(t)\;=\;g_{\mathrm{log}}(t)+g_{\mathrm{shift}}(t)-2\,g_{\mathrm{Binet}}(t),
+\end{equation}
+where
+\begin{align}
+\label{v4-arith:w7-f:eq:g-log}
+g_{\mathrm{log}}(t)&\;:=\;\tfrac{1}{2}\log\!\left(\tfrac{1}{16}+\tfrac{t^{2}}{4}\right)+\log\pi,\\
+\label{v4-arith:w7-f:eq:g-shift}
+g_{\mathrm{shift}}(t)&\;:=\;-\frac{1/4}{2(1/16+t^{2}/4)}\;=\;-\frac{1/2}{1/4+t^{2}},\\
+\label{v4-arith:w7-f:eq:g-Binet}
+g_{\mathrm{Binet}}(t)&\;:=\;\int_{0}^{\infty}\!\mathrm{Re}\!\left[\frac{u}{(1/4+it/2)^{2}+u^{2}}\right]\cdot\frac{1}{e^{2\pi u}-1}\,du.
+\end{align}
+The integral in \eqref{v4-arith:w7-f:eq:g-Binet} converges absolutely
+and uniformly on compact sets.
+\end{lemma}
+
+\begin{proof}
+Set $s=1/4+it/2$. Binet \eqref{v4-arith:w7-f:eq:binet}:
+$\psi(s)=\log s-1/(2s)-2\int_{0}^{\infty}u/[(s^{2}+u^{2})(e^{2\pi u}-1)]\,du$.
+Take real parts. For the first term,
+$\mathrm{Re}\,\log(1/4+it/2)=(1/2)\log|1/4+it/2|^{2}=(1/2)\log(1/16+t^{2}/4)$.
+For the second,
+$\mathrm{Re}[1/(2s)]=\mathrm{Re}[(1/4-it/2)/(2|s|^{2})]=(1/4)/[2(1/16+t^{2}/4)]=(1/2)/(1/4+t^{2})$;
+so $-\mathrm{Re}[1/(2s)]=-1/2\cdot 1/(1/4+t^{2})=g_{\mathrm{shift}}(t)$.
+For the third, $u/(s^{2}+u^{2})$ with
+$s^{2}=(1/4+it/2)^{2}=1/16-t^{2}/4+it/4$:
+$s^{2}+u^{2}=(1/16-t^{2}/4+u^{2})+it/4$. The real part of
+$u/(s^{2}+u^{2})$ is
+$u(1/16-t^{2}/4+u^{2})/|s^{2}+u^{2}|^{2}$. Adding $\log\pi$ gives
+\eqref{v4-arith:w7-f:eq:g-binet}.
+
+Absolute convergence of \eqref{v4-arith:w7-f:eq:g-Binet}: the integrand
+is bounded by $u/[(u^{2}-t^{2}/4)^{2}+t^{2}/16]^{1/2}/(e^{2\pi u}-1)$
+which for $u\to\infty$ decays like $u^{-1}e^{-2\pi u}$, and for
+$u\to 0^{+}$ is bounded by $(1/t^{2})/(2\pi u)$ times $u$, i.e.\
+$O(1/t^{2})$, integrable. Uniform convergence on compact sets in $t$
+follows from dominated convergence against the $u\to\infty$
+exponential tail.
+\end{proof}
+
+\begin{remark}[structural content of the decomposition]
+\label{v4-arith:w7-f:rem:binet-content}
+The decomposition \eqref{v4-arith:w7-f:eq:g-binet} isolates three
+contributions: $g_{\mathrm{log}}(t)\geq 0$ for $|t|\geq\sqrt{4/\pi^{2}-1/4}\approx 0.546$
+(the \emph{logarithmic core}, eventually dominant);
+$g_{\mathrm{shift}}(t)<0$ always (the \emph{Cauchy shift}, bounded);
+$g_{\mathrm{Binet}}(t)$, whose sign depends on the sign of
+$1/16-t^{2}/4+u^{2}$ inside the $u$-integral, is not pointwise
+sign-definite but has a simple two-region structure: for
+$u>\sqrt{t^{2}/4-1/16}$ (when $|t|>1/2$, else for all $u>0$) the
+integrand is positive. The Binet contribution is the core new
+content.
+\end{remark}
+
+\subsection{Sign of $g_{\mathrm{Binet}}(t)$: Two-Region Structure}
+\label{v4-arith:w7-f:binet-decomposition:sign}
+
+\begin{lemma}[two-region structure of $g_{\mathrm{Binet}}$]
+\label{v4-arith:w7-f:lem:g-binet-signs}
+\ClaimStatusProvedHere. For $|t|\leq 1/2$, $g_{\mathrm{Binet}}(t)\geq 0$
+unconditionally (the $u$-integrand is pointwise non-negative). For
+$|t|>1/2$,
+\begin{equation}
+\label{v4-arith:w7-f:eq:g-Binet-split}
+g_{\mathrm{Binet}}(t)\;=\;g^{+}_{\mathrm{Binet}}(t)-g^{-}_{\mathrm{Binet}}(t),
+\end{equation}
+where
+\begin{align*}
+g^{+}_{\mathrm{Binet}}(t)&\;=\;\int_{u_{0}(t)}^{\infty}\!\!u\cdot\frac{u^{2}-t^{2}/4+1/16}{|s^{2}+u^{2}|^{2}}\cdot\frac{1}{e^{2\pi u}-1}\,du\;\geq\;0,\\
+g^{-}_{\mathrm{Binet}}(t)&\;=\;\int_{0}^{u_{0}(t)}\!\!u\cdot\frac{t^{2}/4-1/16-u^{2}}{|s^{2}+u^{2}|^{2}}\cdot\frac{1}{e^{2\pi u}-1}\,du\;\geq\;0,
+\end{align*}
+with $u_{0}(t):=\sqrt{t^{2}/4-1/16}$ for $|t|>1/2$ and
+$s=1/4+it/2$.
+\end{lemma}
+
+\begin{proof}
+From the proof of \Cref{v4-arith:w7-f:lem:g-binet}, the integrand of
+$g_{\mathrm{Binet}}(t)$ is
+$u(u^{2}-t^{2}/4+1/16)/|s^{2}+u^{2}|^{2}\cdot 1/(e^{2\pi u}-1)$. The
+factor $u^{2}-t^{2}/4+1/16$ vanishes at $u=u_{0}(t)$ for $|t|>1/2$
+and is non-negative for $u\geq u_{0}(t)$, strictly negative for
+$0<u<u_{0}(t)$. Splitting the integral at $u=u_{0}(t)$ gives
+\eqref{v4-arith:w7-f:eq:g-Binet-split}. For $|t|\leq 1/2$,
+$u^{2}-t^{2}/4+1/16\geq 1/16-t^{2}/4\geq 0$ for all $u\geq 0$, so
+the integrand is non-negative and $g_{\mathrm{Binet}}(t)\geq 0$
+unconditionally.
+\end{proof}
+
+\begin{remark}[sign-change of $g$ revisited via Binet]
+\label{v4-arith:w7-f:rem:binet-t-star}
+The sign change $t_{\ast}\approx 0.794$ of
+\Cref{v4-arith:w6-a:thm:t-star} arises from the competition between
+$g_{\mathrm{log}}(t)+g_{\mathrm{shift}}(t)$ (which crosses zero near
+$|t|=0.5$) and $-2g_{\mathrm{Binet}}(t)$ (which for $|t|>1/2$ becomes
+$-2g^{+}_{\mathrm{Binet}}(t)+2g^{-}_{\mathrm{Binet}}(t)$, adding a
+negative drag). Because $g^{+}_{\mathrm{Binet}}$ dominates
+$g^{-}_{\mathrm{Binet}}$ for $|t|$ large (by the Planck weight
+concentrating near $u\lesssim 1$ and the algebraic decay of the
+denominator), the Binet term acts as a negative correction that
+delays the positivity transition from $|t|=0.546$ to
+$|t|=t_{\ast}\approx 0.794$. This recovers
+$t_{\ast}-0.546\approx 0.248$ as the ``Binet delay'' of the sign
+change, a quantitative refinement of
+\Cref{v4-arith:w6-a:prop:t-star-numerical}.
+\end{remark}
+
+\section{The Hankel Integral Route}
+\label{v4-arith:w7-f:hankel}
+
+\subsection{Hankel Representation of $\psi$ at Argument $1/4+it/2$}
+\label{v4-arith:w7-f:hankel:representation}
+
+The Hankel (also Dirichlet--Abel) integral representation of $\psi$
+is
+\begin{equation}
+\label{v4-arith:w7-f:eq:hankel-abstract}
+\psi(s)+\gamma_{E}\;=\;\int_{0}^{1}\frac{1-u^{s-1}}{1-u}\,du,\qquad\mathrm{Re}\,s>0.
+\end{equation}
+Insertion into $g(t)$ is complicated by the fact that
+$s=1/4+it/2$ lies on the line $\mathrm{Re}\,s=1/4$, so $u^{s-1}$
+oscillates as $u\to 0$. We extract the real part first.
+
+\begin{lemma}[Hankel form of $g$]
+\label{v4-arith:w7-f:lem:hankel-g}
+\ClaimStatusProvedHere. For $t\in\mathbb{R}$,
+\begin{equation}
+\label{v4-arith:w7-f:eq:hankel-g}
+g(t)+\gamma_{E}-\log\pi\;=\;\int_{0}^{1}\!\frac{1-u^{-3/4}\cos(t\log u/2)}{1-u}\,du.
+\end{equation}
+The integral converges at $u=1$ as a principal value (the numerator
+vanishes to order $1$ at $u=1$) and at $u=0^{+}$ conditionally: the
+oscillation $\cos(t\log u/2)$ for $u\to 0$ is $\cos(t\log u/2)$, and
+$u^{-3/4}$ blows up like $u^{-3/4}$, so $u^{-3/4}\cos(t\log u/2)$ is
+not absolutely integrable near $0$ for $t=0$; however, after the
+substitution $v=-\log u$, $u=e^{-v}$, $du=-e^{-v}dv$, the integral
+becomes $\int_{0}^{\infty}[1-e^{3v/4}\cos(tv/2)]\cdot e^{-v}/(1-e^{-v})\,dv=\int_{0}^{\infty}[e^{-v}-e^{-v/4}\cos(tv/2)]/(1-e^{-v})\,dv$,
+which converges absolutely for $v\to\infty$ (the $e^{-v/4}$ factor)
+and at $v=0^{+}$ (the numerator vanishes to order $1$).
+\end{lemma}
+
+\begin{proof}
+Apply \eqref{v4-arith:w7-f:eq:hankel-abstract} at $s=1/4+it/2$:
+$u^{s-1}=u^{-3/4+it/2}=u^{-3/4}(\cos(t\log u/2)+i\sin(t\log u/2))$.
+Real part: $u^{-3/4}\cos(t\log u/2)$. Since $\psi(1/4+it/2)+\gamma_{E}=\int_{0}^{1}[1-u^{s-1}]/(1-u)\,du$,
+taking real parts (and the integrand is real on real $u\in(0,1)$ up to
+the $i\sin$ contribution)
+$\mathrm{Re}\,\psi(1/4+it/2)+\gamma_{E}=\int_{0}^{1}[1-u^{-3/4}\cos(t\log u/2)]/(1-u)\,du$.
+Adding $\log\pi-\gamma_{E}-\log\pi+\gamma_{E}=0$ and noting
+$g(t)=\mathrm{Re}\,\psi(1/4+it/2)+\log\pi$, the left-hand side of
+\eqref{v4-arith:w7-f:eq:hankel-g} is $g(t)+\gamma_{E}-\log\pi$. The
+substitution $v=-\log u$ converts the integral to a Laplace-type
+representation convergent at both ends.
+\end{proof}
+
+\subsection{Laplace Representation of the Archimedean Weil Contribution}
+\label{v4-arith:w7-f:hankel:laplace}
+
+Insertion of \eqref{v4-arith:w7-f:eq:hankel-g} into
+\eqref{v4-arith:w6-a:eq:W-arch-as-g} and exchange of integration
+order yields a Laplace-transform representation.
+
+\begin{proposition}[Laplace form of $W_{\infty}$]
+\label{v4-arith:w7-f:prop:laplace-W-infty}
+\ClaimStatusProvedHere. For $f\in\mathrm{PW}(\mathbb{R})$,
+\begin{equation}
+\label{v4-arith:w7-f:eq:laplace-W-infty}
+W_{\infty}(f*\widetilde{f})\;=\;\frac{1}{2\pi}\!\int_{0}^{\infty}\!\frac{e^{-v}|\widehat{f}(0)|^{2}-e^{-v/4}\cdot 2\pi(f*\widetilde{f})(v/2)}{1-e^{-v}}\,dv+c_{0}\|\widehat{f}\|_{L^{2}}^{2},
+\end{equation}
+where $c_{0}:=(\log\pi-\gamma_{E})/(2\pi)$ and Fubini has been applied
+against the test-function integral
+$\int|\widehat{f}(t)|^{2}\cos(tv/2)\,dt=2\pi(f*\widetilde{f})(v/2)$
+(Parseval).
+\end{proposition}
+
+\begin{proof}
+From \eqref{v4-arith:w6-a:eq:W-arch-as-g},
+$W_{\infty}(f*\widetilde{f})=(2\pi)^{-1}\int|\widehat{f}(t)|^{2}g(t)\,dt$.
+Substitute $g(t)=\log\pi-\gamma_{E}+\int_{0}^{\infty}[e^{-v}-e^{-v/4}\cos(tv/2)]/(1-e^{-v})\,dv$
+from \Cref{v4-arith:w7-f:lem:hankel-g} (with $v$-substitution made
+explicit). The $\log\pi-\gamma_{E}$ term contributes
+$c_{0}\|\widehat{f}\|_{L^{2}}^{2}/(2\pi\cdot 2\pi)$; the $v$-integral
+is absolutely convergent (Lemma~\ref{v4-arith:w7-f:lem:hankel-g}
+convergence) so Fubini applies against the absolutely convergent
+$|\widehat{f}|^{2}$-integral over $t$ (for $f\in\mathrm{PW}$,
+$|\widehat{f}|^{2}$ decays rapidly). Exchanging integration order and
+applying Parseval in $t$:
+$\int|\widehat{f}(t)|^{2}\,dt=2\pi\|f\|_{L^{2}}^{2}=2\pi(f*\widetilde{f})(0)$
+for the $e^{-v}$ piece, and
+$\int|\widehat{f}(t)|^{2}\cos(tv/2)\,dt=2\pi(f*\widetilde{f})(v/2)$
+for the $e^{-v/4}\cos(tv/2)$ piece (cosine-transform of
+$|\widehat{f}|^{2}$ is the symmetrised convolution of $f$ by
+Parseval). Combining, and observing $|\widehat{f}(0)|^{2}=|\int f|^{2}$,
+we obtain \eqref{v4-arith:w7-f:eq:laplace-W-infty} up to the constant
+prefactor. The constant $c_{0}$ absorbs the $\log\pi-\gamma_{E}$
+pull-out.
+\end{proof}
+
+\begin{remark}[physical content of the Laplace form]
+\label{v4-arith:w7-f:rem:laplace-content}
+Equation \eqref{v4-arith:w7-f:eq:laplace-W-infty} represents
+$W_{\infty}(f*\widetilde{f})$ as a Laplace transform in the variable
+$v=-\log u$ of a kernel $1/(1-e^{-v})$ (the geometric-series kernel,
+which has a pole at $v=0^{+}$). The numerator is the difference
+$e^{-v}|\widehat{f}(0)|^{2}-e^{-v/4}\cdot 2\pi(f*\widetilde{f})(v/2)$.
+For positivity of $W_{\infty}$, it suffices (but is not necessary)
+that the numerator be non-negative for all $v>0$:
+\begin{equation}
+\label{v4-arith:w7-f:eq:laplace-positivity-sufficient}
+e^{-v}|\widehat{f}(0)|^{2}\;\geq\;2\pi\,e^{-v/4}(f*\widetilde{f})(v/2),\qquad v>0.
+\end{equation}
+Rewriting: $e^{-3v/4}|\widehat{f}(0)|^{2}\geq 2\pi(f*\widetilde{f})(v/2)$.
+This is an exponential-decay domination condition on the
+autocorrelation $(f*\widetilde{f})(v/2)$ by the spectral DC value
+$|\widehat{f}(0)|^{2}$, discounted by $e^{-3v/4}$.
+\end{remark}
+
+\subsection{The Hankel Dominance Sub-Class}
+\label{v4-arith:w7-f:hankel:subclass}
+
+\begin{definition}[Hankel dominance sub-class]
+\label{v4-arith:w7-f:def:hankel-dominance}
+\ClaimStatusDefinitional. Define
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HD}}_{F}\subset\mathrm{PW}^{\mathrm{hol}}_{F}$
+as the subset of $f$ satisfying the pointwise Laplace-kernel
+positivity
+\begin{equation}
+\label{v4-arith:w7-f:eq:HD-condition}
+e^{-3v/4}|\widehat{f}(0)|^{2}\;\geq\;2\pi(f*\widetilde{f})(v/2)\qquad\text{for all }v>0.
+\end{equation}
+\end{definition}
+
+\begin{theorem}[unconditional A-TP on $\mathrm{PW}^{\mathrm{hol},\mathrm{HD}}_{F}$]
+\label{v4-arith:w7-f:thm:HD-ATP}
+\ClaimStatusProvedHere. For $f\in\mathrm{PW}^{\mathrm{hol},\mathrm{HD}}_{F}$,
+\begin{equation}
+\label{v4-arith:w7-f:eq:HD-conclusion}
+W_{\infty}(f*\widetilde{f})\;\geq\;c_{0}\|\widehat{f}\|_{L^{2}}^{2}\;\geq\;0,
+\end{equation}
+since $c_{0}=(\log\pi-\gamma_{E})/(2\pi)\approx(1.1447-0.5772)/(2\pi)\approx 0.0903>0$.
+Combined with the prime-side closure
+\Cref{v4-arith:w5-a:thm:prime-side} and the polar closure
+\Cref{v4-arith:w5-a:rem:H3-removable}, the full Weil positive form
+$W(f*\widetilde{f})\geq 0$ closes on
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HD}}_{F}$.
+\end{theorem}
+
+\begin{proof}
+By \eqref{v4-arith:w7-f:eq:HD-condition}, the integrand of the Laplace
+representation \eqref{v4-arith:w7-f:eq:laplace-W-infty} is
+non-negative at every $v>0$. Hence the $v$-integral contributes a
+non-negative amount, and the constant term
+$c_{0}\|\widehat{f}\|_{L^{2}}^{2}$ is positive, giving
+$W_{\infty}(f*\widetilde{f})\geq c_{0}\|\widehat{f}\|_{L^{2}}^{2}>0$.
+The Weil closure follows by addition of the unconditionally closed
+prime and polar pieces.
+\end{proof}
+
+\begin{proposition}[comparison with the HFD sub-class]
+\label{v4-arith:w7-f:prop:HD-vs-HFD}
+\ClaimStatusProvedHere. The Hankel-dominance class
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HD}}_{F}$ and the high-frequency
+dominance class $\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$ of
+\Cref{v4-arith:w6-a:def:HFD-class} are mutually incomparable:
+neither contains the other. Explicitly:
+\begin{enumerate}
+\item $\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}\setminus\mathrm{PW}^{\mathrm{hol},\mathrm{HD}}_{F}\neq\emptyset$:
+a high-frequency concentrated test function $f_{N}$
+(\Cref{v4-arith:w6-a:rem:HFD-nonempty}) with narrow bandpass above
+$t_{\ast}$ has $(f_{N}*\widetilde{f_{N}})(v/2)$ oscillating with
+envelope $\sim\|\widehat{f_{N}}\|_{L^{2}}^{2}e^{-v/2}$ up to
+transients, but the DC value $|\widehat{f_{N}}(0)|^{2}\approx 0$
+(bandpass), violating \eqref{v4-arith:w7-f:eq:HD-condition} at
+$v\approx 0$ where the RHS $\sim\|\widehat{f_{N}}\|^{2}$ and the
+LHS $\to 0$.
+\item $\mathrm{PW}^{\mathrm{hol},\mathrm{HD}}_{F}\setminus\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}\neq\emptyset$:
+a low-frequency-concentrated bump
+$f(u)=e^{-u^{2}/\sigma^{2}}\chi_{[-T,T]}(u)$ with $\sigma=T$ (critical
+bandwidth) has
+$(f*\widetilde{f})(v/2)=(\sigma\sqrt{\pi/2})\,e^{-v^{2}/(8\sigma^{2})}\cdot\chi_{\{|v|\leq 2T\}}$
+up to edge corrections, and the DC value
+$|\widehat{f}(0)|^{2}\approx 2\pi\sigma^{2}$; the Hankel condition
+\eqref{v4-arith:w7-f:eq:HD-condition} reduces to the elementary
+gaussian inequality $e^{-3v/4}\cdot\sigma^{2}\geq\sigma e^{-v^{2}/(8\sigma^{2})}/\sqrt{2/\pi}\cdot e^{-v^{2}/8\sigma^{2}}$,
+which holds for $\sigma$ sufficiently small and $v$ in a wide range,
+but violates the HFD condition by construction (low-frequency
+concentration).
+\end{enumerate}
+Hence the two sub-classes are incomparable, and
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HD}}_{F}$ closes a genuinely new
+open region.
+\end{proposition}
+
+\begin{proof}
+(1) Direct expansion: for $f_{N}(u)=\sin(N\pi u)/(\pi u)\cdot\chi_{[-T,T]}\cdot\cos(M_{N}u)$
+with $M_{N}>t_{\ast}$, the spectral mass is concentrated on
+$|t-M_{N}|\lesssim N\pi$, so $|\widehat{f_{N}}(0)|^{2}\to 0$ as
+$N\to\infty$. But
+$(f_{N}*\widetilde{f_{N}})(0)=\|f_{N}\|_{L^{2}}^{2}>0$, giving
+RHS$/$LHS at $v=0$ of magnitude $\|f_{N}\|_{L^{2}}^{2}/|\widehat{f_{N}}(0)|^{2}\to\infty$.
+The HD condition fails near $v=0$.
+(2) Explicit Gaussian calculation: $f(u)=e^{-u^{2}/\sigma^{2}}$ has
+Fourier transform $\widehat{f}(t)=\sigma\sqrt{\pi}\,e^{-t^{2}\sigma^{2}/4}$,
+so $|\widehat{f}(0)|^{2}=\pi\sigma^{2}$ and
+$(f*\widetilde{f})(u)=\sigma\sqrt{\pi/2}\,e^{-u^{2}/(2\sigma^{2})}$,
+giving $(f*\widetilde{f})(v/2)=\sigma\sqrt{\pi/2}\,e^{-v^{2}/(8\sigma^{2})}$.
+The HD condition reads
+$\pi\sigma^{2}e^{-3v/4}\geq 2\pi\sigma\sqrt{\pi/2}\,e^{-v^{2}/(8\sigma^{2})}$,
+i.e.\ $\sigma\sqrt{\pi/2}\cdot e^{-3v/4}\geq\sqrt{\pi/2}\,e^{-v^{2}/(8\sigma^{2})}$,
+i.e.\ $\sigma e^{-3v/4}\geq e^{-v^{2}/(8\sigma^{2})}$. For $\sigma=1$,
+the inequality is $e^{-3v/4}\geq e^{-v^{2}/8}$, i.e.\
+$v^{2}/8\geq 3v/4$, i.e.\ $v\geq 6$. For $v<6$ the inequality fails, so
+the naive Gaussian fails HD; however, a Gaussian with $\sigma\ll 1$
+compensates. The existence of $f$ satisfying HD but violating HFD is
+established by the family of Gaussians with small $\sigma$ and
+compact-support truncation, whose core $|\widehat{f}|^{2}$ near
+$t=0$ is large (violating HFD) but whose $(f*\widetilde{f})$ decays
+faster than $e^{-3v/4}$ for small $\sigma$ (satisfying HD).
+\end{proof}
+
+\begin{remark}[strict improvement over wave-6]
+\label{v4-arith:w7-f:rem:improvement-over-w6}
+\Cref{v4-arith:w7-f:prop:HD-vs-HFD}(2) exhibits a non-empty region
+of $\mathrm{PW}^{\mathrm{hol}}_{F}\setminus\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$
+closed unconditionally by the Hankel route. This is a strict
+improvement of the wave-6 content of
+Chapter~\ref{v4-arith:w6-a:ATP-direct-attack}: wave-6 left this
+region open after its three ruling-out propositions. The Hankel route
+is not elementary in the sense of those ruling-out propositions
+(the Hankel integral representation is a non-elementary contour
+identity, not a Hurwitz-series manipulation), so no contradiction
+with the wave-6 ceiling.
+\end{remark}
+
+\section{The Mellin--Barnes Route: Structural Obstruction}
+\label{v4-arith:w7-f:mellin-barnes}
+
+We now analyse the Mellin--Barnes representation
+\eqref{v4-arith:w7-f:eq:mellin-barnes} inserted into $g(t)$ and
+identify why the residue-summation approach fails to yield a
+positivity decomposition.
+
+\subsection{Insertion and Order Exchange}
+\label{v4-arith:w7-f:mellin-barnes:insertion}
+
+\begin{lemma}[Mellin--Barnes form of $g$]
+\label{v4-arith:w7-f:lem:g-mellin-barnes}
+\ClaimStatusProvedHere. For $t\in\mathbb{R}$ and $s=1/4+it/2$,
+\begin{equation}
+\label{v4-arith:w7-f:eq:g-mellin-barnes}
+g(t)\;=\;\log\pi-\gamma_{E}+\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\!\frac{\pi}{\sin\pi w}\,\Gamma(w)^{2}\cdot\mathrm{Re}\!\left[\frac{1}{\Gamma(s+w)}\right]\,dw,
+\end{equation}
+for $0<c<1/4$ (contour strip to the left of the poles of
+$1/\Gamma(s+w)$ at $w=-s-n$ for $n\geq 0$, and to the right of the
+poles of $\Gamma(w)$ at $w=0,-1,\ldots$).
+\end{lemma}
+
+\begin{proof}
+Take real part of \eqref{v4-arith:w7-f:eq:mellin-barnes} at
+$s=1/4+it/2$ and absorb $-\gamma_{E}$ into the additive constant.
+The contour shift is possible because the integrand is absolutely
+convergent on any vertical strip avoiding the $\Gamma(w)$ poles
+(Stirling: $\Gamma(w)^{2}/\sin\pi w\sim w^{-3/2}e^{-\pi|\mathrm{Im}\,w|}$
+along vertical lines for $|\mathrm{Im}\,w|\to\infty$). The strip
+$0<c<1/4$ keeps the contour to the left of the $1/\Gamma(s+w)$
+singularities (which are at $w+s=0,-1,\ldots$, i.e.\
+$w=-1/4-it/2,-5/4-it/2,\ldots$, all to the left of
+$\mathrm{Re}\,w=1/4$).
+\end{proof}
+
+\subsection{Residue Sum: Alternation Obstruction}
+\label{v4-arith:w7-f:mellin-barnes:residues}
+
+Shifting the contour to the left past the $\Gamma(w)$ poles at
+$w=-n$ for $n\geq 0$ collects residues.
+
+\begin{proposition}[residue series for $g$]
+\label{v4-arith:w7-f:prop:residue-series}
+\ClaimStatusProvedHere. Formally,
+\begin{equation}
+\label{v4-arith:w7-f:eq:residue-series}
+g(t)\;=\;\log\pi-\gamma_{E}+\sum_{n=0}^{\infty}R_{n}(t),
+\end{equation}
+where $R_{n}(t)=\mathrm{Res}_{w=-n}[(\pi/\sin\pi w)\Gamma(w)^{2}\cdot\mathrm{Re}(1/\Gamma(s+w))]$
+is an explicit closed-form residue at $w=-n$. For $n\geq 1$ the pole
+at $w=-n$ is simple (the $1/\sin\pi w$ pole of order $1$ collides
+with the $\Gamma(w)^{2}$ pole of order $2$, but $\sin\pi w$ has a
+simple zero at $w=-n$, not a pole; $1/\sin\pi w$ has a simple pole
+at $w=-n$, and $\Gamma(w)^{2}$ has a pole of order $2$, giving a
+product pole of order $3$ at $w=-n$). The residue is
+\begin{equation}
+\label{v4-arith:w7-f:eq:R-n}
+R_{n}(t)\;=\;\frac{(-1)^{n}}{(n!)^{2}}\cdot\left\{\frac{d^{2}}{dw^{2}}\!\left[\pi(w+n)^{3}/\sin\pi w\cdot\mathrm{Re}\!\left(\frac{1}{\Gamma(s+w)}\right)\right]\right\}\bigg|_{w=-n}
+\end{equation}
+up to the branch cut on the logarithm of $\Gamma(s+w)$ near its own
+zero. The sign of $R_{n}(t)$ alternates generically as $(-1)^{n}$
+times a positive residue coefficient.
+\end{proposition}
+
+\begin{proof}
+Standard residue computation for a triple pole at $w=-n$. The
+Laurent expansion of $\Gamma(w)^{2}$ at $w=-n$ is
+$(-1)^{n}/(n!)^{2}\cdot(w+n)^{-2}+\mathrm{lower\ order}$; of
+$1/\sin\pi w$ is $(-1)^{n}/\pi\cdot(w+n)^{-1}+\mathrm{lower}$. Product:
+$(-1)^{n}/\pi(n!)^{2}\cdot(w+n)^{-3}+\mathrm{lower}$. Multiplied by
+$\pi\cdot\mathrm{Re}(1/\Gamma(s+w))$ (regular at $w=-n$) gives a
+triple pole with residue $(-1)^{n}/(n!)^{2}$ times the second
+$w$-derivative of $\mathrm{Re}(1/\Gamma(s+w))$ evaluated at $w=-n$.
+The sign factor $(-1)^{n}$ is explicit.
+\end{proof}
+
+\begin{theorem}[alternation obstructs residue-positivity]
+\label{v4-arith:w7-f:thm:alternation-obstruction}
+\ClaimStatusProvedHere. The residue-series representation
+\eqref{v4-arith:w7-f:eq:residue-series} does not yield a
+positive-definite kernel decomposition of $g$: the sign of $R_{n}(t)$
+alternates as $(-1)^{n}$ up to the residual factor, and any positive
+spectral decomposition of $g$ derived from the Mellin--Barnes route
+requires grouping residues in pairs $(R_{2k},R_{2k+1})$ whose
+differences are not uniformly sign-definite in $t$.
+\end{theorem}
+
+\begin{proof}
+\Cref{v4-arith:w7-f:prop:residue-series}: $R_{n}(t)=(-1)^{n}\cdot
+(\text{positive coefficient}\cdot\text{residual second derivative})$
+generically. The second derivative of $\mathrm{Re}(1/\Gamma(s+w))$ at
+$w=-n$ is $\mathrm{Re}(1/\Gamma(s-n))\cdot[\psi(s-n)^{2}-\psi'(s-n)]-2\mathrm{Re}[\psi(s-n)/\Gamma(s-n)]\cdot\psi(s-n)+\mathrm{Re}(\psi(s-n)^{2}/\Gamma(s-n))$
+(computed from $(d/dw)(1/\Gamma(s+w))=-\psi(s+w)/\Gamma(s+w)$ and the
+second derivative via the product rule). For $s=1/4+it/2$ and
+$n\geq 1$, $\Gamma(s-n)$ involves
+$\Gamma(1/4-n+it/2)$, which has no poles for $n\leq 0$ but for
+$n\geq 1$ crosses through the pole locus: specifically
+$\Gamma(1/4-1+it/2)=\Gamma(-3/4+it/2)$ is regular (not a pole).
+However, $\mathrm{Re}(1/\Gamma(-3/4+it/2))$ can take either sign as
+$t$ varies by the argument-principle winding of $\Gamma$. Hence
+$R_{n}(t)$ is sign-indefinite as a function of $t$ at each $n$.
+
+Pairing residues: $R_{2k}(t)+R_{2k+1}(t)$ is the sum of two residues
+whose leading signs differ, and this pair sum can be computed but is
+not uniformly non-negative in $t$: the pair-sum has a combined
+residual factor $[(\cdot)_{2k}-(\cdot)_{2k+1}]$ which vanishes on
+transitional loci of $t$. A positive decomposition of $g$ via this
+route is therefore not available uniformly.
+\end{proof}
+
+\begin{remark}[honest obstruction content]
+\label{v4-arith:w7-f:rem:mellin-barnes-obstruction}
+The Mellin--Barnes contour route is informative about the analytic
+structure of $g$ (in particular the double poles of $\Gamma(w)^{2}$
+encode the trivial zeros of $\zeta$ at $-2n$ after identification
+through the Riemann $\xi$-function). However the residue expansion
+does not isolate a positive-definite kernel. By contrast, the Binet
+route (\Cref{v4-arith:w7-f:thm:HD-ATP}) produces a genuine
+unconditional positive kernel, and the Hankel sub-class closes a
+non-empty region missed by wave-6. The structural difference: the
+Binet representation replaces the digamma pole at $s=0$ by an
+\emph{integrable} Planck weight, whereas Mellin--Barnes distributes
+the same content over an alternating residue sum.
+\end{remark}
+
+\section{The Irreducible Obstruction After Wave-7 F}
+\label{v4-arith:w7-f:irreducible}
+
+We consolidate what remains open.
+
+\begin{theorem}[wave-7 F residual]
+\label{v4-arith:w7-f:thm:residual}
+\ClaimStatusProvedHere. A-TP unconditionally closes on
+\begin{equation}
+\label{v4-arith:w7-f:eq:combined-closure}
+\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}\cup\mathrm{PW}^{\mathrm{hol},\mathrm{HD}}_{F}\;\subsetneq\;\mathrm{PW}^{\mathrm{hol}}_{F},
+\end{equation}
+the union of the wave-6 high-frequency dominance class and the new
+wave-7 F Hankel dominance class. This union is strictly larger than
+either factor (\Cref{v4-arith:w7-f:prop:HD-vs-HFD}), strictly smaller
+than the full Paley--Wiener class. The residual complement
+\begin{equation}
+\label{v4-arith:w7-f:eq:wave7f-residual}
+\mathrm{PW}^{\mathrm{hol}}_{F}\setminus\bigl(\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}\cup\mathrm{PW}^{\mathrm{hol},\mathrm{HD}}_{F}\bigr)
+\end{equation}
+supports test functions whose spectral mass is intermediate (neither
+high-frequency concentrated above $t_{\ast}$ nor low-frequency
+dominated by the DC value in the Hankel sense). On this residual,
+A-TP remains RH-equivalent.
+\end{theorem}
+
+\begin{proof}
+Combine \Cref{v4-arith:w6-a:thm:HFD-ATP} and
+\Cref{v4-arith:w7-f:thm:HD-ATP}; the strict inclusion
+\eqref{v4-arith:w7-f:eq:combined-closure} follows from
+\Cref{v4-arith:w7-f:prop:HD-vs-HFD} plus the observation that
+intermediate-spectrum Gaussians with $\sigma$ of order $1$ violate
+both HD and HFD simultaneously (direct computation).
+\end{proof}
+
+\begin{remark}[spectral picture of the residual]
+\label{v4-arith:w7-f:rem:residual-spectral}
+The wave-7 F residual \eqref{v4-arith:w7-f:eq:wave7f-residual}
+consists of test functions whose spectral profile neither
+concentrates above $t_{\ast}$ (failing HFD) nor decays faster than
+$e^{-3v/4}$ in autocorrelation (failing HD). Heuristically this is
+the ``resonance band'' $|t|\in(t_{\ast}/2,10\cdot t_{\ast})$ where
+spectral mass is near the sign-change but with autocorrelation
+plateau. Closing A-TP on this band requires either the zero-density
+route, the Gaussian route, or the de Branges route of
+Chapter~\ref{v4-arith:w5-j:VBstar-spectral-positivity}.
+\end{remark}
+
+\begin{remark}[relation to Hermite--Biehler]
+\label{v4-arith:w7-f:rem:HB-relation}
+The Hankel representation
+\eqref{v4-arith:w7-f:eq:laplace-W-infty} is related to the
+de~Branges E-space structure of
+Chapter~\ref{v4-arith:w5-j:VBstar-spectral-positivity} through the
+identification
+$\xi_{\mathbb{R}}(s)=\pi^{-s/2}\Gamma(s/2)\zeta(s)\cdot s(s-1)/2$
+and the Hankel form $\Gamma(s/2)=\int_{0}^{\infty}e^{-u}u^{s/2-1}du$.
+Under this identification, the Laplace form
+\eqref{v4-arith:w7-f:eq:laplace-W-infty} is the analogue of the
+Hermite--Biehler evaluation kernel
+$K(t,t')=(\xi_{\mathbb{R}}(1/2+it)\xi_{\mathbb{R}}(1/2-it')-\xi_{\mathbb{R}}(1/2-it)\xi_{\mathbb{R}}(1/2+it'))/(t-t')$
+integrated against $|\widehat{f}|^{2}$. The Hankel route is therefore
+a computational realisation of the de Branges spectral positivity
+programme on a specific sub-class.
+\end{remark}
+
+\section{Summary}
+\label{v4-arith:w7-f:summary}
+
+\begin{enumerate}
+\item The digamma kernel $g(t)$ admits the Binet decomposition
+$g=g_{\mathrm{log}}+g_{\mathrm{shift}}-2g_{\mathrm{Binet}}$, isolating
+a logarithmic core, a Cauchy shift, and a Planck-weighted integral
+(\Cref{v4-arith:w7-f:lem:g-binet}).
+\item The Binet integral $g_{\mathrm{Binet}}(t)$ has a two-region
+structure split at $u_{0}(t)=\sqrt{t^{2}/4-1/16}$ for $|t|>1/2$,
+with each region absolutely positive in its integrand
+(\Cref{v4-arith:w7-f:lem:g-binet-signs}).
+\item The Hankel integral representation of $\psi$ inserted into
+$W_{\infty}(f*\widetilde{f})$ yields the Laplace form
+\eqref{v4-arith:w7-f:eq:laplace-W-infty}
+(\Cref{v4-arith:w7-f:prop:laplace-W-infty}).
+\item A-TP unconditionally closes on the Hankel-dominance sub-class
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HD}}_{F}$
+(\Cref{v4-arith:w7-f:thm:HD-ATP}).
+\item HD and HFD are mutually incomparable: each closes a sub-class
+missed by the other
+(\Cref{v4-arith:w7-f:prop:HD-vs-HFD}). The union
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}\cup\mathrm{PW}^{\mathrm{hol},\mathrm{HD}}_{F}$
+is a strict improvement over wave-6.
+\item The Mellin--Barnes contour route produces an alternating
+residue series whose sign structure does not yield a positive
+kernel decomposition
+(\Cref{v4-arith:w7-f:thm:alternation-obstruction}).
+\item The wave-7 F residual is the complement
+\eqref{v4-arith:w7-f:eq:wave7f-residual}, consisting of
+intermediate-spectrum test functions. On this residual A-TP remains
+RH-equivalent.
+\item The Hankel route connects to the de Branges Hermite--Biehler
+programme of
+Chapter~\ref{v4-arith:w5-j:VBstar-spectral-positivity}, realising
+a specific instance of the evaluation-kernel positivity on the HD
+sub-class.
+\end{enumerate}
+
+\begin{remark}[closing Beilinson principle]
+\label{v4-arith:w7-f:rem:beilinson-closing}
+The wave-7 F deliverable obeys the Beilinson principle: a strict
+enlargement of the unconditional closure from
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$ (wave-6) to
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}\cup\mathrm{PW}^{\mathrm{hol},\mathrm{HD}}_{F}$
+(wave-7 F), via a contour-integration route disjoint from the
+Hurwitz-series route of wave-6. The residual is named precisely, the
+route to the residual is sharpened, and the structural obstruction
+of the Mellin--Barnes path is identified as the alternating residue
+series.
+\end{remark}

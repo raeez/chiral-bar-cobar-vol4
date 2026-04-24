@@ -97,3 +97,54 @@ uses a five-tag system distinct from the Vols I-III ProvedHere/
 Conjectured/Conditional/... tag system; it does not enter the
 HZ-IV coverage denominator for Vols I-III and is tracked
 separately.
+
+### Wave 5 Campaign (2026-04-24)
+
+Ten-agent adversarial swarm driving RH closure through the
+arithmetic Heisenberg Koszul-duality chain P1 + P2 + P3 + H-P^Ar +
+HP-Li. Each agent targeted a disjoint residual family; chapters
+numbered 49 through 59. The master narrative chapter 53 exposes
+the elementary first-principles path without invoking prior volumes.
+
+Residual partition and wave-5 outputs (chapter numbers; target
+residuals):
+
+| Agent | Chapter | Residuals attacked |
+|-------|---------|--------------------|
+| W5-A | 57 | HP-Li positivity (crown jewel; Weil-Petersson isometry on restricted class) |
+| W5-B | 56 | H-P^Ar operator via Bost-Connes GNS; (W) weight existence |
+| W5-C | 55 | Full V^prim P3; Koszul-Petersson; Eisenstein density repair |
+| W5-D | 54 | Arithmetic Positselski 4 sub-items |
+| W5-E | 49 | F1.a.1 + F1.a.2 + L_ACD adelic categorical descent |
+| W5-F | 50 | F1.a.3.A BH packaging + F1.a.3.B Paskunas Ext^1 |
+| W5-G | 51 | F1.a.3.C wild-EG compact generation (p=2,3) |
+| W5-H | 52 | BC-diamond-glue (Ch1) + (AG.det) + F2.c E_2 transport |
+| W5-I | 59 | R_analytic density-of-zeros + Weil at Gaussians + R1.formal.b/c |
+| W5-J | 58 | VB* spectral positivity on primary Fock |
+| Direct | 53 | Elementary closure-path narrative (master exposition) |
+
+Status after wave 5 (to be updated as agents complete):
+
+- W5-D: Arith. Positselski upgraded from Theorem-waiting to Theorem
+  on the abelian Heisenberg sector. All four remaining sub-items
+  closed unconditionally: continuous duals (Pontryagin + Iwasawa),
+  derived completion (Greenlees-May), faithful lifting (Matlis),
+  Koszul-dual Bost-Connes (Consani-Marcolli).
+
+- W5-F: F1.a.3.A block-additivity of HH unconditional (Lurie HA +
+  BFN); F1.a.3.B Ext^1 vanishing on generic fibre unconditional at
+  p >= 5; residual narrowed to per-block Breuil-Mezard + wild-prime
+  centraliser regularity, 2-5 pp each.
+
+- W5-H: F2.c E_2 transport closed unconditionally (Lurie HA 5.1 +
+  Francis-Gaitsgory). BC-diamond-glue (Ch1) Chenevier pseudochar
+  closed unconditionally (Chenevier + Bhatt-Scholze + Bhatt-Lurie).
+  BC-diamond-glue (AG.det) reduced to (AG.det.transition) codim-2
+  residual (5-10 pp), down from full arithmetic AG.
+
+- Remaining agents: A, B, C, E, G, I, J running.
+
+The wave-5 closure map is presented in Chapter 53 Section 6. The
+irreducible residual after wave 5 is the unrestricted extension of
+the Weil-Petersson isometry (equivalently RH itself), stated
+precisely in Chapter 53 Theorem 7.

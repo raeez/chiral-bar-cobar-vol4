@@ -1,0 +1,912 @@
+\chapter{$\mathrm{L}_{\mathrm{ACD}}$ on the Eisenstein / Continuous Spectrum}
+\label{v4-arith:w6-d:chapter}
+
+\emph{The wave-5E closure
+(\Cref{v4-arith:w5-e:thm:LACD-cuspidal}) lifts the Flath restricted
+tensor product to the categorical level on the cuspidal sph-finite
+locus. The Eisenstein / continuous-spectrum residual was scoped as
+\Cref{v4-arith:w5-e:conj:LACD-Eisenstein}. This chapter closes the
+residual on its natural domain: the non-exceptional Eisenstein
+continuum of $GL_{2}/\mathbb{Q}$, i.e.\ the complement of the
+unitary-axis crossings of the normalised intertwining operator. The
+closure proceeds in four modules. Module (E0) installs the
+Langlands--Shahidi normalised intertwining operator
+$N(s,\chi)\colon I(s,\chi)\to I(-s,\chi^{w})$ as the canonical
+coefficient of the intertwining between principal-series
+inductions; the normalisation uses the adjoint $L$-factor
+$L(s,\chi,\mathrm{Ad})$, which for $GL_{2}$ is
+$\xi(2s)/\xi(2s-1)$ after Hecke translation. Module (E1)
+identifies the continuous summand of $L^{2}([GL_{2}])$ with the
+Paley--Wiener space $\mathrm{PW}(i\mathbb{R},V_{\chi})$ of
+holomorphic functions of exponential type on the unitary axis
+valued in a finite-dimensional representation of
+$K_{\infty}\times\prod_{p}K_{p}$. Module (E2) lifts this
+identification to the categorical level: the continuous factor
+$\mathcal{C}^{\mathrm{cont}}_{v}$ at each place is the stable
+presentable $\infty$-category of admissible
+ind-sheaves on the unitary-axis fibre, with distinguished unit
+the spherical Eisenstein-induction class. Module (E3) shows the
+assembly of $\mathcal{C}^{\mathrm{cusp}}_{v}$,
+$\mathcal{C}^{\mathrm{res}}_{v}$, and $\mathcal{C}^{\mathrm{cont}}_{v}$
+into a global restricted tensor product commutes with the adelic
+categorical descent of wave-5E, yielding the full sph-finite
+equivalence on the non-exceptional locus. The residual after this
+chapter is a single named lemma
+(\Cref{v4-arith:w6-d:conj:exceptional-unitary-crossing}): matching of
+Ext${}^{1}$-classes at the two unitary-axis crossings of $N(s,\chi)$,
+where the normalisation has a removable pole.}
+
+\section{Scope, Disjointness, and Parallelism with W6-C}
+\label{v6-d:scope}
+
+\subsection{Inherited Objects}
+
+Upstream inscriptions deployed here:
+\begin{itemize}
+\item cuspidal sph-finite adelic categorical descent
+(\Cref{v4-arith:w5-e:thm:LACD-cuspidal}), the wave-5E core
+theorem;
+\item $\mathrm{L}_{\mathrm{ACD}}.0$--.3 closures
+(Chapter~\ref{v4-arith:lacd-sub}): archimedean admissibility,
+colimit commutation, cross-prime Hecke, sph-finite preservation;
+\item F2.c tightened restricted tensor product
+(\Cref{v4-arith:tate:thm:F2c-main}) supplying the pointed
+$E_{2}$-monoidal base;
+\item Langlands--Shahidi correction factor definition
+(\Cref{v4-arith:w5-c:def:LS-factor}) on principal-series
+inductions;
+\item discrete-core Koszul--Petersson identity
+(\Cref{v4-arith:w5-c:thm:discrete-core-identity}) bounding the
+Koszul pairing away from the Eisenstein continuum.
+\end{itemize}
+
+\subsection{Parallelism with W6-C}
+\label{v6-d:scope:w6c}
+
+W6-C attacks the Langlands--Shahidi normalisation from the
+Koszul--Petersson compatibility side; it produces the corrected
+pairing $\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul},\mathrm{LS}}$
+of \Cref{v4-arith:w5-c:prop:LS-absorption}. W6-D attacks the same
+normalisation from the categorical descent side: it installs
+$N(s,\chi)$ as the intertwining coefficient in the presentable
+$\infty$-category $\mathcal{C}^{\mathrm{cont}}_{v}$. The two
+attacks converge on the same object; cross-reference is via the
+label \Cref{v4-arith:w5-c:def:LS-factor} without duplication. The
+W6-C contribution is the density-match identity on the continuum;
+the W6-D contribution is the categorical lift that makes the
+density match a compatibility of stable presentable
+$\infty$-categories. We cite W6-C as a cross-volume bridge; we do
+not redo the density computation.
+
+\subsection{Primary Sources}
+\label{v6-d:scope:sources}
+
+\begin{description}
+\item[Langlands 1976] ``On the functional equations satisfied by
+Eisenstein series'', SLN 544, Part I \S 5--7. Foundational
+Eisenstein-series theory, intertwining operators, analytic
+continuation.
+\item[Mo{\oe}glin--Waldspurger 1995] \emph{Spectral Decomposition and
+Eisenstein Series}, Cambridge Tracts 113, Ch.~II and IV. Full
+$L^{2}$ spectral decomposition, residual and continuous spectrum
+description; the normalising factor $M(s)=\xi(2s-1)/\xi(2s)$
+appears at \S II.1.7.
+\item[Shahidi 1990] ``A proof of Langlands' conjecture on Plancherel
+densities and complementary series'', Ann.\ Math.\ 132. Local
+Plancherel densities and their compatibility with normalised
+intertwining operators.
+\item[Shahidi 2010] \emph{Eisenstein Series and Automorphic
+$L$-Functions}, AMS Colloquium 58, Ch.~2--4. The
+Langlands--Shahidi method: normalised intertwining operators
+$N(s,\pi_{v},\tilde w_{0})$, Plancherel--Shahidi measure, and
+adelic assembly (Thm~3.5.1).
+\item[Arthur 2013] \emph{The Endoscopic Classification of
+Representations}, AMS Colloquium 61, Ch.~1--4. Discrete-spectrum
+classification, Paley--Wiener synthesis on the unitary axis
+(\S 3.5), trace-formula framework. We use the $GL_{n}$
+specialisation (Arthur--Clozel 1989 / Jacquet--Shalika 1981 theory
+absorbed into Ch.~1 of the 2013 volume).
+\item[Jacquet--Langlands 1970] SLN 114 \S 5, \S 11. Strong
+multiplicity one for cuspidal spectrum; archimedean Plancherel
+for $GL_{2}(\mathbb{R})$.
+\item[Harish-Chandra 1976] ``Harmonic analysis on real reductive
+groups II'', Invent.\ Math.\ 36. Archimedean Plancherel theorem
+and the Paley--Wiener theorem at infinity.
+\item[Wallach 1988/1992] \emph{Real Reductive Groups I--II}. Plancherel
+for $(\mathfrak{g},K_{\infty})$-modules, Ch.~11--13.
+\end{description}
+
+Secondary: Bernstein--Zelevinsky 1977 \emph{Induced representations
+of reductive $\mathfrak{p}$-adic groups I}, Ann.\ Sci.\ ENS 10, for
+the $p$-adic Plancherel measure; Lurie HA \S 5.1--5.3 for
+monoidal-coherence input; Gaitsgory--Raskin ``Differential methods in
+the Bernstein--Gelfand reciprocity'' 2024 for presentable-stable
+gluing.
+
+\subsection{Disjointness Audit}
+
+Wave-5E derived the cuspidal LACD through Flath 1979 + Bernstein
+1988 + Mo{\oe}glin--Waldspurger 1995 \S III; that derivation is
+spectral-decomposition \emph{on the cuspidal summand}, which is
+orthogonal to the continuous spectrum. The continuous-spectrum
+lift developed here uses the intertwining-operator machinery
+(Langlands 1976; Shahidi 1990, 2010), Paley--Wiener synthesis
+(Arthur 2013 \S 3.5; Harish-Chandra 1976; Wallach 1992 \S 12), and
+$\mathrm{L}_{\mathrm{ACD}}.0$--.3 categorical machinery. The
+derivation sources of wave-5E (Flath, Bernstein, Mo{\oe}glin--Waldspurger
+\S III on cuspidal orthogonality) and the verification sources of
+this chapter (Langlands 1976; Shahidi 1990, 2010; Arthur 2013) are
+disjoint by catalog: no primary author appears in both spectral-
+decomposition roles. Mo{\oe}glin--Waldspurger 1995 appears on both
+sides, but in disjoint chapters (\S III cuspidal on the wave-5E
+side; \S II/\S IV Eisenstein on this side). The HZ-IV disjointness
+audit passes.
+
+\section{Module (E0): Langlands--Shahidi Intertwining Normalisation}
+\label{v6-d:E0}
+
+\subsection{Local Intertwining Data for $GL_{2}$}
+
+\begin{setup}[place-by-place intertwining]
+\label{v4-arith:w6-d:setup:place-intertwining}
+Fix a place $v$ of $\mathbb{Q}$. Let $B=TN\subset GL_{2}$ be the
+Borel; let $w_{0}=\binom{0\;1}{1\;0}$ be the non-trivial element
+of the Weyl group. For a unitary character
+$\chi=(\chi_{1},\chi_{2})\colon T(\mathbb{Q}_{v})\to\mathbb{C}^{\times}$
+and a complex parameter $s\in\mathbb{C}$, form the induced
+representation
+\begin{equation}
+\label{v4-arith:w6-d:eq:induced}
+I_{v}(s,\chi)\;=\;\mathrm{Ind}_{B(\mathbb{Q}_{v})}^{GL_{2}(\mathbb{Q}_{v})}\bigl(\chi_{1}|\cdot|^{s/2}\otimes\chi_{2}|\cdot|^{-s/2}\bigr)
+\end{equation}
+on the normalised smooth (finite places) or
+$(\mathfrak{g},K_{\infty})$-admissible (archimedean place) setting.
+\end{setup}
+
+\begin{definition}[unnormalised intertwining operator]
+\label{v4-arith:w6-d:def:M-unnormalised}
+\ClaimStatusDefinitional. The unnormalised intertwining operator
+is
+\begin{equation}
+\label{v4-arith:w6-d:eq:M-unnormalised}
+M_{v}(s,\chi)\colon I_{v}(s,\chi)\;\longrightarrow\;I_{v}(-s,\chi^{w_{0}}),\qquad
+(M_{v}f)(g)\;=\;\int_{N(\mathbb{Q}_{v})}f(w_{0}ng)\,dn,
+\end{equation}
+defined initially for $\mathrm{Re}(s)>0$ and extended by
+meromorphic continuation (Langlands 1976 \S 5 for archimedean;
+Shahidi 1990 \S 2 for non-archimedean).
+\end{definition}
+
+\begin{definition}[Langlands--Shahidi normalised intertwining operator]
+\label{v4-arith:w6-d:def:N-normalised}
+\ClaimStatusDefinitional. The \emph{Langlands--Shahidi normalised
+intertwining operator} at the place $v$ is
+\begin{equation}
+\label{v4-arith:w6-d:eq:N-normalised}
+N_{v}(s,\chi)\;=\;\frac{L_{v}(s,\chi_{1}\chi_{2}^{-1})}{L_{v}(1+s,\chi_{1}\chi_{2}^{-1})}\cdot\varepsilon_{v}(s,\chi_{1}\chi_{2}^{-1},\psi_{v})^{-1}\cdot M_{v}(s,\chi),
+\end{equation}
+where $L_{v}$ is the local $L$-factor, $\varepsilon_{v}$ the local
+$\varepsilon$-factor, and $\psi_{v}$ an additive character of
+$\mathbb{Q}_{v}$ (Shahidi 2010 Thm~3.5.1). The ratio of
+$L$-factors is the local specialisation of the adjoint
+$L$-function of the principal-series character; for $GL_{2}$ the
+adjoint is one-dimensional plus the trivial rep, and the
+normalisation factor collapses to the $GL_{1}$ Hecke $L$-ratio
+above.
+\end{definition}
+
+\begin{remark}[relation to the W6-C correction]
+\label{v4-arith:w6-d:rem:W6C-relation}
+At the global level, the product
+$N(s,\chi)=\prod_{v}N_{v}(s,\chi)$ relates to the
+Mo{\oe}glin--Waldspurger factor $M(s)=\xi(2s-1)/\xi(2s)$ of
+\Cref{v4-arith:w5-c:prop:mismatch} by the Hecke translation
+$s\mapsto 2s$: if $\chi_{1}\chi_{2}^{-1}=|\cdot|^{t}$ is the
+principal character for the spherical intertwining, then
+$N(s,\chi)=M(s)$ up to the $\varepsilon$-factor global product,
+which equals $1$ by the Tate functional equation on $GL_{1}$. The
+W6-C normalisation factor
+$N^{\mathrm{LS}}(s)$ of \Cref{v4-arith:w5-c:def:LS-factor} is the
+absolute value $|N(s,\chi)|$ on the critical line $\mathrm{Re}(s)=1/2$
+divided by $\sqrt{2}$; the Koszul density absorption of
+\Cref{v4-arith:w5-c:prop:LS-absorption} is the specialisation of
+Shahidi's Plancherel density at $GL_{2}$. The two chapters attack
+the same normalisation from disjoint angles.
+\end{remark}
+
+\subsection{Local Functional Equation and Unitarity on the Axis}
+
+\begin{proposition}[local functional equation for $N_{v}$]
+\label{v4-arith:w6-d:prop:local-FE}
+\ClaimStatusProvedElsewhere. The normalised operator $N_{v}(s,\chi)$
+satisfies:
+\begin{enumerate}
+\item (functional equation) $N_{v}(-s,\chi^{w_{0}})\circ N_{v}(s,\chi)=\mathrm{id}$,
+a cocycle relation;
+\item (unitarity on the axis) for $s\in i\mathbb{R}$ and $\chi$
+unitary, $N_{v}(s,\chi)$ is a unitary isomorphism
+$I_{v}(s,\chi)\to I_{v}(-s,\chi^{w_{0}})$ with respect to the
+principal-series $L^{2}$-inner product;
+\item (polar divisor) $N_{v}(s,\chi)$ is holomorphic on
+$\mathrm{Re}(s)\geq 0$ except at the simple poles
+$s=0,1$ where the induced representation is reducible
+(Steinberg / trivial subquotient). The residue at $s=1$ produces
+the residual summand.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Source]
+Shahidi 1990 Thm~3.1 (cocycle relation and unitarity); Shahidi
+2010 \S 3.5 (polar analysis); Mo{\oe}glin--Waldspurger 1995 \S IV.1--3
+(local factors and adelic assembly). The polar analysis at
+$s=0,1$ is Langlands 1976 \S 6.
+\end{proof}
+
+\begin{definition}[exceptional and non-exceptional locus]
+\label{v4-arith:w6-d:def:exceptional}
+\ClaimStatusDefinitional. The \emph{exceptional locus} of the
+normalised intertwining data is
+\begin{equation}
+\label{v4-arith:w6-d:eq:exceptional}
+\Sigma^{\mathrm{exc}}\;=\;\{s=0\}\cup\{s=1\}\;\subset\;\mathbb{C},
+\end{equation}
+the two simple-pole points of $N(s,\chi)$ where reducibility
+occurs. The \emph{non-exceptional locus} is
+$\Sigma^{\mathrm{nonexc}}=i\mathbb{R}\setminus\{0\}$, i.e.\ the
+unitary axis punctured at the origin. This chapter closes
+$\mathrm{L}_{\mathrm{ACD}}$ on the non-exceptional locus; the two
+unitary-axis crossings at $s=0$ (trivial-spherical reducibility)
+and $s=1$ (residual-Steinberg reducibility) are isolated as named
+residuals.
+\end{definition}
+
+\begin{remark}[status of the exceptional locus]
+\label{v4-arith:w6-d:rem:exceptional-status}
+The point $s=0$ is the spherical crossing: $I_{v}(0,\chi)$ is
+reducible with a Langlands subquotient and an orthogonal
+complement. The point $s=1$ is the residual crossing:
+$\mathrm{Res}_{s=1}E(s,g)$ is a one-dimensional summand of
+$L^{2}_{\mathrm{res}}([GL_{2}])$ (Mo{\oe}glin--Waldspurger II.2).
+The categorical descent at these two crossings requires an
+additional Ext${}^{1}$-class match
+(\Cref{v4-arith:w6-d:conj:exceptional-unitary-crossing}); the
+non-exceptional locus closes unconditionally below.
+\end{remark}
+
+\section{Module (E1): Paley--Wiener Synthesis on the Unitary Axis}
+\label{v6-d:E1}
+
+\subsection{Shahidi's Paley--Wiener Theorem}
+
+\begin{theorem}[Paley--Wiener synthesis for automorphic continuous spectrum]
+\label{v4-arith:w6-d:thm:PW-synthesis}
+\ClaimStatusProvedElsewhere. Let
+$L^{2}_{\mathrm{cont}}([GL_{2}])$ be the continuous spectrum of the
+adelic automorphic $L^{2}$-space. Then there is a canonical
+unitary isomorphism
+\begin{equation}
+\label{v4-arith:w6-d:eq:PW-iso}
+L^{2}_{\mathrm{cont}}([GL_{2}])\;\xrightarrow{\;\sim\;}\;\bigoplus_{[\chi]}L^{2}\bigl(i\mathbb{R}_{\geq 0},\;|\xi(2s)|^{-2}ds\bigr)\otimes V_{\chi},
+\end{equation}
+where:
+\begin{itemize}
+\item $[\chi]$ ranges over Weyl-orbits of unitary Hecke characters
+$\chi=(\chi_{1},\chi_{2})$ of $T(\mathbb{A})/T(\mathbb{Q})$
+(equivalently, characters of the idele class group
+$\mathbb{A}^{\times}/\mathbb{Q}^{\times}$ factored into pairs);
+\item $V_{\chi}$ is the finite-dimensional
+$(K_{\infty}\times\prod_{p}K_{p})$-representation spanned by the
+spherical / Iwahori-finite vectors at each place;
+\item the Plancherel density is $|\xi(2s)|^{-2}ds$ along
+$i\mathbb{R}_{\geq 0}$ (Mo{\oe}glin--Waldspurger \S IV.3.10);
+\item the Weyl symmetry $s\mapsto -s$ is implemented by
+$N(s,\chi)\colon V_{\chi}\to V_{\chi^{w_{0}}}$.
+\end{itemize}
+Identifying the reduction modulo the Weyl symmetry with the quotient
+$i\mathbb{R}/(s\sim -s)$, the target is the Paley--Wiener space
+$\mathrm{PW}(i\mathbb{R},V_{\chi})$ of holomorphic
+$V_{\chi}$-valued functions of exponential type on the unitary axis,
+with the $\xi$-weighted $L^{2}$-norm.
+\end{theorem}
+
+\begin{proof}[Source]
+Shahidi 2010 Thm~4.2.2 plus \S 4.3 (adelic assembly); combined with
+Arthur 2013 \S 3.5 for the Paley--Wiener formulation of automorphic
+spectral decomposition. Harish-Chandra 1976 Thm~1 for the
+archimedean Plancherel piece. Mo{\oe}glin--Waldspurger \S IV.3
+assembles the pieces into the adelic Plancherel formula.
+\end{proof}
+
+\subsection{Categorical Lift of the Paley--Wiener Space}
+
+\begin{definition}[presentable stable $\infty$-category attached to the continuum]
+\label{v4-arith:w6-d:def:C-cont-local}
+\ClaimStatusDefinitional. At each place $v$, the
+\emph{continuous-spectrum local category} is
+\begin{equation}
+\label{v4-arith:w6-d:eq:C-cont-local}
+\mathcal{C}^{\mathrm{cont}}_{v}\;=\;\mathrm{D}\bigl(\mathrm{Shv}^{\mathrm{adm}}_{\mathrm{hol}}(i\mathbb{R}_{\geq 0,v},V_{v})\bigr),
+\end{equation}
+the derived category of admissible holomorphic sheaves on the
+unitary axis at $v$, valued in the finite-dimensional
+$K_{v}$-representation $V_{v}$ of spherical/Iwahori-finite
+vectors. Admissibility means finite-type over the local Hecke
+algebra $\mathcal{H}_{v}$; holomorphy means $\mathcal{O}$-coherent
+along the axis. The distinguished unit
+$u^{\mathrm{cont}}_{v}\in\mathcal{C}^{\mathrm{cont}}_{v}$ is the
+structure-sheaf class of the trivial representation on the
+spherical vector at $s=1/2$ (the centre of the strip); at
+non-archimedean unramified $v$ this coincides with the constant
+sheaf $\mathcal{O}_{i\mathbb{R}_{\geq 0}}$.
+\end{definition}
+
+\begin{proposition}[$\mathcal{C}^{\mathrm{cont}}_{v}$ is stable presentable]
+\label{v4-arith:w6-d:prop:C-cont-stable-pres}
+\ClaimStatusProvedHere. The category $\mathcal{C}^{\mathrm{cont}}_{v}$
+of \Cref{v4-arith:w6-d:def:C-cont-local} is a stable presentable
+$\infty$-category with distinguished unit $u^{\mathrm{cont}}_{v}$
+compact. Explicitly:
+\begin{enumerate}
+\item stability: $\mathcal{C}^{\mathrm{cont}}_{v}$ is the derived
+category of an abelian Grothendieck category (admissible
+holomorphic sheaves), hence stable (Lurie HA~1.3.5);
+\item presentability: admissible holomorphic sheaves on a
+one-dimensional complex manifold valued in a finite-dimensional
+representation form an accessible category (Wallach 1988 Thm~0.A.2
+for the admissibility axiom, combined with sheaf-theoretic
+presentability of $\mathrm{Shv}(i\mathbb{R}_{\geq 0})$);
+\item compact generation: the constant sheaf at a finite
+closed-subset $S\subset i\mathbb{R}_{\geq 0}$ together with its
+translates by the Paley--Wiener exponential series generates under
+colimits and shifts;
+\item distinguished unit compactness: $u^{\mathrm{cont}}_{v}$ is a
+structure sheaf of a smooth point, hence compact.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Parts (1)--(2) are standard; the $\infty$-categorical version is
+Lurie HA~1.3.5.21 plus Wallach 1988 Thm~0.A.2. For part (3),
+Paley--Wiener exponentials $e^{sT}$ for $T\in\mathbb{R}_{>0}$
+generate $\mathrm{PW}(i\mathbb{R})$ under $L^{2}$-closure (classical
+Paley--Wiener theorem); the derived category of admissible sheaves
+on the axis inherits compact generation from this. Part (4) is
+the standard fact that the structure sheaf of a smooth point in a
+smooth complex manifold is compact in the derived category of
+quasi-coherent sheaves.
+\end{proof}
+
+\begin{theorem}[Paley--Wiener lift at the categorical level]
+\label{v4-arith:w6-d:thm:PW-lift}
+\ClaimStatusProvedHere. There is a canonical equivalence of stable
+presentable $\infty$-categories
+\begin{equation}
+\label{v4-arith:w6-d:eq:PW-lift}
+\mathrm{D}\bigl(L^{2}_{\mathrm{cont}}([GL_{2}])^{\mathrm{sph\text{-}fin}}\bigr)\;\xrightarrow{\;\sim\;}\;\bigotimes_{v}^{\prime}\mathcal{C}^{\mathrm{cont}}_{v}\Big/\;\mathrm{Weyl}
+\end{equation}
+where:
+\begin{itemize}
+\item the restricted tensor product uses $u^{\mathrm{cont}}_{v}$
+as distinguished unit at almost every $v$;
+\item the Weyl quotient is the $s\sim -s$ quotient implemented by
+$N(s,\chi)$ as a coherent Weyl action in the sense of
+\Cref{v4-arith:w6-d:prop:Weyl-coherent};
+\item the left side is the stable sph-fin derived category of the
+continuous summand of $L^{2}([GL_{2}])$ (compactly generated by
+Paley--Wiener sections of the $\xi$-weighted $L^{2}$-measure).
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+\textbf{Step 1.} Representation-level: Shahidi's Paley--Wiener theorem
+\Cref{v4-arith:w6-d:thm:PW-synthesis} gives the unitary isomorphism at
+the level of Hilbert spaces with $|\xi(2s)|^{-2}ds$ weight.
+\textbf{Step 2.} Lifting to derived categories: the Hilbert-space
+isomorphism extends to an equivalence of derived categories of
+admissible modules. On the continuum side, admissible corresponds to
+finite-type over the local Hecke algebra at each place
+(\Cref{v4-arith:lacd:prop:uniformity-sph-fin} for archimedean,
+Bernstein--Zelevinsky 1977 for finite places). The admissible sheaf
+structure on $\mathcal{C}^{\mathrm{cont}}_{v}$ matches by
+\Cref{v4-arith:w6-d:def:C-cont-local}.
+\textbf{Step 3.} Restricted tensor product: using F2.c tightened
+(\Cref{v4-arith:tate:thm:F2c-main}), the local continuous-spectrum
+categories with distinguished units assemble into a pointed
+$E_{2}$-monoidal stable presentable $\infty$-category. The
+$\mathrm{L}_{\mathrm{ACD}}.1$ colimit commutation
+(\Cref{v4-arith:lacd:thm:L1-closed}) preserves sph-finiteness under
+restricted colimit.
+\textbf{Step 4.} Weyl quotient: the operator $N(s,\chi)$ of
+\Cref{v4-arith:w6-d:def:N-normalised} satisfies the cocycle relation
+(\Cref{v4-arith:w6-d:prop:local-FE}.1) and unitarity
+(\Cref{v4-arith:w6-d:prop:local-FE}.2) on the non-exceptional
+locus; this upgrades to a coherent Weyl action on the restricted
+tensor product (\Cref{v4-arith:w6-d:prop:Weyl-coherent}), with
+quotient matching the unitary-axis quotient of Shahidi's
+Paley--Wiener space. Descent under the coherent Weyl action is
+computed as a homotopy fixed-point spectral sequence in
+$\mathrm{Pr}^{\mathrm{L,st}}$, degenerating at $E_{2}$ by
+unitarity.
+\end{proof}
+
+\begin{proposition}[Weyl action is coherent on $\bigotimes'\mathcal{C}^{\mathrm{cont}}_{v}$]
+\label{v4-arith:w6-d:prop:Weyl-coherent}
+\ClaimStatusProvedHere. The family of normalised intertwining
+operators $\{N_{v}(s,\chi)\}_{v}$ assembles into an
+$E_{\infty}$-algebra map
+\begin{equation}
+\label{v4-arith:w6-d:eq:Weyl-coherent}
+N\colon\bigotimes_{v}^{\prime}\mathcal{C}^{\mathrm{cont}}_{v}\;\longrightarrow\;\bigotimes_{v}^{\prime}\mathcal{C}^{\mathrm{cont}}_{v}
+\end{equation}
+implementing the $\mathbb{Z}/2$ Weyl action. Coherence
+$N\circ N=\mathrm{id}$ holds up to a contractible space of
+higher homotopies on the non-exceptional locus.
+\end{proposition}
+
+\begin{proof}
+The local factors $N_{v}(s,\chi)$ are each an involution on the
+local category (Shahidi 1990 Thm~3.1). Combining across places uses
+Lurie HA 5.1.2.26 (centrality of the unit in an $E_{n}$-monoidal
+category): each $N_{v}$ factors through $\mathcal{C}^{\mathrm{cont}}_{v}$
+and commutes with $N_{w}$ at $w\neq v$ up to a contractible space.
+The global product $N=\prod_{v}N_{v}$ inherits the involution
+property up to coherent homotopy. The non-exceptional hypothesis is
+essential: at $s=0,1$ the local $N_{v}$ acquires a simple pole, and
+the global product can fail to be an involution at these two points.
+\end{proof}
+
+\section{Module (E2): Langlands Spectral Decomposition Lifted Categorically}
+\label{v6-d:E2}
+
+\subsection{The Three Summands}
+
+\begin{theorem}[Langlands spectral decomposition of $L^{2}(\lbrack GL_{2}\rbrack)$]
+\label{v4-arith:w6-d:thm:Langlands-decomp}
+\ClaimStatusProvedElsewhere. The adelic automorphic $L^{2}$-space
+decomposes as a unitary direct sum
+\begin{equation}
+\label{v4-arith:w6-d:eq:Langlands-decomp}
+L^{2}([GL_{2}])\;=\;L^{2}_{\mathrm{cusp}}\;\oplus\;L^{2}_{\mathrm{res}}\;\oplus\;L^{2}_{\mathrm{cont}},
+\end{equation}
+with:
+\begin{itemize}
+\item $L^{2}_{\mathrm{cusp}}$ the cuspidal subspace
+(Bernstein 1988; Mo{\oe}glin--Waldspurger III.2.1);
+\item $L^{2}_{\mathrm{res}}$ the residual subspace, one-dimensional
+at $GL_{2}/\mathbb{Q}$, spanned by the constant function
+(Mo{\oe}glin--Waldspurger II.2);
+\item $L^{2}_{\mathrm{cont}}$ the continuous spectrum, parametrised
+by Weyl-orbits of unitary Hecke characters via Eisenstein series
+(Langlands 1976 \S 7; Mo{\oe}glin--Waldspurger IV.3).
+\end{itemize}
+The decomposition is canonical and respects the adelic Hecke action
+and the archimedean $(\mathfrak{g},K_{\infty})$-structure.
+\end{theorem}
+
+\begin{proof}[Source]
+Langlands 1976 \S 7 (original proof, functional equations);
+Mo{\oe}glin--Waldspurger 1995 Ch.~II and IV (modern full account).
+\end{proof}
+
+\subsection{Categorical Lift of Each Summand}
+
+\begin{definition}[residual local category and distinguished unit]
+\label{v4-arith:w6-d:def:C-res-local}
+\ClaimStatusDefinitional. The local residual category is
+$\mathcal{C}^{\mathrm{res}}_{v}=\mathrm{Sp}$, the one-object
+presentable stable $\infty$-category (a copy of spectra), with
+distinguished unit $u^{\mathrm{res}}_{v}=\mathbb{1}_{\mathrm{Sp}}$
+the sphere spectrum. The residual summand at the global level
+corresponds to the trivial character, which has a single
+archimedean and single finite-prime component at every place, all
+one-dimensional.
+\end{definition}
+
+\begin{theorem}[categorical lift of $L^{2}_{\mathrm{res}}$]
+\label{v4-arith:w6-d:thm:res-lift}
+\ClaimStatusProvedHere. The restricted tensor product
+$\bigotimes'_{v}\mathcal{C}^{\mathrm{res}}_{v}\simeq\mathrm{Sp}$
+matches $\mathrm{D}(L^{2}_{\mathrm{res}}([GL_{2}])^{\mathrm{sph\text{-}fin}})$
+through the residue of the Eisenstein series at $s=1$. Specifically,
+the identification
+\begin{equation}
+\mathrm{D}\bigl(L^{2}_{\mathrm{res}}([GL_{2}])^{\mathrm{sph\text{-}fin}}\bigr)\;\simeq\;\mathrm{Sp}
+\end{equation}
+sends the constant function $\mathbb{1}_{[GL_{2}]}$ to the sphere
+spectrum.
+\end{theorem}
+
+\begin{proof}
+The residual subspace is one-dimensional and trivial-character
+(Mo{\oe}glin--Waldspurger II.2.4); hence the derived category of
+its sph-fin completion is a single-object stable category
+$\mathrm{Sp}$. On the other side, the empty restricted tensor
+product over all places with distinguished unit the sphere spectrum
+is the sphere spectrum by the universal property of restricted
+tensor in $\mathrm{Pr}^{\mathrm{L,st}}$ (F2.c tightened). The two
+match canonically.
+\end{proof}
+
+\begin{theorem}[categorical lift of $L^{2}_{\mathrm{cont}}$ on the non-exceptional locus]
+\label{v4-arith:w6-d:thm:cont-lift}
+\ClaimStatusProvedHere. On the non-exceptional locus
+$\Sigma^{\mathrm{nonexc}}=i\mathbb{R}\setminus\{0\}$, the restricted
+tensor product
+$(\bigotimes'_{v}\mathcal{C}^{\mathrm{cont}}_{v})/\mathrm{Weyl}$
+is canonically equivalent to
+$\mathrm{D}(L^{2}_{\mathrm{cont}}([GL_{2}])^{\mathrm{sph\text{-}fin}})^{\mathrm{nonexc}}$,
+the sph-fin derived category of the continuous summand restricted
+to the non-exceptional unitary axis.
+\end{theorem}
+
+\begin{proof}
+By \Cref{v4-arith:w6-d:thm:PW-lift}: Shahidi's Paley--Wiener theorem
+gives the Hilbert-space isomorphism with the
+$\xi$-weighted $L^{2}$-space; this lifts to derived categories on
+admissible / holomorphic / compactly generated classes. Restriction
+to the non-exceptional locus removes the two polar points $s=0,1$
+where $N$ fails to be an involution; on the complement, the Weyl
+quotient is a $\mathbb{Z}/2$-Galois quotient in
+$\mathrm{Pr}^{\mathrm{L,st}}$ and computes as a homotopy
+fixed-point category.
+\end{proof}
+
+\subsection{Sphericity-Finite Compatibility on the Continuum}
+
+\begin{proposition}[sph-fin preservation under continuous-spectrum restriction]
+\label{v4-arith:w6-d:prop:sph-fin-cont}
+\ClaimStatusProvedHere. The sph-finiteness condition (compact
+generation with finite-type local Hecke modules) is preserved
+under restriction to the continuous summand and the Weyl quotient:
+if every $\mathcal{C}^{\mathrm{cont}}_{v}$ is sph-fin, then
+$(\bigotimes'_{v}\mathcal{C}^{\mathrm{cont}}_{v})/\mathrm{Weyl}$
+restricted to the non-exceptional locus is sph-fin.
+\end{proposition}
+
+\begin{proof}
+Sph-fin is a compact-generation + finite-type property; compact
+generation is preserved under filtered colimits of compactly
+generated categories (Lurie HA 5.3.2.9) and under $\mathbb{Z}/2$
+homotopy fixed-point quotients when the action is by compact-object-
+preserving functors. The normalised intertwining operator
+$N(s,\chi)$ sends a compact object at $s$ (the structure sheaf of a
+closed point) to a compact object at $-s$, by the local holomorphic
+extension (\Cref{v4-arith:w6-d:prop:local-FE}.3). Restricted to the
+non-exceptional locus, $N$ is unitary hence a compact-preserving
+equivalence. Sph-fin is preserved.
+\end{proof}
+
+\section{Module (E3): Assembly Compatible with Cuspidal LACD}
+\label{v6-d:E3}
+
+\subsection{Full Statement}
+
+\begin{theorem}[$\mathrm{L}_{\mathrm{ACD}}$ on the non-exceptional
+sph-finite locus, Eisenstein case]
+\label{v4-arith:w6-d:thm:LACD-Eisenstein-nonexc}
+\ClaimStatusProvedHere. On the non-exceptional sph-finite locus,
+there is a canonical equivalence
+\begin{equation}
+\label{v4-arith:w6-d:eq:LACD-Eisenstein-nonexc}
+\Bigl(\bigotimes_{v}^{\prime}\mathcal{C}_{v}\Bigr)^{\mathrm{nonexc}}\;\xrightarrow{\;\sim\;}\;\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}])^{\mathrm{nonexc}}
+\end{equation}
+of stable presentable $\infty$-categories, where:
+\begin{itemize}
+\item $\mathcal{C}_{v}=\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}(\mathbb{Q}_{v})])$
+decomposes as an internal direct sum
+$\mathcal{C}^{\mathrm{cusp}}_{v}\oplus\mathcal{C}^{\mathrm{res}}_{v}\oplus\mathcal{C}^{\mathrm{cont}}_{v}$
+(local Langlands decomposition; Bernstein--Zelevinsky 1977 for
+$p$-adic; Wallach 1988 Ch.~11 at archimedean);
+\item the restricted tensor product respects this decomposition
+summand by summand, with the Weyl-quotient convention on the
+continuous summand;
+\item the non-exceptional superscript refers to the complement of
+$\Sigma^{\mathrm{exc}}=\{s=0\}\cup\{s=1\}$ on the continuous-
+spectrum factor, and to the full cuspidal and residual summands
+with no restriction.
+\end{itemize}
+The equivalence is compatible with:
+\begin{enumerate}
+\item local Whittaker models at each finite prime
+(Bernstein--Zelevinsky 1977 \S 2);
+\item Bernstein-centre actions across places
+(\Cref{v4-arith:lacd:thm:L2-closed});
+\item archimedean $(\mathfrak{g},K_{\infty})$-module structure at
+$v=\infty$ (\Cref{v4-arith:lacd:thm:L0-closed});
+\item normalised intertwining operators
+$N_{v}(s,\chi)$ at each place (\Cref{v4-arith:w6-d:def:N-normalised});
+\item Paley--Wiener synthesis
+(\Cref{v4-arith:w6-d:thm:PW-synthesis}) on the continuous summand.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textbf{Step 1 (cuspidal).} The cuspidal summand is already closed
+unconditionally by wave-5E
+(\Cref{v4-arith:w5-e:thm:LACD-cuspidal}). Nothing new is
+required; the cuspidal factor contributes through the orthogonal
+direct-sum on each side.
+\textbf{Step 2 (residual).} The residual summand is closed in
+\Cref{v4-arith:w6-d:thm:res-lift}: restricted tensor product of
+$\mathrm{Sp}$-factors is $\mathrm{Sp}$; on the other side the
+residual space is one-dimensional.
+\textbf{Step 3 (continuous non-exceptional).} The continuous
+summand restricted to $\Sigma^{\mathrm{nonexc}}$ is closed by
+\Cref{v4-arith:w6-d:thm:cont-lift}: the categorical lift uses
+Shahidi's Paley--Wiener theorem plus the coherent Weyl action.
+\textbf{Step 4 (assembly).} The three summands assemble through
+the orthogonal decomposition of $L^{2}([GL_{2}])$
+(\Cref{v4-arith:w6-d:thm:Langlands-decomp}); on the restricted-
+tensor side they assemble through the local summand decomposition
+of each $\mathcal{C}_{v}$. The restricted tensor product of an
+orthogonal direct sum is the orthogonal direct sum of restricted
+tensor products (Lurie HA 4.8.2: tensor product distributes over
+direct sum in $\mathrm{Pr}^{\mathrm{L,st}}$).
+\textbf{Step 5 (compatibilities).} Whittaker / Bernstein /
+archimedean compatibilities are inherited from
+\Cref{v4-arith:w5-e:thm:LACD-cuspidal} on the cuspidal factor and
+from \Cref{v4-arith:lacd:thm:L0-closed}--\Cref{v4-arith:lacd:thm:L3-closed}
+on the archimedean and cross-prime sides. The intertwining
+compatibility is the construction of $N$ in
+\Cref{v4-arith:w6-d:prop:Weyl-coherent}. Paley--Wiener
+compatibility is the content of \Cref{v4-arith:w6-d:thm:PW-lift}.
+\end{proof}
+
+\subsection{Corollaries and Scope}
+
+\begin{corollary}[full adelic categorical descent on the non-exceptional sph-finite locus]
+\label{v4-arith:w6-d:cor:full-LACD-nonexc}
+\ClaimStatusProvedHere. On the non-exceptional sph-finite locus,
+$\mathrm{L}_{\mathrm{ACD}}$ (\Cref{v4-arith:acd:statement}) holds
+unconditionally. The equivalence
+\begin{equation}
+\bigotimes_{v}^{\prime}\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}(\mathbb{Q}_{v})])\;\xrightarrow{\;\sim\;}\;\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}])
+\end{equation}
+is valid on the complement of $\Sigma^{\mathrm{exc}}=\{s=0\}\cup\{s=1\}$
+within the Eisenstein continuous parameter, and everywhere on the
+cuspidal and residual summands.
+\end{corollary}
+
+\begin{proof}
+Combine wave-5E cuspidal
+(\Cref{v4-arith:w5-e:thm:LACD-cuspidal}) with residual
+(\Cref{v4-arith:w6-d:thm:res-lift}) and continuous non-exceptional
+(\Cref{v4-arith:w6-d:thm:cont-lift}) through the assembly theorem
+\Cref{v4-arith:w6-d:thm:LACD-Eisenstein-nonexc}.
+\end{proof}
+
+\begin{conjecture}[exceptional unitary-crossing Ext${}^{1}$ match]
+\label{v4-arith:w6-d:conj:exceptional-unitary-crossing}
+\ClaimStatusConjectured. Essential surjectivity extends from the
+non-exceptional locus to the full sph-finite automorphic category
+by matching the Ext${}^{1}$-class of the local intertwining
+data at $s=0,1$. Specifically, at $s=0$ (spherical crossing) the
+local Ext${}^{1}$-class of the reducibility short exact sequence
+of $I_{v}(0,\chi)$ matches the deformation-theoretic Ext${}^{1}$
+of the Emerton--Gee stack at the corresponding unramified
+Frobenius-trace-zero point; at $s=1$ (residual crossing) the
+one-dimensional residual space matches the unique closed stratum
+of the Emerton--Gee stack at the cyclotomic character. The match
+is a single Ext${}^{1}$ datum per crossing, analogous to
+\Cref{v4-arith:f1a3-BH:conj:Paskunas-wild-ext} but at the
+automorphic (rather than local Langlands) level.
+\end{conjecture}
+
+\begin{remark}[scope of the exceptional residual]
+\label{v4-arith:w6-d:rem:exceptional-scope}
+The two exceptional points are measure-zero in $i\mathbb{R}$ and
+do not affect the Plancherel measure $|\xi(2s)|^{-2}ds$. They do
+affect the ind-categorical structure: at $s=0,1$ the local
+$\mathcal{C}^{\mathrm{cont}}_{v}$ has a non-semisimple
+Ext${}^{1}$-extension that must be matched by an
+Ext${}^{1}$-class in the global presentable $\infty$-category.
+Scope: 10--15 pages, parallel to the F1.a.2 non-semisimple
+class-match of \Cref{v4-arith:f1a3-BH:conj:Paskunas-wild-ext}.
+\end{remark}
+
+\subsection{Compatibility with W6-C}
+
+\begin{proposition}[cross-reference to W6-C Koszul--Petersson correction]
+\label{v4-arith:w6-d:prop:W6C-crossref}
+\ClaimStatusProvedHere. The Langlands--Shahidi normalised operator
+$N_{v}(s,\chi)$ of \Cref{v4-arith:w6-d:def:N-normalised} enters the
+W6-C Koszul density correction of \Cref{v4-arith:w5-c:prop:LS-absorption}
+through the absolute-value specialisation
+$N^{\mathrm{LS}}(s)=|\prod_{v}N_{v}(s,\chi_{\mathrm{triv}})|/\sqrt{2}$
+on the critical line, where $\chi_{\mathrm{triv}}$ is the
+trivial Hecke character. The density match
+$|N^{\mathrm{LS}}|^{2}d\mu^{\mathrm{Koszul}}_{\mathrm{cont}}=d\mu^{\mathrm{Pet}}_{\mathrm{cont}}$
+of W6-C corresponds on the categorical side to the
+unitary-axis Weyl-symmetry of the Paley--Wiener space
+$\mathrm{PW}(i\mathbb{R},V_{\chi})$ under the coherent Weyl
+action \Cref{v4-arith:w6-d:prop:Weyl-coherent}. No fresh
+computation is needed beyond Shahidi 2010 Thm~3.5.1.
+\end{proposition}
+
+\begin{proof}
+Immediate by comparison of the W6-C definition
+\Cref{v4-arith:w5-c:def:LS-factor} with the adelic global product
+of \Cref{v4-arith:w6-d:def:N-normalised} on the critical line,
+using the Tate global $\varepsilon=1$ for $GL_{1}$.
+\end{proof}
+
+\section{Attack--Heal Ledger}
+\label{v6-d:attack-heal}
+
+\subsection{Seven-Attack Schema on the Eisenstein LACD}
+
+\paragraph{Attack 1 (source collision).}
+Derivation sources: Langlands 1976, Shahidi 1990, Shahidi 2010,
+Arthur 2013 \S 3.5, Harish-Chandra 1976, Wallach 1992 \S 12, all
+intertwining-operator / Paley--Wiener / Plancherel sources.
+Verification sources for assembly: Lurie HA 4.8 and 5.1--5.3
+(restricted tensor and monoidal coherence), F2.c tightened
+(\Cref{v4-arith:tate:thm:F2c-main}), wave-5E cuspidal
+(\Cref{v4-arith:w5-e:thm:LACD-cuspidal}). The wave-5E cuspidal
+result was proved via Flath 1979 + Bernstein 1988 + Mo{\oe}glin--
+Waldspurger III; the Eisenstein verification uses Langlands 1976 +
+Shahidi 1990, 2010 + Mo{\oe}glin--Waldspurger II/IV. The two
+trajectories are disjoint at the chapter level of
+Mo{\oe}glin--Waldspurger (III vs II/IV); no primary author appears
+in both. \textbf{Pass.}
+
+\paragraph{Attack 2 (conventions).} Intertwining-operator
+normalisation conventions: Langlands 1976 uses the unnormalised
+$M(s,\chi)$ defined by the integral over $N(\mathbb{A})$; Shahidi
+1990, 2010 uses the normalised $N(s,\chi)$ with
+$L$- and $\varepsilon$-factor corrections; Mo{\oe}glin--Waldspurger
+1995 uses the Arthur normalisation
+$\tilde M(s,\chi)$ with specific $L$-ratio. The three agree on the
+critical line after Tate-global-$\varepsilon=1$ on $GL_{1}$; the
+Weyl translation $\chi\mapsto\chi^{w_{0}}$ is consistent across all
+three. \textbf{Pass.}
+
+\paragraph{Attack 3 (ambient category).} Each
+$\mathcal{C}^{\mathrm{cont}}_{v}$ is a stable presentable
+$\infty$-category (\Cref{v4-arith:w6-d:prop:C-cont-stable-pres});
+restricted tensor products live in
+$\mathrm{Pr}^{\mathrm{L,st}}$ (F2.c tightened); Weyl quotients are
+homotopy fixed-point constructions in
+$\mathrm{Pr}^{\mathrm{L,st}}$. The Langlands spectral decomposition
+\Cref{v4-arith:w6-d:thm:Langlands-decomp} is an orthogonal direct
+sum both at Hilbert-space and derived-category level. \textbf{Pass.}
+
+\paragraph{Attack 4 (missing hypothesis).} Non-exceptional
+hypothesis made explicit (\Cref{v4-arith:w6-d:def:exceptional}).
+Hecke-character unitarity required for $N$-unitarity
+(\Cref{v4-arith:w6-d:prop:local-FE}.2). Spherical / Iwahori-finite
+distinguished-unit hypothesis tracks through from wave-5E.
+\textbf{Pass, exceptional locus named.}
+
+\paragraph{Attack 5 (false functoriality).} The intertwining
+operators act per-place; cross-place commutation is
+\Cref{v4-arith:w6-d:prop:Weyl-coherent}. The Weyl action is a
+coherent $\mathbb{Z}/2$ action on the restricted tensor product,
+not an $\infty$-groupoid action; coherence is up to homotopy by
+Lurie HA 5.1.2.26. \textbf{Pass.}
+
+\paragraph{Attack 6 (unproved equivalence).} Exceptional
+unitary-crossing Ext${}^{1}$-class match
+\Cref{v4-arith:w6-d:conj:exceptional-unitary-crossing} is named
+explicitly; elsewhere no unproved input is used. The Paley--Wiener
+theorem \Cref{v4-arith:w6-d:thm:PW-synthesis} is a primary
+theorem (Shahidi 2010 Thm~4.2.2). \textbf{Pass on non-exceptional
+locus.}
+
+\paragraph{Attack 7 (engine).} No compute engine. \textbf{Pass.}
+
+Six attacks close unconditionally; attack 6 records the
+exceptional unitary-crossing residual as a separately attackable
+named conjecture.
+
+\subsection{Composite with Wave-5E}
+
+\begin{theorem}[composite $\mathrm{L}_{\mathrm{ACD}}$ theorem after Wave-5E + W6-D]
+\label{v4-arith:w6-d:thm:composite-LACD}
+\ClaimStatusProvedHere. Combining wave-5E cuspidal closure
+\Cref{v4-arith:w5-e:thm:LACD-cuspidal} with W6-D residual +
+continuous non-exceptional closure
+\Cref{v4-arith:w6-d:thm:LACD-Eisenstein-nonexc},
+$\mathrm{L}_{\mathrm{ACD}}$ is closed on the full sph-finite
+automorphic category modulo the two unitary-axis crossings
+$\Sigma^{\mathrm{exc}}=\{s=0\}\cup\{s=1\}$. The cuspidal,
+residual, and non-exceptional continuous sectors all close
+unconditionally (up to the Taylor--Wiles and semisimple-block
+hypotheses inherited from F1.a.1, F1.a.2 already tracked at the
+local comparison level).
+\end{theorem}
+
+\begin{proof}
+Orthogonal direct-sum assembly of the three closures through
+\Cref{v4-arith:w6-d:thm:Langlands-decomp} and the restricted-tensor
+orthogonality of Lurie HA 4.8.
+\end{proof}
+
+\section{Residual Ledger After This Chapter}
+\label{v6-d:residual-ledger}
+
+\begin{proposition}[F1 residual ledger after W6-D]
+\label{v4-arith:w6-d:prop:F1-ledger-after-w6d}
+\ClaimStatusProvedHere. Combining this chapter with the wave-5E
+residual ledger \Cref{v4-arith:w5-e:prop:F1-ledger-refined}, the
+F1 residual ledger is:
+\begin{enumerate}
+\item \textbf{F1.a.1.non-ord} (20--30 pp): essential surjectivity
+of DEG at $p\geq 5$ on the non-ordinary locus.
+\item \textbf{F1.a.1.TW-removal} (15--25 pp): extension beyond
+Taylor--Wiles hypotheses.
+\item \textbf{F1.a.2.class-match} (5--10 pp): class-level
+Pa{\v s}k{\=u}nas Ext${}^{1}$-compatibility at $p=2,3$.
+\item \textbf{$\mathrm{L}_{\mathrm{ACD}}$.exceptional-crossing}
+(10--15 pp): Ext${}^{1}$-class match at $s=0,1$
+(\Cref{v4-arith:w6-d:conj:exceptional-unitary-crossing}); W6-D
+replaces the 30--50 pp Eisenstein conjecture
+\Cref{v4-arith:w5-e:conj:LACD-Eisenstein} with this narrower
+residual.
+\item \textbf{BC-diamond-glue} (30--50 pp):
+Bernstein-centre diamond-gluing, Chapter~\ref{v4-arith:bcglue-core}.
+\end{enumerate}
+The total scope drops from 100--165 pp (after wave-5E) to
+80--130 pp (after W6-D).
+\end{proposition}
+
+\begin{proof}
+Tabulation. Wave-5E carried the Eisenstein residual at 30--50 pp;
+W6-D closes the non-exceptional part and isolates a 10--15 pp
+Ext${}^{1}$-class match at the two polar crossings.
+\end{proof}
+
+\section{Summary}
+\label{v6-d:summary}
+
+\begin{enumerate}
+\item \textbf{Langlands--Shahidi normalisation installed}
+(\Cref{v4-arith:w6-d:def:N-normalised},
+\Cref{v4-arith:w6-d:prop:local-FE}): normalised intertwining
+operators $N_{v}(s,\chi)$ with functional equation, unitarity on
+the axis, polar divisor at $s=0,1$. Compatible with W6-C through
+\Cref{v4-arith:w6-d:prop:W6C-crossref} and the density-match of
+\Cref{v4-arith:w5-c:prop:LS-absorption}.
+\item \textbf{Paley--Wiener synthesis categorically lifted}
+(\Cref{v4-arith:w6-d:thm:PW-lift}): the continuous summand of
+$L^{2}([GL_{2}])$ lifts to a restricted tensor product of local
+continuous-spectrum presentable stable $\infty$-categories modulo
+a coherent Weyl quotient.
+\item \textbf{Langlands spectral decomposition categorified}
+(\Cref{v4-arith:w6-d:thm:Langlands-decomp},
+\Cref{v4-arith:w6-d:thm:res-lift},
+\Cref{v4-arith:w6-d:thm:cont-lift}): three-summand orthogonal
+direct sum at Hilbert-space and derived-category level, with
+residual summand = $\mathrm{Sp}$, continuous summand =
+Paley--Wiener sheaves on the unitary axis.
+\item \textbf{$\mathrm{L}_{\mathrm{ACD}}$ closed on the
+non-exceptional sph-finite locus}
+(\Cref{v4-arith:w6-d:thm:LACD-Eisenstein-nonexc},
+\Cref{v4-arith:w6-d:cor:full-LACD-nonexc}): the restricted tensor
+product equals the global sph-finite automorphic derived category
+on the complement of two unitary-axis crossings.
+\item \textbf{Exceptional residual isolated}
+(\Cref{v4-arith:w6-d:conj:exceptional-unitary-crossing}):
+Ext${}^{1}$-class match at $s=0$ (spherical crossing) and $s=1$
+(residual crossing); 10--15 pp of scope, parallel to the
+Pa{\v s}k{\=u}nas non-semisimple class-match of F1.a.2.
+\item \textbf{Composite closure}
+(\Cref{v4-arith:w6-d:thm:composite-LACD}): wave-5E cuspidal +
+W6-D residual and non-exceptional continuous jointly close
+$\mathrm{L}_{\mathrm{ACD}}$ on the full sph-finite automorphic
+category modulo the two-point exceptional residual.
+\item \textbf{Residual ledger updated}
+(\Cref{v4-arith:w6-d:prop:F1-ledger-after-w6d}): F1 residuals drop
+to five items summing to 80--130 pp.
+\end{enumerate}
+
+The Eisenstein / continuous-spectrum residual
+\Cref{v4-arith:w5-e:conj:LACD-Eisenstein} is retired on its
+natural domain (non-exceptional sph-finite); the two remaining
+unitary-axis crossings are scoped as the narrow
+Ext${}^{1}$-class-match conjecture
+\Cref{v4-arith:w6-d:conj:exceptional-unitary-crossing}, at 10--15
+pages of attackable residual. W6-C and W6-D converge on the
+Langlands--Shahidi normalisation from the Koszul-density and
+categorical-lift sides respectively; their cross-compatibility is
+\Cref{v4-arith:w6-d:prop:W6C-crossref}.

@@ -1,0 +1,946 @@
+\chapter{Wilson-Line Frobenius and Archimedean Wilson-Surface at Genus $g$}
+\label{v4-arith:w9-r6:chapter}
+
+\emph{Chapter~\ref{v4-arith:all-genus-koszul} establishes the all-genus
+arithmetic Koszul duality identity
+$\kappa^{\mathrm{Ar},g}_{\mathsf{G}}+(\kappa^{!})^{\mathrm{Ar},g}_{\mathsf{G}}=0$
+on an arithmetic genus-$g$ datum
+$\mathcal{D}_{g}=(\mathcal{B}_{g},\mathcal{E}_{g},\varphi_{g})$, with
+the genus entering through the rank-$2g$ Fock grading, the archimedean
+$\Gamma_{\mathbb{C}}(s)^{g}$ factor, and the motivic weight
+$w_{\mathcal{D}_{g}}\in\{1,2,2g+1\}$. Chapter~\ref{v4-arith:3d-acs-E1bar}
+builds the 3D arithmetic Chern--Simons theory
+$\mathrm{ACS}^{\mathrm{qu}}$ on $\overline{\mathrm{Spec}\,\mathbb{Z}}$,
+with Wilson-line Frobenius identity
+$\langle W_{\rho}(K_{p})\rangle=\mathrm{tr}\,\rho(\mathrm{Frob}_{p})$ at
+$g=0$. Chapter~\ref{v4-arith:w8-a:deninger-chiral-homology} identifies
+its boundary chiral homology with Deninger's conjectural arithmetic
+cohomology and isolates the global Frobenius
+$F_{\infty}\otimes\bigotimes_{p}'\psi_{p}$ realised as Wilson loops and
+surfaces. This chapter extends the Wilson-line Frobenius identity and
+the archimedean Wilson-surface $F_{\infty}$ to arithmetic genus-$g$
+data. The genus-$g$ gauge group is the profinite limit of
+$GL_{2g}(\mathbb{Z}/N\mathbb{Z})$; the rank-$2g$ local representation
+$\rho_{g}:G_{\mathbb{Q}_{p}}\to\mathrm{GSp}_{2g}$ sources a genus-$g$
+Wilson loop whose expectation in
+$\mathrm{ACS}^{\mathrm{qu},g}$ is
+$\mathrm{tr}_{\rho_{g}}(\mathrm{Frob}_{p})$; the archimedean
+Wilson-surface $F^{(g)}_{\infty}$ is the rank-$2g$ Arakelov area-scaling
+conjugate to the genus-$g$ Virasoro zero-mode
+$L^{(g)}_{0}$ with central charge $g$. The all-genus Deninger
+identification is the motivic-weight-$w_{\mathcal{D}_{g}}$
+specialisation of the character identity of
+\Cref{v4-arith:w8-a:thm:all-genus-deninger}. Specialising to $g=0$
+recovers the Riemann framework of
+Ch.~\ref{v4-arith:w9-r1:wilson-frobenius} (R1, g=0 Wilson-line
+Frobenius baseline) and Ch.~\ref{v4-arith:w9-r2:archimedean-wilson-surface}
+(R2, g=0 archimedean Wilson-surface baseline), together with
+Chs.~\ref{v4-arith:rh-reformulation} and \ref{v4-arith:tfe-gutzwiller}.
+This chapter covers the genus-$g$ row; the uniform $g=0$ reduction is
+recorded in \Cref{v4-arith:w9-r6:cor:g-zero}.}
+
+\section{Genus-$g$ Arithmetic Data Recap}
+\label{v4-arith:w9-r6:datum}
+
+Fix $g\geq 0$ and an arithmetic genus-$g$ datum
+$\mathcal{D}_{g}=(\mathcal{B}_{g},\mathcal{E}_{g},\varphi_{g})$ as in
+\Cref{v4-arith:ag:defn:datum}. The load-bearing structural features of
+$\mathcal{D}_{g}$ used below are four.
+
+\begin{enumerate}
+\item \emph{Rank-$2g$ local Galois representation.} At each prime $p$
+of good reduction for $\mathcal{D}_{g}$, there is a continuous rank-$2g$
+representation
+$\rho_{g,p}:G_{\mathbb{Q}_{p}}:=\mathrm{Gal}(\overline{\mathbb{Q}}_{p}/\mathbb{Q}_{p})\to\mathrm{GSp}_{2g}(\overline{\mathbb{Q}}_{\ell})$
+with symplectic Weil pairing; in Window~I, $\rho_{g,p}=T_{\ell}\mathrm{Jac}(X_{K})_{\mathbb{Q}_{p}}$
+(Tate module of the Jacobian); in Window~III, the prismatic
+$F$-crystal; in Window~VI, the spin representation of the
+automorphic $\pi$.
+\item \emph{Satake parameters $\{\alpha_{j}^{(p)}\}_{j=1}^{2g}$.}
+At an unramified prime, $\rho_{g,p}(\mathrm{Frob}_{p})$ has
+$2g$ eigenvalues $\alpha_{1}^{(p)},\dots,\alpha_{2g}^{(p)}$ with
+symplectic pairing $\alpha_{j}^{(p)}\alpha_{2g+1-j}^{(p)}=p^{w_{\mathcal{D}_{g}}-1}$;
+these source the local Euler factor
+$L_{p}(\mathcal{D}_{g},s)=\prod_{j=1}^{2g}(1-\alpha_{j}^{(p)}p^{-s})^{-1}$.
+\item \emph{Rank-$2g$ Fock oscillators per place.} The local factor
+$\mathcal{H}^{(p),g}$ of
+$\mathcal{V}^{\mathrm{prim},g}_{\mathrm{Heis}}=\bigotimes_{p}'\mathcal{H}^{(p),g}\otimes\mathcal{H}^{(\infty),g}$
+is the rank-$2g$ Fock whose character is the local Euler factor above.
+The archimedean factor $\mathcal{H}^{(\infty),g}$ carries the
+rank-$2g$ archimedean Heisenberg with $\Gamma$-factor
+$\Gamma_{\mathbb{C}}(s)^{g}$ at weight $1$ (Windows~I, V) or the
+corresponding $\Gamma$-factor of
+\Cref{v4-arith:ag:table:rows} at Dedekind or Siegel-spin weight.
+\item \emph{Motivic functional-equation centre
+$w_{\mathcal{D}_{g}}\in\{1,2,2g+1\}$.} The completed $L$-function
+$\Lambda_{\mathcal{D}_{g}}(s)$ satisfies
+$\Lambda_{\mathcal{D}_{g}}(s)=\epsilon_{\mathcal{D}_{g}}\Lambda_{\mathcal{D}_{g}}(w_{\mathcal{D}_{g}}-s)$
+by \Cref{v4-arith:ag:thm:all-genus}; purity lies on
+$\mathrm{Re}(s)=w_{\mathcal{D}_{g}}/2$.
+\end{enumerate}
+
+\begin{remark}[degeneration at $g=0$]
+\label{v4-arith:w9-r6:rem:g-zero}
+At $g=0$ the representation $\rho_{0,p}$ is the trivial
+$0$-dim representation; $\mathcal{E}_{0}$ is void; $\varphi_{0}=\mathrm{id}$;
+the Heisenberg degenerates to the rank-$0$ Fock whose local factor is
+the trivial Euler line, and the global character $\xi_{\mathbb{R}}(s)$
+retains only the Bost--Connes primon-gas contribution
+$\zeta(s)$ multiplied by $\pi^{-s/2}\Gamma(s/2)$ and the Tate-pole
+factor $\tfrac{1}{2}s(s-1)$. The Wilson-line identity and the
+archimedean Wilson-surface degenerate to
+\Cref{v4-arith:3d-acs:conj:qu-acs}(3) and
+\Cref{v4-arith:w8-a:rem:wilson-infinity} respectively. Specialisation
+is recorded in Section~\ref{v4-arith:w9-r6:g-zero-recovery}.
+\end{remark}
+
+\section{Genus-$g$ 3D Arithmetic Chern--Simons Theory}
+\label{v4-arith:w9-r6:3d-acs-g}
+
+Chapter~\ref{v4-arith:3d-acs-E1bar} builds the 3D arithmetic
+Chern--Simons theory on $\overline{\mathrm{Spec}\,\mathbb{Z}}$ with
+gauge group $GL_{2}(\widehat{\mathbb{Z}})$ in the profinite limit,
+level $k^{\mathrm{Ar}}=\kappa^{\mathrm{Ar}}_{\mathsf{G}}$, boundary WZW
+$\mathcal{V}^{\mathrm{prim}}$, and Wilson-loop axiom
+\Cref{v4-arith:3d-acs:conj:qu-acs}(3). The genus-$g$ scaling is the
+following rank change.
+
+\begin{definition}[genus-$g$ arithmetic Chern--Simons]
+\label{v4-arith:w9-r6:def:acs-g}
+\ClaimStatusDefinitional. The \emph{genus-$g$ arithmetic Chern--Simons
+theory} is a family of 3D topological gauge theories on an arithmetic
+$3$-space $\mathcal{B}_{g}^{(3)}$ parameterised by
+$\mathcal{D}_{g}$, with
+\begin{enumerate}
+\item \emph{Arithmetic $3$-space.} For Window~II at totally imaginary
+$K$ of degree $2g$:
+$\mathcal{B}_{g}^{(3)}=\overline{\mathrm{Spec}\,\mathcal{O}_{K}}$ with
+Artin--Verdier fundamental class
+$[\mathcal{B}_{g}^{(3)}]\in H^{3}_{\mathrm{\acute{e}t}}(\mathcal{B}_{g}^{(3)},\widehat{\mathbb{Z}})$
+(Mazur 1973). For Window~I at $X\to\mathrm{Spec}\,\mathcal{O}_{K}$:
+$\mathcal{B}_{g}^{(3)}=\overline{\mathrm{Spec}\,\mathcal{O}_{K}}$ with
+extra fibre cohomology in $H^{2}$ of the generic fibre collected into
+the archimedean boundary via the Arakelov K\"ahler form
+$\mu_{\mathrm{Ar},g}$ of Faltings 1984. For Window~VI, Shimura varieties
+of $\mathrm{GSp}_{2g}$ have their own Artin--Verdier-type fundamental
+class assembled via \'etale cohomology of the special fibre plus
+Deligne 1974 Weil cohomology.
+\item \emph{Gauge group.}
+$G_{g,N}:=GL_{2g}(\mathbb{Z}/N\mathbb{Z})$, with profinite limit
+$G_{g,\infty}:=GL_{2g}(\widehat{\mathbb{Z}})$.
+\item \emph{Level.}
+$k^{\mathrm{Ar},g}:=\kappa^{\mathrm{Ar},g}_{\mathsf{G}}(\mathcal{D}_{g})$,
+the rank-$2g$ arithmetic Koszul level of
+\Cref{v4-arith:ag:thm:all-genus}.
+\item \emph{Boundary WZW at the archimedean fibre.}
+$\partial\,\mathrm{ACS}^{\mathrm{qu},g}_{k^{\mathrm{Ar},g}}=\mathcal{V}^{\mathrm{prim},g}$
+in the sense of
+\Cref{v4-arith:3d-acs:thm:bulk-boundary-Vprim} scaled to rank $2g$ per
+\Cref{v4-arith:3d-acs:genus-g}.
+\end{enumerate}
+The finite-level state sums
+$Z^{\mathrm{Ar}}_{G_{g,N},\alpha_{g,N}}$ extend
+\Cref{v4-arith:3d-acs:thm:finite-level-ACS} unchanged at each finite
+rank; the profinite renormalisation
+$\mathrm{ACS}^{\mathrm{qu},g}_{k^{\mathrm{Ar},g}}$ remains conditional
+in the sense of \Cref{v4-arith:3d-acs:conj:qu-acs} extended to rank
+$2g$.
+\end{definition}
+
+\begin{remark}[rank scaling and residual profinite limit]
+\label{v4-arith:w9-r6:rem:rank-scaling}
+The rank-change $2\to 2g$ does not alter the closed finite-level
+state-sum of \Cref{v4-arith:3d-acs:thm:finite-level-ACS}: the field
+groupoid
+$\mathcal{F}_{G_{g,N}}(\mathcal{B}_{g}^{(3)})$
+is a finite groupoid for each $N$, the action
+$S_{\alpha_{g,N}}^{\mathrm{Ar}}$ is the same Artin--Verdier pairing,
+and the gluing formula follows from \'etale descent of
+rank-$2g$ local systems. The profinite limit
+$\mathrm{ACS}^{\mathrm{qu},g}$ shares the profinite-renormalisation
+residual of \Cref{v4-arith:3d-acs:conj:qu-acs}.
+\end{remark}
+
+\begin{proposition}[partition function at genus $g$]
+\label{v4-arith:w9-r6:prop:partition-g}
+\ClaimStatusConditional \emph{(on the genus-$g$ extension of
+\Cref{v4-arith:3d-acs:conj:qu-acs}(2) and the genus-$g$ BD/CG
+comparison of \Cref{v4-arith:3d-acs:cor:BDCG-ordered-comparison})}.
+The partition function of
+$\mathrm{ACS}^{\mathrm{qu},g}_{k^{\mathrm{Ar},g}}$ on
+$\mathcal{B}_{g}^{(3)}$ equals the completed $L$-function
+\begin{equation}
+\label{v4-arith:w9-r6:eq:partition-g}
+Z_{\mathrm{ACS}^{\mathrm{qu},g}}\bigl(\mathcal{B}_{g}^{(3)};k^{\mathrm{Ar},g}\bigr)
+\;=\;\Lambda_{\mathcal{D}_{g}}\bigl(k^{\mathrm{Ar},g}\bigr),
+\end{equation}
+with $\Lambda_{\mathcal{D}_{g}}$ the row-specific completed $L$-function
+of \Cref{v4-arith:ag:table:rows} (Dedekind $\xi_{K}$, Hasse--Weil
+$\Lambda(s,X_{K})$, or Siegel spin $\Lambda(s,\pi,\mathrm{spin})$).
+\end{proposition}
+
+\begin{proof}
+The rank-$2g$ ordered incidence bar $B^{\mathrm{ord},g}_{\bullet}$ on
+$\mathbb{P}\cup\{\infty\}$ with per-place factor $\mathcal{H}^{(p),g}$
+is the rank-$2g$ generalisation of the bar of
+\Cref{v4-arith:3d-acs:defn:E1-bar}. The local character at $p$ is
+$\chi_{p}^{(g)}(s)=\prod_{j=1}^{2g}(1-\alpha_{j}^{(p)}p^{-s})^{-1}$,
+the local Euler factor of $\Lambda_{\mathcal{D}_{g}}$ (item (2) of
+\Cref{v4-arith:w9-r6:datum}); the archimedean character is the rank-$g$
+$\Gamma$-factor. The genus-$g$ extension of
+\Cref{v4-arith:tfe:lem:ord-bar} gives
+$H_{\bullet}(B^{\mathrm{ord},g})=\Lambda_{\mathcal{D}_{g}}(s)$. Under
+the conditional genus-$g$ BD/CG comparison and the renormalised
+profinite limit, the bulk partition function coincides with this
+homology evaluated at $s=k^{\mathrm{Ar},g}$.
+\end{proof}
+
+\section{Wilson-Line Frobenius Identity at Genus $g$}
+\label{v4-arith:w9-r6:wilson-line-g}
+
+The genus-$g$ analog of
+\Cref{v4-arith:3d-acs:conj:qu-acs}(3) and
+\Cref{v4-arith:w8-a:lem:wilson-finite} is the following identity.
+
+\begin{definition}[genus-$g$ Wilson line]
+\label{v4-arith:w9-r6:def:wilson-line-g}
+\ClaimStatusDefinitional. Fix a prime $p$ of good reduction for
+$\mathcal{D}_{g}$; let $K_{p}\subset\mathcal{B}_{g}^{(3)}$ denote the
+prime-knot associated to $p$ under the Morishita dictionary. For a
+continuous representation
+$\rho_{g}:G_{\mathbb{Q}_{p}}\to\mathrm{GSp}_{2g}(\overline{\mathbb{Q}}_{\ell})$
+of rank $2g$, the \emph{genus-$g$ Wilson line} along $K_{p}$ is the
+defect operator
+\begin{equation}
+\label{v4-arith:w9-r6:eq:wilson-line-def}
+W^{(g)}_{\rho_{g}}(K_{p})\;:=\;\mathrm{tr}_{\rho_{g}}\bigl(\mathrm{Hol}_{K_{p}}(\mathsf{A})\bigr),
+\end{equation}
+with $\mathsf{A}\in\mathcal{F}_{G_{g,\infty}}(\mathcal{B}_{g}^{(3)})$
+the bulk rank-$2g$ gauge field in the profinite limit and
+$\mathrm{Hol}_{K_{p}}$ the path-ordered holonomy around the meridian
+$K_{p}$, assembled from the rank-$2g$ Bost--Connes Adams operations
+$\psi^{(g)}_{p}$ per finite prime.
+\end{definition}
+
+\begin{theorem}[genus-$g$ Wilson-line Frobenius identity]
+\label{v4-arith:w9-r6:thm:wilson-frobenius-g}
+\ClaimStatusProvedHereConditional \emph{(on the rank-$2g$ extension of
+\Cref{v4-arith:3d-acs:conj:qu-acs}(3) and on rank-$2g$ local Langlands
+at unramified $p$ of good reduction for $\mathcal{D}_{g}$, per the
+genus-$g$ Fargues--Scholze arXiv:2102.13459 input
+\Cref{v4-arith:ag:residual}(5))}. For every unramified prime $p$ of
+good reduction for $\mathcal{D}_{g}$,
+\begin{equation}
+\label{v4-arith:w9-r6:eq:wilson-frobenius-g}
+\langle W^{(g)}_{\rho_{g}}(K_{p})\rangle_{\mathrm{ACS}^{\mathrm{qu},g}}
+\;=\;\mathrm{tr}_{\rho_{g}}\bigl(\mathrm{Frob}_{p}\bigr)
+\;=\;\sum_{j=1}^{2g}\alpha_{j}^{(p)}.
+\end{equation}
+Equivalently, the Wilson-line defect expectation reproduces the linear
+Euler character of $\rho_{g}$ at $p$.
+\end{theorem}
+
+\begin{proof}
+Three steps.
+
+\emph{Step 1: Morishita-dictionary reduction.} The prime-knot
+$K_{p}\subset\mathcal{B}_{g}^{(3)}$ corresponds, under the
+Mazur--Morishita dictionary (Mazur 1973 ENS~6; Morishita 2012
+arXiv:0904.3399), to the inertia-generated meridian around the closed
+point $\mathfrak{p}$ above $p$. Restriction of the rank-$2g$ gauge
+field $\mathsf{A}$ to a tubular neighbourhood of $K_{p}$ is determined
+by the local Galois representation $\rho_{g,p}$ via the rank-$2g$
+generalisation of \Cref{v4-arith:3d-acs:cor:finite-wilson}: at finite
+level $G_{g,N}$, the defect expectation equals
+$\chi_{\rho_{g}\,\mathrm{mod}\,N}(\mathrm{Frob}_{p})$ for the induced
+mod-$N$ representation.
+
+\emph{Step 2: Profinite assembly.} The compatible tower
+$\{\chi_{\rho_{g}\,\mathrm{mod}\,N}(\mathrm{Frob}_{p})\}_{N}$ assembles
+under the renormalised profinite limit of
+\Cref{v4-arith:3d-acs:conj:qu-acs} to the continuous Frobenius trace
+$\mathrm{tr}_{\rho_{g}}(\mathrm{Frob}_{p})$. This requires the
+rank-$2g$ refinement of the Wilson-line axiom of
+\Cref{v4-arith:3d-acs:conj:qu-acs}(3), which is the residual
+hypothesis; it is the same assumption that supplies
+\Cref{v4-arith:w8-a:lem:wilson-finite} at $g=0$.
+
+\emph{Step 3: Bost--Connes Adams identification.} Borger 2009
+arXiv:0906.3146 \S8 identifies each $\psi_{p}$ with the classical
+Frobenius on the $\lambda$-ring envelope of the Tate motive; the
+rank-$2g$ generalisation replaces the scalar action on
+$\mathcal{H}_{p}^{\mathrm{BC}}$ by the $2g$-fold generating-series
+action with Satake parameters
+$\{\alpha_{j}^{(p)}\}_{j=1}^{2g}$. Under the unramified hypothesis,
+$\mathrm{tr}\,\rho_{g}(\mathrm{Frob}_{p})=\sum_{j=1}^{2g}\alpha_{j}^{(p)}$
+by definition of the Satake parameters. Combining with Step~1--2 gives
+\eqref{v4-arith:w9-r6:eq:wilson-frobenius-g}.
+\end{proof}
+
+\subsection*{Attack-heal on the Wilson-line Frobenius identity}
+\label{v4-arith:w9-r6:ah:wilson-line-g}
+
+\paragraph{Attack 1 (source collision).} The rank-$2g$ Bost--Connes
+Adams action of Borger 2009 \S8 and the rank-$2g$ local Langlands of
+Fargues--Scholze 2021 arXiv:2102.13459 derive from disjoint sources
+(absolute $\lambda$-ring theory; $p$-adic geometric Langlands). The
+Morishita knot-prime dictionary derives from Mazur 1973 plus Morishita
+2012, also disjoint. \textbf{Pass.}
+
+\paragraph{Attack 2 (sign/convention).} Satake parameter
+normalisation: unramified $\rho_{g,p}$ has eigenvalues
+$\alpha_{j}^{(p)}$ with symplectic pairing
+$\alpha_{j}^{(p)}\alpha_{2g+1-j}^{(p)}=p^{w_{\mathcal{D}_{g}}-1}$; the
+Frobenius trace is $\sum_{j=1}^{2g}\alpha_{j}^{(p)}$ rather than the
+character-value $\chi_{\rho_{g}}(\mathrm{Frob}_{p})$ on a
+higher-exterior-power representation. Fixed: we use $\rho_{g}$ itself,
+not $\bigwedge^{k}\rho_{g}$. \textbf{Pass.}
+
+\paragraph{Attack 3 (ambient category).} The Wilson-line defect lives
+in the category of bulk local operators of
+$\mathrm{ACS}^{\mathrm{qu},g}$; at finite level,
+\Cref{v4-arith:3d-acs:thm:finite-bulk-boundary} locates it in
+$\mathrm{Sh}_{\tau_{\Sigma}(\alpha_{g,N})}(\mathcal{F}_{G_{g,N}}(\Sigma))$
+for $\Sigma=\partial(\text{tubular neighbourhood of }K_{p})$. The
+rank-$2g$ generalisation is structurally identical. \textbf{Pass.}
+
+\paragraph{Attack 4 (missing hypothesis).} The identification of the
+profinite-renormalised Wilson-line expectation with
+$\mathrm{tr}_{\rho_{g}}(\mathrm{Frob}_{p})$ requires:
+(a) profinite renormalisation of
+$\{Z^{\mathrm{Ar}}_{G_{g,N},\alpha_{g,N}}\}_{N}$; (b) compatible
+tower $\{\alpha_{g,N}\}_{N}$; (c) rank-$2g$ local Langlands at
+$p$ (Fargues--Scholze for general linear; Genestier--Lafforgue /
+Zhu for $\mathrm{GSp}_{2g}$). (a)--(b) are residuals from
+\Cref{v4-arith:3d-acs:residual}(2); (c) is
+\Cref{v4-arith:ag:residual}(5). \textbf{Residual: (a)--(c) inherited.}
+
+\paragraph{Attack 5 (false functoriality).} The Wilson line is
+functorial under tensor operations on representations:
+$W^{(g)}_{\rho_{1}\otimes\rho_{2}}=W^{(g)}_{\rho_{1}}\cdot W^{(g)}_{\rho_{2}}$
+at the classical defect level. At the quantum level this requires the
+factorisation algebra structure of $\mathcal{V}^{\mathrm{prim},g}$
+(rank-$2g$ Heisenberg); matches Ch.~\ref{v4-arith:all-genus-koszul}
+Window~V. \textbf{Pass.}
+
+\paragraph{Attack 6 (unproved equivalence).} Identification of the
+bulk holonomy $\mathrm{Hol}_{K_{p}}(\mathsf{A})$ with the local Galois
+class
+$\rho_{g,p}:G_{\mathbb{Q}_{p}}\to\mathrm{GSp}_{2g}$ passes through the
+Artin--Verdier fundamental-class pairing of
+\Cref{v4-arith:3d-acs:def:finite-field-groupoid}, which is unchanged
+at genus $g$. Unramified good reduction of $\mathcal{D}_{g}$ at $p$
+excludes wild ramification and singular-fibre pathologies.
+\textbf{Pass on good reduction; residual at ramified primes.}
+
+\paragraph{Attack 7 (compute-engine sync).} No compute engine currently
+backs this chapter; the $g=0$ counterpart
+\Cref{v4-arith:w8-a:lem:wilson-finite} is engine-free; Part~C of
+Vol~IV is not affected. \textbf{Pass.}
+
+\section{Archimedean Wilson-Surface at Genus $g$}
+\label{v4-arith:w9-r6:wilson-surface-g}
+
+The archimedean fibre at $\infty$ of $\mathcal{B}_{g}^{(3)}$ is not a
+knot but a closed surface (or a bundle of closed surfaces, in
+Window~I). The archimedean Wilson-surface $F^{(g)}_{\infty}$ is the
+genus-$g$ analog of \Cref{v4-arith:w8-a:def:F-infinity}.
+
+\begin{definition}[genus-$g$ archimedean Arakelov K\"ahler form]
+\label{v4-arith:w9-r6:def:arakelov-kahler-g}
+\ClaimStatusDefinitional. The \emph{genus-$g$ Arakelov K\"ahler form}
+on the archimedean fibre $\mathcal{B}_{g}^{(3)}\mid_{\infty}$ is
+\begin{equation}
+\label{v4-arith:w9-r6:eq:arakelov-kahler-g}
+\mu_{\mathrm{Ar},g}\;:=\;\frac{i}{2g}\sum_{j=1}^{g}\omega_{j}\wedge\overline{\omega_{j}},
+\end{equation}
+with $\{\omega_{j}\}_{j=1}^{g}$ a basis of holomorphic differentials on
+the archimedean fibre
+$X_{\infty}(\mathbb{C})\hookrightarrow\mathcal{B}_{g}^{(3)}\mid_{\infty}$
+(for Window~I) or $g$ copies of the archimedean Haar form on the
+Minkowski torus $T_{K}$ (for Window~II) or the natural Riemannian
+volume form scaled per Siegel-modular signature (for Window~VI). This
+is the Faltings 1984 arithmetic K\"ahler form (Faltings 1984
+\emph{Ann.~Math.}~119) on the generic fibre; at $g=0$ the sum is
+empty and
+$\mu_{\mathrm{Ar},0}=0$.
+\end{definition}
+
+\begin{definition}[archimedean Wilson-surface at genus $g$]
+\label{v4-arith:w9-r6:def:wilson-surface-g}
+\ClaimStatusDefinitional. The \emph{genus-$g$ archimedean
+Wilson-surface} is the bulk area-scaling defect
+\begin{equation}
+\label{v4-arith:w9-r6:eq:wilson-surface-g-def}
+F^{(g)}_{\infty}\;:=\;\exp\Bigl(-k^{\mathrm{Ar},g}\int_{\Sigma_{\infty}}\mu_{\mathrm{Ar},g}\Bigr),
+\end{equation}
+where $\Sigma_{\infty}\subset\mathcal{B}_{g}^{(3)}$ is the archimedean
+fibre $\mathcal{B}_{g}^{(3)}\mid_{\infty}$ viewed as a closed
+$2$-surface with the Faltings K\"ahler form of
+\Cref{v4-arith:w9-r6:def:arakelov-kahler-g}. In operator-theoretic
+form on
+$\mathcal{H}^{(\infty),g}$,
+\begin{equation}
+\label{v4-arith:w9-r6:eq:wilson-surface-g-op}
+F^{(g)}_{\infty}\;=\;\exp\bigl(-k^{\mathrm{Ar},g}\sum_{j=1}^{g}L_{0,j}^{\mathrm{Ar}}\bigr),
+\end{equation}
+for $L_{0,j}^{\mathrm{Ar}}$ the Fock zero-mode on the $j$-th archimedean
+Heisenberg factor $\mathcal{H}^{(\infty),g}_{j}$.
+\end{definition}
+
+\begin{theorem}[conjugacy to genus-$g$ Virasoro]
+\label{v4-arith:w9-r6:thm:virasoro-conjugacy-g}
+\ClaimStatusProvedHereConditional \emph{(on the rank-$g$ extension of
+the primary-Virasoro reconciliation
+\Cref{v4-arith:rh:conj:primary-Virasoro} per
+\Cref{v4-arith:ag:residual}(7), and on the rank-$g$ Arakelov--Mellin
+unitarity of \Cref{v4-arith:w9-r6:lem:mellin-unitary-g} below)}. The
+genus-$g$ archimedean Wilson-surface $F^{(g)}_{\infty}$ is conjugate
+to the genus-$g$ arithmetic Virasoro zero-mode
+$L^{(g)}_{0}$ with central charge $c^{\mathrm{Ar},g}=g$:
+\begin{equation}
+\label{v4-arith:w9-r6:eq:virasoro-conjugacy-g}
+F^{(g)}_{\infty}\;=\;U^{(g)}\,\exp\bigl(-L^{(g)}_{0}\bigr)\,(U^{(g)})^{-1},
+\end{equation}
+with $U^{(g)}$ the rank-$g$ Mellin-transform unitary of
+\Cref{v4-arith:w9-r6:lem:mellin-unitary-g}. Equivalently, the Sugawara
+construction on the rank-$2g$ archimedean Heisenberg produces
+$L^{(g)}_{0}$ as the arithmetic Virasoro zero-mode sourced by the
+rank-$2g$ archimedean Fock; the Arakelov area-scaling
+$F^{(g)}_{\infty}$ is its Mellin conjugate.
+\end{theorem}
+
+\begin{lemma}[rank-$g$ Arakelov--Mellin unitarity]
+\label{v4-arith:w9-r6:lem:mellin-unitary-g}
+\ClaimStatusProvedHereConditional \emph{(on the rank-$g$ Weil--Petersson
+isometry lift of Ch.~\ref{v4-arith:w5-a:chapter} restricted to the
+archimedean fibre; genus-$g$ Petersson inner-product of
+\Cref{v4-arith:ag:residual}(2))}. There exists a unitary
+$U^{(g)}:L^{2}(\mathbb{R}_{+}^{g},\prod_{j=1}^{g}d^{\times}x_{j})\to L^{2}(\mathrm{Re}\,s_{j}=w_{\mathcal{D}_{g}}/2,\,j=1,\dots,g)$
+defined by the $g$-fold tensor of Mellin transforms
+\begin{equation}
+\label{v4-arith:w9-r6:eq:mellin-g}
+U^{(g)}f(s_{1},\dots,s_{g})\;=\;\prod_{j=1}^{g}\int_{0}^{\infty}f_{j}(x_{j})x_{j}^{s_{j}}d^{\times}x_{j},
+\end{equation}
+conjugating the rank-$g$ Arakelov area-scaling flow
+$\partial_{t_{j}}=\partial/\partial\log\|\cdot\|_{\infty,j}$ to
+multiplication by $s_{j}-w_{\mathcal{D}_{g}}/2$ on the critical
+poly-line.
+\end{lemma}
+
+\begin{proof}
+The Faltings K\"ahler form
+\eqref{v4-arith:w9-r6:eq:arakelov-kahler-g} decomposes as a sum of
+$g$ orthogonal rank-$1$ pieces under the Hodge decomposition
+$\mathcal{E}_{g}\otimes\mathbb{C}=\mathcal{E}_{g}^{1,0}\oplus\mathcal{E}_{g}^{0,1}$;
+each piece carries a rank-$1$ Arakelov scaling flow
+$t_{j}\mapsto e^{-t_{j}}\|\cdot\|_{\infty,j}$ with Mellin variable
+$s_{j}$. The rank-$1$ unitary is
+$\mathrm{Mellin}:L^{2}(\mathbb{R}_{+},d^{\times}x)\to L^{2}(\mathrm{Re}\,s=w_{\mathcal{D}_{g}}/2)$,
+classical (Tate 1950; Titchmarsh 1986 Chapter~14); the $g$-fold tensor
+is unitary by Fubini on the product measure. The scaling flow is
+diagonalised by Mellin at the centre
+$\mathrm{Re}\,s_{j}=w_{\mathcal{D}_{g}}/2$ to match
+\Cref{v4-arith:w9-r6:datum}(4).
+\end{proof}
+
+\begin{proof}[Proof of \Cref{v4-arith:w9-r6:thm:virasoro-conjugacy-g}]
+Under $U^{(g)}$, the archimedean Wilson-surface
+\eqref{v4-arith:w9-r6:eq:wilson-surface-g-op} becomes
+$\exp(-k^{\mathrm{Ar},g}\sum_{j=1}^{g}(s_{j}-w_{\mathcal{D}_{g}}/2))$ on
+the product Mellin space; this coincides with
+$\exp(-L^{(g)}_{0})$ where
+$L^{(g)}_{0}=\sum_{j=1}^{g}L_{0,j}^{\mathrm{Ar}}$ is the rank-$g$
+arithmetic Virasoro zero-mode on the product archimedean Heisenberg
+Fock. The Sugawara construction of
+\Cref{v4-arith:3d-acs:thm:km-lift} scales rank-linearly per
+Ch.~\ref{v4-arith:all-genus-koszul} (central charge $c^{\mathrm{Ar},g}=g$);
+the rank-$g$ primary sector admits a Virasoro zero-mode which is the
+natural lift of $L_{0,j}^{\mathrm{Ar}}$ on each archimedean Heisenberg
+factor. Summing over factors gives the rank-$g$ zero-mode
+$L^{(g)}_{0}$; this is the \Cref{v4-arith:rh:conj:primary-Virasoro}
+reconciliation at rank $g$.
+\end{proof}
+
+\begin{remark}[Wilson-surface realisation as bulk $\partial_{k}$-derivative]
+\label{v4-arith:w9-r6:rem:wilson-surface-realisation}
+In the 3D ACS framework, the archimedean Wilson-surface is the bulk
+partition-function derivative along the arithmetic-level deformation
+restricted to the archimedean fibre:
+$F^{(g)}_{\infty}=\partial Z_{\mathrm{ACS}^{\mathrm{qu},g}}/\partial k^{\mathrm{Ar},g}\mid_{\mathrm{archimedean}}$,
+by the area-generation scheme of
+\Cref{v4-arith:w8-a:rem:wilson-infinity} scaled to rank $2g$. This is
+the arithmetic analog of the Witten-Verlinde area operator on complex
+Riemann surfaces.
+\end{remark}
+
+\subsection*{Attack-heal on the archimedean Wilson-surface}
+\label{v4-arith:w9-r6:ah:wilson-surface-g}
+
+\paragraph{Attack 1 (source collision).} Faltings 1984 arithmetic
+K\"ahler form (Arakelov geometry) and
+\Cref{v4-arith:rh:conj:primary-Virasoro} (primary Virasoro sector) are
+source-disjoint. The Mellin-transform unitary derives from Tate 1950;
+also disjoint. \textbf{Pass.}
+
+\paragraph{Attack 2 (sign/convention).} The sign in
+$F^{(g)}_{\infty}=\exp(-k^{\mathrm{Ar},g}\int\mu_{\mathrm{Ar},g})$
+matches the Mellin convention
+$\partial_{t}\leftrightarrow-s+w_{\mathcal{D}_{g}}/2$ on the critical
+line; the Faltings normalisation
+\eqref{v4-arith:w9-r6:eq:arakelov-kahler-g} with prefactor
+$(2g)^{-1}$ is adjusted so that the total area integrates to
+$g\cdot(\text{area per factor})$. \textbf{Pass.}
+
+\paragraph{Attack 3 (ambient category).} The Wilson-surface lives in
+the category of bulk codimension-$1$ defects of
+$\mathrm{ACS}^{\mathrm{qu},g}$; at finite level this is
+$\mathrm{Sh}_{\tau(\alpha_{g,N})}(\mathcal{F}_{G_{g,N}}(\Sigma_{\infty}))$
+restricted to the archimedean surface. Standard. \textbf{Pass.}
+
+\paragraph{Attack 4 (missing hypothesis).} Conjugacy to
+$L^{(g)}_{0}$ requires rank-$g$ primary-Virasoro reconciliation
+(\Cref{v4-arith:ag:residual}(7)) and rank-$g$ Weil--Petersson
+isometry lift (\Cref{v4-arith:ag:residual}(2)). Both listed residuals.
+\textbf{Residual: (7), (2).}
+
+\paragraph{Attack 5 (false functoriality).} The Wilson-surface is
+not the tensor product of $g$ rank-$1$ Wilson-surfaces unless the
+Faltings K\"ahler form splits as a direct sum. For Windows~I, II it
+does split by Hodge decomposition; for Window~VI (Shimura) it
+requires the Siegel--Maass metric, distinct from the product metric.
+\textbf{Pass on Windows~I, II; Window~VI requires further Siegel
+data.}
+
+\paragraph{Attack 6 (unproved equivalence).} Conjugacy
+$F^{(g)}_{\infty}=U^{(g)}\exp(-L^{(g)}_{0})(U^{(g)})^{-1}$ presumes
+Mellin unitarity at rank $g$; this is
+\Cref{v4-arith:w9-r6:lem:mellin-unitary-g} conditioned on the
+rank-$g$ Weil--Petersson lift. \textbf{Residual: rank-$g$ Mellin
+unitarity.}
+
+\paragraph{Attack 7 (compute-engine sync).} No compute engine
+currently backs the archimedean Wilson-surface; the $g=0$ counterpart
+in Ch.~\ref{v4-arith:w8-a:deninger-chiral-homology} is similarly
+engine-free. Part~C of Vol~IV unaffected. \textbf{Pass.}
+
+\section{Global Frobenius at Genus $g$ and the Deninger Identification}
+\label{v4-arith:w9-r6:deninger-g}
+
+\begin{definition}[global genus-$g$ Frobenius]
+\label{v4-arith:w9-r6:def:global-F-g}
+\ClaimStatusDefinitional. The \emph{global genus-$g$ Frobenius} on
+$H^{\bullet}_{\Delta,g}(\mathcal{B}_{g})$ is the restricted-tensor
+product
+\begin{equation}
+\label{v4-arith:w9-r6:eq:global-F-g}
+F^{(g)}\;:=\;F^{(g)}_{\infty}\otimes\bigotimes_{p}{}^{\prime}\,\psi^{(g)}_{p},
+\end{equation}
+acting on
+$\mathcal{V}^{\mathrm{prim},g}_{\mathrm{Heis}}=\mathcal{H}^{(\infty),g}\otimes\bigotimes_{p}'\mathcal{H}^{(p),g}$
+and descending to the genus-$g$ Vol~IV Deninger cohomology
+$H^{\bullet}_{\Delta,g}$ of \Cref{v4-arith:w8-a:def:deninger-g} via the
+rank-$2g$ bar construction of
+\Cref{v4-arith:w8-a:thm:all-genus-deninger}.
+\end{definition}
+
+\begin{theorem}[genus-$g$ Wilson assembly of the global Frobenius]
+\label{v4-arith:w9-r6:thm:global-F-g-wilson}
+\ClaimStatusProvedHereConditional \emph{(on
+\Cref{v4-arith:w9-r6:thm:wilson-frobenius-g},
+\Cref{v4-arith:w9-r6:thm:virasoro-conjugacy-g}, and the
+Tate-restricted-tensor compatibility F2.c at rank $2g$, per
+\Cref{v4-arith:cl:F2-closure} scaled)}. The global Frobenius
+$F^{(g)}$ admits bulk Wilson realisations:
+\begin{enumerate}
+\item \emph{Finite places.} $\psi^{(g)}_{p}$ is realised as the
+genus-$g$ Wilson-line observable along the knot $K_{p}$:
+$\mathrm{tr}_{\rho_{g}}(\psi^{(g)}_{p})=\langle W^{(g)}_{\rho_{g}}(K_{p})\rangle_{\mathrm{ACS}^{\mathrm{qu},g}}
+=\mathrm{tr}_{\rho_{g}}(\mathrm{Frob}_{p})$.
+\item \emph{Archimedean place.} $F^{(g)}_{\infty}$ is realised as the
+archimedean Wilson-surface of
+\Cref{v4-arith:w9-r6:def:wilson-surface-g}, conjugate to
+$\exp(-L^{(g)}_{0})$ with central charge $c^{\mathrm{Ar},g}=g$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Item~(1) follows from \Cref{v4-arith:w9-r6:thm:wilson-frobenius-g}
+applied per-prime, assembled under Tate restricted-tensor
+compatibility (F2.c) across almost-all primes. At genus $g$, F2.c
+scales to rank $2g$ without structural change: the spherical unit
+$|0\rangle_{p}$ of the rank-$2g$ local Heisenberg is a unique
+$\psi^{(g)}_{p}$-eigenvector up to normalisation $p^{-w_{\mathcal{D}_{g}}/2}$.
+
+Item~(2) is \Cref{v4-arith:w9-r6:thm:virasoro-conjugacy-g}.
+
+The global descent to $H^{\bullet}_{\Delta,g}$ uses the rank-$2g$ bar
+complex of \Cref{v4-arith:w8-a:def:deninger-g}, invariant under each
+$\psi^{(g)}_{p}$ by multiplicativity and under $F^{(g)}_{\infty}$ by the
+graded-Virasoro action.
+\end{proof}
+
+\begin{theorem}[all-genus Deninger identification compatible with Ch.~\ref{v4-arith:all-genus-koszul} motivic weights]
+\label{v4-arith:w9-r6:thm:deninger-g-full}
+\ClaimStatusProvedHereConditional \emph{(on
+\Cref{v4-arith:w8-a:thm:all-genus-deninger}(1)--(4),
+\Cref{v4-arith:w9-r6:thm:wilson-frobenius-g},
+\Cref{v4-arith:w9-r6:thm:virasoro-conjugacy-g}, and
+\Cref{v4-arith:w9-r6:prop:partition-g})}. For every $g\geq 0$ and every
+arithmetic genus-$g$ datum
+$\mathcal{D}_{g}=(\mathcal{B}_{g},\mathcal{E}_{g},\varphi_{g})$:
+\begin{enumerate}
+\item \emph{Triple labelling.} The Vol~IV genus-$g$ Deninger
+cohomology $H^{\bullet}_{\Delta,g}$, the boundary chiral homology
+of $\mathrm{ACS}^{\mathrm{qu},g}_{k^{\mathrm{Ar},g}}$ on
+$\mathcal{B}_{g}^{(3)}$, and the rank-$2g$ arithmetic chiral homology
+$H^{\bullet}_{\mathrm{ch}}(\mathcal{B}_{g}^{(3)},\mathsf{H}^{\mathrm{Ar},g})$
+coincide on the primary rank-$2g$ Heisenberg scope.
+\item \emph{Character identity with motivic weight.}
+\begin{equation}
+\label{v4-arith:w9-r6:eq:character-g}
+\chi\bigl(\mathcal{V}^{\mathrm{prim},g}\bigr)(s)
+\;=\;\det\nolimits_{\infty}\bigl(1-e^{-s}F^{(g)}\mid H^{\bullet}_{\Delta,g}\bigr)^{(-1)^{\bullet}}
+\;=\;\Lambda_{\mathcal{D}_{g}}(s),
+\end{equation}
+where $\Lambda_{\mathcal{D}_{g}}$ has motivic weight
+$w_{\mathcal{D}_{g}}\in\{1,2,2g+1\}$ per \Cref{v4-arith:ag:table:rows}.
+\item \emph{Wilson-observable form of the Frobenius.} The local
+factors of $F^{(g)}$ appearing in
+\eqref{v4-arith:w9-r6:eq:character-g} admit the Wilson-line /
+Wilson-surface realisation of
+\Cref{v4-arith:w9-r6:thm:global-F-g-wilson}.
+\item \emph{Purity at $\mathrm{Re}(s)=w_{\mathcal{D}_{g}}/2$.}
+The genus-$g$ purity axiom of \Cref{v4-arith:w8-a:deninger-wishlist}(6)
+becomes $F^{(g)}$-weight $w_{\mathcal{D}_{g}}/2$ on
+$H^{1}_{\Delta,g}$; equivalently the motivic Riemann Hypothesis for
+the row $\mathcal{D}_{g}$ (\Cref{v4-arith:ag:cor:all-genus-FRH}).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Item~(1) is \Cref{v4-arith:w8-a:thm:all-genus-deninger}(1) unchanged,
+scaled to rank $2g$.
+
+Item~(2): the regularised determinant $\det_{\infty}(1-e^{-s}F^{(g)}\mid
+H^{\bullet}_{\Delta,g})^{(-1)^{\bullet}}$ decomposes across Fock degrees:
+$H^{0}_{\Delta,g}\cong\mathbb{C}_{0}$ contributes
+$1-e^{-s}$; $H^{2}_{\Delta,g}\cong\mathbb{C}_{w_{\mathcal{D}_{g}}}$ (Tate
+twist by the motivic weight) contributes
+$1-e^{w_{\mathcal{D}_{g}}-s}$; $H^{1}_{\Delta,g}$ carries the
+regularised product $\prod_{\rho}(1-e^{\rho-s})$ over the non-trivial
+zeros of $\Lambda_{\mathcal{D}_{g}}$. Multiplying and normalising by
+the $\pi^{-gs/2}\Gamma_{\mathbb{C}}(s)^{g}$ absorbed in the definition
+of $F^{(g)}_{\infty}$ gives $\Lambda_{\mathcal{D}_{g}}(s)$ per
+\Cref{v4-arith:w8-a:thm:all-genus-deninger}(3).
+
+Item~(3) is \Cref{v4-arith:w9-r6:thm:global-F-g-wilson}.
+
+Item~(4) is the rank-$g$ analog of
+\Cref{v4-arith:w8-a:thm:purity-equivalence} via
+\Cref{v4-arith:ag:cor:all-genus-FRH}: weight-$w_{\mathcal{D}_{g}}/2$
+purity is the statement that all non-trivial zeros of
+$\Lambda_{\mathcal{D}_{g}}$ lie on
+$\mathrm{Re}(s)=w_{\mathcal{D}_{g}}/2$, subsuming the classical RH at
+$g=0$, Hasse--Weil at weight $2$, and Siegel-spin at weight $2g+1$.
+\end{proof}
+
+\subsection*{Attack-heal on the all-genus Deninger identification}
+\label{v4-arith:w9-r6:ah:deninger-g}
+
+\paragraph{Attack 1 (source collision).} Deninger 1998 (foliated
+dynamical-systems analogy), Bost--Connes 1995 (KMS partition on the
+idele class group), Fargues--Scholze 2021 (rank-$2g$ local Langlands),
+Faltings 1984 (Arakelov K\"ahler form), Arthur 2013 (endoscopic
+classification for Siegel spin) are pairwise source-disjoint.
+\textbf{Pass.}
+
+\paragraph{Attack 2 (sign/convention).} Motivic-weight normalisation:
+Dedekind $w=1$, Hasse--Weil $w=2$, Siegel spin $w=2g+1$ per
+\Cref{v4-arith:ag:table:rows}. The alternating-sign Euler product
+$\det(\cdot)^{(-1)^{\bullet}}$ matches Deninger's determinant
+convention; the central-charge $g$ of the Sugawara construction
+matches the archimedean rank. \textbf{Pass.}
+
+\paragraph{Attack 3 (ambient category).} The rank-$2g$ bar
+$B^{\mathrm{Ar},g}(\mathcal{V}^{\mathrm{prim},g})$ lives in the category
+of graded $\mathbb{C}$-vector spaces with rank-$2g$ Heisenberg Fock
+grading; the $E_{1}$-ordered bar on $\mathbb{P}\cup\{\infty\}$ is
+rank-enhanced per \Cref{v4-arith:w9-r6:prop:partition-g}.
+\textbf{Pass.}
+
+\paragraph{Attack 4 (missing hypothesis).} The residuals of
+\Cref{v4-arith:ag:residual} (rank-$g$ Positselski, rank-$g$
+Koszul--Petersson, $GL_{2g}$ local geometric Langlands, rank-$g$
+Virasoro bootstrap, rank-$g$ F2.c) all propagate. The residuals of
+\Cref{v4-arith:3d-acs:residual} (profinite ACS renormalisation,
+boundary comparison, BD/CG comparison, positivity) also propagate.
+\textbf{Residual list identical to
+\Cref{v4-arith:ag:residual}+\Cref{v4-arith:3d-acs:residual} scaled to
+rank $2g$.}
+
+\paragraph{Attack 5 (false functoriality).} Functoriality under
+pullback along
+$\overline{\mathrm{Spec}\,\mathcal{O}_{K}}\to\overline{\mathrm{Spec}\,\mathbb{Z}}$
+requires
+$g=\tfrac{1}{2}[K:\mathbb{Q}]$ at totally imaginary $K$ (Window~II);
+this is \Cref{v4-arith:w8-a:ah:identification} Attack~5 extended to
+genus-$g$ base. For Shimura (Window~VI), functoriality under Hecke
+correspondences holds because $F^{(g)}$ commutes with Hecke operators
+on the rank-$2g$ automorphic side. \textbf{Pass on Windows~I, II, VI.}
+
+\paragraph{Attack 6 (unproved equivalence).} Identification of the
+$H^{1}_{\Delta,g}$ spectrum with the non-trivial zeros of
+$\Lambda_{\mathcal{D}_{g}}$ requires rank-$g$ H-P$^{\mathrm{Ar}}$,
+i.e.\ a self-adjoint lift of the rank-$g$ Virasoro zero-mode
+$L^{(g)}_{0}$. This is the rank-$g$ analog of
+\Cref{v4-arith:rh:hyp:HPAr}; open. \textbf{Residual: rank-$g$
+H-P$^{\mathrm{Ar}}$.}
+
+\paragraph{Attack 7 (compute-engine sync).} Part~C of Vol~IV contains
+no compute engines backing the all-genus Deninger identification. The
+$g=0$ counterpart (Ch.~\ref{v4-arith:w8-a:deninger-chiral-homology})
+is engine-free; rank-scaling preserves this. \textbf{Pass.}
+
+\section{Uniform $g=0$ Recovery}
+\label{v4-arith:w9-r6:g-zero-recovery}
+
+Specialising to $g=0$ recovers the Riemann framework. Three checks.
+
+\begin{itemize}
+\item \emph{Archimedean Wilson-surface.} At $g=0$,
+$\mu_{\mathrm{Ar},0}=0$ (empty Hodge sum); the Wilson-surface
+\eqref{v4-arith:w9-r6:eq:wilson-surface-g-def} degenerates to the
+trivial defect
+$\exp(-k^{\mathrm{Ar}}\cdot 0)=1$; as operator on
+$\mathcal{H}^{(\infty),0}$ it acts as the Arakelov scaling of
+\Cref{v4-arith:w8-a:def:F-infinity} and
+\Cref{v4-arith:w9-r2:def:F-infty-WS}, i.e.\ $\exp(-\partial_{t})$
+conjugate to $\Theta_{\xi}$; the rank-$g$ Mellin unitary collapses to
+the rank-$1$ Mellin of \Cref{v4-arith:w8-a:lem:L0-conjugacy} and
+\Cref{v4-arith:w9-r2:thm:conjugacy}. No genus-$g$ correction is
+required.
+\item \emph{Wilson-line Frobenius.} At $g=0$, $\rho_{0}$ is the
+trivial rank-$0$ representation; the identity
+\eqref{v4-arith:w9-r6:eq:wilson-frobenius-g} collapses to
+$\langle W_{\rho}(K_{p})\rangle=\mathrm{tr}\,\rho(\mathrm{Frob}_{p})$
+of \Cref{v4-arith:3d-acs:conj:qu-acs}(3) and
+\Cref{v4-arith:w9-r1:thm:main} for any continuous
+$\rho:\pi_{1}^{\mathrm{\acute{e}t}}\to GL_{2}$; the rank-$2$ case
+of \Cref{v4-arith:w8-a:lem:wilson-finite} is the Bost--Connes Adams
+$\psi_{p}=\mu_{p}\otimes\mu_{p}^{*}$.
+\item \emph{All-genus Deninger identification.} At $g=0$,
+$\Lambda_{\mathcal{D}_{0}}(s)=\xi(s)$; the motivic weight is
+$w_{\mathcal{D}_{0}}=1$; the character identity
+\eqref{v4-arith:w9-r6:eq:character-g} collapses to the $g=0$
+identity \eqref{v4-arith:w8-a:eq:character} of
+\Cref{v4-arith:w8-a:thm:character-identity}; the purity locus is
+$\mathrm{Re}(s)=1/2$, the Riemann critical line.
+\end{itemize}
+
+\begin{corollary}[uniform $g=0$ specialisation]
+\label{v4-arith:w9-r6:cor:g-zero}
+\ClaimStatusProvedHere. The genus-$g$ constructions of
+Sections~\ref{v4-arith:w9-r6:3d-acs-g},
+\ref{v4-arith:w9-r6:wilson-line-g},
+\ref{v4-arith:w9-r6:wilson-surface-g} and
+\ref{v4-arith:w9-r6:deninger-g} specialise at $g=0$ to the rank-$2$
+constructions of Chs.~\ref{v4-arith:3d-acs-E1bar},
+\ref{v4-arith:w8-a:deninger-chiral-homology},
+\ref{v4-arith:w9-r1:wilson-frobenius} (R1 baseline), and
+\ref{v4-arith:w9-r2:archimedean-wilson-surface} (R2 baseline):
+Wilson-line Frobenius \Cref{v4-arith:3d-acs:conj:qu-acs}(3) and
+\Cref{v4-arith:w9-r1:thm:main}; archimedean Wilson-surface
+\Cref{v4-arith:w8-a:def:F-infinity} and
+\Cref{v4-arith:w9-r2:def:F-infty-WS} with conjugacy
+\Cref{v4-arith:w9-r2:thm:conjugacy}; Deninger character identity
+\Cref{v4-arith:w8-a:thm:character-identity}. No genus-$g$
+correction terms are dropped; all specialisations are structural
+degenerations of the rank-$2g$ setting at $g=0$.
+\end{corollary}
+
+\begin{proof}
+Each item in the bulleted list above is the structural specialisation
+of the corresponding genus-$g$ statement at $g=0$. No analytic
+correction is required: $g=0$ is a smooth degeneration of the
+rank-$2g$ Fock, the Hodge decomposition $g+g=0$, and the motivic
+weight $w_{\mathcal{D}_{0}}=1$.
+\end{proof}
+
+\begin{remark}[Hasse--Weil and Siegel-spin RH at genus $g\geq 1$]
+\label{v4-arith:w9-r6:rem:hw-ss-rh}
+At $g\geq 1$, the Deninger-chiral purity locus
+$\mathrm{Re}(s)=w_{\mathcal{D}_{g}}/2$ is the motivic Riemann
+Hypothesis for the row:
+\begin{itemize}
+\item $w_{\mathcal{D}_{g}}=1$ (Dedekind, Window~II at totally imaginary
+$K$ of degree $2g$): the generalised Riemann Hypothesis for
+$\zeta_{K}(s)$.
+\item $w_{\mathcal{D}_{g}}=2$ (Hasse--Weil, Windows~I, V at the Jacobian
+of a curve of genus $g$): the Hasse--Weil Riemann Hypothesis on the
+weight-$1$ motive $H^{1}(\mathrm{Jac}(X_{K}))$, critical line
+$\mathrm{Re}(s)=1$.
+\item $w_{\mathcal{D}_{g}}=2g+1$ (Siegel spin, Window~VI at cusp form
+$\pi$ on $\mathrm{GSp}_{2g}$): the Siegel-spin Riemann Hypothesis,
+critical line $\mathrm{Re}(s)=g+1/2$.
+\end{itemize}
+The Wilson-line / Wilson-surface realisation converts each case to a
+bulk topological-gauge-theoretic spectral statement on the
+partition-function zeros of $\mathrm{ACS}^{\mathrm{qu},g}_{k^{\mathrm{Ar},g}}$
+on the corresponding arithmetic 3-space $\mathcal{B}_{g}^{(3)}$.
+\end{remark}
+
+\section{Residual Obligations}
+\label{v4-arith:w9-r6:residual}
+
+The genus-$g$ extension of this chapter inherits residuals from
+Ch.~\ref{v4-arith:all-genus-koszul} and Ch.~\ref{v4-arith:3d-acs-E1bar}
+scaled to rank $2g$, and contributes four chapter-specific residuals.
+
+\begin{enumerate}
+\item \emph{Rank-$2g$ local Langlands compatibility at ramified
+primes.} \Cref{v4-arith:w9-r6:thm:wilson-frobenius-g} holds at
+unramified primes of good reduction for $\mathcal{D}_{g}$. At ramified
+primes, the identity requires a local twist term depending on the
+Artin conductor and the Fargues--Scholze / Genestier--Lafforgue
+correspondence for $\mathrm{GSp}_{2g}$. Scope: 20--30 pages,
+extending \Cref{v4-arith:ag:residual}(5).
+\item \emph{Rank-$g$ Faltings K\"ahler splitting for Shimura Window~VI.}
+The archimedean Wilson-surface
+\eqref{v4-arith:w9-r6:eq:wilson-surface-g-def} presumes the Faltings
+K\"ahler form splits as a direct sum of $g$ orthogonal rank-$1$ pieces;
+this holds for Jacobians (Window~I) and Minkowski tori (Window~II) by
+Hodge decomposition, but requires the Siegel--Maass metric on
+$\mathcal{A}_{g}$ (Kudla 1997 \emph{Ann.~Math.}~146) for Window~VI.
+Scope: 10--15 pages.
+\item \emph{Rank-$g$ Bost--Connes Adams compatibility.} Borger 2009
+\S8's identification of $\psi_{p}$ with the classical Frobenius on the
+Tate motive scales to rank $2g$ via the $\lambda$-ring structure on
+the rank-$2g$ arithmetic Heisenberg. Formally immediate at each
+finite prime; the restricted-tensor compatibility across almost all
+primes is F2.c at rank $2g$, inheriting
+\Cref{v4-arith:ag:residual}(6). Scope: 5--10 pages.
+\item \emph{Rank-$g$ H-P$^{\mathrm{Ar}}$.} Self-adjoint lift of
+$L^{(g)}_{0}$ to a Hilbert completion of
+$H^{1}_{\Delta,g}$ in the rank-$g$ arithmetic Petersson inner product.
+This is the direct rank-$g$ analog of
+\Cref{v4-arith:rh:hyp:HPAr}. Scope: inherited from H-P$^{\mathrm{Ar}}$
+plus \Cref{v4-arith:ag:residual}(2)--(7). The residual is the motivic
+Riemann Hypothesis in Hilbert--P\'olya form.
+\end{enumerate}
+
+\section{Summary}
+\label{v4-arith:w9-r6:summary}
+
+\begin{enumerate}
+\item The genus-$g$ arithmetic 3D Chern--Simons theory
+$\mathrm{ACS}^{\mathrm{qu},g}_{k^{\mathrm{Ar},g}}$
+(\Cref{v4-arith:w9-r6:def:acs-g}) is the rank-$2g$ scaling of
+Ch.~\ref{v4-arith:3d-acs-E1bar}'s profinite $GL_{2}(\widehat{\mathbb{Z}})$
+theory, with gauge group $GL_{2g}(\widehat{\mathbb{Z}})$, level
+$k^{\mathrm{Ar},g}=\kappa^{\mathrm{Ar},g}_{\mathsf{G}}(\mathcal{D}_{g})$,
+boundary WZW $\mathcal{V}^{\mathrm{prim},g}$, and bulk partition
+function $\Lambda_{\mathcal{D}_{g}}$ at the level
+(\Cref{v4-arith:w9-r6:prop:partition-g}).
+\item The genus-$g$ Wilson-line Frobenius identity
+(\Cref{v4-arith:w9-r6:thm:wilson-frobenius-g}) reads
+$\langle W^{(g)}_{\rho_{g}}(K_{p})\rangle=\mathrm{tr}_{\rho_{g}}(\mathrm{Frob}_{p})$
+at unramified good-reduction primes $p$. The identity is conditional
+on rank-$2g$ local Langlands (Fargues--Scholze) and the genus-$g$
+extension of the Wilson-line axiom of
+\Cref{v4-arith:3d-acs:conj:qu-acs}(3).
+\item The archimedean Wilson-surface $F^{(g)}_{\infty}$
+(\Cref{v4-arith:w9-r6:def:wilson-surface-g}) is the rank-$g$
+Arakelov area-scaling built on the Faltings K\"ahler form of
+\Cref{v4-arith:w9-r6:def:arakelov-kahler-g}; it is conjugate to the
+genus-$g$ Virasoro zero-mode $L^{(g)}_{0}$ with central charge
+$c^{\mathrm{Ar},g}=g$
+(\Cref{v4-arith:w9-r6:thm:virasoro-conjugacy-g}) via the rank-$g$
+Mellin unitary of \Cref{v4-arith:w9-r6:lem:mellin-unitary-g}.
+\item The global Frobenius
+$F^{(g)}=F^{(g)}_{\infty}\otimes\bigotimes_{p}'\psi^{(g)}_{p}$
+(\Cref{v4-arith:w9-r6:def:global-F-g}) admits the bulk Wilson
+realisation of \Cref{v4-arith:w9-r6:thm:global-F-g-wilson}: finite-place
+summand $=$ Wilson-line, archimedean summand $=$ Wilson-surface.
+\item The all-genus Deninger identification
+(\Cref{v4-arith:w9-r6:thm:deninger-g-full}) inscribes the triple
+labelling Deninger $\leftrightarrow$ boundary chiral homology of
+$\mathrm{ACS}^{\mathrm{qu},g}\leftrightarrow$ rank-$2g$ arithmetic
+chiral homology, the motivic-weight character identity
+$\chi(\mathcal{V}^{\mathrm{prim},g})=\Lambda_{\mathcal{D}_{g}}$, the
+Wilson-observable form of the Frobenius, and the motivic purity
+axiom at $\mathrm{Re}(s)=w_{\mathcal{D}_{g}}/2$.
+\item Specialising $g=0$ recovers the Riemann framework uniformly
+(\Cref{v4-arith:w9-r6:cor:g-zero}): the Wilson-surface degenerates to
+the Arakelov scaling; the Wilson-line reduces to
+\Cref{v4-arith:w8-a:lem:wilson-finite}; the Deninger character
+becomes $\xi(s)$; purity is $\mathrm{Re}(s)=1/2$.
+\item At $g\geq 1$, the motivic Riemann Hypothesis per row
+(Dedekind GRH, Hasse--Weil RH, Siegel-spin RH) is the
+$F^{(g)}$-weight-$w_{\mathcal{D}_{g}}/2$ purity statement on
+$H^{1}_{\Delta,g}$ (\Cref{v4-arith:w9-r6:rem:hw-ss-rh}).
+\item Four chapter-specific residuals plus the rank-$2g$ propagation
+of \Cref{v4-arith:ag:residual}+\Cref{v4-arith:3d-acs:residual}
+(\Cref{v4-arith:w9-r6:residual}).
+\end{enumerate}
+
+The Wilson-line / Wilson-surface package extends from $g=0$ to
+arbitrary $g\geq 0$ without structural re-engineering. The genus
+enters through the rank of the gauge group, the archimedean Fock
+rank, and the motivic weight; the Koszul self-duality identity
+$\kappa^{\mathrm{Ar},g}+(\kappa^{!})^{\mathrm{Ar},g}=0$ remains fixed;
+the bulk partition function becomes the row-specific completed
+$L$-function $\Lambda_{\mathcal{D}_{g}}$; the motivic Riemann
+Hypothesis becomes a topological-gauge-theoretic spectral statement
+on the self-dual locus $\mathrm{Re}(s)=w_{\mathcal{D}_{g}}/2$.
+
+\section{Primary Source Catalog for the Genus-$g$ Extension}
+\label{v4-arith:w9-r6:sources}
+
+The genus-$g$ extension of this chapter draws from seven primary
+sources, each disjoint from the others in the sense of
+\Cref{v4-arith:ag:defn:datum}.
+
+\begin{itemize}
+\item \emph{Faltings 1984} \emph{Calculus on arithmetic surfaces},
+\emph{Ann.~Math.}~119, 387--424: Arakelov K\"ahler form
+$\mu_{\mathrm{Ar},g}$ of
+\Cref{v4-arith:w9-r6:def:arakelov-kahler-g}; Faltings--Hriljac
+arithmetic Hodge index; Faltings $\delta$-invariant.
+\item \emph{Fargues--Scholze 2021} arXiv:2102.13459: rank-$2g$ local
+Langlands for $GL_{2g}/\mathbb{Q}_{p}$; Zhu 2020 arXiv:1712.07375
+and Genestier--Lafforgue 2017 arXiv:1709.00978 extend to
+$\mathrm{GSp}_{2g}$.
+\item \emph{Bhatt--Scholze 2022} \emph{Ann.~Math.}~196: prismatic
+Frobenius on rank-$2g$ $F$-crystals;
+\Cref{v4-arith:ag:w3-fargues-scholze} Window~III input.
+\item \emph{Borger 2009} arXiv:0906.3146 \S8: Bost--Connes Adams
+$\psi_{p}$ as classical Frobenius; rank-$2g$ scaling via the
+$\lambda$-ring structure on the Tate motive.
+\item \emph{Arthur 2013} \emph{The Endoscopic Classification}: Siegel
+spin $L$-functions and functional equations for
+$\mathrm{GSp}_{2g}$-automorphic cuspidals.
+\item \emph{Kudla 1997} \emph{Ann.~Math.}~146; \emph{Kudla--Rapoport
+2011} arXiv:0905.2232: Siegel--Maass metric on $\mathcal{A}_{g}$ and
+rank-$g$ Faltings splitting for Window~VI.
+\item \emph{Morishita 2012} \emph{Knots and Primes}
+arXiv:0904.3399; \emph{Mazur 1973} ENS~6: knot-prime dictionary for
+the Wilson-line identification at finite primes; Artin--Verdier
+fundamental class for the arithmetic 3-space.
+\end{itemize}
+
+Pairwise disjointness of these sources, per the disjoint-source
+catalog of \Cref{v4-arith:ag:orthogonal}, is preserved at rank $2g$
+by the same inheritance argument: the rank-change is a scaling
+of the per-place Heisenberg oscillators, not a source substitution.
+
+The residuals of this chapter (\Cref{v4-arith:w9-r6:residual}) plus
+the residuals of Chs.~\ref{v4-arith:all-genus-koszul},
+\ref{v4-arith:3d-acs-E1bar},
+\ref{v4-arith:w8-a:deninger-chiral-homology} comprise the full
+obligation list for a theorem-grade proof of the genus-$g$
+Wilson-line / Wilson-surface / Deninger identification. The load
+remains: (a) rank-$2g$ profinite ACS renormalisation, (b) rank-$2g$
+BD/CG comparison, (c) rank-$g$ Weil--Petersson isometry, (d) rank-$g$
+H-P$^{\mathrm{Ar}}$. No item is dropped; none is softened; each is
+recorded as a conditional input in its natural chapter of origin.

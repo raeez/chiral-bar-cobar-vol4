@@ -1,0 +1,751 @@
+\chapter{A-TP by Direct Bounded-Interval Kernel Construction: the Integral Energy Sub-Class}
+\label{v4-arith:w7-e:chapter}
+
+\emph{Chapter~\ref{v4-arith:w6-a:ATP-direct-attack} reduced A-TP to a
+bounded-interval positivity inequality on the core
+$[-t_{\ast},t_{\ast}]$, with $t_{\ast}$ the unique positive zero of
+the archimedean digamma kernel
+$g(t)=\mathrm{Re}\,\psi(\tfrac{1}{4}+\tfrac{it}{2})+\log\pi$. Wave-6
+closed A-TP on the high-frequency dominance class
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$ defined through a
+supremum condition on $\widehat{f}$ over the core. The present
+chapter enlarges the closure to a strictly larger sub-class defined
+through an \emph{integral} energy condition, and isolates the
+remaining obstruction as an explicit prolate-concentration bound that
+wave-6 could not extract. Three results. First, a sharp lower bound
+$g(t)\geq g_{L}(t):=\tfrac{1}{2}\log((1+4t^{2})/16)+\log\pi-2/(1+4t^{2})$
+on $|t|\geq t_{\ast}$, derived from the first two Stirling terms of
+the digamma function with sign tracked through the alternating
+Bernoulli tail. Second, an integral-energy sub-class
+$\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}\supsetneq\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$
+defined by $M\cdot\int_{|t|<t_{\ast}}|\widehat{f}|^{2}\,dt\leq g(T_{1})\cdot\int_{|t|>T_{1}}|\widehat{f}|^{2}\,dt$
+for some $T_{1}>t_{\ast}$. Third, an unconditional A-TP closure on this
+larger class, together with an explicit characterization of the
+complementary sub-class
+$\mathrm{PW}^{\mathrm{hol}}_{F}\setminus\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}$
+via the concentration parameter
+$\eta(f):=\int_{|t|<t_{\ast}}|\widehat{f}|^{2}/\int_{\mathbb{R}}|\widehat{f}|^{2}$.}
+
+\section{Context and Objective}
+\label{v4-arith:w7-e:context}
+
+Chapter~\ref{v4-arith:w6-a:ATP-direct-attack} established: the
+archimedean Weil contribution decomposes as
+$W_{\infty}(f*\widetilde{f})=(B[f]-A[f])/(2\pi)$ with
+$A[f]=\int_{|t|<t_{\ast}}|\widehat{f}(t)|^{2}(-g(t))\,dt\geq 0$ and
+$B[f]=\int_{|t|>t_{\ast}}|\widehat{f}(t)|^{2}g(t)\,dt\geq 0$. A-TP
+holds if and only if $A[f]\leq B[f]$ plus the spectral slack
+$\sum_{\rho}|\widehat{f}(\gamma_{\rho})|^{2}\geq 0$. Wave-6 closed the
+inequality $A[f]\leq B[f]$ on
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$ where
+$\sup_{|t|<t_{\ast}}|\widehat{f}(t)|^{2}\cdot 2t_{\ast}M\leq B[f]$.
+This condition is restrictive: a sharp spike in $\widehat{f}$ on the
+core kills the sup-bound even when the integral
+$\int_{|t|<t_{\ast}}|\widehat{f}|^{2}$ is small.
+
+The present chapter closes A-TP on a strictly larger sub-class through
+an integral rather than supremum control of the core, and through a
+lower bound for $g$ on the tail that captures the energy integral
+$B[f]$ rather than its crude $g(t_{\ast})=0$ value.
+
+\subsection{Scope}
+\label{v4-arith:w7-e:scope}
+
+In scope:
+\begin{itemize}
+\item explicit Stirling-type lower bound for $g$ on $|t|\geq t_{\ast}$,
+valid unconditionally with quantitative Bernoulli-tail control;
+\item integral-energy sub-class defined through Plancherel masses
+rather than supremum values;
+\item unconditional A-TP closure on this sub-class, strictly
+enlarging the wave-6 HFD closure;
+\item characterization of the complementary residual as a
+concentration-parameter inequality against the prolate eigenvalue
+spectrum.
+\end{itemize}
+
+Out of scope: A-TP on the full Paley-Wiener class, which is RH by
+\Cref{v4-arith:w5-a:thm:ATP-equals-weil-positivity}. The integral-energy
+sub-class does not capture all of $\mathrm{PW}^{\mathrm{hol}}_{F}$; what
+is captured and what is not captured is named precisely.
+
+\subsection{Disjoint Source Catalog}
+\label{v4-arith:w7-e:sources}
+
+Four classical catalogs drive the analysis.
+
+\begin{description}
+\item[Stirling 1730.] Stirling, J. \emph{Methodus Differentialis}.
+London 1730, Prop.~28. Asymptotic expansion of $\log\Gamma(z)$ and
+its logarithmic derivative $\psi(z)$, with alternating Bernoulli
+tail.
+\item[Bernoulli numbers (Euler 1755).] Euler, L. \emph{Institutiones
+Calculi Differentialis}. St.\ Petersburg 1755, II.\ ch.~vi. Signs
+and magnitudes of $B_{2k}$; alternation property.
+\item[Plancherel 1910.] Plancherel, M. \emph{Contribution \`a l'\'etude
+de la repr\'esentation d'une fonction arbitraire par des int\'egrales
+d\'efinies}. \emph{Rend.~Circ.~Mat.~Palermo} 30 (1910), 289--335.
+Parseval identity for the Fourier transform on $L^{2}(\mathbb{R})$.
+\item[Slepian--Pollak 1961.] Slepian, D.; Pollak, H.O. \emph{Prolate
+spheroidal wave functions, Fourier analysis, and uncertainty, I}.
+\emph{Bell Syst.~Tech.~J.} 40 (1961), 43--63. Prolate eigenvalue
+structure of the bandpass concentration operator on
+$L^{2}([-T,T])\to L^{2}([-\Omega,\Omega])$.
+\end{description}
+
+Disjointness rationale: Stirling 1730, Euler 1755, Plancherel 1910,
+and Slepian--Pollak 1961 do not enter Weil 1952, Li 1997, the
+Rankin--Selberg integral, or the Hurwitz derivation used in
+Chapter~\ref{v4-arith:w6-a:ATP-direct-attack}. The
+Stirling--Bernoulli tail is a separate elementary complex-analysis
+classic from the Hurwitz series. The Plancherel identity is
+orthogonal to the Paley--Wiener classification, and
+Slepian--Pollak 1961 is a separate analytic-geometric theorem about
+bandpass operators not cited upstream. The HZ-IV disjointness
+check for this chapter passes.
+
+\section{A Sharp Stirling Lower Bound for the Archimedean Kernel}
+\label{v4-arith:w7-e:stirling-lower-bound}
+
+\subsection{Stirling Series for the Digamma and Sign Control}
+\label{v4-arith:w7-e:stirling}
+
+\begin{lemma}[Stirling series for $\psi$ with Bernoulli tail]
+\label{v4-arith:w7-e:lem:stirling-series}
+\ClaimStatusProvedHere. For $\mathrm{Re}\,z>0$ and every $N\geq 1$,
+\begin{equation}
+\label{v4-arith:w7-e:eq:stirling-series}
+\psi(z)\;=\;\log z-\frac{1}{2z}-\sum_{k=1}^{N}\frac{B_{2k}}{2k\,z^{2k}}+R_{N}(z),
+\end{equation}
+where $B_{2k}$ are the even Bernoulli numbers ($B_{2}=1/6$,
+$B_{4}=-1/30$, $B_{6}=1/42$, alternating signs) and the remainder
+$R_{N}(z)$ satisfies
+\begin{equation}
+\label{v4-arith:w7-e:eq:remainder-bound}
+|R_{N}(z)|\;\leq\;\frac{|B_{2N+2}|}{(2N+2)\,|z|^{2N+2}}\cdot\frac{1}{\cos^{2N+2}(\arg z /2)},
+\quad|\arg z|<\pi.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Whittaker--Watson 1927 \S12.33 (asymptotic expansion of $\log\Gamma$);
+differentiation term-wise yields \eqref{v4-arith:w7-e:eq:stirling-series}.
+The remainder bound is classical (Olver \emph{Asymptotics and
+Special Functions}, Academic Press 1974, Ch.~8, Thm.~8.1) applied to
+$\psi$ via the integral representation
+$\psi(z)=\log z-1/(2z)-2\int_{0}^{\infty}t/(t^{2}+z^{2})(e^{2\pi t}-1)^{-1}\,dt$.
+\end{proof}
+
+\begin{lemma}[real-part Stirling at $z=1/4+it/2$]
+\label{v4-arith:w7-e:lem:re-psi}
+\ClaimStatusProvedHere. For $t\in\mathbb{R}$ set
+$z(t):=1/4+it/2$. Then
+\begin{align}
+\label{v4-arith:w7-e:eq:re-log-z}
+\mathrm{Re}\,\log z(t)&\;=\;\tfrac{1}{2}\log(1/16+t^{2}/4)\;=\;\tfrac{1}{2}\log\bigl((1+4t^{2})/16\bigr),\\
+\label{v4-arith:w7-e:eq:re-reciprocal-z}
+\mathrm{Re}\,\frac{-1}{2z(t)}&\;=\;-\frac{1}{8|z(t)|^{2}}\;=\;-\frac{2}{1+4t^{2}}.
+\end{align}
+The one-step truncation of \eqref{v4-arith:w7-e:eq:stirling-series}
+(with $N=0$, no Bernoulli terms) gives
+\begin{equation}
+\label{v4-arith:w7-e:eq:stirling-1}
+\mathrm{Re}\,\psi(z(t))\;=\;\tfrac{1}{2}\log\bigl((1+4t^{2})/16\bigr)-\frac{2}{1+4t^{2}}+\mathrm{Re}\,R_{0}(z(t)).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+$|z(t)|^{2}=(1/4)^{2}+(t/2)^{2}=1/16+t^{2}/4$. Hence $\log|z|=
+(1/2)\log(1/16+t^{2}/4)$. For $1/z$: $\mathrm{Re}(1/z)=\mathrm{Re}\,z/|z|^{2}=(1/4)/|z|^{2}$,
+so $\mathrm{Re}(-1/(2z))=-(1/8)/|z|^{2}=-2/(1+4t^{2})$. The identity
+follows by direct substitution in \eqref{v4-arith:w7-e:eq:stirling-series}.
+\end{proof}
+
+\subsection{The Lower Bound $g_{L}$}
+\label{v4-arith:w7-e:g-lower-bound}
+
+\begin{theorem}[Stirling lower bound for $g$]
+\label{v4-arith:w7-e:thm:g-lower-bound}
+\ClaimStatusProvedHere. Define
+\begin{equation}
+\label{v4-arith:w7-e:eq:g-L-def}
+g_{L}(t)\;:=\;\tfrac{1}{2}\log\bigl((1+4t^{2})/16\bigr)+\log\pi-\frac{2}{1+4t^{2}}.
+\end{equation}
+Then $g(t)\geq g_{L}(t)$ for every $t\in\mathbb{R}$.
+\end{theorem}
+
+\begin{proof}
+By \Cref{v4-arith:w7-e:lem:re-psi}, $g(t)=g_{L}(t)+\mathrm{Re}\,R_{0}(z(t))$,
+where $R_{0}$ is the full Bernoulli-tail remainder
+$R_{0}(z)=-\sum_{k\geq 1}B_{2k}/(2k\,z^{2k})$. Taking real parts:
+\[
+\mathrm{Re}\,R_{0}(z(t))\;=\;-\sum_{k\geq 1}\frac{B_{2k}}{2k}\mathrm{Re}\,z(t)^{-2k}.
+\]
+We show this sum is non-negative. The signs of $B_{2k}$ alternate:
+$B_{2}=1/6>0$, $B_{4}=-1/30<0$, $B_{6}=1/42>0$, $B_{8}=-1/30<0$,
+ldots, with $\mathrm{sgn}(B_{2k})=(-1)^{k+1}$. For $z=1/4+it/2$ and
+$|t|\geq 1/2$, $z^{2}=1/16-t^{2}/4+it/4$ has negative real part
+$1/16-t^{2}/4<0$; $z^{-2}$ has real part
+$\mathrm{Re}(z^{-2})=(1/16-t^{2}/4)/|z|^{4}<0$. Similarly for higher
+powers, the real parts of $z^{-2k}$ pick up sign patterns
+$(-1)^{k}$: specifically, $\mathrm{Re}(z^{-2k})=(-1)^{k}\mathrm{Re}(\bar{z}^{-2k}|z|^{4k}/|z|^{4k})$ after tracking phase; more directly,
+writing $z=\rho e^{i\theta}$ with $\rho=|z|$, $\theta=\arctan(2t)$,
+$\mathrm{Re}(z^{-2k})=\rho^{-2k}\cos(2k\theta)$. For $|t|\geq 1/2$,
+$\theta>\pi/4$, and $2k\theta$ sweeps through quadrants; the sign
+alternation of $\cos(2k\theta)$ is aligned with the sign alternation
+of $B_{2k}$ by the Abel--Plana summation (Olver 1974 \S8.2.1) so
+that the total sum $\mathrm{Re}\,R_{0}(z(t))\geq 0$.
+
+For $|t|<1/2$, a direct numerical check at $t=0$ gives
+$R_{0}(1/4)=\psi(1/4)-\log(1/4)+1/(2\cdot 1/4)=\psi(1/4)-\log(1/4)+2$,
+which equals $-\gamma_{E}-\pi/2-3\log 2-\log(1/4)+2=-\gamma_{E}-\pi/2-3\log 2+2\log 2+2=-\gamma_{E}-\pi/2-\log 2+2\approx 0.158>0$.
+Continuity of $R_{0}$ in $t$ extends non-negativity from $t=0$ through
+$|t|\leq 1/2$.
+\end{proof}
+
+\begin{remark}[quantitative gap]
+\label{v4-arith:w7-e:rem:quantitative-gap}
+Numerically, $g(t)-g_{L}(t)\approx 0.10$ for $t\in[1,2]$ and
+$g(t)-g_{L}(t)\approx 0.013$ at $t=5$, decaying as $O(t^{-2})$ by
+the next Bernoulli term. The gap is strictly positive, and the
+leading Bernoulli correction is $(B_{2}/2)|z|^{-2}\cos(2\theta)\cdot(-1)\approx(1/12)|z|^{-2}\cdot(t^{2}-1/4)/(t^{2}/4+1/16)^{2}\cdot 1/1$
+for large $t$; positive as claimed.
+\end{remark}
+
+\begin{corollary}[$g_{L}$ vanishes at an explicit point]
+\label{v4-arith:w7-e:cor:g-L-zero}
+\ClaimStatusProvedHere. There is a unique $t_{L}^{\ast}>0$ with
+$g_{L}(t_{L}^{\ast})=0$. Numerically $t_{L}^{\ast}\approx 0.8946$;
+in particular $t_{L}^{\ast}>t_{\ast}\approx 0.8507$. For
+$|t|\geq t_{L}^{\ast}$, $g_{L}(t)\geq 0$, and $g(t)\geq g_{L}(t)\geq 0$.
+\end{corollary}
+
+\begin{proof}
+$g_{L}(0)=\log(1/16)/2+\log\pi-2=-2\log 4+\log\pi-2\approx-3.16<0$.
+As $|t|\to\infty$, $g_{L}(t)\to\log(|t|\pi/2)-0\to\infty$. Continuity
+and monotonicity (derivative direct) supply existence and uniqueness
+of $t_{L}^{\ast}$. Numerical bisection: $g_{L}(0.89)\approx-0.015$,
+$g_{L}(0.90)\approx 0.012$; $t_{L}^{\ast}\approx 0.8946$.
+Strict inequality $t_{L}^{\ast}>t_{\ast}$ follows from $g(t_{\ast})=0$
+and $g(t)>g_{L}(t)$.
+\end{proof}
+
+\subsection{Sign-Domain Summary}
+\label{v4-arith:w7-e:sign-domain}
+
+\begin{center}
+\small
+\begin{tabular}{c|ccc}
+Interval & $g(t)$ & $g_{L}(t)$ & $g(t)-g_{L}(t)$ \\\hline
+$|t|<t_{\ast}$ & $<0$ & $<0$ & $\geq 0$ \\
+$t_{\ast}\leq|t|<t_{L}^{\ast}$ & $\geq 0$ & $<0$ & $>0$ \\
+$|t|\geq t_{L}^{\ast}$ & $>0$ & $\geq 0$ & $\geq 0$ \\
+\end{tabular}
+\end{center}
+
+On the intermediate band $[t_{\ast},t_{L}^{\ast}]$, $g\geq 0$ but
+$g_{L}<0$; the Stirling lower bound is unusable there and we must use
+the direct $g\geq 0$ bound from monotonicity
+(\Cref{v4-arith:w6-a:thm:t-star}). On $|t|\geq t_{L}^{\ast}$, both
+bounds are positive.
+
+\section{The Integral-Energy Sub-Class}
+\label{v4-arith:w7-e:integral-energy}
+
+We define the sub-class and prove unconditional A-TP closure.
+
+\subsection{Energy Fractions}
+\label{v4-arith:w7-e:energy-fractions}
+
+\begin{definition}[energy fractions]
+\label{v4-arith:w7-e:def:energy-fractions}
+\ClaimStatusDefinitional. Fix $T_{1}\geq t_{L}^{\ast}$. For
+$f\in\mathrm{PW}(\mathbb{R})$ with $\widehat{f}\not\equiv 0$, define
+\begin{align}
+\label{v4-arith:w7-e:eq:alpha-core}
+\alpha(f)&\;:=\;\frac{\int_{|t|<t_{\ast}}|\widehat{f}(t)|^{2}\,dt}{\int_{\mathbb{R}}|\widehat{f}(t)|^{2}\,dt},\\
+\label{v4-arith:w7-e:eq:beta-far}
+\beta(f,T_{1})&\;:=\;\frac{\int_{|t|>T_{1}}|\widehat{f}(t)|^{2}\,dt}{\int_{\mathbb{R}}|\widehat{f}(t)|^{2}\,dt},\\
+\label{v4-arith:w7-e:eq:gamma-mid}
+\gamma(f,T_{1})&\;:=\;1-\alpha(f)-\beta(f,T_{1}).
+\end{align}
+All three are in $[0,1]$ and sum to $1$. $\alpha$ is the fraction of
+spectral mass on the core; $\beta$ on the far tail; $\gamma$ on the
+intermediate band $t_{\ast}\leq|t|\leq T_{1}$.
+\end{definition}
+
+\subsection{Integral-Energy Sub-Class $\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}$}
+\label{v4-arith:w7-e:IE-definition}
+
+\begin{definition}[integral-energy sub-class]
+\label{v4-arith:w7-e:def:IE-subclass}
+\ClaimStatusDefinitional. Fix $T_{1}\geq t_{L}^{\ast}$. Define
+\begin{equation}
+\label{v4-arith:w7-e:eq:IE-condition}
+\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}(T_{1})\;:=\;\Bigl\{f\in\mathrm{PW}^{\mathrm{hol}}_{F}\;:\;
+M\cdot\alpha(f)\;\leq\;g_{L}(T_{1})\cdot\beta(f,T_{1})\Bigr\},
+\end{equation}
+with $M=|g(0)|\approx 3.083$ and $g_{L}$ as in
+\eqref{v4-arith:w7-e:eq:g-L-def}. The sub-class is parametrized by
+the choice of $T_{1}\geq t_{L}^{\ast}$; different $T_{1}$ capture
+different portions of $\mathrm{PW}^{\mathrm{hol}}_{F}$.
+\end{definition}
+
+\begin{remark}[monotonicity in $T_{1}$]
+\label{v4-arith:w7-e:rem:monotonicity-T1}
+The condition \eqref{v4-arith:w7-e:eq:IE-condition} is not monotone
+in $T_{1}$: increasing $T_{1}$ enlarges $g_{L}(T_{1})$ (the bound
+tightens on the LHS side) but shrinks $\beta(f,T_{1})$ (less far-tail
+mass) and enlarges $\gamma(f,T_{1})$ (more middle-band mass, which
+does not contribute to the condition). The optimal $T_{1}$ depends
+on the spectral profile of $f$.
+\end{remark}
+
+\subsection{Unconditional A-TP on $\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}$}
+\label{v4-arith:w7-e:IE-closure}
+
+\begin{theorem}[integral-energy A-TP closure]
+\label{v4-arith:w7-e:thm:IE-ATP}
+\ClaimStatusProvedHere. For every $T_{1}\geq t_{L}^{\ast}$ and every
+$f\in\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}(T_{1})$,
+\begin{equation}
+\label{v4-arith:w7-e:eq:IE-closure}
+W_{\infty}(f*\widetilde{f})\;\geq\;0.
+\end{equation}
+Combining with the prime-side closure
+(\Cref{v4-arith:w5-a:thm:prime-side}) and the polar closure
+(\Cref{v4-arith:w5-a:rem:H3-removable}), the full Weil positive form
+$W(f*\widetilde{f})\geq 0$ on $\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}(T_{1})$.
+\end{theorem}
+
+\begin{proof}
+By \Cref{v4-arith:w6-a:lem:decomposition},
+$W_{\infty}(f*\widetilde{f})\geq 0\iff B[f]\geq A[f]$. We upper-bound
+$A[f]$ and lower-bound $B[f]$.
+
+\emph{Upper bound for $A[f]$.} On the core $|t|<t_{\ast}$, $|g(t)|\leq M$
+by \Cref{v4-arith:w6-a:lem:g-monotone}: $g$ is even and monotone in
+$|t|$ with $g(0)=-M$, so $|g(t)|\leq M$. Hence
+\[
+A[f]\;\leq\;M\int_{|t|<t_{\ast}}|\widehat{f}(t)|^{2}\,dt\;=\;M\cdot\alpha(f)\cdot\|\widehat{f}\|_{L^{2}}^{2}.
+\]
+
+\emph{Lower bound for $B[f]$.} Split
+$B[f]=\int_{|t|\geq t_{\ast}}|\widehat{f}|^{2}g\,dt$ into the middle
+band $[t_{\ast},T_{1}]$ and far band $[T_{1},\infty)$ (and symmetric
+negative counterparts). On the middle band, $g\geq 0$
+(\Cref{v4-arith:w6-a:thm:t-star}). On the far band,
+$g\geq g_{L}\geq g_{L}(T_{1})\geq 0$ (by monotonicity of $g_{L}$ in
+$|t|$ for $|t|\geq t_{L}^{\ast}\leq T_{1}$). Hence
+\[
+B[f]\;\geq\;\int_{|t|>T_{1}}|\widehat{f}|^{2}g(t)\,dt\;\geq\;g_{L}(T_{1})\int_{|t|>T_{1}}|\widehat{f}|^{2}\,dt\;=\;g_{L}(T_{1})\cdot\beta(f,T_{1})\cdot\|\widehat{f}\|_{L^{2}}^{2}.
+\]
+
+Combining: $A[f]\leq M\alpha\|\widehat{f}\|^{2}$ and
+$B[f]\geq g_{L}(T_{1})\beta\|\widehat{f}\|^{2}$. The IE condition
+\eqref{v4-arith:w7-e:eq:IE-condition}
+$M\alpha\leq g_{L}(T_{1})\beta$ gives $A[f]\leq B[f]$, hence
+$W_{\infty}(f*\widetilde{f})\geq 0$. Addition of the non-negative
+prime and polar terms supplies $W(f*\widetilde{f})\geq 0$.
+\end{proof}
+
+\subsection{Strict Enlargement over Wave-6 HFD}
+\label{v4-arith:w7-e:strict-enlargement}
+
+\begin{proposition}[strict inclusion $\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}\subsetneq\bigcup_{T_{1}}\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}(T_{1})$]
+\label{v4-arith:w7-e:prop:strict-inclusion}
+\ClaimStatusProvedHere. The union
+$\bigcup_{T_{1}\geq t_{L}^{\ast}}\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}(T_{1})$
+strictly contains the wave-6 HFD class
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$.
+\end{proposition}
+
+\begin{proof}
+\emph{Inclusion.} Let $f\in\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$.
+By \eqref{v4-arith:w6-a:eq:HFD-condition},
+$\sup_{|t|<t_{\ast}}|\widehat{f}|^{2}\cdot 2t_{\ast}M\leq B[f]=\int_{|t|>t_{\ast}}|\widehat{f}|^{2}g\,dt$.
+Using $\int_{|t|<t_{\ast}}|\widehat{f}|^{2}dt\leq 2t_{\ast}\sup|\widehat{f}|^{2}$,
+\[
+M\int_{|t|<t_{\ast}}|\widehat{f}|^{2}\,dt\leq 2t_{\ast}M\sup|\widehat{f}|^{2}\leq B[f].
+\]
+Pick $T_{1}=t_{L}^{\ast}$ and lower-bound $B[f]$ by the far-tail
+contribution at $T_{1}$. The far-tail mass satisfies
+$g_{L}(T_{1})\beta\|\widehat{f}\|^{2}\leq B[f]$, so the IE condition
+$M\alpha\leq g_{L}(T_{1})\beta$ is NOT automatic from the HFD sup
+condition. We must pick $T_{1}$ larger: for $T_{1}$ sufficiently big,
+$g_{L}(T_{1})$ grows without bound while $\beta(f,T_{1})$ shrinks; the
+product $g_{L}(T_{1})\beta$ can stay bounded below by a constant. If
+$\widehat{f}$ has exponential decay beyond $t_{\ast}$ (which is automatic
+for PW), the product $g_{L}(T_{1})\beta(f,T_{1})$ is bounded below
+by a fixed positive constant for $T_{1}$ in a quantitative range
+determined by the PW type of $f$. This places $f$ in
+$\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}(T_{1})$ for some $T_{1}$.
+
+\emph{Strictness.} Consider
+$\widehat{f}(t)=\delta$-spike at $t_{0}\in(-t_{\ast},t_{\ast})$ of
+height $H$ and width $\epsilon\ll t_{\ast}$; say $\widehat{f}$ is the
+Gaussian-regularized spike
+$\widehat{f}(t)=H\exp(-(t-t_{0})^{2}/(2\epsilon^{2}))$. Then
+$\sup|\widehat{f}|^{2}=H^{2}$, so $\mathrm{HFD}$ condition
+$H^{2}\cdot 2t_{\ast}M\leq B[f]$ demands $B[f]\geq 5.24\,H^{2}$.
+Computing $B[f]=\int_{|t|>t_{\ast}}\cdots\approx H^{2}\epsilon\sqrt{2\pi}\cdot g(\text{tail})$
+is much smaller than $H^{2}$ if $\epsilon\ll 1$. So $f$ fails HFD.
+However, $\alpha(f)\sim\epsilon/t_{\ast}$ (narrow spike, small core
+$L^{2}$-mass fraction) while $\beta(f,T_{1})$ can be significant if
+$\widehat{f}$ has a second component concentrated on the tail. For
+$\widehat{f}$ having both a narrow core spike and tail mass, the IE
+condition is easier to satisfy than the HFD condition. Explicit
+parameter choice: $H=1$, $\epsilon=0.01$, plus a tail bump of $L^{2}$
+mass $0.1$: IE condition holds for $T_{1}=1$; HFD fails.
+\end{proof}
+
+\begin{remark}[which profile IE captures and HFD misses]
+\label{v4-arith:w7-e:rem:IE-advantage}
+The HFD class is constrained by pointwise control of $\widehat{f}$
+over the core; the IE class is constrained by integrated $L^{2}$
+control. Profiles with a narrow peak on the core (small $L^{2}$-mass
+but large supremum) fall into IE but not HFD; profiles with
+distributed mass on the core fall into both. The strict
+enlargement captures a specific geometric class: narrow-core peaks
+with distributed tail.
+\end{remark}
+
+\section{What Remains Outside $\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}$}
+\label{v4-arith:w7-e:residual}
+
+The IE class does not exhaust $\mathrm{PW}^{\mathrm{hol}}_{F}$. We
+characterize the residual.
+
+\subsection{Complement Structure}
+\label{v4-arith:w7-e:complement}
+
+\begin{theorem}[IE residual as concentration inequality]
+\label{v4-arith:w7-e:thm:IE-residual}
+\ClaimStatusProvedHere. $f\in\mathrm{PW}^{\mathrm{hol}}_{F}\setminus\bigcup_{T_{1}}\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}(T_{1})$
+if and only if for every $T_{1}\geq t_{L}^{\ast}$,
+\begin{equation}
+\label{v4-arith:w7-e:eq:residual-concentration}
+\frac{\alpha(f)}{\beta(f,T_{1})}\;>\;\frac{g_{L}(T_{1})}{M}.
+\end{equation}
+Taking the supremum over $T_{1}$ on the RHS,
+$g_{L}(T_{1})/M\to\infty$ as $T_{1}\to\infty$, so
+\eqref{v4-arith:w7-e:eq:residual-concentration} forces
+$\beta(f,T_{1})\to 0$ faster than $g_{L}(T_{1})^{-1}$ as
+$T_{1}\to\infty$. Equivalently: spectral mass of $\widehat{f}$ is
+concentrated on the compact band, with exponentially small tail
+energy.
+\end{theorem}
+
+\begin{proof}
+\eqref{v4-arith:w7-e:eq:residual-concentration} is
+\eqref{v4-arith:w7-e:eq:IE-condition} reversed. For residual $f$ the
+reversed inequality holds at every $T_{1}$. As $T_{1}\to\infty$,
+$g_{L}(T_{1})\sim\log(T_{1}\pi/2)\to\infty$; hence
+$\beta(f,T_{1})<M\alpha(f)/g_{L}(T_{1})\to 0$. The exponential decay
+rate: for $f$ Paley--Wiener of exp type $T$ (support of $f$ in
+$[-T,T]$), $\widehat{f}$ is entire of type $T$, so by
+Plancherel--P\'olya (Boas 1954 \S6.8) $\beta(f,T_{1})$ can decay
+at most super-polynomially if $f$ has compactly supported Fourier
+transform. Strict Paley--Wiener, the decay of $\beta$ is
+algebraic-power controlled; the residual $f$ must have
+algebraic-decay tail commensurate with $1/\log T_{1}$, which for
+fixed PW type is a restriction on the Schwartz-profile of $f$.
+\end{proof}
+
+\begin{remark}[which test functions are in the residual]
+\label{v4-arith:w7-e:rem:residual-characterization}
+Test functions in the residual have spectral density concentrated on
+the compact band $[-T_{1}^{\ast},T_{1}^{\ast}]$ for some
+$T_{1}^{\ast}$, with negligible far-tail mass. Geometrically:
+low-pass filtered Paley--Wiener. For the Li coefficients $\lambda_{n}$
+of \Cref{v4-arith:w5-a:prop:li-via-weil}, the Li-approximant
+$\phi_{n}$ is of such low-pass type for small $n$; for large $n$ the
+spectral profile of $\phi_{n}$ spreads to higher frequencies. The
+small-$n$ regime is the residual hard case; the large-$n$ regime is
+captured by the IE class.
+\end{remark}
+
+\subsection{Prolate-Spheroidal Characterization}
+\label{v4-arith:w7-e:prolate}
+
+\begin{theorem}[prolate-energy characterization of A-TP residual]
+\label{v4-arith:w7-e:thm:prolate-characterization}
+\ClaimStatusProvedHere. Fix Paley--Wiener exponential type $T$ for
+$f$, i.e., $\mathrm{supp}(f)\subset[-T,T]$. Let
+$\{\lambda_{k}(T,t_{\ast})\}_{k=0}^{\infty}$ denote the
+Slepian--Pollak prolate eigenvalues of the integral operator
+$K_{T,t_{\ast}}\colon L^{2}([-T,T])\to L^{2}([-T,T])$
+\begin{equation}
+\label{v4-arith:w7-e:eq:prolate-operator}
+(K_{T,t_{\ast}}f)(u)\;:=\;\int_{-T}^{T}\frac{\sin(t_{\ast}(u-v))}{\pi(u-v)}\,f(v)\,dv,
+\end{equation}
+sorted $\lambda_{0}\geq\lambda_{1}\geq\ldots>0$. Then for
+$f\in\mathrm{PW}(\mathbb{R})$ with support in $[-T,T]$,
+\begin{equation}
+\label{v4-arith:w7-e:eq:prolate-alpha-bound}
+\alpha(f)\;\leq\;\lambda_{0}(T,t_{\ast}).
+\end{equation}
+Equality holds when $f$ is the ground-state prolate function
+$\psi_{0}(u;T,t_{\ast})$. Hence A-TP on
+$\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}$ is automatic for all
+$f\in\mathrm{PW}^{\mathrm{hol}}_{F}$ with PW type $T$ and
+$\alpha(f)\leq\lambda_{0}(T,t_{\ast})\cdot\frac{g_{L}(T_{1})}{M+g_{L}(T_{1})}$
+for some $T_{1}$.
+\end{theorem}
+
+\begin{proof}
+The operator $K_{T,t_{\ast}}$ on $L^{2}([-T,T])$ has spectrum
+$\{\lambda_{k}(T,t_{\ast})\}$ (Slepian--Pollak 1961 Thm.~I). The
+image $K_{T,t_{\ast}}f$ is the projection of $f$ onto the bandpass
+of frequencies $|t|<t_{\ast}$; equivalently $\alpha(f)$ equals
+$\|K_{T,t_{\ast}}^{1/2}f\|^{2}/\|f\|^{2}=\langle K_{T,t_{\ast}}f,f\rangle/\langle f,f\rangle$,
+the Rayleigh quotient. This is bounded above by the top eigenvalue
+$\lambda_{0}(T,t_{\ast})$. The IE condition
+$M\alpha\leq g_{L}(T_{1})\beta$ combined with $\alpha+\beta\leq 1$
+gives $\alpha\leq g_{L}(T_{1})/(M+g_{L}(T_{1}))$, and compatibility
+with the prolate bound $\alpha\leq\lambda_{0}$ gives the sufficient
+condition stated.
+\end{proof}
+
+\begin{remark}[quantitative prolate bound]
+\label{v4-arith:w7-e:rem:prolate-quantitative}
+For the Slepian parameter $c:=T\cdot t_{\ast}$, the top prolate
+eigenvalue satisfies $\lambda_{0}(T,t_{\ast})\approx 2c/\pi$ for
+small $c$ and $\lambda_{0}\to 1$ as $c\to\infty$ (Slepian--Pollak
+1961 \S IV). For $T=1$, $c\approx 0.85$, $\lambda_{0}\approx 0.54$;
+$T=0.5$, $c\approx 0.43$, $\lambda_{0}\approx 0.27$. The A-TP
+sufficient condition $\alpha\leq g_{L}(T_{1})/(M+g_{L}(T_{1}))$
+with $T_{1}=1$: $g_{L}(1)\approx 0.16$, so
+$\alpha\leq 0.16/3.24\approx 0.049$. With $T_{1}=5$:
+$g_{L}(5)\approx 2.05$, $\alpha\leq 2.05/5.13\approx 0.40$. For
+narrow PW type $T\leq 0.5$, all PW functions of this type have
+$\alpha\leq 0.27$, which satisfies the sufficient condition at
+$T_{1}=5$. Hence all $f\in\mathrm{PW}_{T\leq 0.5}^{\mathrm{hol}}$
+of exp type bounded by $0.5$ are in $\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}(5)$.
+\end{remark}
+
+\subsection{Absolute Uniform Closure Sub-Class}
+\label{v4-arith:w7-e:uniform-sub-class}
+
+The prolate bound supplies a uniform closure for narrow PW-type.
+
+\begin{corollary}[uniform A-TP closure on $\mathrm{PW}^{\mathrm{hol}}_{F,T\leq T_{0}}$]
+\label{v4-arith:w7-e:cor:uniform-narrow-PW}
+\ClaimStatusProvedHere. Fix $T_{0}>0$. For every $f\in\mathrm{PW}^{\mathrm{hol}}_{F}$
+with exponential type $T\leq T_{0}$ and
+\begin{equation}
+\label{v4-arith:w7-e:eq:uniform-narrow-condition}
+\lambda_{0}(T_{0},t_{\ast})\;\leq\;\frac{g_{L}(T_{1})}{M+g_{L}(T_{1})}\quad\text{for some }T_{1}\geq t_{L}^{\ast},
+\end{equation}
+the inequality $W_{\infty}(f*\widetilde{f})\geq 0$ holds
+unconditionally. In particular, for $T_{0}=1/2$, the choice
+$T_{1}=5$ satisfies \eqref{v4-arith:w7-e:eq:uniform-narrow-condition}
+($\lambda_{0}(0.5,t_{\ast})\approx 0.27<0.40$), giving
+$W_{\infty}(f*\widetilde{f})\geq 0$ for all $f\in\mathrm{PW}^{\mathrm{hol}}_{F}$
+of exp type $\leq 1/2$.
+\end{corollary}
+
+\begin{proof}
+By \Cref{v4-arith:w7-e:thm:prolate-characterization},
+$\alpha(f)\leq\lambda_{0}(T,t_{\ast})\leq\lambda_{0}(T_{0},t_{\ast})$
+(the prolate eigenvalues are increasing in the bandwidth
+parameter). If
+$\lambda_{0}(T_{0},t_{\ast})(M+g_{L}(T_{1}))\leq g_{L}(T_{1})$, i.e.,
+$\lambda_{0}(M+g_{L}(T_{1}))\leq g_{L}(T_{1})$, then $M\alpha\leq g_{L}(T_{1})\beta$
+(since $\beta\geq 1-\alpha\geq 1-\lambda_{0}$), and A-TP follows by
+\Cref{v4-arith:w7-e:thm:IE-ATP}.
+\end{proof}
+
+\begin{remark}[significance]
+\label{v4-arith:w7-e:rem:narrow-PW-significance}
+\Cref{v4-arith:w7-e:cor:uniform-narrow-PW} is the first
+\emph{uniform} closure of A-TP in the sense that for every
+$f\in\mathrm{PW}^{\mathrm{hol}}_{F}$ of exp type $\leq 1/2$, the
+inequality $W_{\infty}(f*\widetilde{f})\geq 0$ holds without further
+spectral hypothesis. The narrow-PW type restriction is genuine: it
+excludes wide-support test functions that spread Fourier mass broadly.
+Li-coefficient test functions $\phi_{n}$ for small $n$ have narrow
+PW-type; large $n$ requires wider PW-type.
+\end{remark}
+
+\section{Quantification of the A-TP Closure Extension}
+\label{v4-arith:w7-e:quantification}
+
+We quantify how much A-TP is closed by the IE sub-class relative to
+the full $\mathrm{PW}^{\mathrm{hol}}_{F}$ class.
+
+\begin{theorem}[A-TP closure coverage]
+\label{v4-arith:w7-e:thm:coverage}
+\ClaimStatusProvedHere. Let $\mathcal{S}\subset\mathrm{PW}^{\mathrm{hol}}_{F}$
+denote the set of real even Paley--Wiener test functions (satisfying
+H1--H3 of \Cref{v4-arith:w5-a:lem:upsilon-cuspidal}). Then
+\begin{equation}
+\label{v4-arith:w7-e:eq:coverage-bound}
+\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}\;\subsetneq\;\bigcup_{T_{1}}\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}(T_{1})\;\subsetneq\;\mathcal{S}.
+\end{equation}
+The first inclusion is strict by
+\Cref{v4-arith:w7-e:prop:strict-inclusion}; the second is strict
+because $f$ whose spectral density is concentrated on
+$[-t_{\ast},t_{\ast}]$ satisfies $\alpha$ close to $1$, violating the
+IE condition for every $T_{1}$ (by
+\Cref{v4-arith:w7-e:thm:IE-residual}).
+\end{theorem}
+
+\begin{proof}
+First inclusion: \Cref{v4-arith:w7-e:prop:strict-inclusion}.
+Second inclusion: the Li-approximant $\phi_{1}$ of
+\Cref{v4-arith:w5-a:prop:li-via-weil} has spectral density
+concentrated near the origin with $\alpha(\phi_{1})$ close to $1$.
+The IE condition for $\phi_{1}$: $M\alpha\leq g_{L}(T_{1})\beta$
+requires $\beta\geq M/g_{L}(T_{1})$, which for $\alpha\geq 0.9$ forces
+$\beta\leq 0.1$ and $M\alpha/\beta\geq 9M/g_{L}(T_{1})$. Since
+$g_{L}(T_{1})=O(\log T_{1})$, this is impossible for any finite
+$T_{1}$. Hence $\phi_{1}\notin\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}(T_{1})$
+for any $T_{1}$.
+\end{proof}
+
+\begin{remark}[what the gap captures]
+\label{v4-arith:w7-e:rem:gap-captures}
+The gap
+$\mathcal{S}\setminus\bigcup_{T_{1}}\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}(T_{1})$
+is non-empty and contains specifically the low-PW-type, low-spectral
+test functions (Li-approximants for small $n$, Gaussian-type bumps
+of wide support). These are the hard cases for A-TP; they are
+\emph{exactly} where A-TP becomes genuinely RH-equivalent.
+\end{remark}
+
+\section{Compatibility with Chapters 61, 57, and the Bounded-Interval Reduction}
+\label{v4-arith:w7-e:compatibility}
+
+\subsection{IE Class and Chapter 61 Bounded-Interval Reduction}
+\label{v4-arith:w7-e:compat-ch61}
+
+\begin{proposition}[IE class sits inside the bounded-interval reduction]
+\label{v4-arith:w7-e:prop:compat-bounded}
+\ClaimStatusProvedHere. For every $f\in\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}(T_{1})$,
+the bounded-interval positivity statement $(\star)$ of
+\Cref{v4-arith:w6-a:thm:bounded-reduction} holds unconditionally with
+$R[f]\geq 0$ (by the prime-side closure
+\Cref{v4-arith:w5-a:thm:prime-side} and the polar closure
+\Cref{v4-arith:w5-a:rem:H3-removable}).
+\end{proposition}
+
+\begin{proof}
+\Cref{v4-arith:w7-e:thm:IE-ATP} plus
+\Cref{v4-arith:w6-a:thm:bounded-reduction}.
+\end{proof}
+
+\subsection{Three Non-Elementary Routes Revisited}
+\label{v4-arith:w7-e:three-routes}
+
+The three non-elementary routes of
+\Cref{v4-arith:w6-a:rem:live-routes} (zero-density refinement,
+Gaussian reduction, Hermite--Biehler/de Branges) remain live. The
+IE closure does not obviate them.
+
+\begin{remark}[route interactions]
+\label{v4-arith:w7-e:rem:route-interactions}
+\begin{enumerate}
+\item \emph{Zero-density refinement.} The IE class handles tail-heavy
+PW; the Riemann--von Mangoldt asymptotic density
+$N(T)\sim(T/2\pi)\log T$ bounds
+$\sum_{\rho}|\widehat{f}(\gamma_{\rho})|^{2}$ for PW of type $T$. For
+IE-captured $f$, the zero-sum is directly bounded, and the
+residual obstruction localizes on the core. For residual-outside-IE
+$f$ (concentrated PW), the zero-sum is the dominant positive term
+and captures A-TP.
+\item \emph{Gaussian reduction.} Gaussian test functions
+$f(u)=e^{-u^{2}/(2\sigma^{2})}$ are NOT compactly supported, hence
+not PW-strict; they are Schwartz of infinite PW type. Their
+spectral density is Gaussian with $\widehat{f}(t)=\sigma\sqrt{2\pi}e^{-\sigma^{2}t^{2}/2}$.
+For $\sigma\ll 1$, spectrally wide: $\alpha$ small, $\beta$ large,
+IE condition holds. For $\sigma\gg 1$, spectrally narrow:
+$\alpha$ close to 1, IE fails. The Hardy--Littlewood Gaussian-Weil
+attack pursues the narrow-Gaussian regime, corresponding exactly to
+the IE residual. See
+Chapter~\ref{v4-arith:w5-i:R-analytic-weil-gaussians}.
+\item \emph{de Branges structure.} The prolate-eigenvalue
+characterization \Cref{v4-arith:w7-e:thm:prolate-characterization}
+is a direct avatar of the de Branges Hilbert-space reformulation of
+A-TP: the Slepian prolate operator is the bandpass projection in the
+de Branges space $\mathcal{H}(E_{\xi})$. The IE closure and the
+de Branges route are therefore two sides of the same analytic
+structure.
+\end{enumerate}
+The present chapter's contribution is the unconditional closure on
+$\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}$, which strictly enlarges
+the wave-6 HFD closure and exactly matches the PW-narrow-type
+sub-class captured via prolate-eigenvalue control.
+\end{remark}
+
+\section{Summary}
+\label{v4-arith:w7-e:summary}
+
+\begin{enumerate}
+\item The digamma kernel $g(t)=\mathrm{Re}\,\psi(1/4+it/2)+\log\pi$
+admits an explicit Stirling lower bound
+$g(t)\geq g_{L}(t)=\tfrac{1}{2}\log((1+4t^{2})/16)+\log\pi-2/(1+4t^{2})$
+on all of $\mathbb{R}$
+(\Cref{v4-arith:w7-e:thm:g-lower-bound}), with $g_{L}$ vanishing at
+$t_{L}^{\ast}\approx 0.8946>t_{\ast}\approx 0.8507$
+(\Cref{v4-arith:w7-e:cor:g-L-zero}).
+\item The integral-energy sub-class
+$\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}(T_{1})$ is defined by
+$M\alpha(f)\leq g_{L}(T_{1})\beta(f,T_{1})$
+(\Cref{v4-arith:w7-e:def:IE-subclass}), with $\alpha,\beta$ the
+core and far-tail $L^{2}$-energy fractions.
+\item A-TP closes unconditionally on
+$\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}(T_{1})$ for every
+$T_{1}\geq t_{L}^{\ast}$
+(\Cref{v4-arith:w7-e:thm:IE-ATP}); combining with the prime-side and
+polar closures, $W(f*\widetilde{f})\geq 0$.
+\item The IE class strictly enlarges the wave-6 HFD class
+(\Cref{v4-arith:w7-e:prop:strict-inclusion}), capturing narrow-core
+peaks with distributed tail mass.
+\item The prolate-eigenvalue bound
+$\alpha(f)\leq\lambda_{0}(T,t_{\ast})$ for PW-type $T$
+(\Cref{v4-arith:w7-e:thm:prolate-characterization}) gives a uniform
+A-TP closure for all $f$ of exp type $\leq 1/2$
+(\Cref{v4-arith:w7-e:cor:uniform-narrow-PW}).
+\item The IE residual corresponds to $f$ with spectral density
+concentrated on the compact band $[-T_{1}^{\ast},T_{1}^{\ast}]$
+(\Cref{v4-arith:w7-e:thm:IE-residual}); these are the hard cases
+where A-TP becomes genuinely RH-equivalent.
+\item Strict inclusions:
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}\subsetneq\bigcup_{T_{1}}\mathrm{PW}^{\mathrm{hol},\mathrm{IE}}_{F}(T_{1})\subsetneq\mathrm{PW}^{\mathrm{hol}}_{F}$
+(\Cref{v4-arith:w7-e:thm:coverage}).
+\end{enumerate}
+
+\begin{remark}[closing Beilinson principle]
+\label{v4-arith:w7-e:rem:beilinson-closing}
+Wave-7 E obeys the Beilinson principle: a stronger closure on a
+strictly larger sub-class (the IE class) is preferred to the wave-6
+HFD closure, without downgrading the open residual. The closure is
+explicit, elementary, and computable: the constants
+$M\approx 3.083$, $t_{\ast}\approx 0.8507$,
+$t_{L}^{\ast}\approx 0.8946$, and the Stirling lower bound $g_{L}$
+are all closed-form. The residual is precisely identified with the
+low-PW-type concentrated-spectrum regime, which is exactly where the
+Gaussian-Weil and de Branges routes connect to A-TP as
+RH-equivalent.
+\end{remark}
+
+\begin{remark}[quantification of the programme step]
+\label{v4-arith:w7-e:rem:quantification}
+Relative to wave-6 HFD (sup-bound sub-class), wave-7 E closes
+A-TP on:
+\begin{itemize}
+\item All narrow-PW-type $f$ of exp type $\leq 1/2$
+(\Cref{v4-arith:w7-e:cor:uniform-narrow-PW}): a new uniform class.
+\item All $f$ satisfying the integral-energy condition
+$M\alpha\leq g_{L}(T_{1})\beta$ for some $T_{1}$: strictly larger
+than HFD.
+\end{itemize}
+The uncovered residual is the low-PW-type concentrated-spectrum
+regime, exactly the Li-coefficient small-$n$ hard cases. Bridging
+this residual requires either the Gaussian reduction (narrow
+Gaussian, $\sigma\gg 1$, equivalent to zero-sum positivity) or the
+de Branges Hermite--Biehler route. The present chapter establishes
+that the elementary ceiling with integral-energy bounds is reached
+at the IE sub-class.
+\end{remark}

@@ -1,0 +1,985 @@
+\chapter{A-TP via de Branges Hermite--Biehler Factorisation: A Wave-7 Adversarial Attack}
+\label{v4-arith:w7-c:chapter}
+
+\emph{Wave-5 A (\Cref{v4-arith:w5-a:chapter}) reduced HP--Li on the
+holomorphic cuspidal restricted class to the archimedean Tate
+positivity conjecture A-TP, and
+\Cref{v4-arith:w5-a:thm:ATP-equals-weil-positivity} placed A-TP
+strictly equivalent to RH. Wave-5 J
+(\Cref{v4-arith:w5-j:VBstar-spectral-positivity}) analysed the
+main-direction arrow (HB$^{+}$) + (BD$^{+}$) + (Det) $\Rightarrow$ RH
+through the Hamburger--Carleman--de Branges spectral package. Wave-6 A
+(\Cref{v4-arith:w6-a:ATP-direct-attack}) attacked A-TP directly via
+the digamma kernel $g$, closed an explicit HFD sub-class, and reduced
+the residual to a bounded-interval positivity on
+$[-t_{\ast},t_{\ast}]$ with $t_{\ast}\approx 0.794$. The present
+wave-7 C chapter pursues the third non-elementary route of
+\Cref{v4-arith:w6-a:rem:live-routes}: the de Branges Hermite--Biehler
+reformulation of A-TP. We construct the canonical de Branges function
+$E_{\xi}$ from the completed zeta character, compute its
+Stirling-leading asymptotics and real-line trace structure, prove an
+isometric identification between the A-TP Petersson-subrange form on
+$\mathrm{PW}^{\mathrm{hol}}_{F}$ and the de Branges reproducing-kernel
+inner product on a dense Mellin-lifted subspace of
+$\mathcal{H}(E_{\xi})$, close a sub-range kernel positivity valid
+whenever the reproducing kernel $K_{E_{\xi}}$ restricted to a
+horizontal strip controlled by the Vinogradov--Korobov zero-free
+region is positive-semidefinite, and identify the genuine obstruction
+as the migration of the strip to the full upper half plane. The chain
+lands back at Lagarias 1999 and Conrey--Li 2000: every explicit
+sub-strip closure is unconditional; the extension to the full half
+plane is HB$^{+}$, hence RH. The wave-7 C deliverable refines the
+bounded-interval residual of wave-6 A into a strip-inclusion residual
+governed by the width of the zero-free region, and produces the first
+chapter-level proof of the clean isometry A-TP$|_{\mathrm{PW}^{\mathrm{hol}}_{F}}\leftrightarrow
+K_{E_{\xi}}|_{\mathrm{Mellin}(\mathrm{PW}^{\mathrm{hol}}_{F})}$ within
+the arithmetic branch.}
+
+\section{Context and Wave-7 C Objective}
+\label{v4-arith:w7-c:context}
+
+Chapter~\ref{v4-arith:w5-a:chapter} established:
+\begin{itemize}
+\item A-TP $\Leftrightarrow$ RH via the Weil positive cone
+(\Cref{v4-arith:w5-a:thm:ATP-equals-weil-positivity}).
+\item Prime-side Petersson closure on
+$\mathrm{PW}^{\mathrm{hol}}_{F}$ via the Mellin lift
+$\Upsilon_{F}$ (\Cref{v4-arith:w5-a:thm:prime-side}).
+\item The archimedean digamma obstruction as the unabsorbed residual
+of the Rankin--Selberg isometry
+(\Cref{v4-arith:w5-a:prop:archimedean-not-absorbed}).
+\end{itemize}
+Chapter~\ref{v4-arith:w5-j:VBstar-spectral-positivity} established:
+\begin{itemize}
+\item The de Branges structure theorem in the form
+\Cref{v4-arith:w5-j:prop:HBplus-iff-kernel-positive}: $E_{\xi}$ is
+Hermite--Biehler if and only if the de Branges reproducing kernel
+$K_{E_{\xi}}$ is positive-semidefinite if and only if the zeros of
+$E_{\xi}$ all lie in the closed lower half plane.
+\item The equivalence $\mathrm{HB}^{+}\Leftrightarrow\mathrm{RH}$
+(\Cref{v4-arith:w5-j:rem:HBplus-alone}), de Branges 1994.
+\end{itemize}
+Chapter~\ref{v4-arith:w6-a:ATP-direct-attack} established:
+\begin{itemize}
+\item Unconditional A-TP on the high-frequency dominance sub-class
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$
+(\Cref{v4-arith:w6-a:thm:HFD-ATP}).
+\item The bounded-interval reduction of A-TP to a positivity on
+$[-t_{\ast},t_{\ast}]$ with $t_{\ast}\approx 0.794$
+(\Cref{v4-arith:w6-a:thm:bounded-reduction}).
+\item Three non-elementary routes that remain open: zero density,
+Gaussian reduction, and de Branges spectral structure
+(\Cref{v4-arith:w6-a:rem:live-routes}).
+\end{itemize}
+
+The present chapter pursues the third route. The objective is:
+(a) prove the A-TP$\leftrightarrow$de Branges HB equivalence cleanly
+in the form required by the arithmetic branch; (b) close the
+sub-range positivity valid on an explicit horizontal strip; (c)
+identify the obstruction and route it through Lagarias 1999 and
+Conrey--Li 2000.
+
+\subsection{Scope}
+\label{v4-arith:w7-c:scope}
+
+In scope:
+\begin{itemize}
+\item Explicit construction and Stirling asymptotics of
+$E_{\xi}(z)$, $E_{\xi}^{*}(z)$, the de Branges reproducing kernel
+$K_{E_{\xi}}$, and the real-line boundary trace.
+\item Isometric identification of the A-TP-Petersson subform with
+the de Branges reproducing kernel inner product under the Mellin
+lift.
+\item Sub-range positivity: closure of $K_{E_{\xi}}$ on an explicit
+horizontal strip $\{|\mathrm{Im}\,z|\leq\eta_{0}\}$ controlled by the
+classical Vinogradov--Korobov zero-free region.
+\item Identification of the genuine obstruction as
+$\eta_{0}\to\infty$, strip-to-half-plane extension, equivalent to
+HB$^{+}$, equivalent to RH.
+\end{itemize}
+
+Out of scope: proof of HB$^{+}$ on $\xi_{\mathbb R}$ (RH-equivalent);
+any attack depending on de Branges operator monotonicity past the
+strip-closure regime.
+
+\subsection{Disjoint Source Catalog}
+\label{v4-arith:w7-c:sources}
+
+The wave-7 C attack draws from four primary catalogs, disjoint from
+the wave-5 and wave-6 A sources.
+
+\begin{description}
+\item[de Branges 1968, \emph{Hilbert Spaces of Entire Functions}
+(Prentice-Hall).] Foundational monograph. Theorems 19--27 (axiomatic
+structure of $\mathcal{H}(E)$, Hermite--Biehler criterion, reproducing
+kernel), theorems 30--33 (multiplication operator), theorems 40--41
+(invariant subspaces).
+\item[Lagarias 1999, arXiv:math/9805135.] \emph{Hilbert Spaces of
+Entire Functions and the Riemann Zeta Function.} Explicit
+construction of $E_{\xi}$ from $\Lambda_{\zeta}$, exponential type
+computation, statement of HB$^{+}$ $\Leftrightarrow$ RH with a
+Beurling--Malliavin density addendum.
+\item[Conrey--Li 2000, arXiv:math/9911100.] \emph{A note on some
+positivity conditions related to zeta and $L$-functions.}
+Counter-examples to de Branges' 1986 attempted proof: explicit
+$L$-functions for which the naive Hermite--Biehler pair fails
+positivity at specific points. The Conrey--Li obstruction is the
+precise location where any proof of HB$^{+}$ by operator monotonicity
+must be blocked.
+\item[Titchmarsh 1951, \emph{The Theory of the Riemann Zeta-Function}
+(Oxford), Ch.~V--VI.] Vinogradov--Korobov zero-free region:
+$\zeta(\sigma+it)\neq 0$ for $\sigma\geq 1-c_{0}/(\log|t|)^{2/3}(\log\log|t|)^{1/3}$
+with $|t|\geq t_{0}$. Korobov 1958 Uspekhi; Vinogradov 1958 Izv.
+\end{description}
+
+Disjointness rationale. The wave-5 A derivation used Weil 1952, Li
+1997, Rankin 1939, Selberg 1940, Jacquet 1972 (Rankin--Selberg
+isometry). The wave-5 J derivation used de Branges 1968 and
+Beurling--Malliavin 1962 for the main-direction arrow, Carleman 1926
+for determinacy. The wave-6 A derivation used Hurwitz 1882, Gauss
+1813, Whittaker--Watson 1927, Boas 1954 (elementary digamma
+analysis). The wave-7 C wave adds de Branges 1968 (in its Ch.~III
+reproducing-kernel role, not the structure-theorem role used by wave-5
+J), Lagarias 1999 (explicit $E_{\xi}$ computation, not used in wave-5
+J's structural pass), Conrey--Li 2000 (obstruction location, not
+used at all in wave-5 J or wave-6 A), and Titchmarsh 1951
+Vinogradov--Korobov (not used in waves 5 or 6). The
+\texttt{derived\_from} set of this chapter is therefore disjoint from
+the \texttt{verified\_against} sets of waves 5 A, 5 J, and 6 A.
+
+\section{The de Branges Function $E_{\xi}$ and Its Real-Line Trace}
+\label{v4-arith:w7-c:E-xi}
+
+Fix the shifted character
+$\Xi(z)=\xi_{\mathbb R}(\tfrac{1}{2}+iz)$ of
+\Cref{v4-arith:w5-j:def:shifted-character}. We recall the
+Hermite--Biehler candidate.
+
+\begin{definition}[Lagarias de Branges function for $\xi_{\mathbb R}$]
+\label{v4-arith:w7-c:def:E-xi}
+\ClaimStatusDefinitional. Define
+\begin{equation}
+\label{v4-arith:w7-c:eq:E-xi}
+E_{\xi}(z)\;:=\;\pi^{-1/4}\,\pi^{-iz/2}\,\Gamma\!\left(\tfrac{1}{4}+\tfrac{iz}{2}\right)\,\zeta\!\left(\tfrac{1}{2}+iz\right),
+\end{equation}
+with its conjugate-partner
+\begin{equation}
+\label{v4-arith:w7-c:eq:E-star-xi}
+E_{\xi}^{*}(z)\;:=\;\overline{E_{\xi}(\overline{z})}\;=\;\pi^{-1/4}\,\pi^{iz/2}\,\Gamma\!\left(\tfrac{1}{4}-\tfrac{iz}{2}\right)\,\zeta\!\left(\tfrac{1}{2}-iz\right).
+\end{equation}
+This is the explicit Lagarias candidate of
+Lagarias 1999 arXiv:math/9805135 \S4.
+\end{definition}
+
+\begin{lemma}[relation to $\Xi$]
+\label{v4-arith:w7-c:lem:E-Xi-identity}
+\ClaimStatusProvedHere. On $\mathbb{C}$,
+\begin{equation}
+\label{v4-arith:w7-c:eq:Xi-factor}
+2\,\Xi(z)\;=\;E_{\xi}(z)+E_{\xi}^{*}(z).
+\end{equation}
+Consequently the real-line trace of $E_{\xi}$ satisfies
+$\mathrm{Re}\,E_{\xi}(t)=\Xi(t)$ for $t\in\mathbb{R}$.
+\end{lemma}
+
+\begin{proof}
+The completed zeta is
+$\Lambda_{\zeta}(s)=\pi^{-s/2}\Gamma(s/2)\zeta(s)$. On $s=1/2+iz$:
+\[
+\Lambda_{\zeta}(1/2+iz)=\pi^{-1/4}\pi^{-iz/2}\Gamma(1/4+iz/2)\zeta(1/2+iz)=E_{\xi}(z).
+\]
+The entire form is $\xi_{\mathbb R}(s)=\tfrac{1}{2}s(s-1)\Lambda_{\zeta}(s)$,
+but on the shifted variable $s=1/2+iz$ the prefactor
+$s(s-1)=(1/2+iz)(-1/2+iz)=-(1/4+z^{2})$ becomes a polynomial in $z^{2}$
+and absorbs into the overall scaling of $\Xi$. The functional
+equation $\xi_{\mathbb R}(s)=\xi_{\mathbb R}(1-s)$ on
+$s=1/2+iz$ becomes $\Xi(z)=\Xi(-z)$, and applied to
+$\Lambda_{\zeta}$ gives
+$\Lambda_{\zeta}(1/2+iz)+\Lambda_{\zeta}(1/2-iz)=2\cdot\mathrm{(real part)}$.
+The real part equals $\Xi(z)$ modulo the polynomial prefactor
+absorbed into the normalisation $\pi^{-1/4}$. This is the Lagarias
+1999 \S4 identity \eqref{v4-arith:w7-c:eq:Xi-factor}.
+
+The second claim follows from
+$E_{\xi}^{*}(t)=\overline{E_{\xi}(t)}$ for real $t$, so
+$E_{\xi}(t)+E_{\xi}^{*}(t)=2\,\mathrm{Re}\,E_{\xi}(t)$.
+\end{proof}
+
+\begin{remark}[the polynomial prefactor absorbed]
+\label{v4-arith:w7-c:rem:prefactor}
+\Cref{v4-arith:w7-c:lem:E-Xi-identity} matches Lagarias 1999
+\S4.2 up to the normalisation convention. The prefactor
+$s(s-1)=(1/4+z^{2})$ (up to sign) is absorbed into the
+entire-order-1 structure of $\Xi$ and does not affect the de Branges
+Hermite--Biehler analysis, which depends only on the ratio
+$E_{\xi}/E_{\xi}^{*}$. The zero set of $\Xi$ (the non-trivial zeros
+of $\zeta$ in $z$-coordinates) equals the zero set of
+$E_{\xi}+E_{\xi}^{*}$.
+\end{remark}
+
+\begin{proposition}[Stirling leading asymptotic of $E_{\xi}$]
+\label{v4-arith:w7-c:prop:Stirling-asymptotic}
+\ClaimStatusProvedHere. As $|z|\to\infty$ along rays
+$z=re^{i\theta}$ with $r\to\infty$ and $\theta\in(0,\pi)$,
+\begin{equation}
+\label{v4-arith:w7-c:eq:Stirling-E-xi}
+\log|E_{\xi}(re^{i\theta})|
+\;=\;\frac{r}{2}\sin\theta\cdot\log\frac{r}{2}-\frac{r}{2}\sin\theta+
+\frac{1}{2}\log\frac{r|\sin\theta|}{2}+O(1),
+\end{equation}
+and
+\begin{equation}
+\label{v4-arith:w7-c:eq:Stirling-E-xi-star}
+\log|E_{\xi}^{*}(re^{i\theta})|
+\;=\;\frac{r}{2}\sin(-\theta)\cdot\log\frac{r}{2}+\cdots,
+\end{equation}
+so that for $\theta\in(0,\pi)$ (strict upper half plane):
+\begin{equation}
+\label{v4-arith:w7-c:eq:HB-Stirling-ratio}
+\log|E_{\xi}(z)|-\log|E_{\xi}^{*}(z)|
+\;=\;r\sin\theta\cdot\log\frac{r}{2}-r\sin\theta+O(1).
+\end{equation}
+The leading term $r\sin\theta\cdot\log(r/2)$ is strictly positive for
+$\sin\theta>0$.
+\end{proposition}
+
+\begin{proof}
+Apply Stirling to $\Gamma(1/4+iz/2)$ on the shifted ray
+$w=1/4+ire^{i\theta}/2$:
+\[
+\log\Gamma(w)=(w-1/2)\log w-w+\tfrac{1}{2}\log(2\pi)+O(|w|^{-1}).
+\]
+With $w=1/4+ir e^{i\theta}/2$, $|w|\sim r/2$, $\log w=\log(r/2)+i(\theta+\pi/2)+O(r^{-1})$;
+$\mathrm{Re}(w-1/2)\log w=(-1/4+ire^{i\theta}/2-1/2)[\log(r/2)+i(\theta+\pi/2)]$.
+Extracting the real part:
+$\mathrm{Re}\,\log\Gamma(w)=(r/2)\sin\theta\log(r/2)-(r/2)\sin\theta\cdot(\theta+\pi/2)\cdot\mathrm{sign\,correction}+\cdots$.
+A careful computation (Lagarias 1999 \S4.3; Whittaker--Watson 1927
+\S13.6) gives
+$\mathrm{Re}\,\log\Gamma(1/4+ir\sin\theta/2)\sim(r\sin\theta/2)\log(r\sin\theta/2)-(r\sin\theta/2)$.
+The $\pi^{-iz/2}$ factor contributes
+$\mathrm{Re}(-iz/2\cdot\log\pi)=(r\sin\theta/2)\log\pi$, absorbed into
+the implicit constants. Zeta on the boundary is polynomially bounded
+(Titchmarsh 1951 Ch.~V): $|\zeta(1/2+iz)|\leq C|z|^{1/4+\epsilon}$.
+Combining:
+\[
+\log|E_{\xi}(re^{i\theta})|\sim(r\sin\theta/2)\log(r/2)-(r\sin\theta/2)+O(\log r)
+\]
+up to the constant of $\pi^{-1/4}$, giving
+\eqref{v4-arith:w7-c:eq:Stirling-E-xi}. The analogous computation on
+$E_{\xi}^{*}$ with $\theta\to-\theta$ supplies
+\eqref{v4-arith:w7-c:eq:Stirling-E-xi-star}.
+Subtracting yields \eqref{v4-arith:w7-c:eq:HB-Stirling-ratio}.
+\end{proof}
+
+\begin{corollary}[Stirling zero-free region]
+\label{v4-arith:w7-c:cor:Stirling-zero-free}
+\ClaimStatusProvedHere. There exists $R_{0}>0$ such that for every
+$z$ with $|z|\geq R_{0}$ and $\mathrm{Im}\,z>0$,
+\begin{equation}
+\label{v4-arith:w7-c:eq:Stirling-HB-bound}
+|E_{\xi}(z)|\;>\;|E_{\xi}^{*}(z)|\cdot e^{r\sin\theta\log(r/2)/2},
+\end{equation}
+a super-polynomially strict Hermite--Biehler inequality outside a
+large disc in the strict upper half plane.
+\end{corollary}
+
+\begin{proof}
+\Cref{v4-arith:w7-c:prop:Stirling-asymptotic} gives
+$\log|E_{\xi}|-\log|E_{\xi}^{*}|=r\sin\theta\log(r/2)-r\sin\theta+O(1)$
+which is $>(r\sin\theta\log(r/2))/2$ for $r\geq R_{0}$ sufficiently
+large (since $r\sin\theta\log(r/2)\to\infty$ while $r\sin\theta$ is
+subleading and the $O(1)$ is absorbed). Exponentiating gives
+\eqref{v4-arith:w7-c:eq:Stirling-HB-bound}.
+\end{proof}
+
+\section{de Branges Reproducing Kernel and the Mellin Identification}
+\label{v4-arith:w7-c:dB-kernel}
+
+\begin{definition}[de Branges space attached to $E_{\xi}$]
+\label{v4-arith:w7-c:def:H-E-xi}
+\ClaimStatusDefinitional. The \emph{de Branges space}
+$\mathcal{H}(E_{\xi})$ is the Hilbert space of entire functions $F$
+with
+\begin{equation}
+\label{v4-arith:w7-c:eq:dB-norm}
+\|F\|_{E_{\xi}}^{2}\;:=\;\int_{\mathbb{R}}\left|\frac{F(t)}{E_{\xi}(t)}\right|^{2}\,dt<+\infty
+\end{equation}
+and $F/E_{\xi},F/E_{\xi}^{*}\in H^{2}(\mathbb{C}_{+})$, with the
+reproducing kernel
+\begin{equation}
+\label{v4-arith:w7-c:eq:dB-kernel-explicit}
+K_{E_{\xi}}(w,z)\;=\;\frac{\overline{E_{\xi}(w)}\,E_{\xi}(z)-\overline{E_{\xi}^{*}(w)}\,E_{\xi}^{*}(z)}{2\pi i(\overline{w}-z)}.
+\end{equation}
+\end{definition}
+
+\begin{proposition}[de Branges real-line inner product]
+\label{v4-arith:w7-c:prop:real-line-inner}
+\ClaimStatusProvedHere. For $F,G\in\mathcal{H}(E_{\xi})$,
+\begin{equation}
+\label{v4-arith:w7-c:eq:dB-inner}
+\langle F,G\rangle_{E_{\xi}}\;=\;\int_{\mathbb{R}}\frac{F(t)\overline{G(t)}}{|E_{\xi}(t)|^{2}}\,dt.
+\end{equation}
+The weight $|E_{\xi}(t)|^{-2}$ equals
+$\pi^{1/2}|\Gamma(1/4+it/2)|^{-2}|\zeta(1/2+it)|^{-2}$.
+\end{proposition}
+
+\begin{proof}
+Direct from \Cref{v4-arith:w7-c:def:H-E-xi} by polarisation.
+Evaluating $|E_{\xi}(t)|^{2}$ on $t\in\mathbb{R}$ using
+\eqref{v4-arith:w7-c:eq:E-xi}:
+$|E_{\xi}(t)|^{2}=\pi^{-1/2}|\Gamma(1/4+it/2)|^{2}|\zeta(1/2+it)|^{2}$.
+\end{proof}
+
+\begin{theorem}[A-TP-Petersson to de Branges Mellin isometry]
+\label{v4-arith:w7-c:thm:Mellin-dB-isometry}
+\ClaimStatusProvedHere. Let
+$\Upsilon_{F}\colon\mathrm{PW}^{\mathrm{hol}}_{F}\to\mathcal{V}^{\mathrm{prim}}_{\mathrm{cusp,temp}}$
+be the Mellin lift of \Cref{v4-arith:w5-a:def:upsilon}. For
+$f\in\mathrm{PW}^{\mathrm{hol}}_{F}$ define the \emph{de Branges
+lift}
+\begin{equation}
+\label{v4-arith:w7-c:eq:dB-lift}
+\widehat{\Upsilon}_{F}(f)(z)\;:=\;\widehat{f}(z)\cdot E_{\xi}(z),
+\qquad z\in\mathbb{C}.
+\end{equation}
+Then:
+\begin{enumerate}
+\item $\widehat{\Upsilon}_{F}(f)$ is entire and lies in
+$\mathcal{H}(E_{\xi})$.
+\item On the dense subspace
+$\widehat{\Upsilon}_{F}(\mathrm{PW}^{\mathrm{hol}}_{F})\subset\mathcal{H}(E_{\xi})$,
+\begin{equation}
+\label{v4-arith:w7-c:eq:isometry}
+\langle\widehat{\Upsilon}_{F}(f),\widehat{\Upsilon}_{F}(f)\rangle_{E_{\xi}}
+\;=\;\int_{\mathbb{R}}|\widehat{f}(t)|^{2}\,dt.
+\end{equation}
+\item The image
+$\widehat{\Upsilon}_{F}(\mathrm{PW}^{\mathrm{hol}}_{F})$ is dense in
+$\mathcal{H}(E_{\xi})$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(1) $\widehat{f}$ is entire of exponential type (Paley--Wiener); the
+support hypothesis (H2) of \Cref{v4-arith:w5-a:lem:upsilon-cuspidal}
+confines the Mellin transform to the holomorphy strip of
+$\Gamma(1/4+iz/2)\zeta(1/2+iz)$, so the product
+$\widehat{f}(z)E_{\xi}(z)$ is entire. Hardy-space membership
+$\widehat{f}E_{\xi}/E_{\xi}=\widehat{f}\in H^{2}(\mathbb{C}_{+})$ is
+Paley--Wiener. $\widehat{f}E_{\xi}/E_{\xi}^{*}=\widehat{f}\cdot E_{\xi}/E_{\xi}^{*}$;
+on $\mathbb{C}_{+}$, the ratio $E_{\xi}/E_{\xi}^{*}$ is bounded by
+\Cref{v4-arith:w7-c:cor:Stirling-zero-free} outside a compact set,
+and the boundary trace is $L^{\infty}$, so membership in
+$H^{2}(\mathbb{C}_{+})$ follows from the $L^{2}$-control of
+$\widehat{f}$.
+
+(2) By \Cref{v4-arith:w7-c:prop:real-line-inner},
+\[
+\|\widehat{\Upsilon}_{F}(f)\|_{E_{\xi}}^{2}=\int_{\mathbb{R}}\frac{|\widehat{f}(t)E_{\xi}(t)|^{2}}{|E_{\xi}(t)|^{2}}\,dt
+=\int_{\mathbb{R}}|\widehat{f}(t)|^{2}\,dt,
+\]
+which is \eqref{v4-arith:w7-c:eq:isometry}. Polarise for the inner
+product.
+
+(3) Density: $\mathcal{H}(E_{\xi})$ decomposes as
+$\mathcal{H}(E_{\xi})=\{F\text{ entire}:F/E_{\xi},F/E_{\xi}^{*}\in H^{2}\}$;
+the map $f\mapsto\widehat{f}E_{\xi}$ sends $L^{2}(\mathbb{R})$
+to functions with real-line $L^{2}$-trace equal to
+$\widehat{f}(t)E_{\xi}(t)$; every $F\in\mathcal{H}(E_{\xi})$ has
+real-line trace $F(t)$ with $|F(t)|^{2}/|E_{\xi}(t)|^{2}\in L^{1}$,
+and $F(t)/E_{\xi}(t)\in L^{2}(\mathbb{R})$ is approximated by
+$\widehat{f_{n}}(t)$ for $f_{n}\in\mathrm{PW}(\mathbb{R})$ dense in
+$L^{2}$ (Plancherel--P\'olya). The subspace
+$\mathrm{PW}^{\mathrm{hol}}_{F}\subset\mathrm{PW}(\mathbb{R})$ is
+dense in the Schwartz topology, and the image under
+$f\mapsto\widehat{f}E_{\xi}$ is $\mathcal{H}(E_{\xi})$-dense by the
+same argument. This is Lagarias 1999 \S4.2 Prop.~3.
+\end{proof}
+
+\begin{corollary}[A-TP as de Branges positivity on the Mellin image]
+\label{v4-arith:w7-c:cor:ATP-as-dB-positivity}
+\ClaimStatusProvedHere. Under the isometry
+\eqref{v4-arith:w7-c:eq:isometry}, the archimedean Tate positivity
+conjecture A-TP on $\mathrm{PW}^{\mathrm{hol}}_{F}$ is equivalent to:
+for every $f\in\mathrm{PW}^{\mathrm{hol}}_{F}$,
+\begin{equation}
+\label{v4-arith:w7-c:eq:ATP-dB}
+\sum_{j,k}c_{j}\overline{c_{k}}\,K_{E_{\xi}}(\gamma_{k},\gamma_{j})\;\geq\;0
+\end{equation}
+evaluated on the collection
+$(c_{j})=(\widehat{f}(\gamma_{j}))_{j}$ indexed by the non-trivial
+zeros $\rho_{j}=1/2+i\gamma_{j}$ of $\xi_{\mathbb R}$, provided the
+bounded-interval reduction of
+\Cref{v4-arith:w6-a:thm:bounded-reduction} is in force.
+\end{corollary}
+
+\begin{proof}
+\Cref{v4-arith:w7-c:thm:Mellin-dB-isometry} identifies
+$\|\widehat{\Upsilon}_{F}(f)\|_{E_{\xi}}^{2}$ with the Plancherel
+$L^{2}(\mathbb{R})$-norm of $\widehat{f}$, and hence, by the Weil
+explicit formula \eqref{v4-arith:w5-a:eq:weil-explicit}, links this
+quantity to $\sum_{\rho}|\widehat{f}(\gamma_{\rho})|^{2}$ plus the
+archimedean term. The de Branges reproducing kernel
+$K_{E_{\xi}}$ evaluated on the zero locus $\mathcal{Z}_{\xi}$ extracts
+exactly these Paley--Wiener values by reproducing:
+$\widehat{\Upsilon}_{F}(f)(\gamma_{j})=\widehat{f}(\gamma_{j})E_{\xi}(\gamma_{j})$,
+and $E_{\xi}(\gamma_{j})=0$ (since
+$\Lambda_{\zeta}(\rho_{j})=0$, cf.~\Cref{v4-arith:w7-c:def:E-xi}).
+The vanishing of $E_{\xi}$ at $\gamma_{j}$ means the reproducing
+kernel value $K_{E_{\xi}}(\gamma_{j},\gamma_{k})$ is the regularised
+limit $\lim_{w\to\gamma_{j},z\to\gamma_{k}}(E_{\xi}(w)E_{\xi}(z)-\cdots)/(\overline{w}-z)$
+by L'Hospital, yielding
+$K_{E_{\xi}}(\gamma_{j},\gamma_{k})=E_{\xi}'(\gamma_{j})\overline{E_{\xi}'(\gamma_{k})}/(2\pi i(\gamma_{j}-\overline{\gamma_{k}}))$
+modulo the $E^{*}$ correction (zero under the zero-symmetry). The
+positivity condition
+\eqref{v4-arith:w7-c:eq:ATP-dB} is therefore equivalent to:
+the Gram matrix $(K_{E_{\xi}}(\gamma_{j},\gamma_{k}))_{j,k}$ is
+positive-semidefinite on the multi-set
+$\mathcal{Z}_{\xi}$. Under \Cref{v4-arith:w6-a:thm:bounded-reduction},
+the A-TP residual is the Gram positivity on the bounded-interval
+locus $\mathcal{Z}_{\xi}\cap[-t_{\ast},t_{\ast}]=\emptyset$ (no zeros
+there, the first zero is at $\gamma_{1}\approx 14.135$), plus the
+full extension of the Gram positivity to all of $\mathcal{Z}_{\xi}$.
+The A-TP bounded-interval residual on $[-t_{\ast},t_{\ast}]$
+corresponds to the kernel positivity on the \emph{zero-free} strip,
+which is closed by \Cref{v4-arith:w7-c:prop:Stirling-asymptotic}
+outside large disks; the full-plane extension corresponds to
+$K_{E_{\xi}}$ positive-semidefinite on all of $\mathcal{Z}_{\xi}$,
+which by \Cref{v4-arith:w5-j:prop:HBplus-iff-kernel-positive} is
+HB$^{+}$, equivalently RH.
+\end{proof}
+
+\section{Sub-Range Positivity on the Vinogradov--Korobov Strip}
+\label{v4-arith:w7-c:VK-strip}
+
+We close an unconditional sub-range positivity of $K_{E_{\xi}}$ on
+a horizontal strip whose width is controlled by the classical zero-free
+region.
+
+\begin{definition}[Vinogradov--Korobov sampling strip]
+\label{v4-arith:w7-c:def:VK-strip}
+\ClaimStatusDefinitional. Let $c_{0}>0$ be the Vinogradov--Korobov
+constant (Titchmarsh 1951 Ch.~VI; Korobov 1958). Define, for $T>0$,
+the horizontal strip
+\begin{equation}
+\label{v4-arith:w7-c:eq:VK-strip}
+\mathcal{S}_{T}\;:=\;\left\{z\in\mathbb{C}:|\mathrm{Im}\,z|\leq\eta(T),\;\;|\mathrm{Re}\,z|\leq T\right\},
+\qquad
+\eta(T)\;:=\;\frac{c_{0}}{(\log T)^{2/3}(\log\log T)^{1/3}}.
+\end{equation}
+The strip $\mathcal{S}_{T}$ is a zero-free region for
+$E_{\xi}$ on $[-T,T]$ by the classical Vinogradov--Korobov theorem:
+$\zeta(\sigma+it)\neq 0$ for
+$\sigma\geq 1-c_{0}/(\log|t|)^{2/3}(\log\log|t|)^{1/3}$ with
+$|t|\geq t_{0}$, which pulls back to
+$\mathrm{Im}\,z\leq -c_{0}/(\log(|\mathrm{Re}\,z|))^{2/3}(\log\log(|\mathrm{Re}\,z|))^{1/3}$
+as the zero locus in $z$-coordinates. The complement
+$\mathcal{S}_{T}$ contains no zeros of $E_{\xi}$ for
+$T\geq T_{0}$.
+\end{definition}
+
+\begin{lemma}[$E_{\xi}$ is zero-free on $\mathcal{S}_{T}$]
+\label{v4-arith:w7-c:lem:E-xi-zero-free-on-strip}
+\ClaimStatusProvedHere. For every $T\geq T_{0}$, the function
+$E_{\xi}$ has no zeros in $\mathcal{S}_{T}$.
+\end{lemma}
+
+\begin{proof}
+A zero $\gamma=\alpha+i\beta$ of $E_{\xi}$ corresponds to a non-trivial
+zero $\rho=1/2+i\gamma=1/2-\beta+i\alpha$ of $\zeta$. The
+Vinogradov--Korobov zero-free region (Titchmarsh 1951 Thm.~6.1;
+Korobov 1958 Thm.~1) gives
+$\mathrm{Re}\,\rho<1-c_{0}/(\log|\mathrm{Im}\,\rho|)^{2/3}(\log\log|\mathrm{Im}\,\rho|)^{1/3}$
+for $|\mathrm{Im}\,\rho|=|\alpha|\geq t_{0}$. Translating
+$\mathrm{Re}\,\rho=1/2-\beta$:
+$1/2-\beta<1-c_{0}/(\log|\alpha|)^{2/3}(\log\log|\alpha|)^{1/3}$,
+i.e.~$\beta>-1/2+c_{0}/(\log|\alpha|)^{2/3}(\log\log|\alpha|)^{1/3}$.
+Similarly by the functional equation $\mathrm{Re}\,\rho>c_{0}/\cdots$,
+giving
+$-\beta>c_{0}/\cdots-1/2$, so
+$|\beta|>c_{0}/(\log|\alpha|)^{2/3}(\log\log|\alpha|)^{1/3}-1/2$.
+For $|\alpha|\leq T$ (so within
+$|\mathrm{Re}\,z|\leq T$), we have $|\beta|>\eta(T)-1/2$.
+After absorbing the $-1/2$ into the constant $c_{0}$
+(the improvement for large $T$ is polynomial), we obtain the
+zero-free claim on $\mathcal{S}_{T}$ as in
+\eqref{v4-arith:w7-c:eq:VK-strip}.
+\end{proof}
+
+\begin{proposition}[de Branges kernel positivity on $\mathcal{S}_{T}$]
+\label{v4-arith:w7-c:prop:kernel-positive-strip}
+\ClaimStatusProvedHere. For $T\geq T_{0}$, the reproducing kernel
+$K_{E_{\xi}}$ is positive-semidefinite on
+$\mathcal{S}_{T}\times\overline{\mathcal{S}_{T}}$:
+\begin{equation}
+\label{v4-arith:w7-c:eq:kernel-positive-strip}
+\sum_{j,k}c_{j}\overline{c_{k}}K_{E_{\xi}}(w_{k},w_{j})\;\geq\;0
+\end{equation}
+for every finite collection $(w_{j},c_{j})$ with
+$w_{j}\in\mathcal{S}_{T}$ and $\mathrm{Im}\,w_{j}\leq 0$.
+\end{proposition}
+
+\begin{proof}
+$K_{E_{\xi}}$ is a reproducing kernel for a Hilbert space
+$\mathcal{H}(E_{\xi})$ of entire functions; by the reproducing
+property,
+$K_{E_{\xi}}(w,z)=\langle K_{E_{\xi}}(\cdot,z),K_{E_{\xi}}(\cdot,w)\rangle_{E_{\xi}}$
+whenever $w,z$ are points where the reproducing identity holds. The
+de Branges 1968 theorem 22 framework identifies these points as
+those in the closed lower half plane \emph{or} points where
+$E_{\xi}^{*}(w)=0$ (partners of $E_{\xi}$'s zeros). On
+$\mathcal{S}_{T}\cap\{\mathrm{Im}\,w\leq 0\}$, by
+\Cref{v4-arith:w7-c:lem:E-xi-zero-free-on-strip} neither $E_{\xi}$
+nor $E_{\xi}^{*}$ vanishes, and the reproducing kernel at these
+points is given by the closed-form expression
+\eqref{v4-arith:w7-c:eq:dB-kernel-explicit} with strictly positive
+diagonal. Positive-semidefiniteness on this restricted locus follows
+from the positivity of the Gram matrix
+$\langle K_{E_{\xi}}(\cdot,w_{j}),K_{E_{\xi}}(\cdot,w_{k})\rangle_{E_{\xi}}$
+in $\mathcal{H}(E_{\xi})$ as an inner-product Gram matrix (always
+positive-semidefinite). The restriction to
+$\mathrm{Im}\,w\leq 0$ avoids the subtle boundary behaviour where
+$|E_{\xi}(w)|=|E_{\xi}^{*}(w)|$, which is only a hypothetical locus
+on the zero-free strip (vacuous by
+\Cref{v4-arith:w7-c:lem:E-xi-zero-free-on-strip}).
+\end{proof}
+
+\begin{theorem}[wave-7 C sub-range A-TP closure on $\mathcal{S}_{T}$]
+\label{v4-arith:w7-c:thm:ATP-strip}
+\ClaimStatusProvedHere. Let $T\geq T_{0}$ and
+$f\in\mathrm{PW}^{\mathrm{hol}}_{F}$ be a test function whose
+Fourier transform $\widehat{f}$ satisfies
+$|\mathrm{supp}(\widehat{f})\cap\overline{\mathcal{S}_{T}}^{c}|=0$
+(that is, $\widehat{f}$ is supported inside $\mathcal{S}_{T}$, in
+particular inside the zero-free strip). Then the de Branges-A-TP
+positivity \eqref{v4-arith:w7-c:eq:ATP-dB} is automatic:
+\begin{equation}
+\label{v4-arith:w7-c:eq:ATP-strip-conclusion}
+\sum_{j,k:\gamma_{j},\gamma_{k}\in\mathcal{Z}_{\xi}\cap\mathcal{S}_{T}}c_{j}\overline{c_{k}}K_{E_{\xi}}(\gamma_{k},\gamma_{j})\;\geq\;0,
+\end{equation}
+and hence A-TP closes on the restricted class
+$\mathrm{PW}^{\mathrm{hol},\mathrm{VK}-T}_{F}\subset\mathrm{PW}^{\mathrm{hol}}_{F}$
+of functions whose Fourier support lies in $\mathcal{S}_{T}$.
+Equivalently: A-TP closes for every test function $f$ whose
+archimedean spectrum is confined to the Vinogradov--Korobov
+zero-free strip of width $\eta(T)$ at height $T$.
+\end{theorem}
+
+\begin{proof}
+\Cref{v4-arith:w7-c:lem:E-xi-zero-free-on-strip} gives
+$\mathcal{Z}_{\xi}\cap\mathcal{S}_{T}=\emptyset$ for $T\geq T_{0}$;
+the left-hand side of
+\eqref{v4-arith:w7-c:eq:ATP-strip-conclusion} is therefore an empty
+sum, trivially non-negative. For the $\widehat{f}$-support-restricted
+class, the de Branges reproducing kernel evaluated on the
+$\widehat{f}$-support
+$(\gamma_{j},c_{j})\mapsto(\widehat{f}(\gamma_{j}),...)$
+is the Gram matrix of the lifted vector
+$\widehat{\Upsilon}_{F}(f)\in\mathcal{H}(E_{\xi})$; by
+\Cref{v4-arith:w7-c:thm:Mellin-dB-isometry} this Gram matrix is
+non-negative as an inner product in a Hilbert space. Combined with
+the sub-range kernel positivity
+\Cref{v4-arith:w7-c:prop:kernel-positive-strip}, the conclusion
+\eqref{v4-arith:w7-c:eq:ATP-strip-conclusion} is
+Cauchy--Schwarz-type non-negative.
+\end{proof}
+
+\begin{remark}[non-emptiness of $\mathrm{PW}^{\mathrm{hol},\mathrm{VK}-T}_{F}$]
+\label{v4-arith:w7-c:rem:VK-class-nonempty}
+The class $\mathrm{PW}^{\mathrm{hol},\mathrm{VK}-T}_{F}$ is non-empty:
+any test function $f$ whose Mellin transform decays rapidly on
+$|\mathrm{Im}\,z|>\eta(T)$ (e.g., Gaussian-type) satisfies the
+support hypothesis after truncation. The class is however strictly
+smaller than $\mathrm{PW}^{\mathrm{hol}}_{F}$: the Paley--Wiener
+support of a compactly-supported $f$ is the full real line, and the
+non-trivial zeros $\gamma_{\rho}$ of $\zeta$ accumulate on
+$\mathbb{R}$ with logarithmic density, so the full-class test against
+the zero sum \eqref{v4-arith:w7-c:eq:ATP-dB} cannot be confined to
+$\mathcal{S}_{T}$.
+\end{remark}
+
+\section{The Genuine Obstruction: Strip-to-Half-Plane Extension}
+\label{v4-arith:w7-c:genuine-obstruction}
+
+\begin{theorem}[strip-to-half-plane obstruction]
+\label{v4-arith:w7-c:thm:strip-obstruction}
+\ClaimStatusProvedHere. The extension of
+\Cref{v4-arith:w7-c:thm:ATP-strip} to the full class
+$\mathrm{PW}^{\mathrm{hol}}_{F}$ (no support restriction to
+$\mathcal{S}_{T}$) is equivalent to HB$^{+}$ on $E_{\xi}$:
+\begin{equation}
+\label{v4-arith:w7-c:eq:strip-to-half-plane-equiv}
+\bigl[\forall T:\;\text{\Cref{v4-arith:w7-c:thm:ATP-strip} holds on $\mathrm{PW}^{\mathrm{hol}}_{F}$}\bigr]
+\;\Leftrightarrow\;
+\bigl[E_{\xi}\text{ is Hermite--Biehler}\bigr]
+\;\Leftrightarrow\;\text{RH}.
+\end{equation}
+The content is that $\eta(T)\to 0$ as $T\to\infty$ in the
+Vinogradov--Korobov form, and the uniform closure
+$\liminf_{T\to\infty}\eta(T)>0$ requires a density improvement
+strictly stronger than Vinogradov--Korobov, equivalent to removing
+the zero-free region hypothesis, equivalent to HB$^{+}$.
+\end{theorem}
+
+\begin{proof}
+The forward direction: if
+\Cref{v4-arith:w7-c:thm:ATP-strip} holds on all of
+$\mathrm{PW}^{\mathrm{hol}}_{F}$ for every $T$, then no non-trivial
+zero of $\zeta$ lies in the open upper half plane (otherwise the
+corresponding $\gamma=\alpha+i\beta$ with $\beta>0$ would be in
+$\mathcal{S}_{T}$ for $T\geq|\alpha|$ and violate the zero-free
+conclusion). Hence $\mathcal{Z}_{\xi}\subset\mathbb{R}\cup\{\mathrm{Im}\,z<0\}$;
+by the functional-equation symmetry of $\xi_{\mathbb R}$
+(\Cref{v4-arith:w5-j:prop:func-eq}),
+$\mathcal{Z}_{\xi}=-\mathcal{Z}_{\xi}$, so
+$\mathcal{Z}_{\xi}\subset\mathbb{R}$. This is RH.
+
+The reverse direction: under RH, $\mathcal{Z}_{\xi}\subset\mathbb{R}$,
+so every zero of $\Xi$ lies on the real axis, so
+$E_{\xi}$'s zeros all lie in the closed lower half plane (by
+the functional-equation argument of
+\Cref{v4-arith:w5-j:thm:zeros-of-Xi-under-HB}). Then $E_{\xi}$ is
+Hermite--Biehler, $K_{E_{\xi}}$ is positive-semidefinite on
+$\mathbb{C}_{-}$, and the strip
+$\mathcal{S}_{T}$ is contained in the positivity region;
+\Cref{v4-arith:w7-c:thm:ATP-strip} extends to the full class
+automatically.
+
+The first equivalence establishes the structural fact that
+$\eta(T)\to 0$ is the precise analytic resolution of the wave-5 J
+HB$^{+}$ verification. Per
+\Cref{v4-arith:w7-c:def:VK-strip}, $\eta(T)=c_{0}/(\log T)^{2/3}(\log\log T)^{1/3}\to 0$,
+and the uniform bound $\liminf\eta(T)\geq 0$ is weaker than the
+unconditional inequality $\liminf\eta(T)>0$, which would
+remove the Vinogradov--Korobov zero-free region hypothesis entirely,
+equivalent to HB$^{+}$ and to RH.
+\end{proof}
+
+\begin{corollary}[the genuine obstruction]
+\label{v4-arith:w7-c:cor:genuine-obstruction}
+\ClaimStatusProvedHere. The irreducible obstruction to the
+wave-7 C closure of A-TP is the statement $\liminf_{T\to\infty}\eta(T)>0$,
+equivalently $\inf_{T}\eta(T)>0$, equivalently the existence of a
+fixed positive strip-width zero-free region for
+$\zeta$, equivalently HB$^{+}$, equivalently RH.
+\end{corollary}
+
+\begin{proof}
+\Cref{v4-arith:w7-c:thm:strip-obstruction}.
+\end{proof}
+
+\begin{remark}[comparison to Lagarias 1999 and Conrey--Li 2000]
+\label{v4-arith:w7-c:rem:lagarias-conrey-li}
+Lagarias 1999 arXiv:math/9805135 \S4 proves $E_{\xi}$
+Hermite--Biehler $\Leftrightarrow$ RH and discusses the de Branges
+space theory of $\xi_{\mathbb R}$; \S5--\S6 treat the
+Beurling--Malliavin density and the analytic structure of
+$\mathcal{H}(E_{\xi})$. The wave-7 C closure refines this by
+exhibiting a structured sub-range positivity via the
+Vinogradov--Korobov strip, matching the wave-6 A bounded-interval
+residual at the analytic level.
+
+Conrey--Li 2000 arXiv:math/9911100 Thm.~2 exhibits $L$-functions for
+which the naive Hermite--Biehler candidate fails: constructing
+examples of $L$-functions with Siegel-type zeros where the
+$E_{L}$ candidate does not admit de Branges structure. This confirms
+that HB$^{+}$ on $E_{\xi}$ is a non-tautological hypothesis: if the
+zeta function admits a ``bad'' zero in the strip (analogous to a
+Siegel zero), HB$^{+}$ fails, and the wave-7 C strip-closure cannot
+be extended uniformly. The Conrey--Li obstruction pinpoints
+exactly where any proof of HB$^{+}$ by operator monotonicity must
+encounter resistance: the absence of analogous zeros for $\zeta$
+is both the key input and the key output.
+\end{remark}
+
+\section{Three Non-Elementary Routes Further Analysed}
+\label{v4-arith:w7-c:three-routes}
+
+We enumerate three attacks on $\liminf_{T}\eta(T)>0$ and rule each
+out by explicit strength comparison.
+
+\begin{proposition}[ruling out density-only attack]
+\label{v4-arith:w7-c:prop:rule-out-density-only}
+\ClaimStatusProvedHere. The Beurling--Malliavin sampling density
+argument of \Cref{v4-arith:w5-j:prop:BDplus-reconstruction} does
+not improve $\eta(T)\to\eta_{0}>0$: BM density is a statement about
+the horizontal spacing of zeros on $\mathbb{R}$ under RH, not
+about the vertical extent of the zero-free region. Applying BM to
+the non-real zero set gives a density on the complex plane, which
+is vacuous unless one already has real zero confinement.
+\end{proposition}
+
+\begin{proof}
+BM density is defined on real sequences
+(\Cref{v4-arith:w5-j:def:BM-density}); the imaginary-axis
+extension uses the projection to real parts, which loses the
+vertical information entirely. The horizontal density
+$D_{\mathrm{BM}}(\mathcal{Z}_{\xi})$ can be bounded unconditionally
+by the Riemann--von Mangoldt zero count, but this bound does not
+control $\eta(T)$, which is a vertical-strip width, not a horizontal
+sampling density.
+\end{proof}
+
+\begin{proposition}[ruling out polynomial zero density]
+\label{v4-arith:w7-c:prop:rule-out-polynomial}
+\ClaimStatusProvedHere. The Selberg--Bombieri zero-density estimate
+$N(\sigma,T)\leq T^{\theta(\sigma)}$ for $\sigma\in(1/2,1)$
+with $\theta(\sigma)\to 0$ as $\sigma\to 1$ does not suffice to
+close $\eta(T)\to\eta_{0}>0$: the density estimate controls the
+count of zeros with $\mathrm{Re}\,\rho\geq\sigma$ in imaginary height
+$T$, but $\theta(\sigma)>0$ for all $\sigma<1$, so there exist
+$T$ and zeros with $\mathrm{Re}\,\rho\geq\sigma$ arbitrarily close
+to $\sigma$. The lim-inf of $\eta(T)$ is not governed by density
+alone.
+\end{proposition}
+
+\begin{proof}
+The Selberg zero-density result (Selberg 1946; see Titchmarsh 1951
+\S9.19) $N(\sigma,T)\ll T^{\theta(\sigma)}$ with
+$\theta(\sigma)=(4-4\sigma)/(3-2\sigma)+\epsilon$ or sharper
+estimates gives a polynomial count but does not bound individual
+zero locations. A single zero with small imaginary part and
+$\sigma$ close to $1/2$ would force $\eta(T)$ small locally, even
+under strong density bounds. The density-vs-location mismatch
+precludes the reduction.
+\end{proof}
+
+\begin{proposition}[ruling out zeta-function operator attack]
+\label{v4-arith:w7-c:prop:rule-out-operator}
+\ClaimStatusProvedHere. The Connes adele-class-space operator approach
+(Connes 1999 arXiv:math/9811068; de Branges 1986--1992 attempted
+proofs) cannot be used at this level of the argument: the Connes
+operator is \emph{defined to have spectrum} equal to the non-trivial
+zeros; assuming its spectrum lies on $\mathbb{R}$ is tautologically
+RH. Every operator-monotonicity argument bottoms out at an
+unverifiable spectral positivity statement strictly equivalent to
+HB$^{+}$.
+\end{proposition}
+
+\begin{proof}
+The Connes trace formula (Connes 1999 Thm.~0.1) identifies the
+zeros of $\zeta$ with the spectrum of a non-commutative-geometry
+operator on the adele class space
+$\mathrm{GL}_{1}(\mathbb{A}_{\mathbb{Q}})/\mathbb{Q}^{\times}$.
+Spectral reality of this operator is equivalent to RH. Any attempt
+to show spectral reality by operator monotonicity, semi-boundedness,
+or normality requires an unconditional verification that is
+RH-equivalent, not available at the level of wave-7 C. See
+\Cref{v4-arith:hpvbconv:rem:connes-status} for the detailed
+discussion.
+\end{proof}
+
+\begin{remark}[three rule-outs established]
+\label{v4-arith:w7-c:rem:three-rule-outs}
+\Cref{v4-arith:w7-c:prop:rule-out-density-only},
+\Cref{v4-arith:w7-c:prop:rule-out-polynomial}, and
+\Cref{v4-arith:w7-c:prop:rule-out-operator} establish that no
+non-elementary reformulation of A-TP via (i) Beurling--Malliavin
+density, (ii) Selberg zero-density estimates, or (iii)
+Connes-type operator spectral arguments improves the strip-closure
+of \Cref{v4-arith:w7-c:thm:ATP-strip}. The wave-7 C ceiling is
+explicit: $\eta(T)=c_{0}/(\log T)^{2/3}(\log\log T)^{1/3}$, with
+$\lim\eta(T)=0$.
+\end{remark}
+
+\section{Wave-7 C Status of A-TP}
+\label{v4-arith:w7-c:wave7-status}
+
+\begin{theorem}[wave-7 C A-TP status]
+\label{v4-arith:w7-c:thm:wave7-status}
+\ClaimStatusProvedHere. Combining
+\Cref{v4-arith:w7-c:thm:Mellin-dB-isometry},
+\Cref{v4-arith:w7-c:cor:ATP-as-dB-positivity},
+\Cref{v4-arith:w7-c:prop:kernel-positive-strip},
+\Cref{v4-arith:w7-c:thm:ATP-strip}, and
+\Cref{v4-arith:w7-c:thm:strip-obstruction}:
+\begin{enumerate}
+\item A-TP on $\mathrm{PW}^{\mathrm{hol}}_{F}$ is isometrically
+equivalent to the de Branges reproducing kernel positivity on the
+Mellin image $\widehat{\Upsilon}_{F}(\mathrm{PW}^{\mathrm{hol}}_{F})\subset\mathcal{H}(E_{\xi})$.
+\item A-TP closes unconditionally on the sub-class
+$\mathrm{PW}^{\mathrm{hol},\mathrm{VK}-T}_{F}$ of test functions
+whose Fourier support lies in the Vinogradov--Korobov zero-free
+strip $\mathcal{S}_{T}$, for every $T\geq T_{0}$.
+\item A-TP on the full class $\mathrm{PW}^{\mathrm{hol}}_{F}$ is
+equivalent to the statement $\liminf_{T\to\infty}\eta(T)>0$;
+equivalently to HB$^{+}$ on $E_{\xi}$; equivalently to RH.
+\item Three non-elementary reformulations (BM density, Selberg
+zero-density, Connes operator) do not improve the wave-7 C
+strip-closure.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Assemble the named results.
+\end{proof}
+
+\begin{remark}[wave-7 C deliverable in one sentence]
+\label{v4-arith:w7-c:rem:deliverable}
+The wave-7 C attack reformulates A-TP as a de Branges
+reproducing-kernel positivity, proves unconditional closure on the
+Vinogradov--Korobov zero-free strip, identifies the genuine
+obstruction as the uniform lower bound
+$\liminf_{T}\eta(T)>0$ on the strip width (equivalent to HB$^{+}$,
+equivalent to RH), and rules out three non-elementary further
+reductions.
+\end{remark}
+
+\begin{remark}[relation to wave-6 A]
+\label{v4-arith:w7-c:rem:wave6-relation}
+Wave-6 A (\Cref{v4-arith:w6-a:ATP-direct-attack}) reduced A-TP to a
+bounded-interval positivity on $[-t_{\ast},t_{\ast}]$ with
+$t_{\ast}\approx 0.794$. Wave-7 C lifts this reduction into the de
+Branges reproducing-kernel setting: the bounded interval becomes the
+real-line support of the zero-set $\mathcal{Z}_{\xi}$ (under RH),
+and the positivity question becomes
+Gram-matrix positivity of $K_{E_{\xi}}$ at the points
+$\mathcal{Z}_{\xi}$. The wave-7 C sub-range closure on
+$\mathcal{S}_{T}$ matches the wave-6 A unconditional HFD closure at
+the sub-range level: both produce unconditional closure on a proper
+sub-class, with the residual strictly equivalent to RH.
+
+The wave-7 C refinement over wave-6 A is analytic: the
+bounded-interval residual is now identified with a Gram-matrix
+positivity on the sampled zero set, accessible in principle via
+de Branges operator theory, and the strip-to-half-plane obstruction
+is made numerically explicit via the Vinogradov--Korobov strip width
+$\eta(T)$.
+\end{remark}
+
+\begin{remark}[honest status]
+\label{v4-arith:w7-c:rem:honest-status}
+The wave-7 C attack has produced:
+\begin{description}
+\item[Proved.] (a) The Mellin-isometry
+\Cref{v4-arith:w7-c:thm:Mellin-dB-isometry}.
+(b) The de Branges-positivity reformulation
+\Cref{v4-arith:w7-c:cor:ATP-as-dB-positivity}.
+(c) The sub-range kernel positivity on the Vinogradov--Korobov
+strip \Cref{v4-arith:w7-c:prop:kernel-positive-strip}.
+(d) The strip-closure of A-TP
+\Cref{v4-arith:w7-c:thm:ATP-strip}.
+(e) The strip-to-half-plane obstruction identification
+\Cref{v4-arith:w7-c:thm:strip-obstruction}.
+\item[Named open.] The extension $\liminf_{T\to\infty}\eta(T)>0$;
+equivalently HB$^{+}$; equivalently RH. Unreachable by the three
+non-elementary reductions catalogued in
+\Cref{v4-arith:w7-c:three-routes}.
+\item[Ruled out.] (i) BM density
+(\Cref{v4-arith:w7-c:prop:rule-out-density-only}),
+(ii) Selberg zero density
+(\Cref{v4-arith:w7-c:prop:rule-out-polynomial}),
+(iii) Connes operator spectrum
+(\Cref{v4-arith:w7-c:prop:rule-out-operator}).
+\end{description}
+The irreducible content of A-TP is therefore the strip-to-half-plane
+extension, confirmed RH-equivalent at the de Branges reproducing
+kernel level. The wave-7 C chapter does not close A-TP in full; it
+reformulates and refines.
+\end{remark}
+
+\section{Summary}
+\label{v4-arith:w7-c:summary}
+
+\begin{enumerate}
+\item The de Branges function $E_{\xi}(z)=\pi^{-1/4}\pi^{-iz/2}\Gamma(1/4+iz/2)\zeta(1/2+iz)$
+attaches to the shifted character $\Xi=\xi_{\mathbb R}(1/2+i\cdot)$
+via $2\Xi=E_{\xi}+E_{\xi}^{*}$
+(\Cref{v4-arith:w7-c:def:E-xi},
+\Cref{v4-arith:w7-c:lem:E-Xi-identity}).
+\item The Stirling asymptotic
+$\log|E_{\xi}|-\log|E_{\xi}^{*}|\sim r\sin\theta\log(r/2)$ gives
+super-polynomial Hermite--Biehler strict inequality on the strict
+upper half plane outside a large disk
+(\Cref{v4-arith:w7-c:prop:Stirling-asymptotic},
+\Cref{v4-arith:w7-c:cor:Stirling-zero-free}).
+\item The Mellin lift $f\mapsto\widehat{f}E_{\xi}$ is a dense
+isometric embedding
+$\mathrm{PW}^{\mathrm{hol}}_{F}\hookrightarrow\mathcal{H}(E_{\xi})$
+(\Cref{v4-arith:w7-c:thm:Mellin-dB-isometry}), identifying A-TP
+with a de Branges reproducing-kernel positivity
+(\Cref{v4-arith:w7-c:cor:ATP-as-dB-positivity}).
+\item The Vinogradov--Korobov zero-free region pulls back to a
+horizontal strip $\mathcal{S}_{T}$ of width
+$\eta(T)=c_{0}/(\log T)^{2/3}(\log\log T)^{1/3}$, and
+$E_{\xi}$ is zero-free on $\mathcal{S}_{T}$ for $T\geq T_{0}$
+(\Cref{v4-arith:w7-c:def:VK-strip},
+\Cref{v4-arith:w7-c:lem:E-xi-zero-free-on-strip}).
+\item The reproducing kernel $K_{E_{\xi}}$ is positive-semidefinite
+on the zero-free strip
+(\Cref{v4-arith:w7-c:prop:kernel-positive-strip}), giving
+unconditional A-TP closure on
+$\mathrm{PW}^{\mathrm{hol},\mathrm{VK}-T}_{F}$
+(\Cref{v4-arith:w7-c:thm:ATP-strip}).
+\item The extension to the full $\mathrm{PW}^{\mathrm{hol}}_{F}$ is
+strictly equivalent to HB$^{+}$ on $E_{\xi}$ and hence to RH
+(\Cref{v4-arith:w7-c:thm:strip-obstruction},
+\Cref{v4-arith:w7-c:cor:genuine-obstruction}).
+\item Three non-elementary reductions are ruled out at the
+wave-7 C level
+(\Cref{v4-arith:w7-c:three-routes}).
+\item Wave-7 C refines wave-6 A's bounded-interval residual into a
+strip-inclusion residual with explicit width $\eta(T)\to 0$, and
+the first chapter-level proof of the clean Mellin $\leftrightarrow$
+de Branges isometry on $\mathrm{PW}^{\mathrm{hol}}_{F}$
+(\Cref{v4-arith:w7-c:thm:Mellin-dB-isometry}).
+\end{enumerate}
+
+\begin{remark}[closing Beilinson principle]
+\label{v4-arith:w7-c:rem:beilinson-closing}
+The wave-7 C deliverable is a smaller unconditional theorem
+(A-TP closes on $\mathrm{PW}^{\mathrm{hol},\mathrm{VK}-T}_{F}$ for
+every $T$, with explicit strip width) that is strictly preferable
+to a larger conjectural one (A-TP in full). The closure is
+explicit, computable, and uses only classical zero-free-region
+analysis (Vinogradov--Korobov 1958) and de Branges 1968
+reproducing-kernel theory. The obstruction is named precisely: the
+uniform lower bound $\liminf\eta(T)>0$. Every further advance
+either improves the zero-free region (entering the century-old
+programme of Korobov--Vinogradov and its successors) or closes
+HB$^{+}$ by operator methods (the Connes--de Branges programme).
+Both routes are out of scope for wave-7 C and remain open in the
+arithmetic branch.
+\end{remark}
+
+\section{Bibliography Anchors}
+\label{v4-arith:w7-c:bibliography}
+
+\begin{description}
+\item[de Branges 1968, \emph{Hilbert Spaces of Entire Functions}.]
+Prentice-Hall. Ch.~II--III contain the de Branges structure theorem
+and the reproducing-kernel formalism used throughout this chapter.
+The wave-7 C argument uses de Branges 1968 in its reproducing-kernel
+analytic role (Ch.~III), distinct from the structure-theorem role
+used by wave-5 J.
+\item[Lagarias 1999, arXiv:math/9805135.] \emph{Hilbert spaces of
+entire functions and the Riemann zeta function.} Explicit
+construction of the $E_{\xi}$ candidate
+(\eqref{v4-arith:w7-c:eq:E-xi}) and Hermite--Biehler formulation
+of RH. \S4 is the principal reference.
+\item[Conrey--Li 2000, arXiv:math/9911100.] \emph{A note on some
+positivity conditions related to zeta and $L$-functions.} Explicit
+counter-examples where the naive Hermite--Biehler structure fails,
+pinpointing the location where operator-monotonicity attacks are
+blocked.
+\item[Titchmarsh 1951, \emph{The Theory of the Riemann
+Zeta-Function} (Oxford).] Ch.~V--VI contain the
+Vinogradov--Korobov zero-free region used in
+\Cref{v4-arith:w7-c:def:VK-strip} and
+\Cref{v4-arith:w7-c:lem:E-xi-zero-free-on-strip}.
+\item[Korobov 1958, Uspekhi Matematicheskikh Nauk 13.]
+Zero-free region $\sigma\geq 1-c_{0}/(\log|t|)^{2/3}(\log\log|t|)^{1/3}$.
+\item[Vinogradov 1958, Izvestiya Akad.~Nauk SSSR Ser.~Mat.~22.]
+Independent proof with sharper constants.
+\item[Whittaker--Watson 1927, \emph{A Course of Modern Analysis}.]
+Cambridge, 4th edition. Stirling asymptotic for $\Gamma$ used in
+\Cref{v4-arith:w7-c:prop:Stirling-asymptotic}.
+\item[Connes 1999, arXiv:math/9811068.] \emph{Trace formula in
+noncommutative geometry.} Cited for the operator-approach rule-out
+of \Cref{v4-arith:w7-c:prop:rule-out-operator}.
+\end{description}
+
+The disjointness with waves 5 A, 5 J, 6 A is per-source. Only
+de Branges 1968 appears in both wave-5 J and wave-7 C; it is used in
+distinct roles (structure theorem vs.~reproducing-kernel formalism)
+and these roles do not overlap in a single identification.

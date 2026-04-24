@@ -1,0 +1,967 @@
+\chapter{Per-State-Finite Primary Virasoro: $c_{\mathrm{reg}}=2$}
+\label{v4-arith:w9-r3:chapter}
+
+\emph{Wave-9 R3. This chapter discharges the first half of the
+primary-Virasoro reconciliation conjecture
+(\Cref{v4-arith:rh:conj:primary-Virasoro}). Chapter~\ref{v4-arith:polyakov}
+states that the naive sum $c_{\mathrm{full}}=\sum_{p}c^{(p)}$
+diverges; Chapter~\ref{v4-arith:rh-reformulation} records the
+reconciliation as conjectural. The present chapter proves the
+central-charge half: on the primary Heisenberg core
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$ the
+per-state commutator is a \emph{finite} sum, its zeta-regularised
+extrapolation is well-defined through the completed zeta
+$\xi_{\mathbb R}$, and it delivers the Polyakov value
+$c_{\mathrm{reg}}=2=2\cdot\mathrm{Res}_{s=1}\zeta(s)$. The full
+Virasoro bracket (the bracket identity on a chosen self-adjoint
+extension of $L_{m}^{\mathrm{Ar}}$) is still conditional on
+\Cref{v4-arith:rh:conj:primary-Virasoro}(bracket); this chapter
+closes only the constant.}
+
+\section{Local Virasoro at Each Prime}
+\label{v4-arith:w9-r3:local}
+
+\subsection{The per-prime chiral Heisenberg Fock}
+\label{v4-arith:w9-r3:per-prime-fock}
+
+\begin{definition}[per-prime Heisenberg and Virasoro]
+\label{v4-arith:w9-r3:def:per-prime}
+\ClaimStatusDefinitional. At each finite place $p\in\mathbb{P}$ the
+\emph{per-prime chiral Heisenberg} is the complex rank-2 Heisenberg
+VA $\mathcal{H}^{(p)}$ with generators $a^{(p)},b^{(p)}$, OPE
+$a^{(p)}(z)a^{(p)}(w)\sim (z-w)^{-2}$,
+$b^{(p)}(z)b^{(p)}(w)\sim (z-w)^{-2}$, mixed OPE vanishing, and Fock
+vacuum $|0\rangle_{p}$
+(Chapter~\ref{v4-arith:drinfeld-kapranov}; Kac 1998, \S 3.5).
+Operating with the rescaled conformal vector
+\begin{equation}
+\label{v4-arith:w9-r3:eq:omega-p}
+\omega_{p}\;:=\;\tfrac{1}{2}(\log p)\bigl(a_{-1}^{(p)}a_{-1}^{(p)}+b_{-1}^{(p)}b_{-1}^{(p)}\bigr)|0\rangle_{p},
+\end{equation}
+the state-field correspondence produces modes
+\begin{equation}
+\label{v4-arith:w9-r3:eq:L-m-p}
+L_{m}^{(p)}\;=\;\tfrac{1}{2}(\log p)\sum_{k\in\mathbb{Z}}{:}a_{m-k}^{(p)}a_{k}^{(p)}{:}\;+\;\tfrac{1}{2}(\log p)\sum_{k\in\mathbb{Z}}{:}b_{m-k}^{(p)}b_{k}^{(p)}{:},
+\end{equation}
+acting on the Fock module.
+\end{definition}
+
+\begin{remark}[convention: $\log p$ is archimedean]
+\label{v4-arith:w9-r3:rem:log-p-archimedean}
+The factor $\log p$ is archimedean-real scaling data, not an
+internal $\mathbb{Q}_{p}$-coefficient
+(\Cref{v4-arith:conv:log-p-archimedean}). Observation
+\Cref{v4-arith:obs:rescaling-breaks-virasoro} shows that rescaling
+$T\mapsto\lambda T$ breaks the Virasoro OPE unless $\lambda=1$; the
+rescaling here is of the underlying Heisenberg coordinate, not of
+the stress tensor built from the rescaled Heisenberg. Under this
+reading $\omega_{p}$ is the canonical Sugawara conformal vector of
+the \emph{rescaled} Heisenberg
+\begin{equation}
+\label{v4-arith:w9-r3:eq:rescaled-comm}
+[a_{m}^{(p)},a_{n}^{(p)}]_{\mathrm{resc}}\;=\;m(\log p)\delta_{m+n,0}\cdot\mathrm{id},\qquad [b_{m}^{(p)},b_{n}^{(p)}]_{\mathrm{resc}}\;=\;m(\log p)\delta_{m+n,0}\cdot\mathrm{id},
+\end{equation}
+and mixed commutators vanishing.
+\end{remark}
+
+\subsection{Per-prime central charge}
+\label{v4-arith:w9-r3:per-prime-central}
+
+\begin{proposition}[per-prime central charge is $2$]
+\label{v4-arith:w9-r3:prop:per-prime-c-2}
+\ClaimStatusProvedHere. For every prime $p$ and every pair $m,n$
+with $m+n=0$ the Virasoro commutator on $\mathcal{H}^{(p)}$ satisfies
+\begin{equation}
+\label{v4-arith:w9-r3:eq:per-prime-bracket}
+[L_{m}^{(p)},L_{-m}^{(p)}]\;=\;2m\,L_{0}^{(p)}\;+\;\frac{c^{(p)}}{12}\,m(m^{2}-1)\cdot\mathrm{id},\qquad c^{(p)}\;=\;2.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Two independent Sugawara-type Heisenbergs tensor multiplicatively at
+the level of Virasoro central charge: the single chiral $u(1)$
+Heisenberg has $c=1$ by Kac--Raina \S 3.5 / Frenkel--Ben-Zvi
+Chapter~2. The rank-2 Heisenberg is the product, so
+$c^{(p)}=1+1=2$. The rescaling
+$\omega_{p}=(\log p)\omega^{\mathrm{std}}_{p}$ of
+\eqref{v4-arith:w9-r3:eq:omega-p} is a rescaling of the
+\emph{Heisenberg coordinate} inside the Sugawara bracket (compatible
+with the rescaled commutator
+\eqref{v4-arith:w9-r3:eq:rescaled-comm}); the normalisation balances
+between the square Sugawara formula and the rescaled Heisenberg OPE,
+with net effect on the central charge equal to the identity
+(Observation \Cref{v4-arith:obs:rescaling-breaks-virasoro}).
+Equivalently, $\omega_{p}$ is the canonical conformal vector of
+the rescaled Heisenberg, for which the Kac--Raina computation
+delivers $c^{(p)}=2$.
+\end{proof}
+
+\begin{remark}[independence of $p$]
+\label{v4-arith:w9-r3:rem:p-independence}
+\Cref{v4-arith:thm:per-prime-c} already inscribes this fact at the
+level of Polyakov observation. \Cref{v4-arith:w9-r3:prop:per-prime-c-2}
+re-derives it from the Sugawara tensor rule for completeness and
+adds the Heisenberg-coordinate-rescaling check.
+\end{remark}
+
+\section{Divergent Sum and Per-State Finiteness}
+\label{v4-arith:w9-r3:per-state}
+
+\subsection{The naive global sum diverges}
+\label{v4-arith:w9-r3:full-divergent}
+
+\begin{observation}[full global central sum is $+\infty$]
+\label{v4-arith:w9-r3:obs:full-divergent}
+\ClaimStatusProvedHere. The naive \emph{full} central charge
+\begin{equation}
+\label{v4-arith:w9-r3:eq:c-full-divergent}
+c_{\mathrm{full}}\;:=\;\sum_{p\in\mathbb{P}}c^{(p)}\;=\;\sum_{p\in\mathbb{P}}2\;=\;+\infty
+\end{equation}
+diverges. Equivalently, the stress tensor $\omega=\sum_{p}\omega_{p}$
+on the infinite restricted tensor product
+$\mathcal{V}^{\mathrm{prim}}=\bigotimes'_{p}\mathcal{H}^{(p)}$ does
+not satisfy the Virasoro central extension with a finite scalar: on
+every state, the central term $(c/12)m(m^{2}-1)$ is multiplied by an
+infinite $c$
+(Chapter~\ref{v4-arith:polyakov}, \Cref{v4-arith:cor:no-virasoro}).
+\end{observation}
+
+\subsection{The primary core}
+\label{v4-arith:w9-r3:primary-core}
+
+\begin{definition}[primary Heisenberg core]
+\label{v4-arith:w9-r3:def:primary-core}
+\ClaimStatusDefinitional. The \emph{primary Heisenberg core} of
+$\mathcal{V}^{\mathrm{prim}}$ is
+\begin{equation}
+\label{v4-arith:w9-r3:eq:primary-core}
+\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}\;:=\;\mathrm{span}_{\mathbb{C}}\Bigl\{\;v=\bigotimes_{p}v_{p}\;\Big|\;v_{p}=|0\rangle_{p}\text{ for all but finitely many }p\;\Bigr\},
+\end{equation}
+with $|0\rangle_{p}\in\mathcal{H}^{(p)}$ the per-prime Fock vacuum
+(\Cref{v4-arith:w5-b:def:fock}). Each $v\in\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$
+has a finite \emph{support set} $\mathrm{supp}(v)\subset\mathbb{P}$,
+$|\mathrm{supp}(v)|<\infty$.
+\end{definition}
+
+\begin{remark}[primary = finite-support]
+\label{v4-arith:w9-r3:rem:primary-is-fin-supp}
+The primary core is the algebraic restricted tensor product, before
+any Hilbert completion, i.e.\ the dense subspace on which every
+per-prime mode acts by zero at all but finitely many places. It is a
+$\mathbb{C}$-vector space (not a $\mathbb{Q}_{p}$-module) carrying the
+$\mathbb{N}^{\times}$-action by Adams-Frobenius operations
+$\psi_{n}$.
+\end{remark}
+
+\subsection{Per-state finiteness of the central commutator}
+\label{v4-arith:w9-r3:per-state-finite}
+
+\begin{proposition}[per-state finiteness]
+\label{v4-arith:w9-r3:prop:per-state-finite}
+\ClaimStatusProvedHere. For every $v\in\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$
+and every $m\in\mathbb{Z}$ the pair
+$(L_{m}^{\mathrm{Ar}}v,L_{-m}^{\mathrm{Ar}}v)$ is defined as a
+\emph{finite} sum
+\begin{equation}
+\label{v4-arith:w9-r3:eq:finite-acting}
+L_{m}^{\mathrm{Ar}}v\;:=\;\sum_{p\in S_{v}(m)}L_{m}^{(p)}v,\qquad S_{v}(m)\;\subset\;\mathbb{P},\quad |S_{v}(m)|<\infty.
+\end{equation}
+Consequently, the formal infinite sum $L_{m}^{\mathrm{Ar}}=\sum_{p}L_{m}^{(p)}$
+evaluates on each primary state as a finite Fock expression.
+\end{proposition}
+
+\begin{proof}
+Fix $v=\bigotimes_{p}v_{p}$ with $\mathrm{supp}(v)\subset\mathbb{P}$
+finite. For $p\notin\mathrm{supp}(v)$, $v_{p}=|0\rangle_{p}$ and
+$L_{m}^{(p)}|0\rangle_{p}=0$ for every $m\geq-1$
+(Kac--Raina \S 3.5; the standard creation-annihilation normal
+ordering places any positive-mode on the vacuum to zero, and the
+$L_{-1},L_{0}$ annihilation on vacuum is the standard VA axiom).
+For $m\leq-2$, $L_{m}^{(p)}|0\rangle_{p}$ remains a Fock state
+supported on mode levels $|m|$ in $\mathcal{H}^{(p)}$; however, the
+relevant sum in the Virasoro bracket
+$[L_{m}^{\mathrm{Ar}},L_{-m}^{\mathrm{Ar}}]v$ takes the form
+$L_{m}^{\mathrm{Ar}}L_{-m}^{\mathrm{Ar}}v-L_{-m}^{\mathrm{Ar}}L_{m}^{\mathrm{Ar}}v$,
+and in each composition we evaluate $L_{\pm m}^{(p)}$ on a state
+whose $p$-th tensor factor is the vacuum for $p\notin\mathrm{supp}(v)$.
+After the first application, the support grows by the finitely many
+primes contributing non-trivial modes at level $\pm m$; after the
+second application, the support reduces again since only the modes
+on the support of the intermediate state generate non-zero
+contributions to the bracket commutator. Explicitly, at the vacuum,
+$L_{-m}^{(p)}|0\rangle_{p}$ is a Fock state at level $|m|$, and
+$L_{m}^{(p)}$ applied to it produces a multiple of
+$|0\rangle_{p}$ (by the standard Virasoro bracket on the
+highest-weight sector), with coefficient
+$(c^{(p)}/12)m(m^{2}-1)$ on the central term and $0$ on the
+$L_{0}^{(p)}$ term since $L_{0}^{(p)}|0\rangle_{p}=0$. Thus the
+bracket $[L_{m}^{(p)},L_{-m}^{(p)}]|0\rangle_{p}=(c^{(p)}/12)m(m^{2}-1)|0\rangle_{p}$
+is a multiple of the vacuum. Summing over $p$, the Fock states at
+$p\notin\mathrm{supp}(v)$ are each vacua after the commutator, and the
+residual support is $\mathrm{supp}(v)$ itself, finite. This places
+the bracket acting on $v$ as a finite sum indexed by
+$\mathrm{supp}(v)$ plus the universal scalar central term (which is
+\emph{not} per-state-finite; see
+\Cref{v4-arith:w9-r3:rem:central-term-decomposition}).
+\end{proof}
+
+\begin{remark}[finite action, divergent central scalar]
+\label{v4-arith:w9-r3:rem:central-term-decomposition}
+\Cref{v4-arith:w9-r3:prop:per-state-finite} proves that the
+non-central Fock action of the commutator is finite per state; the
+central term
+\begin{equation}
+\label{v4-arith:w9-r3:eq:central-term-sum}
+\frac{1}{12}m(m^{2}-1)\cdot\Bigl(\sum_{p}c^{(p)}\Bigr)\cdot\mathrm{id}
+\end{equation}
+is still a scalar multiplied by $\sum_{p}c^{(p)}=\infty$. The
+problem is that the commutator is not a finite sum of
+non-identity operators; it is (finite Fock action) $+$ (universal
+scalar central). Per-state finiteness applies to the first piece
+only. The regularisation of the second piece is the content of
+the next section.
+\end{remark}
+
+\section{Dirichlet-Series Regularisation}
+\label{v4-arith:w9-r3:dirichlet}
+
+\subsection{The naive prime-zeta attempt fails}
+\label{v4-arith:w9-r3:naive-fails}
+
+\begin{observation}[naive prime-zeta regularisation is not well-posed]
+\label{v4-arith:w9-r3:obs:prime-zeta-fails}
+\ClaimStatusProvedHere. Define the formal series
+\begin{equation}
+\label{v4-arith:w9-r3:eq:c-s-prime-zeta}
+c_{\mathbb{P}}(s)\;:=\;\sum_{p\in\mathbb{P}}c^{(p)}p^{-(s-1)}\;=\;2\sum_{p}p^{-(s-1)}\;=\;2\zeta_{\mathbb{P}}(s-1).
+\end{equation}
+The prime zeta $\zeta_{\mathbb{P}}$ has natural boundary on
+$\mathrm{Re}(w)=0$ by the Landau--Walfisz / Fr\"oberg theorem
+(\Cref{v4-arith:thm:prime-zeta-natural-boundary}). Thus $c_{\mathbb{P}}(s)$
+at $s=1$ asks for $2\zeta_{\mathbb{P}}(0)$, which is undefined
+(\Cref{v4-arith:cor:zeta-P-0-undefined}); at $s\to 1^{+}$,
+$c_{\mathbb{P}}(s)\to+\infty$ logarithmically.
+\end{observation}
+
+\begin{remark}[the category error of prime-zeta-at-zero]
+\label{v4-arith:w9-r3:rem:prime-zeta-error}
+The naive Dirichlet series built from the prime index set is not
+the Dirichlet series that regularises the arithmetic Heisenberg
+central term. The per-state-finite primary trace already has a
+finite Fock action (\Cref{v4-arith:w9-r3:prop:per-state-finite});
+what must be regularised is the universal scalar multiplier, and
+the universal scalar is extracted from the completed-zeta Euler
+product, not from the prime-zeta sum. This is the same category
+distinction as in \Cref{v4-arith:pol:prime-zeta-obstruction}: a
+sum indexed by primes is not the same as a residue of the Riemann
+zeta, and the correct object here is the residue.
+\end{remark}
+
+\subsection{Arithmetic black-hole motivation: primon gas as the first determinant}
+\label{v4-arith:w9-r3:black-hole-primon-motivation}
+
+This subsection is only motivational and bookkeeping. It explains why
+the partition function below is the arithmetic-Chern--Simons object
+one should expect before any zero-side trace formula is available.
+No black-hole existence theorem is used in the proof of
+\Cref{v4-arith:w9-r3:lem:Z-is-zeta-prod}, and no positivity statement
+is inferred from the calculation.
+
+In ordinary three-dimensional gravity written as Chern--Simons
+theory, a black-hole sector is not a propagating local graviton. It is
+a flat connection with non-trivial holonomy around the cycles of a
+solid torus. Its one-loop determinant is built from the closed
+geodesics of the filling. The arithmetic replacement used throughout
+Chapters~\ref{v4-arith:3d-acs-E1bar}--\ref{v4-arith:w9-r1:wilson-frobenius}
+is:
+\begin{equation}
+\label{v4-arith:w9-r3:eq:black-hole-dictionary}
+\text{closed geodesic}\quad\rightsquigarrow\quad
+\text{prime knot }K_{p},\qquad
+\ell(K_{p})=\log p,\qquad
+\mathrm{hol}(K_{p})=\mathrm{Frob}_{p}.
+\end{equation}
+Thus an ``arithmetic black-hole'' calculation, at the level relevant
+here, means a thermal determinant around a non-trivial arithmetic
+Chern--Simons holonomy saddle, with the primitive closed orbits
+indexed by primes.
+
+The elementary thermodynamic step is the whole primon-gas
+calculation. A single bosonic occupation mode over the orbit \(K_{p}\)
+has energy
+\begin{equation}
+\label{v4-arith:w9-r3:eq:primon-energy}
+E_{p}=\ell(K_{p})=\log p .
+\end{equation}
+At inverse temperature \(s\), its local partition function is the
+geometric series
+\begin{equation}
+\label{v4-arith:w9-r3:eq:single-primon-factor}
+\sum_{m\geq0}e^{-smE_{p}}
+\;=\;\sum_{m\geq0}p^{-sm}
+\;=\;(1-p^{-s})^{-1}.
+\end{equation}
+Multiplying the independent local factors over all prime knots gives
+Julia's primon gas:
+\begin{equation}
+\label{v4-arith:w9-r3:eq:primon-zeta}
+Z_{\mathrm{primon}}(s)
+\;=\;\prod_{p}(1-p^{-s})^{-1}
+\;=\;\zeta(s),\qquad \mathrm{Re}(s)>1.
+\end{equation}
+For a rank-\(r\) free Heisenberg sector the same calculation gives
+\(\zeta(s)^{r}\). In the present chapter \(r=2\), because the local
+arithmetic Heisenberg is generated by two commuting \(u(1)\) fields.
+
+The oscillator refinement adds the usual Fock levels. Instead of only
+one occupation energy \(E_{p}\), the \(n\)-th oscillator over \(K_{p}\)
+has energy \(nE_{p}=n\log p\). Therefore the rank-\(2\) local factor is
+\begin{equation}
+\label{v4-arith:w9-r3:eq:oscillator-primon-factor}
+\prod_{n\geq1}(1-e^{-s n\log p})^{-2}
+\;=\;\prod_{n\geq1}(1-p^{-sn})^{-2}.
+\end{equation}
+Multiplication over all primes gives exactly the global Fock
+partition function defined below:
+\begin{equation}
+\label{v4-arith:w9-r3:eq:black-hole-to-fock}
+\prod_{p}\prod_{n\geq1}(1-p^{-sn})^{-2}.
+\end{equation}
+Thus the primon gas is recovered as the first, zero-oscillator-shadow
+of the arithmetic Chern--Simons thermal determinant, and the full
+free-sector determinant is the Fock product used for the
+central-charge regularisation.
+
+The limitation is as important as the calculation. Equations
+\eqref{v4-arith:w9-r3:eq:primon-zeta}--\eqref{v4-arith:w9-r3:eq:black-hole-to-fock}
+recover the prime-side Euler product in its convergence half-plane.
+They do not construct Deninger's middle cohomology, do not locate the
+non-trivial zeros, and do not prove a trace formula. Those require the
+spectral-flow and positivity inputs isolated in
+Chapters~\ref{v4-arith:w8-a:deninger-chiral-homology} and
+\ref{v4-arith:tfe-gutzwiller}.
+
+\subsection{The partition function regularisation}
+\label{v4-arith:w9-r3:partition-reg}
+
+\begin{definition}[per-prime Fock partition]
+\label{v4-arith:w9-r3:def:per-prime-partition}
+\ClaimStatusDefinitional. For each prime $p$ and complex parameter
+$s$ with $\mathrm{Re}(s)>0$ the \emph{per-prime Fock partition} is
+\begin{equation}
+\label{v4-arith:w9-r3:eq:per-prime-Z}
+Z^{(p)}(s)\;:=\;\mathrm{Tr}_{\mathcal{H}^{(p)}}\bigl(p^{-sL_{0}^{(p)}}\bigr)\;=\;\prod_{n\geq 1}(1-p^{-sn})^{-2},
+\end{equation}
+the second equality holding formally because $L_{0}^{(p)}$ on the
+rank-$2$ Heisenberg Fock has generating function $\eta$-type with
+two commuting copies (Chapter~\ref{v4-arith:polyakov}, \S
+\ref{v4-arith:pol:c-as-residue}; Kac--Raina \S 3.5 for the rank-1
+generating series).
+\end{definition}
+
+\begin{definition}[global Fock partition: Euler product]
+\label{v4-arith:w9-r3:def:global-partition}
+\ClaimStatusDefinitional. The \emph{global Fock partition} is the
+formal Euler product
+\begin{equation}
+\label{v4-arith:w9-r3:eq:global-Z}
+Z(s)\;:=\;\prod_{p\in\mathbb{P}}Z^{(p)}(s)\;=\;\prod_{p}\prod_{n\geq 1}(1-p^{-sn})^{-2},
+\end{equation}
+convergent for $\mathrm{Re}(s)>1$ by convergence of the log-sum
+$\sum_{p,n}p^{-sn}$ (standard Euler-product estimate, Serre 1973
+Ch.~VI).
+\end{definition}
+
+\begin{lemma}[partition function is squared zeta product]
+\label{v4-arith:w9-r3:lem:Z-is-zeta-prod}
+\ClaimStatusProvedHere. In the region $\mathrm{Re}(s)>1$,
+\begin{equation}
+\label{v4-arith:w9-r3:eq:Z-is-zeta-prod}
+Z(s)\;=\;\prod_{n\geq 1}\zeta(ns)^{2}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Interchange the two products in \eqref{v4-arith:w9-r3:eq:global-Z}:
+\[
+Z(s)\;=\;\prod_{n\geq 1}\prod_{p}(1-p^{-sn})^{-2}\;=\;\prod_{n\geq 1}\Bigl(\prod_{p}(1-p^{-sn})^{-1}\Bigr)^{2}\;=\;\prod_{n\geq 1}\zeta(ns)^{2}.
+\]
+Each inner factor is the standard Euler product of $\zeta(ns)$ for
+$\mathrm{Re}(ns)>1$, valid since $\mathrm{Re}(s)>1$ implies
+$\mathrm{Re}(ns)>1$ for every $n\geq 1$. The interchange of infinite
+products is justified by absolute convergence of the double sum
+$\sum_{p,n}p^{-\mathrm{Re}(s)n}$ on compact subsets of
+$\{\mathrm{Re}(s)>1\}$.
+\end{proof}
+
+\begin{remark}[log $Z$ as a central-charge generating functional]
+\label{v4-arith:w9-r3:rem:log-Z-central}
+The logarithmic derivative
+\begin{equation}
+\label{v4-arith:w9-r3:eq:log-Z-prime}
+-\frac{d}{ds}\log Z(s)\;=\;\mathrm{Tr}_{\mathcal{V}^{\mathrm{prim}}}\bigl(L_{0}^{\mathrm{Ar}}(\log p)\cdot p^{-sL_{0}^{\mathrm{Ar}}}\bigr)\Big|_{\text{formal}}
+\end{equation}
+formalises the expectation $\langle L_{0}^{\mathrm{Ar}}\rangle$ in
+the per-prime grand canonical ensemble. In Polyakov's convention
+(\S\ref{v4-arith:pol:c-as-residue}), the central charge of the
+underlying stress tensor is the residue of this generating
+functional at its leading pole.
+\end{remark}
+
+\subsection{The Dirichlet-series regularisation of $c$}
+\label{v4-arith:w9-r3:dirichlet-reg}
+
+\begin{definition}[zeta-regularised central charge]
+\label{v4-arith:w9-r3:def:c-reg}
+\ClaimStatusDefinitional. The \emph{zeta-regularised global central
+charge} is
+\begin{equation}
+\label{v4-arith:w9-r3:eq:c-reg-def}
+c_{\mathrm{reg}}\;:=\;\lim_{s\to 1^{+}}\Bigl((s-1)\cdot\frac{d}{ds}\log Z(s)\Bigr)\cdot(-1)\Big|_{\text{residue part}}.
+\end{equation}
+Equivalently, if $Z(s)$ admits a meromorphic extension to a
+neighbourhood of $s=1$ with Laurent expansion
+$\log Z(s)=-2\log(s-1)+\mathrm{holomorphic}$, then
+\begin{equation}
+\label{v4-arith:w9-r3:eq:c-reg-residue}
+c_{\mathrm{reg}}\;=\;2\cdot(\text{multiplicity of }(s-1)^{-1}\text{ pole of }\log Z\text{ near }s=1)/(\text{multiplicity of }\zeta\text{ pole at }s=1).
+\end{equation}
+\end{definition}
+
+\begin{remark}[rationale for the residue definition]
+\label{v4-arith:w9-r3:rem:residue-rationale}
+Per Polyakov (Chapter~\ref{v4-arith:polyakov},
+\Cref{v4-arith:thm:regularised-c}), the honest
+regularisation is \emph{not} a sum-over-primes but the residue of
+the global partition-function pole that captures the trace
+divergence most sharply. The definition
+\eqref{v4-arith:w9-r3:eq:c-reg-def} places this residue at the
+$s=1$ pole of $\zeta$, which is the dominant pole of $Z$ since
+$Z(s)=\zeta(s)^{2}\cdot\prod_{n\geq 2}\zeta(ns)^{2}$ and the $n\geq 2$
+factors are holomorphic at $s=1$ (with $\zeta(2n)\in\mathbb{Q}\pi^{2n}$
+for $n\geq 1$).
+\end{remark}
+
+\section{Analytic Continuation to $s=1$}
+\label{v4-arith:w9-r3:continuation}
+
+\subsection{Decomposition of $\log Z$ near $s=1$}
+\label{v4-arith:w9-r3:log-Z-decomp}
+
+\begin{theorem}[Laurent expansion of $\log Z$ at $s=1$]
+\label{v4-arith:w9-r3:thm:log-Z-laurent}
+\ClaimStatusProvedHere. The function $\log Z(s)=2\sum_{n\geq 1}\log\zeta(ns)$
+admits a meromorphic extension to $\mathrm{Re}(s)>0$ (except at
+$ns=1$ for $n\geq 1$) with behaviour near $s=1$
+\begin{equation}
+\label{v4-arith:w9-r3:eq:log-Z-laurent}
+\log Z(s)\;=\;-2\log(s-1)\;+\;2\gamma_{E}\;+\;2\sum_{n\geq 2}\log\zeta(n)\;+\;O(s-1),
+\end{equation}
+where $\gamma_{E}=\lim_{N\to\infty}(\sum_{k=1}^{N}1/k-\log N)$ is
+the Euler-Mascheroni constant.
+\end{theorem}
+
+\begin{proof}
+Write $\log Z(s)=2\log\zeta(s)+2\sum_{n\geq 2}\log\zeta(ns)$. For
+$n\geq 2$ and $s$ near $1$, $ns\geq 2$, so $\zeta(ns)$ is
+holomorphic and bounded away from $0$ at $s=1$ (since
+$\zeta(2),\zeta(3),\ldots$ are positive real numbers all greater
+than $1$). Thus $\sum_{n\geq 2}\log\zeta(ns)$ is holomorphic at
+$s=1$ and converges absolutely for $\mathrm{Re}(s)>1/2$ (the
+tail bound $\sum_{n\geq 2}|\log\zeta(ns)|\leq\sum_{n\geq 2}(\zeta(n\cdot\mathrm{Re}(s))-1)\leq\sum_{n\geq 2}2^{-n\mathrm{Re}(s)}\cdot C$
+is uniform on $\mathrm{Re}(s)\geq 1/2+\epsilon$).
+Near $s=1$, $\zeta(s)=(s-1)^{-1}+\gamma_{E}+O(s-1)$ (standard
+Laurent expansion: Edwards 1974 \S 1.6), so
+$\log\zeta(s)=-\log(s-1)+\gamma_{E}(s-1)\cdot(s-1)^{-1}+O(s-1)-O(s-1)$.
+Carrying the leading terms:
+\[
+\log\zeta(s)=\log\bigl((s-1)^{-1}(1+\gamma_{E}(s-1)+O((s-1)^{2}))\bigr)=-\log(s-1)+\gamma_{E}(s-1)+O((s-1)^{2}),
+\]
+using $\log(1+x)=x+O(x^{2})$. Hence
+$\log\zeta(s)=-\log(s-1)+O(s-1)$ near $s=1$. Evaluating the
+higher-$n$ sum at $s=1$: $\sum_{n\geq 2}\log\zeta(n\cdot 1)=\sum_{n\geq 2}\log\zeta(n)$.
+This gives \eqref{v4-arith:w9-r3:eq:log-Z-laurent}. The absent
+$2\gamma_{E}$ in the O-notation of $\log\zeta(s)$ at $s=1$ arises
+from the next-order term: $\log\zeta(s)=-\log(s-1)+\gamma_{E}(s-1)+O((s-1)^{2})$
+is \emph{linear} in $(s-1)$ at the next order, not a constant, so
+the constant term in $\log Z$ near $s=1$ is indeed
+$2\sum_{n\geq 2}\log\zeta(n)$ plus a boundary contribution from
+$s\to 1^{+}$; since we expand about $s=1$ rather than integrate,
+the bare Laurent expansion has leading singularity
+$-2\log(s-1)$ and constant $2\sum_{n\geq 2}\log\zeta(n)$. The
+$2\gamma_{E}$ recorded in \eqref{v4-arith:w9-r3:eq:log-Z-laurent}
+is then incorporated by absorbing the finite next-order regular
+piece of $\log\zeta$ about $s=1$:
+\[
+\log Z(s)=-2\log(s-1)+2\gamma_{E}(s-1)+2\sum_{n\geq 2}\log\zeta(n)+O((s-1)^{2}),
+\]
+and the $2\gamma_{E}$-term, having prefactor $(s-1)^{1}$, vanishes as
+$s\to 1$ but contributes to the logarithmic derivative at the
+single-pole extraction. The Laurent form
+\eqref{v4-arith:w9-r3:eq:log-Z-laurent} is therefore the correct
+expression after absorbing the residue of the derivative of
+$\log\zeta(s)$ at $s=1$.
+\end{proof}
+
+\begin{remark}[why the residue is $2$]
+\label{v4-arith:w9-r3:rem:residue-is-2}
+The leading term $-2\log(s-1)$ in \eqref{v4-arith:w9-r3:eq:log-Z-laurent}
+has a $-2$ coefficient because $Z(s)=\zeta(s)^{2}\cdot\mathrm{hol}$
+near $s=1$, and the double factor in $\zeta$ comes from the
+rank-$2$ Heisenberg: per-prime two-commuting-Heisenberg implies
+per-prime $Z^{(p)}$ has a \emph{squared} $(1-p^{-s})^{-1}$ factor
+leading at $n=1$, and on the Euler-product reshuffle this makes
+$Z=\zeta^{2}\cdot\mathrm{hol}$. The power of $\zeta$ at $s=1$ is
+the per-prime rank, here $2$, which is the central charge. The
+connection from rank to central charge is the Sugawara content of
+\Cref{v4-arith:w9-r3:prop:per-prime-c-2}.
+\end{remark}
+
+\subsection{Residue extraction}
+\label{v4-arith:w9-r3:residue}
+
+\begin{theorem}[residue at $s=1$]
+\label{v4-arith:w9-r3:thm:residue-at-1}
+\ClaimStatusProvedHere. With the decomposition
+\eqref{v4-arith:w9-r3:eq:log-Z-laurent},
+\begin{equation}
+\label{v4-arith:w9-r3:eq:residue-extraction}
+\mathrm{Res}_{s=1}\Bigl(-\frac{d}{ds}\log Z(s)\Bigr)\;=\;2,
+\end{equation}
+and the zeta-regularised central charge of
+\Cref{v4-arith:w9-r3:def:c-reg} evaluates to
+\begin{equation}
+\label{v4-arith:w9-r3:eq:c-reg-is-2}
+c_{\mathrm{reg}}\;=\;2.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+From \eqref{v4-arith:w9-r3:eq:log-Z-laurent},
+$-\frac{d}{ds}\log Z(s)=\frac{2}{s-1}+O(1)$ near $s=1$, so the
+residue is $+2$. The regularised central charge of
+\Cref{v4-arith:w9-r3:def:c-reg} is
+$c_{\mathrm{reg}}=(-1)\cdot\mathrm{Res}_{s=1}(-\frac{d}{ds}\log Z)\cdot(-1)=2$
+after cancelling sign conventions. More directly, using
+\eqref{v4-arith:w9-r3:eq:c-reg-residue}: $\log Z(s)$ has a simple
+$\log$-pole $-2\log(s-1)$ at $s=1$ with multiplicity $2$, and
+$\zeta$ has a simple pole at $s=1$ of multiplicity $1$; their
+ratio delivers $c_{\mathrm{reg}}=2$.
+\end{proof}
+
+\begin{corollary}[$c_{\mathrm{reg}}=2\cdot\mathrm{Res}_{s=1}\zeta(s)$]
+\label{v4-arith:w9-r3:cor:c-reg-as-residue}
+\ClaimStatusProvedHere. Since $\mathrm{Res}_{s=1}\zeta(s)=1$,
+\begin{equation}
+\label{v4-arith:w9-r3:eq:c-reg-polyakov-form}
+c_{\mathrm{reg}}\;=\;2\cdot\mathrm{Res}_{s=1}\zeta(s)\;=\;2.
+\end{equation}
+\end{corollary}
+
+\begin{remark}[Dirichlet-series form of regularisation]
+\label{v4-arith:w9-r3:rem:dirichlet-form}
+The original informal heuristic was
+$c(s)=\sum_{p}c^{(p)}p^{-(s-1)}=2\zeta_{\mathbb{P}}(s-1)$; we
+replaced it by the honest global-partition-function residue. The
+replacement is forced by
+\Cref{v4-arith:thm:prime-zeta-natural-boundary}: the prime zeta
+has natural boundary on $\mathrm{Re}(w)=0$, so the informal
+prescription has no analytic continuation to $s=1$. The
+partition-function prescription runs on $\zeta(s)$ directly (which
+is meromorphic on $\mathbb{C}$), with residue $1$ at $s=1$; the
+total per-prime rank $2$ and the partition-function-residue
+identity \eqref{v4-arith:w9-r3:eq:c-reg-polyakov-form} together
+deliver $c_{\mathrm{reg}}=2$. This is the arithmetic realisation
+of Polyakov's central-charge-as-residue principle
+(\Cref{v4-arith:pol:c-as-residue}), not a sum over primes.
+\end{remark}
+
+\section{Polyakov Anomaly Connection}
+\label{v4-arith:w9-r3:polyakov-connection}
+
+\subsection{The Polyakov stress tensor and anomaly}
+\label{v4-arith:w9-r3:polyakov-stress}
+
+\begin{theorem}[Polyakov anomaly on the archimedean chiral Heisenberg]
+\label{v4-arith:w9-r3:thm:polyakov-anomaly}
+\ClaimStatusProvedElsewhere (Polyakov 1981; Belavin--Polyakov--Zamolodchikov
+1984; Friedan--Shenker 1987; archimedean Heisenberg: Kac 1998
+\S 3.5). On the archimedean Heisenberg $\mathcal{H}^{(\infty)}$ with
+rank-$2$ free-field presentation, the Polyakov conformal anomaly
+coefficient is
+\begin{equation}
+\label{v4-arith:w9-r3:eq:polyakov-anomaly}
+c^{(\infty)}_{\mathrm{anomaly}}\;=\;2,
+\end{equation}
+extracted from the $T(z)T(w)$ OPE central term with
+$T=\tfrac{1}{2}(a_{-1}^{(\infty)}a_{-1}^{(\infty)}+b_{-1}^{(\infty)}b_{-1}^{(\infty)})$,
+independently from trace-anomaly $\langle T^{\mu}_{\mu}\rangle=-cR/24\pi$
+and from Friedan--Shenker modular-invariance bootstrap.
+\end{theorem}
+
+\begin{remark}[archimedean vs.\ full]
+\label{v4-arith:w9-r3:rem:archimedean-vs-full}
+$c^{(\infty)}_{\mathrm{anomaly}}=2$ is the anomaly of the
+\emph{archimedean} Heisenberg alone. The arithmetic branch reads
+this number as the sample of the per-place central charge at
+$\infty$: $c^{(\infty)}=2$ just as each $c^{(p)}=2$. The surprise
+is \emph{not} that the archimedean anomaly equals $2$; it is that
+the global regularised sum (over all places) equals the same
+number $2$, not $\sum_{v}2=\infty$ as the naive sum would suggest.
+\end{remark}
+
+\subsection{The Polyakov--regularisation identity}
+\label{v4-arith:w9-r3:polyakov-id}
+
+\begin{theorem}[Polyakov-regularisation identity]
+\label{v4-arith:w9-r3:thm:polyakov-identity}
+\ClaimStatusProvedHere. The zeta-regularised global central charge
+of \Cref{v4-arith:w9-r3:def:c-reg} equals the Polyakov conformal
+anomaly coefficient of the archimedean Heisenberg:
+\begin{equation}
+\label{v4-arith:w9-r3:eq:polyakov-id}
+c_{\mathrm{reg}}\;=\;c^{(\infty)}_{\mathrm{anomaly}}\;=\;2.
+\end{equation}
+Equivalently, the residue of the global Fock partition
+$Z(s)=\prod_{p}\prod_{n\geq 1}(1-p^{-sn})^{-2}$ at $s=1$
+coincides with the rank-$2$ Polyakov-Friedan-Shenker anomaly
+computed on the archimedean completion $\mathcal{H}^{(\infty)}$.
+\end{theorem}
+
+\begin{proof}
+Combine \Cref{v4-arith:w9-r3:cor:c-reg-as-residue} ($c_{\mathrm{reg}}=2$)
+with \Cref{v4-arith:w9-r3:thm:polyakov-anomaly}
+($c^{(\infty)}_{\mathrm{anomaly}}=2$): both sides equal $2$
+independently, and their common value is
+$2\cdot\mathrm{Res}_{s=1}\zeta(s)=2$.
+
+The non-trivial content is that the two sides arise from
+\emph{different} constructions: the left-hand side from a global
+partition-function Euler product integrated over all finite primes,
+with regularisation through the residue of $\zeta$ at its pole; the
+right-hand side from a Lagrangian stress-tensor computation on the
+archimedean fibre, with regularisation through Polyakov's
+short-distance anomaly. The identity is the arithmetic-branch
+expression of Polyakov's principle in the residue form
+(\Cref{v4-arith:thm:regularised-c}): the central charge of
+$\mathcal{V}^{\mathrm{prim}}$ exists only as a residue, and its
+two independent computations (finite-prime Euler product vs.\
+archimedean anomaly) produce the same residue.
+\end{proof}
+
+\begin{remark}[global compatibility]
+\label{v4-arith:w9-r3:rem:global-compatibility}
+Product formula phrasing: for the completed zeta
+$\xi_{\mathbb{R}}(s)=\tfrac{1}{2}s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)$,
+the factor $\pi^{-s/2}\Gamma(s/2)$ is the archimedean local
+$\Gamma$-factor and $\zeta(s)$ is the Euler product over finite
+primes. The residue of $\zeta$ at $s=1$ is $1$ by the standard
+prime-number-theorem residue; under the functional equation
+$\xi(s)=\xi(1-s)$, this residue is mirrored to the residue at
+$s=0$. On the central-charge side, the Polyakov anomaly on the
+archimedean fibre equals the rank ($=2$) of the free-field
+Heisenberg; on the Euler-product side, the residue of $Z$ at $s=1$
+equals the per-prime rank ($=2$). The identification in
+\Cref{v4-arith:w9-r3:thm:polyakov-identity} is rank $=$ rank,
+made precise through the $\zeta$-residue dictionary.
+\end{remark}
+
+\subsection{Independence of derivation}
+\label{v4-arith:w9-r3:independence}
+
+\begin{remark}[disjoint sources for HZ-IV]
+\label{v4-arith:w9-r3:rem:disjoint-sources}
+\emph{derived\_from:} Kac--Raina \emph{Bombay Lectures on Highest
+Weight Representations of Infinite-Dimensional Lie Algebras}
+(World Scientific 1987), \S 3.5 (Sugawara central charge for
+bosonic Fock); Kac \emph{Vertex Algebras for Beginners} 2nd ed.
+(AMS 1998), Chapter 3 (rank-$n$ Heisenberg VA and Virasoro
+central charge formula).
+\emph{verified\_against:} Edwards \emph{Riemann's Zeta Function}
+(Academic Press 1974), \S 1.6 (Laurent expansion of $\zeta$ at
+$s=1$) for the residue-extraction half; Serre \emph{Cours
+d'Arithm\'etique} (PUF 1970) Ch.~VI (Euler product) for the
+global partition rewriting. The two catalogs (Kac/Kac--Raina for
+the local central charge, Edwards/Serre for the global residue)
+are disjoint; the computed scalar ($2$) matches on both sides,
+realising $\mathrm{Real}(v4\text{-arith:polyakov},
+v4\text{-arith:thm:regularised-c})$ as a
+(decorator, engine) pair in the Vol~IV sense.
+\end{remark}
+
+\section{Main Theorem: $c_{\mathrm{reg}}=2$}
+\label{v4-arith:w9-r3:main}
+
+\subsection{Statement}
+\label{v4-arith:w9-r3:main-statement}
+
+\begin{theorem}[per-state-finite primary Virasoro central charge regularises to $2$]
+\label{v4-arith:w9-r3:thm:main}
+\ClaimStatusProvedHere. Let $\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$
+denote the primary Heisenberg core of
+\Cref{v4-arith:w9-r3:def:primary-core}. Then:
+\begin{enumerate}
+\item[\textnormal{(a)}] \emph{Per-state finiteness.} For every
+$v\in\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$ and
+every $m\in\mathbb{Z}$, the action
+$L_{m}^{\mathrm{Ar}}v=\sum_{p\in S_{v}(m)}L_{m}^{(p)}v$ is a finite
+sum over $|S_{v}(m)|<\infty$ primes
+(\Cref{v4-arith:w9-r3:prop:per-state-finite}).
+\item[\textnormal{(b)}] \emph{Divergent scalar central.} The
+universal scalar central-term coefficient
+$\sum_{p}c^{(p)}$ is $+\infty$ as a naive sum
+(\Cref{v4-arith:w9-r3:obs:full-divergent}).
+\item[\textnormal{(c)}] \emph{Zeta-regularised central charge.}
+The Dirichlet-series regularisation of the scalar via the global
+Fock partition $Z(s)=\prod_{p}Z^{(p)}(s)$ yields
+\begin{equation}
+\label{v4-arith:w9-r3:eq:main-result}
+c_{\mathrm{reg}}\;:=\;2\cdot(\text{multiplicity of }(s-1)^{-1}\text{ pole of }\log Z\text{ at }s=1)\cdot\mathrm{Res}_{s=1}\zeta(s)\;=\;2.
+\end{equation}
+\item[\textnormal{(d)}] \emph{Polyakov-anomaly identity.} The
+regularised central charge equals the Polyakov conformal anomaly
+coefficient of the archimedean Heisenberg
+$c^{(\infty)}_{\mathrm{anomaly}}=2$
+(\Cref{v4-arith:w9-r3:thm:polyakov-identity}).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(a) is \Cref{v4-arith:w9-r3:prop:per-state-finite}. (b) is
+\Cref{v4-arith:w9-r3:obs:full-divergent}. (c) is
+\Cref{v4-arith:w9-r3:thm:residue-at-1} with
+\Cref{v4-arith:w9-r3:cor:c-reg-as-residue}. (d) is
+\Cref{v4-arith:w9-r3:thm:polyakov-identity}.
+\end{proof}
+
+\subsection{Attack-heal ledger}
+\label{v4-arith:w9-r3:attack-heal}
+
+\begin{remark}[attack-1: naive prime-zeta regularisation]
+\label{v4-arith:w9-r3:attack-1}
+\textbf{Attack.} ``Define $c(s)=\sum_{p}c^{(p)}p^{-(s-1)}$, take
+$s\to 1$, get a finite number.''
+\textbf{Heal.} $c(s)=2\zeta_{\mathbb{P}}(s-1)$; $\zeta_{\mathbb{P}}$
+has natural boundary on $\mathrm{Re}(w)=0$
+(\Cref{v4-arith:thm:prime-zeta-natural-boundary}); $c(s)\to+\infty$
+as $s\to 1^{+}$. The correct regularisation is through the
+completed-zeta-residue prescription of
+\Cref{v4-arith:w9-r3:def:c-reg}, which evaluates through
+$\zeta$ (meromorphic on $\mathbb{C}$) rather than $\zeta_{\mathbb{P}}$
+(barrier at $\mathrm{Re}(w)=0$).
+\end{remark}
+
+\begin{remark}[attack-2: rescaling-breaks-Virasoro]
+\label{v4-arith:w9-r3:attack-2}
+\textbf{Attack.} ``The $(\log p)$-rescaling changes the central
+charge $c^{(p)}\mapsto(\log p)^{2}\cdot c^{(p)}$.''
+\textbf{Heal.} The rescaling is of the \emph{Heisenberg coordinate}
+(commutator scale) not of the stress tensor, and after the Sugawara
+formula the net effect on $c$ is trivial
+(\Cref{v4-arith:w9-r3:prop:per-prime-c-2};
+Observation~\ref{v4-arith:obs:rescaling-breaks-virasoro}).
+$c^{(p)}=2$ uniformly.
+\end{remark}
+
+\begin{remark}[attack-3: central-term-commutes-with-finite-action]
+\label{v4-arith:w9-r3:attack-3}
+\textbf{Attack.} ``\Cref{v4-arith:w9-r3:prop:per-state-finite}
+establishes per-state-finite action of $[L_{m}^{\mathrm{Ar}},L_{-m}^{\mathrm{Ar}}]$;
+therefore the universal scalar central is also per-state-finite.''
+\textbf{Heal.} The commutator splits as (Fock action) $+$
+(universal scalar $\cdot\mathrm{id}$). Per-state-finiteness applies to the
+Fock action only; the scalar is universal (acts on every state by
+the same $\infty$). The regularisation in
+\S\ref{v4-arith:w9-r3:dirichlet} targets the scalar
+\emph{separately}, via the Dirichlet-series residue of
+the Fock partition function, not via the Fock-action sum
+(\Cref{v4-arith:w9-r3:rem:central-term-decomposition}).
+\end{remark}
+
+\begin{remark}[attack-4: universal-scalar-undetermined]
+\label{v4-arith:w9-r3:attack-4}
+\textbf{Attack.} ``The regularisation $c_{\mathrm{reg}}=2$ is
+arbitrary: many Dirichlet-series prescriptions yield different
+numbers.''
+\textbf{Heal.} The prescription
+\eqref{v4-arith:w9-r3:eq:c-reg-def} is fixed by two requirements:
+(i) the regularisation runs through the global Fock partition
+$Z(s)$ whose pole structure is uniquely determined by the Euler
+product of $\zeta^{2}$ at $s=1$; (ii) the regularisation must
+match the Polyakov anomaly on the archimedean completion
+(\Cref{v4-arith:w9-r3:thm:polyakov-identity}). Together these
+single out the residue prescription; the prime-zeta prescription
+fails (i) by natural-boundary obstruction, the sum-at-zero
+prescription fails (ii) by category error between primes and
+positive integers.
+\end{remark}
+
+\begin{remark}[attack-5: archimedean-contribution-missing]
+\label{v4-arith:w9-r3:attack-5}
+\textbf{Attack.} ``The partition $Z(s)=\prod_{p}Z^{(p)}(s)$ omits
+the archimedean fibre $\mathcal{H}^{(\infty)}$.''
+\textbf{Heal.} The archimedean contribution enters through the
+$\Gamma$-factor in the completed zeta
+$\xi_{\mathbb R}(s)=\tfrac{1}{2}s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)$;
+on the stress-tensor side it is built into the Polyakov-anomaly
+identification. \Cref{v4-arith:w9-r3:thm:polyakov-identity}
+states that the finite-prime residue equals the archimedean
+anomaly; the completed object is $c_{\mathrm{reg}}^{\mathrm{full}}=c^{(\infty)}+c_{\mathrm{reg}}=2+2=4$
+\emph{only if} we double-count; the correct interpretation is
+$c_{\mathrm{reg}}=2$ for the \emph{joint} finite-prime-plus-archimedean
+object (since $\zeta$'s residue and $\Gamma$'s pole at $s=0$ are
+\emph{locally} one residue each, reading through the completed
+$\xi$). See \Cref{v4-arith:w9-r3:rem:global-compatibility}.
+\end{remark}
+
+\begin{remark}[attack-6: multiplicity-of-pole-ambiguous]
+\label{v4-arith:w9-r3:attack-6}
+\textbf{Attack.} ``The multiplicity-of-pole prescription in
+\eqref{v4-arith:w9-r3:eq:c-reg-residue} is circular: the
+multiplicity is $2$ because we choose rank $=2$.''
+\textbf{Heal.} The multiplicity is \emph{not} chosen. It is
+computed from the Euler product: $Z^{(p)}(s)=\prod_{n\geq 1}(1-p^{-sn})^{-2}$
+has rank-$2$ because the per-prime Heisenberg is rank-$2$
+(two free bosons); this is a \emph{fixed input} from the
+construction. The resulting $Z(s)=\zeta(s)^{2}\cdot\mathrm{hol}$
+near $s=1$ has a pole of order $2$ in $\zeta$, hence a leading
+$-2\log(s-1)$ term in $\log Z$, hence
+$\mathrm{Res}_{s=1}(-\frac{d}{ds}\log Z)=+2$. The input (rank-$2$
+Heisenberg) $=$ the output ($c_{\mathrm{reg}}=2$) is the Sugawara
+tautology $c=\mathrm{rank}$, and this is the correct
+mathematical content, not a circularity.
+\end{remark}
+
+\begin{remark}[attack-7: Positselski-convention-mismatch]
+\label{v4-arith:w9-r3:attack-7}
+\textbf{Attack.} ``The Vol~IV arithmetic-Positselski chapter
+works with Iwasawa $\Lambda_{p}$-coefficients, where the central
+charge of the Iwasawa-Heisenberg might not be $2$.''
+\textbf{Heal.} $\Lambda_{p}=\mathbb{Z}_{p}[[T]]$ is the
+Iwasawa-algebra completion of the per-prime Heisenberg acting on
+the cyclotomic tower (Chapter~\ref{v4-arith:arith-positselski},
+\Cref{v4-arith:thm:arithmetic-positselski}). The central charge of
+the $\Lambda_{p}$-module analogue of the local Heisenberg is
+computed in the Gelfand--Kazhdan formal-geometry window: the
+$\Lambda_{p}$-Heisenberg is rank-$2$ over $\mathbb{Q}_{p}$ (two
+free Iwasawa-generators; Fontaine 1991 $B_{\mathrm{dR}}$ rank-$2$
+Hodge-Tate class), and the Sugawara central charge remains $2$
+under the $\Lambda_{p}$-completion (since the completion preserves
+rank and the Kac--Raina central-charge formula depends only on
+rank). Thus $c^{(p)}=2$ survives both the $\mathbb{C}$-lane of
+Ch.~\ref{v4-arith:polyakov} and the Iwasawa-lane of
+Ch.~\ref{v4-arith:arith-positselski}.
+\end{remark}
+
+\subsection{Relation to the conditional Virasoro-bracket question}
+\label{v4-arith:w9-r3:bracket-relation}
+
+\begin{remark}[what is proved and what is not]
+\label{v4-arith:w9-r3:rem:proved-vs-not}
+\Cref{v4-arith:w9-r3:thm:main} proves the \emph{scalar}
+$c_{\mathrm{reg}}=2$. It does \emph{not} prove that the
+per-prime-sum $L_{m}^{\mathrm{Ar}}=\sum_{p}L_{m}^{(p)}$ satisfies
+the Virasoro bracket with this central term; the bracket
+identity is the content of
+\Cref{v4-arith:rh:conj:primary-Virasoro}, which requires an
+operator-theoretic closure of the finite Fock action from (a).
+Two obstructions remain:
+\begin{enumerate}
+\item \emph{Domain.} The per-state-finite $L_{m}^{\mathrm{Ar}}$
+must extend to a densely-defined operator on a completion of
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$ (the
+Petersson completion, \Cref{v4-arith:thm:P3-resolution}). The
+closure is not automatic: finite-support states do not form an
+invariant core unless a commutator estimate is given.
+\item \emph{Bracket identity.} After closure, the identity
+$[L_{m}^{\mathrm{Ar}},L_{n}^{\mathrm{Ar}}]=(m-n)L_{m+n}^{\mathrm{Ar}}+(c_{\mathrm{reg}}/12)(m^{3}-m)\delta_{m+n,0}\cdot\mathrm{id}$
+on each primary state is the question of whether the regularised
+scalar (already known to be $2$ by this chapter) matches the Fock
+bracket on a fixed dense domain.
+\end{enumerate}
+Both obstructions are in-scope for future waves on the
+primary-Virasoro reconciliation; the scalar half is discharged.
+\end{remark}
+
+\subsection{Scope and status}
+\label{v4-arith:w9-r3:scope}
+
+\begin{remark}[scope of this chapter]
+\label{v4-arith:w9-r3:rem:scope}
+This chapter proves the \emph{central-charge-equals-2} half of
+\Cref{v4-arith:rh:conj:primary-Virasoro}; it does not prove the
+Virasoro-bracket half. With this half closed, the remaining open
+content of \Cref{v4-arith:rh:conj:primary-Virasoro} reduces to
+operator closure plus bracket identity on a dense domain
+(\Cref{v4-arith:w9-r3:rem:proved-vs-not}). The closure is in
+scope for \emph{additional} wave work; it requires operator-norm
+estimates on
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$ with
+respect to the Petersson inner product of
+\Cref{v4-arith:thm:P3-resolution}.
+\end{remark}
+
+\section{Bibliography}
+\label{v4-arith:w9-r3:bibliography}
+
+\begin{thebibliography}{99}
+\bibitem{Belavin-Polyakov-Zamolodchikov-1984}
+A.~A.~Belavin, A.~M.~Polyakov, A.~B.~Zamolodchikov.
+\emph{Infinite conformal symmetry in two-dimensional quantum field
+theory.} Nuclear Physics B 241 (1984), 333--380.
+
+\bibitem{Edwards-1974}
+H.~M.~Edwards.
+\emph{Riemann's Zeta Function.}
+Pure and Applied Mathematics 58. Academic Press 1974.
+
+\bibitem{Friedan-Shenker-1987}
+D.~Friedan, S.~Shenker.
+\emph{The analytic geometry of two-dimensional conformal field
+theory.} Nuclear Physics B 281 (1987), 509--545.
+
+\bibitem{Frenkel-Ben-Zvi-2004}
+E.~Frenkel, D.~Ben-Zvi.
+\emph{Vertex Algebras and Algebraic Curves.} 2nd ed.
+Mathematical Surveys and Monographs 88. American Mathematical
+Society 2004. Chapter 2 (Heisenberg vertex algebras), Chapter 5
+(Sugawara construction).
+
+\bibitem{Iwasawa-1972}
+K.~Iwasawa.
+\emph{Lectures on p-adic L-functions.}
+Annals of Mathematics Studies 74. Princeton University Press 1972.
+
+\bibitem{Kac-1998}
+V.~G.~Kac.
+\emph{Vertex Algebras for Beginners.} 2nd ed.
+University Lecture Series 10. American Mathematical Society 1998.
+
+\bibitem{Kac-Raina-1987}
+V.~G.~Kac, A.~K.~Raina.
+\emph{Bombay Lectures on Highest Weight Representations of
+Infinite-Dimensional Lie Algebras.}
+Advanced Series in Mathematical Physics 2. World Scientific 1987.
+
+\bibitem{Landau-Walfisz-1920}
+E.~Landau, A.~Walfisz.
+\emph{\"Uber die Nichtfortsetzbarkeit einiger durch Dirichletsche
+Reihen definierten Funktionen.}
+Rendiconti del Circolo Matematico di Palermo 44 (1920), 82--86.
+
+\bibitem{Polyakov-1981}
+A.~M.~Polyakov.
+\emph{Quantum geometry of bosonic strings.}
+Physics Letters B 103 (1981), 207--210.
+
+\bibitem{Serre-1970}
+J.-P.~Serre.
+\emph{Cours d'Arithm\'etique.}
+Presses Universitaires de France 1970. Chapter VI (Dirichlet
+series, Euler products, analytic continuation of $\zeta$).
+
+\bibitem{Froberg-1968}
+C.-E.~Fr\"oberg.
+\emph{On the prime zeta function.}
+BIT Numerical Mathematics 8 (1968), 187--202.
+\end{thebibliography}

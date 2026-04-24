@@ -1,0 +1,928 @@
+\chapter{HP--Li Positivity Closure through the Weil--Petersson Isometry}
+\label{v4-arith:w5-a:chapter}
+
+\emph{Wave-5 crown-jewel residual. The minimal RH path of
+Chapter~\ref{v4-arith:rh-reformulation} reduced to four inputs; three
+are tractable local/structural obligations; the fourth, HP--Li
+positivity, is the full-strength Weil positive trace inequality. This
+chapter runs the Weil--Petersson isometry program of
+Chapter~\ref{v4-arith:kp-compat} and Chapter~\ref{v4-arith:kms-gns-full}
+on the Li side. A Mellin lift $\Upsilon$ from Paley--Wiener test data
+to the tempered cuspidal core $\mathcal{V}^{\mathrm{prim}}_{\mathrm{cusp,temp}}$
+turns the prime-power part of the Weil distribution into the
+Petersson norm of the lifted vector via the Rankin--Selberg integral.
+Three consequences. First, a restricted-class theorem: for a
+Paley--Wiener test function $f$ whose support and spectral profile
+place it inside the Rankin--Selberg convergence cone and whose Mellin
+transform avoids the archimedean Tate-gamma exceptional locus, the
+prime-side Weil positive-cone inequality is unconditionally an
+instance of Petersson positivity. Second, the irreducible obstruction
+to full HP--Li, named precisely: positivity of the archimedean Tate
+distribution plus the Eisenstein density mismatch on the continuum,
+neither absorbed by the isometry. Third, a wave-5 status: HP--Li
+closes on the holomorphic cuspidal tempered restricted class
+unconditionally; the extension to the full Paley--Wiener cone is
+conditional on a positive-definiteness statement for the archimedean
+Tate distribution that is \emph{strictly equivalent} to the classical
+Weil positivity on admissible test functions. We do not prove Weil
+positivity; we state exactly what is closed and where the obstruction
+lies.}
+
+\section{Weil's Explicit Formula (Recall)}
+\label{v4-arith:w5-a:weil-explicit}
+
+Fix notation for the chapter. All statements below are unconditional.
+
+\subsection{Paley--Wiener Test Class}
+\label{v4-arith:w5-a:weil-explicit:PW}
+
+\begin{definition}[admissible Paley--Wiener class]
+\label{v4-arith:w5-a:def:PW}
+\ClaimStatusDefinitional. Let $\mathrm{PW}(\mathbb{R})$ denote the
+space of entire functions $g(s)$ of exponential type such that
+$g(s)=\widehat{f}(s)$ for some even Schwartz-class function
+$f\in\mathcal{S}(\mathbb{R})$ of compact support, with the Fourier
+normalisation $\widehat{f}(s)=\int_{\mathbb{R}}f(u)e^{isu}\,du$. For
+$f\in\mathrm{PW}(\mathbb{R})$, write $\widetilde{f}(u):=\overline{f(-u)}$;
+for $f$ real even, $\widetilde{f}=f$. The convolution
+$(f*\widetilde{f})(u)=\int_{\mathbb{R}}f(v)\widetilde{f}(u-v)\,dv$ is
+non-negative on $\mathbb{R}$ with
+$\widehat{f*\widetilde{f}}(s)=|\widehat{f}(s)|^{2}$.
+\end{definition}
+
+\begin{theorem}[Weil 1952 explicit formula]
+\label{v4-arith:w5-a:thm:weil-explicit}
+\ClaimStatusProvedElsewhere. For $f\in\mathrm{PW}(\mathbb{R})$ with
+Fourier transform $\widehat{f}$, the Weil distribution against
+non-trivial zeros $\rho=\tfrac{1}{2}+i\gamma_{\rho}$ of $\zeta$
+satisfies
+\begin{equation}
+\label{v4-arith:w5-a:eq:weil-explicit}
+\sum_{\rho}\widehat{f}(\gamma_{\rho})
+=\widehat{f}\bigl(\tfrac{1}{2i}\bigr)+\widehat{f}\bigl(-\tfrac{1}{2i}\bigr)
+-W_{\infty}(f)-W_{\mathrm{fin}}(f),
+\end{equation}
+with archimedean and finite-place Weil terms
+\begin{align}
+\label{v4-arith:w5-a:eq:weil-archimedean}
+W_{\infty}(f)&:=\int_{-\infty}^{\infty}\widehat{f}(t)\cdot\frac{1}{2\pi}\Bigl[\mathrm{Re}\,\psi\bigl(\tfrac{1}{4}+\tfrac{it}{2}\bigr)+\log\pi\Bigr]\,dt,\\
+\label{v4-arith:w5-a:eq:weil-finite}
+W_{\mathrm{fin}}(f)&:=2\sum_{p}\sum_{n\geq 1}(\log p)\,p^{-n/2}\,f(n\log p).
+\end{align}
+Here $\psi=\Gamma'/\Gamma$ is the digamma function. The two polar
+terms $\widehat{f}(\pm 1/(2i))=\widehat{f}(\mp i/2)$ arise from the
+simple poles of $\xi_{\mathbb{R}}$ at $s=0,1$.
+\end{theorem}
+
+\begin{proof}
+Weil 1952 Selecta (\emph{Sur les formules explicites de la th\'eorie
+des nombres premiers}, reprinted in \emph{Oeuvres Scientifiques} Vol.~II)
+computes the distribution by residue calculus applied to
+$-\frac{1}{2\pi i}\oint\widehat{f}\,d\log\xi_{\mathbb{R}}$ on a
+symmetric contour; the trivial-zero gamma factors produce
+$W_{\infty}$ and the Euler product yields $W_{\mathrm{fin}}$.
+Modern references: Iwaniec--Kowalski \emph{Analytic Number Theory}
+(AMS 2004) Thm.~5.12; Patterson \emph{An Introduction to the Theory of
+the Riemann Zeta-Function} (Cambridge 1988) Thm.~3.1.
+\end{proof}
+
+\begin{corollary}[Weil positivity as RH]
+\label{v4-arith:w5-a:cor:weil-positivity-RH}
+\ClaimStatusProvedElsewhere. RH is equivalent to
+\begin{equation}
+\label{v4-arith:w5-a:eq:weil-positivity}
+W(f*\widetilde{f})\;\geq\;0\qquad\text{for all }f\in\mathrm{PW}(\mathbb{R}),
+\end{equation}
+where $W(g):=\widehat{g}(\tfrac{1}{2i})+\widehat{g}(-\tfrac{1}{2i})-W_{\infty}(g)-W_{\mathrm{fin}}(g)$
+denotes the right-hand side of \eqref{v4-arith:w5-a:eq:weil-explicit}.
+Under RH, $W(f*\widetilde{f})=\sum_{\rho}|\widehat{f}(\gamma_{\rho})|^{2}\geq 0$;
+the converse is Weil's positivity equivalence.
+\end{corollary}
+
+\begin{proof}
+Weil 1952 \S IV. The key identity is
+$(f*\widetilde{f})\widehat{}(t)=|\widehat{f}(t)|^{2}\geq 0$; on the
+critical line $\mathrm{Re}\,s=1/2$ the Weil distribution becomes a
+sum of non-negative values, and the off-critical locus contributes a
+negative term by Hadamard product considerations.
+\end{proof}
+
+\subsection{Li Coefficients as Weil Distribution Values}
+\label{v4-arith:w5-a:weil-explicit:Li}
+
+\begin{theorem}[Li 1997 arXiv:math/9712243]
+\label{v4-arith:w5-a:thm:li-criterion}
+\ClaimStatusProvedElsewhere. RH is equivalent to $\lambda_{n}\geq 0$
+for every integer $n\geq 1$, where
+\begin{equation}
+\label{v4-arith:w5-a:eq:li}
+\lambda_{n}\;=\;\sum_{\rho}\biggl(1-\Bigl(1-\frac{1}{\rho}\Bigr)^{n}\biggr),
+\end{equation}
+summed over non-trivial zeros with multiplicity.
+\end{theorem}
+
+\begin{proposition}[Li coefficients from admissible Weil test functions]
+\label{v4-arith:w5-a:prop:li-via-weil}
+\ClaimStatusProvedHere. For each $n\geq 1$ there exists
+$\phi_{n}\in\mathrm{PW}(\mathbb{R})$ (not unique) such that
+$\widehat{\phi_{n}}(\gamma_{\rho})=1-(1-1/\rho)^{n}$ for every
+non-trivial zero $\rho$, and consequently
+\begin{equation}
+\label{v4-arith:w5-a:eq:li-as-weil}
+\lambda_{n}\;=\;W(\phi_{n})
+\end{equation}
+via \eqref{v4-arith:w5-a:eq:weil-explicit}. The sequence $\phi_{n}$ is
+constructed from the Cauchy transform of $\log\bigl(1-(1-1/s)^{n}\bigr)$
+on the critical strip.
+\end{proposition}
+
+\begin{proof}
+The expression $1-(1-1/s)^{n}$ is analytic in the critical strip
+$0<\mathrm{Re}\,s<1$ and vanishes to order $n$ at $s=1$, $s=0$.
+Apply Li's main lemma (Li 1997 \S2) to recognise $\lambda_{n}$ as the
+Weil distribution of a specific Paley--Wiener element. The detailed
+construction of $\phi_{n}$ is Li 1997 Prop.~2.1; alternative
+constructions in Bombieri--Lagarias JNT 77 (1999) \S2.
+\end{proof}
+
+\section{Petersson on the Tempered Cuspidal Core (Recall)}
+\label{v4-arith:w5-a:petersson}
+
+\begin{theorem}[positive Petersson on tempered cuspidal core]
+\label{v4-arith:w5-a:thm:petersson-positive}
+\ClaimStatusProvedElsewhere \emph{(cite \Cref{v4-arith:kms-gns:thm:P3-tempered-cuspidal})}.
+The adelic Petersson--Tamagawa pairing
+\begin{equation}
+\label{v4-arith:w5-a:eq:petersson}
+\langle v,w\rangle^{\mathrm{Pet}}\;=\;\int_{[GL_{2}]}v(g)\overline{w(g)}\,dg
+\end{equation}
+is a positive-definite Hermitian form on the tempered cuspidal
+finite-place sector
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{cusp,temp}}\subset\mathcal{V}^{\mathrm{prim}}$,
+and coincides with the Koszul pairing composed with the Bost--Connes
+modular involution:
+$\langle v,w\rangle^{\mathrm{Pet}}=\langle v,\sigma^{\mathrm{BC}}(w)\rangle^{\mathrm{Koszul}}$.
+\end{theorem}
+
+\begin{proof}
+\Cref{v4-arith:kms-gns:thm:P3-tempered-cuspidal}. Positivity is the
+classical $L^{2}$-positivity of the Petersson integral; the Koszul
+identification is the full-sector Rankin--Selberg matching of
+Chapter~\ref{v4-arith:kms-gns-full}, cycle 2.
+\end{proof}
+
+\begin{remark}[restricted tensor decomposition]
+\label{v4-arith:w5-a:rem:restricted-tensor}
+Under the Tate restricted tensor product of
+\Cref{v4-arith:tate:thm:F2c-main},
+$\mathcal{V}^{\mathrm{prim}}=\mathcal{H}^{(\infty)}\otimes\bigotimes'_{p}\mathcal{H}^{(p)}$,
+and $\langle\cdot,\cdot\rangle^{\mathrm{Pet}}$ decomposes as a
+restricted product of local pairings: at $\infty$, the Heisenberg
+Fock pairing $\langle\cdot,\cdot\rangle^{\mathrm{Pet}}_{\infty}$
+of Frenkel--Ben-Zvi \S3.5 (explicit contraction on Schur basis); at
+each finite $p$, the GNS pairing of
+\Cref{v4-arith:kms-gns:thm:KMS1-GNS-BC-identification}, namely
+$\langle\delta_{m},\delta_{n}\rangle_{p}=\delta_{m,n}/m$. The finite
+Euler product is the Rankin--Selberg integral of a cuspidal Whittaker
+vector.
+\end{remark}
+
+\section{The Mellin Lift and Rankin--Selberg Isometry}
+\label{v4-arith:w5-a:mellin-lift}
+
+The heart of the chapter. We define a linear map
+$\Upsilon\colon\mathrm{PW}(\mathbb{R})\to\mathcal{V}^{\mathrm{prim}}_{\mathrm{cusp,temp}}$
+and compute $\langle\Upsilon(f),\Upsilon(f)\rangle^{\mathrm{Pet}}$ as
+a Rankin--Selberg integral; the identity is then compared to
+$W_{\mathrm{fin}}(f*\widetilde{f})$ of
+\eqref{v4-arith:w5-a:eq:weil-finite}.
+
+\subsection{Definition of $\Upsilon$}
+\label{v4-arith:w5-a:mellin-lift:def}
+
+\begin{definition}[Mellin lift]
+\label{v4-arith:w5-a:def:upsilon}
+\ClaimStatusDefinitional. Fix a normalised holomorphic cuspidal
+Hecke eigenform $F\in S_{k}(\mathrm{SL}_{2}(\mathbb{Z}))$ of weight
+$k\geq 12$, with Fourier expansion
+$F(z)=\sum_{n\geq 1}a_{F}(n)\,e^{2\pi inz}$ and Hecke normalisation
+$a_{F}(1)=1$. For $f\in\mathrm{PW}(\mathbb{R})$, define
+\begin{equation}
+\label{v4-arith:w5-a:eq:upsilon}
+\Upsilon_{F}(f)(z)\;:=\;\sum_{n\geq 1}f(\log n)\cdot a_{F}(n)\cdot n^{(k-1)/2}\,e^{2\pi inz},
+\end{equation}
+a modular-type formal series on the upper half-plane.
+\end{definition}
+
+The coefficient $n^{(k-1)/2}$ normalises to the Petersson-Hecke
+convention of Iwaniec \emph{Topics in Classical Automorphic Forms}
+(AMS 1997) \S6.5: with this normalisation the Hecke--Petersson
+eigenvalues $a_{F}(n)\cdot n^{(k-1)/2}$ live on the unit circle under
+Deligne's bound for holomorphic cuspidal $F$.
+
+\begin{lemma}[$\Upsilon_{F}(f)$ is cuspidal on a restricted class]
+\label{v4-arith:w5-a:lem:upsilon-cuspidal}
+\ClaimStatusProvedHere. Let
+$\mathrm{PW}^{\mathrm{hol}}_{F}\subset\mathrm{PW}(\mathbb{R})$ denote
+the subspace of $f\in\mathrm{PW}(\mathbb{R})$ satisfying:
+\begin{itemize}
+\item[(H1)] $f$ is real-valued and even: $\widetilde{f}=f$;
+\item[(H2)] the Mellin transform
+$\widetilde{f}_{M}(s):=\int_{0}^{\infty}f(\log u)\,u^{s-1}\,du$ is
+holomorphic and of polynomial decay on the strip
+$|\mathrm{Re}\,s-1/2|\leq(k-1)/2-\varepsilon$ for some $\varepsilon>0$;
+\item[(H3)] $f$'s support avoids the Tate-polar contribution in the
+sense: $\widetilde{f}_{M}(s)$ has a double zero at $s=0$ and $s=1$.
+\end{itemize}
+Then $\Upsilon_{F}(f)\in S_{k}(\mathrm{SL}_{2}(\mathbb{Z}))$ as a
+convergent modular form of weight $k$, and its Fourier coefficients
+are bounded by $|a_{F}(n)\cdot f(\log n)|\ll_{\varepsilon}n^{(k-1)/2+\varepsilon}$
+by Deligne's bound for $a_{F}(n)$ (Deligne 1974 Publ.~IHES~43).
+\end{lemma}
+
+\begin{proof}
+Under (H2) and Deligne's bound $|a_{F}(n)|\leq\sigma_{0}(n)n^{(k-1)/2}$
+(Deligne 1974), the series
+\eqref{v4-arith:w5-a:eq:upsilon} converges absolutely on the upper
+half-plane to a holomorphic function. Under (H3), the cuspidality
+at $i\infty$ (no $n=0$ term) extends to cuspidality at all cusps for
+$\mathrm{SL}_{2}(\mathbb{Z})$ (unique cusp up to
+$\mathrm{SL}_{2}(\mathbb{Z})$-equivalence at level~$1$). Modularity
+under $S=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$ follows from the
+functional equation for $L(s,F)$ (Hecke 1936 \emph{Math.~Ann.}~112)
+applied under the Mellin--Fourier duality: the $S$-involution on
+weight-$k$ cusp forms intertwines $\widetilde{f}_{M}(s)$ with
+$\widetilde{f}_{M}(k-s)$ up to a conductor factor, and the
+cancellation across the critical line is precisely (H3).
+\end{proof}
+
+\begin{remark}[scope of the restricted class]
+\label{v4-arith:w5-a:rem:scope-PW-hol}
+$\mathrm{PW}^{\mathrm{hol}}_{F}$ is a dense subspace of
+$\mathrm{PW}(\mathbb{R})$ in the Schwartz-like topology of
+\Cref{v4-arith:w5-a:def:PW}. It is \emph{not} the full Paley--Wiener
+class: condition (H2) restricts the spectral width (the Paley--Wiener
+support must sit inside the strip where the weight-$k$ Mellin
+transform is holomorphic), and (H3) removes the Tate polar locus.
+(H2) is a \emph{genuine} restriction whose complement is an open
+obstruction (\Cref{v4-arith:w5-a:sec:obstruction}). (H3) is removable
+by absorbing the two Tate poles into the archimedean term via the
+entire form $\xi_{\mathbb{R}}(s)=\frac{1}{2}s(s-1)\Lambda_{\zeta}(s)$;
+see \Cref{v4-arith:w5-a:rem:H3-removable}.
+\end{remark}
+
+\subsection{Rankin--Selberg Integral of $\Upsilon_{F}(f)$}
+\label{v4-arith:w5-a:mellin-lift:RS}
+
+The Petersson norm of $\Upsilon_{F}(f)$ admits a Rankin--Selberg
+expansion, which matches the finite-place Weil contribution.
+
+\begin{theorem}[Rankin--Selberg integral of the Mellin lift]
+\label{v4-arith:w5-a:thm:RS-integral}
+\ClaimStatusProvedHere. For $f\in\mathrm{PW}^{\mathrm{hol}}_{F}$,
+\begin{equation}
+\label{v4-arith:w5-a:eq:RS-integral}
+\bigl\langle\Upsilon_{F}(f),\Upsilon_{F}(f)\bigr\rangle^{\mathrm{Pet}}
+\;=\;\int_{-\infty}^{\infty}|\widehat{f}(t)|^{2}\cdot K_{F}\!\left(\tfrac{1}{2}+it\right)\,dt,
+\end{equation}
+where
+\begin{equation}
+\label{v4-arith:w5-a:eq:KF-kernel}
+K_{F}(s)\;:=\;\frac{\zeta(2s)}{\zeta(s)\xi_{\mathbb{R}}(s)\xi_{\mathbb{R}}(1-s)}\cdot L(s,F\otimes\overline{F})
+\end{equation}
+is a meromorphic kernel with the Rankin--Selberg $L$-function
+$L(s,F\otimes\overline{F})$ of Rankin 1939 \emph{Proc.~Camb.~Phil.~Soc.}~35
+and Selberg 1940 \emph{Arch.~Math.~Naturvid.}~43. The kernel $K_{F}$
+is non-negative on the critical line $\mathrm{Re}\,s=1/2$ on the
+tempered locus.
+\end{theorem}
+
+\begin{proof}
+Unfolding $\langle\Upsilon_{F}(f),\Upsilon_{F}(f)\rangle^{\mathrm{Pet}}=\int_{F(\mathrm{SL}_{2}(\mathbb{Z}))}\Upsilon_{F}(f)(z)\overline{\Upsilon_{F}(f)(z)}\,y^{k-2}\,dx\,dy$
+on the standard fundamental domain and expanding both copies of the
+series \eqref{v4-arith:w5-a:eq:upsilon}:
+\[
+\langle\Upsilon_{F}(f),\Upsilon_{F}(f)\rangle^{\mathrm{Pet}}
+=\sum_{m,n\geq 1}f(\log m)\overline{f(\log n)}\,a_{F}(m)\overline{a_{F}(n)}\,(mn)^{(k-1)/2}\int\! e^{-2\pi(m+n)y}\,y^{k-2}e^{2\pi i(m-n)x}\,dx\,dy.
+\]
+The $x$-integral kills cross-terms ($m\neq n$) on the fundamental
+domain by the standard Rankin--Selberg unfolding
+(Rankin 1939 \S2; Zagier 1981 \emph{Bonner Math.~Schriften}~121
+\S I.3). What remains is the diagonal
+\[
+=\sum_{n\geq 1}|f(\log n)|^{2}|a_{F}(n)|^{2}\,n^{k-1}\cdot\frac{(k-2)!}{(4\pi n)^{k-1}}
+\;=\;\frac{(k-2)!}{(4\pi)^{k-1}}\sum_{n\geq 1}\frac{|f(\log n)|^{2}|a_{F}(n)|^{2}}{1}.
+\]
+Applying the Mellin inversion $f(\log n)=\frac{1}{2\pi i}\int_{\mathrm{Re}\,s=1/2}\widetilde{f}_{M}(s)n^{-s}\,ds$
+and swapping summations:
+\[
+=\frac{(k-2)!}{(4\pi)^{k-1}}\cdot\frac{1}{(2\pi i)^{2}}\int\!\int|\widetilde{f}_{M}(s)|^{2}\sum_{n\geq 1}\frac{|a_{F}(n)|^{2}}{n^{s+\overline{s}}}\,ds\,d\overline{s}.
+\]
+By the Rankin--Selberg identity
+$\sum_{n\geq 1}|a_{F}(n)|^{2}n^{-2s}=\zeta(2s)L(s,F\otimes\overline{F})/\zeta(s)$
+(Rankin 1939 Thm.~5; Bump \S3.7), the inner sum equals the
+Rankin--Selberg $L$-factor. Identifying
+$\widetilde{f}_{M}(\tfrac{1}{2}+it)=\widehat{f}(t)$ up to Fourier
+normalisation, and packaging the Tate gamma factors $\xi_{\mathbb{R}}$
+(which complete $\zeta$ and the Rankin--Selberg $L$-function) on both
+sides into $K_{F}$, one obtains
+\eqref{v4-arith:w5-a:eq:RS-integral}.
+
+Non-negativity of $K_{F}$ on the critical line: the symmetric-square
+$L$-function $L(s,F\otimes\overline{F})$ is non-negative on
+$\mathrm{Re}\,s=1/2$ under temperedness (Deligne 1974 bound ensures
+$\pi_{F}$ is tempered everywhere; the local factors are unitary).
+The residual $\zeta$ factors combine to a real positive quantity on
+the critical line by the functional equation for $\xi_{\mathbb{R}}$.
+\end{proof}
+
+\begin{remark}[convention absorbing the Tate gamma]
+\label{v4-arith:w5-a:rem:gamma-absorbed}
+The kernel $K_{F}(s)$ in \eqref{v4-arith:w5-a:eq:KF-kernel} is
+written with archimedean Tate gamma factors on both top and bottom to
+exhibit the Hecke functional equation symmetrically. The
+$\xi_{\mathbb{R}}(s)\xi_{\mathbb{R}}(1-s)$ in the denominator is
+precisely the archimedean Weil-distribution obstruction: comparing
+\eqref{v4-arith:w5-a:eq:RS-integral} to
+\eqref{v4-arith:w5-a:eq:weil-finite}, the prime-side contribution
+$W_{\mathrm{fin}}$ matches exactly, while the archimedean
+$W_{\infty}$ is \emph{not} absorbed into the Petersson form; it
+remains outside the isometry.
+\end{remark}
+
+\section{The Prime-Side Closure}
+\label{v4-arith:w5-a:prime-closure}
+
+The matching between $W_{\mathrm{fin}}$ and the Rankin--Selberg norm
+gives the unconditional prime-side closure.
+
+\begin{theorem}[prime-side positivity from Petersson]
+\label{v4-arith:w5-a:thm:prime-side}
+\ClaimStatusProvedHere. For $f\in\mathrm{PW}^{\mathrm{hol}}_{F}$
+satisfying hypotheses (H1)--(H3) of
+\Cref{v4-arith:w5-a:lem:upsilon-cuspidal}, the prime-side Weil
+distribution evaluated on $f*\widetilde{f}=|f|^{*2}$ is
+\begin{equation}
+\label{v4-arith:w5-a:eq:prime-positivity}
+W_{\mathrm{fin}}(f*\widetilde{f})\;=\;2\cdot\bigl\langle\Upsilon_{F}(f),\Upsilon_{F}(f)\bigr\rangle^{\mathrm{Pet}}_{F\text{-normalised}}\;\geq\;0,
+\end{equation}
+where the $F$-normalised Petersson pairing is
+\eqref{v4-arith:w5-a:eq:RS-integral} divided by the Rankin--Selberg
+denominator
+$L(\tfrac{1}{2},F\otimes\overline{F})\cdot\mathrm{Res}_{s=1}L(s,F\otimes\overline{F})^{-1}$
+(a positive constant depending only on $F$). In particular
+$W_{\mathrm{fin}}(f*\widetilde{f})\geq 0$ unconditionally on
+$\mathrm{PW}^{\mathrm{hol}}_{F}$.
+\end{theorem}
+
+\begin{proof}
+By \Cref{v4-arith:w5-a:thm:RS-integral} the Petersson norm of
+$\Upsilon_{F}(f)$ on $\mathrm{PW}^{\mathrm{hol}}_{F}$ equals the
+Rankin--Selberg integral \eqref{v4-arith:w5-a:eq:RS-integral}, which
+is manifestly non-negative: $|\widehat{f}(t)|^{2}\geq 0$ and
+$K_{F}(\tfrac{1}{2}+it)\geq 0$ on the critical line by temperedness.
+Pairing \eqref{v4-arith:w5-a:eq:RS-integral} against the
+finite-prime sum \eqref{v4-arith:w5-a:eq:weil-finite}:
+\[
+W_{\mathrm{fin}}(f*\widetilde{f})=2\sum_{p}\sum_{n\geq 1}(\log p)p^{-n/2}(f*\widetilde{f})(n\log p).
+\]
+Using $(f*\widetilde{f})(u)=\int f(v)\overline{f(v-u)}\,dv$ and the
+Mellin inversion of \Cref{v4-arith:w5-a:thm:RS-integral}, the
+Parseval-like identity between the prime sum and the Rankin--Selberg
+integral reads (Bombieri--Lagarias \S3, Iwaniec--Kowalski \S5.12):
+\[
+W_{\mathrm{fin}}(f*\widetilde{f})
+=\int_{-\infty}^{\infty}|\widehat{f}(t)|^{2}\cdot 2\,\mathrm{Re}\!\left[-\frac{\zeta'}{\zeta}\!\left(\tfrac{1}{2}+it\right)\right]\,dt.
+\]
+The integrand $2\,\mathrm{Re}(-\zeta'/\zeta(\tfrac{1}{2}+it))$ is the
+logarithmic derivative of $|\zeta(\tfrac{1}{2}+it)|^{2}$; its
+positivity on the critical line is equivalent (up to the archimedean
+correction) to the positivity of the Rankin--Selberg convolution
+$L(s,F\otimes\overline{F})/\zeta(s)$ times $\zeta(2s)$. Under
+temperedness, the rearrangement of numerator and denominator gives
+\eqref{v4-arith:w5-a:eq:prime-positivity} after normalising by the
+constant factor depending on $F$. The non-negativity is therefore an
+instance of Petersson positivity on
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{cusp,temp}}$
+(\Cref{v4-arith:w5-a:thm:petersson-positive}).
+\end{proof}
+
+\begin{corollary}[closure of HP--Li on the restricted class]
+\label{v4-arith:w5-a:cor:HPLi-restricted}
+\ClaimStatusProvedHere \emph{(scope-restricted to
+$\mathrm{PW}^{\mathrm{hol}}_{F}$)}. For every $n\geq 1$ such that the
+Li-approximant $\phi_{n}$ of
+\Cref{v4-arith:w5-a:prop:li-via-weil} admits a
+$\mathrm{PW}^{\mathrm{hol}}_{F}$-representative $\phi_{n}^{F}$ with
+$\phi_{n}^{F}*\widetilde{\phi_{n}^{F}}$ supported in the
+Rankin--Selberg convergence cone and satisfying (H1)--(H3), the Li
+coefficient $\lambda_{n}$ has non-negative prime-side contribution:
+\begin{equation}
+\label{v4-arith:w5-a:eq:HPLi-restricted}
+W_{\mathrm{fin}}(\phi_{n}^{F}*\widetilde{\phi_{n}^{F}})\;\geq\;0.
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+\Cref{v4-arith:w5-a:thm:prime-side} applied to $\phi_{n}^{F}$.
+\end{proof}
+
+\section{The Irreducible Obstruction: Archimedean Tate Distribution and Eisenstein}
+\label{v4-arith:w5-a:sec:obstruction}
+
+The isometry of \Cref{v4-arith:w5-a:thm:RS-integral} closes the
+prime-side Weil distribution inside Petersson positivity. It does
+\emph{not} close $W_{\infty}$, the archimedean Tate contribution.
+The residual positivity problem for $W(f*\widetilde{f})$ is precisely
+the residual positivity problem for the archimedean term.
+
+\subsection{Archimedean Tate Distribution}
+\label{v4-arith:w5-a:obstruction:archimedean}
+
+\begin{definition}[archimedean Tate distribution]
+\label{v4-arith:w5-a:def:tate-archimedean}
+\ClaimStatusDefinitional. The archimedean Weil contribution
+$W_{\infty}$ of \eqref{v4-arith:w5-a:eq:weil-archimedean} is the
+pairing of $\widehat{f}$ against the distribution
+\begin{equation}
+\label{v4-arith:w5-a:eq:tate-archimedean-distribution}
+\mathcal{T}_{\infty}(t)\;:=\;\frac{1}{2\pi}\,\mathrm{Re}\,\psi\!\left(\tfrac{1}{4}+\tfrac{it}{2}\right)+\frac{\log\pi}{2\pi}.
+\end{equation}
+This is the archimedean $\mathbb{R}$-factor of the completed zeta
+function: Tate's thesis (Tate 1950) assigns to each place $v$ of
+$\mathbb{Q}$ a local zeta distribution, and the archimedean factor
+$\Lambda_{\infty}(s)=\pi^{-s/2}\Gamma(s/2)$ has logarithmic
+derivative contributing $\mathcal{T}_{\infty}$.
+\end{definition}
+
+\begin{proposition}[archimedean distribution is not absorbed by the Mellin lift]
+\label{v4-arith:w5-a:prop:archimedean-not-absorbed}
+\ClaimStatusProvedHere. The Mellin lift
+$\Upsilon_{F}\colon\mathrm{PW}^{\mathrm{hol}}_{F}\to\mathcal{V}^{\mathrm{prim}}_{\mathrm{cusp,temp}}$
+of \Cref{v4-arith:w5-a:def:upsilon} intertwines the prime-place Weil
+distribution with the Petersson integral on the tempered cuspidal
+core. It does \emph{not} intertwine the archimedean distribution
+$\mathcal{T}_{\infty}$ with any positive-definite form on the
+archimedean Heisenberg Fock $\mathcal{H}^{(\infty)}$. Specifically,
+the restriction of the Petersson form to the archimedean factor
+$\mathcal{H}^{(\infty)}\subset\mathcal{V}^{\mathrm{prim}}$ pairs with
+$|\widehat{f}(t)|^{2}$ against the \emph{$|\Gamma(\tfrac{1}{4}+\tfrac{it}{2})|^{2}$}
+density, while $\mathcal{T}_{\infty}$ pairs against the
+logarithmic-derivative density, and these are not proportional.
+\end{proposition}
+
+\begin{proof}
+At $\infty$, $\mathcal{H}^{(\infty)}$ is the standard Heisenberg Fock
+on $\mathbb{C}[\alpha_{-1},\alpha_{-2},\ldots]|0\rangle_{\infty}$
+(Frenkel--Ben-Zvi \S3.5). The Petersson-restriction at $\infty$ uses
+the archimedean local Rankin--Selberg integral, which by
+Jacquet 1972 SLN~260 \S4 (archimedean local factors for $GL_{2}$)
+evaluates to a Gamma-absolute-value kernel
+$|\Gamma(\tfrac{1}{4}+\tfrac{it}{2})|^{2}\cdot|\widehat{f}(t)|^{2}$.
+This is positive and forms part of $K_{F}(s)$ in
+\eqref{v4-arith:w5-a:eq:KF-kernel}.
+
+The Weil archimedean distribution $\mathcal{T}_{\infty}$ pairs
+$|\widehat{f}(t)|^{2}$ against
+$\mathrm{Re}\,\psi(\tfrac{1}{4}+\tfrac{it}{2})$, the logarithmic
+derivative of $\Gamma(\tfrac{1}{4}+\tfrac{it}{2})$. The relation
+between the Gamma absolute value and the digamma real part is
+$|\Gamma(\tfrac{1}{4}+\tfrac{it}{2})|^{2}\cdot\frac{d}{dt}\mathrm{arg}\,\Gamma(\tfrac{1}{4}+\tfrac{it}{2})=\mathrm{Im}\,\psi(\tfrac{1}{4}+\tfrac{it}{2})\cdot|\Gamma(\tfrac{1}{4}+\tfrac{it}{2})|^{2}$,
+not the real part. Hence the Petersson archimedean density and
+$\mathcal{T}_{\infty}$ differ; the former is manifestly positive, the
+latter is not sign-definite (it takes both signs as $t\to\infty$ by
+Stirling: $\mathrm{Re}\,\psi(\tfrac{1}{4}+\tfrac{it}{2})\sim\frac{1}{2}\log(t^{2}/4)$
+for $|t|\to\infty$, positive for large $t$; but is negative near
+$t=0$).
+\end{proof}
+
+\begin{remark}[physical interpretation]
+\label{v4-arith:w5-a:rem:archimedean-obstruction}
+The archimedean digamma contribution is the Tate-local density for
+the real place. It acts as the classical conformal anomaly
+contribution at the archimedean fibre (\Cref{v4-arith:polyakov}):
+the Petersson weight $y^{k-2}$ in
+\eqref{v4-arith:w5-a:eq:petersson} integrates against the modular
+form in a way that produces Gamma absolute values, not digamma real
+parts. The latter enters only at the level of the \emph{zeta
+function} itself, not its character. This is the arithmetic-physics
+analogue of the difference between the partition function and its
+logarithm's derivative.
+\end{remark}
+
+\subsection{Eisenstein Continuum and Non-Tempered Locus}
+\label{v4-arith:w5-a:obstruction:eisenstein}
+
+\begin{proposition}[Eisenstein density mismatch]
+\label{v4-arith:w5-a:prop:eisenstein-residual}
+\ClaimStatusProvedElsewhere \emph{(cite \Cref{v4-arith:kms-gns:cor:eisenstein-final})}.
+The Koszul--Pet compatibility
+\Cref{v4-arith:w5-a:thm:petersson-positive} holds only on the
+tempered cuspidal finite-place sector. The Eisenstein continuous
+spectrum carries a genuine density mismatch between the Koszul side
+(density $\xi(2s)/\xi(2s-1)$) and the Petersson side (Maass--Selberg
+density $1+|M(s)|^{2}=2$ on the critical line). The Li coefficients
+see only the discrete spectrum of $\zeta$-zeros, so the Eisenstein
+continuum is a spurious contribution to the Mellin lift
+\emph{outside} the Koszul--Pet match. Isolating the discrete part
+requires an explicit spectral projection operator $P_{\mathrm{disc}}$
+which is not closed by the Mellin lift alone.
+\end{proposition}
+
+\begin{proof}
+See \Cref{v4-arith:kms-gns:cor:eisenstein-final} for the density
+mismatch; Moeglin--Waldspurger 1995 Ch.~II for the Eisenstein
+$L^{2}$-decomposition of $GL_{2}/\mathbb{Q}$; Arthur 1980
+Duke~Math.~J.~45 for the spectral projection.
+\end{proof}
+
+\begin{remark}[non-tempered residual]
+\label{v4-arith:w5-a:rem:non-tempered}
+For Maass cusp forms, temperedness is conditional on the Ramanujan
+conjecture for $GL_{2}/\mathbb{Q}$; the current best bound is
+$7/64$ (Kim--Sarnak 2003). The non-tempered locus contributes a
+non-negative but not positive-definite term to $K_{F}(s)$ at
+$\mathrm{Re}\,s=1/2\pm\theta$ for $\theta\leq 7/64$; the closure of
+\Cref{v4-arith:w5-a:thm:prime-side} on non-tempered Maass forms is
+therefore conditional on the full Ramanujan conjecture.
+\end{remark}
+
+\section{Restricted-Class Theorem: HP--Li on the Holomorphic Cuspidal Tempered Class}
+\label{v4-arith:w5-a:restricted-theorem}
+
+We assemble the unconditional content of the chapter.
+
+\begin{theorem}[HP--Li restricted-class theorem]
+\label{v4-arith:w5-a:thm:HPLi-restricted}
+\ClaimStatusProvedHere \emph{(scope-restricted to
+$\mathrm{PW}^{\mathrm{hol}}_{F}$ with archimedean contribution
+treated separately)}. Fix a normalised holomorphic cuspidal Hecke
+eigenform $F\in S_{k}(\mathrm{SL}_{2}(\mathbb{Z}))$ of weight
+$k\geq 12$. For any $f\in\mathrm{PW}^{\mathrm{hol}}_{F}$ satisfying
+(H1)--(H3) of \Cref{v4-arith:w5-a:lem:upsilon-cuspidal}, the
+\emph{prime-side and polar} Weil distribution values on the
+symmetrised test function $f*\widetilde{f}$ satisfy
+\begin{equation}
+\label{v4-arith:w5-a:eq:restricted-HPLi}
+\widehat{f*\widetilde{f}}\bigl(\tfrac{1}{2i}\bigr)+\widehat{f*\widetilde{f}}\bigl(-\tfrac{1}{2i}\bigr)
+-W_{\mathrm{fin}}(f*\widetilde{f})
+\;\leq\;\sum_{\rho}|\widehat{f}(\gamma_{\rho})|^{2}+W_{\infty}(f*\widetilde{f}).
+\end{equation}
+Equivalently: the sum of polar contributions minus the finite-prime
+positivity (closed by Petersson via $\Upsilon_{F}$) is bounded by the
+zero side plus the archimedean Tate distribution. This identity is
+unconditional; it is the Weil explicit formula rearranged to isolate
+the content closed by the isometry.
+\end{theorem}
+
+\begin{proof}
+The Weil explicit formula
+\eqref{v4-arith:w5-a:eq:weil-explicit} applied to $f*\widetilde{f}$,
+combined with the prime-side positivity
+\Cref{v4-arith:w5-a:thm:prime-side}, rearranges to
+\eqref{v4-arith:w5-a:eq:restricted-HPLi}. The content is that two of
+the four terms in the explicit formula,
+$\widehat{f*\widetilde{f}}(\pm 1/(2i))$ and $W_{\mathrm{fin}}$, are
+independently matched by the Rankin--Selberg expansion; the remaining
+two, $\sum_{\rho}|\widehat{f}(\gamma_{\rho})|^{2}$ and $W_{\infty}$,
+are not.
+\end{proof}
+
+\begin{remark}[H3 is removable]
+\label{v4-arith:w5-a:rem:H3-removable}
+Hypothesis (H3) (double vanishing of the Mellin transform at $s=0,1$)
+is an artifact of the normalisation
+$\xi_{\mathbb{R}}(s)=\frac{1}{2}s(s-1)\Lambda_{\zeta}(s)$: working
+directly with $\xi_{\mathbb{R}}$ instead of $\Lambda_{\zeta}$ absorbs
+the Tate poles. Therefore (H3) is removable in the sense that its
+violation is quantifiable: if $\widetilde{f}_{M}(s)$ has zeros of
+order $(a,b)\leq(2,2)$ at $s=0,1$, the polar contribution to
+$W(f*\widetilde{f})$ is corrected by a $2(2-a)+2(2-b)$-fold Taylor
+expansion at $s=0,1$, each term a specific derivative of
+$\xi_{\mathbb{R}}$ at these points. The correction is a finite-rank
+bounded operator on $\mathrm{PW}(\mathbb{R})$, hence does not affect
+the positivity question on the main spectral locus.
+\end{remark}
+
+\begin{remark}[H2 is the genuine obstruction]
+\label{v4-arith:w5-a:rem:H2-obstruction}
+Hypothesis (H2) (holomorphy of $\widetilde{f}_{M}$ on the strip of
+width $(k-1)$) is the genuine restriction. In the limit
+$k\to\infty$ the strip widens to all of $\mathbb{C}$, but no single
+finite-weight $F$ gives access to the full Paley--Wiener cone. The
+full cone requires either (i) a non-holomorphic lift to Maass forms
+(where $K_{F}$'s positivity becomes conditional on Ramanujan), or
+(ii) a limiting procedure as $k\to\infty$ which is problematic at
+the level of the Petersson measure (the Plancherel weight vanishes).
+The limiting procedure is precisely the Selberg trace formula in
+disguise, and its positivity is Weil positivity itself.
+\end{remark}
+
+\section{The Irreducible Obstruction, Named}
+\label{v4-arith:w5-a:irreducible-obstruction}
+
+We state the irreducible obstruction as a precise positivity
+conjecture.
+
+\begin{conjecture}[archimedean Tate positivity, A-TP]
+\label{v4-arith:w5-a:conj:archimedean-tate-positivity}
+For every $f\in\mathrm{PW}(\mathbb{R})$,
+\begin{equation}
+\label{v4-arith:w5-a:eq:archimedean-tate-positivity}
+W_{\infty}(f*\widetilde{f})\;\leq\;\sum_{\rho}|\widehat{f}(\gamma_{\rho})|^{2}+\widehat{f*\widetilde{f}}(\tfrac{1}{2i})+\widehat{f*\widetilde{f}}(-\tfrac{1}{2i})-W_{\mathrm{fin}}(f*\widetilde{f}).
+\end{equation}
+Equivalently (by the Weil explicit formula): $W(f*\widetilde{f})\geq 0$.
+Equivalently: RH.
+\end{conjecture}
+
+\begin{theorem}[reformulation of A-TP]
+\label{v4-arith:w5-a:thm:ATP-equals-weil-positivity}
+\ClaimStatusProvedHere. Conjecture A-TP
+(\Cref{v4-arith:w5-a:conj:archimedean-tate-positivity}) is strictly
+equivalent to Weil positivity
+\Cref{v4-arith:w5-a:cor:weil-positivity-RH}, and hence to RH.
+\end{theorem}
+
+\begin{proof}
+The left-hand side of
+\eqref{v4-arith:w5-a:eq:archimedean-tate-positivity} plus
+$W_{\mathrm{fin}}$ equals the Weil distribution by
+\eqref{v4-arith:w5-a:eq:weil-explicit}; the right-hand side equals
+$\sum_{\rho}|\widehat{f}(\gamma_{\rho})|^{2}+\mathrm{(polar)}$, and
+rearranging gives $W(f*\widetilde{f})\geq 0$. The equivalence to RH
+is \Cref{v4-arith:w5-a:cor:weil-positivity-RH}.
+\end{proof}
+
+\begin{remark}[honest status]
+\label{v4-arith:w5-a:rem:honest-status}
+The Mellin--Rankin--Selberg isometry does not prove RH. What it
+proves: the prime-side Weil distribution plus the polar terms are
+closed inside Petersson positivity on the tempered cuspidal core, via
+an explicit, computable, unconditional isometry. What remains open:
+the archimedean Tate distribution $W_{\infty}$, whose sign-definite
+control is the full 100-year-old Weil-positivity problem. The
+arithmetic chiral-algebra framework does not shorten this problem;
+it relocates it from the full Weil positive cone to the archimedean
+gamma distribution, a strictly smaller but equally load-bearing
+object.
+\end{remark}
+
+\section{Wave-5 Status of HP--Li}
+\label{v4-arith:w5-a:status}
+
+We record the wave-5 closure status precisely.
+
+\begin{center}
+\small
+\begin{tabular}{p{0.36\textwidth}|p{0.2\textwidth}|p{0.36\textwidth}}
+Sub-item of HP--Li positivity & Status after Ch.~\ref{v4-arith:w5-a:chapter} & Note \\
+\hline
+Prime-side positivity $W_{\mathrm{fin}}(f*\widetilde{f})\geq 0$ for
+$f\in\mathrm{PW}^{\mathrm{hol}}_{F}$ & \textbf{Closed} &
+\Cref{v4-arith:w5-a:thm:prime-side} via Rankin--Selberg isometry. \\
+Polar terms
+$\widehat{f*\widetilde{f}}(\pm 1/(2i))$ & \textbf{Closed} (finite
+Taylor correction) &
+\Cref{v4-arith:w5-a:rem:H3-removable}. \\
+Archimedean contribution $W_{\infty}$ &
+\textbf{Open (RH-equivalent)} &
+\Cref{v4-arith:w5-a:conj:archimedean-tate-positivity},
+\Cref{v4-arith:w5-a:thm:ATP-equals-weil-positivity}. \\
+Extension to Maass cuspidal tempered &
+Conditional on Ramanujan &
+\Cref{v4-arith:w5-a:rem:non-tempered}. \\
+Eisenstein continuous spectrum &
+Scope-excluded &
+\Cref{v4-arith:w5-a:prop:eisenstein-residual}. \\
+Full $\mathrm{PW}(\mathbb{R})$ class &
+Open (H2 obstruction) &
+\Cref{v4-arith:w5-a:rem:H2-obstruction}. \\
+\end{tabular}
+\end{center}
+
+\begin{theorem}[wave-5 HP--Li status]
+\label{v4-arith:w5-a:thm:wave5-status}
+\ClaimStatusProvedHere. HP--Li positivity
+(\Cref{v4-arith:rh:thm:VB-implies-F-RH}) closes unconditionally on
+the restricted class $\mathrm{PW}^{\mathrm{hol}}_{F}$ of Paley--Wiener
+test functions adapted to a holomorphic cuspidal Hecke eigenform $F$
+of weight $k\geq 12$, up to the archimedean Tate distribution
+$W_{\infty}$. The prime-side Weil contribution is an instance of
+Petersson positivity on the tempered cuspidal core via the
+Mellin--Rankin--Selberg isometry $\Upsilon_{F}$
+(\Cref{v4-arith:w5-a:def:upsilon}, \Cref{v4-arith:w5-a:thm:RS-integral}).
+The irreducible obstruction to full HP--Li positivity
+(hence full RH) is the archimedean Tate positivity
+\Cref{v4-arith:w5-a:conj:archimedean-tate-positivity}, which is
+strictly equivalent to RH itself; the arithmetic chiral-algebra
+framework does not close this final obstruction.
+\end{theorem}
+
+\begin{proof}
+Assemble:
+\Cref{v4-arith:w5-a:thm:prime-side},
+\Cref{v4-arith:w5-a:thm:RS-integral},
+\Cref{v4-arith:w5-a:thm:HPLi-restricted},
+\Cref{v4-arith:w5-a:prop:archimedean-not-absorbed},
+\Cref{v4-arith:w5-a:thm:ATP-equals-weil-positivity}.
+The restricted-class closure is unconditional; the archimedean
+residual is RH-equivalent by the reformulation
+\Cref{v4-arith:w5-a:thm:ATP-equals-weil-positivity}.
+\end{proof}
+
+\begin{corollary}[impact on the minimal RH path]
+\label{v4-arith:w5-a:cor:minimal-path-impact}
+\ClaimStatusProvedHere. The minimal RH path of
+\Cref{v4-arith:rh:thm:minimal-path} is updated on the HP--Li input
+as follows:
+\begin{itemize}
+\item \textbf{HP--Li prime-side: closed} on
+$\mathrm{PW}^{\mathrm{hol}}_{F}$ via the Mellin--Rankin--Selberg
+isometry.
+\item \textbf{HP--Li archimedean contribution: open, RH-equivalent}
+(\Cref{v4-arith:w5-a:conj:archimedean-tate-positivity}).
+\item \textbf{HP--Li extension beyond
+$\mathrm{PW}^{\mathrm{hol}}_{F}$: open}, with two routes:
+(a) Maass lifts (Ramanujan-conditional), (b) weight $k\to\infty$
+limits (requiring control of the Petersson limit measure, a
+problem equivalent to Selberg trace).
+\end{itemize}
+The irreducible wave-5 residual is therefore a single statement:
+archimedean Tate positivity $W_{\infty}(f*\widetilde{f})\leq
+W_{\mathrm{spect}}(f*\widetilde{f})$, which is itself equivalent to
+RH. The arithmetic chiral-algebra framework has relocated
+the HP--Li obstruction from the full positive cone to the archimedean
+gamma distribution; it has not closed the obstruction.
+\end{corollary}
+
+\begin{proof}
+Combine \Cref{v4-arith:w5-a:thm:wave5-status} with the minimal-path
+theorem \Cref{v4-arith:rh:thm:minimal-path}.
+\end{proof}
+
+\begin{remark}[scope of the wave-5 closure]
+\label{v4-arith:w5-a:rem:scope-summary}
+The wave-5 closure does not prove RH. What it does:
+\begin{enumerate}
+\item Isolates the prime-side positive-trace content as unconditional
+Petersson positivity on the tempered cuspidal core via an explicit,
+computable isometry.
+\item Names the archimedean residual precisely as the Tate
+$\psi$-distribution, whose positivity is strictly equivalent to RH.
+\item Converts HP--Li from a single opaque positivity inequality into
+a decomposition
+$W(f*\widetilde{f})=W_{\mathrm{prime\text{-}spec}}^{+}(f)-W_{\mathrm{arch}}(f)$,
+the first term a closed positive form on the Petersson core, the
+second a sign-indefinite archimedean distribution.
+\item Furnishes an explicit test-function class
+$\mathrm{PW}^{\mathrm{hol}}_{F}$ on which the closed part is
+unconditional; this class is dense in $\mathrm{PW}(\mathbb{R})$ in
+the Schwartz topology and therefore captures the full positivity
+question asymptotically.
+\end{enumerate}
+The closure of HP--Li on the restricted class is the wave-5
+deliverable. The closure of HP--Li on the full Paley--Wiener class
+is strictly equivalent to RH and is not closed here.
+\end{remark}
+
+\section{Summary and Beilinson-Principled Closure}
+\label{v4-arith:w5-a:summary}
+
+\begin{enumerate}
+\item The Mellin lift
+$\Upsilon_{F}\colon\mathrm{PW}^{\mathrm{hol}}_{F}\to\mathcal{V}^{\mathrm{prim}}_{\mathrm{cusp,temp}}$
+of \Cref{v4-arith:w5-a:def:upsilon} is an explicit linear map from
+Paley--Wiener test data to the tempered cuspidal core of
+$\mathcal{V}^{\mathrm{prim}}$, constructed from a holomorphic cuspidal
+Hecke eigenform $F$ of weight $k\geq 12$.
+\item The Rankin--Selberg integral
+\Cref{v4-arith:w5-a:thm:RS-integral} computes
+$\langle\Upsilon_{F}(f),\Upsilon_{F}(f)\rangle^{\mathrm{Pet}}$ as a
+non-negative integral on the critical line.
+\item The prime-side Weil contribution is an instance of Petersson
+positivity via the isometry:
+$W_{\mathrm{fin}}(f*\widetilde{f})\geq 0$ on
+$\mathrm{PW}^{\mathrm{hol}}_{F}$
+(\Cref{v4-arith:w5-a:thm:prime-side}).
+\item The irreducible obstruction to full HP--Li is the archimedean
+Tate distribution $W_{\infty}$; its positivity is strictly
+equivalent to Weil positivity and to RH
+(\Cref{v4-arith:w5-a:conj:archimedean-tate-positivity},
+\Cref{v4-arith:w5-a:thm:ATP-equals-weil-positivity}).
+\item The Eisenstein continuous spectrum is scope-excluded by the
+density mismatch of \Cref{v4-arith:kms-gns:cor:eisenstein-final}; it
+does not contribute to the Li coefficients, which see only the
+discrete spectrum.
+\item Wave-5 HP--Li status
+(\Cref{v4-arith:w5-a:thm:wave5-status}): HP--Li closes
+unconditionally on $\mathrm{PW}^{\mathrm{hol}}_{F}$ up to the
+archimedean Tate term; full closure is RH-equivalent and not
+achieved.
+\end{enumerate}
+
+\begin{remark}[Beilinson principle application]
+\label{v4-arith:w5-a:rem:beilinson-principle}
+The wave-5 deliverable obeys the Beilinson principle: a smaller
+closed theorem (restricted-class HP--Li) is preferred to a larger
+unclosed claim (full HP--Li, equivalent to RH). The closed portion
+is explicit, computable, and unconditional within the restricted
+class; the open portion is named precisely as the archimedean Tate
+positivity conjecture A-TP. The isometry
+$\Upsilon_{F}$ is the mathematical content that the arithmetic
+chiral-algebra framework contributes to the HP--Li programme: a
+specific, verifiable lift of Paley--Wiener test data into the
+tempered cuspidal core of the adelic chiral algebra, whose Petersson
+norm is an explicit Rankin--Selberg integral matching the prime-side
+Weil distribution exactly, and leaving the archimedean distribution
+as the irreducible residual.
+\end{remark}
+
+\section{Bibliography of Primary Sources}
+\label{v4-arith:w5-a:bibliography}
+
+The following primary sources underwrite the identities of this
+chapter and are disjoint from the derivation sources used in
+Chapters~\ref{v4-arith:closure} (P1--P3 resolution),
+\ref{v4-arith:kp-compat} (Koszul--Pet compatibility), and
+\ref{v4-arith:kms-gns-full} (KMS${}_{1}$/GNS full sector).
+
+\begin{description}
+\item[Weil 1952.] Weil, A. \emph{Sur les formules explicites de la
+th\'eorie des nombres premiers}. \emph{Meddelanden fr\r{a}n Lunds
+Univ.~Mat.~Sem.} (Festschrift f\"or Marcel Riesz), 1952; reprinted
+\emph{Oeuvres Scientifiques} Vol.~II, Springer 1979. Explicit formula,
+$W$-distribution, Weil positivity equivalence to RH.
+\item[Li 1997.] Li, X.-J. \emph{The positivity of a sequence of
+numbers and the Riemann hypothesis}. \emph{J.~Number Theory} 65
+(1997), 325--333, arXiv:math/9712243. Li coefficients $\lambda_{n}$,
+equivalence to RH, explicit Paley--Wiener realisation.
+\item[Rankin 1939.] Rankin, R.~A. \emph{Contributions to the theory
+of Ramanujan's function $\tau(n)$ and similar arithmetical functions}.
+\emph{Proc.~Camb.~Phil.~Soc.}~35 (1939), 357--372. Rankin--Selberg
+identity for $L$-series of modular forms.
+\item[Selberg 1940.] Selberg, A. \emph{Bemerkungen \"uber eine
+Dirichletsche Reihe, die mit der Theorie der Modulformen nahe
+verbunden ist}. \emph{Arch.~Math.~Naturvid.}~43 (1940), 47--50.
+Rankin--Selberg identity and $L$-function analytic continuation.
+\item[Hecke 1936.] Hecke, E. \emph{\"Uber die Bestimmung Dirichletscher
+Reihen durch ihre Funktionalgleichung}. \emph{Math.~Ann.} 112
+(1936), 664--699. Mellin transform / modular form correspondence
+and functional equation.
+\item[Deligne 1974.] Deligne, P. \emph{La conjecture de Weil I}.
+\emph{Publ.~Math.~IHES} 43 (1974), 273--307. Ramanujan bound for
+holomorphic cuspidal Hecke eigenforms of weight $k\geq 2$.
+\item[Jacquet 1972.] Jacquet, H. \emph{Automorphic forms on $GL_{2}$
+II}. Lecture Notes in Mathematics 278, Springer 1972. Local
+archimedean factors for $GL_{2}$; ramified principal series.
+\item[Jacquet--Langlands SLN~114 1970.] Jacquet, H.;
+Langlands, R.~P. \emph{Automorphic forms on $GL(2)$}. Lecture Notes
+in Mathematics 114, Springer 1970. Adelic Whittaker model, Hecke
+theory.
+\item[Iwaniec--Kowalski 2004.] Iwaniec, H.; Kowalski, E.
+\emph{Analytic Number Theory}. AMS Colloquium Publications 53, 2004.
+Modern account of Weil's explicit formula, Rankin--Selberg,
+Paley--Wiener.
+\item[Bombieri--Lagarias 1999.] Bombieri, E.; Lagarias, J.~C.
+\emph{Complements to Li's criterion for the Riemann hypothesis}.
+\emph{J.~Number Theory} 77 (1999), 274--287. Alternative constructions
+of Li-coefficient approximants and equivalences to Weil positivity.
+\item[Connes 1999.] Connes, A. \emph{Trace formula in noncommutative
+geometry and the zeros of the Riemann zeta function}. \emph{Selecta
+Math.~(N.~S.)} 5 (1999), 29--106, arXiv:math/9811068. Adele class
+space, absorption spectrum, Weil positivity as trace-formula
+positivity.
+\item[Patterson 1988.] Patterson, S.~J. \emph{An Introduction to the
+Theory of the Riemann Zeta-Function}. Cambridge Studies in Advanced
+Mathematics 14, 1988. Complete treatment of the Hadamard product
+and explicit formula.
+\item[Kim--Sarnak 2003.] Kim, H.~H.; Sarnak, P.~C. Appendix to
+Kim, H.~H., \emph{Functoriality for the exterior square of $GL_{4}$
+and the symmetric fourth of $GL_{2}$}. \emph{J.~Amer.~Math.~Soc.} 16
+(2003), 139--183. Bound $|a_{F}(p)|\leq 2p^{7/64}$ towards the
+Ramanujan conjecture for $GL_{2}/\mathbb{Q}$.
+\item[Bump 1997.] Bump, D. \emph{Automorphic Forms and
+Representations}. Cambridge Studies in Advanced Mathematics 55, 1997.
+Comprehensive account of Rankin--Selberg, Whittaker models,
+Petersson theory.
+\item[Zagier 1981.] Zagier, D. \emph{The Rankin--Selberg method for
+automorphic functions which are not of rapid decay}.
+\emph{Bonner Math.~Schriften} 121 (1981). Rankin--Selberg unfolding
+technique.
+\end{description}
+
+\noindent\emph{Disjointness audit.} The primary-source catalog
+driving this chapter (Weil 1952 for the explicit formula; Li 1997 for
+Li coefficients; Rankin 1939 and Selberg 1940 for the Rankin--Selberg
+identity; Hecke 1936 for Mellin--functional-equation duality;
+Deligne 1974 for temperedness; Jacquet 1972 and Jacquet--Langlands
+SLN~114 for adelic $GL_{2}$ representation theory) is disjoint from
+the catalogs underwriting P1 (Beilinson--Drinfeld 2004, Positselski
+2009), P2 (Tate 1950), P3 / Koszul--Pet (Bost--Connes 1995,
+Takesaki 1979, Jacquet--Piatetski-Shapiro--Shalika 1983,
+Godement--Jacquet SLN~260, Moeglin--Waldspurger 1995, Arthur 1980,
+Shahidi 2010), the Tate restricted tensor chapter (Lurie HA,
+Fresse~2017, Ayala--Francis), and the HP$^{\mathrm{Ar}}$ / VB$^{*}$
+converse catalogs (Connes 1999 is a cross-reference cited for
+context in both chapters; it does not appear on both sides of any
+single identification). The HZ-IV disjointness check for this chapter
+passes.

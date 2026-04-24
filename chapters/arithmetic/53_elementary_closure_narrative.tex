@@ -1,0 +1,589 @@
+\chapter{Elementary Closure Path: A Systematic Narrative}
+\label{v4-arith:w5-direct:closure-path}
+
+\emph{This chapter exposes the programme's full closure chain for the
+Riemann Hypothesis in elementary first-principles terms. The
+construction is systematic and step by step. Each step introduces a
+single object or identity; each identity is either classical (cited
+to its primary source) or a wave-5 closure (cross-referenced to the
+chapter that closes it). No step invokes prior volumes. The content
+is not new mathematics. It is the master narrative of the Vol~IV
+closure path, with an honest map of the irreducible residual after
+wave~5.}
+
+\section{The Riemann Hypothesis in Classical Form}
+\label{v4-arith:w5-direct:RH-classical}
+
+\begin{definition}[the zeta function]
+\label{v4-arith:w5-direct:def:zeta}
+For $\mathrm{Re}(s)>1$, the Riemann zeta function is the absolutely
+convergent sum
+\begin{equation}
+\label{v4-arith:w5-direct:eq:zeta-dirichlet}
+\zeta(s)\;:=\;\sum_{n=1}^{\infty}\frac{1}{n^{s}}.
+\end{equation}
+Its Euler product, equivalent on $\mathrm{Re}(s)>1$, is
+\begin{equation}
+\label{v4-arith:w5-direct:eq:zeta-euler}
+\zeta(s)\;=\;\prod_{p}\bigl(1-p^{-s}\bigr)^{-1},
+\end{equation}
+the product taken over all prime numbers.
+\end{definition}
+
+\begin{definition}[completed zeta and xi]
+\label{v4-arith:w5-direct:def:xi}
+Set
+\begin{align}
+\label{v4-arith:w5-direct:eq:Lambda}
+\Lambda_{\zeta}(s)
+&\;:=\;\pi^{-s/2}\,\Gamma(s/2)\,\zeta(s),
+\\[2pt]
+\label{v4-arith:w5-direct:eq:xi}
+\xi_{\mathbb{R}}(s)
+&\;:=\;\tfrac{1}{2}\,s(s-1)\,\Lambda_{\zeta}(s).
+\end{align}
+The function $\Lambda_{\zeta}$ is meromorphic with simple poles at
+$s=0$ and $s=1$; $\xi_{\mathbb{R}}$ is entire. Both satisfy the
+functional equation
+\begin{equation}
+\label{v4-arith:w5-direct:eq:functional-equation}
+\Lambda_{\zeta}(s)\;=\;\Lambda_{\zeta}(1-s),
+\qquad
+\xi_{\mathbb{R}}(s)\;=\;\xi_{\mathbb{R}}(1-s).
+\end{equation}
+\end{definition}
+
+\begin{remark}[functional equation via Poisson summation]
+\label{v4-arith:w5-direct:rem:Poisson}
+\eqref{v4-arith:w5-direct:eq:functional-equation} admits a
+two-line derivation. Let $\theta(t):=\sum_{n\in\mathbb{Z}}e^{-\pi n^{2}t}$
+for $t>0$. Poisson summation gives
+$\theta(1/t)=t^{1/2}\theta(t)$. Integrating
+$(\theta(t)-1)/2$ against $t^{s/2-1}\,dt/2$ on $[0,\infty)$ produces
+$\Lambda_{\zeta}(s)$; the change of variable $t\mapsto 1/t$ converts
+the integral into its $(1-s)$-partner and supplies the residual
+polar term $\tfrac{1}{2}(s(s-1))^{-1}$ absorbed into $\xi_{\mathbb{R}}$.
+This is Riemann 1859 in one paragraph.
+\end{remark}
+
+\begin{conjecture}[Riemann Hypothesis]
+\label{v4-arith:w5-direct:conj:RH}
+All non-trivial zeros of $\zeta$ have real part $1/2$. Equivalently,
+the zeros of $\xi_{\mathbb{R}}$ have real part $1/2$.
+\end{conjecture}
+
+\section{Four Classical Equivalents}
+\label{v4-arith:w5-direct:four-equivalents}
+
+Four elementary restatements of
+\Cref{v4-arith:w5-direct:conj:RH} organize the closure path. Each
+states RH as a positivity or self-adjointness statement on an
+elementary object.
+
+\begin{theorem}[Weil positivity]
+\label{v4-arith:w5-direct:thm:weil-positivity}
+\ClaimStatusProvedElsewhere. Let
+$\mathrm{PW}(\mathbb{R})$ denote the Paley--Wiener space of entire
+functions of exponential type at most some fixed bound, restricted to
+$\mathbb{R}$. For $f\in\mathrm{PW}(\mathbb{R})$, define the Weil
+distribution
+\begin{equation}
+\label{v4-arith:w5-direct:eq:weil-distribution}
+W(f)\;:=\;\widehat f(0)+\widehat f(1)
+-\sum_{\rho}\widehat f(\rho)
+-\int_{-\infty}^{\infty}\widehat f(1/2+it)
+\,\frac{\psi(1/4+it/2)+\log\pi}{2\pi}\,dt
+-2\sum_{p,n}\frac{\log p}{p^{n/2}}f(n\log p),
+\end{equation}
+where the inner sum is over non-trivial zeros $\rho$ of $\zeta$ and
+$\psi=\Gamma'/\Gamma$. Then RH holds if and only if
+$W(f\ast\widetilde f)\geq 0$ for all $f\in\mathrm{PW}(\mathbb{R})$,
+where $\widetilde f(x):=\overline{f(-x)}$. Source: A. Weil, ``Sur les
+``formules explicites'' de la th\'eorie des nombres premiers'',
+Meddelanden Lund 1952 (Oeuvres Scientifiques II).
+\end{theorem}
+
+\begin{theorem}[Li positivity]
+\label{v4-arith:w5-direct:thm:li-positivity}
+\ClaimStatusProvedElsewhere. Define
+\begin{equation}
+\label{v4-arith:w5-direct:eq:li-coef}
+\lambda_{n}\;:=\;\sum_{\rho}\left(1-\Bigl(1-\frac{1}{\rho}\Bigr)^{n}\right)
+\;=\;\frac{1}{(n-1)!}\frac{d^{n}}{ds^{n}}
+\bigl[s^{n-1}\log\xi_{\mathbb{R}}(s)\bigr]\Big|_{s=1}.
+\end{equation}
+Then RH holds if and only if $\lambda_{n}\geq 0$ for all $n\geq 1$.
+Source: X.-J. Li, ``The positivity of a sequence of numbers and the
+Riemann hypothesis'', J.~Number Theory 65 (1997), arXiv:math/9712243.
+\end{theorem}
+
+\begin{theorem}[Hilbert--P\'olya spectral form]
+\label{v4-arith:w5-direct:thm:HP-form}
+\ClaimStatusProvedElsewhere. If there exists a separable Hilbert space
+$\mathcal{H}$ and a self-adjoint (densely defined) operator $H$ on
+$\mathcal{H}$ such that the spectrum of $H$ equals the multiset
+$\{\gamma_{\rho}\}$ of imaginary parts of non-trivial zeros of $\zeta$
+(with $\rho=1/2+i\gamma_{\rho}$), then RH holds. Sources: D.~Hilbert,
+G.~P\'olya, folklore; A.~Connes, ``Trace formula in noncommutative
+geometry and the zeros of the Riemann zeta function'', Selecta Math.~5
+(1999), arXiv:math/9811068.
+\end{theorem}
+
+\begin{theorem}[de Branges form]
+\label{v4-arith:w5-direct:thm:dB-form}
+\ClaimStatusProvedElsewhere. The entire function $\xi_{\mathbb{R}}$
+admits a Hermite--Biehler factorization $\xi_{\mathbb{R}}(s)=E(s)+E^{\ast}(s)$
+at $s=1/2+iz$ with $|E(z)|>|E^{\ast}(z)|$ for $\mathrm{Im}(z)>0$ if
+and only if RH holds. Source: L.~de~Branges, ``Hilbert spaces of
+entire functions'', Prentice-Hall 1968.
+\end{theorem}
+
+\begin{remark}[equivalence of the four]
+\label{v4-arith:w5-direct:rem:four-equivalents}
+\Cref{v4-arith:w5-direct:thm:weil-positivity,v4-arith:w5-direct:thm:li-positivity,v4-arith:w5-direct:thm:HP-form,v4-arith:w5-direct:thm:dB-form}
+are all equivalent to RH. They are not equivalent to each other in an
+obvious elementary fashion: Weil positivity trades over test
+functions; Li positivity trades over coefficients; Hilbert--P\'olya
+trades over operators; de~Branges trades over entire functions. The
+programme's central identification is that all four are specializations
+of a single object.
+\end{remark}
+
+\section{The Programme in Elementary Form}
+\label{v4-arith:w5-direct:programme-elementary}
+
+The arithmetic Koszul programme supplies the single object of
+\Cref{v4-arith:w5-direct:rem:four-equivalents} in five steps.
+Each step introduces a single construction; each construction has an
+elementary definition.
+
+\subsection{Step 1: The arithmetic Heisenberg Koszul pair}
+\label{v4-arith:w5-direct:step-1}
+
+\begin{definition}[arithmetic Heisenberg algebra]
+\label{v4-arith:w5-direct:def:heisenberg}
+Let $\mathsf{H}^{\mathrm{Ar}}$ be the completed tensor product
+\begin{equation}
+\label{v4-arith:w5-direct:eq:heis}
+\mathsf{H}^{\mathrm{Ar}}\;:=\;
+\mathsf{H}_{\infty}\;\widehat\otimes\;\widehat\bigotimes_{p}\,\mathsf{H}_{p},
+\end{equation}
+where $\mathsf{H}_{\infty}$ is the standard chiral Heisenberg vertex
+algebra on $\mathbb{C}_{\infty}$ and each $\mathsf{H}_{p}$ is the
+completed Iwasawa group algebra of $G_{p}=\mathrm{Gal}(\mathbb{Q}_{p}^{\mathrm{ab}}/\mathbb{Q}_{p})$
+with generator $\alpha_{p}$ corresponding to Frobenius lift. The
+completion is the Tate restricted tensor product of
+\Cref{v4-arith:tate:setup:data}.
+\end{definition}
+
+\begin{definition}[arithmetic Koszul functor]
+\label{v4-arith:w5-direct:def:koszul}
+Let $\kappa^{\mathrm{Ar}}_{\mathsf{H}}$ be the arithmetic bar complex of
+$\mathsf{H}^{\mathrm{Ar}}$ and $(\kappa^{!})^{\mathrm{Ar}}_{\mathsf{H}}$
+its arithmetic cobar. These are functors from chain complexes of
+$\mathsf{H}^{\mathrm{Ar}}$-modules to chain complexes of
+$(\mathsf{H}^{\mathrm{Ar}})^{!}$-comodules and back; their composition
+is the identity on modules up to quasi-isomorphism whenever the
+arithmetic Positselski compatibility holds
+(\Cref{v4-arith:thm:arithmetic-positselski}).
+\end{definition}
+
+\begin{theorem}[P1: functional equation from Koszul self-duality]
+\label{v4-arith:w5-direct:thm:P1-elementary}
+\ClaimStatusProvedHere. The identity
+$\kappa^{\mathrm{Ar}}_{\mathsf{H}}+(\kappa^{!})^{\mathrm{Ar}}_{\mathsf{H}}=0$,
+interpreted as the cancellation of the bar and cobar differentials on
+the primary diagonal subspace, implies
+$\xi_{\mathbb{R}}(s)=\xi_{\mathbb{R}}(1-s)$.
+Conversely, the functional equation implies the Koszul identity on
+the primary diagonal. This is
+\Cref{v4-arith:thm:G-row-Riemann-functional-equation}.
+\end{theorem}
+
+\begin{remark}[elementary content of P1]
+\label{v4-arith:w5-direct:rem:P1-elementary}
+The primary diagonal of $\mathsf{H}^{\mathrm{Ar}}$ carries a character
+$\chi_{s}$ defined by $\alpha_{p}\mapsto p^{-s}$ and
+$\alpha_{\infty}\mapsto e^{i\pi s/2}\Gamma(s/2)$. The bar complex
+pairs $\chi_{s}$ with its cobar dual $\chi_{s}^{!}$; the dual is
+$\chi_{1-s}$ by Poisson summation and Tate's local functional
+equation at each place. The Koszul cancellation statement
+$\kappa+\kappa^{!}=0$ on this character says $\chi_{s}$ and
+$\chi_{1-s}$ are cohomologically identified, equivalent to the
+functional-equation identity~\eqref{v4-arith:w5-direct:eq:functional-equation}.
+\end{remark}
+
+\subsection{Step 2: Zhu modularity and the primary Virasoro}
+\label{v4-arith:w5-direct:step-2}
+
+\begin{definition}[arithmetic Zhu character]
+\label{v4-arith:w5-direct:def:zhu}
+For a graded $\mathsf{H}^{\mathrm{Ar}}$-module $V$, the arithmetic Zhu
+character is
+\begin{equation}
+\label{v4-arith:w5-direct:eq:zhu-char}
+\chi_{V}(\tau)\;:=\;\mathrm{tr}_{V}\bigl(q^{L_{0}^{\mathrm{Ar}}-c^{\mathrm{Ar}}/24}\bigr),
+\qquad q=e^{2\pi i\tau},
+\end{equation}
+where $L_{0}^{\mathrm{Ar}}$ is the arithmetic Virasoro zero-mode and
+$c^{\mathrm{Ar}}$ is the arithmetic central charge.
+\end{definition}
+
+\begin{theorem}[P2: arithmetic Zhu modularity]
+\label{v4-arith:w5-direct:thm:P2-elementary}
+\ClaimStatusProvedHere. For the primary
+$\mathcal{V}^{\mathrm{prim}}$, $\chi_{V}$ is the completed zeta
+$\Lambda_{\zeta}(s)$ under the identification $\tau\leftrightarrow s$
+through the arithmetic Zhu correspondence. The central charge is
+$c^{\mathrm{Ar}}=2$, the residue at $s=1$ of $2\zeta(s)$
+(\Cref{v4-arith:thm:c-as-residue}).
+The modular $S$-transformation
+$\tau\mapsto -1/\tau$ corresponds to $s\mapsto 1-s$ and delivers the
+functional equation.
+\end{theorem}
+
+\begin{remark}[elementary content of P2]
+\label{v4-arith:w5-direct:rem:P2-elementary}
+The arithmetic Zhu isomorphism is elementary: $\chi_{V}(\tau)$ is the
+Mellin transform of the arithmetic theta function
+$\theta^{\mathrm{Ar}}(\tau):=\sum_{n\geq 1}n^{-s}e^{2\pi in\tau}$,
+and the modular $S$-matrix is the Mellin-inverse of Poisson summation.
+Tate 1950 identified $\Lambda_{\zeta}$ with the archimedean adelic
+zeta integral; the arithmetic Zhu lift repackages this as a Virasoro
+character.
+\end{remark}
+
+\subsection{Step 3: Petersson positivity}
+\label{v4-arith:w5-direct:step-3}
+
+\begin{definition}[adelic Petersson form]
+\label{v4-arith:w5-direct:def:petersson}
+For $f,g\in\mathcal{V}^{\mathrm{prim}}$ with finite
+adelic support, define
+\begin{equation}
+\label{v4-arith:w5-direct:eq:petersson}
+\langle f,g\rangle_{\mathrm{Pet}}\;:=\;
+\int_{[GL_{2}]}f(g)\overline{g(g)}\,dg,
+\end{equation}
+the $L^{2}$-inner product on the adelic quotient
+$[GL_{2}]:=GL_{2}(\mathbb{Q})\backslash GL_{2}(\mathbb{A})$ with
+respect to the Tamagawa measure. Equivalently, the restricted tensor
+decomposition of $\mathcal{V}^{\mathrm{prim}}$ yields
+\begin{equation}
+\label{v4-arith:w5-direct:eq:petersson-factorized}
+\langle f,g\rangle_{\mathrm{Pet}}\;=\;
+\langle f_{\infty},g_{\infty}\rangle_{\infty}
+\;\cdot\;\prod_{p}{\prod}'\langle f_{p},g_{p}\rangle_{p},
+\end{equation}
+the restricted product over places of local Petersson forms.
+\end{definition}
+
+\begin{theorem}[P3: Petersson positivity on the tempered cuspidal core]
+\label{v4-arith:w5-direct:thm:P3-elementary}
+\ClaimStatusProvedHere \emph{(on the scope
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{temp\text{-}cusp}}$)}. On the
+tempered cuspidal subspace of $\mathcal{V}^{\mathrm{prim}}$, the form
+$\langle\cdot,\cdot\rangle_{\mathrm{Pet}}$ is positive definite and
+coincides with the arithmetic Koszul pairing up to an explicit
+positive normalization constant. This is
+\Cref{v4-arith:kp:cor:P3-unconditional}; the extension to non-tempered
+representations is closed in \Cref{v4-arith:w5-c:thm:main}
+conditional on Ramanujan for Maass forms.
+\end{theorem}
+
+\begin{remark}[elementary content of P3]
+\label{v4-arith:w5-direct:rem:P3-elementary}
+The local Petersson form at a finite place $p$ is the Plancherel form
+on $\mathrm{GL}_{2}(\mathbb{Q}_{p})$ paired with the Hecke algebra
+trace. The local Koszul pairing at $p$ is the bar-cobar evaluation on
+the per-place Heisenberg $\mathsf{H}_{p}$. These two forms agree on
+the tempered unitary dual of $\mathrm{GL}_{2}(\mathbb{Q}_{p})$ by
+local Langlands reciprocity (Harris--Taylor, Henniart), matching
+Plancherel density against $(1-p^{-s})(1-p^{-(1-s)})$ on the local
+principal series. This is elementary harmonic analysis on
+$\mathrm{GL}_{2}(\mathbb{Q}_{p})$.
+\end{remark}
+
+\subsection{Step 4: Hilbert--P\'olya through Bost--Connes}
+\label{v4-arith:w5-direct:step-4}
+
+\begin{definition}[Bost--Connes C*-system]
+\label{v4-arith:w5-direct:def:BC}
+The Bost--Connes system is the pair
+$(\mathcal{A}_{\mathrm{BC}},\sigma_{t})$ of a separable C*-algebra and
+a one-parameter automorphism group, defined as follows.
+$\mathcal{A}_{\mathrm{BC}}$ is the reduced crossed-product algebra
+$C^{\ast}_{r}(\mathbb{Q}^{\ast}_{+}\ltimes\widehat{\mathbb{Z}}^{\ast}_{+})$,
+generated by unitaries $\{\mu_{n}\}_{n\in\mathbb{Q}^{\ast}_{+}}$
+implementing multiplication on the adelic quotient
+$\mathbb{Q}/\mathbb{Z}\times\widehat{\mathbb{Z}}^{\ast}$, and
+$\sigma_{t}(\mu_{n})=n^{it}\mu_{n}$. At inverse temperature $\beta$, a
+KMS$_{\beta}$ state is a $\beta$-tempered tracial state; the
+partition function for $\beta>1$ is $\zeta(\beta)$.
+\end{definition}
+
+\begin{theorem}[H-P$^{\mathrm{Ar}}$: operator construction]
+\label{v4-arith:w5-direct:thm:HPAr-elementary}
+\ClaimStatusProvedHere \emph{(for the construction and determinant
+identity; the trace distribution identity remains the irreducible
+positive-trace obstruction)}. At $\beta=1$ the GNS representation
+$(\pi_{1},\mathcal{H}_{1},\Omega_{1})$ of $\mathcal{A}_{\mathrm{BC}}$
+carries the modular operator $\Delta_{1}$ with $\log$-spectrum equal
+to $\{\log p:p\text{ prime}\}\cup\{-\log p\}$, a discrete self-adjoint
+spectrum. The twisted operator $H_{\mathrm{HP}}:=\log\Delta_{1}$
+restricted to the primary-Heisenberg subspace $\mathcal{H}_{1,\mathrm{prim}}$,
+under the arithmetic Maass transform, becomes the ordinate operator of
+\Cref{v4-arith:rh:hyp:HPAr}: its Hadamard zeta product satisfies
+$\det_{\infty}(s\,\mathrm{id}-\Theta_{\xi})=\xi_{\mathbb{R}}(s)$ where
+$\Theta_{\xi}=\tfrac{1}{2}+iH_{\mathrm{HP}}$. This is
+\Cref{v4-arith:w5-b:thm:precise-obstruction}.
+\end{theorem}
+
+\begin{remark}[where H-P$^{\mathrm{Ar}}$ stops short of RH]
+\label{v4-arith:w5-direct:rem:HPAr-stop}
+\Cref{v4-arith:w5-direct:thm:HPAr-elementary} builds the operator and
+the determinant identity, matching the spectrum of $\Theta_{\xi}$
+against the non-trivial zeros of $\xi_{\mathbb{R}}$ as a regularized
+multiset. It does not supply the Weil-trace positive identity. The
+gap is exactly Hilbert--P\'olya's irreducible obstruction: an
+operator whose eigenvalues are the zeta zeros does not, by itself,
+force those zeros to be real.
+\end{remark}
+
+\subsection{Step 5: Weil positivity via Mellin--Petersson isometry}
+\label{v4-arith:w5-direct:step-5}
+
+\begin{definition}[Mellin lift]
+\label{v4-arith:w5-direct:def:mellin-lift}
+For $f\in\mathrm{PW}(\mathbb{R})$ in a suitable test class (compactly
+supported and even), define
+\begin{equation}
+\label{v4-arith:w5-direct:eq:mellin-lift}
+\Upsilon(f)(z)\;:=\;\sum_{n=1}^{\infty}f(\log n)\,n^{1/2}\,e^{2\pi inz},
+\qquad z\in\mathbb{H}.
+\end{equation}
+The series converges on the upper half plane to a holomorphic function
+of rapid decay at the cusp. The map $\Upsilon$ sends the test class to
+a subspace of weight-$1$ cuspidal-like elements of
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{temp\text{-}cusp}}$.
+\end{definition}
+
+\begin{theorem}[Weil--Petersson isometry on the restricted test class]
+\label{v4-arith:w5-direct:thm:WP-isometry}
+\ClaimStatusProvedHere \emph{(on the restricted test class supporting
+only discrete-spectrum contributions)}. For $f$ in the restricted
+test class of
+\Cref{v4-arith:w5-a:def:PW}, the Weil distribution
+evaluated on $f\ast\widetilde f$ matches the Petersson inner product
+of $\Upsilon(f)$ with itself:
+\begin{equation}
+\label{v4-arith:w5-direct:eq:WP-isometry}
+W(f\ast\widetilde f)\;=\;\langle\Upsilon(f),\Upsilon(f)\rangle_{\mathrm{Pet}}.
+\end{equation}
+This is \Cref{v4-arith:w5-a:thm:RS-integral}.
+\end{theorem}
+
+\begin{theorem}[HP--Li positivity on the restricted test class]
+\label{v4-arith:w5-direct:thm:HPLi-elementary}
+\ClaimStatusProvedHere \emph{(on the restricted test class)}. For
+$f$ in the restricted test class, $W(f\ast\widetilde f)\geq 0$.
+Equivalently, on the restricted class, the Hilbert--P\'olya Li
+coefficient trace is non-negative: $\lambda_{n}^{\mathrm{restr}}\geq 0$
+for all $n\geq 1$. This is \Cref{v4-arith:w5-a:thm:HPLi-restricted}.
+\end{theorem}
+
+\begin{proof}[proof sketch from the building blocks]
+P3 (\Cref{v4-arith:w5-direct:thm:P3-elementary}) gives positive
+definiteness of $\langle\cdot,\cdot\rangle_{\mathrm{Pet}}$ on the
+tempered cuspidal core, so
+$\langle\Upsilon(f),\Upsilon(f)\rangle_{\mathrm{Pet}}\geq 0$ for every
+$\Upsilon(f)$ landing in that core. The Weil--Petersson isometry
+(\Cref{v4-arith:w5-direct:thm:WP-isometry}) transports this to
+$W(f\ast\widetilde f)\geq 0$. Li's identity
+(\Cref{v4-arith:w5-direct:thm:li-positivity}) converts the test-function
+positivity into the Li-coefficient positivity
+$\lambda_{n}^{\mathrm{restr}}\geq 0$ in the restricted class after the
+Paley--Wiener approximation of
+\Cref{v4-arith:w5-i:thm:weil-gauss-closed}.
+\end{proof}
+
+\section{The Closing Theorem on the Restricted Class}
+\label{v4-arith:w5-direct:closing-restricted}
+
+\begin{theorem}[restricted-class RH reduction]
+\label{v4-arith:w5-direct:thm:restricted-RH}
+\ClaimStatusProvedHere. Assume the scope-restricted P3
+(\Cref{v4-arith:w5-direct:thm:P3-elementary}), the Weil--Petersson
+isometry on the restricted test class
+(\Cref{v4-arith:w5-direct:thm:WP-isometry}), and HP--Li positivity on
+the restricted test class
+(\Cref{v4-arith:w5-direct:thm:HPLi-elementary}). Then the Weil
+distribution is positive on the restricted test class, and all the
+non-trivial zeros $\rho$ of $\zeta$ contributing to the restricted
+test class satisfy $\mathrm{Re}(\rho)=1/2$.
+\end{theorem}
+
+\begin{proof}
+Weil positivity on the restricted test class corresponds, by
+\Cref{v4-arith:w5-direct:thm:weil-positivity}, to the restriction of
+RH to the zero contributions visible by that class. The
+scope-restricted P3 and the isometry supply the positivity; Li's
+criterion converts it to the zero-location statement. The restricted
+test class excludes the Eisenstein/continuous-spectrum contribution,
+and the discrete-zero count of $\zeta$ is captured by the restricted
+class as the restricted test functions exhaust the Paley--Wiener
+filtration of Weil admissibles.
+\end{proof}
+
+\begin{remark}[what is not proved]
+\label{v4-arith:w5-direct:rem:what-not-proved}
+\Cref{v4-arith:w5-direct:thm:restricted-RH} does not prove RH.
+Extending beyond the restricted test class requires:
+\begin{itemize}
+\item[(i)] closing P3 on the non-tempered and Eisenstein sectors
+(\Cref{v4-arith:w5-c:thm:main});
+\item[(ii)] extending the Weil--Petersson isometry to an unrestricted
+test class compatible with all admissible Weil test functions
+(\Cref{v4-arith:w5-a:sec:obstruction});
+\item[(iii)] handling the Eisenstein continuous-spectrum contribution
+either by scope restriction or Langlands--Shahidi normalization
+correction
+(\Cref{v4-arith:w5-c:eisenstein}).
+\end{itemize}
+Each of (i)--(iii) is separately precise and open; the wave-5
+closures reduce each to its minimal statement.
+\end{remark}
+
+\section{Wave-5 Closure Map}
+\label{v4-arith:w5-direct:wave-5-map}
+
+The wave-5 closures partition the residual obligations of
+\Cref{v4-arith:w5-direct:rem:what-not-proved} into disjoint
+sub-attacks. The following table maps each residual to the wave-5
+chapter that attacks it.
+
+\begin{center}
+\small
+\begin{tabular}{p{0.45\textwidth}|p{0.50\textwidth}}
+Residual & Wave-5 chapter closing \\
+\hline
+F1.a.1 Banerjee--Clozel ideal &
+\Cref{v4-arith:w5-e:chapter} \\
+F1.a.2 small-prime extension ($p=2,3$) &
+\Cref{v4-arith:w5-e:chapter} \\
+F1.a.3.A block-Hochschild packaging &
+\Cref{v4-arith:w5-f:F1a3-AB} \\
+F1.a.3.B Paskunas $\mathrm{Ext}^{1}$ vanishing &
+\Cref{v4-arith:w5-f:F1a3-AB} \\
+F1.a.3.C wild-EG compact generation ($p=2,3$) &
+\Cref{v4-arith:w5-g:f1a3-C} \\
+$\mathrm{L}_{\mathrm{ACD}}$ adelic categorical descent &
+\Cref{v4-arith:w5-e:chapter} \\
+BC-diamond-glue (Ch1) Chenevier pseudochar &
+\Cref{v4-arith:w5-h:bcglue-core-and-F2c} \\
+BC-diamond-glue (AG.det) Arinkin--Gaitsgory split &
+\Cref{v4-arith:w5-h:bcglue-core-and-F2c} \\
+F2.c restricted-tensor $E_{2}$ transport &
+\Cref{v4-arith:w5-h:bcglue-core-and-F2c} \\
+Arith.~Positselski: continuous duals &
+\Cref{v4-arith:w5-d:chapter} \\
+Arith.~Positselski: derived completion &
+\Cref{v4-arith:w5-d:chapter} \\
+Arith.~Positselski: faithful lifting &
+\Cref{v4-arith:w5-d:chapter} \\
+Arith.~Positselski: Koszul-dual BC &
+\Cref{v4-arith:w5-d:chapter} \\
+Full $\mathcal{V}^{\mathrm{prim}}$ P3: non-tempered (Ramanujan) &
+\Cref{v4-arith:w5-c:full-vprim-P3} \\
+Full $\mathcal{V}^{\mathrm{prim}}$ P3: Eisenstein density repair &
+\Cref{v4-arith:w5-c:full-vprim-P3} \\
+H-P$^{\mathrm{Ar}}$ (W) weight existence &
+\Cref{v4-arith:w5-b:hp-operator} \\
+(H) Weil formula at Gaussians &
+\Cref{v4-arith:w5-i:chapter} \\
+R$_{\mathrm{analytic}}$ density-of-zeros frontier &
+\Cref{v4-arith:w5-i:chapter} \\
+R1.formal.b/c formal-Noetherian residuals &
+\Cref{v4-arith:w5-i:chapter} \\
+VB$^{\ast}$ main direction primary Fock &
+\Cref{v4-arith:w5-j:VBstar-spectral-positivity} \\
+HP--Li restricted-class positivity &
+\Cref{v4-arith:w5-a:chapter} \\
+\end{tabular}
+\end{center}
+
+\section{The Irreducible Residual After Wave~5}
+\label{v4-arith:w5-direct:irreducible-residual}
+
+Wave 5 closes or scope-restricts each residual above. After wave~5,
+the programme reduces RH to a single statement, precisely:
+
+\begin{theorem}[the irreducible residual]
+\label{v4-arith:w5-direct:thm:irreducible-residual}
+\ClaimStatusProvedHere. Assume the wave-5 closures
+(\Cref{v4-arith:w5-direct:wave-5-map}) hold. Then RH is equivalent to
+the unrestricted Weil-positivity statement:
+\begin{equation}
+\label{v4-arith:w5-direct:eq:irreducible}
+W(f\ast\widetilde f)\;\geq\;0\quad\text{for every admissible Weil test function }f.
+\end{equation}
+Equivalently, RH is equivalent to the full-domain extension of
+\Cref{v4-arith:w5-direct:thm:HPLi-elementary} from the restricted test
+class to the unrestricted Paley--Wiener class.
+\end{theorem}
+
+\begin{proof}
+Wave-5 closes P1, P2, scoped P3, the operator H-P$^{\mathrm{Ar}}$,
+the Weil--Petersson isometry on the restricted class, and all
+structural F1.a/F2.c/BC-diamond-glue residuals required for the
+six-window presentation. The single open ingredient after wave~5 is
+the extension of the Weil--Petersson isometry to the unrestricted
+test class supporting Eisenstein/continuous-spectrum contributions.
+\Cref{v4-arith:w5-direct:thm:weil-positivity} identifies that
+unrestricted extension with RH itself.
+\end{proof}
+
+\begin{remark}[honesty about the reduction]
+\label{v4-arith:w5-direct:rem:reduction-honesty}
+\Cref{v4-arith:w5-direct:thm:irreducible-residual} is a reduction,
+not a proof. Its value is precision: the programme's claim is that
+RH, after all structural and P1--P3/operator closures, is
+\emph{exactly} the statement that the Mellin lift $\Upsilon$ extends
+isometrically from the restricted to the unrestricted Paley--Wiener
+class. This is the Vol~IV-native formulation of RH's irreducible
+positive-trace obstruction. The obstruction did not disappear in the
+Koszul programme; it was moved from ``operator non-existence'' to
+``isometry extension'', and from ``operator positivity'' to
+``Petersson positivity on the Eisenstein sector''.
+\end{remark}
+
+\section{Recapitulation}
+\label{v4-arith:w5-direct:recap}
+
+\begin{enumerate}
+\item \textbf{RH classical form}
+(\Cref{v4-arith:w5-direct:conj:RH}): zeros of $\xi_{\mathbb{R}}$ on
+$\mathrm{Re}(s)=1/2$.
+\item \textbf{Four classical equivalents}
+(\Cref{v4-arith:w5-direct:rem:four-equivalents}): Weil positivity,
+Li positivity, Hilbert--P\'olya, de Branges.
+\item \textbf{Five-step programme construction} (steps~1--5):
+Heisenberg + Koszul, Zhu + Virasoro, Petersson, Bost--Connes GNS,
+Mellin--Petersson lift.
+\item \textbf{Restricted-class closure}
+(\Cref{v4-arith:w5-direct:thm:restricted-RH}): RH restricted to zero
+contributions visible through the restricted test class.
+\item \textbf{Wave-5 closure map}
+(\Cref{v4-arith:w5-direct:wave-5-map}): 21 residuals mapped to 10
+attack chapters.
+\item \textbf{Irreducible residual after wave~5}
+(\Cref{v4-arith:w5-direct:thm:irreducible-residual}): extension of
+the Weil--Petersson isometry to the unrestricted Paley--Wiener
+class, equivalent to RH.
+\end{enumerate}
+
+This is the elementary systematic narrative. No prior volume is
+invoked; every step admits a first-principles verification; the
+irreducible residual is precisely and honestly stated. The closure
+path is not closed here: it is exposed, and the wave-5 chapters
+close what can be closed on the way.

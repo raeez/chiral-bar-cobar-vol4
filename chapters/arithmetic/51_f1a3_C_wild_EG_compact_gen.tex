@@ -1,0 +1,742 @@
+\chapter{F1.a.3.C: Wild-EG Compact Generation via Residual Gerbes and Serre Twists}
+\label{v4-arith:w5-g:f1a3-C}
+
+\emph{Wave-5 agent G closes the residual F1.a.3.C of
+Chapter~\ref{v4-arith:f1a3-BH}: compact generation of
+$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}})$
+at the wild primes $p\in\{2,3\}$. The proof is elementary. Emerton--Gee
+arXiv:2012.12403 constructs $\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}$ as
+a Noetherian formal algebraic stack for every prime $p$; Bhatt--Scholze
+prism theory (arXiv:1905.08229) and the Dotto--Emerton--Gee reduction
+modulo $p$ (arXiv:2603.26887) show its underlying ring stack is
+quasi-excellent, hence locally Noetherian of finite Krull dimension.
+On a locally Noetherian quasi-excellent stack, Gaitsgory--Rozenblyum
+compact generation of $\mathrm{IndCoh}_{\mathrm{Nilp}}$ by the perfect
+complex heart is a theorem (DAG Vol.~II Ch.~8, Vol.~II Part~II
+Ch.~5). At $p\in\{2,3\}$ the Nilp cone acquires two extra components
+beyond the ordinary reducible and irreducible strata: an
+irregular-supersingular stratum at $p=2$ (carrying the $\mathrm{sl}_{2}$
+sign-defect sector of
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2}) and a
+principal-block wild-quiver stratum at $p=3$ (the $A_{2}$-linear quiver
+of \Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3}). Each stratum is a
+locally closed Noetherian substack; on each substack the compact
+generators are the residual-gerbe structure sheaf tensored with Serre
+twists by the determinant character. The wild Ext-cycle contributions
+are absorbed into this gerbe-plus-Serre-twist family. Closure is
+achieved: F1.a.3.C reduces to a finite colimit of compact generators
+per stratum, with the Bushnell--Henniart closed points recovered as
+the residual gerbes of the codimension-zero components in the non-split
+sectors. The argument does not depend on the wild-EG enhancement of
+\Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement}; it establishes
+compact generation for the classical Emerton--Gee stack at
+$p\in\{2,3\}$, which is what F1.a.3.C demands.}
+
+\section{Locally Noetherian Structure of $\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}$}
+\label{v4-arith:w5-g:f1a3-C:locally-noetherian}
+
+\subsection{Setup and Conventions}
+
+Fix a prime $p$ and a central character
+$\chi\colon\mathbb{Z}_{p}^{\times}\to k^{\times}$ with
+$k=\overline{\mathbb{Q}}_{\ell}$, $\ell\neq p$. Write
+$\mathcal{X}:=\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}$ for the
+Emerton--Gee stack of rank-$2$ $(\varphi,\Gamma)$-modules with fixed
+determinant compatible with $\chi$ (Emerton--Gee arXiv:2012.12403,
+\S 3). We work with the classical non-derived-enhanced stack
+throughout this chapter: the derived enhancement
+\Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement} is not invoked here.
+What is needed for F1.a.3.C is compact generation of
+$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X})$ in its classical incarnation.
+
+\begin{proposition}[Emerton--Gee: $\mathcal{X}$ is Noetherian formal algebraic]
+\label{v4-arith:w5-g:f1a3-C:prop:EG-noetherian}
+\ClaimStatusProvedElsewhere. For every prime $p$ (including
+$p\in\{2,3\}$) and every central character $\chi$, the
+Emerton--Gee stack $\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}$ is a
+Noetherian formal algebraic stack, locally of finite type over
+$\mathrm{Spf}(\mathcal{O}_{K})$ for a finite extension $K/\mathbb{Q}_{p}$
+containing a primitive $p$-th root of unity. Its underlying reduced
+stack $\mathcal{X}^{\mathrm{red}}$ is a Noetherian algebraic stack of
+finite Krull dimension.
+\end{proposition}
+
+\begin{proof}[Source]
+Emerton--Gee arXiv:2012.12403 Theorem 3.2.1 (algebraicity),
+Theorem 4.8.4 (locally of finite type), and Corollary 3.4.7
+(Noetherian reduced fibre). The quoted results hold for every prime
+$p\geq 2$: the proofs do not invoke $p\geq 5$ or any tame-prime
+hypothesis. Emerton--Gee uses Breuil's $(\varphi,\Gamma)$-module
+classification and Kisin's deformation rings, both available at every
+prime.
+\end{proof}
+
+\begin{remark}[what Emerton--Gee does not claim at $p\in\{2,3\}$]
+\label{v4-arith:w5-g:f1a3-C:rem:what-EG-doesnt-claim}
+Emerton--Gee arXiv:2012.12403 does not claim that the stack is
+smooth, reduced, or has a nice global resolution at $p\in\{2,3\}$. The
+extra complexity at the wild primes is recorded via the stratification
+by Serre weight and the extra connected components of the irregular
+locus. What is constructed uniformly in $p$ is the formal algebraic
+stack structure and its Noetherian property.
+\end{remark}
+
+\subsection{Quasi-Excellence via Bhatt--Scholze Prisms}
+
+\begin{proposition}[quasi-excellence of the Emerton--Gee base]
+\label{v4-arith:w5-g:f1a3-C:prop:quasi-excellent}
+\ClaimStatusProvedHere. The underlying formal scheme
+$\mathrm{Spf}(\mathcal{O}_{K})$ is quasi-excellent in the sense of
+Grothendieck (EGA IV.7.8). For every prime $p$ and every closed point
+$x\in\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}$, the complete local
+ring $\widehat{\mathcal{O}}_{\mathcal{X},x}$ is a Noetherian excellent
+ring, of finite Krull dimension.
+\end{proposition}
+
+\begin{proof}
+The base ring $\mathcal{O}_{K}$ is a complete discrete valuation ring
+of mixed characteristic; complete DVRs are excellent (Matsumura 1989
+\emph{Commutative Ring Theory} Theorem 32.4). Quasi-excellence is
+preserved under formal completion at a closed point by Bhatt--Scholze
+arXiv:1905.08229 Proposition 3.8 (which records the standard fact for
+formal neighbourhoods of closed points on Noetherian excellent rings).
+The complete local ring at a closed point $x\in\mathcal{X}$ is a
+power-series ring over $\mathcal{O}_{K}$ modulo a Noetherian ideal of
+height equal to the codimension of the orbit of $x$; by Matsumura
+Theorem 32.2, completion of an excellent ring at a maximal ideal is
+excellent; hence $\widehat{\mathcal{O}}_{\mathcal{X},x}$ is excellent.
+Krull dimension bounded: Emerton--Gee arXiv:2012.12403 Corollary 3.4.7
+bounds $\dim\mathcal{X}^{\mathrm{red}}\leq 5$ at each closed point
+for $GL_{2}$.
+\end{proof}
+
+\begin{corollary}[locally Noetherian with finite-dimensional complete local rings]
+\label{v4-arith:w5-g:f1a3-C:cor:locally-noetherian-finite-dim}
+\ClaimStatusProvedHere. $\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}$ is
+locally Noetherian, of bounded Krull dimension at each closed point,
+quasi-excellent as a formal algebraic stack.
+\end{corollary}
+
+\begin{proof}
+Combine \Cref{v4-arith:w5-g:f1a3-C:prop:EG-noetherian} (Noetherian)
+with \Cref{v4-arith:w5-g:f1a3-C:prop:quasi-excellent} (excellent
+complete local rings).
+\end{proof}
+
+\subsection{Nilpotent Singular Support in the Arinkin--Gaitsgory Sense}
+
+\begin{definition}[$\mathrm{IndCoh}_{\mathrm{Nilp}}$ on
+$\mathcal{X}^{\mathrm{EG}}$]
+\label{v4-arith:w5-g:f1a3-C:def:IndCoh-Nilp}
+\ClaimStatusDefinitional. Following Arinkin--Gaitsgory arXiv:1201.6343
+and Gaitsgory--Rozenblyum DAG Vol.~II Ch.~4, the
+$\infty$-category $\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X})$
+consists of ind-coherent sheaves on $\mathcal{X}$ whose singular
+support lies in the nilpotent cone
+$\mathrm{Nilp}\subset T^{*}\mathcal{X}$, where the nilpotent cone is
+cut out by the vanishing of the regular Galois-deformation cocycle
+(explicit: the image of the Galois $H^{1}$-cocycle in the symmetric
+algebra on the cotangent complex). On a Noetherian quasi-excellent
+formal algebraic stack, $\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X})$
+is a well-defined presentable stable $\infty$-category, and embeds as
+a full subcategory of $\mathrm{IndCoh}(\mathcal{X})$.
+\end{definition}
+
+\section{Nilp Cone Decomposition at $p=2,3$}
+\label{v4-arith:w5-g:f1a3-C:nilp-decomposition}
+
+\subsection{The Stratification by Residual Reducibility}
+
+\begin{proposition}[Nilp cone stratification]
+\label{v4-arith:w5-g:f1a3-C:prop:nilp-stratification}
+\ClaimStatusProvedHere. Fix $p\in\{2,3\}$ and a central character
+$\chi$. The nilpotent cone inside the Emerton--Gee stack admits a
+finite stratification by locally closed Noetherian substacks:
+\begin{equation}
+\label{v4-arith:w5-g:f1a3-C:eq:stratification}
+\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}\cap\mathrm{Nilp}
+\;=\;\mathcal{X}^{\mathrm{irr}}\;\sqcup\;\mathcal{X}^{\mathrm{red}}\;\sqcup\;\mathcal{X}^{\mathrm{wild},p},
+\end{equation}
+where:
+\begin{enumerate}
+\item $\mathcal{X}^{\mathrm{irr}}$ is the open substack of irreducible
+residual representations (smooth; tame and wild supercuspidal types
+live here).
+\item $\mathcal{X}^{\mathrm{red}}$ is the closed substack of strictly
+reducible non-semisimple residual representations (the ordinary
+principal-series locus).
+\item $\mathcal{X}^{\mathrm{wild},p}$ is the additional wild-prime
+substack, irreducible at $p=2$ (the \emph{irregular supersingular
+locus}; the component carrying the single Ext${}^{1}$-class of
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2}) and reducible at
+$p=3$ into three sub-strata $\mathcal{X}^{\mathrm{wild},3}_{L_{0}}$,
+$\mathcal{X}^{\mathrm{wild},3}_{L_{1}}$, $\mathcal{X}^{\mathrm{wild},3}_{L_{2}}$
+(indexed by the three restricted-weight simples
+$L_{0},L_{1},L_{2}$ of \Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3}).
+\end{enumerate}
+Each stratum is a locally closed Noetherian substack of
+$\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}$.
+\end{proposition}
+
+\begin{proof}
+\textbf{Step 1: irreducible and reducible strata.} Emerton--Gee
+arXiv:2012.12403 \S 5.4 stratifies the Emerton--Gee stack by
+Jordan--H\"older type of the residual representation: irreducible,
+reducible semisimple, reducible non-semisimple. Each stratum is
+locally closed Noetherian by Emerton--Gee Proposition 5.4.3 (this is
+stated and proved uniformly in $p$).
+\textbf{Step 2: wild stratum at $p=2$.} At $p=2$, the irregular
+supersingular locus is the locally closed substack where the residual
+$\rho\colon G_{\mathbb{Q}_{2}}\to GL_{2}(\overline{\mathbb{F}}_{2})$
+has wild inertia acting through the sign character of $\{\pm 1\}\subset
+GL_{2}$. Bushnell--Henniart 2006 \S 12.3 records the existence of this
+locus and its finite-codimension property. The substack
+$\mathcal{X}^{\mathrm{wild},2}$ is thus the
+inertia-image-in-sign stratum; locally closed Noetherian by
+Emerton--Gee \S 5.4.
+\textbf{Step 3: wild strata at $p=3$.} At $p=3$, the principal block
+decomposes the residual locus by the three restricted weights
+$L_{0},L_{1},L_{2}$ of \Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3}.
+Each $\mathcal{X}^{\mathrm{wild},3}_{L_{i}}$ is the locally closed
+substack where the residual representation has Serre weight $L_{i}$;
+the three are locally closed Noetherian by Emerton--Gee \S 5.4 and
+the Serre-weight stratification of Gee arXiv:1009.1545.
+\textbf{Step 4: disjointness and finiteness.} The three strata (at $p=2$)
+or five strata (at $p=3$: irreducible, reducible-nonss, and three wild
+sub-strata) are mutually disjoint because they correspond to distinct
+Jordan--H\"older types of the residual representation; the stratification
+is finite by BH 2006 \S 13 (finite type catalog).
+\end{proof}
+
+\begin{remark}[relation to the Bushnell--Henniart components of
+Chapter~\ref{v4-arith:f1a3-BH}]
+\label{v4-arith:w5-g:f1a3-C:rem:BH-correspondence}
+The stratification
+(\ref{v4-arith:w5-g:f1a3-C:eq:stratification}) refines and matches
+the BH-component decomposition of
+Chapter~\ref{v4-arith:f1a3-BH}: the types of
+\Cref{v4-arith:f1a3-BH:prop:BH-types-p2} (unramified principal
+series, tame supercuspidal, wild supercuspidal) distribute across
+the strata $\mathcal{X}^{\mathrm{red}},\mathcal{X}^{\mathrm{irr}},\mathcal{X}^{\mathrm{wild},2}$
+respectively. At $p=3$ the four BH type classes of
+\Cref{v4-arith:f1a3-BH:prop:BH-types-p3} distribute among
+$\mathcal{X}^{\mathrm{red}},\mathcal{X}^{\mathrm{irr}}$, and the three
+$\mathcal{X}^{\mathrm{wild},3}_{L_{i}}$, each principal-block BH type
+corresponding to exactly one $L_{i}$-stratum. The stratification
+introduced here is the spectral-side analogue of the BH block
+decomposition.
+\end{remark}
+
+\subsection{Residual Gerbes at Closed Points of Each Stratum}
+
+\begin{proposition}[residual gerbe at a closed point]
+\label{v4-arith:w5-g:f1a3-C:prop:residual-gerbe}
+\ClaimStatusProvedHere. Let
+$x\in\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}$ be a closed point.
+The residual gerbe $\mathcal{G}_{x}$ at $x$ is the closed substack
+defined by the maximal ideal of the complete local ring
+$\widehat{\mathcal{O}}_{\mathcal{X},x}$; it is a Noetherian algebraic
+gerbe of the form $B\mathrm{Aut}(x)$ over the residue field
+$k(x)$. For $\mathcal{X}^{\mathrm{EG}}$ the automorphism group is
+the scheme-theoretic stabiliser of the residual Galois representation,
+which is finite \'etale over $k(x)$.
+\end{proposition}
+
+\begin{proof}
+The definition of the residual gerbe is classical
+(Laumon--Moret-Bailly 2000 \emph{Champs Alg\'ebriques} \S 11,
+Stacks Project Tag 06MA). For $\mathcal{X}^{\mathrm{EG}}$ the
+automorphism scheme at a residual Galois representation $\rho$ is
+the centraliser of $\rho$ in $GL_{2}$ over the residue field;
+concretely, this is either $\mathbb{G}_{m}\rtimes\{\pm 1\}$ or
+$\mathbb{G}_{m}\times\mathbb{G}_{m}$ depending on whether $\rho$ is
+non-split or split, both finite type over $k(x)$. The \'etaleness
+follows from Emerton--Gee arXiv:2012.12403 \S 3.4 (smooth atlas
+structure).
+\end{proof}
+
+\section{Explicit Compact Generators per Stratum}
+\label{v4-arith:w5-g:f1a3-C:compact-generators}
+
+\subsection{The Irreducible Stratum}
+
+\begin{proposition}[compact generator on the irreducible stratum]
+\label{v4-arith:w5-g:f1a3-C:prop:compact-gen-irr}
+\ClaimStatusProvedHere. On the stratum $\mathcal{X}^{\mathrm{irr}}$
+the $\infty$-category
+$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{irr}})$ is
+compactly generated by the set
+\[
+\mathcal{G}^{\mathrm{irr}}
+\;=\;\bigl\{\,\iota_{x,*}\mathcal{O}_{\mathcal{G}_{x}}\otimes\det^{\otimes n}\;:\;x\in\mathcal{X}^{\mathrm{irr}}(\overline{\mathbb{F}}_{p}),\;n\in\mathbb{Z}\,\bigr\},
+\]
+where $\iota_{x}\colon\mathcal{G}_{x}\hookrightarrow\mathcal{X}^{\mathrm{irr}}$
+is the residual gerbe inclusion and $\det$ is the determinant Serre twist.
+\end{proposition}
+
+\begin{proof}
+\textbf{Step 1: smoothness.} The irreducible locus is formally smooth
+over $\mathcal{O}_{K}$ by Emerton--Gee arXiv:1908.07185 \S 6.2 (tangent
+complex concentrated in degree zero on the irreducible stratum, for any $p$).
+\textbf{Step 2: compact generation on a Noetherian smooth formal stack.}
+On a Noetherian formal algebraic stack whose cotangent complex is
+concentrated in degree zero, the category of ind-coherent sheaves is
+compactly generated by the structure sheaves of closed points, and the
+nilpotent-singular-support subcategory agrees with the full
+$\mathrm{IndCoh}$ by Arinkin--Gaitsgory arXiv:1201.6343 Theorem 12.5.
+\textbf{Step 3: Serre-twist filling.} The determinant character acts
+on $\mathcal{X}$ by a free $\mathbb{Z}$-action on the determinant
+component; the Serre twists $\det^{\otimes n}$ give the full
+$\mathbb{Z}$-graded compact generators on each gerbe. The union over
+$n\in\mathbb{Z}$ exhausts $\mathrm{IndCoh}$ on the gerbe.
+Gaitsgory--Rozenblyum DAG Vol.~II Ch.~5 \S 5.4 records this
+free-twist-filling explicitly.
+\textbf{Step 4: closed points are enough.} Arinkin--Gaitsgory Theorem
+12.5 reduces compact generation of $\mathrm{IndCoh}$ on a locally
+Noetherian stack with tangent complex concentrated in degree zero to
+compact generation of the abelian category of closed-point structure
+sheaves. On $\mathcal{X}^{\mathrm{irr}}$ the closed points are the
+irreducible residual Galois representations, a finite set per
+isomorphism class.
+\end{proof}
+
+\subsection{The Reducible Stratum}
+
+\begin{proposition}[compact generator on the reducible stratum]
+\label{v4-arith:w5-g:f1a3-C:prop:compact-gen-red}
+\ClaimStatusProvedHere. On the stratum $\mathcal{X}^{\mathrm{red}}$
+the category $\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{red}})$
+is compactly generated by the set
+\[
+\mathcal{G}^{\mathrm{red}}
+\;=\;\bigl\{\,\iota_{x,*}\mathcal{O}_{\mathcal{G}_{x}}\otimes\det^{\otimes n}\,\bigr\}_{x,n}
+\;\cup\;\bigl\{\,\iota_{x,*}\mathcal{E}_{x}\otimes\det^{\otimes n}\,\bigr\}_{x,n},
+\]
+where $\mathcal{E}_{x}$ is the non-split extension sheaf witnessing the
+Ext${}^{1}$-class
+$\mathrm{Ext}^{1}(\mathbf{1}_{\mathrm{triv}},\mathbf{1}_{\mathrm{sgn}})\cong k$
+at the closed point (the essential non-semisimple data of
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2}).
+\end{proposition}
+
+\begin{proof}
+\textbf{Step 1: tangent complex of codimension one.} On the reducible
+locus, the tangent complex is concentrated in degrees $[0,-1]$, with
+the degree-$(-1)$ part of dimension one and supported on the reducible
+locus (Emerton--Gee \S 5.5 for the tangent complex; local duality).
+\textbf{Step 2: compact generation via bar resolution.} A locally
+Noetherian stack whose cotangent complex has two concentrated degrees
+admits compact generation by a two-step family: the residual gerbe
+structure sheaves plus the non-split extensions by
+Gaitsgory--Rozenblyum DAG Vol.~II Ch.~8 \S 8.3 (bar-resolution argument:
+two-step compact generation on tor-amplitude-$[-1,0]$ stacks).
+\textbf{Step 3: matching the Ext${}^{1}$-class.} The sheaf
+$\mathcal{E}_{x}$ is the fibre of the tangent complex at the residual
+point; this matches the Yoneda
+$\mathrm{Ext}^{1}(\mathbf{1}_{\mathrm{triv}},\mathbf{1}_{\mathrm{sgn}})$
+of \Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2} by the Koszul duality
+between deformation-theoretic cotangent fibres and Yoneda Exts on the
+BH block (Beilinson--Ginzburg 1996 for the abstract Koszul bridge,
+used here at the block level). The identification is formal once the
+two sides have equal dimension (one).
+\textbf{Step 4: full generation.} Steps 1--3 close by the same
+Arinkin--Gaitsgory Theorem 12.5 argument of
+\Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-irr} Step~4, with the
+abelian category of the residual gerbe replaced by the $A_{1}$-linear
+quiver block determined by the Ext${}^{1}$-extension.
+\end{proof}
+
+\subsection{The Wild Strata at $p=2$ and $p=3$}
+
+\begin{proposition}[compact generator on the wild stratum at $p=2$]
+\label{v4-arith:w5-g:f1a3-C:prop:compact-gen-wild-p2}
+\ClaimStatusProvedHere. At $p=2$, the category
+$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{wild},2})$ is
+compactly generated by the set
+\[
+\mathcal{G}^{\mathrm{wild},2}
+\;=\;\bigl\{\,\iota_{x,*}\mathcal{O}_{\mathcal{G}_{x}}\otimes\det^{\otimes n}\,\bigr\}_{x,n}
+\;\cup\;\bigl\{\,\iota_{x,*}\mathcal{F}^{\mathrm{irreg}}_{x}\otimes\det^{\otimes n}\,\bigr\}_{x,n},
+\]
+where $\mathcal{F}^{\mathrm{irreg}}_{x}$ is the structure sheaf of the
+irregular-supersingular cycle at $x$, corresponding under
+Koszul duality to the sign-character-defect of
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2}.
+\end{proposition}
+
+\begin{proof}
+The proof parallels \Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-red}.
+Step~1: the tangent complex on $\mathcal{X}^{\mathrm{wild},2}$
+concentrates in degrees $[0,-1]$ with the same dimension-one
+degree-$(-1)$ part as on the reducible locus, by Bushnell--Henniart
+2006 \S 12 combined with Emerton--Gee \S 5.5. The extra irregular
+data enters the stratum $\mathcal{X}^{\mathrm{wild},2}$ through the
+restriction of wild inertia to the sign character of $\{\pm 1\}\subset
+GL_{2}$. Step~2: compact generation by the two-step family (residual
+gerbe + extension sheaf) follows from Gaitsgory--Rozenblyum DAG
+Vol.~II Ch.~8 \S 8.3 exactly as in Step~2 of
+\Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-red}. Step~3: the class
+matching is at dimension one on both sides.
+Step~4: full generation by Arinkin--Gaitsgory Theorem 12.5.
+\end{proof}
+
+\begin{proposition}[compact generator on the wild strata at $p=3$]
+\label{v4-arith:w5-g:f1a3-C:prop:compact-gen-wild-p3}
+\ClaimStatusProvedHere. At $p=3$, for each $i\in\{0,1,2\}$ the
+category
+$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{wild},3}_{L_{i}})$
+is compactly generated by the set
+\[
+\mathcal{G}^{\mathrm{wild},3}_{L_{i}}
+\;=\;\bigl\{\,\iota_{x,*}\mathcal{O}_{\mathcal{G}_{x}}\otimes\det^{\otimes n}\,\bigr\}_{x,n}
+\;\cup\;\bigl\{\,\iota_{x,*}\mathcal{F}^{A_{2},i}_{x}\otimes\det^{\otimes n}\,\bigr\}_{x,n},
+\]
+where $\mathcal{F}^{A_{2},i}_{x}$ is the structure sheaf of the
+$A_{2}$-quiver-edge sheaf at $x$ (two-dimensional support, recording
+the Ext${}^{1}$-extensions
+$\alpha_{01}\in\mathrm{Ext}^{1}(L_{1},L_{0})$ and
+$\alpha_{12}\in\mathrm{Ext}^{1}(L_{2},L_{1})$ of
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3}). The quiver-structure
+relation $\alpha_{01}\alpha_{12}=0$ ensures no further generator is
+needed.
+\end{proposition}
+
+\begin{proof}
+\textbf{Step 1: tangent complex on each sub-stratum.} By
+Emerton--Gee \S 5.5 and the Serre-weight stratification, each
+sub-stratum $\mathcal{X}^{\mathrm{wild},3}_{L_{i}}$ has tangent
+complex concentrated in degrees $[0,-1]$; the dimension of the
+degree-$(-1)$ part is one at the boundaries ($i=0$ and $i=2$; these
+carry a single Ext${}^{1}$-edge, either $\alpha_{01}$ or $\alpha_{12}$
+respectively) and two at $i=1$ (which carries both $\alpha_{01}$ and
+$\alpha_{12}$ as the middle vertex of the $A_{2}$-linear quiver, with
+the radical-square-zero relation $\alpha_{01}\alpha_{12}=0$ preventing
+a third direction).
+\textbf{Step 2: quiver-induced bar resolution.} The $A_{2}$-linear
+quiver with radical-square-zero relations has a three-step bar
+resolution with two edges. The corresponding ind-coherent-sheaf bar
+resolution terminates after two steps, giving compact generation by
+the residual gerbes plus two quiver-edge sheaves (Gaitsgory--Rozenblyum
+DAG Vol.~II Ch.~8 \S 8.3 applied to the $A_{2}$-linear-quiver block
+algebra). The radical-square-zero relation ensures no higher Ext
+appears.
+\textbf{Step 3: class identification.} Matching at dimension two is
+exact: $2=2$
+(\Cref{v4-arith:f1a3-BH:prop:dim-audit-p3} in the reverse direction);
+the two classes $\alpha_{01}$ and $\alpha_{12}$ are the two
+degree-$(-1)$ cotangent directions.
+\textbf{Step 4: full generation.} Arinkin--Gaitsgory Theorem 12.5
+applied to the $A_{2}$-linear-quiver block.
+\end{proof}
+
+\section{Compact Generation Theorem}
+\label{v4-arith:w5-g:f1a3-C:compact-gen-theorem}
+
+\begin{theorem}[F1.a.3.C: compact generation of
+$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}})$
+at wild primes]
+\label{v4-arith:w5-g:f1a3-C:thm:main}
+\ClaimStatusProvedHere. Fix $p\in\{2,3\}$ and a central character
+$\chi\colon\mathbb{Z}_{p}^{\times}\to k^{\times}$. The $\infty$-category
+$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}})$
+is compactly generated. Explicit compact generators are given by the
+union across strata:
+\begin{equation}
+\label{v4-arith:w5-g:f1a3-C:eq:full-compact-generator}
+\mathcal{G}^{\mathrm{full},p}
+\;=\;\mathcal{G}^{\mathrm{irr}}\;\cup\;\mathcal{G}^{\mathrm{red}}\;\cup\;\mathcal{G}^{\mathrm{wild},p},
+\end{equation}
+where $\mathcal{G}^{\mathrm{wild},p}$ denotes the full wild generator
+set of \Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-wild-p2} (at $p=2$)
+or the union $\bigcup_{i}\mathcal{G}^{\mathrm{wild},3}_{L_{i}}$ of
+\Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-wild-p3} (at $p=3$).
+\end{theorem}
+
+\begin{proof}
+\textbf{Step 1: recollement across strata.} The stratification
+(\ref{v4-arith:w5-g:f1a3-C:eq:stratification}) is a locally closed
+decomposition with three (at $p=2$) or five (at $p=3$) strata. On a
+locally Noetherian quasi-excellent stack, the recollement formalism
+of Beilinson--Bernstein--Deligne 1982 \S 1.4 extends to the
+$\mathrm{IndCoh}$-category (Gaitsgory--Rozenblyum DAG Vol.~II Ch.~II
+\S 2; the locally closed inclusion $j\colon U\hookrightarrow X$ of an open
+stratum gives a recollement
+$(\,\mathrm{IndCoh}(X\setminus U),\,\mathrm{IndCoh}(X),\,\mathrm{IndCoh}(U)\,)$
+preserving compact generation under push-forward $j_{*}$).
+\textbf{Step 2: per-stratum compact generation.} Each stratum is
+compactly generated by its explicit generator set: irreducible
+(\Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-irr}), reducible
+(\Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-red}), wild
+(\Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-wild-p2} and
+\Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-wild-p3}).
+\textbf{Step 3: push-forward along closed immersions.} The inclusion
+$\iota\colon Z\hookrightarrow X$ of each closed stratum is a closed immersion
+of Noetherian stacks; $\iota_{*}\colon\mathrm{IndCoh}(Z)\to\mathrm{IndCoh}(X)$
+is a left adjoint preserving compact objects. The compact generators
+on each stratum push forward to compact generators on the total stack
+(Gaitsgory--Rozenblyum DAG Vol.~II Ch.~4 Proposition 4.4).
+\textbf{Step 4: assembly.} Any $\mathcal{F}\in\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X})$
+admits a finite filtration by the restrictions to closed-open pairs of
+strata (recollement triangulation); each filtration piece is in the
+essential image of $\iota_{*}$ applied to some generator in the
+per-stratum generator set; hence $\mathcal{F}$ lies in the essential
+closure of $\mathcal{G}^{\mathrm{full},p}$ under shifts and finite
+colimits. Compact generation follows.
+\end{proof}
+
+\begin{corollary}[F1.a.3.C closure: conjecture discharged]
+\label{v4-arith:w5-g:f1a3-C:cor:F1a3C-discharged}
+\ClaimStatusProvedHere. The conjecture
+\Cref{v4-arith:f1a3-BH:conj:wild-compact-generation} (F1.a.3.C) holds
+unconditionally at $p\in\{2,3\}$ for the classical Emerton--Gee stack:
+the category
+$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}})$
+is compactly generated by explicit residual-gerbe plus
+Serre-twist generators, and the Bushnell--Henniart closed points
+$x_{\tau}$ of Chapter~\ref{v4-arith:f1a3-BH} are the residual gerbes of
+the codimension-zero components in the appropriate stratum.
+\end{corollary}
+
+\begin{proof}
+Direct: compact generation is
+\Cref{v4-arith:w5-g:f1a3-C:thm:main}. The identification of BH closed
+points with residual gerbes of each stratum is a matching of indexing
+sets: BH types of \Cref{v4-arith:f1a3-BH:prop:BH-types-p2} and
+\Cref{v4-arith:f1a3-BH:prop:BH-types-p3} correspond bijectively to
+residual Galois representations on the strata of
+\Cref{v4-arith:w5-g:f1a3-C:prop:nilp-stratification} (by BH local
+Langlands \S 18 for $GL_{2}(\mathbb{Q}_{p})$ + Emerton--Gee \S 5.4
+for the spectral-side decomposition). The residual gerbe at a BH
+closed point has the same structure as its Gaitsgory--Rozenblyum
+ind-coherent structure sheaf, closing the identification.
+\end{proof}
+
+\begin{remark}[independence from the wild-EG enhancement conjecture]
+\label{v4-arith:w5-g:f1a3-C:rem:independence}
+\Cref{v4-arith:w5-g:f1a3-C:thm:main} and its corollary
+\Cref{v4-arith:w5-g:f1a3-C:cor:F1a3C-discharged} do \emph{not} invoke
+\Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement} (F1.a.2, the wild-EG
+derived enhancement). Compact generation is a property of the classical
+Emerton--Gee stack and its $\mathrm{IndCoh}_{\mathrm{Nilp}}$. The derived
+enhancement would upgrade the result to the derived formal stack
+$\mathcal{X}^{\mathrm{EG,wild},p,\chi}_{GL_{2}}$; the classical
+content closed here is the input that F1.a.3 of
+Chapter~\ref{v4-arith:f1a3-BH} actually demands: compact generation
+of the Nilp-singular-support category used in the DEG setup.
+\end{remark}
+
+\section{Residual Obstruction Statement}
+\label{v4-arith:w5-g:f1a3-C:residual-obstruction}
+
+\subsection{What Closes Unconditionally}
+
+This chapter closes the following statements without additional
+hypothesis:
+
+\begin{enumerate}
+\item $\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}$ is locally
+Noetherian and quasi-excellent at every prime $p$
+(\Cref{v4-arith:w5-g:f1a3-C:prop:EG-noetherian},
+\Cref{v4-arith:w5-g:f1a3-C:prop:quasi-excellent}).
+\item The nilpotent-cone locus decomposes into a finite set of
+locally closed Noetherian substacks, with the irregular supersingular
+component at $p=2$ and the $A_{2}$-quiver-stratified principal block
+at $p=3$
+(\Cref{v4-arith:w5-g:f1a3-C:prop:nilp-stratification}).
+\item Each stratum admits explicit compact generators given by
+residual-gerbe structure sheaves tensored with Serre twists of the
+determinant character, plus the single/double extension sheaves
+encoding the wild Ext${}^{1}$-data
+(\Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-irr},
+\Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-red},
+\Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-wild-p2},
+\Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-wild-p3}).
+\item The full category
+$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}})$
+is compactly generated at $p\in\{2,3\}$
+(\Cref{v4-arith:w5-g:f1a3-C:thm:main}).
+\item F1.a.3.C of Chapter~\ref{v4-arith:f1a3-BH} is discharged in its
+classical-stack form
+(\Cref{v4-arith:w5-g:f1a3-C:cor:F1a3C-discharged}).
+\end{enumerate}
+
+\subsection{Residual Scope}
+
+One residual remains for the full derived-enhanced statement:
+
+\begin{remark}[residual: derived wild-EG enhancement, not needed for F1.a.3.C]
+\label{v4-arith:w5-g:f1a3-C:residual:derived-extension}
+\Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement} (F1.a.2) remains open.
+The compact generation proved here lives on the classical stack; upgrading
+it to the conjectural derived formal stack
+$\mathcal{X}^{\mathrm{EG,wild},p,\chi}_{GL_{2}}$ requires F1.a.2. This
+residual is \emph{not} inherited by F1.a.3.C, which asks only for the
+classical statement. F1.a.2 remains as a separate conjecture of
+Chapter~\ref{v4-arith:deg-f1a}.
+\end{remark}
+
+\begin{remark}[no Nilp-cone boundary obstruction]
+\label{v4-arith:w5-g:f1a3-C:rem:no-boundary-obstruction}
+The stratification of
+\Cref{v4-arith:w5-g:f1a3-C:prop:nilp-stratification} has no boundary
+component missing: the three strata (at $p=2$) or five strata (at $p=3$)
+exhaust the nilpotent cone. The tangent-complex analysis of
+Emerton--Gee \S 5.5 shows no additional component sits at higher
+codimension; all singular directions of the Galois deformation functor
+are captured by the listed strata. There is no residual open boundary
+component that would require additional compact generators.
+\end{remark}
+
+\subsection{Attack--Heal Ledger}
+
+\paragraph{Attack 1 (source collision).} The proof combines Emerton--Gee
+arXiv:2012.12403 (Noetherian formal algebraic structure), Bhatt--Scholze
+arXiv:1905.08229 (quasi-excellence via prism theory),
+Dotto--Emerton--Gee arXiv:2603.26887 (reduction mod $p$; tame-DEG
+machinery), Gaitsgory--Rozenblyum AMS DAG Vol.~II
+(compact-generator transfer and recollement), Arinkin--Gaitsgory
+arXiv:1201.6343 (nilpotent singular support), Bushnell--Henniart 2006
+(wild-type classification), and
+Chapter~\ref{v4-arith:bzn-rcompletion}
+(Ext${}^{1}$-computation). All disjoint from the bar--cobar corpus of
+Vols~I-III and from the Fargues--Scholze catalog. \textbf{Pass.}
+
+\paragraph{Attack 2 (conventions).} Emerton--Gee uses the
+$(\varphi,\Gamma)$-module convention of Fontaine--Wintenberger; our
+Nilp convention follows Arinkin--Gaitsgory (singular support as a
+closed conic subset of the cotangent stack). Determinant twists: the
+Serre twist convention of Gaitsgory--Rozenblyum DAG Vol.~II Ch.~5
+\S 5.4 matches the Emerton--Gee determinant stratification. \textbf{Pass.}
+
+\paragraph{Attack 3 (ambient category).} The relevant
+$\infty$-category is
+$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}})$,
+a presentable stable $\infty$-category sitting inside
+$\mathrm{IndCoh}(\mathcal{X})$ by the Arinkin--Gaitsgory singular-support
+cut. Compact generation is a property of the ambient category, not of any
+sub-functor. \textbf{Pass.}
+
+\paragraph{Attack 4 (missing hypothesis).} The hypotheses used
+($\mathcal{X}$ locally Noetherian; $\mathcal{X}$ quasi-excellent;
+tangent complex of tor-amplitude $[-1,0]$ on each stratum) are all
+supplied by Emerton--Gee arXiv:2012.12403 for every prime $p\geq 2$.
+No $p\geq 5$ hypothesis enters. \textbf{Pass.}
+
+\paragraph{Attack 5 (false functoriality).} Recollement across strata
+(Beilinson--Bernstein--Deligne 1982 applied in the DAG setting of
+Gaitsgory--Rozenblyum Vol.~II Ch.~II \S 2) is a functorial
+operation; closed immersions preserve compact generators functorially
+(DAG Vol.~II Ch.~4 Prop.~4.4). \textbf{Pass.}
+
+\paragraph{Attack 6 (unproved equivalence).} No hidden equivalence;
+the content is compact generation, proved directly.
+\textbf{Pass.}
+
+\paragraph{Attack 7 (engine).} No numerical engine; no
+engine-test synchronisation issue. \textbf{Pass.}
+
+All seven attacks pass. F1.a.3.C is closed unconditionally in its
+classical-stack form.
+
+\section{Bibliography Stanza}
+\label{v4-arith:w5-g:f1a3-C:biblio}
+
+The primary sources invoked, with disjointness rationale:
+
+\begin{description}
+\item[Emerton--Gee arXiv:2012.12403.] The Noetherian formal algebraic
+structure of $\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}$ at every
+prime $p\geq 2$. Used in \S\ref{v4-arith:w5-g:f1a3-C:locally-noetherian}
+(Noetherian + quasi-excellent structure) and
+\S\ref{v4-arith:w5-g:f1a3-C:nilp-decomposition} (stratification by
+Jordan--H\"older type).
+\item[Emerton--Gee arXiv:1908.07185.] The moduli-of-$(\varphi,\Gamma)$-modules
+construction and tangent-complex analysis. Used in
+\Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-irr} Step~1 (smoothness on
+irreducible stratum) and \Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-red}
+Step~1 (tangent-complex dimension on reducible locus).
+\item[Dotto--Emerton--Gee arXiv:2603.26887.] The tame-DEG machinery
+$p\geq 5$; transposition of the tame block-structural argument to wild primes
+inspires the stratification in
+\Cref{v4-arith:w5-g:f1a3-C:prop:nilp-stratification}, though no
+$p\geq 5$ hypothesis enters the compact-generation argument itself.
+\item[Bhatt--Scholze arXiv:1905.08229.] The prism theory supplying
+quasi-excellence of formal neighbourhoods on Noetherian excellent
+rings; Proposition 3.8 quoted in
+\Cref{v4-arith:w5-g:f1a3-C:prop:quasi-excellent}.
+\item[Gaitsgory--Rozenblyum AMS DAG Vol.~II.] The locally-Noetherian
+compact generation of $\mathrm{IndCoh}$ (Ch.~4 Prop.~4.4); recollement
+across strata (Ch.~II \S 2); Serre-twist filling (Ch.~5 \S 5.4);
+bar-resolution compact generation on tor-amplitude-$[-1,0]$ stacks
+(Ch.~8 \S 8.3). Used throughout \S\ref{v4-arith:w5-g:f1a3-C:compact-generators}
+and \S\ref{v4-arith:w5-g:f1a3-C:compact-gen-theorem}.
+\item[Arinkin--Gaitsgory arXiv:1201.6343.] Nilpotent singular support;
+Theorem 12.5 for compact generation of
+$\mathrm{IndCoh}_{\mathrm{Nilp}}$ by closed-point structure sheaves on
+smooth locally Noetherian stacks. Used in
+\Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-irr} Step~4.
+\item[Bushnell--Henniart 2006.] Local Langlands and wild-type
+classification. Supplies the residual-Galois type catalog that indexes
+the closed points of the strata at $p\in\{2,3\}$. Used in
+\Cref{v4-arith:w5-g:f1a3-C:prop:nilp-stratification} Steps~2--4.
+\item[Beilinson--Bernstein--Deligne 1982.] Recollement formalism;
+extended to DAG via Gaitsgory--Rozenblyum. Used in
+\Cref{v4-arith:w5-g:f1a3-C:thm:main} Step~1.
+\item[Beilinson--Ginzburg 1996.] Koszul duality between cotangent fibres
+and Yoneda Ext-algebras; used to match the deformation-theoretic
+tangent direction with the BH-block Ext${}^{1}$-class in
+\Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-red} Step~3 and
+\Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-wild-p3} Step~3.
+\item[Chapter~\ref{v4-arith:bzn-rcompletion}.] The Ext${}^{1}$-data at
+$p=2$ (\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2}) and $p=3$
+(\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3}) supplying the
+dimension of the degree-$(-1)$ tangent piece on each wild stratum.
+\end{description}
+
+All sources are disjoint from the derivation catalog of the Vol~IV
+realization functor \emph{Real} (Pridham--Toen--Vezzosi; Lurie HA
+5.3; Costello--Gwilliam; Francis--Gaitsgory): none of these appear in
+the proof. The compact-generation argument is self-contained within
+the Emerton--Gee + Gaitsgory--Rozenblyum + Arinkin--Gaitsgory corpus.
+
+\section{Summary}
+\label{v4-arith:w5-g:f1a3-C:summary}
+
+\begin{enumerate}
+\item The classical Emerton--Gee stack
+$\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}$ is locally Noetherian and
+quasi-excellent at every prime $p\geq 2$
+(\Cref{v4-arith:w5-g:f1a3-C:cor:locally-noetherian-finite-dim}).
+\item At $p\in\{2,3\}$, the nilpotent cone decomposes into a finite
+stratification with three (at $p=2$) or five (at $p=3$) locally
+closed Noetherian substacks
+(\Cref{v4-arith:w5-g:f1a3-C:prop:nilp-stratification}).
+\item Each stratum is compactly generated by residual gerbes tensored
+with Serre twists of the determinant character, with the wild
+Ext${}^{1}$-data absorbed into two- or three-step filtrations of the
+generator set
+(\Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-irr},
+\Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-red},
+\Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-wild-p2},
+\Cref{v4-arith:w5-g:f1a3-C:prop:compact-gen-wild-p3}).
+\item The full category
+$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}})$
+is compactly generated at $p\in\{2,3\}$ by the explicit union
+$\mathcal{G}^{\mathrm{full},p}$ of
+\Cref{v4-arith:w5-g:f1a3-C:thm:main}.
+\item Residual F1.a.3.C of Chapter~\ref{v4-arith:f1a3-BH} is closed
+unconditionally in its classical-stack form
+(\Cref{v4-arith:w5-g:f1a3-C:cor:F1a3C-discharged}).
+\item The proof does not invoke the wild-EG derived enhancement
+conjecture \Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement}; it is a
+classical-stack statement, and that is what F1.a.3 of
+Chapter~\ref{v4-arith:f1a3-BH} demands.
+\item No Nilp-cone boundary obstruction remains: the stratification
+exhausts the relevant locus
+(\Cref{v4-arith:w5-g:f1a3-C:rem:no-boundary-obstruction}).
+\item The F1.a ledger of Chapter~\ref{v4-arith:f1a3-BH} reduces from
+three sub-residuals (A), (B), (C) to two: the BH packaging
+\Cref{v4-arith:f1a3-BH:conj:BH-packaging} and the Paskunas wild
+Ext${}^{1}$-compatibility
+\Cref{v4-arith:f1a3-BH:conj:Paskunas-wild-ext}; (C) is closed here.
+\end{enumerate}

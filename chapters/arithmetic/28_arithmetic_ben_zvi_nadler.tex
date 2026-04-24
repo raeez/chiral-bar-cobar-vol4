@@ -378,15 +378,15 @@ under the local reciprocity map); this is the adelic restricted-product
 structure on $\widehat{\mathbb{Z}}$.
 \end{proof}
 
-\subsection{The Emerton--Gee Morphism}
+\subsection{The Selmer Inertia-Shadow Morphism}
 
-\begin{proposition}[Emerton--Gee to LocSys morphism]
+\begin{proposition}[Selmer target to inertia shadow]
 \label{v4-arith:bzn:prop:EG-to-LocSys}
 \ClaimStatusNeedsVerification. There is an expected forgetful morphism of
 pro-\'etale derived stacks
 \begin{equation}
 \label{v4-arith:bzn:eq:EG-morphism}
-\iota^{\mathrm{EG}}\;\colon\;\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}\;\longrightarrow\;\mathrm{LocSys}^{\mathrm{Ar}}_{GL_{2}}\bigl(B\widehat{\mathbb{Z}}\bigr)
+\iota^{\mathrm{Sel}}\;\colon\;\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\;\longrightarrow\;\mathrm{LocSys}^{\mathrm{Ar}}_{GL_{2}}\bigl(B\widehat{\mathbb{Z}}\bigr)
 \end{equation}
 which, at each prime $p$, should be the composition of the
 Emerton--Gee stack's universal Galois representation
@@ -408,11 +408,10 @@ with the natural map $I_{p}\twoheadrightarrow\mathbb{Z}_{p}$
 $\mathbb{Z}_{p}\to GL_{2}$, hence a point of
 $\mathrm{Hom}^{\mathrm{cts}}(\mathbb{Z}_{p},GL_{2})/GL_{2}$.
 
-Globally, the assembly over all primes is the inductive limit
-$\iota^{\mathrm{EG}}=\varinjlim_{S}\prod_{p\in S}\iota^{\mathrm{EG},p}$
-indexed by finite sets of primes; this is compatible with the
-(F1.c) presentation of $\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}$
-as an ind-formal algebraic stack.
+Globally, the assembly factors through the Selmer-derived stack:
+the local inertia-shadow maps must be compatible with one global
+representation, fixed determinant, and the chosen local Selmer
+conditions. It is not a product or filtered colimit of local maps.
 \end{proof}
 
 \subsection{The Flat Locus}
@@ -450,15 +449,15 @@ that come from $(\varphi,\Gamma)$-module data, which is the correct
 analogue of a ``flat connection in the arithmetic topology''.
 \end{remark}
 
-\begin{proposition}[image of the Emerton--Gee morphism]
+\begin{proposition}[image of the Selmer inertia-shadow morphism]
 \label{v4-arith:bzn:prop:EG-image-flat}
-\ClaimStatusConjectured. The full Emerton--Gee comparison morphism
+\ClaimStatusConjectured. The full Selmer comparison morphism
 is expected to factor through the flat full-parameter locus. The
-forgetful inertial shadow $\iota^{\mathrm{EG}}$ of
+forgetful inertial shadow $\iota^{\mathrm{Sel}}$ of
 \Cref{v4-arith:bzn:prop:EG-to-LocSys} factors through the flat
 locus
 \begin{equation}
-\iota^{\mathrm{EG}}\colon\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}\longrightarrow\mathrm{LocSys}^{\mathrm{Ar}}_{GL_{2}}(B\widehat{\mathbb{Z}})^{\mathrm{flat}}
+\iota^{\mathrm{Sel}}\colon\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\longrightarrow\mathrm{LocSys}^{\mathrm{Ar}}_{GL_{2}}(B\widehat{\mathbb{Z}})^{\mathrm{flat}}
 \end{equation}
 as a map of pro-\'etale derived stacks. It is not known, and is
 generally false on points, that this inertia-only restriction is a
@@ -472,11 +471,9 @@ $(\varphi,\Gamma)$-module gives rise to a $W_{\mathbb{Q}_{p}}$-representation
 restriction to inertia supplies a $\mathbb{Z}_{p}$-representation
 extending compatibly, which is the Fargues--Scholze local
 compatibility condition (1).
-The almost-everywhere-unramified condition (2) is the restriction
-of $\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}$ to the finite-type
-Noetherian locus (Emerton--Gee Thm.~B.0.1), which automatically
-has almost-all-unramified structure at primes outside a finite
-ramification set.
+The almost-everywhere-unramified condition (2) is imposed in the
+Selmer datum by requiring unramified local conditions outside the
+finite set $S$.
 
 \emph{Closed immersion residual.} Locally at each prime, the full
 $(\varphi,\Gamma)$ or Weil parameter can retain Frobenius data. The
@@ -505,8 +502,8 @@ $\to p^{-1}$). These are the Emerton--Gee conventions; match
 Fargues--Scholze after the standard twist. \textbf{Pass.}
 
 \paragraph{Attack 3 (ambient categories).} $L^{\mathrm{Ar}}BGL_{2}$
-and $\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}$ both live in
-pro-\'etale derived stacks; the morphism $\iota^{\mathrm{EG}}$
+and $\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}$ both live in
+pro-\'etale derived stacks; the morphism $\iota^{\mathrm{Sel}}$
 is in the same ambient $\infty$-category as the target.
 \textbf{Pass.}
 
@@ -764,8 +761,11 @@ $\mathrm{IndCoh}$ all live in this ambient $(\infty,2)$-category
 \paragraph{Attack 4 (missing hypothesis).} Noetherianness and
 derived formal algebraic stack structure on $\mathcal{X}$ are
 required to apply Arinkin--Gaitsgory singular support. The
-global Emerton--Gee stack satisfies these (Emerton--Gee
-arXiv:1908.07185 Thm~B.0.1). \textbf{Pass, hypothesis explicit.}
+local Emerton--Gee stacks supply the local formal input
+(Emerton--Gee arXiv:1908.07185 Thm~B.0.1), but the corrected global
+target is Selmer-derived. Its Noetherian and singular-support
+properties are additional theorem-waiting hypotheses. \textbf{Residual
+named.}
 
 \paragraph{Attack 5 (false functoriality).} The arithmetic
 Ben-Zvi--Nadler map is constructed as an $E_{1}$-algebra map via
@@ -849,11 +849,11 @@ There should be a canonical equivalence of $E_{1}$-algebras
 This is a conditional proof strategy, not a completed proof.
 
 \medskip\noindent\textbf{Step 1: F1 identifies the Hecke category with
-$\mathrm{IndCoh}_{\mathrm{Nilp}}$ of the Emerton--Gee stack.}
+$\mathrm{IndCoh}_{\mathrm{Nilp}}$ of the Selmer-derived stack.}
 If F1 is proved after the local comparison and adelic descent
 residuals, it gives
 \begin{equation}
-\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},\mathrm{glob}}\;\simeq\;\mathrm{D}([GL_{2}])^{\mathrm{sph\text{-}fin}}\;\simeq\;\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}\bigr).
+\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},\mathrm{glob}}\;\simeq\;\mathrm{D}([GL_{2}])^{\mathrm{sph\text{-}fin}}\;\simeq\;\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\bigr).
 \end{equation}
 Here the first equivalence is the standard identification of the
 global Iwahori Hecke category with the sph-finite automorphic
@@ -871,15 +871,15 @@ equivalence is $E_{2}$-monoidal by functoriality of F1).
 
 \medskip\noindent\textbf{Step 3: Apply the arithmetic HH identity.}
 If \Cref{v4-arith:bzn:thm:HH-IndCoh-arith} is proved for
-$\mathcal{X}=\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}$ (Noetherian
-formal algebraic by Emerton--Gee), it yields
+$\mathcal{X}=\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}$
+with the required formal-Noetherian hypotheses, it yields
 \begin{equation}
-\mathrm{HH}_{\bullet}\bigl(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}})\bigr)\;\simeq\;\mathcal{O}\bigl(L^{\mathrm{Ar}}\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}\bigr)^{\mathrm{flat}}.
+\mathrm{HH}_{\bullet}\bigl(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})\bigr)\;\simeq\;\mathcal{O}\bigl(L^{\mathrm{Ar}}\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\bigr)^{\mathrm{flat}}.
 \end{equation}
 
 \medskip\noindent\textbf{Step 4: Full target residual.}
 The last comparison is not supplied by the inertia-only target.
-$\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}})$
+$\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})$
 is a procyclic shadow of the arithmetic loop problem, and
 $\mathrm{Map}(B\widehat{\mathbb{Z}},\mathrm{LocSys}_{GL_{2}}^{\mathrm{Ar}}(B\widehat{\mathbb{Z}}))$
 is not definitionally equal to
@@ -888,20 +888,20 @@ The required comparison is instead a morphism to the full
 Weil/$(\varphi,\Gamma)$ target:
 \begin{equation}
 \label{v4-arith:bzn:eq:full-target-residual}
-L^{\mathrm{Ar}}\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}
+L^{\mathrm{Ar}}\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}
 \longrightarrow
 \mathrm{LocSys}^{W,\varphi\Gamma}_{GL_{2}},
 \end{equation}
 whose pullback on flat functions must identify
-$\mathcal{O}(L^{\mathrm{Ar}}\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}})^{\mathrm{flat}}$
+$\mathcal{O}(L^{\mathrm{Ar}}\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})^{\mathrm{flat}}$
 with
 $\mathcal{O}(\mathrm{LocSys}^{W,\varphi\Gamma}_{GL_{2}})^{\mathrm{flat}}$.
 This is the full-target/formal-loop comparison named in the statement.
 
 \medskip If Steps 1--4 are all supplied, concatenation gives:
 \begin{align}
-\mathrm{HH}_{\bullet}(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},\mathrm{glob}})\;&\overset{\text{F1}}{\simeq}\;\mathrm{HH}_{\bullet}(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}))\\
-&\overset{\text{arith BZN}}{\simeq}\;\mathcal{O}(L^{\mathrm{Ar}}\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}})^{\mathrm{flat}}\\
+\mathrm{HH}_{\bullet}(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},\mathrm{glob}})\;&\overset{\text{F1}}{\simeq}\;\mathrm{HH}_{\bullet}(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}))\\
+&\overset{\text{arith BZN}}{\simeq}\;\mathcal{O}(L^{\mathrm{Ar}}\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})^{\mathrm{flat}}\\
 &\simeq\;\mathcal{O}(\mathrm{LocSys}^{W,\varphi\Gamma}_{GL_{2}})^{\mathrm{flat}}.
 \end{align}
 Each equivalence preserves the $E_{1}$-algebra structure (the
@@ -1134,7 +1134,8 @@ underlying object matches the factorization-homology model of
 \Cref{v4-arith:bzn:thm:arith-fact-homology}.
 \item \emph{MKR-dictionary match of the arithmetic loop space.}
 From the topological analogy, the arithmetic free loop space
-$L^{\mathrm{Ar}}\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}$ corresponds
+The full-target arithmetic loop object for
+$\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}$ corresponds
 to the loop space of the $3$-manifold analogue of the Emerton--Gee
 stack; Morishita's dictionary (arXiv:0904.3399 Ch.~3) reads
 off the correct moduli of local-system pairs.
@@ -1208,8 +1209,9 @@ since:
 \begin{itemize}
 \item The definition of $B\widehat{\mathbb{Z}}$ and arithmetic
 free loop space is group-independent.
-\item The Emerton--Gee stack $\mathcal{X}^{\mathrm{EG,glob}}_{GL_{n}}$
-is defined for all $n$ in Emerton--Gee arXiv:1908.07185.
+\item Local Emerton--Gee stacks are defined for all $n$ in
+Emerton--Gee arXiv:1908.07185; the global spectral target must still
+be Selmer-derived.
 \item Fargues--Scholze local geometrization and spectral action are
 available for $GL_{n}$ (arXiv:2102.13459 Thm.~I.9); the categorical
 comparison remains a separate input.

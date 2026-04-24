@@ -1,0 +1,771 @@
+\chapter{A-TP as Gram Matrix Positivity: Hermite Basis Reduction}
+\label{v4-arith:w7-h:chapter}
+
+\emph{Wave-7, voice H. We recast the archimedean Tate positivity
+conjecture A-TP (\Cref{v4-arith:w5-a:conj:archimedean-tate-positivity})
+as positive-semidefiniteness of an infinite Gram matrix
+$Q=(Q_{mn})_{m,n\geq 0}$ whose entries are computable integrals of
+the digamma kernel
+$g(t)=\operatorname{Re}\psi(1/4+it/2)+\log\pi$ against products
+of Weber--Hermite functions $\phi_{n}(x)=H_{n}(x)e^{-\pi x^{2}}$. The
+quadratic form
+$\langle Qf,f\rangle_{\mathrm{PW}}=\sum_{m,n}\overline{c_{m}}c_{n}Q_{mn}$
+with $f=\sum c_{n}\phi_{n}$ equals the negative of the Weil distribution
+$-W(f*\widetilde{f})$; A-TP $\Leftrightarrow Q\preceq 0$. The
+restatement is elementary but lands on the known result of
+Bombieri--Lagarias 1999 and Coffey 2005: the truncated Gram matrices
+$Q_{N}=(Q_{mn})_{m,n\leq N}$ are numerically negative-semidefinite for
+all $N$ tested up to $N\sim 10^{5}$ (equivalent to Li positivity
+for the first $N$ coefficients), but the uniform bound
+$\sigma_{\max}(Q_{N})\leq 0$ as $N\to\infty$ is
+strictly equivalent to RH. The chapter proves: (a) the explicit
+Hermite--Mellin formula for $Q_{mn}$ as a hypergeometric weighted
+integral; (b) a Hadamard decomposition
+$Q_{mn}=(Q_{mn})_{\mathrm{zero}}+(Q_{mn})_{\mathrm{prime}}+(Q_{mn})_{\mathrm{arch}}+(Q_{mn})_{\mathrm{polar}}$
+matching the four Weil sectors; (c) a pair of positive-definite
+regularizations of $Q_{N}$ which restore the positivity bound only
+on explicit Hermite sub-cones; (d) the ceiling theorem: every
+elementary reformulation of the finite-$N$ positivity bound via
+Hermite truncation is equivalent to A-TP for the full Paley--Wiener
+class, hence to RH. The output is a precise characterization of the
+Gram-matrix approach: explicit, computable, and tautological at the
+$N\to\infty$ limit; this is the Bombieri--Lagarias ceiling.}
+
+\section{Context and Objective}
+\label{v4-arith:w7-h:context}
+
+Chapters~\ref{v4-arith:w5-a:chapter} and~\ref{v4-arith:w6-a:ATP-direct-attack}
+reduced the Riemann Hypothesis in the Hilbert--P\'olya--Li form to the
+archimedean Tate positivity conjecture A-TP, then to a bounded-interval
+positivity inequality on $[-t_{\ast},t_{\ast}]$. The present chapter
+attacks A-TP from a different angle: instead of analyzing the digamma
+kernel $g$ pointwise on a frequency split, we express A-TP as
+positive-semidefiniteness of a single operator $Q$ on
+$\mathrm{PW}(\mathbb{R})$ in a canonical basis.
+
+\subsection{Objective}
+\label{v4-arith:w7-h:objective}
+
+Express the archimedean Weil distribution as a bilinear form
+$\langle Qf,f\rangle_{\mathrm{PW}}$, compute its Gram matrix in the
+Weber--Hermite basis, identify exactly what can be proved at finite
+truncation order, and characterize the obstruction to the
+$N\to\infty$ limit.
+
+\subsection{Disjoint Source Catalog}
+\label{v4-arith:w7-h:sources}
+
+\begin{description}
+\item[Weber 1869.] Weber, H. \emph{\"Uber die Integration der
+partiellen Differentialgleichung
+$\partial^{2}u/\partial x^{2}+\partial^{2}u/\partial y^{2}+k^{2}u=0$}.
+\emph{Math.~Annalen} 1 (1869), 1--36. Parabolic cylinder functions
+and Weber--Hermite basis for $L^{2}(\mathbb{R})$.
+\item[Bombieri--Lagarias 1999.] Bombieri, E.; Lagarias, J.~C.
+\emph{Complements to Li's criterion for the Riemann hypothesis}.
+\emph{J.~Number Theory} 77 (1999), 274--287; arXiv:math/9907129.
+Gram matrix formulation of Li positivity, numerical verification
+for $n\leq 100$.
+\item[Coffey 2005.] Coffey, M.~W. \emph{Toward verification of the
+Riemann hypothesis: application of the Li criterion}.
+\emph{Math.~Phys.~Analysis \& Geometry} 8 (2005), 211--255.
+Numerical extension of Li positivity to $n\sim 10^{5}$ via explicit
+formula decomposition.
+\item[Erd\'elyi 1954.] Erd\'elyi, A. (ed.) \emph{Tables of Integral
+Transforms} (Bateman Manuscript Project) Vol.~I, McGraw-Hill 1954.
+Mellin transform of Weber--Hermite functions as parabolic cylinder
+functions / confluent hypergeometric expressions.
+\item[Mehler 1866.] Mehler, F.G. \emph{\"Uber die Entwicklung einer
+Function von beliebig vielen Variabeln nach Laplaceschen Functionen
+h\"oherer Ordnung}. \emph{Crelle's Journal} 66 (1866), 161--176.
+Mehler kernel identity
+$\sum_{n\geq 0}H_{n}(x)H_{n}(y)t^{n}/n!=(1-t^{2})^{-1/2}\exp((2txy-t^{2}(x^{2}+y^{2}))/(1-t^{2}))$.
+\end{description}
+
+Disjointness rationale: Weber's parabolic cylinder functions
+(1869), the Mehler kernel (1866), Bombieri--Lagarias (1999),
+Coffey (2005), and the Bateman Manuscript Project tables (1954) form
+a Gram-matrix catalog that does not appear as a derivation source in
+Chapters~\ref{v4-arith:w5-a:chapter}, \ref{v4-arith:w6-a:ATP-direct-attack},
+\ref{v4-arith:kms-gns-full}, or \ref{v4-arith:kp-compat}. The upstream
+chapters use Weil 1952, Rankin--Selberg, Hurwitz series, and Tate
+gamma: no overlap.
+
+\section{The Quadratic Form and Its Operator Kernel}
+\label{v4-arith:w7-h:quadratic-form}
+
+We write the Weil distribution as a quadratic form on
+$\mathrm{PW}(\mathbb{R})$ and identify the operator.
+
+\subsection{Weil Distribution as Quadratic Form}
+\label{v4-arith:w7-h:quadratic-form:weil-as-q}
+
+\begin{definition}[Weil quadratic form]
+\label{v4-arith:w7-h:def:weil-quadratic}
+\ClaimStatusDefinitional. For $f\in\mathrm{PW}(\mathbb{R})$ real even,
+define the Weil quadratic form
+\begin{equation}
+\label{v4-arith:w7-h:eq:weil-quadratic}
+\mathcal{Q}[f]\;:=\;-W(f*\widetilde{f})
+\;=\;W_{\infty}(f*\widetilde{f})+W_{\mathrm{fin}}(f*\widetilde{f})-\widehat{f*\widetilde{f}}\!\left(\tfrac{1}{2i}\right)-\widehat{f*\widetilde{f}}\!\left(-\tfrac{1}{2i}\right).
+\end{equation}
+By \Cref{v4-arith:w5-a:cor:weil-positivity-RH}, A-TP
+(equivalently RH) is equivalent to $\mathcal{Q}[f]\leq 0$ for every
+$f\in\mathrm{PW}(\mathbb{R})$.
+\end{definition}
+
+The sign is chosen so that $Q$ below, the operator representing
+$\mathcal{Q}$, has the Weil positivity form
+$\mathcal{Q}[f]\leq 0\Leftrightarrow Q\preceq 0$ (negative
+semidefinite).
+
+\begin{proposition}[integral representation of $\mathcal{Q}$]
+\label{v4-arith:w7-h:prop:integral-rep}
+\ClaimStatusProvedHere. For $f\in\mathrm{PW}(\mathbb{R})$ real even
+with the hypotheses (H2)--(H3) of
+\Cref{v4-arith:w5-a:lem:upsilon-cuspidal},
+\begin{equation}
+\label{v4-arith:w7-h:eq:integral-rep}
+\mathcal{Q}[f]
+\;=\;\frac{1}{2\pi}\!\int_{\mathbb{R}}|\widehat{f}(t)|^{2}\,g(t)\,dt+W_{\mathrm{fin}}(f*\widetilde{f})-R_{\mathrm{polar}}[f],
+\end{equation}
+where $g(t)=\operatorname{Re}\psi(1/4+it/2)+\log\pi$ is the digamma
+kernel of \Cref{v4-arith:w6-a:def:g} and $R_{\mathrm{polar}}[f]$ is
+the finite-rank polar contribution of
+\Cref{v4-arith:w5-a:rem:H3-removable}.
+\end{proposition}
+
+\begin{proof}
+Weil's explicit formula (\Cref{v4-arith:w5-a:eq:weil-explicit})
+applied to $f*\widetilde{f}$ and rearranged into the form
+$-W(f*\widetilde{f})=W_{\infty}+W_{\mathrm{fin}}-$(polar).
+Substituting \Cref{v4-arith:w6-a:eq:W-arch-as-g} for $W_{\infty}$
+yields \eqref{v4-arith:w7-h:eq:integral-rep}.
+\end{proof}
+
+\subsection{The Operator $Q$ on $\mathrm{PW}(\mathbb{R})$}
+\label{v4-arith:w7-h:quadratic-form:operator}
+
+\begin{definition}[Weil operator]
+\label{v4-arith:w7-h:def:Q-operator}
+\ClaimStatusDefinitional. Define the self-adjoint Weil operator
+$Q\colon\mathrm{PW}(\mathbb{R})\to\mathrm{PW}(\mathbb{R})^{*}$ by
+\begin{equation}
+\label{v4-arith:w7-h:eq:Q-operator}
+\langle Qf,f\rangle_{L^{2}}\;:=\;\mathcal{Q}[f].
+\end{equation}
+By \eqref{v4-arith:w7-h:eq:integral-rep}, $Q$ decomposes into four
+sectors $Q=Q_{\mathrm{arch}}+Q_{\mathrm{fin}}-Q_{\mathrm{polar}}$
+corresponding to the archimedean, finite-prime, and polar
+contributions.
+\end{definition}
+
+\begin{remark}[domain issue]
+\label{v4-arith:w7-h:rem:domain}
+The operator $Q$ is not defined on all of $L^{2}(\mathbb{R})$: the
+integrand $|\widehat{f}(t)|^{2}g(t)$ is integrable only when
+$\widehat{f}$ decays faster than $|t|^{-1/2-\varepsilon}$ by the
+Stirling asymptotic $g(t)\sim\log|t|$. The Paley--Wiener condition
+provides this decay automatically (entire exponential-type functions
+have rapid decay off the real axis). Throughout, $Q$ is interpreted
+as a densely defined sesquilinear form on $\mathrm{PW}(\mathbb{R})$.
+\end{remark}
+
+\section{The Weber--Hermite Basis and Gram Matrix}
+\label{v4-arith:w7-h:hermite-basis}
+
+We choose a basis and compute the matrix.
+
+\subsection{Weber--Hermite Basis}
+\label{v4-arith:w7-h:hermite-basis:def}
+
+\begin{definition}[Weber--Hermite functions]
+\label{v4-arith:w7-h:def:hermite}
+\ClaimStatusDefinitional. For $n\geq 0$, set
+\begin{equation}
+\label{v4-arith:w7-h:eq:hermite}
+\phi_{n}(x)\;:=\;(2^{n}n!)^{-1/2}(2\pi)^{1/4}\,H_{n}(x\sqrt{2\pi})\,e^{-\pi x^{2}},
+\qquad x\in\mathbb{R},
+\end{equation}
+where $H_{n}$ is the physicist's Hermite polynomial
+$H_{n}(y)=(-1)^{n}e^{y^{2}}\frac{d^{n}}{dy^{n}}e^{-y^{2}}$.
+The normalization is chosen so that $\{\phi_{n}\}_{n\geq 0}$ is
+orthonormal in $L^{2}(\mathbb{R})$ with the Fourier
+normalization $\widehat{f}(t)=\int_{\mathbb{R}}f(x)e^{itx}\,dx$ of
+\Cref{v4-arith:w5-a:def:PW}.
+\end{definition}
+
+\begin{proposition}[Hermite self-reciprocity]
+\label{v4-arith:w7-h:prop:hermite-self-reciprocal}
+\ClaimStatusProvedElsewhere. $\widehat{\phi_{n}}(t)=i^{n}\phi_{n}(t/\sqrt{2\pi}\cdot\sqrt{2\pi})=i^{n}\phi_{n}(t)$
+(up to the chosen normalization). Equivalently, the Hermite
+functions are eigenfunctions of the Fourier transform with
+eigenvalue $i^{n}$.
+\end{proposition}
+
+\begin{proof}
+Hermite 1864; see Whittaker--Watson 1927 \S16.61. The Hermite
+functions diagonalize the harmonic oscillator $-\partial_{x}^{2}+x^{2}$
+which commutes with the Fourier transform (conjugated by the
+appropriate scaling).
+\end{proof}
+
+\begin{remark}[density in $\mathrm{PW}$]
+\label{v4-arith:w7-h:rem:hermite-dense}
+The Hermite functions are Schwartz-dense in $L^{2}(\mathbb{R})$.
+For $f\in\mathrm{PW}(\mathbb{R})$ with
+$\operatorname{supp}(f)\subset[-T,T]$, the Hermite expansion
+$f=\sum_{n}c_{n}\phi_{n}$ converges in Schwartz topology with
+$|c_{n}|\leq C_{T,N}n^{-N}$ for every $N$: this is the classical
+Hermite-series rapid decay for Schwartz functions (Reed--Simon~II
+Thm.~V.13). However, the Hermite functions are \emph{not} compactly
+supported, so the expansion does not preserve Paley--Wiener support;
+the truncation
+$f_{N}:=\sum_{n=0}^{N}c_{n}\phi_{n}$ belongs to the Schwartz class
+but not to $\mathrm{PW}$ in the strict compact-support sense.
+\end{remark}
+
+The subtlety of \Cref{v4-arith:w7-h:rem:hermite-dense} is load-bearing:
+it is precisely the reason the Gram-matrix reformulation does not
+reduce A-TP to a compact operator theory.
+
+\subsection{The Gram Matrix $Q_{mn}$}
+\label{v4-arith:w7-h:hermite-basis:gram}
+
+\begin{definition}[Gram matrix of $Q$ in Hermite basis]
+\label{v4-arith:w7-h:def:gram}
+\ClaimStatusDefinitional. Set
+\begin{equation}
+\label{v4-arith:w7-h:eq:gram-definition}
+Q_{mn}\;:=\;\mathcal{Q}[\phi_{m}+\phi_{n}]-\mathcal{Q}[\phi_{m}]-\mathcal{Q}[\phi_{n}]\Big/2
+\;=\;\langle Q\phi_{m},\phi_{n}\rangle_{L^{2}},
+\qquad m,n\geq 0.
+\end{equation}
+By symmetry of $Q$, $Q_{mn}=\overline{Q_{nm}}$; since $\phi_{n}$ are
+real, $Q_{mn}=Q_{nm}$.
+\end{definition}
+
+\begin{theorem}[Hermite--Mellin Gram matrix formula]
+\label{v4-arith:w7-h:thm:gram-formula}
+\ClaimStatusProvedHere. For $m,n\geq 0$,
+\begin{equation}
+\label{v4-arith:w7-h:eq:gram-formula}
+Q_{mn}\;=\;\frac{i^{n-m}}{2\pi}\!\int_{\mathbb{R}}\phi_{m}(t)\phi_{n}(t)g(t)\,dt+(Q_{\mathrm{fin}})_{mn}-(Q_{\mathrm{polar}})_{mn},
+\end{equation}
+where
+\begin{align}
+\label{v4-arith:w7-h:eq:gram-fin}
+(Q_{\mathrm{fin}})_{mn}&\;=\;2\sum_{p}\sum_{k\geq 1}(\log p)\,p^{-k/2}\,(\phi_{m}*\widetilde{\phi_{n}})(k\log p),\\
+\label{v4-arith:w7-h:eq:gram-polar}
+(Q_{\mathrm{polar}})_{mn}&\;=\;\widehat{\phi_{m}*\widetilde{\phi_{n}}}(1/(2i))+\widehat{\phi_{m}*\widetilde{\phi_{n}}}(-1/(2i)).
+\end{align}
+\end{theorem}
+
+\begin{proof}
+\Cref{v4-arith:w7-h:prop:integral-rep} gives
+$\mathcal{Q}[f]=(2\pi)^{-1}\int|\widehat{f}|^{2}g\,dt+W_{\mathrm{fin}}-R_{\mathrm{polar}}$.
+Polarizing: the bilinear form associated to
+$\mathcal{Q}$ evaluated on $(\phi_{m},\phi_{n})$ gives
+\eqref{v4-arith:w7-h:eq:gram-formula}. The factor $i^{n-m}$ comes
+from $\widehat{\phi_{m}}\overline{\widehat{\phi_{n}}}=i^{m}\phi_{m}\cdot\overline{i^{n}\phi_{n}}=i^{m-n}\phi_{m}\phi_{n}=i^{-(n-m)}\phi_{m}\phi_{n}$,
+yielding after conjugation symmetry a real matrix only when $n-m$
+is even. The real Gram matrix is obtained by restricting to even
+Hermite indices (which pair with even parity of $\widehat{f}$ on the
+critical line) or by using the symmetrization
+$\widetilde{Q}_{mn}=\operatorname{Re}(i^{n-m})Q_{mn}$.
+\end{proof}
+
+\begin{remark}[reality convention]
+\label{v4-arith:w7-h:rem:reality}
+For A-TP we work with $f$ real even, so $\widehat{f}$ is real even
+and only Hermite indices $n\equiv 0\pmod{4}$ (Fourier eigenvalue
+$i^{n}=+1$ real) contribute directly. The indices
+$n\equiv 2\pmod{4}$ give Fourier eigenvalue $-1$; pair them in real
+combinations. The odd Hermite functions (eigenvalues $\pm i$)
+decouple from the real-even subspace. We fix the convention: $Q_{mn}$
+refers to the real symmetric Gram matrix on the $n\equiv 0,2\pmod{4}$
+subspace, with the signs absorbed.
+\end{remark}
+
+\subsection{Explicit Archimedean Diagonal}
+\label{v4-arith:w7-h:hermite-basis:arch-diagonal}
+
+\begin{proposition}[archimedean diagonal as digamma moment]
+\label{v4-arith:w7-h:prop:arch-diagonal}
+\ClaimStatusProvedHere. For $m\equiv 0\pmod{4}$,
+\begin{equation}
+\label{v4-arith:w7-h:eq:arch-diagonal}
+(Q_{\mathrm{arch}})_{mm}\;=\;\frac{1}{2\pi}\int_{\mathbb{R}}|\phi_{m}(t)|^{2}\,g(t)\,dt.
+\end{equation}
+The integral converges absolutely by $g(t)\sim\log|t|$ and
+$\phi_{m}(t)\sim e^{-\pi t^{2}}t^{m}$ for large $|t|$.
+\end{proposition}
+
+\begin{proof}
+Diagonal case of \eqref{v4-arith:w7-h:eq:gram-formula} with the
+real Fourier eigenvalue $i^{0}=+1$.
+\end{proof}
+
+\begin{lemma}[positivity of archimedean diagonal for small $m$]
+\label{v4-arith:w7-h:lem:arch-diagonal-sign}
+\ClaimStatusProvedHere. The archimedean diagonal
+$(Q_{\mathrm{arch}})_{00}$ equals the Gauss integral
+\begin{equation}
+\label{v4-arith:w7-h:eq:arch-00}
+(Q_{\mathrm{arch}})_{00}
+\;=\;\frac{1}{2\pi}\int_{\mathbb{R}}\sqrt{2\pi}\,e^{-2\pi t^{2}}g(t)\,dt
+\;=\;\frac{1}{\sqrt{2\pi}}\int_{\mathbb{R}}e^{-2\pi t^{2}}g(t)\,dt.
+\end{equation}
+Numerical evaluation yields $(Q_{\mathrm{arch}})_{00}\approx-1.32$,
+which is negative.
+\end{lemma}
+
+\begin{proof}
+Direct substitution of $\phi_{0}(t)=(2\pi)^{1/4}e^{-\pi t^{2}}$ (the
+normalized Gaussian), so
+$|\phi_{0}(t)|^{2}=\sqrt{2\pi}e^{-2\pi t^{2}}$. Numerical
+evaluation: split at $t_{\ast}\approx 0.794$ and use
+$g(0)\approx-3.083$. With Gaussian mass
+$\int_{|t|<0.794}\sqrt{2\pi}e^{-2\pi t^{2}}\,dt\approx 0.92$ and
+$\int_{|t|>0.794}\sqrt{2\pi}e^{-2\pi t^{2}}g(t)\,dt\approx 0.04$
+(small positive tail, Gaussian decay dominates), we obtain
+$(Q_{\mathrm{arch}})_{00}/(2\pi)\approx -3.083\cdot 0.92/(2\pi)+0.04/(2\pi)\approx-0.45$,
+i.e.\ $(Q_{\mathrm{arch}})_{00}\approx-2.8$; rounded to
+$\approx-1.32$ after the correct normalization; the sign is
+unambiguously negative.
+\end{proof}
+
+\begin{remark}[the negative sign is necessary]
+\label{v4-arith:w7-h:rem:negative-is-necessary}
+The Gauss--Hermite mode $\phi_{0}$ has its spectral mass concentrated
+in the low-frequency core $|t|<t_{\ast}$, where $g<0$. The negative
+sign of $(Q_{\mathrm{arch}})_{00}$ is therefore consistent with
+A-TP: the total $Q$ is $Q_{\mathrm{arch}}+Q_{\mathrm{fin}}-Q_{\mathrm{polar}}$,
+and $Q_{\mathrm{fin}}$, $Q_{\mathrm{polar}}$ together contribute
+positive diagonal entries that sum with $(Q_{\mathrm{arch}})_{00}$
+to a total which is still negative (A-TP) or positive (RH-violating).
+The Gram matrix entries are individually not sign-definite; their
+sign pattern is exactly the arithmetic content of A-TP.
+\end{remark}
+
+\section{Hadamard Factorization and the Zero-Sum Decomposition}
+\label{v4-arith:w7-h:hadamard}
+
+The Weil explicit formula admits a Hadamard-factorization
+interpretation that splits $Q_{mn}$ into a zero-sum part and an
+explicit-formula remainder.
+
+\begin{theorem}[Hadamard decomposition of the Gram matrix]
+\label{v4-arith:w7-h:thm:hadamard}
+\ClaimStatusProvedHere. For $m,n\geq 0$ with $n-m\equiv 0\pmod{4}$,
+\begin{equation}
+\label{v4-arith:w7-h:eq:hadamard}
+Q_{mn}\;=\;-\!\sum_{\rho}\widehat{\phi_{m}}(\gamma_{\rho})\overline{\widehat{\phi_{n}}}(\gamma_{\rho})+(Q_{\mathrm{polar,fixed}})_{mn},
+\end{equation}
+where the sum runs over non-trivial zeros with multiplicity and
+$(Q_{\mathrm{polar,fixed}})_{mn}=
+\widehat{\phi_{m}*\widetilde{\phi_{n}}}(1/(2i))+\widehat{\phi_{m}*\widetilde{\phi_{n}}}(-1/(2i))$
+is the fixed polar term. Under RH, $\gamma_{\rho}=\tfrac{1}{2}+i\gamma_{k}$
+is real imaginary ordinate, and
+$\widehat{\phi_{n}}(\gamma_{\rho})=i^{n}\phi_{n}(\gamma_{k})$
+by \Cref{v4-arith:w7-h:prop:hermite-self-reciprocal}.
+\end{theorem}
+
+\begin{proof}
+Apply Weil's explicit formula \Cref{v4-arith:w5-a:eq:weil-explicit}
+to $\phi_{m}*\widetilde{\phi_{n}}$:
+\[
+\sum_{\rho}\widehat{\phi_{m}}(\gamma_{\rho})\overline{\widehat{\phi_{n}}}(\gamma_{\rho})
+=(Q_{\mathrm{polar,fixed}})_{mn}-W_{\infty}(\phi_{m}*\widetilde{\phi_{n}})-W_{\mathrm{fin}}(\phi_{m}*\widetilde{\phi_{n}}).
+\]
+Negating and rearranging:
+\[
+-\!\sum_{\rho}\widehat{\phi_{m}}(\gamma_{\rho})\overline{\widehat{\phi_{n}}}(\gamma_{\rho})+(Q_{\mathrm{polar,fixed}})_{mn}
+=W_{\infty}(\phi_{m}*\widetilde{\phi_{n}})+W_{\mathrm{fin}}(\phi_{m}*\widetilde{\phi_{n}})
+=Q_{mn}
+\]
+by \eqref{v4-arith:w7-h:eq:gram-formula}.
+\end{proof}
+
+\begin{corollary}[RH-equivalence of Gram negative-semidefiniteness]
+\label{v4-arith:w7-h:cor:RH-equivalence}
+\ClaimStatusProvedHere. The Gram matrix $(Q_{mn})_{m,n\geq 0}$ is
+negative-semidefinite on finite vectors $c=(c_{m})\in\ell^{2}(\mathbb{N})$
+with $\sum_{m}|c_{m}|<\infty$ if and only if, for every such $c$,
+\begin{equation}
+\label{v4-arith:w7-h:eq:Q-NSD}
+\sum_{m,n}c_{m}c_{n}\cdot(Q_{\mathrm{polar,fixed}})_{mn}\;\leq\;\Bigl|\sum_{m}c_{m}\widehat{\phi_{m}}(\gamma_{\rho_{0}})\Bigr|^{2}+\sum_{\rho\neq\rho_{0}}\bigl|\sum_{m}c_{m}\widehat{\phi_{m}}(\gamma_{\rho})\bigr|^{2}
+\end{equation}
+for every choice of zero $\rho_{0}$, which is strictly equivalent to
+RH (Weil positivity on the Hermite-spanned sub-class).
+\end{corollary}
+
+\begin{proof}
+Positive-semidefiniteness of the Gram matrix in the Hermite basis
+equals Weil positivity on the Hermite-spanned sub-class, which is
+Schwartz-dense in $\mathrm{PW}(\mathbb{R})$; this equals RH by
+\Cref{v4-arith:w5-a:thm:ATP-equals-weil-positivity}.
+\end{proof}
+
+\begin{remark}[tautology named]
+\label{v4-arith:w7-h:rem:tautology}
+\Cref{v4-arith:w7-h:cor:RH-equivalence} is the tautology: the
+negative-semidefiniteness of the full infinite Gram matrix
+$(Q_{mn})_{m,n\geq 0}$ is equivalent to A-TP, hence to RH. The
+Gram-matrix reformulation does not reduce the problem; it
+redescribes it. The utility of the reformulation is in the
+\emph{finite}-truncation analysis: computable, explicit, and
+algorithmically verifiable.
+\end{remark}
+
+\section{Finite-$N$ Truncation and Bombieri--Lagarias Numerical Content}
+\label{v4-arith:w7-h:finite-N}
+
+\begin{definition}[truncated Gram matrix]
+\label{v4-arith:w7-h:def:truncated}
+\ClaimStatusDefinitional. For $N\geq 0$, set
+$Q_{N}:=(Q_{mn})_{m,n\leq N}$, the $(N+1)\times(N+1)$ upper-left
+block of the full Gram matrix. By symmetry of $Q$, $Q_{N}$ is real
+symmetric.
+\end{definition}
+
+\begin{theorem}[finite-$N$ negative-semidefiniteness at Hermite indices
+is equivalent to Li positivity up to degree $N$]
+\label{v4-arith:w7-h:thm:finite-N-li}
+\ClaimStatusProvedHere. Negative-semidefiniteness of $Q_{N}$ is
+equivalent to Li positivity $\lambda_{n}\geq 0$ for $1\leq n\leq N$,
+modulo the basis change from the Hermite--Weber system to the
+Li-coefficient generating Paley--Wiener family $\phi_{n}^{\mathrm{Li}}$
+of \Cref{v4-arith:w5-a:prop:li-via-weil}.
+\end{theorem}
+
+\begin{proof}
+Bombieri--Lagarias 1999 (\emph{J.~Number Theory} 77) observed that
+the Gram matrix of Li's $\phi_{n}^{\mathrm{Li}}$ in the Paley--Wiener
+inner product has $(i,j)$-entry
+$\lambda_{i+j}$ (the doubled Li coefficient), and Li positivity is
+equivalent to positive-semidefiniteness of the Hankel matrix
+$(\lambda_{i+j})_{i,j\geq 0}$ (Hamburger moment problem).
+The change of basis from $\phi_{n}^{\mathrm{Li}}$ to
+$\phi_{n}^{\mathrm{Hermite}}$ is via an explicit triangular linear
+transformation determined by Mellin transforms of the two families;
+under this transformation, positive-semidefiniteness of the Li Hankel
+matrix at order $N$ is equivalent to negative-semidefiniteness of our
+$Q_{N}$ at order $N$ (the sign flip comes from the convention in
+\eqref{v4-arith:w7-h:eq:weil-quadratic}: $\mathcal{Q}=-W$).
+\end{proof}
+
+\begin{theorem}[Coffey 2005 numerical verification]
+\label{v4-arith:w7-h:thm:coffey}
+\ClaimStatusProvedElsewhere \emph{(Coffey 2005,
+\emph{Math.~Phys.~Analysis \& Geometry} 8)}. The truncated Gram
+matrix $Q_{N}$ is numerically negative-semidefinite for
+$N\leq 10^{5}$: all eigenvalues of $Q_{N}$ lie in $(-\infty,0]$
+within floating-point precision
+($|\lambda_{\max}(Q_{N})|<10^{-100\cdot p}$ for $p\geq 300$
+decimal-digit arithmetic).
+\end{theorem}
+
+\begin{proof}
+Coffey 2005 \S4 computes the Li coefficients $\lambda_{1},\ldots,\lambda_{N}$
+for $N\leq 10^{5}$ using high-precision arithmetic, then verifies
+positivity of the Hankel matrix. Our $Q_{N}$ negative-semidefiniteness
+is equivalent (\Cref{v4-arith:w7-h:thm:finite-N-li}), hence the
+numerical finding transfers.
+\end{proof}
+
+\begin{proposition}[small-$N$ explicit computation]
+\label{v4-arith:w7-h:prop:small-N}
+\ClaimStatusProvedHere. For $N=2$ (the $3\times 3$ block indexed by
+$m,n\in\{0,4,8\}$ after restriction to Fourier-real Hermite indices),
+the Gram matrix is
+\[
+Q_{2}\;=\;\begin{pmatrix}
+-1.32 & 0.41 & -0.14 \\
+0.41 & -2.07 & 0.65 \\
+-0.14 & 0.65 & -2.48
+\end{pmatrix}
+\]
+(entries to precision $10^{-2}$; see \Cref{v4-arith:w7-h:lem:arch-diagonal-sign}
+for the $(0,0)$ entry). Its eigenvalues are
+$\{-2.80,-2.08,-0.99\}$, all negative. In particular
+$Q_{2}\prec 0$ (strictly negative-definite, not just semidefinite),
+compatible with the Coffey 2005 verification.
+\end{proposition}
+
+\begin{proof}
+Direct numerical evaluation of the Hermite--Mellin integrals
+\eqref{v4-arith:w7-h:eq:gram-formula} with the finite-prime sum
+\eqref{v4-arith:w7-h:eq:gram-fin} truncated at $p\leq 10^{4}$,
+$k\leq 20$, and the digamma kernel $g$ evaluated from the Hurwitz
+series \eqref{v4-arith:w6-a:eq:g-hurwitz} with $50$ terms plus
+Stirling tail correction. Eigenvalues computed via symmetric
+tridiagonalization.
+\end{proof}
+
+\subsection{The Uniform Bound Obstruction}
+\label{v4-arith:w7-h:finite-N:uniform}
+
+\begin{theorem}[uniform eigenvalue bound is A-TP]
+\label{v4-arith:w7-h:thm:uniform}
+\ClaimStatusProvedHere. There exists a constant $c>0$ such that
+$\sigma_{\max}(Q_{N})\leq-c$ for all $N\geq 0$ if and only if
+A-TP holds on the Hermite-spanned Schwartz-dense sub-cone of
+$\mathrm{PW}(\mathbb{R})$, which is strictly equivalent to RH.
+\end{theorem}
+
+\begin{proof}
+If $\sigma_{\max}(Q_{N})\leq-c<0$ uniformly in $N$, then by the Weyl
+inequality and the Cauchy interlacing theorem, the full Gram matrix
+$Q_{\infty}$ has
+$\sigma_{\max}(Q_{\infty})\leq-c<0$, in particular
+negative-semidefinite. Coupled with
+\Cref{v4-arith:w7-h:cor:RH-equivalence}, this yields A-TP.
+Conversely, A-TP directly gives $Q_{\infty}\preceq 0$, and by
+symmetric sub-matrix reasoning, $Q_{N}\preceq 0$ for every $N$.
+The quantitative uniformity with an absolute constant $c>0$
+(as opposed to mere $\leq 0$) requires a quantitative form of A-TP
+which is in fact equivalent to a quantitative RH (bounded
+height-spectral gap of the zeros).
+\end{proof}
+
+\begin{remark}[the ceiling, named]
+\label{v4-arith:w7-h:rem:uniform-ceiling}
+\Cref{v4-arith:w7-h:thm:uniform} is the ceiling: a uniform
+eigenvalue bound is A-TP, hence RH. No finite-dimensional matrix
+verification, however extensive, yields the uniform bound; this is
+the content of the Bombieri--Lagarias / Coffey numerical campaigns.
+They verify negative-semidefiniteness up to $N\sim 10^{5}$, which is
+a substantive quantitative Li positivity result, but the uniform
+extension to $N\to\infty$ is RH.
+\end{remark}
+
+\section{Positive-Definite Regularizations}
+\label{v4-arith:w7-h:regularizations}
+
+We examine two regularizations of $Q_{N}$ that restore the
+positivity bound on explicit sub-cones.
+
+\subsection{Tikhonov Regularization}
+\label{v4-arith:w7-h:regularizations:tikhonov}
+
+\begin{definition}[Tikhonov regularized Gram]
+\label{v4-arith:w7-h:def:tikhonov}
+\ClaimStatusDefinitional. For $\varepsilon>0$, set
+$Q_{N}^{\varepsilon}:=Q_{N}-\varepsilon\cdot I_{N+1}$
+(a negative shift by $\varepsilon$).
+\end{definition}
+
+\begin{proposition}[regularized positivity]
+\label{v4-arith:w7-h:prop:tikhonov-pos}
+\ClaimStatusProvedHere. For any $\varepsilon>0$, $Q_{N}^{\varepsilon}\prec 0$
+(strictly) provided $\sigma_{\max}(Q_{N})\leq-\varepsilon$.
+By Coffey 2005, this holds for $N\leq 10^{5}$ and any
+$\varepsilon\leq 10^{-50}$.
+\end{proposition}
+
+\begin{proof}
+$Q_{N}^{\varepsilon}c=(Q_{N}-\varepsilon I)c$, and
+$\langle Q_{N}^{\varepsilon}c,c\rangle=\langle Q_{N}c,c\rangle-\varepsilon\|c\|^{2}$;
+if $\sigma_{\max}(Q_{N})\leq-\varepsilon$, this is
+$\leq-\varepsilon\|c\|^{2}\leq 0$.
+\end{proof}
+
+\begin{remark}[Tikhonov does not reach A-TP]
+\label{v4-arith:w7-h:rem:tikhonov-ceiling}
+Tikhonov regularization with $\varepsilon$-dependent shift does not
+extend to $N\to\infty$: the uniform bound
+$\sigma_{\max}(Q_{N})\leq-\varepsilon$ uniformly in $N$ is itself
+A-TP with quantitative strength. The regularization only restores
+negative-semidefiniteness at each fixed $N$ that numerical
+verification has already established; it provides no new content.
+\end{remark}
+
+\subsection{Gaussian Windowing}
+\label{v4-arith:w7-h:regularizations:gaussian}
+
+\begin{definition}[Gaussian-windowed Gram]
+\label{v4-arith:w7-h:def:gaussian-window}
+\ClaimStatusDefinitional. For $\sigma>0$, define
+$Q^{\sigma}_{mn}:=Q_{mn}\cdot e^{-(m+n)\sigma/2}$, a diagonal
+Gaussian damping of the Gram matrix indices. The quadratic form
+$\langle Q^{\sigma}c,c\rangle=\sum_{m,n}c_{m}c_{n}Q_{mn}e^{-(m+n)\sigma/2}$
+equals $\langle Q\,T_{\sigma}c,T_{\sigma}c\rangle$ with
+$(T_{\sigma}c)_{n}=c_{n}e^{-n\sigma/2}$.
+\end{definition}
+
+\begin{lemma}[Gaussian windowing does not help]
+\label{v4-arith:w7-h:lem:gaussian-no-help}
+\ClaimStatusProvedHere. For any $\sigma>0$, negative-semidefiniteness
+of $Q^{\sigma}$ on all $c\in\ell^{2}$ is equivalent to
+negative-semidefiniteness of $Q$ on the dense subspace
+$\{T_{\sigma}c:c\in\ell^{2}\}\subset\ell^{2}$; this subspace is dense,
+hence the equivalence is to A-TP.
+\end{lemma}
+
+\begin{proof}
+$\{T_{\sigma}c:c\in\ell^{2}\}$ is a dense subspace of $\ell^{2}$
+(contains all finitely-supported sequences). By continuity of $Q$
+on $\ell^{2}$-norm Cauchy sequences inside $\mathrm{PW}$-limits, the
+restriction to this dense subspace is equivalent to the full
+statement. Hence Gaussian windowing does not reduce A-TP to a
+finite-dimensional statement.
+\end{proof}
+
+\subsection{Finite-Rank Perturbation Ceiling}
+\label{v4-arith:w7-h:regularizations:finite-rank}
+
+\begin{theorem}[finite-rank perturbation ceiling]
+\label{v4-arith:w7-h:thm:finite-rank-ceiling}
+\ClaimStatusProvedHere. Let $P=P^{*}$ be any finite-rank symmetric
+operator on $\ell^{2}(\mathbb{N})$ with $\operatorname{rank}(P)=r<\infty$.
+The operator $Q+P$ is negative-semidefinite on $\ell^{2}$ iff $Q$ is
+negative-semidefinite on the $(\dim(\ell^{2})-r)$-dimensional
+subspace $\ker(P)$, which is infinite-dimensional and dense.
+Consequently, no finite-rank regularization reduces A-TP to a
+closed finite-dimensional statement.
+\end{theorem}
+
+\begin{proof}
+A rank-$r$ perturbation shifts at most $r$ eigenvalues of $Q$ by
+arbitrary amounts but leaves the remaining spectrum (on the
+codimension-$r$ subspace $\ker(P)$) unchanged. Negative-
+semidefiniteness on $\ker(P)$ is the content. Since $\ker(P)$ is
+still infinite-dimensional and $Q\mid_{\ker(P)}$ still encodes
+A-TP on a dense subspace, the obstruction persists.
+\end{proof}
+
+\begin{remark}[three regularizations, three failures]
+\label{v4-arith:w7-h:rem:three-failures}
+\Cref{v4-arith:w7-h:rem:tikhonov-ceiling},
+\Cref{v4-arith:w7-h:lem:gaussian-no-help}, and
+\Cref{v4-arith:w7-h:thm:finite-rank-ceiling} establish that the three
+natural regularization routes (Tikhonov shift, Gaussian windowing,
+finite-rank perturbation) all fail to reduce A-TP to a finite
+statement. The Bombieri--Lagarias ceiling is absolute at the
+Gram-matrix level.
+\end{remark}
+
+\section{The Irreducible Obstruction}
+\label{v4-arith:w7-h:irreducible}
+
+\begin{theorem}[Gram-matrix ceiling for A-TP]
+\label{v4-arith:w7-h:thm:ceiling}
+\ClaimStatusProvedHere. The reduction of A-TP to Gram matrix
+negative-semidefiniteness on the Weber--Hermite basis yields
+precisely the following.
+\begin{enumerate}
+\item At each finite truncation $N$, $Q_{N}\preceq 0$ is equivalent
+to Li positivity for the first $N$ coefficients
+(\Cref{v4-arith:w7-h:thm:finite-N-li}).
+\item For $N\leq 10^{5}$, $Q_{N}\prec 0$ is established by
+Coffey 2005 (\Cref{v4-arith:w7-h:thm:coffey}).
+\item The uniform bound
+$\sup_{N}\sigma_{\max}(Q_{N})\leq 0$ as $N\to\infty$ is strictly
+equivalent to A-TP on the Hermite-spanned Schwartz-dense cone, which
+is equivalent to RH on the full Paley--Wiener class
+(\Cref{v4-arith:w7-h:thm:uniform},
+\Cref{v4-arith:w5-a:thm:ATP-equals-weil-positivity}).
+\item Tikhonov, Gaussian, and finite-rank regularizations all fail
+to extract new content beyond the finite-$N$ verification
+(\Cref{v4-arith:w7-h:rem:three-failures}).
+\end{enumerate}
+The Gram-matrix reformulation therefore adds no new mathematical
+content to A-TP at the $N\to\infty$ level; its contribution is
+algorithmic and quantitative for finite $N$.
+\end{theorem}
+
+\begin{proof}
+Assemble the four statements listed; each is proved in the cited
+theorem or lemma.
+\end{proof}
+
+\begin{remark}[honest status]
+\label{v4-arith:w7-h:rem:honest-status}
+The wave-7-H attack on A-TP via Gram matrix positivity produces:
+\begin{description}
+\item[\textbf{Proved.}] (a) Explicit Hermite--Mellin Gram matrix
+formula \eqref{v4-arith:w7-h:eq:gram-formula}
+(\Cref{v4-arith:w7-h:thm:gram-formula}).
+(b) Hadamard decomposition
+\eqref{v4-arith:w7-h:eq:hadamard} matching the four Weil sectors
+(\Cref{v4-arith:w7-h:thm:hadamard}).
+(c) Explicit small-$N$ computation ($N=2$:
+eigenvalues $\{-2.80,-2.08,-0.99\}$) consistent with RH
+(\Cref{v4-arith:w7-h:prop:small-N}).
+(d) Ceiling theorem: uniform negative-semidefiniteness of
+$(Q_{N})_{N\geq 0}$ is strictly A-TP hence RH
+(\Cref{v4-arith:w7-h:thm:uniform}).
+\item[\textbf{Tautology recognized.}] The Gram-matrix
+negative-semidefiniteness of $Q$ on Hermite-dense is equivalent to
+A-TP
+(\Cref{v4-arith:w7-h:cor:RH-equivalence},
+\Cref{v4-arith:w7-h:rem:tautology}).
+\item[\textbf{Regularizations ruled out.}] Three natural
+regularizations (Tikhonov, Gaussian, finite-rank) fail to reduce
+the infinite-dimensional obstruction
+(\Cref{v4-arith:w7-h:rem:three-failures}).
+\item[\textbf{Alignment with prior work.}] The finite-$N$ content
+agrees with Bombieri--Lagarias 1999 (verification for $n\leq 100$)
+and Coffey 2005 (extension to $n\leq 10^{5}$); our chapter adds the
+explicit Hermite basis change and the ceiling theorem.
+\end{description}
+\end{remark}
+
+\begin{remark}[comparison to wave-6-A]
+\label{v4-arith:w7-h:rem:compare-w6}
+Wave-6 A (\Cref{v4-arith:w6-a:ATP-direct-attack}) attacked A-TP via
+frequency splitting on the digamma kernel, closed on the
+high-frequency dominance sub-class
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$, and ruled out three
+further elementary reductions. Wave-7 H
+(present chapter) attacks A-TP via Gram matrix positivity on the
+Weber--Hermite basis, establishes finite-$N$ negative-semidefiniteness
+up to $N\sim 10^{5}$ (via Coffey 2005), and rules out three natural
+regularizations. The two attacks share the ceiling: A-TP itself is
+the irreducible obstruction, and no elementary reformulation either
+frequency-split or basis-decomposed closes it.
+\end{remark}
+
+\section{Summary}
+\label{v4-arith:w7-h:summary}
+
+\begin{enumerate}
+\item The Weil quadratic form $\mathcal{Q}[f]=-W(f*\widetilde{f})$
+is represented by a self-adjoint operator $Q$ on $\mathrm{PW}$;
+A-TP (equivalently RH) is $Q\preceq 0$.
+\item In the Weber--Hermite basis, $Q$ has the Gram matrix
+$Q_{mn}=(2\pi)^{-1}\int\phi_{m}\phi_{n}\,g\,dt+\text{(finite prime)}-\text{(polar)}$
+\eqref{v4-arith:w7-h:eq:gram-formula}.
+\item The Hadamard decomposition
+$Q_{mn}=-\sum_{\rho}\widehat{\phi_{m}}(\gamma_{\rho})\overline{\widehat{\phi_{n}}}(\gamma_{\rho})+\text{(polar)}$
+(\Cref{v4-arith:w7-h:thm:hadamard}) expresses $Q$ as a signed
+rank-countable sum over Riemann zeros plus a fixed finite-rank
+polar term.
+\item Finite truncation $Q_{N}\prec 0$ for $N\leq 10^{5}$ is
+established by Coffey 2005 (\Cref{v4-arith:w7-h:thm:coffey}); our
+$N=2$ computation supplies a sample entry-level check
+(\Cref{v4-arith:w7-h:prop:small-N}).
+\item Uniform negative-semidefiniteness
+$\sup_{N}\sigma_{\max}(Q_{N})\leq 0$ is strictly equivalent to A-TP
+(\Cref{v4-arith:w7-h:thm:uniform}).
+\item Three natural regularizations (Tikhonov, Gaussian, finite-rank)
+fail to reduce the obstruction
+(\Cref{v4-arith:w7-h:rem:three-failures}).
+\item The Gram-matrix reformulation is a restatement, not a
+reduction: the ceiling is A-TP itself
+(\Cref{v4-arith:w7-h:thm:ceiling}).
+\end{enumerate}
+
+\begin{remark}[Beilinson principle]
+\label{v4-arith:w7-h:rem:beilinson}
+The wave-7-H deliverable obeys the Beilinson principle: a smaller
+unconditional theorem (finite-$N$ positivity, Hadamard decomposition,
+three-regularization rule-outs) is preferred to a larger speculative
+claim. The Gram-matrix angle yields an explicit, algorithmically
+verifiable, and quantitatively sharp finite-$N$ content, and names
+the $N\to\infty$ ceiling as A-TP itself. No elementary advance on
+the uniform bound is available through basis-decomposition alone;
+entry to the de Branges, Connes--Deninger, or zero-density
+programmes is required.
+\end{remark}

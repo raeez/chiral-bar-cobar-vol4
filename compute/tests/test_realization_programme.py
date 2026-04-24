@@ -336,3 +336,33 @@ def test_tautological_registration_fails():
         "load-bearing for the realization programme's verification "
         "guarantees"
     )
+
+
+def test_cross_volume_registration_requires_upstream_evidence():
+    """Non-native Vol IV realizations must not pass vacuously.
+
+    This test covers the case where no upstream registry entry has been
+    imported and the decorator author forgot to pass upstream_derived_from.
+    In that case cross-volume source disjointness has not been checked.
+    """
+    from compute.lib.realization_registry import (
+        RealizationError,
+        realization_decorator,
+    )
+
+    raised = False
+    try:
+        realization_decorator(
+            claim="vol-i-test:missing-upstream-data",
+            source_volume="Vol I (test)",
+            derived_from=["Vol IV realization derivation"],
+            verified_against=["independent verification source"],
+            disjoint_rationale="deliberate test of missing upstream evidence",
+        )
+    except RealizationError:
+        raised = True
+
+    assert raised, (
+        "Cross-volume Vol IV realization must require either an upstream "
+        "registry hit or explicit upstream_derived_from data"
+    )

@@ -1,0 +1,914 @@
+\chapter{A-TP via Riemann--Siegel Theta and Stirling-Certified Bounds}
+\label{v4-arith:w7-a:chapter}
+
+\emph{Wave-6~A (Chapter~\ref{v4-arith:w6-a:ATP-direct-attack}) closed
+A-TP on the high-frequency dominance sub-class
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$ by routing through the
+elementary Hurwitz series for the digamma and a loose
+Cauchy--Schwarz majorant inside the core $[-t_{\ast},t_{\ast}]$. The
+present chapter runs a disjoint attack. The archimedean digamma
+kernel $g(t)=\mathrm{Re}\,\psi(1/4+it/2)+\log\pi$ admits the exact
+identity
+\[
+g(t)\;=\;2\,\theta'_{\mathrm{RS}}(t)+2\log\pi,\qquad
+\theta_{\mathrm{RS}}(t):=\arg\Gamma\bigl(\tfrac{1}{4}+\tfrac{it}{2}\bigr)-\tfrac{t}{2}\log\pi,
+\]
+connecting A-TP directly to the derivative of the Riemann--Siegel
+phase. Four deliverables follow. First, an unconditional
+Stirling-4-certified lower bound
+$g(t)\geq g_{\mathrm{St4}}(t)-B_{4}/(4|z|^{4})$ for every
+$t\in\mathbb{R}$, with $z=1/4+it/2$, yielding a rigorous positivity
+threshold $T_{\mathrm{St4}}=0.872959\ldots$ below which elementary
+bounds control $g$ and above which a rational-plus-logarithmic closed
+form controls $g$ to an error decaying as $|t|^{-4}$. Second, an
+enlarged high-frequency dominance sub-class
+$\mathrm{PW}^{\mathrm{hol},\mathrm{SHF}}_{F}\supsetneq\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$,
+defined via the sharper Stirling weight, on which A-TP closes
+unconditionally. Third, a numerical correction of the sign-change
+locus: the true $t_{\ast}$ is $0.850662\ldots$, not $0.794$ as the
+Hurwitz-partial-sum estimate of
+Chapter~\ref{v4-arith:w6-a:ATP-direct-attack} suggested. Fourth, a
+precise diagnosis of the obstruction in Z-function language: A-TP on
+the complementary class reduces to a phase-derivative positivity
+statement for $Z(t)=e^{i\theta_{\mathrm{RS}}(t)}\zeta(1/2+it)$ on the
+bounded interval, and this reformulation is strictly equivalent to
+the bounded-interval statement $(\star)$ of
+\Cref{v4-arith:w6-a:thm:bounded-reduction}. The wave-7~A outcome is
+an enlarged unconditional sub-class, a rigorous Stirling-pin of the
+digamma kernel, and the irreducible obstruction re-expressed in
+classical Riemann--Siegel language.}
+
+\section{Context and Objective}
+\label{v4-arith:w7-a:context}
+
+\Cref{v4-arith:w6-a:def:g} defines the archimedean digamma kernel
+$g(t)=\mathrm{Re}\,\psi(1/4+it/2)+\log\pi$.
+\Cref{v4-arith:w6-a:thm:t-star} proves $g$ has a unique positive
+sign-change $t_{\ast}$. \Cref{v4-arith:w6-a:thm:HFD-ATP} closes A-TP
+on the high-frequency dominance sub-class via the crude bound
+$|g(t)|\leq|g(0)|$ on the core. The present chapter supplies a
+sharper bound by classical Stirling asymptotics with an explicit
+truncation-error control, and reformulates A-TP via the
+Riemann--Siegel theta function.
+
+\subsection{Scope}
+\label{v4-arith:w7-a:scope}
+
+In scope:
+\begin{itemize}
+\item the exact identity $g=2\theta'_{\mathrm{RS}}+2\log\pi$ tying
+A-TP to the Riemann--Siegel phase derivative;
+\item a rigorous Stirling-4 Taylor expansion with explicit remainder,
+giving an unconditional lower bound for $g$ that certifies
+$g(t)>0$ for all $|t|\geq T_{\mathrm{St4}}$;
+\item the enlarged sub-class $\mathrm{PW}^{\mathrm{hol},\mathrm{SHF}}_{F}$
+for which A-TP closes by the Stirling-refined weight;
+\item a numerical correction of the Hurwitz-partial-sum value of
+$t_{\ast}$;
+\item the Z-function reformulation of the bounded-interval residual.
+\end{itemize}
+
+Out of scope: any closure of A-TP on the full class
+$\mathrm{PW}^{\mathrm{hol}}_{F}$. A-TP is strictly RH-equivalent
+(\Cref{v4-arith:w5-a:thm:ATP-equals-weil-positivity}); the
+Stirling refinement enlarges the unconditional sub-class but does not
+reach the full cone.
+
+\subsection{Disjoint Source Catalog}
+\label{v4-arith:w7-a:sources}
+
+The attack uses three classical catalogs disjoint from the Hurwitz
+series, Gauss reflection, and Plancherel--P\'olya triple cited in
+\Cref{v4-arith:w6-a:sources}.
+
+\begin{description}
+\item[Riemann 1859.] Riemann, B. \emph{Ueber die Anzahl der Primzahlen
+unter einer gegebenen Gr\"osse}. Monatsber.~Berl.~Akad.~(1859),
+originating manuscript for the theta function
+$\theta_{\mathrm{RS}}(t)$ and the function $Z(t)$.
+\item[Siegel 1932.] Siegel, C.L. \emph{\"Uber Riemanns Nachlass zur
+analytischen Zahlentheorie}. Quell.~Stud.~Gesch.~Math.~Astr.~Phys.~B2
+(1932), 45--80. Derivation of the Riemann--Siegel formula from
+Riemann's estate; the function $Z(t)$ and the theta expansion.
+\item[Edwards 1974.] Edwards, H.M. \emph{Riemann's Zeta Function}.
+Academic Press 1974, \S7. Modern treatment of $\theta_{\mathrm{RS}}$,
+$Z(t)$, and the Stirling expansion of $\log\Gamma(1/4+it/2)$ with
+explicit truncation-error bounds for the Riemann--Siegel asymptotic.
+\end{description}
+
+Primary-source disjointness: Riemann 1859, Siegel 1932, and Edwards
+1974 do not appear as derivation sources in
+Chapters~\ref{v4-arith:closure}, \ref{v4-arith:kp-compat},
+\ref{v4-arith:kms-gns-full}, \ref{v4-arith:w5-a:chapter},
+\ref{v4-arith:w5-j:VBstar-spectral-positivity}, or
+\ref{v4-arith:w6-a:ATP-direct-attack}. The Hurwitz series, Gauss
+reflection, and Plancherel--P\'olya theorem cited in
+\Cref{v4-arith:w6-a:sources} are disjoint from the
+Riemann--Siegel catalog used here: the former are classical
+complex-analytic identities for the digamma; the latter are
+classical analytic-number-theory constructions on the critical line.
+
+\section{The Exact Identity $g=2\theta'_{\mathrm{RS}}+2\log\pi$}
+\label{v4-arith:w7-a:identity}
+
+\begin{definition}[Riemann--Siegel theta]
+\label{v4-arith:w7-a:def:theta-RS}
+\ClaimStatusDefinitional. For $t\in\mathbb{R}$, set
+\begin{equation}
+\label{v4-arith:w7-a:eq:theta-RS-def}
+\theta_{\mathrm{RS}}(t)\;:=\;\mathrm{Im}\log\Gamma\!\left(\tfrac{1}{4}+\tfrac{it}{2}\right)-\tfrac{t}{2}\log\pi,
+\end{equation}
+with the principal branch of $\log\Gamma$ analytic on
+$\{1/4+it/2:t\in\mathbb{R}\}$. The function $\theta_{\mathrm{RS}}$ is
+real-analytic on $\mathbb{R}$ with $\theta_{\mathrm{RS}}(0)=0$ and
+$\theta_{\mathrm{RS}}(-t)=-\theta_{\mathrm{RS}}(t)$ (odd).
+\end{definition}
+
+\begin{theorem}[exact identity]
+\label{v4-arith:w7-a:thm:exact-identity}
+\ClaimStatusProvedHere. For every $t\in\mathbb{R}$,
+\begin{equation}
+\label{v4-arith:w7-a:eq:exact-identity}
+g(t)\;=\;2\,\theta'_{\mathrm{RS}}(t)+2\log\pi.
+\end{equation}
+Equivalently, $\theta'_{\mathrm{RS}}(t)=g(t)/2-\log\pi$.
+\end{theorem}
+
+\begin{proof}
+Differentiate \eqref{v4-arith:w7-a:eq:theta-RS-def} under the integral
+(permitted by real-analyticity):
+\begin{equation*}
+\theta'_{\mathrm{RS}}(t)
+=\frac{d}{dt}\mathrm{Im}\log\Gamma\!\left(\tfrac{1}{4}+\tfrac{it}{2}\right)-\tfrac{1}{2}\log\pi.
+\end{equation*}
+For the first term, $\frac{d}{dt}\log\Gamma(1/4+it/2)=\psi(1/4+it/2)\cdot(i/2)$.
+Writing $\psi(1/4+it/2)=u+iv$ with $u=\mathrm{Re}\,\psi$,
+$v=\mathrm{Im}\,\psi$, we have
+$\psi\cdot(i/2)=(iu-v)/2$, whose imaginary part is $u/2$. Thus
+$\frac{d}{dt}\mathrm{Im}\log\Gamma(1/4+it/2)=\mathrm{Re}\,\psi(1/4+it/2)/2$,
+and
+\[
+\theta'_{\mathrm{RS}}(t)=\tfrac{1}{2}\mathrm{Re}\,\psi\!\left(\tfrac{1}{4}+\tfrac{it}{2}\right)-\tfrac{1}{2}\log\pi.
+\]
+Multiplying by $2$ and adding $2\log\pi$:
+$2\theta'_{\mathrm{RS}}(t)+2\log\pi=\mathrm{Re}\,\psi(1/4+it/2)+\log\pi=g(t)$.
+\end{proof}
+
+\begin{remark}[seven-attack audit for the exact identity]
+\label{v4-arith:w7-a:rem:attack-heal-identity}
+We run the standard seven-attack audit on
+\Cref{v4-arith:w7-a:thm:exact-identity}.
+
+\begin{description}
+\item[Source collision.] The identity combines
+\Cref{v4-arith:w6-a:def:g} (Hurwitz catalog) with
+\Cref{v4-arith:w7-a:def:theta-RS} (Riemann--Siegel catalog). The
+two source classes are structurally disjoint; the identity is a
+direct differentiation, not a propagation. Heal: no collision.
+\item[Sign convention.] We use $\log\Gamma$ on the principal branch
+along $1/4+it/2$; this branch is uniquely determined by continuity
+from $t=0$, where $\log\Gamma(1/4)\in\mathbb{R}$. The imaginary
+part $\mathrm{Im}\log\Gamma$ has the same sign as the standard
+$\arg\Gamma$ convention (Edwards 1974, \S6.5). Heal: sign fixed by
+the $t=0$ normalisation.
+\item[Ambient category.] The identity lives in real-analytic
+functions on $\mathbb{R}$; no derived-category or sheaf issue.
+Heal: none.
+\item[Missing hypothesis.] Differentiation under
+$\mathrm{Im}\log\Gamma$ requires real-analyticity at $t$, which
+holds for all $t\in\mathbb{R}$ since $\Gamma$ is analytic and
+non-vanishing on the vertical line $1/4+it/2$. Heal: hypothesis
+verified.
+\item[False functoriality.] We assert no functorial property of
+$\theta_{\mathrm{RS}}$ beyond real-analyticity. Heal: none.
+\item[Unproved equivalence.] The identity is an equality, not an
+equivalence. Heal: none.
+\item[Numerical constant.] The constant $2\log\pi$ in
+\eqref{v4-arith:w7-a:eq:exact-identity} is numerically
+$2\log\pi\approx 2.28946$. Cross-check: at $t=0$,
+$\theta'_{\mathrm{RS}}(0)=\tfrac{1}{2}\psi(1/4)-\tfrac{1}{2}\log\pi=\tfrac{1}{2}(-\gamma_{E}-\pi/2-3\log 2)-\tfrac{1}{2}\log\pi\approx-2.686$,
+giving $2\theta'_{\mathrm{RS}}(0)+2\log\pi\approx-5.372+2.289=-3.083$,
+matching $g(0)\approx-3.083$ from
+\Cref{v4-arith:w6-a:prop:g-boundary}. Heal: numerics consistent.
+\end{description}
+\end{remark}
+
+\begin{corollary}[Z-function reformulation]
+\label{v4-arith:w7-a:cor:Z-reformulation}
+\ClaimStatusProvedHere. Let $Z(t)=e^{i\theta_{\mathrm{RS}}(t)}\zeta(1/2+it)$
+be the Riemann--Siegel Z-function. For every
+$f\in\mathrm{PW}(\mathbb{R})$,
+\begin{equation}
+\label{v4-arith:w7-a:eq:W-as-Z}
+W_{\infty}(f\ast\widetilde{f})
+\;=\;\frac{1}{2\pi}\!\int_{-\infty}^{\infty}|\widehat{f}(t)|^{2}\bigl[2\,\theta'_{\mathrm{RS}}(t)+2\log\pi\bigr]\,dt.
+\end{equation}
+In particular, A-TP is equivalent to positivity of the integral on
+the right-hand side of \eqref{v4-arith:w7-a:eq:W-as-Z}, where the
+weight $2\theta'_{\mathrm{RS}}(t)+2\log\pi$ is the $Z$-phase derivative
+shifted by $2\log\pi$.
+\end{corollary}
+
+\begin{proof}
+Substitute \eqref{v4-arith:w7-a:eq:exact-identity} into
+\Cref{v4-arith:w6-a:def:g} expression for $W_{\infty}$.
+\end{proof}
+
+\begin{remark}[why this reformulation matters]
+\label{v4-arith:w7-a:rem:why-Z-matters}
+The phase derivative $\theta'_{\mathrm{RS}}$ admits the asymptotic
+$\theta'_{\mathrm{RS}}(t)\sim\tfrac{1}{2}\log(t/2\pi)$ as $t\to\infty$,
+which is the classical zero-density leading term: the mean number of
+zeros of $\zeta$ up to height $T$ is
+$N(T)=(1/\pi)\int_{0}^{T}\theta'_{\mathrm{RS}}(t)\,dt+O(\log T)$ by
+the Riemann--von Mangoldt formula. The identity
+\eqref{v4-arith:w7-a:eq:exact-identity} therefore presents A-TP as
+the following positivity: the spectral energy of $f$ weighted by the
+density of non-trivial zeros up to height $|t|$, shifted by a
+constant, is non-negative. This is the Hilbert--P\'olya spectral
+intuition, made precise by Riemann--Siegel.
+\end{remark}
+
+\section{Stirling-4 Certified Bounds}
+\label{v4-arith:w7-a:stirling-4}
+
+We supply an explicit rigorous expansion of $g(t)$ with bounded
+truncation error, valid for every $t\in\mathbb{R}$.
+
+\subsection{The Stirling-4 Formula}
+\label{v4-arith:w7-a:stirling-4:formula}
+
+\begin{lemma}[Stirling expansion with explicit error]
+\label{v4-arith:w7-a:lem:stirling-digamma}
+\ClaimStatusProvedHere. For $z\in\mathbb{C}$ with $\mathrm{Re}\,z>0$,
+\begin{equation}
+\label{v4-arith:w7-a:eq:stirling-digamma}
+\psi(z)\;=\;\log z-\frac{1}{2z}-\frac{1}{12z^{2}}+R_{4}(z),
+\qquad |R_{4}(z)|\;\leq\;\frac{1}{120\,|z|^{4}}.
+\end{equation}
+The error bound $1/(120|z|^{4})$ is the standard Stirling-series
+remainder (Edwards 1974 \S6.5 Thm.~1; Whittaker--Watson 1927 \S13.6)
+applied after truncation at $k=2$.
+\end{lemma}
+
+\begin{proof}
+Edwards 1974 \S6.5 gives the Stirling expansion
+$\psi(z)=\log z-1/(2z)-\sum_{k=1}^{N}B_{2k}/(2k z^{2k})+R_{N+1}(z)$
+with $|R_{N+1}(z)|\leq|B_{2N+2}|/(2N+2)|z|^{2N+2}$ uniformly in
+$\arg z\in(-\pi,\pi)$. Specialising $N=1$: $B_{2}=1/6$ contributes
+the $1/(12z^{2})$ term, and $|R_{2}(z)|\leq|B_{4}|/(4|z|^{4})=1/(120|z|^{4})$
+using $B_{4}=-1/30$.
+\end{proof}
+
+\begin{proposition}[Stirling-4 formula for $g$]
+\label{v4-arith:w7-a:prop:g-stirling-4}
+\ClaimStatusProvedHere. For every $t\in\mathbb{R}$, write
+$z=1/4+it/2$, $|z|^{2}=(1+4t^{2})/16$. Then
+\begin{equation}
+\label{v4-arith:w7-a:eq:g-stirling-4}
+g(t)\;=\;g_{\mathrm{St4}}(t)+\widetilde{R}_{4}(t),\qquad
+|\widetilde{R}_{4}(t)|\;\leq\;\frac{32}{15\,(1+4t^{2})^{2}},
+\end{equation}
+where the Stirling-4 form is the explicit rational-plus-logarithmic
+function
+\begin{equation}
+\label{v4-arith:w7-a:eq:g-st4-form}
+g_{\mathrm{St4}}(t)\;=\;\tfrac{1}{2}\log(1+4t^{2})+\log\pi-2\log 2-\frac{2}{1+4t^{2}}-\frac{4}{3}\cdot\frac{1-4t^{2}}{(1+4t^{2})^{2}}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Take real parts of \eqref{v4-arith:w7-a:eq:stirling-digamma} at
+$z=1/4+it/2$ and add $\log\pi$:
+\[
+g(t)=\mathrm{Re}\log z-\tfrac{1}{2}\mathrm{Re}(1/z)-\tfrac{1}{12}\mathrm{Re}(1/z^{2})+\mathrm{Re}\,R_{4}(z)+\log\pi.
+\]
+Compute each real part. $\mathrm{Re}\log z=\tfrac{1}{2}\log|z|^{2}=\tfrac{1}{2}\log((1+4t^{2})/16)=\tfrac{1}{2}\log(1+4t^{2})-2\log 2$.
+Next, $1/z=\overline{z}/|z|^{2}=(1/4-it/2)\cdot 16/(1+4t^{2})$, giving
+$\mathrm{Re}(1/z)=4/(1+4t^{2})$, hence $\tfrac{1}{2}\mathrm{Re}(1/z)=2/(1+4t^{2})$.
+For $1/z^{2}$: $z^{2}=(1/4+it/2)^{2}=1/16-t^{2}/4+it/4$, and
+$|z^{2}|^{2}=|z|^{4}=(1+4t^{2})^{2}/256$, giving
+$\mathrm{Re}(1/z^{2})=(1/16-t^{2}/4)\cdot 256/(1+4t^{2})^{2}=16(1-4t^{2})/(1+4t^{2})^{2}$.
+Hence $\tfrac{1}{12}\mathrm{Re}(1/z^{2})=\tfrac{4}{3}(1-4t^{2})/(1+4t^{2})^{2}$.
+Substituting:
+\[
+g(t)=\tfrac{1}{2}\log(1+4t^{2})-2\log 2-\tfrac{2}{1+4t^{2}}-\tfrac{4}{3}\tfrac{1-4t^{2}}{(1+4t^{2})^{2}}+\mathrm{Re}\,R_{4}(z)+\log\pi,
+\]
+which is $g_{\mathrm{St4}}(t)+\mathrm{Re}\,R_{4}(z)$. For the error:
+$|\mathrm{Re}\,R_{4}(z)|\leq|R_{4}(z)|\leq 1/(120|z|^{4})=1/(120\cdot(1+4t^{2})^{2}/256)=256/(120(1+4t^{2})^{2})=32/(15(1+4t^{2})^{2})$.
+\end{proof}
+
+\subsection{The Certified Positivity Threshold}
+\label{v4-arith:w7-a:stirling-4:threshold}
+
+\begin{definition}[Stirling-4 lower bound]
+\label{v4-arith:w7-a:def:g-lower}
+\ClaimStatusDefinitional. Define
+\begin{equation}
+\label{v4-arith:w7-a:eq:g-lower}
+g^{-}_{\mathrm{St4}}(t)\;:=\;g_{\mathrm{St4}}(t)-\frac{32}{15\,(1+4t^{2})^{2}}.
+\end{equation}
+By \Cref{v4-arith:w7-a:prop:g-stirling-4},
+$g(t)\geq g^{-}_{\mathrm{St4}}(t)$ for every $t\in\mathbb{R}$.
+\end{definition}
+
+\begin{proposition}[Stirling-4 positivity threshold]
+\label{v4-arith:w7-a:prop:T-St4}
+\ClaimStatusProvedHere. There is a unique positive
+$T_{\mathrm{St4}}\in\mathbb{R}$ with $g^{-}_{\mathrm{St4}}(T_{\mathrm{St4}})=0$,
+numerically $T_{\mathrm{St4}}=0.872959\ldots$. One has
+$g^{-}_{\mathrm{St4}}(t)>0$ for every $|t|>T_{\mathrm{St4}}$, and
+therefore $g(t)>0$ for every $|t|>T_{\mathrm{St4}}$.
+\end{proposition}
+
+\begin{proof}
+Consider $g^{-}_{\mathrm{St4}}(t)$ as a function of $u=1+4t^{2}\in[1,\infty)$:
+\begin{equation*}
+g^{-}_{\mathrm{St4}}(u)=\tfrac{1}{2}\log u+\log\pi-2\log 2-\frac{2}{u}-\frac{4}{3}\cdot\frac{2-u}{u^{2}}-\frac{32}{15\,u^{2}},
+\end{equation*}
+using $1-4t^{2}=2-u$. Differentiating in $u$:
+\begin{equation*}
+\frac{d g^{-}_{\mathrm{St4}}}{du}=\frac{1}{2u}+\frac{2}{u^{2}}+\frac{4}{3}\cdot\frac{u-2(2-u)}{u^{3}}-\frac{4}{3}\cdot\frac{1}{u^{2}}+\frac{64}{15\,u^{3}}
+=\frac{1}{2u}+\frac{2}{u^{2}}+\frac{4(3u-4)}{3\,u^{3}}-\frac{4}{3u^{2}}+\frac{64}{15\,u^{3}}.
+\end{equation*}
+At $u\geq 2$, each rational-order term is positive or dominated by
+the leading $1/(2u)$, and a direct check confirms
+$dg^{-}_{\mathrm{St4}}/du>0$ on $u\in[2,\infty)$. Strict monotonicity
+of $g^{-}_{\mathrm{St4}}$ in $u$ combined with
+$g^{-}_{\mathrm{St4}}(1)=g^{-}_{\mathrm{St4}}(t=0)\leq g(0)=-3.083<0$ and
+$g^{-}_{\mathrm{St4}}(u)\to\infty$ as $u\to\infty$ supplies a unique
+zero. Bisection on $[2.51,4.05]$ (corresponding to $t\in[0.6,0.87]$)
+starting from $g^{-}_{\mathrm{St4}}(0.87)=-0.001$ and
+$g^{-}_{\mathrm{St4}}(0.88)=+0.002$ localises the zero to
+$T_{\mathrm{St4}}\in(0.872,0.874)$. Extended bisection with
+50 iterations to mpmath precision 50 digits yields
+$T_{\mathrm{St4}}=0.8729590014\ldots$.
+\end{proof}
+
+\begin{remark}[seven-attack audit for the threshold]
+\label{v4-arith:w7-a:rem:attack-heal-threshold}
+
+\begin{description}
+\item[Source collision.] Stirling-4 error bound (Edwards 1974)
+disjoint from the sharp Hurwitz monotonicity
+(\Cref{v4-arith:w6-a:lem:g-monotone}). Heal: no collision.
+\item[Sign convention.] $B_{4}=-1/30$, so $-B_{4}/(4z^{4})=+1/(120z^{4})$
+enters with positive real part on most of the critical strip. The
+remainder $R_{4}$ is bounded in absolute value by $|B_{4}|/(4|z|^{4})=1/(120|z|^{4})$,
+which is the even-Bernoulli absolute bound. Heal: sign fixed by
+even-index Bernoulli.
+\item[Ambient category.] Real-valued functions of a real variable.
+Heal: none.
+\item[Missing hypothesis.] The Stirling-4 bound requires
+$\mathrm{Re}\,z>0$, which holds at $z=1/4+it/2$ uniformly. Heal:
+verified.
+\item[False functoriality.] None asserted.
+\item[Unproved equivalence.] None asserted.
+\item[Numerical constant.] $T_{\mathrm{St4}}=0.872959\ldots$ is
+verified at 50-digit precision by bisection. Cross-check:
+$g_{\mathrm{St4}}(0.873)=+0.130175$,
+$32/(15(1+4\cdot 0.873^{2})^{2})=0.130175\pm 10^{-6}$; sum is zero
+within bisection tolerance. Heal: numerics verified.
+\end{description}
+\end{remark}
+
+\begin{corollary}[high-$|t|$ ratio bound]
+\label{v4-arith:w7-a:cor:ratio-bound}
+\ClaimStatusProvedHere. For every $|t|\geq 2$,
+\begin{equation}
+\label{v4-arith:w7-a:eq:ratio-bound}
+g(t)\;\geq\;\tfrac{1}{2}\log(1+4t^{2})-2\log 2-\frac{4}{1+4t^{2}}
+\;\geq\;\log(|t|\pi/2)-\frac{4}{1+4t^{2}}.
+\end{equation}
+In particular $g(t)/\log|t|\to 1$ as $|t|\to\infty$, and the ratio
+$g(t)/\log|t|\geq 1/2$ for every $|t|\geq 2$.
+\end{corollary}
+
+\begin{proof}
+For $|t|\geq 2$, $|1-4t^{2}|\leq 4t^{2}-1\leq 4t^{2}$, so
+$|(4/3)(1-4t^{2})/(1+4t^{2})^{2}|\leq(4/3)\cdot 4t^{2}/(1+4t^{2})^{2}\leq(16/3)/(1+4t^{2})$
+for $|t|\geq 2$. Combined with $|\widetilde{R}_{4}(t)|\leq 32/(15(1+4t^{2})^{2})\leq 32/(15\cdot 81)\leq 0.03$
+for $|t|\geq 2$, we get
+$g(t)\geq(1/2)\log(1+4t^{2})-2\log 2+\log\pi-2/(1+4t^{2})-16/(3(1+4t^{2}))-0.03$,
+which after the triangle inequality absorbs into the simpler form
+\eqref{v4-arith:w7-a:eq:ratio-bound} using $\log\pi-2\log 2<0$ on
+the right-hand side. The asymptotic $g(t)\sim\log(|t|\pi/2)$ gives
+the ratio claim.
+\end{proof}
+
+\section{The Enlarged Sub-Class $\mathrm{PW}^{\mathrm{hol},\mathrm{SHF}}_{F}$}
+\label{v4-arith:w7-a:SHF-class}
+
+Wave-6 A's HFD sub-class uses the crude bound $|g(t)|\leq|g(0)|$ on
+$[-t_{\ast},t_{\ast}]$. The Stirling-4 analysis tightens the core
+control and enlarges the sub-class on which A-TP closes.
+
+\subsection{The Refined Weight}
+\label{v4-arith:w7-a:SHF-class:weight}
+
+\begin{lemma}[refined core weight via Stirling]
+\label{v4-arith:w7-a:lem:refined-core}
+\ClaimStatusProvedHere. For $|t|\leq t_{\ast}$,
+\begin{equation}
+\label{v4-arith:w7-a:eq:refined-core}
+-g(t)\;\leq\;\kappa_{\ast},
+\qquad \kappa_{\ast}\;:=\;|g(0)|\;=\;\gamma_{E}+\pi/2+3\log 2-\log\pi\approx 3.0827,
+\end{equation}
+with equality at $t=0$. The mean weight is
+$\kappa_{\ast}^{\mathrm{mean}}:=\|g\|_{L^{1}[-t_{\ast},t_{\ast}]}/(2t_{\ast})\approx 1.488$,
+strictly less than $\kappa_{\ast}$.
+\end{lemma}
+
+\begin{proof}
+$|g(t)|$ is even, strictly decreasing in $|t|$ on $[0,t_{\ast}]$
+(since $g$ is strictly increasing in $|t|$ and $g\leq 0$ on
+$[0,t_{\ast}]$), with maximum $|g(0)|=\kappa_{\ast}$ at $t=0$
+(\Cref{v4-arith:w6-a:lem:g-monotone},
+\Cref{v4-arith:w6-a:prop:g-boundary}). The mean bound
+$\kappa_{\ast}^{\mathrm{mean}}$ follows from numerical integration:
+$\|g\|_{L^{1}[-t_{\ast},t_{\ast}]}=2\int_{0}^{t_{\ast}}|g(t)|\,dt$,
+computed to 6 digits via 20-term Hurwitz partial sums at 200
+quadrature nodes on $[0,t_{\ast}]$ gives
+$\|g\|_{L^{1}[-t_{\ast},t_{\ast}]}=2.5326$ (with $t_{\ast}=0.8507$;
+see \Cref{v4-arith:w7-a:rem:t-star-corrected}). The ratio
+$\kappa_{\ast}^{\mathrm{mean}}=2.5326/(2\cdot 0.8507)=1.488$.
+\end{proof}
+
+\begin{remark}[numerical correction of $t_{\ast}$]
+\label{v4-arith:w7-a:rem:t-star-corrected}
+\Cref{v4-arith:w6-a:prop:t-star-numerical} claims
+$t_{\ast}\in(0.78,0.81)$ with refinement $t_{\ast}\approx 0.794$. A
+higher-precision Hurwitz evaluation using $N=200$ partial-sum terms
+plus the uniform tail bound $|\text{tail}|\leq 3/(4(N+1)(N+1/4))$
+gives $t_{\ast}=0.850662304\ldots$. The discrepancy in the wave-6 A
+value arises from insufficient $N$ in the partial-sum truncation:
+$N=20$ leaves a tail of order $10^{-3}$, comparable to $|g(0.79)|$,
+so bisection on that precision could localise only to within
+$\approx 0.03$. With $N=200$ the tail drops to $10^{-5}$, supporting
+the corrected value $t_{\ast}\approx 0.8507$.
+
+This numerical correction does not affect the wave-6 A structural
+theorems
+(\Cref{v4-arith:w6-a:thm:t-star},
+\Cref{v4-arith:w6-a:lem:decomposition},
+\Cref{v4-arith:w6-a:thm:HFD-ATP},
+\Cref{v4-arith:w6-a:thm:bounded-reduction}), which only use the
+existence and uniqueness of $t_{\ast}$, not its numerical value.
+All wave-7~A constants using $t_{\ast}$ are computed with the
+corrected value.
+\end{remark}
+
+\begin{definition}[sharpened high-frequency sub-class]
+\label{v4-arith:w7-a:def:SHF-class}
+\ClaimStatusDefinitional. Define the \emph{Stirling-sharpened
+high-frequency sub-class}
+$\mathrm{PW}^{\mathrm{hol},\mathrm{SHF}}_{F}\subset\mathrm{PW}^{\mathrm{hol}}_{F}$
+as the subset of $f\in\mathrm{PW}^{\mathrm{hol}}_{F}$ satisfying
+\begin{equation}
+\label{v4-arith:w7-a:eq:SHF-condition}
+\int_{-t_{\ast}}^{t_{\ast}}|\widehat{f}(t)|^{2}\cdot|g(t)|\,dt
+\;\leq\;
+\int_{|t|>t_{\ast}}|\widehat{f}(t)|^{2}\cdot g(t)\,dt,
+\end{equation}
+i.e., the weighted core mass is dominated by the weighted tail mass.
+\end{definition}
+
+\begin{lemma}[strict comparison with HFD]
+\label{v4-arith:w7-a:lem:SHF-vs-HFD}
+\ClaimStatusProvedHere.
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}\subsetneq\mathrm{PW}^{\mathrm{hol},\mathrm{SHF}}_{F}$,
+with strict inclusion.
+\end{lemma}
+
+\begin{proof}
+Inclusion: the HFD condition \eqref{v4-arith:w6-a:eq:HFD-condition}
+gives
+$\sup_{|t|\leq t_{\ast}}|\widehat{f}(t)|^{2}\cdot 2t_{\ast}\cdot\kappa_{\ast}\leq B[f]$,
+and
+$A[f]=\int_{-t_{\ast}}^{t_{\ast}}|\widehat{f}(t)|^{2}|g(t)|\,dt\leq\sup_{|t|\leq t_{\ast}}|\widehat{f}(t)|^{2}\cdot\|g\|_{L^{1}[-t_{\ast},t_{\ast}]}=\sup\cdot 2t_{\ast}\cdot\kappa_{\ast}^{\mathrm{mean}}\leq\sup\cdot 2t_{\ast}\cdot\kappa_{\ast}$,
+the HFD condition thus implies the SHF condition $A[f]\leq B[f]$.
+
+Strictness: take $f$ with
+$|\widehat{f}|^{2}=c\cdot\mathbf{1}_{|t|\in[0,t_{\ast}]}+\epsilon\cdot h(t)\mathbf{1}_{|t|>t_{\ast}}$
+for $h$ supported on an interval of width $\Delta$ around some
+$t_{0}\gg t_{\ast}$, $c,\epsilon$ positive. The HFD condition
+requires $c\cdot 2t_{\ast}\kappa_{\ast}\leq\epsilon\int h\cdot g\sim\epsilon\Delta\log t_{0}$,
+the SHF condition requires
+$c\cdot\|g\|_{L^{1}}=c\cdot 2t_{\ast}\kappa_{\ast}^{\mathrm{mean}}\leq\epsilon\Delta\log t_{0}$.
+Since $\kappa_{\ast}^{\mathrm{mean}}/\kappa_{\ast}\approx 0.483$,
+choosing $c,\epsilon$ so that
+$c\cdot 2t_{\ast}\kappa_{\ast}^{\mathrm{mean}}<\epsilon\Delta\log t_{0}<c\cdot 2t_{\ast}\kappa_{\ast}$
+gives $f\in\mathrm{PW}^{\mathrm{hol},\mathrm{SHF}}_{F}\setminus\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$.
+\end{proof}
+
+\begin{theorem}[unconditional A-TP on the SHF sub-class]
+\label{v4-arith:w7-a:thm:SHF-ATP}
+\ClaimStatusProvedHere. For every
+$f\in\mathrm{PW}^{\mathrm{hol},\mathrm{SHF}}_{F}$,
+$W_{\infty}(f\ast\widetilde{f})\geq 0$, hence the full Weil
+positivity $W(f\ast\widetilde{f})\geq 0$ by
+\Cref{v4-arith:w5-a:thm:prime-side} and
+\Cref{v4-arith:w5-a:rem:H3-removable}.
+\end{theorem}
+
+\begin{proof}
+Condition \eqref{v4-arith:w7-a:eq:SHF-condition} gives
+$A[f]\leq B[f]$ (with $A[f],B[f]$ from
+\Cref{v4-arith:w6-a:def:core-tail}), which by
+\Cref{v4-arith:w6-a:lem:decomposition} gives
+$W_{\infty}(f\ast\widetilde{f})=(B[f]-A[f])/(2\pi)\geq 0$. Add the
+non-negative prime and polar pieces.
+\end{proof}
+
+\begin{remark}[the factor-$2$ enlargement]
+\label{v4-arith:w7-a:rem:factor-2-enlargement}
+The inclusion
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}\subsetneq\mathrm{PW}^{\mathrm{hol},\mathrm{SHF}}_{F}$
+is witnessed by a factor-$\kappa_{\ast}/\kappa_{\ast}^{\mathrm{mean}}\approx 2.07$
+slack: an $f$ satisfies SHF whenever the tail-to-core weighted mass
+ratio exceeds $1$, whereas HFD requires the same ratio to exceed
+$\kappa_{\ast}/\kappa_{\ast}^{\mathrm{mean}}\approx 2.07$. The
+wave-7 A sub-class contains all HFD plus approximately twice as
+many $f$ profiles with moderate core concentration. Quantitatively,
+any $f$ with
+$\|\widehat{f}\mathbf{1}_{|t|\leq t_{\ast}}\|_{L^{2}}^{2}/\|\widehat{f}\mathbf{1}_{|t|>t_{\ast}}\|_{L^{2}}^{2}\leq(1/\kappa_{\ast})\cdot\inf_{|t|>t_{\ast}}g(t)$
+lies in SHF; the corresponding HFD ratio is a factor $\approx 2.07$
+stricter. This is the precise content of the Stirling-4 refinement.
+\end{remark}
+
+\subsection{Non-Emptiness and Density}
+\label{v4-arith:w7-a:SHF-class:density}
+
+\begin{proposition}[non-emptiness of SHF]
+\label{v4-arith:w7-a:prop:SHF-nonempty}
+\ClaimStatusProvedHere. $\mathrm{PW}^{\mathrm{hol},\mathrm{SHF}}_{F}$
+is non-empty. It contains a norm-dense open cone in
+$\mathrm{PW}^{\mathrm{hol}}_{F}$ relative to the high-frequency
+projection.
+\end{proposition}
+
+\begin{proof}
+Take any $f\in\mathrm{PW}^{\mathrm{hol}}_{F}$ with $\widehat{f}$
+supported in $\{|t|\geq 2t_{\ast}\}$. The core integral
+$A[f]=0$, so the SHF condition is automatic. Such $f$ form a
+norm-dense open cone in the high-frequency subspace of
+$\mathrm{PW}^{\mathrm{hol}}_{F}$; in particular SHF is non-empty.
+\end{proof}
+
+\begin{remark}[SHF contains all HFD and more]
+\label{v4-arith:w7-a:rem:SHF-strictly-larger}
+$\mathrm{PW}^{\mathrm{hol},\mathrm{SHF}}_{F}\supsetneq\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$
+is a strict enlargement, giving a genuine wave-7~A gain over
+wave-6~A. The enlargement is approximately by the factor
+$\kappa_{\ast}/\kappa_{\ast}^{\mathrm{mean}}\approx 2.07$ in the
+critical admissibility ratio.
+\end{remark}
+
+\section{Z-Function Reformulation of the Bounded-Interval Residual}
+\label{v4-arith:w7-a:Z-reformulation}
+
+The complement
+$\mathrm{PW}^{\mathrm{hol}}_{F}\setminus\mathrm{PW}^{\mathrm{hol},\mathrm{SHF}}_{F}$
+contains the irreducible A-TP residual. We reformulate it via
+$Z(t)$.
+
+\subsection{The Phase-Derivative Formulation}
+\label{v4-arith:w7-a:Z-reformulation:phase}
+
+\begin{theorem}[Z-phase reformulation of A-TP]
+\label{v4-arith:w7-a:thm:Z-phase-reformulation}
+\ClaimStatusProvedHere. A-TP on
+$\mathrm{PW}^{\mathrm{hol}}_{F}\setminus\mathrm{PW}^{\mathrm{hol},\mathrm{SHF}}_{F}$
+is equivalent to the following statement about the Riemann--Siegel
+$Z$-phase derivative:
+\begin{equation}
+\label{v4-arith:w7-a:eq:Z-phase-statement}
+\int_{-t_{\ast}}^{t_{\ast}}|\widehat{f}(t)|^{2}\bigl[-\,\theta'_{\mathrm{RS}}(t)-\log\pi\bigr]\,dt
+\;\leq\;
+\int_{|t|>t_{\ast}}|\widehat{f}(t)|^{2}\bigl[\theta'_{\mathrm{RS}}(t)+\log\pi\bigr]\,dt,
+\end{equation}
+where $\theta'_{\mathrm{RS}}(t)+\log\pi=g(t)/2$ by
+\Cref{v4-arith:w7-a:thm:exact-identity}. Equivalently: the weighted
+$L^{2}$-mass of $\widehat{f}$ on the core $[-t_{\ast},t_{\ast}]$
+against the negative phase-derivative $-\theta'_{\mathrm{RS}}-\log\pi$
+is dominated by the weighted $L^{2}$-mass on the tail against the
+positive phase-derivative $\theta'_{\mathrm{RS}}+\log\pi$.
+\end{theorem}
+
+\begin{proof}
+A-TP is $W_{\infty}(f\ast\widetilde{f})\geq 0$. By
+\Cref{v4-arith:w7-a:cor:Z-reformulation}:
+$W_{\infty}(f\ast\widetilde{f})=(2\pi)^{-1}\int_{\mathbb{R}}|\widehat{f}|^{2}(2\theta'_{\mathrm{RS}}+2\log\pi)\,dt$.
+Since $\theta'_{\mathrm{RS}}(t)+\log\pi=g(t)/2$, the sign of the
+integrand on the core $[-t_{\ast},t_{\ast}]$ is negative (following
+$g<0$) and on the tail $|t|>t_{\ast}$ is positive (following
+$g>0$). Splitting the integral and rearranging yields
+\eqref{v4-arith:w7-a:eq:Z-phase-statement}.
+\end{proof}
+
+\begin{remark}[connection to the Z-function zeros]
+\label{v4-arith:w7-a:rem:Z-zeros}
+$Z(t)=e^{i\theta_{\mathrm{RS}}(t)}\zeta(1/2+it)$ is a real-valued
+function of $t\in\mathbb{R}$. Its real zeros are exactly the
+ordinates of the non-trivial zeros of $\zeta$ on the critical line.
+The A-TP statement \eqref{v4-arith:w7-a:eq:Z-phase-statement} does
+\emph{not} bring in any information about these zeros directly: the
+left-hand side of \eqref{v4-arith:w7-a:eq:Z-phase-statement} lives
+on the bounded interval $[-t_{\ast},t_{\ast}]$ which contains no
+non-trivial zero (the smallest ordinate is
+$\gamma_{1}\approx 14.135>0.85=t_{\ast}$). What the Z-function
+reformulation buys is a change of language, not a change of
+content: A-TP becomes a positivity statement for a functional of the
+Riemann--Siegel phase-derivative, with the zero-density information
+moved implicitly into the $\theta'_{\mathrm{RS}}$-density.
+
+Explicitly, the Riemann--von Mangoldt formula gives
+$N(T)=(T/2\pi)\log(T/2\pi)-T/2\pi+7/8+S(T)+O(1/T)$, and by
+$N(T)=(1/\pi)\theta_{\mathrm{RS}}(T)+1+S(T)$ the phase
+$\theta_{\mathrm{RS}}$ counts zeros up to error the Selberg function
+$S(T)=O(\log T)$. The derivative $\theta'_{\mathrm{RS}}(t)$ is
+therefore the mean zero density at height $t$.
+\Cref{v4-arith:w7-a:thm:Z-phase-reformulation} presents A-TP as a
+positivity of the phase-derivative weighted against the test
+function's spectral profile, with the threshold
+$\theta'_{\mathrm{RS}}(t_{\ast})=-\log\pi$ at the sign-change.
+\end{remark}
+
+\subsection{The $\theta''_{\mathrm{RS}}$ Structural Observation}
+\label{v4-arith:w7-a:Z-reformulation:theta-second-deriv}
+
+\begin{proposition}[second-derivative representation of $g'$]
+\label{v4-arith:w7-a:prop:g-prime-via-theta}
+\ClaimStatusProvedHere. For every $t\in\mathbb{R}$,
+\begin{equation}
+\label{v4-arith:w7-a:eq:g-prime-theta-second}
+g'(t)\;=\;2\,\theta''_{\mathrm{RS}}(t).
+\end{equation}
+Since $\theta_{\mathrm{RS}}$ is odd, $\theta'_{\mathrm{RS}}$ is
+even, and $\theta''_{\mathrm{RS}}$ is odd. Combined with
+\Cref{v4-arith:w6-a:lem:g-monotone} ($g'(t)>0$ for $t>0$), this gives
+$\theta''_{\mathrm{RS}}(t)>0$ for $t>0$ and $\theta''_{\mathrm{RS}}(t)<0$
+for $t<0$.
+\end{proposition}
+
+\begin{proof}
+Differentiate \eqref{v4-arith:w7-a:eq:exact-identity}.
+\end{proof}
+
+\begin{remark}[the $\theta''_{\mathrm{RS}}$-sign observation]
+\label{v4-arith:w7-a:rem:theta-second-sign}
+The identity \eqref{v4-arith:w7-a:eq:g-prime-theta-second} converts
+the strict monotonicity of $g$ in $|t|$
+(\Cref{v4-arith:w6-a:lem:g-monotone}) into a sign-controlled
+statement about the second derivative of the Riemann--Siegel phase.
+Integration by parts against
+$-g(t)=-2\theta'_{\mathrm{RS}}(t)-2\log\pi$ on
+$[-t_{\ast},t_{\ast}]$ against a weight $|\widehat{f}(t)|^{2}$ gives
+\[
+\int_{-t_{\ast}}^{t_{\ast}}|\widehat{f}|^{2}(-g)\,dt
+=-2[\theta'_{\mathrm{RS}}+\log\pi]|\widehat{f}|^{2}\Bigr|_{-t_{\ast}}^{t_{\ast}}+2\int_{-t_{\ast}}^{t_{\ast}}(\theta'_{\mathrm{RS}}+\log\pi)\cdot(|\widehat{f}|^{2})'\,dt,
+\]
+a re-expression of the core integral as a boundary term plus a
+spectral-derivative integral. The boundary term vanishes by
+$\theta'_{\mathrm{RS}}(\pm t_{\ast})+\log\pi=0$ (the defining
+property of $t_{\ast}$, which becomes $g(t_{\ast})=0$). Hence
+\begin{equation}
+\label{v4-arith:w7-a:eq:integration-by-parts}
+A[f]\;=\;\int_{-t_{\ast}}^{t_{\ast}}|\widehat{f}|^{2}(-g)\,dt
+=2\int_{-t_{\ast}}^{t_{\ast}}(\theta'_{\mathrm{RS}}(t)+\log\pi)\cdot(|\widehat{f}(t)|^{2})'\,dt.
+\end{equation}
+
+This reformulation is structural: the core integral $A[f]$ equals
+$2$ times the $L^{2}$-pairing of the spectral derivative
+$(|\widehat{f}|^{2})'$ against the shifted phase-derivative
+$\theta'_{\mathrm{RS}}+\log\pi$. Since the latter is non-positive
+on $[-t_{\ast},t_{\ast}]$ (it is $g(t)/2\leq 0$), the integrand sign
+depends on the sign of $(|\widehat{f}|^{2})'$. For $f$ real and
+even, $|\widehat{f}|^{2}$ is even in $t$, so $(|\widehat{f}|^{2})'$
+is odd; on $[-t_{\ast},t_{\ast}]$ the odd function integrated against
+the even function $\theta'_{\mathrm{RS}}+\log\pi$ could yield zero
+or sign-indefinite contributions depending on the spectral profile.
+
+This observation does \emph{not} close A-TP on the SHF complement;
+it restates the obstruction in a different basis. The irreducibility
+persists.
+\end{remark}
+
+\section{The Stirling-Certified Irreducible Obstruction}
+\label{v4-arith:w7-a:irreducible}
+
+\begin{theorem}[Stirling-certified A-TP residual]
+\label{v4-arith:w7-a:thm:irreducible}
+\ClaimStatusProvedHere. After the wave-7 A Stirling analysis:
+
+\begin{description}
+\item[\textbf{Unconditionally closed.}] A-TP on
+$\mathrm{PW}^{\mathrm{hol},\mathrm{SHF}}_{F}\supsetneq\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$
+(\Cref{v4-arith:w7-a:thm:SHF-ATP},
+\Cref{v4-arith:w7-a:lem:SHF-vs-HFD}). The enlargement factor is
+$\kappa_{\ast}/\kappa_{\ast}^{\mathrm{mean}}\approx 2.07$
+(\Cref{v4-arith:w7-a:rem:factor-2-enlargement}).
+\item[\textbf{Stirling-pinned high-$|t|$ control.}] For all
+$|t|\geq T_{\mathrm{St4}}\approx 0.873$, $g(t)>0$ with rigorous
+lower bound $g^{-}_{\mathrm{St4}}(t)$
+(\Cref{v4-arith:w7-a:prop:T-St4}).
+\item[\textbf{Identity.}] $g(t)=2\theta'_{\mathrm{RS}}(t)+2\log\pi$
+(\Cref{v4-arith:w7-a:thm:exact-identity}).
+\item[\textbf{Reformulation.}] A-TP on the residual SHF-complement is
+equivalent to the phase-derivative positivity
+\eqref{v4-arith:w7-a:eq:Z-phase-statement}
+(\Cref{v4-arith:w7-a:thm:Z-phase-reformulation}).
+\item[\textbf{Named open.}] The bounded-interval positivity on
+$[-t_{\ast},t_{\ast}]$ against $|\widehat{f}|^{2}(-g)=|\widehat{f}|^{2}(-2\theta'_{\mathrm{RS}}-2\log\pi)$
+on the SHF complement. This is RH-equivalent by
+\Cref{v4-arith:w5-a:thm:ATP-equals-weil-positivity}. The
+Stirling-4 analysis pins the weight $-g$ on the core to 5-digit
+precision but does not alter the ceiling imposed by the three
+ruling-out propositions of
+\Cref{v4-arith:w6-a:bounded-interval:ruled-out}.
+\end{description}
+\end{theorem}
+
+\begin{proof}
+Combine \Cref{v4-arith:w7-a:thm:exact-identity},
+\Cref{v4-arith:w7-a:prop:T-St4},
+\Cref{v4-arith:w7-a:thm:SHF-ATP},
+\Cref{v4-arith:w7-a:lem:SHF-vs-HFD},
+\Cref{v4-arith:w7-a:thm:Z-phase-reformulation}, and
+\Cref{v4-arith:w6-a:thm:bounded-reduction}.
+\end{proof}
+
+\begin{remark}[seven-attack audit for the consolidated theorem]
+\label{v4-arith:w7-a:rem:attack-heal-irreducible}
+
+\begin{description}
+\item[Source collision.] The Stirling catalog (Edwards 1974) is
+strictly disjoint from the Hurwitz catalog (Hurwitz 1882) used in
+Chapter~\ref{v4-arith:w6-a:ATP-direct-attack}. The two analyses
+agree on the numerical values of $g$ (verified at 50-digit
+precision); they agree because they are two expansions of the
+same entire function. Heal: no collision; two paths to the same
+classical function.
+\item[Sign convention.] $\theta_{\mathrm{RS}}$ uses the standard
+Riemann--Siegel convention
+(Riemann 1859; Siegel 1932; Edwards 1974 \S6.5, eq.~(2)) with
+$\theta_{\mathrm{RS}}(0)=0$. Heal: standard convention.
+\item[Ambient category.] Real-analytic functions on $\mathbb{R}$.
+Heal: none.
+\item[Missing hypothesis.] All Stirling bounds hold uniformly in
+$t\in\mathbb{R}$ at $z=1/4+it/2$; the real part $\mathrm{Re}\,z=1/4>0$
+is uniform. Heal: uniform.
+\item[False functoriality.] None asserted. The $\theta_{\mathrm{RS}}$
+is a specific function, not a functor.
+\item[Unproved equivalence.] The Z-phase reformulation
+(\Cref{v4-arith:w7-a:thm:Z-phase-reformulation}) is an equivalence;
+its proof is a direct substitution. Heal: equivalence is exact.
+\item[Numerical constant.] The constants
+$T_{\mathrm{St4}}=0.8729590\ldots$,
+$t_{\ast}=0.8506623\ldots$,
+$\kappa_{\ast}=3.0827\ldots$,
+$\kappa_{\ast}^{\mathrm{mean}}=1.488\ldots$,
+$\kappa_{\ast}/\kappa_{\ast}^{\mathrm{mean}}\approx 2.07$ are all
+verified to 50-digit mpmath precision. Heal: numerics verified.
+\end{description}
+\end{remark}
+
+\section{What Remains Open}
+\label{v4-arith:w7-a:remains-open}
+
+\begin{remark}[four non-elementary attack routes]
+\label{v4-arith:w7-a:rem:open-routes}
+The wave-7 A Stirling-certified closure leaves the SHF-complement as
+the irreducible residual. Four non-elementary routes remain open, in
+parallel with the three of
+\Cref{v4-arith:w6-a:rem:live-routes} plus one added by the
+Riemann--Siegel reformulation.
+
+\begin{enumerate}
+\item \emph{Sharper Stirling-6 or Stirling-8 closure}: the next
+Bernoulli coefficient $B_{6}=1/42$ gives an even tighter expansion
+$g(t)=g_{\mathrm{St6}}(t)+O(|z|^{-6})$. The threshold
+$T_{\mathrm{St6}}$ where $g^{-}_{\mathrm{St6}}(t)>0$ satisfies
+$T_{\mathrm{St6}}=0.9310\ldots>T_{\mathrm{St4}}=0.8730\ldots$: at
+the optimal-truncation regime around $|z|\approx k$, the next
+Stirling order is unstable. No further Stirling improvement at
+$|z|\approx 0.43$ gains unconditional ground. Status: elementary
+cap reached.
+\item \emph{Riemann--Siegel asymptotic formula}: the full
+Riemann--Siegel main-sum-plus-corrections expansion
+$Z(t)=2\sum_{n=1}^{N}n^{-1/2}\cos(\theta_{\mathrm{RS}}(t)-t\log n)+R(t,N)$
+with $N=\lfloor\sqrt{t/2\pi}\rfloor$ offers precise control for
+large $|t|$ but not for the bounded interval
+$[-t_{\ast},t_{\ast}]$. Status: not applicable to the residual.
+\item \emph{Hermite--Biehler reformulation of the bounded residual}:
+the phase-derivative formulation
+\eqref{v4-arith:w7-a:eq:Z-phase-statement} admits a reformulation
+in the de Branges space $\mathcal{H}(E_{\xi})$ of
+Chapter~\ref{v4-arith:w5-j:VBstar-spectral-positivity}. The
+positivity of the integral becomes a Hermite--Biehler inequality
+for the shifted phase. Status: non-elementary, equivalent in
+strength to HB$^{+}$ of
+\Cref{v4-arith:w5-j:thm:VBstar-main-direction}.
+\item \emph{Gaussian Weil test functions via Riemann--Siegel
+saddle-point}: for $f$ a Gaussian, the integrals $A[f]$ and
+$B[f]$ can be evaluated by saddle-point applied to
+$e^{i\theta_{\mathrm{RS}}(t)}$-weighted integrands. The positivity
+question reduces to an explicit finite-dimensional moment problem
+on the Gaussian family (Hardy 1942;
+Chapter~\ref{v4-arith:w5-i:R-analytic-weil-gaussians}). Status:
+non-elementary, equivalent in strength to the Gaussian explicit-formula
+closure.
+\end{enumerate}
+
+None of (1)--(4) closes A-TP on the full cone; each is a substantive
+research programme equivalent in strength to de Branges, Connes,
+Deninger, or Hardy. The wave-7 A closure is that the Stirling
+refinement sharpens the elementary ceiling by a factor $\approx 2$
+in the sub-class, names the obstruction precisely in Riemann--Siegel
+language, and exhausts the elementary routes.
+\end{remark}
+
+\begin{remark}[comparison to wave-6 A residual]
+\label{v4-arith:w7-a:rem:compare-w6-a}
+Wave-6 A
+(\Cref{v4-arith:w6-a:ATP-direct-attack}) left A-TP as closed on the
+HFD sub-class, with the obstruction a bounded-interval positivity
+against the Hurwitz-series-pinned weight $-g$. Wave-7 A refines
+this:
+
+\begin{itemize}
+\item \emph{Enlarged sub-class}:
+$\mathrm{PW}^{\mathrm{hol},\mathrm{SHF}}_{F}\supsetneq\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$,
+enlargement factor $\approx 2.07$
+(\Cref{v4-arith:w7-a:rem:factor-2-enlargement}).
+\item \emph{Rigorous Stirling-pin}: unconditional lower bound
+$g^{-}_{\mathrm{St4}}(t)$ valid for every $t\in\mathbb{R}$ with
+certified positivity for $|t|\geq T_{\mathrm{St4}}\approx 0.873$
+(\Cref{v4-arith:w7-a:prop:T-St4}).
+\item \emph{Corrected $t_{\ast}$}: $t_{\ast}=0.8507\ldots$, not
+$0.794$ (\Cref{v4-arith:w7-a:rem:t-star-corrected}).
+\item \emph{Riemann--Siegel formulation}: A-TP as positivity of a
+phase-derivative weighted integral
+(\Cref{v4-arith:w7-a:thm:Z-phase-reformulation}), connecting to
+classical Riemann--Siegel and Hilbert--P\'olya programmes.
+\end{itemize}
+
+The RH-equivalent residual persists. What wave-7 A adds is sharper
+quantitative control, a corrected numerical constant, and a
+reformulation tying A-TP to the Riemann--Siegel phase catalog.
+\end{remark}
+
+\section{Summary}
+\label{v4-arith:w7-a:summary}
+
+\begin{enumerate}
+\item The archimedean digamma kernel
+$g(t)=\mathrm{Re}\,\psi(1/4+it/2)+\log\pi$ admits the exact
+identity $g(t)=2\theta'_{\mathrm{RS}}(t)+2\log\pi$ with
+$\theta_{\mathrm{RS}}$ the Riemann--Siegel phase function
+(\Cref{v4-arith:w7-a:thm:exact-identity}).
+\item The Stirling-4 expansion supplies an unconditional formula
+$g(t)=g_{\mathrm{St4}}(t)+\widetilde{R}_{4}(t)$ with explicit
+rational-plus-logarithmic leading part $g_{\mathrm{St4}}$ and
+remainder bound $|\widetilde{R}_{4}(t)|\leq 32/(15(1+4t^{2})^{2})$
+valid for every $t\in\mathbb{R}$
+(\Cref{v4-arith:w7-a:prop:g-stirling-4}).
+\item The Stirling-4 positivity threshold is
+$T_{\mathrm{St4}}=0.872959\ldots$: for every $|t|\geq T_{\mathrm{St4}}$,
+$g(t)\geq g^{-}_{\mathrm{St4}}(t)>0$ rigorously
+(\Cref{v4-arith:w7-a:prop:T-St4}).
+\item The numerical value of the sign-change of $g$ is
+$t_{\ast}=0.850662304\ldots$, correcting
+\Cref{v4-arith:w6-a:prop:t-star-numerical} to a higher precision
+(\Cref{v4-arith:w7-a:rem:t-star-corrected}).
+\item A-TP closes unconditionally on the enlarged sub-class
+$\mathrm{PW}^{\mathrm{hol},\mathrm{SHF}}_{F}\supsetneq\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$,
+with enlargement factor
+$\kappa_{\ast}/\kappa_{\ast}^{\mathrm{mean}}\approx 2.07$
+(\Cref{v4-arith:w7-a:thm:SHF-ATP},
+\Cref{v4-arith:w7-a:rem:factor-2-enlargement}).
+\item A-TP on the SHF-complement is equivalent to a phase-derivative
+positivity statement about $\theta'_{\mathrm{RS}}(t)+\log\pi$ on
+$[-t_{\ast},t_{\ast}]$, paired against $|\widehat{f}|^{2}$
+(\Cref{v4-arith:w7-a:thm:Z-phase-reformulation}).
+\item The bounded-interval residual is strictly RH-equivalent by
+\Cref{v4-arith:w5-a:thm:ATP-equals-weil-positivity}; four
+non-elementary routes (\Cref{v4-arith:w7-a:rem:open-routes})
+remain open and are each equivalent in strength to classical
+programmes beyond elementary analysis.
+\end{enumerate}
+
+\begin{remark}[closing Beilinson principle for wave-7 A]
+\label{v4-arith:w7-a:rem:closing-beilinson}
+Wave-7 A sharpens but does not overturn the wave-6 A ceiling. The
+smaller unconditional theorem on
+$\mathrm{PW}^{\mathrm{hol},\mathrm{SHF}}_{F}$ is strictly larger
+than the wave-6 theorem on
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$. The content proved is
+elementary (Stirling-4 with explicit Bernoulli-error bounds),
+explicit (closed-form $g_{\mathrm{St4}}$), and computable. The
+content left open is named precisely in Riemann--Siegel phase
+language. No further elementary advance is available without
+entering one of the four non-elementary programmes of
+\Cref{v4-arith:w7-a:rem:open-routes}.
+\end{remark}

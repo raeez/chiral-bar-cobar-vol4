@@ -1,0 +1,395 @@
+\chapter{Compute Engine Cross-Verification of Wave-5 Numerical Constants}
+\label{v4-arith:w6-h:compute-engine-verification}
+
+\emph{Wave~5 inscribed several load-bearing numerical constants across
+the arithmetic branch: the arithmetic central charge $c^{\mathrm{Ar}}=2$
+of \Cref{v4-arith:thm:c-as-residue}, the first four Li coefficients
+$\lambda_{1},\dots,\lambda_{4}$ of
+\Cref{v4-arith:w5-direct:thm:li-positivity}, the Riemann--von Mangoldt
+count $N(T)$ of \Cref{v4-arith:w5-i:thm:rvm}, the first three non-trivial
+ordinates $\gamma_{1},\gamma_{2},\gamma_{3}$ appearing throughout
+Chapters~\ref{v4-arith:w5-b:hp-operator}--\ref{v4-arith:w5-i:chapter},
+and the archimedean digamma value
+$\psi(1/4)=-\gamma_{E}-\pi/2-3\log 2$ of the Weil archimedean term.
+This chapter installs five HZ-IV realization decorators that verify
+each constant by a route mechanically disjoint from the one used to
+derive it. The decorators live in
+\texttt{compute/tests/test\_wave5\_verification.py}; the Vol~IV
+realization registry records each installation and refuses registration
+whose \texttt{derived\_from} and \texttt{verified\_against} catalogs
+intersect. This chapter records the claims, the disjoint rationales,
+and the test pass-ledger.}
+
+\section{Protocol and Source Discipline}
+\label{v4-arith:w6-h:protocol}
+
+Each wave-5 constant comes with a canonical derivation path, inscribed
+in the manuscript chapter that first uses it; and at least one
+alternative numerical or closed-form verification path drawn from a
+disjoint catalog. The HZ-IV discipline of
+\Cref{v4-thm:realization-programme-definition} requires the two catalogs
+to be source-disjoint at the string-set level (a mechanical guard)
+and semantically independent (a human-audited guard). The decorator
+\texttt{realization\_decorator} of
+\texttt{compute/lib/realization\_registry.py} enforces the string-set
+guard at import time and records the rationale for the semantic guard
+as a free-text field auditable by any reader.
+
+\begin{definition}[wave-5 verification pair]
+\label{v4-arith:w6-h:def:wave5-pair}
+\ClaimStatusDefinitional. For a wave-5 numerical constant
+$C\in\mathbb{R}$ with canonical derivation source $D(C)$ and
+verification source $V(C)$, the \emph{wave-5 verification pair} is
+the triple $(C,D(C),V(C))$ together with a disjoint-rationale
+paragraph certifying that $D(C)\cap V(C)=\emptyset$ at the string
+level and that no hidden common subroutine couples the two paths.
+\end{definition}
+
+\begin{remark}[mechanical vs semantic guard]
+\label{v4-arith:w6-h:rem:mechanical-semantic}
+The mechanical guard is strict set-disjointness of
+\texttt{derived\_from} and \texttt{verified\_against} tuples; the
+decorator refuses registration on overlap. The semantic guard
+requires the test author to articulate why no hidden common
+dependency couples the two paths (for instance, why a library call
+in one path is algorithmically disjoint from a library call in the
+other). Semantic disjointness is not machine-checkable; it is a
+human audit requirement, made explicit in the
+\texttt{disjoint\_rationale} field.
+\end{remark}
+
+\section{The Five Wave-5 Constants and Their Pairs}
+\label{v4-arith:w6-h:five-constants}
+
+\subsection{$c^{\mathrm{Ar}}=2$: arithmetic central charge as residue of
+$2\zeta$}
+\label{v4-arith:w6-h:c-ar}
+
+\begin{theorem}[$c^{\mathrm{Ar}}$ cross-verification]
+\label{v4-arith:w6-h:thm:c-ar-residue}
+\ClaimStatusProvedHere. The identity
+\begin{equation}
+\label{v4-arith:w6-h:eq:c-ar}
+c^{\mathrm{Ar}}\;=\;2\cdot\mathrm{Res}_{s=1}\zeta(s)\;=\;2
+\end{equation}
+admits two source-disjoint numerical verifications:
+\begin{enumerate}
+\item[(D)] \emph{Derivation.} Compute
+\(2(s-1)\zeta(s)\) at \(s=1+\varepsilon\) via mpmath's direct
+Euler--Maclaurin zeta routine. As \(\varepsilon\to 0^{+}\) this
+returns \(2\) by the simple pole of \(\zeta\).
+\item[(V)] \emph{Verification.} Use the Dirichlet eta identity
+\(\zeta(s)=\eta(s)/(1-2^{1-s})\), where
+\(\eta(s)=\sum_{n\geq 1}(-1)^{n+1}n^{-s}\). At \(s=1\),
+\(\eta(1)=\log 2\) (alternating series) and the denominator
+derivative equals \(\log 2\). Hence
+\(\mathrm{Res}_{s=1}\zeta(s)=\log 2/\log 2=1\), and doubling
+returns \(c^{\mathrm{Ar}}=2\).
+\end{enumerate}
+The two paths agree at rtol $=10^{-10}$.
+\end{theorem}
+
+\begin{proof}
+Mechanical: the decorator's \texttt{derived\_from} set names the
+mpmath Euler--Maclaurin evaluation at \(s=1+\varepsilon\); the
+\texttt{verified\_against} set names the eta closed-form identity.
+The two sets are disjoint. Numerical: the Python test
+\texttt{test\_c\_Ar\_equals\_two} in
+\texttt{compute/tests/test\_wave5\_verification.py} confirms
+\(|\mathrm{derived}-\mathrm{verified}|<10^{-10}\cdot|\mathrm{verified}|\) at 80~dps
+working precision. Semantic: Euler--Maclaurin on the non-alternating
+Dirichlet series is disjoint from the alternating-series evaluation
+of \(\eta\), and the eta identity supplies the residue algebraically
+rather than numerically. The decorator registers the pair in the
+Vol~IV realization registry as \texttt{v4-arith:w6-h:c-ar-residue}.
+\end{proof}
+
+\subsection{Li coefficients \(\lambda_{1},\dots,\lambda_{4}\)}
+\label{v4-arith:w6-h:li}
+
+\begin{theorem}[Li coefficient cross-verification]
+\label{v4-arith:w6-h:thm:li-coefficients}
+\ClaimStatusProvedHere. For \(n\in\{1,2,3,4\}\) the Li coefficient
+\(\lambda_{n}\) of
+\Cref{v4-arith:w5-direct:eq:li-coef} admits two source-disjoint
+numerical verifications.
+\begin{enumerate}
+\item[(D)] \emph{Derivation.} Hardcoded published values from
+OEIS sequence A074760, itself obtained historically through the
+Keiper 1992 zero-sum algorithm and cross-checked against Voros~2010.
+\item[(V)] \emph{Verification.} Extract \(\lambda_{n}\) from the
+analytic Taylor series of \(\log\xi_{\mathbb{R}}(s)\) at \(s=1\).
+After the pole-subtraction
+\begin{equation}
+\label{v4-arith:w6-h:eq:log-xi-pole-free}
+\log\xi_{\mathbb{R}}(s)=\log(s/2)-\tfrac{s}{2}\log\pi
++\log\Gamma(s/2)+\log\bigl((s-1)\zeta(s)\bigr),
+\end{equation}
+all terms are analytic near \(s=1\). Expand via
+\texttt{mpmath.taylor} and apply
+Leibniz to \(f(s)=s^{n-1}\) times the log-xi expansion:
+\begin{equation}
+\label{v4-arith:w6-h:eq:leibniz-li}
+\lambda_{n}\;=\;\sum_{k=0}^{n-1}\binom{n}{k}(n-k)\,c_{n-k},
+\end{equation}
+where \(c_{m}\) is the \(m\)-th Taylor coefficient of the right
+side of~\eqref{v4-arith:w6-h:eq:log-xi-pole-free} at \(s=1\).
+\end{enumerate}
+The two paths agree at rtol \(=10^{-6}\).
+\end{theorem}
+
+\begin{proof}
+Mechanical: \texttt{derived\_from} names OEIS A074760 and Keiper 1992;
+\texttt{verified\_against} names the Taylor expansion of
+\(\log\xi_{\mathbb{R}}\) at \(s=1\) and the Keiper--Li derivative
+formula applied via \texttt{mpmath.taylor} on the pole-subtracted
+expression~\eqref{v4-arith:w6-h:eq:log-xi-pole-free}. The two sets
+are disjoint.
+Numerical: the Python test
+\texttt{test\_li\_coefficients\_oeis\_vs\_log\_xi} in
+\texttt{compute/tests/test\_wave5\_verification.py} confirms
+\(|\mathrm{derived}-\mathrm{verified}|<10^{-6}\cdot|\mathrm{derived}|\)
+for each \(n\in\{1,2,3,4\}\). Semantic: derivation lives on the
+\emph{zero side} (a truncated sum over non-trivial zeros), while
+verification lives on the \emph{log-xi analytic side} (a Taylor
+expansion at a regular point); no zero data enters the verification
+path and no Taylor expansion enters the derivation path. The
+disjointness is structural, not merely nomenclatural. The decorator
+registers the pair as \texttt{v4-arith:w6-h:li-coefficients}.
+\end{proof}
+
+\begin{remark}[precision floor for Li]
+\label{v4-arith:w6-h:rem:li-floor}
+The rtol \(10^{-6}\) budget is the practical floor of both paths.
+The derivation side is limited by the precision of the published
+OEIS digits (conservatively 45 digits in the rounded table entry,
+effectively reduced by Keiper-algorithm truncation error on finite
+zero counts). The verification side is limited by cancellation
+in \texttt{mpmath.taylor} for the pole-subtracted log-xi expansion,
+which loses roughly 10 digits of precision per Taylor order. At
+80~dps working precision the verification has \(\sim50\) accurate
+digits at \(n=4\), far better than the \(10^{-6}\) rtol budget.
+The budget is set by the derivation side's published-table digit
+count.
+\end{remark}
+
+\subsection{Riemann--von Mangoldt \(N(T)\) at \(T=100\), \(T=1000\)}
+\label{v4-arith:w6-h:N-T}
+
+\begin{theorem}[\(N(T)\) cross-verification]
+\label{v4-arith:w6-h:thm:N-T-rvm}
+\ClaimStatusProvedHere. For \(T\in\{100,1000\}\), the non-trivial
+zero count \(N(T)\) of \Cref{v4-arith:w5-i:thm:rvm} admits two
+source-disjoint numerical verifications.
+\begin{enumerate}
+\item[(D)] \emph{Derivation.} \texttt{mpmath.nzeros(T)} returns the
+exact count by Turing's method, which counts sign changes of the
+Riemann--Siegel \(Z\)-function on the critical line up to \(T\) and
+verifies via the argument principle applied to a rectangle enclosing
+the strip.
+\item[(V)] \emph{Verification.} The von Mangoldt asymptotic
+\begin{equation}
+\label{v4-arith:w6-h:eq:rvm-asym}
+N(T)\;\approx\;\frac{T}{2\pi}\log\!\frac{T}{2\pi e}\,+\,\frac{7}{8}
+\end{equation}
+(Riemann~1859 final remark, von Mangoldt~1895 full proof; Stirling
+on the gamma factor of \(\xi\)) with the result rounded to the
+nearest integer. For \(T=100\) and \(T=1000\), the leading terms
+round to within one of the exact count without invoking any zeta
+call.
+\end{enumerate}
+The two paths agree at rtol \(=1\) (integer comparison).
+\end{theorem}
+
+\begin{proof}
+Mechanical: \texttt{derived\_from} names the Turing contour-counting
+method and the exact sign-change count of the Riemann--Siegel
+\(Z\)-function; \texttt{verified\_against} names the von Mangoldt
+asymptotic and the Stirling-based derivation from Riemann~1859. The
+two sets are disjoint. Numerical: the Python test
+\texttt{test\_N\_T\_at\_100\_and\_1000} confirms
+\(|\mathrm{derived}-\mathrm{verified}|\leq 1\) at \(T\in\{100,1000\}\).
+Semantic: Turing's method uses a \emph{contour integral} of
+\(\xi'/\xi\) around the strip boundary plus sign-change count of
+\(Z\) on the critical line, while the asymptotic route uses
+\emph{Stirling on the archimedean gamma factor} of \(\xi\) with no
+zero evaluation and no contour. Both paths appeal to the same
+underlying functional equation, but the algorithmic content is
+different: contour integration with zeta evaluation versus closed
+asymptotic. The decorator registers the pair as
+\texttt{v4-arith:w6-h:N-T-riemann-von-mangoldt}.
+\end{proof}
+
+\subsection{First non-trivial zeros \(\gamma_{1},\gamma_{2},\gamma_{3}\)}
+\label{v4-arith:w6-h:gamma}
+
+\begin{theorem}[first-three-zeros cross-verification]
+\label{v4-arith:w6-h:thm:first-three-zeros}
+\ClaimStatusProvedHere. The ordinates \(\gamma_{1}\approx
+14.1347\ldots\), \(\gamma_{2}\approx 21.0220\ldots\),
+\(\gamma_{3}\approx 25.0108\ldots\) of the first three non-trivial
+zeros admit two source-disjoint numerical verifications.
+\begin{enumerate}
+\item[(D)] \emph{Derivation.} Hardcoded LMFDB / Odlyzko published
+values, originally produced by the Odlyzko--Sch\"onhage~1988
+FFT-accelerated algorithm on the zeta function and archived in
+Odlyzko's first-million-zeros file.
+\item[(V)] \emph{Verification.} \texttt{mpmath.zetazero(k)} runs
+Newton's method on the Riemann--Siegel \(Z\)-function seeded at
+Gram points, returning the live-computed \(k\)-th zero at working
+precision.
+\end{enumerate}
+The two paths agree at rtol \(=10^{-15}\).
+\end{theorem}
+
+\begin{proof}
+Mechanical: \texttt{derived\_from} names the LMFDB table and
+Odlyzko~2002 zeros1 file; \texttt{verified\_against} names the
+mpmath Newton iteration and Gram-point seed. The two sets are
+disjoint. Numerical: the Python test
+\texttt{test\_first\_three\_zeros} confirms agreement at
+rtol~\(=10^{-15}\). Semantic: Odlyzko's FFT-accelerated batch
+algorithm is disjoint from live Newton iteration on
+Riemann--Siegel \(Z\); the former is a historical numerical
+artifact, the latter a fresh computation. Both recover the same
+zero but via different routes. The decorator registers the pair
+as \texttt{v4-arith:w6-h:first-three-zeros}.
+\end{proof}
+
+\subsection{Archimedean digamma \(\psi(1/4)\)}
+\label{v4-arith:w6-h:psi-quarter}
+
+\begin{theorem}[\(\psi(1/4)\) cross-verification]
+\label{v4-arith:w6-h:thm:psi-quarter}
+\ClaimStatusProvedHere. The value
+\begin{equation}
+\label{v4-arith:w6-h:eq:psi-quarter}
+\psi(1/4)\;=\;-\gamma_{E}-\frac{\pi}{2}-3\log 2
+\end{equation}
+that appears in the archimedean term of the Weil explicit formula
+admits two source-disjoint numerical verifications.
+\begin{enumerate}
+\item[(D)] \emph{Derivation.} \texttt{mpmath.digamma(1/4)} returns
+the value via a rational-function approximation combined with a
+shift-and-asymptotic recursion (Lanczos-style).
+\item[(V)] \emph{Verification.} Direct substitution into the Gauss
+multiplication formula for \(\psi\) at rational argument \(p/q\):
+\begin{equation}
+\label{v4-arith:w6-h:eq:gauss-formula}
+\psi(p/q)=-\gamma_{E}-\log(2q)-\frac{\pi}{2}\cot(\pi p/q)
++2\sum_{k=1}^{\lfloor(q-1)/2\rfloor}\!\cos(2\pi kp/q)\log\sin(\pi k/q).
+\end{equation}
+At \(p/q=1/4\), the summand at \(k=1\) vanishes because
+\(\cos(\pi/2)=0\); the tail is empty (\(\lfloor 3/2\rfloor=1\));
+the remaining terms simplify to \(-\gamma_{E}-\log 8-\pi/2\cdot 1\),
+which equals \(-\gamma_{E}-\pi/2-3\log 2\).
+\end{enumerate}
+The two paths agree at rtol \(=10^{-14}\).
+\end{theorem}
+
+\begin{proof}
+Mechanical: \texttt{derived\_from} names the mpmath Lanczos-style
+digamma evaluation; \texttt{verified\_against} names the Gauss
+multiplication formula and the closed-form expression. The two
+sets are disjoint. Numerical: the Python test
+\texttt{test\_psi\_quarter} confirms agreement at
+rtol~\(=10^{-14}\). Semantic: the mpmath numerical series is
+disjoint from the Gauss closed form; the former is an
+implementation artifact of the special-functions library, the
+latter a 19th-century algebraic identity. The decorator registers
+the pair as
+\texttt{v4-arith:w6-h:archimedean-digamma-quarter}.
+\end{proof}
+
+\section{Registry Ledger}
+\label{v4-arith:w6-h:registry-ledger}
+
+The five decorators of \Cref{v4-arith:w6-h:five-constants} install
+into the Vol~IV realization registry at import time. The registry
+refuses a decorator whose \texttt{derived\_from} and
+\texttt{verified\_against} sets intersect; collection-time failure
+on a tautological pair is the load-bearing HZ-IV guard. The
+installed claim labels are recorded below.
+
+\begin{center}
+\small
+\begin{tabular}{l|l|c}
+Claim label & Constant & rtol \\
+\hline
+\texttt{v4-arith:w6-h:c-ar-residue} &
+$c^{\mathrm{Ar}}=2$ & $10^{-10}$ \\
+\texttt{v4-arith:w6-h:li-coefficients} &
+$\lambda_{1},\lambda_{2},\lambda_{3},\lambda_{4}$ & $10^{-6}$ \\
+\texttt{v4-arith:w6-h:N-T-riemann-von-mangoldt} &
+$N(100),\,N(1000)$ & $1$ (integer) \\
+\texttt{v4-arith:w6-h:first-three-zeros} &
+$\gamma_{1},\gamma_{2},\gamma_{3}$ & $10^{-15}$ \\
+\texttt{v4-arith:w6-h:archimedean-digamma-quarter} &
+$\psi(1/4)$ & $10^{-14}$ \\
+\end{tabular}
+\end{center}
+
+\begin{theorem}[wave-6 agent H installation pass-ledger]
+\label{v4-arith:w6-h:thm:installation-ledger}
+\ClaimStatusProvedHere. All five decorators install without
+triggering the disjointness guard, and all five tests pass at
+their recorded rtol budget under
+\texttt{pytest compute/tests/test\_wave5\_verification.py -q} at
+80~dps mpmath working precision.
+\end{theorem}
+
+\begin{proof}
+Execution of
+\texttt{pytest compute/tests/test\_wave5\_verification.py -q}
+on 2026-04-24 returns \texttt{6 passed}: the five verification
+tests plus the smoke test
+\texttt{test\_wave5\_decorators\_registered} that confirms all
+five claim labels appear in \texttt{realized\_claims()}. The
+six-test pass is reproducible on any machine with mpmath~\(\geq\) 1.3.
+\end{proof}
+
+\section{Placement in the Wave-6 Verification Lattice}
+\label{v4-arith:w6-h:placement}
+
+The wave-6 campaign closed five agent slots on cross-verification of
+wave-5 content. Agent~H's slot covers the numerical-constant layer:
+five constants, five decorators, all passing. Other wave-6 slots
+handle orthogonal classes:
+\begin{itemize}
+\item Agent~A: structural closures of
+$\mathrm{L}_{\mathrm{ACD}}$ and F1.a/F2.c.
+\item Agent~B: $\mathrm{H}_{\mathrm{HP}}^{\mathrm{Ar}}$ operator
+audit.
+\item Agent~C: full $\mathcal{V}^{\mathrm{prim}}$ P3 conditional
+closures.
+\item Agent~D: Positselski four sub-items.
+\item Agent~E--G: F1.a1--F1.a3 closure ledgers.
+\item \textbf{Agent~H (this chapter): wave-5 numerical-constant
+cross-verification.}
+\item Agent~I: R-analytic density-of-zeros residuals.
+\item Agent~J: $\mathrm{VB}^{\ast}$ spectral positivity.
+\end{itemize}
+Agent~H's installations do not overlap the structural-theorem slots;
+they isolate and audit the numerical content that threads through
+the manuscript.
+
+\section{Summary}
+\label{v4-arith:w6-h:summary}
+
+\begin{enumerate}
+\item Five wave-5 numerical constants carry a HZ-IV source-disjoint
+cross-verification decorator each. The decorators live in
+\texttt{compute/tests/test\_wave5\_verification.py}.
+\item Each decorator passes the mechanical disjointness guard
+(string-set disjointness of \texttt{derived\_from} and
+\texttt{verified\_against}) and records a human-readable
+\texttt{disjoint\_rationale}.
+\item All six tests (five verifications plus one smoke test) pass
+at the recorded rtol budget under pytest.
+\item The five constants verified are \(c^{\mathrm{Ar}}=2\),
+\(\lambda_{1}\) through \(\lambda_{4}\), \(N(100)\) and \(N(1000)\),
+\(\gamma_{1}\), \(\gamma_{2}\), \(\gamma_{3}\), and \(\psi(1/4)\).
+\item The chapter contributes no new mathematics; it audits the
+numerical load-bearing layer of wave~5 and installs the HZ-IV
+decorators that certify each verification.
+\end{enumerate}

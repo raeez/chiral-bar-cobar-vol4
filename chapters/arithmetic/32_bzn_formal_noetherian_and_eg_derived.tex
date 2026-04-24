@@ -6,10 +6,10 @@ Hochschild and Derived Structure on Emerton--Gee}
 \Cref{v4-arith:sw:wave2}) split the conditional closure of
 F3.BZN$^{\mathrm{Ar}}$ (\Cref{v4-arith:sw:thm:BZN-Ar-split}) into
 R1.fin-type (GR theorem, inapplicable), R1.formal (genuine open),
-R2 (derived enhancement of the Emerton--Gee stack), R3 (tautological
-once R2 closes), and R4 (non-semisimple correction at wild primes).
-This chapter closes R2 by an explicit ind-level cotangent complex
-computation and reduces R1.formal to three structurally tight
+R2 (correct Selmer-derived global spectral target), R3 (full-target
+Weil/$(\varphi,\Gamma)$ comparison beyond the inertia shadow), and
+R4 (non-semisimple correction at wild primes).
+This chapter corrects R2 and reduces R1.formal to three structurally tight
 sub-obligations, of which the first closes unconditionally via
 Lurie HA 5.5.3 colimit continuity, while the remaining two are
 inscribed as named open obstructions with explicit scope.}
@@ -26,7 +26,7 @@ trace equivalence
 \label{v4-arith:bzn-sub:eq:F3-statement}
 \mathrm{HH}_{\bullet}\bigl(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},\mathrm{glob}}\bigr)
 \;\simeq\;
-\mathcal{O}\bigl(\mathrm{LocSys}^{\mathrm{Ar}}_{GL_{2}}(B\widehat{\mathbb{Z}})\bigr)^{\mathrm{flat}}
+\mathcal{O}\bigl(\mathrm{LocSys}^{W,\varphi\Gamma}_{GL_{2}}\bigr)^{\mathrm{flat}}
 \end{equation}
 holds as an equivalence of $E_{1}$-algebras in stable presentable
 $\infty$-categories. Wave-2 attacker A2-BZN-01 (\Cref{v4-arith:sw:wave2},
@@ -39,8 +39,10 @@ sub-obligations:
 $\mathrm{HH}_{\bullet}(\mathrm{IndCoh}(\mathcal{X}))\simeq\mathcal{O}(L\mathcal{X})$
 holds for smooth finite-type derived stacks $\mathcal{X}$.
 \emph{Status: Theorem} (Gaitsgory--Rozenblyum).
-\emph{Inapplicable} to $\mathcal{X}=\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}$
-because the Emerton--Gee stack is formal Noetherian, not finite-type.
+\emph{Inapplicable} to
+$\mathcal{X}=\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}$
+because the Selmer-derived stack is formal/derived and not
+finite-type.
 \item[\textbf{R1.formal.}] The extension of the Gaitsgory--Rozenblyum
 theorem to formal Noetherian derived stacks. For
 $\mathcal{X}$ a formal Noetherian derived algebraic stack and
@@ -51,19 +53,18 @@ $\mathcal{C}=\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X})$,
 \mathcal{O}\bigl(L^{\mathrm{Ar}}\mathcal{X}\bigr)^{\mathrm{flat}}.
 \end{equation}
 \emph{Status at installation: genuinely open, not a routine extension.}
-\item[\textbf{R2.}] The Emerton--Gee stack
-$\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}$ is a \emph{derived} formal
-algebraic stack in the Gaitsgory--Rozenblyum DAG sense, verified by
-an explicit computation of the cotangent complex at
-ind-colimit level. \emph{Status at installation: Plausibly Theorem}
-(Emerton--Gee arXiv:1908.07185 constructs the Noetherian formal
-algebraic stack; the derived enhancement requires cotangent-complex
-verification).
-\item[\textbf{R3.}] Identification
-$\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}})\simeq\mathrm{LocSys}^{\mathrm{Ar}}_{GL_{2}}(B\widehat{\mathbb{Z}})$.
-\emph{Status: Definitional} (tautological once R2 holds, since
-$\mathrm{LocSys}^{\mathrm{Ar}}$ is by definition the derived internal
-Hom from $B\widehat{\mathbb{Z}}$; see \Cref{v4-arith:bzn:prop:EG-to-LocSys}).
+\item[\textbf{R2.}] The correct spectral target is the
+Selmer-derived global deformation stack
+$\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}$, built from
+local Emerton--Gee/Weil/$(\varphi,\Gamma)$ stacks by derived
+Selmer fibre product, not by a product or colimit of local stacks.
+\emph{Status at installation: target definitional; derived
+Noetherianity theorem-waiting for the chosen local conditions.}
+\item[\textbf{R3.}] Comparison from the inertia shadow
+$\mathrm{Map}(B\widehat{\mathbb{Z}},-)$ to the full
+Weil/$(\varphi,\Gamma)$ local-system target.
+\emph{Status: Conjectural}; the inertia-only identification is not
+the final arithmetic BZN target.
 \item[\textbf{R4.}] Non-semisimple correction at wild primes $p=2,3$:
 $\mathrm{Ext}^{1}$ contributions to
 $\mathrm{HH}_{\bullet}(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p})$
@@ -75,13 +76,12 @@ chapter}; addressed separately.
 
 This chapter treats R2 and R1.formal:
 \begin{enumerate}
-\item \textbf{R2 is closed here} by an ind-level cotangent complex
-computation against the Emerton--Gee smoothness + mass-formula
-structure (Emerton--Gee arXiv:1908.07185 \S2.4--2.6), combined with
-the Lurie DAG~X / HA~7.4 functorial framework. The computation is
-routine in the sense of Lurie DAG, but not in the literature
-(Emerton--Gee do not package their stack in GR derived language).
-The proof executed here supplies the missing translation.
+\item \textbf{R2 is reformulated here} as the Selmer-derived target.
+The local Emerton--Gee stacks supply local formal algebraic input,
+but the global object must impose the global Galois relation,
+determinant, residual representation, and local Selmer conditions by
+derived fibre product. Derived Noetherianity of that fibre product is
+kept as theorem-waiting, not asserted as a product-colimit theorem.
 \item \textbf{R1.formal is reduced to three named sub-obligations}
 (R1.formal.a, b, c), of which R1.formal.a closes unconditionally
 via Lurie HA~5.5.3 (HH-colimit continuity), while R1.formal.b
@@ -159,16 +159,23 @@ cotangent complex on the pro-representable moduli stack. Emerton--Gee
 formula. \emph{Pass.} (See \Cref{v4-arith:bzn-sub:prop:EG-tangent-local}.)
 
 \item[\textbf{Cycle 2: R2 ind-level check.}]
-\emph{Attack.} The global Emerton--Gee stack is presented as an
-inductive limit
-$\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}=\varinjlim_{S\text{ finite}}\prod_{p\in S}\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}$.
-Does the cotangent complex preserve this colimit structure?
-\emph{Heal.} Lurie HA~7.4.3 (cotangent complex is a left adjoint
-from derived stacks to quasi-coherent complexes) ensures
-cotangent-complex preservation under all small colimits in derived
-stacks, in particular under the filtered colimit indexing finite
-sets of primes and under the finite product across primes.
-\emph{Pass.} (See \Cref{v4-arith:bzn-sub:prop:cotangent-ind-level}.)
+\emph{Attack.} A global Emerton--Gee stack cannot be an inductive
+limit of products of local stacks: a global Galois representation is
+not independent local data. The restrictions to decomposition groups
+must come from one global representation and obey the chosen Selmer
+conditions. \emph{Heal.} Replace the product/colimit by the
+Selmer-derived fibre product
+\[
+\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}
+=
+\mathrm{Map}_{\bar\rho,\det}(G_{\mathbb{Q},S},GL_{2})
+\times^{\mathbf{R}}_{\prod_{v\in S}\mathrm{Map}(G_{\mathbb{Q}_{v}},GL_{2})}
+\prod_{v\in S}\mathcal{X}^{\mathcal{L}_{v}}_{v}.
+\]
+Its tangent complex is the Selmer complex
+$C^{\bullet}_{\mathcal{L}}(G_{\mathbb{Q},S},\mathrm{ad}\,\rho)[1]$.
+\emph{Pass as a definition; derived Noetherianity remains
+theorem-waiting.}
 
 \item[\textbf{Cycle 3: R2 derived enhancement test.}]
 \emph{Attack.} Is Emerton--Gee's Noetherian formal algebraic stack
@@ -358,93 +365,56 @@ pair of square-zero extensions of $\mathcal{X}$ and $\mathcal{Y}$.
 
 \subsection{R2 Main Theorem}
 
-\begin{theorem}[R2 closed: Emerton--Gee is a derived formal algebraic stack]
+\begin{theorem}[R2 corrected: Selmer-derived spectral target]
 \label{v4-arith:bzn-sub:thm:R2-main}
-\ClaimStatusProvedHere. The global Emerton--Gee stack
-$\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}$ is a derived formal
-algebraic stack in the Gaitsgory--Rozenblyum DAG Vol.~II sense:
+\ClaimStatusNeedsVerification. For fixed residual representation
+$\bar\rho$, determinant, finite ramification set $S$, and local
+conditions $\mathcal{L}_{v}$, the corrected global spectral target is
+the Selmer-derived stack
+\begin{equation}
+\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}
+=
+\mathrm{Map}_{\bar\rho,\det}(G_{\mathbb{Q},S},GL_{2})
+\times^{\mathbf{R}}_{\prod_{v\in S}\mathrm{Map}(G_{\mathbb{Q}_{v}},GL_{2})}
+\prod_{v\in S}\mathcal{X}^{\mathcal{L}_{v}}_{v}.
+\end{equation}
+At a point $\rho$ its tangent complex is the Selmer tangent complex
+\begin{equation}
+T_{\rho}\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}
+\simeq
+C^{\bullet}_{\mathcal{L}}(G_{\mathbb{Q},S},\mathrm{ad}^{0}\rho)[1].
+\end{equation}
+The following items are the remaining theorem-waiting checks for
+the chosen local deformation problem:
 \begin{enumerate}
-\item Underlying ordinary stack: the Noetherian formal algebraic
-stack of Emerton--Gee arXiv:1908.07185 Thm~B.0.1.
-\item Cotangent complex: a perfect complex of tor-amplitude
-$[-1,0]$, computed point-wise as
-$\mathbb{L}_{\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}},\overline{\rho}}\simeq H^{*}_{\mathrm{cts}}(\mathrm{Gal},\mathrm{ad}\,\overline{\rho})[1]$
-for closed points $\overline{\rho}$ (\Cref{v4-arith:bzn-sub:prop:EG-tangent-local}),
-globalised by the ind-colimit structure
-(\Cref{v4-arith:bzn-sub:prop:cotangent-ind-level}) and the
-product-across-primes structure
-(\Cref{v4-arith:bzn-sub:cor:cotangent-product}).
-\item Quasi-smoothness: the cotangent complex is perfect of
-tor-amplitude $[-1,0]$, which is the defining property of a
-quasi-smooth derived stack in GR DAG~Vol.~II.
-\item Compatibility with formal completion: the derived structure
-extends from the mass-formula smooth finite-type cover
-(Emerton--Gee Thm~B.0.1(1)) to the formal completion via GR
-DAG~Vol.~II Ch.~II \S3.3 (formal-completion smoothness).
+\item Local conditions $\mathcal{X}^{\mathcal{L}_{v}}_{v}$ are
+derived formal algebraic substacks of the full local
+Weil/$(\varphi,\Gamma)$ parameter stack.
+\item The derived fibre product is formal Noetherian/quasi-smooth in
+the Gaitsgory--Rozenblyum sense.
+\item The nilpotent-singular-support condition used in
+$\mathrm{IndCoh}_{\mathrm{Nilp}}$ is compatible with the Selmer
+cotangent complex.
 \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-The proof proceeds in four steps.
-
-\medskip\noindent\textbf{Step 1: Local derived enhancement at each prime.}
-Emerton--Gee arXiv:1908.07185~\S2 constructs
-$\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}$ as a Noetherian formal
-algebraic stack; \S2.6 Thm.~B.0.1(1) exhibits a smooth finite-type
-cover given by the mass-formula parametrisation of
-$(\varphi,\Gamma)$-modules with fixed Hodge--Tate weight $k$.
-By \Cref{v4-arith:bzn-sub:prop:EG-tangent-local}, the tangent
-complex at each closed $\overline{\mathbb{F}}_{p}$-point is
-$H^{*}_{\mathrm{cts}}(\mathrm{Gal}(\overline{\mathbb{Q}}_{p}/\mathbb{Q}_{p}),\mathrm{ad}\,\overline{\rho})[1]$,
-a perfect complex of tor-amplitude $[-1,0]$ by
-\Cref{v4-arith:bzn-sub:rem:perfect-tor}. By Lurie DAG~X~\S1
-(pro-representable formal moduli functors), the pro-representable
-structure lifts this point-wise tangent complex to a globally
-defined cotangent complex $\mathbb{L}_{\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}}$
-on the stack, functorially in points. This produces the local
-derived enhancement.
-
-\medskip\noindent\textbf{Step 2: Product-across-primes.} For a finite
-set $S$ of primes, the product
-$\prod_{p\in S}\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}$ is a finite
-product of local derived formal algebraic stacks. By
-\Cref{v4-arith:bzn-sub:cor:cotangent-product}, the cotangent complex
-of the product is the external direct sum of the local cotangent
-complexes. Each local cotangent complex is perfect of tor-amplitude
-$[-1,0]$; the external direct sum is again perfect of tor-amplitude
-$[-1,0]$; hence $\prod_{p\in S}\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}$
-is a derived formal algebraic stack.
-
-\medskip\noindent\textbf{Step 3: Ind-colimit over finite $S$.}
-By the global structure (F1.c) of the Emerton--Gee stack
-(\Cref{v4-arith:thm:F1-reduction}~(F1.c)),
-\begin{equation}
-\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}\;=\;\varinjlim_{S\text{ finite}}\prod_{p\in S}\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}.
-\end{equation}
-By \Cref{v4-arith:bzn-sub:prop:cotangent-ind-level}, the cotangent
-complex of the ind-colimit is the $\mathrm{Pro}$-limit of the
-finite-$S$ cotangent complexes under the closed-immersion
-transitions $\prod_{p\in S}\to\prod_{p\in S'}$ (extension-by-trivial
-on the factors $p\in S'\setminus S$). Since each level is a perfect
-complex of tor-amplitude $[-1,0]$ and the transitions are closed
-immersions (hence preserve the perfectness and tor-amplitude, by
-Lurie HA~7.3.2.4), the ind-colimit cotangent complex is still a
-perfect complex of tor-amplitude $[-1,0]$ in $\mathrm{IndCoh}$.
-
-\medskip\noindent\textbf{Step 4: Quasi-smoothness.}
-A derived algebraic stack whose cotangent complex is perfect of
-tor-amplitude $[-1,0]$ is quasi-smooth by definition (GR DAG~Vol.~II
-Ch.~II \S3.3). Therefore $\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}$
-is a derived formal algebraic stack, and quasi-smooth.
+The displayed stack is the derived fibre product defining the Selmer
+deformation functor with fixed determinant and local conditions.
+Linearising continuous Galois cochains gives the standard Selmer
+mapping cone, hence the tangent complex
+$C^{\bullet}_{\mathcal{L}}(G_{\mathbb{Q},S},\mathrm{ad}^{0}\rho)[1]$.
+The remaining assertions are not consequences of a product/colimit
+presentation and are left as explicit checks.
 \end{proof}
 
 \begin{corollary}[R3 remains a full-target residual under R2]
 \label{v4-arith:bzn-sub:cor:R3-definitional}
 \ClaimStatusNeedsVerification. Given
-\Cref{v4-arith:bzn-sub:thm:R2-main} (R2 closed), R3 still requires
+\Cref{v4-arith:bzn-sub:thm:R2-main} (R2 corrected), R3 still requires
 the full-target comparison:
 \begin{equation}
-\mathrm{Map}\bigl(B\widehat{\mathbb{Z}},\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}\bigr)
+\mathrm{Map}\bigl(B\widehat{\mathbb{Z}},\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\bigr)
 \;\longrightarrow\;
 \mathrm{LocSys}^{\mathrm{Ar}}_{GL_{2}}\bigl(B\widehat{\mathbb{Z}}\bigr),
 \end{equation}
@@ -457,9 +427,9 @@ By \Cref{v4-arith:bzn:def:L-ar} and
 \Cref{v4-arith:bzn:cor:L-ar-BGL2-is-LocSys},
 $\mathrm{LocSys}^{\mathrm{Ar}}_{GL_{2}}(B\widehat{\mathbb{Z}})=L^{\mathrm{Ar}}BGL_{2}=\mathrm{Map}(B\widehat{\mathbb{Z}},BGL_{2})$.
 The map from
-$\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}})$
-is obtained only after choosing an Emerton--Gee comparison morphism
-$\iota^{\mathrm{EG}}\colon\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}\to\mathrm{LocSys}^{\mathrm{Ar}}_{GL_{2}}(B\widehat{\mathbb{Z}})$
+$\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})$
+is obtained only after choosing an inertia-shadow comparison morphism
+$\iota^{\mathrm{Sel}}\colon\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\to\mathrm{LocSys}^{\mathrm{Ar}}_{GL_{2}}(B\widehat{\mathbb{Z}})$
 (\Cref{v4-arith:bzn:prop:EG-to-LocSys}). That inertia-only morphism
 forgets Frobenius and $(\varphi,\Gamma)$ data, so R2 does not make it
 a closed immersion and does not identify the two mapping stacks.
@@ -865,15 +835,17 @@ Gaitsgory--Rozenblyum; R1.formal splits into R1.formal.a
 R1.formal.b (\Cref{v4-arith:bzn-sub:prop:R1-formal-b-scope},
 conjectural) plus R1.formal.c
 (\Cref{v4-arith:bzn-sub:prop:R1-formal-c-scope}, conjectural) by
-\Cref{v4-arith:bzn-sub:thm:R1-formal-reduction}; R2 closes by
+\Cref{v4-arith:bzn-sub:thm:R1-formal-reduction}; R2 is corrected by
 \Cref{v4-arith:bzn-sub:thm:R2-main}; R3 remains a full-target
 comparison residual by \Cref{v4-arith:bzn-sub:cor:R3-definitional};
 R4 is out of scope.
 
 Combining: F3.BZN$^{\mathrm{Ar}}$ can become theorem-grade only if all of R1.fin-type,
 R1.formal.a, R1.formal.b, R1.formal.c, R2, R3, R4 close. Of these,
-R1.fin-type, R1.formal.a, and R2 are theorem-grade here;
-R1.formal.b, R1.formal.c, R3, and R4 are residual.
+R1.fin-type and R1.formal.a are theorem-grade here; R2 supplies the
+correct target and tangent complex but leaves derived Noetherianity
+and nilpotent-support compatibility theorem-waiting. R1.formal.b,
+R1.formal.c, R3, and R4 are residual.
 \end{proof}
 
 \subsection{Attack-Heal Trace for R1.formal}
@@ -902,8 +874,10 @@ correspondences for $\mathrm{IndCoh}$-valued functoriality.
 
 \paragraph{Attack 4 (missing hypothesis).} The main hypothesis on
 $\mathcal{X}$ is Noetherianness $+$ derived-formal-algebraic
-structure (R2). Both are explicit in the statement; R2 is closed
-by \Cref{v4-arith:bzn-sub:thm:R2-main}. \textbf{Pass.}
+structure (R2). R2 is corrected in
+\Cref{v4-arith:bzn-sub:thm:R2-main}; the Noetherian and
+nilpotent-support checks remain explicit theorem-waiting
+hypotheses. \textbf{Residual named.}
 
 \paragraph{Attack 5 (false functoriality).} HH-colim continuity
 is a functorial statement on the $\infty$-category of stable
@@ -1066,19 +1040,15 @@ category).
 \label{v4-arith:bzn-sub:summary}
 
 \begin{enumerate}
-\item \textbf{R2 is closed here unconditionally.} The global
-Emerton--Gee stack $\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}$ is a
-derived formal algebraic stack in the Gaitsgory--Rozenblyum
-DAG~Vol.~II sense, with cotangent complex perfect of tor-amplitude
-$[-1,0]$, computed point-wise via Galois-cohomology of the adjoint
-representation (\Cref{v4-arith:bzn-sub:prop:EG-tangent-local}),
-globalised via the ind-colimit preservation of the cotangent
-complex (\Cref{v4-arith:bzn-sub:prop:cotangent-ind-level}) and the
-product-across-primes preservation
-(\Cref{v4-arith:bzn-sub:cor:cotangent-product}). The Emerton--Gee
-stack is quasi-smooth in the GR sense
-(\Cref{v4-arith:bzn-sub:thm:R2-main}).
-\item \textbf{R3 closes definitionally under R2}
+\item \textbf{R2 is corrected here, not closed unconditionally.}
+The spectral target is the Selmer-derived stack
+$\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}$ with tangent
+complex
+$C^{\bullet}_{\mathcal{L}}(G_{\mathbb{Q},S},\mathrm{ad}^{0}\rho)[1]$
+(\Cref{v4-arith:bzn-sub:thm:R2-main}). Formal Noetherianity,
+quasi-smoothness, and nilpotent-support compatibility remain
+theorem-waiting for the chosen local deformation problem.
+\item \textbf{R3 remains a full-target residual under R2}
 (\Cref{v4-arith:bzn-sub:cor:R3-definitional}).
 \item \textbf{R1.formal is reduced to three sub-obligations.}
 R1.formal.a (HH-colim continuity) closes unconditionally via
@@ -1093,15 +1063,16 @@ scopes 30--50 and 20--40 respectively
 present chapter, F3.BZN$^{\mathrm{Ar}}$ reduces to R1.formal.b
 $+$ R1.formal.c $+$ R3 $+$ R4
 (\Cref{v4-arith:bzn-sub:cor:F3-BZN-closure-path}).
-The theorem-grade sub-residuals here are R1.fin-type, R1.formal.a,
-and R2.
+The theorem-grade sub-residuals here are R1.fin-type and
+R1.formal.a; R2 is target-corrected with remaining checks.
 \item \textbf{Consistency with wave-1.} The present chapter
 surfaces, as R1.formal.b, the implicit pro-\'etale extension of
 Ben-Zvi--Francis--Nadler used in wave-1
 \Cref{v4-arith:bzn:thm:arith-fact-homology}; the two chapters are
 consistent (\Cref{v4-arith:bzn-sub:rem:wave1-consistency}).
-\item \textbf{Paper-length estimates.} R2 is closed in the present
-chapter (approximately 20 pages of the chapter). R1.formal.b is
+\item \textbf{Paper-length estimates.} R2's remaining
+Noetherian/quasi-smooth and nilpotent-support checks are estimated
+at 20--40 pages for a fixed Selmer problem. R1.formal.b is
 estimated at 30--50 pages in a dedicated paper. R1.formal.c is
 estimated at 20--40 pages. R4 scope is TBD (dedicated
 chapter or paper on non-semisimple Hecke corrections).

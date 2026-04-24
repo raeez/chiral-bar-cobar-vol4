@@ -1,20 +1,18 @@
 \chapter{Arithmetic Virasoro Positivity Bootstrap}
 \label{v4-arith:virasoro-bootstrap}
 
-\emph{With the RH reformulation of Chapter~\ref{v4-arith:rh-reformulation}
-in place, all structural work has been discharged onto a single
-operator-positivity obligation: the sequence
-$T_{n}=(L_{0}^{\mathrm{Ar}})^{n}-(L_{0}^{\mathrm{Ar}}-\mathrm{id})^{n}$
-is positive-semidefinite on the primary arithmetic Heisenberg Fock
-for every $n\geq 1$. This chapter closes the closable: $n=1$
-trivially; $n=2$ unconditionally up to a single reduction that is
-itself RH-equivalent; $n\geq 3$ via a structural moment-problem
-reduction combined with the Bombieri--Lagarias unconditional upper
-bound. Full VB$^{*}$ is equivalent to RH and cannot be established
-here. What is established is the sharpest operator-theoretic form
-of that equivalence: VB$^{*}$ reduces to a single Hamburger moment
-determinacy condition, and the central obstruction is named
-precisely.}
+\emph{With the corrected RH reformulation of
+Chapter~\ref{v4-arith:rh-reformulation} in place, the old
+Virasoro-polynomial sequence
+\(T_{n}=(L_{0}^{\mathrm{Ar}})^{n}-(L_{0}^{\mathrm{Ar}}-\mathrm{id})^{n}\)
+is no longer the Li operator. This chapter is therefore retained as a
+formal Fock/Virasoro attack ledger: it records what the polynomial
+sequence proves on finite Fock sectors, why that does not construct a
+Hilbert--P\'olya operator, and where the false shortcut from Fock
+positivity to RH breaks. The live RH input is the positive
+Hilbert--P\'olya trace of
+\(\mathcal L_{n}=\mathrm{id}-(\mathrm{id}-\Theta_{\xi}^{-1})^{n}\)
+from Chapter~\ref{v4-arith:rh-reformulation}.}
 
 \section{Statement Recalled}
 \label{v4-arith:vb:statement}
@@ -22,7 +20,7 @@ precisely.}
 \subsection{The Operator Sequence}
 \label{v4-arith:vb:operator-sequence}
 
-\begin{definition}[arithmetic Virasoro descendant sequence]
+\begin{definition}[formal Virasoro polynomial sequence]
 \label{v4-arith:vb:def:T_n}
 \ClaimStatusDefinitional. Let $\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$
 denote the primary (non-descendant) subspace of the arithmetic
@@ -32,70 +30,68 @@ $\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Pet}}$ of
 define
 \begin{equation}
 \label{v4-arith:vb:eq:T_n-def}
-T_{n}\;:=\;(L_{0}^{\mathrm{Ar}})^{n}\,-\,(L_{0}^{\mathrm{Ar}}-\mathrm{id})^{n}
+T_{n}^{\mathrm{Vir}}\;:=\;(L_{0}^{\mathrm{Vir}})^{n}
+\,-\,(L_{0}^{\mathrm{Vir}}-\mathrm{id})^{n}
 \;\in\;\mathrm{End}\bigl(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}\bigr).
 \end{equation}
-The notation is operator-theoretic, not merely formal. P3 supplies the
-positive Hermitian form; it does \emph{not} by itself construct the
-unbounded operator, its domain, or its adjoint. Thus $T_{n}$ is a
-Hermitian self-adjoint operator only after one supplies
-H-P$^{\mathrm{Ar}}$ (or an explicit diagonal model with a common
-spectral-calculus core). Under that additional input, every polynomial
-in $L_{0}^{\mathrm{Ar}}$ is self-adjoint on its natural spectral
-domain, and the real linear combination
-(\ref{v4-arith:vb:eq:T_n-def}) remains self-adjoint.
+Here \(L_{0}^{\mathrm{Vir}}\) is the Fock/Virasoro conformal-energy
+operator. It is not the Hilbert--P\'olya ordinate operator
+\(H_{\mathrm{HP}}\), the Bost--Connes Hamiltonian \(N_{\mathrm{BC}}\),
+or the zero operator \(\Theta_{\xi}=1/2+iH_{\mathrm{HP}}\). Thus
+\(T_{n}^{\mathrm{Vir}}\) is a legitimate Fock polynomial on any
+common Virasoro spectral core, but it is not Li's transform.
+For legacy compatibility within this chapter, later occurrences of
+\(T_n\) mean \(T_{n}^{\mathrm{Vir}}\) unless the Hilbert--P\'olya
+Li transform \(\mathcal L_n\) is written explicitly.
 \end{definition}
 
-\begin{remark}[why $T_{n}$ is the right object]
+\begin{remark}[why \(T_{n}^{\mathrm{Vir}}\) is not the Li object]
 \label{v4-arith:vb:rem:why-T_n}
 Two conventions for Li's criterion circulate in the literature. The
 original Li 1997 arXiv:math/9712243 defines
 $\lambda_{n}=\sum_{\rho}(1-(1-1/\rho)^{n})$; Bombieri--Lagarias J.
 Number Theory 77 (1999) uses the equivalent closed form
 $\lambda_{n}=(n-1)!^{-1}(d/ds)^{n}[s^{n-1}\log\xi(s)]\big|_{s=1}$.
-The operator $T_{n}$ packages both once H-P$^{\mathrm{Ar}}$ has
-supplied the zeta-zero spectral model: under the
-Bost--Connes-regularised trace (Connes--Marcolli
-arXiv:math/0404128, \S1.8)
-$\mathrm{tr}(L_{0}^{\mathrm{Ar}})^{k}=\sum_{\rho}\rho^{k}$ in the
-analytic sense of Riemann--von Mangoldt, one finds
-$\mathrm{tr}(T_{n})=\sum_{\rho}[\rho^{n}-(\rho-1)^{n}]=n\lambda_{n}$ up
-to the normalisation chosen in \Cref{v4-arith:rh:prop:Li-is-Virasoro}.
-Positive-semidefiniteness of $T_{n}$ is strictly stronger than
-non-negativity of its trace.
+The corresponding operator is
+\(\mathcal L_{n}=\mathrm{id}-(\mathrm{id}-\Theta_{\xi}^{-1})^{n}\),
+with \(\Theta_{\xi}\) the normal zero operator of
+\Cref{v4-arith:rh:hyp:HPAr}. A polynomial
+\((L_{0}^{\mathrm{Vir}})^{n}-(L_{0}^{\mathrm{Vir}}-\mathrm{id})^{n}\)
+does not become Li's transform by regularisation. Consequently, every
+claim below involving \(T_{n}^{\mathrm{Vir}}\) is a formal
+Fock/Virasoro claim unless it is explicitly restated in terms of
+\(\mathcal L_{n}\) and the positive Weil--Connes trace.
 \end{remark}
 
 \subsection{Conditional Chain: VB$^{*}$ $\Rightarrow$ Li Positivity $\Leftrightarrow$ RH}
 \label{v4-arith:vb:equivalence-chain}
 
-\begin{proposition}[conditional implication and the converse problem]
+\begin{proposition}[formal Virasoro positivity is not Li positivity]
 \label{v4-arith:vb:thm:three-equivalences}
-\ClaimStatusProvedHere \emph{(conditional on P2, P3,
-H-P$^{\mathrm{Ar}}$, and a positive Bost--Connes regularised trace)}.
-Under these hypotheses,
+\ClaimStatusProvedHere. Positivity of the formal Virasoro polynomial
+\(T_{n}^{\mathrm{Vir}}\) on finite Fock sectors does not imply
+\(\lambda_{n}\geq0\), and therefore does not imply RH. The
+one-directional RH implication in Vol~IV is instead
 \[
-\mathrm{VB}^{*}\Longrightarrow \lambda_{n}\geq 0\ \forall n\geq 1
-\Longleftrightarrow \mathrm{RH}.
+\mathrm{HP\text{--}Li}\Longrightarrow \lambda_{n}\geq 0\ \forall n
+\Longleftrightarrow \mathrm{RH},
 \]
-The converse direction $\mathrm{RH}\Rightarrow\mathrm{VB}^{*}$ is not
-proved in Vol~IV. It is the separate zero-mode
-spectral-positivity/determinacy problem named below as
-VB$^{*}_{\mathrm{core}}$.
+where HP--Li is the positive trace statement of
+\Cref{v4-arith:rh:thm:VB-implies-F-RH}.
 \end{proposition}
 
 \begin{proof}
-(RH)$\Leftrightarrow$(Li) is Li 1997 arXiv:math/9712243, reproduced
-in Bombieri--Lagarias J. Number Theory 77 (1999). Under
-H-P$^{\mathrm{Ar}}$, the operators $T_{n}$ are defined by spectral
-calculus on the Hilbert--P\'olya domain, and
-\Cref{v4-arith:rh:prop:Li-is-Virasoro} identifies their
-Bost--Connes-regularised traces with Li's coefficients. If the
-regularised trace is positive on the positive cone used here, then
-$T_{n}\succeq 0$ implies $\lambda_{n}\geq 0$ for every $n$. Li's
-criterion then gives RH. The reverse implication would require
-showing that trace-level Li positivity determines the operator
-positive cone; for the unbounded countable-spectrum problem at hand
-this is precisely the moment/determinacy residual, not a theorem.
+Li's criterion is Li 1997 arXiv:math/9712243, reproduced in
+Bombieri--Lagarias J. Number Theory 77 (1999). The Li summand is
+\(1-(1-1/\rho)^{n}\). The spectral transform realising this summand
+is therefore \(z\mapsto1-(1-z^{-1})^{n}\) applied to the zero
+operator \(z=\Theta_{\xi}\). The polynomial \(x^{n}-(x-1)^{n}\)
+applied to a Virasoro energy \(x=L_{0}^{\mathrm{Vir}}\) is a different
+function of a different operator. Positivity of the latter is a Fock
+calculation; it has no trace identity with Li's coefficients unless
+the Hilbert--P\'olya trace identity has already been replaced by the
+correct \(\Theta_{\xi}\)-transform. The HP--Li implication follows
+from \Cref{v4-arith:rh:thm:VB-implies-F-RH}.
 \end{proof}
 
 \begin{remark}[what is genuinely equivalent]
@@ -529,98 +525,83 @@ positive-regularisation residual isolated in
 \subsection{The Shifted Zero Measure}
 \label{v4-arith:vb:shifted-measure}
 
-\begin{definition}[symmetrised zero measure]
+\begin{definition}[off-line defect measure]
 \label{v4-arith:vb:def:zero-measure}
 \ClaimStatusDefinitional. Let $\rho=1/2+i\gamma_{\rho}$ denote a
 non-trivial zero of $\xi$, written with $\gamma_{\rho}\in\mathbb{C}$
-(purely imaginary iff RH). Under the symmetrisation
+(real for every zero iff RH). Under the symmetrisation
 $\rho\leftrightarrow 1-\overline{\rho}$, the pair set
-$Z=\{\rho,1-\overline{\rho}\}$ pushes to a measure $\nu$ on
-$\mathbb{R}$ via
+$Z=\{\rho,1-\overline{\rho}\}$ pushes to the off-line defect measure
+\(\nu_{\mathrm{def}}\) on \(\mathbb{R}_{\geq0}\) via
 \begin{equation}
-\int f\,d\nu\;:=\;\sum_{\rho}f(\tfrac{1}{2}+|\mathrm{Im}\,\gamma_{\rho}|^{2})
+\int f\,d\nu_{\mathrm{def}}\;:=\;\sum_{\rho}f(|\mathrm{Im}\,\gamma_{\rho}|^{2})
 \end{equation}
 for test functions $f$ of suitable growth, Bost--Connes-regularised.
+The measure \(\nu_{\mathrm{def}}\) is supported at \(0\) exactly when
+RH holds. It is a defect detector, not Li's positive moment measure.
 \end{definition}
 
 \begin{remark}
-Under RH, $\gamma_{\rho}\in\mathbb{R}$ and the measure $\nu$ is
-supported on $[1/2,\infty)$: $\mathrm{Im}\,\gamma_{\rho}=0$,
-$\mathrm{Im}\,\gamma_{\rho}^{2}=0$, and $\nu$ becomes the spectral
-measure of the critical-line restriction of $L_{0}^{\mathrm{Ar}}$.
-Outside RH, $\nu$ is not supported on the real line.
+Under RH, $\gamma_{\rho}\in\mathbb{R}$ and
+\(\nu_{\mathrm{def}}\) is supported at \(0\). This defect measure is
+not the spectral measure of \(H_{\mathrm{HP}}\) and not the Li moment
+measure; it records only the distance of zeros from the critical
+line.
 \end{remark}
 
 \subsection{Li-Stieltjes Moment Formulation}
 \label{v4-arith:vb:li-stieltjes}
 
-\begin{proposition}[Li--Stieltjes moment formulation]
+\begin{proposition}[the defect measure is not a Li--Stieltjes moment model]
 \label{v4-arith:vb:prop:li-stieltjes}
-\ClaimStatusProvedHere \emph{(conditional on H-P$^{\mathrm{Ar}}$ and
-the Bost--Connes regularised trace package)}. The sequence
-$\mu_{n}:=\sum_{\rho}\rho^{n}$, Bost--Connes-regularised, admits the
-expression
-\begin{equation}
-\label{v4-arith:vb:eq:moment-formula}
-\mu_{n}\;=\;\int_{\mathbb{R}}x^{n}\,d\nu(x)
-\end{equation}
-where $\nu$ is the symmetrised zero measure of
-\Cref{v4-arith:vb:def:zero-measure}, extended by complex-conjugate
-pairing when applied outside RH.
+\ClaimStatusProvedHere. The off-line defect measure
+\(\nu_{\mathrm{def}}\) of \Cref{v4-arith:vb:def:zero-measure} does
+not give a Stieltjes moment representation of Li's coefficients or of
+\(\mu_{n}:=\sum_{\rho}\rho^{n}\). A Li--Stieltjes formulation requires
+the Hilbert--P\'olya zero operator \(\Theta_{\xi}\), the Li transform
+\(\mathcal L_n\), and the positive Weil--Connes trace of
+\Cref{v4-arith:rh:hyp:HPAr}.
 \end{proposition}
 
 \begin{proof}
-Bost--Connes regularisation of the trace of
-$(L_{0}^{\mathrm{Ar}})^{n}$ on the primary Fock equals
-$\sum_{\rho}\rho^{n}$ by
-\Cref{v4-arith:rh:prop:Li-is-Virasoro}. By the
-$\rho\leftrightarrow 1-\overline{\rho}$ pairing arising from the
-functional equation P1 (\Cref{v4-arith:cl:eq:G-row}), the zero set
-$Z$ is closed under $s\mapsto 1-\overline{s}$. Grouping zeros into
-conjugate pairs and invoking reality of $\xi$ gives
-$\mu_{n}=\sum_{\rho\in Z/\sim}[\rho^{n}+(1-\overline{\rho})^{n}]$,
-which by the substitution $x=\rho(1-\overline{\rho})$ (image under
-the Chebyshev map) becomes the real integral
-(\ref{v4-arith:vb:eq:moment-formula}).
+\(\nu_{\mathrm{def}}\) records \(|\mathrm{Im}\,\gamma_{\rho}|^{2}\),
+which vanishes exactly on the critical line. Li's summand is instead
+\(1-(1-1/\rho)^{n}\), a holomorphic function of the zero
+\(\rho\). No change of variables from the defect alone recovers this
+holomorphic transform with multiplicity. The repaired trace identity
+is \Cref{v4-arith:rh:prop:Li-is-Virasoro}, which applies the Li
+transform to \(\Theta_{\xi}\).
 \end{proof}
 
 \subsection{Hamburger Moment Determinacy}
 \label{v4-arith:vb:hamburger}
 
-\begin{theorem}[conditional Hamburger moment reformulation for VB$^{*}$]
+\begin{theorem}[quarantined Hamburger reformulation for the formal \(T_n\)]
 \label{v4-arith:vb:thm:moment-equivalence}
-\ClaimStatusProvedHere \emph{(conditional on P2, P3,
-H-P$^{\mathrm{Ar}}$, a positive Bost--Connes regularised trace, and
-the moment formula \Cref{v4-arith:vb:prop:li-stieltjes})}. Under
-these hypotheses, the following are equivalent as reformulations of
-the same residual:
+\ClaimStatusProvedHere. The following equivalence is a formal
+operator-theoretic template for a genuine positive moment problem; it
+is not the live RH path unless the measure is replaced by the
+Hilbert--P\'olya spectral measure of \(H_{\mathrm{HP}}\) and the trace
+is the positive Weil--Connes trace:
 \begin{enumerate}
-\item VB$^{*}$: $T_{n}\succeq 0$ for all $n\geq 1$.
-\item The symmetrised zero measure $\nu$ is a positive measure
-supported on $[0,\infty)$.
+\item Formal positivity: \(T_{n}^{\mathrm{Vir}}\succeq0\) for all
+\(n\geq1\) on a fixed self-adjoint spectral model.
+\item The associated spectral measure is a positive measure supported
+on the corresponding positive half-line.
 \item All Hankel minors $H_{n}:=\det(\mu_{i+j})_{0\leq i,j\leq n}$
 and shifted Hankel minors $H_{n}^{(1)}:=\det(\mu_{i+j+1})_{0\leq i,j\leq n}$
 are non-negative for every $n\geq 0$.
-\item Every non-trivial zero $\rho$ of $\xi$ satisfies
-$\mathrm{Re}(\rho)=1/2$: RH.
 \end{enumerate}
-This theorem is not an independent proof of RH: item (2), item (3),
-and item (4) are the RH-equivalent positivity problem expressed in
-three languages.
+This theorem is not an independent proof of RH and does not connect
+\(T_{n}^{\mathrm{Vir}}\) to Li's coefficients.
 \end{theorem}
 
 \begin{proof}
-$(1)\Leftrightarrow(2)$: Spectral-theorem application.
-Diagonalise $L_{0}^{\mathrm{Ar}}$ on the primary Fock with respect to
-the Petersson inner product using the self-adjointness supplied by
-H-P$^{\mathrm{Ar}}$; P3 supplies the positive form, not the unbounded
-operator. The
-eigenvalues form the support of $\nu$, weighted by spectral
-multiplicity. $T_{n}$ then diagonalises with eigenvalue
-$\lambda^{n}-(\lambda-1)^{n}$, which is non-negative for all $n\geq 1$
-iff $\lambda\geq 1/2$. Hence $T_{n}\succeq 0$ for all $n\geq 1$ iff
-$\mathrm{supp}(\nu)\subseteq[1/2,\infty)$, i.e.~(after shift by $1/2$)
-iff $\nu$ is a positive measure on $[0,\infty)$.
+$(1)\Leftrightarrow(2)$ is the spectral theorem for a chosen
+self-adjoint model: positivity of a polynomial functional calculus is
+equivalent to support of the spectral measure in the region where the
+polynomial is non-negative. This is a formal statement about that
+model, not about zeta zeros.
 
 $(2)\Leftrightarrow(3)$: Stieltjes moment-problem theorem
 (Shohat--Tamarkin 1943, Ch.~III; Akhiezer 1965, \S2.1): a sequence
@@ -628,22 +609,17 @@ $\{m_{k}\}_{k\geq 0}$ is the moment sequence of a positive measure on
 $[0,\infty)$ iff all Hankel and shifted Hankel minors are
 non-negative.
 
-$(2)\Leftrightarrow(4)$: Under $\rho=1/2+i\gamma$, $\rho\geq 1/2$
-(in the shifted sense) iff $\mathrm{Re}(\rho)\geq 1/2$. The
-functional equation forces symmetry about $1/2$, so
-$\mathrm{Re}(\rho)\geq 1/2$ for all zeros means
-$\mathrm{Re}(\rho)=1/2$ for all: RH.
-
-$(1)\Leftrightarrow(4)$: Composition of the above.
+No implication to RH is asserted.
 \end{proof}
 
 \begin{remark}[what this gains]
 \label{v4-arith:vb:rem:moment-gain}
-\Cref{v4-arith:vb:thm:moment-equivalence} reformulates VB$^{*}$ as a
-moment-determinacy problem, bringing the full classical apparatus of
-moment-problem theory to bear. In particular:
+\Cref{v4-arith:vb:thm:moment-equivalence} records the formal
+moment-determinacy apparatus that would become relevant after a true
+Hilbert--P\'olya spectral measure is constructed. In particular:
 \begin{itemize}
-\item Testing VB$^{*}$ level-by-level becomes testing Hankel
+\item Testing a genuine positive spectral measure level-by-level
+becomes testing Hankel
 determinants $H_{n}$ level-by-level, a finite numerical procedure at
 each $n$.
 \item Known numerical bounds (Coffey arXiv:math-ph/0507008 for
@@ -655,8 +631,8 @@ upper bounds on Hankel determinants.
 \item The gap between known and needed becomes precisely specified:
 \emph{unconditional} lower bounds on $H_{n}^{(1)}$ for all $n$.
 \end{itemize}
-None of this shortens RH: the residual is exactly (4) and hence (1).
-But the residual is now fully formalised in moment-problem language.
+None of this shortens RH. The residual is the construction of the
+positive Hilbert--P\'olya spectral measure itself.
 \end{remark}
 
 \section{Arithmetic Kac Determinant at $c^{\mathrm{Ar}}=2$}
@@ -1116,6 +1092,114 @@ analogue of Friedan-Qiu-Shenker but on a $C^{*}$-algebraic target
 rather than on a VOA. Ingredient (3) is speculative.
 \end{remark}
 
+\section{Arithmetic Zhu Finiteness Test}
+\label{v4-arith:vb:zhu-finiteness-test}
+
+The tempting shortcut is Verlinde finite-dimensionality: prove that the
+primary Bost--Connes core is an arithmetic Zhu-finite object, obtain a
+finite-dimensional Hermitian modular functor, and read positivity from
+ordinary linear algebra. The shortcut fails on the full zeta object.
+
+\begin{definition}[Euler-faithful arithmetic Zhu quotient]
+\label{v4-arith:vb:def:euler-faithful-zhu}
+\ClaimStatusDefinitional. An \emph{Euler-faithful arithmetic Zhu
+quotient} of the primary Bost--Connes core is a quotient \(Q\) of the
+zero-mode lattice \(L=\ell^{2}(\mathbb{N}^{\times})\) satisfying:
+\begin{enumerate}
+\item the Bost--Connes operators descend:
+\[
+\mu_{n}\overline{\delta}_{m}=\overline{\delta}_{nm},\qquad
+\mu_{n}^{*}\overline{\delta}_{m}=
+\begin{cases}
+\overline{\delta}_{m/n},& n\mid m,\\
+0,& n\nmid m,
+\end{cases}
+\]
+where \(\overline{\delta}_{m}\) is the image of
+\(\delta_{m}\in L\);
+\item the KMS Hamiltonian \(H=\log N\) descends with
+\(H\overline{\delta}_{m}=(\log m)\overline{\delta}_{m}\) whenever
+\(\overline{\delta}_{m}\neq0\);
+\item the ordinary KMS character of the quotient is the full
+Bost--Connes Euler product:
+\[
+\mathrm{Tr}_{Q}(e^{-\beta H})=\sum_{m\geq1}m^{-\beta}=\zeta(\beta)
+\qquad(\mathrm{Re}\,\beta>1).
+\]
+\end{enumerate}
+It is \emph{Zhu finite} if \(\dim_{\mathbb C}Q<\infty\).
+\end{definition}
+
+\begin{theorem}[no Euler-faithful Zhu finiteness]
+\label{v4-arith:vb:thm:no-euler-faithful-zhu-finite}
+\ClaimStatusProvedHere. No Euler-faithful arithmetic Zhu quotient of
+the primary Bost--Connes core is Zhu finite.
+\end{theorem}
+
+\begin{proof}
+If \(Q\) were finite-dimensional, the trace
+\(\mathrm{Tr}_{Q}(e^{-\beta H})\) would be a finite sum
+\(\sum_{j=1}^{r}a_{j}e^{-\beta E_{j}}\) after triangularising the
+finite-dimensional operator \(H\). In particular it extends to an
+entire function of \(\beta\). Euler-faithfulness requires this finite
+sum to equal \(\zeta(\beta)\) on the half-plane
+\(\mathrm{Re}\,\beta>1\). By the identity theorem the meromorphic
+continuation of \(\zeta\) would be entire, contradicting its simple
+pole at \(\beta=1\). Hence \(Q\) is infinite-dimensional.
+
+Equivalently, the faithful Bost--Connes action of
+\Cref{v4-arith:thm:BC-acts-on-L} sends
+\(\delta_{1}\) to \(\delta_{m}\) by \(\mu_{m}\delta_{1}=\delta_{m}\).
+Keeping the full Euler product keeps one independent KMS eigenline at
+every \(m\in\mathbb{N}^{\times}\). A finite Zhu quotient must kill or
+identify infinitely many of these lines, and then it no longer has
+character \(\zeta(\beta)\).
+\end{proof}
+
+\begin{corollary}[Verlinde finite-dimensionality cannot close full RH]
+\label{v4-arith:vb:cor:verlinde-shortcut-fails}
+\ClaimStatusProvedHere. Arithmetic Zhu/Verlinde finite-dimensionality
+cannot prove VB$^{*}_{\mathrm{core}}$ for the full
+\(\mathcal{V}^{\mathrm{prim}}\) while preserving the completed zeta
+partition function. The only Zhu-finite quotients compatible with the
+Bost--Connes action are finite-prime or finite-conductor truncations;
+their characters are finite Euler products or finite Dirichlet
+polynomials, not \(\xi(s)\).
+\end{corollary}
+
+\begin{proof}
+By \Cref{v4-arith:vb:thm:no-euler-faithful-zhu-finite}, a
+finite-dimensional quotient cannot be Euler-faithful. A quotient
+supported on a finite set \(S\) of primes has character
+\(\prod_{p\in S}(1-p^{-\beta})^{-1}\), possibly with an archimedean
+Tate factor. Such a finite Euler product is a finite-level arithmetic
+modular-functor object; it is not the zeta object whose zero-placement
+is RH. Therefore finite-dimensional Hermitian linear algebra can test
+finite windows, but it cannot supply the missing positivity for the
+full Bost--Connes zero-mode spectral measure.
+\end{proof}
+
+\begin{remark}[central charge does not rescue Zhu finiteness]
+\label{v4-arith:vb:rem:c-not-zhu-finite}
+The residue value \(c_{\mathrm{global}}=2\) of
+\Cref{v4-arith:thm:regularised-c} is not a finite rank and not a
+trace. Chapter~\ref{v4-arith:polyakov} proves that the full infinite
+tensor has divergent Virasoro central term and only a Witt action
+algebraically. Thus the equality \(c_{\mathrm{global}}=2\) cannot be
+used as a \(C_{2}\)-cofiniteness or Zhu-finiteness input.
+\end{remark}
+
+\begin{remark}[surviving direction]
+\label{v4-arith:vb:rem:zhu-surviving-direction}
+The finite-dimensional route survives only as a finite-window
+technology: truncate to finitely many primes or to bounded conductor,
+prove the corresponding arithmetic modular functor is finite, compute
+its Hermitian form, and compare its limiting trace to the
+Bost--Connes KMS trace. Any limiting theorem strong enough to recover
+\(\mathrm{VB}^{*}_{\mathrm{core}}\) must add a new positivity or compactness
+input beyond Zhu finite-dimensionality at finite level.
+\end{remark}
+
 \section{Open Problem Inscription}
 \label{v4-arith:vb:open-problem}
 
@@ -1186,6 +1270,11 @@ generic weights, establishing absence of null-vector obstruction
 \item VB$^{*}$ reduces to a single statement on the Bost--Connes
 zero-mode lattice: (VB$^{*}_{\mathrm{core}}$,
 \Cref{v4-arith:vb:thm:reduction}).
+\item Arithmetic Zhu/Verlinde finite-dimensionality does not close the
+full zero-mode core: any Euler-faithful quotient preserving the
+Bost--Connes character \(\zeta(\beta)\) is infinite-dimensional
+(\Cref{v4-arith:vb:thm:no-euler-faithful-zhu-finite},
+\Cref{v4-arith:vb:cor:verlinde-shortcut-fails}).
 \item (VB$^{*}_{\mathrm{core}}$) is the Vol~IV-natural form of RH,
 equivalent at the $\Leftrightarrow$ level to
 $\mathrm{Re}(\rho)=1/2$ for all non-trivial zeros

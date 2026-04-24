@@ -152,8 +152,8 @@ def _cross_volume_disjointness_ok(
          and intersect each upstream entry's derived_from with
          verified_against. Any overlap fails. If Vol I registry has no
          entries for this claim (e.g., the upstream test module has not
-         yet been imported in the current process), this channel is
-         silent.
+         yet been imported in the current process), this channel supplies
+         no evidence.
       2. Explicit: if the decorator author passes upstream_derived_from,
          intersect it with verified_against directly. This channel is
          mandatory for load-bearing enforcement when the upstream
@@ -199,10 +199,10 @@ def _cross_volume_disjointness_ok(
 
     # Neither channel yielded data. This is a genuine gap: the author
     # did not supply upstream_derived_from and the Vol I registry has
-    # not imported the upstream test for this claim. Flag it so the
-    # reader sees that this entry's cross-volume disjointness was not
-    # mechanically verified at decoration time.
-    return True, "unverified-no-upstream-data"
+    # not imported the upstream test for this claim. A cross-volume
+    # realization without upstream derivation evidence is vacuous, so it
+    # must fail at decoration time.
+    return False, "missing upstream derived_from evidence"
 
 
 # ---------------------------------------------------------------------------

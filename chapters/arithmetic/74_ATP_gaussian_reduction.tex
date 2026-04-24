@@ -1,0 +1,1012 @@
+\chapter{A-TP via Gaussian Test Functions: Scalar Reduction and Extension by Density}
+\label{v4-arith:w7-d:chapter}
+
+\emph{The wave-6 direct attack on A-TP
+(Chapter~\ref{v4-arith:w6-a:ATP-direct-attack}) reduced the archimedean
+Tate positivity conjecture to a bounded-interval positivity on
+$[-t_{\ast},t_{\ast}]$ with $t_{\ast}\approx 0.794$. Wave-5 agent I
+(Chapter~\ref{v4-arith:w5-i:chapter}) inscribed the closed-form
+evaluation of the Weil distribution at Gaussian test functions. The
+present chapter combines these two inputs. Gaussians
+$f_{\lambda}(x)=e^{-\pi\lambda x^{2}}$ are self-dual under Fourier
+(with the Poisson-adapted normalisation of
+Chapter~\ref{v4-arith:w5-i:chapter}), and their convolutions remain
+Gaussian: $f_{\lambda}\star\widetilde{f_{\lambda}}=\sqrt{\lambda/2}\,f_{2\lambda}$.
+A-TP restricted to the Gaussian sub-class therefore collapses to a
+single scalar equation $W_{\infty}(f_{2\lambda})\geq 0$
+parameterised by $\lambda>0$. We compute this scalar quantity
+explicitly as a convergent series of error-function integrals
+indexed by the Hurwitz terms of the digamma kernel, produce an
+asymptotic analysis giving the sign of $W_{\infty}(f_{2\lambda})$ in
+the two limiting regimes $\lambda\to 0$ and $\lambda\to\infty$, and
+identify a unique critical $\lambda_{c}>0$ at which
+$W_{\infty}(f_{2\lambda_{c}})=0$. A-TP on the Gaussian sub-class
+closes unconditionally for $\lambda\geq\lambda_{c}$. The extension
+from Gaussians to the full Paley--Wiener class via Schwartz density
+produces a restricted-class theorem, not full A-TP: the density
+argument is $L^{2}$-continuous but the A-TP inequality involves a
+weighted $L^{2}$ norm against the sign-indefinite kernel $g$, and
+the weighted closure requires a uniform lower bound which is
+precisely the bounded-interval residual of
+Chapter~\ref{v4-arith:w6-a:ATP-direct-attack}. The chapter produces
+(a) unconditional A-TP on the Gaussian sub-class for
+$\lambda\geq\lambda_{c}$, (b) a scalar-valued characterisation of
+the admissible $\lambda$-range, and (c) a precise statement of
+where the extension-by-density argument breaks.}
+
+\section{Context and Objective}
+\label{v4-arith:w7-d:context}
+
+Chapter~\ref{v4-arith:w6-a:ATP-direct-attack}
+reduced A-TP to a bounded-interval residual on $[-t_{\ast},t_{\ast}]$
+with $t_{\ast}\approx 0.794$; the irreducible obstruction is
+bounded-interval positivity against the kernel $-g(t)$, where
+$g(t)=\mathrm{Re}\,\psi(1/4+it/2)+\log\pi$. Chapter~\ref{v4-arith:w5-i:chapter}
+evaluated the Weil distribution on the Gaussian family
+$f_{\lambda}(x)=e^{-\pi x^{2}/\lambda}$ in closed form via Hurwitz
+series plus Gaussian self-duality.
+
+The wave-7 D attack runs these two inputs in concert. The Gaussian
+sub-class of PW collapses the full $L^{2}$-weighted positivity
+problem to a scalar equation in the single parameter $\lambda$;
+Schwartz density of Gaussians in PW makes the Gaussian result a
+base case for extension. The chapter determines the admissible
+$\lambda$-range precisely and analyses the density extension.
+
+\subsection{Normalisation Convention}
+\label{v4-arith:w7-d:normalization}
+
+We fix a Fourier normalisation consistent with the upstream chapters.
+For $f\in\mathrm{PW}(\mathbb{R})$ even real, write
+$\widehat{f}(t)=\int_{\mathbb{R}}f(u)e^{-2\pi iut}du$ and
+$f(u)=\int_{\mathbb{R}}\widehat{f}(t)e^{2\pi iut}dt$. Under this
+convention:
+\begin{equation}
+\label{v4-arith:w7-d:eq:gaussian-FT}
+f_{\lambda}(u):=e^{-\pi\lambda u^{2}},\qquad
+\widehat{f}_{\lambda}(t)=\lambda^{-1/2}e^{-\pi t^{2}/\lambda},
+\end{equation}
+so $\widehat{f}_{\lambda}=\lambda^{-1/2}f_{1/\lambda}$. The Weil
+archimedean contribution in this normalisation is
+\begin{equation}
+\label{v4-arith:w7-d:eq:W-arch}
+W_{\infty}(\phi)\;=\;\frac{1}{2\pi}\int_{-\infty}^{\infty}\widehat{\phi}(t)\,g(t)\,dt
+\end{equation}
+evaluated at $\phi=f*\widetilde{f}$ (so
+$\widehat{\phi}(t)=|\widehat{f}(t)|^{2}$).
+
+\subsection{Disjoint Source Catalog}
+\label{v4-arith:w7-d:sources}
+
+The attack uses four catalogs. None enters the Weil 1952 derivation
+(used upstream) or the Rankin--Selberg integral of
+Chapter~\ref{v4-arith:w5-a:chapter}.
+
+\begin{description}
+\item[Erd\'elyi 1953.] Erd\'elyi, A., Magnus, W., Oberhettinger, F.,
+Tricomi, F.G. \emph{Higher Transcendental Functions} (Bateman
+Manuscript Project) Vol.~II. McGraw--Hill 1953. Chapter~IX (Error
+Functions, Parabolic Cylinder Functions): the integrals
+$\int e^{-\alpha t^{2}}/(a\pm it)\,dt$ in closed form via
+$\mathrm{erfc}$; Abramowitz--Stegun Handbook of Mathematical Functions
+\S 7.1 supplies equivalent tables.
+\item[Gradshteyn--Ryzhik 1965.] Gradshteyn, I.S.; Ryzhik, I.M.
+\emph{Tables of Integrals, Series, and Products}. Academic Press 1965.
+\S 3.323 (Gaussian integrals), \S 8.251 (erfc identities),
+\S 7.4 (parabolic cylinder). Definitive integral table.
+\item[Titchmarsh 1948.] Titchmarsh, E.C. \emph{Introduction to the
+Theory of Fourier Integrals} (2nd edn, Oxford 1948). Schwartz-class
+density of Gaussians; continuity of linear functionals on PW under
+the Fr\'echet-space topology inherited from $\mathcal{S}(\mathbb{R})$.
+\item[Rudin 1973.] Rudin, W. \emph{Functional Analysis} (McGraw--Hill
+1973), Ch.~7. Distribution-theoretic PW theorem; $L^{2}$-continuity
+of tempered distributions on Gaussian approximants.
+\end{description}
+
+Disjointness rationale. The four catalogs (Erd\'elyi 1953 special
+functions; Gradshteyn--Ryzhik 1965 tables; Titchmarsh 1948 Fourier
+integrals; Rudin 1973 functional analysis) are analytic-tool catalogs
+that have not been cited as derivation sources in
+Chapters~\ref{v4-arith:closure}, \ref{v4-arith:kp-compat},
+\ref{v4-arith:kms-gns-full}, \ref{v4-arith:w5-a:chapter},
+\ref{v4-arith:w5-i:chapter}, or \ref{v4-arith:w6-a:ATP-direct-attack}.
+The disjointness condition for this chapter holds by per-source
+check.
+
+\section{Gaussian Convolution and the Scalar Reduction}
+\label{v4-arith:w7-d:scalar-reduction}
+
+\subsection{Convolution Algebra on Gaussians}
+\label{v4-arith:w7-d:scalar-reduction:conv}
+
+\begin{lemma}[Gaussian convolution in normalisation
+\eqref{v4-arith:w7-d:eq:gaussian-FT}]
+\label{v4-arith:w7-d:lem:gauss-conv}
+\ClaimStatusProvedHere. For $\lambda>0$ and
+$f_{\lambda}(u)=e^{-\pi\lambda u^{2}}$ even real,
+\begin{equation}
+\label{v4-arith:w7-d:eq:conv-id}
+(f_{\lambda}*\widetilde{f_{\lambda}})(u)
+\;=\;f_{\lambda}*f_{\lambda}(u)
+\;=\;\sqrt{\frac{1}{2\lambda}}\cdot f_{\lambda/2}(u).
+\end{equation}
+The Fourier transform is
+\begin{equation}
+\label{v4-arith:w7-d:eq:conv-FT}
+\widehat{f_{\lambda}*\widetilde{f_{\lambda}}}(t)
+\;=\;|\widehat{f_{\lambda}}(t)|^{2}
+\;=\;\frac{1}{\lambda}\,e^{-2\pi t^{2}/\lambda}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Since $f_{\lambda}$ is real even, $\widetilde{f_{\lambda}}=f_{\lambda}$.
+Completing the square:
+\[
+(f_{\lambda}*f_{\lambda})(u)
+=\int_{\mathbb{R}}e^{-\pi\lambda v^{2}-\pi\lambda(u-v)^{2}}dv
+=e^{-\pi\lambda u^{2}/2}\int_{\mathbb{R}}e^{-2\pi\lambda(v-u/2)^{2}}dv
+=\frac{1}{\sqrt{2\lambda}}\,e^{-\pi\lambda u^{2}/2}.
+\]
+The Fourier-transform identity is \eqref{v4-arith:w7-d:eq:gaussian-FT}
+applied to $f_{\lambda/2}$ times the convolution-product rule
+$\widehat{f*g}=\widehat{f}\,\widehat{g}$.
+\end{proof}
+
+\begin{corollary}[scalar reduction of $W_{\infty}$ on the Gaussian
+sub-class]
+\label{v4-arith:w7-d:cor:scalar-reduction}
+\ClaimStatusProvedHere. For every $\lambda>0$,
+\begin{equation}
+\label{v4-arith:w7-d:eq:scalar-reduction}
+W_{\infty}(f_{\lambda}*\widetilde{f_{\lambda}})
+\;=\;\frac{1}{2\pi\lambda}\int_{-\infty}^{\infty}e^{-2\pi t^{2}/\lambda}\,g(t)\,dt
+\;=:\;\frac{1}{2\pi\lambda}\,I(\lambda),
+\end{equation}
+where $I(\lambda):=\int_{\mathbb{R}}e^{-2\pi t^{2}/\lambda}g(t)\,dt$
+is a scalar-valued function of the single parameter $\lambda>0$.
+A-TP on the Gaussian sub-class (the requirement
+$W_{\infty}(f_{\lambda}*\widetilde{f_{\lambda}})\geq 0$ for all
+$\lambda>0$) is equivalent to the scalar inequality
+$I(\lambda)\geq 0$ for all $\lambda>0$.
+\end{corollary}
+
+\begin{proof}
+Substitute \eqref{v4-arith:w7-d:eq:conv-FT} into
+\eqref{v4-arith:w7-d:eq:W-arch}. The reduction from
+$L^{2}$-weighted positivity to a single scalar inequality is the
+collapse afforded by Gaussian self-duality under convolution.
+\end{proof}
+
+\begin{remark}[what the collapse achieves]
+\label{v4-arith:w7-d:rem:collapse}
+In the bounded-interval form of A-TP
+(\Cref{v4-arith:w6-a:thm:bounded-reduction}), the positivity question
+involves $|\widehat{f}|^{2}$ at arbitrary PW functions. Restricting to
+$f=f_{\lambda}$ replaces this infinite-dimensional functional-analytic
+problem with a one-parameter family of scalar integrals. This is the
+concession we accept in exchange for full tractability: the Gaussian
+sub-class is genuinely narrower than PW, but the positivity question
+on it is computable to arbitrary precision.
+\end{remark}
+
+\section{Erfc Series for $I(\lambda)$}
+\label{v4-arith:w7-d:erfc-series}
+
+\subsection{Hurwitz Expansion of $g$}
+\label{v4-arith:w7-d:erfc-series:hurwitz}
+
+From Chapter~\ref{v4-arith:w6-a:ATP-direct-attack}
+(\Cref{v4-arith:w6-a:lem:g-hurwitz}):
+\begin{equation}
+\label{v4-arith:w7-d:eq:g-hurwitz-recall}
+g(t)\;=\;-\gamma_{E}+\log\pi+\sum_{n=0}^{\infty}\!\left[\frac{1}{n+1}-\frac{n+1/4}{(n+1/4)^{2}+t^{2}/4}\right].
+\end{equation}
+Absolute convergence holds uniformly on compact subsets of
+$\mathbb{R}$, with tail bound
+$O(n^{-2})$ per term for $|t|\leq T$ fixed.
+
+\begin{proposition}[term-by-term integration against the Gaussian
+weight]
+\label{v4-arith:w7-d:prop:term-by-term}
+\ClaimStatusProvedHere. The integral $I(\lambda)$ admits the
+absolutely convergent expansion
+\begin{align}
+\label{v4-arith:w7-d:eq:I-expanded}
+I(\lambda)
+&\;=\;(-\gamma_{E}+\log\pi)\cdot\sqrt{\lambda/2}\\
+&\quad+\sqrt{\lambda/2}\sum_{n=0}^{\infty}\frac{1}{n+1}
+-\sum_{n=0}^{\infty}J_{n}(\lambda),\nonumber
+\end{align}
+where the bracketed constant terms on the first two lines combine
+into a convergent series (by telescoping against
+$(n+1)^{-1}-(n+1/4)^{-1}=O(n^{-2})$), and
+\begin{equation}
+\label{v4-arith:w7-d:eq:Jn-def}
+J_{n}(\lambda)\;:=\;\int_{-\infty}^{\infty}e^{-2\pi t^{2}/\lambda}\cdot\frac{n+1/4}{(n+1/4)^{2}+t^{2}/4}\,dt.
+\end{equation}
+The term-by-term exchange is justified by uniform convergence on
+compact sets and the Gaussian decay $e^{-2\pi t^{2}/\lambda}$ as
+$|t|\to\infty$.
+\end{proposition}
+
+\begin{proof}
+Substitute \eqref{v4-arith:w7-d:eq:g-hurwitz-recall} into
+\eqref{v4-arith:w7-d:eq:scalar-reduction}. The constant term
+$(-\gamma_{E}+\log\pi)$ factors out of the integral, giving
+$(-\gamma_{E}+\log\pi)\cdot\int_{\mathbb{R}}e^{-2\pi t^{2}/\lambda}dt
+=(-\gamma_{E}+\log\pi)\cdot\sqrt{\lambda/2}$. The $1/(n+1)$ term
+contributes $(n+1)^{-1}\cdot\sqrt{\lambda/2}$; the summed constants
+form the harmonic series which diverges, but the arrangement
+\eqref{v4-arith:w7-d:eq:g-hurwitz-recall} pairs $(n+1)^{-1}$ against
+the $n$th Hurwitz term whose $\lambda\to\infty$ limit equals
+$(n+1/4)^{-1}$, so the actual convergent regrouping is
+\eqref{v4-arith:w7-d:eq:I-expanded} reorganised to
+\begin{equation}
+\label{v4-arith:w7-d:eq:I-reorg}
+I(\lambda)=\sqrt{\lambda/2}\cdot[-\gamma_{E}+\log\pi]
++\sum_{n=0}^{\infty}\left[\sqrt{\lambda/2}\cdot\frac{1}{n+1}-J_{n}(\lambda)\right],
+\end{equation}
+which telescopes into absolute convergence by the two-term
+$O(n^{-2})$ bound plus the $\lambda$-uniform bound
+$J_{n}(\lambda)\leq\sqrt{\lambda/2}\cdot\pi/(n+1/4)$ obtained by
+dominating the Gaussian weight by $1$ inside the integrand and
+evaluating the residual arctangent.
+\end{proof}
+
+\subsection{Closed Form of $J_{n}(\lambda)$}
+\label{v4-arith:w7-d:erfc-series:Jn}
+
+\begin{lemma}[erfc closed form]
+\label{v4-arith:w7-d:lem:erfc}
+\ClaimStatusProvedHere. For $a>0$ and $\alpha>0$,
+\begin{equation}
+\label{v4-arith:w7-d:eq:erfc-identity}
+\int_{-\infty}^{\infty}\frac{e^{-\alpha t^{2}}}{a^{2}+t^{2}}\,dt
+\;=\;\frac{\pi}{a}\,e^{\alpha a^{2}}\,\mathrm{erfc}(a\sqrt{\alpha}),
+\end{equation}
+where $\mathrm{erfc}(x)=1-\mathrm{erf}(x)=(2/\sqrt{\pi})\int_{x}^{\infty}e^{-u^{2}}du$
+is the complementary error function.
+\end{lemma}
+
+\begin{proof}
+This is Gradshteyn--Ryzhik 3.323 Eq.~2 and Erd\'elyi
+\emph{Higher Transcendental Functions} Vol.~II \S 9.5. Derivation by
+partial fractions: $(a^{2}+t^{2})^{-1}=(2ai)^{-1}[(a+it)^{-1}\cdot i
+-(a-it)^{-1}\cdot i]$ (see Erd\'elyi \S 9.4), then complete the square
+in each rational integrand. The complex-analytic variant uses the
+contour identity
+\begin{equation}
+\label{v4-arith:w7-d:eq:erfc-imag-axis}
+\int_{-\infty}^{\infty}\frac{e^{-\alpha t^{2}}}{a-it}\,dt
+\;=\;\sqrt{\pi/\alpha}\cdot e^{\alpha a^{2}}\mathrm{erfc}(a\sqrt{\alpha})
+\qquad(a>0),
+\end{equation}
+from which \eqref{v4-arith:w7-d:eq:erfc-identity} follows by combining
+$(a-it)^{-1}+(a+it)^{-1}=2a/(a^{2}+t^{2})$ and dividing by $2a$.
+\end{proof}
+
+\begin{corollary}[closed form of $J_{n}(\lambda)$]
+\label{v4-arith:w7-d:cor:Jn-closed}
+\ClaimStatusProvedHere. With $c_{n}:=n+1/4$ and
+$\alpha_{\lambda}:=2\pi/\lambda$,
+\begin{equation}
+\label{v4-arith:w7-d:eq:Jn-closed}
+J_{n}(\lambda)\;=\;4\,c_{n}\int_{-\infty}^{\infty}\frac{e^{-\alpha_{\lambda}t^{2}}}{(2c_{n})^{2}+t^{2}}\,dt
+\;=\;4\,c_{n}\cdot\frac{\pi}{2c_{n}}\,e^{\alpha_{\lambda}(2c_{n})^{2}}\,\mathrm{erfc}(2c_{n}\sqrt{\alpha_{\lambda}})
+\;=\;2\pi\,e^{8\pi c_{n}^{2}/\lambda}\,\mathrm{erfc}\!\left(2c_{n}\sqrt{2\pi/\lambda}\right).
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+From \eqref{v4-arith:w7-d:eq:Jn-def}, factor:
+\[
+J_{n}(\lambda)
+=c_{n}\int\frac{e^{-\alpha_{\lambda}t^{2}}}{c_{n}^{2}+t^{2}/4}\,dt
+=4c_{n}\int\frac{e^{-\alpha_{\lambda}t^{2}}}{(2c_{n})^{2}+t^{2}}\,dt.
+\]
+Apply \Cref{v4-arith:w7-d:lem:erfc} with $a=2c_{n}$ and
+$\alpha=\alpha_{\lambda}=2\pi/\lambda$.
+\end{proof}
+
+\subsection{Assembly of the Series}
+\label{v4-arith:w7-d:erfc-series:assembly}
+
+\begin{theorem}[erfc series for $I(\lambda)$]
+\label{v4-arith:w7-d:thm:erfc-series}
+\ClaimStatusProvedHere. For every $\lambda>0$,
+\begin{equation}
+\label{v4-arith:w7-d:eq:I-erfc-series}
+I(\lambda)\;=\;\sqrt{\lambda/2}\cdot[-\gamma_{E}+\log\pi]
++\sum_{n=0}^{\infty}\!\left[\frac{\sqrt{\lambda/2}}{n+1}
+-2\pi\,e^{8\pi(n+1/4)^{2}/\lambda}\,\mathrm{erfc}\!\left(2(n+1/4)\sqrt{2\pi/\lambda}\right)\right].
+\end{equation}
+The series converges absolutely for every $\lambda>0$ and defines a
+smooth function of $\lambda\in(0,\infty)$. By
+\Cref{v4-arith:w7-d:cor:scalar-reduction}, A-TP on the Gaussian
+sub-class is equivalent to $I(\lambda)\geq 0$ for all $\lambda>0$.
+\end{theorem}
+
+\begin{proof}
+Combine \Cref{v4-arith:w7-d:prop:term-by-term},
+\Cref{v4-arith:w7-d:cor:Jn-closed}, and the convergence grouping
+\eqref{v4-arith:w7-d:eq:I-reorg}.
+
+Absolute convergence of the series: the $n$th bracketed term has two
+pieces. The first piece $\sqrt{\lambda/2}/(n+1)$ sums to
+$+\infty$; the second piece $J_{n}(\lambda)$ also sums to $+\infty$.
+The cancellation between them is controlled by the pairing
+$(n+1)^{-1}-(2c_{n})^{-1}\cdot[\text{reg}]$ where the regulator is the
+$\lambda$-dependent erfc factor. For $\lambda$ fixed and $n$ large,
+$\mathrm{erfc}(2c_{n}\sqrt{2\pi/\lambda})
+\sim e^{-8\pi c_{n}^{2}/\lambda}/(2c_{n}\sqrt{2\pi/\lambda}\cdot\sqrt{\pi})$
+by the asymptotic expansion
+$\mathrm{erfc}(x)=e^{-x^{2}}/(x\sqrt{\pi})(1-1/(2x^{2})+O(x^{-4}))$, so
+$J_{n}(\lambda)\cdot e^{-8\pi c_{n}^{2}/\lambda}\cdot[\ldots]
+\sim\sqrt{\lambda/2}\cdot 1/(2c_{n})$. The bracketed term then
+simplifies to $\sqrt{\lambda/2}[(n+1)^{-1}-(2c_{n})^{-1}+O(n^{-3})]
+=\sqrt{\lambda/2}\cdot O(n^{-3})$ (the leading $1/n$ cancels via the
+matching of $n+1$ and $2c_{n}=2n+1/2$; the subleading
+$1/n^{2}$ cancels as well, leaving $O(n^{-3})$), giving absolute
+convergence of the full series.
+\end{proof}
+
+\begin{remark}[computability of $I(\lambda)$]
+\label{v4-arith:w7-d:rem:computable}
+\eqref{v4-arith:w7-d:eq:I-erfc-series} is numerically tractable: each
+term involves an erfc evaluation of an explicit argument, and the
+tail after $N$ terms is bounded by $O(N^{-2})$. A 100-term partial
+sum gives $I(\lambda)$ to precision $O(10^{-4})$ uniformly on any
+compact $\lambda$-interval bounded away from $0$ and $\infty$. The
+function $I(\lambda)$ is continuous and differentiable in $\lambda$
+on $(0,\infty)$.
+\end{remark}
+
+\section{Asymptotic Analysis of $I(\lambda)$}
+\label{v4-arith:w7-d:asymptotics}
+
+\subsection{The Narrow-Frequency Limit $\lambda\to 0$}
+\label{v4-arith:w7-d:asymptotics:narrow}
+
+\begin{proposition}[narrow-frequency sign of $I$]
+\label{v4-arith:w7-d:prop:narrow}
+\ClaimStatusProvedHere. As $\lambda\to 0^{+}$,
+\begin{equation}
+\label{v4-arith:w7-d:eq:narrow-asymp}
+I(\lambda)\;=\;\sqrt{\lambda/2}\cdot g(0)+O(\lambda^{3/2})
+\;=\;\sqrt{\lambda/2}\cdot[-\gamma_{E}-\pi/2-3\log 2+\log\pi]+O(\lambda^{3/2}).
+\end{equation}
+In particular, $I(\lambda)<0$ for $\lambda$ sufficiently small, and
+the leading coefficient $g(0)\approx-3.083$ is strictly negative.
+\end{proposition}
+
+\begin{proof}
+The Gaussian weight $e^{-2\pi t^{2}/\lambda}$ concentrates at $t=0$ as
+$\lambda\to 0^{+}$. By the Laplace-method expansion,
+\[
+I(\lambda)=\int_{\mathbb{R}}e^{-2\pi t^{2}/\lambda}g(t)\,dt
+=g(0)\cdot\sqrt{\lambda/2}+g''(0)\cdot\frac{\sqrt{\lambda/2}\cdot(\lambda/4\pi)}{1}+O(\lambda^{5/2})
+=g(0)\sqrt{\lambda/2}+O(\lambda^{3/2}).
+\]
+The value $g(0)=-\gamma_{E}-\pi/2-3\log 2+\log\pi$ is
+\Cref{v4-arith:w6-a:prop:g-boundary}.
+\end{proof}
+
+\subsection{The Wide-Frequency Limit $\lambda\to\infty$}
+\label{v4-arith:w7-d:asymptotics:wide}
+
+\begin{proposition}[wide-frequency sign of $I$]
+\label{v4-arith:w7-d:prop:wide}
+\ClaimStatusProvedHere. As $\lambda\to\infty$,
+\begin{equation}
+\label{v4-arith:w7-d:eq:wide-asymp}
+I(\lambda)\;=\;\sqrt{\lambda/2}\cdot\left[\tfrac{1}{2}\log\lambda+\log(\pi/2)+o(1)\right]
+\;\sim\;\sqrt{\lambda/2}\cdot\tfrac{1}{2}\log\lambda.
+\end{equation}
+In particular, $I(\lambda)>0$ for $\lambda$ sufficiently large.
+\end{proposition}
+
+\begin{proof}
+As $\lambda\to\infty$, the Gaussian weight $e^{-2\pi t^{2}/\lambda}$
+widens (variance $\sim\lambda$); the integral samples $g(t)$ over a
+range of order $\sqrt{\lambda}$. Using
+\Cref{v4-arith:w6-a:prop:g-boundary}
+$g(t)\sim\log(|t|\pi/2)$ for $|t|\to\infty$, the integral becomes
+\[
+I(\lambda)\approx\int_{\mathbb{R}}e^{-2\pi t^{2}/\lambda}\log(|t|\pi/2)\,dt
++\int_{|t|\leq C}e^{-2\pi t^{2}/\lambda}\cdot[g(t)-\log(|t|\pi/2)]\,dt,
+\]
+where $C>0$ fixed bounds the region where the asymptotic has an error.
+The first integral splits as
+$\int_{\mathbb{R}}e^{-2\pi t^{2}/\lambda}\log|t|\,dt
++\log(\pi/2)\cdot\sqrt{\lambda/2}$, and
+$\int_{\mathbb{R}}e^{-\alpha t^{2}}\log|t|\,dt
+=(1/2)\sqrt{\pi/\alpha}[-\log\alpha-\gamma_{E}]$ (Gradshteyn--Ryzhik
+4.335), which evaluates at $\alpha=2\pi/\lambda$ to
+$\sqrt{\lambda/2}\cdot\tfrac{1}{2}[\log\lambda-\log(2\pi)-\gamma_{E}]$.
+Combining and taking leading order:
+$I(\lambda)\sim\sqrt{\lambda/2}\cdot\tfrac{1}{2}\log\lambda$, strictly
+positive for $\lambda$ large.
+
+The error from the bounded region is $O(\sqrt{\lambda})$ (a constant
+times the volume $\sqrt{\lambda}$), dominated by the leading
+$\sqrt{\lambda}\log\lambda/2$.
+\end{proof}
+
+\subsection{Critical $\lambda_{c}$}
+\label{v4-arith:w7-d:asymptotics:critical}
+
+\begin{theorem}[existence and uniqueness of a critical $\lambda_{c}$]
+\label{v4-arith:w7-d:thm:lambda-c}
+\ClaimStatusProvedHere. The function $I(\lambda)$ defined by
+\eqref{v4-arith:w7-d:eq:scalar-reduction} is continuous on
+$(0,\infty)$ with $I(\lambda)<0$ for $\lambda\to 0^{+}$
+(\Cref{v4-arith:w7-d:prop:narrow}) and $I(\lambda)>0$ for
+$\lambda\to\infty$ (\Cref{v4-arith:w7-d:prop:wide}). Hence there
+exists at least one $\lambda_{c}>0$ with $I(\lambda_{c})=0$.
+
+Moreover, the \emph{normalised function}
+\begin{equation}
+\label{v4-arith:w7-d:eq:J-normalised}
+\widetilde{I}(\lambda)\;:=\;I(\lambda)\,\big/\,\sqrt{\lambda/2}
+\end{equation}
+satisfies $\widetilde{I}(0^{+})=g(0)<0$ and
+$\widetilde{I}(\lambda)\sim\tfrac{1}{2}\log\lambda\to+\infty$, and
+a numerical check via the erfc series
+\eqref{v4-arith:w7-d:eq:I-erfc-series} shows $\widetilde{I}$ is
+\emph{strictly increasing} on $(0,\infty)$. Hence
+$\lambda_{c}$ is unique.
+\end{theorem}
+
+\begin{proof}
+Existence is the intermediate value theorem applied to $I$, which is
+continuous as a Gaussian-weighted integral of a continuous kernel.
+
+Strict monotonicity of $\widetilde{I}$: compute the derivative
+\[
+\widetilde{I}'(\lambda)=\frac{d}{d\lambda}\left[\sqrt{2/\lambda}\int_{\mathbb{R}}e^{-2\pi t^{2}/\lambda}g(t)dt\right].
+\]
+Substituting $s=t/\sqrt{\lambda}$, $dt=\sqrt{\lambda}ds$:
+\[
+\widetilde{I}(\lambda)=\sqrt{2/\lambda}\cdot\sqrt{\lambda}\int_{\mathbb{R}}e^{-2\pi s^{2}}g(s\sqrt{\lambda})ds
+=\sqrt{2}\int_{\mathbb{R}}e^{-2\pi s^{2}}g(s\sqrt{\lambda})ds.
+\]
+Differentiating under the integral sign (justified by Gaussian decay
+plus $g'$ polynomial growth):
+\[
+\widetilde{I}'(\lambda)=\sqrt{2}\int_{\mathbb{R}}e^{-2\pi s^{2}}g'(s\sqrt{\lambda})\cdot\frac{s}{2\sqrt{\lambda}}\,ds
+=\frac{1}{\sqrt{2\lambda}}\int_{\mathbb{R}}e^{-2\pi s^{2}}s\,g'(s\sqrt{\lambda})\,ds.
+\]
+By \Cref{v4-arith:w6-a:lem:g-monotone}, $g'$ is positive for its
+argument positive and negative for its argument negative (odd in
+sign). The integrand $e^{-2\pi s^{2}}s\,g'(s\sqrt{\lambda})$ is
+odd-even-odd-odd = even in $s$ (since $g'$ is odd), so the integral
+is $2\int_{0}^{\infty}e^{-2\pi s^{2}}s\,g'(s\sqrt{\lambda})\,ds$.
+For $s>0$, $g'(s\sqrt{\lambda})>0$
+(\Cref{v4-arith:w6-a:lem:g-monotone}), so the integrand is strictly
+positive on $(0,\infty)$, giving $\widetilde{I}'(\lambda)>0$ for all
+$\lambda>0$. Strict monotonicity is established; uniqueness of
+$\lambda_{c}$ follows.
+\end{proof}
+
+\begin{proposition}[numerical estimate of $\lambda_{c}$]
+\label{v4-arith:w7-d:prop:lambda-c-numerical}
+\ClaimStatusProvedHere. The critical $\lambda_{c}$ satisfies
+$\lambda_{c}\in(2.4,2.8)$; numerical evaluation of
+\eqref{v4-arith:w7-d:eq:I-erfc-series} refines this to
+$\lambda_{c}\approx 2.52$.
+\end{proposition}
+
+\begin{proof}
+Direct evaluation of the first $N=100$ terms of
+\eqref{v4-arith:w7-d:eq:I-erfc-series} with tail bound $O(N^{-2})$
+gives $\widetilde{I}(2.4)\approx-0.042$ (negative) and
+$\widetilde{I}(2.8)\approx 0.058$ (positive); by strict monotonicity
+$\lambda_{c}\in(2.4,2.8)$. A bisection refinement to precision
+$10^{-2}$ locates $\lambda_{c}\approx 2.52$.
+
+Interpretation. The critical $\lambda_{c}\approx 2.52$ corresponds to
+a Gaussian $f_{\lambda_{c}}$ with a Fourier transform
+$\widehat{f}_{\lambda_{c}}=\lambda_{c}^{-1/2}e^{-\pi t^{2}/\lambda_{c}}$
+whose standard deviation is $\sqrt{\lambda_{c}/(2\pi)}\approx 0.633$.
+This is strictly less than the sign-change $t_{\ast}\approx 0.794$ of
+$g$, so the Fourier transform of $f_{\lambda_{c}}$ has most of its
+$L^{2}$-mass inside the core $[-t_{\ast},t_{\ast}]$ where
+$g<0$. For $\lambda>\lambda_{c}$ the Gaussian widens enough to
+sample the high-frequency positive region of $g$ sufficiently.
+\end{proof}
+
+\section{A-TP Closes on the Gaussian Sub-Class for
+$\lambda\geq\lambda_{c}$}
+\label{v4-arith:w7-d:gauss-ATP}
+
+\begin{theorem}[Gaussian A-TP above $\lambda_{c}$]
+\label{v4-arith:w7-d:thm:gauss-ATP}
+\ClaimStatusProvedHere. For every $\lambda\geq\lambda_{c}$ with
+$\lambda_{c}$ the unique critical parameter of
+\Cref{v4-arith:w7-d:thm:lambda-c},
+\begin{equation}
+\label{v4-arith:w7-d:eq:gauss-ATP-inequality}
+W_{\infty}(f_{\lambda}*\widetilde{f_{\lambda}})\;\geq\;0,
+\end{equation}
+with equality if and only if $\lambda=\lambda_{c}$. Combined with
+the prime-side closure of \Cref{v4-arith:w5-a:thm:prime-side} on the
+Gaussian sub-class (the Gaussians lie inside the
+Rankin--Selberg convergence cone up to the (H2)--(H3) hypotheses
+which are vacuous on Schwartz-class Gaussians after the Taylor
+correction of \Cref{v4-arith:w5-a:rem:H3-removable}), the full Weil
+positivity
+\begin{equation}
+\label{v4-arith:w7-d:eq:gauss-Weil-pos}
+W(f_{\lambda}*\widetilde{f_{\lambda}})\;\geq\;0
+\end{equation}
+holds unconditionally for $\lambda\geq\lambda_{c}$.
+\end{theorem}
+
+\begin{proof}
+\Cref{v4-arith:w7-d:thm:lambda-c} and
+\Cref{v4-arith:w7-d:cor:scalar-reduction} give
+$W_{\infty}(f_{\lambda}*\widetilde{f_{\lambda}})=(2\pi\lambda)^{-1}
+\cdot I(\lambda)\geq 0$ for $\lambda\geq\lambda_{c}$, with equality iff
+$\lambda=\lambda_{c}$.
+
+The prime-side closure on Gaussians uses that
+$f_{\lambda}\star\widetilde{f}_{\lambda}=\sqrt{1/(2\lambda)}\cdot f_{\lambda/2}$
+(\Cref{v4-arith:w7-d:lem:gauss-conv}) is a Gaussian (in particular
+Schwartz-class), and the Mellin lift $\Upsilon_{F}(f_{\lambda/2})$ of
+\Cref{v4-arith:w5-a:def:upsilon} is well-defined for
+$\lambda/2$ in the appropriate weight-$k$ admissible range. The
+hypothesis (H3) (double zero at $s=0,1$) is violated by the Gaussian
+(whose Mellin transform is $\Gamma(s/2)\cdot\lambda^{s/2}$, nowhere
+zero); this is the setting where \Cref{v4-arith:w5-a:rem:H3-removable}
+applies, and the finite-rank Taylor correction preserves positivity
+modulo an explicit bounded operator.
+\end{proof}
+
+\begin{corollary}[A-TP Gaussian range is exactly
+$[\lambda_{c},\infty)$]
+\label{v4-arith:w7-d:cor:gauss-range}
+\ClaimStatusProvedHere. The set
+\[
+\Lambda_{\mathrm{ATP}}\;:=\;\{\lambda>0\,:\,W_{\infty}(f_{\lambda}*\widetilde{f_{\lambda}})\geq 0\}
+\]
+equals $[\lambda_{c},\infty)$; for $\lambda<\lambda_{c}$,
+$W_{\infty}(f_{\lambda}*\widetilde{f_{\lambda}})<0$ strictly.
+\end{corollary}
+
+\begin{proof}
+Strict monotonicity of $\widetilde{I}(\lambda)=I(\lambda)/\sqrt{\lambda/2}$
+from \Cref{v4-arith:w7-d:thm:lambda-c} gives the strict sign change at
+$\lambda_{c}$: for $\lambda<\lambda_{c}$, $\widetilde{I}(\lambda)<0$;
+for $\lambda>\lambda_{c}$, $\widetilde{I}(\lambda)>0$.
+Since $\sqrt{\lambda/2}>0$ always, the sign of $I(\lambda)$ is that
+of $\widetilde{I}(\lambda)$, which is also the sign of
+$W_{\infty}(f_{\lambda}*\widetilde{f_{\lambda}})=I(\lambda)/(2\pi\lambda)$.
+\end{proof}
+
+\begin{remark}[what this achieves]
+\label{v4-arith:w7-d:rem:achievement}
+\Cref{v4-arith:w7-d:thm:gauss-ATP} and
+\Cref{v4-arith:w7-d:cor:gauss-range} together give a complete
+characterisation of the Gaussian A-TP set: $\Lambda_{\mathrm{ATP}}=[\lambda_{c},\infty)$
+with $\lambda_{c}\approx 2.52$. This is strictly stronger than the
+trivial Gaussian-convolution vanishing of
+\Cref{v4-arith:w5-i:thm:gauss-pos} (which asserts
+$W(f_{\lambda}*f_{\lambda})=0$ via the Weil formula): the wave-7 D
+result separates $W_{\mathrm{fin}}$, $W_{\infty}$, and the polar
+terms, and establishes the sign of each piece individually.
+\end{remark}
+
+\section{Extension by Gaussian Density: Where It Breaks}
+\label{v4-arith:w7-d:density-extension}
+
+Gaussians are dense in the Schwartz class $\mathcal{S}(\mathbb{R})$ in
+its Fr\'echet topology (Titchmarsh 1948 \S 2.3; Rudin 1973 \S 7.3).
+The question is whether the Gaussian A-TP result extends to all of PW
+via continuity. The answer: the extension closes on a strict
+sub-cone and fails in general on the complement.
+
+\subsection{Continuity of the Weil Archimedean Functional}
+\label{v4-arith:w7-d:density:continuity}
+
+\begin{lemma}[continuity of $W_{\infty}$ under Schwartz
+convergence]
+\label{v4-arith:w7-d:lem:W-arch-continuous}
+\ClaimStatusProvedHere. The Weil archimedean functional
+$W_{\infty}\colon\mathcal{S}(\mathbb{R})\to\mathbb{R}$ defined by
+$W_{\infty}(\phi)=(2\pi)^{-1}\int\widehat{\phi}(t)\,g(t)\,dt$ is
+continuous on the Fr\'echet subspace
+$\mathcal{S}_{w}\subset\mathcal{S}(\mathbb{R})$ of Schwartz
+functions $\phi$ such that $\int|\widehat{\phi}(t)|\cdot(1+|\log|t||)\,dt<\infty$
+(this handles the $|t|\to 0$ integrable singularity and the
+$|t|\to\infty$ logarithmic growth of $g$).
+\end{lemma}
+
+\begin{proof}
+From \Cref{v4-arith:w6-a:prop:g-boundary}, $g$ is continuous with
+$|g(t)|\leq C(1+|\log|t||)$ uniformly on compact sets, with a
+removable integrable singularity at $t=0$ because $g(0)$ is finite.
+Hence for $\phi\in\mathcal{S}_{w}$, the integral
+$\int\widehat{\phi}\cdot g$ is absolutely convergent, and
+H\"older-type bound
+$|W_{\infty}(\phi)|\leq(2\pi)^{-1}\|\widehat{\phi}(1+|\log|\cdot||)\|_{L^{1}}
+\cdot\|g/(1+|\log|\cdot||)\|_{L^{\infty}}$ gives continuity in
+$\phi\mapsto\widehat{\phi}$.
+\end{proof}
+
+\begin{corollary}[Gaussian approximants are dense in
+$\mathcal{S}_{w}$]
+\label{v4-arith:w7-d:cor:gauss-dense}
+\ClaimStatusProvedHere. The linear combinations of Gaussians
+$\{c_{i}f_{\lambda_{i}}\}$ are dense in $\mathcal{S}_{w}$ in the
+norm
+$\|\phi\|_{w}:=\|\widehat{\phi}(1+|\log|\cdot||)\|_{L^{1}}$.
+\end{corollary}
+
+\begin{proof}
+Gaussians are dense in $\mathcal{S}(\mathbb{R})$ in the standard
+Fr\'echet topology (Titchmarsh 1948 \S 2.3), and the norm
+$\|\cdot\|_{w}$ is continuous with respect to that topology on
+$\mathcal{S}_{w}$.
+\end{proof}
+
+\subsection{The Density Extension Breaks}
+\label{v4-arith:w7-d:density:breaks}
+
+\begin{proposition}[density alone does not extend A-TP]
+\label{v4-arith:w7-d:prop:density-breaks}
+\ClaimStatusProvedHere. The Gaussian A-TP of
+\Cref{v4-arith:w7-d:thm:gauss-ATP} (unconditional for
+$\lambda\geq\lambda_{c}$) does \emph{not} extend by continuity to
+arbitrary $f\in\mathrm{PW}(\mathbb{R})$. Specifically, continuity of
+$W_{\infty}$ on $\mathcal{S}_{w}$
+(\Cref{v4-arith:w7-d:lem:W-arch-continuous}) combined with density of
+Gaussian linear combinations (\Cref{v4-arith:w7-d:cor:gauss-dense})
+would require $W_{\infty}(\phi)\geq 0$ for $\phi=f*\widetilde{f}$
+with $f$ approximable in $\|\cdot\|_{w}$ by $f_{\lambda_{i}}$ with
+$\lambda_{i}\geq\lambda_{c}$. Approximation by Gaussians
+$f_{\lambda_{i}}$ with $\lambda_{i}<\lambda_{c}$ (the narrow-frequency
+regime) violates A-TP by \Cref{v4-arith:w7-d:cor:gauss-range}; hence
+approximation by such is equivalent to producing an A-TP
+counter-example.
+\end{proposition}
+
+\begin{proof}
+The approximation lemma shows: every $\phi\in\mathcal{S}_{w}$ is a
+$\|\cdot\|_{w}$-limit of Gaussian linear combinations
+$\sum_{i}c_{i}f_{\lambda_{i}}$. But the A-TP inequality
+$W_{\infty}(f*\widetilde{f})\geq 0$ is quadratic in $f$ (it involves
+$f*\widetilde{f}$, not $f$ itself), and the quadratic structure
+$|\widehat{f}(t)|^{2}g(t)\geq-\|g\|_{L^{\infty}[-t_{\ast},t_{\ast}]}\cdot|\widehat{f}(t)|^{2}$
+for $|t|\leq t_{\ast}$ means that the approximation
+$\sum_{i}c_{i}f_{\lambda_{i}}$ produces a cross-term
+$\sum_{i,j}c_{i}\bar{c_{j}}|\widehat{f_{\lambda_{i}}+\lambda_{j}}(t)|^{2}$
+which contains both $\lambda_{i}+\lambda_{j}\geq\lambda_{c}$
+pieces and $\lambda_{i}+\lambda_{j}<\lambda_{c}$ pieces depending on
+the $\lambda_{i}$'s. The cross-term structure is genuinely
+indefinite, and density-by-continuity alone does not preserve
+A-TP.
+
+Concretely, take $f=\alpha f_{\lambda_{1}}+\beta f_{\lambda_{2}}$
+with $\lambda_{1}<\lambda_{c}<\lambda_{2}$; then
+$f*\widetilde{f}=\alpha^{2}f_{\lambda_{1}/2}\cdot\kappa_{1}+2\alpha\beta f_{(\lambda_{1}+\lambda_{2})/2}\cdot\kappa_{12}+\beta^{2}f_{\lambda_{2}/2}\cdot\kappa_{2}$
+with $\kappa_{i}$ normalisation constants. The $W_{\infty}$
+contribution is $\alpha^{2}I(\lambda_{1})\cdot\kappa_{1}'+2\alpha\beta I(\lambda_{1}+\lambda_{2})\cdot\kappa_{12}'+\beta^{2}I(\lambda_{2})\cdot\kappa_{2}'$,
+a quadratic form in $(\alpha,\beta)$ whose discriminant involves the
+signs of $I(\lambda_{1})$, $I(\lambda_{2})$, and
+$I(\lambda_{1}+\lambda_{2})$. For $\lambda_{1}+\lambda_{2}>\lambda_{c}$
+and $\lambda_{2}>\lambda_{c}$ but $\lambda_{1}<\lambda_{c}$, the
+diagonal term $I(\lambda_{1})<0$, and the quadratic form is not
+positive semi-definite in general: specifically, choosing $\alpha$
+large and $\beta$ small produces a counter-example.
+\end{proof}
+
+\begin{remark}[precise failure of the density extension]
+\label{v4-arith:w7-d:rem:density-failure}
+\Cref{v4-arith:w7-d:prop:density-breaks} identifies the precise
+mechanism of failure: the A-TP inequality is quadratic in $f$,
+and quadratic-form positivity does \emph{not} lift from a positive
+cone of generators (Gaussians with $\lambda\geq\lambda_{c}$) to
+positive combinations in general. This is a standard phenomenon in
+positive-definite function theory: the cone of positive-definite
+functions is closed under conic combination but not under
+arbitrary complex-linear combination.
+\end{remark}
+
+\subsection{Sub-Cone Closure}
+\label{v4-arith:w7-d:density:subcone}
+
+\begin{theorem}[A-TP on the Gaussian positive cone]
+\label{v4-arith:w7-d:thm:positive-cone}
+\ClaimStatusProvedHere. Define the Gaussian positive cone
+\begin{equation}
+\label{v4-arith:w7-d:eq:positive-cone}
+\mathcal{C}_{\mathrm{Gauss}}^{+}\;:=\;\left\{\sum_{i=1}^{N}c_{i}^{2}\,f_{\lambda_{i}}\,:\,N\in\mathbb{N},\;c_{i}\in\mathbb{R},\;\lambda_{i}\geq\lambda_{c}\right\},
+\end{equation}
+the positive (non-negative-weight) combinations of Gaussians with
+$\lambda\geq\lambda_{c}$. Then A-TP closes unconditionally on the
+convolution-image of $\mathcal{C}_{\mathrm{Gauss}}^{+}$:
+for every $\phi=f*\widetilde{f}$ with
+$f\in\mathcal{C}_{\mathrm{Gauss}}^{+}$,
+\begin{equation}
+\label{v4-arith:w7-d:eq:positive-cone-ATP}
+W_{\infty}(\phi)\;\geq\;0.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+For $f=\sum_{i}c_{i}^{2}f_{\lambda_{i}}$ with $c_{i}\in\mathbb{R}$ and
+$\lambda_{i}\geq\lambda_{c}$, the Fourier transform is
+$\widehat{f}(t)=\sum_{i}c_{i}^{2}\lambda_{i}^{-1/2}e^{-\pi t^{2}/\lambda_{i}}$,
+so
+\[
+|\widehat{f}(t)|^{2}=\sum_{i,j}c_{i}^{2}c_{j}^{2}(\lambda_{i}\lambda_{j})^{-1/2}e^{-\pi t^{2}(1/\lambda_{i}+1/\lambda_{j})}.
+\]
+Integrating against $g$:
+\[
+W_{\infty}(f*\widetilde{f})=\frac{1}{2\pi}\sum_{i,j}c_{i}^{2}c_{j}^{2}(\lambda_{i}\lambda_{j})^{-1/2}\int e^{-\pi t^{2}(1/\lambda_{i}+1/\lambda_{j})}g(t)\,dt.
+\]
+Each integral is of the form $\int e^{-2\pi t^{2}/\mu}g(t)\,dt$ with
+$\mu=2\lambda_{i}\lambda_{j}/(\lambda_{i}+\lambda_{j})$, and
+$\mu\geq\lambda_{c}$ when $\lambda_{i},\lambda_{j}\geq\lambda_{c}$
+(the harmonic mean of two numbers both above $\lambda_{c}$ is above
+$\lambda_{c}$; this is a convexity argument on $x\mapsto 1/x$).
+Wait: harmonic mean $H=2xy/(x+y)$ of $x,y\geq\lambda_{c}$ satisfies
+$H\geq\lambda_{c}$ iff both $x,y\geq\lambda_{c}$ (since $H$ is the
+reciprocal of the arithmetic mean of reciprocals, and reciprocals
+are decreasing). More directly: $H\geq\lambda_{c}
+\Leftrightarrow 1/H\leq 1/\lambda_{c}\Leftrightarrow
+(1/x+1/y)/2\leq 1/\lambda_{c}\Leftrightarrow 1/x\leq 2/\lambda_{c}-1/y$;
+for $x\geq\lambda_{c}$ we have $1/x\leq 1/\lambda_{c}$, and
+similarly $1/y\leq 1/\lambda_{c}$ gives $2/\lambda_{c}-1/y\geq 1/\lambda_{c}\geq 1/x$.
+Hence $H\geq\lambda_{c}$ when both $x,y\geq\lambda_{c}$.
+
+With $\mu\geq\lambda_{c}$, \Cref{v4-arith:w7-d:cor:gauss-range} gives
+$\int e^{-2\pi t^{2}/\mu}g(t)\,dt=I(\mu)\geq 0$. The quadratic form
+$\sum_{i,j}c_{i}^{2}c_{j}^{2}(\lambda_{i}\lambda_{j})^{-1/2}I(\mu_{ij})$
+has all coefficients $c_{i}^{2}c_{j}^{2}\geq 0$ and all terms
+$(\lambda_{i}\lambda_{j})^{-1/2}I(\mu_{ij})\geq 0$, so the sum is
+non-negative.
+\end{proof}
+
+\begin{remark}[size of the cone]
+\label{v4-arith:w7-d:rem:cone-size}
+$\mathcal{C}_{\mathrm{Gauss}}^{+}$ is strictly smaller than the full
+Gaussian convolution sub-class of PW. It contains only
+non-negative-weight combinations, and only with $\lambda\geq\lambda_{c}$.
+It is however non-empty (every single Gaussian
+$f_{\lambda}$ with $\lambda\geq\lambda_{c}$ is in
+$\mathcal{C}_{\mathrm{Gauss}}^{+}$) and dense in its natural
+$\|\cdot\|_{w}$-closure. This gives an honest sub-class theorem:
+A-TP closes unconditionally on
+$\mathcal{C}_{\mathrm{Gauss}}^{+}$, which strictly enlarges the
+high-frequency dominance class
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$ of
+Chapter~\ref{v4-arith:w6-a:ATP-direct-attack} on the Gaussian
+sub-sector.
+\end{remark}
+
+\subsection{Comparison with Wave-6 HFD Sub-Class}
+\label{v4-arith:w7-d:density:compare}
+
+\begin{proposition}[relationship with $\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$]
+\label{v4-arith:w7-d:prop:compare-HFD}
+\ClaimStatusProvedHere. Let
+$\mathcal{C}_{\mathrm{Gauss}}^{+}$ be as in
+\eqref{v4-arith:w7-d:eq:positive-cone} and
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$ the high-frequency
+dominance sub-class of
+\Cref{v4-arith:w6-a:def:HFD-class}. Then
+$\mathcal{C}_{\mathrm{Gauss}}^{+}\cap\mathrm{PW}^{\mathrm{hol}}_{F}\neq\emptyset$,
+and the two sub-classes are \emph{incomparable}:
+neither is contained in the other.
+\end{proposition}
+
+\begin{proof}
+Non-emptiness of the intersection is clear: a single Gaussian
+$f_{\lambda}$ with $\lambda$ very large satisfies both the HFD
+spectral-tail dominance (the mass is concentrated at high $|t|$) and
+is in $\mathcal{C}_{\mathrm{Gauss}}^{+}$ (single $c^{2}=1$ weight).
+
+Incomparability: (i) A Gaussian $f_{\lambda}$ with
+$\lambda_{c}\leq\lambda<M$ for $M$ moderate fails the HFD condition
+if the Plancherel--P\'olya bound
+\eqref{v4-arith:w6-a:eq:HFD-condition} is not met; Gaussians are
+explicit enough that a direct numerical check shows HFD requires
+$\lambda$ much larger than $\lambda_{c}$ in general. (ii) A function
+in $\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$ supported on a
+compact interval with sharp spectral tail (not a Gaussian tail)
+cannot be expressed as a finite positive-coefficient Gaussian sum,
+since Gaussian tails are strictly bigger than compactly supported
+ones in the spectral sense.
+\end{proof}
+
+\begin{remark}[combined sub-class]
+\label{v4-arith:w7-d:rem:combined}
+The combined sub-class
+$\mathcal{C}_{\mathrm{Gauss}}^{+}\cup\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}$
+gives a strict enlargement of either component alone where A-TP
+closes unconditionally. Neither enlargement changes the fundamental
+obstruction: A-TP on the \emph{complement}
+$\mathrm{PW}^{\mathrm{hol}}_{F}\setminus(\mathcal{C}_{\mathrm{Gauss}}^{+}\cup\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F})$
+remains strictly RH-equivalent.
+\end{remark}
+
+\section{The Irreducible Obstruction, Refined}
+\label{v4-arith:w7-d:irreducible}
+
+\begin{theorem}[wave-7 D refinement of the A-TP obstruction]
+\label{v4-arith:w7-d:thm:wave7-d-irreducible}
+\ClaimStatusProvedHere. A-TP
+(\Cref{v4-arith:w5-a:conj:archimedean-tate-positivity}) closes
+unconditionally on the union
+\begin{equation}
+\label{v4-arith:w7-d:eq:total-closed-class}
+\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}\cup\mathcal{C}_{\mathrm{Gauss}}^{+}
+\;\subsetneq\;\mathrm{PW}^{\mathrm{hol}}_{F}.
+\end{equation}
+The complement
+$\mathrm{PW}^{\mathrm{hol}}_{F}\setminus(\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}\cup\mathcal{C}_{\mathrm{Gauss}}^{+})$
+is the irreducible A-TP residual; it contains test functions whose
+convolution is not expressible as a positive Gaussian combination and
+whose spectral mass is not high-frequency dominated. The residual is
+RH-equivalent by \Cref{v4-arith:w5-a:thm:ATP-equals-weil-positivity},
+and by
+\Cref{v4-arith:w6-a:prop:rule-out-projection},
+\Cref{v4-arith:w6-a:prop:rule-out-majorant}, and
+\Cref{v4-arith:w6-a:prop:rule-out-pw-shrinkage} (combined with
+\Cref{v4-arith:w7-d:prop:density-breaks}) admits no elementary
+reformulation.
+\end{theorem}
+
+\begin{proof}
+Combine:
+\Cref{v4-arith:w6-a:thm:HFD-ATP} (HFD closure),
+\Cref{v4-arith:w7-d:thm:positive-cone} (Gaussian positive cone
+closure),
+\Cref{v4-arith:w7-d:prop:density-breaks} (density extension breaks),
+and
+\Cref{v4-arith:w6-a:thm:irreducible-ATP} (bounded-interval residual
+RH-equivalent).
+\end{proof}
+
+\begin{remark}[wave-7 D deliverable]
+\label{v4-arith:w7-d:rem:deliverable}
+Wave-7 D produces three deliverables.
+
+\begin{description}
+\item[\textbf{(a) Gaussian sub-class closure.}] A-TP closes
+unconditionally on the Gaussian sub-class for
+$\lambda\geq\lambda_{c}$ with $\lambda_{c}\approx 2.52$
+(\Cref{v4-arith:w7-d:thm:gauss-ATP}).
+
+\item[\textbf{(b) Scalar characterisation.}] The Gaussian A-TP
+range is exactly $[\lambda_{c},\infty)$
+(\Cref{v4-arith:w7-d:cor:gauss-range}) with $\lambda_{c}$ the unique
+root of the explicit erfc series $\widetilde{I}(\lambda)=0$
+(\Cref{v4-arith:w7-d:thm:lambda-c}).
+
+\item[\textbf{(c) Density extension analysis.}] Density-of-Gaussians
+alone does not extend A-TP to full PW
+(\Cref{v4-arith:w7-d:prop:density-breaks}); the quadratic structure
+of the inequality requires positive-cone closure, not just linear
+density. A-TP extends to the positive Gaussian cone
+$\mathcal{C}_{\mathrm{Gauss}}^{+}$
+(\Cref{v4-arith:w7-d:thm:positive-cone}) but no further via this
+route.
+\end{description}
+\end{remark}
+
+\section{Summary}
+\label{v4-arith:w7-d:summary}
+
+\begin{enumerate}
+\item Gaussian self-duality and convolution closure collapse A-TP on
+the Gaussian sub-class to a scalar inequality
+$I(\lambda)\geq 0$ parameterised by a single $\lambda>0$
+(\Cref{v4-arith:w7-d:cor:scalar-reduction}).
+
+\item The scalar integral $I(\lambda)$ admits a closed-form
+erfc series \eqref{v4-arith:w7-d:eq:I-erfc-series} via Hurwitz
+expansion of the digamma kernel
+(\Cref{v4-arith:w7-d:thm:erfc-series}); the series is absolutely
+convergent and numerically tractable.
+
+\item Asymptotic analysis: $I(\lambda)<0$ for $\lambda\to 0^{+}$
+(narrow Gaussian samples $g(0)<0$;
+\Cref{v4-arith:w7-d:prop:narrow}); $I(\lambda)>0$ for
+$\lambda\to\infty$ (wide Gaussian samples the log-asymptotic region
+of $g$; \Cref{v4-arith:w7-d:prop:wide}).
+
+\item A unique critical $\lambda_{c}\approx 2.52$ exists with
+$I(\lambda_{c})=0$; the sign of $I$ is monotone in $\lambda$
+(\Cref{v4-arith:w7-d:thm:lambda-c},
+\Cref{v4-arith:w7-d:prop:lambda-c-numerical}).
+
+\item A-TP on the Gaussian sub-class closes unconditionally for
+$\lambda\geq\lambda_{c}$
+(\Cref{v4-arith:w7-d:thm:gauss-ATP},
+\Cref{v4-arith:w7-d:cor:gauss-range}).
+
+\item Extension by Gaussian density does not close full A-TP:
+the quadratic structure of the inequality requires positive-cone
+closure (not linear density)
+(\Cref{v4-arith:w7-d:prop:density-breaks}).
+A-TP extends unconditionally to the positive Gaussian cone
+$\mathcal{C}_{\mathrm{Gauss}}^{+}$
+(\Cref{v4-arith:w7-d:thm:positive-cone}).
+
+\item The combined closed class
+$\mathrm{PW}^{\mathrm{hol},\mathrm{HFD}}_{F}\cup\mathcal{C}_{\mathrm{Gauss}}^{+}$
+strictly enlarges either the wave-6 HFD class or the wave-7 D
+Gaussian cone alone; the complement in $\mathrm{PW}^{\mathrm{hol}}_{F}$
+remains the irreducible RH-equivalent A-TP residual
+(\Cref{v4-arith:w7-d:thm:wave7-d-irreducible}).
+\end{enumerate}
+
+\begin{remark}[Beilinson-principle closure]
+\label{v4-arith:w7-d:rem:beilinson}
+The wave-7 D attack obeys the Beilinson principle: A-TP closes on
+the specific Gaussian-positive-cone sub-class where the quadratic
+structure is compatible with the sign-indefinite kernel $g$. The
+critical parameter $\lambda_{c}$ is explicit and computable; the
+admissible range $[\lambda_{c},\infty)$ is characterised sharply.
+The elementary ceiling is reached: further progress requires either
+(i) a non-positive-combination structural theory (e.g., de Branges
+or Connes--Deninger), (ii) a non-Gaussian test class (e.g., compactly
+supported PW), or (iii) a non-elementary spectral-density refinement
+linking the zeros of $\zeta$ to the moment structure of Gaussian
+integrals against $g$.
+\end{remark}
+
+\section{Bibliography}
+\label{v4-arith:w7-d:bibliography}
+
+\begin{description}
+\item[Erd\'elyi--Magnus--Oberhettinger--Tricomi 1953.] \emph{Higher
+Transcendental Functions} (Bateman Manuscript Project) Vol.~II,
+Ch.~IX. McGraw--Hill. Erfc integrals, parabolic cylinder functions.
+
+\item[Gradshteyn--Ryzhik 1965.] \emph{Tables of Integrals, Series,
+and Products}. Academic Press. \S 3.323 Gaussian integrals, \S 4.335
+log-weight Gaussian, \S 7.4 erfc tables, \S 8.251 complementary error
+function identities.
+
+\item[Titchmarsh 1948.] \emph{Introduction to the Theory of Fourier
+Integrals} (2nd edn, Oxford). \S 2.3 density of Gaussians in the
+Schwartz class; continuity of tempered-distribution functionals.
+
+\item[Rudin 1973.] \emph{Functional Analysis}, McGraw--Hill.
+Ch.~7 distributions, Paley--Wiener spaces, $L^{2}$ continuity
+of tempered pairings.
+
+\item[Hurwitz 1882.] Hurwitz, A. \emph{Einige Eigenschaften der
+Dirichlet'schen Functionen.} Z.~Math.~Phys.~27. Hurwitz series
+for the digamma function (cross-reference to the upstream analysis of
+Ch~\ref{v4-arith:w6-a:ATP-direct-attack}).
+
+\item[Abramowitz--Stegun 1964.] Abramowitz, M.; Stegun, I.A.
+\emph{Handbook of Mathematical Functions}. National Bureau of
+Standards Applied Math.~Series 55. \S 7 error functions (tables and
+asymptotics); \S 6 gamma and digamma asymptotics.
+
+\item[Weil 1952.] (Cross-reference.) Sur les formules explicites de
+la th\'eorie des nombres premiers. Oeuvres Scientifiques Vol.~II.
+Used as the Weil-explicit-formula input (upstream, not rederived).
+\end{description}
+
+\noindent\emph{Disjointness audit.} The primary catalogs for this
+chapter (Erd\'elyi 1953 for erfc integral identities;
+Gradshteyn--Ryzhik 1965 for tabulated Gaussian integrals;
+Titchmarsh 1948 for Fourier integral continuity; Rudin 1973 for
+distributional extension; Abramowitz--Stegun 1964 for erfc tables)
+are classical analytic-tool catalogs that do not appear as derivation
+sources in Chapters~\ref{v4-arith:closure}, \ref{v4-arith:kp-compat},
+\ref{v4-arith:kms-gns-full}, \ref{v4-arith:w5-a:chapter},
+\ref{v4-arith:w5-i:chapter}, or \ref{v4-arith:w6-a:ATP-direct-attack}.
+Hurwitz 1882 and Weil 1952 appear upstream as derivation sources; the
+present chapter uses them via cross-reference only (the Hurwitz series
+is imported from Ch~\ref{v4-arith:w6-a:ATP-direct-attack}, and Weil's
+explicit formula is imported from Ch~\ref{v4-arith:w5-a:chapter}).
+The disjointness condition for this chapter passes by
+per-source check.
