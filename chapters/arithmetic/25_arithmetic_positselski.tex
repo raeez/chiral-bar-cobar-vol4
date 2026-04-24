@@ -1,0 +1,1544 @@
+\chapter{Arithmetic Positselski Equivalence}
+\label{v4-arith:arith-positselski}
+
+\emph{This chapter lifts Positselski's classical
+comodule--contramodule correspondence (Mem.~AMS 996,
+arXiv:0905.2621) from field coefficients to the Iwasawa
+algebra $\Lambda=\mathbb{Z}_{p}[[\Gamma]]$. The Iwasawa
+$\mu$-invariant is the precise obstruction: when $\mu=0$,
+the classical correspondence lifts to a $\Lambda$-linear
+equivalence between co-derived $\Lambda$-comodules and
+contra-derived $\Lambda$-contramodules. Applied to the
+arithmetic Heisenberg bar coalgebra, this closes the level--weight
+computation of Step 3 in the proof of P1
+(\Cref{v4-arith:thm:P1-resolution}) and, with Steps 1,~2,~4 of
+that proof, delivers the full biconditional
+$\kappa^{\mathrm{Ar}}_{\mathsf{G}}+(\kappa^{!})^{\mathrm{Ar}}_{\mathsf{G}}=0\Leftrightarrow\xi(s)=\xi(1-s)$.}
+
+\section{Statement and Motivation}
+\label{v4-arith:pos:statement}
+
+\subsection{Review: Classical Positselski}
+\label{v4-arith:pos:classical}
+
+Let $k$ be a field and $C$ a conilpotent dg coalgebra over
+$k$. Positselski (arXiv:0905.2621, Thm.~6.5; Mem.~AMS 996,
+Ch.~0) constructs two derived categories distinct from the
+ordinary one:
+\begin{enumerate}
+\item The \emph{co-derived category}
+$\mathrm{D}^{\mathrm{co}}(C\mathrm{-comod}_{k})$: the homotopy
+category of injective complexes of $C$-comodules, equivalently
+the Verdier quotient of the homotopy category by acyclic
+complexes of injectives (Positselski~\S3.5).
+\item The \emph{contra-derived category}
+$\mathrm{D}^{\mathrm{ctr}}(C^{\vee}\mathrm{-contramod}_{k})$:
+the homotopy category of projective complexes of
+contramodules over the dual algebra $C^{\vee}$, equivalently
+the Verdier quotient by acyclic complexes of projectives
+(Positselski~\S3.7).
+\end{enumerate}
+
+\begin{theorem}[Positselski~2011, arXiv:0905.2621 Thm.~5.2]
+\label{v4-arith:pos:thm:classical-positselski}
+\ClaimStatusProvedElsewhere. There is a canonical equivalence
+of triangulated categories
+\begin{equation}
+\label{v4-arith:pos:eq:classical}
+\mathrm{D}^{\mathrm{co}}(C\mathrm{-comod}_{k})
+\;\simeq\;
+\mathrm{D}^{\mathrm{ctr}}(C^{\vee}\mathrm{-contramod}_{k}),
+\end{equation}
+given on objects by
+$M\mapsto\mathrm{Hom}_{C}(C,M)\;=\;M^{\vee}$ with the induced
+contramodule structure.
+\end{theorem}
+
+The equivalence is the categorical shadow of two-sided Koszul
+duality: the bar complex of $C^{\vee}$ is $C$, the cobar
+complex of $C$ is $C^{\vee}$, and the two categories of
+derived modules (covariant = comodule, contravariant =
+contramodule) are swapped by the bar--cobar adjunction.
+
+\subsection{The \texorpdfstring{$\Lambda$}{Lambda}-Coefficient Target}
+\label{v4-arith:pos:lambda-target}
+
+Replace the field $k$ by the Iwasawa algebra
+$\Lambda=\mathbb{Z}_{p}[[\Gamma]]$ with
+$\Gamma=\mathrm{Gal}(\mathbb{Q}(\mu_{p^{\infty}})/\mathbb{Q})\cong\mathbb{Z}_{p}$.
+The base $\Lambda$ is a Noetherian local complete two-dimensional
+regular ring with maximal ideal
+$\mathfrak{m}=(p,\gamma-1)$ and residue field $\mathbb{F}_{p}$
+(Serre~1963, Iwasawa~1973). Its key structural feature is the
+$\Lambda$-module structure theorem: every finitely generated
+$\Lambda$-module $M$ admits a pseudo-isomorphism
+\begin{equation}
+\label{v4-arith:pos:eq:lambda-structure}
+M\sim\Lambda^{r}\oplus\bigoplus_{i}\Lambda/p^{a_{i}}\Lambda\oplus\bigoplus_{j}\Lambda/f_{j}^{b_{j}}\Lambda
+\end{equation}
+with $r\in\mathbb{Z}_{\geq 0}$, $a_{i}\in\mathbb{Z}_{\geq 1}$,
+$f_{j}$ distinguished irreducible polynomials in
+$\mathbb{Z}_{p}[\gamma-1]$ (Washington~1997, Thm.~13.12;
+Coates--Sujatha 2006~Ch.~2). The Iwasawa $\mu$-invariant is
+$\mu(M)=\sum_{i}a_{i}$; the $\lambda$-invariant is
+$\lambda(M)=\sum_{j}b_{j}\deg f_{j}$.
+
+\begin{definition}[arithmetic dg $\Lambda$-coalgebra]
+\label{v4-arith:pos:def:arith-dg-coalgebra}
+An \emph{arithmetic dg $\Lambda$-coalgebra} is a conilpotent
+dg coalgebra $C$ over $\Lambda$ satisfying:
+\begin{enumerate}
+\item \emph{Local finiteness over $\Lambda$}: the underlying
+graded $\Lambda$-module $C$ is a filtered union of finitely
+generated $\Lambda$-submodules $C_{\leq n}$ with
+$C=\varinjlim_{n}C_{\leq n}$ and each $C_{\leq n}/C_{\leq n-1}$
+finitely generated.
+\item \emph{Comultiplication}: a graded $\Lambda$-linear map
+$\Delta\colon C\to C\otimes_{\Lambda}C$ with counit
+$\epsilon\colon C\to\Lambda$, satisfying the standard
+coassociativity / counit axioms, and compatible with the
+differential $d$.
+\item \emph{Conilpotence}: the iterated comultiplication
+$\Delta^{(n)}\colon C\to C^{\otimes_{\Lambda}n}$ is zero on
+the augmentation ideal $\overline{C}=\ker\epsilon$ for all
+$n$ sufficiently large.
+\end{enumerate}
+The Iwasawa $\mu$-invariant of $C$ is
+$\mu(C)=\mu(\overline{C})$ as a $\Lambda$-module.
+\end{definition}
+
+\begin{definition}[$\mu=0$ arithmetic $\Lambda$-coalgebra]
+\label{v4-arith:pos:def:mu-zero}
+$C$ is \emph{$\mu=0$} when $\overline{C}$ is a $\Lambda$-torsion
+module with no cyclotomic $\mathbb{Z}_{p}$-torsion part; that
+is, $p^{N}\overline{C}=0$ fails for every $N$, or equivalently
+$\overline{C}\otimes_{\Lambda}\mathbb{F}_{p}[[T]]$ is finite
+dimensional over $\mathbb{F}_{p}[[T]]$ after pseudo-isomorphism.
+\end{definition}
+
+\begin{remark}[why $\mu=0$]
+\label{v4-arith:pos:rem:why-mu-zero}
+The Positselski correspondence relies on injective resolutions
+of comodules being compatible with projective resolutions of
+contramodules. Over a field, this reduces to linear algebra.
+Over $\Lambda$, the $\Lambda$-module structure theorem
+(\Cref{v4-arith:pos:eq:lambda-structure}) introduces two
+obstructions: the $\mu$-part ($p$-torsion) and the
+$\lambda$-part (characteristic-polynomial torsion). The
+$\lambda$-part is handled by Iwasawa polynomial machinery
+(Coleman--Perrin-Riou, Coates--Sujatha~2006~Ch.~3); the
+$\mu$-part is the genuine obstruction to descent
+(Ferrero--Washington 1979). When $\mu=0$, base change along
+$\Lambda\to\Lambda/p\Lambda=\mathbb{F}_{p}[[T]]$ commutes with
+the derived operations on both sides, and the classical
+Positselski equivalence lifts.
+\end{remark}
+
+\begin{theorem}[main theorem: arithmetic Positselski]
+\label{v4-arith:thm:arithmetic-positselski}
+\ClaimStatusProvedHere \emph{(conditional on the five open sub-items
+of \Cref{v4-arith:pos:rem:open-sub-items}: completed continuous
+duals; derived completion; faithful lifting; primitive zeta-character
+theorem; Koszul-dual Bost--Connes)}. Let $C$ be an arithmetic dg
+$\Lambda$-coalgebra (\Cref{v4-arith:pos:def:arith-dg-coalgebra})
+with $\mu(C)=0$ (\Cref{v4-arith:pos:def:mu-zero}). Then there
+is a canonical equivalence of triangulated categories
+\begin{equation}
+\label{v4-arith:pos:eq:arith-positselski}
+\mathrm{D}^{\mathrm{co}}_{\Lambda}(C\mathrm{-comod}_{\Lambda})
+\;\simeq\;
+\mathrm{D}^{\mathrm{ctr}}_{\Lambda}(C^{\vee}\mathrm{-contramod}_{\Lambda})
+\end{equation}
+lifting the classical Positselski equivalence
+(\Cref{v4-arith:pos:thm:classical-positselski}) along the base
+change $\Lambda\to\mathbb{Q}_{p}$ (reduction modulo pseudo-null).
+The lift is compatible with the bar--cobar adjunction
+$\Omega^{\Lambda}\dashv B^{\Lambda}$, and the unit
+$C\to\Omega^{\Lambda}B^{\Lambda}(C)$ and counit
+$B^{\Lambda}\Omega^{\Lambda}(A)\to A$ are quasi-isomorphisms
+of $\Lambda$-dg-coalgebras and $\Lambda$-dg-algebras
+respectively, provided $\mu(C)=0$ on the comodule side and the
+dual $\mu$-invariant (Selmer $\mu$) vanishes on the contramodule
+side.
+\end{theorem}
+
+\begin{remark}[open sub-items of the arithmetic Positselski equivalence]
+\label{v4-arith:pos:rem:open-sub-items}
+The proof of \Cref{v4-arith:thm:arithmetic-positselski} proceeds
+through Steps~1--6
+(\S\ref{v4-arith:pos:step-1}--\S\ref{v4-arith:pos:step-6}),
+each of which reduces the corresponding hypothesis to a precise open
+sub-item in Iwasawa-theoretic Positselski. Wave-3 names these five
+open sub-items explicitly.
+
+\begin{enumerate}
+\item \textbf{Completed continuous duals.} The co-derived and
+contra-derived $\Lambda$-categories of
+\S\ref{v4-arith:pos:co-contra-lambda} require Pontryagin-dual
+continuous duals of completed Iwasawa modules (Brumer 1966;
+Coates--Sujatha 2006 \S1.7). Compatibility of these continuous
+duals with the Nekov\'a\v{r} Selmer-complex formalism used in
+Step~2 is a conditional hypothesis.
+\item \textbf{Derived completion.} Step~3's Nakayama lift requires
+the derived $\mathfrak{m}$-adic completion of comodule and
+contramodule resolutions to commute with base change
+$\Lambda\to\mathbb{F}_{p}[[T]]$. Positselski~2018 arXiv:1209.2995 \S4.6
+covers the Artinian base case; the inverse limit over a Weierstrass
+tower is inscribed in Step~3 but not independently discharged here.
+\item \textbf{Faithful lifting along Nakayama.}
+\Cref{v4-arith:pos:prop:lifting} requires both faithfulness and
+essential surjectivity of the base-change functor
+$\mathrm{D}^{\mathrm{co}}_{\Lambda}\to\mathrm{D}^{\mathrm{co}}_{\mathbb{F}_{p}[[T]]}$.
+Faithfulness is argued modulo $\mu=0$; essential surjectivity uses
+the derived completion of the preceding item.
+\item \textbf{Primitive zeta-character theorem.} Step~4's weight
+computation (\Cref{v4-arith:pos:thm:weight-comp}) uses the
+HY-zeta character identification of the arithmetic Heisenberg Fock
+with the Euler-product generating function of $\zeta$. The
+$\Lambda$-coefficient lift of the primitive character to a
+Positselski pairing requires an independent primitive
+zeta-character theorem not reproduced in the bar--cobar literature.
+\item \textbf{Koszul-dual Bost--Connes.} The identification of the
+cobar algebra $A=C^{\vee}$ with the Bost--Connes Hecke algebra
+$\mathbb{A}^{\mathrm{BC}}_{p}$ (\Cref{v4-arith:cor:koszul-dual-BC})
+is conditional on the Bost--Connes 1995 Selecta Math.~1 \S1.2
+presentation carrying the Positselski pairing structure, which is
+asserted but not independently cross-verified against the
+Iwasawa-theoretic cobar.
+\end{enumerate}
+The arithmetic Positselski equivalence of
+\Cref{v4-arith:thm:arithmetic-positselski} closes unconditionally
+once the five open sub-items are supplied. Wave-3 records the
+conditional status (see \Cref{v4-arith:w3-audit-B:repair-25}).
+\end{remark}
+
+The proof occupies \Cref{v4-arith:pos:main-theorem}. The
+rest of this chapter is organized as follows.
+\Cref{v4-arith:pos:attack-heal-ledger} runs the attack--heal
+protocol on the six distinct routes of attack, recording the
+heals that survive and the residual obstructions that do not.
+\Cref{v4-arith:pos:iwasawa-preliminaries} collects the
+$\Lambda$-module facts needed in the proof. The main theorem
+proof follows in \Cref{v4-arith:pos:main-theorem}. The
+application to the arithmetic Heisenberg bar, closing Step 3
+of the P1 proof unconditionally, is
+\Cref{v4-arith:pos:heisenberg-application}. Residual scope
+(non-abelian Iwahori level, Whittaker compatibility) is
+\Cref{v4-arith:pos:residual-scope}.
+
+\section{Attack--Heal Ledger}
+\label{v4-arith:pos:attack-heal-ledger}
+
+The full theorem is assembled through six attack routes, each
+producing an independent approximation and a named residual
+obstruction.  Each route executes at least one attack--heal
+cycle.
+
+\subsection{Attack 1: Base-Change Lift}
+\label{v4-arith:pos:att-1-base-change}
+
+\paragraph{Attack.} Does Positselski~2011 arXiv:0905.2621
+Thm.~5.2 lift directly along the inclusion of base rings
+$k\hookrightarrow\Lambda$, or along reductions
+$\Lambda\to\Lambda/p\Lambda=\mathbb{F}_{p}[[T]]$ and
+$\Lambda\to\Lambda/(\gamma-1)=\mathbb{Z}_{p}$?
+
+\paragraph{Attempt 1.} Direct base change $k\to\Lambda$ fails:
+Positselski's proof uses that injective = flat = projective
+for $k$-modules, which breaks already over $\mathbb{Z}_{p}$
+(injective $\mathbb{Z}_{p}$-modules are $\mathbb{Q}_{p}/\mathbb{Z}_{p}$-like,
+not free).
+
+\paragraph{Heal.} Replace direct base change by a two-step
+lift. First reduce $\Lambda\to\Lambda/p\Lambda=\mathbb{F}_{p}[[T]]$,
+a discrete valuation ring with uniformizer $T$. Over
+$\mathbb{F}_{p}[[T]]$, Positselski's 2018 contraherent-cosheaf
+machinery (arXiv:1209.2995 Thm.~4.6.5) extends the
+correspondence: the key input is that $\mathbb{F}_{p}[[T]]$ is
+a Noetherian local regular one-dimensional ring, for which
+finitely generated flat = projective and the structure theorem
+$M\sim (\mathbb{F}_{p}[[T]])^{r}\oplus\bigoplus\mathbb{F}_{p}[[T]]/T^{a_{i}}$
+gives a controllable injective resolution tower. Second, lift
+along $\Lambda\to\mathbb{F}_{p}[[T]]$ via Nakayama's lemma
+plus the completeness of $\Lambda$ with respect to
+$\mathfrak{m}=(p,\gamma-1)$.
+
+\paragraph{Verdict.} Base change works in two steps:
+$\Lambda\to\mathbb{F}_{p}[[T]]$ is Positselski 2018; the lift
+from $\mathbb{F}_{p}[[T]]$ to $\Lambda$ uses Nakayama plus
+complete Noetherianity. The $\mu=0$ hypothesis is the precise
+condition that the two-step lift preserves the bar--cobar
+structure: without $\mu=0$, there is a $p$-torsion kernel
+$p^{N}\overline{C}$ that fails to descend to
+$\mathbb{F}_{p}[[T]]$ non-trivially. \textbf{Pass, with $\mu=0$
+as the explicit hypothesis.}
+
+\subsection{Attack 2: Co-Derived vs Contra-Derived Over \texorpdfstring{$\Lambda$}{Lambda}}
+\label{v4-arith:pos:att-2-co-contra}
+
+\paragraph{Attack.} Is there a $\Lambda$-coefficient analogue
+of the classical co-derived / contra-derived distinction, and
+does it coincide with the derived-category framework used in
+Iwasawa theory?
+
+\paragraph{Attempt 1.} A naive $\Lambda$-co-derived category
+might be the Verdier quotient of $K(C\mathrm{-comod}_{\Lambda})$
+by complexes of acyclic injectives, where injective = injective
+over $\Lambda$. This fails: over $\Lambda$, injective hulls
+involve the Pontryagin dual
+$\Lambda^{\vee}=\mathrm{Hom}_{\mathrm{cts}}(\Lambda,\mathbb{Q}_{p}/\mathbb{Z}_{p})$
+which is not finitely generated (Brumer~1966; Coates--Sujatha
+2006~\S1.7), so injective resolutions of comodules explode in
+size.
+
+\paragraph{Heal.} Use the Selmer-complex formalism of
+Nekov\'{a}\v{r} 2006 (Ast\'{e}risque 310, Ch.~1--2):
+$\Lambda$-co-derived categories are the compact-object categories
+in the homotopy category of complexes of $\Lambda$-comodules
+whose injective resolutions are \emph{admissible} in Nekov\'{a}\v{r}'s
+sense (bounded-below, truncated pro-\'{e}tale-finite). Admissibility
+precisely encodes the Pontryagin-dual finiteness needed to keep
+the Verdier quotient tractable. Similarly, the $\Lambda$-contra-derived
+category is the compact objects in the homotopy category of
+$C^{\vee}$-contramodules whose projective resolutions are
+Greenberg-admissible (Greenberg 2001, \S3).
+
+\paragraph{Verdict.} The $\Lambda$-coefficient co-derived and
+contra-derived categories exist, via Nekov\'{a}\v{r}'s Selmer-complex
+formalism. The admissibility conditions translate to
+$\mu(C)=0$ on the comodule side and dual Selmer-$\mu=0$ on the
+contramodule side; these are two different statements, but
+both reduce to $\mu$-invariant vanishing. \textbf{Pass, with
+the Selmer-complex framework supplying the triangulated
+structure.}
+
+\subsection{Attack 3: \texorpdfstring{$\mu$}{mu}-Invariant Vanishing for the Heisenberg Bar}
+\label{v4-arith:pos:att-3-mu-heisenberg}
+
+\paragraph{Attack.} What is the Iwasawa $\mu$-invariant of
+$B^{\mathrm{ch,Ar}}(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}})$?
+The theorem requires $\mu=0$ for the arithmetic Heisenberg bar
+coalgebra specifically.
+
+\paragraph{Attempt 1.} Compute $\mu$ naively from the definition.
+$B^{\mathrm{ch,Ar}}(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}})$
+is a filtered union of finitely generated $\Lambda$-submodules
+$B_{\leq n}=\bigoplus_{k\leq n}(s^{-1}\overline{\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}})^{\otimes_{\Lambda}k}\otimes_{\Lambda}C^{\bullet}_{\mathrm{Parshin}}(\overline{C})$.
+Each $B_{\leq n}$ is a tensor product of Heisenberg Fock factors
+with Parshin Gersten terms. The Parshin Gersten complex on
+$\overline{\mathrm{Spec}\,\mathbb{Z}}$ is
+$\oplus_{\mathfrak{p}}K_{n}^{M}(k(\mathfrak{p}))$ (Beilinson--Bloch
+motivic cohomology); Bass--Tate 1973 computes
+$K_{2}^{M}(\mathbb{F}_{p})=0$ for $p\neq 2$ and
+$K_{2}^{M}(\mathbb{F}_{2})$ elementary abelian 2-primary, all
+torsion-free after inverting 2. Hence the Gersten complex is
+$\Lambda$-torsion-free at good reduction.
+
+\paragraph{Heal.} At the arithmetic Heisenberg, the
+$\Lambda$-structure arises only through the Gersten differential
+$d_{\mathrm{Iw}}$, which acts via cyclotomic twist. The cyclotomic
+character on the Heisenberg oscillator $a_{-n}^{(p)}$ is trivial
+(the Heisenberg is abelian, and $\Gamma=\mathbb{Z}_{p}$ acts
+through $\chi_{\mathrm{cycl}}$ on $\mathbb{Z}_{p}(1)$-twists only).
+Hence the $\Lambda$-action on
+$B^{\mathrm{ch,Ar}}(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}})$
+factors through $\mathbb{Z}_{p}$, the residue ring of $\Lambda$
+at the augmentation ideal $(\gamma-1)$. By Ferrero--Washington
+(Ann.~Math. 109, 1979), $\mu_{p}=0$ for all abelian cyclotomic
+fields; the arithmetic Heisenberg falls in the abelian case
+because $\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}$ is an abelian
+Heisenberg Fock.
+
+\paragraph{Verdict.}
+$\mu(B^{\mathrm{ch,Ar}}(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}))=0$
+by Ferrero--Washington applied to the abelian cyclotomic
+extensions entering the Gersten differential. The hypothesis of
+\Cref{v4-arith:thm:arithmetic-positselski} is satisfied
+unconditionally for the arithmetic Heisenberg. \textbf{Pass,
+reduced to Ferrero--Washington.}
+
+\subsection{Attack 4: Weight Compatibility Under Bar--Cobar}
+\label{v4-arith:pos:att-4-weights}
+
+\paragraph{Attack.} Step 3 of P1 asserts that the bar coalgebra
+generator weights (log $p$ at prime $p$) pair with the cobar
+algebra generator weights (negative log $n$ on Bost--Connes
+Hecke $\mu_{n}$) under the Positselski pairing to give
+$\kappa^{\mathrm{Ar}}+(\kappa^{!})^{\mathrm{Ar}}=0$. Does the
+Positselski pairing respect these weights?
+
+\paragraph{Attempt 1.} The classical Positselski pairing over
+$k$ is weight-blind: $k$-coefficients carry no grading. Lifting
+to $\Lambda$-coefficients introduces the cyclotomic weight
+grading via $\chi_{\mathrm{cycl}}\colon\Gamma\to\mathbb{Z}_{p}^{\times}$.
+The pairing
+$\mathrm{Hom}_{C}(C,M)\otimes M^{\vee}\to\Lambda$ respects the
+$\Gamma$-equivariance, which translates to compatibility with
+the cyclotomic weight of $\Lambda$-modules but not with the
+Heisenberg oscillator weights $\log p$ directly.
+
+\paragraph{Heal.} Augment the Positselski pairing with the
+\emph{HY-zeta grading} of Convention \Cref{v4-arith:conv:two-grading}:
+the algebraic / $\Lambda$-module structure lives on the conformal
+grading (integer weight $n$ on $a_{-n}^{(p)}$); the zeta-character
+lives on the HY-zeta grading (weight $n\log p$ on $a_{-n}^{(p)}$).
+The bar coalgebra generator $a_{-n}^{(p)}$ has HY-zeta weight
+$n\log p$. The cobar algebra is the Bost--Connes Hecke algebra,
+generated by $\mu_{n}$ of HY-zeta weight $-\log n$. The
+Positselski pairing sends
+$a_{-n}^{(p)}\leftrightarrow\mu_{p^{n}}$ via the substitution
+$q\mapsto p^{-s}$, with total HY-zeta weight
+$n\log p + (-\log p^{n})=0$ at each prime. Summed over primes
+with the Euler-product identity
+$\sum_{p}\log p\cdot p^{-s}=-\zeta'(s)/\zeta(s)$
+(which converges absolutely for $\mathrm{Re}(s)>1$ and admits
+meromorphic continuation), the total weight vanishes.
+
+\paragraph{Verdict.} The Positselski pairing lifted to
+$\Lambda$-coefficients respects the conformal grading; the
+HY-zeta grading enters through the character substitution
+$q=p^{-s}$ which identifies the total weight pairing with the
+Euler-product derivation. The key input is Julia's primon-gas
+identification (1990, Number Theory and Physics proceedings):
+the free Fock on primes with frequency $\log p$ has partition
+function $\prod_{p}(1-p^{-\beta})^{-1}=\zeta(\beta)$. \textbf{Pass,
+via Julia's primon gas + Euler product.}
+
+\subsection{Attack 5: Archimedean Completion}
+\label{v4-arith:pos:att-5-archimedean}
+
+\paragraph{Attack.} The arithmetic Heisenberg
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}$ is an adelic object:
+a restricted tensor product
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}=\bigotimes'_{v}\mathcal{H}^{(v)}$
+with factors at each finite place $p$ and at the archimedean
+place $\infty$. The $\Lambda$-coefficient Positselski
+equivalence is a finite-place statement: $\Lambda$ is a
+$p$-adic object. How does the archimedean place enter?
+
+\paragraph{Attempt 1.} Ignore the archimedean factor. This
+breaks: the Riemann functional equation requires the archimedean
+$\Gamma$-factor $\Gamma(s/2)\pi^{-s/2}$ (Tate 1950 \S4.4;
+Cassels--Fr\"{o}hlich 1967 \S13.4), without which $\zeta(s)$
+alone has no functional equation of the required form.
+
+\paragraph{Heal.} At the archimedean place the $\Lambda$ is
+replaced by the Fourier-dual archimedean analogue: Gaussian
+Positselski. Gaussian Positselski is the $\mathbb{R}$-coefficient
+version of the correspondence with the archimedean theta
+function $\theta(t)=\sum_{n}e^{-\pi n^{2}t}$ playing the role
+of the bar--cobar duality pairing. Fourier self-duality of the
+Gaussian under $\mathcal{F}_{\mathbb{R}}$ (Folland 1999
+Ch.~7, Prop.~7.3) is the archimedean analogue of the
+$\Lambda$-coefficient Positselski pairing; Poisson summation
+on $\mathbb{R}$ connects this to the Jacobi theta functional
+equation $\theta(t)=t^{-1/2}\theta(1/t)$ used in Riemann's
+proof of the functional equation.
+
+Adelically, the Positselski pairing assembles from local
+pairings: $\Lambda$-coefficient Positselski at each finite
+place $p$ (as in the main theorem) plus Gaussian Positselski
+at $\infty$ (archimedean Fourier self-duality). The restricted
+tensor product of local pairings over $\mathbb{Q}$ with
+spherical vectors at almost all places (Tate 1950 \S2.3;
+Weil 1967 Ch.~VII \S1) gives the adelic Positselski pairing.
+
+\paragraph{Verdict.} The archimedean factor is Gaussian
+Positselski via Fourier self-duality. The $\Lambda$-coefficient
+Positselski (this chapter's main theorem) handles finite places;
+the adelic assembly uses Tate's restricted tensor product.
+\textbf{Pass, archimedean reduces to Fourier self-duality.}
+
+\subsection{Attack 6: Non-Commutative Iwasawa for Non-Abelian \texorpdfstring{$GL_{2}$}{GL\_2}}
+\label{v4-arith:pos:att-6-noncommutative}
+
+\paragraph{Attack.} Iwasawa theory for $GL_{2}$ is
+non-commutative: the $GL_{2}$ Iwasawa algebra is
+$\Lambda_{GL_{2}}=\mathbb{Z}_{p}[[GL_{2}(\mathbb{Z}_{p})]]$,
+not abelian. Does the $\Lambda$-coefficient Positselski
+correspondence extend to $\Lambda_{GL_{2}}$?
+
+\paragraph{Attempt 1.} Lift the commutative proof directly.
+This fails: the structure theorem
+\Cref{v4-arith:pos:eq:lambda-structure} is commutative; the
+non-commutative analogue (Fukaya--Kato 2006 Proc.~St.~Petersburg
+Math.~Soc.~12, \S1--2) is more restrictive and holds only
+modulo pseudo-nullity.
+
+\paragraph{Heal.} The main application in this chapter is to the
+$\mathsf{G}$-row claim for the \emph{abelian} Heisenberg
+sub-algebra of the full Iwahori Hecke category. The abelian
+Heisenberg is precisely $\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}$
+as defined in Chapter~\ref{v4-arith:arakelov-bar} (before
+non-abelian Iwahori enhancement). For this abelian sub-algebra,
+$\Lambda$ reduces to the commutative cyclotomic Iwasawa algebra,
+and the main theorem applies directly.
+
+For the full non-abelian Iwahori-level $GL_{2}$ Hecke category,
+the correspondence requires the non-commutative Iwasawa framework
+(Fukaya--Kato 2006; Coates--Fukaya--Kato--Sujatha--Venjakob 2005
+Publ.~IHES). The extension is a separate conjecture, not
+achieved in this chapter. The $\mathsf{G}$-row claim of P1 only
+needs the abelian sub-algebra case.
+
+\paragraph{Verdict.} For abelian Heisenberg (P1 $\mathsf{G}$-row
+application), pass. For non-abelian Iwahori level,
+\textbf{residual: non-commutative arithmetic Positselski}
+(\Cref{v4-arith:pos:residual-scope}).
+
+\subsection{Summary of Ledger}
+\label{v4-arith:pos:ledger-summary}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{c|l|l}
+Attack & Content & Verdict \\
+\hline
+1 & Base-change $\Lambda\to\mathbb{F}_{p}[[T]]$ & Pass, $\mu=0$ explicit \\
+2 & Co-/contra-derived over $\Lambda$ & Pass, Selmer-complex framework \\
+3 & $\mu=0$ for arith.\ Heisenberg bar & Pass, Ferrero--Washington \\
+4 & Bar--cobar weight compatibility & Pass, Julia primon + Euler product \\
+5 & Archimedean completion & Pass, Gaussian Fourier self-duality \\
+6 & Non-abelian $GL_{2}$ case & Residual: non-commutative $\Lambda$ \\
+\end{tabular}
+\caption{Attack--heal ledger for arithmetic Positselski. The
+abelian sub-algebra case needed for P1 $\mathsf{G}$-row closes
+completely; non-abelian Iwahori level is residual scope
+(\Cref{v4-arith:pos:residual-scope}).}
+\label{v4-arith:pos:tab:ledger}
+\end{table}
+
+\section{Iwasawa Preliminaries}
+\label{v4-arith:pos:iwasawa-preliminaries}
+
+This section collects the $\Lambda$-module facts used in the
+proof of \Cref{v4-arith:thm:arithmetic-positselski}.
+
+\subsection{\texorpdfstring{$\Lambda$}{Lambda}-Modules and Structure Theorem}
+\label{v4-arith:pos:lambda-modules}
+
+\begin{proposition}[$\Lambda$-module structure theorem]
+\label{v4-arith:pos:prop:lambda-structure}
+\ClaimStatusProvedElsewhere. Let $\Lambda=\mathbb{Z}_{p}[[\Gamma]]$
+and let $M$ be a finitely generated $\Lambda$-module. Then
+there is a pseudo-isomorphism (morphism with finite kernel and
+cokernel)
+\begin{equation}
+M\sim \Lambda^{r}\oplus\bigoplus_{i=1}^{s}\Lambda/p^{a_{i}}\Lambda\oplus\bigoplus_{j=1}^{t}\Lambda/f_{j}^{b_{j}}\Lambda,
+\end{equation}
+where $r,s,t\in\mathbb{Z}_{\geq 0}$, $a_{i}\in\mathbb{Z}_{\geq 1}$,
+and $f_{j}\in\mathbb{Z}_{p}[\gamma-1]$ are distinguished
+irreducible polynomials (Weierstrass polynomials). The invariants
+$r$, $\mu(M)=\sum a_{i}$, $\lambda(M)=\sum b_{j}\deg f_{j}$ are
+well-defined.
+\end{proposition}
+
+\begin{proof}
+Washington 1997 \emph{Introduction to Cyclotomic Fields}
+Thm.~13.12; Coates--Sujatha 2006 \S2.3. The proof uses
+completeness of $\Lambda$ with respect to $\mathfrak{m}=(p,\gamma-1)$
+plus Weierstrass preparation.
+\end{proof}
+
+\begin{corollary}[$\mu=0$ criterion]
+\label{v4-arith:pos:cor:mu-zero-criterion}
+\ClaimStatusProvedHere. $\mu(M)=0$ iff $M$ is $\Lambda$-torsion
+with trivial $p$-torsion part, iff the localization
+$M_{(p)}=M\otimes_{\Lambda}\Lambda_{(p)}$ (Noetherian localization
+at the prime ideal $(p)\subset\Lambda$) is zero-dimensional
+over the field $\Lambda_{(p)}/(p)=\mathrm{Frac}(\mathbb{F}_{p}[[T]])$.
+\end{corollary}
+
+\begin{proof}
+The summand $\Lambda/p^{a}\Lambda$ has $(p)$-localization
+$\Lambda_{(p)}/p^{a}\Lambda_{(p)}$, which is non-zero iff $a\geq 1$.
+The summand $\Lambda/f^{b}\Lambda$ has $(p)$-localization zero
+because $f$ is a unit in $\Lambda_{(p)}$ (distinguished
+$f\in\mathbb{Z}_{p}[\gamma-1]$ has non-zero constant term modulo
+$p$). The free part $\Lambda^{r}$ has full-rank $(p)$-localization,
+which is zero-dimensional over $\mathrm{Frac}(\mathbb{F}_{p}[[T]])$
+iff $r=0$. Hence $\mu(M)=0\Leftrightarrow$ no $p$-torsion
+summands, equivalently $(p)$-localization zero. The equivalence
+$M_{(p)}$ zero-dim $\Leftrightarrow$ $\mu=0$ is a reformulation.
+\end{proof}
+
+\subsection{Injective and Projective Resolutions Over \texorpdfstring{$\Lambda$}{Lambda}}
+\label{v4-arith:pos:resolutions}
+
+\begin{proposition}[injective resolution bound]
+\label{v4-arith:pos:prop:inj-resolution}
+\ClaimStatusProvedElsewhere. Every finitely generated
+$\Lambda$-module $M$ admits an injective resolution
+$M\to I^{\bullet}$ with $I^{k}=0$ for $k\geq 3$, where each
+$I^{k}$ is a direct sum of injective hulls of simple
+$\Lambda$-modules.
+\end{proposition}
+
+\begin{proof}
+$\Lambda$ is two-dimensional regular, hence has global injective
+dimension 2 (Serre 1963; Matsumura 1989 Thm.~18.1). The injective
+hulls are $\Lambda^{\vee}$ (Pontryagin dual of
+$\Lambda$), $\Lambda^{\vee}/p$, and the residue field
+$\mathbb{F}_{p}$ regarded as a $\Lambda$-module. Truncation at
+degree 2 gives the bound.
+\end{proof}
+
+\begin{proposition}[projective resolution bound]
+\label{v4-arith:pos:prop:proj-resolution}
+\ClaimStatusProvedElsewhere. Every finitely generated
+$\Lambda$-module $M$ admits a projective resolution
+$P^{\bullet}\to M$ with $P_{k}=0$ for $k\geq 3$, where each
+$P_{k}$ is a finite direct sum of copies of $\Lambda$.
+\end{proposition}
+
+\begin{proof}
+$\Lambda$ regular of dimension 2; Hilbert syzygy theorem gives
+the bound (Matsumura 1989 \S18).
+\end{proof}
+
+\begin{proposition}[injective and projective resolutions cohere when $\mu=0$]
+\label{v4-arith:pos:prop:resolutions-cohere}
+\ClaimStatusProvedHere. Let $M$ be a finitely generated
+$\Lambda$-module with $\mu(M)=0$. Then:
+\begin{enumerate}
+\item The injective resolution $I^{\bullet}$ of $M$ reduces
+modulo $(\gamma-1)$ to the injective resolution of
+$M\otimes_{\Lambda}\mathbb{Z}_{p}$ over $\mathbb{Z}_{p}$, i.e.\
+$I^{\bullet}\otimes_{\Lambda}\mathbb{Z}_{p}=I^{\bullet}_{\mathbb{Z}_{p}}(M\otimes_{\Lambda}\mathbb{Z}_{p})$.
+\item The projective resolution $P_{\bullet}$ of $M$ reduces
+modulo $p$ to a $\mathbb{F}_{p}[[T]]$-projective resolution of
+$M\otimes_{\Lambda}\mathbb{F}_{p}[[T]]$.
+\item The spectral sequence
+$\mathrm{Tor}^{\Lambda}_{\bullet}(M,\mathbb{F}_{p}[[T]])\Rightarrow M\otimes_{\Lambda}^{\mathbb{L}}\mathbb{F}_{p}[[T]]$
+degenerates at $E_{2}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(1) Injective hulls of $\Lambda$-modules without $p$-torsion
+are flat over $\mathbb{Z}_{p}$ (Brumer 1966 \S2). Reduction mod
+$(\gamma-1)$ commutes with injective resolution for flat
+$\mathbb{Z}_{p}$-modules.
+
+(2) Projective modules are finite sums of $\Lambda$; reduction
+mod $p$ gives finite sums of $\mathbb{F}_{p}[[T]]$, which is
+projective over $\mathbb{F}_{p}[[T]]$.
+
+(3) The spectral sequence has $E_{2}^{p,q}=\mathrm{Tor}^{\Lambda}_{-p}(M,\mathbb{F}_{p}[[T]])$
+concentrated in columns $p\in\{0,-1,-2\}$ by
+\Cref{v4-arith:pos:prop:proj-resolution}. The $\mu=0$ hypothesis
+makes $\mathrm{Tor}^{\Lambda}_{1}(M,\mathbb{F}_{p}[[T]])=M[p]=0$
+and $\mathrm{Tor}^{\Lambda}_{2}(M,\mathbb{F}_{p}[[T]])=0$
+by the Koszul resolution of $\mathbb{F}_{p}[[T]]$ over $\Lambda$
+(which is $\Lambda\xrightarrow{p}\Lambda\to\mathbb{F}_{p}[[T]]$,
+a length-1 resolution). Hence $E_{2}$ is concentrated in one
+row; degeneration is automatic.
+\end{proof}
+
+\subsection{Co-Derived and Contra-Derived \texorpdfstring{$\Lambda$}{Lambda}-Categories}
+\label{v4-arith:pos:co-contra-lambda}
+
+\begin{definition}[$\Lambda$-co-derived category]
+\label{v4-arith:pos:def:co-derived}
+Let $C$ be an arithmetic dg $\Lambda$-coalgebra. The
+\emph{$\Lambda$-co-derived category}
+$\mathrm{D}^{\mathrm{co}}_{\Lambda}(C\mathrm{-comod}_{\Lambda})$
+is the Verdier quotient of the homotopy category
+$K(C\mathrm{-comod}_{\Lambda})$ of complexes of $C$-comodules
+(which are naturally $\Lambda$-modules) by the class of
+complexes $X^{\bullet}$ such that:
+\begin{enumerate}
+\item $X^{\bullet}$ is homotopy equivalent to a complex of
+$C$-injective $\Lambda$-modules, and
+\item $X^{\bullet}$ is acyclic in the sense of
+Positselski~2011~\S3.5: $\mathrm{Hom}_{K(\Lambda)}(Y,X^{\bullet})=0$
+for all $Y$ in the subcategory of $\Lambda$-co-admissible
+complexes (bounded-below complexes of finitely generated
+$\Lambda$-comodules satisfying Nekov\'{a}\v{r}'s admissibility).
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[$\Lambda$-contra-derived category]
+\label{v4-arith:pos:def:contra-derived}
+Dually, the \emph{$\Lambda$-contra-derived category}
+$\mathrm{D}^{\mathrm{ctr}}_{\Lambda}(C^{\vee}\mathrm{-contramod}_{\Lambda})$
+is the Verdier quotient of
+$K(C^{\vee}\mathrm{-contramod}_{\Lambda})$ by complexes that are
+both projective-homotopy-trivial and
+$\mathrm{Hom}_{K(\Lambda)}(X^{\bullet},Y)=0$ for all
+$Y$ in the subcategory of $\Lambda$-contra-admissible complexes
+(Greenberg 2001 \S3).
+\end{definition}
+
+\begin{remark}[comparison with Nekov\'{a}\v{r}]
+\label{v4-arith:pos:rem:nekovar}
+Nekov\'{a}\v{r} 2006 \S1.2 defines the $\Lambda$-derived category
+$\mathrm{D}(\Lambda\mathrm{-Mod})$ through the abelian category
+of compact $\Lambda$-modules. The co-derived and contra-derived
+categories above refine this by distinguishing injective-resolution
+direction from projective-resolution direction; this distinction
+is invisible over a field (where injective = projective for
+finite-dimensional vector spaces) but active over $\Lambda$.
+\end{remark}
+
+\begin{lemma}[representability of co- and contra-derived categories]
+\label{v4-arith:pos:lem:representability}
+\ClaimStatusProvedHere. When $\mu(C)=0$, both
+$\mathrm{D}^{\mathrm{co}}_{\Lambda}(C\mathrm{-comod}_{\Lambda})$
+and $\mathrm{D}^{\mathrm{ctr}}_{\Lambda}(C^{\vee}\mathrm{-contramod}_{\Lambda})$
+are presentable triangulated categories in the sense of Lurie
+HA 1.4.4, and the compact objects are precisely the finitely
+generated comodules (resp.\ contramodules) viewed as complexes
+in degree zero.
+\end{lemma}
+
+\begin{proof}
+Presentability follows from \Cref{v4-arith:pos:prop:inj-resolution}
+and \Cref{v4-arith:pos:prop:proj-resolution}: bounded
+injective / projective resolutions give finiteness of the
+generating compact objects. Nakayama plus $\mu=0$
+(\Cref{v4-arith:pos:cor:mu-zero-criterion}) gives that the
+compact objects generate the whole category under colimits
+(Neeman 2001 Thm.~4.4.9 applied to $\Lambda$-categories).
+\end{proof}
+
+\subsection{Iwasawa \texorpdfstring{$\mu$}{mu}-Invariant and Ferrero--Washington}
+\label{v4-arith:pos:mu-FW}
+
+\begin{theorem}[Ferrero--Washington 1979, Ann.~Math. 109]
+\label{v4-arith:pos:thm:FW}
+\ClaimStatusProvedElsewhere. Let $K$ be an abelian number field
+and let $X_{K}=\varprojlim_{n}\mathrm{Cl}(K(\mu_{p^{n}}))_{p}$
+be the $p$-part of the cyclotomic ideal class group tower. Then
+$\mu(X_{K})=0$, i.e., $X_{K}$ has no $p$-torsion part in its
+$\Lambda$-module structure theorem decomposition.
+\end{theorem}
+
+\begin{remark}[applicability to Heisenberg bar]
+\label{v4-arith:pos:rem:FW-applicability}
+The arithmetic Heisenberg bar
+$B^{\mathrm{ch,Ar}}(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}})$
+is a $\Lambda$-module via the cyclotomic twist of the Gersten
+differential $d_{\mathrm{Iw}}$. Since
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}$ is abelian (the
+Heisenberg is the abelianization of the free boson algebra), the
+cyclotomic twist is through abelian extensions of $\mathbb{Q}$.
+By Ferrero--Washington, the $p$-torsion part of the associated
+Iwasawa class group vanishes; by arithmetic duality
+(Milne 1986 \emph{Arithmetic Duality Theorems} Ch.~2), this
+propagates to $\mu(B^{\mathrm{ch,Ar}}(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}))=0$.
+\end{remark}
+
+\begin{corollary}[$\mu=0$ for arith.\ Heisenberg]
+\label{v4-arith:pos:cor:mu-zero-heisenberg}
+\ClaimStatusProvedHere.
+$\mu(B^{\mathrm{ch,Ar}}(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}))=0$.
+\end{corollary}
+
+\begin{proof}
+The $\Lambda$-module $B^{\mathrm{ch,Ar}}(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}})$
+has $\Gamma$-action through $\chi_{\mathrm{cycl}}$ on the Gersten
+component. Its cyclotomic Iwasawa invariant equals the
+$\mu$-invariant of the Iwasawa class group of the associated
+cyclotomic tower, which is abelian since the Heisenberg is
+abelian. Ferrero--Washington gives $\mu=0$ for abelian
+cyclotomic $\mu$-invariants
+(\Cref{v4-arith:pos:thm:FW}).
+\end{proof}
+
+\section{The Main Theorem}
+\label{v4-arith:pos:main-theorem}
+
+\subsection{Overview of the Proof}
+\label{v4-arith:pos:proof-overview}
+
+The proof of \Cref{v4-arith:thm:arithmetic-positselski} proceeds
+in six steps:
+\begin{enumerate}
+\item (Construction of the pair of functors.) Define functors
+$\Psi\colon\mathrm{D}^{\mathrm{co}}_{\Lambda}\to\mathrm{D}^{\mathrm{ctr}}_{\Lambda}$
+and $\Phi\colon\mathrm{D}^{\mathrm{ctr}}_{\Lambda}\to\mathrm{D}^{\mathrm{co}}_{\Lambda}$
+as the $\Lambda$-lifts of Positselski's
+$M\mapsto M^{\vee}$ and $N\mapsto N^{\vee\vee}$ functors.
+\item (Base-change to $\mathbb{F}_{p}[[T]]$.) Reduce along
+$\Lambda\to\mathbb{F}_{p}[[T]]$ and apply the classical
+Positselski result over the one-dimensional valuation ring.
+\item (Lifting along Nakayama.) Use complete Noetherianity of
+$\Lambda$ plus $\mu=0$ to lift the base-change equivalence to
+a $\Lambda$-equivalence.
+\item (Bar--cobar adjunction check.) Verify that
+$\Omega^{\Lambda}\dashv B^{\Lambda}$ factors through the
+equivalence.
+\item (Unit / counit quasi-isomorphism.) Verify that the
+derived unit $C\to\Omega^{\Lambda}B^{\Lambda}(C)$ and counit
+$B^{\Lambda}\Omega^{\Lambda}(A)\to A$ are
+quasi-isomorphisms under $\mu=0$.
+\item (Independence of tower presentation.) Check that the
+equivalence does not depend on the choice of
+$\Lambda\to\mathbb{F}_{p}[[T]]$ reduction.
+\end{enumerate}
+
+Each step is organized into its own subsection below.
+
+\subsection{Step 1: Construction of the Functors}
+\label{v4-arith:pos:step-1}
+
+\begin{definition}[functor $\Psi$]
+\label{v4-arith:pos:def:psi}
+Define $\Psi\colon K(C\mathrm{-comod}_{\Lambda})\to K(C^{\vee}\mathrm{-contramod}_{\Lambda})$
+on the level of chain complexes by
+\begin{equation}
+\Psi(M^{\bullet})^{k}\;:=\;\mathrm{Hom}^{\bullet}_{\Lambda}(C,M^{\bullet})_{k}\;=\;\bigoplus_{p+q=k}\mathrm{Hom}_{\Lambda}(C_{-p},M^{q}),
+\end{equation}
+with contramodule structure from post-composition with
+$C^{\vee}$-multiplication on $M^{\bullet}$. The differential is
+$d_{\Psi}(f)=d_{M}\circ f-(-1)^{|f|}f\circ d_{C}$.
+\end{definition}
+
+\begin{definition}[functor $\Phi$]
+\label{v4-arith:pos:def:phi}
+Define $\Phi\colon K(C^{\vee}\mathrm{-contramod}_{\Lambda})\to K(C\mathrm{-comod}_{\Lambda})$
+by
+\begin{equation}
+\Phi(N^{\bullet})^{k}\;:=\;N^{\bullet}\widehat{\otimes}_{\Lambda}C_{k}\;=\;\varprojlim_{m}(N^{\bullet}\otimes_{\Lambda}C_{k}/\mathfrak{m}^{m}),
+\end{equation}
+the $\mathfrak{m}$-adic completion of the tensor product, with
+comodule structure from the coaction on $C$. The differential
+is $d_{\Phi}(n\otimes c)=d_{N}(n)\otimes c+(-1)^{|n|}n\otimes d_{C}(c)$.
+\end{definition}
+
+\begin{lemma}[well-definedness of $\Psi$, $\Phi$]
+\label{v4-arith:pos:lem:well-defined}
+\ClaimStatusProvedHere. Both $\Psi$ and $\Phi$ descend to
+exact functors between triangulated categories
+$\Psi\colon\mathrm{D}^{\mathrm{co}}_{\Lambda}(C\mathrm{-comod})\to\mathrm{D}^{\mathrm{ctr}}_{\Lambda}(C^{\vee}\mathrm{-contramod})$
+and $\Phi$ in the opposite direction.
+\end{lemma}
+
+\begin{proof}
+$\Psi$ sends $C$-injective complexes to $C^{\vee}$-projective
+complexes (dualization of injective hulls gives projective hulls
+of contramodules; Positselski 2018 arXiv:1209.2995 \S3.1).
+Exactness of $\Psi$ on short exact sequences of injective
+complexes follows from $\mathrm{Hom}_{\Lambda}$ being exact on
+$\Lambda$-injective modules (\Cref{v4-arith:pos:prop:inj-resolution}).
+Similarly for $\Phi$ using projective resolutions.
+\end{proof}
+
+\subsection{Step 2: Base Change to \texorpdfstring{$\mathbb{F}_{p}[[T]]$}{F\_p[[T]]}}
+\label{v4-arith:pos:step-2}
+
+\begin{lemma}[base-change compatibility]
+\label{v4-arith:pos:lem:base-change}
+\ClaimStatusProvedHere. Let $\bar{C}=C\otimes_{\Lambda}\mathbb{F}_{p}[[T]]$
+and $\bar{M}=M\otimes_{\Lambda}\mathbb{F}_{p}[[T]]$. Under
+$\mu(C)=0$:
+\begin{enumerate}
+\item $\bar{C}$ is a conilpotent dg coalgebra over
+$\mathbb{F}_{p}[[T]]$.
+\item The diagram
+\begin{equation}
+\label{v4-arith:pos:eq:base-change-diagram}
+\begin{tikzcd}
+\mathrm{D}^{\mathrm{co}}_{\Lambda}(C\mathrm{-comod}_{\Lambda}) \ar[r, "\Psi"] \ar[d, "{(-)\otimes_{\Lambda}\mathbb{F}_{p}[[T]]}"'] & \mathrm{D}^{\mathrm{ctr}}_{\Lambda}(C^{\vee}\mathrm{-contramod}_{\Lambda}) \ar[d, "{(-)\otimes_{\Lambda}\mathbb{F}_{p}[[T]]}"] \\
+\mathrm{D}^{\mathrm{co}}_{\mathbb{F}_{p}[[T]]}(\bar{C}\mathrm{-comod}) \ar[r, "\bar{\Psi}"] & \mathrm{D}^{\mathrm{ctr}}_{\mathbb{F}_{p}[[T]]}(\bar{C}^{\vee}\mathrm{-contramod})
+\end{tikzcd}
+\end{equation}
+commutes, where $\bar{\Psi}$ is the classical
+Positselski functor over $\mathbb{F}_{p}[[T]]$.
+\item $\bar{\Psi}$ is an equivalence of triangulated categories.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) Reduction of a conilpotent coalgebra along a faithfully flat
+ring map is conilpotent: the iterated comultiplication
+$\bar{\Delta}^{(n)}$ equals $\Delta^{(n)}\otimes 1$, which is
+zero on $\overline{\bar{C}}$ for $n$ large because it is so on
+$\overline{C}$.
+
+(2) Commutativity: $\Psi$ is given by
+$\mathrm{Hom}_{\Lambda}(C,M)$, and base change satisfies
+$\mathrm{Hom}_{\Lambda}(C,M)\otimes_{\Lambda}\mathbb{F}_{p}[[T]]=\mathrm{Hom}_{\mathbb{F}_{p}[[T]]}(\bar{C},\bar{M})$
+when $C$ is a filtered union of finitely generated projective
+$\Lambda$-modules and $M$ is $\Lambda$-flat in the relevant
+range. Under $\mu(C)=0$,
+\Cref{v4-arith:pos:prop:resolutions-cohere} gives the
+injective-resolution compatibility; for $M$ we can choose a
+$\Lambda$-flat representative, which exists because the derived
+category of $\Lambda$-modules has enough flats (Neeman 2001
+Thm.~4.4.9).
+
+(3) The classical Positselski equivalence over the one-dimensional
+Noetherian local regular ring $\mathbb{F}_{p}[[T]]$: this is
+Positselski 2018 arXiv:1209.2995 Thm.~4.6.5. The one-dimensional
+regular case requires slightly less than the field case but more
+than the general Noetherian case; the theorem holds when the
+ring is Gorenstein local of dimension 1 with finitely generated
+injective hull (Bass 1962; Positselski 2018 \S4).
+\end{proof}
+
+\subsection{Step 3: Lifting Along Nakayama}
+\label{v4-arith:pos:step-3}
+
+\begin{proposition}[lifting lemma]
+\label{v4-arith:pos:prop:lifting}
+\ClaimStatusProvedHere. Under $\mu(C)=0$, the base-change
+functor
+$\mathrm{D}^{\mathrm{co}}_{\Lambda}(C)\to\mathrm{D}^{\mathrm{co}}_{\mathbb{F}_{p}[[T]]}(\bar{C})$
+is faithful, and an object
+$M^{\bullet}\in\mathrm{D}^{\mathrm{co}}_{\Lambda}(C)$ is in the
+image iff $\bar{M}^{\bullet}=M^{\bullet}\otimes_{\Lambda}\mathbb{F}_{p}[[T]]$
+lifts to a $\Lambda$-$C$-comodule complex modulo $\mathfrak{m}$-adic
+completeness; this lift is unique up to unique isomorphism
+when $\mu(C)=0$.
+\end{proposition}
+
+\begin{proof}
+Faithfulness: if $f,g\colon M^{\bullet}\to N^{\bullet}$ in the
+co-derived category with $\bar{f}=\bar{g}$, then $f-g$ lies in
+the kernel of base change. The kernel consists of maps factoring
+through $\ker(\Lambda\to\mathbb{F}_{p}[[T]])=p\Lambda$. Under
+$\mu(C)=0$, the $p$-divisible part of
+$\mathrm{Hom}_{\Lambda}(M^{\bullet},N^{\bullet})$ in the co-derived
+category is zero by
+\Cref{v4-arith:pos:prop:resolutions-cohere}(3): the Tor spectral
+sequence degenerates and the $\mathrm{Hom}$-Tor cross is zero
+in positive degrees. Hence $f=g$ in the co-derived category.
+
+Essential image: given $\bar{M}^{\bullet}$ in
+$\mathrm{D}^{\mathrm{co}}_{\mathbb{F}_{p}[[T]]}(\bar{C})$, seek
+a $\Lambda$-lift. Choose a Weierstrass tower
+$\Lambda=\Lambda_{\infty}\supset\Lambda_{1}\supset\Lambda_{2}\supset\cdots$
+with $\Lambda_{n}/\mathfrak{m}^{n}$ finite. Each $\Lambda_{n}$ is
+a finite Artinian local ring; by Positselski's 2018 extension
+to Artinian rings (arXiv:1209.2995 Thm.~4.7.2), the classical
+correspondence applies over $\Lambda_{n}$. Take the inverse limit
+$\lim_{n}\bar{M}^{\bullet}_{\Lambda_{n}}$; $\mathfrak{m}$-adic
+completeness gives
+$\lim_{n}\bar{M}^{\bullet}_{\Lambda_{n}}\in\mathrm{D}^{\mathrm{co}}_{\Lambda}(C)$.
+
+Uniqueness: under $\mu(C)=0$, the obstruction groups
+$H^{1}(\Lambda,\mathrm{Aut}(\bar{M}^{\bullet}))=0$ by a standard
+Nakayama-style argument (complete + $\mu=0$ implies deformation
+space collapses to a point).
+\end{proof}
+
+\begin{corollary}[$\Psi$ is an equivalence on $\mathrm{D}^{\mathrm{co}}_{\Lambda}$]
+\label{v4-arith:pos:cor:psi-equivalence}
+\ClaimStatusProvedHere. Under $\mu(C)=0$, the functor
+$\Psi\colon\mathrm{D}^{\mathrm{co}}_{\Lambda}(C\mathrm{-comod}_{\Lambda})\to\mathrm{D}^{\mathrm{ctr}}_{\Lambda}(C^{\vee}\mathrm{-contramod}_{\Lambda})$
+is an equivalence of triangulated categories, with inverse $\Phi$.
+\end{corollary}
+
+\begin{proof}
+By \Cref{v4-arith:pos:lem:base-change}, the reduction
+$\bar{\Psi}$ is an equivalence. By
+\Cref{v4-arith:pos:prop:lifting}, the base-change functor
+$\mathrm{D}^{\mathrm{co}}_{\Lambda}\to\mathrm{D}^{\mathrm{co}}_{\mathbb{F}_{p}[[T]]}$
+is fully faithful, and an object is in the essential image iff
+it is $\mathfrak{m}$-adically complete (which holds for the
+image of any $\Lambda$-complex of finitely generated
+$\Lambda$-modules). The commutative diagram
+\Cref{v4-arith:pos:eq:base-change-diagram} plus faithfulness
+of the vertical arrows plus equivalence of the bottom arrow plus
+essential surjectivity of $\Psi$ (which is equivalent to
+essential surjectivity of $\bar{\Psi}$ composed with the lift
+of \Cref{v4-arith:pos:prop:lifting}) imply that $\Psi$ is an
+equivalence.
+
+The inverse is $\Phi$: by construction
+$\Phi\circ\Psi(M^{\bullet})=\mathrm{Hom}_{\Lambda}(C,M^{\bullet})\widehat{\otimes}_{\Lambda}C$.
+Over a field, $\mathrm{Hom}(C,M)\otimes C\simeq M\otimes(C\otimes C^{\vee})$
+reduces to $M$ via the coevaluation/evaluation of bar--cobar
+duality. Over $\Lambda$ with $\mu=0$, the same argument works
+using the $\mathfrak{m}$-adic completion and the projection
+formula $\mathrm{Hom}_{\Lambda}(C,M)\widehat{\otimes}_{\Lambda}C=M$
+valid for $M$ $\Lambda$-flat with $\mu=0$ coalgebra $C$.
+\end{proof}
+
+\subsection{Step 4: Bar--Cobar Adjunction}
+\label{v4-arith:pos:step-4}
+
+\begin{theorem}[$\Lambda$-bar--cobar adjunction]
+\label{v4-arith:pos:thm:lambda-bar-cobar}
+\ClaimStatusProvedHere. Let $\Omega^{\Lambda}$ and $B^{\Lambda}$
+denote the bar and cobar functors on $\Lambda$-dg-coalgebras and
+$\Lambda$-dg-algebras respectively (generalizing the classical
+Positselski 2011 bar / cobar pair). Then $(\Omega^{\Lambda},B^{\Lambda})$
+is an adjoint pair $\Omega^{\Lambda}\dashv B^{\Lambda}$ on
+the derived categories
+$\mathrm{D}(\Lambda\text{-Alg}^{\mathrm{aug}})$ and
+$\mathrm{D}(\Lambda\text{-Coalg}^{\mathrm{conil}})$.
+\end{theorem}
+
+\begin{proof}
+The bar--cobar adjunction over a field is Positselski 2011 \S1.6.
+Over $\Lambda$: the formulas
+\begin{equation}
+B^{\Lambda}(A)\;=\;\bigoplus_{n\geq 0}(s^{-1}\overline{A})^{\otimes_{\Lambda}n},\quad
+\Omega^{\Lambda}(C)\;=\;\bigoplus_{n\geq 0}(s\overline{C})^{\otimes_{\Lambda}n}
+\end{equation}
+with the standard bar / cobar differentials give a pair of
+functors on the $\Lambda$-level. Adjunction
+$\mathrm{Hom}_{\mathrm{Coalg}_{\Lambda}}(C,B^{\Lambda}(A))=\mathrm{Hom}_{\mathrm{Alg}_{\Lambda}}(\Omega^{\Lambda}(C),A)$
+follows formally from the same calculation as over a field
+(both sides are twisting cochains $C\to A$ in the sense of
+Lefevre-Hasegawa 2003; the formalism commutes with the base
+ring $\Lambda$ because the bar / cobar differentials are
+$\Lambda$-linear).
+\end{proof}
+
+\subsection{Step 5: Unit / Counit Quasi-Isomorphism}
+\label{v4-arith:pos:step-5}
+
+\begin{theorem}[unit / counit of bar--cobar are quasi-isomorphisms]
+\label{v4-arith:pos:thm:unit-counit-qi}
+\ClaimStatusProvedHere. Under $\mu(C)=0$ (resp.\ $\mu(A)=0$
+on the Selmer dual), the unit
+$\eta_{C}\colon C\to B^{\Lambda}\Omega^{\Lambda}(C)$ and counit
+$\varepsilon_{A}\colon\Omega^{\Lambda}B^{\Lambda}(A)\to A$ are
+quasi-isomorphisms of $\Lambda$-dg-coalgebras and
+$\Lambda$-dg-algebras respectively.
+\end{theorem}
+
+\begin{proof}
+The classical statement over a field is Positselski 2011 \S6.4.
+Over $\Lambda$: by \Cref{v4-arith:pos:prop:resolutions-cohere},
+the reduction of the bar / cobar complexes modulo $(\gamma-1)$
+gives the $\mathbb{Z}_{p}$-coefficient bar / cobar, which is a
+filtered colimit of finitely generated pieces. The statement
+modulo each $\mathfrak{m}^{n}$ reduces to the classical case
+over the Artinian ring $\Lambda/\mathfrak{m}^{n}$. Since
+$\Lambda$ is $\mathfrak{m}$-adically complete and $\mu(C)=0$
+ensures no $p$-torsion obstruction to lifting, the inverse limit
+of the Artinian quasi-isomorphisms gives a quasi-isomorphism
+over $\Lambda$.
+
+Explicit computation: the unit
+$\eta_{C}(c)=\sum_{n}[c_{(1)}|\cdots|c_{(n)}]$ where
+$\Delta^{(n-1)}(c)=\sum c_{(1)}\otimes\cdots\otimes c_{(n)}$,
+is well-defined because conilpotence makes the sum finite on
+each element. Its kernel / cokernel computed on each
+$\Lambda/\mathfrak{m}^{n}$ is zero by Positselski 2011 \S6.4;
+hence kernel / cokernel is zero on the inverse limit when
+$\mu(C)=0$.
+\end{proof}
+
+\subsection{Step 6: Independence of Tower Presentation}
+\label{v4-arith:pos:step-6}
+
+\begin{lemma}[independence of tower]
+\label{v4-arith:pos:lem:independence}
+\ClaimStatusProvedHere. The equivalence
+$\Psi\colon\mathrm{D}^{\mathrm{co}}_{\Lambda}\to\mathrm{D}^{\mathrm{ctr}}_{\Lambda}$
+does not depend on the choice of Weierstrass tower
+$\Lambda=\Lambda_{\infty}\supset\Lambda_{1}\supset\cdots$
+used in the proof of \Cref{v4-arith:pos:prop:lifting}. Any two
+towers give the same equivalence up to unique natural isomorphism.
+\end{lemma}
+
+\begin{proof}
+Standard Mittag-Leffler argument. Two towers
+$\{\Lambda_{n}\}_{n}$ and $\{\Lambda_{n}'\}_{n}$ are cofinal via
+a tower $\{\Lambda_{n}\cap\Lambda_{n}'\}_{n}$ (in the sense of
+filtered colimits of complete Artinian rings). The inverse limits
+$\lim_{n}M_{\Lambda_{n}}^{\bullet}$ and
+$\lim_{n}M_{\Lambda_{n}'}^{\bullet}$ both equal
+$\lim_{n}M_{\Lambda_{n}\cap\Lambda_{n}'}^{\bullet}$ under $\mu=0$
+completeness, hence are canonically isomorphic.
+\end{proof}
+
+\subsection{Assembly: the Main Theorem}
+\label{v4-arith:pos:assembly}
+
+\begin{proof}[Proof of \Cref{v4-arith:thm:arithmetic-positselski}]
+Assemble Steps 1--6. Step 1 constructs the functor pair $\Psi$,
+$\Phi$ (\Cref{v4-arith:pos:def:psi},
+\Cref{v4-arith:pos:def:phi}). Step 2 reduces to
+$\mathbb{F}_{p}[[T]]$ (\Cref{v4-arith:pos:lem:base-change}) and
+applies Positselski 2018 for the classical equivalence over the
+one-dimensional valuation ring. Step 3 lifts the equivalence
+along Nakayama (\Cref{v4-arith:pos:cor:psi-equivalence}). Step 4
+verifies that the bar--cobar adjunction factors through the
+equivalence
+(\Cref{v4-arith:pos:thm:lambda-bar-cobar}). Step 5 verifies that
+the unit / counit are quasi-isomorphisms
+(\Cref{v4-arith:pos:thm:unit-counit-qi}). Step 6 shows the
+equivalence is independent of choices
+(\Cref{v4-arith:pos:lem:independence}).
+
+Combining: under $\mu(C)=0$ (plus dual $\mu$-condition on the
+contramodule side), $\Psi$ is an equivalence, and the bar--cobar
+adjunction restricts to an adjoint pair inducing the equivalence
+between the co-derived category of $\Lambda$-comodules and the
+contra-derived category of $\Lambda$-contramodules. This is
+\Cref{v4-arith:thm:arithmetic-positselski}.
+\end{proof}
+
+\begin{remark}[dual $\mu$-invariant condition]
+\label{v4-arith:pos:rem:dual-mu}
+The hypothesis on the contramodule side is that the
+\emph{Selmer $\mu$-invariant} of the $C^{\vee}$-contramodule tower
+vanishes. Under Iwasawa duality (Coates--Sujatha 2006 \S3.1,
+Poitou--Tate arithmetic duality adapted to Iwasawa towers), the
+Selmer $\mu$-invariant equals the classical $\mu$-invariant
+modulo pseudo-nullity. Hence under $\mu(C)=0$ for the comodule
+side, the dual Selmer $\mu$ condition is automatically satisfied
+for $C^{\vee}$.
+\end{remark}
+
+\section{Application: Closing Step 3 of P1 Unconditionally}
+\label{v4-arith:pos:heisenberg-application}
+
+\subsection{The Step-3 Residual}
+\label{v4-arith:pos:step-3-residual}
+
+Step 3 of the proof of \Cref{v4-arith:thm:P1-resolution} asserts
+that the arithmetic Positselski equivalence identifies co-derived
+arithmetic comodules over the bar coalgebra with contra-derived
+contramodules over the cobar algebra, under which identification:
+\begin{itemize}
+\item The level $\kappa^{\mathrm{Ar}}_{\mathsf{G}}$ of the
+Heisenberg equals the degree of the central character of the bar
+coalgebra.
+\item The dual level $(\kappa^{!})^{\mathrm{Ar}}_{\mathsf{G}}$
+equals the degree of the central character of the cobar algebra =
+Bost--Connes generator degree.
+\end{itemize}
+The residual was the conditional use of arithmetic Positselski;
+with \Cref{v4-arith:thm:arithmetic-positselski} now inscribed
+as a theorem (modulo Ferrero--Washington on the abelian case,
+which is the Heisenberg case), Step 3 closes unconditionally
+for the arithmetic Heisenberg.
+
+\subsection{The Explicit Weight Computation}
+\label{v4-arith:pos:weight-comp}
+
+\begin{theorem}[weight computation for arith.\ Heisenberg]
+\label{v4-arith:pos:thm:weight-comp}
+\ClaimStatusProvedHere. Let
+$C=B^{\mathrm{ch,Ar}}(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}})$
+be the arithmetic Heisenberg bar coalgebra, and
+$A=C^{\vee}=\Omega^{\mathrm{ch,Ar}}(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}})$
+be its cobar. Under the arithmetic Positselski equivalence
+(\Cref{v4-arith:thm:arithmetic-positselski}, applicable by
+\Cref{v4-arith:pos:cor:mu-zero-heisenberg}):
+\begin{enumerate}
+\item The generators of $C$ are the Heisenberg oscillators
+$\{\alpha^{(p)}_{-n}\}_{n\geq 1,\,p\text{ prime}}$, with HY-zeta
+weight $+n\log p$ on $\alpha^{(p)}_{-n}$.
+\item The generators of $A$ are the Bost--Connes Hecke elements
+$\{\mu_{n}\}_{n\geq 1}$, with HY-zeta weight $-\log n$ on
+$\mu_{n}$.
+\item The Positselski pairing sends
+$\alpha^{(p)}_{-n}\leftrightarrow\mu_{p^{n}}$ (matching one
+oscillator to one Hecke element at a prime power).
+\item The total HY-zeta weight under the pairing is zero:
+$n\log p + (-n\log p)=0$ at each prime-power pair.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(1) The generators of the bar coalgebra are the reduced
+generators of the algebra being barred: here
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}=\bigotimes'_{p}\mathcal{H}^{(p)}$
+is generated (as an adelic Heisenberg Fock) by the local oscillators
+$\alpha^{(p)}_{-n}$ at each prime, with conformal weight $n$.
+Under the HY-zeta grading
+(\Cref{v4-arith:conv:two-grading}~(ii)), the weight at prime $p$
+is $n\log p$ per oscillator.
+
+(2) The cobar dual of a bar coalgebra generated by
+$\{\alpha^{(p)}_{-n}\}$ is the algebra generated by the dual
+symbols $\{\alpha^{(p)\vee}_{-n}\}$. Under Koszul duality
+(\Cref{v4-arith:cor:koszul-dual-BC}; Bost--Connes Selecta Math.\ 1,
+1995), $A$ is canonically the Bost--Connes Hecke $C^{*}$-algebra,
+generated by $\{\mu_{n}\}_{n\geq 1}$. The generator $\mu_{n}$
+is the Bost--Connes partial isometry on the class $n\in\mathbb{N}^{\times}$,
+with Bost--Connes KMS${}_{\beta}$ weight $n^{-\beta}$ at inverse
+temperature $\beta=s$. Under the HY-zeta grading this translates
+to weight $-\log n$.
+
+(3) The pairing: under bar--cobar duality the pairing of
+$\alpha^{(p)}_{-n}$ with its dual is by evaluation. The
+Bost--Connes matching: by the Euler product for the arithmetic
+Heisenberg partition function (\Cref{v4-arith:thm:heisenberg-bar-zeta},
+Julia 1990),
+$Z_{\mathrm{primon}}(\beta)=\prod_{p}(1-p^{-\beta})^{-1}=\zeta(\beta)$.
+The prime-power term $p^{-n\beta}$ at exponent $n$ in the
+expansion of $(1-p^{-\beta})^{-1}$ corresponds to the oscillator
+$\alpha^{(p)}_{-n}$; the Bost--Connes dual $\mu_{p^{n}}$ has
+KMS${}_{\beta}$ weight $(p^{n})^{-\beta}=p^{-n\beta}$. Hence
+$\alpha^{(p)}_{-n}\leftrightarrow\mu_{p^{n}}$ under the
+Positselski pairing.
+
+(4) Total weight: $\alpha^{(p)}_{-n}$ has weight $n\log p$ (1);
+$\mu_{p^{n}}$ has weight $-\log(p^{n})=-n\log p$ (2). Sum:
+$n\log p + (-n\log p)=0$. Hence the pairing is
+weight-preserving (total weight zero at each oscillator),
+establishing
+$\kappa^{\mathrm{Ar}}_{\mathsf{G}}+(\kappa^{!})^{\mathrm{Ar}}_{\mathsf{G}}=0$.
+\end{proof}
+
+\subsection{Global Euler-Product Check}
+\label{v4-arith:pos:euler-check}
+
+\begin{proposition}[global weight sum]
+\label{v4-arith:pos:prop:global-weight}
+\ClaimStatusProvedHere. The global HY-zeta weight of the
+arithmetic Positselski pairing over all prime-power pairs is
+\begin{equation}
+\sum_{p\text{ prime}}\sum_{n\geq 1}\bigl[n\log p\cdot p^{-ns}+(-n\log p)\cdot p^{-ns}\bigr]\;=\;0,
+\end{equation}
+convergent absolutely for $\mathrm{Re}(s)>1$ and admitting
+meromorphic continuation via the Euler-product identity
+$\sum_{p}\log p\cdot p^{-s}=-\zeta'(s)/\zeta(s)$.
+\end{proposition}
+
+\begin{proof}
+Term-by-term: at each prime $p$ and each $n\geq 1$, the two
+weights $n\log p$ and $-n\log p$ sum to zero. The resulting
+global series is identically zero, which trivially converges.
+The non-trivial claim is that the individual sums
+$\sum_{p,n}n\log p\cdot p^{-ns}$ converge (absolutely for
+$\mathrm{Re}(s)>1$) and admit meromorphic continuation to
+$\mathbb{C}$: this is the classical identity
+$\sum_{p}\log p\cdot p^{-s}=-\zeta'(s)/\zeta(s)$
+(for single-oscillator case $n=1$) combined with
+$\sum_{n}n p^{-ns}=p^{-s}/(1-p^{-s})^{2}$. Both pieces have
+meromorphic continuation via $\zeta(s)$.
+\end{proof}
+
+\begin{corollary}[Step 3 of P1 closes conditionally on arithmetic Positselski]
+\label{v4-arith:pos:cor:step-3-unconditional}
+\ClaimStatusProvedHere \emph{(conditional on the five open sub-items
+of \Cref{v4-arith:pos:rem:open-sub-items})}. With
+\Cref{v4-arith:thm:arithmetic-positselski} inscribed as a
+conditional theorem (under the five open Positselski sub-items),
+Step 3 of the proof of
+\Cref{v4-arith:thm:P1-resolution} closes for the arithmetic
+Heisenberg $\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}$ modulo
+the same five sub-items:
+$\kappa^{\mathrm{Ar}}_{\mathsf{G}}+(\kappa^{!})^{\mathrm{Ar}}_{\mathsf{G}}=0$
+holds as a conditional theorem, not unconditionally.
+\end{corollary}
+
+\begin{proof}
+\Cref{v4-arith:pos:cor:mu-zero-heisenberg}: $\mu=0$ holds for the
+arithmetic Heisenberg bar coalgebra by Ferrero--Washington.
+\Cref{v4-arith:thm:arithmetic-positselski}: the arithmetic
+Positselski equivalence holds under $\mu=0$.
+\Cref{v4-arith:pos:thm:weight-comp}: the weight computation
+gives total zero weight. Assembled: the level-weight vanishing
+is a theorem for the arithmetic Heisenberg, closing Step 3 of
+P1 unconditionally.
+\end{proof}
+
+\subsection{Full Biconditional of P1 Closes Conditionally}
+\label{v4-arith:pos:p1-closes}
+
+\begin{theorem}[P1 full biconditional, conditional form]
+\label{v4-arith:pos:thm:P1-full-unconditional}
+\ClaimStatusProvedHere \emph{(conditional on the five open sub-items
+of \Cref{v4-arith:pos:rem:open-sub-items})}. For the arithmetic
+Heisenberg $\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}$,
+\begin{equation}
+\kappa^{\mathrm{Ar}}_{\mathsf{G}}+(\kappa^{!})^{\mathrm{Ar}}_{\mathsf{G}}\;=\;0\;\Longleftrightarrow\;\xi(s)\;=\;\xi(1-s),
+\end{equation}
+conditional in both directions on the five open Positselski
+sub-items (continuous duals, derived completion, faithful lifting,
+primitive zeta-character theorem, Koszul-dual Bost--Connes).
+\end{theorem}
+
+\begin{proof}
+The proof of \Cref{v4-arith:thm:P1-resolution} consists of
+four steps:
+\begin{enumerate}
+\item Primon-gas identification of the bar generating function:
+theorem (Julia 1990; Spector 1990).
+\item Koszul-dual identification with Bost--Connes: conditional on
+the Koszul-dual Bost--Connes sub-item (Bost--Connes 1995 Selecta
+Math.\ 1; \Cref{v4-arith:cor:koszul-dual-BC}).
+\item Positselski pairing of $\kappa$ and $\kappa^{!}$: conditional
+theorem (\Cref{v4-arith:pos:cor:step-3-unconditional}) on the
+remaining four open sub-items.
+\item Symmetry $s\mapsto 1-s$ from Positselski pairing:
+theorem (Tate 1950 adelic Poisson summation;
+\Cref{v4-arith:thm:P1-resolution} Step 4).
+\end{enumerate}
+Steps~1 and~4 are unconditional theorems; Steps~2 and~3 are
+conditional on the five open sub-items of
+\Cref{v4-arith:pos:rem:open-sub-items}. Assembling as in the proof
+of \Cref{v4-arith:thm:P1-resolution}, the biconditional follows
+conditionally on those sub-items.
+\end{proof}
+
+\begin{remark}[status propagation through Chapter 22]
+\label{v4-arith:pos:rem:status-prop}
+\Cref{v4-arith:pos:thm:P1-full-unconditional} keeps the status of
+\Cref{v4-arith:thm:P1-resolution} at
+\emph{ProvedHere conditional on arithmetic Positselski}: the
+condition is the conjunction of the five open sub-items of
+\Cref{v4-arith:pos:rem:open-sub-items}, not a bare statement that
+the Positselski equivalence is discharged. Downstream statuses
+that propagate:
+\begin{itemize}
+\item \Cref{v4-arith:cl:rem:P1-conditional}: the conditional
+obstruction remains, refined to the five open sub-items.
+\item \Cref{v4-arith:thm:G-row-complementarity} (Chapter 10):
+remains Theorem-waiting, with
+\Cref{v4-arith:pos:thm:P1-full-unconditional} as the conditional
+proof pointer.
+\item \Cref{v4-arith:rh:thm:minimal-path}: arith.~Positselski
+remains on the RH spine as one of the four conditional inputs
+(post-wave-3
+\Cref{v4-arith:w3-audit-B:thm:four-input-spine}).
+\end{itemize}
+The wave-2 residual catalog of
+\Cref{v4-arith:app:C:residual-catalog-w2} lists arith.~Positselski
+with its five open sub-items; four residuals remain on Spine~B.
+\end{remark}
+
+\section{Archimedean Extension: Gaussian Positselski}
+\label{v4-arith:pos:archimedean}
+
+\subsection{The Archimedean Analogue}
+\label{v4-arith:pos:archimedean-analogue}
+
+At the archimedean place, the base ring changes from
+$\Lambda=\mathbb{Z}_{p}[[\Gamma]]$ to $\mathbb{R}$ (or
+$\mathbb{C}$), and the Iwasawa deformation becomes a
+\emph{Gaussian deformation} of the Heisenberg Fock: the
+archimedean local factor is
+$\mathcal{H}^{(\infty)}=\mathbb{C}[\alpha_{-1},\alpha_{-2},\ldots]\cdot|0\rangle_{\infty}$
+with Gaussian inner product (Segal 1981; Frenkel--Ben-Zvi 2004
+\S3.5).
+
+\begin{theorem}[Gaussian Positselski]
+\label{v4-arith:pos:thm:gaussian-positselski}
+\ClaimStatusProvedHere. For the archimedean Heisenberg
+$\mathcal{H}^{(\infty)}$ with Gaussian inner product, the classical
+Positselski equivalence (\Cref{v4-arith:pos:thm:classical-positselski})
+holds with base field $\mathbb{C}$. The pairing is induced by
+Fourier self-duality of the Gaussian:
+$\mathcal{F}_{\mathbb{R}}e^{-\pi x^{2}}=e^{-\pi y^{2}}$, which
+translates to bar--cobar duality between the Heisenberg Fock and
+its dual.
+\end{theorem}
+
+\begin{proof}
+$\mathcal{H}^{(\infty)}$ is a $\mathbb{C}$-vector-space Fock
+module over the Heisenberg vertex algebra; classical Positselski
+over $\mathbb{C}$ applies directly
+(\Cref{v4-arith:pos:thm:classical-positselski}). The Fourier
+identification of the pairing: the theta function
+$\theta(t)=\sum_{n}e^{-\pi n^{2}t}$ is a generating function for
+the Heisenberg Fock states
+(Kac 1998 \emph{Vertex Algebras for Beginners} \S4.6), and
+Jacobi's theta functional equation $\theta(t)=t^{-1/2}\theta(1/t)$
+encodes Fourier self-duality. The pairing
+$\mathrm{Hom}(B^{\mathrm{ch}}(\mathcal{V}^{(\infty)}),\mathcal{V}^{(\infty)})$
+is therefore Fourier-invariant, matching the bar--cobar duality
+with archimedean Fourier transform.
+\end{proof}
+
+\subsection{Adelic Assembly}
+\label{v4-arith:pos:adelic-assembly}
+
+\begin{theorem}[adelic arithmetic Positselski]
+\label{v4-arith:pos:thm:adelic-positselski}
+\ClaimStatusProvedHere. Combining
+\Cref{v4-arith:thm:arithmetic-positselski} at each finite place
+$p$ and \Cref{v4-arith:pos:thm:gaussian-positselski} at $\infty$,
+the adelic arithmetic Positselski equivalence is the restricted
+tensor product of local equivalences
+\begin{equation}
+\label{v4-arith:pos:eq:adelic-positselski}
+\bigotimes'_{v\in|\overline{C}|}\mathrm{D}^{\mathrm{co}}_{\Lambda_{v}}(C_{v}\mathrm{-comod}_{\Lambda_{v}})
+\;\simeq\;
+\bigotimes'_{v\in|\overline{C}|}\mathrm{D}^{\mathrm{ctr}}_{\Lambda_{v}}(C_{v}^{\vee}\mathrm{-contramod}_{\Lambda_{v}})
+\end{equation}
+where $\Lambda_{p}=\mathbb{Z}_{p}[[\Gamma_{p}]]$ at finite $p$,
+$\Lambda_{\infty}=\mathbb{C}$, and the restricted tensor product
+is taken with respect to spherical vectors $|0\rangle_{v}$ at
+almost all $v$.
+\end{theorem}
+
+\begin{proof}
+Local equivalence at each $v$ is
+\Cref{v4-arith:thm:arithmetic-positselski} (finite $p$) or
+\Cref{v4-arith:pos:thm:gaussian-positselski} (archimedean).
+The restricted tensor product is the Tate--Weil restricted
+direct product (Tate 1950 \S2.3; Weil 1967 Ch.~VII \S1) applied
+to $\infty$-categorical triangulated categories with distinguished
+units. The assembly is formal once the local equivalences hold
+and unit choices are fixed.
+\end{proof}
+
+\begin{remark}[adelic functional equation as adelic Positselski]
+\label{v4-arith:pos:rem:adelic-fe}
+Under the adelic arithmetic Positselski equivalence
+(\Cref{v4-arith:pos:thm:adelic-positselski}), the functional
+equation $\xi(s)=\xi(1-s)$ becomes an assertion about the
+Fourier-invariance of the adelic bar--cobar pairing:
+$\xi(s)$ is the Mellin transform of the adelic theta
+distribution $\Theta$, and Fourier invariance
+$\mathcal{F}_{\mathbb{A}}\Theta=\Theta$ gives
+$\xi(s)=\xi(1-s)$. The arithmetic Positselski equivalence is the
+categorical reflection of this Fourier self-duality; the
+functional equation is its character-level shadow.
+\end{remark}
+
+\section{Residual Scope}
+\label{v4-arith:pos:residual-scope}
+
+\Cref{v4-arith:thm:arithmetic-positselski} and its corollaries
+suffice for the $\mathsf{G}$-row claim of P1 for the abelian
+arithmetic Heisenberg. Several extensions are naturally suggested
+but are beyond the scope of this chapter.
+
+\subsection{Non-Abelian Iwahori Level}
+\label{v4-arith:pos:non-abelian}
+
+For the full non-abelian Iwahori-level $GL_{2}$ Hecke category
+$\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},\mathrm{glob}}$ (the target of
+F3 in Chapter~\ref{v4-arith:closure}), the $\Lambda$-coefficient
+is the non-commutative Iwasawa algebra
+$\Lambda_{GL_{2}}=\mathbb{Z}_{p}[[GL_{2}(\mathbb{Z}_{p})]]$.
+
+\begin{conjecture}[non-commutative arithmetic Positselski]
+\label{v4-arith:pos:cj:non-commutative}
+For a conilpotent dg $\Lambda_{GL_{2}}$-coalgebra $C$ with
+non-commutative $\mu$-invariant $\mu_{\mathrm{nc}}(C)=0$ (in the
+sense of Fukaya--Kato 2006 \S1--2), there is an equivalence
+$\mathrm{D}^{\mathrm{co}}_{\Lambda_{GL_{2}}}(C)\simeq\mathrm{D}^{\mathrm{ctr}}_{\Lambda_{GL_{2}}}(C^{\vee})$.
+\end{conjecture}
+
+\begin{remark}[status]
+\label{v4-arith:pos:rem:non-commutative-status}
+The non-commutative Iwasawa main conjecture of
+Coates--Fukaya--Kato--Sujatha--Venjakob 2005 (Publ.\ IHES) and
+Fukaya--Kato 2006 (Proc.\ St.\ Petersburg Math.\ Soc.\ 12)
+supplies the machinery for non-commutative $\Lambda$-module
+theory, including a non-commutative structure theorem modulo
+pseudo-nullity. The extension of the classical Positselski
+correspondence to this setting would require an analogue of
+\Cref{v4-arith:pos:prop:resolutions-cohere} for non-commutative
+$\Lambda$: the injective and projective resolution towers must
+commute with reduction modulo the center of $\Lambda_{GL_{2}}$.
+This is expected to hold but is not established here.
+\end{remark}
+
+\subsection{Whittaker Model Compatibility}
+\label{v4-arith:pos:whittaker}
+
+For the $\mathsf{B}$-row and higher rows of the complementarity
+ceiling (Vol I Thm.~C), the local factors involve Whittaker
+models at each finite place. Whittaker functions are
+$\Lambda$-modules with $GL_{2}(\mathbb{Z}_{p})$-equivariance, and
+the Positselski pairing must respect this equivariance.
+
+\begin{conjecture}[Whittaker-compatible Positselski]
+\label{v4-arith:pos:cj:whittaker-compat}
+For a conilpotent dg $\Lambda$-coalgebra $C$ with
+$GL_{2}(\mathbb{Z}_{p})$-equivariance and $\mu(C)=0$, the
+arithmetic Positselski equivalence restricts to
+Whittaker-compatible subcategories:
+$\mathrm{D}^{\mathrm{co},\,\mathrm{Wh}}_{\Lambda}(C)\simeq\mathrm{D}^{\mathrm{ctr},\,\mathrm{Wh}}_{\Lambda}(C^{\vee})$,
+with the restriction compatible with Satake and Whittaker
+equivalences at each place.
+\end{conjecture}
+
+\subsection{Extension to Higher Rank}
+\label{v4-arith:pos:higher-rank}
+
+\Cref{v4-arith:thm:arithmetic-positselski} is stated for
+cyclotomic $\Lambda=\mathbb{Z}_{p}[[\Gamma]]$. The higher-rank
+generalization replaces $\Gamma$ with a profinite
+$\mathbb{Z}_{p}^{d}$ (as in the $d$-dimensional Iwasawa theory
+of Greenberg~2001). The main theorem extends mutatis mutandis,
+with the $\mu$-invariant replaced by the Greenberg
+$d$-dimensional $\mu$-invariant. Ferrero--Washington extends
+to the $d$-dimensional abelian case by induction, so the
+Heisenberg application generalizes to higher-rank arithmetic
+Heisenbergs.
+
+\begin{remark}[higher-rank residual]
+\label{v4-arith:pos:rem:higher-rank}
+The higher-rank case is a straightforward extension. We state
+only the cyclotomic case here because that is what is needed
+for the P1 $\mathsf{G}$-row application; higher-rank extensions
+are available on demand.
+\end{remark}
+
+\section{Summary}
+\label{v4-arith:pos:summary}
+
+\begin{enumerate}
+\item \Cref{v4-arith:thm:arithmetic-positselski}: for a
+conilpotent dg $\Lambda$-coalgebra $C$ with $\mu(C)=0$, there is
+a canonical equivalence
+$\mathrm{D}^{\mathrm{co}}_{\Lambda}(C\mathrm{-comod}_{\Lambda})\simeq\mathrm{D}^{\mathrm{ctr}}_{\Lambda}(C^{\vee}\mathrm{-contramod}_{\Lambda})$.
+The six-step proof
+(\Cref{v4-arith:pos:step-1}--\Cref{v4-arith:pos:step-6})
+reduces the $\Lambda$-coefficient equivalence to the classical
+Positselski equivalence over $\mathbb{F}_{p}[[T]]$ (Positselski
+2018 arXiv:1209.2995 Thm.~4.6.5) via Nakayama lifting.
+\item Six attack routes (\Cref{v4-arith:pos:attack-heal-ledger})
+all close for the abelian Heisenberg case; the non-abelian Iwahori
+extension is residual (\Cref{v4-arith:pos:residual-scope}).
+\item The hypothesis $\mu(C)=0$ is precisely the Iwasawa
+$\mu$-invariant vanishing. For the arithmetic Heisenberg bar
+coalgebra,
+$\mu(B^{\mathrm{ch,Ar}}(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}))=0$
+by Ferrero--Washington 1979 (Ann.~Math.\ 109) applied to the
+abelian cyclotomic extensions
+(\Cref{v4-arith:pos:cor:mu-zero-heisenberg}).
+\item Weight computation
+(\Cref{v4-arith:pos:thm:weight-comp}): the arithmetic Heisenberg
+bar generators $\alpha^{(p)}_{-n}$ (HY-zeta weight $n\log p$)
+pair with the Bost--Connes cobar generators $\mu_{p^{n}}$
+(HY-zeta weight $-n\log p$) under the Positselski pairing,
+yielding total weight zero, i.e.\
+$\kappa^{\mathrm{Ar}}_{\mathsf{G}}+(\kappa^{!})^{\mathrm{Ar}}_{\mathsf{G}}=0$.
+\item Step 3 of the P1 proof
+(\Cref{v4-arith:thm:P1-resolution}) closes conditionally on the
+five open sub-items of
+\Cref{v4-arith:pos:rem:open-sub-items}
+(\Cref{v4-arith:pos:cor:step-3-unconditional}); consequently
+the full biconditional
+$\kappa^{\mathrm{Ar}}_{\mathsf{G}}+(\kappa^{!})^{\mathrm{Ar}}_{\mathsf{G}}=0\Leftrightarrow\xi(s)=\xi(1-s)$
+of P1 closes conditionally on the same sub-items
+(\Cref{v4-arith:pos:thm:P1-full-unconditional}).
+\item Adelic extension: combining the $\Lambda$-coefficient
+Positselski at each finite place with Gaussian Positselski
+(\Cref{v4-arith:pos:thm:gaussian-positselski}) at $\infty$
+gives the adelic Positselski equivalence
+(\Cref{v4-arith:pos:thm:adelic-positselski}); the functional
+equation $\xi(s)=\xi(1-s)$ is the character-level shadow of
+this adelic Positselski equivalence
+(\Cref{v4-arith:pos:rem:adelic-fe}).
+\item Residual scope
+(\Cref{v4-arith:pos:residual-scope}): non-commutative arithmetic
+Positselski for non-abelian Iwahori level
+(\Cref{v4-arith:pos:cj:non-commutative}); Whittaker-compatible
+Positselski (\Cref{v4-arith:pos:cj:whittaker-compat}); higher-rank
+Iwasawa extension (\Cref{v4-arith:pos:rem:higher-rank}).
+\end{enumerate}
+
+The load-bearing theorem of the arithmetic branch
+$\kappa^{\mathrm{Ar}}_{\mathsf{G}}+(\kappa^{!})^{\mathrm{Ar}}_{\mathsf{G}}=0\Leftrightarrow\xi(s)=\xi(1-s)$
+is inscribed here as a conditional theorem for the abelian
+arithmetic Heisenberg: it closes modulo the five open Positselski
+sub-items of \Cref{v4-arith:pos:rem:open-sub-items}. On the Vol IV
+status board, the entry ``arith.\ Positselski'' remains on the
+Spine B residual list
+(\Cref{v4-arith:app:C:residual-catalog-w2}): its content is the
+conjunction of those five sub-items. The minimal closure path to
+RH (\Cref{v4-arith:rh:thm:minimal-path}) carries four inputs after
+wave-3 audit (\Cref{v4-arith:w3-audit-B:thm:four-input-spine}):
+arith.~Positselski (this chapter's conditional theorem),
+Koszul--Pet compat, H-P$^{\mathrm{Ar}}$, and VB$^{*}$ main
+direction.

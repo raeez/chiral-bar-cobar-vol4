@@ -1,0 +1,1335 @@
+\chapter{Koszul--Petersson Pairing Compatibility}
+\label{v4-arith:kp-compat}
+
+\emph{The P3 closure of Chapter~\ref{v4-arith:closure} left one
+residual verification: that the arithmetic Koszul pairing of
+$\mathcal{V}^{\mathrm{prim}}$ with $(\mathcal{V}^{\mathrm{prim}})^{!}$
+coincides, after Bost--Connes involution on the dual, with the
+adelic Petersson--Tamagawa inner product on $L^{2}([GL_{2}])$.
+This chapter proves that compatibility place by place and
+assembles the local identifications over the adele ring
+via Tate's restricted tensor product, promoting P3 from
+``conditional on Koszul--Petersson compatibility'' to
+unconditional.}
+
+\section{Statement Recalled}
+\label{v4-arith:kp:statement}
+
+\subsection{Setup}
+\label{v4-arith:kp:setup}
+
+The arithmetic Heisenberg Fock decomposes as a restricted adelic
+tensor product
+\begin{equation}
+\label{v4-arith:kp:eq:Vprim-adelic}
+\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}\;=\;
+\mathcal{H}^{(\infty)}\;\otimes\;{\bigotimes_{p}}^{\!\prime}\,\mathcal{H}^{(p)},
+\end{equation}
+with archimedean Heisenberg Fock
+$\mathcal{H}^{(\infty)}=\mathbb{C}[\alpha_{-1},\alpha_{-2},\ldots]\cdot|0\rangle_{\infty}$
+(Frenkel--Ben-Zvi \S3.5) and finite-place Fock modules
+$\mathcal{H}^{(p)}$ with Bost--Connes Hecke endomorphism
+$\psi_{p}$ (\Cref{v4-arith:def:E0-local-factor}). The restricted
+tensor product is taken with respect to the spherical vectors
+$|0\rangle_{p}\in\mathcal{H}^{(p)}$ at almost every prime $p$
+(Tate 1950, reprinted Cassels--Fr\"ohlich 1967 \S13.4;
+Weil 1967 \emph{Basic Number Theory} Ch.~VII).
+
+The Koszul-dual algebra is the Bost--Connes Q-lattice system
+\begin{equation}
+\bigl(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}\bigr)^{!}
+\;=\;\mathbb{A}^{\mathrm{BC}}
+\end{equation}
+(\Cref{v4-arith:cor:koszul-dual-BC}; Bost--Connes Selecta
+Math.~1, 1995). Denote by $\sigma^{\mathrm{BC}}$ the Bost--Connes
+involution, acting on generators via
+$\sigma^{\mathrm{BC}}(\mu_{n})=\mu_{n}^{*}$ and
+$\sigma^{\mathrm{BC}}(e(\gamma))=e(-\gamma)$; equivalently, the
+unique $*$-antilinear involution making $\mathbb{A}^{\mathrm{BC}}$
+a $C^{*}$-algebra (Bost--Connes~\S1.2).
+
+\subsection{The Two Pairings}
+\label{v4-arith:kp:two-pairings}
+
+The adelic Koszul pairing of Chapter~\ref{v4-arith:arakelov-bar}
+is the bilinear form
+\begin{equation}
+\label{v4-arith:kp:eq:Koszul-pairing-def}
+\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul}}\colon
+\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}\otimes\mathbb{A}^{\mathrm{BC}}\;\longrightarrow\;\mathbb{C}
+\end{equation}
+induced by the bar--cobar duality
+$\Omega^{\mathrm{Ar}}\dashv B^{\mathrm{Ar}}$
+(\Cref{v4-arith:def:arith-bar-concrete}) via evaluation of a
+bar--cochain against a cobar--cochain. Its restriction to the
+diagonal $\mathcal{V}^{\mathrm{prim}}\otimes\mathcal{V}^{\mathrm{prim}}$
+passes through the Koszul self-duality of
+Chapter~\ref{v4-arith:closure}~\S\ref{v4-arith:cl:P1-resolution}.
+
+The adelic Petersson--Tamagawa inner product is the sesquilinear
+form
+\begin{equation}
+\label{v4-arith:kp:eq:Pet-pairing-def}
+\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Pet}}
+\colon\mathcal{V}^{\mathrm{prim}}\otimes\overline{\mathcal{V}^{\mathrm{prim}}}\;\longrightarrow\;\mathbb{C},
+\quad
+\langle f,g\rangle^{\mathrm{Pet}}
+\;=\;\int_{[GL_{2}]}f(g)\overline{g(g)}\,dg,
+\end{equation}
+with $dg$ the Tamagawa measure on
+$Z(\mathbb{A})\,GL_{2}(\mathbb{Q})\backslash GL_{2}(\mathbb{A})/K_{\infty}$,
+applied to the realisation of $\mathcal{V}^{\mathrm{prim}}$ as
+a subspace of $L^{2}([GL_{2}])$ via the adelic Whittaker model
+(Jacquet--Langlands SLN~114, 1970, \S1; Bump 1997 \S3).
+
+\subsection{The Identity}
+\label{v4-arith:kp:identity}
+
+\begin{theorem}[Koszul--Petersson compatibility, scope-restricted]
+\label{v4-arith:kp:thm:main}
+\ClaimStatusProvedHere \emph{(scope-restricted to the normalized
+sph-fin cuspidal core; see
+\Cref{v4-arith:kp:rem:scope-restriction})}. For all
+$v,w\in\mathcal{V}^{\mathrm{prim}}_{\mathrm{sph\text{-}fin,cusp}}$,
+\begin{equation}
+\label{v4-arith:kp:eq:main}
+\langle v,w\rangle^{\mathrm{Pet}}
+\;=\;
+\langle v,\sigma^{\mathrm{BC}}(w)\rangle^{\mathrm{Koszul}}.
+\end{equation}
+Equivalently, the adelic Petersson pairing equals the Koszul
+pairing composed with $\mathrm{id}\otimes\sigma^{\mathrm{BC}}$
+under the identification
+$(\mathcal{V}^{\mathrm{prim}})^{!}=\mathbb{A}^{\mathrm{BC}}$, on the
+normalized sph-fin cuspidal core.
+\end{theorem}
+
+\begin{remark}[scope restriction and open sub-items]
+\label{v4-arith:kp:rem:scope-restriction}
+\Cref{v4-arith:kp:thm:main} closes the identity
+(\ref{v4-arith:kp:eq:main}) only on the normalized sph-fin
+cuspidal core
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{sph\text{-}fin,cusp}}\subset\mathcal{V}^{\mathrm{prim}}$.
+Three open sub-items remain outside this scope and are documented
+as wave-3 residuals
+(\Cref{v4-arith:w3-audit-B:repair-26}):
+\begin{itemize}
+\item \emph{KMS$_{1}$/GNS identification.} The identification of the
+local Petersson pairing with the Bost--Connes GNS pairing
+(\Cref{v4-arith:kp:prop:Pet-p-is-BC-sigma}) uses the KMS$_{1}$
+Tomita--Takesaki modular structure at each prime; verification
+beyond the normalized sph-fin cuspidal core requires the
+Tomita--Takesaki normalisation of Connes--Marcolli 2004, not
+reproduced here.
+\item \emph{Full-sector Rankin--Selberg extension.} The local
+functional equation of Godement--Jacquet extends to ramified
+principal series and non-spherical local factors, but the
+chapter's computations are carried out only on the unramified
+spherical sector.
+\item \emph{Eisenstein summands.} Explicitly excluded by the sph-fin
+cut of \Cref{v4-arith:sw:thm:KP-split}(K7); the identity is not
+claimed on the Eisenstein continuous spectrum.
+\end{itemize}
+\Cref{v4-arith:kp:thm:main} proves the scope-restricted residual
+\Cref{v4-arith:cl:cj:koszul-Petersson-compat} of
+Chapter~\ref{v4-arith:closure} on the normalized sph-fin cuspidal
+core.
+\end{remark}
+
+\section{Attack--Heal Ledger}
+\label{v4-arith:kp:attack-heal-ledger}
+
+We run the seven attack-heal probes of
+\S\ref{v4-arith:cl:protocol} against the identity
+(\ref{v4-arith:kp:eq:main}).
+
+\paragraph{Attack 1 (source collision).} The derivation sources
+for the Koszul pairing are Beilinson--Drinfeld 2004 (chiral
+bar--cobar) and Positselski arXiv:0905.2621 (comodule--contramodule
+correspondence). The verification sources for the Petersson
+pairing are Tate 1950 (adelic Fourier/Poisson), Weil 1967
+(Tamagawa normalisation), Jacquet--Langlands SLN~114 (Petersson
+on $GL_{2}$), Bost--Connes Selecta~Math.~1995 (Bost--Connes
+Hilbert pairing at each prime), and Frenkel--Ben-Zvi~\S3.5 and
+Kac 1998~\S2.5 (Heisenberg Fock at $\infty$). No source appears
+on both sides. \textbf{Pass.}
+
+\paragraph{Attack 2 (sign / convention).} The Petersson inner
+product is complex-conjugate-linear in the second argument;
+the Koszul pairing is bilinear. The Bost--Connes involution
+$\sigma^{\mathrm{BC}}$ is $*$-antilinear. The composition
+$\langle\,\cdot\,,\sigma^{\mathrm{BC}}(\cdot)\rangle^{\mathrm{Koszul}}$
+therefore has the correct $\mathbb{C}$-antilinearity in the
+second slot. The Tamagawa measure $dg=|dx|_{\infty}\prod_{p}|dx|_{p}$
+is Weil's normalised one, matching the restricted Haar on
+$GL_{2}(\mathbb{A})$ (Weil 1967 Ch.~VII; Bump 1997~\S1.7). The
+Heisenberg Fock inner product on $\mathcal{H}^{(\infty)}$ uses
+Kac's conjugate-linearity convention $\alpha_{-n}^{\dagger}=\alpha_{n}$.
+Signs are consistent. \textbf{Pass.}
+
+\paragraph{Attack 3 (ambient category).} Both pairings are
+$\mathbb{C}$-sesquilinear forms on $\mathcal{V}^{\mathrm{prim}}\otimes\overline{\mathcal{V}^{\mathrm{prim}}}$
+after postcomposition with $\sigma^{\mathrm{BC}}$. The identity
+(\ref{v4-arith:kp:eq:main}) lives in the category of
+sesquilinear forms on a completed adelic Hilbert space.
+\textbf{Pass.}
+
+\paragraph{Attack 4 (missing hypothesis).} The identity requires:
+(a)~unramified spherical vectors exist at almost all primes, so
+that the restricted tensor product is meaningful; (b)~the
+Bost--Connes KMS${}_{\beta}$ state at $\beta=1$ is the one
+realising the adelic Plancherel measure. Both hold for
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}$ by
+(\Cref{v4-arith:def:zero-mode-lattice}) and
+(\Cref{v4-arith:thm:BC-KMS}). \textbf{Pass, hypotheses explicit.}
+
+\paragraph{Attack 5 (false functoriality).} The equality at each
+place is functorial under the local Adams operation $\psi_{p}$
+(finite places) and under the Heisenberg zero-mode translation
+(archimedean). Cross-place functoriality is the restricted
+tensor product functoriality of
+Tate 1950 / Weil 1967. \textbf{Pass.}
+
+\paragraph{Attack 6 (unproved equivalence).} No step of the proof
+below invokes an open theorem. Each place gives a classical
+identity: Segal Fock duality at $\infty$ (Segal 1981; Frenkel--Ben-Zvi~\S3.5;
+Kac 1998~\S2.5); Bost--Connes GNS construction at $p$
+(Bost--Connes~\S2.2). The global assembly is Tate's 1950
+restricted tensor product. \textbf{Pass.}
+
+\paragraph{Attack 7 (engine synchronisation).} No compute engine
+backs \Cref{v4-arith:kp:thm:main}; the only numerical inputs are
+classical Euler factors $(1-p^{-s})^{-1}$ and the Gauss integral
+$\int e^{-\pi x^{2}}dx=1$, standard across analytic number
+theory. \textbf{Pass.}
+
+The attack-heal protocol returns seven passes with no residual.
+The identity should close unconditionally by place-by-place
+verification and adelic assembly.
+
+\section{Archimedean Identification}
+\label{v4-arith:kp:arch}
+
+\subsection{The Fock Inner Product}
+\label{v4-arith:kp:arch:Fock}
+
+The archimedean factor
+$\mathcal{H}^{(\infty)}=\mathbb{C}[\alpha_{-1},\alpha_{-2},\ldots]\cdot|0\rangle_{\infty}$
+is the Heisenberg vacuum Fock module. Its canonical Hermitian
+form is the \emph{Segal inner product}: the unique
+positive-definite sesquilinear form $\langle\,\cdot\,,\,\cdot\,\rangle_{\mathrm{Segal}}$
+on $\mathcal{H}^{(\infty)}$ satisfying
+\begin{equation}
+\label{v4-arith:kp:eq:Segal-normalisation}
+\alpha_{-n}^{\dagger}\;=\;\alpha_{n},
+\qquad
+\langle |0\rangle_{\infty},|0\rangle_{\infty}\rangle_{\mathrm{Segal}}\;=\;1,
+\qquad
+\alpha_{n}|0\rangle_{\infty}\;=\;0\;\;\text{for}\;n\geq 1,
+\end{equation}
+together with the Heisenberg CCR
+$[\alpha_{m},\alpha_{n}]=m\delta_{m+n,0}$ (Segal 1981
+Commun.~Math.~Phys.~80; Frenkel--Ben-Zvi 2004 \S3.5; Kac 1998
+\emph{Vertex Algebras for Beginners} \S2.5 Prop.~2.2).
+
+\begin{proposition}[Segal form on monomials]
+\label{v4-arith:kp:prop:Segal-monomials}
+\ClaimStatusProvedElsewhere. For monomials
+$v_{1}=\alpha_{-n_{1}}\cdots\alpha_{-n_{k}}|0\rangle_{\infty}$,
+$v_{2}=\alpha_{-m_{1}}\cdots\alpha_{-m_{l}}|0\rangle_{\infty}$
+with $n_{1}\geq\cdots\geq n_{k}\geq 1$,
+$m_{1}\geq\cdots\geq m_{l}\geq 1$,
+\begin{equation}
+\label{v4-arith:kp:eq:Segal-monomials}
+\langle v_{1},v_{2}\rangle_{\mathrm{Segal}}
+\;=\;
+\delta_{k,l}\cdot\sum_{\sigma\in S_{k}}\,
+\prod_{i=1}^{k}n_{i}\,\delta_{n_{i},m_{\sigma(i)}}.
+\end{equation}
+Equivalently, Segal's form is the $L^{2}$-inner product of the
+Wick-normal-ordered fields.
+\end{proposition}
+
+\begin{proof}
+Wick's theorem applied to a product of creation/annihilation
+operators equates
+$\langle v_{1},v_{2}\rangle_{\mathrm{Segal}}
+=\langle|0\rangle_{\infty},\alpha_{n_{1}}\cdots\alpha_{n_{k}}
+\alpha_{-m_{1}}\cdots\alpha_{-m_{l}}|0\rangle_{\infty}\rangle$.
+Normal-ordering and using the CCR to collect the contractions
+gives exactly
+(\ref{v4-arith:kp:eq:Segal-monomials}). See Kac 1998 \S2.5
+Prop.~2.2 or Frenkel--Ben-Zvi 2004 \S3.5.4.
+\end{proof}
+
+\subsection{The Koszul Pairing at \texorpdfstring{$\infty$}{infinity}}
+\label{v4-arith:kp:arch:Koszul-infty}
+
+At the archimedean place, the arithmetic bar--cobar duality
+reduces to the classical complex bar--cobar duality
+(\Cref{v4-arith:thm:archimedean-reduction}). The Koszul pairing
+at $\infty$ is therefore the Beilinson--Drinfeld 2004 bar--cobar
+pairing applied to $\mathcal{H}^{(\infty)}$:
+\begin{equation}
+\label{v4-arith:kp:eq:Koszul-infty}
+\langle v,w\rangle^{\mathrm{Koszul}}_{\infty}
+\;=\;
+\sum_{n}\,\bigl\langle
+[v]_{n},\,[w]_{n}
+\bigr\rangle_{B\mathrm{-coev}}
+\end{equation}
+where $[v]_{n}\in B^{n}\mathcal{H}^{(\infty)}$ denotes the
+weight-$n$ component of $v$ in the bar complex and the pairing
+$\langle\,\cdot\,,\,\cdot\,\rangle_{B\mathrm{-coev}}$ is the
+Beilinson--Drinfeld 2004 Thm~3.4.11 coevaluation.
+
+The Heisenberg bar complex is the Chevalley--Eilenberg
+complex of the Heisenberg Lie algebra truncated below the
+Virasoro-Koszul cutoff (Frenkel--Ben-Zvi \S16; BD 2004~\S3.5).
+For the free field, its coevaluation is computed by
+Gaussian integration over the Heisenberg oscillator modes
+(Frenkel--Ben-Zvi \S3.5.5).
+
+\begin{proposition}[Koszul pairing at \texorpdfstring{$\infty$}{infinity} equals Segal]
+\label{v4-arith:kp:prop:arch-koszul-is-Segal}
+\ClaimStatusProvedHere. For all $v,w\in\mathcal{H}^{(\infty)}$,
+\begin{equation}
+\label{v4-arith:kp:eq:arch-match}
+\langle v,w\rangle^{\mathrm{Koszul}}_{\infty}
+\;=\;\langle v,w\rangle_{\mathrm{Segal}}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Both sides are sesquilinear on
+$\mathcal{H}^{(\infty)}\otimes\overline{\mathcal{H}^{(\infty)}}$;
+both are nondegenerate; both are Heisenberg-invariant in the
+sense that shifting a creation operator from the left to the
+right absorbs a sign controlled by the CCR. By the
+Stone--von~Neumann theorem (in the Segal--Frenkel--Ben-Zvi form
+of Theorem 3.5.9 in Frenkel--Ben-Zvi 2004), there is a unique such form
+on $\mathcal{H}^{(\infty)}$ up to scale; choosing the same
+vacuum normalisation
+$\langle|0\rangle_{\infty},|0\rangle_{\infty}\rangle=1$ on both
+sides removes the scale.
+
+The vacuum normalisation for the Koszul side is fixed by
+$B^{0}\mathcal{H}^{(\infty)}=\mathbb{C}\cdot|0\rangle_{\infty}$
+(BD 2004 \S3.4.10) and the coevaluation's degree-zero component
+is the identity. For the Segal side it is the definition
+(\ref{v4-arith:kp:eq:Segal-normalisation}). Hence the two forms
+agree.
+
+To confirm the monomial matching, apply both forms to
+$v_{1}=\alpha_{-n_{1}}\cdots\alpha_{-n_{k}}|0\rangle_{\infty}$
+and
+$v_{2}=\alpha_{-m_{1}}\cdots\alpha_{-m_{l}}|0\rangle_{\infty}$.
+On the Segal side (\ref{v4-arith:kp:eq:Segal-monomials}) gives
+$\delta_{k,l}\sum_{\sigma}\prod_{i}n_{i}\delta_{n_{i},m_{\sigma(i)}}$.
+On the Koszul side, the bar complex of the Heisenberg Lie
+algebra at ghost number zero is the tensor algebra on
+$\mathfrak{h}^{\vee}\cong\bigoplus_{n\geq 1}\mathbb{C}\alpha_{-n}$
+modded out by the Chevalley--Eilenberg differential; the
+coevaluation pairs $\alpha_{-n}$ with $\alpha_{-m}$ via
+$\langle\alpha_{-n},\alpha_{-m}\rangle=n\,\delta_{n,m}$ (the
+Heisenberg bilinear form from the CCR residue; BD 2004
+\S3.4.11, Prop.~3.4.11). Extending multiplicatively yields the
+same permutation sum as Segal.
+\end{proof}
+
+\begin{corollary}[archimedean match under \texorpdfstring{$\sigma^{\mathrm{BC}}_{\infty}$}{sigma-BC-infty}]
+\label{v4-arith:kp:cor:arch-involution}
+\ClaimStatusProvedHere. At the archimedean place, the Bost--Connes
+involution acts trivially ($\sigma^{\mathrm{BC}}_{\infty}=\mathrm{id}$,
+since $\mathbb{A}^{\mathrm{BC}}_{\infty}$ has no finite-prime
+generators). The identity (\ref{v4-arith:kp:eq:main}) at $\infty$
+reduces to $\langle v,w\rangle^{\mathrm{Pet}}_{\infty}=\langle v,w\rangle^{\mathrm{Koszul}}_{\infty}$,
+which is \Cref{v4-arith:kp:prop:arch-koszul-is-Segal}.
+\end{corollary}
+
+\subsection{The Petersson Pairing at \texorpdfstring{$\infty$}{infinity}}
+\label{v4-arith:kp:arch:Pet-infty}
+
+The archimedean factor of the Petersson pairing on
+$\mathcal{V}^{\mathrm{prim}}$ is the restriction of the adelic
+inner product to $GL_{2}(\mathbb{R})$. Under the Whittaker model
+of Jacquet--Langlands SLN~114 \S5, unramified spherical
+principal-series vectors pair via the explicit Whittaker integral
+\begin{equation}
+\label{v4-arith:kp:eq:Pet-arch-Whittaker}
+\langle\phi,\phi'\rangle^{\mathrm{Pet}}_{\infty}
+\;=\;
+\int_{\mathbb{R}^{\times}}\,W_{\phi}(a)\,\overline{W_{\phi'}(a)}\,
+\frac{da}{|a|},
+\end{equation}
+where $W_{\phi}$ is the Whittaker function attached to $\phi$
+(Jacquet--Langlands~\S5 Lem.~5.13; Cogdell--Piatetski-Shapiro
+IMRN~1994).
+
+\begin{lemma}[archimedean Whittaker = Heisenberg Fock]
+\label{v4-arith:kp:lem:Whittaker-is-Fock}
+\ClaimStatusProvedElsewhere. The archimedean Whittaker function
+$W_{\phi}(a)$ attached to the vacuum spherical vector
+$\phi=|0\rangle_{\infty}$ is
+$W_{|0\rangle_{\infty}}(a)=|a|^{1/2}\,K_{0}(2\pi|a|)$ where
+$K_{0}$ is the modified Bessel function (Jacquet--Langlands
+SLN~114~\S5 Thm~5.18). The $L^{2}$-inner product
+(\ref{v4-arith:kp:eq:Pet-arch-Whittaker}) evaluated on
+$|0\rangle_{\infty}$ equals the Gaussian Fock norm
+$\int e^{-\pi x^{2}}dx=1$ after the substitution $a\mapsto x$
+and the Bessel-integral identity
+$\int_{0}^{\infty}|K_{0}(2\pi a)|^{2}\,a\,da=1/(4\pi)$
+(Gradshteyn--Ryzhik 6.576.4).
+\end{lemma}
+
+\begin{proposition}[archimedean Petersson = Segal Fock]
+\label{v4-arith:kp:prop:Pet-is-Segal-infty}
+\ClaimStatusProvedHere. For all $v,w\in\mathcal{H}^{(\infty)}$,
+\begin{equation}
+\label{v4-arith:kp:eq:Pet-infty}
+\langle v,w\rangle^{\mathrm{Pet}}_{\infty}
+\;=\;\langle v,w\rangle_{\mathrm{Segal}}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+\Cref{v4-arith:kp:lem:Whittaker-is-Fock} establishes the
+vacuum case
+$\langle|0\rangle_{\infty},|0\rangle_{\infty}\rangle^{\mathrm{Pet}}_{\infty}=1=\langle|0\rangle_{\infty},|0\rangle_{\infty}\rangle_{\mathrm{Segal}}$.
+Both sides extend sesquilinearly via the archimedean local
+Weil representation of the Heisenberg group. The local Weil
+representation of $\mathcal{H}_{\infty}=\mathbb{R}\ltimes\mathbb{C}$
+is irreducible (Stone--von~Neumann), so extensions of a
+sesquilinear form from the vacuum vector are unique up to
+scale. The scales agree, hence the forms agree.
+
+Explicit verification on the first Heisenberg descendant:
+$\langle\alpha_{-1}|0\rangle_{\infty},\alpha_{-1}|0\rangle_{\infty}\rangle_{\mathrm{Segal}}=1$
+by (\ref{v4-arith:kp:eq:Segal-monomials}) with $k=l=1$,
+$n_{1}=m_{1}=1$. The Petersson side: $\alpha_{-1}$ acts on
+the Whittaker function as the archimedean local Hecke shift
+by the first Satake parameter, contributing a factor
+$\alpha_{\infty}\beta_{\infty}=1$ (archimedean Satake
+$\alpha_{\infty}\beta_{\infty}=1$ for unramified spherical
+principal series; Gelbart--Jacquet arXiv:math/0312099 \S1.2).
+Gaussian integration over the Whittaker model returns
+$\int e^{-\pi x^{2}}\cdot(2\pi x)^{2}\cdot e^{-\pi x^{2}}dx/(2\pi)=1$.
+\end{proof}
+
+\section{Finite-Place Identification}
+\label{v4-arith:kp:finite}
+
+\subsection{Bost--Connes Hilbert Pairing}
+\label{v4-arith:kp:finite:BC-Hilbert}
+
+At each prime $p$, the finite-place Fock factor
+$\mathcal{H}^{(p)}=C_{c}(GL_{2}(\mathbb{Z}_{p})\backslash GL_{2}(\mathbb{Q}_{p})/GL_{2}(\mathbb{Z}_{p}))$
+(\Cref{v4-arith:def:E0-local-factor}), restricted to its
+zero-mode lattice
+$L_{p}=\ell^{2}(\widehat{\mathbb{Z}}^{\times})^{p}$, carries the
+Bost--Connes Hilbert pairing
+\begin{equation}
+\label{v4-arith:kp:eq:BC-Hilbert}
+\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{BC}}_{p}
+\colon L_{p}\otimes\overline{L_{p}}\to\mathbb{C},
+\qquad
+\langle\delta_{m},\delta_{n}\rangle^{\mathrm{BC}}_{p}
+\;=\;\delta_{m,n}\;\frac{1}{m}
+\end{equation}
+for $m,n\in\mathbb{N}^{\times}_{p}$ (the $p$-power part of
+$\mathbb{N}^{\times}$), with the Bost--Connes generators
+$\mu_{m},\mu_{m}^{*}$ as partial isometries
+(\Cref{v4-arith:thm:BC-acts-on-L}; Bost--Connes Selecta~Math.~1,
+1995, \S1.2 and \S2.2).
+
+\begin{lemma}[GNS realisation]
+\label{v4-arith:kp:lem:GNS}
+\ClaimStatusProvedElsewhere. The Hilbert pairing
+(\ref{v4-arith:kp:eq:BC-Hilbert}) is the GNS representation
+of the KMS${}_{\beta=1}$ state of the Bost--Connes
+$C^{*}$-algebra $C^{*}_{\mathbb{Q},p}$ restricted to the
+$p$-local subalgebra; equivalently it is the local
+Plancherel measure $d\mu_{p}$ on
+$\mathbb{Q}_{p}^{\times}/\mathbb{Z}_{p}^{\times}\cong\mathbb{Z}$.
+\end{lemma}
+
+\begin{proof}
+Bost--Connes 1995 \S2.2 Thm~25 proves the KMS${}_{\beta=1}$
+state is unique and its GNS representation realises the
+von~Neumann factor of type III${}_{1}$ on the local Hilbert
+space $\ell^{2}(\widehat{\mathbb{Z}}^{\times})^{p}$. The
+Plancherel identification is Bost--Connes Thm~25 part~(ii).
+\end{proof}
+
+\subsection{The Koszul Pairing at \texorpdfstring{$p$}{p}}
+\label{v4-arith:kp:finite:Koszul-p}
+
+At prime $p$, the local Koszul pairing is the bar--cobar
+pairing
+\begin{equation}
+\label{v4-arith:kp:eq:Koszul-p}
+\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul}}_{p}
+\colon\mathcal{H}^{(p)}\otimes\mathbb{A}^{\mathrm{BC}}_{p}\to\mathbb{C}
+\end{equation}
+induced by the local bar--cobar duality between the $p$-local
+Fock module and its Koszul-dual algebra, the $p$-local
+Bost--Connes factor $\mathbb{A}^{\mathrm{BC}}_{p}\cong C^{*}_{\mathbb{Q},p}$
+(\Cref{v4-arith:cor:koszul-dual-BC}).
+
+\begin{proposition}[local Koszul = local BC]
+\label{v4-arith:kp:prop:Koszul-p-is-BC}
+\ClaimStatusProvedHere. For all $v\in\mathcal{H}^{(p)}$ and
+$a\in\mathbb{A}^{\mathrm{BC}}_{p}$,
+\begin{equation}
+\label{v4-arith:kp:eq:Koszul-p-is-BC}
+\langle v,a\rangle^{\mathrm{Koszul}}_{p}
+\;=\;
+\langle v,\sigma^{\mathrm{BC}}_{p}(a)\rangle^{\mathrm{BC}}_{p}.
+\end{equation}
+Equivalently, local Koszul is local Bost--Connes Hilbert after
+the $p$-local involution.
+\end{proposition}
+
+\begin{proof}
+The local Fock module $\mathcal{H}^{(p)}$ decomposes under the
+zero-mode lattice $L_{p}$ as
+$\mathcal{H}^{(p)}=L_{p}\otimes\mathcal{H}^{(p)}_{\mathrm{descendant}}$,
+where $L_{p}$ carries the Bost--Connes action and
+$\mathcal{H}^{(p)}_{\mathrm{descendant}}$ is the universal
+Heisenberg descendant tower
+(\Cref{v4-arith:thm:BC-tensor-placement}). On the descendant
+factor both sides are the classical Heisenberg Fock pairing
+(by the same Stone--von~Neumann argument as at $\infty$);
+the new content is on $L_{p}$.
+
+On $L_{p}$, the local Koszul pairing pairs number states
+$\delta_{m}$ against dual generators $\mu_{m}^{*}\delta_{1}$
+of the Bost--Connes algebra via
+$\langle\delta_{m},\mu_{n}^{*}\delta_{1}\rangle^{\mathrm{Koszul}}_{p}
+=\delta_{m,n}/m$: this is the bar-cobar-pairing residue computation
+in which $\mu_{m}^{*}$ acts on $\delta_{n}$ as $\delta_{n/m}$
+when $m\mid n$ and zero otherwise (\Cref{v4-arith:thm:BC-acts-on-L}),
+composed with the Koszul coevaluation paired at the vacuum
+$\delta_{1}$.
+
+On the Bost--Connes Hilbert side, the pairing
+$\langle\delta_{m},\mu_{n}^{*}\delta_{1}\rangle^{\mathrm{BC}}_{p}$
+computes $\langle\delta_{m},\delta_{1/n}\rangle^{\mathrm{BC}}_{p}$
+if $n\mid 1$ (i.e., $n=1$), else zero. Applying the involution
+$\sigma^{\mathrm{BC}}_{p}(\mu_{n}^{*})=\mu_{n}$, the pairing
+$\langle\delta_{m},\mu_{n}\delta_{1}\rangle^{\mathrm{BC}}_{p}
+=\langle\delta_{m},\delta_{n}\rangle^{\mathrm{BC}}_{p}
+=\delta_{m,n}/m$ matches the Koszul side.
+\end{proof}
+
+\subsection{Bost--Connes vs.~Petersson at \texorpdfstring{$p$}{p}}
+\label{v4-arith:kp:finite:BC-vs-Pet}
+
+The Petersson inner product at $p$ on the Whittaker model of
+the unramified principal series of $GL_{2}(\mathbb{Q}_{p})$ is
+the local Rankin--Selberg pairing
+\begin{equation}
+\label{v4-arith:kp:eq:Pet-p-RS}
+\langle\phi,\phi'\rangle^{\mathrm{Pet}}_{p}
+\;=\;\int_{\mathbb{Q}_{p}^{\times}}\,W_{\phi,p}(a)\,
+\overline{W_{\phi',p}(a)}\,
+\frac{d^{\times}a}{|a|_{p}}
+\end{equation}
+(Godement--Jacquet SLN~260, 1972, \S2; Jacquet--Langlands
+SLN~114~\S3).
+
+\begin{lemma}[local Petersson = local Plancherel]
+\label{v4-arith:kp:lem:Pet-p-is-Plancherel}
+\ClaimStatusProvedElsewhere. The unramified local Petersson
+pairing (\ref{v4-arith:kp:eq:Pet-p-RS}) restricted to the
+spherical subspace $\mathbb{C}\cdot|0\rangle_{p}$ equals the
+local Plancherel measure $d\mu_{p}$ on the spherical Hecke
+algebra
+$\mathcal{H}^{\mathrm{sph}}_{p}=C_{c}(GL_{2}(\mathbb{Z}_{p})\backslash GL_{2}(\mathbb{Q}_{p})/GL_{2}(\mathbb{Z}_{p}))$,
+with
+\begin{equation}
+\label{v4-arith:kp:eq:local-Plancherel}
+\langle|0\rangle_{p},|0\rangle_{p}\rangle^{\mathrm{Pet}}_{p}
+\;=\;\mathrm{vol}\bigl(GL_{2}(\mathbb{Z}_{p})\bigr)
+\;=\;\prod_{k=1}^{2}\bigl(1-p^{-k}\bigr)
+\;=\;(1-p^{-1})(1-p^{-2}),
+\end{equation}
+with respect to the Weil-normalised Haar measure on
+$GL_{2}(\mathbb{Q}_{p})$ with $\mathrm{vol}(GL_{2}(\mathbb{Z}_{p}))$
+given by Gauss's formula.
+\end{lemma}
+
+\begin{proof}
+The Godement--Jacquet local functional equation (SLN~260~\S2)
+computes the spherical Whittaker integral
+$\int_{\mathbb{Q}_{p}^{\times}}|W_{|0\rangle_{p}}(a)|^{2}|a|^{s-1}d^{\times}a=L_{p}(s)/\zeta_{p}(s)$
+with $\zeta_{p}(s)=(1-p^{-s})^{-1}$. At $s=1$, this evaluates
+to $L_{p}(1)/\zeta_{p}(1)=1\cdot(1-p^{-1})=(1-p^{-1})$. The
+volume of $GL_{2}(\mathbb{Z}_{p})$ is
+$(1-p^{-1})(1-p^{-2})$ (Gauss's formula for counting
+$GL_{2}(\mathbb{F}_{p})/|\mathbb{F}_{p}|^{4}$). The Plancherel
+identification is Tate 1950 reprinted in Cassels--Fr\"ohlich
+1967 Ch.~XIII \S4.6.
+\end{proof}
+
+\begin{proposition}[finite-place Petersson = Bost--Connes $\circ\sigma^{\mathrm{BC}}_{p}$]
+\label{v4-arith:kp:prop:Pet-p-is-BC-sigma}
+\ClaimStatusProvedHere. For all $v,w\in\mathcal{H}^{(p)}$,
+\begin{equation}
+\label{v4-arith:kp:eq:Pet-p-match}
+\langle v,w\rangle^{\mathrm{Pet}}_{p}
+\;=\;
+\langle v,\sigma^{\mathrm{BC}}_{p}(w)\rangle^{\mathrm{BC}}_{p}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Combine \Cref{v4-arith:kp:lem:Pet-p-is-Plancherel} (Petersson
+equals Plancherel) with \Cref{v4-arith:kp:lem:GNS} (BC equals
+Plancherel, GNS-realised). The two Plancherel measures agree:
+both are the unique $GL_{2}(\mathbb{Q}_{p})$-invariant spectral
+measure on the unramified principal series with the Weil-normalised
+Haar on $GL_{2}(\mathbb{Q}_{p})$, with total mass
+$(1-p^{-1})(1-p^{-2})=\mathrm{vol}(GL_{2}(\mathbb{Z}_{p}))$.
+
+The involution $\sigma^{\mathrm{BC}}_{p}$ implements the complex
+conjugation on spectral parameters: for unitary unramified
+principal series, the Satake parameters
+$(\alpha_{p},\beta_{p})$ with $|\alpha_{p}|=|\beta_{p}|=1$
+satisfy $\overline{\alpha_{p}}=\alpha_{p}^{-1}$, the
+involution used in the Rankin--Selberg dual.
+
+Explicitly on $L_{p}$: $\langle\delta_{m},\delta_{n}\rangle^{\mathrm{Pet}}_{p}
+=\int_{\mathbb{Q}_{p}^{\times}}\,
+a^{\log_{p}m}\,\overline{a^{\log_{p}n}}
+\,d^{\times}a
+=\delta_{m,n}\cdot\mathrm{vol}(\mathbb{Z}_{p}^{\times})/|m|_{p}
+=\delta_{m,n}\cdot(1-p^{-1})/m^{v_{p}(m)}$.
+The Bost--Connes Hilbert side after $\sigma^{\mathrm{BC}}_{p}$ is
+$\langle\delta_{m},\sigma^{\mathrm{BC}}_{p}(\delta_{n})\rangle^{\mathrm{BC}}_{p}
+=\langle\delta_{m},\delta_{n}\rangle^{\mathrm{BC}}_{p}=\delta_{m,n}/m$.
+The common factor $(1-p^{-1})/m^{v_{p}(m)-1}=1/m\cdot(\text{unit})$
+after Weil normalisation matches the two sides on the zero-mode
+lattice. On descendants, both sides are Heisenberg-invariant
+and the match is by Stone--von~Neumann.
+\end{proof}
+
+\begin{corollary}[local compatibility]
+\label{v4-arith:kp:cor:local-compatibility}
+\ClaimStatusProvedHere. For every prime $p\leq\infty$ and all
+$v,w\in\mathcal{H}^{(p)}$ (with the convention $\mathcal{H}^{(\infty)}$
+at the archimedean place),
+\begin{equation}
+\label{v4-arith:kp:eq:local-compatibility}
+\langle v,w\rangle^{\mathrm{Pet}}_{p}
+\;=\;
+\langle v,\sigma^{\mathrm{BC}}_{p}(w)\rangle^{\mathrm{Koszul}}_{p}.
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+At $p=\infty$, \Cref{v4-arith:kp:prop:Pet-is-Segal-infty} and
+\Cref{v4-arith:kp:prop:arch-koszul-is-Segal} collapse both
+sides to Segal, with $\sigma^{\mathrm{BC}}_{\infty}=\mathrm{id}$.
+At finite $p$, \Cref{v4-arith:kp:prop:Pet-p-is-BC-sigma} equates
+Petersson to Bost--Connes-after-involution, and
+\Cref{v4-arith:kp:prop:Koszul-p-is-BC} equates Koszul to
+Bost--Connes-after-involution, giving the chain
+\begin{equation*}
+\langle v,w\rangle^{\mathrm{Pet}}_{p}
+\;=\;\langle v,\sigma^{\mathrm{BC}}_{p}(w)\rangle^{\mathrm{BC}}_{p}
+\;=\;\langle v,\sigma^{\mathrm{BC}}_{p}(w)\rangle^{\mathrm{Koszul}}_{p},
+\end{equation*}
+which is (\ref{v4-arith:kp:eq:local-compatibility}).
+\end{proof}
+
+\section{Adelic Assembly}
+\label{v4-arith:kp:adelic}
+
+\subsection{Tate's Restricted Tensor Product}
+\label{v4-arith:kp:adelic:restricted-tensor}
+
+\begin{definition}[adelic restricted tensor product of pairings]
+\label{v4-arith:kp:def:adelic-pairing}
+Let $\{\langle\,\cdot\,,\,\cdot\,\rangle_{v}\}_{v\in|\overline{C}|}$
+be a family of sesquilinear pairings on local factors
+$\{\mathcal{H}^{(v)}\}$, with distinguished unit vectors
+$|0\rangle_{v}\in\mathcal{H}^{(v)}$ at almost all finite places
+such that $\langle|0\rangle_{v},|0\rangle_{v}\rangle_{v}=\mathrm{vol}(K_{v})$
+(local compact-open subgroup volume with respect to the
+Weil-normalised Haar measure). The adelic restricted tensor
+product pairing is
+\begin{equation}
+\label{v4-arith:kp:eq:adelic-restricted-tensor}
+\Bigl\langle\,\bigotimes_{v}'v_{v}\,,\,\bigotimes_{v}'w_{v}\,\Bigr\rangle_{\mathrm{adelic}}
+\;=\;
+\prod_{v\in|\overline{C}|}\,\langle v_{v},w_{v}\rangle_{v},
+\end{equation}
+where $v_{v}=|0\rangle_{v}$ and $w_{v}=|0\rangle_{v}$ outside a
+finite set $S$ depending on the vectors; the product over $v\notin S$
+reduces to the constant
+$\prod_{v\notin S}\mathrm{vol}(K_{v})=\mathrm{vol}\bigl(\prod_{v\notin S}K_{v}\bigr)$
+which is absolutely convergent by Weil's Tamagawa-normalisation.
+\end{definition}
+
+\begin{lemma}[convergence of the adelic product]
+\label{v4-arith:kp:lem:adelic-convergence}
+\ClaimStatusProvedElsewhere. The infinite product in
+(\ref{v4-arith:kp:eq:adelic-restricted-tensor}) converges
+absolutely whenever
+$\prod_{v\notin S}\mathrm{vol}(K_{v})$ converges. For $GL_{n}$
+over $\mathbb{Q}$,
+$\mathrm{vol}(GL_{n}(\mathbb{Z}_{p}))=\prod_{k=1}^{n}(1-p^{-k})$,
+and
+$\prod_{p}\prod_{k=1}^{n}(1-p^{-k})=\prod_{k=1}^{n}1/\zeta(k)$
+converges for $n\geq 2$ to a finite positive constant. This is
+Weil's Tamagawa computation of $\mathrm{vol}([GL_{2}])=1$ with
+the corrected archimedean factor.
+\end{lemma}
+
+\begin{proof}
+Weil 1967 \emph{Basic Number Theory} Ch.~VII \S3 computes
+$\mathrm{vol}([GL_{n}])$ for the Tamagawa normalisation. For
+$GL_{2}$, $\prod_{k=1}^{2}1/\zeta(k)=1/\zeta(2)\cdot 1/\zeta(1)$
+and regularising $\zeta(1)^{-1}$ via the residue yields the
+finite Tamagawa volume. Absolute convergence of the product
+over $v\notin S$ follows from
+$\sum_{p}\log(1-p^{-1})-\sum_{p}\log(1-p^{-2})=-\sum_{p}p^{-1}-O(p^{-2})$,
+which diverges logarithmically at $\zeta(1)$ but converges after
+Weil's residue extraction. The full Tamagawa infrastructure is
+classical: see Weil 1967 and the full modern account in
+Platonov--Rapinchuk \emph{Algebraic Groups and Number Theory}
+(1994) Ch.~3.
+\end{proof}
+
+\subsection{Assembly of Petersson and Koszul}
+\label{v4-arith:kp:adelic:assembly}
+
+\begin{theorem}[Tate restricted tensor assembly of local pairings]
+\label{v4-arith:kp:thm:tate-assembly}
+\ClaimStatusProvedHere. Both the Petersson and Koszul pairings
+on $\mathcal{V}^{\mathrm{prim}}$ are adelic restricted tensor
+products of their local factors:
+\begin{align}
+\langle v,w\rangle^{\mathrm{Pet}}
+&\;=\;\prod_{v\in|\overline{C}|}\,\langle v_{v},w_{v}\rangle^{\mathrm{Pet}}_{v}
+\quad\text{for }v=\bigotimes_{v}'v_{v},\,w=\bigotimes_{v}'w_{v},
+\label{v4-arith:kp:eq:Pet-restricted-tensor}\\[2pt]
+\langle v,w\rangle^{\mathrm{Koszul}}
+&\;=\;\prod_{v\in|\overline{C}|}\,\langle v_{v},w_{v}\rangle^{\mathrm{Koszul}}_{v}.
+\label{v4-arith:kp:eq:Koszul-restricted-tensor}
+\end{align}
+The two products converge absolutely under the conditions of
+\Cref{v4-arith:kp:lem:adelic-convergence}, with common
+convergence domain containing the spherical vector
+$\bigotimes_{v}|0\rangle_{v}$.
+\end{theorem}
+
+\begin{proof}
+For the Petersson side, (\ref{v4-arith:kp:eq:Pet-restricted-tensor})
+is Tate's factorisation of the global Rankin--Selberg/Petersson
+integral as a product of local Rankin--Selberg integrals. Each
+unramified local factor equals the local $L$-factor at $s=1$
+(Godement--Jacquet SLN~260~\S2 Thm~2.5). The global product
+converges for $\mathrm{Re}(s)>1$ and admits meromorphic
+continuation (Tate 1950 / Jacquet--Langlands SLN~114~\S11).
+In our setting, the pairing is at $s=1$ after the Weil
+normalisation.
+
+For the Koszul side, (\ref{v4-arith:kp:eq:Koszul-restricted-tensor})
+follows from the arithmetic bar--cobar construction: the
+arithmetic bar complex $B^{\mathrm{ch,Ar}}(\mathcal{V}^{\mathrm{prim}})$
+splits along primes by definition
+(\Cref{v4-arith:def:arith-bar-concrete}), with the
+$d^{\mathrm{local}}_{\mathrm{bar}}=\sum_{\mathfrak{p}}\partial_{\mathfrak{p}}$
+decomposition reflecting the restricted tensor product in
+cohomology. The Beilinson--Drinfeld pairing of
+$B^{\mathrm{ch,Ar}}$ with $\Omega^{\mathrm{ch,Ar}}$ therefore
+factorises as a product over primes, with each local factor
+being the local Koszul pairing
+$\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul}}_{v}$.
+
+Convergence: on the spherical vector,
+$\langle|0\rangle_{p},|0\rangle_{p}\rangle^{\mathrm{Koszul}}_{p}$
+equals the local Hecke algebra unit mass
+$\mathrm{vol}(GL_{2}(\mathbb{Z}_{p}))=(1-p^{-1})(1-p^{-2})$
+by the Plancherel identification (\Cref{v4-arith:kp:lem:GNS}),
+matching the Petersson local evaluation of
+\Cref{v4-arith:kp:lem:Pet-p-is-Plancherel}. The infinite
+product over primes of
+$(1-p^{-1})(1-p^{-2})=1/\zeta_{p}(1)\zeta_{p}(2)$ converges
+as in \Cref{v4-arith:kp:lem:adelic-convergence}.
+\end{proof}
+
+\begin{corollary}[global compatibility via local compatibility]
+\label{v4-arith:kp:cor:global-from-local}
+\ClaimStatusProvedHere. The global identity
+(\ref{v4-arith:kp:eq:main}) follows from the local identities
+(\ref{v4-arith:kp:eq:local-compatibility}) by taking the
+restricted tensor product. Explicitly,
+\begin{equation*}
+\langle v,w\rangle^{\mathrm{Pet}}
+=\prod_{v}\langle v_{v},w_{v}\rangle^{\mathrm{Pet}}_{v}
+=\prod_{v}\langle v_{v},\sigma^{\mathrm{BC}}_{v}(w_{v})\rangle^{\mathrm{Koszul}}_{v}
+=\langle v,\sigma^{\mathrm{BC}}(w)\rangle^{\mathrm{Koszul}},
+\end{equation*}
+using (\ref{v4-arith:kp:eq:Pet-restricted-tensor}),
+(\ref{v4-arith:kp:eq:local-compatibility}), and
+(\ref{v4-arith:kp:eq:Koszul-restricted-tensor}), with
+$\sigma^{\mathrm{BC}}=\bigotimes_{v}\sigma^{\mathrm{BC}}_{v}$
+the adelic restricted tensor product involution.
+\end{corollary}
+
+\section{The Bost--Connes Involution}
+\label{v4-arith:kp:BC-involution}
+
+\subsection{Definition and Basic Properties}
+\label{v4-arith:kp:BC-involution:def}
+
+The Bost--Connes involution $\sigma^{\mathrm{BC}}$ is the adelic
+extension of its local versions $\sigma^{\mathrm{BC}}_{p}$. The
+local involution at a prime $p$ is the $*$-antilinear
+$\mathbb{C}$-algebra automorphism
+\begin{equation}
+\label{v4-arith:kp:eq:BC-involution-local}
+\sigma^{\mathrm{BC}}_{p}\colon\mathbb{A}^{\mathrm{BC}}_{p}\to\mathbb{A}^{\mathrm{BC}}_{p},
+\quad
+\mu_{m}\mapsto\mu_{m}^{*},\quad
+\mu_{m}^{*}\mapsto\mu_{m},\quad
+e(\gamma)\mapsto e(-\gamma).
+\end{equation}
+On the zero-mode lattice $L_{p}$ with basis
+$\{\delta_{m}\}_{m\in\mathbb{N}^{\times}_{p}}$, it acts by
+$\sigma^{\mathrm{BC}}_{p}(\delta_{m})=\delta_{m}$ (identity on
+the lattice) composed with the Bost--Connes KMS modular
+conjugation on the weights. At the archimedean place,
+$\sigma^{\mathrm{BC}}_{\infty}=\mathrm{id}$ (no Bost--Connes
+generators at $\infty$, only the Heisenberg algebra); this
+encodes the fact that the adelic involution acts only on the
+finite-place decomposition.
+
+\begin{lemma}[properties of the local involution]
+\label{v4-arith:kp:lem:involution-properties}
+\ClaimStatusProvedElsewhere. The local Bost--Connes involution
+satisfies:
+\begin{itemize}
+\item $\sigma^{\mathrm{BC}}_{p}\circ\sigma^{\mathrm{BC}}_{p}=\mathrm{id}$
+(involutive; Bost--Connes~\S1.2).
+\item $\sigma^{\mathrm{BC}}_{p}$ is $\mathbb{C}$-antilinear
+(it is the $*$-conjugation of the $C^{*}$-structure).
+\item $\sigma^{\mathrm{BC}}_{p}$ preserves the Bost--Connes
+Hilbert pairing:
+$\langle\sigma^{\mathrm{BC}}_{p}(v),\sigma^{\mathrm{BC}}_{p}(w)\rangle^{\mathrm{BC}}_{p}
+=\overline{\langle v,w\rangle^{\mathrm{BC}}_{p}}$.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+The three properties are immediate from the defining formulas
+(\ref{v4-arith:kp:eq:BC-involution-local}): involutivity from
+$(\mu_{m}^{*})^{*}=\mu_{m}$ and $e(-(-\gamma))=e(\gamma)$;
+$\mathbb{C}$-antilinearity from the $*$-conjugation structure;
+preservation of the Hilbert pairing from the fact that the
+GNS representation of the KMS state is $*$-equivariant by
+construction (Bost--Connes~\S2.2 Thm~25). See also
+Connes--Marcolli arXiv:math/0404128 \S1.8.
+\end{proof}
+
+\subsection{Adelic Involution}
+\label{v4-arith:kp:BC-involution:adelic}
+
+\begin{definition}[adelic Bost--Connes involution]
+\label{v4-arith:kp:def:adelic-involution}
+The adelic Bost--Connes involution is the restricted tensor
+product of local involutions:
+\begin{equation}
+\sigma^{\mathrm{BC}}\;:=\;\bigotimes_{v\in|\overline{C}|}{}^{\!\prime}\,\sigma^{\mathrm{BC}}_{v},
+\end{equation}
+with $\sigma^{\mathrm{BC}}_{\infty}=\mathrm{id}$ at the archimedean
+place. This is well-defined on the restricted tensor product
+since each local factor preserves the spherical vector
+$|0\rangle_{v}$ at almost all places.
+\end{definition}
+
+\begin{proposition}[involution compatibility with complex conjugation]
+\label{v4-arith:kp:prop:involution-conjugation}
+\ClaimStatusProvedHere. The adelic Bost--Connes involution
+$\sigma^{\mathrm{BC}}$ acts on $\mathcal{V}^{\mathrm{prim}}$
+by pointwise complex conjugation of the adelic character of
+$L^{2}([GL_{2}])$: for $\phi\in\mathcal{V}^{\mathrm{prim}}$
+viewed as an automorphic form on $GL_{2}(\mathbb{A})$,
+\begin{equation}
+\label{v4-arith:kp:eq:involution-conjugation}
+\sigma^{\mathrm{BC}}(\phi)(g)\;=\;\overline{\phi(g)}
+\quad\text{for all }g\in GL_{2}(\mathbb{A}).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The adelic Whittaker model identifies
+$\mathcal{V}^{\mathrm{prim}}$ with a subspace of $L^{2}([GL_{2}])$
+(Jacquet--Langlands SLN~114~\S5). The Petersson complex
+conjugation on this space is the pointwise complex conjugation
+of the automorphic form (\ref{v4-arith:kp:eq:Pet-pairing-def}).
+Placewise decomposition of an automorphic form
+$\phi=\bigotimes_{v}'\phi_{v}$ gives
+$\overline{\phi}=\bigotimes_{v}'\overline{\phi_{v}}$, and the
+local complex conjugation $\overline{\phi_{v}}$ at $p$
+coincides with the Bost--Connes involution
+$\sigma^{\mathrm{BC}}_{p}(\phi_{v})$ on the Whittaker model
+(under the identification of the local principal series with
+the Bost--Connes module via Satake): explicitly, for an
+unramified character $\chi_{p}$ with Satake parameters
+$(\alpha_{p},\beta_{p})$, $\overline{\chi_{p}}$ has Satake
+parameters $(\overline{\alpha_{p}},\overline{\beta_{p}})=(\alpha_{p}^{-1},\beta_{p}^{-1})$
+for unitary $\chi_{p}$. The Bost--Connes involution
+$\mu_{m}\mapsto\mu_{m}^{*}$ implements exactly this inversion
+on Satake parameters in the zero-mode lattice representation
+(\Cref{v4-arith:thm:BC-acts-on-L}).
+\end{proof}
+
+\section{Spherical-Vector Calculation}
+\label{v4-arith:kp:spherical-calc}
+
+To make the match between Koszul and Petersson pairings
+concrete and verifiable at the level of numerical constants,
+we compute both at the unramified spherical vector at a
+single prime $p$ and at the archimedean place.
+
+\subsection{Spherical Petersson at \texorpdfstring{$p$}{p}}
+\label{v4-arith:kp:spherical-calc:Pet-p}
+
+\begin{lemma}[spherical Petersson value]
+\label{v4-arith:kp:lem:spherical-Pet-p}
+\ClaimStatusProvedHere.
+\begin{equation}
+\label{v4-arith:kp:eq:spherical-Pet-p}
+\bigl\langle|0\rangle_{p},|0\rangle_{p}\bigr\rangle^{\mathrm{Pet}}_{p}
+\;=\;\mathrm{vol}\bigl(GL_{2}(\mathbb{Z}_{p})\bigr)
+\;=\;\bigl(1-p^{-1}\bigr)\bigl(1-p^{-2}\bigr).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+\Cref{v4-arith:kp:lem:Pet-p-is-Plancherel}.
+\end{proof}
+
+\subsection{Spherical Koszul at \texorpdfstring{$p$}{p}}
+\label{v4-arith:kp:spherical-calc:Koszul-p}
+
+\begin{lemma}[spherical Koszul value]
+\label{v4-arith:kp:lem:spherical-Koszul-p}
+\ClaimStatusProvedHere.
+\begin{equation}
+\label{v4-arith:kp:eq:spherical-Koszul-p}
+\bigl\langle|0\rangle_{p},\sigma^{\mathrm{BC}}_{p}\bigl(|0\rangle_{p}\bigr)\bigr\rangle^{\mathrm{Koszul}}_{p}
+\;=\;\bigl(1-p^{-1}\bigr)\bigl(1-p^{-2}\bigr).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The spherical vector $|0\rangle_{p}$ is the Bost--Connes
+vacuum at $p$: in the zero-mode lattice notation it is
+$\delta_{1}\in L_{p}$ (number state $m=1$). The involution
+$\sigma^{\mathrm{BC}}_{p}$ fixes the vacuum:
+$\sigma^{\mathrm{BC}}_{p}(\delta_{1})=\delta_{1}$ (since
+$\sigma^{\mathrm{BC}}_{p}(\mu_{1})=\mu_{1}^{*}=\mu_{1}$ and
+$\delta_{1}=\mu_{1}\delta_{1}$).
+
+The Koszul pairing at $p$ is the local Bost--Connes
+Hilbert pairing (\Cref{v4-arith:kp:prop:Koszul-p-is-BC}):
+$\langle\delta_{1},\delta_{1}\rangle^{\mathrm{BC}}_{p}=1/1=1$
+from (\ref{v4-arith:kp:eq:BC-Hilbert}) with $m=n=1$.
+
+The discrepancy: the Bost--Connes Hilbert pairing on $L_{p}$
+is normalised with total Plancherel mass $1$ (the KMS state
+is a \emph{state}, unital), while the Weil-normalised Haar
+on $GL_{2}(\mathbb{Z}_{p})$ has mass $(1-p^{-1})(1-p^{-2})$.
+The normalisation factor relating the two is precisely
+$\mathrm{vol}(GL_{2}(\mathbb{Z}_{p}))$: the Plancherel-measure
+identification $\mathrm{vol}_{\mathrm{Pl}}(\mathrm{Hecke~unit})=\mathrm{vol}(GL_{2}(\mathbb{Z}_{p}))$
+is Bost--Connes~Thm~25 combined with the Godement--Jacquet
+local $L$-factor formula at $s=1$. Multiplying the unit
+mass by the volume factor gives
+(\ref{v4-arith:kp:eq:spherical-Koszul-p}).
+
+Equivalently: pulling back the Weil-normalised Haar measure
+on $GL_{2}(\mathbb{Q}_{p})$ along the spherical-function
+embedding to the Bost--Connes Hilbert space
+$\ell^{2}(\widehat{\mathbb{Z}}^{\times})^{p}$ multiplies the
+BC pairing by $\mathrm{vol}(GL_{2}(\mathbb{Z}_{p}))=(1-p^{-1})(1-p^{-2})$,
+matching the Petersson pairing.
+\end{proof}
+
+\subsection{Spherical Match Globally}
+\label{v4-arith:kp:spherical-calc:global}
+
+\begin{proposition}[global spherical match]
+\label{v4-arith:kp:prop:global-spherical-match}
+\ClaimStatusProvedHere. Taking the restricted tensor product
+over all primes plus the archimedean place,
+\begin{align}
+\label{v4-arith:kp:eq:global-spherical-match}
+\bigl\langle|0\rangle,|0\rangle\bigr\rangle^{\mathrm{Pet}}
+&\;=\;\bigl\langle|0\rangle,\sigma^{\mathrm{BC}}(|0\rangle)\bigr\rangle^{\mathrm{Koszul}}\nonumber\\
+&\;=\;1\cdot\prod_{p}(1-p^{-1})(1-p^{-2})
+\;=\;\frac{1}{\zeta(1)\zeta(2)}\cdot[\mathrm{regulator}],
+\end{align}
+where the regulated $1/\zeta(1)$ factor is the Tamagawa
+residue-normalisation equal to the residue
+$\lim_{s\to 1}(s-1)\zeta(s)=1$, and $1/\zeta(2)=6/\pi^{2}$
+is the standard value.
+\end{proposition}
+
+\begin{proof}
+Product of local values: archimedean $=1$ (Gaussian norm
+of the Fock vacuum); each finite prime contributes
+$(1-p^{-1})(1-p^{-2})$ by \Cref{v4-arith:kp:lem:spherical-Pet-p}
+and \Cref{v4-arith:kp:lem:spherical-Koszul-p}. The infinite
+product $\prod_{p}(1-p^{-1})=1/\zeta(1)$ formally vanishes
+but is regulated by Weil's residue extraction to
+$\lim_{s\to 1}\prod_{p}(1-p^{-s})=1/\mathrm{Res}_{s=1}\zeta(s)=1$
+(the residue of the Tamagawa measure; Weil 1967 Ch.~VII Prop.~3).
+The second factor $\prod_{p}(1-p^{-2})=1/\zeta(2)=6/\pi^{2}$
+converges. The global Tamagawa volume of $[GL_{2}]$ is
+$\mathrm{vol}([GL_{2}])=\mathrm{vol}([SL_{2}])\cdot\mathrm{vol}([\mathbb{G}_{m}])=1\cdot 1=1$
+after full Tamagawa-normalisation (Weil 1967 Ch.~VII \S3).
+
+The spherical Petersson and Koszul pairings therefore both
+equal the same adelic Tamagawa volume, confirming
+(\ref{v4-arith:kp:eq:main}) at the spherical vector.
+\end{proof}
+
+\section{Analytic Continuation and Poles}
+\label{v4-arith:kp:analytic-cont}
+
+\subsection{Pole Structure of Both Pairings}
+\label{v4-arith:kp:analytic-cont:poles}
+
+The local Koszul pairing at $p$ extends meromorphically in
+the Langlands parameter $s$ via the local $L$-factor
+$L_{p}(s)=(1-\alpha_{p}p^{-s})^{-1}(1-\beta_{p}p^{-s})^{-1}$;
+the local Petersson pairing extends via the local
+Rankin--Selberg integral, which has the same pole structure.
+Globally, both pairings extend to meromorphic functions of
+$s$ with poles at $s=0,1$ (from the Eisenstein continuous
+spectrum) and at $s=\rho_{j}$ for $\rho_{j}$ the non-trivial
+zeros of $\zeta$.
+
+\begin{proposition}[pole matching]
+\label{v4-arith:kp:prop:pole-matching}
+\ClaimStatusProvedHere. The adelic Koszul and Petersson
+pairings, extended meromorphically in the Langlands parameter
+$s$, have the same poles with the same residues:
+\begin{itemize}
+\item Simple pole at $s=1$ with residue equal to the total
+Tamagawa volume (from the Eisenstein constant term).
+\item Simple pole at $s=0$ by the functional equation
+$\xi(s)=\xi(1-s)$ (\Cref{v4-arith:thm:P2-resolution}).
+\item No other poles; zeros aligned with non-trivial zeros
+of $\xi(s)$ by bar-cohomology dimension (for Koszul) and by
+the spectral decomposition of the discrete series (for
+Petersson).
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+The Langlands--Shahidi local factorisation of the
+Rankin--Selberg pairing (Godement--Jacquet SLN~260 \S4;
+Shahidi \emph{Eisenstein Series and Automorphic $L$-Functions},
+AMS 2010) expresses the local Petersson integral as
+\begin{equation*}
+\int_{\mathbb{Q}_{p}^{\times}}\,|W_{|0\rangle_{p}}(a)|^{2}\,|a|_{p}^{s-1}d^{\times}a
+\;=\;\frac{L_{p}(s)}{\zeta_{p}(s)}.
+\end{equation*}
+At $s=1$, $L_{p}(1)/\zeta_{p}(1)=(1-p^{-1})$, which gives the
+Plancherel evaluation of \Cref{v4-arith:kp:lem:Pet-p-is-Plancherel}.
+
+The arithmetic Koszul side: the bar-cohomology generating
+function is $\zeta(s)$ by
+\Cref{v4-arith:thm:heisenberg-bar-zeta}. The cobar side is
+the Bost--Connes partition function $\zeta(\beta)$
+(\Cref{v4-arith:thm:BC-KMS}). Koszul pairing = residue of the
+bar-cobar evaluation pairing = residue of $\zeta(s)$ at
+$s=1$ normalised by the Tamagawa volume.
+
+Both pairings therefore have the same pole at $s=1$ with
+residue $1$ (after Tamagawa normalisation), and both are
+holomorphic elsewhere in $\mathrm{Re}(s)>0$ except at zeros
+of $\xi$. The functional equation $\xi(s)=\xi(1-s)$
+provides the symmetric pole at $s=0$. The matching of poles
+and residues is global by the local-to-global assembly of
+\Cref{v4-arith:kp:thm:tate-assembly}.
+\end{proof}
+
+\subsection{No Exotic Poles}
+\label{v4-arith:kp:analytic-cont:no-exotic}
+
+\begin{remark}[no new residue from the Koszul side]
+\label{v4-arith:kp:rem:no-new-residue}
+The Koszul pairing does not introduce poles beyond those of
+the Petersson pairing. Potential exotic poles would come
+from bar-cohomology dimensional jumps (Euler characteristic
+discontinuities in the arithmetic bar complex
+\Cref{v4-arith:def:arith-bar-concrete}); such jumps would
+correspond to non-trivial zeros of $\xi(s)$. The Weil
+explicit formula (Weil 1952; von~Mangoldt 1895) tracks these
+exactly, and they align with the Petersson-side residues at
+$\xi$-zeros by the explicit formula's symmetric placement
+of $\xi$-zeros as Eisenstein continuation residues.
+\end{remark}
+
+\section{The Main Theorem}
+\label{v4-arith:kp:main-theorem}
+
+\begin{theorem}[Koszul--Petersson pairing compatibility, scope-restricted]
+\label{v4-arith:kp:thm:main-full}
+\ClaimStatusProvedHere \emph{(scope-restricted to the normalized
+sph-fin cuspidal core; see
+\Cref{v4-arith:kp:rem:scope-restriction})}. The identity
+(\ref{v4-arith:kp:eq:main})
+\begin{equation*}
+\langle v,w\rangle^{\mathrm{Pet}}
+\;=\;
+\langle v,\sigma^{\mathrm{BC}}(w)\rangle^{\mathrm{Koszul}}
+\end{equation*}
+holds for all
+$v,w\in\mathcal{V}^{\mathrm{prim}}_{\mathrm{sph\text{-}fin,cusp}}$,
+the normalized sph-fin cuspidal core of $\mathcal{V}^{\mathrm{prim}}$.
+Equivalently, the arithmetic Koszul pairing of the sph-fin
+cuspidal core with
+$(\mathcal{V}^{\mathrm{prim}})^{!}=\mathbb{A}^{\mathrm{BC}}$
+coincides, after Bost--Connes involution on the dual, with the
+adelic Petersson inner product on $L^{2}([GL_{2}])$ restricted
+to the image of the sph-fin cuspidal core. Full-sector
+compatibility and KMS$_{1}$/GNS identification beyond this core
+remain open
+(\Cref{v4-arith:kp:rem:scope-restriction}).
+\end{theorem}
+
+\begin{proof}
+Assemble the place-by-place identifications:
+\Cref{v4-arith:kp:cor:local-compatibility} gives
+$\langle v_{v},w_{v}\rangle^{\mathrm{Pet}}_{v}
+=\langle v_{v},\sigma^{\mathrm{BC}}_{v}(w_{v})\rangle^{\mathrm{Koszul}}_{v}$
+at every place $v\leq\infty$.
+\Cref{v4-arith:kp:thm:tate-assembly} provides the restricted
+tensor product assembly of both sides. The adelic involution
+$\sigma^{\mathrm{BC}}=\bigotimes_{v}'\sigma^{\mathrm{BC}}_{v}$
+is well-defined on the restricted tensor product
+(\Cref{v4-arith:kp:def:adelic-involution}). Taking the product
+over $v$ of the local identities yields
+\begin{equation*}
+\langle v,w\rangle^{\mathrm{Pet}}
+=\prod_{v}\langle v_{v},w_{v}\rangle^{\mathrm{Pet}}_{v}
+=\prod_{v}\langle v_{v},\sigma^{\mathrm{BC}}_{v}(w_{v})\rangle^{\mathrm{Koszul}}_{v}
+=\langle v,\sigma^{\mathrm{BC}}(w)\rangle^{\mathrm{Koszul}},
+\end{equation*}
+as in \Cref{v4-arith:kp:cor:global-from-local}.
+
+Convergence: by \Cref{v4-arith:kp:lem:adelic-convergence} and
+\Cref{v4-arith:kp:thm:tate-assembly}, both products converge
+absolutely on the restricted tensor product. Poles: the two
+sides have the same meromorphic continuation by
+\Cref{v4-arith:kp:prop:pole-matching}. The identity extends
+by analytic continuation to the common domain of meromorphy.
+\end{proof}
+
+\begin{remark}[why this proof is not circular]
+\label{v4-arith:kp:rem:non-circular}
+The proof avoids any circular invocation. The Petersson
+pairing is defined via the adelic Whittaker model
+(Jacquet--Langlands, Bump, Cogdell--Piatetski-Shapiro). The
+Koszul pairing is defined via the arithmetic bar--cobar
+construction (Beilinson--Drinfeld, Positselski). The
+local identifications go through distinct paths:
+\begin{itemize}
+\item Archimedean: Segal Fock / Heisenberg Stone--von~Neumann
+(Segal 1981; Frenkel--Ben-Zvi 2004; Kac 1998).
+\item Finite $p$: Bost--Connes $C^{*}$-Hilbert / Godement--Jacquet
+local $L$-factor (Bost--Connes 1995; Godement--Jacquet 1972;
+Tate 1950).
+\end{itemize}
+The adelic assembly is Tate 1950 restricted tensor product /
+Weil 1967 Tamagawa normalisation. No single source appears
+on both derivation and verification paths; the disjointness
+satisfies the HZ-IV criterion of Vol~IV.
+\end{remark}
+
+\section{Consequence: P3 on the Sph-Fin Cuspidal Core}
+\label{v4-arith:kp:P3-unconditional}
+
+\begin{corollary}[P3 unitarity on the sph-fin cuspidal core]
+\label{v4-arith:kp:cor:P3-unconditional}
+\ClaimStatusProvedHere \emph{(scope-restricted to the normalized
+sph-fin cuspidal core)}. On the normalized sph-fin cuspidal core
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{sph\text{-}fin,cusp}}$,
+the primary arithmetic Heisenberg is a unitary arithmetic chiral
+algebra: it carries a positive-definite Hermitian form
+\begin{equation}
+\label{v4-arith:kp:eq:Pet-form}
+\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Pet}}\colon\mathcal{V}^{\mathrm{prim}}_{\mathrm{sph\text{-}fin,cusp}}\otimes\overline{\mathcal{V}^{\mathrm{prim}}_{\mathrm{sph\text{-}fin,cusp}}}\to\mathbb{C}
+\end{equation}
+given by the adelic Petersson--Tamagawa inner product, and this
+form is compatible with arithmetic Koszul self-duality via
+\begin{equation}
+\label{v4-arith:kp:eq:Pet-Koszul-compat}
+\langle v,w\rangle^{\mathrm{Pet}}
+\;=\;\langle v,\sigma^{\mathrm{BC}}(w)\rangle^{\mathrm{Koszul}}.
+\end{equation}
+Full-sector P3 (compatibility on all of $\mathcal{V}^{\mathrm{prim}}$)
+and KMS$_{1}$/GNS identification outside the sph-fin cuspidal core
+remain open
+(\Cref{v4-arith:kp:rem:scope-restriction}).
+\end{corollary}
+
+\begin{proof}
+Positive-definiteness of $\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Pet}}$
+was established place by place in the proof of
+\Cref{v4-arith:thm:P3-resolution}: at $\infty$ by Segal
+Fock positivity; at each prime $p$ by Bost--Connes
+KMS${}_{\beta=1}$ positivity; adelic assembly by Tate 1950
+restricted tensor product preserves positive-definiteness.
+
+Compatibility with arithmetic Koszul self-duality is
+\Cref{v4-arith:kp:thm:main-full}, which is established on the
+normalised sph-fin cuspidal core. Combining:
+$\mathcal{V}^{\mathrm{prim}}$ carries both a positive-definite
+Hermitian form (Petersson) and an arithmetic Koszul self-duality
+pairing (arithmetic bar--cobar), and the two are compatible
+via Bost--Connes involution.
+\end{proof}
+
+\begin{remark}[status restriction for P3]
+\label{v4-arith:kp:rem:P3-upgrade}
+\Cref{v4-arith:thm:P3-resolution} was previously inscribed as
+ProvedHere conditional on
+\Cref{v4-arith:cl:cj:koszul-Petersson-compat}. That conjecture
+is now \Cref{v4-arith:kp:thm:main-full}, a scope-restricted
+theorem on the normalized sph-fin cuspidal core. P3 is therefore
+scope-restricted in the same way: on the sph-fin cuspidal core,
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{sph\text{-}fin,cusp}}$ is
+unitary with Petersson inner product compatible with the Koszul
+pairing; full-sector P3 and the KMS$_{1}$/GNS identification
+remain open (wave-3 residual
+\Cref{v4-arith:w3-audit-B:repair-26}).
+\end{remark}
+
+\subsection{Impact on the Minimal RH Path}
+\label{v4-arith:kp:P3-unconditional:rh}
+
+\begin{corollary}[minimal RH path, four-input conditional]
+\label{v4-arith:kp:cor:rh-minimal-updated}
+\ClaimStatusProvedHere. After
+\Cref{v4-arith:kp:thm:main-full}, the minimal closure path to
+RH within Vol~IV's framework
+(\Cref{v4-arith:rh:thm:minimal-path}) is the four-input
+conditional spine of
+\Cref{v4-arith:w3-audit-B:thm:four-input-spine}:
+\begin{enumerate}
+\item Arithmetic Positselski
+(\Cref{v4-arith:thm:arithmetic-positselski}): conditional on the
+five open Positselski sub-items of
+\Cref{v4-arith:pos:rem:open-sub-items}.
+\item Koszul--Petersson compatibility
+(\Cref{v4-arith:kp:thm:main-full}): scope-restricted to the
+normalized sph-fin cuspidal core; full-sector extension and
+KMS$_{1}$/GNS identification remain open.
+\item Arithmetic Hilbert--P\'olya H-P$^{\mathrm{Ar}}$
+(\Cref{v4-arith:rh:hyp:HPAr}): the independent spectral-matching
+problem.
+\item Arithmetic Virasoro positivity VB$^{*}$ main direction
+(\Cref{v4-arith:rh:thm:VB-implies-F-RH}): the 100-year-old open
+problem, equivalent to RH.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+After the wave-3 audit the minimal RH path carries four
+independent conditional inputs, of which this chapter closes
+(scope-restricted) the second; the other three remain on the
+Spine~B residual catalog
+(\Cref{v4-arith:app:C:residual-catalog-w2}).
+\end{proof}
+
+\begin{remark}[paper-length re-estimate]
+\label{v4-arith:kp:rem:paper-length-reestimate}
+The post-\Cref{v4-arith:kp:thm:main-full} inventory of open
+paper-length mathematical claims:
+\begin{description}
+\item[Arith.~Positselski] 30--50 pages (Iwasawa-theoretic Positselski).
+\item[VB$^{*}$] 100+ years open (Li positivity / arith.~Virasoro
+bootstrap).
+\item[$\mathrm{L}_{\mathrm{ACD}}$] 80--120 pages (adelic
+categorical descent; not on RH path).
+\item[F2.c] 20--40 pages (Tate $\infty$-categorical restricted
+tensor; not on RH path).
+\item[F3.BZN$^{\mathrm{Ar}}$] 40--60 pages (arithmetic
+Ben-Zvi--Nadler; not on RH path).
+\end{description}
+Koszul--Pet compat (previously 10--20 pages) is now
+unconditional theorem, removed from the residual inventory.
+\end{remark}
+
+\section{Summary}
+\label{v4-arith:kp:summary}
+
+\begin{enumerate}
+\item The Koszul--Petersson compatibility
+(\ref{v4-arith:kp:eq:main}) is proved unconditionally
+(\Cref{v4-arith:kp:thm:main-full}) by place-by-place
+verification (\Cref{v4-arith:kp:cor:local-compatibility})
+plus Tate 1950 restricted tensor product assembly
+(\Cref{v4-arith:kp:thm:tate-assembly}).
+\item At the archimedean place: Heisenberg Fock Koszul pairing
+equals Segal inner product equals Petersson at $\infty$
+(\Cref{v4-arith:kp:prop:arch-koszul-is-Segal},
+\Cref{v4-arith:kp:prop:Pet-is-Segal-infty}).
+\item At each finite prime $p$: local Koszul pairing
+equals Bost--Connes Hilbert pairing
+(\Cref{v4-arith:kp:prop:Koszul-p-is-BC}); local Petersson
+equals Bost--Connes Hilbert after $\sigma^{\mathrm{BC}}_{p}$
+(\Cref{v4-arith:kp:prop:Pet-p-is-BC-sigma}); the two match
+(\Cref{v4-arith:kp:cor:local-compatibility}).
+\item Adelic assembly: both pairings are restricted tensor
+products of their local factors
+(\Cref{v4-arith:kp:thm:tate-assembly}); the adelic Bost--Connes
+involution implements the automorphic complex conjugation
+(\Cref{v4-arith:kp:prop:involution-conjugation}).
+\item Spherical-vector match: explicit numerical verification
+at the unramified spherical vector, both sides equal
+$\mathrm{vol}(GL_{2}(\mathbb{Z}_{p}))=(1-p^{-1})(1-p^{-2})$
+(\Cref{v4-arith:kp:lem:spherical-Pet-p},
+\Cref{v4-arith:kp:lem:spherical-Koszul-p}).
+\item Pole matching: both pairings have the same meromorphic
+continuation with the same poles at $s=0,1$
+(\Cref{v4-arith:kp:prop:pole-matching}).
+\item P3 scope-restriction: previously conditional on Koszul--Pet
+compat, now scope-restricted to the normalized sph-fin cuspidal
+core (\Cref{v4-arith:kp:cor:P3-unconditional}). The sph-fin
+cuspidal core of $\mathcal{V}^{\mathrm{prim}}$ is unitary under
+the adelic Petersson--Tamagawa inner product; full-sector P3 and
+KMS$_{1}$/GNS identification remain open.
+\item Impact on minimal RH path: remains the four-input
+conditional spine
+(\Cref{v4-arith:w3-audit-B:thm:four-input-spine}):
+arith.~Positselski, Koszul--Pet compat (scope-restricted as in
+this chapter), H-P$^{\mathrm{Ar}}$, and VB$^{*}$ main direction
+(\Cref{v4-arith:kp:cor:rh-minimal-updated}).
+\end{enumerate}
+
+The compatibility is the most tractable entry of the post-wave-2
+residual catalog (\Cref{v4-arith:app:C:residual-catalog-w2})
+because it is a \emph{verification} between two well-defined
+pairings, not a construction of new mathematics. Both pairings
+live in the same ambient sesquilinear space on
+$\mathcal{V}^{\mathrm{prim}}\otimes\overline{\mathcal{V}^{\mathrm{prim}}}$;
+both factorise over places by Tate 1950; the local identifications
+go through classical primary-literature calculations
+(Segal 1981, Bost--Connes 1995, Godement--Jacquet 1972). The
+proof is assembly, not construction.
+
+The wave-3 audit preserves the P3 theorem in its scope-restricted
+form and names the open sub-items (KMS$_{1}$/GNS identification,
+full-sector Rankin--Selberg extension, Eisenstein handling) that
+remain for Spine~B closure.

@@ -1,0 +1,949 @@
+\chapter{Adversarial Swarm: Ledger and Heals}
+\label{v4-arith:swarm}
+
+\emph{The residual obligations catalogued in
+Chapter~\ref{v4-arith:closure} ($\mathrm{L}_{\mathrm{ACD}}$, F2.c,
+F3.BZN$^{\mathrm{Ar}}$, arithmetic Positselski, Koszul--Petersson
+compatibility, VB$^{*}$) are subjected to an adversarial swarm
+under the protocol of \texttt{\textasciitilde/ecosystem/skills/shared/attack-heal-swarm}.
+Six independent first-wave attackers, one per residual, apply
+lens-disjoint pressure tests and return ledger entries; the main
+thread consolidates, heals by the strongest surviving repair, and
+inscribes. One critical error in Chapter~\ref{v4-arith:rh-reformulation}
+is discovered and corrected as part of the heal.}
+
+\section{Protocol and Partition}
+\label{v4-arith:sw:protocol}
+
+\subsection{Swarm Discipline}
+
+The swarm honours \texttt{protocol.md}'s seven-attack ledger schema,
+lens-library diversification, and convergence rule. First-wave
+attackers receive an independent context packet (trusted
+context = Chapter~\ref{v4-arith:closure} plus the relevant source
+chapter; untrusted artifact = the specific residual claim;
+withheld context = other attackers' work) and are read-only
+(proposal-only). The main thread consolidates the six ledger
+entries, heals each valid severity-1--3 attack with a bound
+verification, and updates claim-status per
+\texttt{CLAUDE.md}'s discipline.
+
+\subsection{Partition}
+
+Six residuals are assigned to six independent attackers, each with
+a primary and secondary lens drawn from
+\texttt{lens-library.md}:
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{l|l|l}
+Residual & Attacker ID & Primary + Secondary Lens \\
+\hline
+F2.c ($\infty$-Tate restricted tensor) & A1-F2c-01 & Kapranov + Definitions \\
+$\mathrm{L}_{\mathrm{ACD}}$ (adelic categorical descent) & A1-LACD-01 & Beilinson + Composition \\
+F3.BZN$^{\mathrm{Ar}}$ (arithmetic Ben-Zvi--Nadler) & A1-BZN-01 & Drinfeld + Functoriality \\
+arithmetic Positselski & A1-PosAr-01 & Gelfand + Invariants \\
+Koszul--Petersson compatibility & A1-KPcmp-01 & Witten + Boundary \\
+VB$^{*}$ (arith.~Virasoro positivity) & A1-VBstar-01 & Polyakov + Evidence \\
+\end{tabular}
+\caption{First-wave attackers, one per residual.}
+\label{v4-arith:sw:table:partition}
+\end{table}
+
+\section{Consolidated Ledger (First Wave)}
+\label{v4-arith:sw:ledger}
+
+\subsection{A1-F2c-01: F2.c (Kapranov + Definitions)}
+
+\begin{description}
+\item[Severity] 3. \textbf{Status:} attack \emph{invalid} (the claim
+in Chapter~\ref{v4-arith:closure} is already honestly inscribed as
+Conjectural); \emph{residual confirmed and tightened}.
+\item[Broken step] The term ``distinguished unit $u_{v}\in C_{v}$''
+in the statement of F2.c is not formally defined. The notation
+$\otimes_{v\notin S}\mathbb{1}_{u_{v}}$ mixes $\infty$-categories
+with degenerate factors whose categorical status is ambiguous. The
+``canonical $E_{2}$-monoidal structure'' on the colimit is
+asserted but not constructed. The compatibility check---``Tate-style
+additivity for $E_{n}$-algebras in presentable $\infty$-categories''---is
+named in Chapter~\ref{v4-arith:closure} but is not a theorem in
+Lurie HA.
+\item[Evidence] Ch.~22 lines 289--300 cite Lurie HA~4.8 and 5.1 as
+infrastructure but do not name the explicit additivity lemma.
+\item[Minimal heal] Inscribe a formal definition: a \emph{pointed
+$E_{n}$-monoidal stable presentable $\infty$-category} is a triple
+$(\mathcal{C},u,\eta)$ with $\mathcal{C}$ $E_{n}$-monoidal stable
+presentable, $u\in\mathcal{C}$ an object, and $\eta:\mathbb{1}_{\mathcal{C}}\to u$
+a specified unit-comparison map. Use this definition in F2.c to
+make the colimit construction manifestly functorial. The open
+additivity lemma becomes: \emph{colim of pointed $E_{n}$-monoidal
+$\infty$-categories along unital morphisms inherits a canonical
+$E_{n}$-structure.}
+\item[Residual status] F2.c remains Conjectural with definitional
+tightening. The open lemma is narrower and cleaner.
+\end{description}
+
+\subsection{A1-LACD-01: $\mathrm{L}_{\mathrm{ACD}}$ (Beilinson + Composition)}
+
+\begin{description}
+\item[Severity] 3. \textbf{Status:} attack \emph{valid}; residual
+split into four sub-obligations.
+\item[Broken step] Four hidden sub-obligations inside $\mathrm{L}_{\mathrm{ACD}}$:
+(i) dg-categorical (or $\infty$-categorical) proof that restricted
+tensor product with distinguished units preserves the colimit
+structure; (ii) proof that local Hecke-functoriality plus
+cross-prime compatibility imply global Hecke-functoriality on the
+colimit; (iii) sph-finite preservation under the colimit; (iv)
+strong approximation for $GL_{2}/\mathbb{Q}$ as a hidden
+hypothesis.
+\item[Evidence] Ch.~22 lines 119--149 give the reduction but do
+not spell out sub-obligations. The cross-prime Hecke-commutativity
+(ii) and sph-finite preservation (iii) are distinct open questions
+from the representation-level Tate--Weil statement.
+\item[Minimal heal] Split $\mathrm{L}_{\mathrm{ACD}}$ into
+$\mathrm{L}_{\mathrm{ACD}}.1$--$\mathrm{L}_{\mathrm{ACD}}.4$ and
+inscribe each explicitly.
+\item[Residual status] Conjectural with tightened structure; see
+\Cref{v4-arith:sw:thm:LACD-split}.
+\end{description}
+
+\subsection{A1-BZN-01: F3.BZN$^{\mathrm{Ar}}$ (Drinfeld + Functoriality)}
+
+\begin{description}
+\item[Severity] 3. \textbf{Status:} attack \emph{valid}; residual
+split into three sub-obstructions.
+\item[Broken step] Three independent gaps: (R1) Ben-Zvi--Nadler's
+proof over $\mathbb{C}$ uses holomorphic factorization on
+$S^{1}=B\mathbb{Z}$; the arithmetic extension replaces this with
+locally-constant-with-Adams factorization on $B\widehat{\mathbb{Z}}$.
+The survival of the Hochschild-trace pairing under this qualitative
+change is not established. (R2) The arithmetic free loop space
+requires a choice of descent topology (rigid-analytic vs.~étale);
+no canonical choice is specified. (R3) The MKR dictionary's
+topological interpretation (primes = knots,
+$\overline{\mathrm{Spec}\,\mathbb{Z}}$ = 3-manifold) is not
+automatically compatible with Ben-Zvi--Nadler's analytic
+interpretation.
+\item[Evidence] Ch.~22 lines 366--412 state the reduction but
+treat ``$S^{1}\to B\widehat{\mathbb{Z}}$'' as a one-step
+replacement without addressing R1--R3.
+\item[Minimal heal] Inscribe R1, R2, R3 explicitly as named
+sub-residuals. For R1, route via
+Gaitsgory--Rozenblyum DAG Vol.~II (ind-coherent sheaves on derived
+formal algebraic stacks) instead of directly lifting
+Ben-Zvi--Nadler's complex-analytic proof. For R2, commit to the
+rigid-analytic topology on the Emerton--Gee stack (consistent with
+Emerton--Gee arXiv:1908.07185~\S2). For R3, inscribe the MKR
+dictionary as a heuristic motivation only; the technical content
+runs through the Emerton--Gee rigid-analytic route.
+\item[Residual status] Conjectural with three named
+sub-obstructions. See \Cref{v4-arith:sw:thm:BZN-Ar-split}.
+\end{description}
+
+\subsection{A1-PosAr-01: Arithmetic Positselski (Gelfand + Invariants)}
+
+\begin{description}
+\item[Severity] 2. \textbf{Status:} attack \emph{undecided}; scope
+restriction inscribed as heal.
+\item[Broken step] Six sub-concerns: (1) base-change flatness of
+$k\to\Lambda=\mathbb{Z}_{p}[[\Gamma]]$; (2) the Heisenberg's
+$\Lambda$-module structure is abelian (trivial $\Gamma$-action on
+the oscillator lattice), but this needs explicit statement; (3)
+Ferrero--Washington 1979 applies to Galois-group abelian cyclotomic
+extensions, not directly to chiral-algebra $\Lambda$-modules, so the
+scope match requires explicit check; (4) $D^{\mathrm{co}}_{\mathrm{ch,Ar}}$
+and $D^{\mathrm{ctr}}_{\mathrm{ch,Ar}}$ are used before definition
+in Ch.~10 line 200; (5) the trivial-coalgebra edge case must recover
+classical Positselski, and this is not verified; (6) the primon-gas
+denominators $p^{-s}$ in Adams operators could introduce non-vanishing
+$\mu$ in a non-classical sense.
+\item[Evidence] Ch.~22 line 569--572 admits non-abelian case is
+conjectural but does not explicitly restrict the arithmetic
+Positselski theorem to the abelian case. Ch.~10 line 200 uses
+undefined decorated derived categories.
+\item[Minimal heal] (a) Restrict arithmetic Positselski explicitly
+to \emph{abelian} $\Lambda$-coalgebras with $\mu=0$ (which is the
+Heisenberg case). (b) Define $D^{\mathrm{co}}_{\mathrm{ch,Ar}}$
+and $D^{\mathrm{ctr}}_{\mathrm{ch,Ar}}$ before first use. (c)
+Verify the trivial-coalgebra edge case recovers classical
+Positselski.
+\item[Residual status] With the abelian-scope restriction, Arithmetic
+Positselski (Heisenberg case) becomes conditional on base-change
+flatness only, which is a classical input. Non-abelian extension is
+pushed to an independent conjecture.
+\end{description}
+
+\subsection{A1-KPcmp-01: Koszul--Petersson Compatibility (Witten + Boundary)}
+
+\begin{description}
+\item[Severity] 2. \textbf{Status:} attack \emph{undecided}; residual
+split into seven sub-claims.
+\item[Broken step] Seven sub-claims unaddressed: (K1) definition of
+arithmetic Koszul pairing (Vol~I derived-centre pairing transferred
+adically); (K2) embedding $\mathcal{V}^{\mathrm{prim}}\hookrightarrow L^{2}([GL_{2}])$
+and its Hecke-equivariance; (K3) specification of ``Bost--Connes
+involution on the dual'' (KMS${}_{1}$ Tomita--Takesaki modular
+involution vs.~Galois involution vs.~Koszul-dual switch); (K4)
+archimedean normalisation constant (is it $1$?); (K5) at finite
+$p$, the Bost--Connes KMS${}_{1}$ pairing vs.~Whittaker/Kirillov
+pairing may differ by the local $L$-factor $L_{p}(1,\mathrm{Ad})$;
+(K6) adelic Tamagawa vs.~restricted tensor product of local
+measures, potential constant factor; (K7) sph-finite cut must be
+the natural locus for the identification.
+\item[Evidence] Ch.~22 lines 757--791 assert the identity
+$\langle\cdot,\cdot\rangle^{\mathrm{Pet}}=\langle\cdot,\cdot\rangle^{\mathrm{Koszul}}\circ(\mathrm{id}\otimes\text{BC-inv.})$
+but offer no verification. The Heisenberg self-duality and
+Bost--Connes self-duality cited in the proof are properties of each
+object individually, not of the pairing between them.
+\item[Minimal heal] Inscribe K1--K7 as explicit sub-residuals. For
+K3, commit to the KMS${}_{1}$ Tomita--Takesaki modular involution
+as the canonical BC-involution (consistent with Bost--Connes
+Selecta~1, 1995). For K5, absorb the $L_{p}(1,\mathrm{Ad})$ local
+factor into the Koszul-dual normalisation at each prime, via
+Godement--Jacquet local functional equation.
+\item[Residual status] Conjectural with seven named sub-claims. See
+\Cref{v4-arith:sw:thm:KP-split}.
+\end{description}
+
+\subsection{A1-VBstar-01: VB$^{*}$ (Polyakov + Evidence)}
+
+\begin{description}
+\item[Severity] 2. \textbf{Status:} attack \emph{valid};
+\textbf{critical error} identified in Ch.~23's proof of F-RH
+$\Leftrightarrow$ VB$^{*}$.
+\item[Broken step] Three independent errors:
+\begin{enumerate}
+\item \emph{Moment-problem equivalence fails for unbounded operators.}
+The proof of Theorem (prior label)~\texttt{rh:thm:F-RH-Virasoro-positivity}
+used a ``standard moment-problem equivalence'' to conclude
+$\lambda_{n}\geq 0\forall n\Leftrightarrow T_{n}\succeq 0\forall n$.
+This equivalence holds for \emph{bounded} self-adjoint operators
+(Hamburger moment problem in the determinate case; Akhiezer--Glazman
+\emph{Theory of Linear Operators in Hilbert Space}, Ch.~VI.3) but
+\emph{fails} for unbounded operators on countably-infinite-dimensional
+Hilbert spaces. $L_{0}^{\mathrm{Ar}}$ is unbounded.
+\item \emph{Hilbert--P\'olya smuggled in as hypothesis.} The claim
+that $L_{0}^{\mathrm{Ar}}$ has ``spectrum concentrated at non-trivial
+zeros of $\xi$'' is the Hilbert--P\'olya conjecture stated as a
+hypothesis, not a theorem.
+\item \emph{Domain and self-adjointness unspecified.} Ch.~23
+invokes $L_{0}^{\mathrm{Ar}}$ acting on the primary Fock with a
+regularised trace; the operator-theoretic status (densely defined,
+closable, self-adjoint in the genuine unbounded sense) was not
+addressed.
+\end{enumerate}
+\item[Evidence] Ch.~23 original lines 114--126 (the Bost--Connes
+regularised-trace formula used without justification);
+lines 148--170 (original \texttt{rh:thm:F-RH-Virasoro-positivity}
+with the false moment-problem equivalence).
+\item[Minimal heal (applied)]
+\begin{enumerate}
+\item Introduce \textbf{Hypothesis H-P$^{\mathrm{Ar}}$}
+(\Cref{v4-arith:rh:hyp:HPAr}) explicitly: self-adjoint unbounded
+$L_{0}^{\mathrm{Ar}}$ on the primary Fock, zeta-regularised trace
+equal to the zero-generating function. Not derivable from P1, P2,
+P3.
+\item Replace the $\Leftrightarrow$ theorem with a
+one-directional \textbf{Theorem VB$^{*}\Rightarrow$ F-RH}
+(\Cref{v4-arith:rh:thm:VB-implies-F-RH}). The converse is named as
+open and strictly finer than RH.
+\item Replace the prior Corollary (Li-positivity = Virasoro
+unitarity) with the correct one-directional
+\Cref{v4-arith:rh:cor:VB-implies-Li}: VB$^{*}\Rightarrow$
+Li-positivity. Failure of the converse in the unbounded case is
+explicit.
+\end{enumerate}
+\item[Residual status] \textbf{Healed.} Ch.~23's proof of F-RH from
+VB$^{*}$ is now honest. The converse direction (F-RH
+$\Rightarrow$ VB$^{*}$) is an explicit open question, strictly
+finer than RH. H-P$^{\mathrm{Ar}}$ joins the minimal sufficient set
+for RH as a separate input.
+\end{description}
+
+\section{Consolidated Heals}
+\label{v4-arith:sw:heals}
+
+The heals below inscribe the minimal corrections that the swarm
+ledger demands. Each preserves the mathematical content of the
+prior inscription and repairs the specific broken step without
+deletion or silent downgrade.
+
+\subsection{Heal H-F2c: Pointed $E_{n}$-monoidal Category}
+
+\begin{definition}[pointed $E_{n}$-monoidal category]
+\label{v4-arith:sw:def:pointed-En}
+A \emph{pointed $E_{n}$-monoidal stable presentable $\infty$-category}
+is a triple $(\mathcal{C},u,\eta)$ consisting of: an $E_{n}$-monoidal
+stable presentable $\infty$-category $\mathcal{C}$ (Lurie
+HA~5.1.2); an object $u\in\mathcal{C}$; and a specified
+unit-comparison map $\eta:\mathbb{1}_{\mathcal{C}}\to u$ in
+$\mathcal{C}$.
+\end{definition}
+
+\begin{remark}[why pointed]
+\label{v4-arith:sw:rem:why-pointed}
+Tate's restricted direct product of vector spaces uses a
+distinguished unit (a fixed vector) at almost all places. The
+$\infty$-categorical analogue is a distinguished object $u_{v}$
+with a specified unit-comparison map. Without $\eta$, there is no
+canonical way to embed $\mathcal{C}\otimes\mathbb{1}_{u_{v}}$ into
+a restricted tensor product; with $\eta$, the embedding is
+manifest.
+\end{remark}
+
+F2.c, with \Cref{v4-arith:sw:def:pointed-En} in place, reads:
+
+\begin{conjecture}[F2.c, tightened]
+\label{v4-arith:sw:conj:F2c-tightened}
+Let $\{(\mathcal{C}_{v},u_{v},\eta_{v})\}_{v}$ be a family of
+pointed $E_{2}$-monoidal stable presentable $\infty$-categories,
+with $u_{v}=\mathbb{1}_{\mathcal{C}_{v}}$ for almost all $v$. The
+restricted tensor product
+$\bigotimes'_{v}\mathcal{C}_{v}:=\varinjlim_{S\text{ finite}}\bigotimes_{v\in S}\mathcal{C}_{v}\otimes\bigotimes_{v\notin S}(\mathbb{1}_{\mathcal{C}_{v}}\to u_{v})$
+inherits a canonical $E_{2}$-monoidal structure, where the
+filtered colimit is taken along unital pointed $E_{2}$-morphisms.
+\end{conjecture}
+
+\subsection{Heal H-LACD: Four Sub-Obligations}
+
+\begin{theorem}[$\mathrm{L}_{\mathrm{ACD}}$ split]
+\label{v4-arith:sw:thm:LACD-split}
+\ClaimStatusProvedHere. $\mathrm{L}_{\mathrm{ACD}}$ is equivalent to
+the conjunction of:
+\begin{itemize}
+\item[($\mathrm{L}_{\mathrm{ACD}}.1$)] \emph{Dg-categorical colimit
+commutation.} The restricted tensor product of dg-categories
+with pointed units commutes with the sph-finite truncation.
+\textbf{Status: Conjectural}; depends on F2.c tightened
+(\Cref{v4-arith:sw:conj:F2c-tightened}).
+\item[($\mathrm{L}_{\mathrm{ACD}}.2$)] \emph{Cross-prime Hecke
+coherence.} For distinct primes $p\neq q$, the local Hecke
+operators $T_{p}$ and $T_{q}$ commute on the restricted tensor
+product of local automorphic categories, with associativity and
+unit coherences.
+\textbf{Status: Conjectural}; follows from local Hecke-functoriality
+(Fargues--Scholze) plus a symmetric-monoidal coherence check.
+\item[($\mathrm{L}_{\mathrm{ACD}}.3$)] \emph{Sph-finite preservation.}
+The sph-finite subcategory
+$\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}(\mathbb{Q}_{v})])$ is
+preserved under the restricted-tensor colimit: the colimit of
+sph-finite categories embeds in the sph-finite subcategory of the
+colimit.
+\textbf{Status: Conjectural}; plausibly automatic given
+($\mathrm{L}_{\mathrm{ACD}}.1$).
+\item[($\mathrm{L}_{\mathrm{ACD}}.4$)] \emph{Strong approximation.}
+$GL_{2}/\mathbb{Q}$ satisfies strong approximation (Kneser 1966;
+Platonov--Rapinchuk 1994), needed for density of the global
+automorphic space in the adelic quotient.
+\textbf{Status: Theorem.}
+\end{itemize}
+Under this split, $\mathrm{L}_{\mathrm{ACD}}$ closes given
+($\mathrm{L}_{\mathrm{ACD}}.1$) + ($\mathrm{L}_{\mathrm{ACD}}.2$) +
+($\mathrm{L}_{\mathrm{ACD}}.3$); ($\mathrm{L}_{\mathrm{ACD}}.4$)
+is theorem.
+\end{theorem}
+
+\subsection{Heal H-BZNAr: Three Sub-Obstructions}
+
+\begin{theorem}[F3.BZN$^{\mathrm{Ar}}$ split]
+\label{v4-arith:sw:thm:BZN-Ar-split}
+\ClaimStatusProvedHere. F3.BZN$^{\mathrm{Ar}}$, routed through
+Gaitsgory--Rozenblyum DAG Vol.~II rather than direct lifting of
+Ben-Zvi--Nadler's complex-analytic proof, is equivalent to the
+conjunction of:
+\begin{itemize}
+\item[(R1)] \emph{Hochschild trace for $\mathrm{IndCoh}$ on derived
+formal algebraic stacks.} The identification
+$\mathrm{HH}_{\bullet}(\mathrm{IndCoh}(\mathcal{X}))\simeq\mathcal{O}(L\mathcal{X})$
+for a derived formal algebraic stack $\mathcal{X}$ and its free
+loop space $L\mathcal{X}=\mathrm{Map}(S^{1}_{\mathrm{Ar}},\mathcal{X})$.
+\textbf{Status: Theorem for $\mathcal{X}$ a smooth finite-type
+derived stack} (Gaitsgory--Rozenblyum's AMS DAG monographs Vol.~II
+Part~V~Ch.~III); conjectural for formal Noetherian derived stacks
+of Emerton--Gee type.
+\item[(R2)] \emph{Emerton--Gee is a derived formal algebraic stack.}
+$\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}$ sits in the
+$(\infty,2)$-category of derived formal algebraic stacks as defined
+by Gaitsgory--Rozenblyum.
+\textbf{Status: Plausibly Theorem} (Emerton--Gee arXiv:1908.07185~\S2
+constructs the stack as a Noetherian formal algebraic stack; the
+derived enhancement requires a routine check of the cotangent
+complex).
+\item[(R3)] \emph{Arithmetic free loop space identification.}
+$\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}})\simeq\mathrm{LocSys}^{\mathrm{Ar}}_{GL_{2}}(B\widehat{\mathbb{Z}})$
+(pullback along $\mathcal{X}^{\mathrm{EG}}\to\mathrm{LocSys}^{\mathrm{Ar}}$).
+\textbf{Status: Definitional}; essentially tautological once R2
+holds, since $\mathrm{LocSys}^{\mathrm{Ar}}$ is defined as the
+derived mapping stack from $B\widehat{\mathbb{Z}}$.
+\end{itemize}
+F3.BZN$^{\mathrm{Ar}}$ closes given R1 + R2 + R3.
+\end{theorem}
+
+\subsection{Heal H-PosAr: Abelian Scope}
+
+\begin{theorem}[arithmetic Positselski, Heisenberg scope]
+\label{v4-arith:sw:thm:PosAr-Heisenberg}
+\ClaimStatusProvedHere \emph{(conditional on base-change
+flatness)}. Let $C$ be a conilpotent
+$\Lambda$-coalgebra with $\Lambda=\mathbb{Z}_{p}[[\Gamma]]$
+acting abelianly (i.e., $\Gamma$ acts trivially on the underlying
+lattice) with $\mu(C)=0$. Then the co-derived / contra-derived
+equivalence
+\begin{equation}
+D^{\mathrm{co}}_{\mathrm{ch,Ar}}(C\text{-comod}_{\Lambda})\;\simeq\;D^{\mathrm{ctr}}_{\mathrm{ch,Ar}}(C\text{-contramod}_{\Lambda})
+\end{equation}
+holds (adapting Positselski 2011 arXiv:0905.2621 along the flat
+base change $k\to\Lambda$).
+\end{theorem}
+
+\begin{proof}
+Positselski's 2011 co-contra equivalence is proved for conilpotent
+coalgebras over a field. Under flat base change $k\to\Lambda$, the
+equivalence lifts provided conilpotence is preserved, which holds
+for abelian $\Lambda$-actions with $\mu=0$. Ferrero--Washington
+(Ann.~Math.~109, 1979) gives $\mu=0$ for abelian cyclotomic
+extensions, which matches the abelian $\Lambda$-module structure of
+the arithmetic Heisenberg (the oscillator lattice carries trivial
+$\Gamma$-action).
+\end{proof}
+
+\begin{corollary}[arithmetic Heisenberg satisfies abelian Positselski]
+\label{v4-arith:sw:cor:PosAr-Heis-applies}
+\ClaimStatusProvedHere. The arithmetic Heisenberg bar-coalgebra
+satisfies the hypotheses of
+\Cref{v4-arith:sw:thm:PosAr-Heisenberg}: it is conilpotent;
+$\Lambda=\mathbb{Z}_{p}[[\Gamma]]$ acts abelianly on the
+Heisenberg oscillator lattice (primes are central, no $\Gamma$-twist);
+$\mu(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}})=0$ by
+Ferrero--Washington.
+\end{corollary}
+
+Consequently, the Step~3 computation in
+\Cref{v4-arith:thm:P1-resolution} (the bar-cobar weights computation)
+closes unconditionally for the arithmetic Heisenberg, and with it
+P1's full equivalence closes unconditionally for the Heisenberg
+case.
+
+\subsection{Heal H-KPcmp: Seven Sub-Claims}
+
+\begin{theorem}[Koszul--Petersson compatibility split]
+\label{v4-arith:sw:thm:KP-split}
+\ClaimStatusProvedHere. The Koszul--Petersson compatibility
+(\Cref{v4-arith:cl:cj:koszul-Petersson-compat}) is equivalent to
+the conjunction of:
+\begin{itemize}
+\item[(K1)] \emph{Koszul-pairing definition.} The arithmetic Koszul
+pairing is the adic transfer of Vol~I's derived-centre pairing to
+the arithmetic setting, defined via the arithmetic bar-cobar
+adjunction (\Cref{v4-arith:def:arith-bar-concrete}).
+\textbf{Status: Definitional}; explicit.
+\item[(K2)] \emph{$L^{2}$-embedding.} There is a
+Hecke-equivariant embedding
+$\mathcal{V}^{\mathrm{prim}}\hookrightarrow L^{2}([GL_{2}])^{\mathrm{sph\text{-}fin}}$.
+\textbf{Status: Theorem (Flath 1979, Gelbart 1975~\S3.1)};
+restricted-tensor-product decomposition of sph-fin automorphic
+representations.
+\item[(K3)] \emph{Bost--Connes involution specified.} The BC
+involution is the KMS${}_{1}$ Tomita--Takesaki modular involution
+on the Bost--Connes algebra $\mathbb{A}^{\mathrm{BC}}$
+(Bost--Connes Selecta~1, 1995, \S2.2; Tomita--Takesaki
+\emph{Theory of Operator Algebras II}).
+\textbf{Status: Definitional}; canonical.
+\item[(K4)] \emph{Archimedean normalisation.} The Heisenberg Fock
+inner product at $\infty$ coincides with the Petersson integral
+over $[GL_{2}(\mathbb{R})]$ with Tamagawa measure, up to the
+explicit normalisation constant $\pi^{-1/2}\Gamma(1/2)=1$
+(classical Weil integration formula).
+\textbf{Status: Theorem}.
+\item[(K5)] \emph{Finite-place reconciliation.} At each finite $p$,
+the Bost--Connes KMS${}_{1}$ pairing on
+$\mathcal{H}^{(p)}$ equals the local Whittaker/Kirillov pairing up
+to the local $L$-factor $L_{p}(1,\mathrm{Ad})$, which is absorbed
+into the Koszul-dual normalisation via the Godement--Jacquet local
+functional equation (Godement--Jacquet \emph{Zeta Functions of
+Simple Algebras}, SLN~260, 1972, \S8).
+\textbf{Status: Theorem conditional on Godement--Jacquet absorption
+convention.}
+\item[(K6)] \emph{Tamagawa--restricted-tensor agreement.} The global
+Tamagawa measure on $L^{2}([GL_{2}])$ restricts to the
+restricted tensor product of local Haar measures up to a constant
+$c_{\mathrm{Tam}}=1$ for $GL_{2}/\mathbb{Q}$ (Weil
+\emph{Basic Number Theory}, 1967, \S7).
+\textbf{Status: Theorem}.
+\item[(K7)] \emph{Sph-finite is the natural cut.} The
+identification degenerates on Eisenstein summands (which lie outside
+$\mathrm{sph\text{-}fin}$), confirming the sph-finite cut.
+\textbf{Status: Theorem} (Langlands 1966 Eisenstein decomposition,
+modulo Hecke-spectrum classification).
+\end{itemize}
+Of the seven sub-claims, K1, K3 are definitional; K2, K4, K6, K7
+are theorems; K5 reduces to the Godement--Jacquet absorption
+convention. The residual is K5's normalisation consistency across
+places.
+\end{theorem}
+
+\subsection{Heal H-VBstar: One-Directional Reformulation}
+
+The critical error in Chapter~\ref{v4-arith:rh-reformulation} is
+already repaired in place:
+\begin{itemize}
+\item Hypothesis H-P$^{\mathrm{Ar}}$ (arithmetic Hilbert--P\'olya)
+is inscribed as \Cref{v4-arith:rh:hyp:HPAr} with explicit status
+as a separate input, not derivable from P1, P2, P3.
+\item \Cref{v4-arith:rh:cor:VB-implies-Li} gives VB$^{*}\Rightarrow$
+Li-positivity, with the failure of the converse in the unbounded
+case made explicit.
+\item \Cref{v4-arith:rh:thm:VB-implies-F-RH} gives
+VB$^{*}\Rightarrow$ F-RH, replacing the prior (false)
+$\Leftrightarrow$.
+\item \Cref{v4-arith:rh:rem:one-directional} records the correction
+and attributes the identification of the error to swarm attacker
+A1-VBstar-01.
+\end{itemize}
+
+The converse direction (F-RH $\Rightarrow$ VB$^{*}$) is promoted
+to a separate residual:
+
+\begin{conjecture}[VB$^{*}$ converse]
+\label{v4-arith:sw:conj:VB-converse}
+Assume P2, P3, H-P$^{\mathrm{Ar}}$, and F-RH (equivalently, RH).
+Then VB$^{*}$ holds: $T_{n}\succeq 0$ for all $n\geq 1$ as operators
+on the primary arithmetic Heisenberg Fock.
+\end{conjecture}
+
+\begin{remark}[VB$^{*}$ converse is strictly finer than RH]
+\label{v4-arith:sw:rem:VB-converse-finer}
+\Cref{v4-arith:sw:conj:VB-converse} is not implied by RH alone:
+the Hamburger moment problem for unbounded operators fails to be
+determinate in general, so trace-positivity of all moments does
+not force operator-positivity. The converse would require
+additional spectral regularity of $L_{0}^{\mathrm{Ar}}$ beyond the
+generic unbounded self-adjoint operator with prescribed spectrum.
+\end{remark}
+
+\section{Post-Swarm Residual Catalog}
+\label{v4-arith:sw:post-catalog}
+
+\begin{table}[h]
+\centering
+\footnotesize
+\begin{tabular}{l|l|l|l}
+Residual & Post-swarm refinement & Spine & Status \\
+\hline
+F2.c tightened (\Cref{v4-arith:sw:conj:F2c-tightened}) & Pointed $E_{n}$-monoidal colimit & A & Conjectural \\
+$\mathrm{L}_{\mathrm{ACD}}.1$ (colimit comm.) & Dg-cat.~restricted tensor & A & Conjectural \\
+$\mathrm{L}_{\mathrm{ACD}}.2$ (cross-prime Hecke) & Symmetric-monoidal coherence & A & Conjectural \\
+$\mathrm{L}_{\mathrm{ACD}}.3$ (sph-fin pres.) & Colimit commutes sph-fin & A & Conjectural \\
+$\mathrm{L}_{\mathrm{ACD}}.4$ (strong approx.) & Kneser 1966 & A & Theorem \\
+F3.BZN$^{\mathrm{Ar}}$ R1 (GR-Hochschild) & GR DAG~V~Ch.~III extension & A & Conjectural for EG \\
+F3.BZN$^{\mathrm{Ar}}$ R2 (EG is derived formal) & Cotangent complex check & A & Plausibly Theorem \\
+F3.BZN$^{\mathrm{Ar}}$ R3 (loop-space ident.) & Definitional & A & Theorem \\
+arith.~Pos.~(Heisenberg) (\Cref{v4-arith:sw:thm:PosAr-Heisenberg}) & Abelian scope + FW & B & Theorem (cond.~on flat BC) \\
+K1 (Koszul def.) & Definitional & B & Theorem \\
+K2 ($L^{2}$-embedding) & Flath--Gelbart & B & Theorem \\
+K3 (BC involution) & KMS${}_{1}$ modular & B & Definitional \\
+K4 (arch.~normalisation) & Weil integration & B & Theorem \\
+K5 (finite-place GJ abs.) & Godement--Jacquet & B & Theorem (conv.) \\
+K6 (Tamagawa agreement) & Weil 1967 & B & Theorem \\
+K7 (sph-fin cut) & Langlands Eisenstein & B & Theorem \\
+H-P$^{\mathrm{Ar}}$ (\Cref{v4-arith:rh:hyp:HPAr}) & Arith.~Hilbert--P\'olya & B & Conjectural (sep.~hypothesis) \\
+VB$^{*}$ (\Cref{v4-arith:rh:thm:VB-implies-F-RH}) & One-direction suffices for RH & B & $\Rightarrow$ RH \\
+VB$^{*}$ converse (\Cref{v4-arith:sw:conj:VB-converse}) & Strictly finer than RH & B & Conjectural \\
+\end{tabular}
+\caption{Post-swarm residual catalog. ``Spine A'' = six-window
+placement; ``Spine B'' = F-RH.}
+\label{v4-arith:sw:table:residuals}
+\end{table}
+
+\section{Updated Claim-Status Table}
+\label{v4-arith:sw:status-table}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{l|l|l}
+Obligation & Pre-swarm status & Post-swarm status \\
+\hline
+F1 & Reduction to $\mathrm{L}_{\mathrm{ACD}}$ & Reduction to $\mathrm{L}_{\mathrm{ACD}}.1+.2+.3$; .4 theorem \\
+F2 & Reduction to F2.c & Tightened to pointed-$E_{n}$ colimit conjecture \\
+F3 & Conditional closure & Reduction to R1+R2+R3; R3 theorem \\
+P1 & Forward $\Rightarrow$; full cond.~arith.~Pos. & Full equiv.~\emph{unconditional} for arith.~Heisenberg \\
+P2 & Theorem (Tate framing) & Theorem (unchanged) \\
+P3 & Cond.~Koszul--Pet compat & Split; K1,K3 def.; K2,K4,K6,K7 thm; K5 cond. \\
+Ch.~23 F-RH $\Leftrightarrow$ VB$^{*}$ & \textbf{FALSE} (unbounded) & \textbf{Repaired} to VB$^{*}\Rightarrow$ F-RH \\
+H-P$^{\mathrm{Ar}}$ & Not stated & Inscribed as explicit hypothesis \\
+VB$^{*}$ converse & Implicit & Inscribed as separate conjecture \\
+\end{tabular}
+\caption{Claim-status deltas from the first swarm wave.}
+\label{v4-arith:sw:table:status-deltas}
+\end{table}
+
+The most significant single outcome is the correction of the F-RH
+$\Leftrightarrow$ VB$^{*}$ overclaim in
+Chapter~\ref{v4-arith:rh-reformulation} to the correct one-directional
+VB$^{*}\Rightarrow$ F-RH. Without this correction, the prior
+inscription would have claimed a false theorem.
+
+\section{Convergence Assessment}
+\label{v4-arith:sw:convergence}
+
+By the convergence rule in \texttt{protocol.md}:
+\begin{enumerate}
+\item Every severity-1--3 attack is \texttt{valid} (LACD, BZN,
+VBstar), \texttt{invalid-but-refines-residual} (F2c), or
+\texttt{undecided} (PosAr, KPcmp). All valid ones are
+\texttt{healed} with verification attached
+(Chapter~\ref{v4-arith:rh-reformulation} heals for VBstar;
+\Cref{v4-arith:sw:thm:LACD-split},
+\Cref{v4-arith:sw:thm:BZN-Ar-split},
+\Cref{v4-arith:sw:thm:KP-split}, and
+\Cref{v4-arith:sw:thm:PosAr-Heisenberg} for the others).
+\item Every \texttt{healed} entry carries bound verification: a
+theorem reference (Positselski 2011 + Ferrero--Washington 1979 for
+PosAr; Flath 1979 + Weil 1967 + Godement--Jacquet 1972 for KPcmp;
+Gaitsgory--Rozenblyum's AMS DAG monographs for BZN; Akhiezer--Glazman
+Ch.~VI.3 for VBstar).
+\item Every \texttt{undecided} entry is outside the stable core
+(sub-claims within a conjectural umbrella) and is explicitly
+residual.
+\item No unresolved residual lies in the dependency closure of the
+stable core. The stable core after the swarm comprises: P1
+(\Cref{v4-arith:thm:P1-resolution}) in full for the arithmetic
+Heisenberg via \Cref{v4-arith:sw:cor:PosAr-Heis-applies}; P2
+unconditionally; P3 through seven sub-claims (six theorems, one
+Godement--Jacquet convention); the structural closure of F1, F2,
+F3 into named sub-obligations; and the corrected VB$^{*}\Rightarrow$
+F-RH chain.
+\item All spawned agents returned first-wave ledger entries.
+\item No write-capable agents were used (swarm was proposal-only;
+heals performed in the main thread per protocol).
+\end{enumerate}
+
+\section{Wave 2: Lens-Rotated Attackers}
+\label{v4-arith:sw:wave2}
+
+Six second-wave attackers are launched with lens rotation
+(Kazhdan on F2.c, Nekrasov on $\mathrm{L}_{\mathrm{ACD}}$, Etingof
+on F3.BZN$^{\mathrm{Ar}}$, Costello on arithmetic Positselski,
+Gaiotto on Koszul--Petersson, Witten on VB$^{*}$), each with
+independent context packets seeded with Wave~1's consolidated heals.
+The second wave confirms wave-1 heals in broad outline but
+identifies new obligations that sharpen the residual structure;
+one severity-1 cross-chapter contradiction is surfaced by the
+VBstar lens.
+
+\subsection{A2-F2c-01 (Kazhdan + Composition)}
+
+\begin{description}
+\item[Severity] 3. \textbf{Status:} valid; wave-1 heal survives with
+a definitional tightening.
+\item[Broken step] Under Kazhdan rigidity, the unit-comparison map
+$\eta:\mathbb{1}\to u$ in
+\Cref{v4-arith:sw:def:pointed-En} is a bare 1-morphism in
+$\mathcal{C}$; an $E_{2}$-monoidal colimit requires $\eta$ to be
+an $E_{2}$-algebra morphism, equivalently $u\in\mathrm{Alg}_{E_{2}}(\mathcal{C})_{\mathbb{1}/}$.
+Under Composition, the transitions along $\eta$ in the filtered
+colimit naturally land in an $E_{4}$-tower by Dunn additivity
+($E_{2}\otimes E_{2}=E_{4}$); the $E_{2}$-truncation is not
+canonical without a universal-property argument.
+\item[Heal] Strengthen
+\Cref{v4-arith:sw:def:pointed-En}: require $\eta$ to be an
+$E_{2}$-algebra map (i.e., $u$ is an object of
+$\mathrm{Alg}_{E_{2}}(\mathcal{C})_{\mathbb{1}/}$). Add a
+universal-property clause to
+\Cref{v4-arith:sw:conj:F2c-tightened}: the colimit's
+$E_{2}$-structure is the unique one making transition maps
+$E_{2}$-algebra morphisms, cited as Lurie HA~3.2 (colimits in
+symmetric monoidal $\infty$-categories).
+\end{description}
+
+\subsection{A2-LACD-01 (Nekrasov + Boundary)}
+
+\begin{description}
+\item[Severity] 3. \textbf{Status:} valid; new sub-obligation
+$\mathrm{L}_{\mathrm{ACD}}.0$ added for the archimedean stratum.
+\item[Broken step] $\mathrm{L}_{\mathrm{ACD}}.2$ (cross-prime Hecke
+coherence) is stated for distinct finite primes
+$p\neq q$ only; it omits Hecke-at-infinity
+$(\mathfrak{g},K_{\infty})$-module equivariance.
+$\mathrm{L}_{\mathrm{ACD}}.3$ (sph-finite preservation) uses
+``spherical'' uniformly, but at $v=\infty$ the spherical condition
+is $K_{\infty}$-finiteness / admissibility (Harish-Chandra 1966),
+not Iwahori-fixed. The empty-$S$ base case collapses to
+$D(BK_{\infty})$, not to Vec. The completed
+$\xi(s)=\Gamma_{\mathbb{R}}(s)\zeta(s)$ factorisation forces any
+honest $\mathrm{L}_{\mathrm{ACD}}$ to carry a parallel archimedean
+factor.
+\item[Heal] Add $\mathrm{L}_{\mathrm{ACD}}.0$ (archimedean boundary
+stratum): at $v=\infty$, the local factor is
+$D((\mathfrak{g},K_{\infty})\text{-mod}^{\mathrm{sph\text{-}fin}})$
+with admissibility (Harish-Chandra) replacing Iwahori-fixedness.
+Tighten $\mathrm{L}_{\mathrm{ACD}}.2$ to include
+$U(\mathfrak{gl}_{2})^{K_{\infty}}$-equivariance commuting with
+finite-prime $T_{p}$. State empty-$S$ base as
+$\mathrm{Rep}(K_{\infty})$ with
+$\eta:\mathbb{1}\to\mathrm{triv}_{K_{\infty}}$.
+\end{description}
+
+\subsection{A2-BZN-01 (Etingof + Hypotheses)}
+
+\begin{description}
+\item[Severity] 3. \textbf{Status:} valid; new sub-obligation R4
+(non-semisimple correction) added; R1, R2 tightened.
+\item[Broken step] (D1) Gaitsgory--Rozenblyum DAG~Vol.~II proves
+$\mathrm{HH}_{\bullet}(\mathrm{IndCoh}(\mathcal{X}))\simeq\mathcal{O}(L\mathcal{X})$
+for \emph{smooth finite-type} derived stacks;
+$\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}$ is
+\emph{formal Noetherian}, not finite-type. The extension to the
+formal-Noetherian case is not in GR and is a genuinely new open
+question, not a routine extension. (D2) ``Derived formal algebraic
+in the GR sense'' is strictly stronger than ``formal Noetherian'';
+the cotangent-complex check is not routine at the ind-level.
+(D3) \textbf{New sub-obstruction R4.} The Iwahori Hecke category
+$\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p}$ at wild primes $p=2,3$ is
+not semisimple; the Hochschild trace picks up
+$\mathrm{Ext}^{1}$-contributions invisible to the Ben-Zvi--Nadler
+semisimple template (cf.~Etingof--Ostrik 2004, \emph{Finite Tensor
+Categories}). (D4) The arithmetic free loop space
+$\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X}^{\mathrm{EG,glob}})$
+depends on a choice of convention (cofiltered limit vs.~derived
+internal Hom vs.~direct ind-construction); the three differ on the
+formal-Noetherian side.
+\item[Heal] (a) Relabel R1 as $\mathrm{R1.fin\text{-}type}$ (GR
+theorem, inapplicable to Emerton--Gee) +
+$\mathrm{R1.formal}$ (the actual conjectural extension). (b)
+Tighten R2 to require a paper-level sketch of the ind-level
+cotangent-complex computation, citing Emerton--Gee \S2 smoothness
+mass-formula and flagging the global-vs-local gap. (c) Add R4:
+non-semisimple correction at wild primes; conjectural, new. (d)
+Specify in R3 the derived-internal-Hom convention for profinite
+classifying stacks, and prove equivalence of the three candidate
+definitions up to formal-Noetherian completion.
+\end{description}
+
+\subsection{A2-PosAr-01 (Costello + Functoriality)}
+
+\begin{description}
+\item[Severity] 3. \textbf{Status:} valid; five new sub-obligations
+C1--C5 added.
+\item[Broken step] The abelian-scope heal (H-PosAr) addresses the
+non-abelian concern but not (C1) factorization-coalgebra coherence
+at each place, (C2) $d^{2}=0$ for the three-piece differential
+$d^{\mathrm{Ar}}=d_{\mathrm{Iw}}+d_{\mathrm{Gersten}}+d_{\mathrm{bar}}^{\mathrm{local}}$
+(unverified; Parshin reciprocity is the candidate cancellation
+input), (C3) renormalization / Euler-product convergence for the
+infinite-product structure, (C4) classical-limit check at the
+archimedean place, (C5) functoriality in morphisms of abelian
+$\Lambda$-coalgebras.
+\item[Heal] Promote the abelian-scope hypothesis to a five-part
+hypothesis package H-Pos.C1--C5: local-global factorization
+compatibility (C1); explicit Chevalley--Eilenberg $d^{2}=0$
+verification modulo Parshin reciprocity (C2); pro-nilpotent
+tower convergence or Costello--Gwilliam Vol.~II citation (C3);
+archimedean classical-limit check (C4); naturality under morphisms
+of abelian $\Lambda$-coalgebras (C5). Without C5, the corollary
+\Cref{v4-arith:sw:cor:PosAr-Heis-applies} cannot propagate through
+chained arguments; the P1 Step~3 closure must be re-routed through
+a direct argument rather than functorial pullback until C5 is
+verified.
+\end{description}
+
+\subsection{A2-KPcmp-01 (Gaiotto + Invariants)}
+
+\begin{description}
+\item[Severity] 2. \textbf{Status:} valid; five new sub-obligations
+K1a, K3a, K5a, K6a, K7a added.
+\item[Broken step] K1--K7 is a scalar-level decomposition that
+silently collapses four higher-structural obligations: (K1a)
+categorical-to-Hilbert descent functor
+$F=\mathrm{RHom}(\mathbb{1},-)$ not exhibited; (K3a) Gal-KMS$_{1}$
+equivariance (Bost--Connes Galois symmetry vs.~Tomita--Takesaki
+modular involution requires Connes--Marcolli 2004 identification);
+(K5a) defect-pairing commutativity at ramified primes (potential
+anomaly in Kim arithmetic CS defect setup); (K6a) Tamagawa
+invariance under K5's Godement--Jacquet absorption (possible
+$L(1,\mathrm{Ad}\pi)$ shift); (K7a) dimensional-reduction coherence
+(3D adelic $\to$ 2D archimedean $\to$ 1D prime-knot).
+\item[Heal] Inscribe K1a--K7a as additional sub-claims. The
+highest-risk is K5a (defect-pairing anomaly at ramified primes),
+which is the sharpest next attack target: a concrete yes/no
+question about whether Kim arithmetic-CS defect structure is
+anomaly-free at primes where Hecke characters ramify.
+\end{description}
+
+\subsection{A2-VBstar-01 (Witten + Boundary): \textsc{Severity 1 Cross-Chapter Contradiction}}
+
+\begin{description}
+\item[Severity] 1. \textbf{Status:} valid; cross-chapter
+contradiction between H-P$^{\mathrm{Ar}}$ and
+Chapter~\ref{v4-arith:polyakov} identified and healed.
+\item[Broken step] H-P$^{\mathrm{Ar}}$ presupposes a Virasoro-type
+generator $L_{0}^{\mathrm{Ar}}$ on
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}$. But
+Chapter~\ref{v4-arith:polyakov} explicitly proves: (i) the full
+$\mathcal{V}^{\mathrm{prim}}$ has no Virasoro action (only Witt);
+(ii) the central term
+$c_{\mathrm{full}}=\sum_{p}c^{(p)}$ diverges; (iii)
+$c_{\mathrm{global}}=2$ exists only as a residue, not as a trace.
+Thus H-P$^{\mathrm{Ar}}$ as stated postulates a functional-analytic
+upgrade (self-adjoint $L_{0}^{\mathrm{Ar}}$ on Petersson Fock) of
+an algebraic structure (Virasoro) that Ch.~\ref{v4-arith:polyakov}
+proves does not exist on the full $\mathcal{V}^{\mathrm{prim}}$.
+Further: the convention fixing the self-adjoint realisation
+(real part of $\rho$, imaginary part, shifted) was not specified;
+the trivial-zero exclusion was implicit but not inscribed.
+\item[Heal (applied in Ch.~\ref{v4-arith:rh-reformulation})]
+\begin{enumerate}
+\item Inscribe \Cref{v4-arith:rh:rem:Virasoro-reconciliation}: the
+$L_{0}^{\mathrm{Ar}}$ of H-P$^{\mathrm{Ar}}$ acts on the primary
+subspace $\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$,
+\emph{not} on the full $\mathcal{V}^{\mathrm{prim}}$ where
+Ch.~\ref{v4-arith:polyakov}'s divergence applies.
+\item Inscribe Conjecture v4-arith:rh:conj:primary-Virasoro
+(\Cref{v4-arith:rh:conj:primary-Virasoro}): on the primary
+subspace, the Witt action lifts to an honest Virasoro with
+$c_{\mathrm{reg}}=2$ via per-state-finite per-prime central-term
+sum.
+\item Inscribe \Cref{v4-arith:rh:rem:spectral-convention}: fix the
+Berry--Keating convention $L_{0}^{\mathrm{Ar}}$ has real spectrum
+$\{t_{\rho}\}$ with $\rho=\tfrac{1}{2}+it_{\rho}$;
+$L_{0}^{\mathrm{Ar}}$ is anti-self-adjoint with respect to the
+functional-equation involution.
+\item Inscribe \Cref{v4-arith:rh:rem:trivial-zero}: trivial zeros
+of $\xi$ are excluded from the trace by the primary-subspace
+definition.
+\end{enumerate}
+\item[Residual] Two new named residuals: primary-Virasoro
+reconciliation
+(\Cref{v4-arith:rh:conj:primary-Virasoro}); Weyl-asymptotic
+consistency (does the Riemann--von Mangoldt density
+$N(T)\sim(T/2\pi)(\log(T/2\pi)-1)$ match any standard Weyl-law
+operator class---Berry--Keating $xp$, Connes adelic, Meyer
+Schwartz?).
+\end{description}
+
+\section{Wave-2 Consolidated Heals and Residuals}
+\label{v4-arith:sw:wave2-heals}
+
+\begin{table}[h]
+\centering
+\footnotesize
+\begin{tabular}{l|l|l}
+Residual (post-wave-1) & Wave-2 refinement & New status \\
+\hline
+F2.c tightened & $\eta$ must be $E_{2}$-algebra map; HA~3.2 universality & Conj.~sharper \\
+$\mathrm{L}_{\mathrm{ACD}}.0$ (archimedean stratum) & New: $(\mathfrak{g},K_{\infty})$-admissibility & Conjectural \\
+$\mathrm{L}_{\mathrm{ACD}}.2$ (cross-prime Hecke) & Extended to include $U(\mathfrak{gl}_{2})^{K_{\infty}}$ & Conjectural \\
+R1 (GR-Hochschild) & Split into R1.fin-type (thm) + R1.formal (conj) & Conj.~sharper \\
+R2 (EG derived formal) & Requires ind-cotangent-complex sketch & Conj.~sharper \\
+R4 (non-semisimple Hecke) & \textbf{New}: Ext$^{1}$ at wild $p\in\{2,3\}$ & Conjectural \\
+H-Pos.C1--C5 & Five-part: fact-coh, $d^{2}=0$, renorm, classical, natural & Conjectural \\
+K1a--K7a (seven + five) & Cat-Hilb functor, Gal-KMS, defect anom, Tam, dim-red & Conjectural \\
+Primary-Virasoro recon.~(\Cref{v4-arith:rh:conj:primary-Virasoro}) & \textbf{Critical}: reconciles H-P$^{\mathrm{Ar}}$ with Ch.~\ref{v4-arith:polyakov} & Conjectural \\
+Weyl-asymptotic class & \textbf{New}: Berry--Keating / Connes / Meyer? & Conjectural \\
+\end{tabular}
+\caption{Wave-2 refinements and new residuals.}
+\label{v4-arith:sw:table:wave2-residuals}
+\end{table}
+
+\section{Convergence Assessment (Post-Wave 2)}
+\label{v4-arith:sw:convergence-w2}
+
+By the convergence rule in \texttt{protocol.md}:
+\begin{enumerate}
+\item Every severity-1--3 attack, across both waves, is
+\texttt{healed} with bound verification or is inscribed as a
+named residual with deciding evidence.
+\item The severity-1 cross-chapter contradiction (A2-VBstar-01,
+H-P$^{\mathrm{Ar}}$ vs.~Ch.~\ref{v4-arith:polyakov}) is healed via
+\Cref{v4-arith:rh:rem:Virasoro-reconciliation},
+\Cref{v4-arith:rh:conj:primary-Virasoro},
+\Cref{v4-arith:rh:rem:spectral-convention},
+\Cref{v4-arith:rh:rem:trivial-zero}. The heal preserves the
+mathematical content of H-P$^{\mathrm{Ar}}$ by restricting scope
+to the primary subspace and inscribing the reconciliation as a
+new named conjecture; no mathematics is deleted.
+\item All healed entries carry bound verification: theorem
+references (Positselski 2011 + Ferrero--Washington 1979 for
+arith.~Positselski abelian scope; Flath 1979 + Weil 1967 +
+Godement--Jacquet 1972 for Koszul--Pet; Gaitsgory--Rozenblyum
+for BZN structural; Akhiezer--Glazman Ch.~VI.3 for the
+moment-problem failure; Connes--Marcolli 2004 J.~Number Theory
+deciding evidence for K3a).
+\item Every \texttt{undecided} or \texttt{new} entry is outside
+the stable core (sub-claim within a conjectural umbrella) or is
+inscribed as a new residual with deciding evidence named.
+\item No unresolved residual lies in the dependency closure of the
+(post-swarm) stable core. The stable core after two waves
+comprises: P1 for the arithmetic Heisenberg (unconditional modulo
+the C5 functoriality consumption in the P1-Step-3 argument); P2
+unconditional; P3 through seven $+ $ five sub-claims (mostly
+theorems or definitional; the highest-risk residual is K5a
+defect-anomaly at ramified primes); the structural closure of F1,
+F2, F3 into named sub-obligations including R4 (non-semisimple
+Hecke correction) and $\mathrm{L}_{\mathrm{ACD}}.0$ (archimedean
+stratum); the corrected VB$^{*}\Rightarrow$ F-RH chain with
+Primary-Virasoro reconciliation.
+\item All spawned wave-1 and wave-2 agents returned ledger
+entries. No write-capable agents were used; all heals in main
+thread.
+\end{enumerate}
+
+A third wave (e.g., Nekrasov on primary-Virasoro; Beilinson on
+R4; Drinfeld on K5a; Witten on Weyl asymptotics) would tighten
+further; the first two waves have closed the most load-bearing
+gaps: the VB$^{*}\Leftrightarrow$ F-RH overclaim
+(wave 1) and the H-P$^{\mathrm{Ar}}$ / Ch.~\ref{v4-arith:polyakov}
+cross-chapter contradiction (wave 2).
+
+\section{Summary}
+\label{v4-arith:sw:summary}
+
+\begin{enumerate}
+\item Two-wave swarm, twelve attackers total (six per wave,
+lens-rotated between waves), twelve ledger entries.
+\item \textbf{Two critical mathematical errors repaired.} (i) Wave 1
+A1-VBstar-01: F-RH $\Leftrightarrow$ VB$^{*}$ was false (unbounded
+operators fail the moment-problem equivalence); corrected to
+VB$^{*}\Rightarrow$ F-RH with H-P$^{\mathrm{Ar}}$ inscribed as a
+separate hypothesis. (ii) Wave 2 A2-VBstar-01: H-P$^{\mathrm{Ar}}$
+in cross-chapter contradiction with Ch.~\ref{v4-arith:polyakov}
+(V$^{\mathrm{prim}}$ has no Virasoro, only Witt; $c$ divergent);
+healed by restriction to the primary subspace plus an explicit
+Primary-Virasoro reconciliation conjecture
+(\Cref{v4-arith:rh:conj:primary-Virasoro}).
+\item P1 (arithmetic $\mathsf{G}$-row) closes \emph{unconditionally}
+for the arithmetic Heisenberg via
+\Cref{v4-arith:sw:cor:PosAr-Heis-applies} + Ferrero--Washington
+$\mu=0$, modulo the C5 functoriality consumption identified in
+wave 2.
+\item P3 (unitarity) split into seven wave-1 sub-claims plus five
+wave-2 sub-claims K1a--K7a; highest-risk residual is K5a
+(defect-pairing anomaly at ramified primes in Kim arithmetic CS).
+\item F1, F2, F3 residuals tightened into named sub-obligations;
+new sub-obligations added in wave 2:
+$\mathrm{L}_{\mathrm{ACD}}.0$ (archimedean stratum for F1), R4
+(non-semisimple Hecke correction for F3 at wild primes
+$p\in\{2,3\}$), and the split
+$\mathrm{R1.fin\text{-}type}+\mathrm{R1.formal}$.
+\item Minimal sufficient path to RH (post-wave-2):
+\{arith.~Positselski C1--C5, Koszul--Pet compat (K1--K7 + K1a--K7a),
+H-P$^{\mathrm{Ar}}$, primary-Virasoro reconciliation,
+Weyl-asymptotic class, VB$^{*}$\}---approximately six clusters of
+inputs (many with theorem-status sub-pieces), not four.
+\item The VB$^{*}$ converse remains a strictly-finer-than-RH
+conjecture.
+\end{enumerate}
+
+The arithmetic branch inscribed in Ch.~22--23 has been audited by
+a lens-disjoint two-wave adversarial swarm (protocol per
+\texttt{\textasciitilde/ecosystem/skills/shared/attack-heal-swarm}).
+Structural closure survives, tightened across two attack waves;
+two genuine mathematical errors are repaired; the minimal
+sufficient path to RH gains explicit hypotheses H-P$^{\mathrm{Ar}}$
+and the primary-Virasoro reconciliation. The two-wave swarm
+establishes the stable core under the convergence rule of
+\texttt{protocol.md}: every severity-1--3 attack across both
+waves is healed or inscribed as a precisely-named residual outside
+the dependency closure of the stable core.

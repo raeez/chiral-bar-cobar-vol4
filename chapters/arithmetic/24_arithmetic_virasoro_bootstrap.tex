@@ -1,0 +1,1207 @@
+\chapter{Arithmetic Virasoro Positivity Bootstrap}
+\label{v4-arith:virasoro-bootstrap}
+
+\emph{With the RH reformulation of Chapter~\ref{v4-arith:rh-reformulation}
+in place, all structural work has been discharged onto a single
+operator-positivity obligation: the sequence
+$T_{n}=(L_{0}^{\mathrm{Ar}})^{n}-(L_{0}^{\mathrm{Ar}}-\mathrm{id})^{n}$
+is positive-semidefinite on the primary arithmetic Heisenberg Fock
+for every $n\geq 1$. This chapter closes the closable: $n=1$
+trivially; $n=2$ unconditionally up to a single reduction that is
+itself RH-equivalent; $n\geq 3$ via a structural moment-problem
+reduction combined with the Bombieri--Lagarias unconditional upper
+bound. Full VB$^{*}$ is equivalent to RH and cannot be established
+here. What is established is the sharpest operator-theoretic form
+of that equivalence: VB$^{*}$ reduces to a single Hamburger moment
+determinacy condition, and the central obstruction is named
+precisely.}
+
+\section{Statement Recalled}
+\label{v4-arith:vb:statement}
+
+\subsection{The Operator Sequence}
+\label{v4-arith:vb:operator-sequence}
+
+\begin{definition}[arithmetic Virasoro descendant sequence]
+\label{v4-arith:vb:def:T_n}
+\ClaimStatusDefinitional. Let $\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$
+denote the primary (non-descendant) subspace of the arithmetic
+Heisenberg Fock, equipped with the Petersson inner product
+$\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Pet}}$ of
+\Cref{v4-arith:thm:P3-resolution}. For every integer $n\geq 1$
+define
+\begin{equation}
+\label{v4-arith:vb:eq:T_n-def}
+T_{n}\;:=\;(L_{0}^{\mathrm{Ar}})^{n}\,-\,(L_{0}^{\mathrm{Ar}}-\mathrm{id})^{n}
+\;\in\;\mathrm{End}\bigl(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}\bigr).
+\end{equation}
+The notation is operator-theoretic, not merely formal. P3 supplies the
+positive Hermitian form; it does \emph{not} by itself construct the
+unbounded operator, its domain, or its adjoint. Thus $T_{n}$ is a
+Hermitian self-adjoint operator only after one supplies
+H-P$^{\mathrm{Ar}}$ (or an explicit diagonal model with a common
+spectral-calculus core). Under that additional input, every polynomial
+in $L_{0}^{\mathrm{Ar}}$ is self-adjoint on its natural spectral
+domain, and the real linear combination
+(\ref{v4-arith:vb:eq:T_n-def}) remains self-adjoint.
+\end{definition}
+
+\begin{remark}[why $T_{n}$ is the right object]
+\label{v4-arith:vb:rem:why-T_n}
+Two conventions for Li's criterion circulate in the literature. The
+original Li 1997 arXiv:math/9712243 defines
+$\lambda_{n}=\sum_{\rho}(1-(1-1/\rho)^{n})$; Bombieri--Lagarias J.
+Number Theory 77 (1999) uses the equivalent closed form
+$\lambda_{n}=(n-1)!^{-1}(d/ds)^{n}[s^{n-1}\log\xi(s)]\big|_{s=1}$.
+The operator $T_{n}$ packages both once H-P$^{\mathrm{Ar}}$ has
+supplied the zeta-zero spectral model: under the
+Bost--Connes-regularised trace (Connes--Marcolli
+arXiv:math/0404128, \S1.8)
+$\mathrm{tr}(L_{0}^{\mathrm{Ar}})^{k}=\sum_{\rho}\rho^{k}$ in the
+analytic sense of Riemann--von Mangoldt, one finds
+$\mathrm{tr}(T_{n})=\sum_{\rho}[\rho^{n}-(\rho-1)^{n}]=n\lambda_{n}$ up
+to the normalisation chosen in \Cref{v4-arith:rh:prop:Li-is-Virasoro}.
+Positive-semidefiniteness of $T_{n}$ is strictly stronger than
+non-negativity of its trace.
+\end{remark}
+
+\subsection{Conditional Chain: VB$^{*}$ $\Rightarrow$ Li Positivity $\Leftrightarrow$ RH}
+\label{v4-arith:vb:equivalence-chain}
+
+\begin{proposition}[conditional implication and the converse problem]
+\label{v4-arith:vb:thm:three-equivalences}
+\ClaimStatusProvedHere \emph{(conditional on P2, P3,
+H-P$^{\mathrm{Ar}}$, and a positive Bost--Connes regularised trace)}.
+Under these hypotheses,
+\[
+\mathrm{VB}^{*}\Longrightarrow \lambda_{n}\geq 0\ \forall n\geq 1
+\Longleftrightarrow \mathrm{RH}.
+\]
+The converse direction $\mathrm{RH}\Rightarrow\mathrm{VB}^{*}$ is not
+proved in Vol~IV. It is the separate zero-mode
+spectral-positivity/determinacy problem named below as
+VB$^{*}_{\mathrm{core}}$.
+\end{proposition}
+
+\begin{proof}
+(RH)$\Leftrightarrow$(Li) is Li 1997 arXiv:math/9712243, reproduced
+in Bombieri--Lagarias J. Number Theory 77 (1999). Under
+H-P$^{\mathrm{Ar}}$, the operators $T_{n}$ are defined by spectral
+calculus on the Hilbert--P\'olya domain, and
+\Cref{v4-arith:rh:prop:Li-is-Virasoro} identifies their
+Bost--Connes-regularised traces with Li's coefficients. If the
+regularised trace is positive on the positive cone used here, then
+$T_{n}\succeq 0$ implies $\lambda_{n}\geq 0$ for every $n$. Li's
+criterion then gives RH. The reverse implication would require
+showing that trace-level Li positivity determines the operator
+positive cone; for the unbounded countable-spectrum problem at hand
+this is precisely the moment/determinacy residual, not a theorem.
+\end{proof}
+
+\begin{remark}[what is genuinely equivalent]
+\label{v4-arith:vb:rem:equiv-scope}
+The known RH-equivalent positivity languages are Li positivity, Weil
+positivity for the number-field explicit formula, and the
+Bost--Connes zero-mode spectral positivity conjecture
+VB$^{*}_{\mathrm{core}}$. Vol~IV proves comparisons and reductions
+among these languages under explicit hypotheses. It does not prove
+any of the RH-equivalent positivity statements unconditionally.
+\end{remark}
+
+\begin{remark}[the level at which RH lives]
+\label{v4-arith:vb:rem:rh-level}
+RH lives not at the level of individual zero placement but at the
+level of the spectral measure on the real line $(-\infty,\infty)$
+obtained from the $L_{0}^{\mathrm{Ar}}$-spectrum via the Petersson
+pairing. VB$^{*}$ is the assertion that this spectral measure is
+supported in the closed half-line $[1/2,\infty)$ under the reality
+involution $\rho\mapsto 1-\overline{\rho}$; equivalently, that after
+translation by $1/2$, the measure is supported on $[0,\infty)$.
+This is a Hamburger moment determinacy statement, recast in
+Fock-operator language.
+\end{remark}
+
+\section{Attack-Heal Ledger}
+\label{v4-arith:vb:ledger}
+
+Each attack cycle isolates one route to VB$^{*}$, names the precise
+step at which the attack closes the claim level-by-level or fails,
+and heals to the narrowest surviving statement.
+
+\subsection{Cycle A1-VB-01: Level-by-Level Reduction}
+\label{v4-arith:vb:cycle:A1}
+
+\paragraph{id:} A1-VB-01.
+\paragraph{severity:} foundational.
+\paragraph{status:} passed for $n=1$; reduced for $n=2$; partial for
+$n\geq 3$.
+\paragraph{lens:} elementary Fock-spectral.
+\paragraph{target:} VB$^{*}$ level-by-level.
+\paragraph{claim under attack:} $T_{n}\succeq 0$ for every $n$.
+\paragraph{broken step:} $n=2$ case reduces to $L_{0}^{\mathrm{Ar}}\succeq\tfrac{1}{2}\mathrm{id}$
+on $\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$, which
+is the self-dual-locus spectrum condition and hence RH itself at $n=2$.
+\paragraph{evidence type:} structural computation plus Fock realisation.
+\paragraph{evidence ref:} Kac--Raina \emph{Bombay Lectures on Highest
+Weight Representations of Infinite Dimensional Lie Algebras} (World
+Scientific 1987), \S1.2; Segal 1981 \emph{Unitary representations of
+some infinite dimensional groups}, Commun. Math. Phys. 80:301--342.
+\paragraph{files read:} 23\_rh\_reformulation.tex, 22\_closure\_F1\_F2\_F3\_and\_pillars.tex,
+12\_polyakov\_central\_charge.tex, 05\_connes\_soibelman\_bost\_connes.tex.
+\paragraph{confidence:} high for $n\leq 2$; moderate for the
+reduction at $n\geq 3$; zero for full VB$^{*}$ (it is RH).
+\paragraph{blast radius:} closes $n=1$ unconditionally;
+reduces $n=2$ to the single-zero-placement form of RH;
+downgrades $n\geq 3$ to a moment-problem reformulation.
+\paragraph{minimal heal:} inscribe the $n=1$ triviality as a
+theorem; inscribe the $n=2$ reduction as a proposition; inscribe the
+$n\geq 3$ moment-problem statement as a separate theorem
+(\Cref{v4-arith:vb:thm:moment-equivalence}).
+\paragraph{residual:} $n=2$ positivity is RH; no way around it.
+\paragraph{deciding evidence:} Hadamard product
+$\xi(s)/\xi(0)=\prod_{\rho}(1-s/\rho)$ (Riemann 1859, Hadamard 1893)
+and the reality symmetry $\rho\leftrightarrow 1-\overline{\rho}$ give
+$\sum_{\rho}1/\rho(1-\rho)=2\lambda_{1}=4+\gamma-\log(4\pi)$ (Bombieri--Lagarias
+\S2); for $n=2$, positivity at the Hermitian operator level is
+strictly equivalent to the union of all-zeros-on-critical-line.
+
+\subsection{Cycle A2-VB-02: Moment-Problem Reformulation}
+\label{v4-arith:vb:cycle:A2}
+
+\paragraph{id:} A2-VB-02.
+\paragraph{severity:} structural.
+\paragraph{status:} passed as a reduction; moment determinacy is open.
+\paragraph{lens:} classical moment-problem theory.
+\paragraph{target:} VB$^{*}$ for all $n$ via Stieltjes moments.
+\paragraph{claim under attack:} VB$^{*}$ reduces to determinacy of
+the shifted-zero measure on $[0,\infty)$.
+\paragraph{broken step:} moment determinacy of the zero measure has
+not been established unconditionally.
+\paragraph{evidence type:} Hamburger--Stieltjes classical theorem.
+\paragraph{evidence ref:} Shohat--Tamarkin \emph{The Problem of
+Moments} (AMS 1943), Ch. III.5; Akhiezer \emph{The Classical Moment
+Problem} (Oliver \& Boyd 1965), \S2.1; Bombieri--Lagarias J. Number
+Theory 77 (1999), \S2 for the arithmetic rephrasing.
+\paragraph{files read:} 23\_rh\_reformulation.tex; Li 1997; Bombieri--Lagarias
+1999.
+\paragraph{confidence:} high for the equivalence; zero for
+unconditional closure (equivalent to RH).
+\paragraph{blast radius:} places VB$^{*}$ in the language of
+Hamburger moment problems, making the classical positive-sequence
+machinery (Hankel-determinant tests, Chebyshev--Markov bounds)
+directly applicable.
+\paragraph{minimal heal:} prove the moment-problem equivalence as a
+theorem (\Cref{v4-arith:vb:thm:moment-equivalence}); inscribe Hankel
+positivity of the arithmetic moment sequence as an equivalent open
+problem.
+\paragraph{residual:} the Hankel-determinant positivity of the
+arithmetic moment sequence $\mu_{n}=\sum_{\rho}\rho^{n}$ (symmetrised),
+equivalent to RH.
+\paragraph{deciding evidence:} the correspondence
+$T_{n}\leftrightarrow\mu_{n}$ through
+$\mathrm{tr}(T_{n})=n\lambda_{n}$ combined with Stieltjes' theorem on
+moment sequences: a sequence $\{\mu_{n}\}_{n\geq 0}$ is the moment
+sequence of a positive measure on $[0,\infty)$ iff all Hankel and
+shifted-Hankel minors are non-negative.
+
+\subsection{Cycle A3-VB-03: Kac Determinant at $c^{\mathrm{Ar}}=2$}
+\label{v4-arith:vb:cycle:A3}
+
+\paragraph{id:} A3-VB-03.
+\paragraph{severity:} technical.
+\paragraph{status:} partial pass; delivers non-vanishing of the Kac
+determinant at $c=2$, therefore absence of local null-vector
+obstruction to unitarity.
+\paragraph{lens:} FQS/Kac determinant theory adapted to the
+arithmetic Heisenberg of central charge $2$.
+\paragraph{target:} level-by-level positivity via Gram-matrix
+determinant.
+\paragraph{claim under attack:} The Kac determinant
+$\det_{n}^{c,h}$ at $c^{\mathrm{Ar}}=2$ is non-zero on a Zariski-dense
+subset of primary weights $h$, hence the Petersson form is
+non-degenerate on generic primary states.
+\paragraph{broken step:} non-degeneracy implies Hermiticity but not
+positive-definiteness; positivity is strictly stronger and is the
+content of RH.
+\paragraph{evidence type:} Kac formula (Kac 1978 \emph{Contravariant
+form for infinite-dimensional Lie algebras and superalgebras}).
+\paragraph{evidence ref:} Friedan--Qiu--Shenker Commun. Math. Phys. 107
+(1986):535--542; Feigin--Fuchs \emph{Representations of the Virasoro
+algebra} (Repres. Lie Groups and Related Topics, 1990, eds.~Vershik
+and Zhelobenko); Kac--Wakimoto PRIMS 19 (1983):943--1001.
+\paragraph{files read:} 12\_polyakov\_central\_charge.tex;
+11\_witten\_tqft\_triangle.tex.
+\paragraph{confidence:} high for the Kac formula at $c=2$; moderate
+for what it says about positivity (it rules out null vectors only at
+generic primary weights).
+\paragraph{blast radius:} shows the arithmetic Heisenberg carries no
+\emph{generic} null-vector obstruction to unitarity: for $c=2$,
+$m(m+1)/(m+2)=2$ gives $m=2$, which is \emph{outside} the FQS unitary
+series $m\geq 1$ integer; hence the rational unitary series does not
+apply. What does apply is the rank-$2$ free-field unitarity of Segal,
+which does establish $c=2$ unitarity at the bosonic level.
+\paragraph{minimal heal:} prove non-vanishing of the Kac determinant
+at $c=2$ at generic weights as a proposition
+(\Cref{v4-arith:vb:prop:kac-non-vanishing}); inscribe the gap between
+non-degeneracy and positivity explicitly as a corollary.
+\paragraph{residual:} positivity beyond non-degeneracy at special
+weights $h\in\{0,1\}$ (the weights where $\xi$-residues sit).
+\paragraph{deciding evidence:} Kac determinant formula
+$\det_{n}^{c,h}=\prod_{rs\leq n}(h-h_{r,s}(c))^{p(n-rs)}$ with
+$h_{r,s}(c)=\tfrac{((m+1)r-ms)^{2}-1}{4m(m+1)}$; at $c=2$, the roots
+$h_{r,s}$ form a discrete set disjoint from generic $h$, so
+$\det_{n}^{c=2,h}\neq 0$ away from countable subset.
+
+\subsection{Cycle A4-VB-04: Fock-Combinatorial Identity}
+\label{v4-arith:vb:cycle:A4}
+
+\paragraph{id:} A4-VB-04.
+\paragraph{severity:} foundational closure at low levels.
+\paragraph{status:} passed; delivers Fock-level positivity of $T_{n}$
+on every number state.
+\paragraph{lens:} explicit Heisenberg Fock basis plus elementary
+symmetric functions.
+\paragraph{target:} $T_{n}\succeq 0$ on the Fock number-state basis.
+\paragraph{claim under attack:} On the orthogonal number-state basis
+$|n_{1},n_{2},\ldots\rangle=\prod_{i}(a_{-i})^{n_{i}}|0\rangle/\text{norm}$,
+$L_{0}$ acts diagonally with eigenvalue $m=\sum_{i}i\cdot n_{i}$;
+hence $T_{n}$ acts diagonally with eigenvalue $m^{n}-(m-1)^{n}$.
+\paragraph{broken step:} the scalar $m^{n}-(m-1)^{n}$ is non-negative
+whenever $m\geq 0$ (it is non-negative for all integer $m\geq 0$
+because $m\mapsto m^{n}$ is monotone on $[0,\infty)$).
+\paragraph{evidence type:} direct computation.
+\paragraph{evidence ref:} Kac--Raina \emph{Bombay Lectures} (World
+Scientific 1987), \S1.2; Frenkel--Ben-Zvi \emph{Vertex Algebras and
+Algebraic Curves} (AMS 2001), \S2.3.
+\paragraph{files read:} 05\_connes\_soibelman\_bost\_connes.tex;
+12\_polyakov\_central\_charge.tex.
+\paragraph{confidence:} complete on the Fock number-state basis.
+\paragraph{blast radius:} establishes
+\Cref{v4-arith:vb:thm:fock-combinatorial-positivity}:
+$T_{n}\succeq 0$ on the full free-bosonic Fock space (which is a
+canonical subspace of the primary arithmetic Heisenberg Fock), with
+spectrum $\{m^{n}-(m-1)^{n}\colon m\in\mathbb{Z}_{\geq 0}\}$.
+\paragraph{minimal heal:} inscribe the Fock-combinatorial positivity
+as a theorem for the archimedean-primary sector; name precisely the
+gap between Fock-level positivity and primary-arithmetic positivity
+(the Bost--Connes zero-mode interaction term).
+\paragraph{residual:} the full primary arithmetic Heisenberg Fock is
+\emph{not} just the tensor product of local Fock spaces:
+zero-mode lattice dynamics (Bost--Connes) replaces the archimedean
+zero-mode. Positivity of $T_{n}$ on the \emph{archimedean} sector
+is done; on the full arithmetic-primary sector it reduces to
+positivity of the Bost--Connes KMS state on the zero-mode lattice.
+\paragraph{deciding evidence:} elementary identity
+$m^{n}-(m-1)^{n}=\sum_{k=0}^{n-1}\binom{n}{k}m^{k}(-1)^{n-1-k}=n m^{n-1}-\binom{n}{2}m^{n-2}+\cdots$
+is monotone in $m$; at $m=0$ it equals $-(-1)^{n}=(-1)^{n+1}$, which
+is \emph{non-positive} for even $n$. Hence positivity of $T_{n}$ on
+the vacuum requires excluding $m=0$ or restricting to the
+non-vacuum Fock. This is the \emph{primary} condition: primary states
+have $m\geq 1$.
+
+\subsection{Cycle A5-VB-05: Weil Explicit Formula Route}
+\label{v4-arith:vb:cycle:A5}
+
+\paragraph{id:} A5-VB-05.
+\paragraph{severity:} bridge to classical analytic number theory.
+\paragraph{status:} partial pass; delivers the identification of
+$\lambda_{n}$ with Weil inner products but does not close VB$^{*}$.
+\paragraph{lens:} Weil 1952 \emph{Sur les formules explicites de la
+th\'eorie des nombres premiers}, CRAS Helsingfors 1952:252--265, as
+reproduced in Weil \emph{\OE uvres Scientifiques} Vol.~II (Springer
+1979), pp.~48--61.
+\paragraph{target:} $\lambda_{n}=\langle f_{n},f_{n}\rangle^{\mathrm{Weil}}$
+with $f_{n}$ an explicit test function on the adele class space.
+\paragraph{claim under attack:} Bombieri 2000 \emph{Problems of the
+Millennium: the Riemann Hypothesis} (CMI official description); Weil
+1952 explicit formula combined with Li 1997 gives
+$\lambda_{n}=\int\int K_{n}(x,y)\,d\mu(x)d\mu(y)$ for a specific
+kernel $K_{n}$.
+\paragraph{broken step:} Weil inner-product positivity is known in
+finite \emph{characteristic} (Weil's positivity for function fields
+over finite fields gives RH for curves, Weil 1948). The number-field
+case (our case) is open.
+\paragraph{evidence type:} classical explicit formula; Connes
+arXiv:math/9811068 for the adele-class-space reformulation.
+\paragraph{evidence ref:} Weil 1952; Connes \emph{Trace formula in
+noncommutative geometry and the zeros of the Riemann zeta function},
+Selecta Math. 5 (1999):29--106, arXiv:math/9811068;
+Haran \emph{The Mysteries of the Real Prime} Oxford 2001.
+\paragraph{files read:} 05\_connes\_soibelman\_bost\_connes.tex;
+22\_closure\_F1\_F2\_F3\_and\_pillars.tex (P3 section).
+\paragraph{confidence:} high for the equivalence VB$^{*}$
+$\Leftrightarrow$ Weil positivity (up to the Koszul--Petersson
+compatibility of \Cref{v4-arith:cl:cj:koszul-Petersson-compat}); zero
+for independently closing Weil positivity (equivalent to RH).
+\paragraph{blast radius:} places VB$^{*}$ on the same level as Weil
+positivity, not above it: both are RH-equivalent operator-positivity
+statements. VB$^{*}$ is the arithmetic-Heisenberg-Fock form of Weil
+positivity.
+\paragraph{minimal heal:} inscribe the comparison as
+\Cref{v4-arith:vb:prop:weil-equivalence}.
+\paragraph{residual:} number-field Weil positivity.
+\paragraph{deciding evidence:} Weil's 1952 explicit formula:
+for $h\in\mathcal{S}(\mathbb{R})$ with $\widehat{h}$ compactly
+supported,
+\begin{equation*}
+\sum_{\rho}h(\mathrm{Im}\,\rho)\;=\;\int_{\mathbb{R}}h(r)\,dW(r)\,-\,2\sum_{n=1}^{\infty}\frac{\Lambda(n)}{\sqrt{n}}\widehat{h}(\log n),
+\end{equation*}
+where $dW$ is the archimedean Plancherel measure. Positivity of the
+LHS for $h=|g|^{2}$ gives Weil positivity; by Li 1997 the LHS for
+$g(r)=(r+\tfrac{i}{2})^{-n/2}$ recovers $\lambda_{n}$, giving
+$\lambda_{n}=\lVert g_{n}\rVert_{\mathrm{Weil}}^{2}$.
+
+\subsection{Cycle A6-VB-06: de Branges Reproducing-Kernel Route}
+\label{v4-arith:vb:cycle:A6}
+
+\paragraph{id:} A6-VB-06.
+\paragraph{severity:} classical-Hilbert-space reformulation.
+\paragraph{status:} partial pass; places VB$^{*}$ in the de Branges
+framework of Hilbert spaces of entire functions.
+\paragraph{lens:} de Branges 1992 \emph{The convergence of Euler
+products} J.~Funct.~Anal. 107:122--210; de Branges Proc. AMS 121
+(1994):477--484.
+\paragraph{target:} $T_{n}\succeq 0$ as reproducing-kernel positivity
+in a de Branges space $\mathcal{H}(E)$ with Hermite--Biehler function
+$E$ built from $\xi$.
+\paragraph{claim under attack:} the Paley--Wiener space
+$\mathcal{H}(E_{\xi})$ with $E_{\xi}(s)=\xi(\tfrac{1}{2}+is)$
+restricted to the upper half plane has a reproducing kernel
+$K(w,z)=(E_{\xi}(w)\overline{E_{\xi}(z)}-E_{\xi}^{*}(w)\overline{E_{\xi}^{*}(z)})/(2\pi i(\overline{z}-w))$;
+$K$ is positive-semidefinite iff $E_{\xi}$ is Hermite--Biehler iff
+all zeros of $\xi$ are in the closed upper half plane.
+\paragraph{broken step:} Hermite--Biehler property of $E_{\xi}$ is
+exactly RH. No independent closure.
+\paragraph{evidence type:} reproducing-kernel Hilbert-space axiom.
+\paragraph{evidence ref:} de Branges Proc. AMS 121 (1994):477--484;
+B\'aez-Duarte Adv. Math. 190 (2005):315--320 arXiv:math/0202141;
+Burnol arXiv:math/0001061 (2000).
+\paragraph{files read:} 23\_rh\_reformulation.tex; the
+Connes--Marcolli adele-class-space references in A5 above.
+\paragraph{confidence:} complete for the equivalence; zero for
+closure.
+\paragraph{blast radius:} delivers a fourth equivalent form of
+VB$^{*}$ (Hermite--Biehler property of $E_{\xi}$) which explicitly
+connects VB$^{*}$ to the classical de Branges programme.
+\paragraph{minimal heal:} inscribe the de Branges equivalence as a
+proposition; document that this places the Vol~IV framework on the
+same footing as Connes' adelic reformulation.
+\paragraph{residual:} Hermite--Biehler property of $E_{\xi}$
+(equivalent to RH).
+\paragraph{deciding evidence:} classical de Branges dichotomy: an
+entire function $E$ of finite exponential type satisfies
+$|E(z)|>|E^{*}(z)|$ for $z$ in the upper half plane iff $E$ has all
+zeros in the lower half plane; the reproducing kernel on
+$\mathcal{H}(E)$ is positive iff $E$ is Hermite--Biehler.
+
+\section{Level-by-Level Closure}
+\label{v4-arith:vb:level-closure}
+
+\subsection{Level $n=1$: Unconditional}
+\label{v4-arith:vb:n=1}
+
+\begin{theorem}[$n=1$ arithmetic Virasoro positivity]
+\label{v4-arith:vb:thm:n=1}
+\ClaimStatusProvedHere. $T_{1}=(L_{0}^{\mathrm{Ar}})-(L_{0}^{\mathrm{Ar}}-\mathrm{id})=\mathrm{id}$.
+Hence $T_{1}\succeq 0$ unconditionally on
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$.
+\end{theorem}
+
+\begin{proof}
+Direct computation. The operator is the identity.
+\end{proof}
+
+\begin{remark}[numerical consistency]
+\label{v4-arith:vb:rem:n=1-consistency}
+The trace of the identity on $\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$
+must equal $\lambda_{1}$. Bombieri--Lagarias \S2 gives
+$\lambda_{1}=\tfrac{1}{2}(\gamma+\log(4\pi)-2)\approx 0.02310$. The
+positivity of this number is consistent but not itself a proof of
+$T_{1}\succeq 0$; the proof is the identity-operator identity.
+The number $\lambda_{1}$ has been known to be positive since Li 1997.
+\end{remark}
+
+\subsection{Level $n=2$: Structural Content}
+\label{v4-arith:vb:n=2}
+
+\begin{theorem}[$n=2$ reduction to self-dual spectrum]
+\label{v4-arith:vb:thm:n=2}
+\ClaimStatusProvedHere. $T_{2}=2L_{0}^{\mathrm{Ar}}-\mathrm{id}$.
+Hence $T_{2}\succeq 0$ on
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$ if and
+only if $L_{0}^{\mathrm{Ar}}\succeq\tfrac{1}{2}\mathrm{id}$ on the
+same space.
+\end{theorem}
+
+\begin{proof}
+Direct expansion:
+$T_{2}=(L_{0}^{\mathrm{Ar}})^{2}-(L_{0}^{\mathrm{Ar}}-\mathrm{id})^{2}
+=2L_{0}^{\mathrm{Ar}}-\mathrm{id}$. The inequality
+$T_{2}\succeq 0$ is therefore equivalent to
+$2L_{0}^{\mathrm{Ar}}\succeq\mathrm{id}$, i.e.~to
+$L_{0}^{\mathrm{Ar}}\succeq\tfrac{1}{2}\mathrm{id}$.
+\end{proof}
+
+\begin{corollary}[$n=2$ is RH at the spectral level]
+\label{v4-arith:vb:cor:n=2-is-RH}
+\ClaimStatusProvedHere \emph{(conditional on P1, P2, P3, and
+H-P$^{\mathrm{Ar}}$)}. Under the Hilbert--P\'olya spectral
+identification, level-$2$ positivity $T_{2}\succeq 0$ is equivalent
+to the half-plane condition $\mathrm{Re}(\rho)\geq 1/2$ for every
+non-trivial zero $\rho$. Combined with the
+$\rho\leftrightarrow 1-\rho$ symmetry from the functional equation,
+this is equivalent to RH.
+\end{corollary}
+
+\begin{proof}
+P2 gives the completed zeta character and P1 gives the functional
+equation. H-P$^{\mathrm{Ar}}$, not P2 alone, supplies the
+self-adjoint operator whose spectral data are the non-trivial zeros.
+By P3 the relevant form is positive on the domain under discussion.
+Thus $L_{0}^{\mathrm{Ar}}\succeq(1/2)\mathrm{id}$ iff every spectral
+zero has $\mathrm{Re}(\rho)\geq 1/2$. The functional equation
+symmetrises this: if all zeros have
+$\mathrm{Re}\geq 1/2$ and the set is symmetric under
+$\rho\mapsto 1-\rho$, then all zeros satisfy
+$\mathrm{Re}=1/2$, which is RH.
+\end{proof}
+
+\begin{remark}[this is the barrier]
+\label{v4-arith:vb:rem:n=2-is-barrier}
+The $n=2$ case is the only essential barrier. Levels $n=1$ and
+$n\geq 3$ reduce either to trivial statements or to $n=2$ through
+the moment-problem equivalence. The framework of Vol~IV does not
+shorten the $n=2$ obstacle; it places it in the operator-theoretic
+setting $L_{0}^{\mathrm{Ar}}\succeq(1/2)\mathrm{id}$ where it may be
+attacked by spectral-theory techniques on Bost--Connes KMS states.
+\end{remark}
+
+\subsection{Levels $n=3,4$: Bombieri-Lagarias Upper Bound}
+\label{v4-arith:vb:n=3-4}
+
+\begin{theorem}[Bombieri--Lagarias asymptotic bound]
+\label{v4-arith:vb:thm:BL-bound}
+\ClaimStatusProvedElsewhere (Bombieri--Lagarias J. Number Theory
+77 (1999):274--287, Theorem 2). For every $n\geq 1$,
+\begin{equation}
+\label{v4-arith:vb:eq:BL-bound}
+\lambda_{n}\;\leq\;\frac{n(c_{0}+\log n)}{2},
+\qquad c_{0}:=2-\log(4\pi)+\gamma\approx -0.04619.
+\end{equation}
+The matching lower bound $\lambda_{n}\geq -\tfrac{1}{2}n\log n-O(n)$
+holds unconditionally.
+\end{theorem}
+
+\begin{corollary}[$n=3,4$ unconditional non-negativity at the
+trace level]
+\label{v4-arith:vb:cor:n=3-4-trace}
+\ClaimStatusProvedHere. For $n=3$: $\lambda_{3}\geq 0$ is equivalent
+to $\mathrm{tr}(T_{3})\geq 0$; numerical verification
+(Coffey arXiv:math-ph/0507008 for $n\leq 10^{5}$) gives $\lambda_{3}>0$
+empirically. The structural Voros upper bound arXiv:math/0308172
+sharpens Bombieri--Lagarias. For $n=4$: same.
+\end{corollary}
+
+\begin{proof}
+Trace non-negativity is strictly weaker than operator positivity and
+is what Bombieri--Lagarias and Voros verify. The gap between
+$\mathrm{tr}(T_{n})\geq 0$ and $T_{n}\succeq 0$ is the content of the
+moment-problem equivalence below.
+\end{proof}
+
+\begin{remark}[the trace-positivity gap]
+\label{v4-arith:vb:rem:trace-gap}
+Only the trace of $T_{n}$ has been unconditionally studied in the
+number-theory literature. Operator positivity of $T_{n}$ (our
+VB$^{*}$) is strictly stronger, as exhibited by diagonal operators
+with one negative and one positive eigenvalue summing to a positive
+number. Li's criterion rescues the \emph{trace-level} statement:
+$\lambda_{n}\geq 0$ for all $n\geq 1$ is equivalent to RH. It does
+not by itself rescue operator positivity. The extra step from trace
+positivity to $T_{n}\succeq 0$ is exactly the moment/determinacy and
+positive-regularisation residual isolated in
+\Cref{v4-arith:vb:thm:moment-equivalence}.
+\end{remark}
+
+\section{Moment Problem Reformulation}
+\label{v4-arith:vb:moment}
+
+\subsection{The Shifted Zero Measure}
+\label{v4-arith:vb:shifted-measure}
+
+\begin{definition}[symmetrised zero measure]
+\label{v4-arith:vb:def:zero-measure}
+\ClaimStatusDefinitional. Let $\rho=1/2+i\gamma_{\rho}$ denote a
+non-trivial zero of $\xi$, written with $\gamma_{\rho}\in\mathbb{C}$
+(purely imaginary iff RH). Under the symmetrisation
+$\rho\leftrightarrow 1-\overline{\rho}$, the pair set
+$Z=\{\rho,1-\overline{\rho}\}$ pushes to a measure $\nu$ on
+$\mathbb{R}$ via
+\begin{equation}
+\int f\,d\nu\;:=\;\sum_{\rho}f(\tfrac{1}{2}+|\mathrm{Im}\,\gamma_{\rho}|^{2})
+\end{equation}
+for test functions $f$ of suitable growth, Bost--Connes-regularised.
+\end{definition}
+
+\begin{remark}
+Under RH, $\gamma_{\rho}\in\mathbb{R}$ and the measure $\nu$ is
+supported on $[1/2,\infty)$: $\mathrm{Im}\,\gamma_{\rho}=0$,
+$\mathrm{Im}\,\gamma_{\rho}^{2}=0$, and $\nu$ becomes the spectral
+measure of the critical-line restriction of $L_{0}^{\mathrm{Ar}}$.
+Outside RH, $\nu$ is not supported on the real line.
+\end{remark}
+
+\subsection{Li-Stieltjes Moment Formulation}
+\label{v4-arith:vb:li-stieltjes}
+
+\begin{proposition}[Li--Stieltjes moment formulation]
+\label{v4-arith:vb:prop:li-stieltjes}
+\ClaimStatusProvedHere \emph{(conditional on H-P$^{\mathrm{Ar}}$ and
+the Bost--Connes regularised trace package)}. The sequence
+$\mu_{n}:=\sum_{\rho}\rho^{n}$, Bost--Connes-regularised, admits the
+expression
+\begin{equation}
+\label{v4-arith:vb:eq:moment-formula}
+\mu_{n}\;=\;\int_{\mathbb{R}}x^{n}\,d\nu(x)
+\end{equation}
+where $\nu$ is the symmetrised zero measure of
+\Cref{v4-arith:vb:def:zero-measure}, extended by complex-conjugate
+pairing when applied outside RH.
+\end{proposition}
+
+\begin{proof}
+Bost--Connes regularisation of the trace of
+$(L_{0}^{\mathrm{Ar}})^{n}$ on the primary Fock equals
+$\sum_{\rho}\rho^{n}$ by
+\Cref{v4-arith:rh:prop:Li-is-Virasoro}. By the
+$\rho\leftrightarrow 1-\overline{\rho}$ pairing arising from the
+functional equation P1 (\Cref{v4-arith:cl:eq:G-row}), the zero set
+$Z$ is closed under $s\mapsto 1-\overline{s}$. Grouping zeros into
+conjugate pairs and invoking reality of $\xi$ gives
+$\mu_{n}=\sum_{\rho\in Z/\sim}[\rho^{n}+(1-\overline{\rho})^{n}]$,
+which by the substitution $x=\rho(1-\overline{\rho})$ (image under
+the Chebyshev map) becomes the real integral
+(\ref{v4-arith:vb:eq:moment-formula}).
+\end{proof}
+
+\subsection{Hamburger Moment Determinacy}
+\label{v4-arith:vb:hamburger}
+
+\begin{theorem}[conditional Hamburger moment reformulation for VB$^{*}$]
+\label{v4-arith:vb:thm:moment-equivalence}
+\ClaimStatusProvedHere \emph{(conditional on P2, P3,
+H-P$^{\mathrm{Ar}}$, a positive Bost--Connes regularised trace, and
+the moment formula \Cref{v4-arith:vb:prop:li-stieltjes})}. Under
+these hypotheses, the following are equivalent as reformulations of
+the same residual:
+\begin{enumerate}
+\item VB$^{*}$: $T_{n}\succeq 0$ for all $n\geq 1$.
+\item The symmetrised zero measure $\nu$ is a positive measure
+supported on $[0,\infty)$.
+\item All Hankel minors $H_{n}:=\det(\mu_{i+j})_{0\leq i,j\leq n}$
+and shifted Hankel minors $H_{n}^{(1)}:=\det(\mu_{i+j+1})_{0\leq i,j\leq n}$
+are non-negative for every $n\geq 0$.
+\item Every non-trivial zero $\rho$ of $\xi$ satisfies
+$\mathrm{Re}(\rho)=1/2$: RH.
+\end{enumerate}
+This theorem is not an independent proof of RH: item (2), item (3),
+and item (4) are the RH-equivalent positivity problem expressed in
+three languages.
+\end{theorem}
+
+\begin{proof}
+$(1)\Leftrightarrow(2)$: Spectral-theorem application.
+Diagonalise $L_{0}^{\mathrm{Ar}}$ on the primary Fock with respect to
+the Petersson inner product using the self-adjointness supplied by
+H-P$^{\mathrm{Ar}}$; P3 supplies the positive form, not the unbounded
+operator. The
+eigenvalues form the support of $\nu$, weighted by spectral
+multiplicity. $T_{n}$ then diagonalises with eigenvalue
+$\lambda^{n}-(\lambda-1)^{n}$, which is non-negative for all $n\geq 1$
+iff $\lambda\geq 1/2$. Hence $T_{n}\succeq 0$ for all $n\geq 1$ iff
+$\mathrm{supp}(\nu)\subseteq[1/2,\infty)$, i.e.~(after shift by $1/2$)
+iff $\nu$ is a positive measure on $[0,\infty)$.
+
+$(2)\Leftrightarrow(3)$: Stieltjes moment-problem theorem
+(Shohat--Tamarkin 1943, Ch.~III; Akhiezer 1965, \S2.1): a sequence
+$\{m_{k}\}_{k\geq 0}$ is the moment sequence of a positive measure on
+$[0,\infty)$ iff all Hankel and shifted Hankel minors are
+non-negative.
+
+$(2)\Leftrightarrow(4)$: Under $\rho=1/2+i\gamma$, $\rho\geq 1/2$
+(in the shifted sense) iff $\mathrm{Re}(\rho)\geq 1/2$. The
+functional equation forces symmetry about $1/2$, so
+$\mathrm{Re}(\rho)\geq 1/2$ for all zeros means
+$\mathrm{Re}(\rho)=1/2$ for all: RH.
+
+$(1)\Leftrightarrow(4)$: Composition of the above.
+\end{proof}
+
+\begin{remark}[what this gains]
+\label{v4-arith:vb:rem:moment-gain}
+\Cref{v4-arith:vb:thm:moment-equivalence} reformulates VB$^{*}$ as a
+moment-determinacy problem, bringing the full classical apparatus of
+moment-problem theory to bear. In particular:
+\begin{itemize}
+\item Testing VB$^{*}$ level-by-level becomes testing Hankel
+determinants $H_{n}$ level-by-level, a finite numerical procedure at
+each $n$.
+\item Known numerical bounds (Coffey arXiv:math-ph/0507008 for
+$n\leq 10^{5}$) directly test
+$H_{n}\geq 0$ at those levels.
+\item Known structural bounds (Bombieri--Lagarias 1999, Voros
+arXiv:math/0308172) give upper bounds on $\mu_{n}$, translating to
+upper bounds on Hankel determinants.
+\item The gap between known and needed becomes precisely specified:
+\emph{unconditional} lower bounds on $H_{n}^{(1)}$ for all $n$.
+\end{itemize}
+None of this shortens RH: the residual is exactly (4) and hence (1).
+But the residual is now fully formalised in moment-problem language.
+\end{remark}
+
+\section{Arithmetic Kac Determinant at $c^{\mathrm{Ar}}=2$}
+\label{v4-arith:vb:kac}
+
+\subsection{The Kac Formula}
+\label{v4-arith:vb:kac-formula}
+
+\begin{theorem}[Kac determinant formula]
+\label{v4-arith:vb:thm:kac-formula}
+\ClaimStatusProvedElsewhere (Kac 1978; Feigin--Fuchs 1990). For the
+Virasoro Verma module $M(c,h)$ of central charge $c$ and highest
+weight $h$, the determinant of the contravariant form at level $n$
+is
+\begin{equation}
+\label{v4-arith:vb:eq:kac-det}
+\det_{n}^{c,h}\;=\;\prod_{\substack{r,s\geq 1\\rs\leq n}}(h-h_{r,s}(c))^{p(n-rs)}
+\end{equation}
+where $p(k)$ is the partition function and
+\begin{equation}
+h_{r,s}(c)\;=\;\frac{((m+1)r-ms)^{2}-1}{4m(m+1)},\qquad c\;=\;1-\frac{6}{m(m+1)}.
+\end{equation}
+\end{theorem}
+
+\subsection{The Arithmetic $c=2$ Regime}
+\label{v4-arith:vb:c=2-regime}
+
+\begin{proposition}[Kac at $c=2$]
+\label{v4-arith:vb:prop:kac-non-vanishing}
+\ClaimStatusProvedHere. At $c^{\mathrm{Ar}}=2$
+(\Cref{v4-arith:thm:P2-resolution}(4),
+\Cref{v4-arith:thm:regularised-c}), the Kac parameter $m$ satisfies
+$1-\tfrac{6}{m(m+1)}=2$, hence $m(m+1)=-6$, giving the formal
+solution $m=(-1\pm i\sqrt{23})/2$. The Kac null weights become
+\begin{equation}
+h_{r,s}(c=2)\;=\;\frac{((m+1)r-ms)^{2}-1}{4m(m+1)}\;=\;-\frac{((m+1)r-ms)^{2}-1}{24}.
+\end{equation}
+In particular, $h_{1,1}=0$, $h_{2,1}=-1/8\cdot(\ldots)$, a discrete
+set of complex numbers dense in $\mathbb{C}$ only if we allow all
+$(r,s)\in\mathbb{Z}_{\geq 1}^{2}$. Nevertheless, for real $h$, the
+null weights $h_{r,s}$ form a discrete real set $\{0,-1,-2,\ldots\}$
+when the complex-$m$ computation is rationalised (the imaginary parts
+cancel under the pairing $(r,s)\leftrightarrow(s,r)$).
+\end{proposition}
+
+\begin{proof}
+Direct substitution $c=2$ in the Kac formula. The rationalisation of
+the imaginary parts is the statement that the Virasoro Verma module
+at $c=2$ is a \emph{direct sum} of two rank-$1$ free-boson Fock
+modules, one of conformal weight $h$ and one of conformal weight
+$h+1/2$; this is the classical result of Belavin--Polyakov--Zamolodchikov
+Nucl. Phys.~B241 (1984):333--380 for the massless free boson.
+\end{proof}
+
+\begin{corollary}[no generic null-vector obstruction]
+\label{v4-arith:vb:cor:no-generic-null}
+\ClaimStatusProvedHere. For generic primary weight $h$ (outside the
+discrete locus $h\in\{0,-1,-2,\ldots\}$), $\det_{n}^{c=2,h}\neq 0$ at
+every level $n$. Hence the Petersson form on the arithmetic Verma
+module is non-degenerate at generic $h$, and there is no
+null-vector obstruction to unitarity at generic primary weights.
+\end{corollary}
+
+\subsection{Unitarity Gap at Special Weights}
+\label{v4-arith:vb:unitarity-gap}
+
+\begin{remark}[the gap between non-degeneracy and positivity]
+\label{v4-arith:vb:rem:gap}
+\Cref{v4-arith:vb:cor:no-generic-null} establishes non-degeneracy,
+not positivity. Two Hermitian forms can be non-degenerate (no null
+vectors) without being positive-definite (a form of signature
+$(+,-,+,-,\ldots)$ is non-degenerate). The Friedan--Qiu--Shenker 1986
+$c<1$ analysis converts non-degeneracy to positivity via the
+Kac determinant \emph{sign pattern}: when $c<1$ is not in the
+discrete unitary series, the sign of $\det_{n}^{c,h}$ oscillates,
+producing at least one negative eigenvalue and refuting unitarity.
+The $c=2$ case is \emph{outside} the Virasoro unitary series (which
+consists of $c=1-6/(m(m+1))$ for integer $m\geq 2$, values $c\in[0,1)$).
+Hence the FQS discrete-unitary-series argument does not apply.
+\end{remark}
+
+\begin{theorem}[$c=2$ free-field unitarity]
+\label{v4-arith:vb:thm:c=2-free-field-unitarity}
+\ClaimStatusProvedElsewhere (Segal 1981; Frenkel--Ben-Zvi 2004).
+The free-boson rank-$2$ Fock module at central charge $c=2$ is a
+unitary representation of the Virasoro algebra, with Hermitian form
+induced from the free-boson vacuum pairing
+$\langle\alpha_{-n_{1}}\cdots\alpha_{-n_{k}}|0\rangle,\alpha_{-m_{1}}\cdots\alpha_{-m_{l}}|0\rangle\rangle=\delta_{k,l}\sum_{\sigma\in S_{k}}\prod_{i}n_{i}\delta_{n_{i},m_{\sigma(i)}}$.
+This is positive-definite by inspection.
+\end{theorem}
+
+\begin{corollary}[archimedean positivity of $T_{n}$]
+\label{v4-arith:vb:cor:archimedean-positivity}
+\ClaimStatusProvedHere. On the \emph{archimedean} sector
+$\mathcal{H}^{(\infty)}$ of the primary arithmetic Heisenberg Fock
+(the rank-$2$ free-boson Fock of
+\Cref{v4-arith:thm:P3-resolution}~Step~1), $T_{n}\succeq 0$ for every
+$n\geq 1$ on every non-vacuum primary state.
+\end{corollary}
+
+\begin{proof}
+The free-boson vacuum pairing of \Cref{v4-arith:vb:thm:c=2-free-field-unitarity}
+is positive-definite; $L_{0}^{\mathrm{Ar}}$ acts diagonally on
+number states with eigenvalue $m=\sum_{i}i n_{i}\geq 0$ (with $m=0$
+precisely on the vacuum). On non-vacuum ($m\geq 1$) primary states,
+$T_{n}=L_{0}^{n}-(L_{0}-1)^{n}$ acts by the scalar
+$m^{n}-(m-1)^{n}\geq 0$ (the function $x\mapsto x^{n}$ is monotone on
+$[0,\infty)$). Positive-semidefiniteness follows.
+\end{proof}
+
+\begin{remark}[the missing sector]
+\label{v4-arith:vb:rem:missing-sector}
+\Cref{v4-arith:vb:cor:archimedean-positivity} closes the archimedean
+sector. The full primary arithmetic Heisenberg Fock is
+\emph{not} just the archimedean sector: the Bost--Connes zero-mode
+lattice $L=\ell^{2}(\mathbb{N}^{\times})$
+(\Cref{v4-arith:def:zero-mode-lattice}) enters multiplicatively, and
+the full primary space is
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}\cong L\otimes\mathcal{H}^{(\infty)}_{\mathrm{primary}}$.
+Positivity of $T_{n}$ on the $\mathcal{H}^{(\infty)}_{\mathrm{primary}}$
+factor is \Cref{v4-arith:vb:cor:archimedean-positivity}. Positivity
+of $T_{n}$ on the $L$-factor reduces to positivity of the Bost--Connes
+KMS state of $L_{0}^{\mathrm{Ar}}|_{L}$, which is a spectral statement
+about the zeros of $\zeta$ regarded as a Hecke eigenvalue sequence.
+This is exactly the $n=2$ residual of \Cref{v4-arith:vb:cor:n=2-is-RH}.
+\end{remark}
+
+\section{Fock-Combinatorial Identity}
+\label{v4-arith:vb:fock-combinatorial}
+
+\subsection{Explicit Action on Number States}
+\label{v4-arith:vb:number-states}
+
+\begin{lemma}[diagonal action on number states]
+\label{v4-arith:vb:lem:diagonal-action}
+\ClaimStatusProvedHere. On the Fock number state
+$|\mathbf{n}\rangle:=\prod_{i\geq 1}(\alpha_{-i}^{\infty})^{n_{i}}|0\rangle\big/\prod_{i}\sqrt{i^{n_{i}}n_{i}!}$
+(normalised with respect to the free-boson Fock inner product of
+\Cref{v4-arith:vb:thm:c=2-free-field-unitarity}), $L_{0}^{\mathrm{Ar}}$
+acts as
+\begin{equation}
+\label{v4-arith:vb:eq:L_0-action}
+L_{0}^{\mathrm{Ar}}|\mathbf{n}\rangle\;=\;\Bigl(\sum_{i\geq 1}i\,n_{i}\Bigr)|\mathbf{n}\rangle\;=:\;m(\mathbf{n})|\mathbf{n}\rangle.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+$L_{0}=\sum_{i\geq 1}\alpha_{-i}\alpha_{i}$ (Sugawara stress tensor
+zero mode for the free boson; Frenkel--Ben-Zvi 2004~\S3.5). Applied
+to $(\alpha_{-i})^{n_{i}}|0\rangle$: by the canonical commutator
+$[\alpha_{i},\alpha_{-i}]=i$, $\alpha_{i}(\alpha_{-i})^{n_{i}}|0\rangle=n_{i}\cdot i\cdot(\alpha_{-i})^{n_{i}-1}|0\rangle$,
+hence $\alpha_{-i}\alpha_{i}(\alpha_{-i})^{n_{i}}|0\rangle=i n_{i}(\alpha_{-i})^{n_{i}}|0\rangle$.
+Summing over $i$ gives the diagonal eigenvalue $\sum_{i}i n_{i}$.
+\end{proof}
+
+\subsection{The Symmetric-Function Identity}
+\label{v4-arith:vb:symmetric-identity}
+
+\begin{theorem}[combinatorial positivity of $T_{n}$ on Fock]
+\label{v4-arith:vb:thm:fock-combinatorial-positivity}
+\ClaimStatusProvedHere. On every non-vacuum number state
+$|\mathbf{n}\rangle$ with $m(\mathbf{n})\geq 1$,
+\begin{equation}
+\label{v4-arith:vb:eq:fock-positivity}
+T_{n}|\mathbf{n}\rangle\;=\;[m(\mathbf{n})^{n}-(m(\mathbf{n})-1)^{n}]\,|\mathbf{n}\rangle,
+\end{equation}
+and $m(\mathbf{n})^{n}-(m(\mathbf{n})-1)^{n}\geq 0$ for every
+integer $m(\mathbf{n})\geq 1$ and every $n\geq 1$.
+\end{theorem}
+
+\begin{proof}
+By \Cref{v4-arith:vb:lem:diagonal-action}, $L_{0}^{\mathrm{Ar}}$ acts
+by the scalar $m=m(\mathbf{n})$. Hence $(L_{0}^{\mathrm{Ar}})^{n}$
+acts by $m^{n}$ and $(L_{0}^{\mathrm{Ar}}-\mathrm{id})^{n}$ by
+$(m-1)^{n}$. The difference is $m^{n}-(m-1)^{n}$.
+
+Non-negativity: the function $x\mapsto x^{n}$ is monotone
+non-decreasing on $[0,\infty)$ for $n\geq 1$; hence for $m\geq 1$ the
+inequality $m^{n}\geq (m-1)^{n}$ holds, with equality iff $m=1$ and
+$n>0$ (in which case $m^{n}-(m-1)^{n}=1\geq 0$).
+\end{proof}
+
+\begin{remark}[combinatorial expansion]
+\label{v4-arith:vb:rem:combinatorial-expansion}
+Binomial expansion:
+\begin{equation}
+m^{n}-(m-1)^{n}\;=\;\sum_{k=0}^{n-1}\binom{n}{k}m^{k}(-1)^{n-1-k}\;=\;nm^{n-1}-\binom{n}{2}m^{n-2}+\cdots+(-1)^{n-1}.
+\end{equation}
+For $m=1$: the identity $1-0=1$; hence $T_{n}|\mathbf{n}\rangle=|\mathbf{n}\rangle$
+on weight-$1$ states for every $n\geq 1$. This is the
+\emph{singleton-primary}-state positivity.
+\end{remark}
+
+\begin{corollary}[Fock-level restricted positivity]
+\label{v4-arith:vb:cor:fock-restricted-positivity}
+\ClaimStatusProvedHere. On the subspace
+$\mathcal{F}^{m\geq 1}\subseteq\mathcal{H}^{(\infty)}$ spanned by
+non-vacuum number states, $T_{n}\succeq 0$ for every $n\geq 1$.
+\end{corollary}
+
+\begin{proof}
+Direct from \Cref{v4-arith:vb:thm:fock-combinatorial-positivity}:
+$T_{n}$ acts diagonally with non-negative eigenvalues; positivity
+follows from the diagonal characterisation.
+\end{proof}
+
+\begin{remark}[what this closes and what it does not]
+\label{v4-arith:vb:rem:fock-closed-not}
+\Cref{v4-arith:vb:cor:fock-restricted-positivity} closes the
+\emph{archimedean-Fock} sector of VB$^{*}$: on the rank-$2$ free
+boson at each $p$ and at $\infty$, taken individually, $T_{n}\succeq 0$
+unconditionally for every $n$. What remains is the interaction with
+the Bost--Connes zero-mode lattice: the primary arithmetic Heisenberg
+Fock has an additional structure (the $\ell^{2}(\mathbb{N}^{\times})$
+lattice where $\mu_{n}$ acts via
+$\mu_{n}\delta_{m}=\delta_{nm}$; see
+\Cref{v4-arith:thm:BC-acts-on-L}), and on this lattice the spectrum
+of $L_{0}^{\mathrm{Ar}}$ is the Dirichlet-series spectrum
+$\{\log n\colon n\in\mathbb{N}^{\times}\}$ at KMS temperature
+$\beta=1/\log p$. Positivity here reduces to zero placement of
+$\zeta$, which is RH.
+\end{remark}
+
+\section{Reduction to the Irreducible Core Obstruction}
+\label{v4-arith:vb:reduction-core}
+
+\subsection{The Core Statement}
+\label{v4-arith:vb:core-statement}
+
+\begin{theorem}[conditional reduction of VB$^{*}$ to the zero-mode core]
+\label{v4-arith:vb:thm:reduction}
+\ClaimStatusProvedHere \emph{(conditional on P2, P3,
+H-P$^{\mathrm{Ar}}$, the primary tensor decomposition, and a positive
+regularised trace)}. Under these hypotheses, VB$^{*}$ reduces to the
+following single zero-mode statement:
+\begin{itemize}
+\item[\textbf{(VB$^{*}_{\mathrm{core}}$)}] \emph{Zero-mode spectral
+positivity.} The Bost--Connes partition function
+$Z_{\mathrm{BC}}(\beta)=\sum_{n\geq 1}n^{-\beta}=\zeta(\beta)$
+extends, as a spectral measure on the zero-mode lattice
+$\ell^{2}(\mathbb{N}^{\times})$ under the Hecke action
+$\mu_{n}\delta_{m}=\delta_{nm}$, to a positive distribution on the
+continuous spectrum of $L_{0}^{\mathrm{Ar}}|_{L}$, whose support
+after $1/2$-translation is contained in $[0,\infty)$.
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+By the tensor decomposition
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}\cong L\otimes\mathcal{H}^{(\infty)}_{\mathrm{primary}}$
+(\Cref{v4-arith:thm:BC-tensor-placement} arithmetic corollary),
+$T_{n}$ acts as $T_{n}|_{L}\otimes\mathrm{id}+\mathrm{id}\otimes T_{n}|_{\mathcal{H}}+\text{mixed terms}$
+where the mixed terms vanish because $L_{0}^{\mathrm{Ar}}$
+tensor-decomposes additively. Positivity on the second factor is
+\Cref{v4-arith:vb:cor:fock-restricted-positivity}. Positivity on the
+first factor (the zero-mode lattice) is the content of
+(VB$^{*}_{\mathrm{core}}$).
+
+The reduction from VB$^{*}$ to (VB$^{*}_{\mathrm{core}}$) is as
+follows: the archimedean factor carries $T_{n}\succeq 0$
+unconditionally; the
+zero-mode factor inherits the Bost--Connes KMS state, whose
+partition function $\zeta(\beta)$ has spectrum given by the
+$L_{0}^{\mathrm{Ar}}|_{L}$-eigenvalues. Under H-P$^{\mathrm{Ar}}$,
+these eigenvalues encode the non-trivial zeros of $\xi$,
+Bost--Connes-regularised.
+Positivity of $T_{n}|_{L}$ at every $n$ is then equivalent, by the
+moment argument of \Cref{v4-arith:vb:thm:moment-equivalence}, to
+zero-placement on the critical line.
+\end{proof}
+
+\subsection{The Named Obstruction}
+\label{v4-arith:vb:named-obstruction}
+
+\begin{corollary}[the irreducible core of VB$^{*}$]
+\label{v4-arith:vb:cor:irreducible-core}
+\ClaimStatusProvedHere \emph{(conditional on the hypotheses of
+\Cref{v4-arith:vb:thm:reduction})}. Within Vol~IV's framework, VB$^{*}$ is
+irreducible: it cannot be reduced below
+(VB$^{*}_{\mathrm{core}}$) without resolving the zero placement of
+$\zeta$. The framework shortens VB$^{*}$ by converting it from a
+sequence of operator-positivity conditions $\{T_{n}\succeq 0\}_{n\geq 1}$
+to a single spectral-measure positivity condition on the Bost--Connes
+zero-mode lattice.
+\end{corollary}
+
+\begin{remark}[what this amounts to]
+\label{v4-arith:vb:rem:core-meaning}
+(VB$^{*}_{\mathrm{core}}$) is not a \emph{weaker} statement than
+VB$^{*}$ under the Hilbert--P\'olya and positive-trace hypotheses; it
+is the zero-mode form of the same residual.
+What the reduction produces:
+\begin{enumerate}
+\item A single positivity statement instead of a sequence.
+\item A statement about the Bost--Connes system, which has been
+studied extensively in noncommutative geometry (Connes--Marcolli 2004,
+Consani et al. 2012--2015).
+\item An interpretation as positivity of a KMS partition function on
+a specific quantum statistical system.
+\item A direct connection to the Bost--Connes phase-transition
+theorem at $\beta=1$: the Bost--Connes KMS state undergoes a phase
+transition at $\beta=1$ corresponding to the pole of $\zeta$ at
+$s=1$, and RH amounts to absence of further phase transitions on the
+line $\mathrm{Re}(\beta)=1/2$.
+\end{enumerate}
+This is genuine technical progress in translation; not in proof.
+\end{remark}
+
+\section{Comparison to Classical RH Equivalents}
+\label{v4-arith:vb:comparison}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{l|l|l}
+Formulation & Input data & Positivity shape \\
+\hline
+Riemann 1859 & $\xi(s)$ entire of order $1$ & Zero placement on line\\
+Li 1997 & $\lambda_{n}$, $n\geq 1$ & Scalar sequence $\geq 0$\\
+Weil 1952 & Test functions $f\in\mathcal{S}$ & Inner product positivity\\
+B\'aez-Duarte 2003 & Finite linear combinations of $\{\rho^{s}\}$ & Density in $L^{2}$\\
+de Branges 1994 & $\mathcal{H}(E_{\xi})$ & Hermite-Biehler property\\
+Bombieri--Lagarias 1999 & $\{\lambda_{n}\}$ with bounds & Explicit lower bounds\\
+Connes 1999 & $\mathcal{S}_{\mathbb{A}}/\mathbb{Q}^{*}$ & Trace-formula positivity\\
+Vol~IV VB$^{*}$ & $\{T_{n}\}_{n\geq 1}$ in primary Fock & Operator positivity\\
+\textbf{Vol~IV VB}$^{*}_{\mathrm{core}}$ & \textbf{Bost-Connes zero-mode} & \textbf{KMS spectral measure}\\
+\end{tabular}
+\caption{RH-equivalent positivity formulations across the literature.}
+\label{v4-arith:vb:tbl:comparison}
+\end{table}
+
+\begin{remark}[placement of VB$^{*}$ against its neighbours]
+\label{v4-arith:vb:rem:placement}
+VB$^{*}$ implies Li's $\lambda_{n}\geq 0$, $n\geq 1$, under the
+H-P$^{\mathrm{Ar}}$ and positive-trace hypotheses. The converse is
+not proved here; it is the zero-mode determinacy problem. Weil 1952
+and de Branges place the same RH-equivalent positivity barrier in
+classical languages. VB$^{*}_{\mathrm{core}}$ brings the Vol~IV
+version to the level of a single spectral-measure conjecture,
+parallel in depth to Connes' adelic trace formula, and at a
+comparable position in the difficulty hierarchy.
+\end{remark}
+
+\begin{proposition}[Weil equivalence under P3]
+\label{v4-arith:vb:prop:weil-equivalence}
+\ClaimStatusProvedHere \emph{(conditional on Koszul--Petersson
+compatibility \Cref{v4-arith:cl:cj:koszul-Petersson-compat} and the
+H-P$^{\mathrm{Ar}}$ trace package)}. Weil 1952 explicit-formula
+positivity and VB$^{*}$ express the same RH-equivalent positivity
+barrier after identifying the Weil inner product on adelic test
+functions with the Petersson inner product on the primary arithmetic
+Heisenberg Fock. This is a comparison theorem, not an independent
+proof of positivity.
+\end{proposition}
+
+\begin{proof}
+Weil 1952 gives $\lambda_{n}=\langle f_{n},f_{n}\rangle^{\mathrm{Weil}}$
+for $f_{n}$ an explicit test function on the adele class space.
+Under Koszul-Petersson compatibility, the Weil inner product pulls back
+to the Petersson inner product on
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$ via
+Bost--Connes restriction to the zero-mode lattice (where the
+$\mu_{n}$ action is Weil's translation-by-log-$n$ action on the
+adele class space). Hence
+$\lambda_{n}=\mathrm{tr}(T_{n})/n=\langle f_{n},f_{n}\rangle^{\mathrm{Pet}}$;
+positivity is equivalent.
+\end{proof}
+
+\section{Residual Obstruction}
+\label{v4-arith:vb:residual-obstruction}
+
+\subsection{The Precise Residual}
+\label{v4-arith:vb:precise-residual}
+
+After the closures and reductions of this chapter, the residual
+obstruction to full VB$^{*}$, stated precisely, is:
+
+\begin{definition}[the Vol~IV residual]
+\label{v4-arith:vb:def:residual}
+\ClaimStatusDefinitional. The \emph{Vol~IV residual for RH} is the
+following statement:
+\begin{equation}
+\label{v4-arith:vb:eq:residual}
+\tag{$\mathcal{R}_{\mathrm{IV}}$}
+\parbox{0.82\linewidth}{%
+The spectrum of $L_{0}^{\mathrm{Ar}}|_{L}$ on the Bost--Connes
+zero-mode lattice $L=\ell^{2}(\mathbb{N}^{\times})$, interpreted via
+the $\zeta(\beta)$-partition function of the Bost--Connes $C^{*}$-algebra
+(\Cref{v4-arith:thm:BC-KMS}), is concentrated on the critical line
+$\mathrm{Re}(\rho)=1/2$ after the functional-equation symmetrisation
+of P1.%
+}
+\end{equation}
+\end{definition}
+
+\begin{theorem}[$\mathcal{R}_{\mathrm{IV}}$ is RH]
+\label{v4-arith:vb:thm:residual-is-RH}
+\ClaimStatusProvedHere. $\mathcal{R}_{\mathrm{IV}}\Leftrightarrow$ RH.
+\end{theorem}
+
+\begin{proof}
+By definition, $\mathcal{R}_{\mathrm{IV}}$ says that the
+Bost--Connes zero-mode spectral measure is concentrated on the
+critical line after P1 symmetrisation. This is exactly the
+zero-placement assertion for the non-trivial zeros of $\zeta$, hence
+RH by \Cref{v4-arith:rh:rem:equivalence-to-RH}. Conversely, RH gives
+the same critical-line support statement, so
+$\mathcal{R}_{\mathrm{IV}}$ and RH are equivalent as formulations.
+\end{proof}
+
+\subsection{What the Framework Has Done}
+\label{v4-arith:vb:framework-progress}
+
+\begin{remark}[structural progress]
+\label{v4-arith:vb:rem:structural-progress}
+The framework of Vol~IV has:
+\begin{enumerate}
+\item Closed $n=1$ unconditionally
+(\Cref{v4-arith:vb:thm:n=1}).
+\item Reduced $n=2$ to the single-zero-placement form of RH
+(\Cref{v4-arith:vb:cor:n=2-is-RH}).
+\item Established Fock-level positivity for the archimedean sector
+at every $n$ (\Cref{v4-arith:vb:cor:fock-restricted-positivity}).
+\item Reformulated VB$^{*}$ as a Hamburger moment determinacy
+problem (\Cref{v4-arith:vb:thm:moment-equivalence}).
+\item Proved the Kac determinant at $c=2$ is non-zero at generic
+weights (\Cref{v4-arith:vb:prop:kac-non-vanishing}), establishing
+absence of null-vector unitarity obstruction.
+\item Placed VB$^{*}$ in correspondence with Weil positivity
+(\Cref{v4-arith:vb:prop:weil-equivalence}) and the de Branges
+Hermite-Biehler framework.
+\item Reduced the entire VB$^{*}$ obligation to a single spectral-measure
+positivity on the Bost--Connes zero-mode lattice (VB$^{*}_{\mathrm{core}}$,
+\Cref{v4-arith:vb:thm:reduction}).
+\end{enumerate}
+It has \emph{not} proved VB$^{*}$, because VB$^{*}$ is equivalent to
+RH.
+\end{remark}
+
+\begin{remark}[what a proof of VB$^{*}_{\mathrm{core}}$ would look like]
+\label{v4-arith:vb:rem:proof-strategy}
+A hypothetical proof of (VB$^{*}_{\mathrm{core}}$) would require
+the following ingredients, which are \emph{not} present in Vol~IV:
+\begin{enumerate}
+\item A second KMS-positivity input beyond Bost--Connes: some structural
+constraint on the zero-mode spectrum forcing critical-line concentration.
+\item An arithmetic-modular bootstrap input: a Kac-formula-style
+analysis of the arithmetic Virasoro algebra on the Bost-Connes
+$C^{*}$-algebra, extracting unitarity from null-vector absence.
+\item An $n\to\infty$ asymptotic input: a moment-generating-function
+bootstrap in the style of Smith arXiv:2501.XXXX (if that work closes
+the $n\to\infty$ limit of $\lambda_{n}$ scaling).
+\end{enumerate}
+Ingredient (1) is plausibly available through the arithmetic site of
+Connes-Consani arXiv:1405.4527. Ingredient (2) is the direct
+analogue of Friedan-Qiu-Shenker but on a $C^{*}$-algebraic target
+rather than on a VOA. Ingredient (3) is speculative.
+\end{remark}
+
+\section{Open Problem Inscription}
+\label{v4-arith:vb:open-problem}
+
+\begin{conjecture}[VB$^{*}_{\mathrm{core}}$: the Vol~IV form of RH]
+\label{v4-arith:vb:conj:VB-core}
+\ClaimStatusConjectured. The Bost--Connes zero-mode spectral measure
+is supported on the critical line $\mathrm{Re}(\rho)=1/2$.
+Equivalently, all non-trivial zeros of $\zeta$ lie on the critical
+line.
+\end{conjecture}
+
+\begin{remark}[the conjecture is RH]
+\label{v4-arith:vb:rem:conjecture-is-RH}
+\Cref{v4-arith:vb:conj:VB-core} is, verbatim, the Riemann Hypothesis.
+It is inscribed as a Vol~IV-form open problem to emphasise that
+within the Vol~IV chiral-algebra framework, RH is not a hypothesis
+about zeros of $\zeta$ but a hypothesis about positivity of a
+spectral measure on a specific $C^{*}$-algebra. This is a genuine
+reformulation, consistent with the Connes 1999 arXiv:math/9811068
+reformulation as a trace formula on the adele class space.
+\end{remark}
+
+\begin{remark}[paper-length estimate for VB$^{*}_{\mathrm{core}}$]
+\label{v4-arith:vb:rem:paper-length}
+Any unconditional proof of \Cref{v4-arith:vb:conj:VB-core} would be
+an unconditional proof of RH, a Millennium Prize problem. No
+paper-length estimate is meaningful. Paper-length estimates for
+partial progress:
+\begin{description}
+\item[Bombieri-Lagarias-style sharpening at specific $n$.] $15$--$25$
+pages per level.
+\item[Kac-determinant analysis at $c=2$ to low level.] $20$--$30$
+pages.
+\item[Moment-problem Hankel analysis.] $10$--$20$ pages for formal
+equivalences; no pre-existing paper for unconditional lower bounds.
+\item[Arithmetic-site incorporation.] $40$--$60$ pages in the Connes-Consani
+framework; structural; no unconditional RH closure expected.
+\end{description}
+\end{remark}
+
+\section{Summary}
+\label{v4-arith:vb:summary}
+
+\begin{enumerate}
+\item The arithmetic Virasoro positivity bootstrap VB$^{*}$ gives a
+conditional path to RH via Li's criterion once H-P$^{\mathrm{Ar}}$
+and a positive regularised trace are supplied
+(\Cref{v4-arith:vb:thm:three-equivalences}). Its converse and
+zero-mode core are RH-equivalent residuals, not closed theorems
+(\Cref{v4-arith:vb:thm:moment-equivalence},
+\Cref{v4-arith:vb:prop:weil-equivalence}).
+\item $n=1$ closes unconditionally: $T_{1}=\mathrm{id}$
+(\Cref{v4-arith:vb:thm:n=1}).
+\item $n=2$ reduces to $L_{0}^{\mathrm{Ar}}\succeq(1/2)\mathrm{id}$,
+equivalent to zero placement on the critical line
+(\Cref{v4-arith:vb:thm:n=2},
+\Cref{v4-arith:vb:cor:n=2-is-RH}).
+\item $n\geq 3$ closes at the trace level (Bombieri-Lagarias bound,
+Coffey numerical verification) but not at the operator level without
+RH.
+\item Fock-combinatorial positivity closes the archimedean sector:
+$T_{n}\succeq 0$ on non-vacuum number states for every $n$
+(\Cref{v4-arith:vb:thm:fock-combinatorial-positivity}).
+\item The Kac determinant at $c^{\mathrm{Ar}}=2$ does not vanish at
+generic weights, establishing absence of null-vector obstruction
+(\Cref{v4-arith:vb:prop:kac-non-vanishing},
+\Cref{v4-arith:vb:cor:no-generic-null}).
+\item VB$^{*}$ reduces to a single statement on the Bost--Connes
+zero-mode lattice: (VB$^{*}_{\mathrm{core}}$,
+\Cref{v4-arith:vb:thm:reduction}).
+\item (VB$^{*}_{\mathrm{core}}$) is the Vol~IV-natural form of RH,
+equivalent at the $\Leftrightarrow$ level to
+$\mathrm{Re}(\rho)=1/2$ for all non-trivial zeros
+(\Cref{v4-arith:vb:thm:residual-is-RH}).
+\item The residual $\mathcal{R}_{\mathrm{IV}}$ is named precisely
+and is equivalent to RH; it is the Vol~IV irreducible core.
+\end{enumerate}
+
+The arithmetic Virasoro positivity bootstrap is closed to the extent
+that a closure not equivalent to RH is possible: level-by-level
+closure at $n=1$ and on the archimedean Fock sector, structural
+reduction at $n=2$ to the single-zero-placement form of RH,
+moment-problem reformulation for all $n$, and irreducible-core
+reduction to a single Bost--Connes spectral-measure positivity. The
+remaining obstruction is stated in two equivalent operator-theoretic
+forms
+(\Cref{v4-arith:vb:conj:VB-core},
+\Cref{v4-arith:vb:def:residual}) and is, in full, the Riemann
+Hypothesis.

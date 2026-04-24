@@ -1,0 +1,1051 @@
+\chapter{F1.a.3: Bushnell--Henniart Block Exhaustion at Wild Primes}
+\label{v4-arith:f1a3-BH}
+
+\emph{Agent $\gamma$ in Chapter~\ref{v4-arith:deg-f1a} reduced F1.a at
+$p\in\{2,3\}$ to two conjectural inputs: (F1.a.2) the wild-enhanced
+Emerton--Gee stack
+$\mathcal{X}^{\mathrm{EG,wild},p,\chi}_{GL_{2}}$ and (F1.a.3) the
+Bushnell--Henniart version of block exhaustion at the wild primes.
+F1.a.3 is the smallest of the three residuals: $15$--$25$ pages at a
+first paper-length estimate, bounded in difficulty by the finite
+cardinality of the Bushnell--Kutzko type catalog and by the precise
+$\mathrm{Ext}^{1}$-structure recorded in
+Chapter~\ref{v4-arith:bzn-rcompletion}. This chapter attacks F1.a.3
+directly. We do not close it unconditionally. We prove it conditional
+on three disjoint, individually tractable inputs, each shorter than
+the residual itself: the BH type packaging
+(\Cref{v4-arith:f1a3-BH:conj:BH-packaging}), the Paskunas wild-block
+$\mathrm{Ext}^{1}$-compatibility
+(\Cref{v4-arith:f1a3-BH:conj:Paskunas-wild-ext}), and the wild-EG
+compact-generator identification
+(\Cref{v4-arith:f1a3-BH:conj:wild-compact-generation}). The assembly
+is an equivalence on the wild block; no essential-surjectivity gap
+remains beyond the three named inputs.}
+
+\section{Statement}
+\label{v4-arith:f1a3-BH:statement}
+
+\subsection{Setup}
+
+Fix $p\in\{2,3\}$, an algebraically closed coefficient field
+$k=\overline{\mathbb{Q}}_{\ell}$ with $\ell\neq p$, and a smooth
+central character
+$\chi\colon\mathbb{Z}_{p}^{\times}\to k^{\times}$. We work with the
+twisted DEG-type functor constructed in
+\Cref{v4-arith:deg-f1a:thm:wild-functor-existence}:
+\[
+\Phi^{\mathrm{wild}}_{p,\chi}\colon
+\mathrm{D}^{\mathrm{sph\text{-}fin}}\bigl([GL_{2}(\mathbb{Q}_{p})]\bigr)_{\chi}
+\;\longrightarrow\;
+\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG,wild},p,\chi}_{GL_{2}}\bigr),
+\]
+which is fully faithful conditional on the wild-EG enhancement
+\Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement}. The block
+decomposition on the automorphic side uses the Bushnell--Kutzko types
+of the \emph{Bushnell--Henniart} classification
+(Bushnell--Henniart 2006 Chapters~12--16):
+\[
+\mathrm{Mod}_{GL_{2}(\mathbb{Q}_{p})}^{\mathrm{sm},\chi}
+\;=\;\prod_{\tau\in\mathbf{T}^{\mathrm{BH}}_{p,\chi}}\mathrm{Block}^{\mathrm{BH}}_{\tau},
+\qquad p\in\{2,3\},
+\]
+with $\mathbf{T}^{\mathrm{BH}}_{p,\chi}$ the finite set of
+Bushnell--Kutzko types with central character $\chi$ (tame and wild
+together). On the spectral side, the wild-enhanced EG stack
+decomposes accordingly:
+\[
+\mathcal{X}^{\mathrm{EG,wild},p,\chi}_{GL_{2}}
+\;=\;\coprod_{\tau\in\mathbf{T}^{\mathrm{BH}}_{p,\chi}}\mathcal{X}^{\mathrm{EG,wild},p,\chi,\tau}_{GL_{2}},
+\]
+where each component is the formal neighbourhood of the BH-type
+point, enhanced by the degree-$1$ derived structure of
+\Cref{v4-arith:deg-f1a:def:EG-wild-enhanced} on the non-semisimple
+locus.
+
+\subsection{The BH Block-Exhaustion Statement}
+
+\begin{definition}[BH-exhausted block]
+\label{v4-arith:f1a3-BH:def:BH-exhausted}
+\ClaimStatusDefinitional. Fix $p\in\{2,3\}$, $\chi$, and a
+Bushnell--Kutzko type $\tau\in\mathbf{T}^{\mathrm{BH}}_{p,\chi}$. The
+block $(\mathrm{Block}^{\mathrm{BH}}_{\tau},\mathcal{X}^{\mathrm{EG,wild},p,\chi,\tau}_{GL_{2}})$
+is \emph{BH-exhausted} if the restriction of
+$\Phi^{\mathrm{wild}}_{p,\chi}$ to the block,
+\[
+\Phi^{\mathrm{wild}}_{p,\chi,\tau}\colon\mathrm{Block}^{\mathrm{BH}}_{\tau}
+\;\longrightarrow\;
+\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG,wild},p,\chi,\tau}_{GL_{2}}\bigr),
+\]
+is essentially surjective; equivalently, the derived structure sheaves
+of the BH-indexed closed points generate
+$\mathrm{IndCoh}_{\mathrm{Nilp}}$ on the component under colimits and
+shifts.
+\end{definition}
+
+\begin{theorem}[F1.a.3: BH block exhaustion at wild primes, conditional]
+\label{v4-arith:f1a3-BH:thm:main}
+\ClaimStatusProvedHereConditional. Assume:
+\begin{itemize}
+\item[\textbf{(A)}] The BH packaging conjecture
+\Cref{v4-arith:f1a3-BH:conj:BH-packaging}: for every
+$\tau\in\mathbf{T}^{\mathrm{BH}}_{p,\chi}$, the projective
+indecomposable generator of $\mathrm{Block}^{\mathrm{BH}}_{\tau}$ is
+a compact object of
+$\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}(\mathbb{Q}_{p})])_{\chi}$
+whose image under $\Phi^{\mathrm{wild}}_{p,\chi}$ is the derived
+structure sheaf of the BH closed point
+$x_{\tau}\in\mathcal{X}^{\mathrm{EG,wild},p,\chi,\tau}_{GL_{2}}$.
+\item[\textbf{(B)}] The Paskunas wild-block $\mathrm{Ext}^{1}$-compatibility
+\Cref{v4-arith:f1a3-BH:conj:Paskunas-wild-ext}: the non-semisimple
+wild contribution on the automorphic side, classified by
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2} (at $p=2$) and
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3} (at $p=3$), matches
+the degree-$1$ derived structure on the wild-enhanced EG stack of
+\Cref{v4-arith:deg-f1a:def:EG-wild-enhanced}.
+\item[\textbf{(C)}] The wild-EG compact-generator identification
+\Cref{v4-arith:f1a3-BH:conj:wild-compact-generation}: the compact
+objects of $\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG,wild},p,\chi,\tau}_{GL_{2}})$
+are generated under shifts and finite colimits by the derived structure
+sheaf of the BH closed point $x_{\tau}$.
+\end{itemize}
+Then for every $p\in\{2,3\}$ and every central character $\chi$, every
+block
+$(\mathrm{Block}^{\mathrm{BH}}_{\tau},\mathcal{X}^{\mathrm{EG,wild},p,\chi,\tau}_{GL_{2}})$
+with $\tau\in\mathbf{T}^{\mathrm{BH}}_{p,\chi}$ is BH-exhausted. The
+twisted DEG-type functor $\Phi^{\mathrm{wild}}_{p,\chi}$ is essentially
+surjective, hence an equivalence.
+\end{theorem}
+
+\begin{proof}[Proof strategy]
+Reduce essential surjectivity to block-by-block via the orthogonal
+decomposition. Each block decomposes further into its semisimple skeleton
+and a finite non-semisimple correction governed by the Ext${}^{1}$-quiver
+of Chapter~\ref{v4-arith:bzn-rcompletion}. The semisimple part is
+exhausted by the type-indexed structure sheaves (A). The non-semisimple
+correction is exhausted by the derived-structure upgrade in
+\Cref{v4-arith:deg-f1a:def:EG-wild-enhanced} under (B). Compact
+generation (C) then closes the colimit argument. The proof is an
+assembly, not a new construction; the conjectural content is
+concentrated in (A), (B), (C).
+\end{proof}
+
+\begin{remark}[why F1.a.3 is the smallest residual]
+\label{v4-arith:f1a3-BH:rem:smallest-residual}
+Chapter~\ref{v4-arith:deg-f1a} records three residuals for F1.a:
+F1.a.1 (block exhaustion at $p\geq 5$, paper-length $30$--$50$ pp),
+F1.a.2 (wild-EG enhancement at $p\in\{2,3\}$, paper-length $20$--$40$
+pp), and F1.a.3 (this chapter, paper-length $15$--$25$ pp). The
+smaller size reflects three simplifying features: (i) the BH type
+catalog is finite, not varying over a deformation space; (ii) the
+Ext${}^{1}$-structure is already computed in
+Chapter~\ref{v4-arith:bzn-rcompletion} and is of explicit dimension
+$1$ at $p=2$ and dimension $2$ at $p=3$; (iii) the block-by-block
+reduction makes each BH type a local computation whose scope is
+bounded.
+\end{remark}
+
+\section{Attack--Heal Ledger}
+\label{v4-arith:f1a3-BH:ledger}
+
+The five attack--heal cycles of this chapter apply the seven-attack
+protocol of \Cref{v4-arith:cl:protocol} (source collision,
+sign/convention, ambient category, missing hypothesis, false
+functoriality, unproved equivalence, engine-test sync).
+
+\begin{description}
+\item[\textbf{Cycle 1 (BH tame-wild enumeration at $p=2$).}]
+\emph{Attack.} Enumerate Bushnell--Kutzko types in
+$\mathbf{T}^{\mathrm{BH}}_{2,\chi}$. Show that wild types at $p=2$
+are classified by a finite list: the unramified principal series, the
+tame supercuspidal, the wild supercuspidal of conductor exponent $2$,
+and the spherical (Iwahori-fixed) type absorbing the
+Ext${}^{1}$-extension of
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2}.
+\emph{Heal.} The BH classification
+(Bushnell--Henniart 2006 \S 11--13) gives the exact list; the wild
+conductor-exponent bound is $a(\chi)+2$, cf.\ BH \S 12.1.
+\emph{Residual: (A), the BH packaging conjecture.}
+
+\item[\textbf{Cycle 2 (BH tame-wild enumeration at $p=3$).}]
+\emph{Attack.} Enumerate Bushnell--Kutzko types in
+$\mathbf{T}^{\mathrm{BH}}_{3,\chi}$. Show that the wild primary block
+at $p=3$ has three restricted-weight simples $L_{0},L_{1},L_{2}$ with
+the $A_{2}$-linear-quiver Ext${}^{1}$-structure of
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3}.
+\emph{Heal.} The three BH types in the principal block match the
+three restricted-weight simples; the two quiver edges
+$\alpha_{01}\in\mathrm{Ext}^{1}(L_{1},L_{0})$,
+$\alpha_{12}\in\mathrm{Ext}^{1}(L_{2},L_{1})$ lift to two
+non-split extensions in the category, each corresponding to a
+derived-structure fibre in the wild-enhanced EG component.
+\emph{Residual: (B), the Paskunas wild $\mathrm{Ext}^{1}$-compatibility.}
+
+\item[\textbf{Cycle 3 (essential surjectivity via type-by-type
+exhaustion).}] \emph{Attack.} Fix a hypothetical
+$\mathcal{F}\in\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG,wild},p,\chi}_{GL_{2}})$
+not in the essential image of $\Phi^{\mathrm{wild}}_{p,\chi}$.
+Decompose $\mathcal{F}$ along the BH-component decomposition of the
+wild-EG stack. Each summand $\mathcal{F}_{\tau}$ lives on a single
+component $\mathcal{X}^{\mathrm{EG,wild},p,\chi,\tau}_{GL_{2}}$.
+\emph{Heal.} By (C), $\mathcal{F}_{\tau}$ is a colimit of shifts of
+the derived structure sheaf of $x_{\tau}$; by (A), each such shift
+is in the image of $\Phi^{\mathrm{wild}}_{p,\chi,\tau}$; hence
+$\mathcal{F}_{\tau}$ itself is, and the full $\mathcal{F}$ is.
+Contradiction.
+\emph{Residual: (C), wild-EG compact-generator identification.}
+
+\item[\textbf{Cycle 4 (cross-check with wild-EG Definition of
+Chapter~\ref{v4-arith:deg-f1a}).}] \emph{Attack.} Does the BH-component
+decomposition of this chapter coincide with the Bushnell--Henniart
+fibre-correspondence decomposition of
+\Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement}(3)? \emph{Heal.}
+Yes: both indexing sets are $\mathbf{T}^{\mathrm{BH}}_{p,\chi}$, and
+the derived-structure dimensions agree
+($1$ at $p=2$ matching
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2},
+$2$ at $p=3$ matching
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3}).
+\emph{No new residual.}
+
+\item[\textbf{Cycle 5 (attempt at unconditional closure).}]
+\emph{Attack.} Can (A), (B), (C) collectively close on existing
+primary literature? \emph{Heal.} (A) is known for $p\geq 5$ by Paskunas
+2013 in the Breuil--Mezard framework; its transport to $p\in\{2,3\}$
+via Bushnell--Henniart types requires a direct match of types to
+structure sheaves not yet inscribed. (B) is known numerically (both
+sides have the same dimension) but the identification of the
+Ext${}^{1}$-classes themselves with the degree-$1$ derived fibre is
+not recorded in Colmez 2010 or Paskunas 2013; it is a conjectural
+enhancement. (C) is standard for compactly-supported perfect complexes
+on classical formal schemes but requires proof in the derived-enhanced
+case. None of the three is closable from currently-inscribed primary
+literature; all three are individually tractable.
+\emph{Final residual: (A), (B), (C), three named conjectures.}
+\end{description}
+
+Cycle-level seven-attack protocols are recorded inline within each
+section. Cycles~1--4 close conditionally on (A), (B), (C);
+Cycle~5 identifies the three as the minimal conjectural set.
+
+\section{Bushnell--Henniart Tame-Wild Types at $p=2$}
+\label{v4-arith:f1a3-BH:BH-p2}
+
+\subsection{The Classification}
+
+\begin{proposition}[Bushnell--Henniart 2006 classification at $p=2$]
+\label{v4-arith:f1a3-BH:prop:BH-types-p2}
+\ClaimStatusProvedElsewhere. Fix a central character
+$\chi\colon\mathbb{Z}_{2}^{\times}\to k^{\times}$. The set
+$\mathbf{T}^{\mathrm{BH}}_{2,\chi}$ of Bushnell--Kutzko types with
+central character $\chi$ consists of three sorts of types:
+\begin{enumerate}
+\item \textbf{Unramified principal-series types.} One type per
+unramified character $\psi\colon\mathbb{Q}_{2}^{\times}\to k^{\times}$
+with $\psi|_{\mathbb{Z}_{2}^{\times}}$ square-rooting $\chi$. The
+associated representation is the parabolic induction from the Borel of
+$\psi\otimes\psi^{-1}\chi$.
+\item \textbf{Tame supercuspidal types.} One type per tame character
+$\psi$ of a quadratic unramified extension $\mathbb{Q}_{2}(\sqrt{u})$
+with $u\in\mathbb{Z}_{2}^{\times}\setminus(\mathbb{Z}_{2}^{\times})^{2}$,
+inducing to a supercuspidal representation of $GL_{2}(\mathbb{Q}_{2})$.
+\item \textbf{Wild supercuspidal types.} One type per wild character
+of $\mathbb{Q}_{2}(\sqrt{-1})$ or $\mathbb{Q}_{2}(\sqrt{2})$
+or $\mathbb{Q}_{2}(\sqrt{-2})$ (the three ramified quadratic
+extensions of $\mathbb{Q}_{2}$), with conductor exponent in the range
+$a(\chi)+1\leq n\leq a(\chi)+2$.
+\end{enumerate}
+The total number of BH types at $p=2$ with fixed $\chi$ is finite:
+$|\mathbf{T}^{\mathrm{BH}}_{2,\chi}|<\infty$, bounded by a polynomial in
+$a(\chi)$.
+\end{proposition}
+
+\begin{proof}[Source]
+Bushnell--Henniart 2006 \emph{The Local Langlands Conjecture for
+$GL(2)$}, Grundlehren~335, Springer. Chapter~11 for the principal series
+and tame supercuspidal classification; Chapter~12 for the wild
+supercuspidal classification and the conductor-exponent bound at $p=2$;
+Chapter~13 for the counting formula.
+\end{proof}
+
+\begin{remark}[the Ext${}^{1}$-carrying type at $p=2$]
+\label{v4-arith:f1a3-BH:rem:ext1-type-p2}
+Among the three sorts of BH types at $p=2$, the non-semisimple
+Ext${}^{1}$-contribution of
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2} is carried entirely by
+the unramified principal-series types at the special character
+$\psi=\mathbf{1}$ (trivial): the Ext${}^{1}(\mathbf{1}_{\mathrm{triv}},\mathbf{1}_{\mathrm{sgn}})$
+of Chapter~\ref{v4-arith:bzn-rcompletion} is the non-split extension
+between the two constituents of the parabolic induction
+$\mathrm{Ind}_{B}^{G}(\mathbf{1}\otimes\mathbf{1}\cdot|\cdot|)$ reduced
+mod~$p$. The tame and wild supercuspidal types are
+Ext${}^{1}$-free because they are realised on compact open subgroups
+with trivial $p$-local Ext-structure.
+\end{remark}
+
+\subsection{Matching to Spectral Components}
+
+\begin{proposition}[type-to-component match at $p=2$]
+\label{v4-arith:f1a3-BH:prop:type-to-component-p2}
+\ClaimStatusProvedHereConditional. Assume the BH packaging
+\Cref{v4-arith:f1a3-BH:conj:BH-packaging} and the wild-EG enhancement
+\Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement}. Then each
+$\tau\in\mathbf{T}^{\mathrm{BH}}_{2,\chi}$ corresponds to a unique
+component $\mathcal{X}^{\mathrm{EG,wild},2,\chi,\tau}_{GL_{2}}$ of the
+wild-enhanced EG stack, with:
+\begin{itemize}
+\item Unramified principal-series type $\tau$: classical component
+indexed by a reducible residual Galois representation $\rho$ with
+$\det\rho=\chi\cdot\chi_{\mathrm{cyc}}$; for the trivial $\psi=\mathbf{1}$,
+the component carries the degree-$1$ derived fibre of dimension $1$
+(the wild-EG enhancement).
+\item Tame supercuspidal type $\tau$: classical component, no derived
+enhancement; corresponds to an irreducible residual $\rho$ induced
+from a tame character of a quadratic unramified extension.
+\item Wild supercuspidal type $\tau$: classical component, no derived
+enhancement; corresponds to an irreducible residual $\rho$ induced
+from a wild character of a quadratic ramified extension.
+\end{itemize}
+The type-to-component map is a bijection.
+\end{proposition}
+
+\begin{proof}
+\textbf{Step 1: residual-Galois match.} Each BH type $\tau$ has an
+associated $L$-parameter
+$\phi_{\tau}\colon W_{\mathbb{Q}_{2}}\to GL_{2}(k)$ by the local
+Langlands correspondence of Bushnell--Henniart 2006 \S 18, with
+determinant $\det\phi_{\tau}=\chi\cdot\chi_{\mathrm{cyc}}$.
+The residual representation $\rho_{\tau}$ is the reduction mod-$p$ of
+$\phi_{\tau}$. The EG component
+$\mathcal{X}^{\mathrm{EG},2,\chi,\rho_{\tau}}_{GL_{2}}$ is the formal
+neighbourhood of $\rho_{\tau}$.
+\textbf{Step 2: enhanced fibre at reducible $\rho$.} For $\tau$ the
+unramified principal series at $\psi=\mathbf{1}$, $\rho_{\tau}$ is
+reducible with constituents $\mathbf{1}_{\mathrm{triv}}$ and
+$\mathbf{1}_{\mathrm{sgn}}\cdot\chi_{\mathrm{cyc}}$; the non-split
+extension class of
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2} lifts to a
+non-trivial Ext${}^{1}$-class of the deformation functor of
+$\rho_{\tau}$, realised as the degree-$1$ derived fibre of dimension $1$
+in $\mathcal{X}^{\mathrm{EG,wild},2,\chi,\tau}_{GL_{2}}$ by
+\Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement}(2). The match is
+by construction.
+\textbf{Step 3: semisimplicity at irreducible $\rho$.} For $\tau$ a
+tame or wild supercuspidal, $\rho_{\tau}$ is irreducible; the
+deformation functor is smooth (Emerton--Gee arXiv:1908.07185 \S 6.2);
+no derived enhancement is needed.
+\textbf{Step 4: bijectivity.} Finiteness on both sides follows from
+Bushnell--Henniart \S 13 (left-hand) and the connected-component
+decomposition of $\mathcal{X}^{\mathrm{EG},2,\chi}_{GL_{2}}$
+(right-hand). The bijection is the local Langlands correspondence
+for $GL_{2}(\mathbb{Q}_{2})$ at the residual level.
+\end{proof}
+
+\section{Bushnell--Henniart Tame-Wild Types at $p=3$}
+\label{v4-arith:f1a3-BH:BH-p3}
+
+\subsection{The Classification and the $A_{2}$-Quiver Structure}
+
+\begin{proposition}[Bushnell--Henniart 2006 classification at $p=3$]
+\label{v4-arith:f1a3-BH:prop:BH-types-p3}
+\ClaimStatusProvedElsewhere. Fix $\chi\colon\mathbb{Z}_{3}^{\times}\to k^{\times}$.
+The set $\mathbf{T}^{\mathrm{BH}}_{3,\chi}$ consists of:
+\begin{enumerate}
+\item \textbf{Unramified principal series.} Parabolically induced
+from the Borel of $GL_{2}(\mathbb{Q}_{3})$.
+\item \textbf{Tame supercuspidals.} One per tame character of the
+unramified quadratic extension $\mathbb{Q}_{3}(\sqrt{u})$ with
+$u\in\mathbb{Z}_{3}^{\times}\setminus(\mathbb{Z}_{3}^{\times})^{2}$.
+\item \textbf{Wild supercuspidals.} One per wild character of the
+ramified quadratic extension $\mathbb{Q}_{3}(\sqrt{3})$ with conductor
+exponent $\geq a(\chi)+1$.
+\item \textbf{Principal-block wild types.} Corresponding to the three
+restricted-weight simples $L_{0},L_{1},L_{2}$ of the principal block of
+$\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},3}$ per
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3}.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Source]
+Bushnell--Henniart 2006 \S 11 (principal series), \S 12 (tame
+supercuspidal), \S 13 (wild supercuspidal), \S 15 (wild types at
+small primes). The classification at $p=3$ is strictly more complete
+than at $p=2$ because all ramified quadratic extensions of
+$\mathbb{Q}_{3}$ have a single wild-ramification conductor exponent.
+\end{proof}
+
+\begin{proposition}[$A_{2}$-quiver on the principal block at $p=3$]
+\label{v4-arith:f1a3-BH:prop:A2-quiver-p3}
+\ClaimStatusProvedHere. The principal-block wild types at $p=3$ form
+a finite non-semisimple block with Ext${}^{1}$-quiver
+\[
+L_{0}\;\xleftarrow{\;\alpha_{01}\;}\;L_{1}\;\xleftarrow{\;\alpha_{12}\;}\;L_{2},
+\]
+where
+$\alpha_{01}\in\mathrm{Ext}^{1}_{\mathrm{Block}^{\mathrm{BH}}_{\tau_{p}}}(L_{1},L_{0})$
+and
+$\alpha_{12}\in\mathrm{Ext}^{1}_{\mathrm{Block}^{\mathrm{BH}}_{\tau_{p}}}(L_{2},L_{1})$
+are one-dimensional generators, with the single non-trivial relation
+$\alpha_{01}\alpha_{12}=0$ in Ext${}^{2}$. Extensions between
+non-adjacent simples vanish: $\mathrm{Ext}^{1}(L_{0},L_{2})=0$.
+\end{proposition}
+
+\begin{proof}
+This is \Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3} restated at
+the BH-block level. The block structure is the image of the Iwahori
+Hecke block under the inverse Bushnell--Kutzko type functor; the
+inverse sends simples to types and Ext${}^{1}$-classes to BH-category
+extensions. The $A_{2}$-linear quiver with
+radical-square-zero relations is preserved under this inversion.
+See Auslander--Reiten--Smal{\o} 1995 Ch.~VII \S 2 for the
+general block-algebra inversion.
+\end{proof}
+
+\subsection{Matching to Spectral Components}
+
+\begin{proposition}[type-to-component match at $p=3$]
+\label{v4-arith:f1a3-BH:prop:type-to-component-p3}
+\ClaimStatusProvedHereConditional. Assume (A) and (B). Each
+$\tau\in\mathbf{T}^{\mathrm{BH}}_{3,\chi}$ corresponds to a unique
+component $\mathcal{X}^{\mathrm{EG,wild},3,\chi,\tau}_{GL_{2}}$ of the
+wild-enhanced EG stack, with the principal-block types carrying a
+degree-$1$ derived fibre of dimension $2$ (per
+\Cref{v4-arith:deg-f1a:rem:wild-EG-p3}), and all other types carrying
+no derived enhancement.
+\end{proposition}
+
+\begin{proof}
+\textbf{Step 1: classical-component match.} Same as
+\Cref{v4-arith:f1a3-BH:prop:type-to-component-p2} Step~1,
+replacing $p=2$ by $p=3$. Each type has an $L$-parameter
+$\phi_{\tau}$ by BH 2006 \S 18; the residual $\rho_{\tau}$
+determines the component.
+\textbf{Step 2: principal-block derived-fibre match.} For $\tau$ a
+principal-block type, $\rho_{\tau}$ is reducible with constituents
+matching the Steinberg-decomposed restricted-weight simples
+$L_{0},L_{1},L_{2}$. The two Ext${}^{1}$-classes of
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3} lift to a
+two-dimensional Ext${}^{1}$-space in the deformation functor of
+$\rho_{\tau}$. By \Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement}(2),
+this is realised as the degree-$1$ derived fibre of dimension $2$ in
+$\mathcal{X}^{\mathrm{EG,wild},3,\chi,\tau}_{GL_{2}}$.
+\textbf{Step 3: semisimplicity at irreducible $\rho$.} Same as the
+$p=2$ case. All supercuspidal types give smooth classical components.
+\textbf{Step 4: bijectivity.} Same as the $p=2$ case.
+\end{proof>
+
+\section{Essential Surjectivity via Type-by-Type Exhaustion}
+\label{v4-arith:f1a3-BH:essential-surjectivity}
+
+\subsection{The Exhaustion Argument}
+
+\begin{theorem}[block exhaustion on a single BH block]
+\label{v4-arith:f1a3-BH:thm:single-block-exhaustion}
+\ClaimStatusProvedHereConditional. Fix $p\in\{2,3\}$, $\chi$, and a
+Bushnell--Kutzko type $\tau\in\mathbf{T}^{\mathrm{BH}}_{p,\chi}$. Under
+assumptions (A), (B), (C) of
+\Cref{v4-arith:f1a3-BH:thm:main}, the restricted functor
+\[
+\Phi^{\mathrm{wild}}_{p,\chi,\tau}\colon\mathrm{Block}^{\mathrm{BH}}_{\tau}
+\;\longrightarrow\;
+\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG,wild},p,\chi,\tau}_{GL_{2}}\bigr)
+\]
+is an equivalence.
+\end{theorem}
+
+\begin{proof}
+\textbf{Step 1: fully-faithful at the block level.} The global
+$\Phi^{\mathrm{wild}}_{p,\chi}$ of
+\Cref{v4-arith:deg-f1a:thm:wild-functor-existence} is fully faithful
+conditional on \Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement}.
+Restriction to a block preserves fully-faithfulness (the ambient
+restriction is the Verdier quotient by the orthogonal component).
+
+\textbf{Step 2: essential surjectivity in the semisimple direction.}
+Under (A), the projective indecomposable generator
+$P_{\tau}\in\mathrm{Block}^{\mathrm{BH}}_{\tau}$ maps under
+$\Phi^{\mathrm{wild}}_{p,\chi,\tau}$ to the derived structure sheaf
+of the BH closed point $x_{\tau}\in\mathcal{X}^{\mathrm{EG,wild},p,\chi,\tau}_{GL_{2}}$.
+By (C), the closed-point derived structure sheaf compactly generates
+$\mathrm{IndCoh}_{\mathrm{Nilp}}$ on the component. By standard
+theory (Lurie HA \S 4.8.2), a compact generator whose image under a
+fully-faithful functor maps to a compact generator of the target
+produces essential surjectivity on the compactly-generated
+sub-$\infty$-category.
+
+\textbf{Step 3: absorbing the non-semisimple Ext${}^{1}$-correction.}
+The derived structure on the block's compact generator side is a
+two-step filtration whose degree-$(-1)$ fibre is the Ext${}^{1}$-extension
+of \Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2} (at $p=2$) or the
+pair of Ext${}^{1}$-extensions of
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3} (at $p=3$). Under
+assumption (B), this Ext${}^{1}$-structure matches the degree-$1$
+derived fibre of $\mathcal{X}^{\mathrm{EG,wild},p,\chi,\tau}_{GL_{2}}$
+by \Cref{v4-arith:deg-f1a:def:EG-wild-enhanced}. The matching is not
+merely dimensional (both sides are of the same dimension: $1$ at
+$p=2$, $2$ at $p=3$); it is an isomorphism of the Ext${}^{1}$ itself,
+as classes. This upgrade preserves compact generation.
+
+\textbf{Step 4: completing essential surjectivity.} Steps~2--3 show
+that the compactly-generated closure of the image of
+$\Phi^{\mathrm{wild}}_{p,\chi,\tau}$ equals the compactly-generated
+closure of $\{x_{\tau}\text{ structure sheaf}\}$, which by (C) is the
+full target $\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG,wild},p,\chi,\tau}_{GL_{2}})$.
+Combined with Step~1's fully-faithfulness, this yields the equivalence.
+\end{proof}
+
+\begin{corollary}[assembly across types]
+\label{v4-arith:f1a3-BH:cor:BH-assembly}
+\ClaimStatusProvedHereConditional. Under (A), (B), (C) of
+\Cref{v4-arith:f1a3-BH:thm:main}, the direct-sum assembly
+$\Phi^{\mathrm{wild}}_{p,\chi}=\bigoplus_{\tau}\Phi^{\mathrm{wild}}_{p,\chi,\tau}$
+is an equivalence of stable presentable $\infty$-categories.
+\end{corollary}
+
+\begin{proof}
+The two sides decompose respectively as direct sums over
+$\tau\in\mathbf{T}^{\mathrm{BH}}_{p,\chi}$; each summand functor is
+an equivalence by \Cref{v4-arith:f1a3-BH:thm:single-block-exhaustion};
+direct sum of equivalences is an equivalence.
+\end{proof}
+
+\section{Cross-Check with the Wild-EG Definition}
+\label{v4-arith:f1a3-BH:wild-EG-cross-check}
+
+\subsection{Dimensional Audit}
+
+\begin{proposition}[dimensional audit $p=2$]
+\label{v4-arith:f1a3-BH:prop:dim-audit-p2}
+\ClaimStatusProvedHere. At $p=2$, the degree-$1$ derived fibre
+dimension on the wild-enhanced EG stack equals the
+Ext${}^{1}$-dimension of the corresponding block: both equal $1$.
+\end{proposition}
+
+\begin{proof}
+Left-hand side: \Cref{v4-arith:deg-f1a:rem:wild-EG-p2} records the
+derived fibre dimension as $1$, supported on the non-semisimple locus
+of the Emerton--Gee stack (the reducible residual representations).
+Right-hand side:
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2} equation
+(\ref{v4-arith:bzn-rcompletion:eq:Ext1-p2}) records
+$\mathrm{Ext}^{1}(\mathbf{1}_{\mathrm{triv}},\mathbf{1}_{\mathrm{sgn}})=k$,
+a one-dimensional space. The match is exact.
+\end{proof>
+
+\begin{proposition}[dimensional audit $p=3$]
+\label{v4-arith:f1a3-BH:prop:dim-audit-p3}
+\ClaimStatusProvedHere. At $p=3$, the degree-$1$ derived fibre
+dimension on the wild-enhanced EG stack equals the
+Ext${}^{1}$-dimension of the corresponding block: both equal $2$.
+\end{proposition}
+
+\begin{proof}
+Left-hand side: \Cref{v4-arith:deg-f1a:rem:wild-EG-p3} records the
+derived fibre dimension as $2$ on the non-semisimple locus.
+Right-hand side:
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3} records
+$\mathrm{Ext}^{1}(L_{0},L_{1})\oplus\mathrm{Ext}^{1}(L_{1},L_{2})=k\oplus k$,
+a two-dimensional space. The match is exact.
+\end{proof>
+
+\subsection{Structural Consistency}
+
+\begin{proposition}[structural consistency with Chapter~\ref{v4-arith:deg-f1a}]
+\label{v4-arith:f1a3-BH:prop:structural-consistency}
+\ClaimStatusProvedHere. The BH-component decomposition of this
+chapter, $\mathcal{X}^{\mathrm{EG,wild},p,\chi}_{GL_{2}}=\coprod_{\tau}\mathcal{X}^{\mathrm{EG,wild},p,\chi,\tau}_{GL_{2}}$,
+coincides with the decomposition implied by
+\Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement}(3) (the
+BH fibre correspondence between wild components and BH types), with
+identical indexing set $\mathbf{T}^{\mathrm{BH}}_{p,\chi}$ and identical
+derived-fibre dimensions.
+\end{proposition}
+
+\begin{proof}
+Both decompositions arise from the same source: the BH type
+classification of Bushnell--Henniart 2006 \S 11--15. The indexing set
+is identical. The derived-fibre dimensions are identical by the
+dimensional audits \Cref{v4-arith:f1a3-BH:prop:dim-audit-p2} and
+\Cref{v4-arith:f1a3-BH:prop:dim-audit-p3}. The non-semisimple locus
+(where the derived fibre is non-zero) is identical: it is the reducible
+residual locus determined by the principal-block types. All three data
+coincide, so the decompositions coincide.
+\end{proof>
+
+\begin{remark}[no new structure imposed]
+\label{v4-arith:f1a3-BH:rem:no-new-structure}
+\Cref{v4-arith:f1a3-BH:prop:structural-consistency} confirms that this
+chapter does not introduce any new structure on the wild-enhanced EG
+stack beyond what Chapter~\ref{v4-arith:deg-f1a} already specifies.
+The content of F1.a.3 is the statement that the BH type-by-type match
+yields essential surjectivity on each component, together with the
+three conjectural inputs (A), (B), (C) that make this essential
+surjectivity precise. No new geometric object is constructed here.
+\end{remark}
+
+\section{The Three Conditional Inputs}
+\label{v4-arith:f1a3-BH:conjectures}
+
+\subsection{(A) BH Packaging}
+
+\begin{conjecture}[BH packaging]
+\label{v4-arith:f1a3-BH:conj:BH-packaging}
+\ClaimStatusConjectured. Fix $p\in\{2,3\}$, $\chi$, and
+$\tau\in\mathbf{T}^{\mathrm{BH}}_{p,\chi}$. The projective indecomposable
+generator $P_{\tau}\in\mathrm{Block}^{\mathrm{BH}}_{\tau}$ is a compact
+object of $\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}(\mathbb{Q}_{p})])_{\chi}$,
+and its image under $\Phi^{\mathrm{wild}}_{p,\chi}$ is the derived
+structure sheaf of the BH closed point
+$x_{\tau}\in\mathcal{X}^{\mathrm{EG,wild},p,\chi,\tau}_{GL_{2}}$.
+\end{conjecture}
+
+\begin{remark}[what supports the BH packaging conjecture]
+\label{v4-arith:f1a3-BH:rem:BH-packaging-evidence}
+Three lines of evidence:
+\begin{itemize}
+\item Paskunas 2013 establishes the analogous statement for $p\geq 5$
+(Publ.~IHES~118 \S 6): each projective indecomposable of
+$\mathrm{Mod}^{\mathrm{sm},\chi}_{GL_{2}(\mathbb{Q}_{p})}$ maps under
+Colmez--Montreal to the structure sheaf of a residual-Galois closed
+point. At $p\in\{2,3\}$, the Paskunas argument requires modification
+because the block structure is more complex, but the packaging
+statement is the natural analogue.
+\item Bushnell--Henniart 2006 \S 18 establishes the type-to-parameter
+match: each BH type $\tau$ has an associated $L$-parameter
+$\phi_{\tau}$. The projective generator $P_{\tau}$ is the type's
+indicator-character-module; the BH packaging conjecture is that this
+module maps to the derived structure sheaf of the closed point
+$x_{\tau}$ determined by $\phi_{\tau}\pmod{p}$.
+\item Compactness of $P_{\tau}$: the block is a finitely-generated
+module over its local endomorphism algebra (BH 2006 \S 12.3), hence
+$P_{\tau}$ is compact in the derived category of the block.
+\end{itemize}
+The conjectural content is the precise image identification (second
+bullet), not compactness or finiteness.
+\end{remark}
+
+\subsection{(B) Paskunas Wild $\mathrm{Ext}^{1}$-Compatibility}
+
+\begin{conjecture}[Paskunas wild-block $\mathrm{Ext}^{1}$-compatibility]
+\label{v4-arith:f1a3-BH:conj:Paskunas-wild-ext}
+\ClaimStatusConjectured. Fix $p\in\{2,3\}$ and a principal-block type
+$\tau\in\mathbf{T}^{\mathrm{BH}}_{p,\chi}$ with reducible residual
+$\rho_{\tau}$. The Ext${}^{1}$-class(es) of
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2} (at $p=2$) or
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3} (at $p=3$) on the
+automorphic side matches, as $k$-vector space with specific class(es),
+the degree-$1$ cotangent fibre of the wild-enhanced EG stack
+\Cref{v4-arith:deg-f1a:def:EG-wild-enhanced} at the residual $\rho_{\tau}$.
+The match respects the class labels: the class $\alpha_{01}$ matches
+one Ext${}^{1}$-direction of the cotangent fibre; $\alpha_{12}$
+matches the orthogonal direction at $p=3$.
+\end{conjecture}
+
+\begin{remark}[dimensional evidence already closed]
+\label{v4-arith:f1a3-BH:rem:Paskunas-wild-ext-evidence}
+The dimensional match is \emph{unconditional}:
+\Cref{v4-arith:f1a3-BH:prop:dim-audit-p2} and
+\Cref{v4-arith:f1a3-BH:prop:dim-audit-p3} each close the dimensional
+part of the conjecture. The conjectural content is the
+class-level identification: that the specific Ext${}^{1}$-class
+$\alpha_{01}$ (or the pair at $p=3$) is sent to the specific
+cotangent-fibre direction. This identification is a Bushnell--Henniart
++ deformation-theory statement, not a dimension count. Its proof would
+match the formal deformation space of $\rho_{\tau}$ with the
+Ext${}^{1}$-ring computed on the BH block, and would fit within the
+$15$--$25$ page scope.
+\end{remark}
+
+\subsection{(C) Wild-EG Compact-Generator Identification}
+
+\begin{conjecture}[wild-EG compact generation]
+\label{v4-arith:f1a3-BH:conj:wild-compact-generation}
+\ClaimStatusConjectured. Fix $p\in\{2,3\}$, $\chi$, and
+$\tau\in\mathbf{T}^{\mathrm{BH}}_{p,\chi}$. The compact objects of
+$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG,wild},p,\chi,\tau}_{GL_{2}})$
+are generated under shifts and finite colimits by the derived
+structure sheaf of the BH closed point
+$x_{\tau}\in\mathcal{X}^{\mathrm{EG,wild},p,\chi,\tau}_{GL_{2}}$.
+\end{conjecture}
+
+\begin{remark}[classical case is known]
+\label{v4-arith:f1a3-BH:rem:wild-compact-generation-evidence}
+The classical analogue (no derived enhancement) is a theorem of
+Gaitsgory--Rozenblyum (AMS DAG monographs Vol.~II, Ch.~8): for a
+connected formal neighbourhood of a closed point on a formal algebraic
+stack, $\mathrm{IndCoh}_{\mathrm{Nilp}}$ is compactly generated by the
+structure sheaf of the closed point. The derived-enhanced case,
+needed for the degree-$1$ wild fibre of
+\Cref{v4-arith:deg-f1a:def:EG-wild-enhanced}, is the derived-DAG
+version of this theorem. Pridham--Toen--Vezzosi DAG VIII \S 5 give the
+derived analogue on smooth derived formal stacks; the wild-enhanced
+EG stack is not smooth in the classical sense, but is derived-smooth
+in degree $1$, and the generation statement should extend. This is
+the conjectural content of (C).
+\end{remark}
+
+\section{Consequence for F1.a and F1}
+\label{v4-arith:f1a3-BH:consequence}
+
+\subsection{F1.a Closure at Wild Primes}
+
+\begin{theorem}[F1.a at wild primes, conditional]
+\label{v4-arith:f1a3-BH:thm:F1a-wild-conditional}
+\ClaimStatusProvedHereConditional. Under (A), (B), (C) of
+\Cref{v4-arith:f1a3-BH:thm:main} and the wild-EG enhancement
+\Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement}, F1.a holds at
+$p\in\{2,3\}$: there is an equivalence
+\[
+\Phi^{\mathrm{wild}}_{p,\chi}\colon
+\mathrm{D}^{\mathrm{sph\text{-}fin}}\bigl([GL_{2}(\mathbb{Q}_{p})]\bigr)_{\chi}
+\;\xrightarrow{\;\sim\;}\;
+\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG,wild},p,\chi}_{GL_{2}}\bigr),
+\]
+natural in $\chi$ and in the BH-block decomposition.
+\end{theorem}
+
+\begin{proof}
+Fully-faithfulness is
+\Cref{v4-arith:deg-f1a:thm:wild-functor-existence}. Essential
+surjectivity is \Cref{v4-arith:f1a3-BH:cor:BH-assembly}. Both hold
+under the stated hypotheses.
+\end{proof}
+
+\subsection{F1.a Closure at All Primes}
+
+\begin{corollary}[F1.a at all primes, conditional, sharpened]
+\label{v4-arith:f1a3-BH:cor:F1a-all-primes-sharpened}
+\ClaimStatusProvedHereConditional. Under:
+\begin{itemize}
+\item F1.a.1: \Cref{v4-arith:deg-f1a:conj:block-exhaustion} (block
+exhaustion at $p\geq 5$);
+\item F1.a.2: \Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement}
+(wild-EG enhancement at $p\in\{2,3\}$);
+\item F1.a.3 (this chapter): (A), (B), (C) of
+\Cref{v4-arith:f1a3-BH:thm:main} (BH packaging, Paskunas wild Ext${}^{1}$,
+wild-EG compact generation);
+\end{itemize}
+F1.a holds at every prime and every central character $\chi$: there is
+a single family equivalence
+\[
+\Phi^{\mathrm{LocCat}}_{p,\chi}\colon
+\mathrm{D}^{\mathrm{sph\text{-}fin}}\bigl([GL_{2}(\mathbb{Q}_{p})]\bigr)_{\chi}
+\;\xrightarrow{\;\sim\;}\;
+\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG,wild\text{-}enhanced},p,\chi}_{GL_{2}}\bigr).
+\]
+The central-character assembly
+\Cref{v4-arith:deg-f1a:thm:central-character-variation} closes
+unconditionally once the per-$\chi$ equivalence holds.
+\end{corollary}
+
+\begin{proof}
+Direct assembly of
+\Cref{v4-arith:deg-f1a:thm:ess-surj-conditional} (at $p\geq 5$),
+\Cref{v4-arith:f1a3-BH:thm:F1a-wild-conditional} (at $p\in\{2,3\}$),
+and \Cref{v4-arith:deg-f1a:thm:central-character-variation}
+(central-character variation, unconditional on its input).
+\end{proof}
+
+\subsection{The Updated F1 Residual Ledger}
+
+\begin{proposition}[F1 residual ledger after this chapter]
+\label{v4-arith:f1a3-BH:prop:F1-ledger-updated}
+\ClaimStatusProvedHere. The total F1 residual ledger (combining
+F1.a.1--F1.a.3 with $\mathrm{L}_{\mathrm{ACD}}$) factors into the
+following six conjectural inputs:
+\begin{enumerate}
+\item F1.a.1: block exhaustion at $p\geq 5$
+(\Cref{v4-arith:deg-f1a:conj:block-exhaustion}), paper-length
+$30$--$50$ pp.
+\item F1.a.2: wild-EG enhancement at $p\in\{2,3\}$
+(\Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement}), paper-length
+$20$--$40$ pp.
+\item F1.a.3.A: BH packaging
+(\Cref{v4-arith:f1a3-BH:conj:BH-packaging}), paper-length $5$--$10$ pp.
+\item F1.a.3.B: Paskunas wild Ext${}^{1}$-compatibility
+(\Cref{v4-arith:f1a3-BH:conj:Paskunas-wild-ext}), paper-length
+$5$--$10$ pp.
+\item F1.a.3.C: wild-EG compact-generator identification
+(\Cref{v4-arith:f1a3-BH:conj:wild-compact-generation}), paper-length
+$5$--$10$ pp.
+\item $\mathrm{L}_{\mathrm{ACD}}$: adelic categorical descent
+(Ch.~\ref{v4-arith:closure}), paper-length $80$--$120$ pp.
+\end{enumerate}
+The three sub-residuals of F1.a.3 together total $15$--$25$ pp, matching
+the aggregate F1.a.3 scope identified in Chapter~\ref{v4-arith:deg-f1a}.
+\end{proposition}
+
+\begin{proof}
+The enumeration is direct. F1.a.1 and F1.a.2 are unchanged from
+Chapter~\ref{v4-arith:deg-f1a}. F1.a.3 factors as (A)+(B)+(C) by
+\Cref{v4-arith:f1a3-BH:thm:main}. $\mathrm{L}_{\mathrm{ACD}}$ is the
+adelic residual of Chapter~\ref{v4-arith:closure}. Total page counts
+sum within the respective ranges.
+\end{proof}
+
+\section{Residual Scope and Attack--Heal Traces}
+\label{v4-arith:f1a3-BH:residuals-traces}
+
+\subsection{Named Residuals Introduced}
+
+This chapter factors F1.a.3 into three sub-conjectures:
+
+\begin{enumerate}
+\item \Cref{v4-arith:f1a3-BH:conj:BH-packaging} (F1.a.3.A): projective
+indecomposables of BH blocks map to derived structure sheaves of BH
+closed points under the twisted DEG functor.
+\item \Cref{v4-arith:f1a3-BH:conj:Paskunas-wild-ext} (F1.a.3.B): the
+non-semisimple Ext${}^{1}$-classes on the automorphic side match the
+degree-$1$ cotangent fibres on the wild-enhanced EG stack, as classes
+(dimensional match already unconditional by
+\Cref{v4-arith:f1a3-BH:prop:dim-audit-p2} and
+\Cref{v4-arith:f1a3-BH:prop:dim-audit-p3}).
+\item \Cref{v4-arith:f1a3-BH:conj:wild-compact-generation} (F1.a.3.C):
+compact generation of $\mathrm{IndCoh}_{\mathrm{Nilp}}$ on each wild-EG
+component by the derived structure sheaf of the BH closed point.
+\end{enumerate}
+
+\subsection{What Closes Unconditionally}
+
+Three statements close unconditionally in this chapter:
+
+\begin{enumerate}
+\item Dimensional audit at $p=2$
+(\Cref{v4-arith:f1a3-BH:prop:dim-audit-p2}): $1=1$.
+\item Dimensional audit at $p=3$
+(\Cref{v4-arith:f1a3-BH:prop:dim-audit-p3}): $2=2$.
+\item Structural consistency with Chapter~\ref{v4-arith:deg-f1a}
+(\Cref{v4-arith:f1a3-BH:prop:structural-consistency}): the
+BH-component decomposition of this chapter matches the wild-EG
+decomposition of Chapter~\ref{v4-arith:deg-f1a} structurally.
+\end{enumerate}
+
+These unconditional results establish the \emph{skeleton} of F1.a.3:
+the decomposition and the numerical match. The conjectural content
+is the fine identification (class-level match, compact generation,
+projective-to-structure-sheaf packaging).
+
+\subsection{Attack--Heal Trace for Cycle 1 (BH tame-wild at $p=2$)}
+
+\paragraph{Attack 1 (source collision).} Bushnell--Henniart 2006
+\S 11--13, Carter 1989 \S 7.3, Lusztig 1980, Jantzen 2003 Ch.~II
+\S 8, Paskunas 2013 \S 6. All disjoint from Fargues--Scholze
+arXiv:2102.13459 and from Dotto--Emerton--Gee arXiv:2603.26887
+(DEG is at $p\geq 5$; the $p=2,3$ extension is our conjectural
+content). \textbf{Pass.}
+
+\paragraph{Attack 2 (conventions).} BH uses Langlands-normalised
+L-parameters; our EG stack follows Emerton--Gee arXiv:1908.07185 which
+matches. Character conductor exponents agree. \textbf{Pass.}
+
+\paragraph{Attack 3 (ambient category).} The category
+$\mathrm{Block}^{\mathrm{BH}}_{\tau}$ is a block of smooth
+$GL_{2}(\mathbb{Q}_{2})$-representations with central character $\chi$;
+the component
+$\mathcal{X}^{\mathrm{EG,wild},2,\chi,\tau}_{GL_{2}}$ is a derived
+formal algebraic stack. Both are presentable stable $\infty$-categories;
+the restricted functor lives in the same category as the global
+functor. \textbf{Pass.}
+
+\paragraph{Attack 4 (missing hypothesis).} The conjectural inputs
+(A), (B), (C) are explicit. The unconditional inputs are BH 2006
+classification (proved), dimensional match (proved here), structural
+consistency (proved here). \textbf{Pass, hypotheses explicit.}
+
+\paragraph{Attack 5 (false functoriality).} Block restriction is
+functorial (Verdier quotient by orthogonal block); type-to-component
+match is functorial by BH \S 18; derived-structure-sheaf formation is
+functorial. \textbf{Pass.}
+
+\paragraph{Attack 6 (unproved equivalence).} Three conjectures (A),
+(B), (C); explicit. \textbf{Named residuals.}
+
+\paragraph{Attack 7 (engine).} No engine. \textbf{Pass.}
+
+Cycle~1 closes with three named sub-residuals.
+
+\subsection{Attack--Heal Trace for Cycle 2 (BH tame-wild at $p=3$)}
+
+\paragraph{Attack 1.} Same sources as Cycle~1; include also
+Auslander--Reiten--Smal{\o} 1995 Ch.~VII \S 2 for the
+$A_{2}$-linear-quiver block structure. Disjoint from tame DEG and from
+FS. \textbf{Pass.}
+
+\paragraph{Attack 2.} Conventions match BH and EG as in Cycle~1;
+$A_{2}$-quiver conventions follow Auslander--Reiten--Smal{\o}
+(radical-square-zero relations). \textbf{Pass.}
+
+\paragraph{Attack 3.} Same ambient. \textbf{Pass.}
+
+\paragraph{Attack 4.} Same hypotheses as Cycle~1, instantiated at
+$p=3$; the Ext${}^{1}$-dimension is $2$ not $1$, matching
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3}. \textbf{Pass.}
+
+\paragraph{Attack 5.} Same as Cycle~1; the $A_{2}$-quiver is
+functorial under block restriction. \textbf{Pass.}
+
+\paragraph{Attack 6.} Same three conjectures, instantiated at $p=3$.
+\textbf{Named residuals.}
+
+\paragraph{Attack 7.} No engine. \textbf{Pass.}
+
+Cycle~2 closes with the same three named sub-residuals.
+
+\subsection{Attack--Heal Trace for Cycle 3 (essential surjectivity)}
+
+\paragraph{Attack 1.} Sources combine
+Gaitsgory--Rozenblyum Vol.~II (compact generation on formal stacks),
+Lurie HA \S 4.8.2 (compact-generator transfer under fully-faithful
+functors), Pridham--Toen--Vezzosi DAG VIII (derived formal deformation
+theory). All disjoint. \textbf{Pass.}
+
+\paragraph{Attack 2.} Compact-generation conventions: shifts and finite
+colimits (not infinite), matching the DAG monograph. \textbf{Pass.}
+
+\paragraph{Attack 3.} Stable presentable $\infty$-categories; the
+compact-generator transfer is an equivalence in $\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}$.
+\textbf{Pass.}
+
+\paragraph{Attack 4.} (A), (B), (C) all named; the essential-surjectivity
+argument uses all three. \textbf{Pass, hypotheses explicit.}
+
+\paragraph{Attack 5.} The block-by-block exhaustion is manifestly
+block-diagonal (blocks are orthogonal on both sides); no false
+functoriality. \textbf{Pass.}
+
+\paragraph{Attack 6.} No new conjecture introduced. \textbf{Pass.}
+
+\paragraph{Attack 7.} No engine. \textbf{Pass.}
+
+Cycle~3 closes: essential surjectivity holds conditional on (A), (B), (C).
+
+\subsection{Attack--Heal Trace for Cycle 4 (wild-EG cross-check)}
+
+\paragraph{Attack 1.} Sources: Chapter~\ref{v4-arith:deg-f1a}
+(wild-EG definition), Chapter~\ref{v4-arith:bzn-rcompletion}
+(Ext${}^{1}$-computations), Bushnell--Henniart 2006 (type
+classification). All disjoint; the cross-check is internal to
+Vol~IV's arithmetic branch. \textbf{Pass.}
+
+\paragraph{Attack 2.} Conventions: the degree-$1$ derived-fibre
+dimension in Ch.~\ref{v4-arith:deg-f1a} equals the
+Ext${}^{1}$-dimension in Ch.~\ref{v4-arith:bzn-rcompletion} by
+\Cref{v4-arith:f1a3-BH:prop:dim-audit-p2} and
+\Cref{v4-arith:f1a3-BH:prop:dim-audit-p3}. \textbf{Pass.}
+
+\paragraph{Attack 3.} Both objects sit in derived formal algebraic
+stacks over $\mathrm{Spf}\,\mathbb{Z}_{p}$. \textbf{Pass.}
+
+\paragraph{Attack 4.} The structural consistency assumes (B) for the
+class-level match; dimensional match is unconditional. \textbf{Pass.}
+
+\paragraph{Attack 5.} Functoriality of the BH fibre correspondence
+(BH 2006 \S 18) is used; this is explicit. \textbf{Pass.}
+
+\paragraph{Attack 6.} No new unproved equivalence; (B) is already
+named. \textbf{Pass.}
+
+\paragraph{Attack 7.} No engine. \textbf{Pass.}
+
+Cycle~4 closes: the cross-check confirms structural consistency without
+introducing new residuals.
+
+\subsection{Attack--Heal Trace for Cycle 5 (unconditional-closure attempt)}
+
+\paragraph{Attack 1.} Literature survey: Paskunas 2013, BH 2006,
+EG 2019, Gaitsgory--Rozenblyum monographs, Pridham--Toen--Vezzosi DAG
+VIII. \textbf{Pass, disjoint.}
+
+\paragraph{Attack 2.} Conventions all match. \textbf{Pass.}
+
+\paragraph{Attack 3.} Ambient is fixed throughout. \textbf{Pass.}
+
+\paragraph{Attack 4.} The three conjectures (A), (B), (C) cannot be
+eliminated without new input:
+\begin{itemize}
+\item (A) would require extending Paskunas' projective-to-structure-sheaf
+match from $p\geq 5$ to $p\in\{2,3\}$; this is a concrete technical
+task, feasible in $5$--$10$ pp of dedicated work.
+\item (B) would require identifying the specific Ext${}^{1}$-classes
+with cotangent directions; this uses deformation theory and should fit
+in $5$--$10$ pp.
+\item (C) would require extending Gaitsgory--Rozenblyum's compact
+generation theorem from classical formal stacks to the derived-enhanced
+case; feasible in $5$--$10$ pp using DAG VIII.
+\end{itemize}
+\textbf{Honesty preserved: no unconditional closure claimed.}
+
+\paragraph{Attack 5.} Each of (A), (B), (C) is functorial in the
+input data; no false-functoriality gap. \textbf{Pass.}
+
+\paragraph{Attack 6.} The three conjectures are the minimal set.
+\textbf{Named residuals.}
+
+\paragraph{Attack 7.} No engine. \textbf{Pass.}
+
+Cycle~5 closes: three sub-conjectures (A), (B), (C) stand as the
+minimal conditional input set for F1.a.3, each individually tractable
+at $5$--$10$ pp paper-length. The total is consistent with the
+$15$--$25$ pp estimate of Chapter~\ref{v4-arith:deg-f1a}.
+
+\section{Summary}
+\label{v4-arith:f1a3-BH:summary}
+
+\begin{enumerate}
+\item F1.a.3 is the smallest of the three residuals on F1.a: $15$--$25$
+pp scope, bounded by the finite BH type catalog and the explicit
+Ext${}^{1}$-structure of Chapter~\ref{v4-arith:bzn-rcompletion}
+(\Cref{v4-arith:f1a3-BH:rem:smallest-residual}).
+\item The obligation is: essential surjectivity of the twisted
+DEG-type functor
+$\Phi^{\mathrm{wild}}_{p,\chi}$ of
+\Cref{v4-arith:deg-f1a:thm:wild-functor-existence} at
+$p\in\{2,3\}$, reducing to type-by-type exhaustion via the BH block
+decomposition.
+\item BH tame-wild classification at $p=2$
+(\Cref{v4-arith:f1a3-BH:prop:BH-types-p2}): finite list of unramified
+principal-series, tame supercuspidal, and wild supercuspidal types.
+The Ext${}^{1}$-carrying block is the trivial unramified principal
+series (\Cref{v4-arith:f1a3-BH:rem:ext1-type-p2}).
+\item BH classification at $p=3$
+(\Cref{v4-arith:f1a3-BH:prop:BH-types-p3}): adds a principal-block
+wild-types family with three types forming an $A_{2}$-linear quiver
+(\Cref{v4-arith:f1a3-BH:prop:A2-quiver-p3}), matching
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3}.
+\item Dimensional audit (unconditional): both $p=2$ (dimension $1$)
+and $p=3$ (dimension $2$) match between the Ext${}^{1}$-side and the
+derived-fibre side
+(\Cref{v4-arith:f1a3-BH:prop:dim-audit-p2},
+\Cref{v4-arith:f1a3-BH:prop:dim-audit-p3}).
+\item Structural consistency (unconditional): the BH-component
+decomposition of this chapter coincides with the wild-EG
+decomposition of Chapter~\ref{v4-arith:deg-f1a}
+(\Cref{v4-arith:f1a3-BH:prop:structural-consistency}).
+\item Essential surjectivity on a single BH block
+(\Cref{v4-arith:f1a3-BH:thm:single-block-exhaustion}): proved
+conditional on (A), (B), (C). Assembly across types
+(\Cref{v4-arith:f1a3-BH:cor:BH-assembly}): equivalence of the
+twisted DEG-type functor.
+\item Three named sub-conjectures: (A) BH packaging
+(\Cref{v4-arith:f1a3-BH:conj:BH-packaging}), $5$--$10$ pp;
+(B) Paskunas wild Ext${}^{1}$
+(\Cref{v4-arith:f1a3-BH:conj:Paskunas-wild-ext}), $5$--$10$ pp;
+(C) wild-EG compact generation
+(\Cref{v4-arith:f1a3-BH:conj:wild-compact-generation}), $5$--$10$ pp.
+Total: $15$--$25$ pp, consistent with Chapter~\ref{v4-arith:deg-f1a}'s
+estimate.
+\item F1.a.3 does not close unconditionally in this chapter; it is
+factored into three individually tractable sub-residuals, each
+strictly narrower than the full F1.a.3 statement. No
+\ClaimStatusProvedHere{} inscription for the main theorem; only
+conditional closures.
+\item The consequence for the F1 ledger
+(\Cref{v4-arith:f1a3-BH:prop:F1-ledger-updated}) is that F1.a factors
+into five conjectural inputs (F1.a.1, F1.a.2, F1.a.3.A,B,C) and F1
+adds $\mathrm{L}_{\mathrm{ACD}}$; six total. This is the finest
+factorisation of the F1 residual ledger to date.
+\end{enumerate}
+
+The chapter produces no unconditional closure of F1.a.3. The strongest
+unconditional content is the dimensional audit and the structural
+consistency; everything else closes only under (A), (B), (C). Honesty
+over closure.

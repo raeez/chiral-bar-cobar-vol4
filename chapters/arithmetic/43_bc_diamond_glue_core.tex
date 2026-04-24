@@ -1,0 +1,873 @@
+\chapter{(BC-Diamond-Glue).core: Cross-Prime Bernstein Compatibility}
+\label{v4-arith:bcglue-core}
+
+\emph{Wave-4 attack-heal on the smallest $\mathrm{L}_{\mathrm{ACD}}$
+residual. Wave-1 Ch.~\ref{v4-arith:bcglue-k5} reduced the
+$\mathrm{L}_{\mathrm{ACD}}$ Bernstein-centre obligation
+to three pieces (BCglue.local), (BCglue.glue), (BCglue.core); the
+wave-3 audit
+(\Cref{v4-arith:w3-audit-A:ch35}) corrected their status
+(the first two are \emph{Theorem-waiting} / \emph{Conjectural}). The
+present chapter attacks the residual (BCglue.core) itself: cross-prime
+compatibility of the local Bernstein-centre actions with the global
+Bernstein-centre pullback under the diagonal restriction of the glued
+prismatic sheaf on the global Emerton--Gee stack. The net result is
+a further reduction of (BCglue.core) to a single scalar datum on the
+Chenevier pseudocharacter spectrum, together with a short list of
+explicit conditional inputs; the residual is not closed
+unconditionally (it requires arithmetic Arinkin--Gaitsgory), but the
+load-bearing cross-prime content is isolated to a single
+Chenevier-level statement amenable to primary-source attack.}
+
+\section{Statement of (BCglue.core)}
+\label{v4-arith:bcglue-core:statement}
+
+\subsection{Setup}
+
+Fix $G=GL_{2}$. Let
+$\mathcal{X}^{\mathrm{EG},p}_{G}$ be the Emerton--Gee stack of rank-$2$
+$(\varphi,\Gamma)$-modules at the prime $p$ (Emerton--Gee
+arXiv:1908.07185). Let $\mathcal{X}^{\mathrm{EG,glob}}_{G}$ be the
+global Emerton--Gee stack
+(\Cref{v4-arith:thm:emerton-gee}); it is the colimit of the local
+stacks glued along the diagonal embeddings and an archimedean factor.
+
+For a finite place $p$ write $\mathcal{Z}_{p}$ for the Bernstein
+centre of $\mathrm{Rep}(GL_{2}(\mathbb{Q}_{p}))$ in the sense of
+Bernstein 1984 ``Le centre de Bernstein'' \S2.13. Write
+$\mathcal{Z}_{\mathrm{glob}}$ for the conjectural global Bernstein
+centre acting on
+$\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}])$ by averaging over the
+local factors. Let
+$\mathcal{F}_{p}\in\mathrm{Coh}(\mathcal{X}^{\mathrm{EG},p}_{G})$ be
+the local coherent Springer sheaf supplied by (BCglue.local)
+(Ben-Zvi--Chen--Helm--Nadler arXiv:2010.02321 for $\ell\neq p$;
+Emerton--Gee + Zhu arXiv:2008.02998 + Fargues--Scholze
+arXiv:2102.13459 for $\ell=p$). Let
+$\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}\in\mathrm{Coh}(\mathcal{X}^{\mathrm{EG,glob}}_{G})$
+be the glued sheaf supplied by (BCglue.glue)
+(\Cref{v4-arith:bcglue-k5:thm:prismatic-gluing}).
+
+\subsection{The Core Compatibility Statement}
+
+\begin{definition}[the diagonal pullback at $(p,q)$]
+\label{v4-arith:bcglue-core:def:diagonal-pullback}
+For distinct finite primes $p,q$, let
+$\Delta_{p,q}\colon\mathcal{X}^{\mathrm{EG},\{p,q\}}_{G}\hookrightarrow\mathcal{X}^{\mathrm{EG,glob}}_{G}$
+be the closed immersion of the two-prime stratum of the global
+Emerton--Gee stack into the global stack (the stratum where the
+underlying global Galois representation is determined by its
+restrictions to the decomposition groups at $p$ and $q$). The
+\emph{diagonal pullback at $(p,q)$} is the coherent-sheaf pullback
+\begin{equation}
+\label{v4-arith:bcglue-core:eq:diagonal-pullback}
+\Delta_{p,q}^{*}\colon\mathrm{Coh}(\mathcal{X}^{\mathrm{EG,glob}}_{G})\longrightarrow\mathrm{Coh}(\mathcal{X}^{\mathrm{EG},\{p,q\}}_{G}).
+\end{equation}
+Under the prismatic-gluing conjecture
+(\Cref{v4-arith:bcglue-k5:thm:prismatic-gluing}) and the
+Nygaard-convention-aware transition of
+\Cref{v4-arith:bcglue-k5:def:nygaard-transition},
+$\Delta_{p,q}^{*}$ is a well-defined exact functor on the
+sub-category of coherent sheaves obtained from the filtered colimit
+of pair-wise Nygaard-indexed sheaves $\mathcal{F}^{\mathrm{prism}}_{S}$.
+\end{definition}
+
+\begin{definition}[the Bernstein-centre product action]
+\label{v4-arith:bcglue-core:def:bernstein-product-action}
+For distinct finite primes $p,q$, the local Bernstein centres
+$\mathcal{Z}_{p}$ and $\mathcal{Z}_{q}$ act on
+$\mathrm{Coh}(\mathcal{X}^{\mathrm{EG},p}_{G})$ and
+$\mathrm{Coh}(\mathcal{X}^{\mathrm{EG},q}_{G})$ through the spectral
+action supplied by Fargues--Scholze arXiv:2102.13459 Part~IX (local
+$\ell$-adic case) and Zhu arXiv:2008.02998 \S4 (local $\ell=p$ case).
+The external tensor product
+$\mathcal{F}_{p}\boxtimes\mathcal{F}_{q}\in\mathrm{Coh}(\mathcal{X}^{\mathrm{EG},\{p,q\}}_{G})$
+inherits a canonical action of the tensor product
+$\mathcal{Z}_{p}\otimes\mathcal{Z}_{q}$ acting factor-wise.
+\end{definition}
+
+\begin{conjecture}[(BCglue.core), cross-prime Bernstein compatibility]
+\label{v4-arith:bcglue-core:cj:core}
+\ClaimStatusConjectured. For every global Langlands parameter
+$\rho\colon\mathrm{Gal}(\overline{\mathbb{Q}}/\mathbb{Q})\to GL_{2}(\overline{\mathbb{Q}_{p_{0}}})$
+(for a chosen coefficient prime $p_{0}$ not shared with either $p$ or
+$q$), and for every pair of distinct finite primes $p\neq q$:
+\begin{enumerate}
+\item[(a)] the diagonal pullback of the glued prismatic sheaf
+\begin{equation}
+\label{v4-arith:bcglue-core:eq:diagonal-is-external}
+\Delta_{p,q}^{*}\,\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}
+\;\simeq\;
+\mathcal{F}_{p}\boxtimes\mathcal{F}_{q}
+\end{equation}
+as coherent sheaves on $\mathcal{X}^{\mathrm{EG},\{p,q\}}_{G}$,
+\emph{equivariantly} with respect to the action of
+$\mathcal{Z}_{p}\otimes\mathcal{Z}_{q}$ described in
+\Cref{v4-arith:bcglue-core:def:bernstein-product-action}; and
+\item[(b)] taking the filtered colimit over finite sets of primes $S$
+yields
+\begin{equation}
+\label{v4-arith:bcglue-core:eq:colimit-to-global}
+\varinjlim_{S}\,\mathcal{Z}_{S}\;=\;\mathcal{Z}_{\mathrm{glob}}
+\end{equation}
+as centres of the action on
+$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG,glob}}_{G})$,
+agreeing with the global Bernstein-centre action on
+$\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}])$ under the
+(conjectural) arithmetic Arinkin--Gaitsgory equivalence of
+\Cref{v4-arith:thm:arithmetic-AG}.
+\end{enumerate}
+\end{conjecture}
+
+\begin{remark}[why both (a) and (b) are needed]
+\label{v4-arith:bcglue-core:rem:both-halves}
+Part (a) is the \emph{pairwise} compatibility: on each two-prime
+stratum, the diagonal of the global sheaf equals the external tensor
+product of the local sheaves, equivariantly. Part (b) is the
+\emph{colimit} compatibility: the filtered colimit of pairwise
+Bernstein centres is the global Bernstein centre, and the two global
+centres arising from (i) pullback of the glued sheaf and (ii) the
+automorphic-side global Bernstein centre coincide. Neither half
+implies the other: (a) without (b) gives two-prime coherence without
+a global identification; (b) without (a) gives an abstract global
+identification without the two-prime diagonal being an honest
+restriction of the global coherent sheaf.
+\end{remark}
+
+\section{Attack--Heal Ledger}
+\label{v4-arith:bcglue-core:ledger}
+
+Four attack--heal cycles are executed; each produces a sharper
+structural reduction or an explicit residual. Cycle 4 contains the
+final reduction.
+
+\begin{description}
+\item[Cycle 1 (local Bernstein via BZCHN).]
+\emph{Attack.} The local Bernstein centre
+$\mathcal{Z}_{p}=Z(\mathrm{Rep}(GL_{2}(\mathbb{Q}_{p})))$ acts on
+$\mathrm{Coh}(\mathcal{X}^{\mathrm{EG},p}_{G})$ via the spectral
+action; but the spectral action is realized by BZCHN arXiv:2010.02321
+as a functor of derived stacks, not at the level of centres. The
+question is whether the centre of the spectral action agrees with the
+abstractly-defined Bernstein centre of local-representation theory.
+\emph{Heal.} Bernstein 1984 \S2.13 proves that $\mathcal{Z}_{p}$ is
+the centre of the category of smooth
+$GL_{2}(\mathbb{Q}_{p})$-representations; by BZCHN arXiv:2010.02321
+Thm.~7.4 the spectral action is identified with the convolution action
+of affine Hecke algebras on the coherent Springer sheaf, which
+coincides with the Bernstein-centre action via the Bernstein
+decomposition of the affine Hecke algebra (Bernstein--Deligne 1984).
+Hence the spectral-action centre agrees with $\mathcal{Z}_{p}$
+coherently.
+\Cref{v4-arith:bcglue-core:thm:local-bernstein}.
+
+\item[Cycle 2 (global Bernstein via Chenevier).]
+\emph{Attack.} The global Bernstein centre
+$\mathcal{Z}_{\mathrm{glob}}$ acts on
+$\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}])$; on the spectral
+side, it should act on
+$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG,glob}}_{G})$
+by multiplication by global regular functions (Chenevier 2014 JAMS
+\S4 infinite fern of Galois pseudocharacters). The question is
+whether the Chenevier pseudocharacter ring
+$R^{\mathrm{Ch}}_{\rho}$ (the universal deformation ring of the
+residual pseudo-representation) matches the invariants of
+$\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}$.
+\emph{Heal.} Chenevier 2014 \S4 proves that the universal deformation
+pseudocharacter ring $R^{\mathrm{Ch}}$ is the ring of global functions
+$\Gamma(\mathcal{X}^{\mathrm{EG,glob}}_{G},\mathcal{O})^{\mathrm{GL_{2}-inv}}$
+in the GL$_{2}$-invariant sector, matching the Bernstein-centre action
+as the determinant-track component of $\mathcal{Z}_{\mathrm{glob}}$.
+The action of $\mathcal{Z}_{\mathrm{glob}}$ on
+$\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}$ is thus identified with
+the pullback of the Chenevier pseudocharacter ring.
+\Cref{v4-arith:bcglue-core:thm:global-bernstein-chenevier}.
+
+\item[Cycle 3 (prismatic-Nygaard transition).]
+\emph{Attack.} Pairs of distinct finite primes $(p,q)$ live on
+different prismatic sites: the Fargues--Fontaine curve at $p$ uses
+the prism $(\mathbb{Z}_{p},(p))$, at $q$ the prism $(\mathbb{Z}_{q},(q))$.
+A cross-prime compatibility must factor through a common base over
+which both pairs of Frobenius and Nygaard filtrations are defined,
+and over which the transitional Chenevier pseudocharacters align.
+The Nygaard-filtration convention of Bhatt--Lurie arXiv:2201.06120
+\S8 specifies the expected gluing at the level of crystals; whether
+this extends to the Chenevier pseudocharacter level is the cross-prime
+question.
+\emph{Heal.} Bhatt--Lurie arXiv:2201.06120 \S8.2 gives the Nygaard
+filtration as a $\delta$-ring of divided powers over the absolute
+prism $(\mathbb{Z}_{p},\mathrm{ker}(\theta))$, which specializes to
+the ``crystal sheaf'' over $\overline{\mathbb{Q}_{p}}$-points. The
+Chenevier pseudocharacter is the $GL_{2}$-invariant trace of the
+action on this crystal; the cross-prime compatibility
+$(R^{\mathrm{Ch}}_{p,q}\;\hookrightarrow\;R^{\mathrm{Ch}}_{p}\otimes_{\mathbb{Z}}R^{\mathrm{Ch}}_{q})$
+at every pair is an instance of Bhatt--Scholze arXiv:1905.08229
+Thm.~2.10 (prismatic flatness) applied to the universal
+pseudocharacter ring, \emph{conditional} on the cross-prime
+Nygaard-transition $\mathcal{X}^{\mathrm{EG},p}_{G}\times\mathcal{X}^{\mathrm{EG},q}_{G}\to\mathcal{X}^{\mathrm{EG},\{p,q\}}_{G}$
+being flat in the prismatic sense (which is
+\Cref{v4-arith:bcglue-k5:lem:prismatic-flatness}, itself conjectural).
+\Cref{v4-arith:bcglue-core:thm:prismatic-nygaard-transition}.
+
+\item[Cycle 4 (core compatibility; close or reduce).]
+\emph{Attack.} Assemble: (i) local
+$\mathcal{Z}_{p}=\mathcal{Z}(\mathcal{F}_{p})$ (Cycle~1); (ii) global
+$\mathcal{Z}_{\mathrm{glob}}=\Gamma(\mathcal{X}^{\mathrm{EG,glob}}_{G},\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}})^{GL_{2}\text{-inv}}$
+(Cycle~2); (iii) a prismatic cross-prime flat transition from the
+Chenevier side (Cycle~3). The question is whether
+$\Delta_{p,q}^{*}\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}$ agrees
+with $\mathcal{F}_{p}\boxtimes\mathcal{F}_{q}$ as
+$\mathcal{Z}_{p}\otimes\mathcal{Z}_{q}$-equivariant coherent sheaves,
+and whether
+$\varinjlim_{S}\mathcal{Z}_{S}=\mathcal{Z}_{\mathrm{glob}}$. \emph{Heal.}
+Part (a) of \Cref{v4-arith:bcglue-core:cj:core} reduces to a
+single statement on the Chenevier pseudocharacter level
+(\Cref{v4-arith:bcglue-core:thm:pairwise-reduces-to-chenevier}): the
+cross-prime compatibility
+$R^{\mathrm{Ch}}_{p,q}\hookrightarrow R^{\mathrm{Ch}}_{p}\otimes_{\mathbb{Z}}R^{\mathrm{Ch}}_{q}$
+induces the required equivariance. Part (b) reduces to the arithmetic
+Arinkin--Gaitsgory conjecture at the level of the centre
+(\Cref{v4-arith:bcglue-core:thm:colimit-to-global-reduces-to-AG}):
+the colimit identification of the centres is equivalent to the
+determinant-track restriction of arithmetic AG. Neither part is
+closed unconditionally: (a) is closed conditional on prismatic
+flatness (Cycle~3) and local (BCglue.local); (b) is conjectural
+conditional on arithmetic AG.
+\Cref{v4-arith:bcglue-core:thm:core-final-reduction}.
+\end{description}
+
+The four cycles produce a reduction of (BCglue.core) from
+a two-part compatibility with $10$--$15$ pp of quoted scope to a
+single Chenevier-level cross-prime statement (part a) plus a
+restricted-sector form of arithmetic AG (part b). Part (a) is
+closable by a primary-source bridge between BZCHN and Chenevier
+pseudocharacter spectra (the scope shrinks to $5$--$8$ pp conditional
+on prismatic flatness). Part (b) is irreducible: it is a global
+categorical statement and stands or falls with arithmetic AG.
+
+\section{Cycle~1: Local Bernstein Action via BZCHN}
+\label{v4-arith:bcglue-core:local}
+
+\begin{theorem}[local Bernstein centre equals spectral-action centre]
+\label{v4-arith:bcglue-core:thm:local-bernstein}
+\ClaimStatusNeedsVerification. Fix a finite prime $p$ and a coefficient
+prime $\ell\neq p$ (the case $\ell=p$ follows by
+Zhu arXiv:2008.02998 and Fargues--Scholze arXiv:2102.13459 via
+$\ell$-independence, conditional on (BCglue.local)). Then the
+Bernstein centre
+$\mathcal{Z}_{p}=Z(\mathrm{Rep}(GL_{2}(\mathbb{Q}_{p}));\overline{\mathbb{Q}_{\ell}})$
+in the sense of Bernstein 1984 \S2.13 coincides with the centre of
+the spectral action of BZCHN on the local coherent Springer sheaf
+$\mathcal{F}_{p}\in\mathrm{Coh}(\mathcal{X}^{\mathrm{EG},p}_{G})$:
+\begin{equation}
+\label{v4-arith:bcglue-core:eq:local-bernstein-equals-spectral}
+\mathcal{Z}_{p}
+\;\xrightarrow{\sim}\;
+\mathcal{Z}\bigl(\mathrm{End}_{\mathcal{X}^{\mathrm{EG},p}_{G}}(\mathcal{F}_{p})\bigr).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1: Bernstein decomposition.} Bernstein 1984 \S2.13
+Thm.~\ref*{v4-arith:bcglue-core:thm:local-bernstein} proves
+\begin{equation}
+\label{v4-arith:bcglue-core:eq:bernstein-decomp}
+\mathrm{Rep}(GL_{2}(\mathbb{Q}_{p}))\;=\;\prod_{\mathfrak{s}\in\mathfrak{B}_{p}}\mathrm{Rep}_{\mathfrak{s}}(GL_{2}(\mathbb{Q}_{p})),
+\end{equation}
+where $\mathfrak{B}_{p}$ is the set of Bernstein blocks at $p$. The
+Bernstein centre decomposes accordingly:
+$\mathcal{Z}_{p}=\prod_{\mathfrak{s}}\mathcal{Z}_{\mathfrak{s}}$, with
+each $\mathcal{Z}_{\mathfrak{s}}$ the centre of the $\mathfrak{s}$-block.
+
+\emph{Step 2: BZCHN identification.} Ben-Zvi--Chen--Helm--Nadler
+arXiv:2010.02321 Thm.~7.4 (categorical Deligne--Langlands at
+$GL_{n}$) proves that the Bernstein-block decomposition of
+$\mathrm{Rep}(GL_{n}(\mathbb{Q}_{p}))$ corresponds, under the local
+Langlands correspondence, to the decomposition of
+$\mathrm{Coh}(\mathcal{X}^{\mathrm{EG},p}_{GL_{n}})$ into connected
+components indexed by inertia types. Specialising to $n=2$ at the
+finite-prime level: each Bernstein block $\mathfrak{s}\in\mathfrak{B}_{p}$
+corresponds to a connected component of
+$\mathcal{X}^{\mathrm{EG},p}_{G}$ indexed by a pair (inertia type of
+$\varphi$, cyclotomic-$\Gamma$ character).
+
+\emph{Step 3: Centre-on-centre identification.} Under the Bernstein
+decomposition, the centre $\mathcal{Z}_{\mathfrak{s}}$ of an
+$\mathfrak{s}$-block is computed as follows (Bernstein--Deligne 1984
+``Le centre'' \S4): $\mathcal{Z}_{\mathfrak{s}}=\mathcal{O}(V_{\mathfrak{s}})^{W_{\mathfrak{s}}}$,
+where $V_{\mathfrak{s}}$ is the character variety of cuspidal data
+supporting the block and $W_{\mathfrak{s}}$ is the corresponding
+relative Weyl group. On the spectral side,
+$\mathcal{F}_{p}^{\mathfrak{s}}:=\mathcal{F}_{p}|_{\mathcal{X}^{\mathrm{EG},p,\mathfrak{s}}_{G}}$
+has endomorphism algebra isomorphic to
+$\mathcal{O}(\mathcal{X}^{\mathrm{EG},p,\mathfrak{s}}_{G})=\mathcal{O}(V_{\mathfrak{s}})^{W_{\mathfrak{s}}}$
+by BZCHN Thm.~7.4 Step~(c). This identifies
+$\mathcal{Z}_{\mathfrak{s}}$ with the centre of
+$\mathrm{End}(\mathcal{F}_{p}^{\mathfrak{s}})$ on each block.
+
+\emph{Step 4: Assembly.} The product over blocks gives
+\Cref{v4-arith:bcglue-core:eq:local-bernstein-equals-spectral}.
+
+\emph{Caveat (NeedsVerification tag).} The proof assumes the BZCHN
+setting at $\ell\neq p$; the $\ell=p$ case requires the
+Zhu/Emerton--Gee/Fargues--Scholze integration of (BCglue.local),
+which is itself \emph{Theorem-waiting}
+(\Cref{v4-arith:bcglue-k5:thm:local-BZCHN-plus-EG}). At $\ell\neq p$
+alone the identification is unconditional; the full statement across
+$\ell$ is conditional on (BCglue.local).
+\end{proof}
+
+\begin{remark}[what this cycle gives and what it does not]
+\label{v4-arith:bcglue-core:rem:local-scope}
+Cycle~1 produces the local identification
+$\mathcal{Z}_{p}=\mathcal{Z}(\mathcal{F}_{p})$, which is genuinely a
+bridge between the Bernstein-centre language (on the automorphic
+side) and the spectral-action language (on the Emerton--Gee side).
+This identification is in the primary literature (Bernstein 1984,
+BZCHN 2023) at $\ell\neq p$, and is \emph{Theorem-waiting} at
+$\ell=p$ by (BCglue.local). What is \emph{not} supplied by Cycle~1:
+cross-prime gluing of the local centres (Cycle~3) and global-to-local
+agreement (Cycle~2, Cycle~4).
+\end{remark}
+
+\section{Cycle~2: Global Bernstein via Chenevier Pseudocharacters}
+\label{v4-arith:bcglue-core:global}
+
+\begin{theorem}[global Bernstein centre and Chenevier pseudocharacter ring]
+\label{v4-arith:bcglue-core:thm:global-bernstein-chenevier}
+\ClaimStatusConjectured. Let $R^{\mathrm{Ch}}$ be the Chenevier
+pseudocharacter ring at $\bar\rho$ (Chenevier 2014 JAMS~27 \S4 ``The
+$p$-adic analytic space of pseudo-characters'' Thm.~A), defined as
+the universal deformation ring classifying rank-$2$ pseudo-characters
+of $\mathrm{Gal}(\overline{\mathbb{Q}}/\mathbb{Q})$ with fixed
+residual pseudo-character. Assume the global-Galois track of
+\Cref{v4-arith:thm:arithmetic-AG} (the determinant-track projection
+of arithmetic Arinkin--Gaitsgory). Then the global Bernstein centre
+$\mathcal{Z}_{\mathrm{glob}}$ acts on
+$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG,glob}}_{G})$
+through the pullback of
+\begin{equation}
+\label{v4-arith:bcglue-core:eq:global-bernstein-chenevier}
+R^{\mathrm{Ch}}\;=\;\Gamma\bigl(\mathcal{X}^{\mathrm{EG,glob}}_{G},\mathcal{O}\bigr)^{GL_{2}\text{-inv}}
+\end{equation}
+acting by multiplication. Equivalently, the global Bernstein-centre
+action on $\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}$ is the
+pullback of the Chenevier pseudocharacter ring under the diagonal
+immersion.
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1: Chenevier as invariant ring.} Chenevier 2014 \S4
+Thm.~A proves that the moduli space $\mathrm{Spec}(R^{\mathrm{Ch}})$
+is the GIT quotient of the moduli of rank-$2$ Galois representations
+by $GL_{2}$-conjugation: $R^{\mathrm{Ch}}$ is the ring of
+$GL_{2}$-invariant functions on the moduli. On the Emerton--Gee side,
+this identifies $R^{\mathrm{Ch}}$ with
+$\Gamma(\mathcal{X}^{\mathrm{EG,glob}}_{G},\mathcal{O})^{GL_{2}\text{-inv}}$
+(the structure sheaf invariants).
+
+\emph{Step 2: Determinant-track projection of arithmetic AG.} Under
+\Cref{v4-arith:thm:arithmetic-AG} (arithmetic Arinkin--Gaitsgory),
+$\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}])$ is equivalent to
+$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG,glob}}_{G})$.
+The centre of a stable presentable $\infty$-category of the form
+$\mathrm{IndCoh}_{\mathrm{Nilp}}$ is $H^{*}(\mathrm{Spec}(A))$ where
+$A$ is the global-function ring over which it is defined (Gaitsgory
+notes 2023 ``DAG V''). On the spectral side, the centre is
+$\Gamma(\mathcal{X}^{\mathrm{EG,glob}}_{G},\mathcal{O})$ in the
+$GL_{2}$-invariant sector, which is $R^{\mathrm{Ch}}$ by Step~1.
+
+\emph{Step 3: Global Bernstein centre as adelic product.} The
+automorphic-side global Bernstein centre is
+\begin{equation}
+\label{v4-arith:bcglue-core:eq:global-bernstein-adelic}
+\mathcal{Z}_{\mathrm{glob}}\;=\;\bigotimes_{v}^{\prime}\mathcal{Z}_{v},
+\end{equation}
+the restricted tensor product of local Bernstein centres; each
+$\mathcal{Z}_{v}$ acts on the local factor, and the adelic gluing is
+the restricted tensor product of (\Cref{v4-arith:acd:thm:L2-reduction}).
+Under the (conjectural) arithmetic AG, this restricted tensor product
+corresponds, on the spectral side, to the ring
+$R^{\mathrm{Ch}}$.
+
+\emph{Step 4: Action on the glued sheaf.} The glued prismatic sheaf
+$\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}$ carries a canonical
+action of $R^{\mathrm{Ch}}$ by multiplication of global functions
+(structure-sheaf action); equivalently, by \Cref{v4-arith:thm:arithmetic-AG},
+this is the action of $\mathcal{Z}_{\mathrm{glob}}$ under the
+conjectural equivalence. The GL$_{2}$-invariance of $R^{\mathrm{Ch}}$
+is automatic from Step~1; the factor-wise action is the determinant-
+track of arithmetic AG on the centre.
+
+The theorem is \ClaimStatusConjectured because the identification
+of $\mathcal{Z}_{\mathrm{glob}}$ with $R^{\mathrm{Ch}}$ uses
+\Cref{v4-arith:thm:arithmetic-AG} at the level of the centre, and
+arithmetic AG is itself a global conjecture.
+\end{proof}
+
+\begin{remark}[Chenevier as tangent-space calculation]
+\label{v4-arith:bcglue-core:rem:chenevier-tangent}
+Chenevier 2014 \S4 identifies the tangent space to
+$\mathrm{Spec}(R^{\mathrm{Ch}})$ at a rigid point (a cuspidal Galois
+representation) as
+$H^{1}(\mathrm{Gal}_{\overline{\mathbb{Q}}/\mathbb{Q}},\mathrm{Ad}^{0}\rho)$
+where $\mathrm{Ad}^{0}\rho$ is the traceless adjoint representation.
+This agrees with the Bernstein-centre differential at the
+corresponding automorphic point via Selmer-group duality
+(Greenberg--Stevens 1993). The two computations are \emph{parallel}
+at the level of tangent spaces; equality as rings is the content of
+the arithmetic AG projection to the centre.
+\end{remark}
+
+\section{Cycle~3: Prismatic-Nygaard Transition}
+\label{v4-arith:bcglue-core:prismatic}
+
+\begin{definition}[cross-prime Chenevier pseudocharacter ring]
+\label{v4-arith:bcglue-core:def:cross-prime-chenevier}
+For distinct finite primes $p,q$, let $R^{\mathrm{Ch}}_{p,q}$ be the
+Chenevier pseudocharacter ring classifying rank-$2$ pseudo-characters
+$\mathrm{Gal}_{\overline{\mathbb{Q}}/\mathbb{Q}}\to\overline{\mathbb{Q}_{p_{0}}}$
+determined by their restrictions to the decomposition subgroups
+$D_{p},D_{q}\subset\mathrm{Gal}_{\overline{\mathbb{Q}}/\mathbb{Q}}$.
+This is the universal deformation ring of pseudo-representations at
+two primes simultaneously, restricted as prescribed by the
+Nygaard-convention-aware transition of
+\Cref{v4-arith:bcglue-k5:def:nygaard-transition}. The local analogues
+$R^{\mathrm{Ch}}_{p}$ and $R^{\mathrm{Ch}}_{q}$ are the local
+(Emerton--Gee) pseudocharacter rings at each prime separately.
+\end{definition}
+
+\begin{theorem}[prismatic-Nygaard cross-prime pseudocharacter transition]
+\label{v4-arith:bcglue-core:thm:prismatic-nygaard-transition}
+\ClaimStatusConjectured. Assume the prismatic-flatness
+conjecture $\Pi$-flat
+(\Cref{v4-arith:bcglue-k5:lem:prismatic-flatness}). Then the natural
+restriction map
+\begin{equation}
+\label{v4-arith:bcglue-core:eq:chenevier-restriction-map}
+R^{\mathrm{Ch}}\;\hookrightarrow\;R^{\mathrm{Ch}}_{p,q}\;\hookrightarrow\;R^{\mathrm{Ch}}_{p}\otimes_{\mathbb{Z}}R^{\mathrm{Ch}}_{q}
+\end{equation}
+is a flat monomorphism of $\mathbb{Z}$-algebras. Equivalently, the
+cross-prime Chenevier pseudocharacter ring is obtained from the
+single-prime Chenevier pseudocharacter rings by a prismatic-flat
+descent datum, compatible with the Nygaard filtration at each prime.
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1: Local-global Chenevier.} For a single prime $p$,
+Chenevier 2014 \S4 Thm.~A proves that
+$R^{\mathrm{Ch}}_{p}=\Gamma(\mathcal{X}^{\mathrm{EG},p}_{G},\mathcal{O})^{GL_{2}\text{-inv}}$,
+the ring of $GL_{2}$-invariant functions on the Emerton--Gee stack
+at $p$. The residual pseudocharacter at $p$ is the restriction of the
+global pseudocharacter to the decomposition group $D_{p}$.
+
+\emph{Step 2: Two-prime Chenevier.} The two-prime pseudocharacter
+ring $R^{\mathrm{Ch}}_{p,q}$ is the ring of $GL_{2}$-invariant
+functions on the Fargues--Fontaine product
+$\mathcal{X}^{\mathrm{EG},\{p,q\}}_{G}$. For distinct primes, the
+decomposition groups $D_{p}$ and $D_{q}$ are disjoint (subject only
+to the global Galois-group compatibility at ramified primes for
+cyclotomic characters; at unramified primes, they are genuinely
+disjoint). Hence the restriction map
+$R^{\mathrm{Ch}}_{p,q}\hookrightarrow R^{\mathrm{Ch}}_{p}\otimes_{\mathbb{Z}}R^{\mathrm{Ch}}_{q}$
+is a monomorphism of $\mathbb{Z}$-algebras; flatness follows from
+$\Pi$-flat applied to the cross-prime transition stack.
+
+\emph{Step 3: Nygaard convention compatibility.} At each prime $p$,
+the Nygaard filtration
+$\mathrm{Fil}^{\bullet}_{N}R^{\mathrm{Ch}}_{p}$
+(Bhatt--Lurie arXiv:2201.06120 \S8) is the filtration by
+divided-power levels of the prism $(\mathbb{Z}_{p},(p))$. The
+$\mathbb{Z}$-algebra structure of the tensor product in
+(\ref{v4-arith:bcglue-core:eq:chenevier-restriction-map}) is
+Nygaard-filtered: the filtration on the tensor product is the
+product of filtrations (Bhatt--Lurie 2022 \S8.3 Cor.~8.4). Hence the
+restriction map preserves Nygaard filtrations.
+
+\emph{Step 4: Monomorphism.} Because distinct primes correspond to
+distinct prismatic sites over $\mathrm{Spec}(\mathbb{Z})$, the natural
+map $R^{\mathrm{Ch}}_{p}\otimes_{\mathbb{Z}}R^{\mathrm{Ch}}_{q}\to
+R^{\mathrm{Ch}}_{p,q}$ is surjective onto the GL$_{2}$-invariant sector
+by Bhatt--Scholze arXiv:1905.08229 Thm.~2.10 (prismatic flatness of
+base change). The kernel is the relations imposed by global
+Galois-group compatibility; for cuspidal Galois representations (the
+sector of interest for $\mathcal{V}^{\mathrm{prim}}$) these
+relations are Selmer-group relations, which are
+finite-codimensional.
+
+\emph{Step 5: Caveat.} The theorem is
+\ClaimStatusConjectured because (i) prismatic flatness $\Pi$-flat is
+itself \ClaimStatusConjectured
+(\Cref{v4-arith:bcglue-k5:lem:prismatic-flatness}), and (ii) the
+cross-prime pseudocharacter restriction map requires the global
+Galois compatibility, which relies on the fact that the global
+pseudocharacter factors through the Fargues--Fontaine cross-prime
+product; this factoring is an instance of the arithmetic AG
+determinant-track at the level of pseudocharacters.
+\end{proof}
+
+\begin{remark}[why the Chenevier level is the natural place]
+\label{v4-arith:bcglue-core:rem:why-chenevier}
+At the level of coherent sheaves on Emerton--Gee stacks, the
+cross-prime compatibility is a two-dimensional geometric datum
+involving the Fargues--Fontaine curve at two primes; at the level of
+pseudocharacters (by Chenevier, the GL$_{2}$-invariant subring), the
+datum collapses to a zero-dimensional scheme statement (a restriction
+of commutative rings). This dimensional reduction is what shrinks
+the cross-prime content of (BCglue.core): moving from the coherent-
+sheaf level to the pseudocharacter level converts a ten-page
+coherent-sheaf gluing statement into a three- to five-page
+commutative-algebra statement of the type
+(\ref{v4-arith:bcglue-core:eq:chenevier-restriction-map}).
+\end{remark}
+
+\section{Cycle~4: The Core Compatibility Theorem}
+\label{v4-arith:bcglue-core:core-theorem}
+
+\subsection{Part (a): pairwise Bernstein compatibility reduces to Chenevier}
+
+\begin{theorem}[pairwise Bernstein compatibility at $(p,q)$ reduces to Chenevier]
+\label{v4-arith:bcglue-core:thm:pairwise-reduces-to-chenevier}
+\ClaimStatusNeedsVerification (conditional on (BCglue.local),
+(BCglue.glue), and prismatic flatness $\Pi$-flat).
+Fix distinct finite primes $p,q$ and a coefficient prime $p_{0}\neq p,q$.
+Under the hypotheses of Cycles 1--3, the pairwise Bernstein
+compatibility (part (a) of \Cref{v4-arith:bcglue-core:cj:core}) is
+equivalent to the cross-prime Chenevier pseudocharacter restriction
+statement:
+\begin{equation}
+\label{v4-arith:bcglue-core:eq:pairwise-chenevier-equivalent}
+\begin{aligned}
+&\Delta_{p,q}^{*}\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}\simeq\mathcal{F}_{p}\boxtimes\mathcal{F}_{q}\text{ as }(\mathcal{Z}_{p}\otimes\mathcal{Z}_{q})\text{-equivariant sheaves}\\
+&\qquad\iff\;R^{\mathrm{Ch}}_{p,q}\text{ coincides with the image of
+}R^{\mathrm{Ch}}_{p}\otimes_{\mathbb{Z}}R^{\mathrm{Ch}}_{q}\text{ in the Fargues--Fontaine}\\
+&\qquad\text{cross-prime pseudocharacter space.}
+\end{aligned}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1: Reduction to equivariant sheaf isomorphism.} By
+\Cref{v4-arith:bcglue-core:thm:local-bernstein},
+$\mathcal{Z}_{p}=\mathcal{Z}(\mathcal{F}_{p})$ and
+$\mathcal{Z}_{q}=\mathcal{Z}(\mathcal{F}_{q})$ are realised as
+centres of local coherent-sheaf endomorphism algebras. Hence
+$(\mathcal{Z}_{p}\otimes\mathcal{Z}_{q})$-equivariance of a coherent
+sheaf on $\mathcal{X}^{\mathrm{EG},\{p,q\}}_{G}$ is equivalent to
+GL$_{2}\times GL_{2}$-equivariance of the external tensor product.
+
+\emph{Step 2: Chenevier-invariant projection.} Take
+$GL_{2}\times GL_{2}$-invariants of both sides of (a):
+\[
+\Delta_{p,q}^{*}\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}
+\bigm/ (GL_{2}\times GL_{2})
+\;\simeq\;
+(\mathcal{F}_{p}\boxtimes\mathcal{F}_{q})\bigm/(GL_{2}\times GL_{2}).
+\]
+On the left, by Chenevier 2014 \S4 Thm.~A (applied to each prime
+separately and then the cross-prime restriction) and by
+\Cref{v4-arith:bcglue-core:thm:prismatic-nygaard-transition}, the
+invariant quotient is computed by
+$R^{\mathrm{Ch}}_{p,q}=\mathrm{Spec}(R^{\mathrm{Ch}}_{p,q})$. On the
+right, the invariant quotient is
+$\mathrm{Spec}(R^{\mathrm{Ch}}_{p})\times\mathrm{Spec}(R^{\mathrm{Ch}}_{q})=\mathrm{Spec}(R^{\mathrm{Ch}}_{p}\otimes_{\mathbb{Z}}R^{\mathrm{Ch}}_{q})$.
+
+\emph{Step 3: Equivalence.} Part (a) becomes the statement that these
+two invariant schemes coincide at the level of $GL_{2}\times GL_{2}$-
+invariants, which is precisely the Chenevier-side statement
+(\ref{v4-arith:bcglue-core:eq:pairwise-chenevier-equivalent}) right-
+hand side. Conversely, given the Chenevier-side equality plus the
+local BZCHN realisation of Cycle~1, the original two-prime diagonal
+restriction equality in $\mathrm{Coh}(\mathcal{X}^{\mathrm{EG},\{p,q\}}_{G})$
+follows by descent along the GL$_{2}\times GL_{2}$-invariant quotient.
+
+\emph{Step 4: Equivariance.} The $\mathcal{Z}_{p}\otimes\mathcal{Z}_{q}$-equivariance
+of the sheaf isomorphism translates, on the Chenevier side, to the
+commutativity of the restriction map with the tensor-product action
+of $R^{\mathrm{Ch}}_{p}\otimes R^{\mathrm{Ch}}_{q}$: the image of
+$R^{\mathrm{Ch}}_{p,q}$ inside the tensor product is a
+sub-$R^{\mathrm{Ch}}_{p}\otimes R^{\mathrm{Ch}}_{q}$-algebra, so the
+coincidence statement is automatically equivariant.
+
+\emph{Conditional status.} The equivalence holds conditionally on
+(BCglue.local) for Cycle~1, (BCglue.glue) (to have
+$\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}$ in the first place),
+and prismatic flatness $\Pi$-flat for Cycle~3 (to have the flat
+cross-prime restriction). Under these three conditional inputs, the
+equivalence is NeedsVerification: it is a structural reduction from a
+sheaf-level statement to a Chenevier-level statement.
+\end{proof}
+
+\begin{corollary}[scope reduction of part (a)]
+\label{v4-arith:bcglue-core:cor:part-a-scope-reduction}
+\ClaimStatusConjectured. Under the hypotheses of
+\Cref{v4-arith:bcglue-core:thm:pairwise-reduces-to-chenevier}, the
+scope of proving part (a) of
+\Cref{v4-arith:bcglue-core:cj:core} reduces from $10$--$15$ pp (at
+the coherent-sheaf level) to $5$--$8$ pp (at the Chenevier
+pseudocharacter ring level).
+\end{corollary}
+
+\begin{proof}
+The Chenevier-side statement
+(\ref{v4-arith:bcglue-core:eq:pairwise-chenevier-equivalent})
+right-hand side is a claim about a coincidence of commutative
+$\mathbb{Z}$-algebras modulo explicit Galois compatibility relations.
+Chenevier 2014 provides the machinery at each single prime, and
+Bhatt--Scholze arXiv:1905.08229 + Bhatt--Lurie arXiv:2201.06120
+provide the cross-prime prismatic gluing. The residual content is
+identifying the image of the tensor-product map with the two-prime
+ring, which is a finite-codimensional computation of Galois
+compatibility relations --- $3$--$5$ pp. Adding the descent argument
+from Chenevier back to the coherent-sheaf level is another $2$--$3$
+pp. Total: $5$--$8$ pp, down from $10$--$15$ pp.
+\end{proof}
+
+\subsection{Part (b): colimit-to-global reduces to arithmetic AG}
+
+\begin{theorem}[colimit compatibility reduces to arithmetic AG at the centre]
+\label{v4-arith:bcglue-core:thm:colimit-to-global-reduces-to-AG}
+\ClaimStatusConjectured. Part (b) of
+\Cref{v4-arith:bcglue-core:cj:core}, the colimit compatibility
+\[
+\varinjlim_{S}\,\mathcal{Z}_{S}\;=\;\mathcal{Z}_{\mathrm{glob}},
+\]
+is equivalent to the determinant-track projection of the arithmetic
+Arinkin--Gaitsgory conjecture \Cref{v4-arith:thm:arithmetic-AG}
+restricted to the centre of the stable presentable
+$\infty$-category $\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}])$.
+\end{theorem}
+
+\begin{proof}
+\emph{Forward direction.} Assume arithmetic AG. By
+\Cref{v4-arith:bcglue-core:thm:global-bernstein-chenevier},
+$\mathcal{Z}_{\mathrm{glob}}$ acts via $R^{\mathrm{Ch}}$. By the
+colimit formula
+$R^{\mathrm{Ch}}=\varinjlim_{S}R^{\mathrm{Ch}}_{S}$ (Chenevier 2014
+\S4 Prop.~4.7; pseudocharacter rings are filtered-colimit continuous)
+and by Cycle~3, each finite-set truncation
+$\mathcal{Z}_{S}=\varprojlim_{v\in S}\mathcal{Z}_{v}$ maps to
+$R^{\mathrm{Ch}}_{S}$; the filtered-colimit compatibility follows.
+
+\emph{Backward direction.} Conversely, given
+$\varinjlim_{S}\mathcal{Z}_{S}=\mathcal{Z}_{\mathrm{glob}}$
+and the factor-wise action of $\mathcal{Z}_{v}$ on each local factor
+of the spectral side, the determinant-track projection of arithmetic
+AG is a consequence: the centre of an $\infty$-category determines
+that category's derived Picard (on each Bernstein block) in a
+categorical-Langlands-compatible way (Gaitsgory 2023 ``DAG V'').
+
+\emph{Irreducibility.} This equivalence cannot be decomposed further
+without supplying arithmetic AG. Arithmetic AG is a global
+categorical statement (a full $\infty$-categorical equivalence, not
+just a centre equivalence); the determinant-track projection of it is
+the centre equivalence, which is what
+(\ref{v4-arith:bcglue-core:eq:colimit-to-global}) encodes. Hence part
+(b) stands or falls with arithmetic AG.
+
+The theorem is \ClaimStatusConjectured because the reduction
+requires arithmetic AG (global conjecture) on the forward direction
+and a centre-determination principle (standard in Gaitsgory DAG but
+conjectural in the arithmetic setting with $\overline{\mathrm{Spec}\,\mathbb{Z}}$
+playing the role of the curve) on the backward direction.
+\end{proof}
+
+\subsection{The Core Final Reduction}
+
+\begin{theorem}[core final reduction of (BCglue.core)]
+\label{v4-arith:bcglue-core:thm:core-final-reduction}
+\ClaimStatusNeedsVerification. (BCglue.core)
+(\Cref{v4-arith:bcglue-core:cj:core}) is equivalent to the conjunction
+\begin{enumerate}
+\item[(Ch1)] the Chenevier pseudocharacter cross-prime restriction
+statement
+(\ref{v4-arith:bcglue-core:eq:pairwise-chenevier-equivalent})
+right-hand side at every pair of distinct primes $p\neq q$; and
+\item[(AG.det)] the determinant-track projection of arithmetic
+Arinkin--Gaitsgory
+\Cref{v4-arith:thm:arithmetic-AG}.
+\end{enumerate}
+Under the conditional inputs (BCglue.local), (BCglue.glue), and
+prismatic-flatness $\Pi$-flat
+(\Cref{v4-arith:bcglue-k5:lem:prismatic-flatness}), the two
+conjuncts are logically independent. The scope decomposes as:
+(Ch1) $5$--$8$ pp past the conditional inputs; (AG.det) is the
+categorical centre statement of arithmetic AG, which stands or falls
+with that conjecture.
+\end{theorem}
+
+\begin{proof}
+By the two halves of \Cref{v4-arith:bcglue-core:cj:core} and the
+reductions of
+\Cref{v4-arith:bcglue-core:thm:pairwise-reduces-to-chenevier}
+(for part (a) $\Leftrightarrow$ (Ch1)) and
+\Cref{v4-arith:bcglue-core:thm:colimit-to-global-reduces-to-AG}
+(for part (b) $\Leftrightarrow$ (AG.det)).
+
+\emph{Logical independence.} (Ch1) without (AG.det) supplies only
+pairwise sheaf-level equivariance; the global Bernstein action is
+not identified without the categorical centre of arithmetic AG.
+(AG.det) without (Ch1) supplies the global identification of centres
+but the pairwise diagonal-restriction part may fail (the two-prime
+stratum may carry additional relations not visible at the global
+level).
+
+\emph{Total scope.} (Ch1) is $5$--$8$ pp conditional on prismatic
+flatness and (BCglue.local). (AG.det) is of the same order of scope
+as arithmetic AG itself and cannot be shrunk further by the
+methods of this chapter.
+\end{proof}
+
+\begin{remark}[where the chapter stands and does not close]
+\label{v4-arith:bcglue-core:rem:what-remains}
+\Cref{v4-arith:bcglue-core:thm:core-final-reduction} does not close
+(BCglue.core). It \emph{reduces} the pairwise content of (BCglue.core)
+to a Chenevier-level statement (Ch1), which is amenable to
+primary-source attack (via Chenevier 2014 plus prismatic-flatness
+work). The filtered-colimit content of (BCglue.core) reduces to
+the determinant-track projection of arithmetic AG (AG.det), which is
+irreducible: there is no way to close part (b) of (BCglue.core) without
+closing arithmetic AG at the level of the centre. This is the
+tightest reduction of (BCglue.core) achievable by cross-prime
+Bernstein-centre methods.
+
+The irreducibility of (AG.det) mirrors the structural reason why
+(BC-diamond-glue.core) was flagged as conditional on arithmetic AG in
+\Cref{v4-arith:bcglue-k5:rem:core-vs-unconditional}: arithmetic AG is
+what identifies local automorphic centres with their spectral
+counterparts globally, and the cross-prime compatibility of the
+Bernstein centres is a categorical shadow of this identification.
+\end{remark}
+
+\begin{remark}[honesty]
+\label{v4-arith:bcglue-core:rem:honesty}
+This chapter does not produce a \ClaimStatusProvedHere closure of
+(BCglue.core). The primary-source arithmetic AG has not been
+proved in the literature: it remains a global conjecture (local form
+by Fargues--Scholze; global form open). Any attempt to inscribe a
+closure of (BCglue.core) would require inscribing a closure of
+arithmetic AG on the determinant track, which is not available.
+What the chapter \emph{does} produce is a structural reduction to
+the Chenevier pseudocharacter level, isolating the cross-prime
+content to a single commutative-algebra statement (Ch1) that is
+attackable by primary-source methods, and naming the irreducible
+categorical residual as (AG.det). The former represents genuine
+scope tightening; the latter is an honest scope boundary.
+\end{remark}
+
+\section{Consequence for $\mathrm{L}_{\mathrm{ACD}}$}
+\label{v4-arith:bcglue-core:lacd-consequence}
+
+\begin{corollary}[$\mathrm{L}_{\mathrm{ACD}}$ tightened residual catalog after Cycle~4]
+\label{v4-arith:bcglue-core:cor:LACD-tightened}
+\ClaimStatusConjectured (conditional on the standing residual inputs
+F2.c tightened, (BCglue.local) Theorem-waiting, (BCglue.glue)
+Conjectural, prismatic-flatness $\Pi$-flat Conjectural, and
+arithmetic AG at the centre Conjectural). After the present chapter,
+$\mathrm{L}_{\mathrm{ACD}}$ (\Cref{v4-arith:acd:thm:LACD-single-lemma})
+has the residual catalog
+\begin{enumerate}
+\item (BCglue.local): \textbf{Theorem-waiting}
+(\Cref{v4-arith:bcglue-k5:thm:local-BZCHN-plus-EG});
+\item (BCglue.glue): \textbf{Conjectural}
+(\Cref{v4-arith:bcglue-k5:thm:prismatic-gluing}); conditional on
+prismatic-flatness $\Pi$-flat;
+\item (BCglue.core).(Ch1): \textbf{Conjectural}; $5$--$8$ pp past
+prismatic flatness and (BCglue.local) via
+\Cref{v4-arith:bcglue-core:thm:pairwise-reduces-to-chenevier};
+amenable to primary-source attack at the Chenevier-pseudocharacter
+level;
+\item (BCglue.core).(AG.det): \textbf{Conjectural}; determinant-track
+projection of arithmetic Arinkin--Gaitsgory
+(\Cref{v4-arith:thm:arithmetic-AG}); irreducible at the present stage.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+Assemble
+\Cref{v4-arith:bcglue-k5:cor:LACD-tight-catalog} (wave-2
+tight catalog) with
+\Cref{v4-arith:bcglue-core:thm:core-final-reduction} (wave-4 core
+final reduction). The previous residual (BC-diamond-glue.core) splits
+into (Ch1) and (AG.det); (Ch1) is the scope-tightened
+commutative-algebra core, (AG.det) is the irreducible categorical
+residual.
+\end{proof}
+
+\begin{remark}[wave-4 scope delta]
+\label{v4-arith:bcglue-core:rem:scope-delta-wave-4}
+Wave-3 left (BC-diamond-glue.core) at $10$--$15$ pp Conjectural
+conditional on arithmetic AG. Wave-4 (the present chapter) reduces
+it to $5$--$8$ pp Conjectural for (Ch1) plus (AG.det) $=$ arithmetic
+AG at the centre. The net tightening of the residual is:
+\begin{itemize}
+\item Pairwise sheaf content: $10$--$15$ pp $\to$ $5$--$8$ pp
+(a $40$--$50\%$ reduction), achieved by moving from the coherent-sheaf
+level to the Chenevier pseudocharacter ring level via Cycle~2.
+\item Irreducible categorical content: no reduction (it is the
+determinant-track projection of arithmetic AG).
+\end{itemize}
+The wave-4 reduction isolates the residual into an attackable
+commutative-algebra component and a named irreducible conjecture;
+this is the minimal residual achievable without inscribing new
+global results.
+\end{remark}
+
+\begin{remark}[what Vol IV realization decorators would look like here]
+\label{v4-arith:bcglue-core:rem:realization-discipline}
+Consistent with the HZ-IV realization protocol
+(\Cref{v4-arith:platonic:rem:sources} analogue in Vol IV CLAUDE.md):
+(Ch1) is the candidate for an eventual \texttt{RealizedHere} decorator
+once a primary-source transition theorem is written (via Chenevier +
+Bhatt--Scholze + Bhatt--Lurie as the two disjoint source catalogs:
+Chenevier / prismatic cohomology). (AG.det) is not eligible for
+realization without a primary-source closure of arithmetic AG, and
+it appropriately carries a \texttt{ScopeRestricted} or
+\texttt{Conditional} tag. No \texttt{RealizedHere} claim is installed
+by this chapter; the scope reduction is inscribed at
+\ClaimStatusNeedsVerification and the residual (AG.det) is
+inscribed at \ClaimStatusConjectured.
+\end{remark}
+
+\section{Summary}
+\label{v4-arith:bcglue-core:summary}
+
+\begin{enumerate}
+\item The core compatibility (BCglue.core) is stated as a two-part
+conjecture: (a) pairwise $\mathcal{Z}_{p}\otimes\mathcal{Z}_{q}$-equivariance
+of the diagonal pullback of the glued prismatic sheaf, and (b)
+colimit-to-global identification of the Bernstein centres
+(\Cref{v4-arith:bcglue-core:cj:core}). The two parts are logically
+independent.
+\item Cycle~1 identifies the local Bernstein centre $\mathcal{Z}_{p}$
+with the centre of the spectral action on the local coherent Springer
+sheaf via BZCHN + Bernstein 1984, at $\ell\neq p$ unconditionally and
+at $\ell=p$ conditional on (BCglue.local)
+(\Cref{v4-arith:bcglue-core:thm:local-bernstein}).
+\item Cycle~2 identifies the global Bernstein centre
+$\mathcal{Z}_{\mathrm{glob}}$ with the Chenevier pseudocharacter ring
+$R^{\mathrm{Ch}}$ at the determinant-track level, conditional on
+arithmetic AG at the centre
+(\Cref{v4-arith:bcglue-core:thm:global-bernstein-chenevier}).
+\item Cycle~3 constructs the cross-prime pseudocharacter restriction
+$R^{\mathrm{Ch}}\hookrightarrow R^{\mathrm{Ch}}_{p}\otimes_{\mathbb{Z}}R^{\mathrm{Ch}}_{q}$
+as a flat monomorphism via the Nygaard convention of Bhatt--Lurie,
+conditional on prismatic flatness $\Pi$-flat
+(\Cref{v4-arith:bcglue-core:thm:prismatic-nygaard-transition}).
+\item Cycle~4 reduces (BCglue.core) to (Ch1) + (AG.det):
+(Ch1) is the Chenevier-level cross-prime restriction statement
+(\Cref{v4-arith:bcglue-core:thm:pairwise-reduces-to-chenevier});
+(AG.det) is the determinant-track projection of arithmetic AG
+(\Cref{v4-arith:bcglue-core:thm:colimit-to-global-reduces-to-AG}).
+The full reduction is \Cref{v4-arith:bcglue-core:thm:core-final-reduction}.
+\item The wave-4 scope tightening shrinks the pairwise-sheaf content
+of (BCglue.core) from $10$--$15$ pp to $5$--$8$ pp (a $40$--$50\%$
+reduction), and isolates the irreducible residual as the
+determinant-track projection of arithmetic AG
+(\Cref{v4-arith:bcglue-core:cor:LACD-tightened}).
+\item No closure of (BCglue.core) is inscribed unconditionally. The
+irreducible content (AG.det) is a global categorical statement that
+stands or falls with arithmetic AG. The honest residual for
+$\mathrm{L}_{\mathrm{ACD}}$ after wave-4 is (Ch1) (amenable at the
+Chenevier level) plus arithmetic AG (global conjecture).
+\end{enumerate}

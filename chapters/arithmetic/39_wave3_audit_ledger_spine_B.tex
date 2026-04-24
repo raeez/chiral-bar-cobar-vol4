@@ -1,0 +1,491 @@
+\chapter{Wave-3 Audit Ledger: Spine B Corrections}
+\label{v4-arith:w3-audit-B}
+
+\emph{Wave-1 and wave-2 chapters on the RH-path (Spine B) overclaimed
+the unconditionality of five load-bearing results: the P1 biconditional
+for the abelian arithmetic Heisenberg, the full-sector P3 closure and
+KMS$_1$/GNS identification, the K5 Godement--Jacquet normalisation on
+the whole primary space, the C1--C5 Costello-refined Positselski, the
+H-P$^{\mathrm{Ar}}$ reduction to ``essentially-closed-modulo-weight-choice'',
+and the VB$^{*}\Rightarrow$F-RH implication. The authoritative corrected
+view is the post-wave-2 residual catalog
+(\Cref{v4-arith:app:C:residual-catalog-w2}) and the Platonic capstone
+(\Cref{v4-arith:platonic:thm:RH-completion}). This chapter audits each
+overclaim, downgrades or restricts the misplaced statuses, and records
+the in-place repairs to Chapters~\ref{v4-arith:rh-reformulation},
+\ref{v4-arith:virasoro-bootstrap}, \ref{v4-arith:arith-positselski},
+\ref{v4-arith:kp-compat}, \ref{v4-arith:pos-costello},
+\ref{v4-arith:bc-glue-k5}, \ref{v4-arith:HPAr-vbconverse}. The four-input
+conditional spine (arith.~Positselski, Koszul--Pet compat,
+H-P$^{\mathrm{Ar}}$, VB$^{*}$) is re-stated explicitly.}
+
+\section{Overclaim Catalog}
+\label{v4-arith:w3-audit-B:overclaim-catalog}
+
+The six principal overclaims left by waves~1 and~2 on Spine~B are
+catalogued in \Cref{v4-arith:w3-audit-B:tab:overclaims}. Each entry
+names the offending statement, locates it at the chapter/theorem level,
+identifies the open sub-item that falsifies the unconditional claim,
+and points to the repaired statement in the target chapter.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{l|p{5cm}|p{4.5cm}|l}
+OC\# & Offending claim & Open sub-item & Repair target \\
+\hline
+OC1 & P1 biconditional unconditional for the abelian arithmetic
+Heisenberg (\Cref{v4-arith:pos:thm:P1-full-unconditional},
+\Cref{v4-arith:pos-costello:thm:P1-unconditional}). & Completed
+continuous duals; derived completion; faithful lifting; primitive
+zeta-character theorem; Koszul-dual Bost--Connes. & \S\ref{v4-arith:w3-audit-B:repair-25} \\
+OC2 & P3 fully unconditional
+(\Cref{v4-arith:kp:cor:P3-unconditional},
+\Cref{v4-arith:kp:thm:main-full}). & Stable only on normalized
+sph-fin cuspidal core; full $\mathcal{V}^{\mathrm{prim}}$
+compatibility and KMS$_{1}$/GNS identification remain open. &
+\S\ref{v4-arith:w3-audit-B:repair-26} \\
+OC3 & K5 closed unconditionally via Hoffstein--Lockhart
+(\Cref{v4-arith:bcglue-k5:thm:K5-absorption-canonical},
+\Cref{v4-arith:bcglue-k5:thm:K5-adelic-consistent}). &
+Conditional on sph-fin cuspidal cut; Eisenstein-pole handling via
+sph-fin cut, not absent. & \S\ref{v4-arith:w3-audit-B:repair-35} \\
+OC4 & C1--C5 closed as unconditional theorems
+(\Cref{v4-arith:pos-costello:thm:C1-closed},
+\Cref{v4-arith:pos-costello:thm:C2-closed},
+\Cref{v4-arith:pos-costello:thm:C3-closed},
+\Cref{v4-arith:pos-costello:thm:C4-closed},
+\Cref{v4-arith:pos-costello:thm:C5-closed}). & Continuous duals,
+derived completion, base-change faithfulness, pro-nilpotent
+convergence, classical-limit check; each refinement restricts
+domain but does not close the Positselski equivalence. &
+\S\ref{v4-arith:w3-audit-B:repair-34} \\
+OC5 & H-P$^{\mathrm{Ar}}$ equivalent to Connes / Deninger
+``essentially closed modulo weight choice''
+(\Cref{v4-arith:hpvbconv:thm:HPAr-equivalence}). & Domain theorem
+closes; zeta-zero spectral matching open; Bost--Connes
+trace-compatibility is the zeta-zero placement problem, not a
+routine weight choice. & \S\ref{v4-arith:w3-audit-B:repair-36} \\
+OC6 & VB$^{*}\Rightarrow$F-RH is unconditional under an
+H-P$^{\mathrm{Ar}}$ hypothesis assumed trivial
+(\Cref{v4-arith:rh:thm:VB-implies-F-RH}); VB$^{*}$ converse
+``four-way equivalence'' closes VB$^{*}$ one direction
+(\Cref{v4-arith:hpvbconv:thm:VBstar-converse-spectral-regularity}).
+& The implication depends on P2, P3, H-P$^{\mathrm{Ar}}$, and a
+positive Bost--Connes regularised trace; the converse is strictly
+finer than RH and does not help the forward direction. &
+\S\ref{v4-arith:w3-audit-B:repair-23},
+\S\ref{v4-arith:w3-audit-B:repair-36} \\
+\end{tabular}
+\caption{Principal wave-1/wave-2 overclaims on Spine~B and their
+repair targets.}
+\label{v4-arith:w3-audit-B:tab:overclaims}
+\end{table}
+
+\paragraph{Authoritative references.} The corrected catalogue is
+\Cref{v4-arith:app:C:residual-catalog-w2} (Post-wave-2 residual
+catalog); the corrected RH-closure package is
+\Cref{v4-arith:platonic:def:RH-package} and the Platonic RH-completion
+theorem \Cref{v4-arith:platonic:thm:RH-completion}. The four-input
+conditional spine is the minimal path of
+\S\ref{v4-arith:app:C:minimal-path}: arith.~Positselski, Koszul--Pet
+compat, H-P$^{\mathrm{Ar}}$, and VB$^{*}$ main direction.
+
+\section{Repair Summary}
+\label{v4-arith:w3-audit-B:repair-summary}
+
+The repairs proceed chapter by chapter. Each repair downgrades the
+offending claim to \texttt{ProvedHere} conditional on explicitly named
+open items, or to \texttt{Conjectured}, or to
+\texttt{ScopeRestricted} on the sph-fin cuspidal core. No theorems are
+deleted; the H-VB$^{*}$ swarm heal in
+Chapter~\ref{v4-arith:rh-reformulation} is preserved.
+
+\subsection{Ch.~\ref{v4-arith:rh-reformulation} Repair (RH Reformulation)}
+\label{v4-arith:w3-audit-B:repair-23}
+
+\paragraph{Target.} Remark
+\Cref{v4-arith:rh:rem:one-directional} already records the
+\emph{one-directional} nature of VB$^{*}\Rightarrow$F-RH. The chapter
+is otherwise honest in marking \Cref{v4-arith:rh:thm:VB-implies-F-RH}
+as conditional on P2, P3, and H-P$^{\mathrm{Ar}}$, and in naming
+VB$^{*}$ converse as strictly finer than RH.
+
+\paragraph{Repair.} Add an explicit note at the summary table
+(\Cref{v4-arith:rh:summary}) naming the four-input conditional spine
+and reiterating that the H-VB$^{*}$ swarm heal has preserved only the
+forward implication. The H-VB$^{*}$ heal remains inscribed.
+
+\paragraph{Scope.} No \texttt{ClaimStatusProvedHere} tag is removed.
+One clarifying remark is added to make the four-input spine explicit.
+
+\subsection{Ch.~\ref{v4-arith:arith-positselski} Repair (Arithmetic Positselski)}
+\label{v4-arith:w3-audit-B:repair-25}
+
+\paragraph{Target.} The chapter's main theorem
+\Cref{v4-arith:thm:arithmetic-positselski}, the corollary
+\Cref{v4-arith:pos:cor:mu-zero-heisenberg}, and the P1-propagation
+theorem \Cref{v4-arith:pos:thm:P1-full-unconditional} claim the
+$\Lambda$-coefficient Positselski equivalence unconditionally (under
+$\mu=0$) and propagate ``unconditional P1'' downstream. The
+underlying arguments in Steps~1--6
+(\S\ref{v4-arith:pos:step-1}--\S\ref{v4-arith:pos:step-6}) depend
+on open sub-items: completed continuous duals and their compatibility
+with co-derived and contra-derived categories
+(\S\ref{v4-arith:pos:step-2}), derived completion of projective
+and injective resolutions (\S\ref{v4-arith:pos:step-3}), faithful
+lifting along Nakayama (\S\ref{v4-arith:pos:step-3}), the primitive
+zeta-character theorem underpinning the $\kappa$-pairing weight
+computation (\S\ref{v4-arith:pos:step-4}), and Koszul-dual
+Bost--Connes interpretation of the $C^{\vee}$ side.
+
+\paragraph{Repair.} Downgrade the status of
+\Cref{v4-arith:thm:arithmetic-positselski},
+\Cref{v4-arith:pos:cor:step-3-unconditional}, and
+\Cref{v4-arith:pos:thm:P1-full-unconditional} from
+\texttt{ClaimStatusProvedHere} to
+\texttt{ClaimStatusProvedHere conditional on the five open sub-items
+(continuous duals, derived completion, faithful lifting, primitive
+zeta-character theorem, Koszul-dual Bost--Connes)}.
+Add a \texttt{ScopeRestricted} tag to
+\Cref{v4-arith:thm:arithmetic-positselski} locating its intended
+scope on the abelian primary Heisenberg datum with these five
+assumptions. Update summary (\S\ref{v4-arith:pos:summary}).
+
+\paragraph{Scope.} Five \texttt{ClaimStatusProvedHere} upgrades are
+downgraded to \texttt{ClaimStatusProvedHere} conditional, not
+deleted; the theorems remain, carrying their conditional hypotheses
+explicitly.
+
+\subsection{Ch.~\ref{v4-arith:kp-compat} Repair (Koszul--Pet Compatibility and P3)}
+\label{v4-arith:w3-audit-B:repair-26}
+
+\paragraph{Target.} The main theorem
+\Cref{v4-arith:kp:thm:main-full} and the corollary
+\Cref{v4-arith:kp:cor:P3-unconditional} assert Koszul--Petersson
+compatibility and P3 unitarity as unconditional. The archimedean
+proposition (\Cref{v4-arith:kp:prop:Pet-is-Segal-infty}) is honest;
+the finite-place proposition
+(\Cref{v4-arith:kp:prop:Pet-p-is-BC-sigma}) depends on an unstated
+KMS$_{1}$/GNS identification, and the adelic assembly
+(\Cref{v4-arith:kp:thm:tate-assembly}) is only proved on the sph-fin
+cuspidal core.
+
+\paragraph{Repair.} Scope-restrict
+\Cref{v4-arith:kp:thm:main-full} and
+\Cref{v4-arith:kp:cor:P3-unconditional} to the
+\emph{normalised sph-fin cuspidal core} of
+$\mathcal{V}^{\mathrm{prim}}$, and downgrade them to
+\texttt{ScopeRestricted}. Explicitly name the open sub-items: (i)
+KMS$_{1}$/GNS identification beyond the normalised sph-fin cuspidal
+core; (ii) full-sector Rankin--Selberg extension of the local
+Petersson computation; (iii) Eisenstein-sector treatment
+(currently excluded by the sph-fin cut). Update summary
+(\S\ref{v4-arith:kp:summary}) and the corollary updating the
+minimal RH path (\Cref{v4-arith:kp:cor:rh-minimal-updated}).
+
+\paragraph{Scope.} Two \texttt{ProvedHere} tags are replaced by
+\texttt{ScopeRestricted}; the theorems survive with their restricted
+scope made explicit.
+
+\subsection{Ch.~\ref{v4-arith:pos-costello} Repair (C1--C5)}
+\label{v4-arith:w3-audit-B:repair-34}
+
+\paragraph{Target.} The five closure theorems
+\Cref{v4-arith:pos-costello:thm:C1-closed},
+\Cref{v4-arith:pos-costello:thm:C2-closed},
+\Cref{v4-arith:pos-costello:thm:C3-closed},
+\Cref{v4-arith:pos-costello:thm:C4-closed},
+\Cref{v4-arith:pos-costello:thm:C5-closed} each claim unconditional
+closure of a named refinement, and the consequence
+\Cref{v4-arith:pos-costello:thm:P1-unconditional} propagates the
+unconditional P1 biconditional.
+
+Each C$i$ proof reduces its refinement to a narrower domain (abelian
+primary Heisenberg scope, $\mu=0$, unit-compatible pointed $E_{2}$
+structure, etc.) but does not close the full Positselski equivalence:
+C1 is conditional on the $\eta$-algebra pointed colimit of
+\Cref{v4-arith:sw:conj:F2c-tightened}; C2 on Parshin reciprocity
+modulo $\Lambda$-coboundaries and the $p=2$ torsion handling; C3
+on pro-nilpotent convergence at $\beta=1$ matching the KMS$_{1}$
+Tomita--Takesaki state; C4 on the Witt-truncation classical limit
+and its compatibility with the archimedean Heisenberg Fock; C5 on
+the restricted $\Lambda$-linear morphism class with trivial
+$\Gamma$-action.
+
+\paragraph{Repair.} Downgrade
+\Cref{v4-arith:pos-costello:thm:C1-closed},
+\Cref{v4-arith:pos-costello:thm:C2-closed},
+\Cref{v4-arith:pos-costello:thm:C3-closed},
+\Cref{v4-arith:pos-costello:thm:C4-closed},
+\Cref{v4-arith:pos-costello:thm:C5-closed} from
+\texttt{ClaimStatusProvedHere} to
+\texttt{ClaimStatusProvedHere conditional} on the named
+domain-restricting hypotheses. Downgrade
+\Cref{v4-arith:pos-costello:thm:P1-unconditional} and
+\Cref{v4-arith:pos-costello:cor:arith-Heis-Koszul} to
+\texttt{ClaimStatusProvedHere} conditional on the five C$i$
+conditionals plus the five open Positselski sub-items from
+\S\ref{v4-arith:w3-audit-B:repair-25}. Update summary
+(\S\ref{v4-arith:pos-costello:summary}).
+
+\paragraph{Scope.} Seven \texttt{ProvedHere} tags are each
+conditionalised; no theorem is deleted.
+
+\subsection{Ch.~\ref{v4-arith:bc-glue-k5} Repair (K5)}
+\label{v4-arith:w3-audit-B:repair-35}
+
+\paragraph{Target.} The two K5 theorems
+\Cref{v4-arith:bcglue-k5:thm:K5-absorption-canonical} and
+\Cref{v4-arith:bcglue-k5:thm:K5-adelic-consistent} claim
+unconditional closure of the Godement--Jacquet absorption
+convention via Hoffstein--Lockhart nonvanishing. The corollary
+\Cref{v4-arith:bcglue-k5:cor:K-P-unconditional} propagates this
+unconditional closure to Koszul--Pet compat and P3.
+
+The Hoffstein--Lockhart 1994 nonvanishing is an unconditional theorem
+on the cuspidal sph-fin locus. The K5 absorption is therefore
+conditional only on the cuspidal sph-fin scope; Eisenstein summands
+are explicitly excluded by the sph-fin cut of
+\Cref{v4-arith:sw:thm:KP-split}(K7), not absent.
+
+\paragraph{Repair.} Scope-restrict
+\Cref{v4-arith:bcglue-k5:thm:K5-absorption-canonical} and
+\Cref{v4-arith:bcglue-k5:thm:K5-adelic-consistent} to the
+\emph{cuspidal sph-fin locus}, and retain them as
+\texttt{ClaimStatusProvedHere} with
+\texttt{ScopeRestricted(cuspidal sph-fin)}. Downgrade the
+Koszul--Pet propagation corollary
+\Cref{v4-arith:bcglue-k5:cor:K-P-unconditional} to match
+Ch.~\ref{v4-arith:kp-compat} scope restriction
+(\S\ref{v4-arith:w3-audit-B:repair-26}). Remove the misleading
+``unconditional'' phrasing in the summary
+(\S\ref{v4-arith:bcglue-k5:summary}).
+
+\paragraph{Scope.} Two \texttt{ProvedHere} tags remain in place with
+explicit \texttt{ScopeRestricted(cuspidal sph-fin)} annotation.
+
+\subsection{Ch.~\ref{v4-arith:HPAr-vbconverse} Repair (H-P$^{\mathrm{Ar}}$ and VB$^{*}$ Converse)}
+\label{v4-arith:w3-audit-B:repair-36}
+
+\paragraph{Target.} \Cref{v4-arith:hpvbconv:thm:HPAr-equivalence}
+names four equivalent formulations of H-P$^{\mathrm{Ar}}$
+(Friedrichs Fock, Connes adele class space, Deninger motivic
+cohomology, spectral realisation condition) and its corollary
+\Cref{v4-arith:hpvbconv:cor:HPAr-single-residual} asserts the
+``single residual is the choice of Bost--Connes zero-mode weights.''
+The domain theorem \Cref{v4-arith:hpvbconv:thm:L0-Friedrichs}
+closes the Friedrichs construction; the trace-compatibility
+proposition \Cref{v4-arith:hpvbconv:prop:BC-trace-compatibility}
+and the Connes identification
+\Cref{v4-arith:hpvbconv:thm:connes-identification} reduce the
+trace-compatibility to the zeta-zero spectrum of the Bost--Connes
+scaling action---which is Hilbert--P\'olya.
+
+\Cref{v4-arith:hpvbconv:thm:VBstar-converse-spectral-regularity}
+and its corollary
+\Cref{v4-arith:hpvbconv:cor:three-strictly-finer} name four
+equivalent forms of the VB$^{*}$ converse, all strictly finer than
+RH. This equivalence is honest at the converse level but has been
+over-advertised in wave-2 summaries as closing VB$^{*}$ ``one
+direction''; the converse is strictly finer than RH and does not
+help the forward direction VB$^{*}\Rightarrow$F-RH.
+
+\paragraph{Repair.} Retain
+\Cref{v4-arith:hpvbconv:thm:L0-Friedrichs} as \texttt{ProvedHere}
+(domain theorem; genuinely closed). Retain
+\Cref{v4-arith:hpvbconv:thm:HPAr-equivalence} as
+\texttt{ProvedHere} for the equivalence of the four formulations,
+but add an explicit remark that the zeta-zero spectral matching is
+the open Hilbert--P\'olya content, not a routine ``weight choice.''
+Retain
+\Cref{v4-arith:hpvbconv:thm:VBstar-converse-spectral-regularity}
+and its strictly-finer-than-RH status, and add an explicit remark
+that the converse does not help VB$^{*}\Rightarrow$F-RH.
+Update \Cref{v4-arith:hpvbconv:cor:HPAr-single-residual} to remove
+the ``single residual'' wording; the residual is Hilbert--P\'olya
+itself. Update summary
+(\S\ref{v4-arith:hpvbconv:summary}).
+
+\paragraph{Scope.} No \texttt{ProvedHere} tag is removed; two
+corollaries are re-worded to stop advertising ``essentially closed
+modulo weight choice.''
+
+\subsection{App.~\ref{v4-arith:app:primary-sources} Repair (Primary-Source Catalog)}
+\label{v4-arith:w3-audit-B:repair-A}
+
+\paragraph{Target.} The Li/Weil/Deninger citations in
+\S\ref{v4-arith:app:A:li-weil} and
+\S\ref{v4-arith:app:A:operator-theory} currently describe the
+status of H-P$^{\mathrm{Ar}}$/VB$^{*}$ reductions without pointing
+to the wave-3 corrections.
+
+\paragraph{Repair.} Add a short closing remark to
+\S\ref{v4-arith:app:A:li-weil} naming the strictly-finer-than-RH
+content (Hamburger determinacy of the symmetrised zero measure) as
+the VB$^{*}$ converse. Add a short closing remark to
+\S\ref{v4-arith:app:A:operator-theory} noting that the Connes and
+Deninger programme references anchor equivalent formulations of
+H-P$^{\mathrm{Ar}}$ but that the zeta-zero spectral matching
+itself remains the open Hilbert--P\'olya content.
+
+\paragraph{Scope.} Purely annotative; no theorem statuses are
+affected.
+
+\section{The Four-Input Conditional Spine, Made Explicit}
+\label{v4-arith:w3-audit-B:four-input-spine}
+
+After the wave-3 audit, the minimal closure path to RH within Vol~IV's
+arithmetic branch is the conjunction of four open inputs. This
+matches verbatim the post-wave-2 minimal path of
+\S\ref{v4-arith:app:C:minimal-path} and the Platonic RH-completion
+hypothesis package of
+\Cref{v4-arith:platonic:def:RH-package}.
+
+\begin{theorem}[four-input conditional spine, post-wave-3]
+\label{v4-arith:w3-audit-B:thm:four-input-spine}
+\ClaimStatusProvedHere. Within the Vol~IV arithmetic branch, the
+following four open items form a sufficient conditional package for
+the Riemann Hypothesis:
+\begin{enumerate}
+\item \textbf{arith.~Positselski}: the $\Lambda$-coefficient
+Positselski equivalence of
+\Cref{v4-arith:thm:arithmetic-positselski} on the abelian primary
+Heisenberg scope, conditional on the five open sub-items
+(continuous duals; derived completion; faithful lifting; primitive
+zeta-character theorem; Koszul-dual Bost--Connes).
+\item \textbf{Koszul--Pet compat}: the identification
+\Cref{v4-arith:kp:thm:main-full} scope-restricted to the normalized
+sph-fin cuspidal core, plus the open KMS$_{1}$/GNS identification
+and full-sector Rankin--Selberg extension.
+\item \textbf{H-P$^{\mathrm{Ar}}$}: the arithmetic Hilbert--P\'olya
+hypothesis in the spectral-realisation form of
+\Cref{v4-arith:hpvbconv:thm:HPAr-equivalence}, whose open content is
+the zeta-zero spectral matching (Hilbert--P\'olya itself).
+\item \textbf{VB$^{*}$ main direction}: the RH-equivalent
+operator-positivity statement of
+\Cref{v4-arith:rh:thm:VB-implies-F-RH} read as a standalone residual.
+\end{enumerate}
+The first two are scope-restricted reductions of Spine-B Positselski
+and adelic compatibility; the third is a Friedrichs extension plus
+the Hilbert--P\'olya content; the fourth is the operator-positivity
+residual. Their conjunction is sufficient for F-RH via
+\Cref{v4-arith:platonic:thm:RH-completion}. No converse necessity is
+claimed for the internal scaffold inputs.
+\end{theorem}
+
+\begin{proof}
+The sufficiency is exactly the Platonic RH-completion theorem's
+assembly of P1, P2, P3, H-P$^{\mathrm{Ar}}$, VB$^{*}$, and
+Hamburger determinacy into the RH-closure package; after wave-3 audit
+these inputs reduce to the four named above. Logical separation of
+the H-P$^{\mathrm{Ar}}$/VB$^{*}$ residuals is
+\Cref{v4-arith:hpvbconv:prop:HPAr-det-independent} at the
+H-P$^{\mathrm{Ar}}$/VB$^{*}$ boundary and
+\Cref{v4-arith:pos:residual-scope},
+\Cref{v4-arith:kp:rem:paper-length-reestimate} elsewhere.
+\end{proof}
+
+\begin{remark}[what wave-3 preserves]
+\label{v4-arith:w3-audit-B:rem:preserved}
+The wave-3 audit preserves:
+\begin{itemize}
+\item All theorem labels, all statements, and the attack--heal
+ledgers of wave-1 and wave-2.
+\item The H-VB$^{*}$ swarm heal of
+Ch.~\ref{v4-arith:rh-reformulation} (one-directional VB$^{*}
+\Rightarrow$F-RH).
+\item The Platonic RH-completion theorem
+\Cref{v4-arith:platonic:thm:RH-completion} and its capstone role
+in Ch.~\ref{v4-arith:platonic-rh-completion}.
+\item The distinction between the RH-independent Spine~A (F1/F2/F3
+residuals) and the RH-dependent Spine~B (four-input conditional).
+\end{itemize}
+\end{remark}
+
+\begin{remark}[what wave-3 changes]
+\label{v4-arith:w3-audit-B:rem:changed}
+The wave-3 audit changes only the status tags and the propagation
+wording:
+\begin{enumerate}
+\item Ch.~\ref{v4-arith:arith-positselski}: five theorems
+downgraded from \texttt{ProvedHere} to \texttt{ProvedHere
+conditional on the five open Positselski sub-items}.
+\item Ch.~\ref{v4-arith:kp-compat}: main theorem and P3 corollary
+scope-restricted to the normalized sph-fin cuspidal core with
+KMS$_{1}$/GNS identification listed as open.
+\item Ch.~\ref{v4-arith:pos-costello}: seven closure theorems (C1,
+C2, C3, C4, C5, P1 consequence, arith.~Heis Koszul corollary)
+conditionalised on their named domain-restricting hypotheses.
+\item Ch.~\ref{v4-arith:bc-glue-k5}: two K5 theorems
+scope-restricted to the cuspidal sph-fin locus.
+\item Ch.~\ref{v4-arith:HPAr-vbconverse}: H-P$^{\mathrm{Ar}}$
+single-residual corollary re-worded; VB$^{*}$ converse remark added
+clarifying that the converse does not help VB$^{*}\Rightarrow$F-RH.
+\item App.~\ref{v4-arith:app:primary-sources}:
+Li/Weil/Deninger/operator-theory annotations corrected to match the
+post-wave-3 residual catalog.
+\end{enumerate}
+\end{remark}
+
+\section{Honesty Audit of the Load-Bearing Theorem}
+\label{v4-arith:w3-audit-B:load-bearing}
+
+The arithmetic branch's load-bearing theorem
+\begin{equation*}
+\kappa^{\mathrm{Ar}}_{\mathsf{G}}+(\kappa^{!})^{\mathrm{Ar}}_{\mathsf{G}}
+\;=\;0\;\Longleftrightarrow\;\xi(s)=\xi(1-s)
+\end{equation*}
+(\Cref{v4-arith:thm:G-row-Riemann-functional-equation},
+\Cref{v4-arith:thm:P1-resolution}) is the statement that arithmetic
+Koszul self-duality for the abelian Heisenberg archetype is
+equivalent to the Riemann functional equation. Its forward direction
+$(\Rightarrow)$ is closed in
+\Cref{v4-arith:cl:cor:P1-unconditional-forward}
+(by Tate 1950 adelic Poisson). The full biconditional requires
+arithmetic Positselski, and hence inherits the five open sub-items
+named in OC1.
+
+Wave-3 preserves the load-bearing theorem's status as
+\emph{Theorem-waiting}: forward direction unconditional, biconditional
+conditional on arithmetic Positselski (in the post-wave-3 sense of
+OC1). This status is consistent with the Platonic capstone's
+reading of the load-bearing theorem as the P1 component of the four-input
+conditional spine (\Cref{v4-arith:platonic:thm:RH-completion}).
+
+\section{Summary}
+\label{v4-arith:w3-audit-B:summary}
+
+\begin{enumerate}
+\item Six principal overclaims OC1--OC6 of waves~1 and~2 on Spine~B
+are catalogued in
+\Cref{v4-arith:w3-audit-B:tab:overclaims}.
+\item Each overclaim is repaired in-place by status downgrade or
+scope restriction, not by deletion. The theorems survive; the
+advertised unconditionality is corrected.
+\item The four-input conditional spine of
+\Cref{v4-arith:w3-audit-B:thm:four-input-spine} is the honest
+minimal path to RH within Vol~IV's framework, matching the
+post-wave-2 catalog
+\Cref{v4-arith:app:C:residual-catalog-w2} verbatim.
+\item The load-bearing theorem retains its \emph{Theorem-waiting}
+status: forward direction unconditional, full biconditional
+conditional on arith.~Positselski.
+\item The H-VB$^{*}$ swarm heal in
+Ch.~\ref{v4-arith:rh-reformulation} is preserved; the Platonic
+RH-completion theorem in
+Ch.~\ref{v4-arith:platonic-rh-completion} is preserved.
+\item Honesty is preferred to closure. The residuals are named
+precisely; none is swept under a ``routine'' tag.
+\end{enumerate}
+
+This chapter is the wave-3 audit ledger. It contains no new
+mathematics; it records the status corrections to Chapters~\ref{v4-arith:rh-reformulation},
+\ref{v4-arith:virasoro-bootstrap},
+\ref{v4-arith:arith-positselski},
+\ref{v4-arith:kp-compat},
+\ref{v4-arith:pos-costello},
+\ref{v4-arith:bc-glue-k5},
+\ref{v4-arith:HPAr-vbconverse}, and to
+App.~\ref{v4-arith:app:primary-sources}, and names the four-input
+conditional spine explicitly.

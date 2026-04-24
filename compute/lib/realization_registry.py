@@ -70,6 +70,7 @@ _vol_i = sys.modules[_MODULE_NAME]
 independent_verification = _vol_i.independent_verification
 assert_sources_disjoint = _vol_i.assert_sources_disjoint
 IndependentVerificationError = _vol_i.IndependentVerificationError
+_vol_i_entries_for = _vol_i.entries_for
 
 
 # ---------------------------------------------------------------------------
@@ -135,25 +136,73 @@ def _is_vol_iv_native(claim: str) -> bool:
 def _cross_volume_disjointness_ok(
     claim: str,
     verified_against: Iterable[str],
+    upstream_derived_from: Iterable[str] | None = None,
 ) -> tuple[bool, str]:
     """Check Vol IV verified_against is disjoint from Vols I-III
     derived_from for the same claim label.
 
-    Returns (True, "") on pass; (False, reason) on fail.
+    Returns (True, reason) on pass; (False, reason) on fail.
 
     For Vol IV native labels (prefix "v4-"), the check is skipped and
     returns (True, "native").
+
+    For non-native (Vol I/II/III) labels, enforcement proceeds by two
+    channels:
+      1. Opportunistic: query the Vol I HZ-IV registry via entries_for
+         and intersect each upstream entry's derived_from with
+         verified_against. Any overlap fails. If Vol I registry has no
+         entries for this claim (e.g., the upstream test module has not
+         yet been imported in the current process), this channel is
+         silent.
+      2. Explicit: if the decorator author passes upstream_derived_from,
+         intersect it with verified_against directly. This channel is
+         mandatory for load-bearing enforcement when the upstream
+         registry may not be populated at collection time.
+
+    At least one of the two channels must yield positive evidence
+    (explicit upstream or an opportunistic hit) for the check to be
+    classified as enforcing rather than vacuous.
     """
     if _is_vol_iv_native(claim):
         return True, "native"
 
-    # We do not have direct access to Vols I-III registries here; the
-    # check is left as an assertion-on-import to be enabled when those
-    # registries expose their derived_from sets via a canonical API. At
-    # present the check is advisory and returns True; the Vol IV CLAUDE.md
-    # and realization chapter require the author to have verified
-    # disjointness manually.
-    return True, "advisory"
+    verified_set = {s.strip().lower() for s in verified_against}
+
+    explicit_checked = False
+    if upstream_derived_from is not None:
+        explicit_checked = True
+        upstream_set = {s.strip().lower() for s in upstream_derived_from}
+        overlap = verified_set & upstream_set
+        if overlap:
+            return False, (
+                f"Vol IV verified_against overlaps explicit upstream "
+                f"derived_from at {sorted(overlap)!r}"
+            )
+
+    opportunistic_checked = False
+    try:
+        upstream_entries = _vol_i_entries_for(claim)
+    except Exception:
+        upstream_entries = []
+    for entry in upstream_entries:
+        opportunistic_checked = True
+        upstream_set = {s.strip().lower() for s in entry.derived_from}
+        overlap = verified_set & upstream_set
+        if overlap:
+            return False, (
+                f"Vol IV verified_against overlaps Vol I registered "
+                f"derived_from for claim={claim!r} at {sorted(overlap)!r}"
+            )
+
+    if explicit_checked or opportunistic_checked:
+        return True, "enforced"
+
+    # Neither channel yielded data. This is a genuine gap: the author
+    # did not supply upstream_derived_from and the Vol I registry has
+    # not imported the upstream test for this claim. Flag it so the
+    # reader sees that this entry's cross-volume disjointness was not
+    # mechanically verified at decoration time.
+    return True, "unverified-no-upstream-data"
 
 
 # ---------------------------------------------------------------------------
@@ -168,20 +217,26 @@ def realization_decorator(
     derived_from: Iterable[str],
     verified_against: Iterable[str],
     disjoint_rationale: str,
+    upstream_derived_from: Iterable[str] | None = None,
 ) -> Callable:
     """Register a Vol IV realization pair for claim.
 
-    Parameters match @independent_verification in Vol I with one
-    addition: source_volume tracks which volume of the programme the
+    Parameters match @independent_verification in Vol I with two
+    additions: source_volume tracks which volume of the programme the
     claim originally lives in (Vol I, Vol II, Vol III, or Vol IV for
-    Vol IV's own theorems).
+    Vol IV's own theorems); upstream_derived_from is the explicit
+    derivation catalog of the upstream volume's own inscription of
+    the claim, supplied by the author so that cross-volume
+    disjointness can be enforced even when the upstream test has not
+    been imported in the current pytest collection.
 
     The decorator:
       1. Calls assert_sources_disjoint on derived_from vs
          verified_against (same as Vol I HZ-IV);
       2. Calls _cross_volume_disjointness_ok to confirm verified_against
          is also disjoint from the upstream volume's derived_from for
-         the same claim label;
+         the same claim label, using both opportunistic Vol I registry
+         lookup and the explicit upstream_derived_from argument;
       3. Registers a RealizationEntry in _VOL_IV_REGISTRY;
       4. Wraps the test with the Vol I @independent_verification
          decorator so the same Vol I-level registry also records it.
@@ -191,7 +246,9 @@ def realization_decorator(
 
     assert_sources_disjoint(derived_tuple, verified_tuple, claim=claim)
 
-    ok, reason = _cross_volume_disjointness_ok(claim, verified_tuple)
+    ok, reason = _cross_volume_disjointness_ok(
+        claim, verified_tuple, upstream_derived_from=upstream_derived_from,
+    )
     if not ok:
         raise RealizationError(
             f"Vol IV realization for claim={claim!r} fails cross-volume "

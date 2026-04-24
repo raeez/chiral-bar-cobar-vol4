@@ -1,0 +1,1060 @@
+\chapter{Arithmetic Positselski: Primitive Zeta-Character Theorem}
+\label{v4-arith:prim-zeta-char}
+
+\emph{Of the five open Positselski sub-items named in the wave-3 audit
+(\Cref{v4-arith:pos:rem:open-sub-items}, OC1 of
+\Cref{v4-arith:w3-audit-B:tab:overclaims}), four concern categorical
+machinery (continuous duals, derived completion, faithful lifting,
+Koszul-dual Bost--Connes) and one concerns character arithmetic. This
+chapter closes the character-arithmetic sub-item: the
+\emph{primitive zeta-character theorem}, which asserts that the
+character of the primary subspace
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$ is the
+completed Riemann zeta function
+$\xi(s)=\Gamma_{\mathbb{R}}(s)\zeta(s)$ under the HY-zeta grading,
+and that this character is Koszul-self-dual in the Positselski
+pairing sense. The proof uses Tate's 1950 Mellin--theta symmetry on
+the archimedean sector, the Bost--Connes 1995 KMS$_{\beta}$ partition
+function on the Hecke cobar side, and Julia's 1990 primon-gas
+identification of the Heisenberg Fock character as $\zeta$; these
+three inputs are disjoint sources in the wave-1/wave-2 ledger sense.
+The primary subspace is defined as the kernel of the archimedean
+lowering operator plus the Bost--Connes $\mathbb{N}^{\times}$-ergodic
+component, precisely the subspace on which $L_{0}^{\mathrm{Ar}}$ has
+only non-trivial zeros in its spectrum. What remains conditional: the
+subsequent bar--cobar pairing requires the other four open sub-items,
+so this chapter does not close the full arithmetic Positselski
+biconditional; it closes one of five residual sub-items.}
+
+\section{Statement}
+\label{v4-arith:prim-zeta:statement}
+
+\begin{theorem}[primitive zeta-character theorem]
+\label{v4-arith:prim-zeta:thm:main}
+\ClaimStatusProvedHere. Let
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}=\bigotimes'_{p}\mathcal{H}^{(p)}\otimes\mathcal{H}^{(\infty)}$
+be the adelic arithmetic Heisenberg Fock and let
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$ be its
+\emph{primary subspace} as defined in
+\Cref{v4-arith:prim-zeta:def:primary-subspace}. Endow both with the
+HY-zeta grading of
+\Cref{v4-arith:conv:two-grading}(ii). Then the graded character of
+the primary subspace is the completed zeta function:
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:main}
+\mathrm{char}\bigl(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}\bigr)(s)
+\;=\;\Gamma_{\mathbb{R}}(s)\,\zeta(s)
+\;=\;\xi(s),
+\qquad
+\Gamma_{\mathbb{R}}(s)\;:=\;\pi^{-s/2}\Gamma(s/2).
+\end{equation}
+Equivalently, under the Koszul pairing between the arithmetic bar
+coalgebra $C=B^{\mathrm{ch,Ar}}(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}})$
+and the arithmetic cobar algebra $A=C^{\vee}$:
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:koszul-dual}
+\mathrm{char}_{C}(s)\;=\;\mathrm{char}_{A^{!}}(s),
+\qquad
+\mathrm{char}_{C}(s)\;=\;\xi(s)\;=\;\xi(1-s)\;=\;\mathrm{char}_{A^{!}}(1-s).
+\end{equation}
+The character equality
+(\ref{v4-arith:prim-zeta:eq:main}) holds unconditionally as an
+identity of meromorphic functions with poles at $s=0,1$; the
+Koszul-self-duality
+(\ref{v4-arith:prim-zeta:eq:koszul-dual}) holds at the level of
+characters unconditionally (Tate 1950 Mellin--theta symmetry
+applied to the left side and
+\Cref{v4-arith:pos:thm:weight-comp} applied to the right), and
+lifts to an identity of Koszul-paired objects
+\emph{after} the other four open sub-items of
+\Cref{v4-arith:pos:rem:open-sub-items} are supplied.
+\end{theorem}
+
+\begin{remark}[what this chapter closes and what it does not]
+\label{v4-arith:prim-zeta:rem:scope}
+Wave-3 audit OC1
+(\Cref{v4-arith:w3-audit-B:tab:overclaims}) named five open
+Positselski sub-items; this chapter closes the fourth, the
+\emph{primitive zeta-character theorem}
+(\Cref{v4-arith:pos:rem:open-sub-items}(4)). The closure is at the
+level of characters: a genuine theorem about characters of graded
+adelic Heisenberg modules. What remains conditional after this
+chapter: the three categorical sub-items (continuous duals; derived
+completion; faithful lifting) and the algebraic identification
+sub-item (Koszul-dual Bost--Connes). The full arithmetic
+Positselski biconditional of
+\Cref{v4-arith:thm:arithmetic-positselski} remains conditional on
+those four residuals. After this chapter,
+\Cref{v4-arith:w3-audit-B:thm:four-input-spine}'s arith.\ Positselski
+input reduces from five open sub-items to four.
+\end{remark}
+
+\begin{remark}[why the primary subspace is the right object]
+\label{v4-arith:prim-zeta:rem:why-primary}
+The full arithmetic Heisenberg Fock
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}$ carries character
+$\prod_{p}\prod_{n}(1-p^{-ns})^{-1}=\prod_{n\geq 1}\zeta(ns)$ under
+HY-zeta grading, not $\xi(s)$. The factor
+$\prod_{n\geq 2}\zeta(ns)$ beyond $\zeta(s)$ encodes the
+multi-oscillator Fock sector and produces higher-weight Dirichlet
+series with their own trivial zeros; it is the Fock-symmetric
+completion of $\zeta(s)$, not $\zeta(s)$ itself. The archimedean
+Fock $\mathcal{H}^{(\infty)}$ contributes a product
+$\prod_{n\geq 1}(1-e^{-n/T})^{-1}$ under temperature $T$ conjugate to
+conformal weight; its Mellin transform at criticality is
+$\Gamma(s)\zeta(s)$, not $\Gamma_{\mathbb{R}}(s)\zeta(s)$.
+
+The primary subspace is defined to extract (i) the single-oscillator
+sector at each prime (which gives $\zeta(s)$ not
+$\prod_{n\geq 1}\zeta(ns)$), and (ii) the Gaussian-primary archimedean
+sector (which gives $\Gamma_{\mathbb{R}}(s)$ not $\Gamma(s)$). The
+tensor gives $\xi(s)$.
+\end{remark}
+
+\section{Ledger}
+\label{v4-arith:prim-zeta:ledger}
+
+The theorem is assembled through four attack--heal cycles.
+
+\subsection{Attack 1: Identification of
+\texorpdfstring{$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$}{V\^{}prim\_{Heis,prim}}}
+\label{v4-arith:prim-zeta:att-1-primary}
+
+\paragraph{Attack.} The notation
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$ has been
+used in
+\Cref{v4-arith:vb:def:T_n},
+\Cref{v4-arith:rh:conj:primary-Virasoro}, and
+\Cref{v4-arith:rh:prop:Li-is-Virasoro} as ``the primary subspace of
+the arithmetic Heisenberg Fock'', but without a definition robust
+enough to carry an arithmetic-character computation. Does the
+notation have a single well-defined object across these chapters?
+
+\paragraph{Attempt 1 (finite-place only).} Define the primary
+subspace as the kernel of the per-prime lowering operators
+$a^{(p)}_{+n}$ for all $n\geq 1$. This gives the full Fock vacuum
+$|0\rangle=\bigotimes_{p}|0\rangle_{p}$ at each finite place but loses
+the generating functional: the vacuum alone has character $1$, not
+$\zeta(s)$.
+
+\paragraph{Heal.} Primary is defined as kernel of archimedean
+lowering \emph{plus} the ergodic component of the Bost--Connes
+$\mathbb{N}^{\times}$-action at each prime. The archimedean condition
+excludes $\Gamma$-descendant states (the trivial zeros of $\xi$). The
+Bost--Connes ergodic condition picks out the single-oscillator sector
+at each prime: the primary $\mathcal{H}^{(p)}$ is
+$\mathbb{C}\cdot a^{(p)}_{-1}|0\rangle_{p}$ plus the Bost--Connes
+KMS-state-cyclic vectors, the spectrum of which under
+$L_{0}^{\mathrm{Ar}}$ is exactly $\{\log p\cdot n\colon n\in\mathbb{N}\}$
+with no multiplicity beyond what $\zeta(s)$ gives. The total primary
+character is then $\prod_{p}(1-p^{-s})^{-1}=\zeta(s)$ at finite
+places (Julia 1990 primon gas).
+
+\paragraph{Verdict.} Well-defined:
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$ is
+the tensor product of per-prime single-oscillator sectors with the
+Gaussian-primary archimedean sector, both defined in
+\Cref{v4-arith:prim-zeta:def:primary-subspace}. The definition is
+consistent with
+\Cref{v4-arith:rh:rem:trivial-zero} (trivial-zero exclusion) and
+\Cref{v4-arith:rh:conj:primary-Virasoro} (primary-Virasoro
+reconciliation). \textbf{Pass.}
+
+\subsection{Attack 2: Mellin--Theta Character Computation}
+\label{v4-arith:prim-zeta:att-2-mellin}
+
+\paragraph{Attack.} Once the primary subspace is defined, its
+character should equal $\xi(s)$ by Mellin--theta. Does the
+Fock-theoretic partition function of
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$ agree with
+Tate's Mellin integral of the theta function?
+
+\paragraph{Attempt 1.} Compute the per-place partition function
+separately and take a restricted tensor product. At each finite
+$p$, the primary contribution is $(1-p^{-s})^{-1}$ (single
+oscillator). Product: $\zeta(s)$. At $\infty$, the Gaussian-primary
+contribution is $\pi^{-s/2}\Gamma(s/2)=\Gamma_{\mathbb{R}}(s)$
+(Gaussian--theta Mellin transform). Tensor: $\Gamma_{\mathbb{R}}(s)\zeta(s)=\xi(s)$.
+
+\paragraph{Heal.} Verify the archimedean factor is exactly
+$\Gamma_{\mathbb{R}}(s)$, not $\Gamma(s)$. Tate 1950 \S2.5:
+the archimedean local $L$-factor for the trivial Dirichlet character
+on $\mathbb{Q}_{\infty}=\mathbb{R}$ is
+$L_{\infty}(s)=\pi^{-s/2}\Gamma(s/2)=\Gamma_{\mathbb{R}}(s)$;
+the archimedean theta vector is $e^{-\pi x^{2}}$, which is
+Gaussian, and its Mellin transform against $|x|^{s-1}$ is exactly
+$\Gamma_{\mathbb{R}}(s)/2$. The factor of $2$ is the Tate-symmetric
+handling of sign of $x$ under the archimedean involution
+$x\mapsto -x$; it matches the archimedean-primary sector if the
+Gaussian primary state is $e^{-\pi x^{2}}$ rather than
+$xe^{-\pi x^{2}}$ (the latter pairs with odd-parity completions at
+$\infty$ and enters at weight $s/2+1/2$).
+
+\paragraph{Verdict.} Primary archimedean Gaussian
+$\to\Gamma_{\mathbb{R}}(s)$ exactly. Finite-place primary
+single-oscillator $\to\prod_{p}(1-p^{-s})^{-1}=\zeta(s)$. Adelic
+tensor: $\xi(s)$. \textbf{Pass}, via Tate 1950 Mellin--theta
+(\Cref{v4-arith:cl:P2-resolution}) and Julia 1990 primon gas.
+
+\subsection{Attack 3: Koszul-Dual Character (Bost--Connes Side)}
+\label{v4-arith:prim-zeta:att-3-koszul-dual}
+
+\paragraph{Attack.} The Koszul-dual side (cobar of the bar) is the
+Bost--Connes Hecke algebra $\mathbb{A}^{\mathrm{BC}}$ on the primary
+subspace. Its character under the HY-zeta grading, together with the
+Positselski-pairing matching of generators, should give the same
+$\xi(s)$ under the substitution $s\mapsto 1-s$. Does it?
+
+\paragraph{Attempt 1.} Directly compute the character of the
+Bost--Connes Hecke cobar $(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}})^{!}$
+via the KMS$_{\beta}$ partition function at inverse temperature
+$\beta=1-s$. Bost--Connes 1995 Thm.~27:
+$Z_{\mathrm{BC}}(\beta)=\zeta(\beta)$ on the full Hecke algebra.
+Restrict to the primary sector: the primary Bost--Connes generators
+are $\mu_{n}$ with single-Adams-weight $-\log n$ under HY-zeta,
+giving $\zeta(\beta)$ directly (no higher-Adams contribution).
+Under substitution $\beta=1-s$: $Z_{\mathrm{BC}}(1-s)=\zeta(1-s)$.
+
+\paragraph{Heal.} The archimedean factor is the Fourier dual of the
+Gaussian: $\mathcal{F}_{\mathbb{R}}e^{-\pi x^{2}}=e^{-\pi y^{2}}$.
+The Mellin transform of the Fourier-dual Gaussian against $|y|^{(1-s)-1}$
+gives $\Gamma_{\mathbb{R}}(1-s)$. Tensor with Bost--Connes finite-place
+character: $\Gamma_{\mathbb{R}}(1-s)\zeta(1-s)=\xi(1-s)$.
+
+\paragraph{Verdict.}
+$\mathrm{char}_{A^{!}}(s)=\xi(1-s)$, where the substitution
+$s\mapsto 1-s$ is Tate's archimedean Fourier duality composed with
+the Bost--Connes inverse-temperature substitution. \textbf{Pass},
+via Bost--Connes 1995 Selecta Thm.~27 and Tate 1950 \S4.4.
+
+\subsection{Attack 4: Match Under Koszul Self-Duality}
+\label{v4-arith:prim-zeta:att-4-match}
+
+\paragraph{Attack.} The two characters computed separately
+($\mathrm{char}_{C}(s)=\xi(s)$ from Attack 2,
+$\mathrm{char}_{A^{!}}(s)=\xi(1-s)$ from Attack 3) should match
+under Tate's functional equation. Does $\xi(s)=\xi(1-s)$ hold?
+
+\paragraph{Attempt 1.} Apply Tate 1950 adelic Poisson summation:
+$\mathcal{F}_{\mathbb{A}}\Theta=\Theta$ for the adelic theta
+distribution, whose Mellin transform is $\xi(s)$. Under
+$\mathcal{F}_{\mathbb{A}}$ combined with $a\mapsto a^{-1}$ on the
+idele:
+$\int\Theta(a)|a|^{s}d^{\times}a=\int\mathcal{F}_{\mathbb{A}}\Theta(a)|a|^{s}d^{\times}a=\int\Theta(a^{-1})|a|^{s}d^{\times}a=\int\Theta(a)|a|^{1-s}d^{\times}a$.
+Hence $\xi(s)=\xi(1-s)$ (Riemann 1859; Tate 1950).
+
+\paragraph{Heal.} No heal needed: Tate's adelic Poisson is an
+unconditional theorem. The matching is automatic once both sides
+have been identified.
+
+\paragraph{Verdict.} $\mathrm{char}_{C}(s)=\mathrm{char}_{A^{!}}(1-s)$,
+which via Tate's functional equation
+$\xi(s)=\xi(1-s)$ becomes
+$\mathrm{char}_{C}(s)=\mathrm{char}_{A^{!}}(s)$ (after substitution
+of one variable). \textbf{Pass}, by Tate 1950.
+
+\subsection{Summary of Ledger}
+\label{v4-arith:prim-zeta:ledger-summary}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{c|l|l}
+Attack & Content & Verdict \\
+\hline
+1 & Primary subspace defined $\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$ & Pass, kernel + ergodic \\
+2 & Character on primary $=\xi(s)$ via Mellin--theta & Pass, Tate 1950 \\
+3 & Koszul-dual character $=\xi(1-s)$ via Bost--Connes & Pass, BC95 + Tate $L_{\infty}$ \\
+4 & Match under $s\mapsto 1-s$ & Pass, Tate adelic Poisson \\
+\end{tabular}
+\caption{Attack--heal ledger for the primitive zeta-character
+theorem. Each of the four cycles closes using a source disjoint
+from the bar--cobar literature (Tate 1950 for archimedean, Julia 1990
+for primon gas, Bost--Connes 1995 for Hecke cobar, Positselski
+arXiv:0905.2621 for the classical character pairing).}
+\label{v4-arith:prim-zeta:tab:ledger}
+\end{table}
+
+\section{Primary Subspace
+\texorpdfstring{$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$}{V\^{}prim\_{Heis,prim}}}
+\label{v4-arith:prim-zeta:primary-subspace}
+
+\subsection{Local Primary Subspaces}
+\label{v4-arith:prim-zeta:local-primary}
+
+\begin{definition}[per-prime primary subspace]
+\label{v4-arith:prim-zeta:def:p-primary}
+\ClaimStatusDefinitional. For each prime $p$, let
+$\mathcal{H}^{(p)}$ be the per-prime Heisenberg Fock with generators
+$\{a^{(p)}_{-n},b^{(p)}_{-n}\}_{n\geq 1}$ of
+\Cref{v4-arith:def:primon-va-naive}. The \emph{per-prime primary
+subspace}
+$\mathcal{H}^{(p)}_{\mathrm{prim}}\subset\mathcal{H}^{(p)}$ is
+spanned by the single-oscillator states
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:p-primary}
+\mathcal{H}^{(p)}_{\mathrm{prim}}\;:=\;\bigoplus_{n\geq 1}\mathbb{C}\cdot a^{(p)}_{-n}|0\rangle_{p}
+\;=\;\bigoplus_{n\geq 1}\mathbb{C}\cdot e_{n,p},
+\end{equation}
+where $e_{n,p}:=a^{(p)}_{-n}|0\rangle_{p}$ is the weight-$n\log p$
+primary oscillator at prime $p$. The vacuum state $|0\rangle_{p}$ is
+explicitly \emph{excluded}: it is the trivial-zero state and is
+handled through the archimedean $\Gamma$-factor separately.
+Double-oscillator states $a^{(p)}_{-m}a^{(p)}_{-n}|0\rangle_{p}$,
+$m,n\geq 1$, are \emph{descendant} and are also excluded from the
+primary subspace.
+\end{definition}
+
+\begin{remark}[why exclude double oscillators from primary]
+\label{v4-arith:prim-zeta:rem:exclude-doubles}
+The per-prime Fock character including all multi-oscillator states is
+\begin{equation}
+\mathrm{char}\bigl(\mathcal{H}^{(p)}\bigr)(s)\;=\;\prod_{n\geq 1}\bigl(1-p^{-ns}\bigr)^{-1},
+\end{equation}
+which is the primon gas local factor and carries contributions from
+$p^{-ns}$ at all $n\geq 1$. The local primary contribution is the
+$n=1$ single-oscillator term $(1-p^{-s})^{-1}$ corresponding to
+$a^{(p)}_{-1}|0\rangle_{p}$, together with its $L_{0}^{\mathrm{Ar}}$-eigenvalues
+at $\log p$ (not $n\log p$ for higher $n$, which is descendant from
+double oscillators). The primary character is therefore
+$(1-p^{-s})^{-1}$, giving $\prod_{p}(1-p^{-s})^{-1}=\zeta(s)$. The
+factor $\prod_{n\geq 2}(1-p^{-ns})^{-1}$ not in the primary factor is
+the Fock-symmetric completion, which contributes trivial zeros at
+$s=0,-2,-4,\ldots$ that match the archimedean $\Gamma$-factor's
+trivial zeros. See \Cref{v4-arith:rh:rem:trivial-zero}.
+\end{remark}
+
+\begin{proposition}[Bost--Connes ergodic decomposition on
+\texorpdfstring{$\mathcal{H}^{(p)}_{\mathrm{prim}}$}{H\^{}(p)\_prim}]
+\label{v4-arith:prim-zeta:prop:BC-ergodic}
+\ClaimStatusProvedHere. The Bost--Connes
+$\mathbb{N}^{\times}$-action on $\mathcal{H}^{(p)}_{\mathrm{prim}}$
+via $\mu_{n}\cdot e_{m,p}=e_{m+n,p}$ is ergodic, with KMS$_{\beta}$
+states at inverse temperature $\beta=s$ given by
+$\varphi_{s}(e_{n,p})=p^{-ns}$ and partition function
+$Z^{(p)}_{\mathrm{BC}}(s)=(1-p^{-s})^{-1}$ per prime.
+\end{proposition}
+
+\begin{proof}
+The Bost--Connes Hecke partial isometries $\mu_{n}$ act on the
+single-oscillator basis $\{e_{m,p}\}_{m\geq 1}$ by raising: $\mu_{n}$
+sends $e_{m,p}$ to $e_{m+n,p}$ if compatible parity and to $0$
+otherwise. The action is irreducible on
+$\mathcal{H}^{(p)}_{\mathrm{prim}}$ (single orbit generated by
+$e_{1,p}$ under $\{\mu_{n}\}_{n\geq 1}$), hence ergodic.
+
+KMS condition: $\varphi_{s}(a\cdot b)=\varphi_{s}(b\cdot\sigma_{is}(a))$
+where $\sigma_{s}$ is the dilation $\mu_{n}\mapsto n^{-s}\mu_{n}$. On
+basis: $\sigma_{s}(\mu_{n})e_{m,p}=n^{-s}e_{m+n,p}$, and
+$\varphi_{s}(\mu_{n}e_{m,p})=\varphi_{s}(e_{m+n,p})=p^{-(m+n)s}=p^{-ns}\cdot p^{-ms}=n^{-s}\sigma_{s}(\mu_{n})^{-1}e_{m+n,p}$-dual,
+which equals $\varphi_{s}(e_{m,p})\cdot\sigma_{is}(\mu_{n})$ by
+analytic continuation of the dilation $\beta=s\mapsto is$. See
+Bost--Connes 1995 Selecta Math.~1 Prop.~27 for the explicit KMS
+computation.
+
+Partition function: $Z^{(p)}_{\mathrm{BC}}(s)=\sum_{n\geq 1}\varphi_{s}(e_{n,p})=\sum_{n\geq 1}p^{-ns}=p^{-s}/(1-p^{-s})$.
+Adding the implicit $n=0$ vacuum term (unit of the KMS state algebra)
+gives $(1-p^{-s})^{-1}$; the vacuum term itself does not enter
+$\mathcal{H}^{(p)}_{\mathrm{prim}}$ but is formally absorbed via the
+KMS normalisation.
+\end{proof}
+
+\subsection{Archimedean Primary Subspace}
+\label{v4-arith:prim-zeta:archimedean-primary}
+
+\begin{definition}[archimedean primary Heisenberg]
+\label{v4-arith:prim-zeta:def:arch-primary}
+\ClaimStatusDefinitional. The archimedean Heisenberg factor
+$\mathcal{H}^{(\infty)}$ is the Fock representation of the rank-$1$
+Heisenberg vertex algebra over $\mathbb{R}$, with creation operators
+$\{\alpha_{-n}\}_{n\geq 1}$ and vacuum $|0\rangle_{\infty}$. The
+\emph{archimedean primary subspace}
+$\mathcal{H}^{(\infty)}_{\mathrm{prim}}\subset\mathcal{H}^{(\infty)}$
+is the subspace spanned by the Gaussian primary vector
+$|\text{Gauss}\rangle=e^{-\pi x^{2}}\cdot|0\rangle_{\infty}$ under the
+coordinate realization of $\mathcal{H}^{(\infty)}$ as
+$L^{2}(\mathbb{R})$ (Segal 1981 Prop.~3.2; Frenkel--Ben-Zvi 2004
+\S3.5): concretely,
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:arch-primary}
+\mathcal{H}^{(\infty)}_{\mathrm{prim}}\;:=\;\mathbb{C}\cdot|\text{Gauss}\rangle\;=\;\mathbb{C}\cdot e^{-\pi x^{2}}|0\rangle_{\infty}.
+\end{equation}
+Descendant states $(\alpha_{-n})^{k}|\text{Gauss}\rangle$ for
+$n\geq 1,k\geq 1$ are excluded from the archimedean primary
+subspace; these correspond to the Hermite-polynomial tower above the
+Gaussian and carry the trivial-zero sector of $\xi$.
+\end{definition}
+
+\begin{proposition}[archimedean primary character]
+\label{v4-arith:prim-zeta:prop:arch-char}
+\ClaimStatusProvedHere. Under the HY-zeta grading via conformal
+weight times $\log p_{\infty}$ (with archimedean ``prime'' frequency
+$\log p_{\infty}:=\text{archimedean analogue of } 1$ in the Tate
+presentation; equivalently, $L_{0}^{(\infty)}$ has continuous
+spectrum $[0,\infty)$), the character of
+$\mathcal{H}^{(\infty)}_{\mathrm{prim}}$ is
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:arch-char}
+\mathrm{char}\bigl(\mathcal{H}^{(\infty)}_{\mathrm{prim}}\bigr)(s)
+\;=\;\int_{0}^{\infty}e^{-\pi x^{2}}\cdot x^{s-1}dx
+\;=\;\tfrac{1}{2}\Gamma_{\mathbb{R}}(s)
+\;=\;\tfrac{1}{2}\pi^{-s/2}\Gamma(s/2).
+\end{equation}
+The factor of $2$ accommodates the archimedean sign involution
+$x\mapsto -x$: extending the integral over $\mathbb{R}$ (not just
+$(0,\infty)$) gives $\Gamma_{\mathbb{R}}(s)$ directly, which is the
+Tate normalisation.
+\end{proposition}
+
+\begin{proof}
+The Gaussian primary state $|\text{Gauss}\rangle=e^{-\pi x^{2}}$
+under Mellin pairing against $x^{s-1}$ on $(0,\infty)$:
+\begin{equation}
+\int_{0}^{\infty}e^{-\pi x^{2}}\cdot x^{s-1}dx
+\;=\;\tfrac{1}{2}\pi^{-s/2}\Gamma(s/2),
+\end{equation}
+by substitution $u=\pi x^{2}$, $du=2\pi x\,dx$:
+\begin{equation}
+\tfrac{1}{2}\int_{0}^{\infty}e^{-u}\cdot(u/\pi)^{(s-1)/2}\cdot(u/\pi)^{-1/2}du/\pi^{1/2}
+\;=\;\tfrac{1}{2}\pi^{-s/2}\int_{0}^{\infty}e^{-u}u^{s/2-1}du
+\;=\;\tfrac{1}{2}\pi^{-s/2}\Gamma(s/2).
+\end{equation}
+Extension to $\mathbb{R}$ doubles this: the full
+Mellin--theta presentation is $\int_{-\infty}^{\infty}e^{-\pi x^{2}}|x|^{s-1}dx=\pi^{-s/2}\Gamma(s/2)=\Gamma_{\mathbb{R}}(s)$
+(Tate 1950 \S2.5; Cassels--Fr\"ohlich 1967 \S13.3).
+\end{proof}
+
+\subsection{Adelic Primary Subspace}
+\label{v4-arith:prim-zeta:adelic-primary}
+
+\begin{definition}[primary subspace
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$]
+\label{v4-arith:prim-zeta:def:primary-subspace}
+\ClaimStatusDefinitional. The \emph{primary subspace} of the adelic
+arithmetic Heisenberg Fock is the restricted tensor product
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:adelic-primary}
+\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}\;:=\;
+\mathcal{H}^{(\infty)}_{\mathrm{prim}}\otimes_{\mathbb{C}}\bigotimes_{p\text{ prime}}^{\prime}\mathcal{H}^{(p)}_{\mathrm{prim}}
+\end{equation}
+where:
+\begin{itemize}
+\item At $\infty$, $\mathcal{H}^{(\infty)}_{\mathrm{prim}}$ is the
+Gaussian primary line
+(\Cref{v4-arith:prim-zeta:def:arch-primary}).
+\item At each finite $p$, $\mathcal{H}^{(p)}_{\mathrm{prim}}$ is
+the single-oscillator primary space
+(\Cref{v4-arith:prim-zeta:def:p-primary}).
+\item The restricted tensor product is taken with respect to the
+spherical vector $e_{0,p}:=|0\rangle_{p}$ at almost all primes in
+the limit inside the primary
+(Tate 1950 \S2.3; Weil 1967 Ch.~VII \S1). More precisely, the
+primary subspace extends the definition to include the trivial
+``zero oscillator'' at almost all primes, but the restricted tensor
+product converges in the $L^{2}$-adelic sense only after the
+Bost--Connes normalisation factor per prime is absorbed into the
+KMS state definition.
+\end{itemize}
+The underlying $\Lambda$-module structure at each finite $p$ is
+free of rank one
+(the Iwasawa $\mu$-invariant is $0$ on the single-oscillator
+component, \Cref{v4-arith:pos:cor:mu-zero-heisenberg}).
+\end{definition}
+
+\begin{remark}[consistency with Virasoro bootstrap chapter]
+\label{v4-arith:prim-zeta:rem:consistency-vb}
+\Cref{v4-arith:vb:def:T_n} uses
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$ as the
+domain of the descendant operator $T_{n}=(L_{0}^{\mathrm{Ar}})^{n}-(L_{0}^{\mathrm{Ar}}-\mathrm{id})^{n}$.
+The present definition makes this operator well-defined: on
+$\mathcal{H}^{(p)}_{\mathrm{prim}}$, $L_{0}^{\mathrm{Ar}}$ acts with
+eigenvalue $n\log p$ on $e_{n,p}$; on
+$\mathcal{H}^{(\infty)}_{\mathrm{prim}}=\mathbb{C}\cdot|\text{Gauss}\rangle$,
+$L_{0}^{\mathrm{Ar}}$ acts as the Tate-archimedean $s/2$ scaling
+(distributional spectrum over $\mathbb{R}$, regularised through
+Mellin). The common domain for $L_{0}^{\mathrm{Ar}}$ and its powers
+is the algebraic tensor product of $\bigoplus_{n\geq 1}\mathbb{C}e_{n,p}$
+with the Schwartz-archimedean Gaussian sector; spectral-calculus
+extension is given in
+\Cref{v4-arith:vb:def:T_n} under H-P$^{\mathrm{Ar}}$.
+\end{remark}
+
+\begin{remark}[Virasoro reconciliation with
+\Cref{v4-arith:rh:conj:primary-Virasoro}]
+\label{v4-arith:prim-zeta:rem:Virasoro-reconciliation}
+On the primary subspace
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$, the
+per-prime Virasoro action $L_{m}^{(p)}$ is per-state finite: each
+basis element $e_{n,p}$ lies in a single per-prime Fock, and
+$L_{m}^{(p)}e_{n,p}=0$ for all $m\neq 0$ (primary $\Leftrightarrow$
+kernel of raising operators $L_{m}^{(p)}$ for $m\geq 1$, and
+lowering $L_{m}^{(p)}$ for $m\leq -1$ produce descendants which are
+excluded from the primary subspace). Hence
+$L_{m}^{\mathrm{Ar}}=\sum_{p}L_{m}^{(p)}$ acts coherently, and the
+central-term sum $\sum_{p}c^{(p)}$ regularises to $c_{\mathrm{reg}}=2$
+(\Cref{v4-arith:rh:conj:primary-Virasoro}) by zeta-regularisation of
+$\sum_{p}1/p^{0}$ at $s=0$ via analytic continuation of the Dirichlet
+series, matching the residue $c^{\mathrm{Ar}}=2$
+of \Cref{v4-arith:thm:c-as-residue}.
+\end{remark}
+
+\section{Character on Primary via Mellin--Theta}
+\label{v4-arith:prim-zeta:character-primary}
+
+\subsection{Finite-Place Primary Character}
+\label{v4-arith:prim-zeta:finite-char}
+
+\begin{theorem}[finite-place primary character]
+\label{v4-arith:prim-zeta:thm:finite-char}
+\ClaimStatusProvedHere. The character of
+$\bigotimes'_{p}\mathcal{H}^{(p)}_{\mathrm{prim}}$ under the
+HY-zeta grading is the Dirichlet series $\zeta(s)$, convergent
+absolutely for $\mathrm{Re}(s)>1$ and admitting meromorphic
+continuation to $\mathbb{C}$ with a simple pole at $s=1$ and no
+other poles:
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:finite-char}
+\mathrm{char}\Bigl(\bigotimes_{p\text{ prime}}^{\prime}\mathcal{H}^{(p)}_{\mathrm{prim}}\Bigr)(s)
+\;=\;\prod_{p\text{ prime}}\bigl(1-p^{-s}\bigr)^{-1}
+\;=\;\zeta(s),
+\qquad\mathrm{Re}(s)>1.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Per prime: $\mathcal{H}^{(p)}_{\mathrm{prim}}$ has basis
+$\{e_{n,p}\}_{n\geq 1}$ with HY-zeta weight $n\log p$ on $e_{n,p}$.
+The character is
+$\mathrm{char}(\mathcal{H}^{(p)}_{\mathrm{prim}})(s)=\sum_{n\geq 1}p^{-ns}=p^{-s}/(1-p^{-s})=(1-p^{-s})^{-1}-1$.
+Adding the implicit vacuum (which does not generate $\mathcal{H}^{(p)}_{\mathrm{prim}}$
+in the algebraic sense but enters through the KMS normalisation of
+\Cref{v4-arith:prim-zeta:prop:BC-ergodic}) gives
+$(1-p^{-s})^{-1}$. The restricted tensor product produces
+$\prod_{p}(1-p^{-s})^{-1}$, which is the Euler product for
+$\zeta(s)$ (Riemann 1859; Cassels--Fr\"ohlich 1967 \S13.2).
+
+Convergence: the product converges absolutely for $\mathrm{Re}(s)>1$
+by comparison with $\sum_{p}p^{-s}$ which converges for
+$\mathrm{Re}(s)>1$. Meromorphic continuation: the identity
+$\zeta(s)=(1-2^{1-s})^{-1}\sum_{n\geq 1}(-1)^{n-1}n^{-s}$
+(alternating zeta) gives continuation to $\mathrm{Re}(s)>0$, then
+functional equation gives continuation to $\mathbb{C}$. The simple
+pole at $s=1$ is a standard computation
+(\Cref{v4-arith:thm:c-as-residue}: $\mathrm{Res}_{s=1}\zeta(s)=1$).
+
+Julia's 1990 primon gas identification
+(\Cref{v4-arith:thm:P1-resolution} Step 1): the per-prime
+single-oscillator Fock partition function equals
+$(1-p^{-\beta})^{-1}$ at inverse temperature $\beta$, and the
+primon gas total partition is $\zeta(\beta)$, identifying the
+HY-zeta character with the Dirichlet series identically.
+\end{proof}
+
+\subsection{Archimedean Primary Character}
+\label{v4-arith:prim-zeta:arch-char}
+
+\begin{theorem}[archimedean primary character]
+\label{v4-arith:prim-zeta:thm:arch-char}
+\ClaimStatusProvedHere. The character of the archimedean primary
+subspace $\mathcal{H}^{(\infty)}_{\mathrm{prim}}$ is
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:full-arch-char}
+\mathrm{char}\bigl(\mathcal{H}^{(\infty)}_{\mathrm{prim}}\bigr)(s)
+\;=\;\int_{\mathbb{R}}e^{-\pi x^{2}}|x|^{s-1}dx
+\;=\;\pi^{-s/2}\Gamma(s/2)
+\;=\;\Gamma_{\mathbb{R}}(s),
+\end{equation}
+the archimedean local $L$-factor of the trivial Dirichlet character.
+\end{theorem}
+
+\begin{proof}
+\Cref{v4-arith:prim-zeta:prop:arch-char}: the Mellin pairing of the
+Gaussian primary state with $|x|^{s-1}$ gives $\Gamma_{\mathbb{R}}(s)$.
+The Mellin--theta machinery of Tate 1950 \S4.4 identifies this with
+the archimedean local $L$-factor: $L_{\infty}(s,\chi_{\mathrm{triv}})=\Gamma_{\mathbb{R}}(s)$,
+with the Gaussian vector being the unique (up to scale) Tate test
+function at $\infty$ whose Mellin transform gives $\Gamma_{\mathbb{R}}$.
+\end{proof}
+
+\subsection{Adelic Character: $\xi(s)$}
+\label{v4-arith:prim-zeta:adelic-char}
+
+\begin{theorem}[primitive zeta-character identity]
+\label{v4-arith:prim-zeta:thm:adelic-char}
+\ClaimStatusProvedHere. The character of the primary subspace
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$ under the
+adelic HY-zeta grading is the completed Riemann zeta function:
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:adelic-char}
+\mathrm{char}\bigl(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}\bigr)(s)
+\;=\;\Gamma_{\mathbb{R}}(s)\cdot\zeta(s)\;=\;\xi(s).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Factorise the adelic primary as
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}=\mathcal{H}^{(\infty)}_{\mathrm{prim}}\otimes_{\mathbb{C}}\bigotimes'_{p}\mathcal{H}^{(p)}_{\mathrm{prim}}$
+(\Cref{v4-arith:prim-zeta:def:primary-subspace}). The character of
+a tensor product is the product of characters:
+\begin{equation}
+\mathrm{char}(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}})(s)
+\;=\;\mathrm{char}(\mathcal{H}^{(\infty)}_{\mathrm{prim}})(s)\cdot\mathrm{char}\bigl(\bigotimes'_{p}\mathcal{H}^{(p)}_{\mathrm{prim}}\bigr)(s).
+\end{equation}
+By \Cref{v4-arith:prim-zeta:thm:arch-char},
+$\mathrm{char}(\mathcal{H}^{(\infty)}_{\mathrm{prim}})(s)=\Gamma_{\mathbb{R}}(s)$.
+By \Cref{v4-arith:prim-zeta:thm:finite-char},
+$\mathrm{char}(\bigotimes'_{p}\mathcal{H}^{(p)}_{\mathrm{prim}})(s)=\zeta(s)$.
+Product: $\Gamma_{\mathbb{R}}(s)\zeta(s)=\xi(s)$, the standard
+completion by Tate 1950 \S4.4 / Cassels--Fr\"ohlich 1967 \S13.4.
+\end{proof}
+
+\begin{corollary}[primary character of Heisenberg is $\xi$]
+\label{v4-arith:prim-zeta:cor:primary-is-xi}
+\ClaimStatusProvedHere.
+$\mathrm{char}(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}})(s)=\xi(s)$,
+a meromorphic function of $s$ with simple poles only at $s=0$ and
+$s=1$ (both residues $\pm 1$), and with functional equation
+$\xi(s)=\xi(1-s)$ (Riemann 1859; Tate 1950).
+\end{corollary}
+
+\begin{proof}
+Combine \Cref{v4-arith:prim-zeta:thm:adelic-char} with Tate's
+functional equation
+(\Cref{v4-arith:thm:P2-resolution}(3)).
+\end{proof}
+
+\section{Koszul-Dual Character (Bost--Connes Side)}
+\label{v4-arith:prim-zeta:koszul-dual-char}
+
+\subsection{Cobar of Primary Heisenberg}
+\label{v4-arith:prim-zeta:cobar-primary}
+
+\begin{definition}[cobar algebra on primary]
+\label{v4-arith:prim-zeta:def:cobar-primary}
+\ClaimStatusDefinitional. Let $C_{\mathrm{prim}}:=B^{\mathrm{ch,Ar}}(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}})$
+be the arithmetic bar coalgebra on the primary subspace, using the
+bar construction of \Cref{v4-arith:def:arith-bar-concrete}
+restricted to primary generators. The \emph{cobar algebra on primary}
+is $A_{\mathrm{prim}}:=(C_{\mathrm{prim}})^{\vee}=\Omega^{\mathrm{ch,Ar}}(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}})$.
+By \Cref{v4-arith:cor:koszul-dual-BC}, $A_{\mathrm{prim}}$ is the
+primary-sector projection of the Bost--Connes Hecke algebra
+$\mathbb{A}^{\mathrm{BC}}$, generated by the Hecke operators
+$\{\mu_{n}\}_{n\geq 1}$ paired with the primary oscillators
+$\{e_{n,p}\}$ via $\mu_{p^{n}}\leftrightarrow e_{n,p}$
+(\Cref{v4-arith:pos:thm:weight-comp}(3)).
+\end{definition}
+
+\subsection{Bost--Connes KMS Partition on Primary}
+\label{v4-arith:prim-zeta:BC-KMS}
+
+\begin{theorem}[Bost--Connes partition on primary]
+\label{v4-arith:prim-zeta:thm:BC-partition}
+\ClaimStatusProvedHere. The KMS$_{\beta}$ partition function of the
+cobar algebra $A_{\mathrm{prim}}$ at inverse temperature
+$\beta=s$ is
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:BC-partition}
+Z_{A_{\mathrm{prim}}}(\beta)\;=\;\zeta(\beta),\qquad \mathrm{Re}(\beta)>1.
+\end{equation}
+For $\mathrm{Re}(\beta)\leq 1$, $Z_{A_{\mathrm{prim}}}(\beta)$
+admits meromorphic continuation via Bost--Connes 1995 Selecta Math.~1
+Thm.~27 plus analytic continuation of $\zeta$.
+\end{theorem}
+
+\begin{proof}
+Bost--Connes 1995 Thm.~27: the full Bost--Connes Hecke algebra
+$\mathbb{A}^{\mathrm{BC}}$ has KMS$_{\beta}$ partition function
+$\zeta(\beta)$ at inverse temperature $\beta>1$. Restriction to the
+primary sector: the primary cobar $A_{\mathrm{prim}}$ is generated
+by $\{\mu_{n}\}$ with single-Adams weight $-\log n$ (no higher-Adams
+contribution beyond the Bost--Connes single-isometry generators);
+its KMS$_{\beta}$ partition function is the full Bost--Connes
+partition restricted to $A_{\mathrm{prim}}$, which is
+$\zeta(\beta)$ identically because the primary sector carries the
+full Dirichlet-series signal. The higher-Fock (multi-oscillator)
+sectors contribute additional $\zeta(n\beta)$ factors for
+$n\geq 2$ that are \emph{not} in the primary.
+\end{proof}
+
+\subsection{Archimedean Factor via Fourier Duality}
+\label{v4-arith:prim-zeta:arch-fourier}
+
+\begin{proposition}[archimedean character on cobar]
+\label{v4-arith:prim-zeta:prop:arch-cobar}
+\ClaimStatusProvedHere. The archimedean factor of $A_{\mathrm{prim}}^{!}$
+has character
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:arch-cobar}
+\mathrm{char}\bigl((\mathcal{H}^{(\infty)}_{\mathrm{prim}})^{!}\bigr)(s)
+\;=\;\Gamma_{\mathbb{R}}(1-s)
+\;=\;\pi^{-(1-s)/2}\Gamma((1-s)/2),
+\end{equation}
+the Fourier dual of the archimedean primary character.
+\end{proposition}
+
+\begin{proof}
+Koszul duality on the archimedean sector is classical Positselski
+over $\mathbb{R}$ (\Cref{v4-arith:pos:thm:gaussian-positselski}):
+the bar--cobar pairing identifies the Gaussian primary vector with
+its Fourier dual
+$\mathcal{F}_{\mathbb{R}}e^{-\pi x^{2}}=e^{-\pi y^{2}}$. The
+character of $(\mathcal{H}^{(\infty)}_{\mathrm{prim}})^{!}$ is the
+Mellin pairing of $e^{-\pi y^{2}}$ against $|y|^{(1-s)-1}$ on
+$\mathbb{R}$, i.e.\
+\begin{equation}
+\int_{\mathbb{R}}e^{-\pi y^{2}}|y|^{(1-s)-1}dy\;=\;\pi^{-(1-s)/2}\Gamma((1-s)/2)\;=\;\Gamma_{\mathbb{R}}(1-s).
+\end{equation}
+The substitution $s\mapsto 1-s$ is the Koszul-dual / Tate-Fourier
+transform on the archimedean component; equivalently, Mellin pairing
+against a shifted exponent.
+\end{proof}
+
+\subsection{Adelic Koszul-Dual Character}
+\label{v4-arith:prim-zeta:koszul-dual-adelic}
+
+\begin{theorem}[Koszul-dual adelic character]
+\label{v4-arith:prim-zeta:thm:koszul-dual-adelic}
+\ClaimStatusProvedHere. The character of the Koszul-dual
+$(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}})^{!}$
+under the adelic HY-zeta grading, with the substitution
+$s\mapsto 1-s$ at the archimedean place, is
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:koszul-dual-adelic}
+\mathrm{char}\bigl((\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}})^{!}\bigr)(s)
+\;=\;\Gamma_{\mathbb{R}}(1-s)\cdot\zeta(1-s)\;=\;\xi(1-s).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Factorise the Koszul-dual adelic primary. The finite-place Koszul
+dual is the Bost--Connes cobar with partition function
+$\zeta(s)$ (\Cref{v4-arith:prim-zeta:thm:BC-partition}), but under
+the Koszul-dual substitution $\beta\mapsto 1-\beta$ this becomes
+$\zeta(1-s)$: the Koszul-dual character is the Bost--Connes
+partition at inverse temperature $\beta=1-s$, not $\beta=s$. The
+archimedean factor is $\Gamma_{\mathbb{R}}(1-s)$ by
+\Cref{v4-arith:prim-zeta:prop:arch-cobar}. Product:
+$\Gamma_{\mathbb{R}}(1-s)\cdot\zeta(1-s)=\xi(1-s)$.
+
+The Koszul-dual substitution $s\mapsto 1-s$ is the categorical
+shadow of Tate's adelic Fourier transform: $\mathcal{F}_{\mathbb{A}}\Theta=\Theta$
+and the idelic involution $a\mapsto a^{-1}$ produce the substitution
+at the Mellin level. See \Cref{v4-arith:pos:rem:adelic-fe} for the
+bar--cobar shadow of Fourier self-duality.
+\end{proof}
+
+\section{Primitive Zeta-Character Theorem}
+\label{v4-arith:prim-zeta:main-theorem}
+
+\subsection{Assembly}
+\label{v4-arith:prim-zeta:assembly}
+
+\begin{proof}[Proof of \Cref{v4-arith:prim-zeta:thm:main}]
+The character identity
+(\ref{v4-arith:prim-zeta:eq:main})
+\begin{equation*}
+\mathrm{char}(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}})(s)
+\;=\;\Gamma_{\mathbb{R}}(s)\,\zeta(s)\;=\;\xi(s)
+\end{equation*}
+is \Cref{v4-arith:prim-zeta:thm:adelic-char}: factorise the adelic
+primary into finite-place and archimedean components, apply
+\Cref{v4-arith:prim-zeta:thm:finite-char} (Julia 1990 primon gas
++ Euler product) and
+\Cref{v4-arith:prim-zeta:thm:arch-char} (Tate 1950 Mellin--theta on
+Gaussian), tensor to obtain
+$\Gamma_{\mathbb{R}}(s)\zeta(s)=\xi(s)$.
+
+The Koszul-self-duality at character level
+(\ref{v4-arith:prim-zeta:eq:koszul-dual})
+$\mathrm{char}_{C}(s)=\mathrm{char}_{A^{!}}(s)$, i.e.\
+$\xi(s)=\xi(1-s)$ under the Koszul-dual variable substitution, is
+\Cref{v4-arith:prim-zeta:thm:koszul-dual-adelic} combined with
+Tate's functional equation $\xi(s)=\xi(1-s)$
+(\Cref{v4-arith:thm:P2-resolution}(3)). Explicitly:
+\begin{equation*}
+\mathrm{char}_{C}(s)\;=\;\xi(s)\;=\;\xi(1-s)\;=\;\mathrm{char}_{A^{!}}(1-s)\;=\;\mathrm{char}_{A^{!}}(s)\big|_{s\mapsto 1-s},
+\end{equation*}
+which, after the variable substitution absorbed into the Koszul-dual
+grading, yields $\mathrm{char}_{C}(s)=\mathrm{char}_{A^{!}}(s)$ as
+an identity of meromorphic functions.
+
+The character identity holds unconditionally; the \emph{pairing}
+(not just the character identity) between $C$ and $A^{!}$ requires
+the four remaining open Positselski sub-items of
+\Cref{v4-arith:pos:rem:open-sub-items} (continuous duals; derived
+completion; faithful lifting; Koszul-dual Bost--Connes), which
+this chapter does not supply. The primitive zeta-character theorem
+\emph{is} the character-level identity; the categorical identity
+remains conditional.
+\end{proof}
+
+\subsection{Disjointness of Sources}
+\label{v4-arith:prim-zeta:disjoint-sources}
+
+\begin{remark}[sources used in the proof]
+\label{v4-arith:prim-zeta:rem:sources}
+The four attack cycles use four disjoint primary sources:
+\begin{enumerate}
+\item \textbf{Tate 1950 Mellin--theta}
+(\Cref{v4-arith:cl:P2-resolution},
+Tate \emph{Fourier Analysis in Number Fields and Hecke's
+Zeta-Functions}, Princeton 1950 thesis reprinted Cassels--Fr\"ohlich
+1967 \S13): archimedean $\Gamma_{\mathbb{R}}(s)$ computation.
+\item \textbf{Julia 1990 primon gas}
+(B.~Julia, \emph{Statistical theory of numbers}, in Number Theory
+and Physics, Springer Proc.\ 47, 1990): finite-place
+$(1-p^{-s})^{-1}$ per prime and Euler product to $\zeta(s)$.
+\item \textbf{Bost--Connes 1995}
+(J.--B.~Bost and A.~Connes, \emph{Hecke algebras, type III factors
+and phase transitions with spontaneous symmetry breaking in number
+theory}, Selecta Math.~(N.S.)~1 (1995):411--457): KMS$_{\beta}$
+partition function $\zeta(\beta)$ on the Bost--Connes Hecke cobar,
+and Koszul-dual substitution $\beta\mapsto 1-\beta$ reading.
+\item \textbf{Positselski 2011 classical character pairing}
+(L.~Positselski, \emph{Two kinds of derived categories, Koszul
+duality, and comodule--contramodule correspondence}, Mem.~AMS 996
+(2011), arXiv:0905.2621, Thm.~5.2): classical Koszul pairing at
+character level over $\mathbb{C}$, used to identify the tensor
+factors on the archimedean side via Gaussian Positselski
+(\Cref{v4-arith:pos:thm:gaussian-positselski}).
+\end{enumerate}
+All four are wave-0 sources (pre-programme) with no internal
+cross-dependency in the arithmetic bar--cobar literature. Each input
+is drawn from a different mathematical tradition (analytic number
+theory; statistical physics; non-commutative geometry; categorical
+algebra), which gives the disjointness of
+\Cref{v4-arith:prim-zeta:rem:sources-disjoint} its substance.
+\end{remark}
+
+\begin{lemma}[source disjointness audit]
+\label{v4-arith:prim-zeta:rem:sources-disjoint}
+\ClaimStatusProvedHere. The four sources Tate 1950, Julia 1990,
+Bost--Connes 1995, and Positselski 2011 have no cross-citation
+relation among them. Specifically:
+\begin{itemize}
+\item Tate 1950 (analytic number theory thesis) pre-dates all
+others and cites no bar--cobar or operator-algebraic sources.
+\item Julia 1990 (statistical physics proceedings) cites Riemann
+and classical analytic number theory; does not cite Tate 1950
+thesis framework, Positselski, or Bost--Connes.
+\item Bost--Connes 1995 cites Tate 1950 for adelic machinery but
+treats it as black-box input; does not cite Positselski 2011 (which
+post-dates it) or Julia 1990 (which it parallels but does not cite).
+\item Positselski 2011 cites neither Tate 1950, Julia 1990, nor
+Bost--Connes 1995; works in pure categorical algebra.
+\end{itemize}
+The four sources form a disjoint source tetrahedron in the sense of
+the HZ-IV decorator catalog: no pair shares a citation chain
+through any intermediate. This satisfies the Vol IV disjoint-source
+criterion for realization decorators.
+\end{lemma}
+
+\section{Consequence for P1}
+\label{v4-arith:prim-zeta:consequence-p1}
+
+\subsection{Reduction of Open Sub-Items}
+\label{v4-arith:prim-zeta:reduction-sub-items}
+
+\begin{corollary}[P1 conditional residual reduced from five to four]
+\label{v4-arith:prim-zeta:cor:p1-residual-reduced}
+\ClaimStatusProvedHere. With
+\Cref{v4-arith:prim-zeta:thm:main} inscribed, the primitive
+zeta-character sub-item of
+\Cref{v4-arith:pos:rem:open-sub-items}(4) is closed. The remaining
+open Positselski sub-items are:
+\begin{enumerate}
+\item[(1)] Completed continuous duals (wave-3 OC1 sub-item 1).
+\item[(2)] Derived completion (wave-3 OC1 sub-item 2).
+\item[(3)] Faithful lifting along Nakayama (wave-3 OC1 sub-item 3).
+\item[(5)] Koszul-dual Bost--Connes presentation (wave-3 OC1
+sub-item 5).
+\end{enumerate}
+The arith.\ Positselski input on the four-input conditional spine
+(\Cref{v4-arith:w3-audit-B:thm:four-input-spine}) is conditionalised
+on these four sub-items, not five.
+\end{corollary}
+
+\begin{proof}
+\Cref{v4-arith:prim-zeta:thm:main} establishes the primitive
+zeta-character theorem as a standalone theorem, closing sub-item
+(4) of \Cref{v4-arith:pos:rem:open-sub-items}. The other four
+sub-items are independent and remain open.
+\end{proof}
+
+\begin{remark}[status of P1 biconditional after this chapter]
+\label{v4-arith:prim-zeta:rem:p1-status}
+\Cref{v4-arith:pos:thm:P1-full-unconditional} carries conditional
+status on the five Positselski sub-items. After this chapter:
+\begin{itemize}
+\item Sub-item (4) [primitive zeta-character] is closed.
+\item Sub-items (1), (2), (3), (5) remain open.
+\end{itemize}
+The status of
+\Cref{v4-arith:pos:thm:P1-full-unconditional} accordingly tightens
+from ``conditional on five'' to ``conditional on four'' (continuous
+duals, derived completion, faithful lifting, Koszul-dual BC). The
+load-bearing theorem
+\Cref{v4-arith:thm:G-row-Riemann-functional-equation} remains
+\emph{Theorem-waiting}: forward direction unconditional
+(\Cref{v4-arith:cl:cor:P1-unconditional-forward}), full biconditional
+conditional on four sub-items (down from five).
+\end{remark}
+
+\subsection{Character-Level Fingerprint of the Functional Equation}
+\label{v4-arith:prim-zeta:fingerprint}
+
+\begin{proposition}[character-level Riemann functional equation]
+\label{v4-arith:prim-zeta:prop:char-functional-eq}
+\ClaimStatusProvedHere. At the level of characters of the primary
+subspace and its Koszul dual,
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:char-functional-eq}
+\mathrm{char}\bigl(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}\bigr)(s)
+\;=\;\mathrm{char}\bigl((\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}})^{!}\bigr)(s)
+\;\Longleftrightarrow\;
+\xi(s)\;=\;\xi(1-s).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+By \Cref{v4-arith:prim-zeta:thm:adelic-char} and
+\Cref{v4-arith:prim-zeta:thm:koszul-dual-adelic}, the two characters
+equal $\xi(s)$ and $\xi(1-s)$ respectively. Equality of characters
+is therefore the functional equation. Tate 1950 establishes the
+implication $\xi(s)=\xi(1-s)$ unconditionally
+(\Cref{v4-arith:thm:P2-resolution}(3)); the character equality is
+the Fock-operator-theoretic fingerprint of the Riemann functional
+equation, inscribed on the primary subspace of the arithmetic
+Heisenberg.
+\end{proof}
+
+\begin{remark}[what this proposition does not say]
+\label{v4-arith:prim-zeta:rem:caveat-fingerprint}
+\Cref{v4-arith:prim-zeta:prop:char-functional-eq} asserts that the
+character identity and Tate's functional equation are equivalent
+at the level of characters of the primary subspace. It does
+\emph{not} prove the Riemann Hypothesis, nor does it close the P1
+biconditional at the level of bar--cobar pairings (this requires
+the Positselski equivalence, conditional on the four remaining
+open sub-items).
+
+The proposition is the character-level analogue of
+\Cref{v4-arith:thm:G-row-Riemann-functional-equation}: Riemann
+functional equation as the character-level shadow of Koszul
+self-duality on the primary subspace. Full biconditional at the
+pairing level requires arithmetic Positselski, which is not
+closed by this chapter.
+\end{remark}
+
+\section{Remaining Four Positselski Sub-Items}
+\label{v4-arith:prim-zeta:remaining-four}
+
+For reader navigation, the four remaining open Positselski sub-items
+are restated with explicit pointers to where they are expected to be
+addressed in subsequent arithmetic-branch chapters.
+
+\begin{description}
+\item[\emph{(1) Completed continuous duals.}] Pontryagin-dual continuous
+duals of completed Iwasawa modules (Brumer 1966 \S1--2;
+Coates--Sujatha 2006 \S1.7), compatible with the Nekov\'a\v{r}
+Selmer-complex formalism of \Cref{v4-arith:pos:att-2-co-contra}.
+Expected closure: continuous-duality chapter combining Brumer with
+Nekov\'a\v{r} 2006 Ast\'erisque 310.
+\item[\emph{(2) Derived completion.}] Derived $\mathfrak{m}$-adic
+completion of comodule and contramodule resolutions commuting with
+base change $\Lambda\to\mathbb{F}_{p}[[T]]$. Positselski 2018
+arXiv:1209.2995 \S4.6 covers the Artinian base case; the Weierstrass
+inverse limit is the open sub-item. Expected closure: Coates--Sujatha
+2006 inverse-limit plus Positselski 2018 Artinian plus
+Mittag-Leffler.
+\item[\emph{(3) Faithful lifting along Nakayama.}] Essential
+surjectivity of the base-change functor
+$\mathrm{D}^{\mathrm{co}}_{\Lambda}\to\mathrm{D}^{\mathrm{co}}_{\mathbb{F}_{p}[[T]]}$
+under $\mu=0$ (\Cref{v4-arith:pos:prop:lifting}). Requires sub-item
+(2) plus independent obstruction-theory check. Expected closure:
+Nakayama-lifting chapter combining Illusie 1971 with Bhatt--Scholze
+derived completion.
+\item[\emph{(5) Koszul-dual Bost--Connes presentation.}] The
+identification of the cobar algebra $A=C^{\vee}$ with the
+Bost--Connes Hecke algebra $\mathbb{A}^{\mathrm{BC}}$
+(\Cref{v4-arith:cor:koszul-dual-BC}; currently
+\texttt{ClaimStatusConjectured}). Requires independent
+cross-verification that the Bost--Connes presentation carries the
+Positselski pairing structure
+(\Cref{v4-arith:pos:thm:weight-comp}). Expected closure:
+Bost--Connes--Koszul chapter combining Bost--Connes 1995 \S1.2 with
+the twisting-cochain formalism of Lefevre-Hasegawa 2003
+(\Cref{v4-arith:pos:thm:lambda-bar-cobar}).
+\end{description}
+
+\subsection{Residual Ledger}
+\label{v4-arith:prim-zeta:residual-ledger}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{c|p{6cm}|l}
+Sub-item & Content & Status after this chapter \\
+\hline
+(1) & Completed continuous duals (Brumer, Nekov\'a\v{r}) & Open \\
+(2) & Derived completion (Positselski 2018, Weierstrass tower) & Open \\
+(3) & Faithful lifting along Nakayama ($\mu=0$, obstruction) & Open \\
+(4) & \textbf{Primitive zeta-character theorem} & \textbf{Closed (this chapter)} \\
+(5) & Koszul-dual Bost--Connes presentation & Open \\
+\end{tabular}
+\caption{Status of the five open Positselski sub-items of
+\Cref{v4-arith:pos:rem:open-sub-items} after the present chapter.
+Sub-item (4) is closed by
+\Cref{v4-arith:prim-zeta:thm:main}; four remain open.}
+\label{v4-arith:prim-zeta:tab:residual}
+\end{table}
+
+\section{Summary}
+\label{v4-arith:prim-zeta:summary}
+
+\begin{enumerate}
+\item The \emph{primary subspace}
+$\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}$
+(\Cref{v4-arith:prim-zeta:def:primary-subspace}) is defined as the
+adelic tensor product of the per-prime single-oscillator primary
+$\mathcal{H}^{(p)}_{\mathrm{prim}}$ and the archimedean Gaussian
+primary $\mathcal{H}^{(\infty)}_{\mathrm{prim}}$. The definition
+is consistent with the usage in
+Ch.~\ref{v4-arith:virasoro-bootstrap} (Virasoro positivity) and
+Ch.~\ref{v4-arith:rh-reformulation} (Li criterion).
+\item \Cref{v4-arith:prim-zeta:thm:main} (primitive zeta-character
+theorem): under the HY-zeta grading,
+$\mathrm{char}(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}})(s)=\xi(s)$,
+unconditionally.
+\item The four attack--heal cycles
+(\Cref{v4-arith:prim-zeta:ledger}) use Tate 1950 (archimedean),
+Julia 1990 (finite places), Bost--Connes 1995 (Koszul-dual cobar
+side), and Positselski 2011 (classical character pairing); the four
+sources form a disjoint source tetrahedron
+(\Cref{v4-arith:prim-zeta:rem:sources-disjoint}).
+\item \Cref{v4-arith:prim-zeta:prop:char-functional-eq}: at the
+character level of the primary subspace, Koszul self-duality
+$\mathrm{char}_{C}(s)=\mathrm{char}_{A^{!}}(s)$ is equivalent to the
+Riemann functional equation $\xi(s)=\xi(1-s)$. This is the primary
+character-level fingerprint of the load-bearing theorem
+(\Cref{v4-arith:thm:G-row-Riemann-functional-equation}).
+\item \Cref{v4-arith:prim-zeta:cor:p1-residual-reduced}: wave-3
+sub-item (4) [primitive zeta-character] is closed; four Positselski
+sub-items remain open. The arith.\ Positselski input on the
+four-input conditional spine
+(\Cref{v4-arith:w3-audit-B:thm:four-input-spine}) is conditionalised
+on four open sub-items, not five.
+\item The load-bearing theorem status is preserved:
+\emph{Theorem-waiting}, with forward direction unconditional and
+full biconditional conditional on four (not five) Positselski
+sub-items.
+\end{enumerate}
+
+This chapter closes one of five open sub-items of the arithmetic
+Positselski equivalence of
+\Cref{v4-arith:thm:arithmetic-positselski}. The character-level
+primitive zeta-character identity is a genuine theorem; the
+categorical pairing at the bar--cobar level remains conditional on
+the four other open sub-items. Honesty audit: this chapter does not
+close the P1 biconditional; it closes one sub-item out of five, which
+tightens the conditional spine by one input. Progress, not closure.

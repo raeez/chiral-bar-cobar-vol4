@@ -17,14 +17,27 @@ precise conjectures close the cross-Langlands loop.}
 following six equivalent presentations:
 \begin{enumerate}
 \item \textbf{(Langlands / automorphic)}
-$\mathcal{V}^{\mathrm{prim}}$ is the universal Hecke character on
-$\mathrm{D}([GL_{2}])^{\mathrm{sph\text{-}fin}}$; its spectral
+$\mathcal{V}^{\mathrm{prim}}$ represents the universal family of
+Hecke characters on $\mathrm{D}([GL_{2}])^{\mathrm{sph\text{-}fin}}$:
+the $2$-arithmetic-dimensional total space whose fibre at a closed
+point $p$ is the moduli of local Hecke characters of
+$\mathbb{Q}_{p}^{\times}$ (ramified allowed). Its spectral
 counterpart is the structure sheaf of the global Emerton--Gee
-stack $\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}$.
+stack $\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}$, which parametrises
+global Galois representations; individual Hecke characters are the
+closed points of this family, not the family itself.
 \item \textbf{(TQFT / Chern--Simons)}
 $\mathcal{V}^{\mathrm{prim}}=\partial\,\mathrm{ACS}[\overline{\mathrm{Spec}\,\mathbb{Z}},\mathbb{G}_{m},1]$
-at level~$1$; Wilson lines at prime $p$ are ramified Hecke
-characters.
+at level~$1$, a $2$-arithmetic-dimensional chiral algebra living
+on the archimedean fibre $\mathbb{C}_{\infty}$ (conditional on F2
+for the diamond extension across finite places). Wilson lines
+wrapping the prime-knot $K_{p}\subset\overline{\mathrm{Spec}\,\mathbb{Z}}$
+are $1$-arithmetic-dimensional defects \emph{labeled by} modules
+of $\mathcal{V}^{\mathrm{prim}}$ specialized at $p$; these labels
+are ramified Hecke characters of $\mathbb{Q}_{p}^{\times}$
+($0$-dimensional data). Wilson-line labels are points of the
+universal family in~(i), not another copy of
+$\mathcal{V}^{\mathrm{prim}}$.
 \item \textbf{(Categorical / Hochschild trace)}
 $\mathcal{V}^{\mathrm{prim}}=\mathrm{HH}_{\bullet}(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},\mathrm{glob}})$,
 the trace class of the identity on the global affine Iwahori
@@ -153,10 +166,242 @@ $Z(\Sigma)$ & $=$ $\zeta_{K}(s)=\prod_{\mathfrak{p}}(1-N\mathfrak{p}^{-s})^{-1}$
 \begin{equation}
 c_{\mathrm{global}}(\mathcal{V}^{\mathrm{prim}})\;=\;2\cdot\mathrm{Res}_{s=1}\zeta(s)\;=\;2.
 \end{equation}
-Not a trace, not a sum --- a residue. The functional equation
+Not a trace, not a sum: a residue. The functional equation
 $\xi(s)=\xi(1-s)$ replaces modular invariance; the Arakelov height
 pairing replaces the Weyl anomaly.
 \end{theorem}
+
+\section{Arithmetic Conformal Field Theory: The Coherent Inscription}
+\label{v4-arith:syn:aCFT}
+
+The six-window placement
+(\Cref{v4-arith:thm:six-window-placement}), the arithmetic modular
+functor (\Cref{v4-arith:def:arithmetic-modular-functor}), the
+boundary-VA presentation
+(\Cref{v4-arith:thm:arith-CS-VA-correspondence}), the Hochschild
+trace placement (\Cref{v4-arith:thm:crowning-placement}), and the
+central-charge residue
+(\Cref{v4-arith:thm:c-as-residue}) assemble into a single object:
+an arithmetic conformal field theory on the Arakelov curve. This
+section inscribes the coherent definition and a dimensional audit
+that assigns an explicit arithmetic dimension to every piece of
+the data, so that the universal-vs-specialization distinction is
+enforced at the axiom level.
+
+\begin{definition}[arithmetic conformal field theory]
+\label{v4-arith:def:aCFT}
+An \emph{arithmetic conformal field theory} (aCFT) on the Arakelov
+curve $\overline{C}=\overline{\mathrm{Spec}\,\mathcal{O}_{K}}$
+with gauge datum $(G,k)$ is a tuple
+$(S^{\mathrm{\acute{e}t}},\mathcal{V},\mathrm{Mod}(\mathcal{V}),W,\mathcal{F},Z,c,\kappa)$
+satisfying (B)--(K) below.
+
+\paragraph{(B) Base.} A stratified \'etale arithmetic site
+$S^{\mathrm{\acute{e}t}}$ of operadic arithmetic dimension~$2$,
+equipped with a stratified arithmetic complex datum
+$\mathfrak{J}^{\mathrm{Ar}}$ in the sense of
+\Cref{v4-arith:platonic:rem:almost-complex}. Conditional on F2
+(\Cref{v4-arith:conj:F2-perfectoid-E2}):
+\begin{itemize}
+\item at the archimedean place:
+$S^{\mathrm{\acute{e}t}}|_{\infty}=\mathbb{C}_{\infty}$ with its
+standard complex structure
+$(\mathfrak{J}^{\mathrm{Ar}}_{\infty}=i)$;
+\item at a finite prime $p$:
+$S^{\mathrm{\acute{e}t}}|_{p}=\mathrm{Spd}\,\mathbb{Q}_{p}$
+(Scholze diamond) with
+$\mathfrak{J}^{\mathrm{Ar}}_{p}$ the Frobenius-semilinear
+untilt-orientation, together with the Adams operation
+$\psi_{p}$ and the prismatic/Nygaard comparison filtration when
+the finite-place diagonal is thickened.
+\end{itemize}
+The global $S^{\mathrm{\acute{e}t}}$ glues the local pieces
+through the Scholze-diamond side of the global Iwahori Hecke
+category. Thus $\mathfrak{J}^{\mathrm{Ar}}$ is literal almost-complex
+geometry only at $\infty$; at finite primes it is the
+Frobenius-oriented arithmetic substitute that makes the pointed
+$E_{2}$ Iwahori Hecke datum functorial. It is not a tangent-bundle
+endomorphism at a finite prime and carries no equation $J^{2}=-1$.
+
+\paragraph{(V) Chiral algebra.} A factorization algebra
+\begin{equation*}
+\mathcal{V}\;\in\;\mathrm{FactAlg}_{S^{\mathrm{\acute{e}t}}}(\mathrm{Mod}_{\widehat{\mathbb{Z}},\psi})
+\end{equation*}
+of arithmetic dimension~$2$, satisfying (F1)--(F5) of
+\Cref{v4-arith:def:CG-arithmetic-factorization}: genuine
+$E_{1}$-chiral OPE at the archimedean fibre $\mathbb{C}_{\infty}$,
+locally constant ($E_{0}$) with commuting Adams operations
+$\psi_{p}$ at each finite place. $\mathcal{V}$ is the 2-dimensional
+universal family whose fibre at each closed point $x$ of
+$S^{\mathrm{\acute{e}t}}$ is a module category $\mathrm{Mod}(\mathcal{V})_{x}$.
+
+\paragraph{(M) Module category.} For each closed point
+$x\in S^{\mathrm{\acute{e}t}}$, a category $\mathrm{Mod}(\mathcal{V})_{x}$
+of $\mathcal{V}$-modules supported at $x$. Objects of
+$\mathrm{Mod}(\mathcal{V})_{x}$ are $0$-dimensional data: individual
+modules, i.e., closed points of the universal family (V). The
+primary datum $(\mathbb{G}_{m},1)$ gives
+$\mathrm{Mod}(\mathcal{V}^{\mathrm{prim}})_{p}$ = local Hecke
+characters of $\mathbb{Q}_{p}^{\times}$ (ramified allowed).
+
+\paragraph{(W) Wilson-line defects.} The bulk theory
+$\mathrm{ACS}[\overline{C},G,k]$ on the arithmetic $3$-fold
+$\overline{C}$ carries $1$-dimensional defects $W_{x}(M)$ supported
+on closed-point loci $x\subset\overline{C}$ (prime-knots
+$K_{p}$ and the archimedean locus $K_{\infty}$), each labeled by
+a module $M\in\mathrm{Mod}(\mathcal{V})_{x}$. The defect is
+$1$-dimensional; the label is $0$-dimensional; neither is
+$\mathcal{V}$ itself, which is $2$-dimensional and lives on
+$S^{\mathrm{\acute{e}t}}$ (not on $\overline{C}$).
+
+\paragraph{(F) Modular functor.} A Segal-style functor
+\begin{equation*}
+\mathcal{F}\colon\mathcal{C}^{\mathrm{Arak}}\to\mathrm{Hom}(\mathbb{C}_{s},\mathrm{Line})
+\end{equation*}
+satisfying axioms (A1)--(A5) of
+\Cref{v4-arith:def:arithmetic-modular-functor} (finiteness,
+factorization, Weil--Deligne sewing, modular invariance under
+$\mathrm{Gal}(\overline{K}/K)\ltimes GL_{n}(\mathbb{A}_{K})/GL_{n}(K)$,
+functional equation). The relation to (V)--(M) is: the conformal
+block $\mathcal{F}(\overline{X},S,\{\chi_{\mathfrak{p}}\})$ is the
+space of global $\mathcal{V}$-correlators for the module insertion
+$\{\chi_{\mathfrak{p}}\}_{\mathfrak{p}\in S}$, each $\chi_{\mathfrak{p}}\in\mathrm{Mod}(\mathcal{V})_{\mathfrak{p}}$.
+
+\paragraph{(Z) Partition function.}
+\begin{equation*}
+Z(\overline{X},S,\{\chi_{\mathfrak{p}}\})(s)\;=\;\mathcal{F}(\overline{X},S,\{\chi_{\mathfrak{p}}\})(s)\;=\;L(s,\chi),
+\end{equation*}
+the completed automorphic $L$-function of $\chi=\otimes_{\mathfrak{p}}\chi_{\mathfrak{p}}$.
+Unmarked case: $Z(\overline{C},\emptyset)(s)=\xi_{K}(s)$.
+
+\paragraph{(C) Central charge.}
+$c=2\cdot\mathrm{Res}_{s=1}\zeta_{K}(s)\in\mathbb{R}$; for
+$K=\mathbb{Q}$, $c=2$
+(\Cref{v4-arith:thm:c-as-residue}).
+
+\paragraph{(K) Koszul complementarity.} The derived-centre
+identity
+\begin{equation*}
+\kappa^{\mathrm{Ar}}_{\mathsf{G}}(\mathcal{V})\,+\,\bigl(\kappa^{!}\bigr)^{\mathrm{Ar}}_{\mathsf{G}}(\mathcal{V})\;=\;0
+\end{equation*}
+holds, equivalent to $Z(s)=\varepsilon\cdot Z(1-s)$ (axiom (A5) on
+$\mathcal{F}$; \Cref{v4-arith:thm:G-row-Riemann-functional-equation}).
+
+\medskip
+An aCFT datum is \emph{primary} when $(G,k)=(\mathbb{G}_{m},1)$ and
+$\mathcal{V}=\mathcal{V}^{\mathrm{prim}}$; the primary aCFT is the
+abelian unramified sector with partition function $\xi(s)$.
+\end{definition}
+
+\begin{remark}[dimensional audit]
+\label{v4-arith:rem:aCFT-dimensions}
+The data (B)--(K) assigns an arithmetic dimension to every
+geometric object. The audit is:
+\begin{center}
+\begin{tabular}{lll}
+Object & Arithmetic dimension & Role \\
+\hline
+$\overline{C}$ (Arakelov curve) & \'etale $3$ / Krull $1$ & CS bulk 3-fold \\
+$S^{\mathrm{\acute{e}t}}$ (F2 diamond site) & $2$ & chiral base \\
+$\mathbb{C}_{\infty}$ (archimedean fibre) & $2$ (${=}\,1_{\mathbb{C}}$) & $E_{1}$-chiral OPE \\
+$\mathcal{V}$ (universal family) & $2$ (on $S^{\mathrm{\acute{e}t}}$) & factorization algebra \\
+$K_{p}\subset\overline{C}$ (prime-knot) & $1$ & Wilson-line locus \\
+$M\in\mathrm{Mod}(\mathcal{V})_{x}$ & $0$ & Wilson-line label, modules \\
+$S^{\mathrm{\acute{e}t}}|_{p}$ (finite fibre) & $0$ (for factorization) & $E_{0}$ locally constant \\
+$\mathcal{F}(\overline{X},S,\chi)$ & $1$ (meromorphic line) & conformal block \\
+$Z$ (partition function) & $0$ (meromorphic scalar) & $L$-function value
+\end{tabular}
+\end{center}
+Total-space / fibre relation: $\mathcal{V}$ (dim~$2$) is the
+universal family; $M\in\mathrm{Mod}(\mathcal{V})_{x}$ (dim~$0$) is
+a closed-point specialization. The phrase ``$\mathcal{V}$ is the
+universal Hecke character'' asserts the former; the phrase
+``Wilson lines are labeled by ramified Hecke characters'' asserts
+the latter. No object appears at two inconsistent dimensions.
+\end{remark}
+
+\begin{theorem}[coherent inscription of the primary aCFT]
+\label{v4-arith:thm:aCFT-coherence}
+\ClaimStatusConjectured (conditional on F1, F2, F3). The primary
+datum
+\begin{equation*}
+(\overline{C},G,k)\;=\;(\overline{\mathrm{Spec}\,\mathbb{Z}},\mathbb{G}_{m},1),\qquad
+\mathcal{V}\;=\;\mathcal{V}^{\mathrm{prim}}
+\end{equation*}
+satisfies (B)--(K). The six windows of
+\Cref{v4-arith:thm:six-window-placement} verify the data:
+\begin{itemize}
+\item (i) Langlands / automorphic: builds (V), (M), (Z) from the
+universal family of Hecke characters on $\mathrm{D}([GL_{2}])^{\mathrm{sph\text{-}fin}}$
+with spectral side $\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}$.
+\item (ii) TQFT / Chern--Simons: builds (B), (V), (W), (C) through
+$\mathrm{ACS}[\overline{\mathrm{Spec}\,\mathbb{Z}},\mathbb{G}_{m},1]$
+with boundary VA at $\mathbb{C}_{\infty}$ and Wilson-line labels
+drawn from (M).
+\item (iii) Categorical / Hochschild trace: builds (V), (M) via
+$\mathrm{HH}_{\bullet}(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},\mathrm{glob}})$
+(\Cref{v4-arith:thm:crowning-placement}).
+\item (iv) Integrability / Bethe algebra: builds (V), (M) via
+$\bigotimes_{p}\mathcal{H}_{p}^{\mathrm{sph}}$ and Bethe-eigenvector
+identification of Hecke eigenforms.
+\item (v) Statistical mechanics: builds (V), (Z) via
+Bost--Connes $\otimes$ universal Heisenberg.
+\item (vi) Factorization / homotopical: builds (B), (V) via the
+adelic axioms (F1)--(F5).
+\end{itemize}
+Axioms (A1)--(A5) of the arithmetic modular functor
+(\Cref{v4-arith:def:arithmetic-modular-functor}) discharge (F),
+(Z), (K). The load-bearing theorem
+(\Cref{v4-arith:thm:G-row-Riemann-functional-equation}) discharges
+(K). The Polyakov residue
+(\Cref{v4-arith:thm:c-as-residue}) discharges (C).
+\end{theorem}
+
+\begin{remark}[what this inscription is]
+The coherence theorem is not a new claim on top of the six-window
+theorem. It is the statement that the six windows are \emph{six
+axiom-checks of a single aCFT structure}, not six unrelated
+isomorphism classes. The content the inscription adds is the
+dimensional audit
+(\Cref{v4-arith:rem:aCFT-dimensions}), which enforces the
+universal-vs-specialization stratification at the definitional
+level, and the unification of (F)--(Z)--(K) through the load-bearing
+theorem.
+\end{remark}
+
+\begin{remark}[honest scope restrictions]
+\label{v4-arith:rem:aCFT-scope}
+Three scope restrictions of the programme are carried by the aCFT
+definition rather than hidden:
+\begin{enumerate}
+\item \textbf{F2-conditional base.} Item (B) assumes the
+Scholze-diamond $E_{2}$-enhancement. Without F2 the local aCFTs at
+each place exist but the global aCFT is not assembled; the primary
+datum then degenerates to a disjoint union of local aCFTs plus an
+archimedean aCFT.
+\item \textbf{Admissible logarithmic lane} (Creutzig--Kanade--Linshaw).
+Non-unitary admissible parameters are excluded from (M) and treated
+as a boundary of the aCFT category, not as elements of it.
+\item \textbf{Super-Yangian chain-level chiral coproduct} (FM230).
+Outside the primary datum. A super-enhancement of the aCFT waits
+on an independent construction.
+\end{enumerate}
+The aCFT of \Cref{v4-arith:def:aCFT} is inscribed on the
+non-degenerate, non-admissible, non-super locus of the programme.
+\end{remark}
+
+\begin{remark}[why this is a conformal field theory]
+The five classical CFT data are present in direct correspondence:
+(B)~Riemann-surface base $\to$ arithmetic $S^{\mathrm{\acute{e}t}}$;
+(V)~vertex/chiral algebra $\to$ arithmetic factorization algebra;
+(M)~primary modules $\to$ local Hecke modules at each place;
+(F)~conformal blocks $\to$ Tate integrals;
+(K)~modular invariance $\to$ functional equation. What breaks from
+the classical picture is the archimedean-only locus of
+$E_{1}$-chiral structure (finite places are $E_{0}$ per (F1)--(F5)):
+the aCFT is a \emph{stratified} CFT, chiral at $\infty$ and
+locally constant elsewhere, rather than uniformly chiral.
+\end{remark}
 
 \section{Langlands as Arithmetic Bethe Ansatz}
 \label{v4-arith:syn:langlands-bethe}
@@ -277,13 +522,30 @@ arithmetic Langlands tower.
 
 The arithmetic branch of Volume~IV does not inscribe new
 ProvedHere theorems by default. Its status is a curated map of a
-new region of the programme --- with the load-bearing theorem
+new region of the programme: the load-bearing theorem
 (\Cref{v4-arith:thm:G-row-Riemann-functional-equation}) stamped
-\emph{Theorem-waiting} until the full paper is written, and each
-of the six presentations
+\emph{Theorem-waiting} until the full paper is written; each of
+the six presentations
 (\Cref{v4-arith:thm:six-window-placement}) stamped
 \emph{Conjecture} pending the three closing results of
 \Cref{v4-arith:syn:three-open-conjectures}.
+
+\emph{After Chapter~\ref{v4-arith:closure}:} the three closing
+conjectures F1, F2, F3 are reduced structurally to five narrower
+residual obligations ($\mathrm{L}_{\mathrm{ACD}}$, F2.c,
+F3.BZN$^{\mathrm{Ar}}$, arith.~Positselski, Koszul--Pet compat).
+The load-bearing theorem closes unconditionally in its forward
+direction (\Cref{v4-arith:cl:cor:P1-unconditional-forward}) and
+conditionally in full equivalence
+(\Cref{v4-arith:thm:P1-resolution}).
+
+\emph{After Chapter~\ref{v4-arith:rh-reformulation}:} the Riemann
+Hypothesis is inscribed as Conjecture F-RH
+(\Cref{v4-arith:conj:F-RH}), a unitary-bootstrap statement on
+$\mathcal{V}^{\mathrm{prim}}$ equivalent to RH, reducible to
+the minimal three-item Spine~B: arith.~Positselski, Koszul--Pet
+compat, and the arith.~Virasoro positivity VB$^{*}$
+(\Cref{v4-arith:rh:thm:minimal-path}).
 
 \begin{principle}[Courage, after Drinfeld]
 \label{v4-arith:princ:courage}
@@ -312,6 +574,11 @@ functional equation
 (\Cref{v4-arith:thm:segal-tate}).
 \item Central charge $=$ residue
 (\Cref{v4-arith:thm:c-as-residue}).
+\item Arithmetic conformal field theory inscribed with (B)--(K)
+data and dimensional audit
+(\Cref{v4-arith:def:aCFT},
+\Cref{v4-arith:rem:aCFT-dimensions},
+\Cref{v4-arith:thm:aCFT-coherence}).
 \item Langlands programme $=$ arithmetic Bethe ansatz
 (\Cref{v4-arith:thm:langlands-bethe}).
 \item Fifteen voices converge on a common rigorous core

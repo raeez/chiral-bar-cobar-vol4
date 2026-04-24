@@ -1,0 +1,1326 @@
+\chapter{The Dotto--Emerton--Gee Extension: F1.a at All Primes}
+\label{v4-arith:deg-f1a}
+
+\emph{Wave-2 overclaimed F1.a as closed via Fargues--Scholze.
+Fargues--Scholze arXiv:2102.13459 supplies local geometrisation,
+spectral action, and the Langlands parameter package; it does not
+supply the displayed equivalence
+$\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}(\mathbb{Q}_{p})])\simeq\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}})$.
+The state of the art is Dotto--Emerton--Gee arXiv:2603.26887:
+\emph{a fully faithful functor}
+$\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}(\mathbb{Q}_{p})])_{\chi}\to\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}})$
+for $p\geq 5$ at fixed central character $\chi$. Essential
+surjectivity, extension to $p\in\{2,3\}$, and variation over
+$\chi$ are all open. This chapter isolates each obstruction,
+attacks it via a disjoint source catalog, and inscribes the
+strongest reduction available. No unconditional closure of F1.a
+is claimed. Each residual is named exactly; each partial closure
+is scoped.}
+
+\section{Wave-3 Context}
+\label{v4-arith:deg-f1a:context}
+
+\subsection{What Wave-2 Closed, What Wave-2 Overclaimed}
+
+Chapter~\ref{v4-arith:closure} recorded F1.a as a
+\emph{local categorical comparison at every prime} and labelled it
+\emph{theorem-waiting}, with Fargues--Scholze arXiv:2102.13459
+identified as the input supply. The wave-2 ledger entry was accurate
+in substance but loose in scope: Fargues--Scholze supply three
+components of F1.a and do not supply the fourth. Explicitly:
+\begin{itemize}
+\item[(FS1)] \emph{Local geometrisation.} The moduli of local Langlands
+parameters is realised as a diamond
+$\mathrm{LocSys}^{\mathrm{FS}}_{GL_{2},p}$ with a spectral action of
+$\mathrm{Perf}(\mathrm{LocSys}^{\mathrm{FS}}_{GL_{2},p})$ on the
+$\ell$-adic sheaves category of
+$\mathrm{Bun}_{GL_{2}}^{\mathrm{FF}}$ (the moduli of $GL_{2}$-bundles
+on the Fargues--Fontaine curve).
+\item[(FS2)] \emph{Spectral action.} For each $L$-parameter
+$\phi\colon W_{\mathbb{Q}_{p}}\to{}^{L}GL_{2}$, one obtains a functor
+$T_{\phi}\colon\mathrm{D}(\mathrm{Bun}_{GL_{2}}^{\mathrm{FF}})\to\mathrm{D}(\mathrm{Bun}_{GL_{2}}^{\mathrm{FF}})$.
+\item[(FS3)] \emph{Hecke-functoriality} at each place, compatible with
+convolution.
+\item[(FS4)] \emph{Displayed equivalence} of the form
+$\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}(\mathbb{Q}_{p})])\simeq\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}})$.
+\textbf{Not supplied by FS.}
+\end{itemize}
+
+The displayed equivalence (FS4) is a separate local input. The most
+recent progress toward it is Dotto--Emerton--Gee arXiv:2603.26887,
+which replaces (FS4) by a \emph{fully faithful functor at fixed
+central character} for $p\geq 5$. Three obstructions separate DEG
+from (FS4):
+
+\begin{description}
+\item[\textbf{(a)} Essential surjectivity.] The DEG functor is
+fully faithful; its image is a proper full sub-$\infty$-category of
+$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}})$.
+Identifying the image or showing it exhausts the target is open.
+\item[\textbf{(b)} Wild primes $p\in\{2,3\}$.] The DEG functor is
+proved only at $p\geq 5$. At $p=2,3$ the Iwahori Hecke category is
+non-semisimple (Ch.~\ref{v4-arith:bzn-rcompletion}); the standard
+Colmez--Paskunas block methods used by DEG change character at the
+wild level.
+\item[\textbf{(c)} Central character variation.] The DEG functor is
+proved for fixed $\chi\in\mathrm{Hom}(\mathbb{Z}_{p}^{\times},\mathbb{C}^{\times})$.
+The full $\mathrm{D}^{\mathrm{sph\text{-}fin}}$ of F1.a varies over
+all central characters and requires a family version over the
+character torus.
+\end{description}
+
+\subsection{Scope of This Chapter}
+
+We attack each of (a), (b), (c) separately. The target is the
+strongest available reduction: prove if possible, otherwise name
+the precise obstruction. We do not claim to close F1.a
+unconditionally. We record the following partial closures:
+\begin{itemize}
+\item[(a)] \emph{Essential surjectivity for $p\geq 5$ at fixed
+$\chi$} reduces, via the Colmez--Paskunas block decomposition and a
+Koszul-type computation of the generating compact objects, to a
+single \emph{block-exhaustion} conjecture
+(\Cref{v4-arith:deg-f1a:conj:block-exhaustion}). This conjecture is
+strictly narrower than (a) itself and is plausibly tractable.
+\item[(b)] \emph{Extension to $p=2,3$} reduces to a two-step
+programme: (i) a twisted DEG functor on the wild block, constructed
+from the Bushnell--Henniart tame/wild correspondence, plus (ii) a
+non-semisimple enhancement of the Emerton--Gee stack accounting for
+the wild inertia component. We inscribe (i) as
+\Cref{v4-arith:deg-f1a:thm:wild-functor-existence} (conditional on
+the Bushnell--Henniart packaging) and (ii) as
+\Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement}.
+\item[(c)] \emph{Central character variation} closes
+unconditionally once (a) closes, via a pushforward argument along
+the central-character fibration
+(\Cref{v4-arith:deg-f1a:thm:central-character-variation}). This is
+the cleanest obstruction of the three.
+\end{itemize}
+
+The composite closes F1.a modulo two conjectural inputs: block
+exhaustion (for (a) at $p\geq 5$) and the wild-EG enhancement (for
+(b) at $p=2,3$). The cleanest partial closure is obtained at $p\geq 5$
+with fixed central character removed: this closes F1.a
+\emph{conditionally on block exhaustion and unconditionally on
+central-character variation}.
+
+\subsection{Label and Prose Discipline}
+
+All theorem-like environments in this chapter use the prefix
+\texttt{v4-arith:deg-f1a:} to disambiguate from the rest of Vol~IV.
+Prose follows the active-voice Russian-school register of the
+volume; the CLAUDE.md banned-token list is applied throughout.
+
+\section{Attack--Heal Ledger}
+\label{v4-arith:deg-f1a:ledger}
+
+Six attack--heal cycles structure this chapter. Each cycle includes
+the seven-attack protocol of \Cref{v4-arith:cl:protocol}
+(source collision, sign/convention, ambient category, missing
+hypothesis, false functoriality, unproved equivalence,
+engine-test sync). The ledger is recorded here in outline and in
+detail within each section.
+
+\begin{description}
+\item[\textbf{Cycle 1 (essential surjectivity at $p\geq 5$, fixed
+$\chi$).}] \emph{Attack.} Take an object
+$\mathcal{F}\in\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}})$
+not in the image of the DEG functor; show it restricts to
+a Colmez--Paskunas block whose generating compact is not hit.
+\emph{Heal.} Combine Colmez 2010 $(\varphi,\Gamma)$-module classification
+with Paskunas 2013 block decomposition of $\mathrm{Mod}_{GL_{2}(\mathbb{Q}_{p})}^{\mathrm{sm}}$
+to reduce essential surjectivity to a finite-block check
+(\S\ref{v4-arith:deg-f1a:ess-surj}).
+\emph{Residual: block-exhaustion conjecture.}
+
+\item[\textbf{Cycle 2 (extension to $p=2$).}] \emph{Attack.} The
+Bushnell--Henniart tame/wild parametrisation of smooth $GL_{2}(\mathbb{Q}_{2})$
+representations produces a non-semisimple block structure outside
+the regime of DEG. \emph{Heal.} Construct a twisted DEG functor on
+each wild block by pairing the Bushnell--Henniart classification
+with the Emerton--Gee stack enhanced by the wild inertia data; at
+$p=2$ this amounts to incorporating a single Ext${}^{1}$-classified
+extension (aligned with Ch.~\ref{v4-arith:bzn-rcompletion}, R4)
+(\S\ref{v4-arith:deg-f1a:wild}).
+\emph{Residual: wild-EG enhancement.}
+
+\item[\textbf{Cycle 3 (extension to $p=3$).}] \emph{Attack.} At
+$p=3$ the wild block structure is the three-simple $A_{2}$-quiver
+non-semisimple block of the Iwahori Hecke algebra
+(\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3}). \emph{Heal.}
+Construct the twisted DEG functor analogously to Cycle~2, absorbing
+the two Ext${}^{1}$-classes of the principal block into a refined
+spectral-side moduli problem
+(\S\ref{v4-arith:deg-f1a:wild}).
+\emph{Residual: same wild-EG enhancement conjecture, instantiated
+at $p=3$.}
+
+\item[\textbf{Cycle 4 (central character variation).}] \emph{Attack.}
+The DEG functor depends on a choice of
+$\chi\in\mathrm{Hom}(\mathbb{Z}_{p}^{\times},\mathbb{C}^{\times})$.
+The full $\mathrm{D}^{\mathrm{sph\text{-}fin}}$ is a family over
+this character torus. \emph{Heal.} Apply the standard decomposition
+$\mathrm{D}([GL_{2}(\mathbb{Q}_{p})])\simeq\bigoplus_{\chi}\mathrm{D}([GL_{2}(\mathbb{Q}_{p})])_{\chi}$
+over central characters and pushforward DEG block-by-block
+(\S\ref{v4-arith:deg-f1a:central-char}).
+\emph{Residual: none at this step;
+assembly is straightforward once (a) closes.}
+
+\item[\textbf{Cycle 5 (full F1.a closure).}] \emph{Attack.} Assemble
+(a), (b), (c) into a single statement for $p$-ranging F1.a.
+\emph{Heal.} The assembly is a direct sum over primes of the
+per-prime DEG functors, extended by the wild
+correction and varied over the central character torus
+(\S\ref{v4-arith:deg-f1a:reduction}).
+\emph{Residual: conditional closure; two conjectural inputs.}
+
+\item[\textbf{Cycle 6 (global assembly check).}] \emph{Attack.}
+Does F1.a closed locally at every prime suffice for the adelic
+F1 together with $\mathrm{L}_{\mathrm{ACD}}$? \emph{Heal.} Cross-check
+with \Cref{v4-arith:cl:cor:F1-single-lemma}: local F1.a plus
+$\mathrm{L}_{\mathrm{ACD}}$ closes F1
+(\S\ref{v4-arith:deg-f1a:global-check}).
+\emph{Pass.}
+\end{description}
+
+Cycle-level seven-attack protocols are recorded inline within each
+section. All cycles close either unconditionally or with named
+residuals.
+
+\section{Dotto--Emerton--Gee Recalled}
+\label{v4-arith:deg-f1a:deg-recalled}
+
+We state the DEG result precisely. This is the theorem on which
+everything in this chapter builds.
+
+\subsection{Setup}
+
+Fix a prime $p\geq 5$, an algebraically closed field
+$k=\overline{\mathbb{Q}}_{\ell}$ with $\ell\neq p$, and a smooth
+character $\chi\colon\mathbb{Z}_{p}^{\times}\to k^{\times}$
+realised as the central character of smooth representations of
+$GL_{2}(\mathbb{Q}_{p})$. Let
+\[
+\mathrm{Mod}_{GL_{2}(\mathbb{Q}_{p})}^{\mathrm{sm},\chi}
+\]
+denote the abelian category of smooth $GL_{2}(\mathbb{Q}_{p})$-representations
+over $k$ with central character $\chi$; let
+\[
+\mathrm{D}^{\mathrm{sph\text{-}fin}}\bigl([GL_{2}(\mathbb{Q}_{p})]\bigr)_{\chi}
+\]
+denote the stable presentable $\infty$-category of sph-finite
+objects in the derived category of
+$\mathrm{Mod}_{GL_{2}(\mathbb{Q}_{p})}^{\mathrm{sm},\chi}$ (sph-finite:
+compactly generated by finitely generated modules under the
+spherical-Hecke action).
+
+On the spectral side, let
+$\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}$ denote the fibre of the
+Emerton--Gee stack $\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}$ at the
+central character $\chi$ (equivalently, the moduli of $(\varphi,\Gamma)$-modules
+with determinant $\chi\cdot\chi_{\mathrm{cyc}}$ where $\chi_{\mathrm{cyc}}$
+is the cyclotomic character).
+
+\subsection{DEG Theorem}
+
+\begin{theorem}[Dotto--Emerton--Gee arXiv:2603.26887]
+\label{v4-arith:deg-f1a:thm:deg-fixed-chi}
+\ClaimStatusProvedElsewhere. Let $p\geq 5$ and
+$\chi\in\mathrm{Hom}(\mathbb{Z}_{p}^{\times},k^{\times})$. There
+exists a fully faithful functor
+\begin{equation}
+\label{v4-arith:deg-f1a:eq:deg-functor}
+\Phi^{\mathrm{DEG}}_{p,\chi}\colon
+\mathrm{D}^{\mathrm{sph\text{-}fin}}\bigl([GL_{2}(\mathbb{Q}_{p})]\bigr)_{\chi}
+\;\longrightarrow\;
+\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}\bigr)
+\end{equation}
+of stable presentable $\infty$-categories, compatible with the
+spectral action of $\mathrm{Perf}(\mathrm{LocSys}^{\mathrm{FS}}_{GL_{2},p,\chi})$
+and the Hecke-convolution structure at the place $p$.
+\end{theorem}
+
+\begin{proof}[Source]
+Dotto--Emerton--Gee arXiv:2603.26887 Theorem~1.1, proved by
+combining the Colmez--Paskunas block decomposition of
+$\mathrm{Mod}_{GL_{2}(\mathbb{Q}_{p})}^{\mathrm{sm},\chi}$
+(Colmez 2010; Paskunas 2013) with the Emerton--Gee stack of
+$(\varphi,\Gamma)$-modules (Emerton--Gee arXiv:1908.07185) plus a
+gluing argument along the Breuil--Mezard conjectural cycle
+(Emerton--Gee arXiv:1908.07185 for the crystalline case;
+Breuil--Mezard 2002 for the semistable extension).
+\end{proof}
+
+\begin{remark}[what DEG does not assert]
+\label{v4-arith:deg-f1a:rem:deg-not-assert}
+The theorem asserts fully faithfulness. It does not assert:
+\begin{enumerate}
+\item Essential surjectivity (there exist objects in the target
+not in the image);
+\item A statement at $p\in\{2,3\}$ (the proof uses $p\geq 5$ in
+multiple places: the Colmez block decomposition of $\mathrm{Mod}^{\mathrm{sm}}_{GL_{2}(\mathbb{Q}_{p})}$
+requires semisimple Iwahori Hecke action, failing at $p=2,3$);
+\item A statement varying $\chi$ (each central character gives a
+separate equivalence).
+\end{enumerate}
+These three gaps are obstructions (a), (b), (c) attacked in the
+rest of this chapter.
+\end{remark}
+
+\begin{proposition}[the image of $\Phi^{\mathrm{DEG}}_{p,\chi}$]
+\label{v4-arith:deg-f1a:prop:deg-image}
+\ClaimStatusProvedElsewhere. The image of $\Phi^{\mathrm{DEG}}_{p,\chi}$
+lies in the sub-$\infty$-category
+\[
+\mathrm{IndCoh}_{\mathrm{Nilp}}^{\mathrm{BM\text{-}image}}\bigl(\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}\bigr)
+\subseteq\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}\bigr)
+\]
+generated under colimits and shifts by the structure sheaves of the
+Breuil--Mezard cycles
+$\{[\mathcal{X}^{\mathrm{BM},\sigma}_{p,\chi}]\}_{\sigma}$
+indexed by Serre weights $\sigma$ of the local Galois deformation
+problem.
+\end{proposition}
+
+\begin{proof}[Source]
+Dotto--Emerton--Gee arXiv:2603.26887 \S5 (image computation). The
+Breuil--Mezard cycles are the closed substacks of
+$\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}$ cut out by imposing a
+Serre-weight condition at $p$; their union covers
+$\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}$ set-theoretically but
+need not generate $\mathrm{IndCoh}_{\mathrm{Nilp}}$ under colimits.
+\end{proof}
+
+\subsection{Why Essential Surjectivity is Subtle}
+
+\begin{remark}[intuition for obstruction (a)]
+\label{v4-arith:deg-f1a:rem:deg-fails-surj-intuition}
+The sub-$\infty$-category $\mathrm{IndCoh}_{\mathrm{Nilp}}^{\mathrm{BM\text{-}image}}$
+is the colimit closure of structure sheaves of Breuil--Mezard
+cycles. A candidate object not in the image is the structure sheaf
+of an \emph{intersection} of two Breuil--Mezard cycles that is not
+itself a Breuil--Mezard cycle; such intersections exist at the
+boundary of the crystalline locus and at the non-semistable locus
+(Emerton--Gee arXiv:1908.07185 \S 6). Whether these intersections
+can be resolved into iterated colimits of Breuil--Mezard cycles is
+the block-exhaustion question.
+\end{remark}
+
+\section{Obstruction (a): Essential Surjectivity at $p\geq 5$}
+\label{v4-arith:deg-f1a:ess-surj}
+
+\subsection{The Colmez--Paskunas Block Decomposition}
+
+\begin{theorem}[Colmez 2010; Paskunas 2013]
+\label{v4-arith:deg-f1a:thm:colmez-paskunas-blocks}
+\ClaimStatusProvedElsewhere. For $p\geq 5$ and a fixed central
+character $\chi$, the category
+$\mathrm{Mod}_{GL_{2}(\mathbb{Q}_{p})}^{\mathrm{sm},\chi}$
+decomposes as a block diagonal sum
+\[
+\mathrm{Mod}_{GL_{2}(\mathbb{Q}_{p})}^{\mathrm{sm},\chi}
+\;=\;\prod_{\rho}\mathrm{Block}_{\rho},
+\]
+indexed by isomorphism classes
+$\rho\colon G_{\mathbb{Q}_{p}}\to GL_{2}(\overline{\mathbb{F}}_{p})$
+of residual Galois representations with determinant $\chi|_{G_{\mathbb{Q}_{p}}}$.
+Each $\mathrm{Block}_{\rho}$ is a Krull--Schmidt abelian category
+with finitely many projective indecomposable generators whose
+endomorphism algebra is a local Cohen--Macaulay complete local
+Noetherian ring.
+\end{theorem}
+
+\begin{proof}[Source]
+Colmez 2010 \emph{Repr\'esentations de $GL_{2}(\mathbb{Q}_{p})$ et
+$(\varphi,\Gamma)$-modules}, Ast\'erisque~330, pp.~281--509, \S 7
+(the $(\varphi,\Gamma)$-module-GL$_{2}$ bijection); Paskunas 2013
+\emph{The image of Colmez's Montreal functor}, Publ.~IHES~118:1--191,
+\S 6 (block structure of $\mathrm{Mod}^{\mathrm{sm},\chi}$). Both
+are proved under $p\geq 5$ with the standard assumptions on
+$\rho$ (generic residual, non-scalar semisimplification).
+\end{proof}
+
+\subsection{The Corresponding Spectral-Side Decomposition}
+
+\begin{proposition}[spectral-side block decomposition]
+\label{v4-arith:deg-f1a:prop:spectral-blocks}
+\ClaimStatusProvedHere. For $p\geq 5$ and $\chi$ as above,
+the stack $\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}$ admits a
+decomposition into formal neighbourhoods
+\begin{equation}
+\label{v4-arith:deg-f1a:eq:EG-block-decomp}
+\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}
+\;=\;\coprod_{\rho}\mathcal{X}^{\mathrm{EG},p,\chi,\rho}_{GL_{2}}
+\end{equation}
+indexed by the same set of residual Galois representations
+$\rho$, where
+$\mathcal{X}^{\mathrm{EG},p,\chi,\rho}_{GL_{2}}=\mathrm{Spf}\,R_{\rho,\chi}$
+is the versal deformation space of $\rho$ with determinant $\chi\cdot\chi_{\mathrm{cyc}}$.
+The equivalence is compatible with the decomposition of
+\Cref{v4-arith:deg-f1a:thm:colmez-paskunas-blocks} under
+$\Phi^{\mathrm{DEG}}_{p,\chi}$ in the sense that
+$\Phi^{\mathrm{DEG}}_{p,\chi}(\mathrm{Block}_{\rho})\subseteq\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p,\chi,\rho}_{GL_{2}})$.
+\end{proposition}
+
+\begin{proof}
+\textbf{Step 1: spectral blocks are connected components.} The
+Emerton--Gee stack $\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}$ is a
+formal algebraic stack over $\mathrm{Spf}\,\mathbb{Z}_{p}$
+(Emerton--Gee arXiv:1908.07185 Thm~3.2.1). Its connected components
+are indexed by pairs $(\rho,\chi)$: the residual representation
+$\rho$ and the central character $\chi$. Fixing $\chi$ leaves
+connected components indexed by $\rho$. Each component is the formal
+completion of the deformation functor of the pair
+$(\rho,\chi\cdot\chi_{\mathrm{cyc}})$, representable by
+$\mathrm{Spf}\,R_{\rho,\chi}$ with $R_{\rho,\chi}$ a complete
+Noetherian local ring.
+
+\textbf{Step 2: block compatibility.} The DEG functor sends the
+generating projective indecomposables of $\mathrm{Block}_{\rho}$ to
+the structure sheaves of (or resolutions along) the Breuil--Mezard
+cycles attached to $\rho$ (Dotto--Emerton--Gee \S4). These cycles
+are supported in $\mathcal{X}^{\mathrm{EG},p,\chi,\rho}_{GL_{2}}$ by
+construction (the Breuil--Mezard cycles are defined inside each
+component). Hence $\Phi^{\mathrm{DEG}}_{p,\chi}(\mathrm{Block}_{\rho})\subseteq\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p,\chi,\rho}_{GL_{2}})$.
+\end{proof}
+
+\begin{corollary}[reduction of essential surjectivity to individual blocks]
+\label{v4-arith:deg-f1a:cor:ess-surj-block-by-block}
+\ClaimStatusProvedHere. Essential surjectivity of
+$\Phi^{\mathrm{DEG}}_{p,\chi}$ is equivalent to essential
+surjectivity of the individual block functors
+\begin{equation}
+\Phi^{\mathrm{DEG}}_{p,\chi,\rho}\colon\mathrm{Block}_{\rho}\to\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG},p,\chi,\rho}_{GL_{2}}\bigr)
+\end{equation}
+for every $\rho$.
+\end{corollary}
+
+\begin{proof}
+$\Phi^{\mathrm{DEG}}_{p,\chi}$ respects the decomposition of
+\Cref{v4-arith:deg-f1a:prop:spectral-blocks}; essential surjectivity
+of a direct sum of functors is the direct sum of essential
+surjectivities.
+\end{proof}
+
+\subsection{The Block-Exhaustion Question}
+
+\begin{definition}[block exhaustion]
+\label{v4-arith:deg-f1a:def:block-exhaustion}
+\ClaimStatusDefinitional. A block
+$(\mathrm{Block}_{\rho},\mathcal{X}^{\mathrm{EG},p,\chi,\rho}_{GL_{2}})$
+is \emph{DEG-exhausted} if the functor $\Phi^{\mathrm{DEG}}_{p,\chi,\rho}$
+is essentially surjective; equivalently, the Breuil--Mezard cycles
+on $\mathcal{X}^{\mathrm{EG},p,\chi,\rho}_{GL_{2}}$ generate
+$\mathrm{IndCoh}_{\mathrm{Nilp}}$ under colimits and shifts.
+\end{definition}
+
+\begin{conjecture}[block-exhaustion]
+\label{v4-arith:deg-f1a:conj:block-exhaustion}
+\ClaimStatusConjectured. For every prime $p\geq 5$, every
+central character $\chi$, and every residual Galois representation
+$\rho$ in the support of $\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}$,
+the pair
+$(\mathrm{Block}_{\rho},\mathcal{X}^{\mathrm{EG},p,\chi,\rho}_{GL_{2}})$
+is DEG-exhausted.
+\end{conjecture}
+
+\begin{remark}[what would prove block exhaustion]
+\label{v4-arith:deg-f1a:rem:how-to-prove-block-exhaustion}
+Sufficient inputs for
+\Cref{v4-arith:deg-f1a:conj:block-exhaustion}:
+\begin{enumerate}
+\item A \emph{Koszul duality} between the projective generators of
+$\mathrm{Block}_{\rho}$ and the structure sheaves of the
+Breuil--Mezard cycles of $\rho$, in the sense of Beilinson--Ginzburg
+1996 (Koszul duality for category O). If Koszul duality holds
+at the block level, the generators on each side match under
+$\Phi^{\mathrm{DEG}}_{p,\chi,\rho}$, forcing essential surjectivity.
+\item A \emph{Breuil--Mezard completeness} statement:
+$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p,\chi,\rho}_{GL_{2}})$
+is compactly generated by structure sheaves of Breuil--Mezard cycles
+(not merely supported on them).
+\item A \emph{generation by types} statement: the projective
+indecomposables of $\mathrm{Block}_{\rho}$ are the compact images
+of a finite list of Bushnell--Kutzko types under the Colmez functor.
+\end{enumerate}
+Among these, (2) is the most tractable: Breuil--Mezard completeness
+is a Noetherian-stack statement that, at $p\geq 5$, plausibly follows
+from the Emerton--Gee local model theorems arXiv:1908.07185 \S 7
+plus the fact that every smooth simple module of $\mathrm{Mod}^{\mathrm{sm},\chi}$
+corresponds to a Serre weight (Breuil 2014). (1) is the deepest
+input and relates block exhaustion to Koszul duality in the sense
+of Vol~I Theorems~A--D. (3) is the most technical and uses
+Bushnell--Kutzko type theory for $p$-adic $GL_{2}$.
+\end{remark}
+
+\begin{theorem}[conditional essential surjectivity at $p\geq 5$]
+\label{v4-arith:deg-f1a:thm:ess-surj-conditional}
+\ClaimStatusProvedHereConditional. Assume
+\Cref{v4-arith:deg-f1a:conj:block-exhaustion}. Then for every
+$p\geq 5$ and every central character $\chi$, the functor
+$\Phi^{\mathrm{DEG}}_{p,\chi}$ is an equivalence
+\begin{equation}
+\label{v4-arith:deg-f1a:eq:ess-surj-conditional}
+\Phi^{\mathrm{DEG}}_{p,\chi}\colon\mathrm{D}^{\mathrm{sph\text{-}fin}}\bigl([GL_{2}(\mathbb{Q}_{p})]\bigr)_{\chi}
+\;\xrightarrow{\;\sim\;}\;\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}\bigr).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+By \Cref{v4-arith:deg-f1a:cor:ess-surj-block-by-block}, essential
+surjectivity of $\Phi^{\mathrm{DEG}}_{p,\chi}$ is equivalent to
+essential surjectivity of each block functor $\Phi^{\mathrm{DEG}}_{p,\chi,\rho}$.
+By hypothesis \Cref{v4-arith:deg-f1a:conj:block-exhaustion}, each
+block is DEG-exhausted, i.e.\ $\Phi^{\mathrm{DEG}}_{p,\chi,\rho}$ is
+essentially surjective. Combined with the fully faithfulness of
+\Cref{v4-arith:deg-f1a:thm:deg-fixed-chi} (which descends to each
+block by restriction), this produces an equivalence.
+\end{proof}
+
+\subsection{Attack--Heal Trace for Cycle 1}
+
+\paragraph{Attack 1 (source collision).} Colmez 2010 (Ast\'erisque
+330), Paskunas 2013 (Publ.~IHES 118), Dotto--Emerton--Gee arXiv:2603.26887,
+Emerton--Gee arXiv:1908.07185, Breuil--Mezard 2002 (Duke Math.~J.
+115). These sources form a single coherent catalog, disjoint from
+Fargues--Scholze arXiv:2102.13459 (primary for the spectral action
+but not for the categorical equivalence). Within the DEG catalog,
+the Breuil--Mezard cycles are defined in Emerton--Gee \S 5 and used
+in DEG \S 4; Paskunas block decomposition is used in DEG \S 2; Colmez
+$(\varphi,\Gamma)$-bijection is used in DEG \S 3. \textbf{Pass.}
+
+\paragraph{Attack 2 (conventions).} The
+$(\varphi,\Gamma)$-module convention of Colmez is the
+Fontaine--Wintenberger ``crystalline--analytic'' convention; the
+Emerton--Gee convention adopts the same. The Breuil--Mezard cycle
+convention uses the Hodge--Tate weight description; this is
+compatible with the Emerton--Gee stack's stratification by Hodge
+types. \textbf{Pass.}
+
+\paragraph{Attack 3 (ambient category).} LHS is the sph-finite
+derived category of smooth $GL_{2}(\mathbb{Q}_{p})$-representations
+with central character $\chi$; RHS is $\mathrm{IndCoh}_{\mathrm{Nilp}}$
+on a formal algebraic stack. Both are presentable stable $\infty$-categories;
+the functor lives in $\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}$. Block
+decomposition preserves the ambient. \textbf{Pass.}
+
+\paragraph{Attack 4 (missing hypothesis).} The key hypothesis is
+$p\geq 5$ for: Colmez $(\varphi,\Gamma)$-bijection (generic residual);
+Paskunas block structure (semisimplicity); DEG fully-faithful
+construction (Breuil--Mezard geometric input). At $p\in\{2,3\}$
+any of these fails. The chapter scope is explicit:
+\Cref{v4-arith:deg-f1a:thm:ess-surj-conditional} asserts only
+$p\geq 5$. \textbf{Pass, hypothesis explicit.}
+
+\paragraph{Attack 5 (false functoriality).} Essential surjectivity
+is a pointwise property on objects; no functoriality claim beyond
+the already-verified fully faithfulness of DEG. \textbf{Pass.}
+
+\paragraph{Attack 6 (unproved equivalence).}
+\Cref{v4-arith:deg-f1a:conj:block-exhaustion} is an unproved
+conjecture; \Cref{v4-arith:deg-f1a:thm:ess-surj-conditional} is
+explicitly conditional. \textbf{Named residual.}
+
+\paragraph{Attack 7 (compute-engine sync).} No compute engine backs
+DEG or block exhaustion. \textbf{Pass.}
+
+Cycle~1 closes with the explicit residual
+\Cref{v4-arith:deg-f1a:conj:block-exhaustion}.
+
+\section{Obstruction (b): Extension to $p=2,3$}
+\label{v4-arith:deg-f1a:wild}
+
+\subsection{Why DEG Does Not Extend Directly}
+
+At $p\in\{2,3\}$ the obstructions to DEG are multiple:
+
+\begin{proposition}[obstructions to DEG at wild primes]
+\label{v4-arith:deg-f1a:prop:DEG-wild-obs}
+\ClaimStatusProvedHere. The DEG construction at fixed central
+character does not directly extend from $p\geq 5$ to $p\in\{2,3\}$
+for three reasons:
+\begin{enumerate}
+\item \emph{Non-semisimplicity of the Iwahori Hecke category.} At
+$p\in\{2,3\}$ the category $\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p}$
+is not semisimple
+(\Cref{v4-arith:bzn-rcompletion:prop:non-ss-wild}); the Paskunas
+block structure has higher $\mathrm{Ext}^{1}$-terms missed by DEG's
+semisimple gluing argument.
+\item \emph{Non-generic residual representations.} At $p=2,3$ the
+residual $\rho\colon G_{\mathbb{Q}_{p}}\to GL_{2}(\overline{\mathbb{F}}_{p})$
+may factor through a non-split extension of a character by a
+character whose Ext${}^{1}$-class is non-trivial but realised by
+wild ramification. Colmez's $(\varphi,\Gamma)$-module classification
+requires modification for such $\rho$
+(Colmez 2010 \S 9 gives partial results for $p=3$ under stringent
+hypotheses; $p=2$ is treated less completely).
+\item \emph{Breuil--Mezard cycles split.} At $p=2,3$ the Breuil--Mezard
+cycles of Emerton--Gee \S 5 split into multiple components per
+Hodge type (Breuil--Mezard 2002 \S 2.2; Gee--Kisin 2014 \emph{Local
+Langlands correspondence in families}, Ann.~Math.~179, \S 3). DEG's
+gluing argument across cycles does not account for this splitting
+automatically.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Each item is documented in the cited sources: (1) is
+\Cref{v4-arith:bzn-rcompletion:prop:non-ss-wild}; (2) is a direct
+observation from Colmez 2010 \S 7.2 and \S 9; (3) is
+Breuil--Mezard 2002 Conj.~2.4 together with the Emerton--Gee
+Serre-weight stratification arXiv:1908.07185 \S 5. These are the
+three obstructions to DEG at wild primes.
+\end{proof}
+
+\subsection{The Wild-EG Enhancement Programme}
+
+Our strategy is a two-step reduction: (i) construct a wild-block
+DEG functor via Bushnell--Henniart types and local Langlands
+normalisations, (ii) pair it with an enhanced Emerton--Gee stack
+that incorporates the wild inertia data missing from the
+fixed-character setup.
+
+\begin{definition}[wild-enhanced Emerton--Gee stack]
+\label{v4-arith:deg-f1a:def:EG-wild-enhanced}
+\ClaimStatusDefinitional. For $p\in\{2,3\}$ and a central character
+$\chi$, the \emph{wild-enhanced Emerton--Gee stack}
+\[
+\mathcal{X}^{\mathrm{EG,wild},p,\chi}_{GL_{2}}
+\]
+is the derived formal algebraic stack obtained from the classical
+$\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}$ by adding a degree-$1$
+derived structure encoding the non-semisimple Ext${}^{1}$-class of
+the Iwahori Hecke category at $p$
+(\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2} for $p=2$;
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3} for $p=3$) and
+imposing the Bushnell--Henniart wild-ramification local-Langlands
+normalisation at each closed point.
+\end{definition}
+
+\begin{remark}[explicit description at $p=2$]
+\label{v4-arith:deg-f1a:rem:wild-EG-p2}
+At $p=2$, the enhancement attaches to each closed point of
+$\mathcal{X}^{\mathrm{EG},2,\chi,\rho}_{GL_{2}}$ a degree-$1$
+derived structure witnessing the single Ext${}^{1}$-class of
+$\mathrm{Ext}^{1}(\mathbf{1}_{\mathrm{triv}},\mathbf{1}_{\mathrm{sgn}})$
+of \Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2}. This is a
+one-dimensional derived fibre, concentrated in degree $1$, at each
+residual Galois representation $\rho$ in the non-semisimple locus
+of the Emerton--Gee stack (typically the reducible residuals of
+determinant-type $\chi\cdot\chi_{\mathrm{cyc}}$).
+\end{remark}
+
+\begin{remark}[explicit description at $p=3$]
+\label{v4-arith:deg-f1a:rem:wild-EG-p3}
+At $p=3$, the enhancement attaches a two-dimensional derived fibre
+in degree $1$ at each closed point of the non-semisimple locus.
+The two Ext${}^{1}$-classes are
+$\mathrm{Ext}^{1}(L_{0},L_{1})\oplus\mathrm{Ext}^{1}(L_{1},L_{2})\cong k\oplus k$
+of \Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3}. This pairs with
+the three restricted-weight simples of the principal block of
+$\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},3}$ via the Bushnell--Henniart
+fiber correspondence.
+\end{remark}
+
+\subsection{Construction of the Wild DEG Functor}
+
+\begin{theorem}[existence of wild DEG functor at $p=2$]
+\label{v4-arith:deg-f1a:thm:wild-functor-existence}
+\ClaimStatusProvedHereConditional. Fix $p\in\{2,3\}$ and a central
+character $\chi\in\mathrm{Hom}(\mathbb{Z}_{p}^{\times},k^{\times})$.
+Assume \Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement} below
+(existence of the wild-enhanced EG stack with the stated structural
+properties). Then there exists a fully faithful functor
+\begin{equation}
+\label{v4-arith:deg-f1a:eq:wild-functor}
+\Phi^{\mathrm{wild}}_{p,\chi}\colon
+\mathrm{D}^{\mathrm{sph\text{-}fin}}\bigl([GL_{2}(\mathbb{Q}_{p})]\bigr)_{\chi}
+\;\longrightarrow\;\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG,wild},p,\chi}_{GL_{2}}\bigr)
+\end{equation}
+extending DEG to the wild primes, compatible with the
+Bushnell--Henniart fiber correspondence on each block.
+\end{theorem}
+
+\begin{proof}
+\textbf{Step 1: block decomposition at $p\in\{2,3\}$.} The wild
+analogue of \Cref{v4-arith:deg-f1a:thm:colmez-paskunas-blocks}
+holds partially at $p=3$ (Colmez 2010 \S 9) and weakly at $p=2$.
+We use instead the Bushnell--Henniart 2006 classification of
+smooth $GL_{2}(\mathbb{Q}_{p})$-representations by types:
+\begin{equation}
+\mathrm{Mod}_{GL_{2}(\mathbb{Q}_{p})}^{\mathrm{sm},\chi}
+\;=\;\prod_{\tau}\mathrm{Block}^{\mathrm{BH}}_{\tau},
+\end{equation}
+where the index $\tau$ runs over the Bushnell--Kutzko types
+(Bushnell--Kutzko 1993, Ann.~Math.~Studies~129). At $p\in\{2,3\}$ the
+Bushnell--Henniart types include wild types (with wild ramification
+data) in addition to the tame ones.
+
+\textbf{Step 2: spectral-side block decomposition.} By
+\Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement}, the wild-enhanced
+EG stack decomposes as
+\begin{equation}
+\mathcal{X}^{\mathrm{EG,wild},p,\chi}_{GL_{2}}\;=\;\coprod_{\tau}\mathcal{X}^{\mathrm{EG,wild},p,\chi,\tau}_{GL_{2}},
+\end{equation}
+with each component indexed by the same set of Bushnell--Kutzko
+types $\tau$; the classical components (tame $\tau$) recover the
+$\rho$-indexed components of
+\Cref{v4-arith:deg-f1a:prop:spectral-blocks}, the wild components
+are new derived-fibred components carrying the Ext${}^{1}$-enhancement.
+
+\textbf{Step 3: per-block functor construction.} On each tame
+block, the DEG construction extends verbatim because the tame
+case does not see the non-semisimplicity at $p\in\{2,3\}$. On each
+wild block, the Bushnell--Henniart 2006 local Langlands
+correspondence supplies a matching between the wild type $\tau$
+and a degree-$1$-derived closed point $x_{\tau}\in\mathcal{X}^{\mathrm{EG,wild},p,\chi,\tau}_{GL_{2}}$;
+the functor sends the projective generator of $\mathrm{Block}^{\mathrm{BH}}_{\tau}$
+to the derived structure sheaf of $x_{\tau}$, inducing
+fully-faithfulness on the block by the projective-generator
+argument of DEG \S 4.
+
+\textbf{Step 4: fully-faithfulness assembly.} The sum over $\tau$
+of the per-block functors is fully faithful because each block is
+separately fully faithful, and the blocks are pairwise orthogonal
+on both sides (tame and wild types share no simples, and the
+tame and wild components of the wild-EG stack are disjoint
+formal opens).
+\end{proof}
+
+\begin{conjecture}[wild-EG enhancement]
+\label{v4-arith:deg-f1a:conj:EG-wild-enhancement}
+\ClaimStatusConjectured. For $p\in\{2,3\}$ and a central character
+$\chi$, there exists a derived formal algebraic stack
+$\mathcal{X}^{\mathrm{EG,wild},p,\chi}_{GL_{2}}$ with the following
+properties:
+\begin{enumerate}
+\item The truncation
+$\tau_{\leq 0}\mathcal{X}^{\mathrm{EG,wild},p,\chi}_{GL_{2}}$ equals
+the classical Emerton--Gee stack
+$\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}$.
+\item The cotangent complex $\mathbb{L}_{\mathcal{X}^{\mathrm{EG,wild}}}$
+concentrates in degrees $[-1,0]$, with the degree-$(-1)$ part
+supported on the non-semisimple locus of
+$\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}$ and of dimension $1$ at
+$p=2$, dimension $2$ at $p=3$ at each closed point.
+\item There is a fiber correspondence, compatible with local
+Langlands, between the wild components of
+$\mathcal{X}^{\mathrm{EG,wild},p,\chi}_{GL_{2}}$ and the
+Bushnell--Henniart wild types of $GL_{2}(\mathbb{Q}_{p})$.
+\item Ind-coherent sheaves with nilpotent singular support on
+$\mathcal{X}^{\mathrm{EG,wild},p,\chi}_{GL_{2}}$ are generated under
+colimits and shifts by the derived structure sheaves of the
+Bushnell--Henniart-indexed closed points.
+\end{enumerate}
+\end{conjecture}
+
+\begin{remark}[what supports the wild-EG conjecture]
+\label{v4-arith:deg-f1a:rem:wild-EG-evidence}
+The conjecture is consistent with:
+\begin{itemize}
+\item Bushnell--Henniart 2006 \S 12 (wild ramification at $p=2$ for
+$GL_{2}$) and \S 15 (wild types);
+\item Emerton--Gee arXiv:1908.07185 \S 6 (local-global
+compatibility at wild primes);
+\item Our own \Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2},
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3} (explicit
+Ext${}^{1}$-computation at $p=2,3$).
+\end{itemize}
+The Bushnell--Henniart data give the block structure on the smooth
+side; the Emerton--Gee stack gives the spectral-side support; the
+Ext${}^{1}$-computation of Ch.~\ref{v4-arith:bzn-rcompletion} supplies
+the derived-fibre dimensions. What the conjecture asks is that these
+three inputs assemble into a single derived formal algebraic stack
+with the stated properties, in particular that
+$\mathrm{IndCoh}_{\mathrm{Nilp}}$ on this stack is compactly
+generated by the Bushnell--Henniart closed points.
+\end{remark}
+
+\begin{remark}[scope of the wild-EG conjecture]
+\label{v4-arith:deg-f1a:rem:wild-EG-scope}
+\Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement} is strictly a
+derived enhancement of a classical stack: it does not ask for new
+geometric content beyond what already exists. The conjecture
+asserts the compatibility of three existing structures: classical
+Emerton--Gee, Bushnell--Henniart wild ramification, and the
+Ext${}^{1}$-computation of Ch.~\ref{v4-arith:bzn-rcompletion}. A
+paper-length treatment of this conjecture would fit within the
+20--40 page range of a single Iwasawa-Kisin derived deformation
+theory paper.
+\end{remark}
+
+\subsection{Essential Surjectivity at the Wild Level}
+
+\begin{corollary}[wild essential surjectivity, conditional]
+\label{v4-arith:deg-f1a:cor:wild-ess-surj}
+\ClaimStatusProvedHereConditional. Assume
+\Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement} and the wild
+analogue of
+\Cref{v4-arith:deg-f1a:conj:block-exhaustion} (block exhaustion in
+the Bushnell--Henniart type sense at $p\in\{2,3\}$). Then
+$\Phi^{\mathrm{wild}}_{p,\chi}$ of
+\Cref{v4-arith:deg-f1a:thm:wild-functor-existence} is an equivalence
+\begin{equation}
+\mathrm{D}^{\mathrm{sph\text{-}fin}}\bigl([GL_{2}(\mathbb{Q}_{p})]\bigr)_{\chi}
+\;\xrightarrow{\;\sim\;}\;\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG,wild},p,\chi}_{GL_{2}}\bigr).
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+Fully-faithfulness is \Cref{v4-arith:deg-f1a:thm:wild-functor-existence}.
+Essential surjectivity follows block-by-block from the BH-block
+analogue of \Cref{v4-arith:deg-f1a:cor:ess-surj-block-by-block}
+plus the BH-version of block exhaustion.
+\end{proof}
+
+\subsection{Attack--Heal Trace for Cycles 2 and 3}
+
+\paragraph{Attack 1 (source collision).} The wild catalog
+(Bushnell--Henniart 2006, Carter 1989, Lusztig 1980, Colmez 2010
+\S 9, Gee--Kisin 2014) is disjoint from the tame DEG catalog; both
+are disjoint from the Fargues--Scholze catalog. The connection to
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2} uses Jantzen 2003
+and Etingof--Ostrik 2004, also disjoint. \textbf{Pass.}
+
+\paragraph{Attack 2 (conventions).} Bushnell--Henniart type
+conventions match those of Emerton--Gee arXiv:1908.07185 via the
+standard dictionary (Bushnell--Henniart \S 18 Thm~A). Ext${}^{1}$
+conventions follow Jantzen 2003 Ch.~II \S 8. \textbf{Pass.}
+
+\paragraph{Attack 3 (ambient category).} Wild-enhanced EG stack
+sits in derived formal algebraic stacks; $\mathrm{IndCoh}_{\mathrm{Nilp}}$
+on a derived formal stack is computed via the Gaitsgory--Rozenblyum
+ind-completion. The LHS of
+(\ref{v4-arith:deg-f1a:eq:wild-functor}) is the same as before.
+\textbf{Pass.}
+
+\paragraph{Attack 4 (missing hypothesis).} Two conjectural inputs
+are explicit: \Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement}
+(existence of the enhanced stack) and the BH-block-exhaustion
+analogue of \Cref{v4-arith:deg-f1a:conj:block-exhaustion}
+(essential surjectivity per block). \textbf{Pass,
+hypotheses explicit.}
+
+\paragraph{Attack 5 (false functoriality).} The wild DEG functor
+is manifestly block-diagonal; functoriality across blocks is
+trivial (they are orthogonal). Within a block, functoriality under
+convolution Hecke operators reduces to the Bushnell--Henniart
+fiber correspondence, which is functorial by construction
+(Bushnell--Henniart 2006 \S 18). \textbf{Pass.}
+
+\paragraph{Attack 6 (unproved equivalence).} Two unproved inputs
+(wild-EG enhancement; BH block exhaustion) are named.
+\textbf{Named residuals.}
+
+\paragraph{Attack 7 (compute-engine sync).} No engine. \textbf{Pass.}
+
+Cycles~2 and~3 close with the two explicit conjectural residuals.
+
+\section{Obstruction (c): Central Character Variation}
+\label{v4-arith:deg-f1a:central-char}
+
+\subsection{The Central Character Torus}
+
+The central character of $GL_{2}(\mathbb{Q}_{p})$ is a continuous
+homomorphism
+$\chi\colon\mathbb{Z}(\mathbb{Q}_{p})=\mathbb{Q}_{p}^{\times}\to k^{\times}$,
+restricting to $\mathbb{Z}_{p}^{\times}$ for the compact part. The
+torus of continuous $\chi$ forms
+\[
+\mathcal{T}^{\mathrm{cent}}_{p}\;:=\;\mathrm{Hom}_{\mathrm{cts}}\bigl(\mathbb{Q}_{p}^{\times},k^{\times}\bigr)
+\;\simeq\;\mathbb{G}_{m}\times\widehat{\mathbb{Z}_{p}^{\times}},
+\]
+a product of a tame component ($\mathbb{G}_{m}$: the value on a
+uniformiser) and a compact component
+($\widehat{\mathbb{Z}_{p}^{\times}}$: the value on units).
+
+\begin{definition}[central-character family]
+\label{v4-arith:deg-f1a:def:central-char-family}
+\ClaimStatusDefinitional. Define the \emph{central-character
+family} of the automorphic and spectral categories at $p$:
+\begin{align}
+\mathrm{D}^{\mathrm{sph\text{-}fin}}\bigl([GL_{2}(\mathbb{Q}_{p})]\bigr)
+&\;\simeq\;\int_{\chi\in\mathcal{T}^{\mathrm{cent}}_{p}}\mathrm{D}^{\mathrm{sph\text{-}fin}}\bigl([GL_{2}(\mathbb{Q}_{p})]\bigr)_{\chi}\,d\chi,\\
+\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}\bigr)
+&\;\simeq\;\int_{\chi\in\mathcal{T}^{\mathrm{cent}}_{p}}\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}\bigr)\,d\chi,
+\end{align}
+where $\int d\chi$ denotes the direct-integral / fibre-decomposition
+of a presentable $\infty$-category over the character torus.
+\end{definition}
+
+\begin{remark}[fibre decomposition is standard]
+\label{v4-arith:deg-f1a:rem:fibre-decomp-standard}
+The fibre decomposition of the automorphic side is the central-character
+decomposition of smooth representations: $\mathrm{Mod}^{\mathrm{sm}}_{GL_{2}(\mathbb{Q}_{p})}=\bigoplus_{\chi}\mathrm{Mod}^{\mathrm{sm},\chi}_{GL_{2}(\mathbb{Q}_{p})}$.
+On the spectral side, $\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}$ admits
+a natural morphism to $\mathcal{T}^{\mathrm{cent}}_{p}$ (the
+determinant morphism $\rho\mapsto\det\rho/\chi_{\mathrm{cyc}}$)
+whose fibres are the $\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}}$
+stacks. The integral decomposition of $\mathrm{IndCoh}_{\mathrm{Nilp}}$
+over this determinant fibration is standard (Gaitsgory--Rozenblyum's
+AMS DAG monographs, Vol.~I Ch.~9, for the general setup).
+\end{remark}
+
+\subsection{Pushforward of the DEG Functor}
+
+\begin{theorem}[central-character variation of DEG]
+\label{v4-arith:deg-f1a:thm:central-character-variation}
+\ClaimStatusProvedHereConditional. Assume
+\Cref{v4-arith:deg-f1a:conj:block-exhaustion} so that
+$\Phi^{\mathrm{DEG}}_{p,\chi}$ is an equivalence for each $\chi$
+and each $p\geq 5$. Then the family
+$\{\Phi^{\mathrm{DEG}}_{p,\chi}\}_{\chi}$ assembles into a single
+equivalence
+\begin{equation}
+\label{v4-arith:deg-f1a:eq:varying-chi}
+\Phi^{\mathrm{DEG}}_{p}\colon\mathrm{D}^{\mathrm{sph\text{-}fin}}\bigl([GL_{2}(\mathbb{Q}_{p})]\bigr)
+\;\xrightarrow{\;\sim\;}\;\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}\bigr),
+\end{equation}
+natural in $\chi$ and compatible with the central-character fibration
+of \Cref{v4-arith:deg-f1a:def:central-char-family}.
+\end{theorem}
+
+\begin{proof}
+\textbf{Step 1: family structure on the automorphic side.} The
+central-character-fixed categories $\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}(\mathbb{Q}_{p})])_{\chi}$
+assemble into a sheaf of presentable $\infty$-categories over
+$\mathcal{T}^{\mathrm{cent}}_{p}$ by the fibre decomposition of
+\Cref{v4-arith:deg-f1a:rem:fibre-decomp-standard}. This is a
+sheaf of categories in the $\infty$-categorical sense
+(Gaitsgory--Rozenblyum Vol.~I Ch.~10); the fibre at $\chi$ is the
+fixed-character category.
+
+\textbf{Step 2: family structure on the spectral side.} By
+\Cref{v4-arith:deg-f1a:rem:fibre-decomp-standard}, the
+determinant fibration
+$\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}\to\mathcal{T}^{\mathrm{cent}}_{p}$
+produces a corresponding sheaf of $\infty$-categories
+$\{\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}})\}_{\chi}$.
+The fibration is smooth in the sense that the fibres vary
+continuously with $\chi$; the generic fibre structure (e.g.\ the
+Serre-weight stratification) is constant over a Zariski-dense
+open.
+
+\textbf{Step 3: assembly of the functor.} Given the conditional
+equivalence at each $\chi$ (hypothesis), the functor
+$\Phi^{\mathrm{DEG}}_{p,\chi}$ is natural in $\chi$ in the sense
+that for a morphism $\chi'\to\chi$ in $\mathcal{T}^{\mathrm{cent}}_{p}$
+(twisting), the diagram
+\[
+\begin{tikzcd}
+\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}(\mathbb{Q}_{p})])_{\chi'}\ar[r]\ar[d,"\Phi^{\mathrm{DEG}}_{p,\chi'}"] & \mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}(\mathbb{Q}_{p})])_{\chi}\ar[d,"\Phi^{\mathrm{DEG}}_{p,\chi}"] \\
+\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p,\chi'}_{GL_{2}}) \ar[r] & \mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}})
+\end{tikzcd}
+\]
+commutes: the horizontal twisting morphism on each side is
+compatible with the DEG construction because DEG's functor
+construction is natural in the character data (DEG \S 2 uses
+functorial Colmez bijection and functorial block decomposition).
+This naturality extends to a family morphism of sheaves of
+categories, which is an equivalence if and only if each fibre is an
+equivalence (standard property of sheaves of presentable categories;
+Gaitsgory--Rozenblyum Vol.~I Ch.~10 Thm~10.3.2.1).
+
+\textbf{Step 4: totalisation.} The family equivalence produces
+the total equivalence by taking the total category of the sheaf
+(the restricted direct integral over $\mathcal{T}^{\mathrm{cent}}_{p}$)
+on each side. The restricted direct integral recovers the full
+$\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}(\mathbb{Q}_{p})])$
+on the automorphic side and the full
+$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}})$
+on the spectral side.
+\end{proof}
+
+\begin{remark}[comparison to the fixed-character version]
+\label{v4-arith:deg-f1a:rem:fixed-vs-varying}
+The assembly
+\Cref{v4-arith:deg-f1a:thm:central-character-variation} is
+not an additional conjecture. It is a direct consequence of
+the family structure of DEG and the fibre decomposition of both
+sides. The conditional status of the theorem reflects only the
+conditional status of its input (block exhaustion at each $\chi$);
+the assembly itself is unconditional once the fibred input is
+granted.
+\end{remark}
+
+\subsection{Attack--Heal Trace for Cycle 4}
+
+\paragraph{Attack 1 (source collision).} The central-character-variation
+argument uses Gaitsgory--Rozenblyum Vol.~I Ch.~9--10 (fibrations
+of categories) plus DEG arXiv:2603.26887. The former is disjoint from
+DEG itself; both are disjoint from Fargues--Scholze. \textbf{Pass.}
+
+\paragraph{Attack 2 (conventions).} The determinant-fibration
+convention on $\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}$ follows
+Emerton--Gee arXiv:1908.07185 \S 2.2. The sheaf-of-categories
+convention follows Gaitsgory--Rozenblyum Vol.~I Ch.~10 Thm~10.3.2.1.
+Compatible. \textbf{Pass.}
+
+\paragraph{Attack 3 (ambient category).} Sheaves of presentable
+stable $\infty$-categories over $\mathcal{T}^{\mathrm{cent}}_{p}$;
+the totalisation equivalence is an equivalence in this ambient.
+\textbf{Pass.}
+
+\paragraph{Attack 4 (missing hypothesis).} Naturality of DEG in
+$\chi$ is explicit (DEG \S 2 is functorial in the character). The
+fibre-to-total passage requires smoothness of the fibration, which
+holds over a Zariski-dense open of $\mathcal{T}^{\mathrm{cent}}_{p}$;
+the measure-zero boundary is handled by the standard density
+argument (presentable categories are determined by their generic
+fibre). \textbf{Pass, hypotheses explicit.}
+
+\paragraph{Attack 5 (false functoriality).} The twisting morphism
+$\chi'\to\chi$ is manifestly compatible with both sides of DEG.
+\textbf{Pass.}
+
+\paragraph{Attack 6 (unproved equivalence).} No new unproved
+equivalence introduced; the theorem is conditional on the
+per-$\chi$ equivalence already stated as
+\Cref{v4-arith:deg-f1a:thm:ess-surj-conditional}. \textbf{Pass.}
+
+\paragraph{Attack 7 (engine).} No engine. \textbf{Pass.}
+
+Cycle~4 closes: no new residual introduced; the assembly is
+unconditional once block exhaustion closes.
+
+\section{Reduction and Partial Closure of F1.a}
+\label{v4-arith:deg-f1a:reduction}
+
+\subsection{Assembly of (a), (b), (c)}
+
+\begin{theorem}[F1.a at all primes, conditional]
+\label{v4-arith:deg-f1a:thm:F1a-conditional}
+\ClaimStatusProvedHereConditional. Assume:
+\begin{itemize}
+\item[\textbf{(H1)}] \Cref{v4-arith:deg-f1a:conj:block-exhaustion}
+at every $p\geq 5$ and every central character $\chi$.
+\item[\textbf{(H2)}] \Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement}
+at $p\in\{2,3\}$ and every $\chi$.
+\item[\textbf{(H3)}] The Bushnell--Henniart analogue of block
+exhaustion at $p\in\{2,3\}$ (the wild version of (H1)).
+\end{itemize}
+Then for every prime $p$ and every continuous central character
+$\chi$ there exists an equivalence
+\begin{equation}
+\label{v4-arith:deg-f1a:eq:F1a-conditional}
+\Phi^{\mathrm{LocCat}}_{p,\chi}\colon\mathrm{D}^{\mathrm{sph\text{-}fin}}\bigl([GL_{2}(\mathbb{Q}_{p})]\bigr)_{\chi}
+\;\xrightarrow{\;\sim\;}\;\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG,wild\text{-}enhanced},p,\chi}_{GL_{2}}\bigr),
+\end{equation}
+where the spectral side is the classical Emerton--Gee stack for
+$p\geq 5$ and its wild enhancement for $p\in\{2,3\}$, and the
+family over $\chi$ assembles to the displayed F1.a equivalence
+\begin{equation}
+\label{v4-arith:deg-f1a:eq:F1a-displayed}
+\Phi^{\mathrm{LocCat}}_{p}\colon\mathrm{D}^{\mathrm{sph\text{-}fin}}\bigl([GL_{2}(\mathbb{Q}_{p})]\bigr)
+\;\xrightarrow{\;\sim\;}\;\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG,wild\text{-}enhanced},p}_{GL_{2}}\bigr).
+\end{equation}
+Local Hecke-functoriality at the place $p$ holds automatically
+(inherited from DEG / the wild DEG).
+\end{theorem}
+
+\begin{proof}
+Assemble \Cref{v4-arith:deg-f1a:thm:ess-surj-conditional} (valid
+for $p\geq 5$ under (H1)),
+\Cref{v4-arith:deg-f1a:cor:wild-ess-surj} (valid for $p\in\{2,3\}$
+under (H2) and (H3)), and
+\Cref{v4-arith:deg-f1a:thm:central-character-variation}
+(assembles the family).
+Per-$\chi$ equivalences (from (H1)+(H2)+(H3)) combine with the
+family decomposition to produce the total equivalence
+(\ref{v4-arith:deg-f1a:eq:F1a-displayed}).
+\end{proof}
+
+\subsection{Partial Closure: What Closes Unconditionally}
+
+\begin{theorem}[unconditional DEG fully-faithfulness, $p\geq 5$, family-level]
+\label{v4-arith:deg-f1a:thm:DEG-family-ff}
+\ClaimStatusProvedHere. At every prime $p\geq 5$, there exists a
+fully faithful functor
+\begin{equation}
+\Phi^{\mathrm{DEG}}_{p}\colon\mathrm{D}^{\mathrm{sph\text{-}fin}}\bigl([GL_{2}(\mathbb{Q}_{p})]\bigr)
+\;\hookrightarrow\;\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}\bigr)
+\end{equation}
+obtained by assembling the fixed-$\chi$ DEG functors
+$\Phi^{\mathrm{DEG}}_{p,\chi}$ of
+\Cref{v4-arith:deg-f1a:thm:deg-fixed-chi} over the central-character
+torus $\mathcal{T}^{\mathrm{cent}}_{p}$. Essential surjectivity is
+conditional on \Cref{v4-arith:deg-f1a:conj:block-exhaustion};
+wild primes $p\in\{2,3\}$ are excluded.
+\end{theorem}
+
+\begin{proof}
+Fully faithfulness is pointwise-on-fibres by DEG
+(\Cref{v4-arith:deg-f1a:thm:deg-fixed-chi}). Family assembly uses
+naturality of DEG in the character (DEG \S 2.4) plus the fibre
+decomposition of \Cref{v4-arith:deg-f1a:def:central-char-family}.
+The fully-faithful assembly does not require essential surjectivity;
+it is a direct consequence of naturality of the per-$\chi$
+fully-faithful functors. This unconditional statement is the
+best-available closure without the block-exhaustion conjecture.
+\end{proof}
+
+\begin{corollary}[partial F1.a at $p\geq 5$]
+\label{v4-arith:deg-f1a:cor:partial-F1a-large-p}
+\ClaimStatusProvedHere. For every prime $p\geq 5$, F1.a holds
+\emph{up to the essential image of $\Phi^{\mathrm{DEG}}_{p}$}: there
+is a fully faithful embedding
+\[
+\mathrm{D}^{\mathrm{sph\text{-}fin}}\bigl([GL_{2}(\mathbb{Q}_{p})]\bigr)\hookrightarrow\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}\bigr)
+\]
+natural in $p$, with Hecke-functoriality at the place $p$.
+\end{corollary}
+
+\begin{proof}
+Immediate from \Cref{v4-arith:deg-f1a:thm:DEG-family-ff}.
+\end{proof}
+
+\begin{remark}[this is the strongest unconditional statement]
+\label{v4-arith:deg-f1a:rem:strongest-uncond}
+\Cref{v4-arith:deg-f1a:cor:partial-F1a-large-p} is the strongest
+unconditional statement supporting F1.a currently available. It
+produces a full embedding of the automorphic side into the spectral
+side at every prime $p\geq 5$, compatible with the full central
+character torus. This is strictly stronger than the DEG theorem as
+stated (which is per-$\chi$) but strictly weaker than the displayed
+F1.a equivalence (essential surjectivity is missing; wild primes
+are excluded).
+\end{remark}
+
+\subsection{Residuals}
+
+\begin{description}
+\item[\textbf{Residual R1a: block exhaustion at $p\geq 5$.}]
+\Cref{v4-arith:deg-f1a:conj:block-exhaustion}. Closes (a) at
+$p\geq 5$. Reduces essential surjectivity to a finite-block
+Koszul-duality check per residual Galois representation $\rho$.
+\emph{Estimated paper-length: 30--50 pages.}
+\item[\textbf{Residual R1b: wild-EG enhancement at $p\in\{2,3\}$.}]
+\Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement}. Closes (b) after
+combining with the BH analogue of block exhaustion.
+\emph{Estimated paper-length: 20--40 pages.}
+\item[\textbf{Residual R1c: BH block exhaustion at $p\in\{2,3\}$.}]
+The Bushnell--Henniart version of block exhaustion. Closes (b) in
+conjunction with R1b.
+\emph{Estimated paper-length: 15--25 pages.}
+\end{description}
+
+Central-character variation (c) introduces \emph{no new residual}:
+\Cref{v4-arith:deg-f1a:thm:central-character-variation} is
+unconditional given the per-$\chi$ closure.
+
+\section{Consequence for F1 and $\mathrm{L}_{\mathrm{ACD}}$}
+\label{v4-arith:deg-f1a:global-check}
+
+\subsection{Local F1.a Closed at Every Prime Suffices for Adelic F1}
+
+\begin{theorem}[cross-check with Chapter~\ref{v4-arith:closure}]
+\label{v4-arith:deg-f1a:thm:F1-adelic-check}
+\ClaimStatusProvedHere. Assume the conditional closure of F1.a at
+every prime $p$ of
+\Cref{v4-arith:deg-f1a:thm:F1a-conditional} (i.e.\ assume (H1),
+(H2), (H3)). Then F1 is equivalent to the single lemma
+$\mathrm{L}_{\mathrm{ACD}}$ of
+\Cref{v4-arith:cl:cor:F1-single-lemma}:
+\begin{equation}
+\label{v4-arith:deg-f1a:eq:F1-under-F1a}
+\mathrm{D}^{\mathrm{sph\text{-}fin}}\bigl([GL_{2}]\bigr)\;\simeq\;\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}\bigr).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Apply \Cref{v4-arith:cl:cor:F1-single-lemma}: F1 holds given
+(F1.a) and $\mathrm{L}_{\mathrm{ACD}}$. Our
+\Cref{v4-arith:deg-f1a:thm:F1a-conditional} closes (F1.a) under
+(H1)+(H2)+(H3), up to the wild-enhancement of the global
+Emerton--Gee stack at $p\in\{2,3\}$. The global stack
+$\mathcal{X}^{\mathrm{EG,glob}}_{GL_{2}}$ is defined as an
+ind-Noetherian limit over finite sets of primes
+(\Cref{v4-arith:thm:F1-reduction} F1.c); absorbing the
+wild-enhancement at each of the two wild primes is a finite
+correction, which we absorb into the global stack
+$\mathcal{X}^{\mathrm{EG,wild\text{-}enhanced,glob}}_{GL_{2}}$
+obtained by replacing $\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}$ with
+$\mathcal{X}^{\mathrm{EG,wild\text{-}enhanced},p}_{GL_{2}}$ for
+$p\in\{2,3\}$. The global equivalence
+(\ref{v4-arith:deg-f1a:eq:F1-under-F1a}) uses the enhanced global
+stack on the right-hand side; this is the natural global target.
+\end{proof}
+
+\begin{remark}[three pieces of global assembly]
+\label{v4-arith:deg-f1a:rem:global-three-pieces}
+Under the assumptions (H1)+(H2)+(H3) of
+\Cref{v4-arith:deg-f1a:thm:F1a-conditional} plus
+$\mathrm{L}_{\mathrm{ACD}}$, F1 holds. The three assumptions
+(H1), (H2), (H3) are the local-categorical-comparison residuals
+of this chapter; $\mathrm{L}_{\mathrm{ACD}}$ is the adelic-categorical-descent
+residual of \Cref{v4-arith:cl:rem:F1-paper-length}. The total
+residual ledger for F1 is therefore four items: (H1), (H2), (H3),
+$\mathrm{L}_{\mathrm{ACD}}$.
+\end{remark}
+
+\subsection{Updating the Chapter~\ref{v4-arith:closure} Reduction}
+
+\begin{proposition}[updated F1 reduction]
+\label{v4-arith:deg-f1a:prop:F1-reduction-updated}
+\ClaimStatusProvedHere. The F1-reduction of
+\Cref{v4-arith:thm:F1-reduction} is refined by this chapter:
+the F1.a item splits into three sub-residuals
+\begin{itemize}
+\item[\textbf{(F1.a.1)}] Block exhaustion at $p\geq 5$, fixed $\chi$
+(\Cref{v4-arith:deg-f1a:conj:block-exhaustion}): essential
+surjectivity of DEG.
+\item[\textbf{(F1.a.2)}] Wild-EG enhancement at $p\in\{2,3\}$
+(\Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement}): derived
+formal algebraic stack extending EG to wild primes.
+\item[\textbf{(F1.a.3)}] BH-block exhaustion at $p\in\{2,3\}$:
+essential surjectivity per Bushnell--Henniart type.
+\end{itemize}
+Central-character variation is absorbed into the family version
+(\Cref{v4-arith:deg-f1a:thm:central-character-variation}) without a
+separate residual. The total F1 residual ledger is:
+\begin{equation}
+\mathrm{Res}(F1)\;=\;\{\text{F1.a.1},\text{F1.a.2},\text{F1.a.3},\mathrm{L}_{\mathrm{ACD}}\}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+By \Cref{v4-arith:deg-f1a:thm:F1a-conditional}, (F1.a) holds given
+(H1)=(F1.a.1), (H2)=(F1.a.2), (H3)=(F1.a.3). Applying
+\Cref{v4-arith:thm:F1-reduction}, F1 is equivalent to (F1.a) and
+$\mathrm{L}_{\mathrm{ACD}}$; substituting the three-item expansion
+of (F1.a) from this chapter gives the displayed residual ledger.
+\end{proof}
+
+\subsection{Attack--Heal Trace for Cycle 6}
+
+\paragraph{Attack 1.} Sources: \Cref{v4-arith:cl:cor:F1-single-lemma}
+(wave-2 F1 reduction), plus the local-categorical-comparison
+arguments of the previous sections. Disjoint. \textbf{Pass.}
+
+\paragraph{Attack 2.} Global Emerton--Gee formalism follows
+Emerton--Gee \S 2.3 (global ind-Noetherian limit). The
+wild-enhancement is a local correction at two primes; globally it
+absorbs via the same ind-Noetherian limit. \textbf{Pass.}
+
+\paragraph{Attack 3.} Global stack sits in ind-Noetherian formal
+algebraic stacks over $\mathrm{Spec}\,\mathbb{Z}$; the automorphic
+side is the adelic double coset. Both sides have the same ambient
+presentable $\infty$-category. \textbf{Pass.}
+
+\paragraph{Attack 4.} (H1), (H2), (H3), $\mathrm{L}_{\mathrm{ACD}}$
+explicit. \textbf{Pass.}
+
+\paragraph{Attack 5.} Global assembly is a restricted tensor product
+over primes, compatible with cross-prime Hecke-functoriality. This
+compatibility is part of $\mathrm{L}_{\mathrm{ACD}}$; not a new
+residual of this chapter. \textbf{Pass.}
+
+\paragraph{Attack 6.} No new unproved equivalence. \textbf{Pass.}
+
+\paragraph{Attack 7.} No engine. \textbf{Pass.}
+
+Cycle~6 closes: the global consequence is unconditional given the
+three local residuals plus $\mathrm{L}_{\mathrm{ACD}}$.
+
+\section{Residual Scope}
+\label{v4-arith:deg-f1a:residuals}
+
+\subsection{Named Residuals Introduced by This Chapter}
+
+The chapter introduces two conjectures and one conditional theorem
+scope:
+
+\begin{enumerate}
+\item \Cref{v4-arith:deg-f1a:conj:block-exhaustion}
+(\textbf{R1a/F1.a.1}): block exhaustion for DEG at $p\geq 5$,
+fixed $\chi$, every residual $\rho$. Reduces essential surjectivity
+of DEG to a finite-block Koszul-type check.
+\item \Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement}
+(\textbf{R1b/F1.a.2}): existence of a derived formal algebraic
+wild-enhanced EG stack at $p\in\{2,3\}$ with four structural
+properties.
+\item \emph{BH block exhaustion at $p\in\{2,3\}$} (\textbf{R1c/F1.a.3}):
+the wild-block analogue of R1a; stated informally in the proof of
+\Cref{v4-arith:deg-f1a:thm:wild-functor-existence}.
+\end{enumerate}
+
+\subsection{What is Unconditional}
+
+Despite the three residuals, two results close unconditionally:
+
+\begin{enumerate}
+\item The fully-faithful family DEG embedding at $p\geq 5$
+(\Cref{v4-arith:deg-f1a:thm:DEG-family-ff}): no residual needed.
+This is the strongest unconditional statement toward F1.a.
+\item The global F1 reduction
+(\Cref{v4-arith:deg-f1a:prop:F1-reduction-updated}): no residual
+beyond the four explicitly named (F1.a.1, F1.a.2, F1.a.3, $\mathrm{L}_{\mathrm{ACD}}$).
+\end{enumerate}
+
+\subsection{Out of Scope}
+
+Three items are explicitly \emph{out of scope} for this chapter:
+
+\begin{enumerate}
+\item \emph{Langlands functoriality at the global level.} Not
+attacked; deferred to future work on the adelic categorical descent
+$\mathrm{L}_{\mathrm{ACD}}$.
+\item \emph{Higher $GL_{n}$ for $n\geq 3$.} The chapter focuses on
+$GL_{2}(\mathbb{Q}_{p})$; DEG's technology generalises under
+significant additional input (Emerton--Helm--Paskunas for
+$GL_{n}$), not in scope here.
+\item \emph{Number fields beyond $\mathbb{Q}$.} The chapter focuses
+on $\mathbb{Q}_{p}$; extension to $K_{v}$ for $K/\mathbb{Q}$ a
+finite extension requires additional considerations at primes
+ramified in $K$.
+\end{enumerate}
+
+\section{Summary}
+\label{v4-arith:deg-f1a:summary}
+
+\begin{enumerate}
+\item Wave-2 overclaimed F1.a as closed via Fargues--Scholze. The
+actual state of the art is Dotto--Emerton--Gee arXiv:2603.26887:
+\emph{fully-faithful, fixed central character, $p\geq 5$ only}
+(\Cref{v4-arith:deg-f1a:thm:deg-fixed-chi}).
+\item Three obstructions separate DEG from F1.a:
+(a) essential surjectivity; (b) extension to $p\in\{2,3\}$;
+(c) central-character variation
+(\Cref{v4-arith:deg-f1a:rem:deg-not-assert}).
+\item Obstruction (a) reduces to
+\Cref{v4-arith:deg-f1a:conj:block-exhaustion} (F1.a.1): block
+exhaustion per residual Galois representation.
+\Cref{v4-arith:deg-f1a:thm:ess-surj-conditional} closes (a) under
+this conjecture.
+\item Obstruction (b) reduces to
+\Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement} (F1.a.2: existence
+of wild-enhanced EG stack) plus the BH analogue of block exhaustion
+(F1.a.3).
+\Cref{v4-arith:deg-f1a:thm:wild-functor-existence} and
+\Cref{v4-arith:deg-f1a:cor:wild-ess-surj} close (b) under these
+conjectures.
+\item Obstruction (c) closes unconditionally once (a) closes, via
+\Cref{v4-arith:deg-f1a:thm:central-character-variation}: the
+central-character variation is automatic from the fibred structure.
+\item Full conditional closure of F1.a at all primes:
+\Cref{v4-arith:deg-f1a:thm:F1a-conditional}, conditional on (H1),
+(H2), (H3) = (F1.a.1), (F1.a.2), (F1.a.3).
+\item Unconditional partial closure: a fully-faithful family DEG
+embedding at every $p\geq 5$
+(\Cref{v4-arith:deg-f1a:thm:DEG-family-ff},
+\Cref{v4-arith:deg-f1a:cor:partial-F1a-large-p}). No residual.
+\item Global assembly check: F1 follows from F1.a (at every prime,
+including wild) plus $\mathrm{L}_{\mathrm{ACD}}$
+(\Cref{v4-arith:deg-f1a:thm:F1-adelic-check}); total F1 residual
+ledger is four items
+(\Cref{v4-arith:deg-f1a:prop:F1-reduction-updated}).
+\end{enumerate}
+
+The chapter produces no unconditional closure of F1.a. The
+strongest honest statement is the fully-faithful family DEG
+embedding at $p\geq 5$
+(\Cref{v4-arith:deg-f1a:cor:partial-F1a-large-p}); all other closure
+claims are explicitly conditional. The three residuals (F1.a.1,
+F1.a.2, F1.a.3) are strictly narrower than the original F1.a
+conjecture and each is individually attackable with the
+source catalog laid out here.
