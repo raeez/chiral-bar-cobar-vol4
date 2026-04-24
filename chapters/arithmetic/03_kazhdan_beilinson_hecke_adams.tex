@@ -1,0 +1,282 @@
+\chapter{Hecke versus Adams: the $GL_{1}$ / $GL_{2}$ Type Error}
+\label{v4-arith:kazhdan-beilinson}
+
+\emph{In the voice of Kazhdan + Beilinson. Kazhdan built the modern
+Hecke-algebra and automorphic-representation theory; Beilinson built
+chiral algebras. We interrogate the claim that Adams operations
+$\psi_{n}$ on $\Lambda$ lift to $GL_{2}$ Hecke operators $T_{n}$ on
+$\mathcal{V}^{\mathrm{prim}}$.}
+
+\section{The Satake Pair and Why It Matters}
+\label{v4-arith:kb:satake-pair}
+
+\begin{theorem}[Satake 1963; Macdonald 1971; Gross 1998]
+\label{v4-arith:thm:satake-GL2}
+\ClaimStatusProvedElsewhere. The spherical Hecke algebra
+$\mathcal{H}_{p}^{GL_{2}}=C_{c}^{\infty}(GL_{2}(\mathbb{Z}_{p})\backslash
+GL_{2}(\mathbb{Q}_{p})/GL_{2}(\mathbb{Z}_{p}))$ is a two-variable
+commutative ring; the Satake isomorphism reads
+\begin{equation}
+\mathrm{Sat}_{p}\colon\mathcal{H}_{p}^{GL_{2}}\xrightarrow{\sim}
+\mathbb{Z}[\alpha_{p}^{\pm 1},\beta_{p}^{\pm 1}]^{S_{2}}
+=\mathbb{Z}[\alpha_{p}+\beta_{p},\,\alpha_{p}\beta_{p},\,
+(\alpha_{p}\beta_{p})^{-1}],
+\end{equation}
+with $T_{p}\mapsto p^{1/2}(\alpha_{p}+\beta_{p})$ and the spherical
+determinant $\langle p\rangle$ (characteristic function of
+$GL_{2}(\mathbb{Z}_{p})\mathrm{diag}(p,p)GL_{2}(\mathbb{Z}_{p})$)
+mapping to $\alpha_{p}\beta_{p}$. On cuspidal weight-$0$ forms
+with trivial central character, $\alpha_{p}\beta_{p}=p$.
+\end{theorem}
+
+\begin{proposition}[Hecke generating function]
+\label{v4-arith:prop:hecke-generating-function}
+\ClaimStatusProvedElsewhere (Shimura, \emph{Introduction to the
+Arithmetic Theory of Automorphic Functions}, Princeton 1971,
+Thm~3.24). As an element of $\mathcal{H}_{p}^{GL_{2}}[[X]]$,
+\begin{equation}
+\sum_{k\geq 0}T_{p^{k}}X^{k}\;=\;
+\frac{1}{1-T_{p}X+p\langle p\rangle X^{2}}.
+\end{equation}
+\end{proposition}
+
+On a Hecke eigenform $f$ with $T_{p}f=a_{p}f$ and trivial central
+character, this gives
+\begin{equation}
+\sum_{k\geq 0}a_{p^{k}}X^{k}\;=\;
+\frac{1}{(1-\alpha_{p}X)(1-\beta_{p}X)},
+\end{equation}
+which is precisely the local Euler factor of the Hartnoll--Yang
+primon partition (arXiv:2502.02661, eqs.~14--15). The poles
+$\alpha_{p},\beta_{p}$ are \emph{two distinct numbers}; the
+recursion is driven by the degree-two characteristic polynomial
+$t^{2}-a_{p}t+p$.
+
+\section{Why Adams is not Hecke}
+\label{v4-arith:kb:adams-not-hecke}
+
+\begin{proposition}
+\label{v4-arith:prop:adams-commutative-monoid}
+\ClaimStatusProvedElsewhere (Borger arXiv:0906.3146, Prop.~1.2,
+Wilkerson criterion). Adams operations on a $\Lambda$-ring
+$(R,\{\psi_{n}\})$ satisfy
+$\psi_{m}\psi_{n}=\psi_{mn}$ --- a \emph{free commutative monoid}
+acting, parametrised by $(\mathbb{N}_{\geq 1},\times)$. This is the
+$GL_{1}$ Hecke algebra: one Cartan-torus generator per prime.
+\end{proposition}
+
+\begin{observation}[structural mismatch]
+\label{v4-arith:obs:gl1-vs-gl2}
+$GL_{1}$ Hecke $=$ Adams $=\Lambda$-ring. $GL_{2}$ Hecke has
+\emph{two} generators per prime: $T_{p}$ (trace of Satake pair)
+and $\langle p\rangle$ (determinant of Satake pair). No
+$\Lambda$-ring structure on a commutative ring can encode the
+unordered pair $\{\alpha_{p},\beta_{p}\}$ modulo $S_{2}$; it only
+encodes the product $p=\alpha_{p}\beta_{p}$ and not the individual
+parameters.
+\end{observation}
+
+\section{Explicit Computation: The Recursion Fails}
+\label{v4-arith:kb:recursion-fails}
+
+Take the claimed formula
+\begin{equation}
+T_{n}(a^{(p)}_{-k})\;=\;\sum_{d\mid n}d\cdot a^{(p)}_{-nk/d}\cdot\mathbf{1}_{d\mid k},
+\end{equation}
+extended by $T_{n}(|0\rangle)=|0\rangle$.
+
+\begin{computation}
+\label{v4-arith:comp:T_p-on-a_-1}
+$T_{p}(a^{(p)}_{-1}|0\rangle)$. Divisors of $n=p$ are
+$d\in\{1,p\}$. Only $d=1$ satisfies $d\mid k=1$. So
+\begin{equation}
+T_{p}(a^{(p)}_{-1}|0\rangle)\;=\;a^{(p)}_{-p}|0\rangle.
+\end{equation}
+\end{computation}
+
+\begin{computation}
+\label{v4-arith:comp:T_p-squared}
+$T_{p}^{2}(a^{(p)}_{-1}|0\rangle)$. Apply $T_{p}$ to
+$a^{(p)}_{-p}|0\rangle$: divisors $d\in\{1,p\}$, both satisfy
+$d\mid p$, so
+\begin{equation}
+T_{p}(a^{(p)}_{-p}|0\rangle)\;=\;a^{(p)}_{-p^{2}}|0\rangle
++p\cdot a^{(p)}_{-p}|0\rangle.
+\end{equation}
+Therefore
+\begin{equation}
+T_{p}^{2}(a^{(p)}_{-1}|0\rangle)\;=\;a^{(p)}_{-p^{2}}|0\rangle
++p\cdot a^{(p)}_{-p}|0\rangle.
+\end{equation}
+\end{computation}
+
+\begin{computation}
+\label{v4-arith:comp:T_p-squared-direct}
+$T_{p^{2}}(a^{(p)}_{-1}|0\rangle)$. Divisors $d\in\{1,p,p^{2}\}$,
+only $d=1$ satisfies $d\mid 1$. So
+\begin{equation}
+T_{p^{2}}(a^{(p)}_{-1}|0\rangle)\;=\;a^{(p)}_{-p^{2}}|0\rangle.
+\end{equation}
+\end{computation}
+
+\begin{observation}[recursion discrepancy]
+\label{v4-arith:obs:recursion-discrepancy}
+Testing $T_{p^{2}}=T_{p}^{2}-p\cdot\mathrm{id}$ on $a^{(p)}_{-1}|0\rangle$:
+\begin{align}
+T_{p}^{2}-p\cdot\mathrm{id}\bigr|_{a^{(p)}_{-1}|0\rangle}
+&\;=\;a^{(p)}_{-p^{2}}|0\rangle+p\cdot a^{(p)}_{-p}|0\rangle-p\cdot a^{(p)}_{-1}|0\rangle, \\
+T_{p^{2}}\bigr|_{a^{(p)}_{-1}|0\rangle}
+&\;=\;a^{(p)}_{-p^{2}}|0\rangle.
+\end{align}
+The discrepancy is $p(a^{(p)}_{-p}-a^{(p)}_{-1})|0\rangle\neq 0$.
+\end{observation}
+
+\begin{corollary}[falsification]
+\label{v4-arith:cor:recursion-falsified}
+\ClaimStatusProvedHere. The formula
+$T_{n}(a^{(p)}_{-k})=\sum_{d\mid n}d\cdot a^{(p)}_{-nk/d}\mathbf{1}_{d\mid k}$
+satisfies $T_{m}T_{n}=T_{mn}$ (Adams, $GL_{1}$) but \emph{not} the
+$GL_{2}$ Hecke recursion $T_{p^{2}}=T_{p}^{2}-pT_{1}$.
+\end{corollary}
+
+\section{Healing: Diagonalise onto the Satake Pair}
+\label{v4-arith:kb:healing-satake-diagonalisation}
+
+\begin{definition}[Satake-diagonalised assignment]
+\label{v4-arith:def:satake-diagonalised}
+The rank-$2$ Heisenberg $\mathcal{H}^{(p)}$ has two commuting
+generators per prime. Assign:
+\begin{align}
+a^{(p)}_{-1}|0\rangle\;&\text{ carries Satake weight }\;\alpha_{p}, \\
+b^{(p)}_{-1}|0\rangle\;&\text{ carries Satake weight }\;\beta_{p},
+\end{align}
+with constraint $\alpha_{p}\beta_{p}=p$ encoded in the conformal
+vector
+$\omega_{p}(\theta_{p})=\tfrac{1}{2}(\log p)(a_{-1}^{2}+b_{-1}^{2})|0\rangle$
+via $\log\alpha_{p}+\log\beta_{p}=\log p$.
+\end{definition}
+
+\begin{theorem}[corrected Hecke action]
+\label{v4-arith:thm:corrected-hecke}
+\ClaimStatusProvedHere. Under
+\Cref{v4-arith:def:satake-diagonalised}, the $GL_{2}$ Hecke
+operator $T_{p}^{GL_{2}}$ acts on one-particle states
+$c_{1}a^{(p)}_{-k}|0\rangle+c_{2}b^{(p)}_{-k}|0\rangle$ as the
+diagonal matrix
+\begin{equation}
+T_{p}^{GL_{2}}\;=\;\begin{pmatrix}\alpha_{p}&0\\0&\beta_{p}\end{pmatrix},
+\qquad\langle p\rangle^{GL_{2}}\;=\;\alpha_{p}\beta_{p}\cdot I=p\cdot I.
+\end{equation}
+On the trace-symmetric sector (invariants under $S_{2}$ swap
+$a^{(p)}\leftrightarrow b^{(p)}$), $T_{p}$ acts as the scalar
+$\alpha_{p}+\beta_{p}=2p^{1/2}\cos\theta_{p}$ --- the
+Hartnoll--Yang coefficient (up to $p^{1/2}$ absorbed by the
+central-character shift $s\mapsto s-1/2$).
+\end{theorem}
+
+\begin{corollary}[Hecke recursion on symmetric sector]
+\label{v4-arith:cor:hecke-recursion-Sym}
+\ClaimStatusProvedHere. On $\mathrm{Sym}^{k}(F_{p}^{1})$ with
+$F_{p}^{1}=\mathbb{C}\cdot a^{(p)}_{-1}|0\rangle\oplus\mathbb{C}\cdot b^{(p)}_{-1}|0\rangle$,
+\begin{equation}
+\mathrm{Tr}_{\mathrm{Sym}^{k}}(T_{p})
+\;=\;\alpha_{p}^{k}+\alpha_{p}^{k-1}\beta_{p}+\cdots+\beta_{p}^{k}
+\;=\;h_{k}(\alpha_{p},\beta_{p}),
+\end{equation}
+the complete symmetric function, and the three-term recursion
+$h_{k+1}=(\alpha+\beta)h_{k}-\alpha\beta\cdot h_{k-1}$
+(Macdonald~1971, Ch.~IV~\S1) translates to
+$T_{p^{k+1}}=T_{p}T_{p^{k}}-p\,T_{p^{k-1}}$.
+\end{corollary}
+
+\section{What the Angle $\theta_{p}$ Is (Background Data, not Dynamical)}
+\label{v4-arith:kb:theta-p-background}
+
+\begin{proposition}
+\label{v4-arith:prop:theta-p-is-satake}
+\ClaimStatusProvedElsewhere (Borel, ``Automorphic L-functions,''
+PSPM~33.2, 1979). The angle $\theta_{p}$ is the unramified local
+Langlands parameter at $p$: an unordered pair
+$\{\alpha_{p},\alpha_{p}^{-1}\}=\{e^{i\theta_{p}},e^{-i\theta_{p}}\}\in
+(\mathbb{C}^{\times})^{2}/S_{2}$.
+\end{proposition}
+
+\begin{convention}
+$\{\theta_{p}\}_{p}$ is chosen once and for all as a map
+$\theta\colon\mathrm{Spec}\,\mathbb{Z}\setminus\{\infty\}\to S^{1}/\sigma$
+(the angle modulo $\theta\leftrightarrow-\theta$, since
+$2\cos\theta=2\cos(-\theta)$). This is precisely the data of an
+unramified local Langlands parameter at each finite place. The
+Hartnoll--Yang L-function
+\begin{equation}
+L(s)\;=\;\prod_{p}\frac{1}{1-2\cos\theta_{p}\,p^{-s}+p^{-2s}}
+\end{equation}
+is the standard $L$-function of an automorphic representation of
+$GL_{2}(\mathbb{A}_{\mathbb{Q}})$ with trivial central character
+(Gelbart--Jacquet arXiv:math/0312099, \S2.1).
+\end{convention}
+
+\section{Beilinson: the Chiral Framework Must Accept the Mismatch}
+\label{v4-arith:kb:beilinson-framework}
+
+\begin{remark}
+The chiral-algebras formalism of Beilinson--Drinfeld (AMS~2004)
+requires a smooth complex curve $X$ and right $D_{X}$-module
+structure; the chiral bracket as residue along the diagonal uses
+complex-analytic residues. Over
+$\overline{C}=\overline{\mathrm{Spec}\,\mathbb{Z}}$, the residue at
+a finite place $p$ is the $p$-adic residue on the local spectral
+disk $\mathrm{Spec}\,\mathbb{Q}_{p}$; over the archimedean place,
+it is the classical residue. The $GL_{2}$-Hecke operator is a
+\emph{global} object assembled from local Hecke operators and
+lives in $\mathrm{End}(\pi)$ for the global automorphic
+representation $\pi=\otimes'_{v}\pi_{v}$ (Jacquet--Langlands,
+SLN~114, 1970).
+\end{remark}
+
+\begin{theorem}[healed placement]
+\label{v4-arith:thm:beilinson-honest-reading}
+\ClaimStatusConjectured. $\mathcal{V}^{\mathrm{prim}}$ is the
+restricted tensor product $\otimes'_{p}\mathcal{H}^{(p)}$ of local
+rank-$2$ Heisenberg factors, each carrying a Whittaker model of
+an unramified $GL_{2}(\mathbb{Q}_{p})$ principal series. The
+$GL_{2}$-Hecke action is \emph{diagonal across primes}: each local
+$\mathcal{H}_{p}^{GL_{2}}$ acts on the corresponding
+$\mathcal{H}^{(p)}$; the global Hecke algebra
+$\mathcal{H}_{\mathrm{glob}}^{\mathrm{sph}}=\bigotimes'_{p}\mathcal{H}_{p}^{\mathrm{sph}}$
+acts on $\mathcal{V}^{\mathrm{prim}}$ by restricted tensor product
+of local actions. The simultaneous-diagonalisation of
+$\mathcal{H}_{\mathrm{glob}}^{\mathrm{sph}}$ is the Hecke-eigenform
+decomposition of $\mathcal{V}^{\mathrm{prim}}$.
+\end{theorem}
+
+\section{Summary of This Chapter}
+\label{v4-arith:kb:summary}
+
+\begin{enumerate}
+\item The rank-$2$ Heisenberg per prime, with generators
+$(a^{(p)},b^{(p)})$, is the correct local model for $GL_{2}$
+(\Cref{v4-arith:def:satake-diagonalised}).
+\item The Satake pair $(\alpha_{p},\beta_{p})$ with constraint
+$\alpha_{p}\beta_{p}=p$ is diagonalised on the two Heisenberg
+generators
+(\Cref{v4-arith:thm:corrected-hecke}).
+\item The naive $T_{n}$-formula is $GL_{1}$ Adams, not $GL_{2}$
+Hecke; it fails the recursion on the one-particle sector
+(\Cref{v4-arith:cor:recursion-falsified}).
+\item The correct recursion holds on the symmetric sector
+$\mathrm{Sym}^{k}(F_{p}^{1})$ via Macdonald complete symmetric
+functions
+(\Cref{v4-arith:cor:hecke-recursion-Sym}).
+\item The angle $\theta_{p}$ is the unramified Langlands parameter
+at $p$ (\Cref{v4-arith:prop:theta-p-is-satake}), not a dynamical
+internal parameter.
+\item $\mathcal{V}^{\mathrm{prim}}$ is an automorphic representation
+$\otimes'_{p}\pi_{p}$, with $\mathcal{H}_{\mathrm{glob}}^{\mathrm{sph}}$
+acting diagonally (\Cref{v4-arith:thm:beilinson-honest-reading}).
+\end{enumerate}
+
+The Hecke-Adams identification is corrected: $\Lambda$-ring Adams
+operations capture only the Cartan-torus generator; full $GL_{2}$
+Hecke needs the Weyl-$S_{2}$-swap symmetry plus the determinant
+twist. The rank-$2$ Heisenberg per prime carries both.

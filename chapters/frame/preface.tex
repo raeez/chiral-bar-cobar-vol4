@@ -1,0 +1,171 @@
+\chapter*{Preface}
+\label{v4-ch:preface}
+
+An inscribed theorem is not a verified theorem. A claim carrying the
+tag \texttt{\textbackslash ClaimStatusProvedHere} asserts that the
+reader will find, within the same file, a proof. It does not assert,
+and cannot by itself assert, that the proof's internal derivation is
+disjoint from the sources the author consulted to arrive at the
+statement. The two are routinely identified in mathematical practice,
+and for good reason: one trusts the author. The programme that
+precedes this volume has earned that trust across three volumes, on
+the Beilinson principle, against an explicit adversarial protocol,
+with over one hundred thousand tests. Yet a trust-based corpus is not
+a verified corpus.
+
+The deficiency is concrete. Consider the inscription in Vol III of
+the formula
+\[
+    \kappa_{\mathrm{BKM}} \;=\; c_N(0)/2
+\]
+for the Borcherds-Kac-Moody central charge of a frame-shape orbifold
+lift. In the compute engine, $c_N(0)$ is tabulated from
+\texttt{FRAME\_SHAPE\_DATA}. The hardcoded expected values in the
+test file are computed by halving entries of the same table. Ninety-nine
+tests pass. The derivation (via the Borcherds 1998 weight theorem
+applied to the input lift) and the verification (by direct arithmetic
+on the tabulated lift data) share a source. Nothing can fail. No
+ninety-nine-test harness is detecting anything about the inscription
+beyond the arithmetic $c_N(0)/2 = c_N(0)/2$.
+
+This is not a local accident. The 2026-04-16 adversarial audit across
+the programme found that every programme-wide hardcoded-table
+verification was of this form: the table from which the theorem was
+derived also supplied the test expectations. The programme is not
+verifying that its theorems are true; it is verifying that its
+arithmetic on a single source is consistent. The two are routinely
+identified in mathematical practice, but they are not the same.
+
+The deficiency admits a clean remedy: a disjointness requirement. A
+theorem $T$ is verified, in the sense relevant to avoid the kind of
+coincidental-agreement failure exposed in Vol I's AP186 (the
+$\Psi = 2$ coincidence masking a cross-arity sign error), only if
+there exists a test whose expected value is computed along a source
+disjoint from the source used to derive $T$'s formula. Disjoint means
+disjoint as a set of citations, not disjoint as a rephrasing. The
+2026-04-16 installation of the HZ-IV protocol in Vols I, II, and III
+(\texttt{compute/lib/independent\_verification.py}) begins to enforce
+this: every test decorated with \texttt{@independent\_verification}
+must declare its \texttt{derived\_from} and \texttt{verified\_against}
+sources, and the decorator raises \texttt{IndependentVerificationError}
+at collection time if the two sets overlap.
+
+What HZ-IV does not do, at installation, is provide coverage. The
+installation snapshot across the three prior volumes was:
+
+\begin{center}
+\begin{tabular}{lcl}
+Vol I   & \quad & 0 of 2275 ProvedHere claims covered. \\
+Vol II  & \quad & 0 of 1134 ProvedHere claims covered. \\
+Vol III & \quad & 2 of 283 ProvedHere claims covered. \\
+\end{tabular}
+\end{center}
+
+Two claims out of 3692. The infrastructure was in place; the content
+was not. A programme's claim corpus can be verified one decorator at a
+time, but not by the same act that produces the theorem. The
+verification must be a separate intellectual operation, carried out
+with a different source catalog, and held to a different standard
+than the proof that produced the theorem.
+
+Volume IV is that separate operation.
+
+This volume does not introduce new theorems as its primary content.
+It introduces a verification layer, defined precisely enough to have
+its own theorems (the existence of the realization pair, its
+functoriality on the non-degenerate locus, its behavior under scope
+restriction). The content is the realization pair
+\[
+    \mathrm{Real}(X, T) \;=\; (d, e),
+\]
+where $d$ is an HZ-IV decorator whose derivation and verification
+sources are disjoint, and $e$ is a compute engine whose hardcoded
+expected values come from a source disjoint from the engine's
+formula. The central theorem of Vol IV is that Real exists for every
+ProvedHere claim inscribed in Vols I, II, III on the non-degenerate
+locus of the programme. The non-degenerate locus is large: it
+includes every generic parameter in every standard family, every
+Koszul-locus claim, every chain-level result outside the admissible
+logarithmic sector, every CY route outside the five unconverged
+bridges of AP-CY60. It excludes the critical level $k = -h^\vee$ for
+affine Kac-Moody (where $\kappa = 0$ and Koszulness fails), the
+$\Psi = 0$ locus for chiral Yangians (where the algebra is abelian),
+the Creutzig-Kanade-Linshaw admissible logarithmic sector, and the
+super-Yangian chain-level chiral coproduct sector.
+
+The structure is as follows. The index part (see \texttt{CLAUDE.md}
+Part~A) enumerates every ProvedHere claim of Vols I-III, organized by
+theorem class. The decorator part installs HZ-IV decorators. The
+infrastructure part aligns compute engines. Vol IV's own theorems sit
+in the realization programme chapter, which follows this preface.
+Each of the three Vol IV theorems is itself realized: the decorator is
+installed at inscription time; the engine backs it from a disjoint
+source catalog; the reader can run the test on receipt of the
+repository.
+
+A note on what Vol IV is not. Vol IV is not a summary. The summary
+role belongs to Vol I's opening part (statement of the five theorems)
+and Vol I's preface (programme survey). Vol IV is not a metadata
+volume. Metadata sits in \texttt{concordance.tex}, the \texttt{notes/}
+directory, and the claim-status tags. Vol IV is not a second pass on
+the mathematics of Vols I-III; it does not re-prove theorems. What
+Vol IV is, is a functor. The functor Real from inscribed theorems to
+verification pairs. The proof that Real is defined on a large locus.
+The scope restriction where it is not. This is a mathematical content
+claim, and this volume is organized around it.
+
+A second note, on tone. The three prior volumes are written in the
+Russian school's convergent voice: Gelfand's inevitability,
+Beilinson's falsification, Drinfeld's unifying principle, Kazhdan's
+compression. Vol IV inherits all four. The inevitability is that
+trust-based inscription eventually produces a tautology somewhere in
+the corpus; the falsification is HZ-IV's disjointness check catching
+it at collection time; the unifying principle is the realization
+functor Real; the compression is this preface. The fifth voice Vol IV
+adds is a concession: verification is a craft, and its content is
+specific. The Borcherds $c_N(0)/2$ identification is verified by a
+Gritsenko-Nikulin denominator identity, not by a tabulation; the
+affine Kac-Moody $\kappa = \dim(\mathfrak{g})(k + h^\vee)/(2 h^\vee)$
+identification is verified at non-critical level by Feigin-Frenkel
+screening cohomology, not by character arithmetic on the Sugawara
+construction; the class M MC5 Wick $S_5 = -48/(c^2(5c + 22))$ is
+verified by an independent Wick contraction engine built from the
+Virasoro OPE axioms, not from the lambda-bracket expansion used to
+derive it. Each of these is a specific mathematical act. Vol IV is
+the volume in which these acts are carried out and their disjointness
+recorded.
+
+\section*{How to read this volume}
+
+The reader with a theorem in hand from Vols I, II, or III, wishing to
+know whether its realization pair is installed, consults Part A and
+is directed either to a realized entry in Part B or to a
+scope-restricted entry with the complementary locus explicitly marked.
+
+The reader interested in the realization programme as a mathematical
+object, independent of any particular claim, reads the realization
+programme chapter (\ref{v4-ch:realization-programme}).
+
+The reader interested in the decorator protocol and its enforcement
+at import time consults
+\texttt{compute/lib/realization\_registry.py} in this repository,
+together with the Vol I \texttt{compute/lib/independent\_verification.py}
+that this volume extends.
+
+The programme's Vol I CLAUDE.md remains the primary constitution. Vol
+IV's CLAUDE.md adds Vol IV-specific discipline: label prefix
+\texttt{v4-}, the Vol IV registry's import-time disjointness check
+against the Vol I registry, and the protocol for closing coverage
+against Vols I, II, and III.
+
+\section*{Credits}
+
+The programme is the author's own. The adversarial audits that
+surfaced the verification deficiency, the HZ-IV protocol that
+installed the collection-time disjointness check, and the content of
+this volume's theorems are the author's responsibility. The disjoint
+source catalogs -- Pridham-Toen-Vezzosi, Lurie HA 5.3,
+Costello-Gwilliam, Francis-Gaitsgory, Mok 2025, Hua-Keller,
+Ben-Zvi-Francis-Nadler, Schiffmann-Vasserot, Costello-Witten-Yamazaki
+-- are cited at the points of use. All commits in this repository
+are authored by Raeez Lorgat. No AI attribution appears.
