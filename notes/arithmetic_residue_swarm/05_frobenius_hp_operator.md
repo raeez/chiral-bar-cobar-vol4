@@ -293,16 +293,17 @@ Local file anchors:
 - `chapters/arithmetic/90_archimedean_Wilson_surface.tex:533`: the
   archimedean generator, Virasoro generator, and Hilbert--Polya generator
   remain distinct.
-- `determinant_of_an_operator.tex:851`: determinant identity warning.
-- `determinant_of_an_operator.tex:1168`: Deninger-type determinant target.
-- `determinant_of_an_operator.tex:1455`: required data for an arithmetic
-  determinant formula.
+- `../chiral-bar-cobar/standalone/determinant_of_an_operator.tex:852`:
+  determinant identity warning.
+- `../chiral-bar-cobar/standalone/determinant_of_an_operator.tex:1179`:
+  Deninger-type determinant target.
+- `../chiral-bar-cobar/standalone/determinant_of_an_operator.tex:1467`:
+  required data for an arithmetic determinant formula.
 
 Adjacent-file check:
 
-- `../igusa-cusp-form/standalone/determinant_of_an_operator.tex` and
-  `../topological-strings/standalone/determinant_of_an_operator.tex` contain
-  the same determinant warnings at the corresponding standalone anchors.
+- The determinant paper is canonical in Vol I. Adjacent repositories do not
+  carry separate determinant standalone copies.
 
 ## TeX-Ready Repair Text
 

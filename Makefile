@@ -56,7 +56,7 @@ PDF       := $(OUT_DIR)/main.pdf
 ICLOUD_MAIN_PREREQ := $(if $(wildcard $(PDF)),,$(PDF))
 
 # Standalone documents
-STANDALONE_TEX := determinant_of_an_operator.tex $(wildcard standalone/*.tex)
+STANDALONE_TEX := $(wildcard standalone/*.tex)
 STANDALONE_PASSES := 3
 
 STAMP     := .build_stamp
