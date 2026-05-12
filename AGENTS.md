@@ -135,7 +135,7 @@ then attack again until no fatal objection survives.
    decorator or engine edit.
 5. Home-volume source chapters in `~/chiral-bar-cobar`,
    `~/chiral-bar-cobar-vol2`, and `~/calabi-yau-quantum-groups`.
-6. Adjacent math papers `~/igusa-cusp-form` and `~/topological-strings`
+6. Adjacent math papers `~/igusa-cusp-form` and `~/mixed-holomorphic-topological-strings`
    when a modular, BKM, BCOV, or arithmetic trace claim crosses them.
 
 ## Escalation
@@ -144,3 +144,20 @@ Stop and report when a proof obligation cannot be discharged honestly,
 when Vol IV disagrees with a source theorem in Vol I-III, when a compute
 engine disagrees with manuscript prose, or when completing the task
 requires overwriting work outside this repo or `~/latex-template`.
+
+## Code-writing discipline — repo application
+
+Per `~/ecosystem/INVARIANTS.md §XIII`. Twelve rules instantiated for chiral-bar-cobar Vol IV (realization capstone: `Real(X,T)=(d,e)`; HZ-IV decorators; source-disjoint compute expected-value audits for Vols I–III ProvedHere claims; arithmetic branch):
+
+1. **Think Before Coding.** Every realization-statement edit names the affected ProvedHere claim in Vols I–III, the HZ-IV decorator, and the claim-status macro. Every source-disjoint compute audit cites the underlying Vol I/II/III source.
+2. **Simplicity First.** Realization capstone is the scope; auxiliary scaffolding earns its place by serving a `Real(X,T)=(d,e)` claim. The arithmetic branch is a synthesis, not a computation — Part C remains unchanged by additions.
+3. **Surgical Changes.** A realization-edit does not modify the source Vol I/II/III text; it audits and witnesses. An HZ-IV decorator edit does not silently rewrite the decorator semantics. Arithmetic-branch labels use `v4-arith:` prefix to disambiguate.
+4. **Goal-Driven Execution.** Success = `pdflatex -interaction=nonstopmode main.tex` clean, `pytest compute/tests/ -q` clean, theorem ledger consistent across Vols I–IV, ProvedHere audit ledger up to date, voice-scan + term-coining test pass.
+5. **Use the model only for judgment calls.** Source-disjoint compute audits are deterministic; the comparison source must exist. Codex drafts audit prose; it does not invent decorators or imported theorems.
+6. **Token budgets are not advisory.** Monograph + cross-volume; checkpoint between Vols I/II/III audit batches. Long runs are normal — load context first, build internal outline. `reasoning_effort=xhigh` for non-trivial mathematics, never below `high`.
+7. **Surface conflicts, don't average them.** Vols I–III canonical statements are the source of truth; Vol IV is the witness. If audit shows Vols I–III internal contradiction, halt and escalate. Imported local theorems (Fargues–Scholze arXiv:2102.13459; Emerton–Gee arXiv:2012.12403) are not re-derived — cite, never rewrite.
+8. **Read before you write.** Read the cited Vol I/II/III source before editing the corresponding Vol IV audit entry. Read `compute/lib/realization_registry.py` and `compute/tests/` before any decorator or engine edit. Per Codex load order: `./CLAUDE.md` → `~/ecosystem/INVARIANTS.md` + `AGENTS-HARNESS.md` → `main.tex` → target chapter → registry/tests → home-volume sources → adjacent math papers.
+9. **Tests verify intent.** ProvedHere audit ledger encodes audit completeness; voice-scan + term-coining test are load-bearing. `pytest compute/tests/` exercises engine consistency, not just shape. A ProvedHere row without a source-disjoint compute is broken.
+10. **Checkpoint after every significant step.** Between audit batches, summarize delta in ProvedHere status across Vols I–III. Between arithmetic-branch attacks, restate the convergence trajectory.
+11. **Match the codebase's conventions, even if you disagree.** raeez-math-template per `INVARIANTS.md §XII`. Existing decorator naming. `v4-arith:` label prefix for the arithmetic branch. No new compute engines in Part C unless explicitly authorized.
+12. **Fail loud.** Surface every audit gap; never close a ProvedHere row without a source-disjoint compute. Compute-vs-manuscript disagreement halts and reports. Never claim $\mathcal{V}^{\mathrm{prim}}$ is a vertex algebra — it is a Hochschild trace class.

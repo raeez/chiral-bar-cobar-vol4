@@ -49,10 +49,9 @@ programme.
 ## Mission
 
 1. 100 percent HZ-IV decorator coverage across Vols I-III ProvedHere
-   claims. At installation snapshot (2026-04-16): Vol I 0/2275, Vol II
-   0/1134, Vol III 2/283. Vol IV closes these gaps either by inscribing
-   a genuine decorator or by explicit scope restriction / status
-   downgrade.
+   claims. Vol IV closes coverage gaps by inscribing a genuine
+   decorator or by explicit scope restriction / status downgrade. The
+   live coverage roster lives in `notes/hziv_coverage.md`.
 2. Engine-claim alignment. Every ProvedHere claim backed by a compute
    engine in Vols I-III carries a cross-reference from Vol IV that
    verifies the engine's expected values come from a source disjoint
@@ -76,16 +75,15 @@ Part A is a cross-referenced index of every ProvedHere claim in Vols
 I-III, organized by theorem class:
 
 - A.1 Five theorems (A, B, C, D, H) across all three volumes.
-- A.2 Master conjectures MC1-MC5 (all proved as of 2026-04-16).
+- A.2 Master conjectures MC1-MC5.
 - A.3 Shadow tower, G/L/C/M depth classification, SC-formality.
 - A.4 Chiral quantum groups (sl_2 Yangian, affine KM, gl_N, elliptic,
   toroidal formal disk).
 - A.5 CY landscape (Phi functor, kappa_BKM universality, CY-A_3, CY-D
   stratification, six routes to H_Muk).
-- A.6 Platonic reconstitution chapters (2026-04-16 wave): Koszul
-  Reflection Theorem, kappa-conductor K, d_bar = KZ^*(nabla_Arnold),
-  quadrichotomy, MC5, S_5 Wick, Phi functor Vol III, infinite
-  fingerprint classification.
+- A.6 Reconstitution chapters: Koszul Reflection Theorem,
+  kappa-conductor K, d_bar = KZ^*(nabla_Arnold), quadrichotomy, MC5,
+  S_5 Wick, Phi functor Vol III, infinite fingerprint classification.
 
 Each entry in Part A records: claim label, source chapter (Vol:file),
 status tag, the derivation path used in the original proof, and the
@@ -234,14 +232,9 @@ rationale, decorator in place at inscription time.
 ### HZ-IV (Vol IV coverage target)
 
 Target: 100 percent coverage of ProvedHere claims in Vols I-III by Vol
-IV decorators. Snapshot (2026-04-16, installation):
+IV decorators. The live coverage roster lives in `notes/hziv_coverage.md`.
 
-    Vol I:   0 / 2275 covered   (target: 2275 / 2275)
-    Vol II:  0 / 1134 covered   (target: 1134 / 1134)
-    Vol III: 2 /  283 covered   (target:  283 /  283)
-
-At Vol IV installation, three Vol IV decorators are installed (Part B
-seed):
+Three seed Vol IV decorators sit in Part B:
 
 1. `thm:realization-programme-definition` (defines Real).
 2. `thm:realization-existence-for-platonic-theorems` (Real exists for
@@ -249,9 +242,8 @@ seed):
 3. `thm:realization-completeness-programme` (Real extends to the
    non-degenerate locus).
 
-Progress is tracked in `notes/hziv_coverage.md` (to be created per
-campaign). Each campaign targets a batch of Vol I-III claims, inscribes
-Vol IV decorators, and updates the coverage snapshot.
+Each campaign targets a batch of Vol I-III claims, inscribes Vol IV
+decorators, and updates the coverage roster.
 
 ### Prose standard
 
@@ -522,5 +514,24 @@ attack-heal protocol run during 2026-04-23 to 2026-04-24. Raw
 transcripts are preserved in `notes/arithmetic_attack_heal/`. Each
 voice channelled a distinct combination of the elite Russian school
 and the mathematical physics elite; each executed at least five
-attack-heal cycles; the fifteen independent trajectories converged on
+attack-and-repair iterations; the fifteen independent trajectories converged on
 the common Hochschild-trace-class object described above.
+
+---
+
+## Code-writing discipline — repo application
+
+Per `~/ecosystem/INVARIANTS.md §XIII`. Twelve rules instantiated for chiral-bar-cobar Vol IV (realization capstone: `Real(X,T)=(d,e)`; HZ-IV decorators; source-disjoint compute expected-value audits for Vols I–III ProvedHere claims; arithmetic branch):
+
+1. **Think Before Coding.** Every realization-statement edit names the affected ProvedHere claim in Vols I–III, the HZ-IV decorator, and the claim-status macro. Every source-disjoint compute audit cites the underlying Vol I/II/III source.
+2. **Simplicity First.** Realization capstone is the scope; auxiliary scaffolding earns its place by serving a `Real(X,T)=(d,e)` claim. The arithmetic branch is a synthesis, not a computation — Part C remains unchanged by additions.
+3. **Surgical Changes.** A realization-edit does not modify the source Vol I/II/III text; it audits and witnesses. An HZ-IV decorator edit does not silently rewrite the decorator semantics. Arithmetic-branch labels use `v4-arith:` prefix to disambiguate.
+4. **Goal-Driven Execution.** Success = `pdflatex -interaction=nonstopmode main.tex` clean, `pytest compute/tests/ -q` clean, theorem ledger consistent across Vols I–IV, ProvedHere audit ledger up to date, voice-scan + term-coining test pass.
+5. **Use the model only for judgment calls.** Source-disjoint compute audits are deterministic; the comparison source must exist. The model drafts audit prose; it does not invent decorators or imported theorems.
+6. **Token budgets are not advisory.** Monograph + cross-volume; checkpoint between Vols I/II/III audit batches. Long runs are normal — load context first, build internal outline.
+7. **Surface conflicts, don't average them.** Vols I–III canonical statements are the source of truth; Vol IV is the witness. If audit shows Vols I–III internal contradiction, halt and escalate. Imported local theorems (Fargues–Scholze arXiv:2102.13459; Emerton–Gee arXiv:2012.12403) are not re-derived — cite, never rewrite.
+8. **Read before you write.** Read the cited Vol I/II/III source before editing the corresponding Vol IV audit entry. Read `compute/lib/realization_registry.py` and `compute/tests/` before any decorator or engine edit.
+9. **Tests verify intent.** ProvedHere audit ledger encodes audit completeness; voice-scan + term-coining test are load-bearing. `pytest compute/tests/` exercises engine consistency, not just shape. A ProvedHere row without a source-disjoint compute is broken.
+10. **Checkpoint after every significant step.** Between audit batches, summarize delta in ProvedHere status across Vols I–III. Between arithmetic-branch attacks, restate the convergence trajectory.
+11. **Match the codebase's conventions, even if you disagree.** raeez-math-template per `INVARIANTS.md §XII`. Existing decorator naming. `v4-arith:` label prefix for the arithmetic branch. No new compute engines in Part C unless explicitly authorized.
+12. **Fail loud.** Surface every audit gap; never close a ProvedHere row without a source-disjoint compute. Compute-vs-manuscript disagreement halts and reports. Never claim $\mathcal{V}^{\mathrm{prim}}$ is a vertex algebra — it is a Hochschild trace class.
