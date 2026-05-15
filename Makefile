@@ -55,6 +55,10 @@ OUT_DIR   := out
 PDF       := $(OUT_DIR)/main.pdf
 ICLOUD_MAIN_PREREQ := $(if $(wildcard $(PDF)),,$(PDF))
 
+# Mathematics publish dir -- release binary copied here under canonical name
+MATHEMATICS_DIR := $(HOME)/mathematics
+PUBLISHED_PDF   := arithmetic_chiral_homology_and_deninger.pdf
+
 # Standalone documents
 STANDALONE_TEX := $(wildcard standalone/*.tex)
 STANDALONE_PASSES := 3
@@ -76,7 +80,7 @@ AUX_EXTS  := aux log out toc synctex.gz fdb_latexmk fls bbl blg \
 
 .DEFAULT_GOAL := all
 
-.PHONY: all fast clean veryclean clean-builds count check test help release standalone icloud
+.PHONY: all fast clean veryclean clean-builds count check test help release standalone icloud mathematics-publish
 
 ## icloud: Copy latest PDFs to iCloud Drive (subject-organised)
 icloud: $(ICLOUD_MAIN_PREREQ) standalone
@@ -137,13 +141,26 @@ release:
 		echo "  fail  manuscript build failed."; exit 1; \
 	fi
 	@echo ""
-	@echo "  [2/2] Standalone documents and iCloud"
+	@echo "  [2/3] Standalone documents and iCloud"
 	@$(MAKE) --no-print-directory icloud
+	@echo ""
+	@echo "  [3/3] Publish to ~/mathematics"
+	@$(MAKE) --no-print-directory mathematics-publish
 	@echo ""
 	@echo "  =========================================="
 	@echo "  Release complete. All output in out/:"
 	@ls -1 $(OUT_DIR)/*.pdf 2>/dev/null | sed 's/^/    /'
 	@echo "  =========================================="
+
+## mathematics-publish: Copy the release binary to ~/mathematics under its canonical name
+mathematics-publish:
+	@mkdir -p "$(MATHEMATICS_DIR)"
+	@if [ -f "$(PDF)" ]; then \
+		cp "$(PDF)" "$(MATHEMATICS_DIR)/$(PUBLISHED_PDF)"; \
+		echo "    ok  $(MATHEMATICS_DIR)/$(PUBLISHED_PDF)"; \
+	else \
+		echo "    fail  $(PDF) missing -- skipping ~/mathematics publish"; \
+	fi
 
 ## standalone: Build standalone documents → out/
 standalone:
