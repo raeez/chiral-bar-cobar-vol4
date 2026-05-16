@@ -64,6 +64,7 @@ done
 export TEXINPUTS="$BUILD_DIR:$SRC_DIR:"
 
 RUN_LOG="$LOG_DIR/tex-build.stdout.log"
+prev_stats=""
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -117,13 +118,14 @@ for i in $(seq 1 $MAX_PASSES); do
     fi
 
     cit=$(count_matches 'Citation.*undefined' "$logfile")
-    ref=$(count_matches 'Reference.*undefined' "$logfile")
+    ref=$(count_matches 'LaTeX Warning: Reference `' "$logfile")
     rerun=$(count_matches 'Label\(s\) may have changed|Package rerunfilecheck Warning' "$logfile")
     overfull=$(count_matches 'Overfull \\hbox' "$logfile")
     underfull=$(count_matches 'Underfull \\hbox|Underfull \\vbox' "$logfile")
     pages=$(grep -o '([0-9]* pages' "$logfile" 2>/dev/null \
         | grep -o '[0-9]*' | tail -n 1 || echo '?')
     echo "   ${pages}pp, ${cit} undef citations, ${ref} undef references, ${rerun} rerun requests, ${overfull} overfull, ${underfull} underfull"
+    stats="${pages}:${cit}:${ref}:${rerun}"
 
     # Hard failure: non-zero exit AND no PDF produced
     if [ "$tex_rc" -ne 0 ] && \
@@ -141,6 +143,18 @@ for i in $(seq 1 $MAX_PASSES); do
         cp "$logfile" "$SRC_DIR/out/main.log" 2>/dev/null || true
         exit 0
     fi
+
+    # Fixed point with unresolved external/stale references: more passes cannot
+    # change the result unless the source labels change.
+    if [ "$i" -ge 3 ] && [ "$rerun" -eq 0 ] && [ "$stats" = "$prev_stats" ]; then
+        echo "warn Stable warning state after $i passes (Cit=$cit, Ref=$ref, Rerun=$rerun)."
+        mkdir -p "$SRC_DIR/out"
+        cp "$BUILD_DIR/main.pdf" "$SRC_DIR/out/main.pdf"
+        cp "$logfile" "$SRC_DIR/out/main.log" 2>/dev/null || true
+        exit 0
+    fi
+
+    prev_stats="$stats"
 done
 
 # Did not converge but PDF was produced
