@@ -1,5 +1,9 @@
 \documentclass[11pt]{article}
 \usepackage[localtheorems]{raeez-math-template}
+\usepackage{cleveref}
+\providecommand{\ClaimStatusConditional}{\textit{conditional}}
+\providecommand{\ClaimStatusProved}{\textit{proved}}
+\providecommand{\ClaimStatusOpen}{\textit{open}}
 
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
@@ -81,22 +85,116 @@ The construction uses operadic data. The coefficient datum is assembled from an 
 
 The comparison with Deninger's motivic picture and with arithmetic Chern--Simons is a conditional triangle.
 
-\begin{conjecture}[conditional triple comparison, informal]
+\begin{conjecture}[Conditional triple comparison; three-object typed
+separation $(O) \xrightarrow{\Xi_{\mathrm{BD/CG}}} (D)
+\xrightarrow{\Pi_\partial} (C)$; \ClaimStatusConditional on the four
+named comparison morphisms; licensing tags
+$\alpha + \beta + \gamma + \delta$]
 \label{v4-arith-den:thm:triple-informal}
-Assume:
-\begin{enumerate}
-\item a Deninger spectral-flow operator $\ThetaAr$ on the primary degree-one sector with regularised determinant convention fixed;
-\item a Beilinson--Drinfeld/Costello--Gwilliam comparison between the finite-stage ordered bar and arithmetic chiral homology;
-\item a quantum arithmetic Chern--Simons boundary theory whose boundary trace is the primary class $\VAr$;
-\item compatible topological completions and dualities.
+\index{Deninger comparison!conditional triple|textbf}%
+\index{three-object typed separation!Deninger}%
+\index{typed-carrier discipline!arithmetic curve}%
+
+\noindent\textbf{Status.}\enspace \ClaimStatusConditional on the four
+comparison morphisms $(M1)$--$(M4)$ below.  Without these, the three
+candidate objects $(O)$, $(D)$, $(C)$ are inequivalent: the
+typed-carrier discipline of Vol~II (\texttt{chapters/theory/foundations.tex}
+\texttt{def:six-typed-carriers}) forbids the collapse, and the slogan
+``Deninger cohomology is constructed'' fails (shadow $=$ object;
+forbidden slogan~\#11 of the Vol~II voice table).
+
+\noindent\textbf{Ambient.}\enspace the pointed restricted tensor
+product ambient on $\Zbar = \mathrm{Spec}\,\mathbb{Z} \cup \{\infty\}$
+of \cref{v4-arith-den:def:arithmetic-chiral-algebra}: archimedean
+Beilinson--Drinfeld chiral data $\mathsf{A}_\infty$ on
+$\mathbb{C}_\infty$; finite-place Bost--Connes per-prime $E_1$-data
+$\{\mathsf{A}_p\}_p$; Parshin--Gersten twisting cochain $\tau$ enforcing
+reciprocity-closure on every finite stage.
+
+\noindent\textbf{Source.}\enspace the arithmetic chiral coefficient
+datum $\mathsf{A}^{\mathrm{Ar}} = (\mathsf{A}_\infty,
+\{\mathsf{A}_p\}_p, \{u_v\}_v, \tau, \mathcal{T})$ of
+\cref{v4-arith-den:def:arithmetic-chiral-algebra}.
+
+\noindent\textbf{Three target carriers.}\enspace
+\begin{description}
+\item[$(O)$] the \emph{operadic ordered-incidence chiral homology
+candidate}
+\[
+ H^{\bullet,\,\mathrm{ord}}_{\mathrm{ch}}\bigl(\mathsf{A}^{\mathrm{Ar}}\bigr)
+ \;:=\; H^{\bullet}\bigl(B^{\mathrm{ord}}_{\bullet}(\mathsf{A}^{\mathrm{Ar}}),\,
+ d_\tau\bigr),
+\]
+the chiral Hochschild candidate over $\Zbar$ produced unconditionally on
+reciprocity-closed finite stages.  \emph{Carrier:} (C3) of the Vol~II
+typed master functor (chiral Hochschild brace dg algebra).
+\item[$(D)$] the \emph{Deninger motivic target}
+$H^{\bullet}_{\Delta}(\Zbar)$ with formal Tate polar lines in degrees
+$0$ and $2$, equipped with the conditional Deninger spectral-flow
+operator $\ThetaAr$ on the degree-$1$ sector.  \emph{Carrier:}
+target (C5) graded automorphic shadow promoted to chain level under
+$\ThetaAr$.
+\item[$(C)$] the \emph{boundary chiral homology}
+$H^{\bullet}_{\partial}\bigl(\mathrm{ACS}^{\mathrm{qu}}_{\Zbar}\bigr)$
+of the quantum $3d$ arithmetic Chern--Simons theory on the \'etale
+$3$-space $\Zbar$.  \emph{Carrier:} (C6) physical-bulk analogue
+(the arithmetic gravity-line algebra).
+\end{description}
+
+\noindent\textbf{Four comparison morphisms.}\enspace
+\begin{enumerate}[label=\textup{(M\arabic*)}]
+\item $\ThetaAr \;=\; \tfrac{1}{2}\,\mathrm{id} \;+\; i\,H_{\mathrm{HP}}$
+--- the Deninger spectral-flow operator on the primary degree-$1$
+sector, with regularised determinant convention
+$\det\nolimits_{\mathrm{reg}}(\ThetaAr) = \xi_{\mathbb{R}}(s)$, the
+completed Riemann xi-function;
+\item $\Xi_{\mathrm{BD/CG}} \colon (O) \xrightarrow{\;\sim\;} (D)$
+--- the Beilinson--Drinfeld / Costello--Gwilliam factorisation-homology
+comparison between the finite-stage ordered bar
+$H^{\bullet,\,\mathrm{ord}}_{\mathrm{ch}}$ and the Deninger motivic
+target;
+\item $\Pi_\partial \colon (D) \xrightarrow{\;\sim\;} (C)$ --- the
+boundary trace comparison from the Deninger motivic target to the
+quantum arithmetic Chern--Simons boundary, sending the primary class
+$\VAr$ to the ACS boundary trace;
+\item $\mathrm{Compl}$ --- compatible topological completions, $E_2$
+restricted-tensor pointed monoidal structures, and Artin--Verdier
+dualities on each carrier.
 \end{enumerate}
-Then the following three objects should be canonically equivalent with compatible $\ThetaAr$-actions:
-\begin{enumerate}
-\item[(D)] the Deninger motivic target $\HAd(\Zbar)$;
-\item[(O)] the operadic Deninger-chiral candidate $\Hch{\bullet}{\HAr}$;
-\item[(C)] the boundary chiral homology of the conjectural 3D arithmetic Chern--Simons bulk gauge theory on the \'etale 3-space $\Zbar$.
+
+\noindent\textbf{Conclusion.}\enspace under $(M1)$--$(M4)$, the three
+objects $(O)$, $(D)$, $(C)$ are canonically equivalent with compatible
+$\ThetaAr$-actions, fitting into the diagram
+\[
+ H^{\bullet,\,\mathrm{ord}}_{\mathrm{ch}}\bigl(\mathsf{A}^{\mathrm{Ar}}\bigr)
+ \;\xrightarrow{\;\Xi_{\mathrm{BD/CG}}\;}\;
+ H^{\bullet}_{\Delta}(\Zbar)
+ \;\xrightarrow{\;\Pi_\partial\;}\;
+ H^{\bullet}_{\partial}\bigl(\mathrm{ACS}^{\mathrm{qu}}_{\Zbar}\bigr).
+\]
+The finite places contribute Bost--Connes Euler factors; the
+archimedean place contributes the Gaussian Tate factor and the
+zero-side operator $\ThetaAr$.
+
+\noindent\textbf{Residuals.}\enspace
+\begin{enumerate}[label=\textup{(R\arabic*)}]
+\item without \textup{(M1)}, the candidate $(O)$ is an ordered-incidence
+bar plus polar completion, \emph{not} the Deninger cohomology;
+\item without \textup{(M2)}, the identity $(O) = (D)$ is forbidden
+slogan~\#11 of the Vol~II voice table (shadow $=$ object);
+\item without \textup{(M3)}, the identity $(D) = (C)$ collapses
+similarly;
+\item without \textup{(M4)}, inverse-limit anomalies on the restricted
+tensor product obstruct chain-level identification (compare the
+Mittag--Leffler check $\varprojlim^{1} = 0$ that closes the analogous
+$K3 \times E$ Hall--Borcherds residual in
+Vol~II~\texttt{conj:gravity-line-hall-borcherds-comparison}~(W8)).
 \end{enumerate}
-The finite places contribute Bost--Connes Euler factors; the archimedean place contributes the Gaussian Tate factor and the unresolved zero-side operator.
+
+The Riemann Hypothesis is then the purity of $\ThetaAr$ on
+degree~$1$: the Frobenius-like eigenvalues on
+$H^{1}_{\Delta}(\Zbar)$ have $|\ThetaAr|$-weight $1/2$, equivalently,
+the non-trivial zeros of $\xi_{\mathbb{R}}(s)$ lie on the critical line.
 \end{conjecture}
 
 The character-level Koszul shadow of the arithmetic Heisenberg is Tate's functional equation
