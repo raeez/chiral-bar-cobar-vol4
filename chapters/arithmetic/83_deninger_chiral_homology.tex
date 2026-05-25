@@ -1,14 +1,21 @@
 \chapter{Deninger's Arithmetic Cohomology as a Chiral Candidate}
 \label{v4-arith:w8-a:deninger-chiral-homology}
 
-\emph{This chapter records the post-attack-and-repair state of the
-Deninger construction. The surviving object is not Deninger's missing
-cohomology. It is a chiral candidate package: an ordered-incidence
-bar skeleton, two formal Tate polar lines, the Bost--Connes Euler
-prime-side character, and a named spectral-flow hypothesis. If that
-spectral-flow hypothesis is supplied, the package has Deninger's
-shape. Without it, the construction does not produce the zero-side
-cohomology, the Lefschetz trace formula, or RH.}
+Deninger's programme demands a cohomology theory for
+\(\overline{\mathrm{Spec}\,\mathbb{Z}}\) whose regularised Fredholm
+determinant equals the completed Riemann zeta function and whose closed
+orbits recover the explicit formula. The bar-cobar programme does not
+construct this cohomology. It constructs a candidate: the
+ordered-incidence homology of \(\mathcal{V}^{\mathrm{prim}}\) (the
+Hochschild trace class of the identity on the global arithmetic Iwahori
+Hecke category of \(GL_2\)), two formal Tate polar lines, and the
+Bost--Connes Euler-prime-side character. Whether this candidate realizes
+Deninger's axioms depends on the spectral-flow hypothesis of
+\Cref{v4-arith:3d-acs:conj:spectral-flow}. The central result of this
+chapter is the obstruction theorem: no unconditional triple
+identification exists among Deninger's conjectural cohomology, the
+ordered-incidence candidate, and the boundary homology of the
+arithmetic Chern--Simons bulk.
 
 \section{Deninger's Wish List}
 \label{v4-arith:w8-a:deninger-wishlist}
@@ -17,12 +24,19 @@ Deninger's programme asks for a cohomology theory
 \[
 H^\bullet_\Delta(\overline{\mathrm{Spec}\,\mathbb Z})
 \]
-with three cohomological degrees, a Frobenius/flow operator, a
-regularised determinant equal to the completed zeta function, a
-Lefschetz trace formula whose closed-orbit side is the prime side of
-the explicit formula, Poincare duality, and purity. For the Riemann
+with three cohomological degrees, a Frobenius/flow operator \(\Theta\)
+(the infinitesimal generator whose eigenvalues are the non-trivial
+zeros), a regularised determinant equal to the completed zeta function,
+a Lefschetz trace formula whose closed-orbit side is the prime side of
+the explicit formula, Poincar\'{e} duality, and purity. For the Riemann
 zeta function the middle degree should carry the non-trivial zeros.
 
+% RECTIFICATION-FLAG: Gate 1 -- The notation \zeta(s) here follows
+% Deninger's original convention in which \zeta(s) denotes the
+% completed zeta function (including Gamma and archimedean factors),
+% not the bare Riemann zeta. In standard analytic number theory,
+% this object is typically called \xi(s). The equation is correct
+% under Deninger's convention; a reader note may prevent confusion.
 \begin{equation}
 \label{v4-arith:w8-a:eq:deninger-det}
 \zeta(s)
@@ -32,6 +46,11 @@ zeta function the middle degree should carry the non-trivial zeros.
 H^\bullet_\Delta\bigr)^{(-1)^\bullet}.
 \end{equation}
 
+Here \(\det_\infty\) is Deninger's regularised Fredholm determinant,
+\(\zeta(s)\) denotes the completed Hasse--Weil zeta (including the
+archimedean factor), and the sign \((-1)^\bullet\) is the
+Euler-characteristic grading. The
+Lefschetz trace formula takes the form
 \begin{equation}
 \label{v4-arith:w8-a:eq:deninger-lefschetz}
 \sum_\rho h(\rho)
@@ -40,15 +59,17 @@ H^\bullet_\Delta\bigr)^{(-1)^\bullet}.
 \operatorname{tr}\bigl(h(\Theta)\mid H^\bullet_\Delta\bigr)
 \stackrel{?}{=}
 \text{polar terms}+\text{archimedean term}
--\sum_{p,k}(\log p)p^{-k/2}\widehat h(k\log p).
+-\sum_{p,k}(\log p)p^{-k/2}\widehat{h}(k\log p),
 \end{equation}
+where \(h\) is a Schwartz test function on \(\mathbb{R}\) and
+\(\widehat{h}\) its Fourier transform.
 
 \begin{remark}[absence of a construction]
 \label{v4-arith:w8-a:deninger-wishlist:rem:absence}
 The axioms above are not a construction. They specify what the missing
-arithmetic cohomology must do. The Vol~IV chiral framework supplies
-several pieces of this shape, but the operator whose spectrum is the
-zero set is not constructed.
+arithmetic cohomology must do. The construction provides the prime-side
+Euler data (via Bost--Connes) and the formal polar lines (by
+insertion); the zero-side operator is not constructed.
 \end{remark}
 
 \begin{remark}[Vol IV scoping]
@@ -64,7 +85,8 @@ This chapter keeps that boundary fixed.
 \label{v4-arith:w8-a:machinery}
 \label{v4-arith:w8-a:machinery:ch23}
 
-The post-audit core has four usable inputs.
+The bar-cobar programme produces four inputs with theorem-grade status;
+the remainder of the Deninger axioms are either conditional or open.
 
 \begin{enumerate}
 \item The finite-level arithmetic Chern--Simons state sum and gluing
@@ -80,16 +102,22 @@ homology on \(\overline{\mathrm{Spec}\,\mathbb Z}\).
 character \(\zeta(s)\) and the prime-power logarithmic derivative in
 \(\mathrm{Re}(s)>1\).
 \item The Deninger spectral-flow hypothesis
-\Cref{v4-arith:3d-acs:conj:spectral-flow}. This is the Hilbert--Polya
-/ Connes--Deninger zero-side input. It carries the hard part.
+\Cref{v4-arith:3d-acs:conj:spectral-flow}: the Hilbert--Polya
+self-adjointness of the zero-side operator. This is the single
+missing piece that the bar-cobar programme does not supply.
 \end{enumerate}
 
 \section{The Chiral Candidate}
 \label{v4-arith:w8-a:identification}
 
-Let \(H^\bullet_{\mathrm{ord}}(\mathcal V^{\mathrm{prim}})\) denote the
-homology of the ordered-incidence bar of
-\Cref{v4-arith:3d-acs:defn:E1-bar}.
+Given the four inputs above, one may assemble a graded object that
+mimics Deninger's three-degree shape. The question is whether this
+assembly is genuinely Deninger's cohomology or only a formal
+approximation to it.
+
+Let \(B^{\mathrm{ord}}_\bullet(\mathcal{V}^{\mathrm{prim}})\) denote the
+ordered-incidence bar complex of \Cref{v4-arith:3d-acs:defn:E1-bar}
+applied to \(\mathcal{V}^{\mathrm{prim}}\).
 
 \begin{definition}[arithmetic chiral homology candidate]
 \label{v4-arith:w8-a:def:chiral-homology}
@@ -98,7 +126,7 @@ candidate} is
 \begin{equation}
 \label{v4-arith:w8-a:eq:chiral-homology-def}
 H^\bullet_{\mathrm{ord}}
-(\overline{\mathrm{Spec}\,\mathbb Z},\mathsf H^{\mathrm{Ar}})
+(\overline{\mathrm{Spec}\,\mathbb Z},\mathcal{V}^{\mathrm{prim}})
 :=
 H^\bullet\bigl(
 B^{\mathrm{ord}}_\bullet(\mathcal V^{\mathrm{prim}})
@@ -127,10 +155,10 @@ and formal Tate polar lines in degrees \(0\) and \(2\).
 
 \begin{remark}[three labels, not one theorem]
 \label{v4-arith:w8-a:rem:three-labels}
-There are three nearby objects: Deninger's conjectural cohomology,
+Three nearby objects appear: Deninger's conjectural cohomology,
 the ordered-incidence chiral candidate, and the boundary state space of
-the conjectural 3D ACS bulk. The manuscript now treats their equality
-as a conditional package, not as a proved identification.
+the conjectural 3D ACS bulk. Their equality is a conditional package,
+not a proved identification.
 \end{remark}
 
 \begin{proposition}[conditional Deninger packaging]
@@ -164,10 +192,9 @@ cohomology.
 
 \begin{theorem}[no unconditional triple identification]
 \label{v4-arith:w8-a:thm:triple-id}
-\ClaimStatusProvedHere. The present manuscript does not prove an
-unconditional equality among Deninger's conjectural cohomology, the
-ordered-incidence chiral candidate, and the boundary homology of
-\(\mathrm{ACS}^{\mathrm{qu}}\).
+\ClaimStatusProvedHere. No unconditional equality holds among
+Deninger's conjectural cohomology, the ordered-incidence chiral
+candidate, and the boundary homology of \(\mathrm{ACS}^{\mathrm{qu}}\).
 \end{theorem}
 
 \begin{proof}
@@ -184,8 +211,7 @@ obligations in \Cref{v4-arith:3d-acs:residual}.
 \label{v4-arith:w8-a:cor:triangle}
 \ClaimStatusConditional \emph{(on the profinite ACS conjecture, the
 BD/CG ordered-model comparison, a regularised character map, and the
-Deninger spectral-flow hypothesis)}. Under these assumptions one may
-write
+Deninger spectral-flow hypothesis)}. These assumptions yield
 \begin{equation}
 \label{v4-arith:w8-a:eq:triangle}
 Z_{\mathrm{ACS}^{\mathrm{qu}}}
@@ -194,14 +220,25 @@ Z_{\mathrm{ACS}^{\mathrm{qu}}}
 \xi(k^{\mathrm{Ar}})
 =
 \operatorname{ch}_{\mathrm{reg}}
-\bigl(H^\bullet_{\Delta,\chi}\bigr)(k^{\mathrm{Ar}}).
+\bigl(H^\bullet_{\Delta,\chi}\bigr)(k^{\mathrm{Ar}}),
 \end{equation}
-Without those assumptions, \eqref{v4-arith:w8-a:eq:triangle} is a
-conditional shorthand.
+where \(\xi(s) = \tfrac{1}{2}s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)\)
+is the completed Riemann zeta function satisfying \(\xi(s)=\xi(1-s)\),
+\(k^{\mathrm{Ar}}\) is the arithmetic level parameter, and
+\(\operatorname{ch}_{\mathrm{reg}}\) denotes the regularised graded
+trace (the \(\Theta\)-eigenvalue generating series with Deninger
+regularisation). Without those assumptions,
+\eqref{v4-arith:w8-a:eq:triangle} is a conditional shorthand.
 \end{corollary}
 
 \section{Frobenius and Flow}
 \label{v4-arith:w8-a:global-F}
+
+The Bost--Connes Euler skeleton provides prime-length data at finite
+primes. Deninger's programme requires a global Frobenius/flow operator
+acting on all three cohomological degrees. The question is whether the
+Euler skeleton and the archimedean scaling generator combine into such
+an operator.
 
 \begin{definition}[finite Euler operators]
 \label{v4-arith:w8-a:def:F-finite}
@@ -227,24 +264,31 @@ consequence of the ordered bar.
 \begin{definition}[archimedean scaling candidate]
 \label{v4-arith:w8-a:def:F-infinity}
 \ClaimStatusDefinitional. The archimedean scaling generator is the
-Mellin infinitesimal \( -\partial_t\) on
-\(\mathbb R_+\). It becomes a Deninger zero operator only after a
-spectral-flow identification with
-\(\Theta_\xi=\frac12\mathrm{id}+iH_{\mathrm{HP}}\).
+Mellin infinitesimal \(-\partial_t\) on \(\mathbb{R}_+\). The
+candidate archimedean flow on \(H^\bullet_{\Delta,\chi}\) is denoted
+\(\Theta_{\infty,\chi}\). In Deninger's and Connes' formulation, the
+target operator has the form
+\(\Theta_\xi = \tfrac{1}{2}\mathrm{id} + iH_{\mathrm{HP}}\),
+where \(H_{\mathrm{HP}}\) is a self-adjoint Hilbert--Polya operator
+(to be constructed) whose spectrum equals \(\{\gamma_\rho\}\), the
+imaginary parts of the non-trivial zeros. The identification
 \begin{equation}
 \label{v4-arith:w8-a:eq:F-infinity}
 \Theta_{\infty,\chi}\stackrel{?}{=}
-\Theta_\xi.
+\Theta_\xi
 \end{equation}
+is the spectral-flow hypothesis and is not available unconditionally.
 \end{definition}
 
 \begin{proposition}[Virasoro conjugacy is not available]
 \label{v4-arith:w8-a:lem:L0-conjugacy}
 \ClaimStatusConditional \emph{(on the spectral-flow hypothesis)}.
-The manuscript cannot identify the Virasoro \(L_0^{\mathrm{Ar}}\),
-the Bost--Connes logarithmic Hamiltonian, and the Hilbert--Polya
-operator without the spectral-flow theorem. They remain distinct
-operators until that theorem is supplied.
+Without the spectral-flow theorem of
+\Cref{v4-arith:3d-acs:conj:spectral-flow}, the Virasoro
+\(L_0^{\mathrm{Ar}}\), the Bost--Connes logarithmic Hamiltonian, and
+the Hilbert--Polya operator \(H_{\mathrm{HP}}\) remain distinct
+operators. Their identification requires the spectral-flow theorem as
+input.
 \end{proposition}
 
 \begin{definition}[formal global flow]
@@ -286,6 +330,11 @@ is not an independent construction of \(\Theta_\xi\).
 \label{v4-arith:w8-a:character}
 \label{v4-arith:w8-a:H-structure}
 
+The Frobenius obstruction theorem leaves open the question of what the
+candidate complex does compute. The regularised graded trace and the
+formal Tate structure answer this question partially: the Euler product
+and the polar lines are present; the zero-side is missing.
+
 \begin{theorem}[character identity is conditional]
 \label{v4-arith:w8-a:thm:character-identity}
 \ClaimStatusConditional \emph{(on
@@ -323,10 +372,11 @@ the total complex has only Deninger's three degrees.
 \begin{proposition}[middle cohomology is the hard part]
 \label{v4-arith:w8-a:prop:H1-structure}
 \ClaimStatusConditional \emph{(on
-\Cref{v4-arith:3d-acs:conj:spectral-flow})}. Identifying the middle
-cohomology with a Hilbert space whose self-adjoint generator has
-spectrum \(\{\gamma_\rho\}\) is precisely the Hilbert--Polya part of
-the programme.
+\Cref{v4-arith:3d-acs:conj:spectral-flow})}. The middle cohomology
+\(H^1_{\Delta,\chi}\) admits a Hilbert-space completion with a
+self-adjoint generator having spectrum \(\{\gamma_\rho\}\) only
+after \Cref{v4-arith:3d-acs:conj:spectral-flow} is assumed. This is
+the Hilbert--Polya hypothesis in cohomological form.
 \end{proposition}
 
 \begin{remark}[critical-line locus]
@@ -339,6 +389,12 @@ language.
 \section{Duality and Positivity}
 \label{v4-arith:w8-a:poincare-duality}
 
+Koszul duality for the arithmetic bar complex gives the
+functional-equation symmetry \(s\leftrightarrow 1-s\). The question is
+whether this duality implies Poincar\'{e} duality for the Deninger
+cohomology, and specifically whether it forces the middle degree to be
+positive definite.
+
 \begin{theorem}[duality gives the functional equation, not positivity]
 \label{v4-arith:w8-a:thm:triple-duality}
 \ClaimStatusConditional \emph{(on the relevant Koszul and ACS
@@ -349,6 +405,11 @@ not by itself imply positivity of the Deninger middle pairing or RH.
 
 \section{Purity as the RH-Level Input}
 \label{v4-arith:w8-a:purity}
+
+Duality accounts for the functional equation but not for the
+zero-placement. Purity of the middle cohomological degree is the
+assertion that the zero-side operator \(\Theta_\xi\) is self-adjoint
+with spectrum on the line \(\mathrm{Re}(s)=1/2\), which is RH.
 
 \begin{theorem}[purity is RH-level]
 \label{v4-arith:w8-a:thm:purity-equivalence}
@@ -370,10 +431,23 @@ not remove it.
 \section{All-Genus Extension}
 \label{v4-arith:w8-a:all-genus}
 
+The preceding sections address \(\overline{\mathrm{Spec}\,\mathbb{Z}}\),
+which is the genus-zero case corresponding to the Riemann zeta
+function. Higher-genus arithmetic data arise for arithmetic surfaces
+and motives of higher weight; the formal extension records what the
+candidate construction produces in those cases.
+
 \begin{definition}[genus-\(g\) chiral Deninger candidate]
 \label{v4-arith:w8-a:def:deninger-g}
-\ClaimStatusDefinitional. For a genus-\(g\) arithmetic datum
-\(\mathcal D_g\), the genus-\(g\) candidate is
+\ClaimStatusDefinitional. A \emph{genus-\(g\) arithmetic datum}
+\(\mathcal{D}_g\) is a smooth projective arithmetic surface of
+geometric genus \(g\) together with a choice of polarisation and
+\(L\)-function data (see \Cref{v4-arith:ag:defn:datum}).
+The corresponding \(\mathcal{V}^{\mathrm{prim},g}\) is the
+Hochschild trace class of the identity on the genus-\(g\) arithmetic
+Hecke category, the rank-\(2g\) extension of the rank-\(2\) primary
+\(\mathcal{V}^{\mathrm{prim}}\) of \Cref{v4-arith:00:def:Vprim}. The
+\emph{genus-\(g\) chiral Deninger candidate} is
 \begin{equation}
 \label{v4-arith:w8-a:eq:deninger-g-def}
 H^\bullet_{\Delta,\chi,g}
@@ -381,6 +455,9 @@ H^\bullet_{\Delta,\chi,g}
 H^\bullet_{\mathrm{ord}}
 (\mathcal D_g,\mathcal V^{\mathrm{prim},g}).
 \end{equation}
+The weight of \(\mathcal{D}_g\), denoted \(w_{\mathcal{D}_g}\), is the
+motivic weight of its \(L\)-function; purity is the assertion that
+\(\mathrm{Re}(s)=w_{\mathcal{D}_g}/2\) for all non-trivial zeros.
 \end{definition}
 
 \begin{theorem}[all-genus packaging]
@@ -401,6 +478,9 @@ a theorem of the ordered bar.
 
 \section{Dictionary}
 \label{v4-arith:w8-a:dictionary}
+
+Table~\ref{v4-arith:w8-a:table:triple} records which Deninger axioms
+the chiral candidate supplies and which remain open or conditional.
 
 \begin{table}[h]
 \centering
@@ -426,6 +506,10 @@ purity & real part \(1/2\) for middle spectrum & RH-level \\
 
 \section{What Closes}
 \label{v4-arith:w8-a:what-closes}
+
+The preceding sections separate four unconditionally proved results
+from six conditional or open items. The separation is the chapter's
+main output.
 
 \subsection*{Closed}
 \label{v4-arith:w8-a:what-closes:uncond}
@@ -458,20 +542,7 @@ candidate complex.
 The residue is a single mathematical obstruction seen through several
 interfaces: construct the middle operator and prove the trace formula
 with positivity. Equivalently, prove the spectral-flow hypothesis of
-\Cref{v4-arith:3d-acs:conj:spectral-flow}. All other pieces are
-preparation, bookkeeping, or conditional packaging.
+\Cref{v4-arith:3d-acs:conj:spectral-flow}. All other components of
+the construction are either established unconditionally or packaged
+conditionally on that hypothesis.
 
-\section{Summary}
-\label{v4-arith:w8-a:summary}
-
-\begin{enumerate}
-\item The manuscript now constructs a Deninger \emph{candidate}, not
-Deninger's missing cohomology.
-\item The ordered bar computes the ordered-incidence model only.
-\item The prime side is the Bost--Connes Euler skeleton; the full
-Weil--Guinand/Lefschetz trace formula is not obtained from it alone.
-\item The global Frobenius and the middle zero spectrum are exactly
-the spectral-flow/Hilbert--Polya obstruction.
-\item Arithmetic gravity therefore gives a geometric reformulation of
-RH-level positivity, not a proof of RH.
-\end{enumerate}

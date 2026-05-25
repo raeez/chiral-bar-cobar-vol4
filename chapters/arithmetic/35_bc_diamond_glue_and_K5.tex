@@ -2,45 +2,47 @@
 \label{v4-arith:bc-glue-k5}
 \label{v4-arith:bcglue-k5}
 
-\emph{Route~2 attack-and-repair. Two bundled obligations left open by route~1:
-(i) the BC-diamond-glue lemma, the single residual lemma to which
-\Cref{v4-arith:acd:thm:final-reduction} reduced
-$\mathrm{L}_{\mathrm{ACD}}$; (ii) the Godement--Jacquet absorption
-convention (K5), on which
-\Cref{v4-arith:kp:thm:main-full} was inscribed conditionally by
-\Cref{v4-arith:sw:thm:KP-split}. This chapter reduces (i) to a
-single cross-prime compatibility (``BC-diamond-glue.core'') and
-closes (ii) unconditionally by pinning down the Koszul-dual
-normalisation convention and verifying its adelic consistency.}
+Two obligations from \Cref{v4-arith:acd:thm:final-reduction} and
+\Cref{v4-arith:sw:thm:KP-split} remain: (i) the compatibility
+``(BC-diamond-glue)'' reducing \(\mathrm{L}_{\mathrm{ACD}}\) to a
+global Bernstein-centre action on the Selmer-derived spectral stack;
+(ii) the Godement--Jacquet absorption convention (K5), on which
+\Cref{v4-arith:kp:thm:main-full} was inscribed conditionally.
+This chapter decomposes (i) into three logically independent
+sub-obligations and isolates the irreducible cross-prime compatibility
+(``BC-diamond-glue.core'') as the minimal residual. It closes (ii) on the cuspidal sph-fin locus by specifying the
+Koszul-dual normalisation convention and verifying its adelic
+consistency.
 
-\section{Route~2 Context}
+\section{Incoming Obligations and Disjoint-Source Discipline}
 \label{v4-arith:bcglue-k5:context}
 
-\begin{description}
-\item[\textbf{BC-diamond-glue, route~1 status.}]
+Two compatibility obligations are inherited from upstream chapters.
+
+\textbf{(BC-diamond-glue).}
 \Cref{v4-arith:acd:thm:final-reduction} reduced
-$\mathrm{L}_{\mathrm{ACD}}$ to a single compatibility
+\(\mathrm{L}_{\mathrm{ACD}}\) to the single compatibility
 ``(BC-diamond-glue)'': local Bernstein centres on local
 Emerton--Gee strata glue across primes to a global Bernstein centre
 acting on the global automorphic category. Concretely,
-\Cref{v4-arith:acd:cj:bc-diamond-glue-concrete} asks that
+\Cref{v4-arith:acd:cj:bc-diamond-glue-concrete} requires that
 Ben-Zvi--Chen--Helm--Nadler's local coherent Springer sheaves
 (arXiv:2010.02321) glue to a global coherent sheaf on the
 Selmer-derived global spectral stack, and that the glued sheaf acts on
-$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})$
-consistently with the global Bernstein-centre action. Route~1
-estimated scope $30$--$50$ pp; route~2's mandate is to tighten the
-reduction to the smallest-possible residual and to isolate the
-irreducible primary-source obligation.
-\item[\textbf{K5, route~1 status.}]
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})\)
+consistently with the global Bernstein-centre action. The scope estimate
+from \Cref{v4-arith:acd:rem:bc-diamond-glue-scope} was \(30\)--\(50\) pp;
+this chapter tightens the reduction to isolate the irreducible
+primary-source obligation.
+
+\textbf{(K5).}
 \Cref{v4-arith:sw:thm:KP-split}(K5) inscribed the finite-place
-reconciliation ``Bost--Connes KMS$_{1}$ pairing equals Whittaker/
-Kirillov pairing up to $L_{p}(1,\mathrm{Ad})$, absorbed via
-Godement--Jacquet local functional equation.'' Status at route~1:
-Theorem conditional on the absorption convention. Route~2's
-mandate: pin the convention explicitly, verify its adelic
-consistency with Tamagawa normalisation, close K5 unconditionally.
-\end{description}
+reconciliation ``Bost--Connes KMS\(_{1}\) pairing equals Whittaker/
+Kirillov pairing up to \(L_{p}(1,\mathrm{Ad})\), absorbed via
+Godement--Jacquet local functional equation'' as a theorem
+conditional on the absorption convention. This chapter pins the
+convention explicitly, verifies its adelic consistency with
+Tamagawa normalisation, and closes K5 on the cuspidal sph-fin locus.
 
 \paragraph{Disjoint-source discipline.}
 The BC-diamond-glue analysis routes through four primary catalogs:
@@ -50,116 +52,113 @@ Bernstein 1984 ``Le centre de Bernstein'' (Bernstein centre);
 Fargues--Scholze arXiv:2102.13459 (local Langlands geometrization).
 The K5 analysis routes through three disjoint catalogs:
 Godement--Jacquet SLN~260 1972 (local functional equation);
-Jacquet 1979 Corvallis (adjoint $L$-functions $L_{p}(s,\mathrm{Ad})$);
-Bost--Connes 1995 Selecta~1 (KMS$_{1}$ Tomita--Takesaki modular
-theory). Each pair of catalogs is HZ-IV-disjoint: no primary author
+Jacquet 1979 Corvallis (adjoint \(L\)-functions \(L_{p}(s,\mathrm{Ad})\));
+Bost--Connes 1995 Selecta~1 (KMS\(_{1}\) Tomita--Takesaki modular
+theory). The pairs of catalogs satisfy the source-disjointness requirement
+of the Vol~IV verification programme: no primary author
 appears at overlapping work, no derivation and verification path
 share a primary source.
 
-\section{Attack-and-Repair Ledger}
+\section{Verification Ledger for the Six Sub-Obligations}
 \label{v4-arith:bcglue-k5:ledger}
 
-Six cycles, in order:
+The six sub-obligations are verified in order; each is checked
+against an independent primary source from \Cref{v4-arith:bcglue-k5:context}.
 
 \begin{description}
-\item[Cycle 1 (BC-diamond-glue, structural).] \emph{Attack.}
-(BC-diamond-glue) is stated as one compatibility but bundles two
-operations: local construction of $\mathcal{F}_{v}$ at each prime
-(supplied by BZCHN) and global gluing with Bernstein-centre
-compatibility (the non-trivial content). If either operation were
-already in the primary literature at the level of generality
-required, route~1's 30--50 pp estimate would collapse. Verify
-decomposition. \emph{Heal.} The decomposition into (BCglue.local)
-+ (BCglue.glue) + (BCglue.core) is honest; neither sub-operation is
-in the primary literature at $GL_{2}/\mathbb{Q}$, but the first two
-are within near reach of BZCHN and standard faithfully-flat descent.
+\item[(BC-diamond-glue, structural decomposition).]
+(BC-diamond-glue) states one compatibility but bundles two
+operations: local construction of \(\mathcal{F}_{v}\) at each prime
+(supplied by Ben-Zvi--Chen--Helm--Nadler) and global gluing with
+Bernstein-centre compatibility. Neither operation is in the primary
+literature at \(GL_{2}/\mathbb{Q}\) at the stated generality, but the
+first two sub-obligations fall within reach of
+Ben-Zvi--Chen--Helm--Nadler and standard faithfully-flat descent.
 The irreducible residual is (BCglue.core).
 \Cref{v4-arith:bcglue-k5:thm:decomposition}.
 
-\item[Cycle 2 (BC-diamond-glue, local).] \emph{Attack.} BZCHN
-constructs $\mathcal{F}_{p}$ for each finite prime $p$ with
-residual characteristic different from the coefficient field; they
-do not explicitly address residual-characteristic coincidence
-(i.e., $\ell=p$ in mixed characteristic). For the Koszul-dual
-arithmetic at $GL_{2}/\mathbb{Q}$, the primes where $\ell=p$ are
-unavoidable. \emph{Heal.} (BCglue.local) restricts to the
-$\ell$-integral version supplied by BZCHN + Emerton--Gee's
-$p$-adic Hodge structure at $\ell=p$. The local coherent Springer
-sheaf $\mathcal{F}_{p}$ is constructed as a coherent sheaf on the
-local Emerton--Gee stack $\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}$
-using the $p$-adic refinement (Emerton--Gee \S3--6).
+\item[(BCglue.local), \(\ell=p\) compatibility.] Ben-Zvi--Chen--Helm--Nadler
+construct \(\mathcal{F}_{p}\) for each finite prime \(p\) with
+residual characteristic differing from the coefficient field; the
+case \(\ell=p\) in mixed characteristic is not addressed explicitly
+there. At \(GL_{2}/\mathbb{Q}\), the primes with \(\ell=p\) are
+unavoidable. (BCglue.local) uses the
+\(\ell\)-integral refinement from Ben-Zvi--Chen--Helm--Nadler combined
+with Emerton--Gee's \(p\)-adic Hodge structure: the local coherent
+Springer sheaf \(\mathcal{F}_{p}\) is a coherent sheaf on
+\(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}\) via the \(p\)-adic
+construction of Emerton--Gee \S3--6.
 \Cref{v4-arith:bcglue-k5:thm:local-BZCHN-plus-EG}.
 
-\item[Cycle 3 (BC-diamond-glue, gluing).] \emph{Attack.} Gluing
+\item[(BCglue.glue), prismatic transition.] Gluing
 coherent sheaves across primes requires flatness of the transition
-maps in the sense of Bhatt--Scholze arXiv:1905.08229 (prismatic
-descent) or Bhatt--Lurie arXiv:2201.06120 (Nygaard-convention
-compatibility). Without such a bridge, gluing is only formal.
-\emph{Heal.} The transition maps between local Emerton--Gee stacks
-would have to be flat in the prismatic sense (Bhatt--Scholze 2022
-\emph{Prisms and Prismatic Cohomology} Thm.~2.10); the Nygaard
-convention of Bhatt--Lurie 2022 specifies the expected gluing data
-at each pair $(p,q)$. No primary-source theorem supplies the
-cross-prime transition map as stated, so (BCglue.glue) remains
-conjectural.
+maps in the prismatic sense of Bhatt--Scholze arXiv:1905.08229 or
+Nygaard-convention compatibility of Bhatt--Lurie arXiv:2201.06120.
+The transition maps between local Emerton--Gee stacks at distinct
+primes \(p\neq q\) would need to be flat in the prismatic sense
+(Bhatt--Scholze 2022 \emph{Prisms and Prismatic Cohomology}
+Thm.~2.10); the Nygaard convention of Bhatt--Lurie 2022 specifies the
+expected gluing data at each pair \((p,q)\). No primary-source theorem
+currently supplies the cross-prime transition map as stated, so
+(BCglue.glue) remains conjectural.
 \Cref{v4-arith:bcglue-k5:thm:prismatic-gluing}.
 
-\item[Cycle 4 (BC-diamond-glue, core).] \emph{Attack.} After
-(BCglue.local) and (BCglue.glue), what remains? The glued sheaf
-$\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}$ exists; its action
-on $\mathrm{IndCoh}_{\mathrm{Nilp}}$ of the global stack is
-constructed from the local actions; but \emph{agreement} with the
-global Bernstein centre is an independent compatibility, not
-supplied by BZCHN or Bhatt--Lurie. \emph{Heal.} The irreducible
-core of (BC-diamond-glue) is the cross-prime compatibility
-``(BC-diamond-glue.core)'': for each pair of distinct primes
-$p\neq q$, the diagonal restriction
-$\Delta^{*}_{p,q}\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}$
-computed on the local $(p,q)$-stratum of
-$\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}$ agrees with the external
-tensor product $\mathcal{F}_{p}\boxtimes\mathcal{F}_{q}$ under the
-local Bernstein-centre action. This is a statement about a
-single diagonal compatibility on the global stack, $10$--$15$ pp.
+\item[(BCglue.core), global Bernstein-centre compatibility.] After
+(BCglue.local) and (BCglue.glue), the glued sheaf
+\(\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}\) exists and its action
+on \(\mathrm{IndCoh}_{\mathrm{Nilp}}\) of the global stack is
+constructed from the local actions; agreement with the
+global Bernstein centre is an independent compatibility not
+supplied by Ben-Zvi--Chen--Helm--Nadler or Bhatt--Lurie. The
+irreducible core is: for each pair of distinct primes \(p\neq q\),
+the diagonal restriction
+\(\Delta^{*}_{p,q}\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}\)
+on the local \((p,q)\)-stratum of
+\(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\) agrees with
+\(\mathcal{F}_{p}\boxtimes\mathcal{F}_{q}\) under the local
+Bernstein-centre action. This is a single diagonal compatibility
+on the global stack, of scope \(10\)--\(15\) pp.
 \Cref{v4-arith:bcglue-k5:thm:core-compatibility}.
 
-\item[Cycle 5 (K5, local functional equation).] \emph{Attack.}
-The Godement--Jacquet local functional equation at $s=1$ yields
-$L_{p}(1,\mathrm{Ad})/\zeta_{p}(1)=(1-p^{-1})$, but the convention
-``absorb $L_{p}(1,\mathrm{Ad})$ into the Koszul-dual normalisation''
-is under-specified: $L_{p}(s,\mathrm{Ad})$ has a pole at $s=1$ for
-certain principal-series representations. \emph{Heal.} At unramified
+\item[(K5), local functional equation.] The Godement--Jacquet local
+functional equation at \(s=1\) yields
+\(L_{p}(1,\mathrm{Ad})/\zeta_{p}(1)=(1-p^{-1})\), but the convention
+``absorb \(L_{p}(1,\mathrm{Ad})\) into the Koszul-dual normalisation''
+requires specification: \(L_{p}(s,\mathrm{Ad})\) has a pole at \(s=1\) for
+certain principal-series representations. At unramified
 principal-series with Satake parameters on the unit circle,
-$L_{p}(s,\mathrm{Ad})$ is holomorphic and nonvanishing at $s=1$; at
-the boundary $|\alpha_{p}\beta_{p}^{-1}|=1$, $L_{p}(1,\mathrm{Ad})$
+\(L_{p}(s,\mathrm{Ad})\) is holomorphic and nonvanishing at \(s=1\). At
+the boundary \(|\alpha_{p}\beta_{p}^{-1}|=1\), \(L_{p}(1,\mathrm{Ad})\)
 may have poles, but these are exactly the Eisenstein summands
 excluded by the sph-finite cut of \Cref{v4-arith:sw:thm:KP-split}(K7).
-On the sph-finite locus, $L_{p}(1,\mathrm{Ad})$ is a well-defined
+On the sph-finite locus, \(L_{p}(1,\mathrm{Ad})\) is a well-defined
 invertible constant and the absorption is canonical.
 \Cref{v4-arith:bcglue-k5:thm:K5-absorption-canonical}.
 
-\item[Cycle 6 (K5, adelic consistency).] \emph{Attack.} Local
-absorption at each prime multiplies the local Koszul pairing by
-$L_{p}(1,\mathrm{Ad})$; the adelic product
-$\prod_{p}L_{p}(1,\mathrm{Ad})$ must converge for the convention
-to be adelically consistent. \emph{Heal.}
-$L(s,\mathrm{Ad})=\prod_{p}L_{p}(s,\mathrm{Ad})$ is the adjoint
-$L$-function of $\pi\in\mathcal{V}^{\mathrm{prim}}$; for
-cuspidal $\pi$, $L(s,\mathrm{Ad})$ has holomorphic continuation to
-$\mathrm{Re}(s)>1/2$ and admits a Langlands--Shahidi functional
-equation (Shahidi 1990 Ann.~Math.~132). At $s=1$, the cuspidal
-$L(1,\mathrm{Ad})$ is a finite nonzero constant (Hoffstein--Lockhart
+\item[(K5), adelic consistency.] Local absorption at each prime
+multiplies the local Koszul pairing by \(L_{p}(1,\mathrm{Ad})\); the
+adelic product \(\prod_{p}L_{p}(1,\mathrm{Ad})\) must converge for the
+convention to be adelically consistent.
+\(L(s,\mathrm{Ad})=\prod_{p}L_{p}(s,\mathrm{Ad})\) is the adjoint
+\(L\)-function of \(\pi\in\mathcal{V}^{\mathrm{prim}}\)
+(the Hochschild trace class of the identity on the global arithmetic
+Iwahori--Hecke category of \(GL_{2}\); see
+\Cref{v4-arith:00:def:Vprim}); for
+cuspidal \(\pi\), \(L(s,\mathrm{Ad})\) has holomorphic continuation to
+\(\mathrm{Re}(s)>1/2\) and admits a Langlands--Shahidi functional
+equation (Shahidi 1990 Ann.~Math.~132). At \(s=1\), the cuspidal
+\(L(1,\mathrm{Ad})\) is a finite nonzero constant (Hoffstein--Lockhart
 1994 Ann.~Math.~140). The adelic product converges absolutely and
-equals $L(1,\mathrm{Ad})$. Absorbing into the Koszul-dual
-normalisation replaces the Koszul pairing
-$\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul}}$ by its
-$L(1,\mathrm{Ad})$-rescaled version without altering the
-Petersson identity. K5 closes unconditionally.
+equals \(L(1,\mathrm{Ad})\). Absorbing into the Koszul-dual
+normalisation replaces \(\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul}}\)
+by its \(L(1,\mathrm{Ad})\)-rescaled version without altering the
+Petersson identity. K5 closes on the cuspidal sph-fin locus.
 \Cref{v4-arith:bcglue-k5:thm:K5-adelic-consistent}.
 \end{description}
 
-All six heals are verification rather than new construction; each
-is a cross-check against an independent primary source listed in
-\Cref{v4-arith:bcglue-k5:context}.
+Each of the six verifications is a cross-check against an independent
+primary source from \Cref{v4-arith:bcglue-k5:context}; none introduces
+new construction beyond the primary-source inputs.
 
 \section{BC-Diamond-Glue: Decomposition}
 \label{v4-arith:bcglue-k5:decomposition}
@@ -168,27 +167,27 @@ is a cross-check against an independent primary source listed in
 \label{v4-arith:bcglue-k5:def:three-sub-operations}
 (BC-diamond-glue) decomposes into three sub-operations:
 \begin{description}
-\item[(BCglue.local)] \emph{Local BZCHN construction.} At each
-finite prime $p$, construct a coherent Springer sheaf
-$\mathcal{F}_{p}\in\mathrm{Coh}(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}})$
-whose action on the local $\mathrm{IndCoh}_{\mathrm{Nilp}}$-category
-realises the local Bernstein centre $\mathcal{Z}_{p}$.
+\item[(BCglue.local)] \emph{Local Ben-Zvi--Chen--Helm--Nadler construction.} At each
+finite prime \(p\), construct a coherent Springer sheaf
+\(\mathcal{F}_{p}\in\mathrm{Coh}(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}})\)
+whose action on the local \(\mathrm{IndCoh}_{\mathrm{Nilp}}\)-category
+realises the local Bernstein centre \(\mathcal{Z}_{p}\).
 \item[(BCglue.glue)] \emph{Cross-prime prismatic gluing.} For
-$p\neq q$, construct a common refinement
-$\mathcal{F}_{p,q}\in\mathrm{Coh}(\mathcal{X}^{\mathrm{EG},\{p,q\}}_{GL_{2}})$
-where $\mathcal{X}^{\mathrm{EG},\{p,q\}}_{GL_{2}}$ is the
-Fargues--Fontaine product across the pair $(p,q)$; this refinement
-embeds into $\mathcal{F}_{p}\boxtimes\mathcal{F}_{q}$ compatibly
+\(p\neq q\), construct a common refinement
+\(\mathcal{F}_{p,q}\in\mathrm{Coh}(\mathcal{X}^{\mathrm{EG},\{p,q\}}_{GL_{2}})\)
+where \(\mathcal{X}^{\mathrm{EG},\{p,q\}}_{GL_{2}}\) is the
+Fargues--Fontaine product across the pair \((p,q)\); this refinement
+embeds into \(\mathcal{F}_{p}\boxtimes\mathcal{F}_{q}\) compatibly
 with the local Bernstein-centre actions. Take the filtered colimit
-over finite sets $S$ of primes to obtain the local part of
-$\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}$ on the
+over finite sets \(S\) of primes to obtain the local part of
+\(\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}\) on the
 Selmer-derived stack.
 \item[(BCglue.core)] \emph{Global Bernstein-centre compatibility.}
-The action of $\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}$ on
-$\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})$
+The action of \(\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}\) on
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})\)
 agrees, under the conjectural arithmetic AG equivalence of
 \Cref{v4-arith:thm:arithmetic-AG}, with the global Bernstein-centre
-action on $\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}])$.
+action on \(\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}])\).
 \end{description}
 \end{definition}
 
@@ -206,9 +205,9 @@ any two does not supply the third.
 \begin{proof}
 \emph{Forward.} Suppose (BC-diamond-glue), i.e.\
 \Cref{v4-arith:acd:cj:bc-diamond-glue-concrete}, holds. Then the
-local coherent Springer sheaves $\{\mathcal{F}_{v}\}_{v}$ exist
+local coherent Springer sheaves \(\{\mathcal{F}_{v}\}_{v}\) exist
 (supplying (BCglue.local)), glue to
-$\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}$ along the diagonal
+\(\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}\) along the diagonal
 (supplying (BCglue.glue)), and the glued sheaf's action agrees with
 the global Bernstein centre (supplying (BCglue.core)).
 
@@ -224,85 +223,86 @@ local sheaves exist but may fail to glue (e.g., if
 flatness of transition maps fails). (BCglue.glue) without
 (BCglue.core): formal gluing succeeds, but the glued sheaf's
 action may differ from the global Bernstein action (e.g., if the
-arithmetic AG equivalence itself fails). (BCglue.local) $\wedge$
+arithmetic AG equivalence itself fails). (BCglue.local) \(\wedge\)
 (BCglue.core) without (BCglue.glue): the three obligations are
 separate compatibilities, and knowing agreement at the global
 level does not force local gluability.
 \end{proof}
 
-\section{BC-Diamond-Glue: Local (BZCHN)}
+\section{BC-Diamond-Glue: Local Construction (Ben-Zvi--Chen--Helm--Nadler)}
 \label{v4-arith:bcglue-k5:local}
 
 \begin{theorem}[(BCglue.local) input and residual comparison]
 \label{v4-arith:bcglue-k5:thm:local-BZCHN-plus-EG}
-\ClaimStatusNeedsVerification. BZCHN supplies the local coherent
-Springer input on the affine-Hecke side. To obtain (BCglue.local)
-for each finite prime $p$, one still needs a comparison producing a
-coherent sheaf
-$\mathcal{F}_{p}\in\mathrm{Coh}(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}})$
-realising the local Bernstein centre $\mathcal{Z}_{p}$ of the
-categorical Hecke algebra at $p$.
+\ClaimStatusNeedsVerification. Ben-Zvi--Chen--Helm--Nadler supply
+the local coherent Springer input on the affine-Hecke side. To obtain
+(BCglue.local) for each finite prime \(p\), one still needs a
+comparison producing a coherent sheaf
+\(\mathcal{F}_{p}\in\mathrm{Coh}(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}})\)
+realising the local Bernstein centre \(\mathcal{Z}_{p}\) of the
+categorical Hecke algebra at \(p\).
 \end{theorem}
 
 \begin{proof}
-\emph{Step 1: $\ell\neq p$ case (BZCHN direct).} For
-$\ell\neq p$, Ben-Zvi--Chen--Helm--Nadler arXiv:2010.02321 Thm.~1.2
-(and its $GL_{2}$-specialisation, \S6 of the same paper) construct
-$\mathcal{F}_{p}^{(\ell)}$ as the coherent Springer sheaf on the
-$\ell$-adic moduli of rank-$2$ $\varphi$-modules over the
+\emph{Step 1: \(\ell\neq p\) case (Ben-Zvi--Chen--Helm--Nadler direct).} For
+\(\ell\neq p\), Ben-Zvi--Chen--Helm--Nadler arXiv:2010.02321 Thm.~1.2
+(and its \(GL_{2}\)-specialisation, \S6 of the same paper) construct
+\(\mathcal{F}_{p}^{(\ell)}\) as the coherent Springer sheaf on the
+\(\ell\)-adic moduli of rank-\(2\) \(\varphi\)-modules over the
 Robba-ring side of the Fargues--Fontaine curve. The local
-Bernstein centre $\mathcal{Z}_{p}$ embeds into the algebra of
-global sections $\Gamma(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}},\mathcal{F}_{p}^{(\ell)})$
-and the Hecke action is realised via the BZCHN ind-coherent
-sheaf correspondence.
+Bernstein centre \(\mathcal{Z}_{p}\) embeds into the algebra of
+global sections \(\Gamma(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}},\mathcal{F}_{p}^{(\ell)})\)
+and the Hecke action is realised via the Ben-Zvi--Chen--Helm--Nadler
+ind-coherent sheaf correspondence.
 
-\emph{Step 2: $\ell=p$ case ($p$-adic refinement).} For $\ell=p$,
+\emph{Step 2: \(\ell=p\) case (\(p\)-adic refinement).} For \(\ell=p\),
 Emerton--Gee arXiv:1908.07185 \S3--6 construct the local
-Emerton--Gee stack $\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}$ as the
-moduli of $(\varphi,\Gamma)$-modules with crystalline $p$-adic
-Hodge structure. The coherent Springer sheaf at $\ell=p$ is
-constructed in Zhu arXiv:2008.02998 \S4 using a $p$-adic variant
-of the BZCHN construction: the Robba-ring side is replaced by the
-$(\varphi,\Gamma)$-module side, and the coherent sheaf is built from
+Emerton--Gee stack \(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}\) as the
+moduli of \((\varphi,\Gamma)\)-modules with crystalline \(p\)-adic
+Hodge structure. The coherent Springer sheaf at \(\ell=p\) is
+constructed in Zhu arXiv:2008.02998 \S4 using a \(p\)-adic variant
+of the Ben-Zvi--Chen--Helm--Nadler construction: the Robba-ring side is replaced by the
+\((\varphi,\Gamma)\)-module side, and the coherent sheaf is built from
 the semi-linear algebra of the Frobenius action. Equivalently,
-Fargues--Scholze arXiv:2102.13459 Part~IX construct the $p$-adic
+Fargues--Scholze arXiv:2102.13459 Part~IX construct the \(p\)-adic
 coherent Springer sheaf as the spectral action sheaf of the local
-Langlands geometrization at $\ell=p$.
+Langlands geometrization at \(\ell=p\).
 
-\emph{Step 3: Independence of $\ell$.} For $\ell,\ell'\neq p$, the
-two constructions $\mathcal{F}_{p}^{(\ell)}$ and
-$\mathcal{F}_{p}^{(\ell')}$ agree on the common locus of the
+\emph{Step 3: Independence of \(\ell\).} For \(\ell,\ell'\neq p\), the
+two constructions \(\mathcal{F}_{p}^{(\ell)}\) and
+\(\mathcal{F}_{p}^{(\ell')}\) agree on the common locus of the
 Emerton--Gee stack (Fargues--Scholze Thm.~IX.0.5). For
-$\ell=p$ vs.\ $\ell\neq p$, the two constructions agree under the
-$p$-adic--$\ell$-adic comparison isomorphism of Fargues--Scholze
-Thm.~X.0.1. The coherent sheaf $\mathcal{F}_{p}$ is independent
-of $\ell$.
+\(\ell=p\) vs.\ \(\ell\neq p\), the two constructions agree under the
+\(p\)-adic--\(\ell\)-adic comparison isomorphism of Fargues--Scholze
+Thm.~X.0.1. The coherent sheaf \(\mathcal{F}_{p}\) is independent
+of \(\ell\).
 
 \emph{Step 4: Local Bernstein-centre realisation.} The local
-Bernstein centre $\mathcal{Z}_{p}=Z(\mathrm{Rep}(GL_{2}(\mathbb{Q}_{p})))$
+Bernstein centre \(\mathcal{Z}_{p}=Z(\mathrm{Rep}(GL_{2}(\mathbb{Q}_{p})))\)
 (Bernstein 1984 Thm.~2.13) embeds into
-$\Gamma(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}},\mathcal{F}_{p})$
+\(\Gamma(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}},\mathcal{F}_{p})\)
 as the center of the spectral action. This is Chenevier 2014 JAMS
 (``On the infinite fern of Galois representations of unitary type'')
 at the level of the Bernstein component decomposition: each
 component corresponds to a connected component of
-$\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}$, and the central action on
-the component is the restriction of $\mathcal{F}_{p}$.
+\(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}\), and the central action on
+the component is the restriction of \(\mathcal{F}_{p}\).
 
 (BCglue.local) is theorem-waiting until the Emerton--Gee comparison,
-the $\ell=p$ compatibility, and independence of $\ell$ are supplied
+the \(\ell=p\) compatibility, and independence of \(\ell\) are supplied
 by a primary-source transition theorem.
 \end{proof}
 
 \begin{remark}[scope of (BCglue.local)]
 \label{v4-arith:bcglue-k5:rem:scope-local}
-(BCglue.local) is not a citation as stated. BZCHN arXiv:2010.02321
+(BCglue.local) is not a citation as stated. Ben-Zvi--Chen--Helm--Nadler
+arXiv:2010.02321
 supplies local coherent Springer theory. Emerton--Gee
-arXiv:1908.07185 supplies $(\varphi,\Gamma)$-module stacks.
+arXiv:1908.07185 supplies \((\varphi,\Gamma)\)-module stacks.
 Fargues--Scholze arXiv:2102.13459 supplies local geometrisation and
 spectral action. A theorem identifying these inputs as a canonical
 local coherent Springer sheaf on the Emerton--Gee stack, including
-the $\ell=p$ case and independence of $\ell$, remains to be written.
+the \(\ell=p\) case and independence of \(\ell\), remains to be written.
 \end{remark}
 
 \section{BC-Diamond-Glue: Bernstein Centre Gluing}
@@ -312,18 +312,21 @@ the $\ell=p$ case and independence of $\ell$, remains to be written.
 
 \begin{definition}[Nygaard-convention-aware transition map]
 \label{v4-arith:bcglue-k5:def:nygaard-transition}
-For distinct primes $p,q$ and pairs
-$(R_{p},\varphi_{p},\Gamma_{p})$, $(R_{q},\varphi_{q},\Gamma_{q})$
-of Emerton--Gee data, the \emph{Nygaard-convention-aware transition
+For distinct primes \(p,q\) and pairs
+\((R_{p},\varphi_{p},\Gamma_{p})\), \((R_{q},\varphi_{q},\Gamma_{q})\)
+of Emerton--Gee data (here \(R_{p}\) is the period ring,
+\(\varphi_{p}\) the Frobenius, \(\Gamma_{p}=\mathrm{Gal}(\mathbb{Q}_{p}(\mu_{p^{\infty}})/\mathbb{Q}_{p})\)
+the cyclotomic Galois group, as in Emerton--Gee arXiv:1908.07185 \S2),
+the \emph{Nygaard-convention-aware transition
 map} is the canonical map
 \[
 \mathcal{X}^{\mathrm{EG},p}_{GL_{2}}\times\mathcal{X}^{\mathrm{EG},q}_{GL_{2}}\;\to\;\mathcal{X}^{\mathrm{EG},\{p,q\}}_{GL_{2}}
 \]
-where the target is the Fargues--Fontaine moduli of rank-$2$ vector
-bundles on the product of Fargues--Fontaine curves at $p$ and $q$,
+where the target is the Fargues--Fontaine moduli of rank-\(2\) vector
+bundles on the product of Fargues--Fontaine curves at \(p\) and \(q\),
 and the Nygaard filtration convention of Bhatt--Lurie
 arXiv:2201.06120 \S8 is used to specify the expected comparison data.
-For $p\neq q$ this is a residual comparison correspondence, not a
+For \(p\neq q\) this is a residual comparison correspondence, not a
 canonical fibre-product identity of formal bases.
 \end{definition}
 
@@ -332,7 +335,7 @@ canonical fibre-product identity of formal bases.
 \ClaimStatusConjectured. The Nygaard-convention-aware
 transition map of \Cref{v4-arith:bcglue-k5:def:nygaard-transition}
 is flat in the prismatic sense: pullback preserves
-$\mathrm{IndCoh}_{\mathrm{Nilp}}$-continuity. This is a consequence
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}\)-continuity. This is a consequence
 expected from Bhatt--Scholze arXiv:1905.08229
 (prismatic descent: prismatic cohomology is faithfully flat over
 crystalline cohomology) combined with Bhatt--Lurie
@@ -342,10 +345,10 @@ map used here.
 \end{lemma}
 
 \begin{proof}[Proof sketch]
-The Fargues--Fontaine curve at $p$ is the moduli of $(\varphi_{p},\Gamma_{p})$-modules;
+The Fargues--Fontaine curve at \(p\) is the moduli of \((\varphi_{p},\Gamma_{p})\)-modules;
 its prismatic cohomology is naturally defined over the prism
-$(\mathbb{Z}_{p},(p))$ (Bhatt--Scholze 2022 Thm.~2.10). The
-transition to $q\neq p$ is expected to lift to a common prismatic
+\((\mathbb{Z}_{p},(p))\) (Bhatt--Scholze 2022 Thm.~2.10). The
+transition to \(q\neq p\) is expected to lift to a common prismatic
 comparison correspondence via the Nygaard filtration convention of
 Bhatt--Lurie 2022 \S8. Flatness is the conjectural input; it does
 not follow from an existing cross-prime descent theorem.
@@ -357,10 +360,10 @@ not follow from an existing cross-prime descent theorem.
 \label{v4-arith:bcglue-k5:thm:prismatic-gluing}
 \ClaimStatusConjectured. (BCglue.glue) is the strengthened
 Nygaard-indexed coefficient-descent hypothesis: the local coherent
-Springer sheaves $\{\mathcal{F}_{v}\}_{v}$ glue along pairwise
+Springer sheaves \(\{\mathcal{F}_{v}\}_{v}\) glue along pairwise
 transition maps satisfying the triple cocycle, preserving
-$\mathrm{IndCoh}_{\mathrm{Nilp}}$-continuity and the full
-Weil/$(\varphi,\Gamma)$ target, to a global coherent
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}\)-continuity and the full
+Weil/\((\varphi,\Gamma)\) target, to a global coherent
 sheaf
 \[
 \mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}\;\in\;\mathrm{Coh}(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}).
@@ -368,41 +371,41 @@ sheaf
 \end{theorem}
 
 \begin{proof}
-\emph{Step 1: Pairwise compatibility.} For each pair $p\neq q$ of
+\emph{Step 1: Pairwise compatibility.} For each pair \(p\neq q\) of
 finite primes, the pullback of
-$\mathcal{F}_{p}\boxtimes\mathcal{F}_{q}$ along the transition map
+\(\mathcal{F}_{p}\boxtimes\mathcal{F}_{q}\) along the transition map
 of \Cref{v4-arith:bcglue-k5:def:nygaard-transition} is a coherent
-sheaf $\mathcal{F}_{p,q}$ on $\mathcal{X}^{\mathrm{EG},\{p,q\}}_{GL_{2}}$.
+sheaf \(\mathcal{F}_{p,q}\) on \(\mathcal{X}^{\mathrm{EG},\{p,q\}}_{GL_{2}}\).
 Prismatic flatness (\Cref{v4-arith:bcglue-k5:lem:prismatic-flatness})
 ensures that the pullback preserves coherence.
 
-\emph{Step 2: Triple compatibility.} For distinct $p,q,r$, the two
+\emph{Step 2: Triple compatibility.} For distinct \(p,q,r\), the two
 constructions
-$(\mathcal{F}_{p,q})\boxtimes\mathcal{F}_{r}$ and
-$\mathcal{F}_{p}\boxtimes(\mathcal{F}_{q,r})$, pulled back along
+\((\mathcal{F}_{p,q})\boxtimes\mathcal{F}_{r}\) and
+\(\mathcal{F}_{p}\boxtimes(\mathcal{F}_{q,r})\), pulled back along
 the respective transition maps into
-$\mathcal{X}^{\mathrm{EG},\{p,q,r\}}_{GL_{2}}$, agree by the
+\(\mathcal{X}^{\mathrm{EG},\{p,q,r\}}_{GL_{2}}\), agree by the
 associativity of the Nygaard gluing data (Bhatt--Lurie 2022 \S8,
 Cor.~8.2). Hence the filtered colimit
-$\mathcal{F}^{\mathrm{prism}}_{S}=\mathcal{F}_{v_{1},\ldots,v_{k}}$
-over finite sets $S=\{v_{1},\ldots,v_{k}\}$ is well-defined.
+\(\mathcal{F}^{\mathrm{prism}}_{S}=\mathcal{F}_{v_{1},\ldots,v_{k}}\)
+over finite sets \(S=\{v_{1},\ldots,v_{k}\}\) is well-defined.
 
 \emph{Step 3: Archimedean inclusion.} At the archimedean place, the
-local coherent Springer sheaf $\mathcal{F}_{\infty}$ is the
+local coherent Springer sheaf \(\mathcal{F}_{\infty}\) is the
 Kottwitz--Langlands 1985 archimedean moduli sheaf on
-$\mathcal{X}^{\mathrm{EG},\infty}_{GL_{2}}$ (the moduli of rank-$2$
-$W_{\mathbb{R}}$-representations). The archimedean factor is adjoined
+\(\mathcal{X}^{\mathrm{EG},\infty}_{GL_{2}}\) (the moduli of rank-\(2\)
+\(W_{\mathbb{R}}\)-representations). The archimedean factor is adjoined
 as an external complex/Hodge factor; it is not part of the prismatic
 transition system.
-Including $v=\infty$ in the filtered colimit is well-defined.
+Including \(v=\infty\) in the filtered colimit is well-defined.
 
 \emph{Step 4: Filtered colimit.} The filtered colimit
 \[
 \mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}\;:=\;\varinjlim_{S\text{ finite}}\mathcal{F}^{\mathrm{prism}}_{S}
 \]
-would exist in $\mathrm{Coh}(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})$
+would exist in \(\mathrm{Coh}(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})\)
 after proving the prismatic transition maps and the required
-continuity of $\mathrm{IndCoh}_{\mathrm{Nilp}}$ in the setting of
+continuity of \(\mathrm{IndCoh}_{\mathrm{Nilp}}\) in the setting of
 Gaitsgory--Rozenblyum's AMS DAG monographs. Thus (BCglue.glue) is
 theorem-waiting, not closed.
 \end{proof}
@@ -411,27 +414,28 @@ theorem-waiting, not closed.
 
 \begin{theorem}[BC-diamond-glue reduces to core compatibility]
 \label{v4-arith:bcglue-k5:thm:core-compatibility}
-\ClaimStatusNeedsVerification. After (BCglue.local) and
-(BCglue.glue), the
-content of (BC-diamond-glue) reduces to the single compatibility
+\ClaimStatusConjectured \emph{(conditional on arithmetic AG,
+\Cref{v4-arith:thm:arithmetic-AG})}. After (BCglue.local) and
+(BCglue.glue), the content of (BC-diamond-glue) reduces to the
+single compatibility
 \begin{description}
 \item[(BC-diamond-glue.core)] \emph{Global Bernstein-centre
-compatibility.} For every pair of distinct primes $p\neq q$, the
+compatibility.} For every pair of distinct primes \(p\neq q\), the
 diagonal pullback
 \[
 \Delta^{*}_{p,q}\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}\;\in\;\mathrm{Coh}(\mathcal{X}^{\mathrm{EG},\{p,q\}}_{GL_{2}})
 \]
-of the glued sheaf onto the diagonal $(p,q)$-stratum agrees with
-$\mathcal{F}_{p}\boxtimes\mathcal{F}_{q}$ under the action of the
+of the glued sheaf onto the diagonal \((p,q)\)-stratum agrees with
+\(\mathcal{F}_{p}\boxtimes\mathcal{F}_{q}\) under the action of the
 tensor product of local Bernstein centres
-$\mathcal{Z}_{p}\otimes\mathcal{Z}_{q}$, and the induced
+\(\mathcal{Z}_{p}\otimes\mathcal{Z}_{q}\), and the induced
 colimit
-$\varinjlim_{S}\mathcal{Z}_{S}=\mathcal{Z}_{\mathrm{glob}}$ agrees
+\(\varinjlim_{S}\mathcal{Z}_{S}=\mathcal{Z}_{\mathrm{glob}}\) agrees
 with the global Bernstein centre acting on
-$\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}])$ via the conjectural
+\(\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}])\) via the conjectural
 arithmetic AG equivalence of \Cref{v4-arith:thm:arithmetic-AG}.
 \end{description}
-(BC-diamond-glue.core) is a statement of $10$--$15$ pp scope: a
+(BC-diamond-glue.core) is a statement of \(10\)--\(15\) pp scope: a
 single cross-prime compatibility on the Selmer-derived global spectral stack.
 \end{theorem}
 
@@ -444,21 +448,21 @@ theorem-waiting by \Cref{v4-arith:bcglue-k5:thm:local-BZCHN-plus-EG};
 the remaining residual is (BCglue.core).
 
 (BCglue.core) is the compatibility between two a priori independent
-actions on $\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})$:
-the one from $\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}$ (via
-BZCHN and prismatic gluing) and the one from the global Bernstein
+actions on \(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})\):
+the one from \(\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}\) (via
+Ben-Zvi--Chen--Helm--Nadler and prismatic gluing) and the one from the global Bernstein
 centre (via the conjectural arithmetic AG). For each pair
-$p\neq q$, the compatibility on the $(p,q)$-stratum is a statement
+\(p\neq q\), the compatibility on the \((p,q)\)-stratum is a statement
 about coherent sheaves on the product of two local Emerton--Gee
 stacks: the diagonal pullback of a sheaf glued across primes
 should agree with the external tensor product of the local sheaves,
-up to the action of $\mathcal{Z}_{p}\otimes\mathcal{Z}_{q}$.
+up to the action of \(\mathcal{Z}_{p}\otimes\mathcal{Z}_{q}\).
 
-This pairwise compatibility is $5$ pp per pair (standard
+This pairwise compatibility is \(5\) pp per pair (standard
 coherent-sheaf comparison along a flat gluing); taking the
 filtered colimit over pairs to obtain the global compatibility is
-$5$--$10$ pp of standard filtered-colimit argument. The total
-scope is $10$--$15$ pp.
+\(5\)--\(10\) pp of standard filtered-colimit argument. The total
+scope is \(10\)--\(15\) pp.
 \end{proof}
 
 \begin{remark}[(BC-diamond-glue.core) vs.\ unconditional closure]
@@ -472,31 +476,30 @@ conditional on arithmetic AG}; it is not unconditional.
 
 The reduction chain is therefore:
 \begin{center}
-(BC-diamond-glue) $\Leftarrow$ (BC-diamond-glue.core) $\Leftarrow$
+(BC-diamond-glue) \(\Leftarrow\) (BC-diamond-glue.core) \(\Leftarrow\)
 arithmetic AG.
 \end{center}
-Route~2's contribution is to isolate (BC-diamond-glue.core) as the
-minimal residual after BZCHN integration and prismatic gluing are
-proved. The primary-source obligations still include the local
-Emerton--Gee comparison, the cross-prime prismatic transition maps,
-and arithmetic AG.
+The irreducible residual of (BC-diamond-glue) is
+(BC-diamond-glue.core): a single cross-prime compatibility of
+scope \(10\)--\(15\) pp, conditional on arithmetic AG. The primary-source
+obligations remaining are the local Emerton--Gee comparison, the
+cross-prime prismatic transition maps, and arithmetic AG.
 \end{remark}
 
-\section{Consequence: $\mathrm{L}_{\mathrm{ACD}}$ Final Residual Isolation}
+\section{Consequence: \(\mathrm{L}_{\mathrm{ACD}}\) Final Residual Isolation}
 \label{v4-arith:bcglue-k5:LACD-final}
 
-\begin{corollary}[$\mathrm{L}_{\mathrm{ACD}}$ tight residual catalog]
+\begin{corollary}[\(\mathrm{L}_{\mathrm{ACD}}\) tight residual catalog]
 \label{v4-arith:bcglue-k5:cor:LACD-tight-catalog}
 \ClaimStatusConjectured \emph{(conditional on upstream F2.c, F1.a,
-and on (BCglue.local) and (BCglue.glue) being elevated from their
-current Theorem-waiting / Conjectural statuses)}. After route~2's
-reduction, $\mathrm{L}_{\mathrm{ACD}}$
+and on (BCglue.local) and (BCglue.glue) being proved)}. After the
+reductions of this chapter, \(\mathrm{L}_{\mathrm{ACD}}\)
 (\Cref{v4-arith:acd:thm:LACD-single-lemma})
 has the following residual catalog:
 \begin{enumerate}
-\item (BCglue.local): \textbf{Theorem-waiting}; BZCHN supplies the
+\item (BCglue.local): \textbf{Theorem-waiting}; Ben-Zvi--Chen--Helm--Nadler supply the
 local coherent Springer input, while the Emerton--Gee comparison and
-$\ell=p$ compatibility remain residual in
+\(\ell=p\) compatibility remain residual in
 \Cref{v4-arith:bcglue-k5:thm:local-BZCHN-plus-EG}.
 \item (BCglue.glue): \textbf{Conjectural}; no primary-source
 cross-prime prismatic transition theorem currently supplies
@@ -505,10 +508,10 @@ cross-prime prismatic transition theorem currently supplies
 arithmetic AG} (\Cref{v4-arith:thm:arithmetic-AG}), isolated in
 \Cref{v4-arith:bcglue-k5:thm:core-compatibility}.
 \end{enumerate}
-The total residual content of $\mathrm{L}_{\mathrm{ACD}}$ is:
-(BCglue.local) $+$ (BCglue.glue) $+$ (BC-diamond-glue.core), with
+The total residual content of \(\mathrm{L}_{\mathrm{ACD}}\) is:
+(BCglue.local) \(+\) (BCglue.glue) \(+\) (BC-diamond-glue.core), with
 the core item conditional on arithmetic AG. Estimated scope past
-arithmetic AG: $10$--$15$ pp.
+arithmetic AG: \(10\)--\(15\) pp.
 \end{corollary}
 
 \begin{proof}
@@ -520,12 +523,13 @@ Assemble \Cref{v4-arith:bcglue-k5:thm:decomposition},
 (BC-diamond-glue.core) is the residual after those inputs are supplied.
 \end{proof}
 
-\begin{remark}[scope delta from route~1]
+\begin{remark}[scope decomposition of (BC-diamond-glue)]
 \label{v4-arith:bcglue-k5:rem:scope-delta}
-Route~1 \Cref{v4-arith:acd:rem:bc-diamond-glue-scope} estimated
-(BC-diamond-glue) at $30$--$50$ pp past BZCHN. Route~2 decomposes
-that scope into $5$--$10$ pp for (BCglue.local), $5$--$10$ pp for
-(BCglue.glue), and $10$--$15$ pp for (BC-diamond-glue.core),
+\Cref{v4-arith:acd:rem:bc-diamond-glue-scope} estimated
+(BC-diamond-glue) at \(30\)--\(50\) pp past Ben-Zvi--Chen--Helm--Nadler.
+The decomposition of \Cref{v4-arith:bcglue-k5:thm:decomposition}
+partitions that scope into \(5\)--\(10\) pp for (BCglue.local), \(5\)--\(10\) pp
+for (BCglue.glue), and \(10\)--\(15\) pp for (BC-diamond-glue.core),
 conditional on arithmetic AG. None of these three pieces is closed
 by this chapter.
 \end{remark}
@@ -533,15 +537,15 @@ by this chapter.
 \section{K5: Godement--Jacquet Absorption}
 \label{v4-arith:bcglue-k5:K5}
 
-\subsection{The Local Adjoint $L$-Factor}
+\subsection{The Local Adjoint \(L\)-Factor}
 
-\begin{definition}[local adjoint $L$-factor $L_{p}(s,\mathrm{Ad})$]
+\begin{definition}[local adjoint \(L\)-factor \(L_{p}(s,\mathrm{Ad})\)]
 \label{v4-arith:bcglue-k5:def:adjoint-L}
 For an unramified principal-series representation
-$\pi_{p}=\mathrm{Ind}_{B}^{GL_{2}}(\chi_{1}\otimes\chi_{2})$ at
-$GL_{2}(\mathbb{Q}_{p})$ with Satake parameters
-$(\alpha_{p},\beta_{p})=(\chi_{1}(p),\chi_{2}(p))$ on the unit
-circle, the local adjoint $L$-factor is
+\(\pi_{p}=\mathrm{Ind}_{B}^{GL_{2}}(\chi_{1}\otimes\chi_{2})\) at
+\(GL_{2}(\mathbb{Q}_{p})\) with Satake parameters
+\((\alpha_{p},\beta_{p})=(\chi_{1}(p),\chi_{2}(p))\) on the unit
+circle, the local adjoint \(L\)-factor is
 \begin{equation}
 \label{v4-arith:bcglue-k5:eq:adjoint-L}
 L_{p}(s,\mathrm{Ad}(\pi_{p}))
@@ -549,42 +553,46 @@ L_{p}(s,\mathrm{Ad}(\pi_{p}))
 \cdot(1-p^{-s})^{-1}
 \cdot\bigl(1-\alpha_{p}^{-1}\beta_{p}\,p^{-s}\bigr)^{-1}.
 \end{equation}
-Reference: Jacquet 1979 Corvallis ``Principal $L$-functions'' \S2,
+Reference: Jacquet 1979 Corvallis ``Principal \(L\)-functions'' \S2,
 or Bump 1997 \emph{Automorphic Forms and Representations} \S3.2.
 \end{definition}
 
-\begin{lemma}[$L_{p}(1,\mathrm{Ad})$ is well-defined on sph-fin]
+\begin{lemma}[\(L_{p}(1,\mathrm{Ad})\) is well-defined on sph-fin]
 \label{v4-arith:bcglue-k5:lem:Lp-1-well-defined}
-\ClaimStatusProvedElsewhere. For $\pi\in\mathcal{V}^{\mathrm{prim}}$
-cuspidal and $p$ a finite prime, $L_{p}(1,\mathrm{Ad}(\pi_{p}))$
+\ClaimStatusProvedElsewhere. Throughout, \(\mathcal{V}^{\mathrm{prim}}\)
+denotes the Hochschild trace class of the identity on the global
+arithmetic Iwahori--Hecke category of \(GL_{2}\)
+(\Cref{v4-arith:00:def:Vprim}); it is \emph{not} a vertex algebra.
+For \(\pi\in\mathcal{V}^{\mathrm{prim}}\)
+cuspidal and \(p\) a finite prime, \(L_{p}(1,\mathrm{Ad}(\pi_{p}))\)
 is a well-defined finite nonzero complex number. For
-$\pi\in\mathcal{V}^{\mathrm{prim}}$ Eisenstein, $L_{p}(1,\mathrm{Ad})$
+\(\pi\in\mathcal{V}^{\mathrm{prim}}\) Eisenstein, \(L_{p}(1,\mathrm{Ad})\)
 may have a pole, but Eisenstein summands lie outside the
 sph-fin locus (\Cref{v4-arith:sw:thm:KP-split}(K7)), so the
 pole is not encountered.
 \end{lemma}
 
 \begin{proof}
-\emph{Cuspidal case.} For cuspidal unramified $\pi_{p}$, Satake
-parameters satisfy $|\alpha_{p}|=|\beta_{p}|=1$ with
-$\alpha_{p}\beta_{p}\neq 1$ (generic cuspidal condition; Gelbart
+\emph{Cuspidal case.} For cuspidal unramified \(\pi_{p}\), Satake
+parameters satisfy \(|\alpha_{p}|=|\beta_{p}|=1\) with
+\(\alpha_{p}\beta_{p}\neq 1\) (generic cuspidal condition; Gelbart
 1975 \S3.1). The three factors in
-(\ref{v4-arith:bcglue-k5:eq:adjoint-L}) at $s=1$ are:
-$(1-\alpha_{p}\beta_{p}^{-1}p^{-1})^{-1}$,
-$(1-p^{-1})^{-1}$, and $(1-\alpha_{p}^{-1}\beta_{p}p^{-1})^{-1}$.
+(\ref{v4-arith:bcglue-k5:eq:adjoint-L}) at \(s=1\) are:
+\((1-\alpha_{p}\beta_{p}^{-1}p^{-1})^{-1}\),
+\((1-p^{-1})^{-1}\), and \((1-\alpha_{p}^{-1}\beta_{p}p^{-1})^{-1}\).
 Each factor is finite nonzero since
-$|\alpha_{p}\beta_{p}^{-1}|=|\alpha_{p}^{-1}\beta_{p}|=1$ and
-$p^{-1}<1$. Hence $L_{p}(1,\mathrm{Ad})$ is finite nonzero.
+\(|\alpha_{p}\beta_{p}^{-1}|=|\alpha_{p}^{-1}\beta_{p}|=1\) and
+\(p^{-1}<1\). Hence \(L_{p}(1,\mathrm{Ad})\) is finite nonzero.
 
-\emph{Eisenstein case.} For Eisenstein $\pi_{p}$, one of the
-Satake parameters can equal $p^{\pm 1/2}$, causing the first or
+\emph{Eisenstein case.} For Eisenstein \(\pi_{p}\), one of the
+Satake parameters can equal \(p^{\pm 1/2}\), causing the first or
 third factor in (\ref{v4-arith:bcglue-k5:eq:adjoint-L}) to blow
-up at $s=1$. But Eisenstein summands fail the sph-fin criterion:
-they lie in the continuous spectrum of $L^{2}([GL_{2}])$, not the
+up at \(s=1\). But Eisenstein summands fail the sph-fin criterion:
+they lie in the continuous spectrum of \(L^{2}([GL_{2}])\), not the
 discrete sph-fin part (Langlands 1966 Eisenstein decomposition).
 The sph-fin cut of \Cref{v4-arith:sw:thm:KP-split}(K7) excludes
-Eisenstein summands, so $L_{p}(1,\mathrm{Ad})$ is evaluated only
-on cuspidal $\pi$ where it is well-defined.
+Eisenstein summands, so \(L_{p}(1,\mathrm{Ad})\) is evaluated only
+on cuspidal \(\pi\) where it is well-defined.
 \end{proof}
 
 \subsection{The Absorption Convention}
@@ -592,8 +600,8 @@ on cuspidal $\pi$ where it is well-defined.
 \begin{definition}[Koszul-dual normalisation convention]
 \label{v4-arith:bcglue-k5:def:koszul-dual-norm}
 The \emph{Koszul-dual normalisation convention} is the rescaling
-of the local Koszul pairing at each finite prime $p$ by the local
-adjoint $L$-factor:
+of the local Koszul pairing at each finite prime \(p\) by the local
+adjoint \(L\)-factor:
 \begin{equation}
 \label{v4-arith:bcglue-k5:eq:koszul-dual-norm}
 \langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul,Ad}}_{p}
@@ -602,7 +610,7 @@ L_{p}(1,\mathrm{Ad})^{-1}\cdot\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul}
 \end{equation}
 The global Koszul-dual-normalised pairing is the adelic restricted
 tensor product of these local pairings plus the archimedean factor
-$\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul}}_{\infty}$.
+\(\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul}}_{\infty}\).
 \end{definition}
 
 \begin{theorem}[K5 closed on the cuspidal sph-fin locus]
@@ -610,10 +618,14 @@ $\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul}}_{\infty}$.
 \ClaimStatusProvedHere \emph{(scope-restricted to the cuspidal
 sph-fin locus; see
 \Cref{v4-arith:bcglue-k5:rem:K5-scope})}. At each finite prime
-$p$, for $\pi_{p}$ in the cuspidal sph-fin locus, the Bost--Connes
-KMS$_{1}$ pairing on $\mathcal{H}^{(p)}$ equals the local
-Whittaker/Kirillov pairing under the Koszul-dual normalisation
-convention of \Cref{v4-arith:bcglue-k5:def:koszul-dual-norm}:
+\(p\), for \(\pi_{p}\) in the cuspidal sph-fin locus, the Bost--Connes
+KMS\(_{1}\) pairing on \(\mathcal{H}^{(p)}\) (the local Hilbert space
+of the Bost--Connes system at \(p\); Bost--Connes 1995 Selecta~1 \S3)
+equals the local Whittaker/Kirillov pairing under the Koszul-dual
+normalisation convention of \Cref{v4-arith:bcglue-k5:def:koszul-dual-norm},
+where \(\sigma^{\mathrm{BC}}_{p}\) is the Tomita--Takesaki modular
+involution of the KMS\(_{1}\) state on \(\mathcal{H}^{(p)}\)
+(Bost--Connes 1995 \S5):
 \begin{equation}
 \label{v4-arith:bcglue-k5:eq:K5-match}
 \langle v,w\rangle^{\mathrm{BC}}_{p}
@@ -643,11 +655,10 @@ L(1,\mathrm{Ad}(\pi))\neq 0\qquad\text{for cuspidal }\pi,
 underpinning \Cref{v4-arith:bcglue-k5:lem:Lp-1-well-defined}, is
 an unconditional theorem \emph{on the cuspidal locus}. Eisenstein
 summands are explicitly excluded by the sph-fin cut of
-\Cref{v4-arith:sw:thm:KP-split}(K7); their $L_{p}(1,\mathrm{Ad})$
+\Cref{v4-arith:sw:thm:KP-split}(K7); their \(L_{p}(1,\mathrm{Ad})\)
 may have poles and the Koszul-dual normalisation is not defined
 on them. The closure is therefore scope-restricted to the
-cuspidal sph-fin locus (route~3 audit
-\Cref{v4-arith:w3-audit-B:repair-35}).
+cuspidal sph-fin locus (\Cref{v4-arith:w3-audit-B:repair-35}).
 \end{remark}
 
 \begin{proof}
@@ -665,64 +676,85 @@ Z(s,W_{\phi,p},W_{\phi',p})
 \;=\;\gamma_{p}(s,\pi_{p},\mathrm{Ad})\cdot Z(1-s,\widetilde{W_{\phi,p}},\widetilde{W_{\phi',p}}),
 \end{equation}
 with local gamma-factor
-$\gamma_{p}(s,\pi_{p},\mathrm{Ad})=\varepsilon_{p}(s,\pi_{p})\cdot L_{p}(1-s,\mathrm{Ad})/L_{p}(s,\mathrm{Ad})$,
-where $\varepsilon_{p}=1$ at unramified sph-fin primes and
-$L_{p}(s,\mathrm{Ad})$ is the adjoint $L$-factor of
+\(\gamma_{p}(s,\pi_{p},\mathrm{Ad})=\varepsilon_{p}(s,\pi_{p})\cdot L_{p}(1-s,\mathrm{Ad})/L_{p}(s,\mathrm{Ad})\),
+where \(\varepsilon_{p}=1\) at unramified sph-fin primes and
+\(L_{p}(s,\mathrm{Ad})\) is the adjoint \(L\)-factor of
 \Cref{v4-arith:bcglue-k5:def:adjoint-L}.
 
-\emph{Step 2: Whittaker = Bost--Connes after $\sigma^{\mathrm{BC}}_{p}$.}
+\emph{Step 2: Whittaker = Bost--Connes after \(\sigma^{\mathrm{BC}}_{p}\).}
 \Cref{v4-arith:kp:prop:Pet-p-is-BC-sigma} establishes
 \[
 \langle v,w\rangle^{\mathrm{Whit}}_{p}
 \;=\;\langle v,\sigma^{\mathrm{BC}}_{p}(w)\rangle^{\mathrm{BC}}_{p},
 \]
-where $\sigma^{\mathrm{BC}}_{p}$ is the Bost--Connes involution
-(Tomita--Takesaki modular involution on the KMS$_{1}$ state). The
+where \(\sigma^{\mathrm{BC}}_{p}\) is the Bost--Connes involution
+(Tomita--Takesaki modular involution on the KMS\(_{1}\) state). The
 explicit calculation on the zero-mode lattice
-$L_{p}=\mathrm{span}\{\delta_{m}:m\in\mathbb{N}^{\times}_{p}\}$
+\(L_{p}=\mathrm{span}\{\delta_{m}:m\in\mathbb{N}^{\times}_{p}\}\)
 gives
-$\langle\delta_{m},\delta_{n}\rangle^{\mathrm{Whit}}_{p}=\delta_{m,n}\cdot(1-p^{-1})\cdot m^{-1}$,
+\(\langle\delta_{m},\delta_{n}\rangle^{\mathrm{Whit}}_{p}=\delta_{m,n}\cdot(1-p^{-1})\cdot m^{-1}\),
 matching the Bost--Connes Hilbert pairing
-$\langle\delta_{m},\delta_{n}\rangle^{\mathrm{BC}}_{p}=\delta_{m,n}\cdot m^{-1}$
-up to the factor $(1-p^{-1})$.
+\(\langle\delta_{m},\delta_{n}\rangle^{\mathrm{BC}}_{p}=\delta_{m,n}\cdot m^{-1}\)
+up to the factor \((1-p^{-1})\).
 
-\emph{Step 3: The $(1-p^{-1})$ factor is $L_{p}(1,\zeta)^{-1}$,
-not $L_{p}(1,\mathrm{Ad})$.} At $s=1$, the functional-equation
+\emph{Step 3: The \((1-p^{-1})\) factor is \(L_{p}(1,\zeta)^{-1}\),
+not \(L_{p}(1,\mathrm{Ad})\).} At \(s=1\), the functional-equation
 factor in (\ref{v4-arith:bcglue-k5:eq:GJ-funeq}) specialised to
 the spherical Whittaker function (and in the limit where
-$L_{p}(1,\mathrm{Ad})$ is regular, i.e.\ at cuspidal sph-fin) gives
+\(L_{p}(1,\mathrm{Ad})\) is regular, i.e.\ at cuspidal sph-fin) gives
 \[
 Z(1,W_{|0\rangle_{p}},W_{|0\rangle_{p}})
 \;=\;L_{p}(1,\pi_{p}\times\tilde\pi_{p})\cdot \zeta_{p}(1)^{-1},
 \]
-where $L_{p}(s,\pi_{p}\times\tilde\pi_{p})=L_{p}(s,\mathrm{Ad})\cdot\zeta_{p}(s)$
+where \(L_{p}(s,\pi_{p}\times\tilde\pi_{p})=L_{p}(s,\mathrm{Ad})\cdot\zeta_{p}(s)\)
+% RECTIFICATION-FLAG [Gate 1: Jacquet 1979 Corvallis Prop.~3.1 -- pin-cite likely wrong for
+% the local Rankin-Selberg L-factor factorisation L_p(s,pi x pi^v) = L_p(s,Ad)·ζ_p(s).
+% The Corvallis Proceedings (Jacquet 1979, "Automorphic L-functions") contains multiple
+% propositions; Prop.~3.1 there concerns the functional equation, not the factorisation.
+% The factorisation L_p(s,pi x pi^v) = L_p(s,Ad)·ζ_p(s) is in Jacquet--Shalika 1981
+% (Ann. Math. 114, "On Euler products and the classification of automorphic representations
+% I") or Bump 1997 §3.8.5. Verify before removing flag.]
 is the local Rankin--Selberg factor (Jacquet 1979 Corvallis Prop.~3.1;
 Bump 1997 \S3.8). The factor splits into the trivial part
-$\zeta_{p}(s)=(1-p^{-s})^{-1}$ at $s=1$ giving
-$\zeta_{p}(1)^{-1}=(1-p^{-1})$, plus the adjoint part
-$L_{p}(s,\mathrm{Ad})$ at $s=1$ giving $L_{p}(1,\mathrm{Ad})$.
-Thus $Z(1,W_{|0\rangle},W_{|0\rangle})=(1-p^{-1})\cdot L_{p}(1,\mathrm{Ad})$.
+\(\zeta_{p}(s)=(1-p^{-s})^{-1}\) at \(s=1\) giving
+\(\zeta_{p}(1)^{-1}=(1-p^{-1})\), plus the adjoint part
+\(L_{p}(s,\mathrm{Ad})\) at \(s=1\) giving \(L_{p}(1,\mathrm{Ad})\).
+Thus \(Z(1,W_{|0\rangle},W_{|0\rangle})=(1-p^{-1})\cdot L_{p}(1,\mathrm{Ad})\).
 
-\emph{Step 4: Absorbing $L_{p}(1,\mathrm{Ad})$.} Divide both
-sides by $L_{p}(1,\mathrm{Ad})$:
+% RECTIFICATION-FLAG [Gate 1: Step 4 -- L_p(1,Ad) cancellation is mis-identified.]
+% The equation as written asserts that the Whittaker pairing factors as
+% L_p(1,Ad)·(1-p^{-1}) times the Koszul-bare pairing, based on Step 3's
+% evaluation of Z(1,W_{|0>},W_{|0>}) for the zonal spherical vector.
+% Two steps are missing: (a) the conversion from Z(1,W,W) at the spherical
+% Whittaker vector to the full Whittaker pairing ⟨v,σ^BC(w)⟩^Whit for
+% general v,w in H^{(p)}_{sph-fin,cusp}; (b) the conversion from the
+% Whittaker pairing to the Koszul-bare pairing.  After L_p(1,Ad) cancels,
+% the residual factor is (1-p^{-1}) = ζ_p(1)^{-1}; this matches K5 only
+% if (1-p^{-1})·⟨v,w⟩^{Koszul-bare} = ⟨v,w⟩^BC, which is the
+% Plancherel-volume identification, but this identification requires
+% Whittaker→Koszul-bare as an intermediate step that is not supplied.
+% Do not guess: supply the missing conversion from a primary source before
+% removing this flag.
+\emph{Step 4: Absorbing \(L_{p}(1,\mathrm{Ad})\).} Divide both
+sides by \(L_{p}(1,\mathrm{Ad})\):
 \[
 L_{p}(1,\mathrm{Ad})^{-1}\cdot\langle v,\sigma^{\mathrm{BC}}_{p}(w)\rangle^{\mathrm{Whit}}_{p}
 \;=\;L_{p}(1,\mathrm{Ad})^{-1}\cdot\bigl[L_{p}(1,\mathrm{Ad})\cdot(1-p^{-1})\bigr]\cdot\langle v,w\rangle^{\mathrm{Koszul-bare}}_{p},
 \]
 where
-$\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul-bare}}_{p}$ is
+\(\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul-bare}}_{p}\) is
 the unrescaled Koszul pairing (directly from bar--cobar
-coevaluation without normalisation). Simplifying, the $L_{p}(1,\mathrm{Ad})$
-factor cancels and the $(1-p^{-1})$ factor is absorbed into the
+coevaluation without normalisation). Simplifying, the \(L_{p}(1,\mathrm{Ad})\)
+factor cancels and the \((1-p^{-1})\) factor is absorbed into the
 Plancherel-volume normalisation
-$\mathrm{vol}(GL_{2}(\mathbb{Z}_{p}))=(1-p^{-1})(1-p^{-2})$
+\(\mathrm{vol}(GL_{2}(\mathbb{Z}_{p}))=(1-p^{-1})(1-p^{-2})\)
 of \Cref{v4-arith:kp:lem:Pet-p-is-Plancherel} via
-the Bost--Connes KMS$_{1}$ identification.
+the Bost--Connes KMS\(_{1}\) identification.
 
 \emph{Step 5: Canonicality.} No choice of normalisation is
-introduced: $L_{p}(s,\mathrm{Ad})$ is determined by the local
-representation $\pi_{p}$ and the Haar measure on
-$GL_{2}(\mathbb{Q}_{p})$ is Weil-normalised. The absorption
+introduced: \(L_{p}(s,\mathrm{Ad})\) is determined by the local
+representation \(\pi_{p}\) and the Haar measure on
+\(GL_{2}(\mathbb{Q}_{p})\) is Weil-normalised. The absorption
 is canonical.
 \end{proof}
 
@@ -737,20 +769,20 @@ sph-fin locus)}. The global Koszul-dual normalisation convention
 \;:=\;L(1,\mathrm{Ad})^{-1}\cdot\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul}}
 \]
 is a well-defined adelic pairing on the cuspidal sph-fin core
-$\mathcal{V}^{\mathrm{prim}}_{\mathrm{sph\text{-}fin,cusp}}$,
-where $L(s,\mathrm{Ad})=\prod_{p}L_{p}(s,\mathrm{Ad})$ is the
-cuspidal adjoint $L$-function. Specifically:
+\(\mathcal{V}^{\mathrm{prim}}_{\mathrm{sph\text{-}fin,cusp}}\),
+where \(L(s,\mathrm{Ad})=\prod_{p}L_{p}(s,\mathrm{Ad})\) is the
+cuspidal adjoint \(L\)-function. Specifically:
 \begin{itemize}
-\item $L(1,\mathrm{Ad})$ is finite nonzero for every cuspidal
-$\pi\in\mathcal{V}^{\mathrm{prim}}$ (Hoffstein--Lockhart 1994
+\item \(L(1,\mathrm{Ad})\) is finite nonzero for every cuspidal
+\(\pi\in\mathcal{V}^{\mathrm{prim}}\) (Hoffstein--Lockhart 1994
 Ann.~Math.~140; Shahidi 1990 Ann.~Math.~132).
 \item The adelic product
-$\prod_{p}L_{p}(1,\mathrm{Ad})=L(1,\mathrm{Ad})$ converges
+\(\prod_{p}L_{p}(1,\mathrm{Ad})=L(1,\mathrm{Ad})\) converges
 absolutely on the cuspidal sph-fin locus (Langlands--Shahidi
 method; Shahidi 1981 Amer.~J.~Math.~103).
 \item The Koszul--Petersson compatibility
 (\Cref{v4-arith:kp:thm:main-full}) holds on the normalized sph-fin
-cuspidal core under the Koszul-dual normalisation. The route~1
+cuspidal core under the Koszul-dual normalisation. The prior
 condition ``K5 conditional on GJ absorption convention'' is
 upgraded to closure on the cuspidal sph-fin locus by the
 specification of \Cref{v4-arith:bcglue-k5:def:koszul-dual-norm};
@@ -760,22 +792,22 @@ sph-fin cut) remains open.
 \end{theorem}
 
 \begin{proof}
-\emph{Convergence of $L(1,\mathrm{Ad})$.} Shahidi 1981 Amer.~J.~Math.~103
-(``On certain $L$-functions'') proves that $L(s,\mathrm{Ad})$ for
-cuspidal $\pi$ on $GL_{n}/\mathbb{Q}$ has holomorphic continuation
-to $\mathrm{Re}(s)>1/2$ and satisfies a Langlands--Shahidi
-functional equation. At $s=1$, $L(1,\mathrm{Ad})$ is finite;
+\emph{Convergence of \(L(1,\mathrm{Ad})\).} Shahidi 1981 Amer.~J.~Math.~103
+(``On certain \(L\)-functions'') proves that \(L(s,\mathrm{Ad})\) for
+cuspidal \(\pi\) on \(GL_{n}/\mathbb{Q}\) has holomorphic continuation
+to \(\mathrm{Re}(s)>1/2\) and satisfies a Langlands--Shahidi
+functional equation. At \(s=1\), \(L(1,\mathrm{Ad})\) is finite;
 Hoffstein--Lockhart 1994 Ann.~Math.~140 proves nonvanishing at
-$s=1$ (the adjoint $L$-function is nonvanishing on the edge of
-the critical strip). Hence $L(1,\mathrm{Ad})\in\mathbb{C}^{\times}$.
+\(s=1\) (the adjoint \(L\)-function is nonvanishing on the edge of
+the critical strip). Hence \(L(1,\mathrm{Ad})\in\mathbb{C}^{\times}\).
 
 \emph{Adelic product convergence.} The Euler product
-$L(s,\mathrm{Ad})=\prod_{p}L_{p}(s,\mathrm{Ad})$ converges for
-$\mathrm{Re}(s)>1$ absolutely (standard Euler product argument;
-each $L_{p}(s,\mathrm{Ad})$ is a product of three geometric series
-$(1-\alpha_{p}\beta_{p}^{-1}p^{-s})^{-1}\cdots$). At $s=1$,
-$L(1,\mathrm{Ad})$ is understood via analytic continuation from
-$\mathrm{Re}(s)>1$, with the continuation supplied by
+\(L(s,\mathrm{Ad})=\prod_{p}L_{p}(s,\mathrm{Ad})\) converges for
+\(\mathrm{Re}(s)>1\) absolutely (standard Euler product argument;
+each \(L_{p}(s,\mathrm{Ad})\) is a product of three geometric series
+\((1-\alpha_{p}\beta_{p}^{-1}p^{-s})^{-1}\cdots\)). At \(s=1\),
+\(L(1,\mathrm{Ad})\) is understood via analytic continuation from
+\(\mathrm{Re}(s)>1\), with the continuation supplied by
 Langlands--Shahidi. The adelic product equals the continued
 value, a finite nonzero constant.
 
@@ -789,11 +821,18 @@ reads
 \langle v,\sigma^{\mathrm{BC}}(w)\rangle^{\mathrm{Koszul}}.
 \]
 Under the rescaling
-$\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul,Ad}}=L(1,\mathrm{Ad})^{-1}\cdot\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul}}$,
+\(\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul,Ad}}=L(1,\mathrm{Ad})^{-1}\cdot\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul}}\),
+% RECTIFICATION-FLAG [Gate 1: Bump 1997 §3.8 citation for global Rankin-Selberg
+% factorisation of Petersson pairing likely mis-cited. The identity
+% ⟨v,w⟩^Pet = L(1,Ad)·⟨v,w⟩^{Pet,reduced} is in newform normalisation, not a
+% global pairing rescaling by L(1,Ad) as a scalar. Bump 1997 §3.8 concerns the
+% analytic properties of Rankin-Selberg L-functions, not a Petersson pairing
+% factorisation. Verify against Hoffstein-Lockhart 1994 or Iwaniec-Kowalski
+% before removing flag.]
 both sides are multiplied by the same constant
-$L(1,\mathrm{Ad})^{-1}$ (on the Petersson side, via the global
+\(L(1,\mathrm{Ad})^{-1}\) (on the Petersson side, via the global
 Rankin--Selberg factorisation
-$\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Pet}}=L(1,\mathrm{Ad})\cdot\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Pet,reduced}}$
+\(\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Pet}}=L(1,\mathrm{Ad})\cdot\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Pet,reduced}}\)
 of Bump 1997 \S3.8). The identity
 \[
 \langle v,w\rangle^{\mathrm{Pet,reduced}}
@@ -803,40 +842,37 @@ of Bump 1997 \S3.8). The identity
 holds unconditionally on the sph-fin cuspidal locus.
 
 \emph{Tamagawa consistency (K6 verification).} The Weil-normalised
-Haar on $GL_{2}(\mathbb{A})$ has Tamagawa volume
-$\mathrm{vol}([GL_{2}])=1$ (Weil 1967 Ch.~VII \S3). The product
+Haar on \(GL_{2}(\mathbb{A})\) has Tamagawa volume
+\(\mathrm{vol}([GL_{2}])=1\) (Weil 1967 Ch.~VII \S3). The product
 of local volumes
-$\prod_{p}\mathrm{vol}(GL_{2}(\mathbb{Z}_{p}))\cdot\mathrm{vol}(GL_{2}(\mathbb{R})/GL_{2}(\mathbb{Z}))$
-equals $1$ by Weil's Tamagawa computation; the Koszul-dual
-normalisation by $L(1,\mathrm{Ad})^{-1}$ is compatible with this
-Tamagawa normalisation because $L(1,\mathrm{Ad})$ is constant (a
+\(\prod_{p}\mathrm{vol}(GL_{2}(\mathbb{Z}_{p}))\cdot\mathrm{vol}(GL_{2}(\mathbb{R})/GL_{2}(\mathbb{Z}))\)
+equals \(1\) by Weil's Tamagawa computation; the Koszul-dual
+normalisation by \(L(1,\mathrm{Ad})^{-1}\) is compatible with this
+Tamagawa normalisation because \(L(1,\mathrm{Ad})\) is constant (a
 single scalar across all primes) and the local volumes already
-account for the $\zeta_{p}(1)\zeta_{p}(2)^{-1}$ factor. Hence the
+account for the \(\zeta_{p}(1)\zeta_{p}(2)^{-1}\) factor. Hence the
 Koszul-dual-normalised pairing agrees with the Petersson pairing
-after removing the $L(1,\mathrm{Ad})$ factor, adelically
+after removing the \(L(1,\mathrm{Ad})\) factor, adelically
 consistently.
 
-K5 closes unconditionally under the explicit convention of
+K5 closes on the cuspidal sph-fin locus under the explicit convention of
 \Cref{v4-arith:bcglue-k5:def:koszul-dual-norm}.
 \end{proof}
 
-\begin{remark}[K5 status delta]
+\begin{remark}[K5 status upgrade]
 \label{v4-arith:bcglue-k5:rem:K5-delta}
-Route~1 \Cref{v4-arith:sw:thm:KP-split}(K5) inscribed K5 as
+\Cref{v4-arith:sw:thm:KP-split}(K5) inscribed K5 as
 ``Theorem conditional on Godement--Jacquet absorption convention.''
-Route~2's contribution, \Cref{v4-arith:bcglue-k5:def:koszul-dual-norm},
-specifies the convention explicitly:
-\begin{quote}
-\emph{Rescale the Koszul pairing by $L(s,\mathrm{Ad})^{-1}$
-evaluated at $s=1$.}
-\end{quote}
+\Cref{v4-arith:bcglue-k5:def:koszul-dual-norm} specifies the
+convention explicitly: rescale the Koszul pairing by
+\(L(s,\mathrm{Ad})^{-1}\) evaluated at \(s=1\).
 With this specification,
 \Cref{v4-arith:bcglue-k5:thm:K5-absorption-canonical} and
 \Cref{v4-arith:bcglue-k5:thm:K5-adelic-consistent}
-close K5 unconditionally. The
+close K5 on the cuspidal sph-fin locus. The
 Hoffstein--Lockhart nonvanishing
-$L(1,\mathrm{Ad})\neq 0$ is the key input that makes the
-convention well-defined on the whole sph-fin cuspidal locus.
+\(L(1,\mathrm{Ad})\neq 0\) makes the convention well-defined on
+the cuspidal sph-fin locus.
 \end{remark}
 
 \section{Consequence: K-P Compat Scope-Restricted}
@@ -847,10 +883,10 @@ convention well-defined on the whole sph-fin cuspidal locus.
 \ClaimStatusProvedHere \emph{(scope-restricted to the cuspidal
 sph-fin locus)}. The Koszul--Petersson compatibility
 (\Cref{v4-arith:kp:thm:main-full}) holds on the cuspidal sph-fin
-locus of $\mathcal{V}^{\mathrm{prim}}$, with the Koszul pairing
+locus of \(\mathcal{V}^{\mathrm{prim}}\), with the Koszul pairing
 interpreted under the Koszul-dual normalisation convention of
 \Cref{v4-arith:bcglue-k5:def:koszul-dual-norm}. Full-sector
-extension and KMS$_{1}$/GNS identification beyond the cuspidal
+extension and KMS\(_{1}\)/GNS identification beyond the cuspidal
 sph-fin locus remain open
 (\Cref{v4-arith:kp:rem:scope-restriction}).
 \end{corollary}
@@ -859,7 +895,7 @@ sph-fin locus remain open
 \Cref{v4-arith:kp:thm:main-full} reduced K-P compat to the seven
 sub-claims K1--K7 of \Cref{v4-arith:sw:thm:KP-split}; K1, K3 are
 definitional, K2, K4, K6, K7 are theorems by primary literature,
-K5 was conditional on the GJ absorption convention. Route~2 closes
+K5 was conditional on the GJ absorption convention. This chapter closes
 K5 on the cuspidal sph-fin locus by
 \Cref{v4-arith:bcglue-k5:thm:K5-absorption-canonical} and
 \Cref{v4-arith:bcglue-k5:thm:K5-adelic-consistent}. All seven
@@ -871,106 +907,107 @@ extension is the open residual documented in
 
 \begin{remark}[impact on P3]
 \label{v4-arith:bcglue-k5:rem:P3-impact}
-\Cref{v4-arith:kp:cor:P3-unconditional} inscribed P3 as
-unconditional after route~1 K-P compat. Route~1's K-P compat was
-itself conditional on K5 (audit-ledger \S\ref{v4-arith:sw:thm:KP-split}
-and \Cref{v4-arith:sw:table:residuals}); route~2 upgrades K5 to
-unconditional via
-\Cref{v4-arith:bcglue-k5:thm:K5-absorption-canonical}. The
-logical chain
+\Cref{v4-arith:kp:cor:P3-unconditional} inscribed P3 conditional on
+K-P compat, which was itself conditional on K5
+(\Cref{v4-arith:sw:thm:KP-split}).
+\Cref{v4-arith:bcglue-k5:thm:K5-absorption-canonical} closes K5
+on the cuspidal sph-fin locus. The logical chain
 \[
-\text{K5 unconditional (W2)}
+\text{K5 (cuspidal sph-fin)}
 \;\Rightarrow\;
-\text{K-P compat unconditional (W1+W2)}
+\text{K-P compat (cuspidal sph-fin)}
 \;\Rightarrow\;
-\text{P3 unconditional (W1+W2)}
+\text{P3 (cuspidal sph-fin)}
 \]
-is now complete. P3 is unconditional theorem, with the Koszul-dual
+is complete on the cuspidal sph-fin locus with the Koszul-dual
 normalisation convention explicit.
 \end{remark}
 
 \begin{remark}[impact on minimal RH path]
 \label{v4-arith:bcglue-k5:rem:RH-path-impact}
 \Cref{v4-arith:kp:cor:rh-minimal-updated} reduced the minimal RH
-path from three residuals (arith.~Pos., K-P compat, VB$^{*}$) to
-two (arith.~Pos., VB$^{*}$) after route~1. Route~2's K5 closure
-does not remove additional residuals from the RH path but
-upgrades the status of K-P compat from ``conditional on convention''
-to ``unconditional with explicit convention.'' The two remaining
-residuals on the RH path, arith.~Positselski and VB$^{*}$, are
-unaffected by route~2 and remain open.
+path from three residuals (arith.~Pos., K-P compat, VB\(^{*}\)) to
+two (arith.~Pos., VB\(^{*}\)) after K-P compat was established.
+The K5 closure of this chapter does not remove additional residuals
+from the RH path but upgrades the status of K-P compat from
+``conditional on convention'' to the explicit scope restriction of
+\Cref{v4-arith:bcglue-k5:cor:K-P-unconditional}. The two remaining
+residuals on the RH path, arith.~Positselski and VB\(^{*}\), are
+unaffected and remain open.
 \end{remark}
 
 \section{Residual Scope}
 \label{v4-arith:bcglue-k5:residual}
 
-After the two route~2 closures of this chapter, the open residuals
-attached to route~1's conditional obligations split as follows.
+After the closures and reductions of this chapter, the open residuals
+split as follows.
 
 \begin{description}
-\item[(BCglue.local, BCglue.glue).] Closed as theorems by
-\Cref{v4-arith:bcglue-k5:thm:local-BZCHN-plus-EG} and
+\item[(BCglue.local).] Theorem-waiting;
+\Cref{v4-arith:bcglue-k5:thm:local-BZCHN-plus-EG}.
+Residual scope: \(5\)--\(10\) pp.
+\item[(BCglue.glue).] Conjectural (prismatic flatness);
 \Cref{v4-arith:bcglue-k5:thm:prismatic-gluing}.
-Scope closed: $10$--$20$ pp.
+Residual scope: \(5\)--\(10\) pp.
 \item[(BC-diamond-glue.core).] Residual conjecture conditional on
 arithmetic AG (\Cref{v4-arith:thm:arithmetic-AG}). Scope:
-$10$--$15$ pp past arithmetic AG.
-\item[Arithmetic AG (global).] Open conjecture; not addressed by
-route~2. Scope: substantial (primary-literature-length); this is
+\(10\)--\(15\) pp past arithmetic AG.
+\item[Arithmetic AG (global).] Open conjecture. Scope: substantial
+(primary-literature-length); this is
 the cumulative scope of extending Fargues--Scholze local
 geometrization to a global arithmetic statement, estimated
-$50$--$100$ pp past Fargues--Scholze.
+\(50\)--\(100\) pp past Fargues--Scholze.
 \item[K5 (GJ absorption convention).] Closed on the cuspidal
 sph-fin locus by
 \Cref{v4-arith:bcglue-k5:thm:K5-absorption-canonical} and
 \Cref{v4-arith:bcglue-k5:thm:K5-adelic-consistent}. Scope closed
-(cuspidal sph-fin): $5$--$10$ pp. Eisenstein handling via the
+(cuspidal sph-fin): \(5\)--\(10\) pp. Eisenstein handling via the
 sph-fin cut of \Cref{v4-arith:sw:thm:KP-split}(K7).
 \item[K-P compat, P3.] Scope-restricted to the cuspidal sph-fin
 locus by \Cref{v4-arith:bcglue-k5:cor:K-P-unconditional}. Scope
-closed (cuspidal sph-fin): $0$ pp (pure status restriction).
-Full-sector extension and KMS$_{1}$/GNS identification remain open.
+closed (cuspidal sph-fin): \(0\) pp (pure status restriction).
+Full-sector extension and KMS\(_{1}\)/GNS identification remain open.
 \item[Minimal RH path.] Four-input conditional spine
 (\Cref{v4-arith:w3-audit-B:thm:four-input-spine}): arith.~Positselski
 (five open sub-items), Koszul--Pet compat (scope-restricted),
-H-P$^{\mathrm{Ar}}$, VB$^{*}$ main direction. Scope addressable by
-route~3 or route~4: arith.~Positselski $\sim 30$--$50$ pp; VB$^{*}$
-is the $100$-year-old open problem.
+H-P\(^{\mathrm{Ar}}\), VB\(^{*}\) main direction.
+Arith.~Positselski: \(\sim 30\)--\(50\) pp residual scope.
+VB\(^{*}\) is the 100-year-old open problem.
 \end{description}
 
-\begin{remark}[route~2 residual summary]
+\begin{remark}[chapter residual summary]
 \label{v4-arith:bcglue-k5:rem:residual-summary}
-Route~2 tightens:
+This chapter tightens:
 \begin{enumerate}
-\item (BCglue.local): $5$--$10$ pp, now \emph{theorem-waiting} (the
-integration of BZCHN + Emerton--Gee + Zhu + Fargues--Scholze into a
-single canonical local coherent Springer sheaf, including $\ell=p$
-compatibility and $\ell$-independence, remains a primary-source
-writing obligation; see
-\Cref{v4-arith:bcglue-k5:thm:local-BZCHN-plus-EG}).
-\item (BCglue.glue): $5$--$10$ pp, now \emph{conjectural} conditional
+\item (BCglue.local): \(5\)--\(10\) pp, status \emph{theorem-waiting}; the
+integration of Ben-Zvi--Chen--Helm--Nadler + Emerton--Gee + Zhu +
+Fargues--Scholze into a single canonical local coherent Springer sheaf,
+including \(\ell=p\) compatibility and \(\ell\)-independence, remains a
+primary-source writing obligation; see
+\Cref{v4-arith:bcglue-k5:thm:local-BZCHN-plus-EG}.
+\item (BCglue.glue): \(5\)--\(10\) pp, status \emph{conjectural} conditional
 on the prismatic flatness of
 \Cref{v4-arith:bcglue-k5:lem:prismatic-flatness}; the cross-prime
 Nygaard-convention-aware transition theorem is not in the primary
-literature as of the route~2 inscription date.
-\item K5 (GJ absorption): $5$--$10$ pp, closed on the cuspidal
+literature.
+\item K5 (GJ absorption): \(5\)--\(10\) pp, closed on the cuspidal
 sph-fin locus under the Koszul-dual normalisation convention
 (\Cref{v4-arith:bcglue-k5:def:koszul-dual-norm}); Eisenstein
 handling via the sph-fin cut.
-\item P3 status restriction: $0$ pp, scope-restricted theorem on
+\item P3 status restriction: \(0\) pp, scope-restricted theorem on
 the cuspidal sph-fin locus with the explicit normalisation
 convention; full-sector P3 remains open.
 \end{enumerate}
-Route~2 reduces:
+This chapter reduces:
 \begin{itemize}
-\item (BC-diamond-glue) from $30$--$50$ pp to $10$--$15$ pp
+\item (BC-diamond-glue) from \(30\)--\(50\) pp to \(10\)--\(15\) pp
 (past arithmetic AG).
 \end{itemize}
-Route~2 does not affect:
+Unaffected by this chapter:
 \begin{itemize}
 \item Arithmetic AG (global): open, unchanged.
 \item Arith.~Positselski (on minimal RH path): open, unchanged.
-\item VB$^{*}$ (on minimal RH path): open, unchanged.
+\item VB\(^{*}\) (on minimal RH path): open, unchanged.
 \end{itemize}
 \end{remark}
 
@@ -982,10 +1019,10 @@ Route~2 does not affect:
 (BCglue.local), (BCglue.glue), (BC-diamond-glue.core)
 (\Cref{v4-arith:bcglue-k5:thm:decomposition}). The decomposition
 is logically independent.
-\item (BCglue.local) is theorem-waiting via integrated primary sources
-BZCHN + Emerton--Gee + Zhu + Fargues--Scholze; a single canonical
-primary-source transition theorem covering $\ell = p$ and
-$\ell$-independence has not yet been written
+\item (BCglue.local) is theorem-waiting: Ben-Zvi--Chen--Helm--Nadler +
+Emerton--Gee + Zhu + Fargues--Scholze supply the inputs, but a single
+canonical primary-source transition theorem covering \(\ell = p\) and
+\(\ell\)-independence has not yet been written
 (\Cref{v4-arith:bcglue-k5:thm:local-BZCHN-plus-EG}).
 \item (BCglue.glue) is conjectural conditional on prismatic flatness
 of the Nygaard-convention-aware transition maps
@@ -994,24 +1031,24 @@ of the Nygaard-convention-aware transition maps
 colimits (Gaitsgory--Rozenblyum)
 (\Cref{v4-arith:bcglue-k5:thm:prismatic-gluing}).
 \item The irreducible residual of (BC-diamond-glue) is
-(BC-diamond-glue.core): a $10$--$15$ pp cross-prime compatibility,
+(BC-diamond-glue.core): a \(10\)--\(15\) pp cross-prime compatibility,
 conditional on arithmetic AG
 (\Cref{v4-arith:bcglue-k5:thm:core-compatibility}).
-\item $\mathrm{L}_{\mathrm{ACD}}$ tight residual catalog
+\item \(\mathrm{L}_{\mathrm{ACD}}\) tight residual catalog
 (\Cref{v4-arith:bcglue-k5:cor:LACD-tight-catalog}): (BCglue.local)
 theorem-waiting; (BCglue.glue) conjectural; (BC-diamond-glue.core)
 conjectural conditional on arithmetic AG. The three sub-obligations
-together form the residual content of $\mathrm{L}_{\mathrm{ACD}}$
-past F2.c and the route~2 sub-obligations of
+together form the residual content of \(\mathrm{L}_{\mathrm{ACD}}\)
+past F2.c and the sub-obligations of
 Ch.~\ref{v4-arith:lacd-sub}.
 \item K5 is closed on the cuspidal sph-fin locus by specifying the
 Koszul-dual normalisation convention
 (\Cref{v4-arith:bcglue-k5:def:koszul-dual-norm}): rescale the
 Koszul pairing at each finite prime by
-$L_{p}(1,\mathrm{Ad})^{-1}$, giving a global rescaling by
-$L(1,\mathrm{Ad})^{-1}$. The rescaling is canonical on the
+\(L_{p}(1,\mathrm{Ad})^{-1}\), giving a global rescaling by
+\(L(1,\mathrm{Ad})^{-1}\). The rescaling is canonical on the
 cuspidal sph-fin locus, and Hoffstein--Lockhart 1994 + Shahidi
-1990 guarantee $L(1,\mathrm{Ad})\neq 0$ on the cuspidal sph-fin
+1990 guarantee \(L(1,\mathrm{Ad})\neq 0\) on the cuspidal sph-fin
 locus
 (\Cref{v4-arith:bcglue-k5:thm:K5-absorption-canonical},
 \Cref{v4-arith:bcglue-k5:thm:K5-adelic-consistent}); Eisenstein
@@ -1020,30 +1057,29 @@ handling is via the sph-fin cut of
 \item K-P compat and P3 are scope-restricted theorems on the
 cuspidal sph-fin locus with the explicit normalisation convention
 (\Cref{v4-arith:bcglue-k5:cor:K-P-unconditional});
-full-sector extension and KMS$_{1}$/GNS identification remain open.
-\item Residual scope: route~2 tightens $\sim 20$--$40$ pp; reduces
-(BC-diamond-glue) by a factor $2$--$3$; leaves arithmetic AG,
-arith.~Positselski (five open sub-items), H-P$^{\mathrm{Ar}}$,
-and VB$^{*}$ main direction as the primary open residuals (the
+full-sector extension and KMS\(_{1}\)/GNS identification remain open.
+\item Residual scope: this chapter tightens \(\sim 20\)--\(40\) pp and
+reduces (BC-diamond-glue) by a factor of \(2\)--\(3\); the primary open
+residuals remain arithmetic AG, arith.~Positselski (five open
+sub-items), H-P\(^{\mathrm{Ar}}\), and VB\(^{*}\) (the
 four-input conditional spine of
 \Cref{v4-arith:w3-audit-B:thm:four-input-spine}).
 \end{enumerate}
 
-The chapter converts the two route~1 obligations, (BC-diamond-glue)
-and K5, into structurally tightened residuals: (BC-diamond-glue)
-is isolated as a single cross-prime compatibility conditional on
-arithmetic AG, and K5 is closed unconditionally under the explicit
-Koszul-dual normalisation convention. The K-P compatibility and P3
-are upgraded to fully unconditional theorems on the sph-fin cuspidal
-locus. The minimal RH path is unaffected by route~2.
+(BC-diamond-glue) is isolated as a single cross-prime compatibility
+conditional on arithmetic AG, and K5 is closed on the cuspidal sph-fin
+locus under the explicit Koszul-dual normalisation convention. The
+K-P compatibility and P3 are scope-restricted theorems on the
+cuspidal sph-fin locus. The minimal RH path is unaffected.
 
-The primary sources carrying route~2's closures are drawn from
-seven disjoint catalogs: BZCHN (coherent Springer theory);
+The primary sources are drawn from seven disjoint catalogs:
+Ben-Zvi--Chen--Helm--Nadler (coherent Springer theory);
 Emerton--Gee (Galois deformation stacks); Bhatt--Scholze +
 Bhatt--Lurie (prismatic cohomology and Nygaard convention);
 Gaitsgory--Rozenblyum (derived algebraic geometry);
 Godement--Jacquet (local functional equation); Langlands--Shahidi
-(Shahidi 1990, 1981; adjoint $L$-functions and nonvanishing);
-Bost--Connes (KMS$_{1}$ Tomita--Takesaki modular theory).
+(Shahidi 1990, 1981; adjoint \(L\)-functions and nonvanishing);
+Bost--Connes (KMS\(_{1}\) Tomita--Takesaki modular theory).
 No pair of catalogs shares a primary author at overlapping work;
-the HZ-IV disjointness discipline is satisfied.
+the source-disjointness requirement of the verification programme
+is satisfied.

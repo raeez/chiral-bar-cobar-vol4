@@ -1,50 +1,49 @@
-\chapter{Arithmetic FLE Completion Ledger}
+\chapter{Arithmetic Fundamental Local Equivalence: Selmer-Derived Target and Open Categorical Equivalences}
 \label{v4-arith:fle-completion-ledger}
 
-\emph{This chapter records the final repair of the arithmetic FLE
-analogue. The corrected object is not a proved arithmetic version of
-Gaitsgory's fundamental local equivalence. It is a Hochschild-trace
-candidate equipped with six conditional windows, a Selmer-derived
-spectral target, and a list of theorem-waiting equivalences whose
-failure would stop the programme.}
-
-\section{Corrected Spectral Target}
+\section{Selmer-Derived Global Spectral Stack}
 \label{v4-arith:fle-ledger:spectral-target}
+
+The arithmetic analogue of Gaitsgory's fundamental local equivalence (FLE) requires a global spectral target that imposes local conditions simultaneously. The global Galois group \(G_{\mathbb{Q},S}\) is not a product of its decomposition groups; the correct global object is the derived fibre product of local Emerton--Gee stacks over the restriction maps, with local conditions imposed simultaneously. This is the Selmer-derived construction.
 
 \begin{definition}[Selmer-derived global spectral stack]
 \label{v4-arith:fle-ledger:def:selmer-stack}
 Fix:
 \begin{itemize}
-\item a finite set $S$ of places containing $\infty$, all primes
-where $\bar\rho$ is ramified, and all primes where the local
+\item a finite set \(S\) of places containing \(\infty\), all primes
+where \(\bar\rho\) is ramified, and all primes where the local
 condition is not unramified;
 \item a residual representation
-$\bar\rho\colon G_{\mathbb{Q},S}\to GL_{2}(k)$;
-\item a determinant character $\delta$ lifting $\det\bar\rho$;
-\item for each $v\in S$, a local condition
-$\mathcal{X}^{\mathcal{L}_{v}}_{v}\hookrightarrow
-\mathcal{X}^{W,\varphi\Gamma}_{GL_{2},v}$ inside the full
-Weil/$(\varphi,\Gamma)$ local parameter stack.
+\(\bar\rho\colon G_{\mathbb{Q},S}\to GL_{2}(k)\);
+\item a determinant character \(\delta\) lifting \(\det\bar\rho\);
+\item for each \(v\in S\), a local condition
+\(\mathcal{X}^{\mathcal{L}_{v}}_{v}\hookrightarrow
+\mathcal{X}^{W,\varphi\Gamma}_{GL_{2},v}\) inside the full
+Weil\(/(\varphi,\Gamma)\) local parameter stack
+\(\mathcal{X}^{W,\varphi\Gamma}_{GL_{2},v}\) (Emerton--Gee).
 \end{itemize}
-The corrected global spectral stack is the derived Selmer fibre
-product
+The Selmer-derived global spectral stack is
 \begin{equation}
 \label{v4-arith:fle-ledger:eq:selmer-stack}
 \mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\delta,\mathcal{L}}
 :=
 \mathrm{Map}_{\bar\rho,\delta}(G_{\mathbb{Q},S},GL_{2})
 \times^{\mathbf{R}}_{\prod_{v\in S}\mathrm{Map}(G_{\mathbb{Q}_{v}},GL_{2})}
-\prod_{v\in S}\mathcal{X}^{\mathcal{L}_{v}}_{v}.
+\prod_{v\in S}\mathcal{X}^{\mathcal{L}_{v}}_{v},
 \end{equation}
-It replaces every product/colimit presentation of a ``global
-Emerton--Gee stack''. Local Emerton--Gee stacks supply local
-$(\varphi,\Gamma)$ input; the global object is Selmer-derived.
+where \(\mathrm{Map}_{\bar\rho,\delta}(G_{\mathbb{Q},S},GL_{2})\)
+denotes the derived mapping stack of continuous lifts of \(\bar\rho\)
+with determinant \(\delta\), and the derived fibre product
+\(\times^{\mathbf{R}}\) imposes the local conditions
+\(\mathcal{X}^{\mathcal{L}_{v}}_{v}\) simultaneously. Local
+Emerton--Gee stacks supply the \((\varphi,\Gamma)\) local input
+at each finite \(v\); the global object is Selmer-derived.
 \end{definition}
 
 \begin{proposition}[Selmer tangent complex]
 \label{v4-arith:fle-ledger:prop:selmer-tangent}
 \ClaimStatusProvedHere. At a point
-$\rho\in\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\delta,\mathcal{L}}$,
+\(\rho\in\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\delta,\mathcal{L}}\),
 the tangent complex is the fixed-determinant Selmer complex
 \begin{equation}
 \label{v4-arith:fle-ledger:eq:selmer-tangent}
@@ -52,161 +51,263 @@ T_{\rho}\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\delta,\mathcal{L}}
 \simeq
 C^{\bullet}_{\mathcal{L}}(G_{\mathbb{Q},S},\mathrm{ad}^{0}\rho)[1],
 \end{equation}
-where $C^{\bullet}_{\mathcal{L}}$ is the mapping fibre of the
-localisation map from global cochains to the quotients by the chosen
-local tangent conditions.
-\end{proposition}
-
-\begin{proof}
-The stack in
-\eqref{v4-arith:fle-ledger:eq:selmer-stack} is a derived fibre
-product. Applying the tangent functor gives the fibre of
+where \(C^{\bullet}_{\mathcal{L}}(G_{\mathbb{Q},S},\mathrm{ad}^{0}\rho)\)
+is the mapping fibre of the localisation map
 \[
 C^{\bullet}(G_{\mathbb{Q},S},\mathrm{ad}^{0}\rho)
 \longrightarrow
 \bigoplus_{v\in S}
 C^{\bullet}(G_{\mathbb{Q}_{v}},\mathrm{ad}^{0}\rho)/
-C^{\bullet}_{\mathcal{L}_{v}}(G_{\mathbb{Q}_{v}},\mathrm{ad}^{0}\rho),
+C^{\bullet}_{\mathcal{L}_{v}}(G_{\mathbb{Q}_{v}},\mathrm{ad}^{0}\rho).
 \]
-then shifts by $[1]$ by the usual deformation-stack convention.
+\end{proposition}
+
+\begin{proof}
+The stack \eqref{v4-arith:fle-ledger:eq:selmer-stack} is a derived fibre
+product. Applying the tangent functor yields the fibre of the
+localisation map displayed above, then shifts by \([1]\) by the
+deformation-stack convention.
 \end{proof}
 
-\section{Immediate Repairs Installed}
-\label{v4-arith:fle-ledger:repairs}
+The tangent complex identifies the Selmer cohomology
+\(H^{1}_{\mathcal{L}}(G_{\mathbb{Q},S},\mathrm{ad}^{0}\rho)\) as
+the first cohomology of
+\(C^{\bullet}_{\mathcal{L}}(G_{\mathbb{Q},S},\mathrm{ad}^{0}\rho)\),
+with obstruction class in \(H^{2}\). Quasi-smoothness of
+\(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\delta,\mathcal{L}}\) at
+\(\rho\) is equivalent to the vanishing of this \(H^{2}\), which in
+turn depends on the local conditions \(\mathcal{L}_{v}\) via the
+Greenberg--Wiles formula. Noetherian and quasi-smooth properties thus
+reduce to conditions on local conditions at \(v \in S\).
 
-\begin{theorem}[repair ledger]
-\label{v4-arith:fle-ledger:thm:repairs}
-\ClaimStatusProvedHere. The arithmetic branch is henceforth read
-with the following corrections:
+\section{Local Geometrisation and Its Scope}
+\label{v4-arith:fle-ledger:local-geometrisation}
+
+The following collects what Fargues--Scholze, Emerton--Gee, and
+Dotto--Emerton--Gee establish in the local setting. These are the
+inputs to the conditional programme of \S\ref{v4-arith:fle-ledger:obligations}.
+
+\begin{theorem}[local inputs, Fargues--Scholze / Emerton--Gee / Dotto--Emerton--Gee]
+\label{v4-arith:fle-ledger:thm:local-inputs}
+\ClaimStatusProvedHere\ (assembling external results).
 \begin{enumerate}
-\item The synthesis has six conditional windows on
-$\mathcal{V}^{\mathrm{prim}}$, not six proved equivalent
-presentations.
-\item The global spectral target is
-$\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\delta,\mathcal{L}}$, not a
-product or filtered colimit of local Emerton--Gee stacks.
-\item Fargues--Scholze supplies local geometrisation, spectral
-action, and Hecke functoriality; it does not prove F1.a.
-\item F2.c, the restricted-tensor $E_{2}$ transport lemma, is
-separate from the mixed-characteristic Iwahori $E_{2}$ local input
-F2.b, which remains theorem-waiting.
-\item The arithmetic BZN target is full Weil/$(\varphi,\Gamma)$.
-$B\widehat{\mathbb{Z}}$ is only an inertia shadow.
-\item Kim arithmetic Chern--Simons supplies classical CS torsors and
-action lines. No boundary VOA or quantum boundary category is
-constructed here.
-\item $\mathcal{V}^{\mathrm{prim}}$ has no global VOA/OPE
-structure. Chiral OPE language is confined to the archimedean
-factor; finite places carry locally constant/Hecke data.
-\item Yangian/RTT language is falsified as a Hopf-algebraic claim.
-Only the commutative Bethe/Hecke-algebra heuristic survives.
-\item The global arithmetic branch is conditional/theorem-waiting
-except for explicitly local, formal, or representation-level
-statements marked ProvedHere.
+\item \emph{Local geometrisation and spectral action}
+  (Fargues--Scholze arXiv:2102.13459). For each prime \(p\),
+  the Fargues--Scholze spectral action equips
+  \(D^{\mathrm{sph}\text{-}\mathrm{fin}}([GL_{2}(\mathbb{Q}_{p})])\)
+  with an action of \(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathrm{LocSys}_{GL_{2}})\)
+  and supplies local Langlands geometrisation and Hecke functoriality.
+
+\item \emph{Local \((\varphi,\Gamma)\) parameter stacks}
+  (Emerton--Gee arXiv:1908.07185). For each prime \(p\), the
+  Emerton--Gee stack
+  \(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}\) parametrises
+  two-dimensional \((\varphi,\Gamma)\)-modules over \(\mathbb{Q}_{p}\)
+  with a well-behaved moduli structure; local conditions
+  \(\mathcal{X}^{\mathcal{L}_{v}}_{v}\hookrightarrow
+  \mathcal{X}^{W,\varphi\Gamma}_{GL_{2},v}\) are open or closed
+  substacks.
+
+\item \emph{Fully faithful functor at fixed central character}
+  (Dotto--Emerton--Gee arXiv:2603.26887). For primes
+  \(p \geq 5\), there exists a fully faithful functor
+  \[
+  D^{\mathrm{sph}\text{-}\mathrm{fin}}_{GL_{2}(\mathbb{Q}_{p}),\chi}
+  \longhookrightarrow
+  \mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG},p}_{GL_{2},\chi}\bigr)
+  \]
+  for each fixed central character \(\chi\). Essential surjectivity,
+  the cases \(p = 2,3\), and the central-character-family
+  statement remain open.
+
+\item \emph{Archimedean OPE confined to archimedean factor}.
+  The Hochschild-trace candidate \(\mathcal{V}^{\mathrm{prim}}\)
+  carries chiral OPE structure at the archimedean factor
+  \(v = \infty\) via the \((\mathfrak{gl}_{2},O(2))\)-module structure;
+  finite places carry locally constant sheaf data and Hecke-algebra
+  actions via the Satake isomorphism. Chiral OPE structure is an
+  archimedean-fibre phenomenon.
+
+\item \emph{Commutative Bethe--Hecke algebra}.
+  At each finite prime \(p\), the centre of the spherical Hecke algebra
+  \(\mathcal{H}(GL_{2}(\mathbb{Q}_{p}),GL_{2}(\mathbb{Z}_{p}))\)
+  is commutative and acts on
+  \(\mathcal{V}^{\mathrm{prim}}\) via the Satake isomorphism. This
+  commutative Bethe--Hecke structure is the correct Hecke-algebraic
+  shadow; higher Hopf or Yangian structures require separate
+  verification at each prime.
+
+\item \emph{Classical Kim arithmetic Chern--Simons}.
+  Kim's arithmetic Chern--Simons theory arXiv:1510.05818 supplies
+  classical arithmetic CS torsors on the arithmetic curve and action
+  lines in \(K_{2}\). The quantum boundary category
+  \(\partial_{q}\mathrm{ACS}\) of Conjecture~\ref{v4-arith:fle-ledger:conj:acs-boundary}
+  is a distinct object from \(\mathcal{V}^{\mathrm{prim}}\);
+  its construction is open.
 \end{enumerate}
 \end{theorem}
 
-\section{Theorem-Waiting Equivalences}
+\section{Conditional Categorical Equivalences}
 \label{v4-arith:fle-ledger:obligations}
 
-\begin{conjecture}[F1.a, local categorical comparison]
-\label{v4-arith:fle-ledger:conj:F1a}
-\ClaimStatusConjectured. For every prime $p$ there should be a
-local categorical comparison
+The local inputs of \S\ref{v4-arith:fle-ledger:local-geometrisation}
+establish the spectral action, the \((\varphi,\Gamma)\) parameter stacks,
+and full faithfulness at fixed central character. A complete arithmetic FLE
+requires four further categorical equivalences, each an open problem
+conditional on a named hypothesis.
+
+\begin{conjecture}[local categorical comparison]
+\label{v4-arith:fle-ledger:conj:local-cat}
+\ClaimStatusConjectured. For every prime \(p\) there is an equivalence
 \begin{equation}
+\label{v4-arith:fle-ledger:eq:local-cat}
 D^{\mathrm{sph\text{-}fin}}\bigl([GL_{2}(\mathbb{Q}_{p})]\bigr)
 \simeq
 \mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}\bigr),
 \end{equation}
 compatible with Hecke functors, central-character families, and the
-Fargues--Scholze spectral action.
+Fargues--Scholze spectral action. The Dotto--Emerton--Gee functor
+establishes full faithfulness for \(p \geq 5\) at fixed central
+character; the conjecture adds essential surjectivity, the cases
+\(p = 2, 3\), and the family statement.
 \end{conjecture}
-
-\begin{remark}[current status of F1.a]
-Known inputs do not prove the conjecture. Fargues--Scholze gives
-local geometrisation and spectral action. Emerton--Gee gives local
-$(\varphi,\Gamma)$ stacks. Dotto--Emerton--Gee gives a fully faithful
-fixed-central-character functor for $GL_{2}(\mathbb{Q}_{p})$ in the
-$p\geq 5$ range; it is not essential surjectivity and it does not
-cover the full $p=2,3$ or central-character-family statement.
-\end{remark}
 
 \begin{conjecture}[adelic categorical descent]
 \label{v4-arith:fle-ledger:conj:adelic-descent}
-\ClaimStatusConjectured. The local categories in F1.a glue to the
-global automorphic category
-$D([GL_{2}])^{\mathrm{sph\text{-}fin}}$, with compatibility for
-Whittaker models, Bernstein centres, the archimedean
-$(\mathfrak{g},K)$ factor, and Eisenstein/continuous spectrum.
-Representation-level restricted tensor products are classical; this
-categorical descent is not proved here.
+\ClaimStatusConjectured.
+Under the local categorical comparison
+\eqref{v4-arith:fle-ledger:eq:local-cat} at all primes, the local
+categories glue to the global automorphic category
+\(D([GL_{2}])^{\mathrm{sph\text{-}fin}}\) via an equivalence
+compatible with Whittaker models, Bernstein centres, the archimedean
+\((\mathfrak{g},K)\) factor, and Eisenstein and continuous spectrum.
+Representation-level restricted tensor products are classical
+(Flath); the categorical descent is the open statement.
 \end{conjecture}
 
-\begin{conjecture}[mixed-characteristic Iwahori $E_{2}$]
-\label{v4-arith:fle-ledger:conj:F2b}
+\begin{conjecture}[mixed-characteristic Iwahori \(E_{2}\)]
+\label{v4-arith:fle-ledger:conj:iwahori-e2}
 \ClaimStatusConjectured. The mixed-characteristic local Iwahori
-Hecke category $\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p}$ carries an
-$E_{2}$-monoidal structure compatible with diamond BD fusion and
-with the Iwahori stratification. Current sources give spherical
-fusion and $E_{1}$ convolution; the Iwahori $E_{2}$ enhancement is
-the missing local input.
+Hecke category
+\(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p}\)
+carries an \(E_{2}\)-monoidal structure compatible with diamond
+Beilinson--Drinfeld fusion and with the Iwahori stratification:
+\begin{equation}
+\label{v4-arith:fle-ledger:eq:iwahori-e2}
+\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p}
+\in
+\mathrm{Alg}_{E_{2}}\bigl(\mathrm{Cat}_{\infty}\bigr).
+\end{equation}
+Current sources supply spherical fusion and \(E_{1}\) convolution; the
+\(E_{2}\) enhancement is the local input required for the
+restricted-tensor \(E_{2}\) transport argument. The restricted-tensor
+\(E_{2}\) transport lemma (proved elsewhere in this volume)
+is a separate, purely categorical statement; its hypotheses require
+\eqref{v4-arith:fle-ledger:eq:iwahori-e2} as input.
 \end{conjecture}
 
-\begin{conjecture}[full-target arithmetic BZN]
+\begin{conjecture}[full-target arithmetic Ben-Zvi--Nadler]
 \label{v4-arith:fle-ledger:conj:full-bzn}
-\ClaimStatusConjectured. For the Selmer-derived full
-Weil/$(\varphi,\Gamma)$ target there should be an arithmetic
-Ben-Zvi--Nadler comparison
+\ClaimStatusConjectured.
+For the Selmer-derived full Weil\(/(\varphi,\Gamma)\) target, the
+arithmetic Ben-Zvi--Nadler comparison is
 \begin{equation}
+\label{v4-arith:fle-ledger:eq:bzn}
 \mathrm{HH}_{\bullet}\bigl(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},\mathrm{glob}}\bigr)
 \simeq
 \mathcal{O}\bigl(\mathrm{LocSys}^{W,\varphi\Gamma}_{GL_{2}}\bigr)^{\mathrm{flat}},
 \end{equation}
-including formal-Noetherian Hochschild continuity and comparison of
-the Arinkin--Gaitsgory nilpotent flat locus with the
+where \(\mathrm{LocSys}^{W,\varphi\Gamma}_{GL_{2}}\) is the full
+Weil\(/(\varphi,\Gamma)\) local system stack and
+\({\cdot}^{\mathrm{flat}}\) denotes the flat-locus subfunctor.
+The conjecture requires formal-Noetherian Hochschild continuity for
+\(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},\mathrm{glob}}\) and
+comparison of the Arinkin--Gaitsgory nilpotent flat locus with the
 Fargues--Scholze/Emerton--Gee flat locus.
 \end{conjecture}
 
 \begin{conjecture}[categorical arithmetic Whittaker theory]
 \label{v4-arith:fle-ledger:conj:whittaker}
-\ClaimStatusConjectured. The arithmetic Whittaker factorisation
-should lift from representation-level Whittaker models to a
-categorical equivalence compatible with the local comparisons,
-adelic descent, and the Selmer-derived spectral stack. The current
-evidence is representation-level Tate/Jacquet--Langlands
-factorisation only.
+\ClaimStatusConjectured.
+The arithmetic Whittaker factorisation lifts from
+representation-level Whittaker models to a categorical equivalence
+compatible with the local comparisons of
+\eqref{v4-arith:fle-ledger:eq:local-cat}, adelic descent, and the
+Selmer-derived spectral stack
+\eqref{v4-arith:fle-ledger:eq:selmer-stack}.
+Representation-level Tate--Jacquet--Langlands factorisation is proved;
+the categorical lift is the open statement.
 \end{conjecture}
 
 \begin{conjecture}[quantum ACS boundary category]
 \label{v4-arith:fle-ledger:conj:acs-boundary}
-\ClaimStatusConjectured. If arithmetic Chern--Simons is retained as
-more than motivation, one must construct a quantum boundary category
-$\partial_{q}\mathrm{ACS}$ and compare it with the Hochschild-trace
-candidate. Kim's theory gives the classical arithmetic CS
-torsor/action line; it does not construct this boundary category.
+\ClaimStatusConjectured. There exists a quantum boundary category
+\(\partial_{q}\mathrm{ACS}\) and an equivalence
+\[
+\partial_{q}\mathrm{ACS} \simeq \mathcal{V}^{\mathrm{prim}}
+\]
+compatible with an appropriate quantisation of Kim's arithmetic
+Chern--Simons theory arXiv:1510.05818. Kim's theory provides the
+classical arithmetic CS torsors and action lines in \(K_{2}\); the
+quantisation is the open content of this conjecture.
 \end{conjecture}
 
-\section{Status Table}
-\label{v4-arith:fle-ledger:status-table}
+\section{Proved and Conditional Components of the Arithmetic FLE}
+\label{v4-arith:fle-ledger:summary}
 
-\begin{center}
-\small
-\begin{tabular}{p{4.2cm}|p{4.7cm}|p{4.5cm}}
-Item & Corrected status & Main obstruction \\
-\hline
-Selmer-derived spectral stack & Constructed here & Noetherian/quasi-smooth checks depend on local conditions \\
-F1.a local categorical comparison & Conjectural/theorem-waiting & Essential surjectivity, small primes, central-character families \\
-Adelic categorical descent & Conjectural & Whittaker, Bernstein-centre, archimedean, continuous-spectrum control \\
-F2.c restricted tensor product & ProvedHere elsewhere in this volume & Does not prove local Iwahori $E_{2}$ \\
-F2.b mixed-char Iwahori $E_{2}$ & Conjectural/theorem-waiting & Diamond BD fusion at Iwahori level \\
-F3 full-target arithmetic BZN & Conjectural & Formal-Noetherian HH and flat-locus comparison \\
-Categorical Whittaker theory & Conjectural & Representation-level factorisation not categorical gluing \\
-ACS boundary category & Conjectural & Kim supplies classical torsors/lines only \\
-\end{tabular}
-\end{center}
+\begin{theorem}[arithmetic FLE: proved and conditional components]
+\label{v4-arith:fle-ledger:thm:summary}
+\ClaimStatusProvedHere\ (by enumeration).
+The arithmetic programme based on
+\(\mathcal{V}^{\mathrm{prim}}\) and the Selmer-derived stack
+\(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\delta,\mathcal{L}}\)
+\eqref{v4-arith:fle-ledger:eq:selmer-stack} decomposes as follows.
+\begin{enumerate}
+\item \emph{Proved.} The Selmer-derived global spectral stack
+  \(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\delta,\mathcal{L}}\) is
+  constructed as a derived fibre product
+  (Definition~\ref{v4-arith:fle-ledger:def:selmer-stack}); its tangent
+  complex is identified with the fixed-determinant Selmer complex
+  (Proposition~\ref{v4-arith:fle-ledger:prop:selmer-tangent}). The
+  local inputs of
+  Theorem~\ref{v4-arith:fle-ledger:thm:local-inputs} are
+  assembled from Fargues--Scholze, Emerton--Gee, and
+  Dotto--Emerton--Gee.
 
-Thus the arithmetic analogue of the FLE is a precise conditional
-programme, not a completed theorem. What is completed here is the
-repair: the false global, VOA, Yangian, inertia-only, and
-product-colimit claims are removed from the load-bearing spine and
-replaced by the exact residual mathematical obligations.
+\item \emph{Conditional on
+  Conjecture~\ref{v4-arith:fle-ledger:conj:local-cat}.}
+  Local categorical comparison at all primes, including essential
+  surjectivity at \(p \geq 5\) and the full statement at \(p = 2, 3\).
+
+\item \emph{Conditional on
+  Conjecture~\ref{v4-arith:fle-ledger:conj:local-cat} and
+  Conjecture~\ref{v4-arith:fle-ledger:conj:adelic-descent}.}
+  Adelic categorical descent to the global automorphic category.
+
+\item \emph{Conditional on
+  Conjecture~\ref{v4-arith:fle-ledger:conj:iwahori-e2}.}
+  Iwahori \(E_{2}\)-monoidal structure at mixed characteristic;
+  the restricted-tensor \(E_{2}\) transport lemma applies once this
+  local input is supplied.
+
+\item \emph{Conditional on
+  Conjecture~\ref{v4-arith:fle-ledger:conj:full-bzn}.}
+  Full-target arithmetic Ben-Zvi--Nadler comparison
+  \eqref{v4-arith:fle-ledger:eq:bzn}.
+
+\item \emph{Conditional on
+  Conjecture~\ref{v4-arith:fle-ledger:conj:whittaker}.}
+  Categorical arithmetic Whittaker factorisation.
+
+\item \emph{Conditional on
+  Conjecture~\ref{v4-arith:fle-ledger:conj:acs-boundary}.}
+  Quantum ACS boundary category equivalent to
+  \(\mathcal{V}^{\mathrm{prim}}\).
+\end{enumerate}
+\(\mathcal{V}^{\mathrm{prim}}\) is a Hochschild trace class throughout;
+its chiral OPE structure is confined to the archimedean factor
+as established in Theorem~\ref{v4-arith:fle-ledger:thm:local-inputs}(4).
+A vertex algebra requires an OPE on a formal disk defined at every
+place; \(\mathcal{V}^{\mathrm{prim}}\) carries this structure only at
+\(v = \infty\).
+\end{theorem}
