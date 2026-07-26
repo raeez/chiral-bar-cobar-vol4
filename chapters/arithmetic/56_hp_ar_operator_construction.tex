@@ -1,38 +1,30 @@
-\chapter{Constructing \(H_{\mathrm{HP}}\): Bost--Connes GNS, Modular Spectrum, and the Primary-Heisenberg Twist}
+\chapter{Bost--Connes Log-Modular Spectrum and the Hilbert--P\'olya Twist}
 \label{v4-arith:w5-b:hp-operator}
 
-\emph{The obligation (W) left open by
-Chapters~\ref{v4-arith:hpar-det},
-\ref{v4-arith:R-analytic-audit},
-\ref{v4-arith:kms-gns-full} is weight existence: construct a
-self-adjoint ordinate operator \(H_{\mathrm{HP}}\) such that
-\(\Theta_{\xi}:=\frac12\mathrm{id}+iH_{\mathrm{HP}}\) has regularised
-determinant \(\xi_{\mathbb R}\) and Weil--Connes trace distribution
-equal to the non-trivial-zero distribution of \(\zeta\). This chapter
-builds the operator in elementary steps. Sections~1--2 construct the
-unconditional skeleton: the Bost--Connes \(C^{*}\)-algebra, its
-KMS\({}_{1}\) state, the GNS representation, and the modular operator
-whose logarithm is a self-adjoint diagonal operator on the GNS
-Hilbert space with a spectrum indexed by \(\{\log m\mid m\in
-\mathbb{N}^{\times}\}\). Section~3 sets up the arithmetic Fock and the
-primary Heisenberg core. Section~4 names the \emph{primary-Heisenberg
-twist} that is required to carry the modular log-operator to a
-candidate zeta-zero operator; the twist is a Maass/Mellin transform
-pre-composed with the identification of spectral variables, and its
-\emph{existence with the correct spectrum} is the Hilbert--P\'olya
-obstruction itself. Sections~5--6 state the target determinant and
-trace-distribution identities and record which implications are
-tautological consequences of a spectrum-realising twist and which are
-additional positivity inputs. Section~7 separates the three layers
-precisely: what is unconditional (the GNS skeleton and the modular
-operator), what is conditional-tautological (determinant and trace
-identities given the twist), and what is the classical
-Hilbert--P\'olya obstruction (existence of the twist).}
+\emph{The analytic condition (W) is the existence of a logarithmic
+weight on the Bost--Connes/Fock side which can enter a
+determinant-trace twist. The Hilbert--P\'olya condition asks for a
+self-adjoint \(A\) such that
+\(\Theta_{\xi}:=\frac12\mathrm{id}+iA\) has regularised determinant
+divisor \(\mathrm{div}\,\xi_{\mathbb R}\) and Weil--Connes trace
+distribution equal to the non-trivial-zero distribution of \(\zeta\). The
+Bost--Connes \(C^{*}\)-system supplies an unconditional
+log-modular operator with spectrum \(\{\log m\mid m\in
+\mathbb{N}^{\times}\}\). It does not supply the zero-divisor operator.
+The passage from the log-prime spectrum to the zero divisor is the
+primary-Heisenberg twist; existence of that twist with the prescribed
+determinant divisor is exactly the Hilbert--P\'olya obstruction. Conditional on
+such a twist, the determinant and trace formulae below are the
+Hadamard product and the Weil explicit formula in operator form.}
 
 \section{Bost--Connes \(C^{*}\)-Dynamical Setup}
 \label{v4-arith:w5-b:bc-setup}
 
-The GNS Hilbert space and the modular operator for the primary-Heisenberg construction are determined by the Bost--Connes \(C^{*}\)-dynamical system at inverse temperature \(\beta=1\). The algebra and its \(\mathbb{R}\)-action are fixed in Chapter~\ref{v4-arith:kms-gns-full}; the normalisation below matches the primary-Heisenberg spectrum convention.
+The GNS Hilbert space and the modular operator are determined by the
+Bost--Connes \(C^{*}\)-dynamical system at inverse temperature
+\(\beta=1\). The algebra and its \(\mathbb{R}\)-action are fixed in
+\Cref{v4-arith:kms-gns-full}; the normalisation below matches the
+primary-Heisenberg spectrum convention.
 
 \begin{definition}[local and adelic Bost--Connes algebras]
 \label{v4-arith:w5-b:def:bc-algebra}
@@ -41,8 +33,17 @@ Bost--Connes algebra is the \(C^{*}\)-algebra
 \[
 C^{*}_{\mathbb{Q},p}\;:=\;C^{*}\bigl(\mu_{m},\mu_{m}^{*},e(\gamma)\bigr)_{m\in p^{\mathbb{N}},\,\gamma\in\mathbb{Q}_{p}/\mathbb{Z}_{p}},
 \]
-with Bost--Connes 1995 Selecta~1 \S2.2 relations \(\mu_{m}\mu_{m}^{*}=1/m\),
-\(\mu_{m}e(\gamma)\mu_{m}^{*}=e(m\gamma)/m\), \(e(\gamma+\delta)=e(\gamma)e(\delta)\).
+with Bost--Connes 1995 Selecta~1 \S2.2 relations in which
+\(\mu_{m}\) is an isometry and
+\[
+\mu_{m}^{*}\mu_{m}=1,\qquad
+\mu_{m}e(\gamma)\mu_{m}^{*}
+   ={1\over m}\sum_{m\delta=\gamma}e(\delta),\qquad
+\mu_{m}^{*}e(\gamma)\mu_{m}=e(m\gamma),
+\]
+together with \(e(\gamma+\delta)=e(\gamma)e(\delta)\).
+In particular \(\mu_{m}\mu_{m}^{*}=m^{-1}\sum_{m\delta=0}e(\delta)\), a
+projection and not a scalar multiple of the identity.
 The adelic algebra is the restricted tensor product
 \[
 C^{*}_{\mathbb{Q}}\;:=\;\bigotimes{}'_{p}\,C^{*}_{\mathbb{Q},p},
@@ -60,7 +61,7 @@ C^{*}_{\mathbb{Q}}\) is the tensor product of
 
 \begin{remark}[adelic assembly cross-references]
 \label{v4-arith:w5-b:rem:wave4-ref}
-The local construction is \Cref{v4-arith:def:bost-connes-algebra};
+The local algebra is \Cref{v4-arith:def:bost-connes-algebra};
 the adelic assembly is
 \Cref{v4-arith:kms-gns:cor:adelic-KMS-GNS}. The relations
 \eqref{v4-arith:w5-b:eq:bc-time} are the modular automorphism
@@ -86,7 +87,7 @@ factor is type~III\({}_{1}\).
 This is Bost--Connes 1995 Selecta~1 Theorem~25, with the adelic
 assembly of Connes--Marcolli 2008 AMS Colloquium~55 \S4.1. The
 normalisation choice and the factor type are Bost--Connes Thm~25
-(ii)-(iii). The statement is recorded for normalisations.
+(ii)-(iii).
 \end{proof}
 
 \begin{remark}[partition at \(\beta=1\)]
@@ -100,7 +101,10 @@ Euler--Mascheroni \(\gamma\) (via
 \section{GNS Representation and the Modular Operator}
 \label{v4-arith:w5-b:gns-modular}
 
-The candidate Hilbert--P\'olya operator acts on the GNS Hilbert space of \(\varphi_{1}\), and its spectral data is encoded in the modular operator \(\Delta_{1}\). The GNS construction and modular theory are classical; the spectrum of \(\log\Delta_{1}\) is recorded unconditionally.
+The Bost--Connes logarithmic modular operator acts on the GNS Hilbert
+space of \(\varphi_{1}\). Its spectrum is the log-prime lattice, not
+the zeta-zero divisor. The GNS construction and modular theory are
+classical; the spectrum of \(\log\Delta_{1}\) is unconditional.
 
 \begin{definition}[GNS triple of \(\varphi_{1}\)]
 \label{v4-arith:w5-b:def:gns}
@@ -129,8 +133,7 @@ lattice at \(p\)), restricted with respect to the local vacuum
 Local statement is
 \Cref{v4-arith:kms-gns:lem:GNS-space}; adelic assembly is restricted
 tensor product by modularity of tensors under KMS states (Takesaki
-2003 Ch.~VIII \S1 % RECTIFICATION-FLAG: Gate 1, verify exact proposition number for restricted tensor product of KMS-state GNS spaces; Takesaki 2003 TOA~II Ch.~VIII is the correct volume; Prop.~1.8 not confirmed
-).
+2003 Ch.~VIII \S1).
 \end{proof}
 
 \begin{lemma}[modular operator on the GNS space]
@@ -158,7 +161,7 @@ Tomita--Takesaki theory: for a KMS state at \(\beta=1\),
 Cor.~1.2). Applying \(\sigma^{t}(\mu_{m})=m^{it}\mu_{m}\) twice, one to
 each of \(\mu_{m}\Omega_{1}\) and \(\mu_{m}^{*}\Omega_{1}\), produces the
 \(m^{-2}\) eigenvalue. This is the content of
-\Cref{v4-arith:kms-gns:lem:Delta}; we use it as recorded there.
+\Cref{v4-arith:kms-gns:lem:Delta}.
 \end{proof}
 
 \begin{definition}[BC log-modular operator]
@@ -204,7 +207,7 @@ basis.
 \label{v4-arith:w5-b:rem:N-BC-not}
 \(N_{\mathrm{BC}}\) is the canonical self-adjoint operator extracted
 from the KMS\({}_{1}\) modular data: it is the Bost--Connes Hamiltonian
-of Chapter~\ref{v4-arith:def:bost-connes-algebra} times a normalisation,
+of \Cref{v4-arith:def:bost-connes-algebra} times a normalisation,
 and its spectrum is the log-prime additive semigroup
 \(\{\log m\mid m\in\mathbb{N}^{\times}\}\). The Berry--Keating weight
 \(\lambda(p^{k})=k\log p\) of
@@ -212,15 +215,19 @@ and its spectrum is the log-prime additive semigroup
 of \(N_{\mathrm{BC}}\) at the monomial \(m=p^{k}\), consistent with
 the weight selection of
 \Cref{v4-arith:hpar-det:thm:uniqueness-given-existence}.
-The zeta-zero operator, whose spectrum is \(\{\gamma_{\rho}\}\), is
-the target of the primary-Heisenberg twist of Section~4; see
+The zero-divisor operator, whose normal determinant divisor is
+\(\mathrm{div}\,\xi_{\mathbb R}\), is the target of the
+primary-Heisenberg twist of Section~4; see
 \Cref{v4-arith:rh:rem:spectral-convention}.
 \end{remark}
 
 \section{Arithmetic Heisenberg Fock and Its Embedding into the GNS Space}
 \label{v4-arith:w5-b:primary-heisenberg}
 
-The primary-Heisenberg twist of Section~4 acts on a Fock space built from per-prime Heisenberg oscillators. The arithmetic Fock and its primary core are defined here; the embedding into the GNS space is the content of Lemma~\ref{v4-arith:w5-b:lem:fock-embeds-gns}.
+The primary-Heisenberg twist of Section~4 acts on a Fock space built from
+per-prime Heisenberg oscillators.  The Bost--Connes GNS space contains
+the spherical zero-mode lattice canonically.  Its oscillator Fock
+enlargement is an additional representation-theoretic datum.
 
 \begin{definition}[arithmetic Fock and primary subspace]
 \label{v4-arith:w5-b:def:fock}
@@ -240,45 +247,84 @@ of finite-support number-state/zero-mode tensors
 (\Cref{v4-arith:hpvbconv:def:L0-domain}).
 \end{definition}
 
-\begin{lemma}[primary Fock embeds into GNS]
+\begin{lemma}[spherical zero-mode embedding]
+\label{v4-arith:w5-b:lem:zero-mode-embeds-gns}
+\ClaimStatusProvedHere. The map
+\[
+\iota_{0}:\ell^{2}(\mathbb{N}^{\times},m^{-1}dm)\longrightarrow
+\mathcal{H}_{1},\qquad
+\delta_{m}\longmapsto \delta_{m}\otimes\delta_{0},
+\]
+is a canonical isometry onto the spherical character sector of the
+Bost--Connes zero-mode lattice.
+\end{lemma}
+
+\begin{proof}
+\Cref{v4-arith:w5-b:lem:gns-restricted-tensor} identifies the
+zero-mode lattice with the restricted tensor
+\(\bigotimes'_{p}\ell^{2}(p^{\mathbb{N}},m^{-1}dm)\).  Tensoring the
+local basis vector with the trivial character vector
+\(\delta_{0}\in\ell^{2}(\mathbb{Q}_{p}/\mathbb{Z}_{p})\) preserves the
+product measure and hence the inner product.
+\end{proof}
+
+\begin{definition}[BC--GNS Heisenberg lift]
+\label{v4-arith:w5-b:def:bc-gns-heisenberg-lift}
+\ClaimStatusDefinitional. A BC--GNS Heisenberg lift is a representation
+of the per-prime Heisenberg oscillator algebra on a closed subspace
+\(\mathcal{H}_{\mathrm{osc},0}\subset\mathcal{H}_{1}\) containing
+\(\iota_{0}\ell^{2}(\mathbb{N}^{\times},m^{-1}dm)\), such that the
+operators \(A_{n}^{(p)}\) satisfy the Heisenberg commutation relations,
+annihilate the GNS vacuum for \(n>0\), commute with the spherical
+Bost--Connes character idempotent, and carry the Fock inner product to
+the GNS inner product on finite number states.
+\end{definition}
+
+\begin{lemma}[primary Fock embeds into GNS under a Heisenberg lift]
 \label{v4-arith:w5-b:lem:fock-embeds-gns}
-\ClaimStatusProvedHere. There is a canonical isometric embedding
+\ClaimStatusProvedHereConditional \emph{(on a BC--GNS Heisenberg lift)}.
+There is an isometric embedding
 \[
 \iota:\;\mathcal{F}^{\mathrm{Ar}}_{\mathrm{Heis},\mathrm{prim}}\;\hookrightarrow\;\mathcal{H}_{1}
 \]
 sending the finite-support number-state \(|\mathbf{n}\rangle\otimes\delta_{m}\)
 to \(\mathrm{Asc}(\mathbf{n})\cdot(\delta_{m}\otimes\delta_{0})\) where
-\(\mathrm{Asc}(\mathbf{n})\) is the Heisenberg ascending operator at
-number-occupation \(\mathbf{n}\). The image is dense in the spherical
-character sector of \(\mathcal{H}_{1}\) on the zero-mode lattice.
+\(\mathrm{Asc}(\mathbf{n})\) is the product of the lifted Heisenberg
+creation operators at number-occupation \(\mathbf{n}\).  Its image is
+dense in \(\mathcal{H}_{\mathrm{osc},0}\).
 \end{lemma}
 
 \begin{proof}
-The primary Fock is generated from the vacuum by finite products of
-Heisenberg creation operators acting on spherical zero-mode lattice
-vectors. Each creation operator lifts to a multiplication operator
-on the GNS space commuting with \(\pi_{1}(e(\gamma))\) for \(\gamma=0\),
-and the spherical zero-mode lattice is the \(\gamma=0\) image of the
-Bost--Connes lattice. Isometry is the Heisenberg/GNS inner-product
-match on number states. See \Cref{v4-arith:thm:BC-acts-on-L} for
-the commuting of Heisenberg creation with BC multiplication in the
-spherical sector.
+The lift supplies the operators \(\mathrm{Asc}(\mathbf{n})\), the CCR
+relations, the vacuum condition, and the equality of the Fock and GNS
+inner products on number states.  The zero-mode vector is embedded by
+\Cref{v4-arith:w5-b:lem:zero-mode-embeds-gns}.  These identities give an
+isometry on the algebraic primary core, and completion gives the stated
+closed oscillator sector.
 \end{proof}
 
-\begin{remark}[density and scope of the embedding]
-\label{v4-arith:w5-b:rem:embedding-scope}
-The embedding \(\iota\) lands in the spherical-character zero-mode
-sector; the non-spherical \(\gamma\neq 0\) sectors of the GNS space
-carry the Eisenstein/ramified content of the non-spherical character decomposition
-(\Cref{v4-arith:kms-gns-full}). All subsequent
-spectral matching is performed inside \(\iota\)'s image; the operator
-\(N_{\mathrm{BC}}\) restricts there without loss.
+\begin{remark}[density and domain of the embedding]
+\label{v4-arith:w5-b:rem:embedding-domain}
+The zero-mode embedding \(\iota_{0}\) is unconditional.  The oscillator
+embedding \(\iota\) is present exactly when the BC--GNS Heisenberg lift
+is present.  The non-spherical \(\gamma\neq0\) sectors of the GNS space
+carry the Eisenstein and ramified character decomposition
+(\Cref{v4-arith:kms-gns-full}).  Determinant and trace comparisons using
+oscillator states take place inside \(\mathcal{H}_{\mathrm{osc},0}\).
 \end{remark}
 
-\section{The Primary-Heisenberg Twist and the Candidate \(H_{\mathrm{HP}}\)}
+\section{The Primary-Heisenberg Twist and the Determinant-Trace Operator}
 \label{v4-arith:w5-b:twist}
 
-The BC log-modular operator \(N_{\mathrm{BC}}\) has spectrum \(\{\log m\}_{m\in\mathbb{N}^{\times}}\); the Hilbert--P\'olya obligation asks for an operator with spectrum \(\{\gamma_{\rho}\}\). The \emph{primary-Heisenberg twist} names the data required to pass from the first spectrum to the second; its existence with the correct spectral property is H-P\(^{\mathrm{Ar}}\).
+The BC log-modular operator \(N_{\mathrm{BC}}\) has spectrum
+\(\{\log m\}_{m\in\mathbb{N}^{\times}}\). The Hilbert--P\'olya
+condition asks for a self-adjoint operator \(A\) together with
+the determinant condition forcing the divisor of
+\(\tfrac12\mathrm{id}+iA\) to be the zero divisor of
+\(\xi_{\mathbb R}\). The \emph{primary-Heisenberg twist} names the
+data required to compare the first spectrum with this determinant
+divisor and its Weil--Connes trace. Its existence with the prescribed
+determinant-trace property is H-P\(^{\mathrm{Ar}}\).
 
 \subsection{Statement of the Twist}
 \label{v4-arith:w5-b:twist:statement}
@@ -296,12 +342,15 @@ sph-finite cuspidal core, conditional on
 \(\mathcal{D}_{\xi}\subset\mathcal{H}_{\xi}\);
 \item an isometric map
 \(U:\mathcal{F}^{\mathrm{Ar}}_{\mathrm{Heis},\mathrm{prim}}\to\mathcal{H}_{\xi}\)
-with dense range in \(\mathcal{D}_{\xi}\);
+with dense range in \(\mathcal{D}_{\xi}\), recording the Fock and
+Bost--Connes grading but not diagonalising \(A\);
 \item a self-adjoint unbounded operator
-\(A:\mathcal{D}_{\xi}\to\mathcal{H}_{\xi}\) satisfying
+\(A:\mathcal{D}_{\xi}\to\mathcal{H}_{\xi}\). The grading comparison is
+the bookkeeping identity
 \begin{equation}
 \label{v4-arith:w5-b:eq:twist-intertwine}
-A\,U\,|\mathbf{n}\rangle\otimes\delta_{m}\;=\;U\,\bigl(L_{0}^{\mathrm{Ar},\mathrm{Heis}}+\log m\bigr)\,|\mathbf{n}\rangle\otimes\delta_{m}\quad\text{on}\quad
+\mathrm{gr}\bigl(U(|\mathbf{n}\rangle\otimes\delta_{m})\bigr)
+\;=\;\bigl(L_{0}^{\mathrm{Ar},\mathrm{Heis}}+\log m\bigr)\,|\mathbf{n}\rangle\otimes\delta_{m}\quad\text{on}\quad
 \mathcal{F}^{\mathrm{Ar}}_{\mathrm{Heis},\mathrm{prim}},
 \end{equation}
 in a chain-level sense, where \(L_{0}^{\mathrm{Ar},\mathrm{Heis}}\) is
@@ -312,7 +361,7 @@ Given such data, the \emph{candidate Hilbert--P\'olya operator} is
 \label{v4-arith:w5-b:eq:H-HP-def}
 H_{\mathrm{HP}}\;:=\;A,
 \end{equation}
-and the \emph{arithmetic zero operator} is
+and the \emph{arithmetic zero-divisor operator} is
 \begin{equation}
 \label{v4-arith:w5-b:eq:Theta-xi-def}
 \Theta_{\xi}\;:=\;\tfrac12\mathrm{id}\;+\;iH_{\mathrm{HP}}.
@@ -331,14 +380,20 @@ required to extend the Bost--Connes modular
 data: the zero-mode eigenvalues \(\log m\) are inherited; the new content is the per-prime number operator \(L_{0}^{\mathrm{Ar},\mathrm{Heis}}\) acting on the Heisenberg descendants.
 \end{remark}
 
-\subsection{Spectral Requirement: Hadamard Inversion}
+\subsection{Determinant-Trace Requirement: Hadamard Inversion}
 \label{v4-arith:w5-b:twist:hadamard-inversion}
 
-The spectrum requirement on \(A\) is the critical-line zero-placement
-of \(\xi_{\mathbb R}\): the spectral multiset of \(A\) must match
-\(\{\gamma_{\rho}\mid\xi(1/2+i\gamma_{\rho})=0\}\). This is
+The condition on \(A\) is the Hilbert--P\'olya determinant-trace
+condition for \(\xi_{\mathbb R}\). Write a non-trivial zero as
+\(\rho=\beta_{\rho}+i\gamma_{\rho}\). The self-adjointness of \(A\)
+puts the normal operator \(\Theta_{\xi}=1/2+iA\) on the critical line.
+H-P\(^{\mathrm{Ar}}\) asks that its regularised determinant divisor be
+the original zero divisor and that its Weil--Connes trace be the zero
+distribution. Equivalently, the determinant identity forces
+\(\beta_{\rho}=1/2\) for every zero; after this zero-placement the
+trace of \(A\) is supported at the ordinates \(\gamma_{\rho}\). This is
 \emph{not} the spectrum of \(N_{\mathrm{BC}}\), which is
-\(\{\log m\}_{m\in\mathbb{N}^{\times}}\). The two multisets are
+\(\{\log m\}_{m\in\mathbb{N}^{\times}}\). The prime and zero sides are
 related by the Mellin transform of \(\xi\) through its Hadamard
 factorisation:
 \begin{equation}
@@ -350,28 +405,35 @@ zeros and \(B\) is the Hadamard constant. The primes appear on the
 side of the \emph{logarithmic derivative}
 \begin{equation}
 \label{v4-arith:w5-b:eq:log-deriv-xi}
--\frac{\xi_{\mathbb R}'(s)}{\xi_{\mathbb R}(s)}\;=\;-B-\frac{1}{s}-\frac{1}{s-1}+\frac{1}{2}\log\pi-\frac{1}{2}\Gamma'/\Gamma(s/2)+\sum_{n\geq1}\frac{\Lambda(n)}{n^{s}}
+-\frac{\xi_{\mathbb R}'(s)}{\xi_{\mathbb R}(s)}\;=\;-\frac{1}{s}-\frac{1}{s-1}+\frac{1}{2}\log\pi-\frac{1}{2}\Gamma'/\Gamma(s/2)+\sum_{n\geq1}\frac{\Lambda(n)}{n^{s}}
 \end{equation}
 (von Mangoldt 1895), and the zero-prime duality is the Weil explicit
 formula. The twist \(A\) is the operator-level analogue of
 \emph{inverting this duality}: from the log-prime spectrum of
-\(N_{\mathrm{BC}}\), read off the zero-spectrum of \(A\) via the
-Hadamard expansion. The Hadamard expansion is a
-statement about an entire function; the assertion that a self-adjoint operator on a Hilbert space realises the zero multiset as its spectrum is additional data, the content of H-P\(^{\mathrm{Ar}}\).
+\(N_{\mathrm{BC}}\), construct a normal zero-divisor operator whose
+determinant is governed by the Hadamard expansion and whose trace is
+the Weil--Connes zero distribution. The Hadamard expansion is a
+statement about an entire function. The assertion that a self-adjoint
+operator carries this determinant divisor and trace distribution is
+additional data, the content of H-P\(^{\mathrm{Ar}}\).
 
-\subsection{The Hilbert--P\'olya Hypothesis and Its Spectral Consequences}
+\subsection{The Hilbert--P\'olya Hypothesis and Its Determinant-Trace Consequences}
 \label{v4-arith:w5-b:twist:consequences}
 
 \begin{hypothesis}[H-P\(^{\mathrm{Ar}}\)-twist]
 \label{v4-arith:w5-b:hyp:twist-existence}
 There exists a primary-Heisenberg twist \((\mathcal{H}_{\xi},U,A)\) in
 the sense of \Cref{v4-arith:w5-b:def:twist} with the additional
-spectral property
+zero-placement spectral property
 \begin{equation}
 \label{v4-arith:w5-b:eq:spec-A}
-\mathrm{Spec}(A)\;=\;\{\gamma_{\rho}\mid\rho=\tfrac12+i\gamma_{\rho}\text{ is a non-trivial zero of }\xi_{\mathbb R}\},
+\mathrm{Spec}(A)\;=\;\{\gamma_{\rho}\mid\rho=\beta_{\rho}+i\gamma_{\rho}
+\text{ is a non-trivial zero of }\xi_{\mathbb R}\},
 \end{equation}
-with multiplicities matching zero multiplicities and the
+with multiplicities matching zero multiplicities, together with the
+determinant condition
+\(\mathrm{div}\,\det_{\infty}(s\mathrm{id}-(\tfrac12\mathrm{id}+iA))
+=\mathrm{div}\,\xi_{\mathbb R}\), and the
 \(\mathbb{Z}/2\)-symmetry \(\gamma_{\rho}\mapsto-\gamma_{\rho}\) acting on
 the spectrum as the arithmetic \(S\)-modular involution.
 \end{hypothesis}
@@ -380,27 +442,36 @@ the spectrum as the arithmetic \(S\)-modular involution.
 \label{v4-arith:w5-b:rem:equals-HPAr}
 \Cref{v4-arith:w5-b:hyp:twist-existence} is the functional-analytic
 content of \Cref{v4-arith:rh:hyp:HPAr}: an operator \(A\) with the
-specified spectrum is exactly \(H_{\mathrm{HP}}\) of the reformulation
-chapter, and \(\Theta_{\xi}=1/2+iA\) is the arithmetic zero operator.
-The classical Hilbert--P\'olya programme requests this object; the
-Vol~IV chiral-algebra framework requests it together with the
-intertwining with \(N_{\mathrm{BC}}\) via the log-prime spectrum. The
-latter is an additional constraint which, if imposed,
-\emph{disambiguates} which operator \(A\) is the correct one among
-candidates with the same zero spectrum; existence remains the content of H-P\(^{\mathrm{Ar}}\).
+specified determinant divisor and trace distribution is exactly
+\(H_{\mathrm{HP}}\) of the reformulation chapter, and
+\(\Theta_{\xi}=1/2+iA\) is the arithmetic zero-divisor operator.
+The classical Hilbert--P\'olya problem asks for this object; the
+arithmetic chiral-algebra form asks for it together with the
+intertwining with \(N_{\mathrm{BC}}\) via the log-prime spectrum. This
+intertwining selects the arithmetic representative among candidates
+with the same determinant divisor and Weil--Connes trace; existence
+remains the content of H-P\(^{\mathrm{Ar}}\).
 \end{remark}
 
 \section{Determinant Identity: Hadamard Factorisation}
 \label{v4-arith:w5-b:determinant}
 
-Assuming the twist of \Cref{v4-arith:w5-b:hyp:twist-existence}, the spectral property \eqref{v4-arith:w5-b:eq:spec-A} identifies the zeros of \(\xi_{\mathbb{R}}\) with the spectrum of \(\Theta_{\xi}\); the Hadamard product then determines \(\det_{\infty}(s\,\mathrm{id}-\Theta_{\xi})\) as a regularised determinant. The tautological content and the independent regularisation input are separated in the proposition and remark below.
+Assuming the twist of \Cref{v4-arith:w5-b:hyp:twist-existence}, the
+determinant divisor condition identifies the zeros of
+\(\xi_{\mathbb{R}}\) with the spectrum of \(\Theta_{\xi}\); the
+Hadamard product then determines
+\(\det_{\infty}(s\,\mathrm{id}-\Theta_{\xi})\) as a regularised
+determinant. The formal content and the independent
+regularisation input are separated in the proposition and remark
+below.
 
 \begin{proposition}[regularised determinant from Hadamard]
 \label{v4-arith:w5-b:prop:det-formal}
-\ClaimStatusProvedHere\emph{, conditional on
-\Cref{v4-arith:w5-b:hyp:twist-existence}}. Assume the twist
+\ClaimStatusProvedHere \emph{(conditional on
+\Cref{v4-arith:w5-b:hyp:twist-existence})}. Assume the twist
 \((\mathcal{H}_{\xi},U,A)\) has the spectral property
-\eqref{v4-arith:w5-b:eq:spec-A}. Define the regularised determinant
+\eqref{v4-arith:w5-b:eq:spec-A} and the determinant divisor condition
+of \Cref{v4-arith:w5-b:hyp:twist-existence}. Define the regularised determinant
 of the shifted operator by the \(\zeta\)-regularised prescription
 \[
 \log\det_{\infty}(s\mathrm{id}-\Theta_{\xi})\;:=\;-\partial_{u}\mathrm{Tr}_{\mathrm{reg}}\bigl((s\mathrm{id}-\Theta_{\xi})^{-u}\bigr)\Big|_{u=0},
@@ -415,9 +486,10 @@ Paley--Wiener class. Then
 
 \begin{proof}
 Under
-\Cref{v4-arith:w5-b:hyp:twist-existence}, the spectral multiset of
-\(\Theta_{\xi}=1/2+iA\) is \(\{1/2+i\gamma_{\rho}\}_{\rho}=\{\rho\}\)
-with multiplicities matching. The Hadamard product
+\Cref{v4-arith:w5-b:hyp:twist-existence}, the determinant divisor
+condition says that the spectral multiset of
+\(\Theta_{\xi}=1/2+iA\) is the non-trivial zero divisor
+\(\{\rho\}\) with multiplicities matching. The Hadamard product
 \eqref{v4-arith:w5-b:eq:hadamard} expresses \(\xi_{\mathbb R}\) as a
 product over the same zeros, with the convergence factor
 \(e^{s/\rho}\) and the Hadamard constant \(B\) absorbing the sum over
@@ -434,19 +506,18 @@ regularised determinants in the distributional Paley--Wiener sense,
 modulo explicit normalisation constants.
 \end{proof}
 
-\begin{remark}[tautological content of the determinant identity]
+\begin{remark}[formal content of the determinant identity]
 \label{v4-arith:w5-b:rem:det-does-not-buy}
 \Cref{v4-arith:w5-b:prop:det-formal} is \emph{conditional} on the
-spectrum condition \eqref{v4-arith:w5-b:eq:spec-A}. Given that
-spectrum, the Hadamard identity is tautological: the
-regularised determinant of an operator whose spectrum equals the
-zeros of an entire function of order~\(1\) with genus~\(1\) is the
-function itself (up to a convergence-factor normalisation). The
-content of H-P\(^{\mathrm{Ar}}\) is the existence of a self-adjoint operator
-with the prescribed spectrum: the determinant identity records that
-Hadamard factorisation is compatible with \(\zeta\)-regularisation;
-the spectral existence statement records that a self-adjoint operator
-realises the zeros.
+spectral and determinant conditions of
+\Cref{v4-arith:w5-b:hyp:twist-existence}. Given those conditions, the
+Hadamard identity is formal: the regularised determinant of the normal
+operator whose divisor is the zero divisor of an entire function of
+order~\(1\) with genus~\(1\) is the function itself, up to a
+convergence-factor normalisation. The content of
+H-P\(^{\mathrm{Ar}}\) is the existence of a self-adjoint operator whose
+normal translate has this determinant divisor and whose regularised
+trace is the Weil--Connes zero distribution.
 \end{remark}
 
 \begin{remark}[comparison with Berry--Keating]
@@ -455,9 +526,12 @@ Berry--Keating (SIAM Review 41, 1999) propose \(H=xp+1/2\) on
 \(L^{2}(\mathbb{R}_{>0},dx/x)\) as the candidate \(H_{\mathrm{HP}}\).
 Their proposal reproduces the leading-order Riemann--von Mangoldt
 zero density via Bohr--Sommerfeld quantisation; the Planck-cell
-regularisation, however, requires a self-adjoint extension that Berry--Keating leave open. The Vol~IV twist construction faces a parallel open problem in a different form: the BC log-prime
-spectrum \(\{\log m\}_{m\in\mathbb{N}^{\times}}\) is classical and self-adjoint, and the lift to the zero
-spectrum via the Hadamard-dual twist is the content of H-P\(^{\mathrm{Ar}}\). See
+regularisation, however, requires a self-adjoint extension not supplied
+by the model. The present twist has the same logical form: the BC
+log-prime spectrum \(\{\log m\}_{m\in\mathbb{N}^{\times}}\) is
+classical and self-adjoint, and the lift to the zero determinant
+divisor via the Hadamard-dual twist is the content of
+H-P\(^{\mathrm{Ar}}\). See
 \Cref{v4-arith:hpvbconv:rem:berry-keating} for the HPAr-converse analysis.
 \end{remark}
 
@@ -466,9 +540,10 @@ spectrum via the Hadamard-dual twist is the content of H-P\(^{\mathrm{Ar}}\). Se
 
 \begin{proposition}[distributional trace identity]
 \label{v4-arith:w5-b:prop:weil-trace}
-\ClaimStatusProvedHere\emph{, conditional on
-\Cref{v4-arith:w5-b:hyp:twist-existence}}. Assume the twist with
-spectral property \eqref{v4-arith:w5-b:eq:spec-A}. For every
+\ClaimStatusProvedHere \emph{(conditional on
+\Cref{v4-arith:w5-b:hyp:twist-existence})}. Assume the twist with
+spectral property \eqref{v4-arith:w5-b:eq:spec-A} and determinant
+divisor condition. For every
 admissible Weil--Connes Paley--Wiener test function \(h\)
 (in the class \(\mathsf{PW}\) of
 \Cref{v4-arith:hpar-det:lem:PW-wave-regularisation}),
@@ -484,8 +559,10 @@ where the second equality is the Weil--Connes explicit formula
 Given
 \Cref{v4-arith:w5-b:hyp:twist-existence}, the regularised trace of
 \(h(H_{\mathrm{HP}})=h(A)\) computed in the spectral representation of
-\(A\) is \(\sum_{\rho}h(\gamma_{\rho})\), which is the classical Weil
-explicit formula for \(\mathsf{PW}\) test functions
+\(A\) is \(\sum_{\rho}h(\gamma_{\rho})\). The determinant divisor
+condition makes \(\tfrac12+i\gamma_{\rho}\) the actual zero divisor,
+so this is the classical Weil explicit formula for \(\mathsf{PW}\)
+test functions
 (\Cref{v4-arith:hpar-det:lem:PW-wave-regularisation}; Weil 1952;
 Connes 1999 arXiv:math/9811068 Thm.~1). The admissibility of the
 regularisation for \(\mathrm{Tr}_{\mathrm{reg}}\) is preserved by
@@ -495,8 +572,8 @@ embedding is isometric on the spherical primary-Fock image.
 
 \begin{corollary}[Weil-positive cone compatibility]
 \label{v4-arith:w5-b:cor:weil-positive}
-\ClaimStatusProvedHere\emph{, conditional on
-\Cref{v4-arith:w5-b:hyp:twist-existence}}. The regularised trace
+\ClaimStatusProvedHere \emph{(conditional on
+\Cref{v4-arith:w5-b:hyp:twist-existence})}. The regularised trace
 \(\mathrm{Tr}_{\mathrm{reg}}(h(H_{\mathrm{HP}}))\) is non-negative for
 every \(h\in\mathsf{PW}\) of the form \(h=|\phi|^{2}\) with \(\phi\) in the
 Petersson-positive cone on the primary Fock, \emph{if and only if}
@@ -513,36 +590,39 @@ follows by
 \Cref{v4-arith:rh:prop:Li-is-Virasoro}.
 \end{proof}
 
-\section{Status: Unconditional Core, Conditional Tautologies, and the Obstruction}
-\label{v4-arith:w5-b:status}
+\section{Unconditional Core and Spectral Twist}
+\label{v4-arith:w5-b:form}
 
-The construction separates into three layers: an unconditional skeleton built from KMS and GNS data, tautological consequences that follow from the twist hypothesis, and the twist-existence statement itself.
+The Bost--Connes core is unconditional.  The determinant and trace
+identities are consequences of the spectral twist.  The existence of
+the twist is H-P\(^{\mathrm{Ar}}\).
 
-\subsection{Layer 1 (Unconditional Skeleton)}
-\label{v4-arith:w5-b:status:layer-1}
+\subsection{Bost--Connes Core}
+\label{v4-arith:w5-b:form:layer-1}
 
 \begin{itemize}
 \item The Bost--Connes \(C^{*}\)-algebra, its KMS\({}_{1}\) state,
 its GNS representation, and the modular operator \(\Delta_{1}\) with
 spectrum \(\{m^{-2}\}_{m\in\mathbb{N}^{\times}}\) on the zero-mode
-lattice: Sections~1--2, unconditional
+lattice
 (\Cref{v4-arith:w5-b:lem:modular},
 \Cref{v4-arith:w5-b:thm:N-BC-self-adjoint}).
 \item The BC log-modular operator \(N_{\mathrm{BC}}\) is self-adjoint
 on the finite-span core, non-negative, with pure point spectrum
 \(\{\log m\}_{m\in\mathbb{N}^{\times}}\): unconditional theorem
 (\Cref{v4-arith:w5-b:thm:N-BC-self-adjoint}).
-\item The arithmetic Heisenberg Fock \(\mathcal{F}^{\mathrm{Ar}}_{\mathrm{Heis}}\) embeds isometrically into the GNS
-space on the spherical character sector
+\item The spherical zero-mode lattice embeds isometrically into the GNS
+space (\Cref{v4-arith:w5-b:lem:zero-mode-embeds-gns}); the oscillator
+Fock embedding requires a BC--GNS Heisenberg lift
 (\Cref{v4-arith:w5-b:lem:fock-embeds-gns}).
 \end{itemize}
 
-\subsection{Layer 2 (Conditional Tautologies given the Twist)}
-\label{v4-arith:w5-b:status:layer-2}
+\subsection{Consequences of the Twist}
+\label{v4-arith:w5-b:form:layer-2}
 
 \begin{itemize}
 \item Given a twist \((\mathcal{H}_{\xi},U,A)\) with spectral property
-\eqref{v4-arith:w5-b:eq:spec-A}, the regularised determinant identity
+\eqref{v4-arith:w5-b:eq:spec-A} and determinant divisor condition, the regularised determinant identity
 \(\det_{\infty}(s\mathrm{id}-\Theta_{\xi})=\xi_{\mathbb R}(s)\) holds
 (\Cref{v4-arith:w5-b:prop:det-formal}).
 \item Given the same twist, the distributional trace identity
@@ -555,37 +635,44 @@ positivity for \(\zeta\) holds (\Cref{v4-arith:w5-b:cor:weil-positive}).
 The content is that the Vol~IV primary-Fock
 setting is compatible with the classical Hadamard/Weil calculus: the regularisations match.
 
-\subsection{Layer 3 (the Long-Standing Hilbert--P\'olya Obstruction)}
-\label{v4-arith:w5-b:status:layer-3}
+\subsection{Hilbert--P\'olya Determinant-Trace Existence}
+\label{v4-arith:w5-b:form:layer-3}
 
 \begin{itemize}
 \item The existence of a self-adjoint operator \(A\) on a Hilbert space
 \(\mathcal{H}_{\xi}\), densely defined on a core
 \(\mathcal{D}_{\xi}\subset\mathcal{H}_{\xi}\), intertwining the BC
-log-modular operator \(N_{\mathrm{BC}}\) on the primary Fock and with
-spectrum equal to the imaginary parts of non-trivial zeros of
-\(\zeta\) with correct multiplicities, is
+log-modular operator \(N_{\mathrm{BC}}\) on the primary Fock, whose
+normal zero-divisor operator has determinant divisor
+\(\mathrm{div}\,\xi_{\mathbb R}\) and Weil--Connes trace equal to the
+zero distribution, so that after zero-placement the associated
+ordinate trace carries the non-trivial-zero multiplicities and
+\(\mathrm{div}\,\det_{\infty}(s\mathrm{id}-(\tfrac12\mathrm{id}+iA))
+=\mathrm{div}\,\xi_{\mathbb R}\), is
 \Cref{v4-arith:w5-b:hyp:twist-existence}: it is the
-content of H-P\(^{\mathrm{Ar}}\), beyond the scope of the Bost--Connes/Tomita--Takesaki construction.
-\item The structural analysis of Chapter~\ref{v4-arith:HPAr-vbconverse} establishes that this is equivalent
-to Connes' adele class space absorption spectrum conjecture
+content of H-P\(^{\mathrm{Ar}}\), beyond the domain of the Bost--Connes/Tomita--Takesaki construction.
+\item The structural analysis of \Cref{v4-arith:HPAr-vbconverse} establishes that this is equivalent
+to Connes' adele class space absorption-trace condition
 (Connes arXiv:math/9811068 \S IV) and to Deninger's motivic
 cohomology Frobenius purity conjecture (Deninger 1994).
 \end{itemize}
 
 \begin{theorem}[precise obstruction]
 \label{v4-arith:w5-b:thm:precise-obstruction}
-\ClaimStatusProvedElsewhere. The Hilbert--P\'olya obligation
-(\Cref{v4-arith:rh:hyp:HPAr}) in the Vol~IV framework reduces to
+\ClaimStatusProvedElsewhere. The Hilbert--P\'olya condition
+(\Cref{v4-arith:rh:hyp:HPAr}) in the arithmetic form reduces to
 the existence, in the sense of
 \Cref{v4-arith:w5-b:def:twist}-\Cref{v4-arith:w5-b:hyp:twist-existence},
 of a self-adjoint operator \(A\) intertwining \(N_{\mathrm{BC}}\) via
-the primary-Heisenberg-to-zeta-zero twist and having spectrum
-\eqref{v4-arith:w5-b:eq:spec-A}. The BC log-modular operator
+the primary-Heisenberg determinant-trace twist, satisfying the
+zero-placement spectral condition \eqref{v4-arith:w5-b:eq:spec-A}
+and the determinant divisor condition of
+\Cref{v4-arith:w5-b:hyp:twist-existence}. The BC log-modular operator
 \(N_{\mathrm{BC}}\) supplies the zero-mode eigenvalues at \(\log m\)
 unconditionally. The twist exists if and only if the Connes
-absorption-spectrum condition is realised in the chiral-Fock
-framework; this equivalence is the content of Chapter~\ref{v4-arith:HPAr-vbconverse} and is recorded here as a corollary of that analysis.
+absorption-trace condition is realised in the chiral-Fock
+formalism; this equivalence is
+\Cref{v4-arith:hpvbconv:thm:HPAr-equivalence}.
 \end{theorem}
 
 \begin{proof}
@@ -593,77 +680,83 @@ By \Cref{v4-arith:w5-b:thm:N-BC-self-adjoint}, the operator
 \(N_{\mathrm{BC}}\) is unconditionally present with the log-prime
 spectrum. By \Cref{v4-arith:w5-b:prop:det-formal} and
 \Cref{v4-arith:w5-b:prop:weil-trace}, \emph{conditional on} a twist
-with the spectral property \eqref{v4-arith:w5-b:eq:spec-A}, both
+with the spectral property \eqref{v4-arith:w5-b:eq:spec-A} and the
+determinant divisor condition, both
 the determinant identity \eqref{v4-arith:w5-b:eq:det-identity} and
 the trace identity \eqref{v4-arith:w5-b:eq:trace-identity} hold.
-The spectral property is equivalent to
-\Cref{v4-arith:hpvbconv:cor:HPAr-connes-equivalence}, the Connes
-absorption-spectrum condition. The equivalence is the
-three-way equivalence theorem of Chapter~\ref{v4-arith:HPAr-vbconverse}
-(\Cref{v4-arith:hpvbconv:thm:HPAr-equivalence}) in its repaired
+	The determinant-trace property is equivalent to
+	\Cref{v4-arith:hpvbconv:cor:HPAr-connes-equivalence}, the Connes
+	absorption-trace condition. The equivalence is the
+three-way equivalence theorem of \Cref{v4-arith:HPAr-vbconverse}
+(\Cref{v4-arith:hpvbconv:thm:HPAr-equivalence}) in its corrected
 form after the Friedrichs construction of
 \Cref{v4-arith:hpvbconv:thm:L0-Friedrichs}.
 \end{proof}
 
 \begin{remark}[weight existence (W) and the remaining H-P step]
 \label{v4-arith:w5-b:rem:W-honest}
-The weight-existence obligation of
+The weight-existence condition of
 \Cref{v4-arith:hpar-det:cor:wave3-structure} asks for an additive
 Bost--Connes weight system satisfying the zeta partition
-normalisation. This chapter supplies the weight \(\lambda=\lambda_{\mathrm{BK}}\)
+normalisation. The weight \(\lambda=\lambda_{\mathrm{BK}}\) is supplied
 unconditionally as the eigenvalues of \(N_{\mathrm{BC}}\) on the
-arithmetic Fock image
+spherical zero-mode lattice
 (\Cref{v4-arith:w5-b:thm:N-BC-self-adjoint}); the weight is the
 unique one consistent with KMS\({}_{1}\) and the symmetric
-normalisation. The operator \(H_{\mathrm{HP}}\) with zeta-zero
-spectrum is the content of H-P\(^{\mathrm{Ar}}\) itself: the
-weight step is closed unconditionally by this construction; the full H-P\(^{\mathrm{Ar}}\)
-closure requires the twist-existence statement of
+normalisation. The operator \(H_{\mathrm{HP}}\) with the zeta-zero
+divisor condition is the content of H-P\(^{\mathrm{Ar}}\) itself: the
+weight is unconditional, while H-P\(^{\mathrm{Ar}}\) is the
+twist-existence statement of
 \Cref{v4-arith:w5-b:thm:precise-obstruction}.
 \end{remark}
 
 \begin{remark}[the canonical conditional form of the H-P statement]
 \label{v4-arith:w5-b:rem:honest-conditional}
-The canonical Vol~IV statement about \(H_{\mathrm{HP}}\) reads: ``There
+The assertion about \(H_{\mathrm{HP}}\) reads: ``There
 is a canonical self-adjoint operator \(N_{\mathrm{BC}}\) on the GNS
 space of the Bost--Connes KMS\({}_{1}\) state with pure point
-spectrum \(\{\log m\}_{m\in\mathbb{N}^{\times}}\); \(N_{\mathrm{BC}}\) is the BC log-modular operator, distinct from the zeta-zero operator. There is an intertwining primary-Heisenberg
-twist whose existence with the zeta-zero spectrum is
+spectrum \(\{\log m\}_{m\in\mathbb{N}^{\times}}\). The operator
+\(N_{\mathrm{BC}}\) is the BC log-modular operator, distinct from the
+zero-divisor operator. There is an intertwining primary-Heisenberg
+twist whose existence with determinant divisor
+\(\mathrm{div}\,\xi_{\mathbb R}\) and Weil--Connes zero trace is
 \Cref{v4-arith:w5-b:hyp:twist-existence}, equivalent to the Connes
-and Deninger spectral-realisation conjectures. Under that
+absorption-trace and Deninger determinant formulations. Under that
 hypothesis, the determinant and trace identities
 \eqref{v4-arith:w5-b:eq:det-identity},
 \eqref{v4-arith:w5-b:eq:trace-identity} hold and agree with
-Hadamard factorisation and the Weil explicit formula.'' The weight step is closed; the twist-existence statement
-is H-P\(^{\mathrm{Ar}}\).
+Hadamard factorisation and the Weil explicit formula.'' Thus the
+weight belongs to the Bost--Connes log-modular spectrum, while the
+twist-existence statement is H-P\(^{\mathrm{Ar}}\).
 \end{remark}
 
-\subsection{Summary Table}
-\label{v4-arith:w5-b:status:summary}
+\subsection{Operator Boundary}
+\label{v4-arith:w5-b:form:summary}
 
 \begin{center}
 \small
 \begin{tabular}{l|l|l}
-Component & Status in Vol~IV & Reference \\
+Component & Form in Vol~IV & Reference \\
 \hline
 BC \(C^{*}\)-algebra and KMS\({}_{1}\) state & Unconditional & Bost--Connes 1995 \\
 GNS triple \((\mathcal{H}_{1},\pi_{1},\Omega_{1})\) & Unconditional & \Cref{v4-arith:w5-b:def:gns} \\
 Modular operator \(\Delta_{1}\) and spectrum & Unconditional & \Cref{v4-arith:w5-b:lem:modular} \\
 BC log-modular \(N_{\mathrm{BC}}\), self-adjoint & Unconditional & \Cref{v4-arith:w5-b:thm:N-BC-self-adjoint} \\
-Arithmetic Heisenberg Fock \(\mathcal{F}^{\mathrm{Ar}}_{\mathrm{Heis}}\hookrightarrow\) GNS (spherical) & Unconditional & \Cref{v4-arith:w5-b:lem:fock-embeds-gns} \\
-Twist data \((\mathcal{H}_{\xi},U,A)\) with zero spectrum & Conjectural (=H-P\(^{\mathrm{Ar}}\)) & \Cref{v4-arith:w5-b:hyp:twist-existence} \\
+Spherical zero-mode lattice \(\hookrightarrow\) GNS & Unconditional & \Cref{v4-arith:w5-b:lem:zero-mode-embeds-gns} \\
+Arithmetic Heisenberg Fock \(\mathcal{F}^{\mathrm{Ar}}_{\mathrm{Heis}}\hookrightarrow\) GNS oscillator sector & Conditional on BC--GNS Heisenberg lift & \Cref{v4-arith:w5-b:lem:fock-embeds-gns} \\
+Twist data \((\mathcal{H}_{\xi},U,A)\) with zero divisor & Conjectural (=H-P\(^{\mathrm{Ar}}\)) & \Cref{v4-arith:w5-b:hyp:twist-existence} \\
 \(\det_{\infty}(s\mathrm{id}-\Theta_{\xi})=\xi_{\mathbb R}(s)\) & Conditional on twist & \Cref{v4-arith:w5-b:prop:det-formal} \\
 \(\mathrm{Tr}_{\mathrm{reg}}(h(H_{\mathrm{HP}}))=\sum_{\rho}h(\gamma_{\rho})\) & Conditional on twist & \Cref{v4-arith:w5-b:prop:weil-trace} \\
 Li positivity from Petersson positivity & Conditional on twist + Weil positivity & \Cref{v4-arith:w5-b:cor:weil-positive} \\
-Weight existence: \(\lambda_{\mathrm{BK}}\) as BC eigenvalues & Closed unconditionally & \Cref{v4-arith:w5-b:rem:W-honest} \\
-Hilbert--P\'olya trace bridge: twist existence & Open; equivalent to Connes/Deninger & \Cref{v4-arith:w5-b:thm:precise-obstruction}
+Weight existence: \(\lambda_{\mathrm{BK}}\) as BC eigenvalues & Bost--Connes theorem & \Cref{v4-arith:w5-b:rem:W-honest} \\
+	Hilbert--P\'olya trace bridge: twist existence & H-P\(^{\mathrm{Ar}}\) / Connes--Deninger determinant-trace realisation & \Cref{v4-arith:w5-b:thm:precise-obstruction}
 \end{tabular}
 \end{center}
 
-\section{Bibliography and Source Catalog}
+\section{Bibliography and Source List}
 \label{v4-arith:w5-b:biblio}
 
-The construction draws on four disjoint source catalogs, recorded
+The argument draws on four disjoint source lists
 here with publisher/arXiv identifiers for reproducibility.
 
 \paragraph{Operator-algebra and KMS theory.}
@@ -689,7 +782,7 @@ group related to primes and zeros of \(L\)-functions}, Duke Math.~J.
 127 (2005), 519--595; arXiv:math/0311468.
 \end{description}
 
-\paragraph{Hilbert--P\'olya candidates and spectral realisations.}
+	\paragraph{Hilbert--P\'olya candidates and determinant-trace realisations.}
 \begin{description}
 \item[Berry--Keating.] M.~V.~Berry and J.~P.~Keating, \emph{The
 Riemann zeros and eigenvalue asymptotics}, SIAM Review 41 (1999),
@@ -736,14 +829,14 @@ Academic Press 1974.
 \item[Bost--Connes~(cited above).]
 \item[Vol~IV chapters.] \Cref{v4-arith:kms-gns-full},
 \Cref{v4-arith:HPAr-vbconverse}, \Cref{v4-arith:hpar-det},
-\Cref{v4-arith:R-analytic-audit}, \Cref{v4-arith:rh-reformulation}.
+\Cref{v4-arith:R-analytic-comparison}, \Cref{v4-arith:rh-reformulation}.
 \end{description}
 
-No source in this catalog appears on both sides of the
-Koszul--Petersson/KMS derivation and the Hilbert--P\'olya spectral-realisation
-verification. The source catalog of
-\Cref{v4-arith:hpar-det:sources} is disjoint from the source catalog of
-\Cref{v4-arith:hpvbconv:sources}; this chapter
+No source in this list appears on both sides of the
+Koszul--Petersson/KMS derivation and the Hilbert--P\'olya determinant-trace
+argument. The source list of
+\Cref{v4-arith:hpar-det:sources} is disjoint from the source list of
+\Cref{v4-arith:hpvbconv:sources}; the present argument
 draws on the intersection of the two with the Takesaki modular
 theory and the Hadamard/von~Mangoldt classical analysis, both
 outside the Vol~IV internal derivations.

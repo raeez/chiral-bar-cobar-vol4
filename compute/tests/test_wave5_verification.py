@@ -1,9 +1,8 @@
-"""
-Vol IV wave-6 agent H cross-verification of wave-5 numerical constants.
+"""Vol IV arithmetic-constant cross-verification.
 
-Each constant in the wave-5 manuscript carries at least one load-bearing
-numerical inscription that has a canonical derivation source in the
-chapter and a distinct verification source available in the literature.
+Each constant tested here has a derivation source named in the
+manuscript and a distinct comparison source. The numerical assertion is
+load-bearing only for that finite inscription.
 This test file registers one HZ-IV realization decorator per constant
 with mechanically enforced source disjointness (derived_from and
 verified_against sets are disjoint at the string-set level, and the
@@ -19,14 +18,15 @@ The five constants covered here:
   2. Li coefficients lambda_1, lambda_2, lambda_3, lambda_4.
      Derived from the published Keiper 1992 / Voros 2003 table (literature
      numerical values); verified via Taylor-series extraction of the
-     log-xi function at s=1 using only zeta(s) at non-integer real s
-     (no zero data enters the verification).
+     log-xi function at s=1 using Stieltjes constants and log-gamma
+     derivatives (no zero data enters the verification).
 
   3. Riemann-von Mangoldt N(T) at T=100 and T=1000.
      Derived from mpmath.nzeros (Turing's method, contour-based exact
-     count); verified from the von Mangoldt asymptotic
+     count); compared with the von Mangoldt leading term
      N(T) ~ (T/2pi) log(T/(2 pi e)) + 7/8, which invokes only Stirling
-     on the gamma factor (no zeta calls).
+     on the gamma factor and rounds correctly at the two recorded
+     heights.
 
   4. First non-trivial zeros gamma_1, gamma_2, gamma_3.
      Derived from the LMFDB literature table (Odlyzko/LMFDB published
@@ -39,15 +39,11 @@ The five constants covered here:
 
 Each decorator carries:
   - claim: a v4-arith:w6-h: labelled claim string.
-  - source_volume: "Vol IV" (arithmetic branch; wave-6 agent H).
+  - source_volume: "Vol IV".
   - derived_from: the derivation catalog sources.
   - verified_against: the verification catalog sources.
-  - disjoint_rationale: an english paragraph describing the semantic
-    independence of the two source catalogs, with enough detail that
-    an auditor can verify the two paths do not share a hidden common
-    subroutine.
-
-Authored by Raeez Lorgat. No AI attribution. Vol IV wave-6 agent H.
+  - disjoint_rationale: a sentence recording the independence of the
+    two source catalogs.
 """
 
 from __future__ import annotations
@@ -121,7 +117,7 @@ def _c_Ar_from_borel_eta() -> mp.mpf:
 
 
 @realization_decorator(
-    claim="v4-arith:w6-h:c-ar-residue",
+    claim="v4-arith:w6-h:thm:c-ar-residue",
     source_volume="Vol IV",
     derived_from=[
         "mpmath.zeta direct Euler-Maclaurin/Riemann-Siegel evaluation "
@@ -178,8 +174,8 @@ def test_c_Ar_equals_two():
 # OEIS A074760 gives lambda_n to high precision, derived historically
 # through the Keiper-Li zero-data algorithm. These literature values
 # are hardcoded here as the derivation catalog. The verification
-# catalog below recomputes them via an analytic log-xi Taylor
-# expansion that does not consult the zero side, so agreement
+# catalog below recomputes them via the analytic Stieltjes/log-gamma
+# Taylor expansion of log xi at s=1, which does not consult the zero side, so agreement
 # cross-validates both sides.
 #
 # Source: OEIS sequence A074760 (Li's lambda_n); leading digits cross-
@@ -206,8 +202,8 @@ def _log_xi_pole_free(s: mp.mpc) -> mp.mpc:
         log xi_R(s) = log(s/2) - (s/2) log pi + loggamma(s/2)
                       + log((s-1) zeta(s)),
     all terms analytic near s=1. The verification path computes Taylor
-    coefficients of this expression at s=1 via mpmath.diff with a
-    user-specified step size, reading lambda_n off the n-th coefficient.
+    coefficients from Stieltjes constants and log-gamma derivatives,
+    reading lambda_n off the n-th coefficient.
     """
     if s == 1:
         # Direct evaluation by the closed-form limit:
@@ -219,6 +215,56 @@ def _log_xi_pole_free(s: mp.mpc) -> mp.mpc:
             + mp.log((s - 1) * mp.zeta(s)))
 
 
+def _log_xi_taylor_coefficients(order: int = 4) -> list[mp.mpf]:
+    """Taylor coefficients of log xi_R(1 + eps) through eps**order.
+
+    The zeta pole is removed by
+        (s - 1) zeta(s) = 1 + gamma eps - gamma_1 eps^2
+                          + gamma_2 eps^3/2 - ...
+    using the Stieltjes constants.  The remaining terms are elementary
+    log and log-gamma expansions at 1 and 1/2.
+    """
+    coeffs = [mp.mpf(0) for _ in range(order + 1)]
+    coeffs[0] = -mp.log(2)
+
+    # log(s / 2) = -log 2 + log(1 + eps).
+    for m in range(1, order + 1):
+        coeffs[m] += (-1) ** (m + 1) / mp.mpf(m)
+
+    # -(s / 2) log pi.
+    coeffs[1] += -mp.log(mp.pi) / 2
+
+    # log Gamma(1/2 + eps/2).
+    for m in range(1, order + 1):
+        coeffs[m] += mp.polygamma(m - 1, mp.mpf("0.5")) / (
+            mp.factorial(m) * (2 ** m)
+        )
+
+    # log((s - 1) zeta(s)).
+    h = [mp.mpf(0) for _ in range(order + 1)]
+    h[0] = mp.mpf(1)
+    for m in range(1, order + 1):
+        h[m] = ((-1) ** (m - 1)) * mp.stieltjes(m - 1) / mp.factorial(m - 1)
+
+    log_h = [mp.mpf(0) for _ in range(order + 1)]
+    q = h[:]
+    q[0] -= 1
+    power = q[:]
+    for r in range(1, order + 1):
+        factor = ((-1) ** (r + 1)) / mp.mpf(r)
+        for m in range(1, order + 1):
+            log_h[m] += factor * power[m]
+        next_power = [mp.mpf(0) for _ in range(order + 1)]
+        for i in range(order + 1):
+            for j in range(order + 1 - i):
+                next_power[i + j] += power[i] * q[j]
+        power = next_power
+
+    for m in range(1, order + 1):
+        coeffs[m] += log_h[m]
+    return coeffs
+
+
 def _lambda_n_from_log_xi_taylor(n: int, n_max: int = 4) -> mp.mpf:
     """Verification path: extract lambda_n from Taylor series of log xi at s=1.
 
@@ -227,15 +273,16 @@ def _lambda_n_from_log_xi_taylor(n: int, n_max: int = 4) -> mp.mpf:
 
     We expand g(s) := log xi_R(s) as a Taylor series at s=1,
         g(s) = sum_{m>=0} c_m (s-1)^m, with c_m = g^{(m)}(1)/m!,
-    via mpmath.taylor. Leibniz on (fg)^{(n)} with f(s) = s^{n-1} gives
+    using Stieltjes constants and the log-gamma Taylor series. Leibniz on
+    (fg)^{(n)} with f(s) = s^{n-1} gives
         lambda_n = sum_{k=0}^{n-1} C(n, k) (n-k) c_{n-k},
     because f^{(k)}(1)/k! = C(n-1, k) and (n-k)!/(n-1-k)! = (n-k).
 
-    This path uses only mpmath.zeta at non-integer real arguments near
-    s=1 (the pole is factored out in _log_xi_pole_free) and mpmath.loggamma.
-    No zero data enters.
+    This path uses only Stieltjes constants and log-gamma derivatives.
+    No zero data enters, and no numerical Taylor expansion at the pole is
+    performed.
     """
-    coeffs = mp.taylor(_log_xi_pole_free, mp.mpf(1), n_max + 6)
+    coeffs = _log_xi_taylor_coefficients(max(n, n_max))
     total = mp.mpf(0)
     for k in range(n):
         total += mp.binomial(n, k) * (n - k) * coeffs[n - k]
@@ -243,7 +290,7 @@ def _lambda_n_from_log_xi_taylor(n: int, n_max: int = 4) -> mp.mpf:
 
 
 @realization_decorator(
-    claim="v4-arith:w6-h:li-coefficients",
+    claim="v4-arith:w6-h:thm:li-coefficients",
     source_volume="Vol IV",
     derived_from=[
         "OEIS A074760 published Li coefficients from zero-data sums",
@@ -252,21 +299,21 @@ def _lambda_n_from_log_xi_taylor(n: int, n_max: int = 4) -> mp.mpf:
     verified_against=[
         "Taylor-series coefficient extraction of log xi_R(s) at s=1 "
         "using analytic pole-subtracted decomposition",
-        "Keiper-Li derivative formula lambda_n = (1/(n-1)!) d^n "
-        "[s^{n-1} log xi_R(s)] at s=1 computed by mpmath.diff",
+        "Li derivative formula lambda_n = (1/(n-1)!) d^n "
+        "[s^{n-1} log xi_R(s)] at s=1 computed from Stieltjes "
+        "constants and log-gamma derivatives",
     ],
     disjoint_rationale=(
         "Derivation: hardcoded Keiper/Voros published numerical values "
         "obtained from zero-side sums (these are the literature "
         "benchmark). Verification: compute lambda_n by direct "
-        "numerical Taylor expansion of log xi_R at s=1, where the pole "
-        "of zeta is subtracted analytically via the (s-1) zeta(s) "
-        "regularization and the computation uses only real-argument "
-        "evaluations of zeta away from 1 together with loggamma. No "
+        "Taylor expansion of log xi_R at s=1, where the pole of zeta "
+        "is subtracted analytically and the coefficients are computed "
+        "from Stieltjes constants and log-gamma derivatives. No "
         "Riemann zero data, no zeta-zero sum, and no mpmath.zetazero "
         "enters the verification path. The disjointness is structural: "
-        "derivation lives on the zero side of the Riemann xi, "
-        "verification lives on the log-xi analytic side."
+        "derivation lives on the zero side of Riemann xi, verification "
+        "lives on the analytic expansion side."
     ),
 )
 def test_li_coefficients_oeis_vs_log_xi():
@@ -301,14 +348,14 @@ def _N_T_from_nzeros(T: float) -> int:
 
 
 def _N_T_asymptotic(T: float) -> int:
-    """Verification path: von Mangoldt asymptotic plus rounding.
+    """Comparison path: von Mangoldt leading term plus rounding.
 
     Formula:
         N(T) ~ (T / 2pi) log(T / (2 pi e)) + 7/8 + S(T) + O(1/T),
-    where S(T) = pi^{-1} arg zeta(1/2 + iT) is bounded by O(log T)
-    unconditionally. For T = 100 and T = 1000, the leading terms
-    (without S(T)) round to within 1 of the exact count, and taking
-    the nearest integer recovers N(T) exactly.
+    where S(T) = pi^{-1} arg zeta(1/2 + iT). For T = 100 and T = 1000,
+    the leading term without S(T) rounds to the exact count. This is a
+    finite comparison at the two recorded heights, not a replacement
+    for the argument-principle count.
 
     This path uses only mpmath.log and elementary arithmetic; no zeta
     call and no contour count. The formula is derived from Stirling
@@ -322,7 +369,7 @@ def _N_T_asymptotic(T: float) -> int:
 
 
 @realization_decorator(
-    claim="v4-arith:w6-h:N-T-riemann-von-mangoldt",
+    claim="v4-arith:w6-h:thm:N-T-rvm",
     source_volume="Vol IV",
     derived_from=[
         "mpmath.nzeros Turing contour-counting method for N(T)",
@@ -341,21 +388,17 @@ def _N_T_asymptotic(T: float) -> int:
         "rectangle enclosing the critical strip up to height T. "
         "Verification uses the closed asymptotic formula derived from "
         "Stirling on the gamma factor of xi: no zeta evaluation, no "
-        "contour count. The S(T) term is bounded by O(log T) and for "
-        "T in {100, 1000} the leading Stirling expression rounds to "
-        "within 1 of the exact count, giving an integer-accurate "
-        "verification channel independent of the contour method."
+        "contour count. For T in {100, 1000} the leading Stirling "
+        "expression rounds to the exact count. This gives a finite "
+        "integer-valued comparison independent of the contour method."
     ),
 )
 def test_N_T_at_100_and_1000():
-    """N(T) contour count matches asymptotic rounding at T = 100, 1000."""
+    """N(T) contour count equals asymptotic rounding at T = 100, 1000."""
     for T in (100, 1000):
         derived = _N_T_from_nzeros(T)
         verified = _N_T_asymptotic(T)
-        # Integer-level comparison: |derived - verified| <= 1 is the
-        # rtol = 1 budget stated in the wave-6 task plan. For T = 100
-        # and T = 1000 both paths agree to within 1.
-        assert abs(derived - verified) <= 1, (
+        assert derived == verified, (
             f"N({T}): contour (Turing) = {derived}, "
             f"asymptotic = {verified}"
         )
@@ -390,7 +433,7 @@ def _gamma_k_from_mpmath(k: int) -> mp.mpf:
 
 
 @realization_decorator(
-    claim="v4-arith:w6-h:first-three-zeros",
+    claim="v4-arith:w6-h:thm:first-three-zeros",
     source_volume="Vol IV",
     derived_from=[
         "LMFDB published table of Riemann zeta zeros",
@@ -465,7 +508,7 @@ def _psi_quarter_from_gauss_formula() -> mp.mpf:
 
 
 @realization_decorator(
-    claim="v4-arith:w6-h:archimedean-digamma-quarter",
+    claim="v4-arith:w6-h:thm:psi-quarter",
     source_volume="Vol IV",
     derived_from=[
         "mpmath.digamma rational-function approximation and "
@@ -508,17 +551,17 @@ def test_psi_quarter():
 
 
 def test_wave5_decorators_registered():
-    """All five wave-5 verification decorators appear in the Vol IV registry."""
+    """All five arithmetic-constant decorators appear in the Vol IV registry."""
     from compute.lib.realization_registry import realized_claims
     expected = {
-        "v4-arith:w6-h:c-ar-residue",
-        "v4-arith:w6-h:li-coefficients",
-        "v4-arith:w6-h:N-T-riemann-von-mangoldt",
-        "v4-arith:w6-h:first-three-zeros",
-        "v4-arith:w6-h:archimedean-digamma-quarter",
+        "v4-arith:w6-h:thm:c-ar-residue",
+        "v4-arith:w6-h:thm:li-coefficients",
+        "v4-arith:w6-h:thm:N-T-rvm",
+        "v4-arith:w6-h:thm:first-three-zeros",
+        "v4-arith:w6-h:thm:psi-quarter",
     }
     registered = realized_claims()
     missing = expected - registered
     assert not missing, (
-        f"Wave-6 agent H decorators missing from registry: {missing}"
+        f"Arithmetic-constant decorators missing from registry: {missing}"
     )

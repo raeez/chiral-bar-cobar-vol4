@@ -1,166 +1,96 @@
 \chapter*{Preface}
 \label{v4-ch:preface}
 
-An inscribed theorem is not a verified theorem. A claim carrying the
-tag \texttt{\textbackslash ClaimStatusProvedHere} asserts that the
-reader will find, within the same file, a proof. It does not assert,
-and cannot by itself assert, that the proof's internal derivation is
-disjoint from the sources the author consulted to arrive at the
-statement. The two are routinely identified in mathematical practice.
-The programme that precedes this volume rests on the Beilinson
-principle, an explicit adversarial protocol, and over one hundred
-thousand tests. Yet a trust-based corpus is not a verified corpus.
-
-The deficiency is concrete. Consider the inscription in Vol III of
-the formula
+An equality in this volume is always an equality between two
+constructions.  If the Borcherds--Kac--Moody central charge of a
+frame-shape orbifold lift is written
 \[
- \kappa_{\mathrm{BKM}} \;=\; c_N(0)/2
+ \kappa_{\mathrm{BKM}}=\frac{c_N(0)}{2},
 \]
-for the Borcherds--Kac--Moody central charge of a frame-shape orbifold
-lift. In the compute engine, \(c_N(0)\) is tabulated from
-\texttt{FRAME\_SHAPE\_DATA}. The hardcoded expected values in the
-test file are computed by halving entries of the same table. Ninety-nine
-tests pass. The derivation (via the Borcherds 1998 weight theorem
-applied to the input lift) and the verification (by direct arithmetic
-on the tabulated lift data) share a source. Nothing can fail. No
-ninety-nine-test suite detects anything about the inscription
-beyond the arithmetic \(c_N(0)/2 = c_N(0)/2\).
+then the formula is not tested by reading \(c_N(0)\) twice from the
+same table.  It is tested by placing the Borcherds weight theorem on
+one side and the Gritsenko--Nikulin denominator identity on the other.
+A table may suggest the number; it cannot be the second proof of the
+number.
 
-This is not a local accident. The source-disjoint audit across the
-programme found that every programme-wide hardcoded-table
-verification was of this form: the table from which the theorem was
-derived also supplied the test expectations. The programme is not
-verifying that its theorems are true; it is verifying that its
-arithmetic on a single source is consistent.
+This is the principle used throughout the volume.  To a theorem from
+the first three volumes one attaches a comparison
+\[
+ \mathrm{Real}(X,T)=(d,e)
+\]
+whose two sides have disjoint mathematical origins and the same
+invariant as their common value.  The symbol \(d\) records the
+structural construction and \(e\) records the calculation.  The
+intersection of the two arguments is the object compared, not the
+method by which it is obtained.
 
-The deficiency admits a remedy: a disjointness requirement. A
-theorem \(T\) is verified, in the sense relevant to avoid
-coincidental-agreement failures of the kind exposed by the
-\(\Psi = 2\) coincidence masking a cross-arity sign error, only if
-there exists a test whose expected value is computed along a source
-disjoint from the source used to derive \(T\)'s formula. Disjoint means
-disjoint as a set of citations, not disjoint as a rephrasing. The
-source-disjoint protocol in Vols I, II, and III
-(\texttt{compute/lib/independent\_verification.py}) enforces this:
-every test decorated with \texttt{@independent\_verification} must
-declare its \texttt{derived\_from} and \texttt{verified\_against}
-sources, and the decorator raises \texttt{IndependentVerificationError}
-at collection time if the two sets overlap.
-
-The protocol installs no coverage. The installation snapshot across
-the three prior volumes covered \(2\) of \(3692\) ProvedHere claims:
-\(0/2275\) in Vol~I, \(0/1134\) in Vol~II, and \(2/283\) in Vol~III.
-The infrastructure was in place; the content was not. A programme's
-claim corpus can be verified one decorator at a time, but not by the
-same act that produces the theorem. The
-verification must be a separate intellectual operation, carried out
-with a different source catalog, and held to a different standard
-than the proof that produced the theorem.
-
-Volume IV is that separate operation.
-
-The realization corpus extends beyond the installation snapshot.
-Vol~I supplies the Virasoro shadow tower with Stokes pole
-\(c_S=-218/45\), Borel radius
+For the Virasoro shadow tower the invariants are the Stokes pole
+\[
+ c_S=-\frac{218}{45},
+\]
+the Borel radius
 \[
  |\omega|^2(c)=\frac{c^2(5c+22)}{4(45c+218)},
 \]
-and Riccati equation \(U'+2U^2=Q_c''/(2Q_c)\) on
-\(U=(\log H)'-2/t\); the four-conductor split
-\((K,K^\kappa,K_c,K_g)\); the \(p=691\) Chenevier determinant; and
-the eight-form Gritsenko--Cl\'ery spread. Vol~II supplies
-the \(\mathsf{SC}^{\mathrm{ch,top}}\) heptagon and the finite-jet
-Khan--Zeng (KZ) sector: the shifted-cotangent BV action and the
-CME/PVA-Hamiltonian equivalence are constructed; the all-loop QME,
-reflected weight identity, boundary vertex algebra, and \(E_3\)-lift
-remain conditional on the four endpoint hypotheses: the KZ analytic
-spectral-decomposition representation (SDR), the Fulton--MacPherson
-Stokes datum, the reflected weights, and the \(T\)-lift. Vol~III supplies the
-two-stage functor
+and the Riccati equation
+\[
+ U'+2U^2=\frac{Q_c''}{2Q_c},\qquad U=(\log H)'-\frac2t .
+\]
+They are compared with the conductor splitting
+\((K,K^\kappa,K_c,K_g)\), the \(p=691\) Chenevier determinant, and
+the Gritsenko--Cl\'ery eight-form spread.
+
+For the chiral-topological theory the comparison passes through the
+\(\mathsf{SC}^{\mathrm{ch,top}}\) heptagon and the finite-jet
+Khan--Zeng sector.  The shifted-cotangent BV action and the
+CME/PVA-Hamiltonian equivalence are constructed.  The all-loop QME,
+the reflected weight identity, the boundary vertex algebra, and the
+\(E_3\)-lift remain tied to the endpoint hypotheses: the analytic
+spectral-decomposition representation, the Fulton--MacPherson Stokes
+datum, the reflected weights, and the \(T\)-lift.
+
+For the Calabi--Yau side the comparison uses the two-stage
+factorisation
 \[
  \Phi_d=\mathrm{Sp}^{\mathrm{ch}}_{\Sigma_{d-1},C}\circ
  \Phi^{\mathrm{FA}}_d,
 \]
-the K3 Hall--Drinfeld chiral bialgebra \(\mathbf{H}_{\Delta_5}\), the
-Joyce vertex algebra paired with Kontsevich--Pandharipande--Soibelman
-(KPS) orientation on generic compact Calabi--Yau threefolds with
-Maulik--Nekrasov--Okounkov--Pandharipande (MNOP) invariants,
-\(S^3\)-framing on generic compact Calabi--Yau threefold Lagrangians,
-and the \(\mathfrak{so}(4,20)\) K3 Yangian representation-target
-trichotomy.
+the K3 Hall--Drinfeld chiral bialgebra
+\(\mathbf{H}_{\Delta_5}\), the Joyce vertex algebra with
+Kontsevich--Pandharipande--Soibelman orientation data, MNOP
+invariants, \(S^3\)-framing on generic compact Calabi--Yau
+threefold Lagrangians, and the
+\(\mathfrak{so}(4,20)\) K3 Yangian representation-target trichotomy.
 
-The arithmetic branch carries a native Vol~IV residual calculus whose
-central open problem is the spectral-flow question: whether the
-post-Tate quotient operator admits a self-adjoint extension compatible
-with the Hadamard residue functional on the critical-line ordinate set
-\(\Gamma_\xi^{\mathrm{crit}}\). The ordinary \(M_t\)-graph dual (the
-Hilbert space of \(M_t\)-measurable functions with the \((1+t^2)\,dt\)
-inner product) carries neither point nor finite-jet Hadamard residue
-functionals on \(\Gamma_\xi^{\mathrm{crit}}\). Any surviving
-spectral-flow argument requires a stronger topology (rigged Hilbert
-space, Paley--Wiener, de Branges, reproducing-kernel, nonlocal
-\(L^2\), or BV--BFV boundary) in which Hadamard trace and jet maps
-are continuous and compatible with the post-Tate quotient.
-
-The content is the realization pair
+The arithmetic branch is governed by the post-Tate spectral-flow
+problem over \(\overline{\mathrm{Spec}\,\mathbb Z}\).  The ordinary
+\(M_t\)-graph dual, with Hilbert norm
 \[
- \mathrm{Real}(X, T) \;=\; (d, e),
+ \|f\|^2=\int_{\mathbb R}(1+t^2)|f(t)|^2\,dt,
 \]
-where \(d\) is a source-disjoint decorator whose derivation and
-verification sources are disjoint, and \(e\) is a compute engine whose
-hardcoded expected values come from a source disjoint from the
-engine's formula. The central theorem is that Real exists for every
-ProvedHere claim inscribed in Vols I, II, III on the non-degenerate
-locus of the programme. The non-degenerate locus is large: it
-contains every generic parameter in every standard family, every
-Koszul-locus claim, every chain-level result outside the admissible
-logarithmic sector, every CY construction outside the five
-unconverged CY-C bridges. It excludes the critical level
-\(k = -h^\vee\) for affine Kac--Moody (where \(\kappa = 0\) and
-Koszulness fails), the \(\Psi = 0\) locus for chiral Yangians (where
-the algebra
-is abelian), the Creutzig--Kanade--Linshaw admissible logarithmic
-sector, and the super-Yangian chain-level chiral coproduct sector.
+has continuous spectral measure and therefore cannot by itself carry
+the Hadamard residues on
+\[
+ \Gamma_\xi^{\mathrm{crit}}
+ =
+ \{\gamma\in\mathbb R:\xi(\tfrac12+i\gamma)=0\}.
+\]
+Any spectral-flow construction which survives this obstruction must
+live in a stronger boundary topology: a rigged Hilbert space, a
+Paley--Wiener or de Branges space, a reproducing-kernel space, a
+nonlocal \(L^2\) completion, or a BV--BFV boundary category on which
+the Hadamard trace and the jet maps are continuous.
 
-Each of the three Vol IV theorems is itself realized: the decorator
-is installed at inscription time, the engine backs it from a disjoint
-source catalog, and the reader runs the test on receipt of the
-repository.
-
-Vol IV inherits the Russian school's convergent voice: Gelfand's
-inevitability (trust-based inscription eventually produces a
-tautology somewhere in the corpus), Beilinson's falsification (the
-source-disjointness check catches the tautology at collection time),
-Drinfeld's unifying principle (the realization functor Real),
-Kazhdan's compression. A fifth voice enters: verification is a
-craft, and its content is specific. The Borcherds \(c_N(0)/2\)
-identification is verified by a Gritsenko--Nikulin denominator
-identity, not by a tabulation; the affine Kac--Moody
-\(\kappa = \dim(\mathfrak{g})(k + h^\vee)/(2 h^\vee)\) identification
-is verified at non-critical level by Feigin--Frenkel screening
-cohomology, not by character arithmetic on the Sugawara construction;
-the class M MC5 Wick \(S_5 = -48/(c^2(5c + 22))\) is verified by an
-independent Wick contraction engine built from the Virasoro OPE
-axioms, not from the lambda-bracket expansion used to derive it.
-
-\section*{Structure}
-
-Part A indexes every ProvedHere claim from Vols~I, II, III; each
-entry points either to a realized entry in Part~B or to a
-scope-restricted entry with the complementary locus explicitly marked.
-The realization programme as a mathematical object appears in
-Chapter~\ref{v4-ch:realization-programme}. The decorator protocol and
-its collection-time enforcement are implemented in
-\texttt{compute/lib/realization\_registry.py}, which extends the Vol~I
-\texttt{compute/lib/independent\_verification.py}. Conventions are
-inherited from Vol~I and distinguished here by the prefix
-\texttt{v4-} and the Vol~IV registry's import-time disjointness check
-against the Vol~I registry.
-
-\section*{Credits}
-
-The disjoint source catalogs are cited at the points of use:
-Pridham--Toen--Vezzosi, Lurie HA 5.3, Costello--Gwilliam,
-Francis--Gaitsgory, Mok 2025, Hua--Keller, Ben-Zvi--Francis--Nadler,
-Schiffmann--Vasserot, Costello--Witten--Yamazaki. The mathematical text
-is authored by Raeez Lorgat.
+The basic examples fix the scale.  The Borcherds identity above is
+the denominator identity, not arithmetic on a table.  The non-critical
+affine Kac--Moody central charge
+\[
+ \kappa=\frac{\dim(\mathfrak g)(k+h^\vee)}{2h^\vee}
+\]
+is the Feigin--Frenkel screening-cohomology calculation, not a
+second reading of the Sugawara character.  The class \(M\) MC5 Wick
+coefficient
+\[
+ S_5=-\frac{48}{c^2(5c+22)}
+\]
+is the Virasoro OPE contraction coefficient.

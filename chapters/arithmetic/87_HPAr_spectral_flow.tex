@@ -1,24 +1,25 @@
 \chapter{The Spectral Flow \(N_{\mathrm{BC}}\rightsquigarrow H_{\mathrm{HP}}\): Irreducible Obstruction at the Archimedean Place}
 \label{v4-arith:w9-r4:hpar-spectral-flow}
 
-\emph{Chapter~\ref{v4-arith:w5-b:hp-operator} delivered the Bost--Connes
+\emph{Chapter~\ref{v4-arith:w5-b:hp-operator} constructs the Bost--Connes
 log-modular operator \(N_{\mathrm{BC}}=-\tfrac12\log\Delta_{1}\) with
 unconditional self-adjointness and pure point spectrum
-\(\{\log m\mid m\in\mathbb{N}^{\times}\}\). The target operator is the
-Hilbert--P\'olya ordinate \(H_{\mathrm{HP}}\) with spectrum equal to the
-imaginary parts \(\{\gamma_{\rho}\}\) of non-trivial zeros of
+\(\{\log m\mid m\in\mathbb{N}^{\times}\}\). The target is a
+Hilbert--P\'olya operator \(H_{\mathrm{HP}}\) whose spectral divisor,
+through the regularised determinant of
+\(\tfrac12+iH_{\mathrm{HP}}\), is the non-trivial zero divisor of
 \(\xi_{\mathbb{R}}\). The intertwining operator \(A\) taking
 \(N_{\mathrm{BC}}\) to \(H_{\mathrm{HP}}\) is the classical
-Hilbert--P\'olya twist. One hundred years of effort have not produced
-it. This chapter states the spectral-flow problem rigorously, names
-every obstruction in sequence, constructs the pieces that are
-unconditionally available, isolates the residual as a specific
+Hilbert--P\'olya twist. The spectral-flow problem is a precise
 operator-theoretic statement equivalent to the Connes archimedean
-absorption spectrum, and places it in the triple-identification
-framework of Chapters~\ref{v4-arith:w8-a:deninger-chiral-homology},
+absorption-trace condition; the unconditional pieces are exactly the
+Bost--Connes logarithmic Hamiltonian, the pole-cleared zeta
+determinant, and their common scaling normalisation in the
+triple-identification formalism of
+Chapters~\ref{v4-arith:w8-a:deninger-chiral-homology},
 \ref{v4-arith:w7-j:ATP-adelic-scattering}, and
-\ref{v4-arith:3d-acs-E1bar}. No closure of H-P\(^{\mathrm{Ar}}\) is
-claimed. The chapter is an honest location document.}
+\ref{v4-arith:3d-acs-E1bar}. The determinant-trace condition is not a
+consequence of these unconditional pieces.}
 
 \section{Setup: \(N_{\mathrm{BC}}\) and \(\Theta_{\xi}\) as Target Operators}
 \label{v4-arith:w9-r4:setup}
@@ -64,39 +65,49 @@ Chapter~\ref{v4-arith:connes-soibelman}, realised as a
 Hilbert space of primon occupation states.
 \end{remark}
 
-\subsection{Target: The Hypothetical Zeta-Zero Operator}
+\subsection{Target: The Hypothetical Zeta-Zero Divisor Operator}
 \label{v4-arith:w9-r4:setup:target}
 
-\begin{definition}[target Hilbert space and zero operator]
+\begin{definition}[target Hilbert space and zero-divisor operator]
 \label{v4-arith:w9-r4:def:target-data}
 \ClaimStatusDefinitional. Let \(\mathcal{Z}\) denote the multiset of
-non-trivial zeros \(\rho=1/2+i\gamma_{\rho}\) of \(\xi_{\mathbb{R}}\) with
-multiplicities \(m_{\rho}\). The \emph{formal target Hilbert space} is
+non-trivial zeros \(\rho=\beta_{\rho}+it_{\rho}\) of
+\(\xi_{\mathbb{R}}\), with multiplicities \(m_{\rho}\), and write
+\(\gamma_{\rho}:=t_{\rho}\) for the ordinate. The
+\emph{formal target Hilbert space} is
 \[
 \mathcal{H}_{\xi}^{\mathrm{formal}}\;:=\;\bigoplus_{\rho\in\mathcal{Z}}\mathbb{C}^{m_{\rho}},
 \]
-with inner product making the one-dimensional eigenspaces
-orthonormal. The \emph{formal zeta-zero ordinate operator} is the
-diagonal self-adjoint operator
+with inner product making the one-dimensional summands
+orthonormal. The \emph{formal ordinate multiplier} is the
+diagonal symmetric operator
 \[
-H_{\mathrm{HP}}^{\mathrm{formal}}\;:\;(\xi_{\rho})_{\rho}\;\mapsto\;(\gamma_{\rho}\xi_{\rho})_{\rho}
+H_{\mathrm{ord}}^{\mathrm{formal}}\;:\;(\xi_{\rho})_{\rho}\;\mapsto\;(t_{\rho}\xi_{\rho})_{\rho}
 \]
 on the finite-support core; its spectrum is
-\(\{\gamma_{\rho}\}\) with multiplicities. The \emph{formal zero
-operator} is \(\Theta_{\xi}^{\mathrm{formal}}=\tfrac12\mathrm{id}+iH_{\mathrm{HP}}^{\mathrm{formal}}\).
+\(\{t_{\rho}\}\) with multiplicities. The \emph{critical-line
+projection operator} is
+\[
+\Theta_{\xi}^{\mathrm{proj}}=\tfrac12\mathrm{id}+iH_{\mathrm{ord}}^{\mathrm{formal}}.
+\]
+Its divisor is the projection of the zero divisor to the critical
+line; it is the actual zero divisor of \(\xi_{\mathbb R}\) exactly
+under RH.
 \end{definition}
 
 \begin{remark}[why ``formal'']
 \label{v4-arith:w9-r4:rem:why-formal}
-The triple \((\mathcal{H}_{\xi}^{\mathrm{formal}},H_{\mathrm{HP}}^{\mathrm{formal}},\Theta_{\xi}^{\mathrm{formal}})\)
+The triple \((\mathcal{H}_{\xi}^{\mathrm{formal}},H_{\mathrm{ord}}^{\mathrm{formal}},\Theta_{\xi}^{\mathrm{proj}})\)
 exists trivially as a diagonal construction. It carries no
 intrinsic arithmetic structure: the enumeration of
-\(\{\gamma_{\rho}\}\) is the classical index-set of non-trivial zeros,
-and the diagonal operator realises its spectrum by fiat. The content
-of the Hilbert--P\'olya programme is not the existence of
-\(\mathcal{H}_{\xi}^{\mathrm{formal}}\); it is the existence of a
-Hilbert space \emph{with independent structure} whose spectral data
-happen to agree with this multiset.
+\(\{t_{\rho}\}\) is read from the zero set itself, and the diagonal
+operator realises its spectrum by fiat. If one replaces
+\(\beta_{\rho}\) by \(1/2\), one has already projected the divisor to
+the critical line. The content of the Hilbert--P\'olya problem is
+not the existence of \(\mathcal{H}_{\xi}^{\mathrm{formal}}\); it is
+the existence of a Hilbert space \emph{with independent structure}
+whose spectral data force the original zero divisor to equal this
+projected divisor.
 \end{remark}
 
 \begin{definition}[non-formal target]
@@ -107,13 +118,17 @@ Hilbert space carrying structure inherited from the Bost--Connes
 framework (restricted-tensor adelic factorisation, Petersson inner
 product on cuspidal cores, GNS modular data, or another
 independently specified structure) and \(H_{\mathrm{HP}}\) is a
-self-adjoint operator on \(\mathcal{H}_{\xi}\) with spectrum
-\(\{\gamma_{\rho}\}\) whose spectral resolution is canonical with
-respect to the inherited structure.
+self-adjoint operator on \(\mathcal{H}_{\xi}\) whose spectral
+resolution is canonical with respect to the inherited structure and
+whose regularised determinant
+\[
+\det\nolimits_{\infty}\bigl(s\mathrm{id}-(\tfrac12\mathrm{id}+iH_{\mathrm{HP}})\bigr)
+\]
+has the non-trivial zero divisor of \(\xi_{\mathbb R}\).
 \end{definition}
 
-\begin{remark}[scope of ``canonical'']
-\label{v4-arith:w9-r4:rem:canonical-scope}
+\begin{remark}[domain of ``canonical'']
+\label{v4-arith:w9-r4:rem:canonical-domain}
 ``Canonical'' means: the spectral resolution of \(H_{\mathrm{HP}}\) is
 determined by the inherited structure up to a unitary equivalence
 whose parameters are themselves determined by that structure. A
@@ -166,14 +181,15 @@ to be bounded or unitary. The closed-operator intertwining
 regular case one asks for a polar decomposition \(A=U|A|\) with \(U\)
 partial isometry and \(|A|\) self-adjoint non-negative, on which the
 intertwining reads
-\(U|A|N_{\mathrm{BC}}|A|^{-1}U^{*}=H_{\mathrm{HP}}\). Under
-essential self-adjointness of \(H_{\mathrm{HP}}\) and
-\(N_{\mathrm{BC}}\) the intertwining is equivalent to
-\(U\,\exp(it N_{\mathrm{BC}})\,U^{*}=\exp(itH_{\mathrm{HP}})\) on a
-common core, i.e.\ a unitary intertwining of the one-parameter
-groups. We use the closed-operator form throughout; when the
-literature writes ``\(A\) is a unitary twist'' it is the polar \(U\) in
-this decomposition.
+\(U|A|N_{\mathrm{BC}}|A|^{-1}U^{*}=H_{\mathrm{HP}}\) on its natural
+domain.  It becomes a unitary intertwining of one-parameter groups only
+when the polar partial isometry is unitary between the two Hilbert
+closures, the domains are invariant under the two Stone groups, and the
+closed-operator identity holds on a common core.  Then
+\(U\,\exp(it N_{\mathrm{BC}})\,U^{*}=\exp(itH_{\mathrm{HP}})\). We use
+the closed-operator form throughout; when the literature writes
+``\(A\) is a unitary twist'' it is the polar \(U\) in this restricted
+sense.
 \end{remark}
 
 \section{Prime-Zero Mangoldt-Hadamard Duality Recap}
@@ -225,41 +241,49 @@ where \(\Lambda(n)=\log p\) if \(n=p^{k}\) and \(0\) otherwise.
 \label{v4-arith:w9-r4:eq:mu-prime}
 \mu_{\mathrm{prime}}\;:=\;\sum_{m\in\mathbb{N}^{\times}}\Lambda(m)\,\delta_{\log m}\;=\;\sum_{p\in\mathbb{P}}\sum_{k\geq 1}(\log p)\,\delta_{k\log p}
 \end{equation}
-on \(\mathbb{R}_{\geq 0}\). The \emph{zero-counting distribution} is
+on \(\mathbb{R}_{\geq 0}\). The \emph{ordinate shadow} of the
+zero-counting distribution is
 \begin{equation}
 \label{v4-arith:w9-r4:eq:mu-zero}
-\mu_{\mathrm{zero}}\;:=\;\sum_{\rho\in\mathcal{Z}}\delta_{\gamma_{\rho}}
+\mu_{\mathrm{ord}}\;:=\;\sum_{\rho\in\mathcal{Z}}\delta_{\gamma_{\rho}}
 \end{equation}
-on \(\mathbb{R}\).
+on \(\mathbb{R}\). The actual Weil zero functional is the functional
+on entire test functions
+\[
+\mathfrak Z_{\xi}(h):=\sum_{\rho\in\mathcal Z}h(z_{\rho}),
+\qquad
+z_{\rho}:=-i(\rho-\tfrac12).
+\]
+The equality \(\mathfrak Z_{\xi}(h)=\int_{\mathbb R}h\,d\mu_{\mathrm{ord}}\)
+for all such \(h\) is equivalent to RH.
 \end{definition}
 
 \begin{proposition}[Mellin-dual form of the explicit formula]
 \label{v4-arith:w9-r4:prop:mellin-dual}
 \ClaimStatusProvedElsewhere \emph{(Weil 1952; Patterson 1988 Ch.~3)}.
-For every even Schwartz function \(h\in\mathcal{S}(\mathbb{R})\) with
-Fourier transform \(\widehat{h}\) of rapid decay,
+For every even Paley--Wiener test function \(h\) for which the Weil
+explicit formula is valid,
 \begin{equation}
 \label{v4-arith:w9-r4:eq:mellin-dual}
-\int_{\mathbb{R}}h\,d\mu_{\mathrm{zero}}\;=\;\int_{\mathbb{R}}h\,dW_{\infty}\;-\;2\sum_{m\geq 2}\frac{\Lambda(m)}{\sqrt{m}}\widehat{h}(\log m),
+\mathfrak Z_{\xi}(h)\;=\;\int_{\mathbb{R}}h\,dW_{\infty}\;-\;2\sum_{m\geq 2}\frac{\Lambda(m)}{\sqrt{m}}\widehat{h}(\log m),
 \end{equation}
 with \(W_{\infty}\) the archimedean Weil density of
-\eqref{v4-arith:w7-d:eq:W-arch}. The pairing is Mellin-dual: under
-Mellin transform, the prime-side distribution
-\(\sum_{m}\Lambda(m)m^{-1/2}\delta_{\log m}\) is dual to the zero-side
-distribution \(\mu_{\mathrm{zero}}\) via the Fourier-Mellin pairing on
-\(\mathbb{R}\).
+\eqref{v4-arith:w7-d:eq:W-arch}. If RH holds, then
+\(\mathfrak Z_{\xi}(h)=\int_{\mathbb R}h\,d\mu_{\mathrm{ord}}\). Without
+RH, this replacement is the projection \(z_{\rho}\mapsto\gamma_{\rho}\)
+and is not the explicit formula.
 \end{proposition}
 
 \begin{remark}[the duality is distributional, not operatorial]
 \label{v4-arith:w9-r4:rem:duality-distributional}
 The Mellin-Hadamard duality of
-\Cref{v4-arith:w9-r4:prop:mellin-dual} is a statement about tempered
-distributions on \(\mathbb{R}\): both sides are linear functionals on
-\(\mathcal{S}(\mathbb{R})\), and the equality holds distributionally. It
-is not an operator identity. In particular, the duality does not by
-itself produce a linear map from one Hilbert space to another; it
-produces a pairing between two distributions that, when integrated
-against test functions, agree up to the archimedean correction.
+\Cref{v4-arith:w9-r4:prop:mellin-dual} is a statement about a
+zero-functional on entire test functions and a prime-side tempered
+distribution on \(\mathbb{R}\). It is not an operator identity. In
+particular, the duality does not by itself produce a linear map from
+one Hilbert space to another; it produces a pairing between zero
+samples and prime distributions that agrees up to the archimedean
+term.
 This is the precise sense in which the classical Hilbert--P\'olya
 philosophy ``interprets'' the duality as an operator-level
 intertwining, and the reason the interpretation has not been made
@@ -332,7 +356,7 @@ A^{\mathrm{sym}}(f)(\gamma_{\rho})
 \;=\;
 \frac{F(\rho)}{\xi_{\mathbb R}'(\rho)}.
 \end{equation}
-Consequently the naive formal intertwining relation
+Consequently the bare residue intertwining relation
 \[
 A^{\mathrm{sym}}N_{\mathrm{BC}}
 \stackrel{?}{=}
@@ -373,7 +397,7 @@ the displayed first-order interpolation condition.
 generator differentiates the numerator before Hadamard residue
 extraction. RH would place \(\rho\) on the critical line, but it would
 not imply \(F'(\rho)=-\gamma_{\rho}F(\rho)\) for the Mellin transforms
-in the source class. Thus the naive symbol
+in the source class. Thus the bare symbol
 \(A^{\mathrm{sym}}\) is not a spectral-flow operator. A genuine
 operator construction must supply a new domain theorem or boundary
 condition that converts derivative residue data into zero-ordinate
@@ -510,32 +534,34 @@ interpreted in the residue sense at \(s=\rho\).
 
 \begin{lemma}[the Hadamard kernel is not a Hilbert-Schmidt kernel]
 \label{v4-arith:w9-r4:lem:had-not-HS}
-\ClaimStatusProvedHere. For any pair of Hilbert-space completions
-\(\mathcal{H}_{\mathrm{BC}}\) and \(\mathcal{H}_{\xi}\) compatible with
-Mellin inversion on one side of the spectral-flow obligation, the
-Hadamard kernel \(K_{\mathrm{Had}}\) is not in
-\(\mathrm{HS}(\mathcal{H}_{\xi},\mathcal{H}_{\mathrm{BC}})\): its
+\ClaimStatusProvedHere. For the critical-line Mellin completion
+compatible with the spectral-flow condition, the Hadamard kernel
+\(K_{\mathrm{Had}}\) is not Hilbert--Schmidt. Its
 Hilbert-Schmidt norm
 \(\|K_{\mathrm{Had}}\|_{\mathrm{HS}}^{2}=\sum_{\rho}\int_{\mathrm{Re}(s)=1/2}|\xi_{\mathbb{R}}(s)|^{-2}|s-\rho|^{-2}ds\)
-diverges on the critical line at every \(\rho\).
+diverges at every zero \(\rho\) lying on the critical line.
 \end{lemma}
 
 \begin{proof}
-\(\xi_{\mathbb{R}}\) has a zero at \(\rho\), so \(|\xi_{\mathbb{R}}(s)|^{-2}\sim C_{\rho}|s-\rho|^{-2m_{\rho}}\)
-near \(s=\rho\) on the critical line. The integrand near \(s=\rho\) is
-therefore \(|s-\rho|^{-2m_{\rho}-2}\), which is non-integrable on the
-1-dimensional critical line for any \(m_{\rho}\geq 1\). Summing over
-\(\rho\) only increases the divergence.
+If \(\rho\) lies on the critical line, then
+\(|\xi_{\mathbb{R}}(s)|^{-2}\sim C_{\rho}|s-\rho|^{-2m_{\rho}}\) along
+the contour near \(s=\rho\). The integrand is then
+\(|s-\rho|^{-2m_{\rho}-2}\), non-integrable on a one-dimensional
+contour for \(m_{\rho}\geq 1\). Hardy's theorem gives infinitely many
+zeros on the critical line. Hence the critical-line Hadamard residue
+kernel is not Hilbert--Schmidt. Off-line zeros do not give this local
+contour singularity; they are not needed for the conclusion.
 \end{proof}
 
 \begin{remark}[unboundedness is intrinsic]
 \label{v4-arith:w9-r4:rem:unboundedness-intrinsic}
-\Cref{v4-arith:w9-r4:lem:had-not-HS} means that \(A\) cannot be a
-bounded operator under any reasonable pair of completions. The
-spectral flow is therefore necessarily an \emph{unbounded} operator,
-requiring the machinery of closable operators with dense domain. The
-choice of domain becomes a substantive part of the problem, not a
-technicality.
+\Cref{v4-arith:w9-r4:lem:had-not-HS} rules out a Hilbert--Schmidt
+Hadamard-residue kernel in the critical-line completion. A bounded
+non-Hilbert--Schmidt operator is not thereby excluded. The unbounded
+spectral-flow problem is the stronger demand imposed by the pole
+residue prescription together with the zero-divisor determinant and
+trace identities; it requires a closed densely defined operator and a
+specified domain.
 \end{remark}
 
 \subsection{The Domain Problem}
@@ -547,9 +573,10 @@ technicality.
 \(\mathcal{H}_{\mathrm{BC}}\):
 \begin{enumerate}
 \item \(\mathcal{D}_{\mathrm{fin}}\): finite-support vectors
-\(\sum_{m\leq M}c_{m}e_{m}\) for \(M\) finite. On these, \(A\) can be
-computed via residue extraction; the result is a finite sum of
-residues, well-defined.
+\(\sum_{m\leq M}c_{m}e_{m}\) for \(M\) finite. The associated Dirichlet
+polynomial has residues at every non-trivial zero after division by
+\(\xi_{\mathbb{R}}\); this is a formal algebraic core, not a Hilbert
+domain, unless the residue sequence is square-summable.
 \item \(\mathcal{D}_{\mathrm{Schwartz}}\): Schwartz-class-like vectors
 \(\sum_{m}c_{m}e_{m}\) with \(|c_{m}|=O(m^{-N})\) for all \(N\). On these,
 the Dirichlet series \(F(s)=\sum_{m}c_{m}m^{s-1}\) extends entirely
@@ -565,11 +592,12 @@ rate of \(c_{m}\) being compatible with Hadamard inversion.
 \end{proposition}
 
 \begin{proof}
-Item (1): a finite sum \(\sum_{m\leq M}c_{m}e_{m}\) maps under \(A\) to
+Item (1): a finite sum \(\sum_{m\leq M}c_{m}e_{m}\) maps formally under
+\(A\) to
 \(\sum_{\rho}r_{\rho}(f)\cdot e_{\rho}^{\mathrm{target}}\) where
 \(r_{\rho}(f)=\operatorname{Res}_{s=\rho}(\sum_{m\leq M}c_{m}m^{s-1})/\xi_{\mathbb{R}}(s)\)
-is a finite expression involving derivatives of \(\xi_{\mathbb{R}}^{-1}\)
-at \(\rho\). The sum over \(\rho\) is formal; summability depends on
+is a local expression involving derivatives of \(\xi_{\mathbb{R}}^{-1}\)
+at \(\rho\). The sum over zeros is infinite; summability depends on
 \(\sum_{\rho}|r_{\rho}|^{2}<\infty\), which holds for Schwartz \(c_{m}\)
 but not in general.
 Item (2): Schwartz decay on \(c_{m}\) gives entire \(F(s)\) with rapid
@@ -600,10 +628,11 @@ obstruction.
 \section{Connes 1999 Partial Approach and Its Limitation}
 \label{v4-arith:w9-r4:connes-1999}
 
-Connes' adele class space construction is the canonical partial
-resolution of the spectral-flow problem: it delivers an explicit
-Hilbert space and scaling generator whose absorption spectrum would
-equal \(\{\gamma_\rho\}\) if and only if the Riemann Hypothesis holds.
+Connes' adele class space construction gives an explicit Hilbert space
+and scaling generator together with the trace formula. The
+Hilbert--P\'olya input is the further assertion that its absorption
+trace distribution is the non-trivial zero distribution, with
+critical-line support.
 
 \subsection{The Connes Construction}
 \label{v4-arith:w9-r4:connes-1999:construction}
@@ -624,8 +653,9 @@ The \emph{Connes scaling generator} is
 On the cuspidal subspace
 \(\mathcal{E}\subset\mathcal{H}_{\mathrm{Connes}}\) (orthogonal to the
 Tate-regularised constants), \(D_{\mathrm{Connes}}\) is conjectured to
-have pure point spectrum equal to the imaginary parts of non-trivial
-zeros.
+have absorption trace equal to the zero distribution of
+\(\xi_{\mathbb R}\). Under zero-placement this trace is supported at
+the ordinate multiset \(\{\gamma_{\rho}\}\).
 \end{definition}
 
 \begin{theorem}[Connes trace formula equivalence]
@@ -636,22 +666,22 @@ zeros.
 \(\mathbb{R}\)), the regularised trace
 \(\mathrm{Tr}_{\mathrm{reg}}(h(D_{\mathrm{Connes}})|_{\mathcal{E}})\)
 equals the Weil distribution side, conditional on the
-absorption-spectrum conjecture. Equivalently, the regularised trace
-equals \(\sum_{\rho}h(\gamma_{\rho})\) if and only if the non-trivial
-zeros lie on the critical line.
+absorption-trace identification. With zero-placement, the regularised
+trace is \(\sum_{\rho}h(\gamma_{\rho})\).
 \end{theorem}
 
-\subsection{The Limitation: Absorption Spectrum as RH}
+\subsection{The Limitation: Absorption Trace as RH}
 \label{v4-arith:w9-r4:connes-1999:limitation}
 
-\begin{theorem}[Connes absorption-spectrum conjecture]
+\begin{theorem}[Connes absorption-trace conjecture]
 \label{v4-arith:w9-r4:thm:connes-absorption}
 \ClaimStatusConjectured \emph{(Connes 1999 \S IV Thm.~1 conditional
 form)}. The scaling generator \(D_{\mathrm{Connes}}\) on
 \(\mathcal{E}\subset\mathcal{H}_{\mathrm{Connes}}\) has absorption
-spectrum equal to \(\{\gamma_{\rho}\mid\rho\in\mathcal{Z}\}\) with
-multiplicities matching. Equivalently, the non-trivial zeros lie on
-the critical line.
+trace equal to the non-trivial zero distribution of
+\(\xi_{\mathbb R}\); after zero-placement this distribution is
+supported at the multiset
+\(\{\gamma_{\rho}\mid\rho\in\mathcal{Z}\}\) with multiplicity.
 \end{theorem}
 
 \begin{remark}[Connes does not construct \(A\) unconditionally]
@@ -660,24 +690,24 @@ Connes 1999 does not construct the intertwining \(A\)
 unconditionally. The Connes construction supplies a candidate
 Hilbert space \(\mathcal{H}_{\mathrm{Connes}}\) and a candidate
 self-adjoint operator \(D_{\mathrm{Connes}}\), but the identification
-of \(D_{\mathrm{Connes}}\)'s absorption spectrum with the zero set is
-equivalent to RH. In the spectral-flow vocabulary, Connes supplies
+of \(D_{\mathrm{Connes}}\)'s absorption trace with the zero
+distribution and critical-line support is equivalent to RH. In the
+spectral-flow vocabulary, Connes supplies
 the triple \((\mathcal{H}_{\xi},A,H_{\mathrm{HP}})=(\mathcal{H}_{\mathrm{Connes}},\mathrm{id},D_{\mathrm{Connes}})\)
 with identity intertwiner, and shifts the question from
-``construct \(A\)'' to ``prove \(D_{\mathrm{Connes}}\) has the right
-absorption spectrum''. The two questions have the same strength.
+``construct \(A\)'' to ``prove the right absorption trace for
+\(D_{\mathrm{Connes}}\)''. The two questions have the same strength.
 \end{remark}
 
 \begin{proposition}[Connes equivalence to H-P\(^{\mathrm{Ar}}\)]
 \label{v4-arith:w9-r4:prop:connes-eq-HPAr}
 \ClaimStatusProvedElsewhere \emph{(Connes 1999 \S VII;
 \Cref{v4-arith:hpvbconv:cor:HPAr-connes-equivalence} as recorded in
-Ch.~\ref{v4-arith:HPAr-vbconverse})}. The Connes absorption-spectrum
-conjecture
+Ch.~\ref{v4-arith:HPAr-vbconverse})}. The Connes absorption-trace
+condition
 (\Cref{v4-arith:w9-r4:thm:connes-absorption}) is equivalent to the
 Hilbert--P\'olya hypothesis
-H-P\(^{\mathrm{Ar}}\) (\Cref{v4-arith:rh:hyp:HPAr}) of the Vol~IV
-arithmetic branch.
+H-P\(^{\mathrm{Ar}}\) (\Cref{v4-arith:rh:hyp:HPAr}).
 \end{proposition}
 
 \begin{remark}[the adele-class construction transfers the problem]
@@ -686,9 +716,9 @@ The Connes construction transfers the spectral-flow problem from the
 Bost--Connes GNS side to the adele-class side. The adele-class
 side has an \emph{intrinsic} candidate for the Hilbert space
 (\(L^{2}\) of the non-Hausdorff quotient) and an \emph{intrinsic}
-candidate for the zero operator (scaling generator on cuspidal
+candidate for the zero-divisor operator (scaling generator on cuspidal
 subspace), but the intrinsic candidates are equivalent to the
-abstract candidates of Vol~IV's
+abstract candidates of
 \Cref{v4-arith:rh:hyp:HPAr}, not independently constructed. The
 transfer does not shrink the problem; it renames it.
 \end{remark}
@@ -699,7 +729,7 @@ transfer does not shrink the problem; it renames it.
 Meyer's Schwartz-class refinement provides the most explicit
 existing operator-level treatment. It closes the spectral-flow
 problem on a dense Schwartz subspace, and transfers the residual to
-an explicitly named spectral-matching conjecture.
+the determinant-trace conjecture.
 
 \subsection{The Meyer Construction}
 \label{v4-arith:w9-r4:meyer-2005:construction}
@@ -716,7 +746,7 @@ restriction of the idele scaling \(D_{0}\) of
 \Cref{v4-arith:w7-j:def:H-idele} to \(\mathcal{S}_{\mathrm{Meyer}}(\mathbb{A})\).
 \end{definition}
 
-\begin{theorem}[Meyer spectral-matching intertwiner]
+\begin{theorem}[Meyer determinant-trace intertwiner]
 \label{v4-arith:w9-r4:thm:meyer-intertwiner}
 \ClaimStatusProvedElsewhere \emph{(Meyer 2005 Thm.~4.4, \S4.2)}. There
 is an explicit Mellin-unitary intertwiner
@@ -736,7 +766,7 @@ zeros of \(\xi_{\mathbb{R}}\).
 \label{v4-arith:w9-r4:rem:meyer-not-A}
 \(U_{\mathrm{Meyer}}\) is a unitary from Meyer's Schwartz space into
 \(L^{2}\) of the critical line. It does not intertwine \(N_{\mathrm{BC}}\)
-with \(H_{\mathrm{HP}}^{\mathrm{formal}}\); it intertwines
+with \(H_{\mathrm{ord}}^{\mathrm{formal}}\); it intertwines
 \(D_{\mathrm{Meyer}}\) with multiplication by the spectral variable.
 The pole data at non-trivial zeros is distributional, not an
 eigenvalue realisation. To upgrade \(U_{\mathrm{Meyer}}\) to a
@@ -748,11 +778,11 @@ line: this is exactly RH.
 
 \begin{theorem}[Meyer equivalence to H-P\(^{\mathrm{Ar}}\)]
 \label{v4-arith:w9-r4:thm:meyer-eq-HPAr}
-\ClaimStatusProvedElsewhere \emph{(Meyer 2005 \S5 conditional;
-restated here)}. The Meyer spectral-matching conjecture (that
+\ClaimStatusProvedElsewhere \emph{(Meyer 2005 \S5 conditional)}. The
+Meyer determinant-trace conjecture (that
 \(U_{\mathrm{Meyer}}\) extends continuously to a unitary intertwiner
-delivering the zeta zeros as absorption spectrum) is equivalent to
-the Connes absorption-spectrum conjecture
+carrying the Bost--Connes trace to the zero distribution) is equivalent
+to the Connes absorption-trace conjecture
 (\Cref{v4-arith:w9-r4:thm:connes-absorption}), hence to
 H-P\(^{\mathrm{Ar}}\).
 \end{theorem}
@@ -763,19 +793,19 @@ The Meyer construction closes the spectral flow unconditionally on
 the Schwartz sub-space \(\mathcal{S}_{\mathrm{Meyer}}(\mathbb{A})\),
 intertwining \(D_{\mathrm{Meyer}}\) with multiplication by \(\tau\) on
 \(L^{2}(\mathbb{R}_{1/2+it})\). It does \emph{not} close the
-identification of the pole data on the critical line with the
-\(\ell^{2}\)-sum over zeros; that extension is the Meyer spectral-matching
-conjecture, equivalent to Connes absorption, equivalent to
-H-P\(^{\mathrm{Ar}}\). Meyer therefore supplies the left half of the
-spectral flow (Mellin transform) unconditionally and leaves the
-right half (Hadamard inversion as spectral realisation) as the
-conjectural kernel.
+	identification of the pole data on the critical line with the
+	\(\ell^{2}\)-sum over zeros; that extension is the Meyer determinant-trace
+	conjecture, equivalent to Connes absorption trace, equivalent to
+	H-P\(^{\mathrm{Ar}}\). Meyer therefore supplies the left half of the
+	spectral flow (Mellin transform) unconditionally and leaves the
+	right half (Hadamard inversion as determinant-trace realisation) as the
+	conjectural kernel.
 \end{remark}
 
 \section{Residual: Irreducible Operator-Theoretic Obstruction}
 \label{v4-arith:w9-r4:residual}
 
-The irreducible residual is the absorption-spectrum property of the
+The irreducible residual is the absorption-trace property of the
 archimedean scaling on the cuspidal subspace, isolated and named below.
 
 \subsection{Statement of the Irreducible Obstruction}
@@ -791,10 +821,11 @@ operator-theoretic statement on the idele class Hilbert space
 \emph{A-TP\(^{\mathrm{arch}}\)}: The Meyer scaling generator
 \(D_{\mathrm{Meyer}}\), extended from the Schwartz sub-space
 \(\mathcal{S}_{\mathrm{Meyer}}(\mathbb{A})\) to the cuspidal subspace
-\(\mathcal{E}\subset\mathcal{H}^{\mathrm{id}}\), has pure point
-absorption spectrum equal to
-\(\{\gamma_{\rho}\mid\rho\in\mathcal{Z}\}\) with multiplicities
-matching. Equivalently, the closure of \(U_{\mathrm{Meyer}}\) lifts
+\(\mathcal{E}\subset\mathcal{H}^{\mathrm{id}}\), has absorption trace
+equal to the zero distribution of \(\xi_{\mathbb R}\); after
+zero-placement that trace is supported at
+\(\{\gamma_{\rho}\mid\rho\in\mathcal{Z}\}\) with multiplicity.
+Equivalently, the closure of \(U_{\mathrm{Meyer}}\) lifts
 the distributional Paley--Wiener class on
 \(L^{2}(\mathbb{R}_{1/2+it})\) to an \(\ell^{2}\)-direct sum over the
 non-trivial zeros.
@@ -809,20 +840,20 @@ The following reductions are unconditional.
 is unconditional
 (\Cref{v4-arith:w9-r4:thm:meyer-intertwiner}).
 \item The formal Mellin--Hadamard residue calculation is
-unconditional and obstructs the naive symbolic intertwining:
+unconditional and obstructs the bare symbolic intertwining:
 Mellin scaling differentiates the numerator, while zero-ordinate
 multiplication would multiply the residue
 (\Cref{v4-arith:w9-r4:lem:formal-intertwine}).
 \item The equivalence
-H-P\(^{\mathrm{Ar}}\) \(\Leftrightarrow\) Connes absorption \(\Leftrightarrow\)
-Meyer spectral-matching \(\Leftrightarrow\) A-TP\(^{\mathrm{arch}}\) is
+H-P\(^{\mathrm{Ar}}\) \(\Leftrightarrow\) Connes absorption trace \(\Leftrightarrow\)
+Meyer determinant-trace matching \(\Leftrightarrow\) A-TP\(^{\mathrm{arch}}\) is
 proven within the Vol~IV equivalence chain
 (\Cref{v4-arith:hpvbconv:thm:HPAr-equivalence},
 \Cref{v4-arith:w7-j:thm:ATP-iff-S-unitary}).
 \end{enumerate}
 What is \emph{not} unconditional is A-TP\(^{\mathrm{arch}}\) itself:
-it is the absorption-spectrum property, not derivable from the
-source-side data or the Mellin unitary by any known argument.
+it is the absorption-trace property, not derivable from the source-side
+data or the Mellin unitary by any known argument.
 \end{theorem}
 
 \begin{proof}
@@ -830,11 +861,11 @@ Items (1)--(4) are cited. The content of the theorem is the
 reduction statement: the spectral-flow problem in
 \Cref{v4-arith:w9-r4:def:spectral-flow} admits a decomposition
 \[
-A\;=\;(\text{absorption-spectrum inclusion})\circ U_{\mathrm{Meyer}}\circ(\text{embedding }\mathcal{H}_{\mathrm{BC}}\to\mathcal{S}_{\mathrm{Meyer}}(\mathbb{A}))
+A\;=\;(\text{determinant-trace inclusion})\circ U_{\mathrm{Meyer}}\circ(\text{embedding }\mathcal{H}_{\mathrm{BC}}\to\mathcal{S}_{\mathrm{Meyer}}(\mathbb{A}))
 \]
-in which the first two factors are unconditional and the third
-factor (the absorption-spectrum inclusion into an \(\ell^{2}\)-direct
-sum) is the irreducible residual. The embedding
+in which the embedding and \(U_{\mathrm{Meyer}}\) are unconditional,
+while the determinant-trace inclusion into an \(\ell^{2}\)-direct sum
+is the irreducible residual. The embedding
 \(\mathcal{H}_{\mathrm{BC}}\hookrightarrow\mathcal{S}_{\mathrm{Meyer}}(\mathbb{A})\)
 is the adelic version of the Bost--Connes to idele scaling
 embedding (Meyer 2005 \S4.1); it is bounded after the
@@ -845,9 +876,9 @@ of the scaling, while the archimedean part is the Arakelov scaling
 \(\partial_{\log t_{\infty}}\) at the real place. The intertwining
 \eqref{v4-arith:w9-r4:eq:intertwine} holds on the embedded core by
 \Cref{v4-arith:w9-r4:thm:meyer-intertwiner}. The spectral identity
-\eqref{v4-arith:w9-r4:eq:spec-id} requires the absorption-spectrum
-property (A-TP\(^{\mathrm{arch}}\)), which is the Connes-Meyer
-spectral-matching conjecture.
+\eqref{v4-arith:w9-r4:eq:spec-id} requires the absorption-trace
+property (A-TP\(^{\mathrm{arch}}\)), which is the Connes--Meyer
+determinant-trace conjecture.
 \end{proof}
 
 \begin{remark}[the residual is at the archimedean place]
@@ -855,38 +886,38 @@ spectral-matching conjecture.
 The Meyer intertwining
 (\Cref{v4-arith:w9-r4:thm:meyer-intertwiner}) is derived
 place-by-place from the Tate 1950 local functional equations. At
-each finite prime, the local spectral matching is elementary: the
+each finite prime, the local trace matching is elementary: the
 BC generator \(\mu_{p}\) acts with eigenvalue \(p^{-it}\) on the Mellin
 side, conjugate to multiplication by \(t\) by a change of variable.
 At the archimedean place, the Arakelov scaling acts with eigenvalue
 \(e^{-it}\) on the Mellin side, and the spectral identification
-requires the scaling to have pure point absorption spectrum
-\(\{\gamma_{\rho}\}\) on the cuspidal sub-space. The latter is
-equivalent to A-TP
+requires the scaling trace to be the zero distribution on the
+cuspidal sub-space. With zero-placement this trace is supported at
+\(\{\gamma_{\rho}\}\). The latter condition is equivalent to A-TP
 (\Cref{v4-arith:w5-a:thm:ATP-equals-weil-positivity}) by
 \Cref{v4-arith:w7-j:thm:ATP-iff-S-unitary}, hence the label
 A-TP\(^{\mathrm{arch}}\). The obstruction is purely archimedean; the
-finite-prime spectral matching is delivered by Bost--Connes
+finite-prime trace matching is delivered by Bost--Connes
 unconditionally.
 \end{remark}
 
-\subsection{Spectral-Flow Status Table}
-\label{v4-arith:w9-r4:residual:ledger}
+\subsection{Spectral-Flow Logical Table}
+\label{v4-arith:w9-r4:residual:table}
 
 \begin{center}
 \small
 \begin{tabular}{p{0.42\textwidth}|p{0.25\textwidth}|p{0.28\textwidth}}
-Component & Status & Reference \\
+Component & Form & Reference \\
 \hline
 Source \((\mathcal{H}_{\mathrm{BC}},N_{\mathrm{BC}})\), self-adjoint & Unconditional & \Cref{v4-arith:w5-b:thm:N-BC-self-adjoint} \\
 Source Mellin inversion on \(\mathcal{H}_{\mathrm{BC}}\) & Obstructed (atomic measures) & \Cref{v4-arith:w9-r4:lem:no-mellin-on-HBC} \\
-Embedding \(\mathcal{H}_{\mathrm{BC}}\hookrightarrow\mathcal{S}_{\mathrm{Meyer}}(\mathbb{A})\) & Unconditional after Meyer renormalisation & \Cref{v4-arith:w7-j:rem:trace-class-scope} \\
+Embedding \(\mathcal{H}_{\mathrm{BC}}\hookrightarrow\mathcal{S}_{\mathrm{Meyer}}(\mathbb{A})\) & Unconditional after Meyer renormalisation & \Cref{v4-arith:w7-j:rem:trace-class-domain} \\
 Meyer unitary \(U_{\mathrm{Meyer}}\) on Schwartz sub-space & Unconditional & \Cref{v4-arith:w9-r4:thm:meyer-intertwiner} \\
 Hadamard kernel \(K_{\mathrm{Had}}\) Hilbert-Schmidt & Obstructed (divergent at zeros) & \Cref{v4-arith:w9-r4:lem:had-not-HS} \\
 Naive formal symbolic intertwining & Obstructed by derivative residue & \Cref{v4-arith:w9-r4:lem:formal-intertwine} \\
-Absorption spectrum of \(D_{\mathrm{Meyer}}|_{\mathcal{E}}\) = \(\{\gamma_{\rho}\}\) & Conjectural (A-TP\(^{\mathrm{arch}}\)) & \Cref{v4-arith:w9-r4:thm:irreducible-residual} \\
+Absorption trace of \(D_{\mathrm{Meyer}}|_{\mathcal{E}}\) equals the zero distribution & Conjectural (A-TP\(^{\mathrm{arch}}\)) & \Cref{v4-arith:w9-r4:thm:irreducible-residual} \\
 Connes equivalence with H-P\(^{\mathrm{Ar}}\) & Proved equivalent & \Cref{v4-arith:w9-r4:prop:connes-eq-HPAr} \\
-Meyer spectral-matching equivalence with A-TP\(^{\mathrm{arch}}\) & Proved equivalent & \Cref{v4-arith:w9-r4:thm:meyer-eq-HPAr} \\
+Meyer determinant-trace equivalence with A-TP\(^{\mathrm{arch}}\) & Proved equivalent & \Cref{v4-arith:w9-r4:thm:meyer-eq-HPAr} \\
 Existence of \(A\) as closed operator & Conjectural = A-TP\(^{\mathrm{arch}}\) & \Cref{v4-arith:w9-r4:thm:irreducible-residual} \\
 Existence of \(A\) as bounded operator & Impossible (see unboundedness) & \Cref{v4-arith:w9-r4:rem:unboundedness-intrinsic}
 \end{tabular}
@@ -904,10 +935,11 @@ framework: it is the terminus of the reduction chain.
 
 \begin{proof}
 Under any Hilbert-space completion \(\mathcal{H}_{\xi}\) of the target,
-the spectrum of \(D_{\mathrm{Meyer}}|_{\mathcal{E}}\) is determined
-by the Tate-Mellin transform of the cuspidal forms modulo the
-residue structure at non-trivial zeros. The pole-to-point spectrum
-passage is precisely the spectral-matching conjecture; any finer
+the trace distribution of \(D_{\mathrm{Meyer}}|_{\mathcal{E}}\) is
+determined by the Tate-Mellin transform of the cuspidal forms modulo
+the residue structure at non-trivial zeros. The passage from pole data
+to the zero trace distribution is precisely the determinant-trace
+conjecture; any finer
 reduction would require an \emph{a priori} realisation of the
 cuspidal forms as an \(\ell^{2}\)-sum over non-trivial zeros, which
 presupposes the critical-line placement. No unconditional construction
@@ -915,10 +947,10 @@ exists: every known partial construction (Connes' adele class,
 Meyer's Schwartz refinement, de Branges' Hermite-Biehler,
 Nyman-Beurling, Guinand-Weil, Bost--Connes GNS, scattering
 reformulations of Chapter~\ref{v4-arith:w7-j:ATP-adelic-scattering})
-transfers the problem to an equivalent absorption or positivity
+transfers the problem to an equivalent absorption-trace or positivity
 statement, each equivalent to RH.
 
-A direct obstruction: the naive symbolic intertwining
+A direct obstruction: the bare symbolic intertwining
 \(A^{\mathrm{sym}}\,N_{\mathrm{BC}}=H_{\mathrm{HP}}\,A^{\mathrm{sym}}\)
 does not follow from residue calculus. By
 \Cref{v4-arith:w9-r4:lem:formal-intertwine}, the left hand side
@@ -932,9 +964,9 @@ The irreducible residual is this passage; it has no known proof
 independent of RH.
 \end{proof}
 
-\begin{remark}[Beilinson-principled closure of this chapter]
+\begin{remark}[Beilinson principle]
 \label{v4-arith:w9-r4:rem:beilinson-closure}
-The honest content of the chapter is:
+The assertions are:
 \begin{enumerate}
 \item The source \((\mathcal{H}_{\mathrm{BC}},N_{\mathrm{BC}})\) is
 unconditional.
@@ -945,9 +977,9 @@ symbolic composition.
 \item The symbolic-to-operatorial upgrade is the Connes-Meyer-de
 Branges-Nyman irreducible obstruction, which is equivalent to RH.
 \end{enumerate}
-No closure of H-P\(^{\mathrm{Ar}}\) is claimed. The chapter exists as
-a location document, naming the irreducible obstruction precisely
-within the Vol~IV framework.
+H-P\(^{\mathrm{Ar}}\) remains the determinant-trace hypothesis. The
+irreducible obstruction is the spectral-flow problem in the arithmetic
+formalism.
 \end{remark}
 
 \section{Placement in Triple-Identification Framework}
@@ -995,14 +1027,11 @@ The Deninger triple identification
 completion with the arithmetic chiral homology of
 \(\mathsf{H}^{\mathrm{Ar}}\) and with the boundary chiral homology of
 \(\mathrm{ACS}^{\mathrm{qu}}_{k^{\mathrm{Ar}}}\). The spectral-flow
-operator \(A\) of \Cref{v4-arith:w9-r4:def:spectral-flow} is exactly
-the unitary \(U\) of
-\Cref{v4-arith:w8-a:lem:L0-conjugacy}: it conjugates the archimedean
-Frobenius \(F_{\infty}=e^{-\partial_{t}}\) to the Virasoro-\(L_{0}\)
-representation on the arithmetic Heisenberg Fock, and via the primary-Fock
-embedding of \Cref{v4-arith:w5-b:lem:fock-embeds-gns} maps
-\(N_{\mathrm{BC}}\) to the zero-side operator \(H_{\mathrm{HP}}\) on
-the completed primary sector.
+operator \(A\) is identified with the polar-unitary part of the
+\(L_{0}\)-conjugacy only under the additional closed-range, domain
+invariance, and BC--GNS Heisenberg-lift hypotheses. Under those
+hypotheses the induced conjugacy carries \(N_{\mathrm{BC}}\) to the
+zero-side operator \(H_{\mathrm{HP}}\) on the completed primary sector.
 \end{proof}
 
 \begin{remark}[the Deninger framework renames the residual]
@@ -1031,7 +1060,7 @@ Chapter~\ref{v4-arith:w7-j:ATP-adelic-scattering}.
 \end{proposition}
 
 \begin{proof}
-The Meyer spectral-matching conjecture
+The Meyer determinant-trace conjecture
 (\Cref{v4-arith:w9-r4:thm:meyer-eq-HPAr}) is equivalent to unitarity
 of the scattering matrix \(S\) of the Bost--Connes-perturbed scaling
 generator pair \((D_{0},D_{\mathrm{BC}})\) on the full
@@ -1041,7 +1070,7 @@ The extension from Tate-Mellin sub-class
 \(\mathrm{PW}^{\mathrm{TM}}\) to the full \(\mathrm{PW}(\mathbb{R})\) is
 \Cref{v4-arith:w7-j:thm:obstruction-located}. Under the embedding
 \(\mathcal{H}_{\mathrm{BC}}\hookrightarrow\mathcal{S}_{\mathrm{Meyer}}(\mathbb{A})\)
-of the spectral-flow setup, the absorption-spectrum condition
+of the spectral-flow setup, the absorption-trace condition
 becomes the scattering-matrix unitarity condition. Identification.
 \end{proof}
 
@@ -1095,10 +1124,11 @@ the zero index set via the Mellin unitary of
 \label{v4-arith:w9-r4:rem:acs-wilson}
 The 3D ACS framework reformulates the spectral-flow obstruction as
 a Wilson-loop correlator matching condition: the level-derivative
-operator's spectrum must match the zero multiset under the
+operator must have determinant divisor \(\mathrm{div}\,\xi_{\mathbb R}\)
+and zero trace distribution under the
 Arakelov-K\"ahler Wilson-surface realisation
 (\Cref{v4-arith:w8-a:rem:wilson-infinity}). This is equivalent to
-Deninger axiom (2), to Meyer spectral-matching, to Connes absorption,
+Deninger axiom (2), to Meyer determinant-trace matching, to Connes absorption,
 to A-TP\(^{\mathrm{arch}}\), to H-P\(^{\mathrm{Ar}}\). The 3D framework
 adds geometric content (the bulk theory becomes a concrete
 Chern-Simons computation) but does not change the obstruction's
@@ -1110,20 +1140,25 @@ strength.
 
 \begin{theorem}[unified residual, five equivalent names]
 \label{v4-arith:w9-r4:thm:unified-residual}
-\ClaimStatusProvedHere \emph{(conditional on the referenced
+\ClaimStatusProvedHereConditional \emph{(conditional on the referenced
 equivalences)}. The spectral-flow problem
 (\Cref{v4-arith:w9-r4:def:spectral-flow}) reduces to a single
 operator-theoretic statement, carrying five equivalent names across
-the Vol~IV framework:
+the arithmetic formalism:
 \begin{enumerate}
 \item \emph{H-P\(^{\mathrm{Ar}}\)} (\Cref{v4-arith:rh:hyp:HPAr}):
 existence of a self-adjoint operator \(H_{\mathrm{HP}}\) with
-spectrum \(\{\gamma_{\rho}\}\) on a Petersson completion.
+canonical spectral resolution on a Petersson completion and
+\[
+\det\nolimits_{\infty}\bigl(s\mathrm{id}-(\tfrac12\mathrm{id}+iH_{\mathrm{HP}})\bigr)
+\doteq \xi_{\mathbb R}(s)
+\]
+after removal of the polar Tate factors.
 \item \emph{Connes absorption}
-(\Cref{v4-arith:w9-r4:thm:connes-absorption}): absorption spectrum
-of the scaling generator on the cuspidal subspace of the adele
-class space.
-\item \emph{Meyer spectral-matching}
+(\Cref{v4-arith:w9-r4:thm:connes-absorption}): absorption trace of
+the scaling generator on the cuspidal subspace of the adele class
+space.
+\item \emph{Meyer determinant-trace matching}
 (\Cref{v4-arith:w9-r4:thm:meyer-eq-HPAr}): extension of the Meyer
 Mellin unitary from Schwartz sub-spaces to the full cuspidal sector.
 \item \emph{A-TP} (\Cref{v4-arith:w5-a:conj:archimedean-tate-positivity}):
@@ -1139,7 +1174,7 @@ for \(\zeta\).
 \end{theorem}
 
 \begin{proof}
-Within the Vol~IV framework, the five equivalences are recorded as:
+In the arithmetic formalism, the five equivalences are:
 (1) \(\Leftrightarrow\) (2) by
 \Cref{v4-arith:w9-r4:prop:connes-eq-HPAr};
 (2) \(\Leftrightarrow\) (3) by
@@ -1153,44 +1188,41 @@ Within the Vol~IV framework, the five equivalences are recorded as:
 closes with all five mutually equivalent to RH.
 \end{proof}
 
-\begin{remark}[honest summary]
+\begin{remark}[spectral-flow boundary]
 \label{v4-arith:w9-r4:rem:honest-summary}
 The spectral-flow problem \(N_{\mathrm{BC}}\rightsquigarrow H_{\mathrm{HP}}\)
-is the classical Hilbert--P\'olya twist. It has been recast
-five ways within the Vol~IV framework; each recast supplies
-different geometric or analytic content and closes the problem on
-different explicit sub-classes, but none closes the residual. The
-residual is irreducible within the Vol~IV setting: it is the
-absorption-spectrum property of the archimedean scaling on the
-cuspidal subspace, equivalent to RH.
+is the classical Hilbert--P\'olya twist. The five formulations above
+are equivalent after their stated hypotheses; each supplies different
+geometric or analytic structure, but none supplies the residual
+operator. The residual is irreducible in this formalism: it is the
+absorption-trace property of the archimedean scaling on the cuspidal
+subspace, equivalent to RH.
 
-The Vol~IV contribution is \emph{location}. The chapter catalogues
-the unconditional source, the unconditional Mellin unitary on
-Schwartz sub-spaces, the formal Mellin--Hadamard obstruction, and names
-the irreducible operator-theoretic obstruction precisely. It does
-not close H-P\(^{\mathrm{Ar}}\). One hundred years after Hilbert and
-P\'olya, the operator construction remains open; the present
-chapter exhibits the Vol~IV packaging of the open residual without
-pretending closure.
+The unconditional content is the Bost--Connes logarithmic Hamiltonian,
+the Mellin unitary on Schwartz sub-spaces, and the formal
+Mellin--Hadamard obstruction. The missing object is the irreducible
+operator-theoretic absorption-trace property. It does not close
+H-P\(^{\mathrm{Ar}}\). Thus the operator construction remains the
+Hilbert--P\'olya residual itself.
 \end{remark}
 
 \section{Polyakov--Dirac Normal Form for the Residual}
 \label{v4-arith:w9-r4:polyakov-dirac-normal-form}
 
-The Polyakov scalar rigidity fixes the Virasoro anomaly to
-\(c_{\mathrm{reg}}=2\), closing off any attempt to shift the problem
-by rescaling the central charge. The Dirac reformulation converts the
+The Polyakov rank-residue calculation fixes the determinant scalar
+\(r_{\zeta}=2\), closing off any attempt to hide the problem in a
+different Euler-product normalisation. The Dirac reformulation converts the
 remaining content into a first-order essential self-adjointness
 question on the residual symmetric core, eliminating the possibility
 of concealing the Hilbert--P\'olya content inside an unspecified
 unbounded operator.
 
-\subsection{Polyakov Rigidity of the Scalar}
+\subsection{Polyakov Rigidity of the Rank Residue}
 \label{v4-arith:w9-r4:pdnf:polyakov}
 
-\begin{proposition}[Polyakov scalar rigidity]
+\begin{proposition}[Polyakov rank-residue rigidity]
 \label{v4-arith:w9-r4:prop:polyakov-scalar-rigidity}
-\ClaimStatusProvedHere. In the primary Heisenberg scope of
+\ClaimStatusProvedHere. In the primary Heisenberg domain of
 Chapters~\ref{v4-arith:polyakov} and
 \ref{v4-arith:w9-r3:chapter}, any spectral-flow closure compatible
 with
@@ -1201,42 +1233,41 @@ with
 \item the archimedean Polyakov anomaly of the rank-\(2\) free-field
 completion,
 \end{enumerate}
-has scalar Virasoro anomaly
+has determinant rank residue
 \begin{equation}
 \label{v4-arith:w9-r4:eq:polyakov-rigid-c}
-c_{\mathrm{reg}}\;=\;2.
+r_{\zeta}\;=\;2.
 \end{equation}
 Consequently the residual spectral-flow problem cannot be shifted
-into a different central-charge normalisation. Its remaining
+into a different determinant normalisation. Its remaining
 content is the operator-domain and positivity problem named
 A-TP\(^{\mathrm{arch}}\) in
 \Cref{v4-arith:w9-r4:thm:irreducible-residual}.
 \end{proposition}
 
 \begin{proof}
-\Cref{v4-arith:w9-r3:thm:main} proves that the naive scalar
-\(\sum_{p}c^{(p)}\) diverges, that the per-state Fock action is
-finite only after separating off the universal scalar term, and
-that the global Fock-partition residue gives
-\(c_{\mathrm{reg}}=2\). The same chapter proves the Polyakov
-regularisation identity
+\Cref{v4-arith:w9-r3:thm:main} proves that the unrenormalised conformal scalar
+\(\sum_{p}c^{(p)}\) diverges, that the negative global modes do not act
+on the restricted vacuum, and that the global Fock-partition residue
+gives \(r_{\zeta}=2\). The same chapter proves the Polyakov
+rank comparison
 \Cref{v4-arith:w9-r3:thm:polyakov-identity}, identifying this
 finite-prime residue with the rank-\(2\) archimedean conformal
-anomaly. These inputs leave no scalar parameter: changing
-\(c_{\mathrm{reg}}\) would either abandon the Euler-product
+anomaly. These inputs leave no determinant scalar parameter: changing
+\(r_{\zeta}\) would either abandon the Euler-product
 partition, abandon the Sugawara rank, or abandon the archimedean
 anomaly match. None of those changes is a spectral-flow closure
-inside the stated primary Heisenberg scope. The only remaining
+inside the stated primary Heisenberg domain. The only remaining
 unsettled part is therefore the closed-operator passage from the
-Meyer/Connes absorption symbol to a self-adjoint zero operator,
+Meyer/Connes absorption symbol to a self-adjoint zero-divisor operator,
 which is exactly A-TP\(^{\mathrm{arch}}\) by
 \Cref{v4-arith:w9-r4:thm:irreducible-residual}.
 \end{proof}
 
 \begin{remark}[what Polyakov does and does not buy]
 \label{v4-arith:w9-r4:rem:polyakov-no-rh}
-Polyakov regularisation is decisive for the anomaly coefficient,
-not for RH. It supplies the finite scalar \(c_{\mathrm{reg}}=2\) and
+Polyakov regularisation is decisive for the determinant rank,
+not for RH. It supplies the finite scalar \(r_{\zeta}=2\) and
 rules out the divergent prime-zeta prescription; it does not
 produce the Hilbert space on which the zero ordinates are a
 self-adjoint spectrum.
@@ -1262,14 +1293,14 @@ condition at the non-trivial zeros, as in
 \Cref{v4-arith:w9-r4:def:formal-MH}. This sentence is a source
 description, not a graph-density theorem. The graph-density and
 non-tautology of the Hadamard-residue boundary condition are the
-residual obligations isolated below.
+residual conditions isolated below.
 
 On the Mellin line \(H_{\mathrm{res}}^{\mathrm{sym}}\) is represented
 by multiplication by the real spectral variable \(t\). After the
 Hadamard-residue boundary condition it is intended to become formal
 multiplication by \(\gamma_{\rho}\) on the zero components. Its
 closure is not assumed to exist as a self-adjoint operator. The
-superscript ``\(\mathrm{sym}\)'' is part of the obligation: if the
+superscript ``\(\mathrm{sym}\)'' is part of the condition: if the
 residue data produces non-real ordinate coefficients, no symmetric
 operator has yet been constructed, and the Dirac closure below fails.
 \end{definition}
@@ -1353,19 +1384,19 @@ Polyakov scalar rigidity
 statements are equivalent:
 \begin{enumerate}
 \item H-P\(^{\mathrm{Ar}}\) for \(\xi_{\mathbb{R}}\):
-there exists a self-adjoint zero ordinate operator
-\(H_{\mathrm{HP}}\) whose regularised determinant is
-\(\xi_{\mathbb{R}}\).
+there exists a self-adjoint operator \(H_{\mathrm{HP}}\) whose normal
+translate has determinant divisor \(\mathrm{div}\,\xi_{\mathbb{R}}\).
 \item A-TP\(^{\mathrm{arch}}\):
-the Meyer/Connes absorption spectrum on the cuspidal subspace is
-the non-trivial-zero ordinate multiset.
+the Meyer/Connes absorption trace on the cuspidal subspace is the
+zero distribution, supported after zero-placement at the
+non-trivial-zero ordinates with multiplicity.
 \item The residual symmetric ordinate core
 \(H_{\mathrm{res}}^{\mathrm{sym}}\) of
 \Cref{v4-arith:w9-r4:def:residual-ordinate-core} admits a Dirac
 closure in the sense of \Cref{v4-arith:w9-r4:def:dirac-double}.
 \end{enumerate}
-Thus the entire remaining load-bearing block is the essential
-self-adjointness and determinant identity of one first-order
+Thus the residual is the essential self-adjointness and determinant
+identity of one first-order
 Dirac double on the residual Meyer core. No central-charge,
 partition-function, or formal trace adjustment can change this
 equivalence.
@@ -1392,11 +1423,11 @@ off-diagonal component \(H_{\mathrm{res}}\) by the same lemma. The
 regularised determinant identity
 \eqref{v4-arith:w9-r4:eq:dirac-det} states precisely that
 \(\tfrac12\mathrm{id}+iH_{\mathrm{res}}\) has characteristic
-determinant \(\xi_{\mathbb{R}}\), hence its spectral multiset is the
-non-trivial-zero multiset with multiplicity. This is
+determinant \(\xi_{\mathbb{R}}\), hence its determinant divisor is the
+non-trivial-zero divisor with multiplicity. This is
 H-P\(^{\mathrm{Ar}}\) in the convention of
-\Cref{v4-arith:rh:hyp:HPAr}. The Polyakov scalar rigidity is used
-only to fix the anomaly counterterm at \(c_{\mathrm{reg}}=2\); it
+\Cref{v4-arith:rh:hyp:HPAr}. The Polyakov rank-residue rigidity is used
+only to fix the determinant scalar at \(r_{\zeta}=2\); it
 does not enter the self-adjointness implication and therefore
 cannot be traded against it.
 \end{proof}
@@ -1411,7 +1442,7 @@ Meyer residual core one must prove a graph-norm closure statement:
 \|u\|^{2}+\|H_{\mathrm{res}}^{\mathrm{sym}}u\|^{2}
 \]
 is complete after a closed Tate-polar operator quotient has first
-been installed, and the closure has determinant
+been constructed, and the closure has determinant
 \eqref{v4-arith:w9-r4:eq:dirac-det}. This is not easier than RH;
 it is the same obstruction with all auxiliary parameters removed.
 \end{remark}
@@ -1448,7 +1479,7 @@ after completing both sides in their graph norms. It is also required
 to be compatible with Meyer coordinates, i.e. \(U_{\mathrm{Meyer}}\)
 descends to a unitary residual chart on the quotient.
 
-The present chapter does not construct this quotient. Every phrase
+The quotient is not constructed here. Every phrase
 ``after quotienting the Tate polar directions'' in the residual
 operator argument is to be read under this hypothesis.
 \end{definition}
@@ -1473,10 +1504,10 @@ are well-formed as conditional operator theory but not as an
 unconditional construction.
 \end{remark}
 
-\subsection{What Remains: Boundary Form and Deficiency Kernels}
+\subsection{Boundary Form and Deficiency Kernels}
 \label{v4-arith:w9-r4:pdnf:what-remains}
 
-With the Polyakov scalar rigidity fixing \(c_{\mathrm{reg}}=2\), the
+With the Polyakov rank-residue rigidity fixing \(r_{\zeta}=2\), the
 only remaining scalar renormalisation freedom is gone. The obstruction
 is purely operator-theoretic: the boundary quotient
 \(\mathcal{Q}_{\mathrm{res}}\) of the residual symmetric core must vanish.
@@ -1506,7 +1537,7 @@ with the induced form still denoted \(\mathcal{B}_{\mathrm{res}}\).
 
 \begin{proposition}[operator boundary target after scalar rigidity]
 \label{v4-arith:w9-r4:prop:polyakov-boundary-target}
-\ClaimStatusProvedHere. In the primary Heisenberg scope, the only
+\ClaimStatusProvedHere. In the primary Heisenberg domain, the only
 remaining operator-theoretic obstruction to spectral-flow closure is
 the non-vanishing of the residual boundary quotient:
 \begin{equation}
@@ -1536,7 +1567,7 @@ scalar anomaly coefficient is already fixed by the rank-\(2\)
 Sugawara sector and the Fock determinant. Hence a local
 counterterm cannot be used to absorb a non-zero
 \(\mathcal{Q}_{\mathrm{res}}\) without leaving the primary
-Heisenberg scope. What remains is therefore the operator-boundary
+Heisenberg domain. What remains is therefore the operator-boundary
 vanishing problem. A path-integral/Ward proof would be a proof of the
 same statement only after the missing BV--BFV identification has been
 constructed.
@@ -1553,10 +1584,10 @@ constructed.
 \end{equation}
 \end{definition}
 
-\begin{theorem}[Dirac two-test form of the remaining block]
+\begin{theorem}[Dirac two-test form of the residual]
 \label{v4-arith:w9-r4:thm:dirac-two-test}
-\ClaimStatusProvedHere. After Polyakov scalar rigidity, the
-remaining load-bearing block is equivalent to the following two
+\ClaimStatusProvedHere. After Polyakov scalar rigidity, the residual
+is equivalent to the following two
 statements:
 \begin{enumerate}
 \item \emph{Deficiency vanishing:}
@@ -1612,7 +1643,7 @@ the remaining datum is the determinant identity
 \eqref{v4-arith:w9-r4:eq:closure-det}. If either kernel is non-zero,
 the failure is localised as a specific boundary state in
 \(\mathcal{Q}_{\mathrm{res}}\). The Polyakov--Dirac decomposition is:
-the anomaly coefficient fixes the scalar to \(c_{\mathrm{reg}}=2\);
+the determinant residue fixes the scalar to \(r_{\zeta}=2\);
 first-order operator theory isolates the only surviving obstruction.
 \end{remark}
 
@@ -1664,12 +1695,12 @@ The unconditional Meyer theorem
 \Cref{v4-arith:w9-r4:thm:meyer-intertwiner} supplies this chart only
 on the Schwartz adelic subspace. Its extension to the residual
 quotient and to adjoint domains is part of the residual graph-core
-obligation.
+condition.
 \end{definition}
 
 \begin{theorem}[deficiency kernels are range defects]
 \label{v4-arith:w9-r4:thm:deficiency-range-defect}
-\ClaimStatusProvedHere. Assume a Meyer-coordinate residual chart in
+\ClaimStatusProvedHereConditional. Assume a Meyer-coordinate residual chart in
 the sense of \Cref{v4-arith:w9-r4:def:meyer-coordinate-core}. Then
 \begin{equation}
 \label{v4-arith:w9-r4:eq:deficiency-range-defect-plus}
@@ -1973,13 +2004,12 @@ the ordinary graph dual by
 \subsection{Execution Attempt: Graph Norm Versus Determinant}
 \label{v4-arith:w9-r4:pdnf:execution-attempt}
 
-Three graph-norm closures are available in explicit ambient spaces,
-forming a trichotomy. The classical Meyer line closes but has
-absolutely continuous spectrum \(\mathbb{R}\), not the discrete zero
-ordinate set. The formal zero space has the right determinant but
-inserts the desired spectrum by definition. The non-formal residual
-quotient is exactly A-TP\(^{\mathrm{arch}}\). No non-formal
-post-Tate quotient example is presently constructed.
+Three graph-norm closures are available in explicit ambient spaces.
+The classical Meyer line closes but has absolutely continuous spectrum
+\(\mathbb{R}\), not determinant divisor
+\(\mathrm{div}\,\xi_{\mathbb R}\). The formal zero space has the right
+divisor only by using the zero divisor as input. The non-formal
+quotient is exactly A-TP\(^{\mathrm{arch}}\).
 
 \begin{lemma}[classical Meyer-line graph closure]
 \label{v4-arith:w9-r4:lem:meyer-line-graph-closure}
@@ -2019,7 +2049,8 @@ spectral measure.
 \Cref{v4-arith:w9-r4:lem:meyer-line-graph-closure} does not solve
 the spectral-flow problem. Its graph norm is complete and its
 operator is self-adjoint, but its spectrum is continuous
-\(\mathbb{R}\), not the discrete non-trivial-zero ordinate multiset.
+\(\mathbb{R}\), not a divisor with zero multiplicities of
+\(\xi_{\mathbb R}\).
 Consequently it cannot satisfy
 \[
 \det\nolimits_{\infty}
@@ -2031,14 +2062,14 @@ as a zero-eigenvalue determinant.
 
 \begin{proof}
 The determinant identity in
-\Cref{v4-arith:w9-r4:eq:closure-det} is a regularised product over
-the zero-side spectral points. The multiplication operator \(M_{t}\)
-on \(L^{2}(\mathbb{R},dt)\) has no such point spectrum; its spectral
-measure is Lebesgue measure on the line. Thus the closure obtained
-by ordinary Meyer-line graph completion is the unconditional Mellin
-unitary part of the story, not the Hadamard-residue spectral
-realisation. This is exactly the limitation of Meyer's construction
-recorded in \Cref{v4-arith:w9-r4:rem:meyer-schwartz-only}.
+\Cref{v4-arith:w9-r4:eq:closure-det} has divisor
+\(\mathrm{div}\,\xi_{\mathbb R}\). The multiplication operator
+\(M_{t}\) on \(L^{2}(\mathbb{R},dt)\) has Lebesgue spectral measure on
+the line, not this determinant divisor. Thus the closure obtained by
+ordinary Meyer-line graph completion is the unconditional Mellin
+unitary part, not the Hadamard-residue determinant-trace realisation.
+This is exactly the limitation of Meyer's construction recorded in
+\Cref{v4-arith:w9-r4:rem:meyer-schwartz-only}.
 \end{proof}
 
 \begin{proposition}[formal zero-space closure is tautological]
@@ -2046,30 +2077,35 @@ recorded in \Cref{v4-arith:w9-r4:rem:meyer-schwartz-only}.
 \ClaimStatusProvedHere. On the formal zero Hilbert space
 \(\mathcal{H}_{\xi}^{\mathrm{formal}}\) of
 \Cref{v4-arith:w9-r4:def:target-data}, the diagonal ordinate
-operator has graph-norm closure and satisfies the regularised
-determinant identity if the zero ordinates are used as the input
-spectrum. This proves no non-formal spectral-flow closure.
+operator has graph-norm closure. Its projected operator
+\(\Theta_{\xi}^{\mathrm{proj}}\) satisfies the regularised
+determinant identity for \(\xi_{\mathbb R}\) only if the original
+zero divisor already lies on the critical line. This proves no
+non-formal spectral-flow closure.
 \end{proposition}
 
 \begin{proof}
 The finite-support diagonal operator on
 \(\bigoplus_{\rho}\mathbb{C}^{m_{\rho}}\) closes in the graph norm to
-the maximal diagonal multiplication operator. If all ordinates are
-real, the closure is self-adjoint. Given this prescribed spectrum,
-\Cref{v4-arith:w5-b:prop:det-formal} identifies the regularised
-determinant with \(\xi_{\mathbb{R}}\) by Hadamard factorisation,
-up to the stated genus-one normalisation. But the construction has
-used the zero multiset as its definition. It supplies no
-Bost--Connes, Meyer, Connes, Deninger, or chiral-homological source
-for the Hilbert space or the spectral measure; it is the formal
-target explicitly excluded by
-\Cref{v4-arith:w9-r4:rem:why-formal}.
+the maximal diagonal multiplication operator by the real numbers
+\(t_{\rho}=\mathrm{Im}(\rho)\); its closure is self-adjoint. The
+operator \(\Theta_{\xi}^{\mathrm{proj}}=\tfrac12+iH_{\mathrm{ord}}^{\mathrm{formal}}\)
+has spectral divisor
+\(\{\tfrac12+it_{\rho}\}\). Hadamard factorisation identifies its
+regularised determinant with \(\xi_{\mathbb R}\) only when
+\(\beta_{\rho}=1/2\) for every \(\rho\). Otherwise it is the
+determinant of the projected divisor, not of \(\xi_{\mathbb R}\).
+The construction has therefore used the zero divisor and then
+discarded its real-part defect. It supplies no Bost--Connes, Meyer,
+Connes, Deninger, or chiral-homological source for the Hilbert space
+or the Weil--Connes trace; it is the formal target explicitly excluded
+by \Cref{v4-arith:w9-r4:rem:why-formal}.
 \end{proof}
 
-\begin{theorem}[execution result for the residual Dirac operator]
+\begin{theorem}[residual Dirac criterion]
 \label{v4-arith:w9-r4:thm:execution-result}
-\ClaimStatusProvedHere. The requested non-tautological execution on
-the residual Meyer/Hadamard core is equivalent to the already named
+\ClaimStatusProvedHere. On the residual Meyer/Hadamard core, a
+non-formal Dirac closure with the xi-determinant is equivalent to the
 RH-strength residual. More precisely, the following statements are
 equivalent:
 \begin{enumerate}
@@ -2085,11 +2121,9 @@ sense of \Cref{v4-arith:w9-r4:def:dirac-double}.
 \item A-TP\(^{\mathrm{arch}}\), equivalently H-P\(^{\mathrm{Ar}}\) for
 \(\xi_{\mathbb{R}}\).
 \end{enumerate}
-Thus the execution succeeds on the unquotiented classical line and
-on the tautological zero space, but those two successes do not meet
-the Vol~IV source-disjointness requirement. On the actual residual
-core, the requested proof is the Hilbert--P\'olya/RH-strength step
-itself.
+Thus the unquotiented classical line and the formal zero space give
+opposite degenerate limits.  On the residual core, the missing
+assertion is the Hilbert--P\'olya/RH-strength step itself.
 \end{theorem}
 
 \begin{proof}
@@ -2104,26 +2138,25 @@ Polyakov--Dirac normal-form theorem
 ambient computations above explain why neither classical
 Meyer-line closure nor the formal zero Hilbert space supplies the
 missing implication: the former has the wrong spectral type, and
-the latter imports the desired zero spectrum by definition.
+the latter imports the desired zero divisor by definition.
 \end{proof}
 
 \begin{remark}[graph-norm and determinant together require RH]
 \label{v4-arith:w9-r4:rem:failed-execution-record}
 The graph norm can be closed. The determinant can be obtained. What
 cannot be obtained from the present data is both at once on a
-non-formal, source-disjoint residual Hilbert space. That conjunction
-is precisely the absorption-spectrum property of Connes--Meyer, the
+non-formal, independent residual Hilbert space. That conjunction
+is precisely the absorption-trace property of Connes--Meyer, the
 A-TP positivity statement, and the Hilbert--P\'olya realisation.
-Any manuscript line claiming this conjunction unconditionally would
-be claiming RH.
+An unconditional proof of this conjunction is an unconditional proof
+of RH.
 \end{remark}
 
-\section{Bibliography and Source Catalog}
+\section{Bibliography}
 \label{v4-arith:w9-r4:biblio}
 
-The sources below are organised into four groups, each internally
-disjoint and explicitly disjoint from the corresponding source
-groups of the upstream Vol~IV arithmetic chapters.
+The references below are grouped by the four mathematical
+constructions used above.
 
 \paragraph{Hilbert-P\'olya foundational literature.}
 \begin{description}
@@ -2145,7 +2178,7 @@ of the zeta function}, Proc.~Sympos.~Pure Math.~24 (1973), 181--193.
 \item[Connes.] A.~Connes, \emph{Trace formula in noncommutative
 geometry and the zeros of the Riemann zeta function}, Selecta
 Math.~(N.~S.)~5 (1999), 29--106; arXiv:math/9811068. \S IV for the
-absorption-spectrum conjecture; \S V for the Weil-positive trace
+absorption-trace conjecture; \S V for the Weil-positive trace
 identity.
 \item[Connes--Marcolli.] A.~Connes and M.~Marcolli, \emph{Noncommutative
 Geometry, Quantum Fields, and Motives}, AMS Colloq.~Publ.~55 (2008).
@@ -2209,7 +2242,7 @@ self-adjointness criterion used in
 \Cref{v4-arith:w9-r4:lem:dirac-double-detects-sa}.
 \end{description}
 
-\paragraph{Vol~IV upstream sources used here.}
+\paragraph{Vol~IV earlier sources used here.}
 \begin{description}
 \item \Cref{v4-arith:w5-b:hp-operator}: Bost--Connes GNS and
 log-modular operator construction (Ch.~\ref{v4-arith:w5-b:hp-operator}).
@@ -2227,16 +2260,16 @@ triple identification (Ch.~\ref{v4-arith:w8-a:deninger-chiral-homology}).
 (Ch.~\ref{v4-arith:3d-acs-E1bar}).
 \end{description}
 
-\paragraph{Disjointness audit.}
-The present chapter draws its formal residue-obstruction analysis
+\paragraph{Disjointness comparison.}
+The formal residue-obstruction analysis is drawn
 (\Cref{v4-arith:w9-r4:lem:formal-intertwine}) from the
-Riemann--Hadamard--von Mangoldt classical catalog, disjoint from the
-Bost--Connes / Takesaki modular-theoretic catalog of
-Ch.~\ref{v4-arith:w5-b:hp-operator}; its Meyer spectral-matching
+Riemann--Hadamard--von Mangoldt classical list, disjoint from the
+Bost--Connes / Takesaki modular-theoretic list of
+Ch.~\ref{v4-arith:w5-b:hp-operator}; its Meyer determinant-trace
 analysis from Meyer 2005 arXiv:math/0311468, disjoint from the
-Birman--Krein scattering catalog of
-Ch.~\ref{v4-arith:w7-j:ATP-adelic-scattering}; its Connes absorption
+Birman--Krein scattering list of
+Ch.~\ref{v4-arith:w7-j:ATP-adelic-scattering}; its Connes absorption-trace
 analysis from Connes 1999 \S IV, disjoint from the Bost--Connes 1995
-\(C^{*}\)-algebraic catalog of Ch.~\ref{v4-arith:w5-b:hp-operator}. No
+\(C^{*}\)-algebraic list of Ch.~\ref{v4-arith:w5-b:hp-operator}. No
 derivation on which a residual-irreducibility claim rests is shared
-between the catalogs.
+between the lists.

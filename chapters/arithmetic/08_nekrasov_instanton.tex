@@ -1,11 +1,10 @@
 \chapter{The Arithmetic Instanton Partition Function}
 \label{v4-arith:nekrasov}
 
-\emph{In the voice of Nekrasov. Instanton counting, \(\Omega\)-background,
-AGT, Maulik--Okounkov. The Hartnoll--Yang \(L(s)\) is the
-\((\epsilon_{2}\to\infty,\,b\to 0)\) degenerate limit of the arithmetic
-Nekrasov partition function; the full \(\Omega\)-deformed instanton
-structure is not visible in \(L(s)\).}
+Nekrasov's partition function has two equivariant parameters and a
+Coulomb modulus. The Hartnoll--Yang \(L(s)\) sees only the degenerate
+\((\epsilon_2\to\infty,b\to0)\) arithmetic limit; the full
+\(\Omega\)-background is absent.
 
 \section{Nekrasov's \(Z_{\mathrm{inst}}\) on \(\mathbb{C}^{2}\)}
 \label{v4-arith:nk:Z-inst}
@@ -25,8 +24,8 @@ Z^{U(N)}_{\mathrm{inst}}(\vec a,\epsilon_{1},\epsilon_{2};\Lambda)
 with \(E_{\alpha\beta}(s)=a_{\alpha}-a_{\beta}-\epsilon_{1}L_{\lambda^{(\beta)}}(s)+\epsilon_{2}(A_{\lambda^{(\alpha)}}(s)+1)\),
 where \(A_{\lambda}(s)\) (resp.\ \(L_{\lambda}(s)\)) denotes the arm length (number of boxes
 strictly to the right of \(s\) in \(\lambda\)) and leg length (number of boxes
-strictly below \(s\) in \(\lambda\)).
-% RECTIFICATION-FLAG: Gate 1 -- verify arm/leg superscript assignment: L is measured in lambda^(beta), A in lambda^(alpha); check against Nekrasov hep-th/0206161 (2.6) and Nekrasov--Okounkov hep-th/0306238 (3.11) for the precise alpha,beta index placement.
+strictly below \(s\) in \(\lambda\)). This is the Nekrasov--Okounkov
+arm-on-\(\alpha\), leg-on-\(\beta\) convention.
 \end{theorem}
 
 \section{The Arithmetic Curve as a One-Dimensional Object: No Instanton Sector}
@@ -102,25 +101,26 @@ On the CY / Nekrasov--Okounkov slice \(\epsilon_{1}+\epsilon_{2}=0\),
 \(\epsilon_{1}=-\epsilon_{2}=\hbar\):
 \begin{equation}
 Z^{U(1),\mathrm{CY}}_{\mathrm{inst}}\;=\;\sum_{\lambda}\frac{\Lambda^{|\lambda|}}{\prod_{s\in\lambda}h_{\lambda}(s)^{2}}
-\;=\;\eta(\Lambda)^{-1}\Lambda^{1/24},
-% RECTIFICATION-FLAG: Gate 1 -- verify the identity sum_lambda Lambda^|lambda| / prod_{s in lambda} h_lambda(s)^2 = eta(Lambda)^{-1} Lambda^{1/24}. The Nekrasov--Okounkov formula (hep-th/0306238 (6.12)) gives sum_lambda Lambda^|lambda| prod_s (1-t/h^2) = prod_{n>=1}(1-Lambda^n)^{t-1}; at t=0 this is prod(1-Lambda^n)^{-1} = (Lambda^{-1/24} eta)^{-1}. But the t=0 specialization of the INTEGRAND is prod_s 1 (trivial product), giving sum_lambda Lambda^|lambda| = prod(1-Lambda^n)^{-1} directly. The formula as written divides by hook-lengths squared but then claims to equal the same eta expression; this requires separate justification or correction.
+\;=\;\exp(\Lambda),
 \end{equation}
-the MacMahon--Nekrasov--Okounkov--Pandharipande plane-partition
-generating function (MNOP, math/0312059~Thm~1).
+after absorbing the \(\epsilon_{1}\epsilon_{2}\)-normalisation into
+\(\Lambda\). The equality is the hook-length identity
+\(\sum_{\lambda\vdash n}\prod_{s\in\lambda}h_{\lambda}(s)^{-2}=1/n!\).
 \end{definition}
 
 \begin{computation}
 \label{v4-arith:comp:per-prime-Euler}
 At \(\Lambda_{p}=p^{-s}\):
 \begin{equation}
-Z^{U(1),\mathrm{CY}}_{\mathrm{inst},p}(s)\;=\;(1-p^{-s})^{-1}\cdot\text{(higher corrections)}.
+Z^{U(1),\mathrm{CY}}_{\mathrm{inst},p}(s)\;=\;\exp(p^{-s}).
 \end{equation}
 The product over primes gives
 \begin{equation}
-\prod_{p}Z^{U(1),\mathrm{CY}}_{\mathrm{inst},p}(s)\;=\;L(s)\cdot R(s),
+\prod_{p}Z^{U(1),\mathrm{CY}}_{\mathrm{inst},p}(s)\;=\;\exp\!\left(\sum_{p}p^{-s}\right).
 \end{equation}
-where the leading Euler factor \(\prod_{p}(1-p^{-s})^{-1}=\zeta(s)\) is the primon partition
-and \(R(s)=\prod_{p}R_{p}(s)\) encodes the higher corrections.
+This is the first plethystic logarithmic term of the Euler product, not
+the Euler factor itself. The factor \((1-p^{-s})^{-1}\) belongs to the
+arithmetic Fock degeneration below.
 \end{computation}
 
 \section{The \(\epsilon_{2}\to\infty\) Degeneration}
@@ -135,24 +135,27 @@ Set per prime \(p\):
 In this limit \(1/\epsilon_{2}^{(p)}\to 0\) and every Young diagram
 with \(|\lambda|\geq 2\) contributes \(0\). The sum collapses to
 \begin{equation}
-Z^{U(1)}_{\mathrm{inst},p}\bigr|_{\mathrm{arith}}\;=\;(1-p^{-s})^{-1}.
+Z^{U(1)}_{\mathrm{inst},p}\bigr|_{\mathrm{arith}}\;=\;1+p^{-s}.
 \end{equation}
 \end{definition}
 
 \begin{theorem}[primon partition as degenerate Nekrasov]
 \label{v4-arith:thm:primon-as-degenerate-nekrasov}
 \ClaimStatusConjectured. The Hartnoll--Yang primon partition
-function \(L(s)\) is the product over primes of degenerate
-\(U(1)_{p}\) Nekrasov functions in the
-\((\epsilon_{1}^{(p)},\epsilon_{2}^{(p)})=(\log p,\infty)\) limit:
+function \(\zeta(s)\) is obtained from a per-prime theory only if the
+charge-\(k\) contribution survives with weight \(p^{-ks}\) for every
+\(k\geq0\):
 \begin{equation}
-\boxed{\;L(s,\rho)\;=\;\prod_{p}Z^{U(N)}_{\mathrm{inst},p}(s;\rho_{p})\bigr|_{b^{(p)}\to 0}^{\epsilon_{2}^{(p)}\to\infty}
-\;=\;\prod_{p}\det(1-p^{-s}\rho_{p}(\mathrm{Frob}_{p}))^{-1}.\;}
+\boxed{\;\zeta(s)\;=\;\prod_{p}\sum_{k\geq0}p^{-ks}
+\;=\;\prod_{p}(1-p^{-s})^{-1}.\;}
 \end{equation}
-% RECTIFICATION-FLAG: Gate 1 -- the boxed formula uses U(N) with an N-dimensional Galois representation rho_p, while the theorem text and chapter setup establish U(1)^{infty} (abelian per prime). Clarify: for the automorphic L-function L(s,rho) with rho_p of rank N, the formula is U(N) per prime; for the primon/Riemann zeta (rho_p = trivial, N=1), the formula is U(1) per prime. The present statement conflates these two cases; they should be separated or the rank-N generalization explicitly announced.
-The \(\Omega\)-background is visible only in the full \(\epsilon_{2}\)-deformed
-theory; the limit \(\epsilon_{2}\to\infty\), \(b\to 0\) retains only the
-Euler-factor data.
+For a rank-\(N\) local system \(\rho\), the analogous Euler factor is
+\(\det(1-p^{-s}\rho_{p}(\mathrm{Frob}_{p}))^{-1}\); that is a separate
+rank-\(N\) extension, not the primon rank statement.
+The two-term \(\epsilon_{2}\to\infty\) degeneration gives
+\(\prod_{p}(1+p^{-s})\), not the Euler product. The Euler factor
+therefore belongs to the all-charge Fock specialization, not to the
+vanishing of all Young diagrams of size at least \(2\).
 \end{theorem}
 
 \section{Arakelov Coulomb Modulus}
@@ -228,9 +231,8 @@ Virasoro conformal blocks become free-boson correlators.
 \ClaimStatusConjectured. Per prime,
 \begin{equation}
 Z^{U(1)}_{\mathrm{inst},p}\bigr|_{b^{(p)}\to 0}(\Lambda_{p})
-\;=\;\langle V_{\alpha}|e^{\Lambda_{p}L_{-1}}|V_{\alpha}\rangle_{\mathrm{free\,boson}}
+\;=\;\mathrm{Tr}_{\mathrm{Sym}(\mathbb{C}a_{-1})}(\Lambda_{p}^{N_{p}})
 \;=\;(1-\Lambda_{p})^{-1}.
-% RECTIFICATION-FLAG: Gate 1 -- the equality <V_alpha|exp(Lambda_p L_{-1})|V_alpha>_{free boson} = (1-Lambda_p)^{-1} should be verified: for the free boson, the Verma module at charge alpha_0 has <V|L_{-1}^n/n!|V> = 1 for n=0 and 0 for n>0 at the SL(2,C)-invariant vacuum; the geometric series requires a non-trivial Fock-space identity. Cite or prove the free-boson partition sum producing this result.
 \end{equation}
 At \(\Lambda_{p}=p^{-s}\) this gives the primon Heisenberg trace
 \((1-p^{-s})^{-1}\) per prime.

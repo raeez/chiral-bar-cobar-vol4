@@ -1,42 +1,11 @@
-"""
-Vol IV realization registry.
+"""Vol IV realization registry.
 
-Extends the Vol I HZ-IV independent-verification registry with a
-Vol IV specific disjointness check: a Vol IV entry's verified_against
-set MUST NOT intersect the derivation sources of the corresponding
-Vol I, II, or III entry for the same claim label.
-
-This guards against a specific malpractice mode: registering a Vol IV
-"verification" whose sources are precisely the sources that Vols I-III
-used to derive the formula. Vol IV must supply genuinely independent
-sources.
-
-USAGE
------
-    from compute.lib.realization_registry import realization_decorator
-
-    @realization_decorator(
-        claim="v4-thm:realization-programme-definition",
-        source_volume="Vol IV",
-        derived_from=["Vol IV realization programme chapter manuscript proof"],
-        verified_against=["Pridham-Toen-Vezzosi derived deformation theory"],
-        disjoint_rationale=(
-            "Manuscript proof constructs Real by explicit morphism "
-            "specialization; PTVV supplies an independent (-1)-shifted "
-            "symplectic pairing on the mapping stack that recovers the "
-            "same functoriality without invoking the explicit morphism."),
-    )
-    def test_realization_programme_definition():
-        ...
-
-The decorator is a thin wrapper around the Vol I
-@independent_verification with an additional cross-volume disjointness
-check. When the claim label has the form "v4-<prefix>:<name>", the
-cross-volume check is skipped (Vol IV's own claims). When the claim
-label is a native Vol I, II, or III label, the cross-volume check
-is enforced.
-
-Authored by Raeez Lorgat. No AI attribution.
+The registry records a pair of source lists for each realized claim.
+For a native Vol IV claim, source disjointness is internal to the pair.
+For a claim imported from Vol I, II, or III, the comparison list is also
+tested against every upstream derivation list visible in the three
+source registries, or against the explicit upstream list supplied by
+the decorator.
 """
 
 from __future__ import annotations
@@ -47,30 +16,41 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable, Iterable
 
-# Import Vol I HZ-IV infrastructure by explicit file-path spec-loading.
-# We cannot use a plain "from compute.lib.independent_verification import ..."
-# because Vol IV has its own "compute.lib" package that shadows Vol I's.
-# Load the Vol I module under a distinct qualified name.
-_VOL_I_ROOT = Path("/Users/raeez/chiral-bar-cobar")
-_VOL_I_INDEP = _VOL_I_ROOT / "compute" / "lib" / "independent_verification.py"
+# Import upstream HZ-IV infrastructure by explicit file-path spec-loading.
+# Vol IV has its own compute.lib package, so plain package imports would
+# shadow the source volumes.
+_UPSTREAM_REGISTRIES = {
+    "Vol I": Path("/Users/raeez/chiral-bar-cobar"),
+    "Vol II": Path("/Users/raeez/chiral-bar-cobar-vol2"),
+    "Vol III": Path("/Users/raeez/calabi-yau-quantum-groups"),
+}
 
-_MODULE_NAME = "vol_i_independent_verification"
-if _MODULE_NAME not in sys.modules:
-    _spec = importlib.util.spec_from_file_location(_MODULE_NAME, _VOL_I_INDEP)
-    if _spec is None or _spec.loader is None:
-        raise ImportError(
-            "Vol IV realization registry requires Vol I "
-            f"independent_verification.py at {_VOL_I_INDEP}; spec load failed"
-        )
-    _module = importlib.util.module_from_spec(_spec)
-    sys.modules[_MODULE_NAME] = _module
-    _spec.loader.exec_module(_module)
 
-_vol_i = sys.modules[_MODULE_NAME]
-independent_verification = _vol_i.independent_verification
-assert_sources_disjoint = _vol_i.assert_sources_disjoint
-IndependentVerificationError = _vol_i.IndependentVerificationError
-_vol_i_entries_for = _vol_i.entries_for
+def _load_upstream_registry(volume: str, root: Path):
+    module_name = f"vol_iv_upstream_{volume.lower().replace(' ', '_')}"
+    if module_name not in sys.modules:
+        indep = root / "compute" / "lib" / "independent_verification.py"
+        spec = importlib.util.spec_from_file_location(module_name, indep)
+        if spec is None or spec.loader is None:
+            raise ImportError(
+                f"Vol IV realization registry requires {volume} "
+                f"independent_verification.py at {indep}; spec load failed"
+            )
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[module_name] = module
+        spec.loader.exec_module(module)
+    return sys.modules[module_name]
+
+
+_upstream_modules = {
+    volume: _load_upstream_registry(volume, root)
+    for volume, root in _UPSTREAM_REGISTRIES.items()
+}
+
+_base_registry = _upstream_modules["Vol I"]
+independent_verification = _base_registry.independent_verification
+assert_sources_disjoint = _base_registry.assert_sources_disjoint
+IndependentVerificationError = _base_registry.IndependentVerificationError
 
 
 # ---------------------------------------------------------------------------
@@ -148,12 +128,11 @@ def _cross_volume_disjointness_ok(
 
     For non-native (Vol I/II/III) labels, enforcement proceeds by two
     channels:
-      1. Opportunistic: query the Vol I HZ-IV registry via entries_for
-         and intersect each upstream entry's derived_from with
-         verified_against. Any overlap fails. If Vol I registry has no
-         entries for this claim (e.g., the upstream test module has not
-         yet been imported in the current process), this channel supplies
-         no evidence.
+      1. Opportunistic: query each upstream HZ-IV registry via
+         entries_for and intersect every upstream entry's derived_from
+         with verified_against. Any overlap fails. If no upstream test
+         module has been imported in the current process, this channel
+         supplies no evidence.
       2. Explicit: if the decorator author passes upstream_derived_from,
          intersect it with verified_against directly. This channel is
          mandatory for load-bearing enforcement when the upstream
@@ -180,26 +159,28 @@ def _cross_volume_disjointness_ok(
             )
 
     opportunistic_checked = False
-    try:
-        upstream_entries = _vol_i_entries_for(claim)
-    except Exception:
-        upstream_entries = []
-    for entry in upstream_entries:
-        opportunistic_checked = True
-        upstream_set = {s.strip().lower() for s in entry.derived_from}
-        overlap = verified_set & upstream_set
-        if overlap:
-            return False, (
-                f"Vol IV verified_against overlaps Vol I registered "
-                f"derived_from for claim={claim!r} at {sorted(overlap)!r}"
-            )
+    for volume, module in _upstream_modules.items():
+        try:
+            upstream_entries = module.entries_for(claim)
+        except Exception:
+            upstream_entries = []
+        for entry in upstream_entries:
+            opportunistic_checked = True
+            upstream_set = {s.strip().lower() for s in entry.derived_from}
+            overlap = verified_set & upstream_set
+            if overlap:
+                return False, (
+                    f"Vol IV verified_against overlaps {volume} registered "
+                    f"derived_from for claim={claim!r} at "
+                    f"{sorted(overlap)!r}"
+                )
 
     if explicit_checked or opportunistic_checked:
         return True, "enforced"
 
     # Neither channel yielded data. This is a genuine gap: the author
-    # did not supply upstream_derived_from and the Vol I registry has
-    # not imported the upstream test for this claim. A cross-volume
+    # did not supply upstream_derived_from and no upstream registry has
+    # imported the upstream test for this claim. A cross-volume
     # realization without upstream derivation evidence is vacuous, so it
     # must fail at decoration time.
     return False, "missing upstream derived_from evidence"
@@ -222,7 +203,7 @@ def realization_decorator(
     """Register a Vol IV realization pair for claim.
 
     Parameters match @independent_verification in Vol I with two
-    additions: source_volume tracks which volume of the programme the
+    additions: source_volume tracks which source volume the
     claim originally lives in (Vol I, Vol II, Vol III, or Vol IV for
     Vol IV's own theorems); upstream_derived_from is the explicit
     derivation catalog of the upstream volume's own inscription of
@@ -235,7 +216,7 @@ def realization_decorator(
          verified_against (same as Vol I HZ-IV);
       2. Calls _cross_volume_disjointness_ok to confirm verified_against
          is also disjoint from the upstream volume's derived_from for
-         the same claim label, using both opportunistic Vol I registry
+         the same claim label, using opportunistic source-registry
          lookup and the explicit upstream_derived_from argument;
       3. Registers a RealizationEntry in _VOL_IV_REGISTRY;
       4. Wraps the test with the Vol I @independent_verification
@@ -268,8 +249,8 @@ def realization_decorator(
         )
         _VOL_IV_REGISTRY.append(entry)
 
-        # Also register against the Vol I HZ-IV registry so programme-
-        # wide coverage queries see this verification.
+        # Also register against the base HZ-IV registry so existing
+        # coverage queries see this verification.
         wrapped = independent_verification(
             claim=claim,
             derived_from=derived_tuple,

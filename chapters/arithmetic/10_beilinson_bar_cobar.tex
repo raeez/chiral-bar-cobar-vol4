@@ -1,14 +1,10 @@
 \chapter{Arithmetic Bar--Cobar and Parshin--Gersten}
 \label{v4-arith:arakelov-bar}
 
-\emph{In the voice of Beilinson. The bar--cobar adjunction
-\(\Omega^{\mathrm{ch}}\dashv B^{\mathrm{ch}}\) on a curve \(C/\mathbb{C}\)
-(BD, AMS Colloq.~51, 2004, Ch.~3--4) is the backbone of the
-programme. Its arithmetic avatar is the adjunction
-\(\Omega^{\mathrm{ch,Ar}}\dashv B^{\mathrm{ch,Ar}}\) on the
-Arakelov-compactified arithmetic curve
-\(\overline{\mathrm{Spec}\,\mathbb{Z}}\), with the Parshin--Gersten
-complex replacing the de Rham complex.}
+The chiral bar--cobar adjunction on a complex curve is replaced, over
+\(\overline{\mathrm{Spec}\,\mathbb Z}\), by an ordered
+Parshin--Gersten complex. The de Rham differential is replaced by
+boundary maps in the arithmetic flag complex.
 
 \section{The Configuration Space Is Discrete}
 \label{v4-arith:bar:configuration-space}
@@ -55,21 +51,23 @@ Tate's theorem identifies
 via the tame symbol at each prime.
 \end{theorem}
 
-\begin{theorem}[Parshin reciprocity = triple Arnold]
+\begin{theorem}[one-dimensional reciprocity and the surface obstruction]
 \label{v4-arith:thm:parshin-reciprocity}
-\ClaimStatusProvedElsewhere (Parshin, Kato, Beilinson, Bloch). The
-triple-Arnold identity lifts to the Parshin reciprocity law on
-\(\mathrm{Spec}\,\mathcal{O}_{K}\) for \(K\) a number field:
+\ClaimStatusProvedElsewhere (Tate, Parshin, Kato, Beilinson, Bloch).
+On \(\mathrm{Spec}\,\mathcal{O}_{K}\) the reciprocity law is
+one-dimensional: it is the product formula for tame symbols. The
+triple Parshin symbol belongs to an arithmetic surface, or
+equivalently to two-dimensional local fields. For a regular
+arithmetic surface \(X\), the Arnold-type triple relation has the form
 \begin{equation}
-\sum_{\mathfrak{p}}\{\,a,b,c\,\}_{\mathfrak{p}}\;=\;0,
+\sum_{(x,C)}\{\,a,b,c\,\}_{x,C}\;=\;0,
 \end{equation}
-a sum of local triple symbols over all primes including
-archimedean. The arithmetic \(\eta_{ij}\) (the Arnold \(2\)-form
+a sum over flags \(x\in C\subset X\). The arithmetic \(\eta_{ij}\) (the Arnold \(2\)-form
 \(d\log(z_i - z_j)\) on the complex configuration space, here
 replaced by the tame symbol) is the map
 \(\partial_{\mathfrak{p}}\colon K_{n+1}^{M}(K)\to K_{n}^{M}(k(\mathfrak{p}))\),
-and the Arnold relation is the \(3\)-cocycle condition on the
-Gersten complex:
+and the one-dimensional relation is the boundary-square-zero condition
+in the Gersten complex:
 \begin{equation}
 0\to K_{n}^{M}(K)\to\bigoplus_{\mathfrak{p}}K_{n-1}^{M}(k(\mathfrak{p}))\to\bigoplus_{\mathfrak{q}}K_{n-2}^{M}(k(\mathfrak{q}))\to\cdots
 \end{equation}
@@ -92,7 +90,7 @@ algebra, \(\Gamma=\mathrm{Gal}(\mathbb{Q}(\mu_{p^{\infty}})/\mathbb{Q})\cong\mat
 \begin{equation}
 B^{\mathrm{ch,Ar}}(\mathcal{V}^{\mathrm{prim}})\;:=\;\bigoplus_{n\geq 0}\bigl(s^{-1}\overline{\mathcal{V}^{\mathrm{prim}}}\bigr)^{\otimes_{\Lambda}n}\otimes_{\Lambda}C^{\bullet}_{\mathrm{Parshin}}(\overline{C}),
 \end{equation}
-with differential
+with pre-differential
 \begin{equation}
 d^{\mathrm{Ar}}\;=\;d_{\mathrm{Iw}}\otimes 1\;+\;1\otimes d_{\mathrm{Gersten}}\;+\;d_{\mathrm{bar}}^{\mathrm{local}}.
 \end{equation}
@@ -100,18 +98,18 @@ The three pieces: Iwasawa main-conjecture differential
 (Coleman--Perrin-Riou); Gersten complex differential via the tame
 symbol; local bar differential at each prime weighted by
 \(\partial_{\mathfrak{p}}\).
-% RECTIFICATION-FLAG: (d^Ar)^2=0 is the load-bearing nilpotency
-% condition for B^{ch,Ar} to be a cochain complex. The three
-% summands square to zero individually; cross-terms
-% d_Iw * d_Gersten + d_Gersten * d_Iw and mixed terms with
-% d_bar^local require verification that the Iwasawa--Gersten
-% anticommutativity and the tame-symbol compatibility hold.
-% Independent verification path: Parshin--Kato exactness of the
-% Gersten complex (Kato, J. reine angew. Math. 366, 1986) combined
-% with Coleman--Perrin-Riou Iwasawa theory (Perrin-Riou, Invent.
-% Math. 115, 1994). Cross-term cancellation not yet exhibited in
-% this chapter. Gate 1 HARD: leave flagged.
+It is a differential precisely when the Iwasawa, Gersten, and local bar
+terms anticommute. This anticommutativity is not proved in this
+definition.
 \end{definition}
+
+\begin{conjecture}[arithmetic bar nilpotency]
+\label{v4-arith:bar:conj:dAr-square-zero}
+\ClaimStatusConjectured. The pre-differential \(d^{\mathrm{Ar}}\) satisfies
+\((d^{\mathrm{Ar}})^{2}=0\). Equivalently, the Iwasawa differential, the
+Gersten differential, and the tame-symbol-weighted local bar
+differential form a mixed complex.
+\end{conjecture}
 
 \begin{theorem}[archimedean reduction]
 \label{v4-arith:thm:archimedean-reduction}
@@ -153,28 +151,32 @@ Deligne's purity translates D-module purity over \(\mathbb{C}\)
 arithmetic Koszulness criterion is a genuine purity statement.
 \end{remark}
 
-\section{Heisenberg Bar Cohomology = \(\zeta(s)\)}
+\section{Primary Bar Mellin Character}
 \label{v4-arith:bar:heisenberg-zeta}
 
 The arithmetic bar complex
 \(B^{\mathrm{ch,Ar}}(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}})\)
-carries a grading by homological degree; the question is what
-Dirichlet series its Poincar\'e series computes. At
-\(\kappa^{\mathrm{Ar}}=0\), the Euler product structure of the
-Parshin--Gersten base forces an identification with \(\zeta(s)\).
+carries a homological grading and a Hecke-monoid grading. The
+ordinary Poincar\'e series in homological degree is not a zeta
+function. At \(\kappa^{\mathrm{Ar}}=0\), the zero-mode primary
+quotient has a Mellin character indexed by \(\mathbb{N}^{\times}\).
 
-\begin{theorem}[generating function of arithmetic Heisenberg bar]
+\begin{theorem}[primary bar Mellin character]
 \label{v4-arith:thm:heisenberg-bar-zeta}
-\ClaimStatusConjectured. For the arithmetic Heisenberg
+\ClaimStatusConjectured. For the primary zero-mode quotient of the arithmetic Heisenberg
 \(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}}\) (the Hochschild
 trace class specialised to \(\kappa^{\mathrm{Ar}}=0\), the locus
 of arithmetic Heisenberg data without interacting corrections) at
-the undeformed locus,
+the undeformed locus, the Hecke-monoid basis is indexed by
+\(m\in\mathbb{N}^{\times}\). Its Mellin character is
 \begin{equation}
-\sum_{n}\dim H^{n}B^{\mathrm{ch,Ar}}(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis}})\cdot q^{n}
-\;=\;\prod_{p}(1-q\cdot p^{-s})^{-1}\;=\;\zeta(s)
+\chi_{\mathrm{bar}}(s)
+\;:=\;\sum_{m\geq 1}m^{-s}
+\;=\;\prod_{p}(1-p^{-s})^{-1}
+\;=\;\zeta(s),\qquad \mathrm{Re}(s)>1.
 \end{equation}
-(after specialisation \(q\to q/p^{s}\) and Euler product).
+This is a Mellin character of the primary Hecke grading, not a
+Poincar\'e series of homological dimensions.
 \end{theorem}
 
 \begin{corollary}[Koszul dual = Bost--Connes]
@@ -208,7 +210,7 @@ shift.
 \end{proof}
 
 \begin{remark}
-This is the load-bearing theorem of the arithmetic branch. It is
+This is the essential theorem of the arithmetic branch. It is
 not a tautology: arithmetic Koszulness of Heisenberg \emph{implies}
 meromorphic continuation and functional equation of \(\zeta\), via
 the Koszul-resolution computation of the Hochschild cochain
@@ -261,28 +263,33 @@ the category of motivic sheaves on \(\overline{C}\) with
 \begin{equation}
 B^{\mathrm{ch,Ar}}(\mathcal{V}^{\mathrm{prim}})\;:=\;\bigoplus_{n\geq 0}\bigl(s^{-1}\overline{\mathcal{V}^{\mathrm{prim}}}\bigr)^{\otimes_{\Lambda}n}\otimes_{\Lambda}C^{\bullet}_{\mathrm{Parshin}}(\overline{C}).
 \end{equation}
-Differential: \(d^{\mathrm{Ar}}=d_{\mathrm{Iw}}\otimes 1+1\otimes d_{\mathrm{Gersten}}+d_{\mathrm{bar}}^{\mathrm{local}}\),
+Pre-differential:
+\(d^{\mathrm{Ar}}=d_{\mathrm{Iw}}\otimes 1+1\otimes d_{\mathrm{Gersten}}+d_{\mathrm{bar}}^{\mathrm{local}}\),
 with \(d_{\mathrm{bar}}^{\mathrm{local}}\) the sum over primes
 \(\mathfrak{p}\) of the local chiral bar differential on
 \(\mathcal{V}^{\mathrm{prim}}_{\mathfrak{p}}\) weighted by the tame
-symbol \(\partial_{\mathfrak{p}}\).
+symbol \(\partial_{\mathfrak{p}}\). It is a differential under
+\Cref{v4-arith:bar:conj:dAr-square-zero}.
 \end{definition}
 
 \begin{theorem}[verifications]
 \label{v4-arith:thm:bar-verifications}
-\ClaimStatusConjectured\ (items 2--3; item~1 is
+\ClaimStatusConjectured\ (items 2--4; item~1 is
 \ClaimStatusProvedHere). The construction satisfies:
 \begin{enumerate}
 \item \textbf{Archimedean reduction.} (\ClaimStatusProvedHere,
 \Cref{v4-arith:thm:archimedean-reduction}.) At \(\infty\), the
 construction agrees with the classical bar complex.
+\item \textbf{Nilpotency.} (\ClaimStatusConjectured,
+\Cref{v4-arith:bar:conj:dAr-square-zero}.) The arithmetic
+pre-differential squares to zero.
 \item \textbf{Koszul adjunction.} For arithmetically Koszul
 \(\mathcal{V}^{\mathrm{prim}}\), \(\Omega^{\mathrm{ch,Ar}}\dashv B^{\mathrm{ch,Ar}}\)
 is an adjoint equivalence between conilpotent \(\Lambda\)-coalgebras
 with \(\mu=0\) and arithmetic \(E_{1}\)-algebras with Deligne-pure bar
 cohomology.
 \item \textbf{Complementarity.}
-\(\kappa^{\mathrm{Ar}}+(\kappa^{!})^{\mathrm{Ar}}\in\{0,8,13,250/3,98/3\}\)
+\(\kappa^{\mathrm{Ar}}+(\kappa^{!})^{\mathrm{Ar}}\in\{0,8,13,250/3,25/3\}\)
 with \(\mathsf{G}\)-row \(=0\) realised by arithmetic Heisenberg
 (\Cref{v4-arith:thm:G-row-complementarity}), \(\mathsf{B}\)-row \(=8\)
 realised by arithmetic K3-Mukai Borcherds lift, others
@@ -290,7 +297,7 @@ unrealised.
 \end{enumerate}
 \end{theorem}
 
-\section{Summary of This Chapter}
+\section{Bar--Cobar Boundary}
 \label{v4-arith:bar:summary}
 
 \begin{enumerate}
@@ -306,7 +313,7 @@ Gersten complex (\Cref{v4-arith:thm:parshin-reciprocity}).
 (\Cref{v4-arith:thm:archimedean-reduction}).
 \item Koszulness translates to Deligne weight-concentration
 purity (\Cref{v4-arith:thm:arithmetic-koszulness}).
-\item Arithmetic Heisenberg bar cohomology Euler product \(=\zeta(s)\)
+\item Primary bar Mellin character \(=\zeta(s)\)
 (\Cref{v4-arith:thm:heisenberg-bar-zeta}); Koszul dual \(=\) Bost--Connes
 (\Cref{v4-arith:cor:koszul-dual-BC}).
 \item \(\mathsf{G}\)-row complementarity \(\kappa+\kappa^{!}=0\) is

@@ -1,12 +1,9 @@
 \chapter{\(\Lambda\)-Ring Axiomatic Precision}
 \label{v4-arith:gelfand-borger}
 
-\emph{In the voice of Gelfand + Borger. Gelfand demanded every
-construction be rigorously stated before being used. Borger
-(arXiv:0801.1691, arXiv:0906.3146) defined \(\Lambda\)-rings as
-\(\mathbb{F}_{1}\)-descent data. The question is whether
-\(\mathcal{V}^{\mathrm{prim}}\) carries a Borger \(\Lambda\)-ring
-structure.}
+Borger's \(\Lambda\)-rings encode \(\mathbb F_1\)-descent by commuting
+Frobenius lifts. The issue is whether the integral lattice underlying
+\(\mathcal V^{\mathrm{prim}}\) satisfies the Wilkerson congruences.
 
 \section{The Wilkerson Congruence and the Scalar Ring}
 \label{v4-arith:gb:wilkerson}
@@ -48,9 +45,11 @@ on which \(p\) is not invertible, which must be specified.
 \section{Explicit Computations: \(\psi_{2}\) on Low-Weight States}
 \label{v4-arith:gb:explicit-psi-2}
 
-The Wilkerson congruence requires a candidate Adams operation \(\psi_{n}\) on
-\(\mathcal{V}^{\mathrm{prim}}\). The underlying vector space is the completed
-Fock space of a free Heisenberg algebra: for each prime \(p\), the operators
+The Wilkerson congruence requires a candidate Adams operation \(\psi_{n}\)
+on the Heisenberg Fock shadow of \(\mathcal{V}^{\mathrm{prim}}\). The full
+\(\mathcal{V}^{\mathrm{prim}}\) is a Hochschild trace class; the Fock
+calculation below takes place in the arithmetic Heisenberg sector. For
+each prime \(p\), the operators
 \(a^{(p)}_{-k}\) (\(k\geq 1\)) create a rank-\(1\) harmonic oscillator mode
 of frequency \(k\), acting on the vacuum \(|0\rangle\). The algebra is
 \([a^{(p)}_m, a^{(p)}_n]=m\delta_{m+n,0}\). On single-mode states, the
@@ -180,15 +179,16 @@ Adams monoid \(\mathbb{N}^{\times}\) by group endomorphisms
 \(\psi_{n}\). No ring structure, no congruence.
 \end{definition}
 
-\begin{theorem}[healed status of \(\mathcal{V}^{\mathrm{prim}}\)]
-\label{v4-arith:thm:healed-lambda-status}
-\ClaimStatusProvedHere. \(\mathcal{V}^{\mathrm{prim}}_{\mathbb{Q}}\)
-is a \(\psi\)-ring over \(\mathbb{Q}\) (equivalently, a \(\Lambda\)-ring
-with vacuous Wilkerson congruence) via the Hecke-Adams operations.
-The underlying graded abelian group of any \(\mathbb{Z}\)-integral
-form carries a \(\Lambda\)-module structure in Borger's precise
-sense, but \emph{not} a \(\Lambda\)-ring structure on the natural
-Fock integral form.
+\begin{theorem}[corrected form of \(\mathcal{V}^{\mathrm{prim}}\)]
+\label{v4-arith:thm:corrected-lambda-form}
+\ClaimStatusProvedHere. The Heisenberg Fock shadow of
+\(\mathcal{V}^{\mathrm{prim}}\) over \(\mathbb{Q}\) carries a
+\(\psi\)-ring structure with vacuous Wilkerson congruence via the
+Hecke--Adams operations. The full
+\(\mathcal{V}^{\mathrm{prim}}\) carries only the corresponding
+\(\mathbb{N}^{\times}\)-module datum until a multiplication is specified.
+On the natural Fock integral form there is no Borger
+\(\Lambda\)-ring structure.
 \end{theorem}
 
 \section{The Log-\(p\) Rescaling Destroys Integrality}
@@ -200,15 +200,15 @@ When the Hamiltonian is rescaled so that \(L_{0}\) assigns eigenvalue
 \(k\log p\) to each weight-\(k\) state \(a^{(p)}_{-k}|0\rangle\),
 the resulting grading takes values in \(\mathbb{R}\setminus\mathbb{Q}\)
 (since \(\log p\) is transcendental over \(\mathbb{Q}\) for every prime
-\(p\)). A \(\mathbb{Z}\)-lattice in \(\mathcal{V}^{\mathrm{prim}}\)
-spanned by eigenstates of the conformal \(L_{0}\) is not preserved
+\(p\)). A \(\mathbb{Z}\)-lattice in the Heisenberg Fock shadow, spanned
+by eigenstates of the conformal \(L_{0}\), is not preserved
 under this rescaled grading.
 \end{observation}
 
 \begin{convention}[two-grading principle]
 \label{v4-arith:conv:two-grading}
 Resolve the conflict by carrying \emph{two} gradings on the same
-vector space:
+Heisenberg basis:
 \begin{enumerate}
 \item \textbf{Conformal grading:} integer weight \(n\) on
 \(a^{(p)}_{-n}\). Character \(\prod_{p}\prod_{n}(1-q^{n})^{-1}\)
@@ -249,7 +249,7 @@ preserve conformal weight (commute with \(L_{0}\)). Therefore
 \(T_{n}\) is not a VA endomorphism for \(n>1\).
 \end{proposition}
 
-\begin{theorem}[healed category: Hecke-equivariant VAs]
+\begin{theorem}[corrected category: finite Hecke-equivariant VA shadows]
 \label{v4-arith:thm:HVA-category}
 \ClaimStatusProvedHere. Define
 \begin{equation*}
@@ -257,8 +257,9 @@ preserve conformal weight (commute with \(L_{0}\)). Therefore
 V\text{ VA}, T_{n}\text{ linear, }T_{m}T_{n}=T_{mn},
 T_{n}|0\rangle=|0\rangle\}.
 \end{equation*}
-Then \(\mathcal{V}^{\mathrm{prim}}\) is an object of \(\mathrm{HVA}\),
-with the further intertwining property
+For every finite set \(S\) of primes, the finite Heisenberg truncation
+\(\mathcal{H}^{(S)}=\bigotimes_{p\in S}\mathcal{H}^{(p)}\) is an object
+of \(\mathrm{HVA}\), with the further intertwining property
 \(T_n(a^{(p)}_{-1}|0\rangle)=a^{(p)}_{-n}|0\rangle\) on level-1
 generators (\Cref{v4-arith:prop:T-n-not-VA-endo}). On higher-weight
 states \(T_n\) produces sums of mixed weight, e.g.\
@@ -268,7 +269,9 @@ identity; direct computation gives
 \([T_2,L_{-1}]\,a^{(p)}_{-1}|0\rangle=a^{(p)}_{-4}|0\rangle+2\,a^{(p)}_{-2}|0\rangle-2\,a^{(p)}_{-3}|0\rangle\neq 0\).
 The category \(\mathrm{HVA}\) records the Adams multiplicativity
 \(T_mT_n=T_{mn}\) and the vacuum preservation; the conformal
-interaction is a separate datum.
+interaction is a separate datum. The restricted product is an
+\(\mathbb{N}^{\times}\)-module shadow, not a vertex algebra structure on
+\(\mathcal{V}^{\mathrm{prim}}\).
 \end{theorem}
 
 \begin{corollary}[\(\psi\)-ring plus Hecke-equivariance]
@@ -276,9 +279,10 @@ interaction is a separate datum.
 \ClaimStatusProvedHere. The correct categorical statement:
 \(\mathcal{V}^{\mathrm{prim}}\in\mathrm{Mod}_{\mathbb{N}^{\times}}(\mathrm{Vect}_{\mathbb{C}})\)
 with the \(\mathbb{N}^{\times}\)-action by Hecke operators \(T_{n}\),
-lifted to the VA structure as a weight-rescaling Hecke-equivariant
-endomorphism family. This is Mackey's Hecke algebra representation
-enhanced by the VA structure, not Borger's \(\Lambda\)-ring.
+whose finite Heisenberg shadows are the Hecke-equivariant VA objects of
+\Cref{v4-arith:thm:HVA-category}. This is Mackey's Hecke algebra
+representation enhanced by finite Fock shadows, not Borger's
+\(\Lambda\)-ring.
 \end{corollary}
 
 \section{The Descent Interpretation Goes Through Bost--Connes}
@@ -290,7 +294,7 @@ characterizes a \(\Lambda\)-structure on \(R\) as a descent datum from \(R\) to
 \(R\otimes_{\mathbb{F}_{1}}\mathbb{Z}\). The \(\mathbb{F}_{1}\)-descent of
 \(\mathcal{V}^{\mathrm{prim}}\) in Borger's sense requires a genuine
 \(\Lambda\)-ring structure, hence a Wilkerson-congruent integral form, which
-the natural Fock lattice does not supply (Theorem~\ref{v4-arith:thm:healed-lambda-status}
+the natural Fock lattice does not supply (Theorem~\ref{v4-arith:thm:corrected-lambda-form}
 and Observation~\ref{v4-arith:obs:lattice-form-failure}). The correct
 arithmetic framework for \(\mathcal{V}^{\mathrm{prim}}\) is
 Bost--Connes (Selecta~Math.~1 (1995), 411--457) and Connes--Consani
@@ -299,8 +303,8 @@ Bost--Connes (Selecta~Math.~1 (1995), 411--457) and Connes--Consani
 
 \begin{theorem}[Bost--Connes as the correct descent]
 \label{v4-arith:thm:bost-connes-descent}
-\ClaimStatusConjectured. \(\mathcal{V}^{\mathrm{prim}}\) is a
-vertex-algebraic enhancement of the Bost--Connes Hecke
+\ClaimStatusConjectured. \(\mathcal{V}^{\mathrm{prim}}\) has a
+Heisenberg-Fock shadow compatible with the Bost--Connes Hecke
 \(C^{*}\)-dynamical system, with:
 \begin{itemize}
 \item Hecke action \(\{T_{n}\}\) = Bost--Connes semigroup action;
@@ -327,11 +331,11 @@ The Macdonald lattice \(\Lambda_{\mathbb{Z}}\) carries the Wilkerson
 congruence (\Cref{v4-arith:thm:macdonald-lattice}); the Fock lattice
 \(\mathbb{Z}\langle a^{(p)}_{-\vec{n}}|0\rangle\rangle\) does
 not (\Cref{v4-arith:obs:lattice-form-failure}), and the two integral
-forms are distinct (\Cref{v4-arith:obs:lattice-mismatch-Z}). At the
-level of vertex algebras, \(T_{n}\) scales conformal weight
-(\Cref{v4-arith:prop:T-n-not-VA-endo}), so the correct enriched
-structure is the category \(\mathrm{HVA}\) of Hecke-equivariant vertex
-algebras (\Cref{v4-arith:thm:HVA-category}). The \(\mathbb{F}_{1}\)-descent
+forms are distinct (\Cref{v4-arith:obs:lattice-mismatch-Z}). At finite
+Heisenberg level, \(T_{n}\) scales conformal weight
+(\Cref{v4-arith:prop:T-n-not-VA-endo}), so the category \(\mathrm{HVA}\)
+applies only to finite Fock shadows
+(\Cref{v4-arith:thm:HVA-category}). The \(\mathbb{F}_{1}\)-descent
 framework adequate to \(\mathcal{V}^{\mathrm{prim}}\) is
 Bost--Connes rather than Borger (\Cref{v4-arith:thm:bost-connes-descent}).
 \end{remark}

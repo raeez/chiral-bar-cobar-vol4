@@ -1,74 +1,58 @@
-\chapter{The Realization Programme}
-\label{v4-ch:realization-programme}
+\chapter{The Realization Functor}
+\label{v4-ch:realization-formalism}
 
-\section{The deficiency the realization functor addresses}
+\section{Independent comparison}
 \label{v4-sec:deficiency}
 
-Consider an inscribed theorem \(T\) in a chapter \(X\) of Vols I, II, or
-III, tagged \(\ClaimStatusProvedHere\). The tag encodes the assertion
-that a proof of \(T\) appears inside \(X\). The assertion is, without
-further structure, opaque to disjointness. Let \(S_T^{\mathrm{deriv}}\)
-denote the set of citations, tables, and conventions from which the
-statement of \(T\) was derived; let \(S_T^{\mathrm{verif}}\) denote the
-set of citations, tables, and conventions against which the test
-suite \(E_T\) (if one exists) compares its computed values. The
-programme's source-disjoint audit found that on a majority of
-ProvedHere inscriptions backed by a compute engine,
+Let \(T\) be a theorem in a chapter \(X\) of the first three volumes.
+Let \(S_T^{\mathrm{der}}\) be the set of citations, tables, and
+conventions used in the derivation of \(T\), and let
+\(S_T^{\mathrm{cmp}}\) be the corresponding set for an independent
+numerical or structural comparison.  If
 \[
- S_T^{\mathrm{deriv}} \;\cap\; S_T^{\mathrm{verif}} \;\neq\; \emptyset.
+ S_T^{\mathrm{der}} \cap S_T^{\mathrm{cmp}} \neq \emptyset,
 \]
-Tests passing against such engines provide no evidence about \(T\)
-beyond internal arithmetic consistency.
-
-The source-disjoint protocol requires every test decorated with
-\texttt{@independent\_verification} to declare its two source sets
-and raises \texttt{IndependentVerificationError} at decorator
-execution time if the sets overlap. This closes the gap at the level
-of individual tests. At the programme level, the installation
-snapshot showed 2 of 3692 ProvedHere claims covered by a
-source-disjoint decorator; the verification infrastructure existed
-without the verification pairs.
+then equality of the two computed values may be no more than internal
+consistency of one construction.  The comparison used here is the
+stronger condition
+\[
+ S_T^{\mathrm{der}}\cap S_T^{\mathrm{cmp}}=\emptyset
+\]
+together with equality of the resulting invariant.
 
 Vol IV supplies the pair \(\mathrm{Real}(X, T) = (d, e)\) for every
-ProvedHere claim on the non-degenerate locus.
+theorem on the non-degenerate locus.
 
 \section{The realization pair}
 \label{v4-sec:realization-pair}
 
 \begin{definition}[Realization pair]
 \label{v4-def:realization-pair}
-Let \(T\) be an inscribed ProvedHere theorem in chapter \(X\) of Vols I,
+Let \(T\) be a stated theorem in chapter \(X\) of Vols I,
 II, or III. A \emph{realization pair} for \(T\) is a pair \((d, e)\)
 where:
 \begin{enumerate}
- \item \(d\) is an independent-verification decorator
- \texttt{@independent\_verification} on a Python test in
- \texttt{compute/tests/} of Vol IV, carrying fields
- \texttt{claim}, \texttt{derived\_from}, \texttt{verified\_against},
- and \texttt{disjoint\_rationale}, such that
- \texttt{derived\_from} \(\cap\) \texttt{verified\_against} \(= \emptyset\)
- as sets of canonical source labels;
- \item \(e\) is a compute engine in \texttt{compute/lib/} of Vol IV
- (or a cross-reference to an engine in Vols I-III) whose
- hardcoded expected values are computed from a source disjoint
- from the source used to derive \(T\)'s formula.
+ \item \(d\) is a comparison datum consisting of the two finite sets
+ \(S_T^{\mathrm{der}}\) and \(S_T^{\mathrm{cmp}}\), together with the
+ proof that their intersection is empty;
+ \item \(e\) is a computation whose expected values are obtained from a
+ source disjoint from the source used to derive \(T\)'s formula.
 \end{enumerate}
-The \emph{realization functor} \(\mathrm{Real}\) sends each inscribed
-ProvedHere theorem \((X, T)\) to its realization pair
-\((d_{X,T}, e_{X,T})\), defined whenever such a pair exists. When both
-components exist, we say \(T\) is \emph{realized} and write
-\(\ClaimStatusRealized\).
+The \emph{realization functor} \(\mathrm{Real}\) sends each stated
+theorem \((X, T)\) to its realization pair
+\((d_{X,T}, e_{X,T})\), defined whenever such a pair exists.
 \end{definition}
 
-\begin{theorem}[Realization programme definition]
-\label{v4-thm:realization-programme-definition}
-\ClaimStatusProvedHere{}
-There exists a category \(\mathcal{I}\) whose objects are inscribed
-ProvedHere theorems \((X, T)\) across Vols I-III and whose morphisms
+\begin{theorem}[Realization functor]
+\label{v4-thm:realization-formalism-definition}
+\ClaimStatusProvedHere.
+
+There exists a category \(\mathcal{I}\) whose objects are stated
+theorems \((X, T)\) across Vols I-III and whose morphisms
 are specializations (restrictions of hypotheses, corollaries of the
 ambient theorem), a category \(\mathcal{V}\) whose objects are
 realization pairs \((d, e)\) and whose morphisms are compatible
-decorator-engine specializations, and a functor
+independent specializations, and a functor
 \[
  \mathrm{Real}\colon \mathcal{I}_{\mathrm{nd}} \;\longrightarrow\; \mathcal{V},
 \]
@@ -79,41 +63,41 @@ sending \((X, T)\) to a realization pair \((d_{X,T}, e_{X,T})\).
 
 \begin{proof}
 The category \(\mathcal{I}\) is well-defined: objects are ordered
-pairs \((X, T)\) with \(X\) a chapter file in the union of Vols I-III and
-\(T\) a theorem-like environment within \(X\) carrying the
-\(\ClaimStatusProvedHere\) tag; morphisms \((X, T) \to (X', T')\) are
-specializations under which \(T'\) is a restriction or corollary of \(T\),
-with \(X'\) allowed to coincide with \(X\). The category \(\mathcal{V}\) is
+pairs \((X, T)\) with \(X\) a chapter in the union of Vols I-III and
+\(T\) a theorem-like environment within \(X\); morphisms
+\((X, T) \to (X', T')\) are specializations under which \(T'\) is a
+restriction or corollary of \(T\), with \(X'\) allowed to coincide
+with \(X\). The category \(\mathcal{V}\) is
 well-defined: objects are pairs \((d, e)\) satisfying the conditions of
 Definition \ref{v4-def:realization-pair}; morphisms are pairs
-\((\phi, \psi)\) of Python-callable transformations compatible with the
+\((\phi, \psi)\) of compatible transformations compatible with the
 underlying specialization of the source theorem.
 
 The non-degenerate locus \(\mathcal{I}_{\mathrm{nd}}\) is defined in
 \ref{v4-def:non-degenerate-locus}. On this locus, the functor
-\(\mathrm{Real}\) is constructed claim by claim. For each ProvedHere
-claim \((X, T)\) on the non-degenerate locus, we exhibit:
+\(\mathrm{Real}\) is constructed theorem by theorem. For each
+\((X, T)\) on the non-degenerate locus, we exhibit:
 
 (i) a canonical primary disjoint source \(S_1 \in \{\text{Pridham--Toen--Vezzosi},
-\text{Lurie HA 5.3}, \text{Vol I-III test infrastructure}\}\), or a
-canonical secondary disjoint source selected from the Vol IV secondary disjoint source catalog;
+\text{Lurie HA 5.3}, \text{Vol I-III independent comparison}\}\), or a
+canonical secondary source whose labels are disjoint from
+\(S_T^{\mathrm{der}}\);
 
-(ii) a verification computation against \(S_1\) that reproduces \(T\)'s
+(ii) a comparison computation against \(S_1\) that reproduces \(T\)'s
 numerical or structural content;
 
-(iii) an import-time check that the Vol IV registry entry for
-\((X, T)\) has \texttt{verified\_against} disjoint from
-\(T\)'s \texttt{derived\_from}.
+(iii) a structural check that the Vol~IV comparison source list
+for \((X,T)\) is disjoint from the proof source list of \(T\).
 
-The construction is a finite procedure whose termination is guaranteed
-by finiteness of \(\mathcal{I}_{\mathrm{nd}}\) at any finite coverage
-snapshot. Functoriality under specialization: if \((X', T')\) is a
+The construction is finite on every finite full subcategory of
+\(\mathcal{I}_{\mathrm{nd}}\). Functoriality under specialization:
+if \((X', T')\) is a
 specialization of \((X, T)\) on \(\mathcal{I}_{\mathrm{nd}}\), the
 realization pair \((d_{X', T'}, e_{X', T'})\) is obtained from
-\((d_{X, T}, e_{X, T})\) by restricting the decorator's claim field and
-the engine's parameter range to the subdomain specified by the
-specialization. The import-time disjointness check is preserved
-because the source catalogs at \((X', T')\) are subsets of those at
+\((d_{X, T}, e_{X, T})\) by restricting the source lists and
+parameter range to the subdomain specified by the
+specialization. The structural disjointness check is preserved
+because the source lists at \((X', T')\) are subsets of those at
 \((X, T)\). This exhibits the functor \(\mathrm{Real}\) on morphisms.
 \end{proof}
 
@@ -122,60 +106,61 @@ because the source catalogs at \((X', T')\) are subsets of those at
 The \emph{non-degenerate locus} \(\mathcal{I}_{\mathrm{nd}} \subset
 \mathcal{I}\) is the full subcategory defined by excluding:
 \begin{enumerate}
- \item the critical-level sublocus (claims valid at \(k = -h^\vee\)
+ \item the critical-level sublocus (theorems valid at \(k = -h^\vee\)
  for affine Kac--Moody, where \(\kappa = 0\) and Koszulness fails
- in the programme's sharp sense);
+ in the sharp Koszul sense);
  \item the \(\Psi = 0\) sublocus for chiral Yangians (abelian limit);
  \item the Creutzig--Kanade--Linshaw admissible logarithmic sector for
  admissible representations of affine \(\mathfrak{sl}_2\) and
  higher;
  \item the super-Yangian chain-level chiral coproduct sector
  absorbed under FM230;
- \item the five of six routes \(R_2\)--\(R_6\) to the quantum
+ \item the five of six constructions \(R_2\)--\(R_6\) to the quantum
  vertex chiral group \(G(K3\times E)\) (Vol III canonical taxonomy)
- whose convergence remains open in the CY-C bridge package.
+ whose convergence remains open in the CY-C bridge theorem.
 \end{enumerate}
-A claim \((X, T) \in \mathcal{I}\) lies in \(\mathcal{I}_{\mathrm{nd}}\)
+A theorem \((X, T) \in \mathcal{I}\) lies in \(\mathcal{I}_{\mathrm{nd}}\)
 iff it does not depend on any of the five excluded sectors in its
 statement or proof.
 \end{definition}
 
-The non-degenerate locus contains, in particular, the programme's
-seven Platonic theorems; their realization pairs are the base from
-which the full enumeration extends.
+The non-degenerate locus contains, in particular, the
+seven Platonic theorems; their realization pairs are the initial
+independent objects.
 
 \section{Existence of Real on the seven Platonic theorems}
 \label{v4-sec:existence-platonic}
 
-The programme's seven Platonic theorems are \(A^{\infty,2}\) (Koszul
+The seven Platonic theorems are \(A^{\infty,2}\) (Koszul
 reflection), \(B\) (chiral Positselski co-contra correspondence), \(C\)
 (bar-side derived center identification on Koszul locus), \(D\)
 (obstruction \(= \kappa \cdot \lambda_g\) plus cross-channel
 correction), \(H\) (chiral Hochschild concentration in degrees
 \(\{0,1,2\}\)), \(F\) (universal celestial holography), and \(G\)
-(infinite fingerprint classification). Each is inscribed
-ProvedHere across Vols I-III, and each lies on the non-degenerate
+(infinite fingerprint classification). Each is stated
+proved across Vols I-III, and each lies on the non-degenerate
 locus (they hold at generic parameters in every standard family).
 
 \begin{theorem}[Realization existence for Platonic theorems]
 \label{v4-thm:realization-existence-for-platonic-theorems}
-\ClaimStatusProvedHere{}
+\ClaimStatusProvedHere.
+
 For each \(T \in \{A^{\infty,2}, B, C, D, H, F, G\}\), there exists a
 realization pair \(\mathrm{Real}(X_T, T) = (d_T, e_T)\) in which the
-decorator \(d_T\) sources are disjoint from the proof sources of \(T\)
-inscribed in Vols I-III.
+comparison sources of \(d_T\) are disjoint from the proof sources of \(T\)
+stated in Vols I-III.
 \end{theorem}
 
 \begin{proof}
 We exhibit \((d_T, e_T)\) for each of the seven theorems by naming
-derivation and verification sources from disjoint catalogs.
+derivation and comparison sources from disjoint lists.
 
 \(A^{\infty,2}\) (Koszul reflection). Derivation: Vol I's
-\texttt{thm:A-infinity-2} proof via
+Koszul-reflection proof via
 filtered twisting morphisms and factorization-gluing. Verification:
 Costello--Gwilliam factorization homology applied independently to the
 pure braid Orlik--Solomon ordered Koszul input and compared at the
-ordered E\(_1\)-variant level. The two catalogs are disjoint: the
+ordered E\(_1\)-variant level. The two lists are disjoint: the
 manuscript proof does not invoke factorization homology at the
 Lagrangian-correspondence level, and the factorization-homology
 argument does not invoke filtered comparison.
@@ -186,7 +171,7 @@ conilpotent CDG-coalgebra adjoint pair plus bicomplex totalization.
 Verification: Lurie HA 5.3 adjoint functor theorem for stable
 \((\infty, 1)\)-categories applied to the coderived-contraderived
 adjunction, giving the same equivalence at the \((\infty, 1)\)-category
-level. The catalogs are disjoint: the manuscript proof is a
+level. The lists are disjoint: the manuscript proof is a
 chain-level bicomplex argument; the Lurie path is a formal
 \((\infty, 1)\)-categorical adjoint equivalence.
 
@@ -195,7 +180,7 @@ center plus eigenspace decomposition. Verification: Pridham--Toen--Vezzosi
 shifted symplectic structures applied to the mapping stack
 \(\mathrm{RMap}(\overline{\mathcal{M}}_g, B G_A)\), with the Verdier
 anti-symplectic involution pinning the bar-side identification. The
-catalogs are disjoint: the manuscript proof does not invoke
+lists are disjoint: the manuscript proof does not invoke
 shifted-symplectic structures at the \((-1)\)-shifted level; the PTVV
 path does not invoke fiber-center eigenspace decomposition.
 
@@ -204,13 +189,13 @@ shadow tower plus genus universality via K-theoretic filtration.
 Verification: Grothendieck--Riemann--Roch on the universal curve over
 \(\overline{\mathcal{M}}_g\) applied to the Hodge bundle, combined with
 the Arakelov--Faltings fiberwise Chern-curvature identity. The
-catalogs are disjoint: the manuscript proof uses clutching-uniqueness
+lists are disjoint: the manuscript proof uses clutching-uniqueness
 plus tautological-ring purity; the GRR path uses virtual-class
 globalization plus BGS curvature.
 
 \(H\) (chiral Hochschild concentration). Derivation: Vol I's bar
 complex computation via PBW collapse and Shelton--Yuzvinsky Orlik--Solomon
-Koszulity. Verification: three family-specific decorators
+Koszulity. Verification: three family-specific comparisons
 (Heisenberg via Feigin--Frenkel Chevalley--Eilenberg, Virasoro via
 Wang BRST plus Feigin--Fuks, affine \(\mathfrak{sl}_2\) via Whitehead
 plus K\"unneth). Each family-specific path is disjoint from the bar
@@ -220,7 +205,7 @@ complex derivation.
 celestial holography chapter via the \(w_{1+\infty}\) bulk-boundary
 matching. Verification: Costello--Witten--Yamazaki 6d holomorphic
 Chern-Simons computation reproducing the boundary algebra's OPE via
-the \(\Omega\)-background reduction. The catalogs are disjoint: the
+the \(\Omega\)-background reduction. The lists are disjoint: the
 manuscript proof argues at the chiral-algebra level; the 6d hCS path
 argues at the gauge-theory level.
 
@@ -228,140 +213,54 @@ argues at the gauge-theory level.
 infinite fingerprint classification chapter via shadow tower
 convergence across \(r \to \infty\). Verification: Hua--Keller N=1
 Calabi-Yau categorification applied to the class-M shadow sequence,
-yielding an independent categorical fingerprint. The catalogs are
+yielding an independent categorical fingerprint. The lists are
 disjoint: the manuscript proof uses shadow-tower arithmetic; the
 Hua--Keller path uses N=1 CY category homological invariants.
 
-Each decorator \(d_T\) is installed in Vol IV's
-\texttt{compute/tests/test\_realization\_programme.py} with
-\texttt{derived\_from} drawn from the manuscript-proof catalog and
-\texttt{verified\_against} drawn from the disjoint catalog named
-above. The import-time disjointness check in
-\texttt{compute/lib/independent\_verification.py} of Vol I (imported
-into Vol IV via the realization registry) confirms disjointness at
-decoration time. The engine \(e_T\) in each case computes, from the
-verification source, a value matching the manuscript-proof numerical
-or structural content, with source disjointness checked per
-\ref{v4-def:realization-pair}.
+Each datum \(d_T\) is constructed with the derivation list drawn
+from the manuscript proof and the comparison list drawn from the
+disjoint list named above. The source lists are disjoint. The
+computation \(e_T\) obtains, from the comparison source, a value
+matching the manuscript-proof numerical or structural content, with
+source disjointness checked per \ref{v4-def:realization-pair}.
 \end{proof}
 
 \section{Completeness on the non-degenerate locus}
 \label{v4-sec:completeness}
 
-\begin{theorem}[Realization completeness on the non-degenerate locus]
+\begin{theorem}[Realization criterion on the non-degenerate locus]
 \label{v4-thm:realization-completeness-programme}
-\ClaimStatusProvedHere{}
-The realization functor \(\mathrm{Real}\) extends from the seven
-Platonic theorems to every ProvedHere claim in Vols I-III whose
-statement and proof lie on the non-degenerate locus
-(\ref{v4-def:non-degenerate-locus}). Equivalently: for every
-\((X, T) \in \mathcal{I}_{\mathrm{nd}}\), a realization pair
-\((d_{X, T}, e_{X, T})\) exists.
+\ClaimStatusProvedHere.
+
+For \((X,T)\in\mathcal I_{\mathrm{nd}}\), the value
+\(\mathrm{Real}(X,T)\) exists if and only if there is a pair
+\((d_{X,T},e_{X,T})\) satisfying Definition~\ref{v4-def:realization-pair}.
+No statement is realized merely by lying in the non-degenerate locus;
+the disjoint decorator and the independent expected-value computation
+are part of the datum.
 \end{theorem}
 
 \begin{proof}
-Let \((X, T) \in \mathcal{I}_{\mathrm{nd}}\). Enumerating the primary
-and secondary disjoint source catalogs, one selects a source disjoint
-from \(T\)'s derivation source and constructs a realization pair. The
-following four cases are exhaustive.
-
-Case 1: \(T\) is a downstream corollary or specialization of one of the
-seven Platonic theorems. Then \(\mathrm{Real}(X, T)\) is obtained by
-applying the functor \(\mathrm{Real}\) of
-\ref{v4-thm:realization-programme-definition} to the specialization
-morphism \((X_{T_0}, T_0) \to (X, T)\) where \(T_0\) is the parent
-Platonic theorem and \(X_{T_0}\) is its home chapter. By
-\ref{v4-thm:realization-existence-for-platonic-theorems},
-\(\mathrm{Real}(X_{T_0}, T_0)\) exists; by functoriality,
-\(\mathrm{Real}(X, T) = \mathrm{Real}(X_{T_0}, T_0)\bigr|_{\text{specialized}}\)
-exists. Disjointness is preserved under specialization because the
-source catalog at \((X, T)\) is a subset of the source catalog at
-\((X_{T_0}, T_0)\).
-
-Case 2: \(T\) is not a specialization of one of the seven, but is a
-ProvedHere claim about a specific standard-landscape family (KM,
-Virasoro, \(W_N\), Heisenberg, lattice, \(\beta\gamma\), \(bc\), super-Virasoro,
-BP, etc.), at generic parameters. Then the verification source is
-chosen family by family from the secondary catalog:
-
-\begin{itemize}
- \item Affine KM at non-critical level: verify via Feigin--Frenkel
- screening cohomology.
- \item Virasoro at generic \(c\): verify via Wang's half-BRST plus
- Feigin--Fuks.
- \item Principal \(W_N\) at generic \(\Psi\): verify via Feigin--Frenkel
- screening at rank \(N-1\).
- \item Heisenberg at nonzero level: verify via Chevalley--Eilenberg
- on the Heisenberg Lie algebra.
- \item Lattice \(V_L\): verify via theta-function character arithmetic
- plus Dedekind eta.
- \item \(\beta\gamma\) system: verify via Friedan--Martinec--Shenker
- bosonization.
- \item \(bc\) system: verify via fermionic-bosonic OPE pairing.
- \item Super-Virasoro at non-critical: verify via parity-balance
- super-Whitehead argument.
- \item Bershadsky--Polyakov BP at generic \(k\): verify via coset
- realization in \(W_3 \otimes \beta\gamma\).
-\end{itemize}
-
-Each verification source in this list is disjoint from the
-derivation source used to inscribe \(T\) in Vols I-III: each source
-draws on an independent piece of structure (screening charges, BRST
-ghosts, bosonization, coset realization) absent from the manuscript
-proof.
-
-Case 3: \(T\) is a ProvedHere claim about a CY route to
-\(G(K3\times E)\), the quantum vertex chiral group of
-the Vol~III definition of six routes (Vol~III \texttt{def:cy-c-six-routes}), with the route
-being the one of six proved to converge (\(R_1\), the CY-to-chiral
-framed assignment \(\Phi_3^{(\Sigma_2,C)}\)). Verification source:
-direct K3 Mukai-pairing computation on the
-\((\Sigma_2,C)\)-specialised Stage-1 output, which supplies an
-independent verification value. Disjointness holds because the
-manuscript proof of \(R_1\) uses the framed Stage-1 datum;
-the verification path uses the Mukai-lattice arithmetic on
-\(H^\ast(K3,\mathbb{Z})\oplus H^\ast(E,\mathbb{Z})\) downstream of
-specialisation.
-
-Case 4: \(T\) is a ProvedHere claim about a 3D HT QFT inscription in
-Vol II. Verification source: Costello--Gwilliam factorization
-algebra on \(\mathbb{R} \times C\), independent of Vol II's bar-complex
-construction.
-
-Cases 1-4 exhaust \(\mathcal{I}_{\mathrm{nd}}\) up to the finitely
-many generic-parameter subcases handled claim-by-claim in the
-programme's standard landscape. For each ProvedHere inscription, at
-least one of cases 1-4 applies, and the verification source in the
-corresponding catalog is explicit.
-
-The realization pair \((d_{X, T}, e_{X, T})\) is installed in
-\texttt{compute/tests/test\_realization\_programme.py} or a downstream
-Vol IV test file; the import-time check confirms disjointness; the
-engine \(e_{X, T}\) computes the verification value. Completeness
-follows.
+This is Definition~\ref{v4-def:realization-pair} applied objectwise.
+The forward implication is the meaning of the functor
+\(\mathrm{Real}\). The reverse implication defines the object
+\((d_{X,T},e_{X,T})\) in \(\mathcal V\). Source-disjointness is not
+inferred from genericity or from membership in a family; it is checked
+claim by claim.
 \end{proof}
 
-\begin{remark}[On the completeness claim's status]
-\label{v4-rem:completeness-claim-status}
-The completeness theorem is tagged \(\ClaimStatusProvedHere\) because
-its proof is a finite case analysis over the four cases above, each
-terminating at an explicit verification source. The theorem asserts
-existence of the realization pair, not its installation. The
-installation snapshot shows three decorators installed (this
-chapter's three theorems). The campaign to install the remaining
-decorators, one per ProvedHere claim, is a finite enumeration whose
-termination is guaranteed by
-\ref{v4-thm:realization-completeness-programme} and whose progress
-is tracked in \texttt{notes/hziv\_coverage.md}. Existence is a
-theorem; installation is a campaign.
+\begin{remark}[realization boundary]
+\label{v4-rem:completeness-claim-form}
+The theorem is a criterion, not an enumeration theorem. A Vols I--III
+claim remains unrealized until its decorator and independent
+expected-value computation are present.
 \end{remark}
 
-\section{Scope restrictions and explicit openings}
-\label{v4-sec:scope-restrictions}
+\section{Boundary strata}
+\label{v4-sec:domain-restrictions}
 
 The non-degenerate locus is a proper subset of \(\mathcal{I}\).
-Vol IV records, for each excluded sector, an explicit scope
-restriction.
+Each excluded sector is a mathematical boundary stratum.
 
 \subsection{Degenerate admissible logarithmic sector}
 \label{v4-sec:ckl-sector}
@@ -369,42 +268,36 @@ restriction.
 The Creutzig--Kanade--Linshaw admissible logarithmic sector for
 admissible representations of affine \(\mathfrak{sl}_2\) at
 \(k + 2 = p/q\) with \(\gcd(p, q) = 1\), \(q \geq 2\), lies outside the
-non-degenerate locus. At installation, Vol IV provides no realization pairs for this
-sector. Every ProvedHere claim in Vols I-III whose statement depends
-on admissible logarithmic structure is marked
-\(\ScopeRestricted{claim}{non-admissible-locus}\) in the Vol IV Part B
-index, with the admissible complement marked as scope-restricted
-pending further work. The scope boundary is explicit.
+non-degenerate locus. A theorem whose statement depends on this
+logarithmic structure is a theorem only on the non-admissible locus;
+on the admissible complement the independent comparison requires
+an additional construction.
 
 \subsection{Super-Yangian chain-level chiral coproduct}
 \label{v4-sec:super-yangian}
 
 FM230 absorbs the concrete computation of the chain-level chiral
 coproduct for super-Yangians into the parity-balance super-Whitehead
-lemma, pending an explicit chain-level verification at specific
-super-algebras (super-\(\mathfrak{sl}(m|n)\) at generic parameters). Vol
-IV records this as a \texttt{ProofPending} open problem, not as a
-ProvedHere claim. Installation snapshot: 0 decorators installed
-for super-Yangian chain-level coproduct claims. Target: one decorator
-per standard super-family, verified against the appropriate
-super-Feigin--Frenkel screening.
+lemma, conditional on an explicit chain-level comparison at specific
+super-algebras (super-\(\mathfrak{sl}(m|n)\) at generic parameters).
+The independent comparison in this sector is the comparison with
+the appropriate super-Feigin--Frenkel screening.
 
 \subsection{Vol III CY-C conditional bridges}
 \label{v4-sec:cy-c-conditional}
 
-Vol III enumerates six routes to the quantum vertex chiral group
-\(G(K3\times E)\) (Vol~III \texttt{def:cy-c-six-routes}): \(R_1\)
+Vol III gives six constructions to the quantum vertex chiral group
+\(G(K3\times E)\): \(R_1\)
 the CY-to-chiral framed assignment \(\Phi_3^{(\Sigma_2,C)}\); \(R_2\)
 the Borcherds multiplicative lift; \(R_3\) the Mukai-lattice VOA;
 \(R_4\) the Kummer construction; \(R_5\) the
 \(\mathcal{N}=(2,2)\) sigma-model half-twist; \(R_6\) the BLLPR
 Schur-limit construction. Only \(R_1\) is a \(\Phi_3\) application;
 CY-C is the assertion that \(R_2\)--\(R_6\) identify as
-\((\Sigma_2, C)\)-specialisations of one canonical Stage-1 datum
-(Vol~III \texttt{thm:cy-c-six-routes-generator-level-convergence}).
+\((\Sigma_2, C)\)-specialisations of one canonical Stage-1 datum.
 \(R_1\) carries a proof of convergence at \(d = 2\) via the framed
-Stage-1 output. The remaining five routes carry
-\(\ClaimStatusConditional\) tags tied to convergence hypotheses:
+Stage-1 output. The other five constructions carry
+\(conditional\) forms tied to convergence hypotheses:
 
 \begin{enumerate}
  \item \(R_2\) (Borcherds multiplicative lift): conditional on
@@ -424,95 +317,35 @@ Stage-1 output. The remaining five routes carry
  the common Stage-1 specialisation.
 \end{enumerate}
 
-Vol IV installs a \(\ClaimStatusConditional\) realization entry for
-each of the five, with the verification source being the specific
-convergence hypothesis. When the hypothesis is proved in a future
-campaign, the entry is upgraded to \(\ClaimStatusRealized\); until
-then, the conditional status is maintained.
+For \(R_2,\ldots,R_6\) the realization datum is conditional precisely
+on the corresponding convergence isomorphism. Once that isomorphism is
+proved, the same datum carries \(realized\).
 
-\section{The three Vol IV theorems, realized}
-\label{v4-sec:three-theorems-realized}
-
-Each of Vol IV's three theorems is itself realized at inscription
-time. The realization pairs are installed in
-\texttt{compute/tests/test\_realization\_programme.py} as follows.
-
-\begin{principle}[Three self-realized theorems]
-\label{v4-prin:self-realization}
-For each \(T \in \{\)\ref{v4-thm:realization-programme-definition},
-\ref{v4-thm:realization-existence-for-platonic-theorems},
-\ref{v4-thm:realization-completeness-programme}\(\}\), the
-realization pair \((d_T, e_T)\) satisfies:
-\begin{itemize}
- \item \(d_T\) is an independent-verification decorator registered against \(T\)'s label
- with \texttt{derived\_from} \(=\) the Vol IV chapter proof
- above, and \texttt{verified\_against} \(\in \{\)Pridham--Toen--Vezzosi
- derived deformation theory, Lurie HA 5.3 \((\infty, 2)\)-centralizer
- theory, Vols I-III independent test infrastructure\(\}\);
- \item \(e_T\) is a compute engine that reconstructs the content of
- \(T\) from the verification source;
- \item \texttt{derived\_from} and \texttt{verified\_against} are
- disjoint, checked at decorator import time.
-\end{itemize}
-\end{principle}
-
-\begin{remark}[Why three primary disjoint sources suffice for self-realization]
-\label{v4-rem:three-disjoint-sources}
-The three Vol IV theorems concern, respectively: the definition of
-the realization functor (a formal mathematical construction), the
-existence of \(\mathrm{Real}\) on the seven Platonic theorems (a
-theorem-by-theorem enumeration), and completeness on the
-non-degenerate locus (a case analysis). The verification sources were
-chosen as follows.
-
-For \ref{v4-thm:realization-programme-definition}: verification via
-Pridham--Toen--Vezzosi, whose derived deformation theory supplies an
-independent framework for the functoriality claim on specialization
-morphisms (the deformation-theoretic mapping stack structure gives a
-\((-1)\)-shifted symplectic pairing compatible with specialization,
-independent of this chapter's manuscript proof by explicit morphism
-construction).
-
-For \ref{v4-thm:realization-existence-for-platonic-theorems}:
-verification via Lurie HA 5.3, whose \((\infty, 2)\)-centralizer theory
-supplies the abstract existence of realization pairs at the
-\((\infty, 2)\)-category level, disjoint from the explicit
-source-catalog enumeration carried out in this chapter's proof.
-
-For \ref{v4-thm:realization-completeness-programme}: verification via
-Vols I-III test infrastructure, imported via
-\texttt{compute/lib/independent\_verification.py} with the
-import-time disjointness assertion. The completeness theorem's proof
-by case analysis is checked against the infrastructure's own
-registration of claims in Cases 1-4, confirming that every
-ProvedHere claim falls under one of the four cases.
-\end{remark}
-
-\section{The open ends, precisely}
+\section{Boundary Problems}
 \label{v4-sec:open-ends-precisely}
 
-Vol IV inscribes the following open ends, each a scope boundary that
-survives the programme to this installation.
+The following boundary problems are the complement of the
+non-degenerate locus.
 
 \begin{openproblem}[Admissible logarithmic realization]
 \label{v4-open:admissible-realization}
-Install a Vol IV realization pair for every ProvedHere claim in Vols
+Construct a Vol IV realization pair for every statement in Vols
 I-III whose statement depends on admissible logarithmic
 representations of affine Lie algebras at \(k + h^\vee \in \mathbb{Q}_{>0}\)
-with rational level. A Realization programme that extends
-\ref{v4-thm:realization-completeness-programme} to this sector
-requires an independent verification source for the
-Creutzig--Kanade--Linshaw logarithmic structure. Candidate source: the
-Creutzig--Linshaw semi-infinite cohomology construction, provided it
-can be shown disjoint from the lambda-bracket derivation used to
-inscribe the admissible-logarithmic claims.
+with rational level. A realization functor that extends
+\ref{v4-thm:realization-completeness-programme} to this sector is the
+same as a source-disjoint pair for each such statement. The comparison
+must see the Creutzig--Kanade--Linshaw logarithmic structure without
+using the lambda-bracket derivation of the statement; the
+Creutzig--Linshaw semi-infinite cohomology construction is admissible
+only after this disjointness is proved.
 \end{openproblem}
 
 \begin{openproblem}[Super-Yangian chain-level chiral coproduct]
 \label{v4-open:super-yangian-chain-level}
-Install a Vol IV realization pair for every ProvedHere claim in Vol
+Construct a Vol IV realization pair for every statement in Vol
 I concerning the chain-level chiral coproduct of super-Yangians
-\(Y(\mathfrak{sl}(m|n))^{\mathrm{ch}}\), outside the scope of FM230's
+\(Y(\mathfrak{sl}(m|n))^{\mathrm{ch}}\), outside the domain of FM230's
 absorption into parity-balance super-Whitehead. A concrete super-
 Feigin--Frenkel screening construction for \(Y(\mathfrak{sl}(2|1))^{\mathrm{ch}}\)
 at generic parameters suffices as the seed.
@@ -520,75 +353,26 @@ at generic parameters suffices as the seed.
 
 \begin{openproblem}[Five of six CY-C bridges]
 \label{v4-open:cy-c-bridges}
-Upgrade each of the five conditional CY-C routes \(R_2\)--\(R_6\) of
+Prove each of the five conditional CY-C constructions \(R_2\)--\(R_6\) of
 Vol III (Borcherds multiplicative lift, Mukai-lattice VOA, Kummer
 construction, \(\mathcal{N}=(2,2)\) sigma-model half-twist, BLLPR
-Schur-limit construction) to \(\ClaimStatusRealized\) by discharging
-the specific convergence hypothesis attaching each route to the
+Schur-limit construction) by proving
+the specific convergence isomorphism attaching each construction to the
 common Stage-1 \((\Sigma_2,C)\)-specialisation of \(\Phi_3\). Each
 discharge is a standalone result: proof of the Igusa cusp form
 product convergence against the \(R_1\) normalisation; identification
 of the Mukai-lattice OPE with the framed Stage-1 chiral output;
 identification of the Kummer-orbifold chiral data with the smooth
-\(K3\) chiral specialisation; etc. Completion of any one of the five
-reduces the conditional status count by one.
+\(K3\) chiral specialisation; and the analogous equalities for the
+sigma-model and Schur-limit constructions.
 \end{openproblem}
 
-\section{Relation to the programme's prior source-disjoint installations}
-\label{v4-sec:relation-to-prior-hziv}
-
-Vols I, II, and III installed source-disjoint decorators against their own
-local test infrastructures (\texttt{compute/lib/independent\_verification.py}
-in each volume). The installation snapshots covered \(0\) of \(2275\)
-in Vol~I, \(0\) of \(1134\) in Vol~II, and \(2\) of \(283\) in Vol~III.
-Vol~IV adds \(3\) decorators at installation (the three theorems of
-this chapter), bringing the programme-wide coverage to \(5\) of
-\(3695\).
-Theorem~\ref{v4-thm:realization-completeness-programme} guarantees
-that the remaining 3690 decorators admit installation; the campaign
-to install them is a finite enumeration. Coverage progress is tracked in
-\texttt{notes/hziv\_coverage.md}.
-
-The programme's Beilinson principle applies at the level of Vol IV
-itself. A Vol IV decorator whose verification computation fails
-against the primary source catalog forces one of three honest
-responses: (i) find a secondary disjoint source; (ii) restrict the
-scope of the Vol I-III claim to the locus where verification
-succeeds; (iii) downgrade the Vol I-III claim from ProvedHere to
-Conjectured. The three responses are the realization analog of the
-three Beilinson honest responses in the Vol I source-disjoint protocol. Option
-(iii) is rare; when it occurs, the downgrade is inscribed in both
-volumes (Vol I-III home chapter and Vol IV Part B entry) in the same
-mathematical update, and the claim-status propagation discipline applies.
-
-\section{Summary}
-\label{v4-sec:summary-realization-programme}
-
-The realization functor \(\mathrm{Real}\colon \mathcal{I}_{\mathrm{nd}}
-\to \mathcal{V}\) is defined by Definition~\ref{v4-def:realization-pair},
-exists by Theorem~\ref{v4-thm:realization-programme-definition}, is
-exhibited on the seven Platonic theorems by
-Theorem~\ref{v4-thm:realization-existence-for-platonic-theorems},
-and is complete on \(\mathcal{I}_{\mathrm{nd}}\) by
-Theorem~\ref{v4-thm:realization-completeness-programme}. The three
-explicit scope boundaries on the complement of
-\(\mathcal{I}_{\mathrm{nd}}\) are recorded in
-Open Problems~\ref{v4-open:admissible-realization},
-\ref{v4-open:super-yangian-chain-level}, and
-\ref{v4-open:cy-c-bridges}.
-
-The programme on \(\mathcal{I}_{\mathrm{nd}}\) terminates when
-coverage is \(100\%\): one realization pair per ProvedHere claim,
-one decorator per engine, until \(\mathrm{Real}\) is defined on
-every object of \(\mathcal{I}_{\mathrm{nd}}\).
-
-\section{Architectural sharpenings inherited from Vols I--III}
+\section{Structural Consequences Inherited from Vols I--III}
 \label{v4-sec:architectural-sharpenings-inherited}
 
-The realization functor acts on the Vol~I--III theorem corpus in its
-inscribed form. The architectural sharpenings below land in the
-Vol~I--III manuscripts; each carries the realization pair obligation
-\(\mathrm{Real}(X,T) = (d,e)\) for Vol~IV.
+The realization functor acts on the Vol~I--III theorems in their
+stated form. The consequences below specify the independent
+comparisons attached to inherited constructions.
 
 \subsection{The four-conductor split and the Koszul-self-dual trinity}
 \label{v4-subsec:four-conductor-trinity}
@@ -598,23 +382,23 @@ Off the Koszul-self-dual locus the single Koszul conductor
 equation~(G1) separates into four distinct conductors: \(K\) (BRST
 ghost charge), \(K^{\kappa} := \kappa+\kappa^{!}\) (Theorem-C
 complementarity ceiling, with values
-\((0,13,250/3,98/3,8)\) on
-\((\mathsf G,\mathsf L,\mathsf C,\mathsf M,\mathsf B)\)), \(K_c\)
+\((0,13,250/3,25/3,8)\) on
+\((\mathsf G,\mathsf L,\mathsf C,\mathsf M,\mathsf B)\), the
+\(\mathsf M\)-row value \(25/3\) conditional), \(K_c\)
 (central-charge trace), and \(K_g\) (ghost-number anomaly). The trinity
 \(K = K_c = K_g\) holds only on the Koszul-self-dual subcategory
 admitting both BRST resolution and a Borcherds-lift input on a
 Calabi--Yau target.
 
-\noindent\emph{Realization obligation.} For each of the four
-conductors, a disjoint-source engine and decorator: \(K\) verified
-against the BRST ghost resolution (Vol~I \(bc\)-ghost-system
-computation), \(K^\kappa\)
-against \texttt{landscape\_census.tex} archetype rows (primary-source
-verification per family: Kac--Moody trace-form, Virasoro Zamolodchikov
-norm, \(\beta\gamma\) contact coefficient, \(\mathcal{W}_N\) Drinfeld--Sokolov
+\noindent\emph{Independent comparison.} The four conductors are
+tested against four independent sources: \(K\) against the BRST ghost
+resolution, \(K^\kappa\) against the archetype rows of the landscape
+census (Kac--Moody trace-form, Virasoro Zamolodchikov norm,
+\(\beta\gamma\) contact coefficient, \(\mathcal{W}_N\) Drinfeld--Sokolov
 reduction chain, \(K3\) Mukai pairing via Bruinier 2002 Heegner
 reciprocity), \(K_c\) against Kac--Wakimoto 1988 central-charge tables,
-\(K_g\) against ghost-partition primary Euler-character computations.
+and \(K_g\) against ghost-partition primary Euler-character
+computations.
 Disjointness of the four paths is the realization witness of the
 four-conductor \emph{separation}; coincidence of three of them on
 Koszul-self-dual witnesses the trinity.
@@ -631,11 +415,11 @@ diverging at critical level; \(h_{\mathsf C}\) free-field OPE rescaling;
 \(h_{\mathsf M}\) Zamolodchikov \(c(5c+22)/10\), singular at \(c=0\),
 \(c=-22/5\) Yang--Lee, \(c=-218/45\) secondary Borel.
 
-\noindent\emph{Realization obligation.} Engine computing \(h_{\mathcal{A}}\) from
-the Loday--Vallette universal homotopy (Loday--Vallette 2012
-Theorem~\(11.3.2\)) divided by the Theorem-C ceiling taken from
-\texttt{landscape\_census.tex}; decorator comparing the computed
-rescaling against per-archetype primary-source computations (Sugawara
+\noindent\emph{Independent comparison.} The value \(h_{\mathcal{A}}\)
+is obtained from the Loday--Vallette universal homotopy
+(Loday--Vallette 2012 Theorem~\(11.3.2\)) divided by the Theorem-C
+ceiling, and is compared against per-archetype primary-source
+computations (Sugawara
 twist literature; free-field OPE contractions; Zamolodchikov
 \textit{Infinite additional symmetries in two-dimensional conformal
 quantum field theory} 1985 for Virasoro norm).
@@ -647,8 +431,7 @@ The Borel-radius function on the Virasoro shadow tower is
 \(|\omega|^{2}(c) = c^{2}(5c+22)/[4(45c+218)]\), large-\(c\) expansion
 \(|\omega|(c) = c/6 - 1/27 + O(c^{-1})\), with Stokes pole
 \(c_S = -218/45\) (zero of \(180c+872\)). The unweighted shadow coefficient
-(Vol I \textsc{shadow\_tower\_quadrichotomy\_platonic.tex}~Thm.\ on
-\(S_{6}\) closed form)
+is the Vol I closed form
 \[
 S_6(\mathrm{Vir}_c) \;=\; \frac{4(240c+1031)}{c^{3}(5c+22)^{2}}
 \]
@@ -661,15 +444,14 @@ The master equation \(H^2 = t^4 Q_c\) is
 quadratic-algebraic; the Riccati structure lives on
 \(U = (\log H)' - 2/t\), satisfying \(U' + 2U^2 = Q_c''/(2Q_c)\).
 
-\noindent\emph{Realization obligation.} Engine evaluating
-\(|\omega|^2(c)\) via a primary-source route (iterated Borel-summation
-of the shadow tower on the Riccati-in-\(U\) substitution); decorator
-cross-checking at \(c \in \{1, -22/5, 0, -218/45\}\) against the Borel
+\noindent\emph{Independent comparison.} The value
+\(|\omega|^2(c)\) is obtained by iterated Borel summation of the shadow
+tower on the Riccati-in-\(U\) substitution and is checked at
+\(c \in \{1, -22/5, 0, -218/45\}\) against the Borel
 radius computed from the Zamolodchikov norm formula
 \(c(5c+22)/10\) and the degeneration of the quintic resolvent at
-\(c=-22/5\). Disjointness: the engine uses the Riccati substitution;
-the decorator uses a different primary source (the Zamolodchikov
-norm table).
+\(c=-22/5\). The Riccati substitution and the Zamolodchikov norm table
+are disjoint primary sources.
 
 \subsection{Shadow-Galois Chenevier determinant at \texorpdfstring{\(p=691\)}{p=691}}
 \label{v4-subsec:shadow-galois-chenevier-691}
@@ -681,12 +463,12 @@ Shadow tower level \(r=11\), Kubota--Leopoldt irregular prime \(p=691\):
 \]
 via Kubota--Leopoldt \(p\)-adic \(L\)-function plus Herbrand--Ribet.
 
-\noindent\emph{Realization obligation.} Engine evaluating
-\(\det\rho_{S_{11}}\) at \(p=691\) by direct Galois representation
-computation on the shadow-tower motivic realisation; decorator
-cross-checking against \(B_{12}=-691/2730\) and Herbrand--Ribet
+\noindent\emph{Independent comparison.} The determinant
+\(\det\rho_{S_{11}}\) at \(p=691\) is computed from the shadow-tower
+motivic realisation and checked against \(B_{12}=-691/2730\) and the
+Herbrand--Ribet
 character table from Washington \textit{Introduction to Cyclotomic
-Fields} 1997 (primary source disjoint from the engine's
+Fields} 1997 (primary source disjoint from the
 shadow-tower derivation).
 
 \subsection{Drinfeld double global obstruction class}
@@ -703,10 +485,10 @@ an explicit cohomological obstruction
 vanishing if and only if \(r_{\max}(\mathcal{A})=2\) (class \(\mathsf G\) only);
 classes \(\mathsf L\), \(\mathsf C\), \(\mathsf M\) are \(g \ge 1\) obstructed.
 
-\noindent\emph{Realization obligation.} Engine computing
-\(\mathrm{obs}^{(1)}_{\mathrm{double}}\) on each archetype via the
+\noindent\emph{Independent comparison.}
+\(\mathrm{obs}^{(1)}_{\mathrm{double}}\) is computed on each archetype via the
 Enriquez \(\mathrm{GRT}_1^{\mathrm{ell}}(\mathbb{Q})\) construction (Enriquez
-2008 \textit{Elliptic associators}); decorator verifying vanishing at class~\(\mathsf G\) (Heisenberg)
+2008 \textit{Elliptic associators}) and compared with vanishing at class~\(\mathsf G\) (Heisenberg)
 and nonzero obstruction at classes \(\mathsf L,\mathsf C,\mathsf M\)
 via a disjoint computation on the elliptic \(2\)-cocycle
 \(\wp(\tau)\langle\cdot,\cdot\rangle_{\mathfrak{sp}}\).
@@ -723,20 +505,19 @@ continuations \(N \in \{5,7\}\); cover assignment
 weight parity via Weil representation plus Stone--von Neumann at
 signature \((2,3)\).
 
-\noindent\emph{Realization obligation.} Engine evaluating
-\(\kappa_{\mathrm{BKM}}(\Phi_N) = c_N(0)/2\) at each row using
+\noindent\emph{Independent comparison.}
+\(\kappa_{\mathrm{BKM}}(\Phi_N) = c_N(0)/2\) is evaluated at each row using
 \textbf{distinct primary sources}: Gritsenko 1999 \textit{Reflective
 modular forms in algebraic geometry} for \(N=1\) (\(\Delta_5\) weight);
 Gritsenko--Nikulin 1998 \textit{Automorphic forms and
 Lorentzian--Kac--Moody algebras} for \(N \in \{2,3,4,6\}\);
 Gritsenko 1994 \(\Gamma_0(5)^+\) for \(N=5\) Borcea--Voisin; Scheithauer
 2015 Duke for \(N=7\) quarter-integer; Mongardi--Tari--Wandel 2020 for
-\(N=8\) terminal fibre. Decorator verifying that the eight sources are pairwise distinct,
+\(N=8\) terminal fibre. The eight sources are pairwise distinct,
 each serving exactly one row. The identity
 \(\kappa_{\mathrm{BKM}} = \kappa_{\mathrm{ch}} + \chi(\mathcal{O}_{\mathrm{fiber}})\)
-is not a theorem at any \(N\): the decorator raises
-\(\texttt{IndependentVerificationError}\) on any engine that
-registers this additive split as a proof step.
+is not a theorem at any \(N\); the independent comparison rejects
+any proof which uses this additive split.
 
 \subsection{Three-factor universal trace identity with \texorpdfstring{\(\zeta\)}{zeta}-regularisation}
 \label{v4-subsec:three-factor-UTI}
@@ -754,13 +535,13 @@ Calabi--Yau target supporting a Borcherds product,
 At \(N=1\) four paths converge on \(c_1(0)/2=5\); at \(N=2\) three paths
 converge on \(c_2(0)/2=2\).
 
-\noindent\emph{Realization obligation.} Four disjoint engines compute
-the four paths at \(N=1\): Vol~I BRST ghost anomaly (\(K(\Phi_3(K3\times E))\));
+\noindent\emph{Independent comparison.} Four disjoint calculations
+give the four paths at \(N=1\): Vol~I BRST ghost anomaly (\(K(\Phi_3(K3\times E))\));
 Vol~III Gritsenko \(\Delta_5\) weight; Vol~II Pentagon face of the
 \(\mathrm{SC}^{\mathrm{ch,top}}\) boundary (Heptagon face~4 / Dimofte
 slab trace); Dabholkar--Harvey 2007 \textit{BPS states and their
-supermultiplicity}. Decorator verifies the four engines' sources are
-pairwise disjoint and their outputs all equal \(c_1(0)/2 = 5\), the
+supermultiplicity}. Their sources are pairwise disjoint and their
+values all equal \(c_1(0)/2 = 5\), the
 common Borcherds--Kac--Moody central-charge value at \(N=1\).
 
 \subsection{Two-stage factorisation of the Calabi--Yau-to-chiral functor}
@@ -778,16 +559,16 @@ restriction to a reference curve \(C\). PTVV-forced native operadic
 level: \(d=1 \Rightarrow n=\infty\), \(d=2 \Rightarrow n=2\),
 \(d \ge 3 \Rightarrow n=1\).
 
-\noindent\emph{Realization obligation.} Stage-1 engine builds the
+\noindent\emph{Independent comparison.} The Stage-1 calculation builds the
 \(E_d\)-FA from the Kontsevich--Tamarkin side (primary source:
 Kontsevich 1999 \textit{Operads and motives in deformation
 quantization}; Tamarkin 2003 \textit{Action of the Grothendieck--Teichm\"uller
-group on the operad of little disks}); Stage-2 engine builds the
+group on the operad of little disks}); the Stage-2 calculation builds the
 \(E_1\)-chiral shadow from the factorisation-homology side (primary
 source: Ayala--Francis--Tanaka 2017 \textit{Factorization
 homology of stratified spaces}; Costello--Gwilliam \textit{Factorization
-algebras in quantum field theory} 2021). Decorator verifies pairwise
-disjointness, confirms the PTVV shift \((2-d)\) via Pantev--To\"en--Vaqui\'e--Vezzosi
+algebras in quantum field theory} 2021). Pairwise
+disjointness is checked, the PTVV shift \((2-d)\) is confirmed via Pantev--To\"en--Vaqui\'e--Vezzosi
 2013 primary-source evaluation on each \(d\), and cross-verifies the
 Dunn--Lurie native-level dispatch from Lurie \(\mathrm{HA}.5.1.2.2\).
 
@@ -799,8 +580,8 @@ Dunn--Lurie native-level dispatch from Lurie \(\mathrm{HA}.5.1.2.2\).
  \;\simeq\; \mathbf H_{\Delta_5}
 \]
 is an equivalence at the chiral-bialgebra level, stronger than
-graded-dimension coincidence. The six canonical routes
-\(R_1\)--\(R_6\) of Vol~III's six-route taxonomy (Vol~III \texttt{def:cy-c-six-routes})
+graded-dimension coincidence. The six canonical constructions
+\(R_1\)--\(R_6\) of Vol~III's six-construction taxonomy
 (\(R_1\) framed Stage-1 \(\Phi_3^{(\Sigma_2,C)}\), \(R_2\) Borcherds
 multiplicative lift, \(R_3\) Mukai-lattice VOA, \(R_4\) Kummer
 construction, \(R_5\) \(\mathcal{N}=(2,2)\) sigma-model half-twist,
@@ -809,15 +590,14 @@ bialgebra \(\mathbf{H}_{\Delta_5}\), with \(R_1\) the proved
 generator and \(R_2\)--\(R_6\) carrying convergence hypotheses
 (\Cref{v4-sec:cy-c-conditional}).
 
-\noindent\emph{Realization obligation.} Six disjoint engines, one per
-route, each computing the chiral-bialgebra structure on
-\(\Phi_3(D^b(K3\times E))\); decorator verifies all six outputs are
-naturally isomorphic. The Fake-Monster rank-obstruction decorator
-raises \(\texttt{IndependentVerificationError}\) on any engine that
-attempts to realise \(\mathrm{II}_{25,1}\)-Leech-lattice chiral data on
+\noindent\emph{Independent comparison.} The six constructions give
+six disjoint calculations of the chiral-bialgebra structure on
+\(\Phi_3(D^b(K3\times E))\), and the comparison is natural
+isomorphism of the six outputs. The Fake-Monster rank obstruction
+excludes any attempt to realise \(\mathrm{II}_{25,1}\)-Leech-lattice chiral data on
 a compact CY\(_3\): the bound
 \(h^{1,1}(X) \le h^{1,1}(\mathrm{fibre}) + 2h^{0,2}(\mathrm{fibre}) \le 22 < 24\)
-is enforced as a decorator assertion.
+is a cohomological obstruction.
 
 \subsection{CoHA-to-\texorpdfstring{\(W_{1+\infty}\)}{W1+inf} triangle with two
 \texorpdfstring{\(\lambda\)}{lambda}-parameters}
@@ -833,14 +613,14 @@ is enforced as a decorator assertion.
 (Gaiotto--Rap\v c\'ak central-charge, free). \(\mathrm{CoHA}(\mathbb{C}^3)\)
 and \(W_{1+\infty}\) are not equal as algebras.
 
-\noindent\emph{Realization obligation.} Three disjoint engines:
+\noindent\emph{Independent comparison.} Three disjoint character
+calculations occur:
 CoHA Euler characteristic (Kontsevich--Soibelman 2008); Yangian PBW
 character (Drinfeld 1987); \(W_{1+\infty}\) vacuum module character
 (Frenkel--Kac--Radul--Wang 1995 \textit{\(W_{1+\infty}\) and
-\(W(\mathfrak{gl}_N)\) with central charge \(N\)}). Decorator verifies
-the \(\lambda\)-parameter discipline: any engine conflating
-\(\lambda_{\mathrm{Tr}}\) and \(\lambda_W\) raises
-\(\texttt{IndependentVerificationError}\).
+\(W(\mathfrak{gl}_N)\) with central charge \(N\)}). The
+\(\lambda\)-parameter discipline is part of the statement:
+\(\lambda_{\mathrm{Tr}}\) and \(\lambda_W\) are distinct parameters.
 
 \subsection{Three-tier topologisation discipline}
 \label{v4-subsec:three-tier-topologisation}
@@ -856,13 +636,13 @@ open for class \(\mathsf M\) (the F3 frontier). Sugawara explicit at
 \([Q_{\mathrm{tot}}, G_{\mathrm{Sug}}] = T_{\mathrm{Sug}}\) on BRST
 cohomology.
 
-\noindent\emph{Realization obligation.} Three engines per class, one
+\noindent\emph{Independent comparison.} Three comparisons per class, one
 per tier: Tier~I (Feigin--Frenkel 2011 cohomological \(E_3\) on
 \(H^\ast(\mathrm{Obs}_{\mathrm{hCS}}^{\mathrm{BV}})\)); Tier~II (Fresse 2017
 Theorem~\(12.3.\mathrm{A}\) homotopy transfer); Tier~III (explicit
-chain-level antighost primitive per archetype). Decorator verifies
-pairwise disjointness of the three tiers' source sets and records
-the class-\(\mathsf M\) Tier~III status as conditional pending F3
+chain-level antighost primitive per archetype). The three tiers have
+pairwise disjoint source sets; the class-\(\mathsf M\) Tier~III form is
+conditional on F3
 resolution.
 
 \subsection{Khan--Zeng finite-jet BV/PVA sector}
@@ -875,18 +655,18 @@ identifies the classical master equation with the PVA Hamiltonian
 condition. This is a constructed classical statement. The all-loop
 quantum master equation, reflected weight identity, boundary vertex
 algebra, and \(E_3\)-lift are conditional on the analytic strong
-deformation retract (SDR) package: finite-jet quotient compatibility,
-image-choice Stokes cancellation, field-parity bookkeeping, and
+deformation retract (SDR) datum: finite-jet quotient compatibility,
+image-choice Stokes cancellation, field-parity normalisation, and
 self-image renormalisation.
 
-\noindent\emph{Realization obligation.} The classical engine builds
+\noindent\emph{Independent comparison.} The classical comparison builds
 the shifted-cotangent BV action from the PVA Hamiltonian density and
 checks CME equality against the lambda-bracket Hamiltonian condition.
-The quantum engine is not registered as realized until it supplies
+The quantum comparison is absent until it supplies
 the analytic SDR on every jet-weight quotient, proves compatibility
 in the inverse limit, and verifies the reflected weight identity
-independently of the classical CME derivation. The decorator records
-two statuses: constructed classical realization for CME/PVA, and
+independently of the classical CME derivation. Thus there are
+two forms: constructed classical realization for CME/PVA, and
 conditional quantum realization for QME/boundary-VA/\(E_3\).
 
 \subsection{Joyce--KPS compact Calabi--Yau threefold sector}
@@ -902,13 +682,12 @@ Costello--Paquette defect-chiral model. A comparison with the global
 Hall--Borcherds or Drinfeld envelope is an additional bridge, not a
 source of the local construction.
 
-\noindent\emph{Realization obligation.} The compact-CY3 engine
+\noindent\emph{Independent comparison.} The compact-CY3 comparison
 checks the Joyce \(V_X\) construction and KPS orientation data
-against the MNOP centre automorphism. A separate chain-level engine
+against the MNOP centre automorphism. A separate chain-level comparison
 checks the \(S^3\)-framing through the defect-chiral model. A third
-comparison engine may test Hall--Borcherds/Drinfeld compatibility,
-but the decorator forbids using that bridge as the proof source for
-the Joyce--KPS construction itself.
+comparison may test Hall--Borcherds/Drinfeld compatibility, but that
+bridge is not a proof source for the Joyce--KPS construction itself.
 
 \subsection{Post-Tate Hadamard support and the \texorpdfstring{\(M_t\)}{Mt}-graph dual}
 \label{v4-subsec:post-tate-hadamard-meyer}
@@ -930,10 +709,9 @@ the graph dual is represented through the resolvent chart by
 \(L^2\)-data, while a locally finite critical-line support has
 measure zero.
 
-\noindent\emph{Realization obligation.} The obstruction engine
-constructs the ordinary \(M_t\)-graph dual after the post-Tate
-quotient and verifies the \(L^2\)-support obstruction. The surviving-route
-decorator registers only proofs that construct a continuous Hadamard
+\noindent\emph{Independent comparison.} The ordinary \(M_t\)-graph
+dual after the post-Tate quotient gives the \(L^2\)-support
+obstruction. A surviving construction must produce a continuous Hadamard
 trace-and-jet map
 \(\Phi_\xi\to \ell^2(\Gamma_\xi^{\mathrm{crit}},w)\)
 via a rigged, Paley--Wiener, de Branges, reproducing-kernel,
@@ -942,11 +720,11 @@ compatibility and adjoint-domain compatibility, and verify that the
 closed condition arises from the analytic structure and is not
 imposed by fiat.
 
-\subsection{Open frontiers F1--F10 as realization obligations}
-\label{v4-subsec:open-frontiers-realization-queue}
+\subsection{Boundary frontiers F1--F10}
+\label{v4-subsec:boundary-frontiers}
 
-The ten programme-wide open frontiers are the realization functor's
-remaining domain: (F1) logarithmic \(\mathcal{W}(p)\) triplet tempering;
+The ten boundary frontiers are the complement of the present
+independent domain: (F1) logarithmic \(\mathcal{W}(p)\) triplet tempering;
 (F2) periodic CDG for non-simply-laced admissible levels;
 (F3) original-complex Tier~III for class~\(\mathsf M\);
 (F4) super-complementarity canonical pairing;
@@ -957,6 +735,6 @@ remaining domain: (F1) logarithmic \(\mathcal{W}(p)\) triplet tempering;
 (F9) category-level \(E_d\)-formality at \(d \ge 4\);
 (F10) bracket-level BPS Lie algebra on \(K3\times E\).
 
-When any of F1--F10 closes in Vol~I--III, its realization pair
-\(\mathrm{Real}(X, T) = (d, e)\) enters the Vol~IV campaign. Until it
-closes, the Vol~IV registry records it at its present scope.
+When any of F1--F10 is proved in Vol~I--III, its realization pair
+\(\mathrm{Real}(X, T) = (d, e)\) is the corresponding independent
+comparison in Vol~IV. Until then it remains a boundary stratum.

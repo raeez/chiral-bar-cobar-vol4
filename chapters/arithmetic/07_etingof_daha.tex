@@ -1,10 +1,9 @@
 \chapter{DAHA, Macdonald, and the Parameter Non-Uniformity}
 \label{v4-arith:etingof}
 
-\emph{In the voice of Etingof. Symmetric functions, double affine
-Hecke, Macdonald polynomials, Schiffmann--Vasserot. We test whether
-the primon construction \(\mathcal{V}^{\mathrm{prim}}\) is an arithmetic specialisation of a Macdonald or
-elliptic-Hall algebra.}
+Macdonald theory, DAHA, and elliptic Hall algebras depend on uniform
+parameters. The primon construction carries a prime-indexed family of
+parameters, and this non-uniformity is the obstruction.
 
 \section{Macdonald \((q,t)\) and the Prime-Indexed Alphabet}
 \label{v4-arith:et:macdonald-qt}
@@ -77,8 +76,9 @@ Under \(\mathcal{H}^{(p)}\cong\Lambda_{(p)}\otimes\mathbb{Q}\) with
 Heisenberg norm is
 \begin{equation}
 \langle\!\langle a^{(p)}_{-k}|0\rangle,a^{(p)}_{-k}|0\rangle\!\rangle
-\;=\;k.
+\;=\;1.
 \end{equation}
+Equivalently, the unnormalised vector \(p_{k}^{(p)}\) has norm \(k\).
 The Kesten--McKay \(k\)-th moment (tree branching at degree \(k\)) is
 a Catalan-type count scaling like \(p^{k}\); and the \(\log p\)
 rescaling adds a per-prime \((\log p)^{k}\) factor. Neither matches
@@ -94,16 +94,17 @@ the Macdonald norm \(k(1-q_{p}^{k})/(1-t_{p}^{k})\) at generic
 \lim_{q_{p}\to 0}\frac{1-q_{p}^{k}}{1-q_{p}^{2k}}\;=\;1,
 \end{equation}
 giving \(\langle p_{k}^{(p)},p_{k}^{(p)}\rangle_{q_p,t_p} = k\), the
-free-boson Heisenberg norm. The \(\log p\) rescaling enters
-multiplicatively outside the \((q_{p},t_{p})\) parameters:
+free-boson Heisenberg norm for the unnormalised vector. The
+normalised vector \(p_k^{(p)}/\sqrt{k}\) has norm \(1\). A
+\(\log p\)-weighted arithmetic inner product, if imposed, is an
+external grading convention:
 \begin{equation}
-\langle\!\langle a^{(p)}_{-k}|0\rangle,a^{(p)}_{-k}|0\rangle\!\rangle_{\mathrm{prim}}
+\langle\!\langle p_k^{(p)},p_k^{(p)}\rangle\!\rangle_{\mathrm{prim}}
 \;=\;k\cdot(\log p)^{k}.
 \end{equation}
-The Kesten--McKay measure arises at this limit plus the
-\((\log p)^{k}\) prefactor, matching Ihara-zeta tree moments
-(Terras, \emph{Zeta Functions of Graphs}, CUP~2011, \S8).
-% RECTIFICATION-FLAG: Gate 1 -- "free-fermion" label changed to "Heisenberg specialisation"; original used t_p=q_p^2 and called it "free-fermion" but the text says "free-boson Heisenberg norm". Standard usage: t=q is the free-fermion/Hall-Littlewood specialisation; t=q^2 with q->0 is a distinct limit. Verify intended specialisation against Schiffmann-Vasserot arXiv:0905.2555 conventions before declaring convergence.
+No Kesten--McKay measure is asserted at this limit. That measure is a
+graph-theoretic input, not a consequence of the Macdonald
+specialisation.
 \end{theorem}
 
 \begin{remark}
@@ -141,17 +142,17 @@ occupy distinct tensorial positions.
 \end{observation}
 
 The correct object at each prime is the spherical elliptic Hall
-algebra of Schiffmann--Vasserot, whose \(q\to 1\) degeneration
-recovers the Yangian.
+algebra of Schiffmann--Vasserot. Its degeneration is used only as a
+rank-one Hall degeneration; no prime is a DAHA rank.
 
 \begin{theorem}[Schiffmann--Vasserot, \(q\to 1\) degeneration]
 \label{v4-arith:thm:SV-at-q-to-1}
 \ClaimStatusProvedElsewhere (Schiffmann--Vasserot arXiv:0905.2555,
-arXiv:1202.2756, Theorem~1.2). At the \(q_{p}\to 1\) limit with \(t_p\)
-fixed, the spherical elliptic Hall algebra \(\mathrm{SH}(q_{p},t_{p})\)
-degenerates to the positive part of the \(\widehat{\mathfrak{gl}}_{1}\)
-Yangian, equivalently to \(W_{1+\infty}\).
-% RECTIFICATION-FLAG: Gate 1 -- SV q->1 degeneration: arXiv:1202.2756 Thm 1.2 identifies the q->1 limit with W_{1+infty}; verify that "positive part of the gl-hat_1 Yangian" and "W_{1+infty}" are identified correctly and that the limit is taken at fixed t (not q=t->1 together). Prior audit flagged this citation/specialisation.
+arXiv:1202.2756, Theorem~1.2). Under the degeneration normalisation of
+Schiffmann--Vasserot, the spherical elliptic Hall algebra has
+\(W_{1+\infty}\) as its limiting rank-one algebra. This chapter uses
+only that limiting Hall algebra, not a prime-dependent Yangian
+identification.
 \end{theorem}
 
 \begin{definition}[arithmetic Hall algebra]
@@ -163,9 +164,8 @@ the restricted tensor product of spherical elliptic Hall algebras,
 one per prime. At each prime, the shuffle product on alphabet
 \((x^{(p)}_{1},x^{(p)}_{2},\ldots)\) uses the kernel
 \begin{equation}
-\omega_{p}(x,y)\;=\;\frac{(1-q_{p}x/y)(1-t_{p}^{-1}x/y)}{(1-q_{p}^{-1}t_{p}y/x)(1-x/y)}.
+\omega_{p}(x,y)\;=\;\frac{(1-q_{p}x/y)(1-t_{p}^{-1}x/y)}{(1-x/y)(1-q_{p}t_{p}^{-1}x/y)}.
 \end{equation}
-% RECTIFICATION-FLAG: Gate 1 -- shuffle kernel: the formula above has been rewritten from the inline form; verify against Schiffmann-Vasserot arXiv:0905.2555 Definition 3.1. The standard SV kernel is zeta(x/y) = (1-qz)(1-t^{-1}z)/((1-z)(1-qt^{-1}z)) with z=x/y; the original inline had three factors (1-q_p x/y)(1-t_p^{-1}x/y)(1-q_p^{-1}t_p y/x)^{-1}/(1-x/y) which may encode the same kernel -- confirm equivalence. Prior audit flagged this as a three-parameter CY constraint question.
 Between primes \(p\neq \ell\) the shuffle kernel is~\(1\); primes do
 not mix.
 \end{definition}
@@ -246,8 +246,8 @@ admits the following structure:
   prime-factored tensor product of classical Macdonald polynomials
   (\Cref{v4-arith:def:arithmetic-macdonald-poly}).
 \end{enumerate}
-The trace class \(\mathcal{V}^{\mathrm{prim}}\) is the \(q_p \to 1\)
-limit of \(\mathrm{SH}(q_p, t_p)\) in each prime factor; arithmetic
-data sits in the tensor-indexing over primes, not in the deformation
-parameters.
+The trace class \(\mathcal{V}^{\mathrm{prim}}\) is obtained from the
+Schiffmann--Vasserot rank-one degeneration in each prime factor;
+arithmetic data sits in the tensor-indexing over primes, not in the
+deformation parameters.
 \end{theorem}

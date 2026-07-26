@@ -415,7 +415,7 @@ Bloch-Kato-Beilinson height pairing (Cycle 2), which lives on Selmer
 groups of motives and is a pointwise positivity on a finite-dimensional
 space, not a distributional positivity on $\mathrm{PW}(\mathbb{R})$.
 The Iwasawa framework as developed in Chapters 25, 45, 54 supplies the
-*arithmetic scaffolding* for the functional-equation side of RH (the
+*arithmetic support* for the functional-equation side of RH (the
 $s\mapsto 1-s$ symmetry) but not for the positivity side (A-TP).
 *Status: Iwasawa content already in Vol IV is functional-equation
 content, not positivity content; A-TP requires a different
@@ -585,12 +585,12 @@ statement about the archimedean distribution $W_{\infty}$. These are
 two different structural features of $\zeta$, and Iwasawa theory
 does not supply the positivity content. The Iwasawa axis *does*
 supply the $\mu=0$ input to Chapter 25, the primitive zeta-character
-closure of Chapter 45, and the categorical scaffolding of
+closure of Chapter 45, and the categorical support for
 $\Lambda$-coefficient Positselski equivalence. These are essential
 *structural* contributions but not *positivity* contributions.
 
 *Status: naive "Iwasawa closes A-TP" Falsified in all twelve specific
-variants; Iwasawa axis contributes functional-equation scaffolding
+variants; Iwasawa axis contributes functional-equation support
 but not positivity.*
 
 ### Cycle 14: The one residual Iwasawa-adjacent route worth flagging
@@ -670,7 +670,7 @@ contribution to A-TP closure is:
   Fourier-dual to Axis 1, covering complementary test-function
   geometry.
 - Axis 3 (Iwasawa, Voice 3 = this voice): functional-equation
-  scaffolding; closes the $s\leftrightarrow 1-s$ symmetry at every
+  support; closes the $s\leftrightarrow 1-s$ symmetry at every
   prime via Mazur-Wiles main conjecture; enables the Koszul-duality
   formulation of $\xi(s)=\xi(1-s)$ through Ferrero-Washington $\mu=0$
   plus Chapter 25 arithmetic Positselski equivalence plus Chapter
@@ -712,7 +712,7 @@ $(\varphi,\Gamma)$-modules; Fukaya-Kato non-commutative main
 conjectures; Skinner-Urban; density of Dirichlet-$L$-twisted A-TP;
 infinite-product transport) are all Falsified; the cross-compare
 cycles identify Beilinson-Eisenstein class as common ancestor and
-functional-equation scaffolding as Iwasawa's genuine contribution,
+functional-equation support as Iwasawa's genuine contribution,
 without closing A-TP.
 
 The contribution: Iwasawa theory supplies the *functional-equation
@@ -728,7 +728,7 @@ the Fourier-self-dual bounded-spectral-plus-bounded-time-domain
 locus: the canonical Burnol-de Branges obstruction to RH.
 
 Beilinson-principle closure: Iwasawa's contribution is named
-precisely (functional-equation scaffolding via Chapters 25, 45, 54),
+precisely (functional-equation support via Chapters 25, 45, 54),
 orthogonality to A-TP is named precisely (positivity is not an
 Iwasawa content), and the joint three-axis decomposition is stated
 as a Theorem-waiting equivalent to RH. No Iwasawa route to A-TP is

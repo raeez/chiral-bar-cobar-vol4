@@ -1,4 +1,4 @@
-\chapter{The Speculative Construction}
+\chapter{The Arithmetic Curve and the Heisenberg Cover}
 \label{v4-arith:construction}
 
 \section{The Arithmetic Curve}
@@ -62,10 +62,10 @@ monoid \(\mathbb{N}^{\times}\) of commuting Adams operations \(\{\psi_p\}_{p\in\
 one per prime. Accordingly, any chiral-algebra structure over \(\overline{C}\)
 carries a \(\mathbb{N}^{\times}\)-action by Adams operations.
 
-\section{The Primon Vertex Algebra (Naive Form)}
+\section{The Finite Heisenberg Cover}
 \label{v4-arith:construction:primon-va}
 
-\begin{definition}[primon vertex algebra, naive]
+\begin{definition}[finite Heisenberg cover]
 \label{v4-arith:def:primon-va-naive}
 For each prime \(p\), let \(\mathcal{H}^{(p)}\) be the rank-\(2\)
 Heisenberg vertex algebra with generators \(a^{(p)},b^{(p)}\) and OPE
@@ -79,22 +79,24 @@ Endow \(\mathcal{H}^{(p)}\) with the rescaled conformal vector
 \omega_{p}\;:=\;\tfrac{1}{2}(\log p)\bigl(a^{(p)}_{-1}a^{(p)}_{-1}
 +b^{(p)}_{-1}b^{(p)}_{-1}\bigr)|0\rangle_{p},
 \end{equation}
-so that \(L_{0}^{(p)}\) has eigenvalues in \((\log p)\cdot\mathbb{Z}_{\geq 0}\)
-on the Fock vacuum module. Define the \emph{primon vertex algebra}
+so that \(L_{0}^{(p)}\) has eigenvalues in
+\((\log p)\cdot\mathbb{Z}_{\geq 0}\) on the Fock vacuum module. The
+finite Heisenberg cover is
 \begin{equation}
-\mathcal{V}^{\mathrm{prim}}\;:=\;\bigotimes_{p\in\mathbb{P}}^{!}\mathcal{H}^{(p)},
+\mathcal{H}^{\mathrm{cov}}_{\mathbb P}\;:=\;\bigotimes_{p\in\mathbb{P}}^{!}\mathcal{H}^{(p)},
 \quad\omega\;:=\;\sum_{p}\omega_{p},
 \end{equation}
-as the restricted tensor product pinned by the vacuum
-\(\bigotimes_{p}|0\rangle_{p}\).
+the restricted tensor product pinned by the vacuum
+\(\bigotimes_{p}|0\rangle_{p}\). It is a cover of the arithmetic
+trace class, not the trace class itself.
 \end{definition}
 
-\begin{proposition}[character match, naive]
+\begin{proposition}[finite-cover Euler factor]
 \label{v4-arith:prop:character-match-naive}
 \ClaimStatusConjectured. Let \(N_{p}:=a^{(p)}_{0}-b^{(p)}_{0}\) be
 the \(U(1)^{(p)}\)-charge current zero-mode. Then
 \begin{equation}
-\chi_{\mathcal{V}^{\mathrm{prim}}}(s;\{\theta_{p}\})
+\chi_{\mathcal{H}^{\mathrm{cov}}_{\mathbb P}}(s;\{\theta_{p}\})
 \;:=\;\mathrm{Tr}\Bigl(e^{-sL_{0}}\prod_{p}e^{i\theta_{p}N_{p}}\Bigr)
 \;=\;\prod_{p\in\mathbb{P}}\frac{1}{1-2\cos\theta_{p}\,p^{-s}
 +p^{-2s}},
@@ -111,43 +113,44 @@ On the rank-\(2\) Fock, \(e^{-sL_{0}^{(p)}}e^{i\theta_{p}N_{p}}\) gives
 =[1-2\cos\theta_{p}p^{-s}+p^{-2s}]^{-1}\). Tensor over primes.
 \end{proof}
 
-\section{The Hecke-Adams Lift (Naive Form)}
+\section{The Adams Obstruction to \(GL_{2}\)-Hecke}
 \label{v4-arith:construction:hecke-adams-naive}
 
-\begin{claimnaive}
+\begin{proposition}[Adams operators do not realize the \(GL_{2}\) Hecke algebra]
 \label{v4-arith:claim:hecke-adams-naive}
-Each Adams operation \(\psi_{n}\) of \(\Lambda\) lifts to a
-vertex-algebra endomorphism \(T_{n}\colon\mathcal{V}^{\mathrm{prim}}\to
-\mathcal{V}^{\mathrm{prim}}\), defined on prime-indexed modes by
+The formula
 \begin{equation}
 T_{n}\bigl(a^{(p)}_{-k}\bigr)\;:=\;\sum_{d\mid n}\,d\cdot a^{(p)}_{-nk/d}
 \cdot\mathbf{1}_{d\mid k},
 \end{equation}
-and similarly for \(b^{(p)}\). The \(\{T_{n}\}_{n\geq 1}\) commute and
-multiply as \(T_{m}T_{n}=\sum_{d\mid\gcd(m,n)}d\cdot T_{mn/d^{2}}\)
-(the classical \(GL_{2}\) Hecke algebra presentation), yielding the
-two-term recursion
+with the analogous formula for \(b^{(p)}\), is an Adams operation on
+the finite Heisenberg cover. It is not a representation of the
+unramified \(GL_{2}\)-Hecke algebra. In particular, it does not satisfy
 \begin{equation}
 T_{p^{k+1}}\;=\;T_{p}\,T_{p^{k}}-p\,T_{p^{k-1}}
 \end{equation}
-matching Hartnoll--Yang~eq.~(11).
-\end{claimnaive}
+on the generator \(a^{(p)}_{-1}|0\rangle\).
+\end{proposition}
 
-\begin{warning}[Falsified in Chapter~\ref{v4-arith:kazhdan-beilinson}]
-\label{v4-arith:warning:hecke-adams-false}
-The formula defines a \(GL_{1}\) Adams action; the \(GL_{2}\) Hecke
-algebra relation requires also \(T_{p^{2}}(a^{(p)}_{-1}|0\rangle)
-= T_{p}^{2}(a^{(p)}_{-1}|0\rangle) - p\cdot a^{(p)}_{-1}|0\rangle\),
-which the above formula fails: see Chapter~\ref{v4-arith:kazhdan-beilinson}
-for the explicit computation. The corrected statement diagonalises the
-rank-\(2\) Heisenberg generators onto the Satake pair
-\((\alpha_{p},\beta_{p})\) with \(\alpha_{p}\beta_{p}=p\).
-\end{warning}
+\begin{proof}
+The displayed formula has \(T_{p}(a^{(p)}_{-1}|0\rangle)=0\) and
+\(T_{p^{2}}(a^{(p)}_{-1}|0\rangle)=0\), since \(p\nmid 1\) and
+\(p^{2}\nmid 1\). The \(GL_{2}\) relation would give
+\[
+T_{p^{2}}(a^{(p)}_{-1}|0\rangle)
+=T_{p}^{2}(a^{(p)}_{-1}|0\rangle)
+-p\,a^{(p)}_{-1}|0\rangle
+=-p\,a^{(p)}_{-1}|0\rangle .
+\]
+The two values disagree. The \(GL_{2}\) Hecke action therefore enters
+through the Satake pair \((\alpha_{p},\beta_{p})\) with
+\(\alpha_{p}\beta_{p}=p\), not through the Adams monoid alone.
+\end{proof}
 
-\section{The Averaging Map (Naive Form)}
+\section{The Plancherel Averaging Map}
 \label{v4-arith:construction:averaging-naive}
 
-\begin{definition}[averaging, naive]
+\begin{definition}[Plancherel averaging]
 \label{v4-arith:def:averaging-naive}
 Write \(\mathcal{V}^{E_1,\mathrm{arith}}\) and
 \(\mathcal{V}^{\mathrm{Hecke}}\) for the \(E_1\)-chiral algebra on
@@ -177,11 +180,12 @@ The bar--cobar averaging map of Vol~I is an operadic map from ordered
 to symmetric chiral cohomology; the two operations are distinct.
 \end{warning}
 
-\section{The Four-Archetype Echo (Heuristic)}
+\section{The Depth Analogy}
 \label{v4-arith:construction:archetypes-heuristic}
 
-\ClaimStatusConjectured\;(heuristic pattern match only). Classify
-\(\Lambda\)-rings by depth:
+\ClaimStatusHeuristic. The following four rows name possible
+arithmetic shadows of the Vol~I depth filtration. They do not classify
+\(\Lambda\)-rings.
 \begin{itemize}
 \item \textbf{Depth \(2\):} trivial \(\psi_{n}\) beyond \(\psi_{1}\);
 \emph{archetype G analogue} (primon Heisenberg only);
@@ -203,10 +207,10 @@ the arithmetic side the corresponding derivation via a
 above is a heuristic pattern match.
 \end{remark}
 
-\section{Theorem Analogues (Naive Statements)}
+\section{Boundary Conditions for the Five Arithmetic Analogues}
 \label{v4-arith:construction:theorems-naive}
 
-\begin{conjecture}[\(A^{\mathrm{arith}}\), naive]
+\begin{conjecture}[\(A^{\mathrm{arith}}\)]
 \label{v4-arith:conj:A-naive}
 There is an adjunction
 \(\Omega^{\mathrm{ch,arith}}\dashv B^{\mathrm{ch,arith}}\) between
@@ -217,7 +221,7 @@ adjunction is an equivalence on the subcategory of \(\Lambda\)-ring
 objects with prime-adic convergence at every finite place.
 \end{conjecture}
 
-\begin{conjecture}[\(B^{\mathrm{arith}}\), naive]
+\begin{conjecture}[\(B^{\mathrm{arith}}\)]
 \label{v4-arith:conj:B-naive}
 On \(\Lambda\)-coalgebras satisfying conilpotence at every prime
 (\(\mu\)-invariant \(=0\) in Iwasawa-theoretic sense),
@@ -225,7 +229,7 @@ On \(\Lambda\)-coalgebras satisfying conilpotence at every prime
 in the derived category of coalgebras.
 \end{conjecture}
 
-\begin{conjecture}[\(C^{\mathrm{arith}}\), naive]
+\begin{conjecture}[\(C^{\mathrm{arith}}\)]
 \label{v4-arith:conj:C-naive}
 Define the arithmetic \(\kappa\) of a \(\Lambda\)-chiral algebra as
 its Arakelov first Chern class (sum of finite-place \(p\)-adic
@@ -241,7 +245,7 @@ content is the Riemann functional equation
 \(\xi(s)=\xi(1-s)\).
 \end{warning}
 
-\begin{conjecture}[\(D^{\mathrm{arith}}\), naive]
+\begin{conjecture}[\(D^{\mathrm{arith}}\)]
 \label{v4-arith:conj:D-naive}
 The genus-\(g\) obstruction for the arithmetic Maurer--Cartan element
 \(\Theta_{A}^{\mathrm{arith}}\) equals \(\kappa\cdot h_{g}^{\mathrm{Ar}}\)
@@ -249,7 +253,7 @@ where \(h_{g}^{\mathrm{Ar}}\) is the Arakelov height of the level-\(g\)
 component of \(\overline{M}_{g,n}\).
 \end{conjecture}
 
-\begin{conjecture}[\(H^{\mathrm{arith}}\), naive]
+\begin{conjecture}[\(H^{\mathrm{arith}}\)]
 \label{v4-arith:conj:H-naive}
 \(\mathrm{HH}^{\bullet}(\mathcal{V}^{\mathrm{prim}})\) is concentrated
 in degrees \(\{0,1,2\}\):
@@ -260,11 +264,10 @@ in degrees \(\{0,1,2\}\):
 \end{align}
 \end{conjecture}
 
-\section{Open Technical Problems}
+\section{Boundary Conditions}
 \label{v4-arith:construction:open-technical}
 
-Four technical problems in the construction above remain open; the
-following chapters treat each in turn.
+Four boundary conditions govern the construction above.
 
 \begin{enumerate}
 \item \textbf{\(p\)-adic locality.} The OPE locality axiom \([a(z),b(w)]=0\)
@@ -285,6 +288,7 @@ Chapter~\ref{v4-arith:costello-gwilliam}.
 \(\mathrm{SL}(2)\)-automorphic picture gluing these is developed in
 Chapter~\ref{v4-arith:modular-functor}.
 \item \textbf{Four-archetype derivation.} The shadow-tower depth
-numerology on the arithmetic side requires a \(\Lambda\)-ring analogue
-of Mok's shadow-tower rigidity. Open throughout.
+numerology on the arithmetic side would require a \(\Lambda\)-ring
+analogue of Mok's shadow-tower rigidity. No such rigidity theorem is
+used below.
 \end{enumerate}
