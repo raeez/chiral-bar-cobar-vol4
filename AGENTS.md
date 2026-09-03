@@ -1,5 +1,21 @@
 # AGENTS.md — chiral-bar-cobar-vol4
 
+## Golden rule: no project management at any scale whatsoever in the manuscript
+
+Reader-facing book and paper sources contain mathematics or physics only.
+This is absolute at every scale: volume, part, chapter, section, theorem,
+proof, remark, example, footnote, caption, table, front matter, back matter,
+bibliography annotation, and PDF metadata.
+Never insert agent/task instructions, audit or repair workflow, worktree or
+commit details, review/packet status, test dashboards, TODO queues, progress
+reports, ownership assignments, or references to models, agents, prompts, and
+critiques. Keep such material outside the manuscript. Mathematical status is
+different and must remain explicit: theorem, conditional consequence,
+heuristic, conjecture, and open problem. State missing data as mathematics,
+without narrating who found the gap. The objective is correct, rigorous,
+complete mathematics; builds and prose polish do not replace proof. Pass this
+rule to every subagent and check its returned prose.
+
 > **Inherits `~/ecosystem/INVARIANTS.md`** — canonical ecosystem rules (model-agnostic): destructive-git forbidden list, multi-agent worktree concurrency, standalone-documents discipline, Russian-school voice, every-file-into-the-repo rule, no-LLM-attribution in commits, deep-semantic-merges, intelligence propagation, open-source whitelist, mathematical-repair doctrine.
 > **Inherits `~/ecosystem/AGENTS-HARNESS.md`** — canonical Codex / GPT-5-family harness calibration: reasoning-effort per task class, agentic eagerness, tool-use discipline, tool preambles, persistence and stop conditions, verbosity control, uncertainty handling, long-context outlining, self-reflection rubric, scope discipline, error-handling, git-and-worktree restatement for Codex defaults, frontend quality, no-LLM-commit-attribution, voice.
 > **Mirrors the repo's `CLAUDE.md`** on substance. Before editing code in this repo, `read_file ./CLAUDE.md` — it carries the repo-local layout, commands, doctrine, and conventions. `AGENTS.md` and `CLAUDE.md` must not diverge in facts; they may differ in structure and voice.
