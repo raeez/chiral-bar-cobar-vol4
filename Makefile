@@ -55,13 +55,14 @@ OUT_DIR   := out
 PDF       := $(OUT_DIR)/main.pdf
 ICLOUD_MAIN_PREREQ := $(if $(wildcard $(PDF)),,$(PDF))
 
-# Mathematics publish dir -- release binary copied here under canonical name
+# Mathematics publish dir -- release binaries copied here under canonical names
 MATHEMATICS_DIR := $(HOME)/mathematics
-PUBLISHED_PDF   := arithmetic_chiral_homology_and_deninger.pdf
+PUBLISHED_BOOK_PDF := modular_koszul_duality_volume_iv_realization.pdf
 VOLUME_KEY      := vol4
 
 # Standalone documents
 STANDALONE_TEX := $(wildcard standalone/*.tex)
+STANDALONE_PDFS := $(patsubst standalone/%.tex,$(OUT_DIR)/%.pdf,$(STANDALONE_TEX))
 STANDALONE_PASSES := 3
 
 STAMP     := .build_stamp
@@ -167,7 +168,7 @@ release:
 	@echo "  [2/5] Standalone documents and iCloud"
 	@$(MAKE) --no-print-directory icloud
 	@echo ""
-	@echo "  [3/5] Publish to repo root (canonical PDF name)"
+	@echo "  [3/5] Publish to repo root (canonical PDF names)"
 	@$(MAKE) --no-print-directory root-publish
 	@echo ""
 	@echo "  [4/5] Publish to ~/mathematics + per-volume architecture"
@@ -182,24 +183,42 @@ release:
 	@ls -1 $(OUT_DIR)/*.pdf 2>/dev/null | sed 's/^/    /'
 	@echo "  =========================================="
 
-## root-publish: Copy the release binary to repo root under its canonical name
+## root-publish: Copy the book and standalone PDFs to repo root under distinct names
 root-publish:
 	@if [ -f "$(PDF)" ]; then \
-		cp "$(PDF)" "$(PUBLISHED_PDF)"; \
-		echo "    ok  $(PUBLISHED_PDF) (in repo root)"; \
+		cp "$(PDF)" "$(PUBLISHED_BOOK_PDF)"; \
+		echo "    ok  $(PUBLISHED_BOOK_PDF) (in repo root)"; \
 	else \
 		echo "    fail  $(PDF) missing -- skipping root publish"; \
 	fi
+	@for pdf in $(STANDALONE_PDFS); do \
+		name=$$(basename "$$pdf"); \
+		if [ -f "$$pdf" ]; then \
+			cp "$$pdf" "$$name"; \
+			echo "    ok  $$name (in repo root)"; \
+		else \
+			echo "    fail  $$pdf missing -- skipping root publish"; exit 1; \
+		fi; \
+	done
 
-## mathematics-publish: Copy the release binary to ~/mathematics under its canonical name
+## mathematics-publish: Copy the book and standalone PDFs to ~/mathematics under distinct names
 mathematics-publish:
 	@mkdir -p "$(MATHEMATICS_DIR)"
 	@if [ -f "$(PDF)" ]; then \
-		cp "$(PDF)" "$(MATHEMATICS_DIR)/$(PUBLISHED_PDF)"; \
-		echo "    ok  $(MATHEMATICS_DIR)/$(PUBLISHED_PDF)"; \
+		cp "$(PDF)" "$(MATHEMATICS_DIR)/$(PUBLISHED_BOOK_PDF)"; \
+		echo "    ok  $(MATHEMATICS_DIR)/$(PUBLISHED_BOOK_PDF)"; \
 	else \
 		echo "    fail  $(PDF) missing -- skipping ~/mathematics publish"; \
 	fi
+	@for pdf in $(STANDALONE_PDFS); do \
+		name=$$(basename "$$pdf"); \
+		if [ -f "$$pdf" ]; then \
+			cp "$$pdf" "$(MATHEMATICS_DIR)/$$name"; \
+			echo "    ok  $(MATHEMATICS_DIR)/$$name"; \
+		else \
+			echo "    fail  $$pdf missing -- skipping ~/mathematics publish"; exit 1; \
+		fi; \
+	done
 
 ## architecture: Build interactive HTML + JSON of the manuscript architecture
 architecture:
