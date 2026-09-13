@@ -2,7 +2,7 @@
 
 This repository inherits `~/ecosystem/INVARIANTS.md` and `~/ecosystem/AGENTS-HARNESS.md`.
 Read their universal safety rules, then their task-relevant sections. The invariants take precedence over the harness and local doctrine.
-AGENTS.md and CLAUDE.md share this contract. Read CLAUDE.md before code edits.
+AGENTS.md and CLAUDE.md share this contract. Read one root contract before code edits. Do not load both copies.
 For Claude-specific model controls or context loading, consult `~/ecosystem/CLAUDE-HARNESS.md` when those settings affect the task.
 System and developer instructions govern the session. Preserve the inherited destructive-Git and no-exfiltration safety floor.
 
