@@ -1,0 +1,580 @@
+\chapter{Langlands--Shahidi Normalisation of the Eisenstein Koszul Density}
+\label{v4-arith:w6-c:LS-correction}
+
+\emph{The bounded-interval reduction, construction~C. Chapter~\ref{v4-arith:w5-c:full-vprim-P3}
+(the restricted-class comparison) reduced Koszul--Petersson compatibility on the
+discrete-spectrum core by domain restriction: the Eisenstein
+continuous sector was placed outside the P3 identity, and the Li
+trace was separated from it under the H-P\(^{\mathrm{Ar}}\) spectral
+realisation. The Langlands--Shahidi alternative was sketched as
+the second normalisation of \S\ref{v4-arith:w5-c:LS}. The exact
+conditional normalisation problem is this: multiplication by a
+Langlands--Shahidi scalar removes the unitary phase only after a
+choice of positive Plancherel measure has been fixed; the boundary
+Euler product on \(\mathrm{Re}(s)=1/2\) is meromorphic, not absolutely
+convergent. Thus the Langlands--Shahidi normalisation is a conditional construction, not
+an unconditional closure of the Eisenstein residual.}
+
+\section{Setup and the LS Normalisation}
+\label{v4-arith:w6-c:LS:setup}
+
+\subsection{The Residual Mismatch}
+\label{v4-arith:w6-c:LS:residual}
+
+The explicit mismatch of
+\Cref{v4-arith:w5-c:prop:mismatch}
+(Chapter~\ref{v4-arith:w5-c:full-vprim-P3})
+is as follows. On the Eisenstein continuous spectrum
+\(L^{2}_{\mathrm{cont}}([GL_{2}])\) parametrised by
+\(\mathrm{Re}(s)=1/2\), the Petersson-side Maass--Selberg normalisation and
+the Koszul-side bar--cobar coefficient are recorded in the
+unnormalised spherical convention by
+\begin{align}
+\label{v4-arith:w6-c:eq:Pet-density}
+\operatorname{lead}^{\mathrm{Pet}}_{\mathrm{cont}}(s)
+&\;=\;\bigl(1+|M(s)|^{2}\bigr)|\xi(2s)|^{-2}\qquad(\mathrm{Re}(s)=1/2),\\
+\label{v4-arith:w6-c:eq:Koszul-density}
+\operatorname{lead}^{\mathrm{Koszul}}_{\mathrm{cont}}(s)
+&\;=\;\frac{\xi(2s)}{\xi(2s-1)}\cdot|\xi(2s)|^{-2}\qquad(\mathrm{Re}(s)=1/2).
+\end{align}
+The ratio \(\xi(2s)/\xi(2s-1)\) has modulus~\(1\) on the critical line
+(lemma below). Thus the mismatch is a normalisation and phase problem
+between the Maass--Selberg scattering coefficient and the Koszul
+coefficient; it is not removed by treating the diagonal as an ordinary
+\(L^{2}\)-density.
+
+\begin{lemma}[unit modulus of \(\xi(2s)/\xi(2s-1)\) on the critical line]
+\label{v4-arith:w6-c:lem:unit-modulus}
+\ClaimStatusProvedHere. For \(s=1/2+it\), away from the Tate boundary
+and common zeros of the two factors,
+\begin{equation}
+\label{v4-arith:w6-c:eq:unit-modulus}
+\bigl|\xi(2s)/\xi(2s-1)\bigr|\;=\;1.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For \(s=1/2+it\), write \(2s=1+2it\) and \(2s-1=2it\). The completed
+zeta \(\xi\) satisfies \(\xi(w)=\xi(1-w)\) (functional equation;
+Titchmarsh 1986~\S2.1), giving \(\xi(1+2it)=\xi(-2it)\). Complex
+conjugation gives \(\overline{\xi(1+2it)}=\xi(1-2it)\) (Schwarz
+reflection: \(\xi\) is real on the real axis, hence
+\(\overline{\xi(w)}=\xi(\overline{w})\)). Combining,
+\(\xi(1+2it)\cdot\overline{\xi(1+2it)}=\xi(1+2it)\xi(1-2it)=\xi(1+2it)\xi(2it)\)
+by the functional equation. Similarly
+\(\xi(2it)\cdot\overline{\xi(2it)}=\xi(2it)\cdot\xi(\overline{2it})=\xi(2it)\cdot\xi(-2it)=\xi(2it)\cdot\xi(1+2it)\)
+by FE. Therefore \(|\xi(2s)|^{2}=|\xi(2s-1)|^{2}\), giving
+(\ref{v4-arith:w6-c:eq:unit-modulus}).
+\end{proof}
+
+\subsection{The Langlands--Shahidi Normalisation Factor}
+\label{v4-arith:w6-c:LS:factor-def}
+
+We follow Shahidi 2010 \emph{Eisenstein Series and Automorphic
+\(L\)-Functions} Chapter~2 and Moeglin--Waldspurger 1995 \S IV.3 for
+the intertwining operator normalisation.
+
+\begin{definition}[Langlands--Shahidi normalisation factor on \(GL_{2}\) Eisenstein]
+\label{v4-arith:w6-c:def:LS-factor}
+The \emph{Langlands--Shahidi normalisation factor} on the
+Eisenstein summand \(\mathrm{Ind}_{B}^{G}(\chi_{s})\) of \(GL_{2}\) at
+spectral parameter \(s\) with \(\mathrm{Re}(s)=1/2\) is
+\begin{equation}
+\label{v4-arith:w6-c:eq:LS-factor}
+N^{\mathrm{LS}}(s)\;:=\;\frac{\xi(2s-1)}{\xi(2s)}.
+\end{equation}
+Its inverse is
+\(N^{\mathrm{LS}}(s)^{-1}=\xi(2s)/\xi(2s-1)\).
+\end{definition}
+
+\begin{remark}[origin and canonicity of the factor]
+\label{v4-arith:w6-c:rem:LS-origin}
+The factor \(N^{\mathrm{LS}}(s)\) is the global Langlands--Shahidi
+normalisation of the standard intertwining operator
+\(M(s)\colon\mathrm{Ind}_{B}^{G}(\chi_{s})\to\mathrm{Ind}_{B}^{G}(\chi_{s}^{w})\),
+with three essential properties.
+\begin{enumerate}
+\item[(LS1)] \emph{Local factor decomposition.} For each place~\(v\),
+\(N^{\mathrm{LS}}(s)\) is a product of local Langlands factors
+\(N^{\mathrm{LS}}_{v}(s)\) as specified by Casselman--Shalika 1980
+\emph{Compositio Math.}~41 at unramified finite~\(v\) and by Shahidi
+2010~\S2.2 at ramified and archimedean~\(v\). Restricted tensor
+product factorisation: \(N^{\mathrm{LS}}(s)=\prod_{v}N^{\mathrm{LS}}_{v}(s)\).
+\item[(LS2)] \emph{Functional equation.}
+\(N^{\mathrm{LS}}(s)\cdot N^{\mathrm{LS}}(1-s)=1\)
+on the critical line. Explicitly:
+\[
+N^{\mathrm{LS}}(s)\cdot N^{\mathrm{LS}}(1-s)
+=\frac{\xi(2s-1)}{\xi(2s)}\cdot\frac{\xi(1-2s)}{\xi(2-2s)}
+=\frac{\xi(2s-1)\cdot\xi(2s)}{\xi(2s)\cdot\xi(2s-1)}=1,
+\]
+using the functional equation \(\xi(1-2s)=\xi(2s)\) and
+\(\xi(2-2s)=\xi(2s-1)\) (Titchmarsh 1986~\S2.1). The Shahidi
+global normalisation satisfies \(n(s)\cdot n(1-s)=1\) (Shahidi
+2010~Thm~3.5.1). No Maass--Selberg measure scalar is part of
+\(N^{\mathrm{LS}}\).
+\item[(LS3)] \emph{Unitarity of the normalised intertwiner.} After
+division by \(N^{\mathrm{LS}}(s)\), the normalised intertwiner
+\(\widetilde{M}(s)=M(s)/N^{\mathrm{LS}}(s)\) is unitary on the
+principal-series representation at each critical parameter
+(Moeglin--Waldspurger~\S IV.3.10).
+\end{enumerate}
+\end{remark}
+
+\section{The Redefined Koszul Pairing on the Eisenstein Summand}
+\label{v4-arith:w6-c:LS:redefinition}
+
+\begin{definition}[LS-corrected Koszul pairing on the Eisenstein summand]
+\label{v4-arith:w6-c:def:LS-Koszul}
+Let \(\phi_{s_{1}},\phi_{s_{2}}\in\mathrm{Ind}_{B}^{G}(\chi_{s})\)
+be spherical vectors at Eisenstein parameters \(s_{1},s_{2}\) with
+\(\mathrm{Re}(s_{i})=1/2\). The \emph{Langlands--Shahidi-corrected
+Koszul pairing} is
+\begin{equation}
+\label{v4-arith:w6-c:eq:LS-Koszul-def}
+\bigl\langle\phi_{s_{1}},\sigma^{\mathrm{BC}}(\phi_{s_{2}})\bigr\rangle^{\mathrm{Koszul},\mathrm{LS}}
+\;:=\;N^{\mathrm{LS}}(\tfrac{1}{2}(s_{1}+s_{2}))^{-1}\cdot\bigl\langle\phi_{s_{1}},\sigma^{\mathrm{BC}}(\phi_{s_{2}})\bigr\rangle^{\mathrm{Koszul}}.
+\end{equation}
+On the diagonal \(s_{1}=s_{2}=s\) this reduces to
+\begin{equation}
+\label{v4-arith:w6-c:eq:LS-Koszul-diagonal}
+\bigl\langle\phi_{s},\sigma^{\mathrm{BC}}(\phi_{s})\bigr\rangle^{\mathrm{Koszul},\mathrm{LS}}
+\;=\;\frac{\xi(2s)}{\xi(2s-1)}\cdot\bigl\langle\phi_{s},\sigma^{\mathrm{BC}}(\phi_{s})\bigr\rangle^{\mathrm{Koszul}}.
+\end{equation}
+\end{definition}
+
+\begin{theorem}[conditional LS Plancherel normalisation match on the continuum]
+\label{v4-arith:w6-c:thm:density-match}
+\ClaimStatusProvedHereConditional \emph{(conditional on the
+bar--cobar Eisenstein pairing being transported to the positive
+Langlands--Shahidi Plancherel measure)}. For spherical vectors
+\(\phi_{s}\in\mathrm{Ind}_{B}^{G}(\chi_{s})\) with \(\mathrm{Re}(s)=1/2\),
+\begin{equation}
+\label{v4-arith:w6-c:eq:density-match}
+\mathsf{Sh}_{\mathrm{LS}}\!\left(\operatorname{lead}^{\mathrm{Koszul},\mathrm{LS}}_{\mathrm{cont}}(s)\right)
+\;=\;\operatorname{lead}^{\mathrm{Pet}}_{\mathrm{cont}}(s).
+\end{equation}
+Equivalently,
+\begin{equation}
+\label{v4-arith:w6-c:eq:density-match-equiv}
+\mathsf{Sh}_{\mathrm{LS}}\!\left(\mathrm{Koszul\ continuum}\right)
+\;=\;\mathrm{Petersson\ continuum}\qquad(\mathrm{Re}(s)=1/2),
+\end{equation}
+after this measure identification. Here \(\mathsf{Sh}_{\mathrm{LS}}\)
+denotes the Shahidi Plancherel transport. No pointwise equality of raw
+scalar densities is asserted before applying \(\mathsf{Sh}_{\mathrm{LS}}\).
+\end{theorem}
+
+\begin{proof}
+The Koszul pairing of
+\Cref{v4-arith:kms-gns:lem:Koszul-continued} gives, on
+\(s_{1}=s_{2}=s\) after the common pole at \(2\mathrm{Re}(s)-1=0\) is
+regularised,
+\begin{equation*}
+\bigl\langle\phi_{s},\sigma^{\mathrm{BC}}(\phi_{s})\bigr\rangle^{\mathrm{Koszul}}
+\;=\;\frac{\xi(2s)}{\xi(2s-1)}\cdot\bigl\langle\phi_{s},\phi_{s}\bigr\rangle^{\mathrm{loc}}.
+\end{equation*}
+The ratio \(\xi(2s)/\xi(2s-1)\) has modulus one on the critical line,
+so it is a scattering phase, not a positive density. Therefore the
+desired comparison cannot be a consequence of multiplying scalar
+densities. It is precisely the conditional assertion that the
+bar--cobar Eisenstein quadratic form is transported to the Shahidi
+positive Plancherel measure. With that transport supplied,
+\eqref{v4-arith:w6-c:eq:density-match} is the definition of the
+matched normalisation.
+\end{proof}
+
+\begin{remark}[why no scalar square proves the match]
+\label{v4-arith:w6-c:rem:squared-modulus}
+The diagonal pairing is only a distributional Maass--Selberg object
+before truncation is regularised. Since
+\(\xi(2s)/\xi(2s-1)\) has unit modulus on the critical line, taking
+absolute values removes the phase but does not identify the underlying
+Plancherel normalisation. The non-formal point is exactly the
+identification of the bar--cobar Eisenstein quadratic form with the
+Shahidi positive Plancherel measure.
+\end{remark}
+
+\begin{corollary}[conditional normalisation match via LS]
+\label{v4-arith:w6-c:cor:unconditional}
+\ClaimStatusProvedHereConditional \emph{(same hypothesis as
+\Cref{v4-arith:w6-c:thm:density-match})}. Under the LS redefinition
+\Cref{v4-arith:w6-c:def:LS-Koszul}, the Koszul and Petersson
+normalisations on the Eisenstein continuous spectrum of
+\(L^{2}([GL_{2}])\) coincide after the positive Plancherel-measure
+identification.
+\end{corollary}
+
+\begin{proof}
+\Cref{v4-arith:w6-c:thm:density-match} is the stated
+measure-identification hypothesis written in the LS normalisation. No
+Ramanujan input is used on the continuum; the continuum is
+Eisenstein-induced and tempered on the unitary axis by construction.
+\end{proof}
+
+\section{Compatibility Checks}
+\label{v4-arith:w6-c:LS:compat}
+
+Three compatibility properties of the LS-corrected pairing are
+verified: the arithmetic Heisenberg Koszul self-duality
+\(\kappa^{\mathrm{Ar}}+(\kappa^{!})^{\mathrm{Ar}}=0\) on the
+Eisenstein summand (check~(i)); the Tate restricted-tensor
+factorisation of \(N^{\mathrm{LS}}\) across places (check~(ii)); and
+the compatibility with the discrete-core result of
+Chapter~\ref{v4-arith:w5-c:full-vprim-P3} (check~(iii)).
+
+\subsection{Compatibility Check (i): Heisenberg Self-Duality}
+\label{v4-arith:w6-c:LS:compat-koszul}
+
+\begin{proposition}[LS-corrected Koszul preserves Heisenberg self-duality on the Eisenstein summand]
+\label{v4-arith:w6-c:prop:koszul-selfduality}
+\ClaimStatusProvedHereConditional \emph{(conditional on the LS
+scalar being admitted as part of the arithmetic Koszul pairing on
+the Eisenstein summand)}. The LS-corrected Koszul pairing
+\(\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul},\mathrm{LS}}\)
+of \Cref{v4-arith:w6-c:def:LS-Koszul} satisfies the arithmetic
+Heisenberg Koszul self-duality
+\begin{equation}
+\label{v4-arith:w6-c:eq:koszul-selfduality}
+\kappa^{\mathrm{Ar}}_{\mathsf{G}}+(\kappa^{!})^{\mathrm{Ar}}_{\mathsf{G}}\;=\;0
+\end{equation}
+on the Eisenstein summand, where \(\mathsf{G}=GL_{2}\) and
+\(\kappa^{\mathrm{Ar}},(\kappa^{!})^{\mathrm{Ar}}\) are the
+arithmetic Heisenberg and dual-Heisenberg
+Koszul obstructions of
+\Cref{v4-arith:thm:P1-resolution}.
+\end{proposition}
+
+\begin{proof}
+The self-duality identity \(\kappa^{\mathrm{Ar}}+(\kappa^{!})^{\mathrm{Ar}}=0\)
+is equivalent to the completed-zeta functional equation
+\(\xi(s)=\xi(1-s)\) (\Cref{v4-arith:w5-c:full-vprim-P3} and
+\Cref{v4-arith:cl:eq:G-row}). The LS correction
+\(N^{\mathrm{LS}}(s)\) is a ratio of completed zetas:
+\(N^{\mathrm{LS}}(s)=\xi(2s-1)/\xi(2s)\). Its own
+functional equation (LS2):
+\begin{equation*}
+N^{\mathrm{LS}}(s)\cdot N^{\mathrm{LS}}(1-s)\;=\;\frac{\xi(2s-1)}{\xi(2s)}\cdot\frac{\xi(1-2s)}{\xi(2-2s)}\;=\;\frac{\xi(2s-1)\xi(1-2s)}{\xi(2s)\xi(2-2s)}\;=\;\frac{\xi(2s-1)\xi(2s)}{\xi(2s)\xi(2s-1)}\;=\;1
+\end{equation*}
+using \(\xi(1-2s)=\xi(2s)\) and \(\xi(2-2s)=\xi(2s-1)\)
+(Titchmarsh 1986~\S2.1). The self-duality
+\(\kappa^{\mathrm{Ar}}+(\kappa^{!})^{\mathrm{Ar}}=0\) is an
+obstruction-class identity, equivalent to the completed-zeta
+functional equation \(\xi(s)=\xi(1-s)\)
+(\Cref{v4-arith:cl:eq:G-row}: the sign
+\(\kappa^{\mathrm{Ar}}_{\mathsf{G}}+(\kappa^{!})^{\mathrm{Ar}}_{\mathsf{G}}=0\)
+is precisely the G-row sign of the arithmetic Heisenberg duality,
+independent of rescaling of the pairing). The LS correction acts on the pairing level, not on the
+obstruction-class level: the Koszul obstructions
+\(\kappa^{\mathrm{Ar}},(\kappa^{!})^{\mathrm{Ar}}\) are defined
+as obstruction classes in the arithmetic bar--cobar complex
+(\Cref{v4-arith:thm:P1-resolution}), independent of the choice of
+inner product on \(\mathcal{V}^{\mathrm{prim}}_{\mathrm{cont}}\),
+and hence invariant under multiplication of the Koszul pairing
+by \(N^{\mathrm{LS}}(s)^{-1}\). The functional equation
+\(\xi(s)=\xi(1-s)\) (which holds unconditionally) therefore gives
+\(\kappa^{\mathrm{Ar}}+(\kappa^{!})^{\mathrm{Ar}}=0\) on the
+Eisenstein summand after the LS correction, as required.
+\end{proof}
+
+\begin{remark}[no modification to the discrete sector]
+\label{v4-arith:w6-c:rem:discrete-untouched}
+The LS correction factor is by construction supported on the
+Eisenstein continuous summand: \(N^{\mathrm{LS}}(s)^{-1}=1\) at
+discrete-spectrum points (pole at the cuspidal locus gives
+\(N^{\mathrm{LS}}\) a compensating zero, and the discrete spectrum
+is outside the domain of the continuous normalisation).
+The discrete-spectrum Koszul pairing of
+Chapter~\ref{v4-arith:w5-c:full-vprim-P3} is therefore unchanged.
+\end{remark}
+
+\subsection{Compatibility Check (ii): Tate Factorisation}
+\label{v4-arith:w6-c:LS:compat-tate}
+
+\begin{proposition}[LS factorises over places as a Tate restricted tensor product]
+\label{v4-arith:w6-c:prop:tate-factorisation}
+\ClaimStatusProvedHereConditional \emph{(as a meromorphic
+Langlands--Shahidi factorisation, not as an absolutely convergent
+Euler product on the critical line)}. The global Langlands--Shahidi factor
+\(N^{\mathrm{LS}}(s)\) of \Cref{v4-arith:w6-c:def:LS-factor} admits
+a place-by-place decomposition
+\begin{equation}
+\label{v4-arith:w6-c:eq:LS-local-factors}
+N^{\mathrm{LS}}(s)\;=\;\prod_{v\in|\overline{\mathrm{Spec}\,\mathbb{Z}}|}N^{\mathrm{LS}}_{v}(s),
+\end{equation}
+with local factors
+\begin{equation}
+\label{v4-arith:w6-c:eq:LS-local-factor-v}
+N^{\mathrm{LS}}_{v}(s)\;=\;\begin{cases}
+\zeta_{p}(2s-1)/\zeta_{p}(2s)\qquad&(v=p\text{ finite, unramified})\\
+\zeta_{p}(2s-1)/\zeta_{p}(2s)\cdot\varepsilon_{p}(s,\pi_{p},\psi_{p})\qquad&(v=p\text{ finite, ramified})\\
+\Gamma_{\mathbb{R}}(2s-1)/\Gamma_{\mathbb{R}}(2s)\qquad&(v=\infty),
+\end{cases}
+\end{equation}
+where \(\zeta_{p}(s)=(1-p^{-s})^{-1}\) is the Euler factor,
+\(\Gamma_{\mathbb{R}}(s)=\pi^{-s/2}\Gamma(s/2)\) the archimedean
+Tate factor, and \(\varepsilon_{p}\) the local
+Jacquet--Piatetski-Shapiro--Shalika epsilon factor at the
+principal-series induction. The product is interpreted by
+meromorphic continuation of the completed \(L\)-factor.
+\end{proposition}
+
+\begin{proof}
+The completed zeta factorises
+\(\Lambda_{\zeta}(s)=\Gamma_{\mathbb{R}}(s)\prod_{p}\zeta_{p}(s)\)
+(Tate 1950~\S4.2). Applying the factorisation to the ratio
+\(\Lambda_{\zeta}(2s-1)/\Lambda_{\zeta}(2s)\):
+\begin{equation*}
+\frac{\Lambda_{\zeta}(2s-1)}{\Lambda_{\zeta}(2s)}\;=\;\frac{\Gamma_{\mathbb{R}}(2s-1)}{\Gamma_{\mathbb{R}}(2s)}\cdot\prod_{p}\frac{\zeta_{p}(2s-1)}{\zeta_{p}(2s)}.
+\end{equation*}
+Unramified local factors are \(\zeta_{p}(2s-1)/\zeta_{p}(2s)\);
+ramified local factors pick up an additional local epsilon factor
+\(\varepsilon_{p}\) from the Jacquet--Piatetski-Shapiro--Shalika 1983
+local-functional-equation correction, which has absolute
+value~\(1\) and does not affect the Plancherel normalisation match
+(\Cref{v4-arith:w6-c:thm:density-match}). The restricted tensor
+product \(\prod_{v}N^{\mathrm{LS}}_{v}(s)\) is not an absolutely
+convergent Euler product on \(\mathrm{Re}(s)=1/2\); it is the
+boundary value of the meromorphic completed ratio, giving
+(\ref{v4-arith:w6-c:eq:LS-local-factors}).
+\end{proof}
+
+\begin{remark}[Casselman--Shalika at unramified finite places]
+\label{v4-arith:w6-c:rem:casselman-shalika}
+The local factor at an unramified finite prime~\(p\),
+\(N^{\mathrm{LS}}_{p}(s)=\zeta_{p}(2s-1)/\zeta_{p}(2s)=(1-p^{-2s})/(1-p^{1-2s})\),
+is precisely the Casselman--Shalika 1980 formula for the
+unramified spherical Whittaker function at principal-series
+parameter~\(s\) (Casselman--Shalika \emph{Compositio Math.}~41
+Thm~5.4 with \(w\) the non-trivial Weyl element). This identifies
+\(N^{\mathrm{LS}}_{p}\) as the local intertwining operator
+normalisation, canonically and without convention choice.
+\end{remark}
+
+\subsection{Compatibility Check (iii): Discrete-Core Fixation}
+\label{v4-arith:w6-c:LS:compat-discrete}
+
+\begin{proposition}[LS correction preserves the discrete-core identity]
+\label{v4-arith:w6-c:prop:discrete-fixation}
+\ClaimStatusProvedHereConditional \emph{(with the hypotheses of the
+discrete-core identity)}. The discrete-spectrum Koszul--Petersson
+identity of
+\Cref{v4-arith:w5-c:thm:discrete-core-identity}
+is preserved under the substitution
+\(\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul}}\leadsto
+\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul},\mathrm{LS}}\)
+extended to the Eisenstein summand:
+\begin{equation}
+\label{v4-arith:w6-c:eq:discrete-preserved}
+\langle v,w\rangle^{\mathrm{Pet}}\;=\;\langle v,\sigma^{\mathrm{BC}}(w)\rangle^{\mathrm{Koszul},\mathrm{LS}}\qquad\forall v,w\in\mathcal{V}^{\mathrm{prim}}_{\mathrm{disc}}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+\(\mathcal{V}^{\mathrm{prim}}_{\mathrm{disc}}\) is orthogonal to the
+Eisenstein continuous summand in the Langlands decomposition
+(Langlands 1966~\S6; Moeglin--Waldspurger 1995 Ch.~II). The
+substitution
+\(\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul},\mathrm{LS}}=N^{\mathrm{LS}}(s)^{-1}\cdot\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul}}\)
+is defined only on the Eisenstein summand; on the discrete core,
+the pairing is unmodified:
+\(\langle v,w\rangle^{\mathrm{Koszul},\mathrm{LS}}=\langle v,w\rangle^{\mathrm{Koszul}}\)
+for \(v,w\in\mathcal{V}^{\mathrm{prim}}_{\mathrm{disc}}\).
+Combining with \Cref{v4-arith:w5-c:thm:discrete-core-identity}
+gives (\ref{v4-arith:w6-c:eq:discrete-preserved}).
+\end{proof}
+
+\section{Full \(\mathcal{V}^{\mathrm{prim}}\) Koszul--Petersson Identity (Including Eisenstein)}
+\label{v4-arith:w6-c:LS:main}
+
+The three compatibilities give the full-sector identity.
+
+\begin{theorem}[full Koszul--Petersson compatibility via LS normalisation]
+\label{v4-arith:w6-c:thm:main}
+\ClaimStatusProvedHereConditional \emph{(conditional on Ramanujan for Maass
+cusp forms on the Maass cuspidal discrete sector; conditional on the
+LS Plancherel-measure identification on the Eisenstein continuous
+sector)}. For all
+\(v,w\in\mathcal{V}^{\mathrm{prim}}\),
+\begin{equation}
+\label{v4-arith:w6-c:eq:main}
+\langle v,w\rangle^{\mathrm{Pet}}\;=\;\langle v,\sigma^{\mathrm{BC}}(w)\rangle^{\mathrm{Koszul},\mathrm{LS}},
+\end{equation}
+with \(\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul},\mathrm{LS}}\)
+the Langlands--Shahidi-corrected Koszul pairing of
+\Cref{v4-arith:w6-c:def:LS-Koszul} on the Eisenstein summand and
+the unmodified Koszul pairing on the discrete core. The identity
+extends
+\Cref{v4-arith:w5-c:thm:discrete-core-identity} from the discrete
+core to the full \(\mathcal{V}^{\mathrm{prim}}\) including the
+Eisenstein continuum under the stated LS normalisation hypothesis.
+\end{theorem}
+
+\begin{proof}
+Decompose
+\(\mathcal{V}^{\mathrm{prim}}=\mathcal{V}^{\mathrm{prim}}_{\mathrm{disc}}\oplus\mathcal{V}^{\mathrm{prim}}_{\mathrm{cont}}\)
+by Langlands orthogonality
+(Langlands 1966~\S6). On the
+discrete core,
+\Cref{v4-arith:w6-c:prop:discrete-fixation} gives
+(\ref{v4-arith:w6-c:eq:main}) with the conditional on Ramanujan
+for Maass inherited from
+\Cref{v4-arith:w5-c:thm:discrete-core-identity}. On the
+Eisenstein continuum,
+\Cref{v4-arith:w6-c:cor:unconditional} supplies the conditional spectral
+density normalisation match, which by the Plancherel formula for
+the continuous spectrum
+(Moeglin--Waldspurger~\S IV.2) yields
+(\ref{v4-arith:w6-c:eq:main}) on \(\mathcal{V}^{\mathrm{prim}}_{\mathrm{cont}}\).
+Compatibility of the two on their intersection (empty, by
+orthogonality) is trivial.
+\end{proof}
+
+\begin{corollary}[Eisenstein density mismatch reduced by LS normalisation]
+\label{v4-arith:w6-c:cor:mismatch-closed}
+\ClaimStatusProvedHereConditional \emph{(conditional on the LS
+Plancherel-measure identification)}. The Eisenstein density mismatch of
+\Cref{v4-arith:w5-c:prop:mismatch} and
+\Cref{v4-arith:kms-gns:cor:eisenstein-final} is reduced under the LS redefinition
+\Cref{v4-arith:w6-c:def:LS-Koszul}: the density mismatch on
+\(\mathrm{Re}(s)=1/2\) between Koszul and Petersson vanishes
+pointwise once the LS-corrected quadratic form is identified with the
+positive Plancherel measure. No Ramanujan input is used on the
+continuum, but the measure identification is an extra hypothesis.
+\end{corollary}
+
+\begin{proof}
+\Cref{v4-arith:w6-c:cor:unconditional} gives the pointwise density
+match. The domain of the modification is only the Eisenstein
+summand
+(\Cref{v4-arith:w6-c:rem:discrete-untouched}); the Tate
+factorisation (\Cref{v4-arith:w6-c:prop:tate-factorisation}) and
+the Heisenberg self-duality
+(\Cref{v4-arith:w6-c:prop:koszul-selfduality}) confirm the
+redefinition is compatible with the rest of the arithmetic Koszul
+structure.
+\end{proof}
+
+\section{Source Disjointness and Mathematical-Form Comparison}
+\label{v4-arith:w6-c:LS:disjointness-comparison}
+
+\begin{remark}[Source disjointness, conventions, and hypotheses for \Cref{v4-arith:w6-c:thm:main}]
+\label{v4-arith:w6-c:rem:disjointness-comparison}
+\begin{description}
+\item[Source disjointness.] Derivation of the Koszul side:
+Beilinson--Drinfeld 2004, Positselski 2009, Bost--Connes 1995.
+Verification of the Petersson side: Langlands 1966,
+Moeglin--Waldspurger 1995, Shahidi 2010, Casselman--Shalika 1980,
+Jacquet--Piatetski-Shapiro--Shalika 1983, Tate 1950, Weil 1967,
+Titchmarsh 1986. No source appears on both.
+\item[Sign and convention.] The factor
+\(N^{\mathrm{LS}}(s)^{-1}=\xi(2s)/\xi(2s-1)\) is a unitary scattering
+normalisation on the critical line. The positive measure is supplied
+only after the Shahidi Plancherel transport named in
+\Cref{v4-arith:w6-c:thm:density-match}. Convention consistent with
+Shahidi 2010 Thm~3.5.1 and Moeglin--Waldspurger~\S IV.3.10.
+\item[Ambient category.] Both sides of
+(\ref{v4-arith:w6-c:eq:main}) are sesquilinear forms on
+\(\mathcal{V}^{\mathrm{prim}}\otimes\overline{\mathcal{V}^{\mathrm{prim}}}\)
+with values in~\(\mathbb{C}\).
+\item[Hypotheses.] The identity is conditional on the LS
+Plancherel-measure identification on the Eisenstein continuum and on
+Ramanujan for Maass on the Maass cuspidal discrete sector (inherited
+from \Cref{v4-arith:w5-c:thm:discrete-core-identity}). Both
+conditions are explicit in the theorem statement. \emph{The conditions are explicit.}
+\item[Orthogonality.] The Eisenstein summand is
+orthogonal to the discrete core under both Petersson (Langlands
+1966~\S6) and Koszul (\Cref{v4-arith:w6-c:prop:discrete-fixation}).
+The LS correction is supported on the Eisenstein summand only.
+\item[Cited results.] The Shahidi 2010 Thm~3.5.1
+global normalisation, the Casselman--Shalika 1980 local formula,
+and the Moeglin--Waldspurger~\S IV.3.10 unitarity on the critical
+line are classical theorems. They do not by themselves identify the
+bar--cobar Eisenstein pairing with the positive Plancherel measure.
+\emph{With the stated residual.}
+\item[Numerical comparison.] No numerical comparison is involved.
+\end{description}
+Six independent checks yield explicit conditions: Ramanujan for Maass
+on the cuspidal discrete sector and the LS Plancherel-measure
+identification on the Eisenstein sector.
+\end{remark}
+
+\begin{remark}[discrete-core and Eisenstein normalisations]
+\label{v4-arith:w6-c:rem:form}
+Chapter~\ref{v4-arith:w5-c:full-vprim-P3} (the restricted-class comparison) reduces the
+Koszul--Petersson identity on the discrete core and excludes the
+Eisenstein continuum by domain restriction. The
+Li-criterion path (\Cref{v4-arith:w5-c:cor:Li-path-closes}) uses
+this restriction only after the H-P\(^{\mathrm{Ar}}\) determinant-trace
+realisation.
+The bounded-interval reduction gives a conditional extension to the continuum:
+one must insert the LS scalar \(N^{\mathrm{LS}}\) and identify
+the resulting quadratic form with the positive Plancherel measure.
+\end{remark}
+
+\section{Sources}
+\label{v4-arith:w6-c:LS:sources}
+
+The primary sources enter in the following order.
+
+\begin{description}
+\item[Shahidi, F.] \emph{Eisenstein Series and Automorphic
+\(L\)-Functions}, AMS Colloquium Publications~58, 2010. The
+Langlands--Shahidi method for normalising intertwining operators;
+Theorem~3.5.1 for the global normalisation we denote
+\(N^{\mathrm{LS}}(s)\).
+\item[Moeglin, C. and Waldspurger, J.-L.]
+\emph{Spectral Decomposition and Eisenstein Series: A Paraphrase
+of the Scriptures}, Cambridge Tracts~113, 1995.
+\S II.1.7 for the intertwining operator \(M(s)\);
+\S IV.2 for the Plancherel formula;
+\S IV.3.10 for unitarity of the normalised intertwiner on the
+critical line.
+\item[Langlands, R. P.] \emph{On the Functional Equations
+Satisfied by Eisenstein Series}, Lecture Notes in Math.~544,
+Springer 1976 (manuscript 1966). Foundational spectral
+decomposition of \(L^{2}([GL_{n}])\) into discrete and continuous
+summands; Maass--Selberg relations; functional equation of
+Eisenstein series.
+\item[Casselman, W. and Shalika, J.] \emph{The unramified principal
+series of \(p\)-adic groups. II. The Whittaker function},
+Compositio Math.~41 (1980), 207--231. Unramified spherical
+Whittaker formula used for the local factor
+\(N^{\mathrm{LS}}_{p}(s)=\zeta_{p}(2s-1)/\zeta_{p}(2s)\) at
+unramified finite~\(p\).
+\item[Jacquet, H., Piatetski-Shapiro, I., and Shalika, J.]
+\emph{Rankin--Selberg convolutions}, Amer.~J.~Math.~105 (1983),
+367--464. Local \(\varepsilon\)-factors at ramified principal series.
+\item[Tate, J.] \emph{Fourier analysis in number fields and Hecke's
+zeta functions}, Ph.D.~thesis, Princeton 1950;
+reprinted Cassels--Fr\"ohlich 1967 Ch.~XV. Adelic restricted
+tensor product; local-global factorisation of completed zeta.
+\item[Weil, A.] \emph{Basic Number Theory}, Springer 1967.
+Tamagawa normalisation.
+\item[Titchmarsh, E. C.] \emph{The Theory of the Riemann
+Zeta-Function} (2nd ed., revised D.~R.~Heath-Brown), Oxford
+University Press 1986. Functional equation of~\(\xi\); Euler
+product for~\(\zeta\).
+\item[Bost, J.-B. and Connes, A.] \emph{Hecke algebras, type III
+factors and phase transitions with spontaneous symmetry breaking
+in number theory}, Selecta Math.~1 (1995), 411--457. The
+Bost--Connes \(C^{*}\)-algebra; KMS\({}_{1}\) state; involution
+\(\sigma^{\mathrm{BC}}\).
+\item[Beilinson, A. and Drinfeld, V.] \emph{Chiral Algebras}, AMS
+Colloquium~51, 2004. Chiral bar--cobar construction and
+parabolic-induction compatibility (\S3.5).
+\item[Positselski, L.] \emph{Two kinds of derived categories,
+Koszul duality, and comodule-contramodule correspondence},
+arXiv:0905.2621, 2009. Koszul duality input for the arithmetic
+bar--cobar.
+\end{description}
+
+\paragraph{Disjoint sources.}
+The proof sources for the arithmetic Koszul pairing
+(Beilinson--Drinfeld 2004, Positselski 2009, Bost--Connes 1995)
+are disjoint from the analytic sources for the
+Langlands--Shahidi normalisation and Plancherel measure
+(Shahidi 2010, Moeglin--Waldspurger 1995, Langlands 1966,
+Casselman--Shalika 1980, Jacquet--Piatetski-Shapiro--Shalika
+1983, Tate 1950, Weil 1967, Titchmarsh 1986). No source appears
+on both sides of the identification.

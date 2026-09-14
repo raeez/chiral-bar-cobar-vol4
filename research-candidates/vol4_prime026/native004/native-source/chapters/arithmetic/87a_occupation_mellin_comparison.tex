@@ -1,0 +1,1301 @@
+\section{Occupation, Mellin Dilation, and Residue Hilbert Spaces}
+\label{v4-arith:mo:chapter}
+
+\subsection{Occupation states and two Mellin actions}
+
+An energy proportional to $\log m$ can be represented by a point
+mass at $m^{-1}$. The Mellin transform of that mass is a Dirichlet
+monomial. This gives an exact map from occupation states to
+distributions. Its behavior at a zero of an entire function can
+therefore be calculated before choosing a Hilbert norm on the
+residue values.
+
+All vector spaces are over $\mathbb C$. Inner products are linear
+in the first variable. The coordinate $x>0$ is dimensionless,
+and $t=\log x$ uses the real logarithm. Put
+$\mathscr D=C_c^\infty(\mathbb R_{>0})$. Its elements are smooth
+functions supported in a compact subset of the open half-line.
+For $f\in\mathscr D$, define
+\[
+ F(s)=\mathcal Mf(s)=\int_0^\infty f(x)x^{s-1}\,dx.
+\]
+Compact support away from zero makes $F$ entire and permits every
+spectral derivative under the integral. Define two operators on
+this common invariant domain by
+\[
+ Qf=-(\log x)f,\qquad Df=x f'(x).
+\]
+Differentiation under the integral and integration by parts give
+\begin{equation}
+ \mathcal M(Qf)=-F',\qquad \mathcal M(Df)=-sF.
+ \label{v4-arith:mo:two-actions}
+\end{equation}
+The boundary term $[f(x)x^s]_0^\infty$ is zero. Thus $Q$ and $D$
+already have different actions on entire Mellin transforms.
+
+\subsubsection{An exact occupation embedding}
+
+Let $\mathscr E=c_{00}(\mathbb N_{\geq1})$ be the space of finite
+sequences, with basis $v_m$ and inner product
+$\langle a,b\rangle=\sum_m a_m\overline{b_m}$. Define
+\[
+ Nv_m=(\log m)v_m.
+\]
+Its Hilbert completion is $\ell^2(\mathbb N_{\geq1})$. The maximal
+self-adjoint extension of $N$ has domain
+\[
+ \operatorname{Dom}N=
+ \left\{a:\sum_m(\log m)^2|a_m|^2<\infty\right\}.
+\]
+Indeed finite truncations converge in the graph norm, and the
+adjoint equation on the coordinate vectors imposes exactly this
+domain. The coefficients $(\log m\pm i)^{-1}$ give everywhere
+bounded inverses for $N\pm i$.
+
+A distribution acts complex-linearly on smooth test functions.
+The Dirac distribution $\delta_a$ satisfies
+$\langle\delta_a,\phi\rangle=\phi(a)$; this convention uses the
+additive measure $dx$. A compactly supported distribution $u$
+acts on $x^{s-1}$ after insertion of a smooth cutoff equal to one
+near its support. The result is independent of the cutoff. This
+defines its entire Mellin transform.
+
+\begin{proposition}[occupation distributions]
+\label{v4-arith:mo:occupation}
+The map
+\begin{equation}
+ T:\mathscr E\longrightarrow\mathscr E'(\mathbb R_{>0}),
+ \qquad Tv_m=m^{-1}\delta_{m^{-1}}
+ \label{v4-arith:mo:embedding}
+\end{equation}
+is injective. Here $\mathscr E'$ denotes compactly supported
+distributions. Multiplication of distributions by the smooth
+function $-\log x$ satisfies
+\[
+ QT=TN,\qquad
+ \mathcal M(Ta)(s)=\sum_m a_m m^{-s}.
+\]
+\end{proposition}
+\begin{proof}
+A bump supported near $m^{-1}$, excluding the finitely many other
+support points, recovers $a_m/m$ from $Ta$. This proves injectivity.
+On that point mass, $-\log x$ takes the value $\log m$.
+Finally,
+$m^{-1}(m^{-1})^{s-1}=m^{-s}$, proving the Mellin formula.
+\end{proof}
+
+The factor $m^{-1}$ is fixed by the additive-distribution convention.
+If point masses were instead introduced relative to $dx/x$, their
+conversion to additive distributions would contain this same factor.
+The weighted occupation lattice with coordinate vectors $d_m$ of
+squared norm $m^{-1}$ maps isometrically to the occupation space by
+$d_m\mapsto m^{-1/2}v_m$. Its resulting distribution is
+$m^{-3/2}\delta_{m^{-1}}$, with Mellin transform $m^{-s-1/2}$.
+
+\begin{proposition}[extension and the analytic half-plane]
+\label{v4-arith:mo:dirichlet-domain}
+The same locally finite sum defines an injective map
+$T:\ell^2\to\mathscr D'(\mathbb R_{>0})$. It is continuous for
+the strong distribution topology, and $QT=TN$ on
+$\operatorname{Dom}N$. For $a\in\ell^2$, the Dirichlet series
+\[
+ F_a(s)=\sum_m a_m m^{-s}
+\]
+and all its spectral derivatives converge absolutely and locally
+uniformly on $\operatorname{Re}s>1/2$. No continuation across the
+line $\operatorname{Re}s=1/2$ is part of this construction.
+\end{proposition}
+\begin{proof}
+A compact subset of $\mathbb R_{>0}$ meets only finitely many points
+$m^{-1}$. Thus the sum acts on every test function. Bounded sets
+of tests have a common compact support and uniform bounds on all
+derivatives. Only a fixed finite set of coefficients occurs on such
+a set, so Cauchy--Schwarz proves strong continuity. Separate bumps
+still recover every coefficient, and multiplication proves the
+operator identity.
+
+For $\sigma>1/2$ and integer $k\geq0$,
+\[
+ \sum_m |a_m|(\log m)^k m^{-\sigma}
+ \leq\|a\|_2
+ \left(\sum_m(\log m)^{2k}m^{-2\sigma}\right)^{1/2}<\infty.
+\]
+Integral comparison proves convergence, uniformly when $\sigma$
+stays above $1/2+\epsilon$. Termwise differentiation is therefore
+valid. The estimate supplies no holomorphic neighborhood of a
+point on the boundary line.
+\end{proof}
+
+For a distribution $u$, set $\langle u',\phi\rangle=-\langle
+u,\phi'\rangle$ and $Du=xu'$. The same calculation gives
+$\mathcal M(Du)=-s\mathcal Mu$ for compactly supported $u$.
+In particular,
+\[
+ D(Tv_m)=m^{-1}\bigl(m^{-1}\delta'_{m^{-1}}-\delta_{m^{-1}}\bigr).
+\]
+Dilation does not preserve the span of the point masses in
+\eqref{v4-arith:mo:embedding}. The identity $QT=TN$ cannot be replaced by
+an identity involving $D$.
+
+\subsubsection{Residues of occupation distributions}
+
+Let $\Xi$ be a nonzero entire function. Fix a nonempty finite set
+$Z$ of distinct zeros. For $\rho\in Z$, let $r_\rho\geq1$ be its
+multiplicity, and write
+\[
+ \Xi(s)^{-1}=
+ \sum_{\ell=-r_\rho}^{\infty}b_{\rho,\ell}(s-\rho)^\ell,
+ \qquad b_{\rho,-r_\rho}\ne0.
+\]
+For an entire $F$, define its residue coordinates by
+\begin{equation}
+ R_{\rho,k}F=\operatorname*{Res}_{s=\rho}
+ \frac{(s-\rho)^kF(s)}{\Xi(s)},
+ \quad 0\leq k<r_\rho.
+ \label{v4-arith:mo:jets}
+\end{equation}
+The residue is the coefficient of $(s-\rho)^{-1}$. These coordinates
+record the full principal part of $F/\Xi$. Direct multiplication
+of the Taylor and Laurent series gives
+\begin{equation}
+ R_{\rho,k}F=
+ \sum_{j=0}^{r_\rho-k-1}
+ b_{\rho,-k-j-1}\frac{F^{(j)}(\rho)}{j!}.
+ \label{v4-arith:mo:jet-formula}
+\end{equation}
+The transformation from the Taylor jet of order $r_\rho-1$ to
+these coordinates is invertible, since its successive leading
+coefficients are $b_{\rho,-r_\rho}$.
+
+\begin{proposition}[the occupation residue defect]
+\label{v4-arith:mo:occupation-defect}
+Define $A_0a=(R_{\rho,0}F_a)_{\rho\in Z}$ on $\mathscr E$.
+Let $K_\lambda$ multiply the $\rho$ coordinate by a prescribed
+number $\lambda_\rho$. Then $A_0N=K_\lambda A_0$ fails on
+$\mathscr E$ for every choice of the numbers $\lambda_\rho$.
+At a simple zero,
+\begin{equation}
+ (A_0v_m)_\rho=\frac{m^{-\rho}}{\Xi'(\rho)},\qquad
+ ((A_0N-K_\lambda A_0)v_m)_\rho
+ =\frac{(\log m-\lambda_\rho)m^{-\rho}}{\Xi'(\rho)}.
+ \label{v4-arith:mo:simple-occupation}
+\end{equation}
+\end{proposition}
+\begin{proof}
+Formula \eqref{v4-arith:mo:jet-formula} yields
+\[
+ (A_0v_m)_\rho=m^{-\rho}p_\rho(\log m),\qquad
+ p_\rho(u)=\sum_{j=0}^{r_\rho-1}
+ b_{\rho,-j-1}\frac{(-u)^j}{j!}.
+\]
+The polynomial has degree $r_\rho-1$ and nonzero leading
+coefficient. Among $m=1,\ldots,r_\rho+1$, at least two values
+$p_\rho(\log m)$ are nonzero. The proposed identity would make
+$\lambda_\rho$ equal to two distinct logarithms. At a simple zero,
+$m=1$ and $m=2$ already decide the question.
+\end{proof}
+
+For the local double-zero model $\Xi(s)=(s-\rho)^2$,
+\[
+ R_{\rho,0}(m^{-s})=-(\log m)m^{-\rho},\qquad
+ R_{\rho,1}(m^{-s})=m^{-\rho}.
+\]
+The scalar residue kills $v_1$, but $v_2$ and $v_3$ still contradict
+a fixed diagonal energy. This local entire function is a model
+of the multiplicity calculation, not an identification with an
+arithmetic entire function.
+
+For general $a\in\mathscr E$, equation \eqref{v4-arith:mo:two-actions} gives
+\[
+ (A_0Na)_\rho=\operatorname*{Res}_{s=\rho}
+                      \frac{-F_a'(s)}{\Xi(s)}.
+\]
+Thus allowing point distributions repairs the smooth-support
+obstruction to $T$ itself. It leaves the derivative in the residue
+composition. The target $\lambda_\rho=\operatorname{Im}\rho$ has
+exactly the defect in \eqref{v4-arith:mo:simple-occupation}.
+
+\subsubsection{A one-frequency obstruction before completion}
+
+For real $c$, put
+\[
+ \mathscr H_c=L^2(\mathbb R_{>0},x^{2c-1}\,dx),\qquad
+ (U_cf)(t)=e^{ct}f(e^t).
+\]
+Change of variables gives $\|U_cf\|_{L^2(dt)}=\|f\|_{\mathscr H_c}$.
+Fix a real frequency $\gamma_0$ and choose
+$\psi\in C_c^\infty(\mathbb R)$ with $\int\psi(t)\,dt=1$.
+For $L>0$, define
+\[
+ g_L(t)=L^{-1}\psi(t/L)e^{-i\gamma_0t},\qquad f_L=U_c^{-1}g_L.
+\]
+Then $f_L\in\mathscr D$ and
+\begin{equation}
+ \|f_L\|_{\mathscr H_c}^2=L^{-1}\|\psi\|_2^2\longrightarrow0,
+ \qquad \mathcal Mf_L(c+i\gamma_0)=1.
+ \label{v4-arith:mo:continuous-sequence}
+\end{equation}
+For a simple zero $\rho=c+i\gamma_0$, its residue coordinate
+therefore remains $1/\Xi'(\rho)$ while the source norm tends to zero.
+A linear operator is \emph{closable} if every sequence of domain
+vectors tending to zero whose images converge has image limit zero.
+This necessary and sufficient condition says that the closure of
+its graph is still the graph of a function. Equation
+\eqref{v4-arith:mo:continuous-sequence} proves that this one-coordinate
+evaluation is not closable on $\mathscr H_c$.
+
+There is an equally explicit occupation sequence. Let
+$H_M=\sum_{m=1}^M m^{-1}$ and fix $\rho=1/2+i\gamma_0$. Set
+\[
+ a_m^{(M)}=
+ \begin{cases}H_M^{-1}m^{-1/2+i\gamma_0},&m\leq M,\\0,&m>M.
+ \end{cases}
+\]
+Then
+\begin{equation}
+ \|a^{(M)}\|_{\ell^2}^2=H_M^{-1}\longrightarrow0,
+ \qquad F_{a^{(M)}}(\rho)=1.
+ \label{v4-arith:mo:atomic-sequence}
+\end{equation}
+Divergence of $H_M$ follows from comparison with $\int_1^{M+1}dx/x$.
+Consequently one critical-line evaluation, and hence its nonzero
+simple-residue multiple as a scalar operator, is not closable on
+occupation $\ell^2$. This statement concerns that scalar operator.
+It does not infer nonclosability of an arbitrary vector-valued
+map merely from one unbounded coordinate.
+
+\begin{proposition}[simultaneous critical-line occupation evaluations]
+\label{v4-arith:mo:finite-occupation-graph}
+Let $\rho_j=1/2+i\gamma_j$, $1\leq j\leq n$, have distinct
+real ordinates. The map
+$a\mapsto(F_a(\rho_j))_{j=1}^n$ on $\mathscr E$ has dense graph
+in $\ell^2\oplus\mathbb C^n$. The same holds after multiplication
+of its coordinates by any fixed nonzero constants, including
+simple-residue factors.
+\end{proposition}
+\begin{proof}
+Let $S_M$ be the matrix with entries $(S_M)_{jm}=m^{-\rho_j}$,
+$1\leq m\leq M$. Its Gram matrix $G_M=S_MS_M^*$ has diagonal
+entries $H_M$. For $j\ne k$, its entry is
+$\sum_{m\leq M}m^{-1+i(\gamma_k-\gamma_j)}$, which is bounded
+uniformly in $M$. Indeed its integral is bounded by
+$2/|\gamma_k-\gamma_j|$, and the difference between the sum and
+integral is bounded by the integral of the absolute derivative,
+which is a constant times $\int_1^\infty x^{-2}\,dx$.
+Thus $G_M=H_MI+O(1)$ in the fixed matrix dimension. For large $M$
+it is invertible and $\|G_M^{-1}\|\to0$.
+Given $y\in\mathbb C^n$, extend
+$a^{(M)}=S_M^*G_M^{-1}y$ by zero outside $m\leq M$. Then
+\[
+ S_Ma^{(M)}=y,\qquad
+ \|a^{(M)}\|_2^2=y^*G_M^{-1}y\longrightarrow0.
+\]
+The graph closure contains every $(0,y)$. Subtracting such
+vectors from the graph over the dense finite-sequence core proves
+density in the entire product.
+\end{proof}
+
+\begin{proposition}[finite occupation jets]
+\label{v4-arith:mo:occupation-jet-graph}
+For finitely many distinct zeros on $\operatorname{Re}s=1/2$,
+the full residue map on $\mathscr E$ has dense graph in
+$\ell^2\oplus\mathscr J_Z$. Its range is all of $\mathscr J_Z$.
+For any nonempty finite zero set, its kernel on $\mathscr E$
+is not invariant under $N$.
+\end{proposition}
+\begin{proof}
+A linear combination of the Taylor evaluation kernels is
+$m^{-1/2}q(\log m)$, where
+$q(t)=\sum_jp_j(t)e^{-i\gamma_jt}$. For nonzero coefficients,
+independence in Lemma~\ref{v4-arith:mo:exponential-polynomials} gives $q\ne0$.
+For $h(x)=x^{-1}|q(\log x)|^2$, the derivative is bounded by
+$Cx^{-2}(1+\log x)^d$ for some integer $d$.
+This is integrable on $[1,\infty)$. Hence the difference between
+$\sum_{m\leq M}h(m)$ and $\int_1^M h(x)\,dx$ stays bounded.
+The integral equals $\int_0^{\log M}|q(t)|^2dt$ and tends to
+infinity by the positive-half-line estimate in that lemma.
+No nonzero combination of the kernels belongs to $\ell^2$.
+The orthogonal-complement argument from Theorem~\ref{v4-arith:mo:finite-graph}
+now proves dense graph. A linear subspace of a finite-dimensional
+space is closed, so density of the range proves surjectivity.
+
+For the last assertion, suppose the kernel were $N$-invariant.
+There would be an induced linear operator on the finite-dimensional
+range of the residue map. The image of $v_m$ is nonzero: its
+last coordinate at any zero is
+$b_{\rho,-r_\rho}m^{-\rho}\ne0$.
+That image would be an eigenvector with eigenvalue $\log m$.
+Infinitely many distinct eigenvalues are impossible in finite
+dimension. This contradiction applies without zero-placement
+or simplicity assumptions.
+\end{proof}
+
+\subsubsection{The Mellin-diagonal dilation generator}
+
+The norm of $\mathscr H_c$ dictates the dilation amplitude. Define
+\[
+ (V_uf)(x)=e^{cu}f(e^u x),\qquad u\in\mathbb R.
+\]
+Substitution $y=e^u x$ proves $\|V_uf\|_{\mathscr H_c}=
+\|f\|_{\mathscr H_c}$. In logarithmic coordinates, $V_u$ is
+translation $g(t)\mapsto g(t+u)$. Its infinitesimal operator on
+$\mathscr D$ is $D+c$. With the convention $V_u=e^{-iuP_c}$,
+\begin{equation}
+ P_c=i(D+c),\qquad
+ \mathcal M(P_cf)(s)=i(c-s)F(s).
+ \label{v4-arith:mo:dilation}
+\end{equation}
+In particular $\mathscr H_{1/2}=L^2(dx)$ and
+$P_{1/2}=i(x\partial_x+1/2)$. The half-shift comes from the
+measure, and the factor $i$ comes from the stated unitary-group
+convention. On $L^2(dx/x)$ one has $c=0$ and no half-shift.
+
+\begin{lemma}[the normalized Mellin unitary]
+\label{v4-arith:mo:mellin-unitary}
+The map
+\[
+ (\mathcal U_cf)(\tau)=\frac1{\sqrt{2\pi}}
+                          \mathcal Mf(c+i\tau)
+\]
+on $\mathscr D$ extends to a unitary
+$\mathscr H_c\to L^2(\mathbb R,d\tau)$. The closure of $P_c$ is
+self-adjoint and is multiplication by $\tau$ under this unitary.
+Its domain is
+\[
+ \left\{f\in\mathscr H_c:
+       \tau\mathcal U_cf(\tau)\in L^2(d\tau)\right\}.
+\]
+Equivalently, $U_cf$ has weak derivative in $L^2(dt)$.
+\end{lemma}
+\begin{proof}
+For $g=U_cf$, the displayed map is the Fourier transform
+$\widehat g(\tau)=(2\pi)^{-1/2}\int g(t)e^{i\tau t}\,dt$.
+Its isometry can be proved directly. For Schwartz functions
+$g,h$ and $\epsilon>0$, Fubini and the Gaussian integral give
+\[
+ \int\widehat g(\tau)\overline{\widehat h(\tau)}
+                      e^{-\epsilon\tau^2}\,d\tau
+ =\iint g(t)\overline{h(u)}
+ \frac{e^{-(t-u)^2/(4\epsilon)}}{2\sqrt{\pi\epsilon}}\,dt\,du.
+\]
+The Gaussian kernels have integral one and converge as an
+approximate identity. Splitting their integrals into
+$|t-u|<\delta$ and its complement, then using translation
+continuity in $L^2$, proves convergence to $\langle g,h\rangle$.
+For $h=g$, monotone convergence proves equality of the two squared
+norms. Polarization gives the inner-product identity.
+Integration by parts shows that Fourier transforms of Schwartz
+functions are Schwartz. The same Gaussian calculation gives
+Fourier inversion by first inserting $e^{-\epsilon\tau^2}$ and
+then letting $\epsilon$ tend to zero. Thus the range contains the
+Schwartz space. Its density and the isometry give a unitary on
+$L^2$. Cutoffs and convolution by smooth approximate identities
+prove the required density of compact smooth functions.
+
+On compact smooth functions, $\widehat{ig'}=\tau\widehat g$.
+Multiplication by $\tau$ on its maximal domain is self-adjoint:
+testing against compactly supported functions identifies its
+adjoint domain, and division by $\tau\pm i$ gives its resolvents.
+The inverse Fourier transform identifies this domain with weakly
+differentiable $L^2$ functions whose derivative is in $L^2$.
+Such functions can be approximated in the norm
+$\|g\|_2+\|g'\|_2$ by cutoffs followed by smooth convolution.
+Indeed the cutoff derivative term is bounded by
+$C\|g\|_2/L$ for a cutoff varying at scale $L$.
+Therefore compact smooth functions form a graph core. This proves
+the closure and domain assertions.
+\end{proof}
+
+The spectrum of $P_c$ is all of $\mathbb R$ and has no eigenvectors.
+A nonzero $L^2$ function cannot be supported at one frequency.
+Functions supported in shrinking intervals around any prescribed
+frequency give approximate eigenvectors. In contrast, the
+occupation operator has the eigenbasis $v_m$ and eigenvalues
+$\log m$.
+
+In logarithmic coordinates, $Q=-t$ and $P_c=i\partial_t$.
+On compact smooth functions,
+\[
+ [P_c,Q]=-i\,\mathrm{id}.
+\]
+With $\hbar=1$, these are a position observable with reversed
+orientation and its conjugate momentum. The distribution $Tv_m$
+is localized at $t=-\log m$. Its Mellin transform is a plane
+wave multiplied by $m^{-c}$ on the line $\operatorname{Re}s=c$;
+it is not a frequency point mass. This distinction accounts for
+both actions in \eqref{v4-arith:mo:two-actions}.
+
+\subsubsection{Dilation on full residue jets}
+
+Let $\mathscr J_Z=\bigoplus_{\rho\in Z}\mathbb C^{r_\rho}$,
+with coordinates $a_{\rho,k}$ as in \eqref{v4-arith:mo:jets}. Set
+$a_{\rho,r_\rho}=0$ and define
+\begin{equation}
+ (K_ca)_{\rho,k}=z_{\rho,c}a_{\rho,k}-i a_{\rho,k+1},
+ \qquad z_{\rho,c}=i(c-\rho).
+ \label{v4-arith:mo:jet-generator}
+\end{equation}
+Write $\mathcal R_Zf=(R_{\rho,k}\mathcal Mf)_{\rho,k}$.
+
+\begin{proposition}[the full jet comparison]
+\label{v4-arith:mo:jet-comparison}
+On $\mathscr D$,
+\[
+ \mathcal R_ZP_c=K_c\mathcal R_Z.
+\]
+At a simple zero $\rho=\sigma+i\gamma$, the multiplier is
+$z_{\rho,c}=\gamma+i(c-\sigma)$. It equals the ordinate
+$\gamma$ exactly when $\sigma=c$. At a zero of multiplicity
+$r$, the full block is a Jordan block with eigenvalue $z_{\rho,c}$
+and superdiagonal $-i$.
+\end{proposition}
+\begin{proof}
+In \eqref{v4-arith:mo:dilation}, write
+$i(c-s)=i(c-\rho)-i(s-\rho)$ and take the residue after
+multiplication by $(s-\rho)^k$. The second term is the next
+coordinate in \eqref{v4-arith:mo:jets}; it vanishes at the last coordinate.
+The superdiagonal is nonzero, so the nilpotent part has exact
+order $r$.
+\end{proof}
+
+For a double zero, the scalar residue alone obeys
+\[
+ R_{\rho,0}\mathcal M(P_cf)=
+ z_{\rho,c}R_{\rho,0}F-iR_{\rho,1}F.
+\]
+Dropping the second coordinate drops an actual term. Repeating
+$F(\rho)$ in two coordinates instead gives a diagonal action, but
+its image has dimension one. It does not retain the full
+multiplicity-two jet. Nor does the jet comparison repair the
+occupation map: its last coordinate on $Tv_m$ is
+$b_{\rho,-r_\rho}m^{-\rho}\ne0$. Intertwining $N$ with $K_c$
+would force $\log m=z_{\rho,c}$ for every $m$.
+
+\subsection{Evaluation norms and operator closure}
+
+A residue value is a linear functional on compact smooth tests.
+Completing those tests in the squared sum of their residue values
+changes the Hilbert space. The change can be measured exactly for
+finitely many zeros, without any estimate on the global zero set.
+
+\subsubsection{Finite evaluation and its graph}
+
+\begin{lemma}[independence of exponential polynomials]
+\label{v4-arith:mo:exponential-polynomials}
+Let $\lambda_1,\ldots,\lambda_n$ be distinct complex numbers.
+If polynomials $p_j$ satisfy
+$\sum_j p_j(t)e^{\lambda_jt}=0$ on an interval, then all $p_j$ vanish.
+A nonzero sum of this form does not belong to $L^2(\mathbb R,dt)$.
+\end{lemma}
+\begin{proof}
+For independence, fix $j$ and apply
+$\prod_{k\ne j}(\partial_t-\lambda_k)^{d_k+1}$, where
+$d_k\geq\deg p_k$. All terms except the $j$th vanish. On its
+polynomial factor this operator is
+$\prod_{k\ne j}(\partial_t+\lambda_j-\lambda_k)^{d_k+1}$.
+Each factor is invertible on a space of polynomials of bounded
+degree: in the monomial basis it is triangular with nonzero
+constant diagonal. Therefore $p_j=0$.
+
+For the $L^2$ assertion, choose the largest real part $a$ among
+nonzero terms, and the largest polynomial degree $d$ among terms
+with that real part. On intervals $[T,T+L]$, divide the sum by
+$e^{aT}T^d$. As $T\to+\infty$, its leading part consists of a fixed
+finite family $e^{(a+ib_j)u}$, $0\leq u\leq L$, with coefficients
+of fixed nonzero magnitudes and phases $e^{ib_jT}$. The Gram
+matrix of this family on $[0,L]$ is positive definite by the first
+part. All lower-degree or lower-real-part terms tend to zero
+uniformly after division. Thus, for sufficiently large $T$,
+\[
+ \int_T^{T+L}\left|\sum_jp_j(t)e^{\lambda_jt}\right|^2dt
+ \geq C e^{2aT}T^{2d}
+\]
+for some $C>0$. If $a\geq0$, summing over disjoint such intervals
+proves divergence. If $a<0$, replace $t$ by $-t$; the largest
+real part then becomes positive. This proves the claim.
+\end{proof}
+
+\begin{theorem}[finite residue graph]
+\label{v4-arith:mo:finite-graph}
+For every real $c$ and every nonempty finite zero set $Z$, the map
+$\mathcal R_Z:\mathscr D\to\mathscr J_Z$ is onto. Its graph is
+dense in $\mathscr H_c\oplus\mathscr J_Z$, where $\mathscr J_Z$
+has its Euclidean norm. Hence it is unbounded and not closable
+as an operator from $\mathscr H_c$. Its kernel is dense in
+$\mathscr H_c$.
+\end{theorem}
+\begin{proof}
+Write $g=U_cf$. The Taylor functionals before the invertible
+transformation \eqref{v4-arith:mo:jet-formula} are
+\[
+ F^{(k)}(\rho)=\int_{\mathbb R}t^k
+                       e^{(\rho-c)t}g(t)\,dt.
+\]
+The kernels are linearly independent by
+Lemma~\ref{v4-arith:mo:exponential-polynomials}. No nonzero functional on the
+finite-dimensional target can annihilate the range. Thus the
+range is the whole target.
+
+Suppose $(u,b)\in L^2(\mathbb R)\oplus\mathscr J_Z$ is orthogonal
+to the graph in logarithmic coordinates. For every compact smooth
+$g$ this says
+\[
+ \int g(t)\overline{u(t)}\,dt+\int g(t)q_b(t)\,dt=0,
+\]
+where $q_b$ is a fixed linear combination of the exponential
+polynomials above. Thus $q_b=-\overline u$ as a distribution,
+so $q_b\in L^2$. The lemma forces $q_b=0$. Independence and the
+invertible jet transformation give $b=0$, and then $u=0$.
+A subspace with zero orthogonal complement is dense. The graph
+closure is therefore the entire product, which contains
+$\{0\}\oplus\mathscr J_Z$ and cannot be a graph.
+
+Choose test functions lifting a basis of $\mathscr J_Z$; their
+linear extension is a right inverse $G:\mathscr J_Z\to\mathscr D$.
+As a map into $\mathscr H_c$, $G$ is bounded because its domain is
+finite-dimensional. Graph density gives, for each $f\in\mathscr H_c$,
+$g_n\to f$ and $\mathcal R_Zg_n\to0$. Then
+$g_n-G\mathcal R_Zg_n$ lies in the kernel and converges to $f$.
+\end{proof}
+
+Define a positive semidefinite form on $\mathscr D$ by
+\[
+ q_Z(f,h)=\sum_{\rho\in Z}\sum_{k=0}^{r_\rho-1}
+ R_{\rho,k}\mathcal Mf\;
+ \overline{R_{\rho,k}\mathcal Mh}.
+\]
+Its nullspace is exactly $\ker\mathcal R_Z$. On the quotient
+$\mathscr D/\ker\mathcal R_Z$, this is an inner product.
+Surjectivity in Theorem~\ref{v4-arith:mo:finite-graph} identifies its completion
+isometrically with $\mathscr J_Z$. The nullspace has infinite
+dimension, since $\mathscr D$ has infinite dimension and the
+quotient has finite dimension. Thus this positive norm does not
+give an injective realization of the original function space.
+
+The form is not closable in $\mathscr H_c$. For a positive form,
+closability requires $q(f_n)\to0$ whenever $f_n\to0$ in the
+original Hilbert norm and $q(f_n-f_m)\to0$. Dense graph gives
+$f_n\to0$ with $\mathcal R_Zf_n$ tending to a fixed nonzero
+vector. This sequence violates the form criterion. The same
+argument applies to the countable form below whenever its stated
+summability hypothesis holds.
+
+\begin{theorem}[symmetry in the finite evaluation norm]
+\label{v4-arith:mo:finite-symmetry}
+The dilation operator descends to the quotient with form $q_Z$ and
+extends to the matrix $K_c$ of \eqref{v4-arith:mo:jet-generator}.
+It is symmetric for the Euclidean jet norm exactly when all zeros
+in $Z$ are simple and satisfy $\operatorname{Re}\rho=c$.
+If either condition fails, no positive definite inner product on
+the full jet target can make $K_c$ symmetric.
+\end{theorem}
+\begin{proof}
+The identity $\mathcal R_ZP_c=K_c\mathcal R_Z$ makes the kernel
+invariant and proves the induced action. In finite dimension the
+induced operator is everywhere defined, bounded, and closed.
+If every block has size one and real eigenvalue, its matrix is
+real diagonal and hence symmetric.
+
+Conversely, symmetry on a positive inner-product space forces
+an eigenvalue $z$ to be real, since
+$\langle Kv,v\rangle=z\|v\|^2$ must be real for an eigenvector.
+Thus $\operatorname{Re}\rho=c$. A nontrivial Jordan block then
+has vectors $u,v\ne0$ with $(K-z)u=v$ and $(K-z)v=0$.
+Symmetry would give
+$\|v\|^2=\langle(K-z)u,v\rangle=
+\langle u,(K-z)v\rangle=0$, a contradiction.
+\end{proof}
+
+For one double zero on the line, the matrix is
+\[
+ \begin{pmatrix}\gamma&-i\\0&\gamma\end{pmatrix}.
+\]
+Its two real eigenvalues do not remove its nilpotent part. A
+positive scalar-residue norm using only $R_{\rho,0}$ generally
+has a different defect: its kernel need not be invariant under
+$P_c$, because the omitted coordinate $R_{\rho,1}$ appears in
+its derivative. The full jets are required before asking for
+an induced dilation operator.
+
+\subsubsection{Countable simple zeros and weighted evaluations}
+
+Let $\rho_j=c+i\gamma_j$ be a countable set of distinct simple
+zeros, with no finite accumulation. Choose positive weights $w_j$.
+The raw residue norm would be
+\begin{equation}
+ q_w(f)=\sum_j w_j
+       \left|\frac{F(\rho_j)}{\Xi'(\rho_j)}\right|^2.
+ \label{v4-arith:mo:weighted-residue-norm}
+\end{equation}
+Put $\mu_j=w_j/|\Xi'(\rho_j)|^2$. Multiplication of the residue
+coordinates by $\Xi'(\rho_j)$ identifies the target norm with
+$\ell^2(\mu)$, whose norm is $\sum_j\mu_j|a_j|^2$.
+This conversion retains the residue normalization, including its
+complex phase.
+
+A sufficient summability condition is
+\begin{equation}
+ \sum_j\mu_j(1+\gamma_j^2)^{-b}<\infty
+ \quad\text{for some }b\geq0.
+ \label{v4-arith:mo:weight-condition}
+\end{equation}
+It is a hypothesis on the chosen weights and the actual divisor.
+It is not inferred for the raw choice $w_j=1$. Under
+\eqref{v4-arith:mo:weight-condition}, define
+\[
+ E:\mathscr D\longrightarrow\ell^2(\mu),\qquad
+ (Ef)_j=F(c+i\gamma_j),\qquad
+ (Ka)_j=\gamma_ja_j.
+\]
+The maximal domain of $K$ consists of sequences with
+$\sum_j\mu_j\gamma_j^2|a_j|^2<\infty$. Compact smooth tests have
+Schwartz Mellin transforms on the vertical line, by repeated
+integration by parts in $t$. Therefore $Ef\in\operatorname{Dom}K$
+and $EP_c=KE$ on $\mathscr D$.
+
+\begin{theorem}[the atomic completion and the original norm]
+\label{v4-arith:mo:countable-completion}
+Under \eqref{v4-arith:mo:weight-condition}, $E\mathscr D$ is dense in
+$\ell^2(\mu)$ and is a graph core for $K$.
+The completion of $\mathscr D/\ker E$ in the norm $\|Ef\|$
+is therefore $\ell^2(\mu)$. The induced dilation has self-adjoint
+closure $K$ on its stated maximal domain.
+
+As a map from the original space $\mathscr H_c$, $E$ has dense
+graph in $\mathscr H_c\oplus\ell^2(\mu)$. In particular it is
+not closable and has no closable extension agreeing on
+$\mathscr D$.
+\end{theorem}
+\begin{proof}
+Fix $j_0$ and use $f_L$ from \eqref{v4-arith:mo:continuous-sequence} with
+$\gamma_0=\gamma_{j_0}$. Put
+$\Psi(y)=\int\psi(t)e^{iyt}\,dt$. Then
+\[
+ (Ef_L)_j=\Psi\bigl(L(\gamma_j-\gamma_{j_0})\bigr).
+\]
+The central value is one and every other value tends to zero.
+For $L\geq1$, rapid decay of $\Psi$ gives a uniform bound
+$C_n(1+|\gamma_j-\gamma_{j_0}|)^{-n}$ for every $n$.
+Choosing $n$ sufficiently large in
+\eqref{v4-arith:mo:weight-condition} gives a summable majorant even after
+multiplication by $1+\gamma_j^2$. Dominated convergence proves
+\[
+ Ef_L\longrightarrow e_{j_0},\qquad
+ KEf_L\longrightarrow\gamma_{j_0}e_{j_0}
+ \quad\text{in }\ell^2(\mu),
+\]
+while $f_L\to0$ in $\mathscr H_c$.
+Finite-coordinate vectors form a graph core for the maximal
+real diagonal operator $K$, by truncation of the two convergent
+weighted sums. The approximations just constructed show that
+$E\mathscr D$ is also a graph core. The diagonal adjoint-domain
+calculation proves self-adjointness, as in
+Lemma~\ref{v4-arith:mo:mellin-unitary}.
+
+The graph closure of $E$ contains $(0,e_j)$ for every $j$, hence
+$\{0\}\oplus\ell^2(\mu)$. It also contains $(f,Ef)$ for every
+test $f$. Subtracting the vertical vectors and using density of
+$\mathscr D$ in $\mathscr H_c$ gives the whole product. This
+proves the last assertion.
+\end{proof}
+
+The hypotheses of this theorem can always be imposed on a selected
+countable critical-line simple divisor by changing the weights.
+For example, fix an enumeration and set
+\[
+ \mu_j=2^{-j}(1+\gamma_j^2)^{-j},\qquad
+ w_j=|\Xi'(\rho_j)|^2\mu_j.
+\]
+All polynomial moments of $\mu$ are finite: for a fixed degree,
+only finitely many initial terms need separate consideration.
+This produces a positive evaluation completion. The weights
+are chosen data; they are not the raw residue weights or a native
+arithmetic pairing.
+
+For $w_j=1$, the exact domain of \eqref{v4-arith:mo:weighted-residue-norm}
+is
+\[
+ \mathscr D_{\mathrm{raw}}=
+ \left\{f\in\mathscr D:
+ \sum_j|F(\rho_j)/\Xi'(\rho_j)|^2<\infty\right\}.
+\]
+No assertion that this equals $\mathscr D$, is dense in
+$\mathscr H_c$, or satisfies \eqref{v4-arith:mo:weight-condition} is made
+without bounds on the inverse derivatives. Even existence of an
+individual scalar residue does not imply convergence of this sum.
+If \eqref{v4-arith:mo:weight-condition} is established for the raw weights,
+Theorem~\ref{v4-arith:mo:countable-completion} applies and still gives
+nonclosability in the original norm. Without that estimate, a
+full vector-valued closure claim remains separate from the
+finite-coordinate obstruction.
+
+\begin{proposition}[bounded spectral transfer]
+\label{v4-arith:mo:bounded-transfer}
+A bounded map intertwining the unitary groups of $P_c$ on
+$\mathscr H_c$ and $K$ on $\ell^2(\mu)$ is zero, in either
+direction.
+\end{proposition}
+\begin{proof}
+In the direction from the atomic space, the image of $e_j$ would
+be an eigenvector of $P_c$ with eigenvalue $\gamma_j$.
+Under $\mathcal U_c$, group covariance for all rational times
+forces its support to lie in $\{\gamma_j\}$, a null set.
+Thus it is zero, and density of the finite-coordinate vectors
+finishes the argument. Taking the adjoint gives the opposite
+direction, since both groups are unitary.
+\end{proof}
+
+\begin{proposition}[occupation symmetry in a sampling norm]
+\label{v4-arith:mo:occupation-positive-obstruction}
+Let $\rho_j=c+i\gamma_j$ be a nonempty countable set of simple
+zeros, with positive weights $\mu_j$ and
+$\sum_j\mu_j<\infty$. The evaluation form
+\[
+ q(a,b)=\sum_j\mu_jF_a(\rho_j)\overline{F_b(\rho_j)}
+ \quad(a,b\in\mathscr E)
+\]
+is well-defined and positive semidefinite. The occupation operator
+$N$ is not symmetric for this form on its finite-support core.
+\end{proposition}
+\begin{proof}
+Every finite Dirichlet polynomial is bounded on a fixed vertical
+line. The summability assumption therefore defines the form.
+Put $\phi(t)=\sum_j\mu_je^{i\gamma_jt}$. Uniform convergence
+makes $\phi$ continuous, and $\phi(0)=\sum_j\mu_j>0$.
+The coordinate pairing is
+\[
+ q(v_m,v_n)=(mn)^{-c}\phi(\log(n/m)).
+\]
+Symmetry would require
+$(\log m-\log n)q(v_m,v_n)=0$ for all $m,n$.
+Taking $n=m+1$ would give
+$\phi(\log(1+1/m))=0$. Continuity at zero contradicts
+$\phi(0)>0$.
+\end{proof}
+
+Thus even a positive critical-line evaluation completion cannot
+make occupation energy symmetric on this core. The same norm
+does make the induced continuous dilation self-adjoint under
+Theorem~\ref{v4-arith:mo:countable-completion}. These statements concern different
+source operators, with the exact actions in \eqref{v4-arith:mo:two-actions}.
+
+\subsubsection{A countable completion with all principal parts}
+
+The full principal parts also admit a Hilbert completion when
+multiplicities are unbounded or zeros lie off the chosen line.
+The construction below chooses the norm after the divisor and
+finite interpolation functions have been specified.
+
+Enumerate distinct zeros as $\rho_j$, $j\geq1$, with
+$|\rho_j|\to\infty$, and let $r_j$ be their finite multiplicities.
+Fix real $c$. Write $R_jf\in\mathbb C^{r_j}$ for the full residue
+vector of $\mathcal Mf$ and set
+\[
+ z_j=i(c-\rho_j),\qquad K_j=z_jI-iS_j,
+ \qquad (S_ja)_k=a_{k+1},\quad a_{r_j}=0.
+\]
+Each block has its Euclidean norm, so $\|S_j\|\leq1$.
+For positive numbers $w_j$ define
+\[
+ \mathscr J_w=\left\{a=(a_j):
+              \sum_jw_j\|a_j\|^2<\infty\right\},\qquad
+ (K_wa)_j=K_ja_j.
+\]
+Its maximal domain is
+\begin{equation}
+ \operatorname{Dom}K_w=
+ \left\{a\in\mathscr J_w:
+             \sum_jw_j|z_j|^2\|a_j\|^2<\infty\right\}.
+ \label{v4-arith:mo:full-domain}
+\end{equation}
+Indeed $K_w$ differs from multiplication by $z_j$ by the bounded
+operator $-i\bigoplus_jS_j$. Equivalently its domain requires
+$\sum_jw_j\|K_ja_j\|^2<\infty$.
+
+\begin{theorem}[weighted full-jet completion]
+\label{v4-arith:mo:all-jets}
+For every such zero divisor and every real $c$, positive weights
+$w_j$ can be chosen with the following properties. The map
+$R:f\mapsto(R_jf)_j$ sends $\mathscr D$ into
+$\operatorname{Dom}K_w$ and satisfies $RP_c=K_wR$.
+Its range is dense and is a graph core for $K_w$.
+The completion of $\mathscr D/\ker R$ in the norm $\|Rf\|$
+is $\mathscr J_w$, and the induced dilation closes to $K_w$.
+The graph of $R$ in $\mathscr H_c\oplus\mathscr J_w$ is dense.
+Thus $R$ and its positive evaluation form are not closable in
+the original norm.
+
+The closed operator $K_w$ has compact resolvent and spectrum
+$\{z_j:j\geq1\}$. The generalized eigenspace at $z_j$ is one
+block of dimension $r_j$. It is self-adjoint exactly when all
+$r_j=1$ and $\operatorname{Re}\rho_j=c$.
+\end{theorem}
+\begin{proof}
+Let $I_n=\{(j,k):j\leq n,\ 0\leq k<r_j\}$ and denote its
+coordinate basis by $e_h$. The finite graph theorem supplies,
+for each $n$ and $h\in I_n$, a test $f_{n,h}$ such that
+\begin{equation}
+ \|f_{n,h}\|_{\mathscr H_c}\leq n^{-1},\qquad
+ (R_jf_{n,h})_{j\leq n}=e_h.
+ \label{v4-arith:mo:small-lifts}
+\end{equation}
+Here exact interpolation follows from graph density by correction
+with the bounded finite-dimensional right inverse used in its proof.
+All these choices precede the choice of weights.
+
+For $g=U_cf$ supported in $[-m,m]$, each residue is an integral
+against an exponential polynomial. Hence there is a finite
+constant $C_{j,m}$ with
+$\|R_jf\|\leq C_{j,m}\|g\|_2$ on that support.
+One explicit choice is
+\[
+ C_{j,m}^2=\sum_{k=0}^{r_j-1}\int_{-m}^m
+ \left|e^{(\rho_j-c)t}
+ \sum_{\ell=0}^{r_j-k-1}
+ b_{\rho_j,-k-\ell-1}\frac{t^\ell}{\ell!}\right|^2dt.
+\]
+Cauchy--Schwarz proves the bound. Define the finite maximum
+\[
+ A_j=\max\left(
+ 1,\ \max_{1\leq m\leq j}C_{j,m}^2,
+ \max_{\substack{1\leq n<j\\h\in I_n}}
+                  n^2\|R_jf_{n,h}\|^2\right),
+ \qquad
+ w_j=\frac{2^{-j}}{(1+|z_j|^2)A_j}.
+\]
+The last maximum is omitted for $j=1$.
+For any fixed compact smooth test and sufficiently large $j$,
+the summand $w_j(1+|z_j|^2)\|R_jf\|^2$ is at most
+$2^{-j}\|U_cf\|_2^2$. This proves membership in the domain.
+The coordinate identity from Proposition~\ref{v4-arith:mo:jet-comparison} therefore
+holds as an identity in $\mathscr J_w$.
+
+For a fixed coordinate $h$, take $n$ large enough that $h\in I_n$.
+The first $n$ blocks of $Rf_{n,h}-e_h$ vanish. The remaining
+blocks satisfy
+\[
+ \sum_{j>n}w_j(1+|z_j|^2)\|R_jf_{n,h}\|^2
+ \leq n^{-2}\sum_{j>n}2^{-j}.
+\]
+Since $\|K_j\|\leq |z_j|+1$, this gives
+$Rf_{n,h}\to e_h$ and $K_wRf_{n,h}\to K_we_h$.
+Finite block truncations are a graph core for the maximal operator,
+by convergence of the two sums defining its graph norm.
+Thus $R\mathscr D$ is a graph core and is dense.
+Equation \eqref{v4-arith:mo:small-lifts} also gives $f_{n,h}\to0$.
+The graph closure contains $\{0\}\oplus\mathscr J_w$.
+Subtracting its vertical vectors from $(f,Rf)$ and using density
+of $\mathscr D$ proves density in the whole product.
+The quotient and nonclosability assertions follow.
+
+The maximal block operator is closed: convergence in its graph
+implies convergence in every finite block, where each matrix is
+closed. Its adjoint is the maximal operator with blocks
+$\overline z_jI+iS_j^*$, as testing against finite block vectors
+shows. These formulas also prove self-adjointness when all blocks
+are real scalars. If it is symmetric, its restriction to every
+finite block is symmetric. Theorem~\ref{v4-arith:mo:finite-symmetry} forces every
+block to be a real scalar.
+
+Choose $\lambda$ different from every $z_j$. For all sufficiently
+large $j$, $|z_j-\lambda|>2$. The finite geometric series for
+$(K_j-\lambda)^{-1}$ then gives
+\[
+ \|(K_j-\lambda)^{-1}\|
+ \leq\frac1{|z_j-\lambda|-1}\longrightarrow0.
+\]
+The finitely many other inverses are bounded. Their direct sum
+maps $\mathscr J_w$ into \eqref{v4-arith:mo:full-domain}, since
+$K_ja_j=y_j+\lambda a_j$ for
+$a_j=(K_j-\lambda)^{-1}y_j$.
+Thus $\lambda$ belongs to the resolvent. Truncating this inverse
+to finitely many finite-dimensional blocks converges in operator
+norm, so the resolvent is compact. Each $z_j$ is an eigenvalue.
+On every other block $K_l-z_j$ is invertible, so its generalized
+eigenspace is precisely the $j$th block.
+\end{proof}
+
+The theorem requires no bound on the multiplicities. The norm
+depends on the Laurent coefficients and the chosen interpolation
+functions. Making a weight smaller preserves every estimate and
+every graph approximation in the proof. For a divisor invariant
+under $\rho\mapsto2c-\overline\rho$, one may therefore replace
+the two weights on each orbit by their minimum. The resulting
+residue involution is antiunitary. This does not make a nontrivial
+Jordan block symmetric.
+
+For a double zero on the line, the ordinary trace of a polynomial
+in $K_j$ is $2p(\gamma_j)$, while the operator retains its
+nonzero nilpotent part. More generally,
+\[
+ \operatorname{tr}p(K_j)=r_jp(z_j).
+\]
+This follows by triangularity. Consequently these traces cannot
+distinguish the full block from $r_j$ repeated scalar eigenvalues.
+Equality of spectral traces alone does not construct a map of
+their full jet representations.
+
+
+\subsubsection{Stronger source norms and boundary values}
+
+Evaluation can be continuous after the source topology changes.
+On finite occupation sequences define, for real $a$,
+\[
+ \|u\|_a^2=\sum_{m\geq1}(1+(\log m)^2)^a|u_m|^2,
+\]
+and let $\mathscr H_{\mathrm{occ},a}$ be the corresponding weighted
+$\ell^2$ space. Fix $\rho=1/2+i\gamma$ and an integer $k\geq0$.
+
+\begin{proposition}[the exact logarithmic weight threshold]
+\label{v4-arith:mo:weight-threshold}
+The functional
+$u\mapsto F_u^{(k)}(\rho)=\sum_m u_m(-\log m)^k m^{-\rho}$
+on finite sequences is bounded for $\|\cdot\|_a$ exactly when
+$a>k+1/2$. If $\operatorname{Re}\rho>1/2$, it is bounded for
+every real $a$. If $\operatorname{Re}\rho<1/2$, no real $a$
+makes it bounded.
+\end{proposition}
+\begin{proof}
+The squared dual norm of a finite-coordinate functional increases
+under truncation to
+\[
+ \sum_m\frac{(\log m)^{2k}m^{-2\operatorname{Re}\rho}}
+                    {(1+(\log m)^2)^a}.
+\]
+Cauchy--Schwarz proves sufficiency. Truncated coefficient vectors
+proportional to the weighted conjugate kernel attain the finite
+dual norms, proving necessity. At real part $1/2$, integral
+comparison with $t=\log x$ gives the tail integral
+$\int^\infty t^{2k-2a}\,dt$. It is finite exactly when
+$a>k+1/2$. To the right, exponential decay in $t$ dominates every
+power. To the left, exponential growth defeats every such power.
+\end{proof}
+
+At a zero of order $r$, the scalar residue functional on finite
+occupation sequences has highest derivative order $r-1$, with
+nonzero coefficient. On the critical line its exact threshold
+is therefore $a>r-1/2$. The same condition controls all full jet
+coordinates. Lower derivative terms cannot cancel the nonzero
+leading polynomial in $\log m$.
+
+These extensions are boundary-value functionals of the Dirichlet
+series from Proposition~\ref{v4-arith:mo:dirichlet-domain}. Their defining sums converge
+absolutely under the stated weight condition. They do not supply
+holomorphic continuation across the boundary. Calling them actual
+meromorphic residues for an infinite sequence additionally requires
+such continuation. Nor do stronger norms repair
+Proposition~\ref{v4-arith:mo:occupation-defect}, which already fails on finite sequences.
+
+The occupation operator remains self-adjoint in
+$\mathscr H_{\mathrm{occ},a}$ on its maximal weighted domain,
+because both the norm and the operator are diagonal in $v_m$.
+For continuous tests, a different change is needed to bound point
+evaluation: put $\|g\|_{a,t}^2=\int(1+t^2)^a|g(t)|^2dt$.
+The same dual-integral argument bounds the $k$th Fourier evaluation
+exactly when $a>k+1/2$. This norm is not translation-invariant.
+For $w(t)=(1+t^2)^a$ and compact smooth $g,h$,
+\[
+ \langle i g',h\rangle_w-\langle g,i h'\rangle_w
+ =-i\int w'(t)g(t)\overline{h(t)}\,dt.
+\]
+Thus the same dilation generator need not remain symmetric in
+this stronger continuous norm. A topology that controls residues
+must be checked against the required operator and pairing.
+
+\subsection{Critical-line symmetry and the arithmetic target}
+
+An involution can preserve residue data without making the dilation
+operator symmetric. This distinction is visible in the signs of
+full principal parts.
+
+\subsubsection{Inversion and conjugation}
+
+For real $c$, define on $\mathscr H_c$
+\[
+ (J_cf)(x)=x^{-2c}\overline{f(x^{-1})}.
+\]
+In logarithmic coordinates,
+$U_cJ_cf(t)=\overline{U_cf(-t)}$. Consequently $J_c$ is an
+antiunitary involution. Direct substitution in the Mellin integral
+gives
+\begin{equation}
+ \mathcal M(J_cf)(s)=\overline{F(2c-\overline s)},
+ \qquad J_cP_c=P_cJ_c
+ \label{v4-arith:mo:inversion}
+\end{equation}
+on compact smooth tests, and then on the closed operator domain.
+For the domain assertion, logarithmic reflection and conjugation
+preserve the weak-derivative norm from
+Lemma~\ref{v4-arith:mo:mellin-unitary}.
+
+Suppose now that the entire function satisfies
+\begin{equation}
+ \Xi(2c-\overline s)=\overline{\Xi(s)}.
+ \label{v4-arith:mo:entire-symmetry}
+\end{equation}
+Write $\rho^\#=2c-\overline\rho$. Its zeros and multiplicities
+are preserved by $\rho\mapsto\rho^\#$. Choose the finite zero set
+$Z$ invariant under this map.
+
+\begin{proposition}[the residue involution]
+\label{v4-arith:mo:residue-involution}
+On full jet coordinates, inversion acts by
+\[
+ (J_Za)_{\rho,k}=(-1)^{k+1}\overline{a_{\rho^\#,k}}.
+\]
+Thus $\mathcal R_ZJ_c=J_Z\mathcal R_Z$, and $J_Z$ is an
+antiunitary involution for the Euclidean jet norm. It commutes
+with $K_c$. At a simple critical-line zero, the residue action
+is minus complex conjugation.
+\end{proposition}
+\begin{proof}
+Put $s=\rho+z$. Equations \eqref{v4-arith:mo:inversion} and
+\eqref{v4-arith:mo:entire-symmetry} identify the quotient for $J_cf$ with
+the conjugate of the quotient for $f$ at
+$\rho^\#-\overline z$. A coefficient of order $-(k+1)$ therefore
+acquires the factor $(-1)^{k+1}$. This proves the formula.
+The norm and involution assertions follow by permuting coordinates
+and conjugating them. For commutation, note that
+$z_{\rho^\#,c}=\overline{z_{\rho,c}}$ and that consecutive signs
+in the formula are opposite. Substitution into
+\eqref{v4-arith:mo:jet-generator} gives $J_ZK_c=K_cJ_Z$.
+\end{proof}
+
+The same assertion holds for positive diagonal jet weights invariant
+under $\rho\mapsto\rho^\#$. Commutation with this antiunitary does
+not remove a Jordan block. The symmetry criterion of
+Theorem~\ref{v4-arith:mo:finite-symmetry} still requires simple zeros on the line.
+
+The involution extends to compactly supported distributions by
+\[
+ \langle J_cu,\phi\rangle
+ =\overline{\left\langle u,
+         x^{2c-2}\overline{\phi(x^{-1})}\right\rangle}.
+\]
+Changing variables proves agreement with its action on functions.
+For occupation distributions,
+\[
+ J_cTv_m=m^{1-2c}\delta_m.
+\]
+At $c=1/2$ this is $\delta_m$, with Mellin transform $m^{s-1}$.
+Its $Q$ eigenvalue is $-\log m$. Except for $m=1$, it lies outside
+the distributional image supported at the reciprocal integers.
+Thus an inversion-invariant space must contain both signs of this
+logarithmic position observable. Identifying this involution with
+an arithmetic modular conjugation requires a separate map of the
+actual spaces and pairings.
+
+\subsubsection{The completed Riemann function}
+
+The preceding results apply to any nonzero entire $\Xi$.
+For the arithmetic specialization, an integral formula fixes the
+normalization and both symmetries without a choice of zero locations.
+For $t>0$, put
+\[
+ \vartheta(t)=\sum_{n\in\mathbb Z}e^{-\pi n^2t},\qquad
+ \psi(t)=\sum_{n\geq1}e^{-\pi n^2t}.
+\]
+These series and their derivatives converge uniformly on compact
+subsets of $t>0$.
+
+The Gaussian identity
+$\int_{\mathbb R}e^{-\pi t x^2}e^{-2\pi i yx}\,dx
+=t^{-1/2}e^{-\pi y^2/t}$ follows by differentiation in $y$ and
+integration by parts; its value at zero is the Gaussian integral.
+Periodize $e^{-\pi t x^2}$ over the integers. Its Fourier coefficients
+are the displayed Gaussian values at integer $y$. Both the
+periodized series and the resulting Fourier series converge
+absolutely and uniformly. Equality follows from uniqueness of
+Fourier coefficients for continuous periodic functions. For
+completeness, uniqueness follows by convolution with
+\[
+ F_n(x)=\frac1n\left|\sum_{k=0}^{n-1}e^{2\pi i kx}\right|^2:
+\]
+these nonnegative kernels have integral one and their mass outside
+any neighborhood of the integers tends to zero. Their convolutions
+converge uniformly to a continuous periodic function. Evaluating
+at zero gives
+\[
+ \vartheta(t)=t^{-1/2}\vartheta(t^{-1}),\qquad
+ \psi(t)=t^{-1/2}\psi(t^{-1})+\tfrac12(t^{-1/2}-1).
+\]
+
+Define
+\begin{equation}
+ \xi_{\mathbb R}(s)=\frac12+
+ \frac{s(s-1)}2\int_1^\infty
+ \psi(t)\bigl(t^{s/2}+t^{(1-s)/2}\bigr)\,\frac{dt}{t}.
+ \label{v4-arith:mo:xi-integral}
+\end{equation}
+The exponential decrease of $\psi$ makes this integral entire,
+with every derivative locally uniformly convergent. It gives
+$\xi_{\mathbb R}(0)=\xi_{\mathbb R}(1)=1/2$ and
+\[
+ \xi_{\mathbb R}(1-s)=\xi_{\mathbb R}(s),\qquad
+ \xi_{\mathbb R}(\overline s)=\overline{\xi_{\mathbb R}(s)}.
+\]
+In particular it satisfies \eqref{v4-arith:mo:entire-symmetry} at $c=1/2$.
+
+On $\operatorname{Re}s>1$, define
+$\zeta(s)=\sum_{n\geq1}n^{-s}$ and
+$\Gamma(s/2)=\int_0^\infty e^{-u}u^{s/2-1}\,du$.
+Absolute convergence permits summation under the integral and gives
+\[
+ \int_0^\infty\psi(t)t^{s/2}\,\frac{dt}{t}
+       =\pi^{-s/2}\Gamma(s/2)\zeta(s).
+\]
+Split the integral at one and use the theta identity on $(0,1)$.
+The elementary contribution is
+$1/(s-1)-1/s=1/(s(s-1))$; the remaining integral is that in
+\eqref{v4-arith:mo:xi-integral}. Therefore
+\[
+ \xi_{\mathbb R}(s)=
+ \tfrac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)
+ \quad(\operatorname{Re}s>1).
+\]
+Equation \eqref{v4-arith:mo:xi-integral} supplies the entire continuation.
+No assertion about simplicity or critical-line placement of its
+zeros was used.
+
+\begin{proposition}[the occupation vacuum and the zero divisor]
+\label{v4-arith:mo:vacuum}
+One has $1/4<\xi_{\mathbb R}(1/2)<1/2$.
+Suppose a self-adjoint operator $H$ has the property that every
+eigenvalue of $1/2+iH$ is a zero of $\xi_{\mathbb R}$.
+There is no injective linear map $A$ whose domain contains $v_1$,
+whose image of $v_1$ belongs to $\operatorname{Dom}H$, and which
+satisfies $ANv_1=HAv_1$.
+\end{proposition}
+\begin{proof}
+At $s=1/2$, \eqref{v4-arith:mo:xi-integral} reads
+\[
+ \xi_{\mathbb R}(1/2)=\frac12-
+          \frac14\int_1^\infty\psi(t)t^{-3/4}\,dt.
+\]
+For $t\geq1$, the inequality $n^2\geq n$ gives
+$0<\psi(t)\leq e^{-\pi t}/(1-e^{-\pi})$.
+Consequently the positive integral is bounded above by
+$e^{-\pi}/[\pi(1-e^{-\pi})]<1$. This proves the bounds.
+Since $Nv_1=0$, the proposed identity gives $HAv_1=0$.
+Injectivity makes $Av_1\ne0$, so $1/2$ would be an eigenvalue
+of $1/2+iH$ and a zero of $\xi_{\mathbb R}$. The bounds exclude it.
+\end{proof}
+
+For $\Xi=\xi_{\mathbb R}$ and $c=1/2$, the full jet eigenvalue is
+\[
+ z_{\rho,1/2}=-i(\rho-1/2)
+       =\operatorname{Im}\rho+i(1/2-\operatorname{Re}\rho).
+\]
+The affine shift $1/2+iK_{1/2}$ has eigenvalues $\rho$ and, on
+full jets, superdiagonal $1$. Replacing $z_{\rho,1/2}$ by
+$\operatorname{Im}\rho$ projects the eigenvalue to the critical
+line. Removing the superdiagonal removes the generalized-eigenvector
+data at multiple zeros. Both changes require an explicit comparison.
+
+If the selected zeros are simple and on the critical line, their
+weighted evaluation completion from
+Theorem~\ref{v4-arith:mo:countable-completion} has a self-adjoint diagonal dilation
+operator. Its spectrum and norm were specified through the selected
+zero data and weights. This conditional construction does not
+produce an independently defined arithmetic positive pairing or
+establish critical-line placement. With full multiple-zero jets,
+Theorem~\ref{v4-arith:mo:finite-symmetry} gives an additional obstruction to a
+positive symmetric realization.
+
+\subsubsection{Local quotient representations and traces}
+
+Let $\mathcal O_\rho$ be the algebra of holomorphic germs at
+$\rho$. If $\Xi$ has a zero of order $r$ there, the linear map
+\[
+ \mathcal O_\rho/(\Xi)\longrightarrow\mathbb C^r,
+ \qquad [F]\longmapsto(R_{\rho,k}F)_{0\leq k<r}
+\]
+is an isomorphism. Indeed $F/\Xi$ has no principal part exactly
+when $F$ is divisible by $\Xi$ as a germ. Taylor reduction modulo
+$(s-\rho)^r$ and \eqref{v4-arith:mo:jet-formula} prove surjectivity.
+Multiplication by $s$ becomes $\rho I+S$, where
+$(Sa)_k=a_{k+1}$. Thus the affine operator $c+iK_c$ is exactly
+the local multiplication operator. This comparison preserves
+multiplicity and its nilpotent action.
+
+This local quotient is the algebraic form of zero multiplicity.
+Meyer constructs a global virtual representation of the idele
+class group on nuclear bornological spaces. Its character is
+the Weil distribution, and its spectral multiplicities are the
+pole orders of the completed $L$-function
+(Meyer, arXiv:math/0311468v3, Theorems~5.8 and~5.11, pp.~43 and~47).
+Zeros contribute through the negative representation. That result
+does not specify the positive evaluation weights constructed here.
+An identification with these Hilbert spaces requires maps from
+the global representation, continuity in both norms, and compatibility
+with the scaling action and the chosen pairing.
+
+For finite blocks the distinction between trace and representation
+is explicit. The trace $\operatorname{tr}p(\rho I+S)=rp(\rho)$
+equals the trace on $r$ scalar copies of $\rho$.
+When $r>1$ these representations are not isomorphic: the first has
+a nonzero nilpotent part, while the second has none.
+For infinite blocks an ordinary operator trace additionally requires
+trace-class convergence. In the simple critical-line case,
+\[
+ \operatorname{Tr}\varphi(K_w)=\sum_j\varphi(\gamma_j)
+ \quad\text{if}\quad \sum_j|\varphi(\gamma_j)|<\infty.
+\]
+To prove this formula, use the orthonormal basis
+$w_j^{-1/2}e_j$ and the diagonal trace-class criterion.
+In particular the weights disappear from the trace.
+Hence this trace cannot recover the positive form chosen on
+the test functions.
+
+The occupation operator has a different trace. For real $\beta>1$,
+\[
+ \operatorname{Tr}e^{-\beta N}=\sum_{m\geq1}m^{-\beta}
+ =\zeta(\beta).
+\]
+The positive diagonal sum converges by integral comparison and
+diverges for $\beta\leq1$. A trace over zero ordinates involves
+a different index set and requires a proved comparison of the
+operators and trace functionals. Mellin evaluation and equality
+of local multiplicities do not supply that comparison.
+
+\subsubsection{The occupation realization that remains}
+
+An occupation-to-zero realization would require a Hilbert space
+$\mathscr H_\xi$, an independently specified positive inner product,
+and a self-adjoint operator $H$ there. It would also require an
+injective linear map $A$ on a dense $N$-invariant domain
+$\mathscr D_N\subset\operatorname{Dom}N$, with dense range in
+$\mathscr H_\xi$, such that
+\[
+ A\mathscr D_N\subset\operatorname{Dom}H,\qquad
+ AN=HA\quad\text{on }\mathscr D_N.
+\]
+Closedness and domain compatibility are part of this operator
+problem. Matching the arithmetic zero divisor further requires
+the eigenvalues of $1/2+iH$, with their multiplicities, to give
+the actual zeros of $\xi_{\mathbb R}$. Any determinant or trace
+comparison requires its own definition, convergence domain, and
+normalization.
+
+The explicit map $T$ constructs the occupation-to-distribution
+edge on every finite sequence. Its residue composition fails the
+required energy identity by Proposition~\ref{v4-arith:mo:occupation-defect}, including
+multiple zeros. A domain containing the finite occupation core
+cannot fix that algebraic failure by completion. Domains excluding
+that core are different operator problems and require new maps.
+Proposition~\ref{v4-arith:mo:vacuum} also excludes every injective map
+with the actual zero-divisor target when its domain contains $v_1$.
+The normalized dilation operator instead has the exact jet
+comparison Proposition~\ref{v4-arith:mo:jet-comparison}; it acts on a continuous
+spectral carrier. Its evaluation map is not a closable transfer
+from the original Hilbert space in the settings proved above.
+
+The physical distinction is between logarithmic position and its
+conjugate momentum. Integer occupation selects discrete position
+values. Mellin dilation measures continuous momentum. Residue
+evaluation samples a function of that momentum at a chosen divisor;
+a positive sampling norm changes the state space. The displayed
+maps and obstructions specify these operations. They supply no
+identification of their thermal traces or of an arithmetic trace
+with the sampled norm.
+

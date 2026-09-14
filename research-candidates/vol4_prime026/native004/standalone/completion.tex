@@ -1,0 +1,375 @@
+\chapter{Evaluation norms and operator closure}
+
+A residue value is a linear functional on compact smooth tests.
+Completing those tests in the squared sum of their residue values
+changes the Hilbert space. The change can be measured exactly for
+finitely many zeros, without any estimate on the global zero set.
+
+\section{Finite evaluation and its graph}
+
+\begin{lemma}[independence of exponential polynomials]
+\label{mo:exponential-polynomials}
+Let $\lambda_1,\ldots,\lambda_n$ be distinct complex numbers.
+If polynomials $p_j$ satisfy
+$\sum_j p_j(t)e^{\lambda_jt}=0$ on an interval, then all $p_j$ vanish.
+A nonzero sum of this form does not belong to $L^2(\mathbb R,dt)$.
+\end{lemma}
+\begin{proof}
+For independence, fix $j$ and apply
+$\prod_{k\ne j}(\partial_t-\lambda_k)^{d_k+1}$, where
+$d_k\geq\deg p_k$. All terms except the $j$th vanish. On its
+polynomial factor this operator is
+$\prod_{k\ne j}(\partial_t+\lambda_j-\lambda_k)^{d_k+1}$.
+Each factor is invertible on a space of polynomials of bounded
+degree: in the monomial basis it is triangular with nonzero
+constant diagonal. Therefore $p_j=0$.
+
+For the $L^2$ assertion, choose the largest real part $a$ among
+nonzero terms, and the largest polynomial degree $d$ among terms
+with that real part. On intervals $[T,T+L]$, divide the sum by
+$e^{aT}T^d$. As $T\to+\infty$, its leading part consists of a fixed
+finite family $e^{(a+ib_j)u}$, $0\leq u\leq L$, with coefficients
+of fixed nonzero magnitudes and phases $e^{ib_jT}$. The Gram
+matrix of this family on $[0,L]$ is positive definite by the first
+part. All lower-degree or lower-real-part terms tend to zero
+uniformly after division. Thus, for sufficiently large $T$,
+\[
+ \int_T^{T+L}\left|\sum_jp_j(t)e^{\lambda_jt}\right|^2dt
+ \geq C e^{2aT}T^{2d}
+\]
+for some $C>0$. If $a\geq0$, summing over disjoint such intervals
+proves divergence. If $a<0$, replace $t$ by $-t$; the largest
+real part then becomes positive. This proves the claim.
+\end{proof}
+
+\begin{theorem}[finite residue graph]
+\label{mo:finite-graph}
+For every real $c$ and every nonempty finite zero set $Z$, the map
+$\mathcal R_Z:\mathscr D\to\mathscr J_Z$ is onto. Its graph is
+dense in $\mathscr H_c\oplus\mathscr J_Z$, where $\mathscr J_Z$
+has its Euclidean norm. Hence it is unbounded and not closable
+as an operator from $\mathscr H_c$. Its kernel is dense in
+$\mathscr H_c$.
+\end{theorem}
+\begin{proof}
+Write $g=U_cf$. The Taylor functionals before the invertible
+transformation \eqref{mo:jet-formula} are
+\[
+ F^{(k)}(\rho)=\int_{\mathbb R}t^k
+                       e^{(\rho-c)t}g(t)\,dt.
+\]
+The kernels are linearly independent by
+Lemma~\ref{mo:exponential-polynomials}. No nonzero functional on the
+finite-dimensional target can annihilate the range. Thus the
+range is the whole target.
+
+Suppose $(u,b)\in L^2(\mathbb R)\oplus\mathscr J_Z$ is orthogonal
+to the graph in logarithmic coordinates. For every compact smooth
+$g$ this says
+\[
+ \int g(t)\overline{u(t)}\,dt+\int g(t)q_b(t)\,dt=0,
+\]
+where $q_b$ is a fixed linear combination of the exponential
+polynomials above. Thus $q_b=-\overline u$ as a distribution,
+so $q_b\in L^2$. The lemma forces $q_b=0$. Independence and the
+invertible jet transformation give $b=0$, and then $u=0$.
+A subspace with zero orthogonal complement is dense. The graph
+closure is therefore the entire product, which contains
+$\{0\}\oplus\mathscr J_Z$ and cannot be a graph.
+
+Choose test functions lifting a basis of $\mathscr J_Z$; their
+linear extension is a right inverse $G:\mathscr J_Z\to\mathscr D$.
+As a map into $\mathscr H_c$, $G$ is bounded because its domain is
+finite-dimensional. Graph density gives, for each $f\in\mathscr H_c$,
+$g_n\to f$ and $\mathcal R_Zg_n\to0$. Then
+$g_n-G\mathcal R_Zg_n$ lies in the kernel and converges to $f$.
+\end{proof}
+
+Define a positive semidefinite form on $\mathscr D$ by
+\[
+ q_Z(f,h)=\sum_{\rho\in Z}\sum_{k=0}^{r_\rho-1}
+ R_{\rho,k}\mathcal Mf\;
+ \overline{R_{\rho,k}\mathcal Mh}.
+\]
+Its nullspace is exactly $\ker\mathcal R_Z$. On the quotient
+$\mathscr D/\ker\mathcal R_Z$, this is an inner product.
+Surjectivity in Theorem~\ref{mo:finite-graph} identifies its completion
+isometrically with $\mathscr J_Z$. The nullspace has infinite
+dimension, since $\mathscr D$ has infinite dimension and the
+quotient has finite dimension. Thus this positive norm does not
+give an injective realization of the original function space.
+
+The form is not closable in $\mathscr H_c$. For a positive form,
+closability requires $q(f_n)\to0$ whenever $f_n\to0$ in the
+original Hilbert norm and $q(f_n-f_m)\to0$. Dense graph gives
+$f_n\to0$ with $\mathcal R_Zf_n$ tending to a fixed nonzero
+vector. This sequence violates the form criterion. The same
+argument applies to the countable form below whenever its stated
+summability hypothesis holds.
+
+\begin{theorem}[symmetry in the finite evaluation norm]
+\label{mo:finite-symmetry}
+The dilation operator descends to the quotient with form $q_Z$ and
+extends to the matrix $K_c$ of \eqref{mo:jet-generator}.
+It is symmetric for the Euclidean jet norm exactly when all zeros
+in $Z$ are simple and satisfy $\operatorname{Re}\rho=c$.
+If either condition fails, no positive definite inner product on
+the full jet target can make $K_c$ symmetric.
+\end{theorem}
+\begin{proof}
+The identity $\mathcal R_ZP_c=K_c\mathcal R_Z$ makes the kernel
+invariant and proves the induced action. In finite dimension the
+induced operator is everywhere defined, bounded, and closed.
+If every block has size one and real eigenvalue, its matrix is
+real diagonal and hence symmetric.
+
+Conversely, symmetry on a positive inner-product space forces
+an eigenvalue $z$ to be real, since
+$\langle Kv,v\rangle=z\|v\|^2$ must be real for an eigenvector.
+Thus $\operatorname{Re}\rho=c$. A nontrivial Jordan block then
+has vectors $u,v\ne0$ with $(K-z)u=v$ and $(K-z)v=0$.
+Symmetry would give
+$\|v\|^2=\langle(K-z)u,v\rangle=
+\langle u,(K-z)v\rangle=0$, a contradiction.
+\end{proof}
+
+For one double zero on the line, the matrix is
+\[
+ \begin{pmatrix}\gamma&-i\\0&\gamma\end{pmatrix}.
+\]
+Its two real eigenvalues do not remove its nilpotent part. A
+positive scalar-residue norm using only $R_{\rho,0}$ generally
+has a different defect: its kernel need not be invariant under
+$P_c$, because the omitted coordinate $R_{\rho,1}$ appears in
+its derivative. The full jets are required before asking for
+an induced dilation operator.
+
+\section{Countable simple zeros and weighted evaluations}
+
+Let $\rho_j=c+i\gamma_j$ be a countable set of distinct simple
+zeros, with no finite accumulation. Choose positive weights $w_j$.
+The raw residue norm would be
+\begin{equation}
+ q_w(f)=\sum_j w_j
+       \left|\frac{F(\rho_j)}{\Xi'(\rho_j)}\right|^2.
+ \label{mo:weighted-residue-norm}
+\end{equation}
+Put $\mu_j=w_j/|\Xi'(\rho_j)|^2$. Multiplication of the residue
+coordinates by $\Xi'(\rho_j)$ identifies the target norm with
+$\ell^2(\mu)$, whose norm is $\sum_j\mu_j|a_j|^2$.
+This conversion retains the residue normalization, including its
+complex phase.
+
+A sufficient summability condition is
+\begin{equation}
+ \sum_j\mu_j(1+\gamma_j^2)^{-b}<\infty
+ \quad\text{for some }b\geq0.
+ \label{mo:weight-condition}
+\end{equation}
+It is a hypothesis on the chosen weights and the actual divisor.
+It is not inferred for the raw choice $w_j=1$. Under
+\eqref{mo:weight-condition}, define
+\[
+ E:\mathscr D\longrightarrow\ell^2(\mu),\qquad
+ (Ef)_j=F(c+i\gamma_j),\qquad
+ (Ka)_j=\gamma_ja_j.
+\]
+The maximal domain of $K$ consists of sequences with
+$\sum_j\mu_j\gamma_j^2|a_j|^2<\infty$. Compact smooth tests have
+Schwartz Mellin transforms on the vertical line, by repeated
+integration by parts in $t$. Therefore $Ef\in\operatorname{Dom}K$
+and $EP_c=KE$ on $\mathscr D$.
+
+\begin{theorem}[the atomic completion and the original norm]
+\label{mo:countable-completion}
+Under \eqref{mo:weight-condition}, $E\mathscr D$ is dense in
+$\ell^2(\mu)$ and is a graph core for $K$.
+The completion of $\mathscr D/\ker E$ in the norm $\|Ef\|$
+is therefore $\ell^2(\mu)$. The induced dilation has self-adjoint
+closure $K$ on its stated maximal domain.
+
+As a map from the original space $\mathscr H_c$, $E$ has dense
+graph in $\mathscr H_c\oplus\ell^2(\mu)$. In particular it is
+not closable and has no closable extension agreeing on
+$\mathscr D$.
+\end{theorem}
+\begin{proof}
+Fix $j_0$ and use $f_L$ from \eqref{mo:continuous-sequence} with
+$\gamma_0=\gamma_{j_0}$. Put
+$\Psi(y)=\int\psi(t)e^{iyt}\,dt$. Then
+\[
+ (Ef_L)_j=\Psi\bigl(L(\gamma_j-\gamma_{j_0})\bigr).
+\]
+The central value is one and every other value tends to zero.
+For $L\geq1$, rapid decay of $\Psi$ gives a uniform bound
+$C_n(1+|\gamma_j-\gamma_{j_0}|)^{-n}$ for every $n$.
+Choosing $n$ sufficiently large in
+\eqref{mo:weight-condition} gives a summable majorant even after
+multiplication by $1+\gamma_j^2$. Dominated convergence proves
+\[
+ Ef_L\longrightarrow e_{j_0},\qquad
+ KEf_L\longrightarrow\gamma_{j_0}e_{j_0}
+ \quad\text{in }\ell^2(\mu),
+\]
+while $f_L\to0$ in $\mathscr H_c$.
+Finite-coordinate vectors form a graph core for the maximal
+real diagonal operator $K$, by truncation of the two convergent
+weighted sums. The approximations just constructed show that
+$E\mathscr D$ is also a graph core. The diagonal adjoint-domain
+calculation proves self-adjointness, as in
+Lemma~\ref{mo:mellin-unitary}.
+
+The graph closure of $E$ contains $(0,e_j)$ for every $j$, hence
+$\{0\}\oplus\ell^2(\mu)$. It also contains $(f,Ef)$ for every
+test $f$. Subtracting the vertical vectors and using density of
+$\mathscr D$ in $\mathscr H_c$ gives the whole product. This
+proves the last assertion.
+\end{proof}
+
+The hypotheses of this theorem can always be imposed on a selected
+countable critical-line simple divisor by changing the weights.
+For example, fix an enumeration and set
+\[
+ \mu_j=2^{-j}(1+\gamma_j^2)^{-j},\qquad
+ w_j=|\Xi'(\rho_j)|^2\mu_j.
+\]
+All polynomial moments of $\mu$ are finite: for a fixed degree,
+only finitely many initial terms need separate consideration.
+This produces a positive evaluation completion. The weights
+are chosen data; they are not the raw residue weights or a native
+arithmetic pairing.
+
+For $w_j=1$, the exact domain of \eqref{mo:weighted-residue-norm}
+is
+\[
+ \mathscr D_{\mathrm{raw}}=
+ \left\{f\in\mathscr D:
+ \sum_j|F(\rho_j)/\Xi'(\rho_j)|^2<\infty\right\}.
+\]
+No assertion that this equals $\mathscr D$, is dense in
+$\mathscr H_c$, or satisfies \eqref{mo:weight-condition} is made
+without bounds on the inverse derivatives. Even existence of an
+individual scalar residue does not imply convergence of this sum.
+If \eqref{mo:weight-condition} is established for the raw weights,
+Theorem~\ref{mo:countable-completion} applies and still gives
+nonclosability in the original norm. Without that estimate, a
+full vector-valued closure claim remains separate from the
+finite-coordinate obstruction.
+
+\begin{proposition}[bounded spectral transfer]
+\label{mo:bounded-transfer}
+A bounded map intertwining the unitary groups of $P_c$ on
+$\mathscr H_c$ and $K$ on $\ell^2(\mu)$ is zero, in either
+direction.
+\end{proposition}
+\begin{proof}
+In the direction from the atomic space, the image of $e_j$ would
+be an eigenvector of $P_c$ with eigenvalue $\gamma_j$.
+Under $\mathcal U_c$, group covariance for all rational times
+forces its support to lie in $\{\gamma_j\}$, a null set.
+Thus it is zero, and density of the finite-coordinate vectors
+finishes the argument. Taking the adjoint gives the opposite
+direction, since both groups are unitary.
+\end{proof}
+
+\begin{proposition}[occupation symmetry in a sampling norm]
+\label{mo:occupation-positive-obstruction}
+Let $\rho_j=c+i\gamma_j$ be a nonempty countable set of simple
+zeros, with positive weights $\mu_j$ and
+$\sum_j\mu_j<\infty$. The evaluation form
+\[
+ q(a,b)=\sum_j\mu_jF_a(\rho_j)\overline{F_b(\rho_j)}
+ \quad(a,b\in\mathscr E)
+\]
+is well-defined and positive semidefinite. The occupation operator
+$N$ is not symmetric for this form on its finite-support core.
+\end{proposition}
+\begin{proof}
+Every finite Dirichlet polynomial is bounded on a fixed vertical
+line. The summability assumption therefore defines the form.
+Put $\phi(t)=\sum_j\mu_je^{i\gamma_jt}$. Uniform convergence
+makes $\phi$ continuous, and $\phi(0)=\sum_j\mu_j>0$.
+The coordinate pairing is
+\[
+ q(v_m,v_n)=(mn)^{-c}\phi(\log(n/m)).
+\]
+Symmetry would require
+$(\log m-\log n)q(v_m,v_n)=0$ for all $m,n$.
+Taking $n=m+1$ would give
+$\phi(\log(1+1/m))=0$. Continuity at zero contradicts
+$\phi(0)>0$.
+\end{proof}
+
+Thus even a positive critical-line evaluation completion cannot
+make occupation energy symmetric on this core. The same norm
+does make the induced continuous dilation self-adjoint under
+Theorem~\ref{mo:countable-completion}. These statements concern different
+source operators, with the exact actions in \eqref{mo:two-actions}.
+
+\input{countable-jets}
+
+\section{Stronger source norms and boundary values}
+
+Evaluation can be continuous after the source topology changes.
+On finite occupation sequences define, for real $a$,
+\[
+ \|u\|_a^2=\sum_{m\geq1}(1+(\log m)^2)^a|u_m|^2,
+\]
+and let $\mathscr H_{\mathrm{occ},a}$ be the corresponding weighted
+$\ell^2$ space. Fix $\rho=1/2+i\gamma$ and an integer $k\geq0$.
+
+\begin{proposition}[the exact logarithmic weight threshold]
+\label{mo:weight-threshold}
+The functional
+$u\mapsto F_u^{(k)}(\rho)=\sum_m u_m(-\log m)^k m^{-\rho}$
+on finite sequences is bounded for $\|\cdot\|_a$ exactly when
+$a>k+1/2$. If $\operatorname{Re}\rho>1/2$, it is bounded for
+every real $a$. If $\operatorname{Re}\rho<1/2$, no real $a$
+makes it bounded.
+\end{proposition}
+\begin{proof}
+The squared dual norm of a finite-coordinate functional increases
+under truncation to
+\[
+ \sum_m\frac{(\log m)^{2k}m^{-2\operatorname{Re}\rho}}
+                    {(1+(\log m)^2)^a}.
+\]
+Cauchy--Schwarz proves sufficiency. Truncated coefficient vectors
+proportional to the weighted conjugate kernel attain the finite
+dual norms, proving necessity. At real part $1/2$, integral
+comparison with $t=\log x$ gives the tail integral
+$\int^\infty t^{2k-2a}\,dt$. It is finite exactly when
+$a>k+1/2$. To the right, exponential decay in $t$ dominates every
+power. To the left, exponential growth defeats every such power.
+\end{proof}
+
+At a zero of order $r$, the scalar residue functional on finite
+occupation sequences has highest derivative order $r-1$, with
+nonzero coefficient. On the critical line its exact threshold
+is therefore $a>r-1/2$. The same condition controls all full jet
+coordinates. Lower derivative terms cannot cancel the nonzero
+leading polynomial in $\log m$.
+
+These extensions are boundary-value functionals of the Dirichlet
+series from Proposition~\ref{mo:dirichlet-domain}. Their defining sums converge
+absolutely under the stated weight condition. They do not supply
+holomorphic continuation across the boundary. Calling them actual
+meromorphic residues for an infinite sequence additionally requires
+such continuation. Nor do stronger norms repair
+Proposition~\ref{mo:occupation-defect}, which already fails on finite sequences.
+
+The occupation operator remains self-adjoint in
+$\mathscr H_{\mathrm{occ},a}$ on its maximal weighted domain,
+because both the norm and the operator are diagonal in $v_m$.
+For continuous tests, a different change is needed to bound point
+evaluation: put $\|g\|_{a,t}^2=\int(1+t^2)^a|g(t)|^2dt$.
+The same dual-integral argument bounds the $k$th Fourier evaluation
+exactly when $a>k+1/2$. This norm is not translation-invariant.
+For $w(t)=(1+t^2)^a$ and compact smooth $g,h$,
+\[
+ \langle i g',h\rangle_w-\langle g,i h'\rangle_w
+ =-i\int w'(t)g(t)\overline{h(t)}\,dt.
+\]
+Thus the same dilation generator need not remain symmetric in
+this stronger continuous norm. A topology that controls residues
+must be checked against the required operator and pairing.

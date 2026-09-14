@@ -1,0 +1,294 @@
+\chapter{The Arithmetic Curve and the Heisenberg Cover}
+\label{v4-arith:construction}
+
+\section{The Arithmetic Curve}
+\label{v4-arith:construction:curve}
+
+Write \(\overline{C}:=\overline{\mathrm{Spec}\,\mathbb{Z}}\) for the
+Arakelov compactification: closed points are primes \(p\in\mathbb{P}\)
+plus the archimedean place \(\infty\). At \(p\) the completed local ring
+is \(\mathbb{Z}_{p}\), with uniformizer \(p\), residue field
+\(\mathbb{F}_{p}\), and Frobenius
+\(\mathrm{Frob}_{p}\colon\bar{\mathbb{F}}_{p}\to\bar{\mathbb{F}}_{p}\),
+\(x\mapsto x^{p}\). At \(\infty\) the completion is \(\mathbb{R}\) with
+complex conjugation on \(\mathbb{C}\). The generic stalk is
+\(\mathbb{Q}\).
+
+A function-field curve \(C/\mathbb{C}\) carries a single local coordinate
+\(z\) valued in \(\mathbb{C}\); on \(\overline{C}\) the local coordinate is
+\emph{adelic}: a vector \((x_{\infty};x_{2},x_{3},x_{5},\ldots)\in
+\mathbb{A}_{\mathbb{Q}}\). Every arithmetic chiral-algebra proposal must
+account for this adelic local coordinate.
+
+\section{\texorpdfstring{\(\Lambda\)}{Lambda}-Ring Input}
+\label{v4-arith:construction:lambda-ring}
+
+\begin{definition}[after Grothendieck, Borger]
+\label{v4-arith:def:lambda-ring}
+A \emph{\(\Lambda\)-ring} is a commutative ring \(R\) equipped with
+ring endomorphisms \(\psi_{n}\colon R\to R\), \(n\in\mathbb{N}^{\times}\),
+such that \(\psi_{1}=\mathrm{id}\), \(\psi_{m}\psi_{n}=\psi_{mn}\), and
+\(\psi_{p}(x)\equiv x^{p}\pmod{p}\) for every prime \(p\).
+\end{definition}
+
+\begin{theorem}[Borger, arXiv:0801.1691; arXiv:0906.3146]
+\label{v4-arith:thm:lambda-ring-descent}
+\ClaimStatusProvedElsewhere.
+The category of \(\Lambda\)-rings is the category of commutative rings
+over \(\mathbb{F}_{1}\) in Borger's model: a \(\Lambda\)-structure on
+\(R\) is a descent datum from \(R\) to \(R\otimes_{\mathbb{F}_{1}}\mathbb{Z}\).
+The operations \(\psi_{p}\) are the ``lifts of Frobenius at \(p\)''
+that the ordinary ring \(R\) lacks.
+\end{theorem}
+
+\begin{remark}
+The universal \(\Lambda\)-ring on one generator is the ring
+\(\Lambda=\mathbb{Z}[h_{1},h_{2},\ldots]\) of symmetric functions. On
+Newton power sums the Adams operation acts by
+\(\psi_{n}(p_{m})=p_{mn}\) (Macdonald, \emph{Symmetric Functions and
+Hall Polynomials}, Ch.~I~\S8).
+\end{remark}
+
+\begin{remark}
+The big Witt vector functor \(W\colon\mathrm{CRing}\to\mathrm{Ring}_{\Lambda}\)
+is right adjoint to the forgetful functor. \(W(R)\) is the cofree
+\(\Lambda\)-ring on \(R\). The ghost map
+\(W(R)\hookrightarrow R^{\mathbb{N}^{\times}}\) realizes the
+\(\Lambda\)-structure as a tuple of commuting Frobenius lifts.
+\end{remark}
+
+On \(\mathrm{Spec}\,\mathbb{Z}\), local translations are replaced by a
+monoid \(\mathbb{N}^{\times}\) of commuting Adams operations \(\{\psi_p\}_{p\in\mathbb{P}}\),
+one per prime. Accordingly, any chiral-algebra structure over \(\overline{C}\)
+carries a \(\mathbb{N}^{\times}\)-action by Adams operations.
+
+\section{The Finite Heisenberg Cover}
+\label{v4-arith:construction:primon-va}
+
+\begin{definition}[finite Heisenberg cover]
+\label{v4-arith:def:primon-va-naive}
+For each prime \(p\), let \(\mathcal{H}^{(p)}\) be the rank-\(2\)
+Heisenberg vertex algebra with generators \(a^{(p)},b^{(p)}\) and OPE
+\begin{align}
+a^{(p)}(z)\,a^{(p)}(w)\;&\sim\;\frac{1}{(z-w)^{2}}, \\
+b^{(p)}(z)\,b^{(p)}(w)\;&\sim\;\frac{1}{(z-w)^{2}}, \\
+a^{(p)}(z)\,b^{(q)}(w)\;&\sim\;0\quad\forall p,q.
+\end{align}
+Endow \(\mathcal{H}^{(p)}\) with the rescaled conformal vector
+\begin{equation}
+\omega_{p}\;:=\;\tfrac{1}{2}(\log p)\bigl(a^{(p)}_{-1}a^{(p)}_{-1}
++b^{(p)}_{-1}b^{(p)}_{-1}\bigr)|0\rangle_{p},
+\end{equation}
+so that \(L_{0}^{(p)}\) has eigenvalues in
+\((\log p)\cdot\mathbb{Z}_{\geq 0}\) on the Fock vacuum module. The
+finite Heisenberg cover is
+\begin{equation}
+\mathcal{H}^{\mathrm{cov}}_{\mathbb P}\;:=\;\bigotimes_{p\in\mathbb{P}}^{!}\mathcal{H}^{(p)},
+\quad\omega\;:=\;\sum_{p}\omega_{p},
+\end{equation}
+the restricted tensor product pinned by the vacuum
+\(\bigotimes_{p}|0\rangle_{p}\). It is a cover of the arithmetic
+trace class, not the trace class itself.
+\end{definition}
+
+\begin{proposition}[finite-cover Euler factor]
+\label{v4-arith:prop:character-match-naive}
+\ClaimStatusConjectured. Let \(N_{p}:=a^{(p)}_{0}-b^{(p)}_{0}\) be
+the \(U(1)^{(p)}\)-charge current zero-mode. Then
+\begin{equation}
+\chi_{\mathcal{H}^{\mathrm{cov}}_{\mathbb P}}(s;\{\theta_{p}\})
+\;:=\;\mathrm{Tr}\Bigl(e^{-sL_{0}}\prod_{p}e^{i\theta_{p}N_{p}}\Bigr)
+\;=\;\prod_{p\in\mathbb{P}}\frac{1}{1-2\cos\theta_{p}\,p^{-s}
++p^{-2s}},
+\end{equation}
+which matches the Hartnoll--Yang primon partition function
+(arXiv:2502.02661, eqs.~14--15) with identification
+\(c_{p}^{k}=2\cos\theta_{p}^{k}\) and level index \(k\) absorbed into
+the vacuum sector.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+On the rank-\(2\) Fock, \(e^{-sL_{0}^{(p)}}e^{i\theta_{p}N_{p}}\) gives
+\([(1-e^{-s\log p+i\theta_{p}})(1-e^{-s\log p-i\theta_{p}})]^{-1}
+=[1-2\cos\theta_{p}p^{-s}+p^{-2s}]^{-1}\). Tensor over primes.
+\end{proof}
+
+\section{The Adams Obstruction to \(GL_{2}\)-Hecke}
+\label{v4-arith:construction:hecke-adams-naive}
+
+\begin{proposition}[Adams operators do not realize the \(GL_{2}\) Hecke algebra]
+\label{v4-arith:claim:hecke-adams-naive}
+The formula
+\begin{equation}
+T_{n}\bigl(a^{(p)}_{-k}\bigr)\;:=\;\sum_{d\mid n}\,d\cdot a^{(p)}_{-nk/d}
+\cdot\mathbf{1}_{d\mid k},
+\end{equation}
+with the analogous formula for \(b^{(p)}\), is an Adams operation on
+the finite Heisenberg cover. It is not a representation of the
+unramified \(GL_{2}\)-Hecke algebra. In particular, it does not satisfy
+\begin{equation}
+T_{p^{k+1}}\;=\;T_{p}\,T_{p^{k}}-p\,T_{p^{k-1}}
+\end{equation}
+on the generator \(a^{(p)}_{-1}|0\rangle\).
+\end{proposition}
+
+\begin{proof}
+The displayed formula has \(T_{p}(a^{(p)}_{-1}|0\rangle)=0\) and
+\(T_{p^{2}}(a^{(p)}_{-1}|0\rangle)=0\), since \(p\nmid 1\) and
+\(p^{2}\nmid 1\). The \(GL_{2}\) relation would give
+\[
+T_{p^{2}}(a^{(p)}_{-1}|0\rangle)
+=T_{p}^{2}(a^{(p)}_{-1}|0\rangle)
+-p\,a^{(p)}_{-1}|0\rangle
+=-p\,a^{(p)}_{-1}|0\rangle .
+\]
+The two values disagree. The \(GL_{2}\) Hecke action therefore enters
+through the Satake pair \((\alpha_{p},\beta_{p})\) with
+\(\alpha_{p}\beta_{p}=p\), not through the Adams monoid alone.
+\end{proof}
+
+\section{The Plancherel Averaging Map}
+\label{v4-arith:construction:averaging-naive}
+
+\begin{definition}[Plancherel averaging]
+\label{v4-arith:def:averaging-naive}
+Write \(\mathcal{V}^{E_1,\mathrm{arith}}\) and
+\(\mathcal{V}^{\mathrm{Hecke}}\) for the \(E_1\)-chiral algebra on
+\(\overline{C}\) and its Hecke quotient, both constructed in
+Chapter~\ref{v4-arith:costello-gwilliam}. Define
+\(\mathrm{av}^{\mathrm{arith}}\colon\mathcal{V}^{E_{1},\mathrm{arith}}
+\to\mathcal{V}^{\mathrm{Hecke}}\) by integration against the
+Kesten--McKay measure: on input an ordered product
+\(a^{(p_{1})}_{-k_{1}}\cdots a^{(p_{N})}_{-k_{N}}|0\rangle\),
+\begin{equation}
+\mathrm{av}^{\mathrm{arith}}(\cdot)
+\;:=\;\int_{\prod_{i}[0,\pi]}\prod_{i}\nu_{p_{i}}(\theta_{p_{i}})
+e^{i\sum_{i}\theta_{p_{i}}N_{p_{i}}}\bigl(\text{input}\bigr)\,
+d\theta_{p_{1}}\cdots d\theta_{p_{N}},
+\end{equation}
+where
+\(\nu_{p}(\theta)=(2/\pi)\cdot p(1+p)\sin^{2}\theta/(1+p^{2}-2p\cos 2\theta)\)
+is the Kesten--McKay measure.
+\end{definition}
+
+\begin{warning}[Reframed in Chapter~\ref{v4-arith:connes-soibelman}]
+\label{v4-arith:warning:averaging-is-plancherel}
+The map \(\mathrm{av}^{\mathrm{arith}}\) is the \emph{Plancherel measure}
+of unramified \(GL_{2}(\mathbb{Q}_{p})\): a spectral decomposition
+whose content is the local Plancherel formula for \(GL_{2}\).
+The bar--cobar averaging map of Vol~I is an operadic map from ordered
+to symmetric chiral cohomology; the two operations are distinct.
+\end{warning}
+
+\section{The Depth Analogy}
+\label{v4-arith:construction:archetypes-heuristic}
+
+\ClaimStatusHeuristic. The following four rows name possible
+arithmetic shadows of the Vol~I depth filtration. They do not classify
+\(\Lambda\)-rings.
+\begin{itemize}
+\item \textbf{Depth \(2\):} trivial \(\psi_{n}\) beyond \(\psi_{1}\);
+\emph{archetype G analogue} (primon Heisenberg only);
+\item \textbf{Depth \(3\):} finitely generated image in
+\(\prod_{p}\mathbb{Z}\); \emph{archetype L analogue} (arithmetic
+Kac--Moody / Iwasawa-type \(\Lambda\)-module);
+\item \textbf{Depth \(4\):} higher-derived \(\Lambda\)-structure
+engaging Witt filtration; \emph{archetype C analogue}
+(arithmetic \(\beta\gamma\));
+\item \textbf{Depth \(\infty\):} full Connes--Consani arithmetic site;
+\emph{archetype M analogue} (arithmetic Virasoro).
+\end{itemize}
+
+\begin{remark}
+The depth numerology \(\{2,3,4,\infty\}\) on the Vol~I side is forced
+by explicit shadow-tower computation (Vol~I, shadow-tower chapter). On
+the arithmetic side the corresponding derivation via a
+\(\Lambda\)-ring analogue of Mok's shadow-tower rigidity remains open; the classification
+above is a heuristic pattern match.
+\end{remark}
+
+\section{Boundary Conditions for the Five Arithmetic Analogues}
+\label{v4-arith:construction:theorems-naive}
+
+\begin{conjecture}[\(A^{\mathrm{arith}}\)]
+\label{v4-arith:conj:A-naive}
+There is an adjunction
+\(\Omega^{\mathrm{ch,arith}}\dashv B^{\mathrm{ch,arith}}\) between
+the \(\infty\)-category of \(\Lambda\)-ring-enhanced \(E_{1}\)-algebras
+on \(\overline{C}\) and the \(\infty\)-category of conilpotent
+\(\Lambda\)-coalgebras. On \(\mathcal{V}^{\mathrm{prim}}\) this
+adjunction is an equivalence on the subcategory of \(\Lambda\)-ring
+objects with prime-adic convergence at every finite place.
+\end{conjecture}
+
+\begin{conjecture}[\(B^{\mathrm{arith}}\)]
+\label{v4-arith:conj:B-naive}
+On \(\Lambda\)-coalgebras satisfying conilpotence at every prime
+(\(\mu\)-invariant \(=0\) in Iwasawa-theoretic sense),
+\(\Omega^{\mathrm{ch,arith}}B^{\mathrm{ch,arith}}(C)\xrightarrow{\sim}C\)
+in the derived category of coalgebras.
+\end{conjecture}
+
+\begin{conjecture}[\(C^{\mathrm{arith}}\)]
+\label{v4-arith:conj:C-naive}
+Define the arithmetic \(\kappa\) of a \(\Lambda\)-chiral algebra as
+its Arakelov first Chern class (sum of finite-place \(p\)-adic
+orders plus archimedean logarithmic defect). On the Koszul
+self-dual arithmetic subcategory,
+\(\kappa+\kappa^{!}\in\{0,\log 2,\log 3,\ldots\}\cup\{0,1,2,\ldots\}\)
+with the precise ceiling unknown.
+\end{conjecture}
+
+\begin{warning}[Sharpened in Chapter~\ref{v4-arith:closure}]
+The correct arithmetic \(\mathsf{G}\)-row ceiling is \(0\), and its
+content is the Riemann functional equation
+\(\xi(s)=\xi(1-s)\).
+\end{warning}
+
+\begin{conjecture}[\(D^{\mathrm{arith}}\)]
+\label{v4-arith:conj:D-naive}
+The genus-\(g\) obstruction for the arithmetic Maurer--Cartan element
+\(\Theta_{A}^{\mathrm{arith}}\) equals \(\kappa\cdot h_{g}^{\mathrm{Ar}}\)
+where \(h_{g}^{\mathrm{Ar}}\) is the Arakelov height of the level-\(g\)
+component of \(\overline{M}_{g,n}\).
+\end{conjecture}
+
+\begin{conjecture}[\(H^{\mathrm{arith}}\)]
+\label{v4-arith:conj:H-naive}
+\(\mathrm{HH}^{\bullet}(\mathcal{V}^{\mathrm{prim}})\) is concentrated
+in degrees \(\{0,1,2\}\):
+\begin{align}
+\mathrm{HH}^{0}&\;=\;\mathbb{Z}\quad(\Lambda\text{-ring augmentation}), \\
+\mathrm{HH}^{1}&\;=\;\bigoplus_{p}\log p\cdot\mathbb{Z}\quad(\text{Bost--Connes KMS generators}), \\
+\mathrm{HH}^{2}&\;=\;\text{a }\Lambda\text{-torsor related to Witt cotangent}.
+\end{align}
+\end{conjecture}
+
+\section{Boundary Conditions}
+\label{v4-arith:construction:open-technical}
+
+Four boundary conditions govern the construction above.
+
+\begin{enumerate}
+\item \textbf{\(p\)-adic locality.} The OPE locality axiom \([a(z),b(w)]=0\)
+off-diagonal requires an interpretation of the formal variable \(z-w\)
+at finite places of \(\overline{C}\): see
+Chapter~\ref{v4-arith:drinfeld-kapranov}.
+\item \textbf{Adelic factorization.} Beilinson--Drinfeld
+factorization on a curve employs \(C^{n}/\mathfrak{S}_{n}\). On
+\(\overline{C}\) the two candidate analogues are
+\(W_{n}(\mathbb{Z})/\mathfrak{S}_{n}\) and
+\(\mathrm{Spec}(\Lambda^{\otimes n})^{\mathfrak{S}_{n}}\); their
+comparison is settled in
+Chapter~\ref{v4-arith:costello-gwilliam}.
+\item \textbf{Real place.} The archimedean place carries an
+\(\mathrm{SL}(2,\mathbb{R})\) conformal quantum mechanics
+(Hartnoll--Yang); the non-archimedean places carry
+\(\mathrm{SL}(2,\mathbb{Q}_{p})\). The adelic
+\(\mathrm{SL}(2)\)-automorphic picture gluing these is developed in
+Chapter~\ref{v4-arith:modular-functor}.
+\item \textbf{Four-archetype derivation.} The shadow-tower depth
+numerology on the arithmetic side would require a \(\Lambda\)-ring
+analogue of Mok's shadow-tower rigidity. No such rigidity theorem is
+used below.
+\end{enumerate}

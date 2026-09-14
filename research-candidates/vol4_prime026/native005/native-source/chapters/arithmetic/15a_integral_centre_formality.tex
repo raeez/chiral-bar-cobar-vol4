@@ -1,0 +1,916 @@
+\section{A relative derived centre and its nonpositive part}
+\label{v4-arith:ks:relative-centre}
+
+A strict associative differential graded algebra can retain higher
+multiplications on its cohomology. Take $\mathbb Z[t]\langle\tau\rangle$, with central $t$ and
+\[
+ |t|=0,\qquad |\tau|=-1,\qquad d\tau=t^2.
+\]
+The relation $[t]^2=0$ has primitive $\tau$, whose square
+$u=\tau^2$ is a nonzero class of degree $-2$.
+The fourth operation will record this square.
+The same calculation occurs inside a relative derived centre, where
+an additional class of degree two changes the multiplication relation.
+
+Fix a commutative unital ring $S$ and an integer $r\geq1$.
+All differentials have cohomological degree one.
+Algebras are unital and associative, with a central closed $S$-action.
+Tensor products and polynomial sums are algebraic.
+A homogeneous tensor of maps acts by
+\[
+ (f\otimes g)(x\otimes y)=(-1)^{|g||x|}f(x)\otimes g(y).
+\]
+An odd generator need not have square zero in this category.
+Formality over $S$ means a finite zigzag of unital $S$-linear
+DGA quasi-isomorphisms to cohomology with zero differential.
+No additional generator is fixed by this definition.
+
+Put $R=S[t]$ and
+\[
+ E_r=R\langle\tau\rangle,\qquad d\tau=t^r.
+\]
+The variable $t$ commutes with $\tau$.
+Over the characteristic-zero geometric base, this is the algebra in
+Booth, \emph{The derived contraction algebra}, Lemma~4.3.8, p.~22,
+with $(\xi,\zeta,n)=(t,\tau,r)$.
+The following calculation uses only its displayed algebraic presentation.
+
+The relative derived centre is
+\[
+ Z_R(E_r)=\operatorname{RHom}_{E_r\otimes_R E_r^{\mathrm{op}}}
+ (E_r,E_r),
+\]
+with its derived composition product.
+The opposite algebra uses the Koszul sign convention.
+The word ``relative'' fixes $R=S[t]$ in the bimodule tensor product.
+In particular, this construction differs from $Z_S(E_r)$.
+
+\begin{proposition}[a multiplicative model for the relative centre]
+\label{v4-arith:ks:centre-model}
+\ClaimStatusProvedHere{}
+The relative centre has the associative DGA model
+\[
+ C_{S,r}=S[t]\langle\tau\rangle[z]/(z^2),\qquad
+ |z|=2,\qquad
+ D\tau=t^r-2\tau^2z,\quad Dt=Dz=0,
+\]
+where $z$ commutes with $t,\tau$.
+There is a multiplicative quasi-isomorphism from this algebra to the
+endomorphism DGA of a free bimodule resolution of $E_r$.
+\end{proposition}
+
+\begin{proof}
+Let $P$ be the free graded $E_r$-bimodule on generators
+$e_0,e_1$ of degrees $0,-2$, with
+\[
+ d_Pe_0=0,\qquad d_Pe_1=\tau e_0-e_0\tau.
+\]
+The Leibniz rule defines the differential on all of $P$.
+Its square on $e_1$ is $t^re_0-e_0t^r=0$.
+Define $\epsilon:P\to E_r$ by
+$\epsilon(e_0)=1$ and $\epsilon(e_1)=0$.
+
+The tensor-algebra sequence
+\[
+ 0\longrightarrow E_r\otimes_R R\tau\otimes_R E_r
+ \longrightarrow E_r\otimes_R E_r
+ \xrightarrow{\mathrm{mult}} E_r\longrightarrow0
+\]
+is exact as a sequence of graded modules.
+The first map sends $a\otimes\tau\otimes b$ to
+$a\tau\otimes b-a\otimes\tau b$.
+At each total word length, its matrix is the difference map between
+successive cuts of one word.
+Its image consists exactly of combinations whose coefficients sum to zero,
+and its kernel vanishes by inspecting the first cut, then each successive cut.
+The universal differential of $d\tau=t^r$ relative to $R$ is zero.
+Thus this sequence is a sequence of complexes.
+Its two-term totalization, with the usual shift signs, is $P$.
+Exactness proves that $\epsilon$ is a quasi-isomorphism.
+The filtration generated first by $e_0$ and then by $e_1$ makes $P$
+a semifree bimodule, so it computes the displayed derived Hom.
+
+There is a counital coassociative diagonal
+$\Delta:P\to P\otimes_{E_r}P$ given by
+\[
+ \Delta(e_0)=e_0\otimes e_0,\qquad
+ \Delta(e_1)=e_1\otimes e_0+e_0\otimes e_1.
+\]
+The two middle terms in $d\Delta(e_1)$ cancel in the balanced tensor product.
+This proves that $\Delta$ commutes with the differential.
+Coassociativity and the counit identities follow on these two generators.
+
+A homogeneous bimodule map of degree $k$ satisfies
+$f(apb)=(-1)^{k|a|}af(p)b$.
+Identify $\operatorname{Hom}_{E_r^e}(P,E_r)$ with $E_r\oplus E_rz$
+by the values on $e_0,e_1$.
+Convolution through $\Delta$ gives
+\[
+ (a+bz)(a'+b'z)=aa'+(ba'+ab')z.
+\]
+The differential on the value $a$ has additional $e_1$-component
+\[
+ -\tau a+(-1)^{|a|}a\tau.
+\]
+For $a=\tau$, this is $-2\tau^2$.
+These are exactly the multiplication and differential of $C_{S,r}$.
+In particular $D(\tau^2)=0$, so $D^2=0$.
+
+For a convolution cochain $f$, the map
+\[
+ \rho(f)=(1\otimes f)\Delta:P\longrightarrow P
+\]
+uses the right action to identify $P\otimes_{E_r}E_r$ with $P$.
+Coassociativity gives $\rho(fg)=\rho(f)\rho(g)$, with the tensor signs above.
+The counit gives $\epsilon\rho(f)=f$.
+Since $P$ is semifree, composition with $\epsilon$ is a
+quasi-isomorphism from $\operatorname{End}_{E_r^e}(P)$ to
+$\operatorname{Hom}_{E_r^e}(P,E_r)$ as complexes.
+Its section $\rho$ is therefore the claimed DGA quasi-isomorphism.
+\end{proof}
+
+To separate the coefficient in the differential from the base ring,
+let $c\in S$ and define
+\begin{equation}\label{v4-arith:ks:coefficient-family}
+ \begin{gathered}
+ B=S[u,v]/(v^2),\quad T=B[t],\quad f=t^r-cv,\\
+ A(S,c,r)=T\oplus\tau T,\qquad
+ |u|=-2,\quad |v|=|t|=0,\quad |\tau|=-1,\\
+ \tau^2=u,\qquad d(a+\tau b)=fb.
+ \end{gathered}
+\end{equation}
+Here $\tau$ commutes with $T$.
+The equality $d(\tau^2-u)=f\tau-\tau f=0$ verifies the defining relation.
+This family allows arbitrary $c$.
+The centre in Proposition~\ref{v4-arith:ks:centre-model} has the specific coefficient $c=2$.
+
+\begin{proposition}[the truncation map and its quotient]
+\label{v4-arith:ks:centre-truncation}
+\ClaimStatusProvedHere{}
+There is an injective DGA map
+\[
+ j:A(S,2,r)\longrightarrow C_{S,r},\qquad
+ j(t)=t,\quad j(\tau)=\tau,\quad j(u)=\tau^2,\quad j(v)=\tau^2z.
+\]
+Its image is the nonpositive truncation $\tau_{\leq0}C_{S,r}$.
+It induces an isomorphism on cohomology in every nonpositive degree.
+The quotient complex has its only cohomology in degree two, where it is
+$S[t]/(t^r)\,z$.
+\end{proposition}
+
+\begin{proof}
+Write $u=\tau^2$ inside $C_{S,r}$.
+Its even and odd parts are
+\[
+ S[u,z,t]/(z^2)\quad\hbox{and}\quad
+ \tau S[u,z,t]/(z^2).
+\]
+The monomials $u^at^i$ and $u^azt^i$ are $S$-linearly independent.
+Sending $u^avt^i$ to $u^{a+1}zt^i$ proves injectivity of $j$,
+also on the odd summand.
+The map respects the differential because $t^r-2v$ maps to $D\tau$.
+All degree-zero elements of $C_{S,r}$ are closed.
+Its only positive terms are $S[t]\tau z$ in degree one and $S[t]z$ in degree two.
+The quotient of $j$ is therefore the complex
+\[
+ S[t]\tau z\xrightarrow{\ t^r\ }S[t]z
+\]
+in degrees one and two.
+Multiplication by $t^r$ is injective, which proves the assertions.
+\end{proof}
+
+\begin{remark}[the missing positive generator]
+For $S\ne0$, the map $j$ is not a quasi-isomorphism.
+It has no graded algebra retraction: every such retraction sends $z$ to zero,
+but a retraction would also send $uz$ to the nonzero element $v$.
+The multiplicative quasi-isomorphism of Proposition~\ref{v4-arith:ks:centre-model}
+identifies the full $C_{S,r}$ with the relative centre.
+The map $j$ identifies $A(S,2,r)$ with its nonpositive truncation.
+\end{remark}
+
+\section{The fourth operation over a coefficient ring}
+\label{v4-arith:ks:fourth-operation}
+
+The relation $t^r=cv$ has a chosen primitive $\tau$.
+Products of two such primitives produce $u$.
+To decide whether changing the primitives can remove this effect,
+we first compute the transferred operation and then its cohomology class.
+
+Multiplication by the monic polynomial $f=t^r-cv$ on $T$ is injective.
+A nonzero polynomial times $f$ retains its nonzero leading coefficient,
+including when $S$ has zero divisors.
+It follows that
+\begin{equation}\label{v4-arith:ks:family-cohomology}
+ H=H^*(A(S,c,r))=S[u,v,t]/(v^2,t^r-cv),\qquad H^{\mathrm{odd}}=0.
+\end{equation}
+Division by the monic polynomial supplies the $S$-basis
+\[
+ u^av^jt^i,\qquad a\geq0,\quad j\in\{0,1\},\quad 0\leq i<r.
+\]
+Each $H^{-2a}$ is free of rank $2r$.
+
+Let $i:H\to T$ choose the representative of $t$-degree less than $r$.
+Let $p:A\to H$ take the even component modulo $f$ and kill the odd component.
+Set
+\[
+ h(x)=\tau\frac{x-ip(x)}f\quad(x\in T),\qquad h(\tau T)=0.
+\]
+Existence and uniqueness of monic division give
+\[
+ dh+hd=1-ip,\qquad pi=1,\qquad h^2=hi=ph=0.
+\]
+Define the $B$-bilinear degree-zero map $F:H^{\otimes_S2}\to H$ by
+\[
+ i(x)i(y)-i(xy)=f\,iF(x,y).
+\]
+On the normal basis it is
+\[
+ F(t^i,t^j)=
+ \begin{cases}
+ t^{i+j-r},&i+j\geq r,\\
+ 0,&i+j<r.
+ \end{cases}
+\]
+For the first case, use
+$t^{i+j}=f t^{i+j-r}+cv t^{i+j-r}$.
+Both quotients have degree less than $r$.
+
+We use $A_\infty$ operations of degree $|m_n|=2-n$
+and morphism components of degree $|f_n|=1-n$.
+Explicitly, the operation identities have signs
+\[
+ \sum_{a+b+q=n}(-1)^{a+bq}
+ m_{a+1+q}(1^{\otimes a}\otimes m_b\otimes1^{\otimes q})=0.
+\]
+The indices satisfy $a,q\geq0$ and $b\geq1$.
+In a morphism identity, the term
+$m_k(f_{i_1}\otimes\cdots\otimes f_{i_k})$
+has sign $(-1)^{\sum_{j=1}^k(k-j)(i_j-1)}$.
+Tensor evaluation also uses the Koszul rule fixed above.
+A minimal structure has $m_1=0$.
+
+\begin{lemma}[transfer and the first obstruction]
+\label{v4-arith:ks:transfer-four}
+\ClaimStatusProvedHere{}
+The contraction gives a minimal structure on $H$ and a morphism to $A$
+whose first components are
+\[
+ f_1=i,\qquad f_2=-\tau iF,\qquad f_3=m_3=0,
+\]
+\begin{equation}\label{v4-arith:ks:m-four}
+ m_4(x,y,z,w)=-uF(x,y)F(z,w),\qquad
+ f_4(x,y,z,w)=\tau u\,iF(F(x,y),F(z,w)).
+\end{equation}
+The operation $m_4$ is a Hochschild cocycle of bidegree $(4,-2)$.
+\end{lemma}
+
+\begin{proof}
+For completeness, the transfer can be constructed over $S$ without a field hypothesis.
+Set
+\[
+ U_n=\sum_{a+b=n}(-1)^{a-1}\mu(f_a\otimes f_b),\qquad
+ m_n=pU_n,\qquad f_n=-hU_n\quad(n\geq2),
+\]
+where $a,b\geq1$ and $\mu$ is multiplication in $A$.
+Each formula uses only smaller components.
+
+Here is the compatibility argument.
+Suspend by $|sx|=|x|-1$, and use the tensor coalgebra
+$T^c(sH)=\bigoplus_{n\geq1}(sH)^{\otimes_S n}$ with deconcatenation.
+Write $I,P,K$ for the suspended maps $i,p,h$.
+Write $D_1$ for the suspended differential of $A$ and $\Lambda$
+for its binary multiplication coderivation, with the signs just specified.
+Thus $D_1^2=\Lambda^2=D_1\Lambda+\Lambda D_1=0$.
+The recursion becomes
+\[
+ Q_n=\sum_{a+b=n}\Lambda_2(\Phi_a\otimes\Phi_b),\quad
+ \Phi_1=I,\quad \Phi_n=-KQ_n,\quad \beta_1=0,\quad\beta_n=PQ_n.
+\]
+Extend $\Phi$ by consecutive partitions and $\beta$ by insertion.
+These give a coalgebra map and a coderivation respectively.
+
+Let $E=(D_1+\Lambda)\Phi-\Phi\beta$.
+If $E$ vanishes below length $n$, the coproduct identity
+\[
+ \Delta E=(E\otimes\Phi+\Phi\otimes E)\Delta
+\]
+makes $E$ primitive in length $n$.
+A primitive element has length one, since the cut after its first factor
+detects every component of greater length.
+Writing $Q$ for the corestriction of $\Lambda\Phi$, one obtains
+\[
+ 0=\pi\Lambda E=-D_1Q-Q\beta,
+ \qquad
+ \pi E=K(D_1Q+Q\beta)=0.
+\]
+The second identity uses $D_1K+KD_1=1-IP$.
+Induction gives $E=0$.
+The highest-length component of $\Phi$ is $I^{\otimes n}$,
+which has left inverse $P^{\otimes n}$.
+Thus $\Phi$ is injective on finite tensor sums, and
+$\Phi\beta^2=(D_1+\Lambda)^2\Phi=0$ implies $\beta^2=0$.
+This proves the transfer identities in every arity.
+
+The maps $p,h$ kill odd outputs, giving $f_3=m_3=0$.
+Only the partition $(2,2)$ contributes to $m_4$, with a negative sign.
+Its product is $-u\,iF(x,y)iF(z,w)$.
+Applying $p$ and $-h$ gives \eqref{v4-arith:ks:m-four}.
+For an even algebra the Hochschild differential is
+\[
+ \begin{split}
+ (\delta K)(x_1,\ldots,x_{n+1})={}&x_1K(x_2,\ldots,x_{n+1})\\
+ &+\sum_{j=1}^n(-1)^jK(x_1,\ldots,x_jx_{j+1},\ldots,x_{n+1})\\
+ &+(-1)^{n+1}K(x_1,\ldots,x_n)x_{n+1}.
+ \end{split}
+\]
+The arity-five identity gives $\delta m_4=0$.
+Alternatively, expand the representative of a triple product in both
+parenthesizations, cancel the injective factor $f$, and apply $p$.
+This gives $\delta F=0$, hence $\delta(F\smile F)=0$.
+\end{proof}
+
+A nonzero value of $m_4$ alone does not prove nonformality.
+A change of coordinates can alter it by a Hochschild boundary.
+An arbitrary formality zigzag must therefore be compared with the
+particular minimal structure just constructed.
+
+\begin{lemma}[finite comparison over an arbitrary ring]
+\label{v4-arith:ks:projective-transport}
+\ClaimStatusProvedHere{}
+Suppose a DGA $D$ has an explicit minimal model $V$ whose homogeneous
+components are projective $S$-modules.
+That model can be transported through any finite quasi-isomorphism zigzag,
+through every specified finite arity.
+Consequently, formality of $A(S,c,r)$ implies
+\[
+ m_4=\delta K
+\]
+for an $S$-linear cochain $K:H^{\otimes_S3}\to H$ of degree $-2$.
+The cochain need not preserve $t,u,v$.
+\end{lemma}
+
+\begin{proof}
+First take a degreewise surjective DGA quasi-isomorphism $q:P\to D$.
+Its kernel $L$ is acyclic.
+Suppose a coalgebra morphism from the minimal source has been lifted
+through arity $n-1$.
+Every degree of $W_n=(sV)^{\otimes_S n}$ is projective:
+tensor products of projective modules are projective, and these degrees
+are direct sums of such tensor products.
+Choose a graded lift of the arity-$n$ component through $q$.
+
+The defect $E=D_P\Phi-\Phi b$ is primitive in arity $n$ because
+all smaller defects vanish.
+It lies in $sL$ because its image under $q$ vanishes.
+The identity $D_PE+Eb=0$ makes it closed:
+minimality means that $b$ lowers tensor length, so $Eb$ vanishes here.
+Acyclicity supplies the surjection
+\[
+ d:(sL)^j\longrightarrow Z^{j+1}(sL).
+\]
+Projectivity of $W_n^j$ lifts this particular defect through $d$.
+Subtract the lift from the chosen morphism component.
+This removes the defect without changing its image under $q$.
+No contraction of the acyclic module $L$ is required.
+
+Every backward arrow admits such a surjective replacement.
+Let $J$ be the free $S$-module on $e_0,e_1,\eta$, with
+$|e_i|=0$, $|\eta|=1$,
+\[
+ e_i^2=e_i,\quad e_0e_1=e_1e_0=0,\quad
+ e_0\eta=\eta e_1=\eta,\quad
+ \eta e_0=e_1\eta=\eta^2=0,
+\]
+\[
+ de_0=-\eta,\qquad de_1=\eta,\qquad d\eta=0.
+\]
+The unit is $e_0+e_1$.
+These are upper triangular matrix multiplication and its differential.
+The endpoint maps $\mathrm{ev}_i:J\to S$ select the diagonal coefficients.
+The map $k(\eta)=e_1$, $k(e_i)=0$ satisfies
+\[
+ dk+kd=1-\mathrm{const}\,\mathrm{ev}_0.
+\]
+On $D\otimes_S J$, use $(-1)^{|a|}a\otimes k(\omega)$ on $a\otimes\omega$.
+This gives the same contraction with the tensor differential.
+
+For a quasi-isomorphism $g:D'\to D$, form the pullback DGA
+\[
+ P(g)=\{(b,\omega)\in D'\times(D\otimes_S J):
+             \mathrm{ev}_0\omega=g(b)\}.
+\]
+Projection $p:P(g)\to D'$ is a homotopy equivalence as a complex,
+with section $j(b)=(b,g(b)\otimes1)$ and the displayed contraction.
+The other endpoint $q=\mathrm{ev}_1$ is degreewise surjective:
+$(0,a\otimes e_1)$ lifts every homogeneous $a\in D$.
+Since $qj=g$, it is also a quasi-isomorphism.
+Thus each backward arrow can be replaced by the span
+$D'\xleftarrow{p}P(g)\xrightarrow{q}D$.
+Lift through $q$ and compose with $p$.
+Forward arrows require only composition.
+This traverses the finite zigzag while keeping the minimal source fixed.
+
+At a strict cohomology target, the linear component is a graded algebra automorphism.
+Compose with its inverse to make that component the identity.
+Evenness of $H$ forces the second component to vanish.
+The arity-four morphism equation now reads $m_4=\delta K$,
+with $K$ the third component.
+\end{proof}
+
+\begin{theorem}[the coefficient criterion for formality]
+\label{v4-arith:ks:coefficient-formality}
+\ClaimStatusProvedHere{}
+For every commutative unital ring $S$, every $c\in S$, and every $r\geq1$,
+\[
+ \boxed{\quad A(S,c,r)\text{ is formal over }S
+       \quad\Longleftrightarrow\quad r=1\ \text{or}\ c\in S^\times.\quad}
+\]
+\end{theorem}
+
+\begin{proof}[Necessity]
+Assume $r\geq2$ and put $a=t^{r-1}$.
+The three adjacent products in $(a,t,a,t)$ are $cv$.
+Since $F(a,t)=1$, one has
+\[
+ m_4(a,t,a,t)=-u.
+\]
+Evaluation $t,v\mapsto0$ defines a graded algebra map $H\to S[u]$.
+Follow it in degree $-2$ by extraction of the coefficient of $u$.
+The resulting functional $\lambda:H^{-2}\to S$ satisfies
+$\lambda(u)=1$ and $\lambda(tH^{-2})=0$.
+For every $S$-linear degree-$-2$ ternary cochain,
+\[
+ \begin{split}
+ (\delta K)(a,t,a,t)={}&aK(t,a,t)+K(a,t,a)t\\
+ &+c\bigl(-K(v,a,t)+K(a,v,t)-K(a,t,v)\bigr).
+ \end{split}
+\]
+Applying $\lambda$ kills the exterior terms because $a\in tH^0$.
+Thus $\lambda(\delta K(a,t,a,t))\in cS$.
+The comparison lemma makes formality imply $-1\in cS$, so $c$ is a unit.
+Equivalently, evaluation by $\lambda$ modulo $cS$ kills every boundary
+and sends $m_4$ to $-1$ in $S/cS$.
+This argument reduces one cochain equation modulo $cS$.
+It does not tensor an arbitrary quasi-isomorphism with a nonflat quotient.
+\end{proof}
+
+\section{A multiplicative resolution in the formal case}
+\label{v4-arith:ks:positive-resolution}
+
+For $r=1$, the inclusion $B\hookrightarrow A(S,c,1)$ is a quasi-isomorphism,
+since its cohomology is $B[t]/(t-cv)\cong B$.
+For unit $c$ and arbitrary $r$, eliminating $v=c^{-1}t^r$ gives
+\[
+ H\cong S[t,u]/(t^{2r}).
+\]
+A resolution must account for the square of the primitive of $t^{2r}$.
+
+Put $R'=S[t,u]$ and $s=t^r$.
+The only element of degree $-1$ in $A$ whose differential is $s^2$ is
+$\tau(s+cv)$, by injectivity of $d$ on the odd summand.
+Its square is
+\[
+ u(s^2+2csv).
+\]
+For $S\ne0$, this polynomial is nonzero.
+Thus the exterior resolution with generator $h$, $h^2=0$, $dh=s^2$
+has no DGA map to $A$ over $R'$.
+Successive generators remove these successive multiplication defects.
+
+\begin{proposition}[explicit quasi-isomorphisms]
+\label{v4-arith:ks:positive-zigzag}
+\ClaimStatusProvedHere{}
+Let
+\[
+ P=R'\langle h_1,h_2,\ldots\rangle,\qquad |h_n|=1-2n,
+\]
+with central $R'$ and differential
+\[
+ dh_1=s^2,\qquad dh_n=-\sum_{i+j=n}h_ih_j\quad(n\geq2),
+\]
+where the summation indices are positive.
+Define integers $a_1=1$ and $a_n=-\sum_{i+j=n}a_ia_j$.
+There are DGA maps fixing $R'$
+\[
+ R'/(s^2)\xleftarrow{\ \varepsilon\ }P
+       \xrightarrow{\ \Phi\ }A(S,c,r),
+\]
+where
+\[
+ \varepsilon(h_n)=0,\qquad
+ \Phi(h_n)=a_n\tau u^{n-1}\bigl(s+(2n-1)cv\bigr).
+\]
+The map $\varepsilon$ is always a quasi-isomorphism.
+The cohomology map of $\Phi$ in each degree $-2a$ is
+$\operatorname{diag}(I_r,cI_r)$.
+It is an isomorphism exactly when $c$ is a unit.
+\end{proposition}
+
+\begin{proof}
+All $h_n$ are odd.
+In $d^2h_n$, the scalar terms cancel as
+$-s^2h_{n-1}+h_{n-1}s^2$.
+Each remaining ordered triple product occurs twice with opposite signs.
+Thus $d^2=0$, including in characteristic two.
+For $n\geq1$,
+\[
+ d\Phi(h_n)=a_nu^{n-1}\bigl(s^2+2(n-1)csv\bigr),
+\]
+because $(s-cv)(s+(2n-1)cv)=s^2+2(n-1)csv$.
+For $i+j=n$, one also has
+\[
+ \Phi(h_i)\Phi(h_j)=a_ia_j u^{n-1}\bigl(s^2+2(n-1)csv\bigr).
+\]
+The recurrence for $a_n$ proves that $\Phi$ commutes with the differential.
+The augmentation $\varepsilon$ does so directly.
+
+Consider the auxiliary DGA
+\[
+ K=R'\oplus R'h,\qquad |h|=-1,\qquad h^2=0,\qquad dh=s^2.
+\]
+The exterior relation is imposed also in characteristic two.
+The map $\pi:P\to K$ given by $h_1\mapsto h$ and $h_n\mapsto0$ for $n\geq2$
+is a DGA map.
+Give $h_n$ weight $n$, $h$ weight one, and $R'$ weight zero.
+The differential preserves the increasing weight filtration.
+
+At weight $N\geq1$, words $h_{i_1}\cdots h_{i_\ell}$ correspond to
+compositions $i_1+\cdots+i_\ell=N$.
+Equivalently, they specify the subset of cuts in $\{1,\ldots,N-1\}$.
+The associated graded piece is the exterior module
+\[
+ R'\otimes_S\Lambda_S(e_1,\ldots,e_{N-1}),
+ \qquad d_0=-\Bigl(\sum_{j=1}^{N-1}e_j\Bigr)\wedge(-).
+\]
+A $q$-cut word with coefficient of degree $d$ has degree $d+q+1-2N$.
+Splitting the $k$th factor has sign $(-1)^k$,
+which is exactly the sign for insertion after $k-1$ existing cuts.
+For $N\geq2$, minus removal of $e_1$ contracts this complex:
+\[
+ \iota_{e_1}(\omega\wedge x)+\omega\wedge\iota_{e_1}(x)=x,
+ \qquad \omega=\sum_{j=1}^{N-1}e_j.
+\]
+This identity uses only the exterior relations and integral signs.
+In weights zero and one, $\operatorname{gr}\pi$ is the identity.
+
+The cone of $\pi$ has acyclic associated graded pieces.
+Every cone cycle has a greatest weight.
+Subtract a differential whose top component is its primitive, and descend in weight.
+Finite support makes this process terminate.
+Hence $\pi$ is a quasi-isomorphism, without a convergence hypothesis.
+Multiplication by the monic element $s^2=t^{2r}$ is injective on $R'$,
+so $K\to R'/(s^2)$ is a quasi-isomorphism.
+This proves the assertion for $\varepsilon$.
+
+In degree $-2a$, use the source basis
+$u^a(1,t,\ldots,t^{2r-1})$ and the target basis
+\[
+ u^a(1,t,\ldots,t^{r-1},v,vt,\ldots,vt^{r-1}).
+\]
+The map fixes $t,u$, and $t^{r+i}$ maps to $cvt^i$.
+Its matrix is therefore $\operatorname{diag}(I_r,cI_r)$.
+Its kernel is $\operatorname{Ann}_S(c)^r$, and its cokernel is $(S/cS)^r$.
+A unit $c$ gives the asserted formality zigzag.
+Together with the $r=1$ inclusion, this proves sufficiency in
+Theorem~\ref{v4-arith:ks:coefficient-formality}.
+\end{proof}
+
+\section{The sixth operation on the full centre}
+\label{v4-arith:ks:sixth-operation}
+
+The positive generator $z$ changes the obstruction calculation when $2$ is invertible.
+It permits a primitive for $m_4$, but that change produces a sixth operation.
+A bar cycle containing $z$ detects the resulting class.
+
+Assume throughout this section that $S\ne0$ and $2\in S^\times$.
+Write
+\[
+ H_C=S[u,t,z]/(t^r-2uz,z^2),\qquad |u|=-2,\quad |t|=0,\quad |z|=2.
+\]
+Its normal basis consists of $u^at^iz^j$ with $a\geq0$, $0\leq i<r$, and $j=0,1$.
+Monic division by $t^r-2uz$ gives the same contraction as before.
+The transfer lemma, with coefficient algebra $S[u,z]/(z^2)$, gives
+\[
+ m_4=-uF\smile F,
+\]
+\[
+ m_6(x_1,\ldots,x_6)=u^2\bigl(
+ F_{12}F(F_{34},F_{56})+F(F_{12},F_{34})F_{56}\bigr),
+ \qquad F_{ij}=F(x_i,x_j).
+\]
+Indeed, the only nonzero partitions in arity six are $(2,4)$ and $(4,2)$.
+Every odd-arity operation vanishes by degree.
+In particular the augmentation
+$\epsilon:H_C\to S$, $t,u,z\mapsto0$, kills $m_4$ and $m_6$.
+
+To construct a primitive for $m_4$, consider the associative algebra
+\[
+ S[u,t,z,\alpha,\beta]/(t^r-2uz-\alpha,z^2-\beta),
+ \qquad |\alpha|=0,\quad |\beta|=4.
+\]
+Monic division makes it free over $S[u,\alpha,\beta]$ on $t^iz^j$,
+with $0\leq i<r$ and $j=0,1$.
+Let $F,G$ be the coefficients of $\alpha,\beta$ in its multiplication,
+evaluated at $\alpha=\beta=0$.
+They have degrees $0,-4$, respectively.
+The first $F$ agrees with the multiplication defect already used.
+Associativity in the two parameters gives $\delta F=\delta G=0$.
+
+Define normal-form coefficient derivatives by
+\[
+ \theta_u(u^at^iz^j)=a u^{a-1}t^iz^j,\qquad
+ \theta_z(u^at^iz^j)=j u^at^iz^{j-1}.
+\]
+The first expression is zero when $a=0$.
+These maps have degrees $2,-2$ and satisfy
+\begin{equation}\label{v4-arith:ks:derivative-defects}
+ \delta\theta_u=-2zF,\qquad
+ \delta\theta_z=-2uF+2zG.
+\end{equation}
+For a direct verification take $x=u^at^iz^j$ and $y=u^bt^\ell z^m$.
+Put $A=a+b$, $I=i+\ell$, and $J=j+m$.
+The formulas are
+\[
+ F(x,y)=
+ \begin{cases}
+ u^At^{I-r}z^J,&I\geq r,\ J\leq1,\\
+ 0,&\text{otherwise},
+ \end{cases}
+\]
+\[
+ G(x,y)=
+ \begin{cases}
+ u^At^I,&I<r,\ J=2,\\
+ 2u^{A+1}t^{I-r}z^{J-1},&I\geq r,\ J\geq1,\\
+ 0,&\text{otherwise}.
+ \end{cases}
+\]
+Substitution proves \eqref{v4-arith:ks:derivative-defects} over $S$.
+No derivative of $t^r$ occurs, so no inverse of $r$ is required.
+
+For even internal degrees use the cup product
+$(P\smile Q)(\mathbf x,\mathbf y)=P(\mathbf x)Q(\mathbf y)$.
+For the two binary cochains put
+\[
+ (F\circ G)(x,y,z)=F(G(x,y),z)-F(x,G(y,z)).
+\]
+Expansion of the Hochschild differential gives
+\[
+ \delta(F\circ G)=G\smile F-F\smile G.
+\]
+It follows that the ternary cochain of degree $-2$
+\begin{equation}\label{v4-arith:ks:fourth-primitive}
+ g=\tfrac12(\theta_z\smile F+\theta_u\smile G)-z(F\circ G)
+\end{equation}
+satisfies $\delta g=-uF\smile F=m_4$.
+The two terms with coefficient $z$ cancel by the preceding identity.
+
+Let $Q$ be the tensor-coalgebra coordinate change with components
+$q_1=1$, $q_3=-g$, and all other $q_n=0$.
+It is invertible because its deviation from the identity lowers tensor length.
+The inverse is a finite sum on each finite tensor word.
+Conjugating the transferred coderivation gives a minimal structure $m'$ with
+\[
+ m'_3=m'_4=m'_5=0,
+\]
+\[
+ m'_6=m_6-\sum_{j=0}^3
+ m_4(1^{\otimes j}\otimes g\otimes1^{\otimes(3-j)})+g\smile g.
+\]
+The arity-four identity uses $m'_4=m_4-\delta g$.
+The arity-six signs are the morphism signs specified in
+Section~\ref{v4-arith:ks:fourth-operation}.
+Applying the augmentation gives the decisive identity
+\begin{equation}\label{v4-arith:ks:sixth-augmentation}
+ \epsilon m'_6=(\epsilon g)\smile(\epsilon g).
+\end{equation}
+The arity-seven identity makes $m'_6$ a Hochschild cocycle.
+
+\begin{lemma}[a bar cycle detects the sixth operation]
+\label{v4-arith:ks:sixth-pairing}
+\ClaimStatusProvedHere{}
+For $r\geq2$, the cocycle $m'_6$ is not a Hochschild boundary.
+\end{lemma}
+
+\begin{proof}
+Put $a=t^{r-1}$.
+In the reduced bar complex of the augmented algebra $H_C$, use
+\[
+ b[x_1|\cdots|x_n]
+ =\sum_{j=1}^{n-1}(-1)^{j-1}
+ [x_1|\cdots|x_jx_{j+1}|\cdots|x_n].
+\]
+All letters have even internal degree, so their suspensions are odd.
+The chains
+\[
+ \rho=[a|t]-[u|z]-[z|u],\qquad \sigma=[z|z]
+\]
+are cycles: $b\rho=t^r-2uz=0$ and $b\sigma=z^2=0$.
+Write $\mathrm{sh}$ for the signed shuffle product.
+It interleaves words while preserving each word's order.
+Its sign is the sign of the permutation of the suspended letters.
+It commutes with $b$ because products between different words cancel in pairs,
+while products inside one word give its own bar differential.
+Thus $\gamma=\rho\mathbin{\mathrm{sh}}\rho\mathbin{\mathrm{sh}}\sigma$ is a length-six bar cycle.
+
+On its letters, \eqref{v4-arith:ks:fourth-primitive} gives
+\[
+ \epsilon g(z,a,t)=\epsilon g(z,t,a)=\tfrac12,
+ \qquad \epsilon g(u,z,z)=\tfrac12.
+\]
+All other triples contribute zero.
+For $r=2$ the equality $a=t$ identifies the first two triples.
+The complete list of nonzero contributions to
+$((\epsilon g)\smile(\epsilon g))(\gamma)$ is
+\[
+ \begin{array}{c|r|r}
+ \text{word}&\text{shuffle coefficient}&\text{cochain value}\\ \hline
+ \bigl[z|a|t|z|a|t\bigr]&2&1/4\\
+ \bigl[z|a|t|u|z|z\bigr]&-2&1/4\\
+ \bigl[u|z|z|z|a|t\bigr]&-2&1/4
+ \end{array}
+\]
+These coefficients are obtained by choosing the two ordered positions
+of each of the three two-letter words and summing their permutation signs.
+The table remains valid after $a=t$, with identical words collected.
+Therefore
+\[
+ \epsilon m'_6(\gamma)=\tfrac12-\tfrac12-\tfrac12=-\tfrac12.
+\]
+If $m'_6=\delta K$, its exterior Hochschild terms vanish after $\epsilon$
+because every bar letter has zero augmentation.
+Its interior terms evaluate $K$ on $b\gamma=0$, up to an overall sign.
+Their sum is zero.
+The element $-1/2$ is a unit in the nonzero ring $S$, giving the contradiction.
+\end{proof}
+
+\begin{theorem}[formality of the full relative centre]
+\label{v4-arith:ks:full-centre-formality}
+\ClaimStatusProvedHere{}
+For every commutative unital ring $S$ and every $r\geq1$,
+\[
+ C_{S,r}\text{ is formal over }S
+ \quad\Longleftrightarrow\quad r=1\ \text{or}\ S=0.
+\]
+For a nonzero $S$ and $r\geq2$, it also has no formality zigzag
+that fixes $S[t]$.
+\end{theorem}
+
+\begin{proof}
+For $r=1$, the inclusion $S[u,z]/(z^2)\hookrightarrow C_{S,1}$
+is a quasi-isomorphism by monic division.
+For $S=0$ the statement is immediate.
+Suppose $r\geq2$ and $S\ne0$.
+If $2$ is a nonunit, a formality zigzag would truncate to one for
+$A(S,2,r)$, contradicting Theorem~\ref{v4-arith:ks:coefficient-formality}.
+
+If $2$ is a unit, use the minimal structure $m'$ constructed above.
+Every homogeneous component of $H_C$ is free over $S$.
+The finite comparison lemma transports a hypothetical formality zigzag
+through arity six to a morphism from $m'$ to strict $H_C$.
+Normalize its linear component to the identity.
+Parity forces its second and fourth components to vanish.
+Let $a_3,a_5$ denote its third and fifth components.
+The arity-four and arity-six identities give
+\[
+ \delta a_3=0,\qquad m'_6=\delta a_5+a_3\smile a_3.
+\]
+The self-insertion
+\[
+ \begin{split}
+ (a_3\circ a_3)(x_1,\ldots,x_5)={}&a_3(a_3(x_1,x_2,x_3),x_4,x_5)\\
+ &+a_3(x_1,a_3(x_2,x_3,x_4),x_5)\\
+ &+a_3(x_1,x_2,a_3(x_3,x_4,x_5))
+ \end{split}
+\]
+satisfies $\delta(a_3\circ a_3)=-2a_3\smile a_3$.
+To verify this identity, expand each differential by the displayed Hochschild rule.
+The terms with an adjacent multiplication inside an inner or outer $a_3$
+cancel by $\delta a_3=0$.
+The two remaining end decompositions each give $-a_3\smile a_3$.
+Thus $m'_6=\delta(a_5-\tfrac12a_3\circ a_3)$,
+contrary to Lemma~\ref{v4-arith:ks:sixth-pairing}.
+Finally, forgetting the extra $S[t]$-action would turn any relative
+formality zigzag into an $S$-linear one.
+\end{proof}
+
+The full centre therefore remains nonformal over every field when $r\geq2$.
+At characteristic two its fourth operation is obstructed.
+When two is invertible, the fourth operation is exact and the sixth operation is obstructed.
+The nonpositive truncation has the different coefficient criterion of
+Theorem~\ref{v4-arith:ks:coefficient-formality}.
+
+\section{Coefficient change and the arithmetic comparison}
+\label{v4-arith:ks:coefficient-change}
+
+For a ring map $S\to S'$, the normal bases and monic-division contraction give
+\[
+ A(S,c,r)\otimes_S S'=A(S',c',r),\qquad
+ H^*(A(S,c,r))\otimes_S S'\cong H^*(A(S',c',r)),
+\]
+where $c'$ is the image of $c$.
+The same argument gives
+\[
+ C_{S,r}\otimes_S S'=C_{S',r},\qquad
+ H^*(C_{S,r})\otimes_S S'\cong H^*(C_{S',r}),
+\]
+with
+\[
+ H^*(C_{S,r})=S[u,t,z]/(z^2,t^r-2uz).
+\]
+These are assertions for the displayed complexes and their split normal forms.
+They hold without flatness of $S'$.
+The relative-centre resolution also extends to $S'[t]$ on its two free generators,
+so its multiplicative identification persists after coefficient change.
+
+\begin{corollary}[the exceptional coefficient]
+\label{v4-arith:ks:exceptional-two}
+\ClaimStatusProvedHere{}
+For $r\geq2$, the nonpositive part of the integral relative centre is nonformal.
+Its extension from $\mathbb Z$ to $S$ is formal exactly when $2\in S^\times$.
+In particular it is formal over $\mathbb Q$ and every field of odd characteristic,
+and nonformal over every field of characteristic two and over $\mathbb Z/4$.
+The full $C_{S,r}$ is nonformal whenever $2$ is a nonunit in $S$ and $r\geq2$.
+For $r=1$, both the full centre and its nonpositive part are formal over every $S$.
+\end{corollary}
+
+\begin{proof}
+The assertions about the nonpositive part follow from
+Proposition~\ref{v4-arith:ks:centre-truncation} and Theorem~\ref{v4-arith:ks:coefficient-formality}.
+For any cochain DGA $D$, the complex with $D^n$ in negative degrees,
+$Z^0(D)$ in degree zero, and zero in positive degrees is a sub-DGA.
+This truncation functor preserves quasi-isomorphisms.
+Applying it to a formality zigzag for $C_{S,r}$ would give a formality
+zigzag for $A(S,2,r)$.
+This proves the stated nonformality of the full centre.
+For $r=1$, the inclusion
+$S[u,z]/(z^2)\hookrightarrow C_{S,1}$ is a quasi-isomorphism:
+monic division identifies cohomology by substituting $t=2uz$.
+The analogous inclusion of $B$ proves the nonpositive assertion.
+\end{proof}
+
+\begin{corollary}[localization of the full centre]
+\label{v4-arith:ks:centre-localization}
+\ClaimStatusProvedHere{}
+If $2\in S^\times$, then $C_{S,r}[u^{-1}]$ is formal over
+$S[t,u,u^{-1}]$ for every $r\geq1$.
+\end{corollary}
+
+\begin{proof}
+After localization, $z=u^{-1}v$ gives the inverse of
+\[
+ A(S,2,r)[u^{-1}]\xrightarrow{\ j\ }C_{S,r}[u^{-1}].
+\]
+The zigzag in Proposition~\ref{v4-arith:ks:positive-zigzag} fixes $S[t,u]$.
+Localization at its central even element $u$ is exact on modules,
+so it preserves both quasi-isomorphisms.
+Its cohomology target is
+$S[t,u,u^{-1}]/(t^{2r})$, with $z=t^r/(2u)$.
+\end{proof}
+
+\begin{example}[unit and nonunit parameters]
+For $S=\mathbb F_2$ and $r=2$, the model $A(S,0,2)$ has
+$m_4(t,t,t,t)=-u=u$ and is nonformal.
+The model $A(S,1,2)$ is formal by the explicit zigzag.
+It is not the reduction of $A(\mathbb Z,2,2)$, whose parameter reduces to zero.
+Over $\mathbb Z/4$, the parameters $2$ and $3$ likewise give
+nonformal and formal models, respectively.
+The criterion is invertibility of $c$, rather than its nonvanishing.
+For the zero ring, the unique element is a unit and every displayed algebra is zero.
+\end{example}
+
+The global arithmetic object
+$\mathcal V^{\mathrm{prim}}$
+of Definition~\ref{v4-arith:def:global-iwahori-hecke} is a Hochschild trace class.
+The centre above is a relative derived endomorphism algebra.
+A comparison between them requires a multiplicative map with a specified base,
+source, target, and cohomology isomorphism.
+An equality of degree-zero centres does not supply these data.
+
+\begin{proposition}[scope of the centre obstruction]
+\label{v4-arith:ks:centre-comparison-scope}
+\ClaimStatusProvedHereConditional{}
+Let $\mathcal Z$ be an associative $S$-DGA model for an arithmetic derived centre.
+Suppose a finite multiplicative $S$-linear quasi-isomorphism zigzag identifies
+$\tau_{\leq0}\mathcal Z$ with $A(S,2,r)$.
+If $r\geq2$ and $2$ is a nonunit, then $\mathcal Z$ is nonformal over $S$.
+If the full $\mathcal Z$ is multiplicatively quasi-isomorphic to $C_{S,r}$,
+it is nonformal for every nonzero $S$ and $r\geq2$.
+A relative dg Morita equivalence with $E_r$ over $S[t]$, together with
+its bimodule comparison, is one possible source of the required identification.
+\end{proposition}
+
+\begin{proof}
+A formality zigzag for $\mathcal Z$ would truncate to one for
+$\tau_{\leq0}\mathcal Z$.
+Composing with the hypothesized comparison would make $A(S,2,r)$ formal,
+contrary to Theorem~\ref{v4-arith:ks:coefficient-formality}.
+The full comparison transfers the classification in
+Theorem~\ref{v4-arith:ks:full-centre-formality}.
+\end{proof}
+
+The positive zigzag fixes $S[t,u]$ on the nonpositive algebra.
+The full centre has the additional sixth-operation obstruction of
+Theorem~\ref{v4-arith:ks:full-centre-formality}.
+For the global Iwahori category, the required relative bimodule comparison
+is an additional construction, independent of rectification of the $E_1$ operad.

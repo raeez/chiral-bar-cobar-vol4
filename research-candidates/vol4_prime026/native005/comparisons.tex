@@ -1,0 +1,212 @@
+\section{Hilbert comparisons with specified domains}
+\label{v4-arith:mc:comparisons}
+
+The continuous Mellin unitary and the global arithmetic character
+act on different spaces. A comparison begins with the inner products
+and densely defined maps between these spaces. All Hilbert spaces
+below are complex, with inner products linear in the first variable.
+
+\begin{proposition}[extension of a core isometry]
+\label{v4-arith:mc:core-unitary}
+Let $T_j$ be densely defined operators on Hilbert spaces
+$\mathcal H_j$, with domains $\mathcal C_j$, for $j=1,2$.
+Suppose a complex-linear bijection $U_0:\mathcal C_1\to\mathcal C_2$
+satisfies
+\[
+ \langle U_0v,U_0w\rangle_2=\langle v,w\rangle_1,
+ \qquad U_0T_1v=T_2U_0v,
+\]
+where $T_1\mathcal C_1\subseteq\mathcal C_1$ and
+$T_2\mathcal C_2\subseteq\mathcal C_2$.
+Then $U_0$ extends uniquely to a unitary $U:\mathcal H_1\to\mathcal H_2$.
+It identifies the closures of the graphs and the adjoint domains:
+\[
+ U\operatorname{Dom}T_1^*=\operatorname{Dom}T_2^*,\qquad
+ UT_1^*=T_2^*U.
+\]
+If the operators are closable, then
+$U\overline T_1=\overline T_2U$, with equality of the transported
+domains. In particular, essential self-adjointness and deficiency
+spaces are preserved.
+\end{proposition}
+\begin{proof}
+For $v\in\mathcal H_1$, choose $v_n\in\mathcal C_1$ with $v_n\to v$
+and define $Uv=\lim U_0v_n$. The isometry identity proves existence
+and independence of the sequence. The range is closed and contains
+the dense space $\mathcal C_2$, so $U$ is onto.
+The unitary $U\oplus U$ maps the graph of $T_1$ onto that of $T_2$.
+It therefore maps their graph closures onto one another.
+For $y\in\mathcal H_1$, the functional
+$v\mapsto\langle T_1v,y\rangle_1$ is bounded in the Hilbert norm
+exactly when $U_0v\mapsto\langle T_2U_0v,Uy\rangle_2$ is bounded.
+This gives the adjoint-domain identity and the adjoint action.
+Hence $U\ker(T_1^*\mp i)=\ker(T_2^*\mp i)$.
+\end{proof}
+
+The same proof applies without invariance of the cores when a
+unitary $U$ is already given and $UT_1=T_2U$ on the exact domains.
+In particular, if $H_j$ are self-adjoint, $\mathcal C_j$ are their
+graph cores, and the preceding hypotheses hold for their restrictions,
+then $U\operatorname{Dom}H_1=\operatorname{Dom}H_2$ and $UH_1=H_2U$.
+
+\begin{proposition}[transport of a complete spectral realization]
+\label{v4-arith:mc:transport}
+Let $H_j$ be self-adjoint on $\mathcal H_j$ and let
+$U:\mathcal H_1\to\mathcal H_2$ be unitary, with
+$U\operatorname{Dom}H_1=\operatorname{Dom}H_2$ and $UH_1=H_2U$.
+Let $A_1:\operatorname{Dom}A_1\subset\mathcal H_{\mathrm{BC}}
+\to\mathcal H_1$ be a closed densely defined map. Define
+$A_2=UA_1$ on the same domain.
+Then $A_2$ is closed. Injectivity and dense range are equivalent
+for $A_1$ and $A_2$. On any specified $N_{\mathrm{occ}}$-invariant
+subspace $\mathcal C_N\subseteq\operatorname{Dom}A_1\cap
+\operatorname{Dom}N_{\mathrm{occ}}$ with
+$A_1\mathcal C_N\subseteq\operatorname{Dom}H_1$, one has
+\[
+ A_1N_{\mathrm{occ}}=H_1A_1
+ \quad\Longleftrightarrow\quad
+ A_2N_{\mathrm{occ}}=H_2A_2.
+\]
+The shifted operators $\Theta_j=1/2+iH_j$ have the same eigenvalues,
+eigenspace dimensions, and spectral type.
+For every bounded Borel $\varphi$ with $\varphi(H_1)$ trace-class,
+\[
+ \operatorname{Tr}\varphi(H_2)=\operatorname{Tr}\varphi(H_1).
+\]
+\end{proposition}
+\begin{proof}
+The unitary $1\oplus U$ maps the graph of $A_1$ onto that of $A_2$,
+so closedness, kernel, and closure of the range are preserved.
+Domain compatibility and $UH_1=H_2U$ give the displayed equivalence
+by multiplication with $U$ or $U^{-1}$.
+For nonreal $z$, the resolvents satisfy
+$(H_2-z)^{-1}=U(H_1-z)^{-1}U^{-1}$.
+Uniqueness of the spectral resolution then gives
+$\varphi(H_2)=U\varphi(H_1)U^{-1}$ and transports spectral subspaces.
+Taking an orthonormal basis and its image under $U$ proves trace
+invariance whenever the trace is absolutely defined.
+\end{proof}
+
+\begin{corollary}[a common determinant normalization]
+\label{v4-arith:mc:determinant}
+In Proposition~\ref{v4-arith:mc:transport}, suppose that on a fixed
+domain of $(s,u)$ the powers $(s-\Theta_j)^{-u}$ use the same
+holomorphic branch and are trace-class. Suppose their traces admit
+meromorphic continuation to a neighborhood of $u=0$, regular there.
+Then the determinants
+\[
+ d_j(s)=\exp\left(-\left.\partial_u
+          \operatorname{Tr}(s-\Theta_j)^{-u}\right|_{u=0}\right)
+\]
+are equal. Any identical polar-factor removal on the two sides
+preserves this equality. Thus $d_1=\xi_{\mathbb R}$ transfers to
+$d_2=\xi_{\mathbb R}$ with the same normalization.
+\end{corollary}
+\begin{proof}
+Functional calculus and trace invariance identify the traces on
+their initial domain. Uniqueness of meromorphic continuation
+identifies their derivatives at zero. Exponentiation proves the claim.
+Neither existence of the initial trace-class powers nor continuation
+follows from an identity of formal eigenvalue lists.
+\end{proof}
+
+\begin{definition}[the Fourier test algebra]
+\label{v4-arith:mc:test-algebra}
+For $f\in\mathscr A=C_c^\infty(\mathbb R)$ define the entire function
+$\widehat f(z)=\int_{\mathbb R}f(t)e^{izt}dt$.
+Let $\mathscr P=\{\widehat f:f\in\mathscr A\}$, with the topology
+transported from compact smooth tests by this injective Fourier map.
+Its involution is $h^\star(z)=\overline{h(\overline z)}$.
+For a specified continuous arithmetic functional
+$\mathfrak W:\mathscr P\to\mathbb C$, put
+$W(f)=\mathfrak W(\widehat f)$.
+\end{definition}
+
+Fubini on compact supports gives
+$\widehat{f*g}=\widehat f\,\widehat g$ and
+$\widehat{g^*}=(\widehat g)^\star$, where
+$g^*(t)=\overline{g(-t)}$.
+Injectivity follows from the Fourier unitary of
+Lemma~\ref{mo:mellin-unitary} at $c=0$.
+Thus $W(f*g^*)=\mathfrak W(\widehat f(\widehat g)^\star)$
+is an exact comparison of the two test carriers.
+If $\mathfrak W$ is specified on a larger Paley--Wiener class,
+extending an identity from $\mathscr P$ to that class requires
+the stated density and continuity hypotheses.
+
+\begin{proposition}[a Hilbert space from a positive convolution form]
+\label{v4-arith:mc:positive-form}
+Let $\mathscr A=C_c^\infty(\mathbb R)$, with additive convolution
+and $f^*(t)=\overline{f(-t)}$. Let $W:\mathscr A\to\mathbb C$
+be a continuous linear functional such that
+$q_W(f,g)=W(f*g^*)$ is Hermitian and $q_W(f,f)\geq0$.
+Its nullspace $\mathscr N$ is a linear subspace, and
+$\mathcal H_W=\overline{\mathscr A/\mathscr N}^{q_W}$ is a Hilbert space.
+The maps $V_u[f]=[f(\,\cdot+u)]$ extend to a strongly continuous
+unitary group on $\mathcal H_W$.
+For $h\in\mathscr A$, the convolution action
+$\pi_W(h)[f]=[h*f]$ extends to a bounded operator with
+$\|\pi_W(h)\|\leq\|h\|_{L^1}$ and
+$\pi_W(h^*)=\pi_W(h)^*$.
+If a linear map $C:\mathscr A\to\mathcal K$ has dense range and
+$\langle Cf,Cg\rangle_{\mathcal K}=q_W(f,g)$, it induces a unique
+unitary $\mathcal H_W\to\mathcal K$.
+\end{proposition}
+\begin{proof}
+Positivity gives Cauchy--Schwarz for $q_W$ by applying it to
+$q_W(f+zg,f+zg)$ for all $z\in\mathbb C$.
+Thus null vectors are orthogonal to every test, proving the quotient
+assertion. Translation by $u$ in both arguments leaves $f*g^*$
+unchanged. Hence $V_u$ is an isometry with inverse $V_{-u}$.
+As $u\to0$, translated tests converge in the compact-smooth topology
+on a common compact support. Continuity of convolution and $W$
+gives $\|V_u[f]-[f]\|\to0$. Density and the isometry extend strong
+continuity to the completion. The last claim follows by completing
+the isometry $[f]\mapsto Cf$.
+For convolution, integrate the strongly continuous unitaries:
+\[
+ \pi_W(h)v=\int h(u)V_{-u}v\,du.
+\]
+Riemann sums and the triangle inequality give the displayed norm
+bound. On test vectors, the same sums converge in the compact-smooth
+topology to $h*f$, so continuity of the quotient map identifies
+the integral with the asserted action. Taking adjoints of the
+integral and substituting $u\mapsto-u$ proves the involution identity.
+Fubini proves $\pi_W(h_1*h_2)=\pi_W(h_1)\pi_W(h_2)$.
+\end{proof}
+
+This construction supplies a positive Hilbert space only when the
+specified arithmetic functional satisfies the positivity hypothesis.
+It supplies neither the occupation map nor an ordinary character trace.
+For example, if $W(h)=r\int h(t)e^{i\gamma t}dt$ with integer $r>1$,
+the quotient has dimension one: its norm is
+$r|\int f(t)e^{i\gamma t}dt|^2$.
+An ordinary representation with trace multiplicity $r$ at $\gamma$
+has dimension $r$. A positive cyclic form therefore does not recover
+ordinary trace multiplicity by itself.
+
+\begin{proposition}[the ranges of scattering isometries]
+\label{v4-arith:mc:scattering}
+Let $\Omega_\pm:\mathcal K_0\to\mathcal K$ be isometries of
+complex Hilbert spaces and put $S=\Omega_+^*\Omega_-$.
+Then $S$ is unitary exactly when
+$\operatorname{Ran}\Omega_+=\operatorname{Ran}\Omega_-$.
+\end{proposition}
+\begin{proof}
+Write $P_+=\Omega_+\Omega_+^*$ for the orthogonal projection onto
+$\operatorname{Ran}\Omega_+$. If $S$ is an isometry, then
+\[
+ \|(1-P_+)\Omega_-v\|^2
+ =\|v\|^2-\|Sv\|^2=0.
+\]
+Thus the minus range is contained in the plus range.
+If $S$ is unitary, the same argument for $S^*$ gives the reverse
+inclusion. Conversely, equal ranges give
+$S^*S=1=SS^*$ by inserting their common range projection.
+\end{proof}
+
+Equal scattering ranges do not determine an arithmetic determinant.
+For the constant dynamics on the one-dimensional space $\mathbb C$,
+take $\Omega_+=\Omega_-=1$. Then $S=1$, while the shifted operator
+has the eigenvalue $1/2$, which is excluded from the actual xi divisor
+by Proposition~\ref{mo:vacuum}.

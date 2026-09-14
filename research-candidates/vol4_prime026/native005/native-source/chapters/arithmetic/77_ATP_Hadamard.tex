@@ -1,0 +1,631 @@
+\chapter{A-TP via the Exact Hadamard Factorisation: Reflected Resolvents and Tautology Comparison}
+\label{v4-arith:w7-g:ATP-Hadamard}
+
+\section{Hadamard Factorisation}
+\label{v4-arith:w7-g:context}
+
+\subsection{Setup}
+\label{v4-arith:w7-g:context:obstruction}
+
+The archimedean Tate positivity conjecture A-TP
+(\Cref{v4-arith:w5-a:conj:archimedean-tate-positivity}) is the
+statement that the Weil distribution \(W(f*\widetilde{f})\geq 0\) for
+all \(f\) in the Paley--Wiener space \(\mathrm{PW}(\mathbb{R})\) (entire
+functions of exponential type whose restriction to \(\mathbb{R}\) is
+square-integrable; \(\widetilde{f}(x):=\overline{f(-x)}\)). Chapters~\ref{v4-arith:w5-j:VBstar-spectral-positivity}
+and~\ref{v4-arith:w6-a:ATP-direct-obstruction} tested A-TP via de Branges
+/ Hermite--Biehler spectral theory and via the digamma-kernel elementary
+decomposition, respectively; each construction bottomed out at a hypothesis
+equivalent to RH.
+
+Hadamard factorisation gives
+\(\xi_{\mathbb{R}}(s)=e^{a+bs}\prod_{\rho}(1-s/\rho)e^{s/\rho}\)
+of \(\xi_{\mathbb{R}}\) as an entire function of order \(1\) and genus \(1\)
+(\Cref{v4-arith:w5-j:prop:xi-order}). Logarithmic differentiation
+yields \(\xi_{\mathbb{R}}'/\xi_{\mathbb{R}}\) as a sum over zeros plus a
+linear correction. The reflected-resolvent kernel
+\(\mathcal{K}_{\rho}(t)\) obtained by multiplying opposite critical-line
+resolvents is not the Guinand--Weil zero summand; it is nevertheless
+sign-indefinite even when \(\rho\) lies on the critical line. Thus the
+Hadamard construction gives no termwise positivity theorem. The
+positivity statement is the full Weil distribution, hence RH-level.
+
+\subsection{Classical Sources}
+\label{v4-arith:w7-g:sources}
+
+The Hadamard-factorisation obstruction uses four classical sources
+disjoint from the restricted-class comparison and the bounded-interval reduction.
+
+\begin{description}
+\item[Hadamard 1893.] Hadamard, J. \emph{\'Etude sur les propri\'et\'es
+des fonctions enti\`eres et en particulier d'une fonction consid\'er\'ee
+par Riemann.} \emph{J.~Math.~Pures Appl.}~(4) 9 (1893), 171--215.
+Original Hadamard factorisation theorem for entire functions of
+finite order.
+\item[Guinand--Weil 1948/1952.] Guinand, A.P. \emph{A summation formula
+in the theory of prime numbers.} \emph{Proc.~London Math.~Soc.}~(2) 50
+(1948), 107--119. Weil, A. \emph{Sur les formules explicites de la
+th\'eorie des nombres premiers} (cited above). Pair-pole
+representation via Hadamard derivative; Parseval between critical-line
+Fourier and zero-sum.
+\item[de Bruijn 1950.] de Bruijn, N.G. \emph{The roots of trigonometric
+integrals and a theorem of Hurwitz.} \emph{Duke Math.~J.}~17 (1950),
+197--226. Heat-flow family \(\Xi_{\lambda}\); monotone shift of roots
+towards the real axis.
+\item[Newman 1976, Rodgers--Tao 2020.] Newman, C.M. \emph{Fourier
+transforms with only real zeros.} \emph{Proc.~AMS} 61 (1976), 245--251.
+Rodgers, B.; Tao, T. \emph{The de Bruijn--Newman constant is
+non-negative.} \emph{Forum Math.~Pi} 8 (2020), e6. The de Bruijn--Newman
+constant \(\Lambda\); RH iff \(\Lambda\leq 0\); unconditional lower bound
+\(\Lambda\geq 0\).
+\end{description}
+
+Hadamard 1893, Guinand 1948, de Bruijn 1950,
+Newman 1976, and Rodgers--Tao 2020 are classical entire-function
+complex analysis and heat-flow literature. None enter the de Branges spectral comparison
+de Branges / Hermite--Biehler derivation
+(Chapter~\ref{v4-arith:w5-j:VBstar-spectral-positivity}); none enter
+the bounded-interval reduction elementary digamma kernel analysis
+(Chapter~\ref{v4-arith:w6-a:ATP-direct-obstruction}); none enter the
+Mellin--Rankin--Selberg isometry of
+Chapter~\ref{v4-arith:w5-a:chapter}. These sources are
+disjoint from Chapters~\ref{v4-arith:closure},
+\ref{v4-arith:kp-compat}, \ref{v4-arith:kms-gns-full}.
+
+\section{The Exact Hadamard Formula for \(\xi_{\mathbb{R}}'/\xi_{\mathbb{R}}\)}
+\label{v4-arith:w7-g:hadamard-formula}
+
+\subsection{Hadamard Product Logarithmic Derivative}
+\label{v4-arith:w7-g:hadamard-formula:log-derivative}
+
+\begin{lemma}[Hadamard formula for \(\xi_{\mathbb{R}}'/\xi_{\mathbb{R}}\)]
+\label{v4-arith:w7-g:lem:hadamard-log-deriv}
+\ClaimStatusProvedHere. Fix the Hadamard factorisation
+\eqref{v4-arith:w5-j:eq:hadamard}
+\(\xi_{\mathbb{R}}(s)=e^{a+bs}\prod_{\rho}(1-s/\rho)e^{s/\rho}\) with
+\(a,b\) real constants of \Cref{v4-arith:w5-j:prop:xi-order} and product
+over non-trivial zeros. The logarithmic derivative satisfies
+\begin{equation}
+\label{v4-arith:w7-g:eq:log-deriv-Hadamard}
+\frac{\xi_{\mathbb{R}}'(s)}{\xi_{\mathbb{R}}(s)}
+\;=\;b+\sum_{\rho}\!\Bigl(\frac{1}{s-\rho}+\frac{1}{\rho}\Bigr),
+\end{equation}
+where the series converges absolutely and uniformly on compact subsets
+avoiding the zero locus, after pairing \(\rho\leftrightarrow 1-\rho\).
+\end{lemma}
+
+\begin{proof}
+Logarithmic differentiation of \eqref{v4-arith:w5-j:eq:hadamard}:
+\(\log\xi_{\mathbb{R}}(s)=a+bs+\sum_{\rho}[\log(1-s/\rho)+s/\rho]\).
+Differentiating:
+\(\xi_{\mathbb{R}}'(s)/\xi_{\mathbb{R}}(s)=b+\sum_{\rho}[(-1/\rho)/(1-s/\rho)+1/\rho]
+=b+\sum_{\rho}[1/(s-\rho)+1/\rho]\) after the simplification
+\((-1/\rho)/(1-s/\rho)=1/(s-\rho)\). Absolute convergence: under the
+pairing \(\rho\mapsto 1-\rho\), the paired term
+\([1/(s-\rho)+1/(s-(1-\rho))]+[1/\rho+1/(1-\rho)]\) has both halves
+absolutely summable since
+\(\sum_{\rho}(|\rho(1-\rho)|)^{-1}<\infty\) by the Riemann--von Mangoldt
+bound \(N(T)\asymp T\log T\).
+\end{proof}
+
+\subsection{Comparison with the Completed Zeta Formula}
+\label{v4-arith:w7-g:hadamard-formula:comparison}
+
+\begin{proposition}[partial-fraction and gamma-factor identity]
+\label{v4-arith:w7-g:prop:xi-over-xi-explicit}
+\ClaimStatusProvedElsewhere (Titchmarsh \emph{The Theory of the
+Riemann Zeta Function} (Oxford 1986), \S3.3; Iwaniec--Kowalski \S5.9).
+For \(s\notin\{0,1\}\cup\{\rho\}\),
+\begin{equation}
+\label{v4-arith:w7-g:eq:xi-over-xi-split}
+\frac{\xi_{\mathbb{R}}'(s)}{\xi_{\mathbb{R}}(s)}
+\;=\;\frac{1}{s}+\frac{1}{s-1}+\frac{1}{2}\,\psi\!\left(\frac{s}{2}\right)-\frac{\log\pi}{2}+\frac{\zeta'(s)}{\zeta(s)}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+\(\xi_{\mathbb{R}}(s)=\tfrac{1}{2}s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)\);
+logarithmic derivative of each factor:
+\((s(s-1))'/(s(s-1))=1/s+1/(s-1)\),
+\((\pi^{-s/2})'/\pi^{-s/2}=-\tfrac{1}{2}\log\pi\),
+\((\Gamma(s/2))'/\Gamma(s/2)=\tfrac{1}{2}\psi(s/2)\), and
+\(\zeta'/\zeta\).
+\end{proof}
+
+\begin{corollary}[Hadamard and explicit formula match]
+\label{v4-arith:w7-g:cor:hadamard-equals-explicit}
+\ClaimStatusProvedHere. Equating \eqref{v4-arith:w7-g:eq:log-deriv-Hadamard}
+and \eqref{v4-arith:w7-g:eq:xi-over-xi-split}:
+\begin{equation}
+\label{v4-arith:w7-g:eq:hadamard-explicit-equality}
+b+\sum_{\rho}\!\Bigl(\frac{1}{s-\rho}+\frac{1}{\rho}\Bigr)
+\;=\;\frac{1}{s}+\frac{1}{s-1}+\frac{1}{2}\,\psi\!\left(\frac{s}{2}\right)-\frac{\log\pi}{2}+\frac{\zeta'(s)}{\zeta(s)}.
+\end{equation}
+This is the standard Stark identity; setting \(s=1/2+it\) and taking
+the real part gives a pointwise formula for the Weil kernel.
+\end{corollary}
+
+\begin{proof}
+Both sides express the same meromorphic function; comparison is
+algebraic, valid away from the zero/pole locus.
+\end{proof}
+
+\begin{remark}[the two decompositions of \(\xi_{\mathbb{R}}'/\xi_{\mathbb{R}}\)]
+\label{v4-arith:w7-g:rem:chapter-split}
+The right-hand side of
+\eqref{v4-arith:w7-g:eq:hadamard-explicit-equality} is the Weil-kernel
+split of Chapter~\ref{v4-arith:w5-a:chapter}: polar terms
+\(1/s+1/(s-1)\), archimedean digamma \(\tfrac{1}{2}\psi(s/2)-\tfrac{1}{2}\log\pi\)
+(the kernel \(g(t)\) of Chapter~\ref{v4-arith:w6-a:ATP-direct-obstruction} after shifting argument), finite-prime
+\(\zeta'/\zeta\). The left-hand side is the sum over non-trivial zeros.
+The following section separates the logarithmic-derivative zero sum
+from a reflected-resolvent quadratic form; the latter is not the
+Guinand--Weil zero side.
+\end{remark}
+
+\section{The Reflected Pair-Pole Diagnostic}
+\label{v4-arith:w7-g:pair-pole}
+
+\subsection{Pairing Conjugate Zeros}
+\label{v4-arith:w7-g:pair-pole:pairing}
+
+\begin{definition}[pair-pole kernel]
+\label{v4-arith:w7-g:def:pair-pole-kernel}
+\ClaimStatusDefinitional. Write each non-trivial zero \(\rho=\beta+i\gamma\)
+with \(0\leq\beta\leq 1\) (non-trivial strip), and pair with its
+complex conjugate \(\bar{\rho}=\beta-i\gamma\) and functional-equation
+partner \(1-\rho=1-\beta-i\gamma\) (and \(1-\bar{\rho}=1-\beta+i\gamma\)).
+For \(s=1/2+it\) on the critical line, define the \emph{pair-pole
+kernel}
+\begin{equation}
+\label{v4-arith:w7-g:eq:pair-pole-kernel}
+\mathcal{K}_{\rho}(t)\;:=\;\mathrm{Re}\!\left[\frac{1}{(1/2+it-\rho)(1/2-it-\rho)}\right].
+\end{equation}
+When \(\rho\) is paired with the reflected pole in the \(t\)-variable,
+the denominator becomes
+\(((1/2-\beta)+i(t-\gamma))((1/2-\beta)-i(t+\gamma))\), explicit
+sign structure computed below.
+\end{definition}
+
+\begin{lemma}[explicit form of the pair-pole kernel]
+\label{v4-arith:w7-g:lem:pair-pole-explicit}
+\ClaimStatusProvedHere. For \(\rho=\beta+i\gamma\) with
+\(\beta\in[0,1]\), \(\gamma\in\mathbb{R}\), and \(\alpha:=1/2-\beta\),
+\begin{equation}
+\label{v4-arith:w7-g:eq:K-explicit}
+\mathcal{K}_{\rho}(t)
+\;=\;\frac{\alpha^{2}+t^{2}-\gamma^{2}}{[\alpha^{2}+(t-\gamma)^{2}][\alpha^{2}+(t+\gamma)^{2}]}.
+\end{equation}
+When \(\beta=1/2\) (RH), this simplifies to
+\(\mathcal{K}_{\rho}(t)\big|_{\beta=1/2}=1/(t^{2}-\gamma^{2})\),
+which is a sign-indefinite distribution: positive for \(|t|>|\gamma|\),
+negative for \(|t|<|\gamma|\), with distributional poles at \(t=\pm\gamma\).
+The pair-pole sum \(\int|\widehat{f}|^{2}\mathcal{K}_{\rho}\,dt\) is
+a principal-value term; it is not sign-definite term by term
+(Lemma~\ref{v4-arith:w7-g:lem:residue-extract}).
+\end{lemma}
+
+\begin{proof}
+Write \(\alpha:=1/2-\beta\) and compute:
+\((1/2+it-\rho)(1/2-it-\rho)=(\alpha+i(t-\gamma))(\alpha-i(t+\gamma))\).
+Expanding: \(\alpha^{2}-2i\alpha\gamma+(t^{2}-\gamma^{2})\). The real part of
+the reciprocal is
+\([\alpha^{2}+(t^{2}-\gamma^{2})]/[(\alpha^{2}+(t^{2}-\gamma^{2}))^{2}+4\alpha^{2}\gamma^{2}]\),
+and the denominator equals \([\alpha^{2}+(t-\gamma)^{2}][\alpha^{2}+(t+\gamma)^{2}]\)
+by expanding both sides. The specialisation \(\alpha=0\)
+yields \(\mathcal{K}_{\rho}(t)\big|_{\alpha=0}=(t^{2}-\gamma^{2})/(t^{2}-\gamma^{2})^{2}=1/(t^{2}-\gamma^{2})\);
+the symmetric contour gives the principal-value distribution of
+\Cref{v4-arith:w7-g:lem:residue-extract}.
+\end{proof}
+
+\begin{remark}[the sign of \(\mathcal{K}_{\rho}(t)\)]
+\label{v4-arith:w7-g:rem:off-critical-sign}
+For any \(\beta\in[0,1]\), the numerator \(\alpha^{2}+t^{2}-\gamma^{2}\)
+of \eqref{v4-arith:w7-g:eq:K-explicit} is negative for
+\(|t|<\sqrt{\gamma^{2}-\alpha^{2}}\) (when \(|\gamma|>|\alpha|\)), while
+the denominator is always positive. Hence \(\mathcal{K}_{\rho}(t)<0\)
+on this interval, including in the on-critical case \(\alpha=0\) where
+\(\mathcal{K}_{\rho}(t)<0\) for \(|t|<|\gamma|\). Thus no
+term-by-term positivity follows from the pair-pole kernel.
+\end{remark}
+
+\subsection{Residue Extraction and Dirac Limits}
+\label{v4-arith:w7-g:pair-pole:residue}
+
+\begin{lemma}[principal value at an on-critical pole]
+\label{v4-arith:w7-g:lem:residue-extract}
+\ClaimStatusProvedHere. Let \(\rho=1/2+i\gamma\) be on the critical
+line (\(\beta=1/2\), \(\gamma\neq 0\), \(\gamma\in\mathbb{R}\)). For \(f\in\mathrm{PW}(\mathbb{R})\)
+real and even with \(\widehat{f}\) smooth at \(t=\pm\gamma\),
+\begin{equation}
+\label{v4-arith:w7-g:eq:residue-on-critical}
+\lim_{\varepsilon\downarrow 0}\,\mathrm{Re}\!\int_{\mathbb{R}}|\widehat{f}(t)|^{2}\cdot\frac{dt}{(1/2+\varepsilon+it-\rho)(1/2+\varepsilon-it-\rho)}
+\;=\;\mathrm{PV}\!\int_{\mathbb R}\frac{|\widehat f(t)|^{2}}{t^{2}-\gamma^{2}}\,dt,
+\end{equation}
+with the reflected pole convention of
+\eqref{v4-arith:w7-g:eq:pair-pole-kernel}. This principal value is not
+sign-definite.
+\end{lemma}
+
+\begin{proof}
+With the reflected pole convention the regularised real kernel is
+\[
+\mathrm{Re}\frac{1}{(\varepsilon+i(t-\gamma))(\varepsilon-i(t+\gamma))}
+=\frac{\varepsilon^{2}+t^{2}-\gamma^{2}}
+{(\varepsilon^{2}+(t-\gamma)^{2})(\varepsilon^{2}+(t+\gamma)^{2})}.
+\]
+As \(\varepsilon\downarrow0\) this converges in distributions to
+\(\mathrm{PV}(t^{2}-\gamma^{2})^{-1}\). Pairing with the smooth
+function \(|\widehat f|^{2}\) gives the displayed identity.
+\end{proof}
+
+\begin{theorem}[the reflected pair-pole kernel is not the Guinand--Weil summand]
+\label{v4-arith:w7-g:thm:guinand-weil-pair-pole}
+\ClaimStatusProvedHere. For \(f\in\mathrm{PW}(\mathbb{R})\) real and
+even, the reflected-resolvent expression
+\begin{equation}
+\label{v4-arith:w7-g:eq:guinand-weil}
+\mathcal R_{\mathrm{ref}}(f)\;:=\;\lim_{T\to\infty}\sum_{|\mathrm{Im}\rho|\leq T}R_{\rho}[f],
+\qquad
+R_{\rho}[f]\;:=\;\mathrm{PV}\!\int_{\mathbb{R}}|\widehat{f}(t)|^{2}\,\mathcal{K}_{\rho}(t)\,dt,
+\end{equation}
+where \(\mathcal{K}_{\rho}\) is the reflected pair-pole kernel
+\eqref{v4-arith:w7-g:eq:K-explicit}, the sum is over non-trivial
+zeros of \(\xi_{\mathbb{R}}\), each paired once with its conjugate. When
+the symmetric limit exists, it is not the zero side of the
+Guinand--Weil formula. It is a diagnostic quadratic form obtained by
+multiplying reflected resolvents.
+\end{theorem}
+
+\begin{proof}
+It is enough to compare a single on-critical conjugate pair.  For
+\(\rho=1/2+i\gamma\),
+\[
+\frac{1}{1/2+it-\rho}+\frac{1}{1/2+it-\bar\rho}
+=-i\left(\frac{1}{t-\gamma}+\frac{1}{t+\gamma}\right)
+=-\frac{2it}{t^{2}-\gamma^{2}} .
+\]
+Thus the zero contribution to the imaginary part of the logarithmic
+derivative is the odd principal-value distribution
+\(-2t\,\mathrm{PV}(t^{2}-\gamma^{2})^{-1}\).  The reflected kernel
+\(\mathcal K_{\rho}(t)=\mathrm{PV}(t^{2}-\gamma^{2})^{-1}\) is even.
+It therefore cannot be the residue summand obtained from
+\(\xi_{\mathbb R}'/\xi_{\mathbb R}\). The displayed
+\(\mathcal R_{\mathrm{ref}}\) is consequently not a Guinand--Weil
+decomposition.
+\end{proof}
+
+\subsection{Under RH: No Termwise Positivity}
+\label{v4-arith:w7-g:pair-pole:RH-positivity}
+
+\begin{proposition}[the on-critical pair-pole term is sign-indefinite]
+\label{v4-arith:w7-g:prop:pointwise-RH}
+\ClaimStatusProvedHere. Let \(\rho=1/2+i\gamma\) be on the critical
+line with \(\gamma\neq0\). Then
+\begin{equation}
+\label{v4-arith:w7-g:eq:pointwise-RH}
+\mathcal K_{\rho}(t)=\mathrm{PV}\frac{1}{t^{2}-\gamma^{2}}.
+\end{equation}
+It is sign-indefinite. In particular there are real even
+\(f\in\mathrm{PW}(\mathbb R)\) for which the single principal-value
+term \(R_{\rho}[f]\) is negative. RH gives positivity of the full Weil
+distribution, not positivity of each reflected pair-pole term.
+\end{proposition}
+
+\begin{proof}
+This is \Cref{v4-arith:w7-g:lem:residue-extract}. On
+\(|t|<|\gamma|\) the kernel is negative, away from the poles. Choose
+\(\widehat f\) real, even, smooth, and supported in a sufficiently
+small neighbourhood of \(0\). Then the principal-value integral is an
+ordinary integral over a region where the kernel is negative.
+\end{proof}
+
+\section{Tautology Comparison: Where Positivity Becomes Circular}
+\label{v4-arith:w7-g:tautology-comparison}
+
+Even under RH, a single pair-pole kernel is sign-indefinite. The
+following proposition records the failure of the pointwise construction.
+
+\begin{proposition}[pointwise pair-pole positivity fails]
+\label{v4-arith:w7-g:prop:circular-reduction}
+\ClaimStatusProvedHere. The statement
+``\(\mathcal{K}_{\rho}(t)\geq 0\) pointwise for every non-trivial zero
+\(\rho\)'' is false for the zeta zero set. Hence any attempt to prove
+A-TP by \emph{term-by-term} pointwise non-negativity of
+\(\mathcal{K}_{\rho}(t)\) is not merely circular; it has no valid
+on-critical case.
+\end{proposition}
+
+\begin{proof}
+For an on-critical zero, \(\alpha=0\), and
+\(\mathcal K_{\rho}(0)=-\gamma^{-2}<0\). Thus RH itself does not make
+the pair-pole kernel pointwise non-negative.
+\end{proof}
+
+\begin{remark}[pointwise positivity versus integrated positivity]
+\label{v4-arith:w7-g:rem:ruled-out-pointwise}
+Proposition~\ref{v4-arith:w7-g:prop:circular-reduction} establishes
+that pointwise \(\mathcal{K}_{\rho}(t)\geq 0\) cannot be the mechanism
+for A-TP. Sum-level non-negativity belongs to the actual Weil
+distribution; the reflected-resolvent form
+\(\mathcal R_{\mathrm{ref}}\) is not that distribution. The
+Hadamard logarithmic derivative has the same RH ceiling as the de Branges construction
+(Chapter~\ref{v4-arith:w5-j:VBstar-spectral-positivity}) and the
+digamma-kernel construction (Chapter~\ref{v4-arith:w6-a:ATP-direct-obstruction}).
+\end{remark}
+
+\begin{corollary}[the valid reformulations coincide]
+\label{v4-arith:w7-g:cor:three-constructions-equivalent}
+\ClaimStatusProvedHere. The two valid positivity statements
+\begin{enumerate}
+\item \emph{(Weil)} \(W(f*\widetilde{f})\geq 0\) for all
+\(f\in\mathrm{PW}(\mathbb{R})\);
+\item \emph{(Hermite--Biehler)} the de Branges datum
+\(E_{\xi}(z)=A_{\xi}(z)-iB_{\xi}(z)\) (defined in
+Chapter~\ref{v4-arith:w5-j:VBstar-spectral-positivity}) is
+Hermite--Biehler and satisfies
+\(\mathrm{div}(A_{\xi})=\mathrm{div}(\Xi)\);
+\end{enumerate}
+are equivalent and each equivalent to RH. The pointwise pair-pole
+positivity statement is false and is not a third reformulation.
+\end{corollary}
+
+\begin{proof}
+(1) \(\Leftrightarrow\) RH: \Cref{v4-arith:w5-a:cor:weil-positivity-RH}.
+(2) \(\Leftrightarrow\) RH: Lagarias' Hermite--Biehler theorem and
+\Cref{v4-arith:w5-j:thm:zeros-of-Xi-under-HB}.
+\Cref{v4-arith:w7-g:prop:circular-reduction} excludes the pointwise
+pair-pole statement.
+\end{proof}
+
+\section{de Bruijn--Newman \(\Lambda\leq 0\) is RH}
+\label{v4-arith:w7-g:de-Bruijn-Newman}
+
+The pair-pole pointwise positivity statement is false. The
+de Bruijn--Newman bound \(\Lambda\leq 0\) is a valid construction to A-TP
+only because it is RH itself.
+
+\subsection{The de Bruijn--Newman Family}
+\label{v4-arith:w7-g:de-Bruijn-Newman:family}
+
+\begin{definition}[de Bruijn--Newman heat flow]
+\label{v4-arith:w7-g:def:dBN-family}
+\ClaimStatusDefinitional (de Bruijn 1950; Newman 1976). Let
+\(\Xi(t):=\xi_{\mathbb{R}}(1/2+it)\). Its Fourier representation
+\(\Xi(t)=\int_{0}^{\infty}\Phi(u)\cos(tu)\,du\) with
+\begin{equation}
+\label{v4-arith:w7-g:eq:Phi}
+\Phi(u)\;:=\;\sum_{n=1}^{\infty}\pi n^{2}(2\pi n^{2}e^{4u}-3)e^{5u/2}\exp(-\pi n^{2}e^{4u})
+\end{equation}
+(Polya 1927, Titchmarsh \S10.1). Define the one-parameter family
+\(\Xi_{\lambda}(t):=\int_{0}^{\infty}\Phi(u)e^{\lambda u^{2}}\cos(tu)\,du\)
+for \(\lambda\in\mathbb{R}\). The \emph{de Bruijn--Newman constant}
+\(\Lambda\) is the infimum of \(\lambda\) for which all zeros of
+\(\Xi_{\lambda}\) are real.
+\end{definition}
+
+\begin{theorem}[de Bruijn--Newman bounds]
+\label{v4-arith:w7-g:thm:dBN-bounds}
+\ClaimStatusProvedElsewhere (Newman 1976; Rodgers--Tao 2020).
+\begin{enumerate}
+\item \(\Lambda\leq 1/2\) (de Bruijn 1950: for \(\lambda\geq 1/2\),
+\(\Xi_{\lambda}\) has only real zeros; Newman 1976 introduced
+\(\Lambda\) as an infimum).
+\item \(\Lambda\geq 0\) (Rodgers--Tao 2020, unconditional).
+\item RH \(\Leftrightarrow\) \(\Lambda\leq 0\) (Riemann 1859 for the direction
+\(\Lambda\leq 0\Rightarrow\) all zeros on critical line; Newman 1976 for
+the equivalence statement).
+\item Newman (1976) conjectured \(\Lambda=0\); Rodgers--Tao 2020 established
+\(\Lambda\geq 0\), so \(\Lambda=0\) is the combined best bound.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Newman 1976 \emph{Proc.~AMS} 61; de Bruijn 1950 \emph{Duke Math.~J.}~17;
+Rodgers--Tao 2020 \emph{Forum Math.~Pi} 8; and the classical
+equivalence RH \(\Leftrightarrow\) \(\Xi\) has only real zeros
+(Riemann 1859).
+\end{proof}
+
+\subsection{\(\Lambda\leq 0\) Implies A-TP via RH}
+\label{v4-arith:w7-g:de-Bruijn-Newman:sufficiency}
+
+\begin{lemma}[critical-line reformulation of \(\Lambda\leq 0\)]
+\label{v4-arith:w7-g:lem:Lambda-leq-zero}
+\ClaimStatusProvedHere. The statement \(\Lambda\leq 0\) is equivalent to:
+every non-trivial zero of \(\xi_{\mathbb{R}}\) lies on the critical line
+\(\mathrm{Re}\,s=1/2\).
+\end{lemma}
+
+\begin{proof}
+\(\Lambda\leq 0\Leftrightarrow\Xi_{0}=\Xi\) has only real zeros
+\(\Leftrightarrow\xi_{\mathbb{R}}(1/2+it)=0\) for \(t\) real only
+\(\Leftrightarrow\) every non-trivial zero \(\rho\) of \(\xi_{\mathbb{R}}\)
+satisfies \(\mathrm{Re}\,\rho=1/2\). This is RH.
+\end{proof}
+
+\begin{corollary}[\(\Lambda\leq 0\) implies A-TP]
+\label{v4-arith:w7-g:cor:Lambda-implies-ATP}
+\ClaimStatusProvedHereConditional. Under \(\Lambda\leq 0\) (equivalent to RH),
+A-TP holds.
+\end{corollary}
+
+\begin{proof}
+Lemma~\ref{v4-arith:w7-g:lem:Lambda-leq-zero} reduces \(\Lambda\leq 0\) to
+RH. Then \Cref{v4-arith:w5-a:cor:weil-positivity-RH} gives A-TP.
+\end{proof}
+
+\begin{remark}[\(\Lambda\leq 0\) is equivalent to RH]
+\label{v4-arith:w7-g:rem:Lambda-not-new}
+\(\Lambda\leq 0\) is equivalent to RH, not weaker. The
+Rodgers--Tao theorem \(\Lambda\geq 0\) places the constant at the
+Newman barrier. change
+on \(\Lambda\) is change towards RH, not a weaker substitute. The
+Hadamard-factorisation construction is tautological: it reduces
+A-TP to RH without passing through any strictly weaker intermediate.
+
+The candidate ``\(\Lambda\leq\lambda_{0}\) for some \(\lambda_{0}>0\)
+still implies A-TP'' is not supplied by the de Bruijn--Newman theory.
+The heat flow parameterises the zero-reality problem; the value
+\(\lambda=0\) is exactly RH.
+\end{remark}
+
+\begin{proposition}[zero-free regions do not give a pair-pole positivity criterion]
+\label{v4-arith:w7-g:prop:weaker-condition-elementary}
+\ClaimStatusProvedHere. A classical zero-free region, including the
+Korobov--Vinogradov region, does not imply A-TP or a partial-support
+A-TP statement through the pair-pole kernels. It excludes zeros near
+the edge of the critical strip; it does not make the central
+principal-value kernels positive.
+\end{proposition}
+
+\begin{proof}
+\Cref{v4-arith:w7-g:prop:pointwise-RH} shows that even an on-critical
+zero gives a sign-indefinite principal-value kernel. Moving zeros
+away from the edge of the strip cannot turn these central kernels
+into positive kernels. A zero-free region is a zero-location theorem;
+A-TP is a positivity theorem for the full Weil sum.
+\end{proof}
+
+\begin{remark}[zero-free region boundary]
+\label{v4-arith:w7-g:rem:zero-free-region-standard}
+The Korobov--Vinogradov region is an edge exclusion near
+\(\mathrm{Re}\,s=1\), with the reflected exclusion near
+\(\mathrm{Re}\,s=0\). It is not a central critical-line positivity
+statement. No partial-support A-TP closure is recorded here from that
+input.
+\end{remark}
+
+\section{Zero Density and Pair-Pole Convergence}
+\label{v4-arith:w7-g:zero-density}
+
+\subsection{Convergence of the Pair-Pole Sum}
+\label{v4-arith:w7-g:zero-density:convergence}
+
+\begin{proposition}[reflected pair-pole form converges distributionally after pairing]
+\label{v4-arith:w7-g:prop:pair-pole-converges}
+\ClaimStatusProvedHere. For \(f\in\mathrm{PW}(\mathbb{R})\), the
+reflected pair-pole form \eqref{v4-arith:w7-g:eq:guinand-weil} is a paired
+principal-value distribution. It is not, in general, an absolutely
+convergent sum of ordinary integrals. Absolute convergence holds only
+after imposing vanishing near the finitely many zero ordinates met by
+\(\mathrm{supp}\,\widehat f\), or after keeping the explicit
+regularisation.
+\end{proposition}
+
+\begin{proof}
+Away from \(t=\pm\gamma\), the displayed kernel has the stated
+\(|\gamma|^{-2}\) decay after pairing, and the zero-counting estimate
+controls the tail. At \(t=\pm\gamma\), however, the on-critical kernel
+is \(\mathrm{PV}(t^{2}-\gamma^{2})^{-1}\), whose absolute value is not
+locally integrable. Thus the reflected-resolvent expression is a
+principal-value distribution unless the test function kills those
+poles or a regularisation is retained.
+\end{proof}
+
+\begin{remark}[sum-level positivity versus pointwise positivity]
+\label{v4-arith:w7-g:rem:sum-vs-pointwise}
+For \(\rho=\beta+i\gamma\) with \(\alpha=1/2-\beta\), the functional-equation
+partner \(1-\rho=(1-\beta)-i\gamma\) has \(\alpha'=1/2-(1-\beta)=-\alpha\).
+Since \eqref{v4-arith:w7-g:eq:K-explicit} depends on \(\alpha^{2}\),
+\(\mathcal{K}_{1-\rho}(t)=\mathcal{K}_{\rho}(t)\); the two kernels are equal.
+The sum-level non-negativity of the Weil distribution is equivalent to
+RH by \Cref{v4-arith:w5-a:cor:weil-positivity-RH}. It is not the
+pointwise positivity of \(\mathcal K_\rho\), and it is not the
+positivity of the reflected-resolvent form
+\(\mathcal R_{\mathrm{ref}}\).
+\end{remark}
+
+\subsection{Exact Domain of the Hadamard-Factorisation Construction}
+\label{v4-arith:w7-g:zero-density:form}
+
+\begin{theorem}[Hadamard-factorisation construction: exact domain]
+\label{v4-arith:w7-g:thm:honest-form}
+\ClaimStatusProvedHere. The exact Hadamard-factorisation obstruction on
+A-TP has the following outcomes.
+\begin{enumerate}
+\item \emph{Reflected pair-pole diagnostic}
+(\Cref{v4-arith:w7-g:thm:guinand-weil-pair-pole}): unconditional;
+explicit pointwise form \eqref{v4-arith:w7-g:eq:K-explicit}, but not
+the Guinand--Weil zero side.
+\item \emph{No termwise positivity under RH}
+(Proposition~\ref{v4-arith:w7-g:prop:pointwise-RH}): under RH,
+\(\mathcal{K}_{\rho}(t)=\mathrm{PV}(t^{2}-\gamma^{2})^{-1}\), and
+single pair-pole terms can be negative.
+\item \emph{Valid reformulations coincide}
+(\Cref{v4-arith:w7-g:cor:three-constructions-equivalent}): Weil positivity
+and Hermite--Biehler positivity are equivalent to RH. Pointwise
+pair-pole positivity is false
+(Proposition~\ref{v4-arith:w7-g:prop:circular-reduction}).
+\item \emph{de Bruijn--Newman sufficient condition}
+(\Cref{v4-arith:w7-g:cor:Lambda-implies-ATP}): \(\Lambda\leq 0\)
+implies A-TP; but \(\Lambda\leq 0\Leftrightarrow\) RH, so this is not
+weaker than RH.
+\item \emph{Zero-free region boundary}
+(\Cref{v4-arith:w7-g:prop:weaker-condition-elementary}): the
+Korobov--Vinogradov-style zero-free region does not give a
+pair-pole positivity criterion or a partial-support A-TP closure.
+\end{enumerate}
+The genuine content of the Hadamard-factorisation construction is the
+logarithmic-derivative identity and the reflected-resolvent diagnostic.
+It does not give a termwise Weil decomposition and does not close A-TP
+below the RH threshold.
+\end{theorem}
+
+\begin{proof}
+Combine the cited results.
+\end{proof}
+
+\begin{remark}[the tautology map]
+\label{v4-arith:w7-g:rem:tautology-map}
+The three constructions to A-TP considered across the restricted-class comparison, the bounded-interval reduction, and
+the analytic refinement are:
+\begin{description}
+\item[the de Branges spectral comparison (de Branges).] HB\(^{+}\) + BD\(^{+}\) + Det + SH;
+tautology level: each hypothesis is RH-equivalent or strictly finer.
+\item[the bounded-interval reduction (digamma).] Bounded-interval positivity on
+\([-t_{\ast},t_{\ast}]\) after elementary reductions, with the
+finite-prime and polar functional \(R[f]\) retained; tautology level:
+the full inequality is RH-equivalent.
+\item[the Hadamard reduction (Hadamard).] Logarithmic derivative and reflected pair-pole diagnostic;
+failure mode: pointwise positivity is false even on the critical line
+(\Cref{v4-arith:w7-g:prop:circular-reduction}).
+\end{description}
+All three constructions bottom out at RH. The content each provides is a
+\emph{different local rewriting} of the same positivity question. The
+Hadamard construction offers the pointwise reflected-resolvent formula
+\eqref{v4-arith:w7-g:eq:K-explicit}, which clarifies the sign
+obstruction but does not give the Weil zero side.
+\end{remark}
+
+\section{Conclusion}
+\label{v4-arith:w7-g:conclusion}
+
+The Hadamard factorisation
+\(\xi_{\mathbb{R}}(s)=e^{a+bs}\prod_{\rho}(1-s/\rho)e^{s/\rho}\)
+gives the logarithmic derivative
+\[
+\frac{\xi_{\mathbb R}'(s)}{\xi_{\mathbb R}(s)}
+=b+\sum_{\rho}\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right).
+\]
+The reflected kernel \eqref{v4-arith:w7-g:eq:K-explicit} is not the
+Guinand--Weil zero summand. Pointwise non-negativity of
+\(\mathcal{K}_{\rho}\) fails even under RH
+(Proposition~\ref{v4-arith:w7-g:prop:circular-reduction}), so the
+Hadamard construction cannot prove A-TP by termwise positivity. The
+de Bruijn--Newman constant \(\Lambda\leq 0\) is likewise equivalent to
+RH (Lemma~\ref{v4-arith:w7-g:lem:Lambda-leq-zero}). The
+Korobov--Vinogradov zero-free region gives no pair-pole positivity
+criterion. The valid reformulations of A-TP remain Weil positivity
+and the Hermite--Biehler condition
+(Corollary~\ref{v4-arith:w7-g:cor:three-constructions-equivalent}).
+
+\begin{remark}[the non-tautological content of the Hadamard construction]
+\label{v4-arith:w7-g:rem:consequence}
+The Hadamard construction yields the exact logarithmic derivative of
+\(\xi_{\mathbb R}\) and an explicit reflected-resolvent kernel
+\eqref{v4-arith:w7-g:eq:K-explicit}. Pointwise pair-pole positivity is false
+(Proposition~\ref{v4-arith:w7-g:prop:circular-reduction}), so the
+construction does not close A-TP via this mechanism. Classical zero-free
+regions remain zero-location input, not positivity input.
+\end{remark}

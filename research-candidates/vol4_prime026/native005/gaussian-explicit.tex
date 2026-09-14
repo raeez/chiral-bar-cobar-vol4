@@ -1,0 +1,133 @@
+\section{The Gaussian Explicit Formula in a Fixed Fourier Convention}
+\label{v4-arith:w5-i:weil-gaussians}
+
+The zero test determines the time test by Fourier inversion.
+For the two normalizations, put
+\[
+ \widehat f_{2\pi}(u)=\int f(x)e^{-2\pi iux}dx,\qquad
+ (Sf)(t)=\frac1{2\pi}f\left(-\frac{t}{2\pi}\right).
+\]
+Then $\mathcal F_+(Sf)=\widehat f_{2\pi}$, where
+$\mathcal F_+\varphi(u)=\int\varphi(t)e^{iut}dt$.
+A change of variables gives $S(f*g)=Sf*Sg$ and $S(f^*)=(Sf)^*$.
+It also gives $\|Sf\|_2^2=(2\pi)^{-1}\|f\|_2^2$.
+Thus $S$ preserves the convolution algebra but is not a unitary
+normalization of the scalar product.
+
+\begin{definition}[the Gaussian pair]
+\label{v4-arith:w5-i:def:gaussian-family}
+For $\lambda>0$, define
+\[
+ f_\lambda(x)=e^{-\pi x^2/\lambda},\qquad
+ h_\lambda(u)=\sqrt\lambda e^{-\pi\lambda u^2},\qquad
+ \varphi_\lambda(t)=\frac1{2\pi}e^{-t^2/(4\pi\lambda)}.
+\]
+Then $h_\lambda=\widehat f_{\lambda,2\pi}
+=\mathcal F_+\varphi_\lambda$.
+All time tests belong to the rapid exponential space $\mathscr G$
+of Proposition~\ref{v4-arith:sc:gaussian-extension}.
+The symbol $W$ denotes the zero-side Weil distribution, so
+$W(\varphi)=\sum_\rho\mathcal F_+\varphi(z_\rho)$.
+\end{definition}
+
+\begin{theorem}[the complete Gaussian identity]
+\label{v4-arith:w5-i:thm:weil-gauss-closed}
+With $z_\rho=-i(\rho-1/2)$, counted with multiplicity, one has
+\begin{align}
+ \sqrt\lambda\sum_\rho e^{-\pi\lambda z_\rho^2}
+ ={}&2\sqrt\lambda e^{\pi\lambda/4}
+ -\frac{\sqrt\lambda}{2\pi}\int_{\mathbb R}
+ e^{-\pi\lambda u^2}k(u)du\notag\\
+ &-\frac1\pi\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}
+              e^{-(\log n)^2/(4\pi\lambda)},
+ \label{v4-arith:w5-i:eq:weil-id-gauss}
+\end{align}
+where $k(u)=\log\pi-\Re\psi_\Gamma(1/4+iu/2)$.
+Every sum and integral converges absolutely, locally uniformly in
+$\lambda>0$, together with every derivative in $\lambda$.
+\end{theorem}
+\begin{proof}
+Completing the square gives the Fourier pair above.
+The polar evaluations are $h_\lambda(\pm i/2)
+=\sqrt\lambda e^{\pi\lambda/4}$.
+The prime term is $\sum\Lambda(n)n^{-1/2}
+(\varphi_\lambda(\log n)+\varphi_\lambda(-\log n))$,
+which gives its exact coefficient and exponent.
+The gamma term is $(2\pi)^{-1}\int h_\lambda k$.
+Insert these three evaluations into the explicit formula on
+$\mathscr G$.
+
+On any interval $0<a\le\lambda\le b$, the zero terms and all
+parameter derivatives are bounded by a polynomial in $|z_\rho|$
+times $e^{-\pi a(\Re z_\rho)^2}$.
+The bounded imaginary strip and the zero count make this summable.
+For the prime terms, Gaussian decay in $\log n$ dominates every
+power of $n^{-1}$, uniformly on $[a,b]$. Logarithmic growth of $k$
+controls the gamma integral and its parameter derivatives.
+\end{proof}
+
+\begin{proposition}[the gamma concentration limit]
+As $\lambda\to\infty$, the Guinand gamma term satisfies
+\[
+ -\frac{\sqrt\lambda}{2\pi}\int e^{-\pi\lambda u^2}k(u)du
+ \longrightarrow-\frac{k(0)}{2\pi}<0.
+\]
+\end{proposition}
+\begin{proof}
+Put $v=\sqrt\lambda u$. Then $\int e^{-\pi v^2}dv=1$,
+and $k(v/\sqrt\lambda)\to k(0)$.
+For $\lambda\ge1$, logarithmic growth gives the common integrable
+majorant $C e^{-\pi v^2}(1+\log(2+|v|))$.
+Dominated convergence proves the limit.
+\end{proof}
+
+\begin{proposition}[a different finite part]
+Define
+\[
+ A_\Gamma(\lambda)=\lim_{R\to\infty}
+ \left\{\int_0^R(e^{-\pi x^2/\lambda}-1)
+              \Im\psi_\Gamma(1/2+ix)dx+\frac\pi2 R\right\}.
+\]
+This limit exists and equals
+\[
+ A_\Gamma(\lambda)=\frac\pi2\int_0^\infty
+                  e^{-\pi x^2/\lambda}\tanh(\pi x)dx
+                  +\frac12\log2.
+\]
+It satisfies $A_\Gamma(\lambda)\sim\pi\sqrt\lambda/4$ as
+$\lambda\to\infty$. Consequently $-\log\pi+A_\Gamma(\lambda)$
+is not the gamma term in \eqref{v4-arith:w5-i:eq:weil-id-gauss}.
+\end{proposition}
+\begin{proof}
+Digamma reflection at $1/2+ix$ gives
+$\Im\psi_\Gamma(1/2+ix)=(\pi/2)\tanh(\pi x)$.
+Separate the Gaussian integral from
+$(\pi/2)\int_0^R(1-\tanh(\pi x))dx$.
+The latter converges to $(\log2)/2$.
+After $x=\sqrt\lambda v$, dominated convergence gives
+$\lambda^{-1/2}\int_0^\infty e^{-\pi x^2/\lambda}
+\tanh(\pi x)dx\to\int_0^\infty e^{-\pi v^2}dv=1/2$.
+The preceding finite gamma limit proves the final assertion.
+\end{proof}
+
+\begin{proposition}[convolution and the full quadratic form]
+For $\lambda,\mu>0$,
+\[
+ f_\lambda*f_\mu=\sqrt{\frac{\lambda\mu}{\lambda+\mu}}
+ f_{\lambda+\mu},\qquad
+ \varphi_\lambda*\varphi_\mu
+ =\sqrt{\frac{\lambda\mu}{\lambda+\mu}}\varphi_{\lambda+\mu}.
+\]
+The corresponding Weil pairing is
+\[
+ W(\varphi_\lambda*\varphi_\mu)
+ =\sqrt{\lambda\mu}\sum_\rho e^{-\pi(\lambda+\mu)z_\rho^2}.
+\]
+This is a zero sum, not the identically zero discrepancy between the
+two sides of the explicit formula.
+\end{proposition}
+\begin{proof}
+Complete the square in the time convolution. Apply the convolution
+identity for $S$, then apply the Fourier product formula and the
+absolutely convergent zero evaluation.
+\end{proof}

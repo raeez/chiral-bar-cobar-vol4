@@ -1,0 +1,601 @@
+\section{Euler logarithms and prime traces}
+\label{v4-arith:ks:logL-not-cyclic}
+
+An Euler product already has a concrete algebraic carrier: the free
+commutative monoid on the primes. Its logarithm singles out prime powers,
+and an energy derivation supplies the factors $\log p$. These two
+operations must be distinguished before seeking a Hall-algebra realization.
+
+Let $\mathscr D_K$ be the algebra of formal Dirichlet series over a
+commutative $\mathbb Q$-algebra $K$. An element is a family
+$a=\sum_{n\geq1}a_n[n]$, with multiplication $[m][n]=[mn]$;
+the coefficient of $[n]$ in $ab$ is $\sum_{d\mid n}a_db_{n/d}$.
+We use the coefficient topology, or equivalently the filtration by the
+ideals of series supported on $n\geq N$. If $a_1=0$, then the coefficient
+of $[n]$ in $a^j$ vanishes for $2^j>n$, so formal logarithms and
+exponentials converge in this topology.
+
+\begin{proposition}[Euler logarithm and energy derivation]
+\label{v4-arith:obs:logL-not-cyclic}
+\ClaimStatusProvedHere{}
+In $\mathscr D_{\mathbb Q}$ one has
+\begin{equation}
+ Z=\prod_p(1-[p])^{-1}=\sum_{n\geq1}[n],
+ \qquad
+ \log Z=\sum_p\sum_{k\geq1}\frac{[p^k]}{k}.
+ \label{v4-arith:ks:euler-log}
+\end{equation}
+After extending coefficients to $\mathbb R$, the continuous derivation
+$D[n]=(\log n)[n]$ satisfies
+\begin{equation}
+ D\log Z=\sum_{n\geq1}\Lambda(n)[n],\qquad
+ \Lambda(n)=
+ \begin{cases}\log p&n=p^k,\ k\geq1,\\0&\text{otherwise.}\end{cases}
+ \label{v4-arith:ks:euler-derivation}
+\end{equation}
+For $\operatorname{Re}s>1$, their convergent analytic realizations are
+\begin{equation}
+ \log\zeta(s)=\sum_{p,k\geq1}\frac{p^{-ks}}{k},
+ \qquad
+ -\frac{\zeta'(s)}{\zeta(s)}
+   =\sum_{p,k\geq1}(\log p)p^{-ks}.
+ \label{v4-arith:ks:euler-analytic}
+\end{equation}
+The logarithm is the holomorphic branch tending to zero as
+$\operatorname{Re}s\longrightarrow+\infty$.
+\end{proposition}
+
+\begin{proof}
+Unique prime factorization gives exactly one contribution to every
+coefficient of the product in \eqref{v4-arith:ks:euler-log}.
+Taking its logarithm coefficient by coefficient gives
+$-\log(1-[p])=\sum_{k\geq1}[p^k]/k$.
+The identity $\log(mn)=\log m+\log n$ proves the Leibniz rule for $D$.
+Since $D[p^k]=k\log p\,[p^k]$, applying $D$ cancels the denominator $k$.
+
+On a compact subset of $\operatorname{Re}s>1$, choose $\sigma_0>1$
+below all real parts. Then
+\[
+ \sum_{p,k\geq1}\frac{|p^{-ks}|}{k}
+ \leq\frac{1}{1-2^{-\sigma_0}}\sum_{n\geq2}n^{-\sigma_0}<\infty.
+\]
+The differentiated series has the same bound with
+$\sum_{n\geq2}(\log n)n^{-\sigma_0}$ in place of the final sum.
+Thus both series converge locally uniformly. Exponentiation identifies
+the first series with the Euler product for $\zeta$ and shows that this
+product is nonzero. Differentiation proves the second identity.
+\end{proof}
+
+The coefficient of $n^{-s}$ in $\log\zeta$ is therefore $1/k$ for
+$n=p^k$, and zero otherwise. It is rational. The factor $\log p$
+belongs to the differentiated series. Neither assertion involves a
+cyclic-cohomology construction.
+
+\begin{proposition}[local determinant factors]
+\label{v4-arith:ks:local-determinant-traces}
+\ClaimStatusProvedHere{}
+For each prime $p$, let $T_p$ be a complex endomorphism of a Hermitian
+space of dimension at most $d$, where $d$ is fixed. Suppose
+$\|T_p\|\leq p^\theta$ for a fixed $\theta\geq0$. On
+$\operatorname{Re}s>1+\theta$ the product
+\[
+ L(s)=\prod_p\det(1-p^{-s}T_p)^{-1}
+\]
+is holomorphic and nonzero, and
+\begin{align}
+ \log L(s)&=\sum_{p,k\geq1}
+      \frac{\operatorname{Tr}(T_p^k)}{k}p^{-ks},
+      \label{v4-arith:ks:matrix-euler-log}\\
+ -\frac{L'(s)}{L(s)}&=\sum_{p,k\geq1}
+      (\log p)\operatorname{Tr}(T_p^k)p^{-ks}.
+      \label{v4-arith:ks:matrix-euler-derivative}
+\end{align}
+Here $\operatorname{Tr}$ is the ordinary, unnormalized matrix trace,
+and the logarithm tends to zero as the real part of $s$ tends to infinity.
+\end{proposition}
+
+\begin{proof}
+For $|q|\|T\|<1$, Jacobi's determinant formula gives
+\[
+ \frac{d}{dq}\bigl[-\log\det(1-qT)\bigr]
+   =\operatorname{Tr}\bigl(T(1-qT)^{-1}\bigr)
+   =\sum_{k\geq1}\operatorname{Tr}(T^k)q^{k-1}.
+\]
+Integration from $q=0$ fixes the constant and gives the local logarithm.
+The estimate $|\operatorname{Tr}(T_p^k)|\leq d p^{k\theta}$ reduces
+normal convergence, including differentiation, to the preceding proof
+with $\operatorname{Re}s-\theta$ in place of $\operatorname{Re}s$.
+\end{proof}
+
+These formulas give an arithmetic use for a proposed graded carrier:
+its trace must produce the specified local factors. For $T_p=1$, that
+carrier can be constructed without a quiver.
+
+\begin{proposition}[the prime monoid and its thermal trace]
+\label{v4-arith:ks:prime-fock-trace}
+\ClaimStatusProvedHere{}
+Let $\mathcal P=\mathbb Q[x_p:p\text{ prime}]$, with each monomial
+involving finitely many variables. Declare its monomials orthonormal
+after extension to $\mathbb C$, and complete to a Hilbert space
+$\mathcal F$. The assignment
+\[
+ x^\nu\longmapsto\varepsilon_{\prod_p p^{\nu_p}}
+\]
+is a unitary identification $\mathcal F\cong\ell^2(\mathbb N_{\geq1})$.
+The diagonal energy operator
+\[
+ Hx^\nu=\left(\sum_p\nu_p\log p\right)x^\nu
+\]
+is nonnegative and self-adjoint on
+$\{\sum_n a_n\varepsilon_n:\sum_n(\log n)^2|a_n|^2<\infty\}$.
+For $\operatorname{Re}s>1$,
+\begin{equation}
+ \operatorname{Tr}(e^{-sH})=\zeta(s),\qquad
+ \operatorname{Tr}(He^{-sH})=-\zeta'(s).
+ \label{v4-arith:ks:prime-thermal-trace}
+\end{equation}
+For real $\beta>1$, the normalized state
+$\langle A\rangle_\beta=\operatorname{Tr}(Ae^{-\beta H})/\zeta(\beta)$,
+whenever the numerator is defined, satisfies
+\[
+ \langle H\rangle_\beta=-\frac{\zeta'(\beta)}{\zeta(\beta)},
+ \qquad
+ \langle H^2\rangle_\beta-\langle H\rangle_\beta^2
+   =\sum_{p,k\geq1}k(\log p)^2p^{-k\beta}.
+\]
+\end{proposition}
+
+\begin{proof}
+The monomial basis is indexed bijectively by positive integers through
+unique factorization. Under this identification, $H\varepsilon_n
+=(\log n)\varepsilon_n$. A real diagonal multiplication operator on
+its maximal square-summability domain is self-adjoint; this follows
+directly by testing the adjoint against each basis vector.
+The singular values of $e^{-sH}$ are $n^{-\operatorname{Re}s}$, so it
+is trace class on the stated half-plane. The same argument applies to
+$H^je^{-sH}$ for every fixed $j\geq0$. Its diagonal trace proves
+\eqref{v4-arith:ks:prime-thermal-trace} and permits two differentiations.
+The quotient rule then identifies the variance with
+$(\log\zeta)''(\beta)$, and \eqref{v4-arith:ks:euler-analytic} evaluates it.
+\end{proof}
+
+For a finite set of primes $F$, the same construction on
+$\mathcal P_F=\mathbb Q[x_p:p\in F]$ has partition function
+$\zeta_F(s)=\prod_{p\in F}(1-p^{-s})^{-1}$ for
+$\operatorname{Re}s>0$. Multiplication by $x_p$ extends to the isometry
+$\varepsilon_n\mapsto\varepsilon_{pn}$. Thus the monoid action gives
+the prime shifts in the Bost--Connes representation. The displayed
+trace is a Hilbert-space trace; a map to the arithmetic Hochschild
+trace class $\mathcal V^{\mathrm{prim}}$ is additional data.
+
+\section{Hall multiplication and the BPS filtration}
+\label{v4-arith:ks:CoHA-conjectural}
+
+A Hall product counts extensions of representations. A monoid product
+multiplies their prime labels. Even for one vertex these operations
+produce different algebras, and the distinction persists when their
+graded characters resemble Euler products.
+
+\begin{proposition}[the zero-loop and one-loop calculations]
+\label{v4-arith:ks:one-vertex-coha}
+\ClaimStatusProvedHere{}
+Let $Q_m$ have one vertex and $m\in\{0,1\}$ loops, with zero potential.
+Its rational CoHA has dimension-$n$ summand
+$\mathcal H^{(m)}_n=\mathbb Q[x_1,\ldots,x_n]^{\mathfrak S_n}$.
+A homogeneous polynomial of polynomial degree $j$ has cohomological
+degree $2j+(1-m)n^2$. Write $e_k=x^k\in\mathcal H^{(m)}_1$.
+Then
+\[
+ \mathcal H^{(0)}\cong\bigwedge_{\mathbb Q}(e_0,e_1,e_2,\ldots),
+ \quad |e_k|=2k+1,
+ \qquad
+ \mathcal H^{(1)}\cong\mathbb Q[e_0,e_1,e_2,\ldots],
+ \quad |e_k|=2k.
+\]
+Every generator has dimension degree one.
+\end{proposition}
+
+\begin{proof}
+The representation space is affine and equivariantly contractible,
+so its equivariant cohomology is $H^*(B\mathrm{GL}_n,\mathbb Q)$.
+The Hall correspondence chooses an invariant subspace. Localization
+at the diagonal torus gives the shuffle formula
+\begin{equation}
+ f*g=\sum_{\substack{I\sqcup J=\{1,\ldots,a+b\}\\|I|=a}}
+ f(x_I)g(x_J)\prod_{i\in I,\,j\in J}(x_j-x_i)^{m-1}.
+ \label{v4-arith:ks:one-vertex-shuffle}
+\end{equation}
+The numerator is the Euler class of the $m$ arrow blocks and the
+denominator the Euler class of the tangent space to the Grassmannian.
+This is the specialization of Kontsevich--Soibelman,
+\emph{Cohomological Hall algebra, exponential Hodge structures and
+motivic Donaldson--Thomas invariants}, Theorem~2, pp.~11--12.
+
+For $m=0$, the product of $n$ dimension-one elements is their
+alternant divided by $\prod_{i<j}(x_j-x_i)$. Repeated exponents give
+zero. For $0\leq k_1<\cdots<k_n$, it is the Schur polynomial of
+partition $(k_n-n+1,k_{n-1}-n+2,\ldots,k_1)$. These form a basis of
+the symmetric polynomials. Hence the exterior-algebra map is an
+isomorphism. In particular,
+\[
+ e_0*e_0=0,\qquad
+ e_0*e_1=\frac{x_2-x_1}{x_2-x_1}=1\in\mathcal H^{(0)}_2,
+ \qquad e_1*e_0=-1\in\mathcal H^{(0)}_2.
+\]
+The constants on the right lie in dimension degree two and are not
+the unit, which lies in dimension degree zero.
+
+For $m=1$, the shuffle factor is one. Products of the $e_k$ give the
+monomial symmetric basis, multiplied by the factorials of repeated
+exponents. Those factorials are invertible over $\mathbb Q$, proving
+the polynomial-algebra assertion. This argument also explains its
+coefficient restriction: over $\mathbb Z$, for example,
+$e_0*e_0=2\cdot1\in\mathcal H^{(1)}_2$.
+\end{proof}
+
+An edgeless quiver with a vertex for each prime in a nonempty finite
+set $F$ therefore has odd square-zero classes already in each
+one-vertex subalgebra. Its CoHA cannot be $\mathcal P_F$.
+For $F=\varnothing$, there is only the zero representation, so both
+the CoHA and $\mathcal P_{\varnothing}$ are $\mathbb Q$.
+For the disjoint union of Jordan quivers, the rational Hall algebra
+is polynomial on generators $e_{p,k}$ for $p\in F$, $k\geq0$.
+There is, however, a precise prime-monoid comparison:
+\begin{equation}
+ \mathcal P_F\ \xrightarrow{\ x_p\mapsto e_{p,0}\ }\
+ \mathcal H_F^{(1)},\qquad
+ \mathcal H_F^{(1)}/(e_{p,k}:k>0)\cong\mathcal P_F.
+ \label{v4-arith:ks:jordan-prime-maps}
+\end{equation}
+The first map identifies the cohomological-degree-zero subalgebra;
+the second kills the positive-degree generators. The maps are
+compatible with inclusions of finite sets of primes. The full local
+graded character, as a series in $\mathbb Q[[z,q]]$ with $q$ recording
+half the cohomological degree, is
+\[
+ \sum_{n,j\geq0}\dim\bigl(\mathcal H^{(1)}_{n,2j}\bigr)z^nq^j
+   =\prod_{k\geq0}(1-zq^k)^{-1}.
+\]
+Its coefficient of $q^0$ is $(1-z)^{-1}$, the prime Euler factor
+after $z=p^{-s}$. Forgetting the $q$-grading instead gives infinite
+multiplicities even in dimension degree one. Thus
+\eqref{v4-arith:ks:jordan-prime-maps} specifies the sector on which
+Proposition~\ref{v4-arith:ks:prime-fock-trace} applies.
+
+To include a potential, fix a finite quiver $Q$ with symmetric arrow
+matrix and a polynomial cyclic potential
+$W\in\mathbb C Q/[\mathbb C Q,\mathbb C Q]_{\mathrm{vect}}$.
+For a dimension vector $\mathbf d\in\mathbb N^{Q_0}$, put
+\[
+ X_{\mathbf d}=\bigoplus_{a:i\to j}
+     \operatorname{Hom}(\mathbb C^{d_i},\mathbb C^{d_j}),\qquad
+ G_{\mathbf d}=\prod_i\mathrm{GL}_{d_i}(\mathbb C),\qquad
+ \mathfrak M_{\mathbf d}=[X_{\mathbf d}/G_{\mathbf d}].
+\]
+The Euler form is
+$\chi(\mathbf d,\mathbf e)=\sum_i d_ie_i-\sum_{a:i\to j}d_ie_j$,
+so $\dim\mathfrak M_{\mathbf d}=-\chi(\mathbf d,\mathbf d)$.
+Evaluation followed by matrix trace defines the invariant function
+$f_{\mathbf d}=\operatorname{Tr}(W)$ on this stack and on its affine
+coarse moduli space $M_{\mathbf d}=X_{\mathbf d}/\!/G_{\mathbf d}$.
+Assume $\operatorname{crit}(f_{\mathbf d})\subset f_{\mathbf d}^{-1}(0)$
+for every $\mathbf d$; zero and homogeneous positive-degree potentials
+satisfy this condition.
+
+We use rational monodromic mixed Hodge structures and the monodromic
+vanishing-cycle functor $\phi_f^{\mathrm{mon}}$, normalized to be
+perverse exact and to satisfy $\phi_0^{\mathrm{mon}}=\mathrm{id}$.
+Let $\mathbb L=H_c^*(\mathbb A^1,\mathbb Q)$, in cohomological
+degree two. Its monodromic square root is
+$\mathbb L^{1/2}=H_c^*(\mathbb A^1,\phi_{x^2}^{\mathrm{mon}}
+\mathbb Q_{\mathbb A^1})$, in degree one, with the square-root
+isomorphism fixed by the complex orientation. On a smooth space or smooth quotient
+stack $Y$, write
+$\mathrm{IC}_Y^{\mathrm{vir}}=\mathbb L^{-\dim Y/2}\otimes\mathbb Q_Y$.
+On a singular irreducible coarse moduli space, use the intersection
+complex with the same normalization on its smooth locus and
+intermediate extension. These conventions include the shifts in the
+one-vertex calculation.
+
+\begin{definition}[critical cohomological Hall algebra]
+\label{v4-arith:thm:KS-CoHA}
+The underlying dimension-graded, cohomologically graded object is
+\begin{equation}
+ \mathcal H_{Q,W}
+ =\bigoplus_{\mathbf d}
+ \left[
+ H_c^*(\mathfrak M_{\mathbf d},
+       \phi_{f_{\mathbf d}}^{\mathrm{mon}}
+       \mathrm{IC}_{\mathfrak M_{\mathbf d}}^{\mathrm{vir}})
+ \right]^\vee.
+ \label{v4-arith:ks:normalized-coha}
+\end{equation}
+Here $\vee$ denotes graded duality, including duality of Hodge
+structures, and equivariant cohomology is defined by finite-dimensional
+approximations to the classifying spaces. Its associative product is
+the vanishing-cycle pullback and proper pushforward along the stack
+of short exact sequences, with the virtual shifts displayed above.
+The equality of trace potentials on a block upper-triangular
+representation and on its subquotients supplies the required
+Thom--Sebastiani map. The zero representation supplies the unit.
+This is the critical CoHA of Kontsevich--Soibelman, \S7, in the
+normalization of Davison--Meinhardt, equation~(1) and \S5.2.
+\end{definition}
+
+Choose a stability condition with all central charges $\zeta_i=\sqrt{-1}$.
+Every representation is semistable of slope zero, since the slope
+of $\mathbf d\ne0$ is
+$-\operatorname{Re}(\sum_i\zeta_i d_i)/
+\operatorname{Im}(\sum_i\zeta_i d_i)=0$.
+This stability is slope-generic: the antisymmetrization of $\chi$
+vanishes on all dimension vectors because $Q$ is symmetric.
+Thus the single-slope integrality theorem applies to the full algebra
+\eqref{v4-arith:ks:normalized-coha}.
+
+For $\mathbf d\ne0$, define a BPS sheaf on $M_{\mathbf d}$ by
+\[
+ \mathcal B_{\mathbf d}=
+ \begin{cases}
+ \phi_{f_{\mathbf d}}^{\mathrm{mon}}
+       \mathrm{IC}_{M_{\mathbf d}}^{\mathrm{vir}}
+       &\text{if the stable locus is nonempty},\\
+ 0&\text{otherwise},
+ \end{cases}
+ \qquad
+ B=\bigoplus_{\mathbf d\ne0}H^*(M_{\mathbf d},\mathcal B_{\mathbf d}).
+\]
+At this stability, stable representations are precisely the simple
+ones. Finally put
+\[
+ U=H^*(B\mathbb C^*,\mathbb Q)_{\mathrm{vir}}\otimes B
+   =\mathbb L^{1/2}\otimes\mathbb Q[u]\otimes B,
+ \qquad |u|=2.
+\]
+Here $u$ is the first Chern class of the universal line bundle and
+has dimension degree zero. In particular, the BPS
+cohomology $B$, the shifted BPS Lie algebra $\mathbb L^{1/2}\otimes B$,
+and the full generator object $U$ are distinct.
+
+\begin{theorem}[Davison--Meinhardt integrality and PBW]
+\label{v4-arith:thm:davison-integrality}
+\ClaimStatusProvedElsewhere{}
+For the preceding data define, modulo two,
+\[
+ \tau(\mathbf d,\mathbf e)=\chi(\mathbf d,\mathbf e)
+       +\chi(\mathbf d,\mathbf d)\chi(\mathbf e,\mathbf e).
+\]
+Choose a bilinear form $\psi$ with
+$\psi(\mathbf d,\mathbf e)+\psi(\mathbf e,\mathbf d)
+=\tau(\mathbf d,\mathbf e)$, and twist the Hall product by
+$a*_\psi b=(-1)^{\psi(\mathbf d,\mathbf e)}a*b$.
+Write $\mathcal H^\psi$ for the resulting algebra. It has an
+exhaustive multiplicative ambient perverse filtration $P$ and a
+canonical generator embedding $\iota:U\hookrightarrow\mathcal H^\psi$
+such that the symmetrized Hall-product map
+\begin{equation}
+ \operatorname{PBW}:\operatorname{Sym}_{\mathrm{sup}}(U)
+       \xrightarrow{\ \sim\ }\mathcal H^\psi
+ \label{v4-arith:ks:pbw-object-map}
+\end{equation}
+is an isomorphism of dimension-graded, cohomologically graded
+monodromic mixed Hodge structures. The associated graded
+$\operatorname{gr}_P\mathcal H^\psi$ is a free supercommutative
+algebra. The positive-dimension part of $P_1\mathcal H^\psi$ is
+$\mathbb L^{1/2}\otimes B$, and is closed under the Hall
+supercommutator.
+\end{theorem}
+
+Here $\operatorname{Sym}_{\mathrm{sup}}$ is polynomial on the even
+part and exterior on the odd part, with the cohomological Koszul sign.
+The form $\tau$ is alternating modulo two, so a form $\psi$ exists
+by choosing an ordering of a basis of $(\mathbb Z/2)^{Q_0}$.
+Bilinearity makes the twisted product associative. The theorem is
+Davison--Meinhardt, \emph{Cohomological Donaldson--Thomas theory of
+a quiver with potential and quantum enveloping algebras},
+Theorems~A and~C, pp.~5--6 and 10--11; the Lie subalgebra is
+\S1.7, equation~(22).
+
+For clarity, $P$ uses the semisimplification map
+$p_{\mathbf d}:\mathfrak M_{\mathbf d}\to M_{\mathbf d}$.
+One approximates this map by the proper maps from moduli spaces
+of sufficiently framed representations to $M_{\mathbf d}$, with
+their virtual shifts. Perverse truncation of these direct images
+on the ambient space $M_{\mathbf d}$, followed by cohomology and
+stabilization in each degree, defines $P$; equivalently one uses
+the dual compact-support construction with truncation
+$\tau_{\geq-p}$ in Davison--Meinhardt, \S5.3, pp.~48--49.
+The summand $\mathbb L^{1/2}u^k\otimes B$ supplies generators of
+perverse degree $2k+1$. Supercommutativity of the associated graded
+implies $[P_a,P_b]\subset P_{a+b-1}$, and hence the assertion about
+$P_1$. No integral lattice or coefficient-change theorem is asserted
+by this rational Hodge-theoretic construction.
+
+\begin{proposition}[the multiplicative PBW criterion]
+\label{v4-arith:ks:pbw-multiplicative-criterion}
+\ClaimStatusProvedHere{}
+The map \eqref{v4-arith:ks:pbw-object-map} is an algebra isomorphism
+if and only if the embedded generators $\iota(U)$ pairwise
+supercommute in $\mathcal H^\psi$. An ordinary polynomial algebra
+on these homogeneous generators additionally requires $U$ to have
+no odd part.
+\end{proposition}
+
+\begin{proof}
+If the generators supercommute, the universal property gives an
+algebra map from $\operatorname{Sym}_{\mathrm{sup}}(U)$ to
+$\mathcal H^\psi$. On a product of $n$ generators it equals the
+signed average of the $n!$ ordered Hall products, hence equals the
+PBW map and is bijective. Conversely, an algebra map extending
+$\iota$ preserves the defining supercommutation relations.
+Over $\mathbb Q$ a nonzero odd generator in the symmetric
+superalgebra has square zero, whereas an ordinary polynomial
+algebra over $\mathbb Q$ is reduced.
+\end{proof}
+
+The commutator condition can fail even for a symmetric quiver with
+a homogeneous cubic potential.
+
+\begin{example}[a noncommutative symmetric critical CoHA]
+\label{v4-arith:ks:tripled-a2}
+Start with $Q=(1\xrightarrow{a}2)$, add the reverse arrow $a^*$
+and loops $\omega_1,\omega_2$, and call the resulting symmetric
+quiver $\widetilde Q$. With path multiplication given by composition
+from right to left, take the cyclic potential
+\[
+ \widetilde W=(aa^*-a^*a)(\omega_1+\omega_2).
+\]
+In dimension $(1,1)$ its trace is
+$(\omega_2-\omega_1)aa^*$. For the sign twist choose the original
+Euler form
+$\psi(\mathbf d,\mathbf e)
+=d_1e_1+d_2e_2-d_1e_2\pmod2$.
+It obeys the required relation because
+$\chi_{\widetilde Q}(\mathbf d,\mathbf e)
+=-d_1e_2-d_2e_1$.
+
+Dimensional reduction identifies the resulting critical CoHA with
+the preprojective CoHA of $Q$, with this multiplication and twist.
+The degree-zero BPS Lie algebra is
+$\mathfrak n^-_{\mathfrak{sl}_3}$: this is Davison,
+\emph{BPS Lie algebras and the less perverse filtration on the
+preprojective CoHA}, \S3.2, equation~(35), and Theorem~6.6,
+pp.~33--34. That theorem concerns the Lie algebra embedded in the
+actual Hall algebra, not just an associated graded algebra.
+Under its simple-root normalization, the two vertex classes
+$\alpha_1,\alpha_2$ correspond to $E_{21},E_{32}$. Consequently
+\[
+ [\alpha_2,\alpha_1]\ne0,
+ \qquad [E_{32},E_{21}]=E_{31}\ne0.
+\]
+Both classes have cohomological degree zero, so this is an ordinary
+commutator of even elements. The critical CoHA is not
+supercommutative, although Theorem~\ref{v4-arith:thm:davison-integrality}
+gives its PBW decomposition. Thus that theorem cannot imply a
+polynomial-algebra assertion for an arbitrary arithmetic potential.
+\end{example}
+
+\section{Cyclic potentials and the arithmetic comparison}
+\label{v4-arith:ks:arithmetic-potential-comparison}
+
+The logarithmic Euler series does have a cyclic realization, but its
+critical locus tests whether it can serve as a Hall potential.
+For an associative algebra $A$, degree-zero cyclic \emph{homology}
+is $\mathrm{HC}_0(A)=A/[A,A]_{\mathrm{vect}}$.
+Over a field, degree-zero cyclic cohomology consists of linear
+traces $\lambda:A\to K$ satisfying $\lambda(ab)=\lambda(ba)$.
+These constructions neither adjoin coefficients nor supply a map
+from an arbitrary Dirichlet series into a path algebra.
+
+\begin{proposition}[the completed logarithmic potential]
+\label{v4-arith:ks:logarithmic-potential-obstruction}
+\ClaimStatusProvedHere{}
+For a finite set of primes $F$, let $Q_F$ be the disjoint union of
+one-loop quivers, with loop $x_p$ at vertex $p$. Complete its complex
+path algebra in the arrow ideal. In the quotient by the closure of
+the commutator subspace, the cyclic series
+\[
+ W_F=\sum_{p\in F}\sum_{k\geq1}\frac{x_p^k}{k}
+\]
+is well defined. On tuples of finite matrices with $\|X_p\|<1$,
+\[
+ \operatorname{Tr}(W_F)(X)
+   =-\sum_{p\in F}\log\det(1-X_p).
+\]
+In particular, at dimension one at each vertex and
+$X_p=p^{-s}$ it equals $\log\zeta_F(s)$ for
+$\operatorname{Re}s>0$. Its completed Jacobi algebra is zero.
+\end{proposition}
+
+\begin{proof}
+There are no paths between different vertices, so the completed
+path algebra is $\prod_{p\in F}\mathbb C[[x_p]]$.
+Convergence and the trace identity follow from the local determinant
+calculation. The cyclic derivative removes one occurrence of the
+specified arrow and sums over its positions. Hence
+\[
+ \frac{\partial W_F}{\partial x_p}
+   =\sum_{k\geq1}x_p^{k-1}=(1-x_p)^{-1}.
+\]
+This element is a unit in the corner with identity $e_p$.
+The closed two-sided ideal generated by the cyclic derivatives
+therefore contains every $e_p$ and hence the identity $\sum_{p\in F}e_p$.
+Its quotient, the completed Jacobi algebra, is zero.
+Equivalently, in every nonzero dimension vector the trace function
+has no critical point on the matrix domain: its derivative in a variation $\delta X_p$ is
+$\operatorname{Tr}((1-X_p)^{-1}\delta X_p)$, a nonzero covector.
+\end{proof}
+
+This series lies in a completed cyclic path algebra, whereas
+Theorem~\ref{v4-arith:thm:davison-integrality} is stated for a
+polynomial potential. The obstruction is already visible for every
+polynomial truncation containing its linear term: in the formal
+neighborhood of the zero representation, its cyclic derivative is
+a unit and its vanishing cycles are zero in positive dimension.
+Thus the displayed logarithmic realization supplies no nonzero
+local BPS object at the origin.
+
+Removing the low-degree terms changes the critical problem in a
+computable way. At one vertex, for $m\geq2$, put
+\[
+ W^{\geq m}=\sum_{k\geq m}\frac{x^k}{k},\qquad
+ \frac{\partial W^{\geq m}}{\partial x}
+   =\frac{x^{m-1}}{1-x}.
+\]
+Its completed Jacobi algebra is
+$\mathbb C[[x]]/(x^{m-1})$: it is $\mathbb C$ for $m=2$ and
+the dual numbers for $m=3$. The scalar trace at $x=p^{-s}$ is now
+$-\log(1-p^{-s})-\sum_{1\leq k<m}p^{-ks}/k$.
+The missing terms must therefore be supplied by a separate
+construction if this singularity is used in an Euler-factor model.
+
+\begin{proposition}[arithmetic comparison criterion]
+\label{v4-arith:thm:arithmetic-CoHA-conjectural}
+\ClaimStatusConditional{}
+Suppose that for every finite set of primes $F$ one has a finite
+symmetric complex quiver with polynomial potential $(Q_F,W_F)$
+satisfying the hypotheses above, and a dimension-graded rational
+object $V_F$ with a specified isomorphism
+\[
+ \eta_F:V_F\xrightarrow{\ \sim\ }B_{Q_F,W_F}
+\]
+of cohomologically graded monodromic mixed Hodge structures.
+Then PBW gives an object isomorphism
+\[
+ \operatorname{Sym}_{\mathrm{sup}}
+    (\mathbb L^{1/2}\otimes\mathbb Q[u]\otimes V_F)
+       \xrightarrow{\ \sim\ }\mathcal H_{Q_F,W_F}^{\psi}.
+\]
+It is an algebra isomorphism precisely when the corresponding
+embedded generator tower supercommutes. If these generators
+supercommute and are all even, it is an ordinary polynomial-algebra
+isomorphism.
+\end{proposition}
+
+\begin{proof}
+Apply Theorem~\ref{v4-arith:thm:davison-integrality} through
+$\mathbb L^{1/2}\otimes\mathbb Q[u]\otimes\eta_F$ and then apply
+Proposition~\ref{v4-arith:ks:pbw-multiplicative-criterion}.
+\end{proof}
+
+An arithmetic identification with $\mathcal V^{\mathrm{prim}}$
+requires more than the objects $V_F$. It requires a realization of
+that Hochschild trace class in the same graded coefficient category,
+a comparison with the $V_F$, and maps compatible with enlarging $F$.
+To obtain an Euler product, one must also specify an energy or
+graded-character operation and prove that it intertwines the
+comparison with the local traces of
+Proposition~\ref{v4-arith:ks:local-determinant-traces}.
+The polynomial algebra in that comparison contains the entire
+$\mathbb Q[u]$ tower. Restricting to a single generator per prime
+needs a specified subalgebra or quotient, as in
+\eqref{v4-arith:ks:jordan-prime-maps}.
+
+The construction of such quiver data and compatible comparison maps
+for the arithmetic Hochschild trace remains open. The prime Fock
+trace proves the Euler product on an explicit carrier; the
+zero-loop calculation excludes an edgeless CoHA on a nonempty prime
+set as that carrier;
+the logarithmic-potential calculation excludes its most direct
+completed critical realization; and the tripled-$A_2$ calculation
+shows why a PBW theorem alone cannot remove the multiplication
+obstruction.

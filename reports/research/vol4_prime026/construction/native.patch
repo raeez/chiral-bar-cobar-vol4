@@ -1,0 +1,2372 @@
+--- a/chapters/arithmetic/57_hp_li_positivity_closure.tex
++++ b/chapters/arithmetic/57_hp_li_positivity_closure.tex
+@@ -1,849 +1,432 @@
+-\chapter{HP--Li Positivity and the Rankin--Selberg Kernel Obstruction}
++\chapter{Weil Pairings and Automorphic Coefficient Multipliers}
+ \label{v4-arith:w5-a:chapter}
+ 
+-The HP--Li programme reduces the Riemann Hypothesis to the
+-positivity of the Weil distribution \(W(f*\widetilde{f})\geq 0\) on the
+-Paley--Wiener class \(\mathrm{PW}(\mathbb{R})\)
+-(\Cref{v4-arith:w5-a:cor:weil-positivity-RH}). The
+-fourth input to the sufficient RH path of
+-Chapter~\ref{v4-arith:rh-reformulation}, HP--Li positivity, is the
+-full-strength Weil positive trace inequality.
+-
+-A coefficientwise Mellin lift
+-\(\Upsilon_{F}\colon\mathrm{PW}^{\mathrm{hol}}_{F}\to q\mathbb C[[q]]\)
+-constructed from a holomorphic cuspidal Hecke eigenform \(F\) of weight
+-\(k\geq 12\) is a formal probe of the tempered cuspidal core. It is not,
+-for a general Paley--Wiener multiplier \(f(\log n)\), a modular form.
+-The Rankin--Selberg kernel attached to a fixed \(F\) is the automorphic
+-kernel of \(L(s,F\otimes\overline F)\), whereas the finite term in
+-Weil's formula is the von Mangoldt kernel of \(\zeta\). Thus the
+-prime-side Weil contribution is not made positive by this lift.
+-
+-The archimedean contribution \(W_{\infty}(f*\widetilde{f})\) is the
+-pairing of \(|\widehat{f}|^{2}\) against the distribution
+-\(\mathcal{T}_{\infty}(t)=\frac{1}{2\pi}\mathrm{Re}\,\psi(\tfrac{1}{4}+\tfrac{it}{2})+\frac{\log\pi}{2\pi}\),
+-where \(\psi=\Gamma'/\Gamma=\partial_{s}\log\Gamma\) is the digamma function.
+-The Mellin--Petersson isometry pairs \(|\widehat{f}|^{2}\) against the
+-Petersson archimedean density \(|\Gamma(\tfrac{1}{4}+\tfrac{it}{2})|^{2}\);
+-the Weil archimedean term \(W_{\infty}\) pairs against the
+-logarithmic-derivative density \(\mathrm{Re}\,\psi(\tfrac{1}{4}+\tfrac{it}{2})\).
+-These two densities are not proportional, so \(W_{\infty}\) lies outside
+-the isometry.
+-Conjecture A-TP (\Cref{v4-arith:w5-a:conj:archimedean-tate-positivity})
+-is the full Weil inequality with the archimedean term isolated on one
+-side. It is strictly equivalent to Weil positivity and to RH
+-(\Cref{v4-arith:w5-a:thm:ATP-equals-weil-positivity}).
+-
+-\section{Weil's Explicit Formula (Recall)}
++The Weil functional acts on compact smooth functions of the logarithmic
++variable. Its zero formula evaluates their entire Fourier transforms.
++Keeping these two spaces distinct fixes the prime weights and the
++archimedean sign. It also distinguishes two coefficient multipliers,
++one of which can produce only finite Fourier polynomials.
++
++\section{The compact test algebra and its Fourier image}
+ \label{v4-arith:w5-a:weil-explicit}
+-
+-\subsection{Paley--Wiener Test Class}
+ \label{v4-arith:w5-a:weil-explicit:PW}
+ 
+-\begin{definition}[admissible Paley--Wiener class]
++\begin{definition}[test spaces and involutions]
+ \label{v4-arith:w5-a:def:PW}
+-\ClaimStatusDefinitional. Let \(\mathrm{PW}(\mathbb{R})\) denote the
+-space of entire functions \(g(s)\) of exponential type such that
+-\(g(s)=\widehat{f}(s)\) for some even Schwartz-class function
+-\(f\in\mathcal{S}(\mathbb{R})\) of compact support, with the Fourier
+-normalisation \(\widehat{f}(s)=\int_{\mathbb{R}}f(u)e^{isu}\,du\). For
+-\(f\in\mathrm{PW}(\mathbb{R})\), write \(\widetilde{f}(u):=\overline{f(-u)}\).
+-The convolution
+-\((f*\widetilde{f})(u)=\int_{\mathbb{R}}f(v)\widetilde{f}(u-v)\,dv\) has
+-\[
+-\widehat{f*\widetilde{f}}(s)=
+-\widehat f(s)\,\overline{\widehat f(\overline s)}.
+-\]
+-On the real axis this is \(|\widehat f(t)|^2\); off the real axis it is
+-not an absolute square. For \(f\) real even, \(\widetilde{f}=f\).
++Put $\mathscr A=C_c^\infty(\mathbb R)$, with its usual
++inductive-limit topology, and put $\mathscr P=\mathcal F_+\mathscr A$,
++where
++\[
++ h(z)=\mathcal F_+f(z)=\int_{\mathbb R}f(t)e^{izt}dt,
++ \qquad
++ f(t)=\frac1{2\pi}\int_{\mathbb R}h(u)e^{-iut}du.
++\]
++Give $\mathscr P$ the transported topology. Its elements are entire
++functions, rapidly decreasing in each horizontal strip.
++For $f,g\in\mathscr A$, define
++\[
++ (f*g)(t)=\int f(v)g(t-v)dv,\qquad
++ f^*(t)=\overline{f(-t)},\qquad h^\sharp(z)=\overline{h(\bar z)}.
++\]
++Thus $\mathcal F_+(f*g)=(\mathcal F_+f)(\mathcal F_+g)$ and
++$\mathcal F_+(f^*)=(\mathcal F_+f)^\sharp$.
+ \end{definition}
+ 
+-\begin{theorem}[Weil 1952 explicit formula]
++The identities follow from Fubini and a change of variables. A second
++real Fourier transform of $h\in\mathscr P$ is a reflected compact
++smooth function. It is generally not an entire function available for
++evaluation at complex zeros.
++
++\begin{theorem}[the signed archimedean contribution]
+ \label{v4-arith:w5-a:thm:weil-explicit}
+-\ClaimStatusProvedElsewhere. Let \(\psi=\Gamma'/\Gamma\) be the
+-digamma function. For \(f\in\mathrm{PW}(\mathbb{R})\) with
+-Fourier transform \(\widehat{f}\), write
+-\(\gamma_{\rho}:=-i(\rho-\tfrac12)\in\mathbb C\) for each non-trivial
+-zero \(\rho\) of \(\zeta\). The Weil distribution satisfies
+-\begin{equation}
+-\label{v4-arith:w5-a:eq:weil-explicit}
+-\sum_{\rho}\widehat{f}(\gamma_{\rho})
+-=\widehat{f}\bigl(\tfrac{1}{2i}\bigr)+\widehat{f}\bigl(-\tfrac{1}{2i}\bigr)
+--W_{\infty}(f)-W_{\mathrm{fin}}(f),
+-\end{equation}
+-with archimedean and finite-place Weil terms
++Set $\xi(s)=\tfrac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)$ and
++$\psi_\Gamma=\Gamma'/\Gamma$.
++For $f\in\mathscr A$, write $h=\mathcal F_+f$ and
++$z_\rho=-i(\rho-1/2)$, where $\rho$ ranges over the zeros of $\xi$
++with multiplicity.
++Define
+ \begin{align}
+-\label{v4-arith:w5-a:eq:weil-archimedean}
+-W_{\infty}(f)&:=\int_{-\infty}^{\infty}\widehat{f}(t)\cdot\frac{1}{2\pi}\Bigl[\mathrm{Re}\,\psi\bigl(\tfrac{1}{4}+\tfrac{it}{2}\bigr)+\log\pi\Bigr]\,dt,\\
+-\label{v4-arith:w5-a:eq:weil-finite}
+-W_{\mathrm{fin}}(f)&:=2\sum_{p}\sum_{n\geq 1}(\log p)\,p^{-n/2}\,f(n\log p).
++ P(f)&=h(i/2)+h(-i/2),\notag\\
++ W_\infty(f)&=\frac1{2\pi}\int_{\mathbb R}h(u)
++       \bigl(\log\pi-\Re\psi_\Gamma(1/4+iu/2)\bigr)du,
++ \label{v4-arith:w5-a:eq:weil-archimedean}\\
++ W_{\mathrm{fin}}(f)&=\sum_{m\ge2}\frac{\Lambda(m)}{\sqrt m}
++                   \bigl(f(\log m)+f(-\log m)\bigr).
++ \label{v4-arith:w5-a:eq:weil-finite}
+ \end{align}
+-The two polar terms \(\widehat{f}(\pm 1/(2i))=\widehat{f}(\mp i/2)\)
+-arise from the simple poles of the completed zeta \(\Lambda_{\zeta}\) at
+-\(s=1,0\) (the pole of \(\zeta\) at \(s=1\) and of \(\Gamma(s/2)\) at
+-\(s=0\)); the factor \(s(s-1)/2\) in \(\xi_{\mathbb{R}}=\tfrac12 s(s-1)\Lambda_{\zeta}\)
+-cancels them, so \(\xi_{\mathbb{R}}\) itself is entire.
+-\end{theorem}
+-
+-\begin{proof}
+-Weil 1952 Selecta (\emph{Sur les formules explicites de la th\'eorie
+-des nombres premiers}, reprinted in \emph{Oeuvres Scientifiques} Vol.~II)
+-computes the distribution by residue calculus applied to
+-\(-\frac{1}{2\pi i}\oint\widehat{f}\,d\log\xi_{\mathbb{R}}\) on a
+-symmetric contour; the trivial-zero gamma factors produce
+-\(W_{\infty}\) and the Euler product yields \(W_{\mathrm{fin}}\).
+-Modern references: Iwaniec--Kowalski \emph{Analytic Number Theory}
+-(AMS 2004) Thm.~5.12; Patterson \emph{An Introduction to the Theory of
+-the Riemann Zeta-Function} (Cambridge 1988) Thm.~3.1.
+-\end{proof}
+-
+-\begin{corollary}[Weil positivity as RH]
++Then the continuous distribution $W:\mathscr A\to\mathbb C$ is
++\begin{equation}
++ W(f)=\sum_\rho h(z_\rho)=P(f)-W_\infty(f)-W_{\mathrm{fin}}(f).
++ \label{v4-arith:w5-a:eq:weil-explicit}
++\end{equation}
++The zero sum converges absolutely and the prime sum is finite.
++For even $f$, the prime sum is $2\mu_{1/2}(f)$.
++\end{theorem}
++\begin{proof}
++Theorem~\ref{v4-arith:pm:weil} gives the formula with
++$\mathcal A_\infty(h)=(2\pi)^{-1}\int h(\Re\psi_\Gamma-\log\pi)$.
++The definition here is $W_\infty(f)=-\mathcal A_\infty(h)$.
++This accounts for both signs in \eqref{v4-arith:w5-a:eq:weil-explicit}.
++The compact-test estimates in that theorem prove the convergence and
++continuity assertions. No tempered extension of $\mu_{1/2}$ is used.
++\end{proof}
++
++\begin{proposition}[a compact test determining the sign]
++\label{v4-arith:wc:sign-test}
++Let $0<a<b<\log2$. Suppose $f\ne0$ is even, nonnegative, smooth,
++and supported in $(-b,-a)\cup(a,b)$. Then
++\[
++ W_{\mathrm{fin}}(f)=0,\qquad
++ W_\infty(f)=2\int_a^b\frac{e^{-t/2}}{1-e^{-2t}}f(t)dt>0.
++\]
++\end{proposition}
++\begin{proof}
++There are no prime-power logarithms in the support. Since $f(0)=0$,
++the constant terms of the digamma integral vanish after Fourier
++inversion. The substitution $v=2t$ in
++\[
++ \psi_\Gamma(z)+\gamma
++ =\int_0^\infty\frac{e^{-v}-e^{-zv}}{1-e^{-v}}dv
++ \quad(\Re z>0)
++\]
++gives the displayed positive integral. The identity is
++\href{https://dlmf.nist.gov/5.9.E16}{DLMF 5.9.16}.
++The denominator is positive and $f$ is positive on an interval.
++\end{proof}
++
++\section{The Hermitian form and the two polar moments}
++\label{v4-arith:w5-a:irreducible-obstruction}
++
++Define $q_W(f,g)=W(f*g^*)$, with the first variable linear.
++The zero multiset is invariant under $z\mapsto\bar z$, by the
++functional equation and conjugation of $\xi$. Absolute convergence
++therefore gives $W(f^*)=\overline{W(f)}$. Consequently $q_W$ is Hermitian.
++
++\begin{corollary}[Weil's positivity criterion]
+ \label{v4-arith:w5-a:cor:weil-positivity-RH}
+-\ClaimStatusProvedElsewhere. RH is equivalent to
+-\begin{equation}
+-\label{v4-arith:w5-a:eq:weil-positivity}
+-W(f*\widetilde{f})\;\geq\;0\qquad\text{for all }f\in\mathrm{PW}(\mathbb{R}),
+-\end{equation}
+-where \(W(g):=\widehat{g}(\tfrac{1}{2i})+\widehat{g}(-\tfrac{1}{2i})-W_{\infty}(g)-W_{\mathrm{fin}}(g)\)
+-denotes the right-hand side of \eqref{v4-arith:w5-a:eq:weil-explicit}.
+-Under RH, \(\gamma_{\rho}\in\mathbb R\) and
+-\(W(f*\widetilde{f})=\sum_{\rho}|\widehat{f}(\gamma_{\rho})|^{2}\geq 0\);
+-the converse is Weil's positivity equivalence.
++The Riemann Hypothesis is equivalent to
++\begin{equation}
++ q_W(f,f)\ge0\qquad(f\in\mathscr A).
++ \label{v4-arith:w5-a:eq:weil-positivity}
++\end{equation}
+ \end{corollary}
+-
+-\begin{proof}
+-Weil 1952 \S IV. The key identity is
+-\((f*\widetilde{f})\widehat{}(t)=|\widehat{f}(t)|^{2}\geq 0\); on the
+-critical line \(\mathrm{Re}\,s=1/2\) the Weil distribution becomes a
+-sum of non-negative values, and the off-critical locus contributes a
+-negative term by Hadamard product considerations.
+-\end{proof}
+-
+-\subsection{Li Coefficients as Weil Distribution Values}
+-\label{v4-arith:w5-a:weil-explicit:Li}
+-
+-\begin{theorem}[Li 1997, J.~Number Theory 65]
+-\label{v4-arith:w5-a:thm:li-criterion}
+-\ClaimStatusProvedElsewhere. RH is equivalent to \(\lambda_{n}\geq 0\)
+-for every integer \(n\geq 1\), where
+-\begin{equation}
+-\label{v4-arith:w5-a:eq:li}
+-\lambda_{n}\;=\;\sum_{\rho}\biggl(1-\Bigl(1-\frac{1}{\rho}\Bigr)^{n}\biggr),
+-\end{equation}
+-summed over non-trivial zeros with multiplicity.
+-\end{theorem}
+-
+-\begin{proposition}[Li coefficients and the Paley--Wiener boundary]
++\begin{proof}
++This is Weil's criterion on compact smooth additive tests, with the
++Fourier convention above. It is stated in
++\href{https://arxiv.org/html/2301.00421v3#S1}{Suzuki,
++\emph{On the Hilbert space derived from the Weil distribution},
++Section~1, equations~(1.1)--(1.2)}.
++In that convention the zeros of $\xi(1/2-iz)$ are evaluated with
++the opposite sign. Their reflected multiset is exactly $\{z_\rho\}$
++here. Under RH the assertion follows directly from
++$q_W(f,f)=\sum_\rho|\mathcal F_+f(\gamma_\rho)|^2$.
++The converse is the cited positivity criterion, not an assertion of
++positivity for this arithmetic form.
++\end{proof}
++
++\begin{proposition}[the polar Hermitian form]
++\label{v4-arith:w5-a:rem:H3-removable}
++Put $a(f)=\int f(t)e^{-t/2}dt$ and $b(f)=\int f(t)e^{t/2}dt$.
++Then
++\[
++ P(f*g^*)=a(f)\overline{b(g)}+b(f)\overline{a(g)}.
++\]
++The moment map $(a,b):\mathscr A\to\mathbb C^2$ is continuous and
++surjective. The polar form has rank two and both signs. It vanishes
++on the common kernel of the two moments.
++\end{proposition}
++\begin{proof}
++Evaluate $h_fh_g^\sharp$ at $i/2$ and $-i/2$.
++If a linear combination of $a$ and $b$ vanished on every test, the
++smooth function $c_1e^{-t/2}+c_2e^{t/2}$ would vanish identically.
++Its value and derivative at zero force $c_1=c_2=0$. The moment map
++therefore has two-dimensional range. On that range the form has
++matrix $\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$,
++with eigenvalues $1$ and $-1$.
++\end{proof}
++
++The use of the entire function $\xi$ does not remove these polar
++evaluations from its explicit formula. Removing a rank-two term
++changes the form. It does not preserve positivity automatically.
++
++\begin{conjecture}[archimedean Tate positivity]
++\label{v4-arith:w5-a:conj:archimedean-tate-positivity}
++For every $f\in\mathscr A$,
++\begin{equation}
++ W_\infty(f*f^*)\le P(f*f^*)-W_{\mathrm{fin}}(f*f^*).
++ \label{v4-arith:w5-a:eq:archimedean-tate-positivity}
++\end{equation}
++\end{conjecture}
++
++\begin{theorem}[the full positivity inequality]
++\label{v4-arith:w5-a:thm:ATP-equals-weil-positivity}
++\label{v4-arith:w5-a:thm:HPLi-restricted}
++For all $f\in\mathscr A$,
++\begin{equation}
++ P(f*f^*)-W_{\mathrm{fin}}(f*f^*)=q_W(f,f)+W_\infty(f*f^*).
++ \label{v4-arith:w5-a:eq:restricted-HPLi}
++\end{equation}
++Thus archimedean Tate positivity is equivalent to Weil positivity
++and to RH. The equality applies to any specified restricted class
++as well, but asserts no positivity on that class.
++\end{theorem}
++\begin{proof}
++Apply \eqref{v4-arith:w5-a:eq:weil-explicit} to $f*f^*\in\mathscr A$
++and rearrange. Then apply Weil's criterion.
++\end{proof}
++
++\section{Coefficient multipliers on the two carriers}
++\label{v4-arith:w5-a:mellin-lift}
++
++Fix a holomorphic cusp form $F(z)=\sum_{n\ge1}a_F(n)q^n$ of weight
++$k>0$ for $\mathrm{SL}_2(\mathbb Z)$, where $k$ is even and $q=e^{2\pi iz}$.
++Its coefficients have polynomial growth. Indeed the invariant
++function $y^{k/2}|F(z)|$ is bounded on a fundamental domain and
++hence on the upper half-plane. The Fourier coefficient integral
++at $y=1/n$ gives $|a_F(n)|\le C n^{k/2}$.
++
++\begin{definition}[the two coefficient maps]
++\label{v4-arith:w5-a:def:upsilon}
++For $f\in\mathscr A$ and $h=\mathcal F_+f\in\mathscr P$, set
++\begin{equation}
++ \begin{aligned}
++ U_F(f)(z)&=\sum_{n\ge1}f(\log n)a_F(n)n^{(k-1)/2}q^n,\\
++ \Upsilon_F(h)(z)&=\sum_{n\ge1}h(\log n)a_F(n)n^{(k-1)/2}q^n.
++ \end{aligned}
++ \label{v4-arith:w5-a:eq:upsilon}
++\end{equation}
++The first sum is finite. The second converges locally uniformly
++on the upper half-plane, by polynomial coefficient growth and
++the factor $e^{-2\pi n\Im z}$.
++Neither definition asserts modularity.
++\end{definition}
++
++\begin{theorem}[the compact multiplier obstruction]
++\label{v4-arith:w5-a:lem:upsilon-cuspidal}
++The function $U_F(f)$ is a cusp form of weight $k$ for
++$\mathrm{SL}_2(\mathbb Z)$ only if it vanishes identically.
++Thus the compact multiplier is modular exactly on
++$\{f:f(\log n)a_F(n)=0\text{ for all }n\}$.
++The entire multiplier $\Upsilon_F(h)$ is a distinct construction.
++Its modularity requires the transformation law of its resulting
++holomorphic series.
++\end{theorem}
++\begin{proof}
++Write $G(z)=\sum_{n=1}^N b_n e^{2\pi inz}$ for a nonzero finite
++Fourier polynomial. Then $G(iy)$ is analytic as a function of $y$
++near zero. If $G$ were modular of positive weight $k$,
++\[
++ G(i/y)=(iy)^kG(iy).
++\]
++The finite sum on the left is $O(e^{-2\pi/y})$ as $y\downarrow0$.
++Hence $G(iy)=O(y^{-k}e^{-2\pi/y})$. Every Taylor coefficient at
++zero must vanish, contradicting the nonzero analytic function.
++This proves the first assertion. The coefficient condition is
++exactly vanishing of the finite Fourier polynomial.
++\end{proof}
++
++\begin{remark}[Mellin domains]
++\label{v4-arith:w5-a:rem:H2-obstruction}
++\label{v4-arith:w5-a:rem:domain-PW-hol}
++For $f\in\mathscr A$, the multiplicative Mellin integral
++\[
++ \int_0^\infty f(\log x)x^{s-1}dx=\int_{\mathbb R}f(t)e^{st}dt
++\]
++is entire and rapidly decreasing on every closed vertical strip.
++This follows by integration by parts on the fixed compact support.
++Strip holomorphy imposes no additional condition on this carrier.
++For the entire multiplier $h(\log n)$, the analogous Mellin integral
++has a different domain and must be specified separately.
++\end{remark}
++
++\section{The exact Rankin--Selberg coefficient calculation}
++\label{v4-arith:w5-a:petersson}
++\label{v4-arith:w5-a:mellin-lift:RS}
++
++\begin{theorem}[unfolding for an actual cusp form]
++\label{v4-arith:w5-a:thm:RS-integral}
++Let $G(z)=\sum_{n\ge1}b_n e^{2\pi inz}$ be a holomorphic cusp form
++of weight $k>0$ for $\mathrm{SL}_2(\mathbb Z)$.
++Put $\Gamma=\mathrm{PSL}_2(\mathbb Z)$ and $d\mu=dx\,dy/y^2$.
++Fix its standard fundamental domain $\mathcal F\subset\mathbb H$.
++Use the Eisenstein series
++$E(z,s)=\sum_{\Gamma_\infty\backslash\mathrm{PSL}_2(\mathbb Z)}
++\Im(\gamma z)^s$, where $\Gamma_\infty$ is the translation subgroup.
++For real $s>1$,
++\begin{equation}
++ \int_{\mathcal F}|G(z)|^2y^kE(z,s)d\mu
++ =\frac{\Gamma(s+k-1)}{(4\pi)^{s+k-1}}
++       \sum_{n\ge1}\frac{|b_n|^2}{n^{s+k-1}}.
++ \label{v4-arith:w5-a:eq:KF-kernel}
++\end{equation}
++\end{theorem}
++\begin{proof}
++The Eisenstein series converges for $s>1$. Its cusp growth is
++polynomial, while $G$ decreases exponentially, so the integral is
++finite. Nonnegative summands permit unfolding by Tonelli:
++the integral becomes
++$\int_0^\infty\int_0^1|G(x+iy)|^2y^{s+k-2}dx\,dy$.
++Fourier orthogonality gives $\sum|b_n|^2e^{-4\pi ny}$.
++A second application of Tonelli and the gamma integral prove the formula.
++\end{proof}
++
++\begin{proposition}[positive norm and native pairing maps]
++\label{v4-arith:w5-a:thm:petersson-positive}
++The Petersson norm of an actual cusp form is positive definite.
++If a complex vector space $E$ has an injective linear map
++$I:E\to L^2(\mathcal F,y^k d\mu)$ on the fixed fundamental domain, then
++\begin{equation}
++ \langle v,w\rangle_I=\int_{\mathcal F}(Iv)(z)\overline{(Iw)(z)}y^k d\mu
++ \label{v4-arith:w5-a:eq:petersson}
++\end{equation}
++is a positive definite form. Identifying another specified form
++with this one requires the corresponding pairing identity for $I$.
++\end{proposition}
++\begin{proof}
++These assertions follow from the norm property of $L^2$ and
++injectivity. The unfolding formula computes the coefficients
++of $G$ itself. For $G=\Upsilon_F(h)$ it therefore uses
++$|h(\log n)a_F(n)n^{(k-1)/2}|^2$, whenever this series is modular.
++\end{proof}
++
++\begin{theorem}[a negative finite-prime square]
++\label{v4-arith:w5-a:thm:prime-side}
++There exists $f\in\mathscr A$ with $W_{\mathrm{fin}}(f*f^*)<0$.
++Thus no linear map into a positive Hilbert space can realize
++$W_{\mathrm{fin}}(f*g^*)$ as its inner product on all of $\mathscr A$.
++\end{theorem}
++\begin{proof}
++Put $L=\log2$. Choose a nonzero real smooth $b$, supported in
++$(-\varepsilon,\varepsilon)$, where
++$2\varepsilon<\min(L,\log3-L)$. Write $b_L(t)=b(t-L)$ and
++$f=b-b_L$. If $c=b*b^*$, then
++\[
++ f*f^*=2c-c(\,\cdot-L)-c(\,\cdot+L).
++\]
++The support meets the nonzero prime logarithms only at $L$ and
++$-L$. At each, its value is $-c(0)=-\|b\|_2^2$. Therefore
++\[
++ W_{\mathrm{fin}}(f*f^*)=-\sqrt2\log2\,\|b\|_2^2<0.
++\]
++A Hilbert norm cannot have that value.
++\end{proof}
++
++\begin{corollary}[restricted automorphic comparisons]
++\label{v4-arith:w5-a:cor:HPLi-restricted}
++A positive realization of the finite-prime form on a restricted
++subspace requires a proved restriction on that subspace.
++The existence of an automorphic coefficient multiplier or an
++interpolating function alone does not give a realization on
++the full compact test algebra.
++\end{corollary}
++\begin{proof}
++The preceding test excludes the full-space realization.
++The Rankin--Selberg calculation identifies a different coefficient
++kernel and supplies no equality with the displayed negative value.
++\end{proof}
++
++\section{Archimedean and interpolation obstructions}
++\label{v4-arith:w5-a:sec:obstruction}
++
++\begin{definition}[the archimedean density]
++\label{v4-arith:w5-a:def:tate-archimedean}
++The sign convention in \eqref{v4-arith:w5-a:eq:weil-explicit} uses
++\begin{equation}
++ \mathcal T_\infty(u)=
++ \frac{\log\pi-\Re\psi_\Gamma(1/4+iu/2)}{2\pi}.
++ \label{v4-arith:w5-a:eq:tate-archimedean-distribution}
++\end{equation}
++\end{definition}
++
++\begin{proposition}[the gamma density is not the Weil density]
++\label{v4-arith:w5-a:prop:archimedean-not-absorbed}
++The functions $|\Gamma(1/4+iu/2)|^2$ and $\mathcal T_\infty(u)$
++are not constant multiples. In fact $\mathcal T_\infty$ has both signs.
++For a local continuous argument of the nonvanishing gamma function,
++\[
++ \frac{d}{du}\arg\Gamma(1/4+iu/2)=\frac12\Re\psi_\Gamma(1/4+iu/2),
++ \qquad
++ \frac{d}{du}\log|\Gamma(1/4+iu/2)|^2=-\Im\psi_\Gamma(1/4+iu/2).
++\]
++\end{proposition}
++\begin{proof}
++Differentiate $\log\Gamma(1/4+iu/2)$ to obtain $(i/2)\psi_\Gamma$.
++Taking real and imaginary parts proves the identities.
++The digamma series gives $\psi_\Gamma(1/4)<-\gamma<0$.
++For $y\ge1$, its real part is
++\[
++ -\gamma+\sum_{n\ge0}
++ \left(\frac1{n+1}-\frac{n+1/4}{(n+1/4)^2+y^2}\right).
++\]
++The first $\lfloor y\rfloor$ terms have sum at least $\log y-C$:
++the harmonic part has this growth, and the subtracted part is bounded
++by $y^{-2}\sum_{n\le y}(n+1/4)\le C$.
++In the remaining terms the possible negative part is at most
++$C\sum_{n>y}n^{-2}$. Thus the real part tends to positive infinity.
++The density $\mathcal T_\infty$ is positive at zero and negative
++for sufficiently large $|u|$. The gamma absolute square is positive.
++\end{proof}
++
++\begin{proposition}[rational Li tests are not compact Fourier tests]
+ \label{v4-arith:w5-a:prop:li-via-weil}
+-\ClaimStatusProvedHere. The Li coefficients are values of the
+-zero divisor against the rational functions \(1-(1-1/s)^n\). This is a
+-Weil-type distributional statement, not a compact-support Paley--Wiener
+-interpolation theorem. The existence of
+-\(\phi_n\in\mathrm{PW}(\mathbb R)\) with
+-prescribed values
+-\(\widehat{\phi_n}(-i(\rho-\tfrac12))=1-(1-1/\rho)^n\) at all
+-non-trivial zeros is an additional interpolation theorem, not a
+-consequence of Li's criterion.
+-\end{proposition}
+-
+-\begin{proof}
+-Li's criterion and the Bombieri--Lagarias form give the displayed
+-rational test on the zero set. Paley--Wiener interpolation at the zero
+-divisor would require an exponential-type interpolation theorem with
+-growth constants matched to the Riemann--von Mangoldt density. Li's
+-criterion supplies the rational values on the divisor; it does not
+-produce a compactly supported Paley--Wiener representative.
+-\end{proof}
+-
+-\section{Petersson on the Tempered Cuspidal Core (Recall)}
+-\label{v4-arith:w5-a:petersson}
+-
+-\begin{theorem}[Petersson positivity and native transfer]
+-\label{v4-arith:w5-a:thm:petersson-positive}
+-The squared $L^2$ norm of a square-integrable automorphic
+-function is nonnegative and vanishes only on the zero $L^2$
+-class. If a native core admits an injective realization $I$
+-in this Hilbert space, its pullback
+-\begin{equation}
+- \langle v,w\rangle^{\mathrm{Pet}}
+-       =\int (Iv)(g)\overline{(Iw)(g)}\,dg
+- \label{v4-arith:w5-a:eq:petersson}
+-\end{equation}
+-is positive definite. Identification with a native Koszul form
+-requires the pairing-map hypotheses of
+-\Cref{v4-arith:kp:hyp:native-pairing-maps} in addition.
+-\end{theorem}
+-\begin{proof}
+-The first assertion is the defining norm property of $L^2$.
+-Injectivity of $I$ transfers it to the native core. The bilinear
+-Koszul comparison is then
+-$B(v,cw)=B_q(fv,J_qfw)=h_q(fv,fw)$, provided the displayed
+-native maps exist. A positive local Gibbs state does not itself
+-construct either $I$ or those maps.
+-\end{proof}
+-
+-\begin{remark}[the exact local normalization]
+-\label{v4-arith:w5-a:rem:restricted-tensor}
+-At $\beta=1$, the GNS creation vectors have norm one, while
+-the division vectors have squared norms $m^{-1}$. The radial
+-shell model maps its basis of squared norm $m^{-1}$ to
+-$m^{-1/2}[\mu_m]$ and its dual basis to $[\mu_m^*]$;
+-\Cref{v4-arith:kp:radial-pairing-realization} proves the pairing
+-and conjugation identities. The full local GNS carrier is
+-Hilbert--Schmidt, not a zero-mode lattice times an independent
+-orthogonal phase coordinate. Tensoring the local shift states
+-also does not produce the native adelic phase comparison.
+-\end{remark}
+-
+-\section{The Mellin Lift and Rankin--Selberg Kernel Check}
+-\label{v4-arith:w5-a:mellin-lift}
+-
+-The prime-side Weil contribution \(W_{\mathrm{fin}}(f*\widetilde{f})\) of
+-\eqref{v4-arith:w5-a:eq:weil-finite} is a sum over prime powers of a
+-Paley--Wiener weight. A Petersson proof of its positivity would require
+-a linear map from \(\mathrm{PW}(\mathbb{R})\) to the tempered cuspidal
+-core whose Petersson norm computes the von Mangoldt prime-power sum.
+-The coefficientwise lift \(\Upsilon_F\), defined below, does not supply
+-such a map without an additional automorphic multiplier theorem.
+-
+-\subsection{Definition of \(\Upsilon\)}
+-\label{v4-arith:w5-a:mellin-lift:def}
+-
+-\begin{definition}[Mellin lift]
+-\label{v4-arith:w5-a:def:upsilon}
+-\ClaimStatusDefinitional. Fix a normalised holomorphic cuspidal
+-Hecke eigenform \(F\in S_{k}(\mathrm{SL}_{2}(\mathbb{Z}))\) of weight
+-\(k\geq 12\), with Fourier expansion
+-\(F(z)=\sum_{n\geq 1}a_{F}(n)\,e^{2\pi inz}\) and Hecke normalisation
+-\(a_{F}(1)=1\). For \(f\in\mathrm{PW}(\mathbb{R})\), define
+-\begin{equation}
+-\label{v4-arith:w5-a:eq:upsilon}
+-\Upsilon_{F}(f)(z)\;:=\;\sum_{n\geq 1}f(\log n)\cdot a_{F}(n)\cdot n^{(k-1)/2}\,e^{2\pi inz},
+-\end{equation}
+-a modular-type formal series on the upper half-plane.
+-\end{definition}
+-
+-By Deligne's bound for holomorphic cuspidal \(F\) (Deligne 1974
+-Publ.~IHES~43), the normalised Hecke eigenvalues satisfy
+-\(|a_{F}(p)p^{-(k-1)/2}|\le 2\). This is a growth estimate for the
+-coefficient sequence; it is not an automorphy theorem for an arbitrary
+-coefficientwise multiplier \(f(\log n)\).
+-
+-\begin{lemma}[coefficientwise lift is only a formal automorphic probe]
+-\label{v4-arith:w5-a:lem:upsilon-cuspidal}
+-\ClaimStatusProvedHere. Let
+-\(\mathrm{PW}^{\mathrm{hol}}_{F}\subset\mathrm{PW}(\mathbb{R})\) denote
+-the subspace of \(f\in\mathrm{PW}(\mathbb{R})\) satisfying:
+-\begin{itemize}
+-\item[(H1)] \(f\) is real-valued and even: \(\widetilde{f}=f\);
+-\item[(H2)] the Mellin transform
+-\(\widetilde{f}_{M}(s):=\int_{0}^{\infty}f(\log u)\,u^{s-1}\,du\) is
+-holomorphic and of polynomial decay on the strip
+-\(|\mathrm{Re}\,s-1/2|\leq(k-1)/2-\varepsilon\) for some \(\varepsilon>0\);
+-\item[(H3)] \(f\)'s support avoids the Tate-polar contribution in the
+-sense: \(\widetilde{f}_{M}(s)\) has a double zero at \(s=0\) and \(s=1\).
+-\end{itemize}
+-Then \(\Upsilon_F(f)\) is a convergent holomorphic \(q\)-series on the
+-upper half-plane under the stated decay hypotheses, with coefficients
+-bounded by Deligne's estimate. It is a modular form of weight \(k\) only
+-under the additional condition that the multiplier
+-\(a_F(n)\mapsto f(\log n)a_F(n)\) is induced by an endomorphism of the
+-automorphic representation generated by \(F\). Conditions (H1)--(H3) do
+-not imply this condition.
+-\end{lemma}
+-
+-\begin{proof}
+-Under (H2) and Deligne's bound \(|a_{F}(n)|\leq\sigma_{0}(n)n^{(k-1)/2}\)
+-(Deligne 1974), the series
+-\eqref{v4-arith:w5-a:eq:upsilon} converges absolutely on the upper
+-half-plane to a holomorphic function with no constant term. Modularity
+-is not a coefficientwise condition. The functional equation of \(L(s,F)\)
+-controls the original eigenform \(F\); it does not imply that the
+-Hadamard product of its Fourier coefficients with the sequence
+-\(f(\log n)\) transforms under \(S=\begin{pmatrix}0&-1\\1&0\end{pmatrix}\).
+-Thus the lift is a formal probe until an automorphic multiplier theorem
+-is supplied.
+-\end{proof}
+-
+-\begin{remark}[domain of the restricted class]
+-\label{v4-arith:w5-a:rem:domain-PW-hol}
+-\(\mathrm{PW}^{\mathrm{hol}}_{F}\) is a restricted test class inside
+-\(\mathrm{PW}(\mathbb{R})\). No density assertion for a fixed \(F\) is
+-used. Condition (H2) restricts the spectral width (the Paley--Wiener
+-support must sit inside the strip where the weight-\(k\) Mellin
+-transform is holomorphic), and (H3) removes the Tate polar locus.
+-(H2) is a \emph{genuine} restriction whose complement is not reached
+-by a fixed holomorphic \(F\)-lift
+-(\Cref{v4-arith:w5-a:sec:obstruction}). (H3) is removable
+-by absorbing the two Tate poles into the archimedean term via the
+-entire form \(\xi_{\mathbb{R}}(s)=\frac{1}{2}s(s-1)\Lambda_{\zeta}(s)\);
+-see \Cref{v4-arith:w5-a:rem:H3-removable}.
+-\end{remark}
+-
+-\subsection{Rankin--Selberg Integral and the Kernel Mismatch}
+-\label{v4-arith:w5-a:mellin-lift:RS}
+-
+-The Petersson norm of a genuine cusp form admits a Rankin--Selberg
+-expansion. That expansion is not the finite-place Weil contribution for
+-\(\zeta\).
+-
+-\begin{theorem}[Rankin--Selberg kernel does not compute the zeta prime term]
+-\label{v4-arith:w5-a:thm:RS-integral}
+-\ClaimStatusProvedHere. Suppose that \(\Upsilon_F(f)\) is in fact a
+-weight-\(k\) cusp form. Its Petersson norm is governed by the
+-Rankin--Selberg convolution of the automorphic representation generated
+-by \(F\). In any such identity the spectral kernel is built from
+-\begin{equation}
+-\label{v4-arith:w5-a:eq:KF-kernel}
+-K_{F}(s)\;:=\;\frac{\zeta(2s)}{\zeta(s)\xi_{\mathbb{R}}(s)\xi_{\mathbb{R}}(1-s)}\cdot L(s,F\otimes\overline{F})
+-\end{equation}
+-up to normalising gamma and conductor factors. The finite-place term in
+-Weil's explicit formula is instead the von Mangoldt distribution
+-\[
+-W_{\mathrm{fin}}(\phi)=2\sum_{p}\sum_{n\geq1}(\log p)p^{-n/2}\phi(n\log p).
+-\]
+-No Rankin--Selberg identity identifies \(W_{\mathrm{fin}}(f*\widetilde f)\)
+-with a positive Petersson norm attached to a fixed \(F\).
+-\end{theorem}
+-
+-\begin{proof}
+-Rankin's unfolding computes Dirichlet series with coefficients
+-\(|a_F(n)|^2\), hence \(L(s,F\otimes\overline F)\) after the usual
+-normalisation. Weil's finite distribution has coefficients
+-\(\Lambda(n)n^{-1/2}\) and is the logarithmic derivative of \(\zeta\).
+-These coefficient systems are different. Positivity of a Petersson norm
+-therefore cannot be transported to \(W_{\mathrm{fin}}\) without an
+-additional trace formula identifying the two kernels.
+-\end{proof}
+-
+-\begin{remark}[convention absorbing the Tate gamma]
+-\label{v4-arith:w5-a:rem:gamma-absorbed}
+-The kernel \(K_{F}(s)\) in \eqref{v4-arith:w5-a:eq:KF-kernel} is
+-written with archimedean Tate gamma factors on both top and bottom to
+-exhibit the Hecke functional equation symmetrically. The
+-\(\xi_{\mathbb{R}}(s)\xi_{\mathbb{R}}(1-s)\) in the denominator is
+-part of the automorphic normalisation of the Rankin--Selberg kernel.
+-It is not the statement that the zeta prime distribution
+-\(W_{\mathrm{fin}}\) has been absorbed into the Petersson form.
+-\end{remark}
+-
+-\section{The Prime-Side Obstruction}
+-\label{v4-arith:w5-a:prime-closure}
+-
+-The comparison with Rankin--Selberg exposes a kernel mismatch.
+-
+-\begin{theorem}[no prime-side positivity from a fixed \(F\)-lift]
+-\label{v4-arith:w5-a:thm:prime-side}
+-\ClaimStatusProvedHere. The identity
+-\[
+-W_{\mathrm{fin}}(f*\widetilde f)
+-=2\bigl\langle\Upsilon_F(f),\Upsilon_F(f)\bigr\rangle^{\mathrm{Pet}}_{F\text{-normalised}}
+-\]
+-does not follow from Rankin--Selberg unfolding for a fixed cusp form
+-\(F\). Consequently fixed-\(F\) Rankin--Selberg positivity does not imply
+-\(W_{\mathrm{fin}}(f*\widetilde f)\geq0\) on
+-\(\mathrm{PW}^{\mathrm{hol}}_F\).
+-\end{theorem}
+-
+-\begin{proof}
+-The left-hand side has coefficients \(\Lambda(n)n^{-1/2}\) in the
+-additive variable \(\log n\). The Rankin--Selberg norm of a fixed \(F\)
+-has diagonal coefficients \(|a_F(n)|^2\) after unfolding. Equality for
+-all Paley--Wiener tests would force these coefficient systems to agree
+-as distributions, which they do not. Positivity of Petersson norm is
+-therefore irrelevant to the sign of the zeta finite-place Weil term
+-unless a separate trace formula is inserted.
+-\end{proof}
+-
+-\begin{corollary}[Li approximants do not correct the prime kernel mismatch]
+-\label{v4-arith:w5-a:cor:HPLi-restricted}
+-\ClaimStatusProvedHere. Even if a Li test admits a
+-\(\mathrm{PW}^{\mathrm{hol}}_{F}\)-representative, the non-negativity of
+-\(W_{\mathrm{fin}}(\phi*\widetilde\phi)\) is not a consequence of the
+-fixed-\(F\) Rankin--Selberg norm. It requires an independent trace
+-formula for the von Mangoldt kernel.
+-\end{corollary}
+-
+-\begin{proof}
+-This is exactly the obstruction isolated in
+-\Cref{v4-arith:w5-a:thm:prime-side}. The Li test changes the test
+-function; it does not change the kernel from \(\Lambda(n)\) to
+-\(|a_F(n)|^2\).
+-\end{proof}
+-
+-\section{The Irreducible Obstruction: Archimedean Tate Distribution and Eisenstein}
+-\label{v4-arith:w5-a:sec:obstruction}
+-
+-The fixed-\(F\) Rankin--Selberg norm does not identify
+-\(W_{\mathrm{fin}}(f*\widetilde{f})\) with a Petersson norm.
+-The archimedean Weil contribution \(W_{\infty}(f*\widetilde{f})\)
+-remains outside this identification: the Petersson archimedean
+-density is \(|\Gamma(\tfrac{1}{4}+\tfrac{it}{2})|^{2}\), while
+-\(W_{\infty}\) pairs against
+-\(\mathrm{Re}\,\psi(\tfrac{1}{4}+\tfrac{it}{2})=\partial_{s}\log|\Gamma(s/2+1/4)|^{2}|_{s=it}\),
+-the logarithmic derivative. The positivity of \(W(f*\widetilde{f})\)
+-is the full Weil inequality; the archimedean term, the finite
+-von Mangoldt term, and the two polar terms cannot be separated into
+-independent positivity assertions.
+-
+-\subsection{Archimedean Tate Distribution}
+-\label{v4-arith:w5-a:obstruction:archimedean}
+-
+-\begin{definition}[archimedean Tate distribution]
+-\label{v4-arith:w5-a:def:tate-archimedean}
+-\ClaimStatusDefinitional. The archimedean Weil contribution
+-\(W_{\infty}\) of \eqref{v4-arith:w5-a:eq:weil-archimedean} is the
+-pairing of \(\widehat{f}\) against the distribution
+-\begin{equation}
+-\label{v4-arith:w5-a:eq:tate-archimedean-distribution}
+-\mathcal{T}_{\infty}(t)\;:=\;\frac{1}{2\pi}\,\mathrm{Re}\,\psi\!\left(\tfrac{1}{4}+\tfrac{it}{2}\right)+\frac{\log\pi}{2\pi}.
+-\end{equation}
+-This is the archimedean \(\mathbb{R}\)-factor of the completed zeta
+-function: Tate's thesis (Tate 1950) assigns to each place \(v\) of
+-\(\mathbb{Q}\) a local zeta distribution, and the archimedean factor
+-\(\Lambda_{\infty}(s)=\pi^{-s/2}\Gamma(s/2)\) contributes
+-\(\mathcal{T}_{\infty}\) in the sign convention of
+-\eqref{v4-arith:w5-a:eq:weil-archimedean}.
+-\end{definition}
+-
+-\begin{proposition}[archimedean distribution outside a fixed Rankin--Selberg norm]
+-\label{v4-arith:w5-a:prop:archimedean-not-absorbed}
+-\ClaimStatusProvedHere. The coefficientwise lift
+-\(\Upsilon_{F}\colon\mathrm{PW}^{\mathrm{hol}}_{F}\to\mathcal{V}^{\mathrm{prim}}_{\mathrm{cusp,temp}}\)
+-of \Cref{v4-arith:w5-a:def:upsilon} does not absorb the archimedean
+-distribution \(\mathcal{T}_{\infty}\). Specifically, the restriction of
+-the Petersson form to the archimedean factor
+-\(\mathcal{H}^{(\infty)}\subset\mathcal{V}^{\mathrm{prim}}\) pairs with
+-\(|\widehat{f}(t)|^{2}\) against the \emph{\(|\Gamma(\tfrac{1}{4}+\tfrac{it}{2})|^{2}\)}
+-density, while \(\mathcal{T}_{\infty}\) pairs against the
+-logarithmic-derivative density \(\mathrm{Re}\,\psi(\tfrac{1}{4}+\tfrac{it}{2})\);
+-the two densities are not proportional.
+-\end{proposition}
+-
+-\begin{proof}
+-At \(\infty\), \(\mathcal{H}^{(\infty)}\) is the standard Heisenberg Fock
+-on \(\mathbb{C}[\alpha_{-1},\alpha_{-2},\ldots]|0\rangle_{\infty}\)
+-(Frenkel--Ben-Zvi \S3.5). The Petersson-restriction at \(\infty\) uses
+-the archimedean local Rankin--Selberg integral, which by
+-Jacquet 1972 SLN~260 \S4 (archimedean local factors for \(GL_{2}\))
+-evaluates to a Gamma-absolute-value kernel
+-\(|\Gamma(\tfrac{1}{4}+\tfrac{it}{2})|^{2}\cdot|\widehat{f}(t)|^{2}\).
+-This is positive and forms part of \(K_{F}(s)\) in
+-\eqref{v4-arith:w5-a:eq:KF-kernel}.
+-
+-The Weil archimedean distribution \(\mathcal{T}_{\infty}\) pairs
+-\(|\widehat{f}(t)|^{2}\) against
+-\(\mathrm{Re}\,\psi(\tfrac{1}{4}+\tfrac{it}{2})\), the logarithmic
+-derivative of \(\Gamma(\tfrac{1}{4}+\tfrac{it}{2})\). The relation
+-between the Gamma absolute value and the digamma real part is
+-\(|\Gamma(\tfrac{1}{4}+\tfrac{it}{2})|^{2}\cdot\frac{d}{dt}\mathrm{arg}\,\Gamma(\tfrac{1}{4}+\tfrac{it}{2})=\mathrm{Im}\,\psi(\tfrac{1}{4}+\tfrac{it}{2})\cdot|\Gamma(\tfrac{1}{4}+\tfrac{it}{2})|^{2}\),
+-not the real part. Hence the Petersson archimedean density and
+-\(\mathcal{T}_{\infty}\) differ; the former is manifestly positive, the
+-latter is not sign-definite (it takes both signs as \(t\to\infty\) by
+-Stirling: \(\mathrm{Re}\,\psi(\tfrac{1}{4}+\tfrac{it}{2})\sim\frac{1}{2}\log(t^{2}/4)\)
+-for \(|t|\to\infty\), positive for large \(t\); but is negative near
+-\(t=0\)).
+-\end{proof}
+-
+-\begin{remark}[archimedean Tate density and conformal anomaly]
+-\label{v4-arith:w5-a:rem:archimedean-obstruction}
+-The archimedean digamma contribution \(\mathcal{T}_{\infty}\) is the
+-Tate-local density for the real place: Tate's thesis assigns to
+-\(\Lambda_{\infty}(s)=\pi^{-s/2}\Gamma(s/2)\) the local factor whose
+-logarithmic derivative is
+-\(\frac12\psi(s/2)-\frac12\log\pi\); after moving the local term to
+-the side used in \eqref{v4-arith:w5-a:eq:weil-explicit}, the
+-distribution is written as in
+-\eqref{v4-arith:w5-a:eq:tate-archimedean-distribution}.
+-The identity \(\psi=\Gamma'/\Gamma=\partial_{s}\log\Gamma\) gives
+-\(\mathcal{T}_{\infty}(t)=\frac{1}{2\pi}\mathrm{Re}\,\psi(\tfrac14+\tfrac{it}{2})+\frac{\log\pi}{2\pi}\),
+-the logarithmic derivative of the archimedean Gamma factor evaluated
+-on the critical line. The Petersson weight \(y^{k-2}\) in
+-\eqref{v4-arith:w5-a:eq:petersson} pairs against the modular form
+-and produces \(|\Gamma(\tfrac{1}{4}+\tfrac{it}{2})|^{2}\), the
+-square absolute value, not its logarithmic derivative. The two
+-quantities are related by the Bohr--Mollerup identity, but they
+-differ as distributions on \(\mathbb{R}\); the archimedean
+-conformal-anomaly contribution at (\Cref{v4-arith:polyakov}) is the
+-logarithmic-derivative side, outside the Petersson integral's reach.
+-\end{remark}
+-
+-\subsection{Eisenstein Continuum and Non-Tempered Locus}
+-\label{v4-arith:w5-a:obstruction:eisenstein}
+-
+-\begin{proposition}[the native continuum comparison]
++For any integer $n\ge1$, there is no $f\in\mathscr A$ such that
++\[
++ (\mathcal F_+f)(-i(\rho-1/2))=1-(1-1/\rho)^n
++\]
++for every nontrivial zero $\rho$.
++\end{proposition}
++\begin{proof}
++The right side is $n/\rho+O_n(|\rho|^{-2})$ as $|\rho|\to\infty$.
++The left side decreases faster than every inverse power of
++$|\Im\rho|$, uniformly in the zero strip. There are infinitely many
++zeros and only finitely many in any bounded set. Since their real
++parts lie in $[0,1]$, these two estimates contradict one another.
++\end{proof}
++
++\begin{proposition}[continuous-spectrum pairing data]
+ \label{v4-arith:w5-a:prop:eisenstein-residual}
+-The local Gibbs construction and its scalar ratios do not determine a
+-native Eisenstein pairing. The continuum comparison requires the native
+-maps and regularized spectral measures described in
+-\Cref{v4-arith:kms-gns:cor:eisenstein-final}. A Li-positivity argument
+-using a discrete automorphic core additionally needs a map or projection
+-to that core and an identity for the relevant Li trace.
+-\end{proposition}
+-\begin{proof}
+-The local Gibbs carrier is a Hilbert--Schmidt operator space. Its
+-partition ratio has no induced-representation argument. Thus it cannot
+-define the proposed native spectral density without an additional map.
+-The scalar normalization test of
+-\Cref{v4-arith:kms-gns:rem:match-is-FE} refutes one proposed identity;
+-it does not compute the actual native density. A Mellin transform alone
+-also supplies no projection to a native discrete automorphic subspace.
+-\end{proof}
+-
+-\begin{remark}[non-tempered residual]
+-\label{v4-arith:w5-a:rem:non-tempered}
+-For Maass cusp forms, temperedness is conditional on the Ramanujan
+-conjecture for \(GL_{2}/\mathbb{Q}\); the current best bound is
+-\(7/64\) (Kim--Sarnak 2003). The non-tempered locus contributes a
+-controlled correction to \(K_{F}(s)\) at
+-\(\mathrm{Re}\,s=1/2\pm\theta\) for \(\theta\leq 7/64\), but the
+-Rankin--Selberg argument gives no positive-definite form there. The
+-positive automorphic Rankin--Selberg statement on non-tempered Maass
+-forms is therefore conditional on the full
+-Ramanujan conjecture.
+-This does not address the zeta finite-place Weil term.
+-\end{remark}
+-
+-\section{Restricted-Class Theorem: HP--Li on the Holomorphic Cuspidal Tempered Class}
+-\label{v4-arith:w5-a:restricted-theorem}
+-
+-\begin{theorem}[HP--Li restricted-class identity]
+-\label{v4-arith:w5-a:thm:HPLi-restricted}
+-\ClaimStatusProvedHere. Fix a normalised holomorphic cuspidal Hecke
+-eigenform \(F\in S_{k}(\mathrm{SL}_{2}(\mathbb{Z}))\) of weight
+-\(k\geq 12\). For any \(f\in\mathrm{PW}^{\mathrm{hol}}_{F}\) satisfying
+-(H1)--(H3) of \Cref{v4-arith:w5-a:lem:upsilon-cuspidal}, the
+-symmetrised test function \(f*\widetilde{f}\) satisfies the identity
+-\begin{equation}
+-\label{v4-arith:w5-a:eq:restricted-HPLi}
+-\widehat{f*\widetilde{f}}\bigl(\tfrac{1}{2i}\bigr)+\widehat{f*\widetilde{f}}\bigl(-\tfrac{1}{2i}\bigr)
+--W_{\mathrm{fin}}(f*\widetilde{f})
+-\;=\;W(f*\widetilde f)+W_{\infty}(f*\widetilde{f}).
+-\end{equation}
+-Equivalently: the sum of polar contributions minus the finite-prime
+-term splits into the Weil functional and the archimedean Tate
+-distribution. This is only the Weil explicit formula rearranged; it is
+-not a positivity theorem.
+-\end{theorem}
+-
+-\begin{proof}
+-The Weil explicit formula
+-\eqref{v4-arith:w5-a:eq:weil-explicit} applied to \(f*\widetilde{f}\)
+-gives
+-\[
+-W(f*\widetilde f)=
+-\widehat{f*\widetilde{f}}(\tfrac{1}{2i})
+-+\widehat{f*\widetilde{f}}(-\tfrac{1}{2i})
+--W_{\infty}(f*\widetilde f)-W_{\mathrm{fin}}(f*\widetilde f).
+-\]
+-Moving \(W_{\infty}\) to the other side gives
+-\eqref{v4-arith:w5-a:eq:restricted-HPLi}.
+-\end{proof}
+-
+-\begin{remark}[H3 is removable]
+-\label{v4-arith:w5-a:rem:H3-removable}
+-Hypothesis (H3) (double vanishing of the Mellin transform at \(s=0,1\))
+-is an artifact of the normalisation
+-\(\xi_{\mathbb{R}}(s)=\frac{1}{2}s(s-1)\Lambda_{\zeta}(s)\): working
+-directly with \(\xi_{\mathbb{R}}\) instead of \(\Lambda_{\zeta}\) absorbs
+-the Tate poles. Therefore (H3) is removable in the sense that its
+-violation is quantifiable: if \(\widetilde{f}_{M}(s)\) has zeros of
+-order \((a,b)\leq(2,2)\) at \(s=0,1\), the polar contribution to
+-\(W(f*\widetilde{f})\) is corrected by a \(2(2-a)+2(2-b)\)-fold Taylor
+-expansion at \(s=0,1\), each term a specific derivative of
+-\(\xi_{\mathbb{R}}\) at these points. The correction is a finite-rank
+-bounded operator on \(\mathrm{PW}(\mathbb{R})\), hence does not affect
+-the positivity question on the main spectral locus.
+-\end{remark}
+-
+-\begin{remark}[H2 is the genuine obstruction]
+-\label{v4-arith:w5-a:rem:H2-obstruction}
+-Hypothesis (H2) (holomorphy of \(\widetilde{f}_{M}\) on the strip of
+-width \((k-1)\)) is the genuine restriction. In the limit
+-\(k\to\infty\) the strip widens to all of \(\mathbb{C}\), but no single
+-finite-weight \(F\) gives access to the full Paley--Wiener cone. The
+-full cone requires either (i) a non-holomorphic lift to Maass forms
+-(where \(K_{F}\)'s positivity becomes conditional on Ramanujan), or
+-(ii) a limiting procedure as \(k\to\infty\) which is problematic at
+-the level of the Petersson measure (the Plancherel weight vanishes).
+-The limiting procedure is precisely the Selberg trace formula in
+-disguise, and its positivity is Weil positivity itself.
+-\end{remark}
+-
+-\section{The Archimedean Tate Positivity Conjecture}
+-\label{v4-arith:w5-a:irreducible-obstruction}
+-
+-\begin{conjecture}[archimedean Tate positivity, A-TP]
+-\label{v4-arith:w5-a:conj:archimedean-tate-positivity}
+-For every \(f\in\mathrm{PW}(\mathbb{R})\),
+-\begin{equation}
+-\label{v4-arith:w5-a:eq:archimedean-tate-positivity}
+-W_{\infty}(f*\widetilde{f})\;\leq\;
+-\widehat{f*\widetilde{f}}(\tfrac{1}{2i})+
+-\widehat{f*\widetilde{f}}(-\tfrac{1}{2i})-
+-W_{\mathrm{fin}}(f*\widetilde{f}).
+-\end{equation}
+-Equivalently, \(W(f*\widetilde{f})\geq0\). Equivalently: RH.
+-\end{conjecture}
+-
+-\begin{theorem}[reformulation of A-TP]
+-\label{v4-arith:w5-a:thm:ATP-equals-weil-positivity}
+-\ClaimStatusProvedHere. Conjecture A-TP
+-(\Cref{v4-arith:w5-a:conj:archimedean-tate-positivity}) is strictly
+-equivalent to Weil positivity
+-\Cref{v4-arith:w5-a:cor:weil-positivity-RH}, and hence to RH.
+-\end{theorem}
+-
+-\begin{proof}
+-By \eqref{v4-arith:w5-a:eq:weil-explicit},
+-\[
+-\widehat{f*\widetilde f}(\tfrac{1}{2i})+
+-\widehat{f*\widetilde f}(-\tfrac{1}{2i})-
+-W_{\mathrm{fin}}(f*\widetilde f)-
+-W_{\infty}(f*\widetilde f)
+-=W(f*\widetilde f).
+-\]
+-Thus \eqref{v4-arith:w5-a:eq:archimedean-tate-positivity} is exactly
+-\(W(f*\widetilde f)\geq0\). The equivalence to RH is
+-\Cref{v4-arith:w5-a:cor:weil-positivity-RH}.
+-\end{proof}
+-
+-\begin{remark}[domain of the Mellin--Rankin--Selberg isometry]
+-\label{v4-arith:w5-a:rem:honest-form}
+-The Mellin--Rankin--Selberg isometry gives positivity for automorphic
+-Rankin--Selberg kernels. It does not determine the zeta finite-place Weil
+-distribution. The residual is therefore not merely the sign of
+-\(W_{\infty}\); the full residual is the inequality
+-\[
+-W_{\infty}(f*\widetilde f)\le
+-\widehat{f*\widetilde f}(\tfrac{1}{2i})+
+-\widehat{f*\widetilde f}(-\tfrac{1}{2i})-
+-W_{\mathrm{fin}}(f*\widetilde f),
+-\]
+-which is exactly Weil positivity.
+-\end{remark}
+-
+-\section{HP--Li Boundary}
++Let $\int^\oplus E_u\,d\mu(u)$ be a specified Hilbert direct integral.
++An identity between its norm and an arithmetic Hermitian form requires
++a map into that direct integral and equality of the two pairings.
++A scalar gamma factor determines neither that map nor its measure.
++\end{proposition}
++\begin{proof}
++The direct-integral norm is $\int\|v(u)\|_{E_u}^2d\mu(u)$.
++Replacing a nonzero realization map $I$ by $2I$ multiplies its
++pullback pairing by four. A single scalar factor does not select
++the map or its measure. The sign-changing density above also
++cannot equal an unspecified positive norm by scalar rescaling.
++\end{proof}
++
++\section{The arithmetic pairing requirement}
+ \label{v4-arith:w5-a:form}
+ 
+-The decomposition of HP--Li positivity separates identities from
+-positivity. The prime-side Weil contribution
+-\(W_{\mathrm{fin}}(f*\widetilde{f})\) is not made positive by the fixed
+-Rankin--Selberg lift of \Cref{v4-arith:w5-a:thm:prime-side}. The polar
+-terms \(\widehat{f*\widetilde{f}}(\pm 1/(2i))\) are explicit finite
+-Taylor corrections (\Cref{v4-arith:w5-a:rem:H3-removable}).
+-The full A-TP inequality with \(W_{\infty}\) isolated is RH-equivalent
+-(\Cref{v4-arith:w5-a:conj:archimedean-tate-positivity},
+-\Cref{v4-arith:w5-a:thm:ATP-equals-weil-positivity}). The extension to
+-Maass cuspidal tempered forms is conditional on the Ramanujan conjecture
+-(\Cref{v4-arith:w5-a:rem:non-tempered}). The Eisenstein continuous
+-spectrum is domain-excluded by the density mismatch of
+-\Cref{v4-arith:w5-a:prop:eisenstein-residual}. The full
+-\(\mathrm{PW}(\mathbb{R})\) class is obstructed by (H2)
+-(\Cref{v4-arith:w5-a:rem:H2-obstruction}).
+-
+-\begin{theorem}[HP--Li positivity boundary after the kernel check]
++\begin{theorem}[the remaining positive comparison]
+ \label{v4-arith:w5-a:thm:hpli-form}
+-\ClaimStatusProvedHere. HP--Li positivity
+-(\Cref{v4-arith:rh:thm:VB-implies-F-RH}) does not follow from the
+-fixed-\(F\) Rankin--Selberg lift. That lift gives an automorphic
+-comparison, but it does not identify the von Mangoldt finite-place
+-kernel with a Petersson norm. The RH-equivalent positivity statement is
+-the full archimedean Tate inequality
+-\Cref{v4-arith:w5-a:conj:archimedean-tate-positivity}, equivalently
+-Weil positivity, equivalently RH.
+-\end{theorem}
+-
+-\begin{proof}
+-Assemble:
+-\Cref{v4-arith:w5-a:thm:prime-side},
+-\Cref{v4-arith:w5-a:thm:RS-integral},
+-\Cref{v4-arith:w5-a:thm:HPLi-restricted},
+-\Cref{v4-arith:w5-a:prop:archimedean-not-absorbed},
+-\Cref{v4-arith:w5-a:thm:ATP-equals-weil-positivity}.
+-The first two results identify the kernel mismatch; the third is only
+-an algebraic rearrangement of Weil's formula; the final result records
+-the RH-equivalent positivity statement.
+-\end{proof}
+-
+-\begin{corollary}[HP--Li inputs in the sufficient RH path]
+-\label{v4-arith:w5-a:cor:sufficient-path-impact}
+-\ClaimStatusProvedHere. The sufficient RH path of
+-\Cref{v4-arith:rh:thm:sufficient-path} requires the following HP--Li
+-inputs:
+-\begin{itemize}
+-\item a trace formula for the zeta von Mangoldt kernel beyond the
+-fixed-\(F\) lift;
+-\item the A-TP inequality, which is RH-equivalent
+-(\Cref{v4-arith:w5-a:conj:archimedean-tate-positivity}).
+-\item an extension beyond \(\mathrm{PW}^{\mathrm{hol}}_{F}\), either
+-through Maass lifts with Ramanujan control or through a
+-weight-\(k\to\infty\) limit with the Petersson limit measure under
+-control.
+-\end{itemize}
+-The RH-equivalent residual among these inputs is A-TP:
+-\[
+-W_{\infty}(f*\widetilde f)\le
+-\widehat{f*\widetilde f}(\tfrac{1}{2i})+
+-\widehat{f*\widetilde f}(-\tfrac{1}{2i})-
+-W_{\mathrm{fin}}(f*\widetilde f),
+-\]
+-which is equivalent to RH.
+-The prime-side comparison and the extension beyond
+-\(\mathrm{PW}^{\mathrm{hol}}_{F}\) remain separate domain conditions.
+-The HP--Li obstruction is the full Weil inequality with finite, polar,
+-and archimedean terms kept in their correct places.
+-\end{corollary}
+-
+-\begin{proof}
+-Combine \Cref{v4-arith:w5-a:thm:hpli-form} with the sufficient-path
+-theorem \Cref{v4-arith:rh:thm:sufficient-path}.
+-\end{proof}
+-
+-\begin{remark}[decomposition of HP--Li positivity]
+-\label{v4-arith:w5-a:rem:domain-summary}
+-The kernel identity separates Weil positivity into four constituents:
+-\begin{enumerate}
+-\item The finite-prime term
+-\(W_{\mathrm{fin}}(f*\widetilde{f})\): a von Mangoldt distribution not
+-identified here with a fixed-\(F\) Petersson norm.
+-\item The archimedean term: the Tate
+-\(\mathcal{T}_{\infty}\)-distribution
+-\(\psi(\tfrac{1}{4}+\tfrac{it}{2})=\partial_{s}\log\Gamma|_{s=1/4+it/2}\),
+-which is sign-indefinite.
+-\item The decomposition identity
+-\(W(f*\widetilde{f})=\widehat{f*\widetilde f}(\tfrac{1}{2i})
+-+\widehat{f*\widetilde f}(-\tfrac{1}{2i})
+--W_{\mathrm{fin}}(f*\widetilde f)-W_{\infty}(f*\widetilde f)\).
+-\item The test-function class \(\mathrm{PW}^{\mathrm{hol}}_{F}\),
+-a restricted subspace of \(\mathrm{PW}(\mathbb{R})\), on which the
+-full HP--Li inequality is not implied by the fixed-\(F\) lift.
+-\end{enumerate}
+-HP--Li on the full Paley--Wiener class is equivalent to RH.
+-\end{remark}
+-
+-\section{Beilinson Boundary}
+-\label{v4-arith:w5-a:summary}
+-
+-\begin{enumerate}
+-\item The coefficientwise Mellin lift
+-\(\Upsilon_{F}\colon\mathrm{PW}^{\mathrm{hol}}_{F}\to q\mathbb C[[q]]\)
+-of \Cref{v4-arith:w5-a:def:upsilon} is a formal probe; it is not a
+-modular-form-valued map for an arbitrary Paley--Wiener multiplier.
+-\item The Rankin--Selberg kernel
+-\Cref{v4-arith:w5-a:thm:RS-integral} is built from
+-\(L(s,F\otimes\overline F)\), not from \(-\zeta'/\zeta\).
+-\item The prime-side Weil contribution is not proved positive by the
+-fixed-\(F\) Petersson norm
+-(\Cref{v4-arith:w5-a:thm:prime-side}).
+-\item The irreducible obstruction to full HP--Li is the full A-TP
+-inequality, including polar, finite, and archimedean terms; it is
+-strictly equivalent to Weil positivity and to RH
+-(\Cref{v4-arith:w5-a:conj:archimedean-tate-positivity},
+-\Cref{v4-arith:w5-a:thm:ATP-equals-weil-positivity}).
+-\item The Eisenstein continuous spectrum is domain-excluded by the
+-density mismatch of \Cref{v4-arith:kms-gns:cor:eisenstein-final}; it
+-does not contribute to the Li coefficients, which see only the
+-discrete spectrum.
+-\item HP--Li form
+-(\Cref{v4-arith:w5-a:thm:hpli-form}): the full HP--Li inequality is
+-RH-equivalent.
+-\end{enumerate}
+-
+-\begin{remark}[Beilinson principle: restricted-class HP--Li]
+-\label{v4-arith:w5-a:rem:beilinson-principle}
+-The restricted-class HP--Li theorem is an identity together with a
+-kernel obstruction. The full claim, HP--Li on all of
+-\(\mathrm{PW}(\mathbb{R})\), is equivalent to RH and remains open as
+-Conjecture A-TP (\Cref{v4-arith:w5-a:conj:archimedean-tate-positivity}).
+-The lift \(\Upsilon_F\) is a useful formal comparison, not a proof that
+-the von Mangoldt kernel is a positive Petersson norm.
+-\end{remark}
+-
+-\section{Bibliography of Primary Sources}
+-\label{v4-arith:w5-a:bibliography}
+-
+-The identities above use the following primary sources, disjoint from
+-the proof sources used in
+-Chapters~\ref{v4-arith:closure} (P1--P3 resolution),
+-\ref{v4-arith:kp-compat} (Koszul--Pet compatibility), and
+-\ref{v4-arith:kms-gns-full} (KMS\({}_{1}\)/GNS full sector).
+-
+-\begin{description}
+-\item[Weil 1952.] Weil, A. \emph{Sur les formules explicites de la
+-th\'eorie des nombres premiers}. \emph{Meddelanden fr\r{a}n Lunds
+-Univ.~Mat.~Sem.} (Festschrift f\"or Marcel Riesz), 1952; reprinted
+-\emph{Oeuvres Scientifiques} Vol.~II, Springer 1979. Explicit formula,
+-\(W\)-distribution, Weil positivity equivalence to RH.
+-\item[Li 1997.] Li, X.-J. \emph{The positivity of a sequence of
+-numbers and the Riemann hypothesis}. \emph{J.~Number Theory} 65
+-(1997), 325--333. Li coefficients \(\lambda_{n}\),
+-equivalence to RH, explicit Paley--Wiener realisation.
+-\item[Rankin 1939.] Rankin, R.~A. \emph{Contributions to the theory
+-of Ramanujan's function \(\tau(n)\) and similar arithmetical functions}.
+-\emph{Proc.~Camb.~Phil.~Soc.}~35 (1939), 357--372. Rankin--Selberg
+-identity for \(L\)-series of modular forms.
+-\item[Selberg 1940.] Selberg, A. \emph{Bemerkungen \"uber eine
+-Dirichletsche Reihe, die mit der Theorie der Modulformen nahe
+-verbunden ist}. \emph{Arch.~Math.~Naturvid.}~43 (1940), 47--50.
+-Rankin--Selberg identity and \(L\)-function analytic continuation.
+-\item[Hecke 1936.] Hecke, E. \emph{\"Uber die Bestimmung Dirichletscher
+-Reihen durch ihre Funktionalgleichung}. \emph{Math.~Ann.} 112
+-(1936), 664--699. Mellin transform / modular form correspondence
+-and functional equation.
+-\item[Deligne 1974.] Deligne, P. \emph{La conjecture de Weil I}.
+-\emph{Publ.~Math.~IHES} 43 (1974), 273--307. Ramanujan bound for
+-holomorphic cuspidal Hecke eigenforms of weight \(k\geq 2\).
+-\item[Jacquet 1972.] Jacquet, H. \emph{Automorphic forms on \(GL_{2}\)
+-II}. Lecture Notes in Mathematics 278, Springer 1972. Local
+-archimedean factors for \(GL_{2}\); ramified principal series.
+-\item[Jacquet--Langlands SLN~114 1970.] Jacquet, H.;
+-Langlands, R.~P. \emph{Automorphic forms on \(GL(2)\)}. Lecture Notes
+-in Mathematics 114, Springer 1970. Adelic Whittaker model, Hecke
+-theory.
+-\item[Iwaniec--Kowalski 2004.] Iwaniec, H.; Kowalski, E.
+-\emph{Analytic Number Theory}. AMS Colloquium Publications 53, 2004.
+-Modern account of Weil's explicit formula, Rankin--Selberg,
+-Paley--Wiener.
+-\item[Bombieri--Lagarias 1999.] Bombieri, E.; Lagarias, J.~C.
+-\emph{Complements to Li's criterion for the Riemann hypothesis}.
+-\emph{J.~Number Theory} 77 (1999), 274--287. Alternative constructions
+-of Li-coefficient approximants and equivalences to Weil positivity.
+-\item[Connes 1999.] Connes, A. \emph{Trace formula in noncommutative
+-geometry and the zeros of the Riemann zeta function}. \emph{Selecta
+-Math.~(N.~S.)} 5 (1999), 29--106, arXiv:math/9811068. Adele class
+-space, absorption trace, Weil positivity as trace-formula positivity.
+-\item[Patterson 1988.] Patterson, S.~J. \emph{An Introduction to the
+-Theory of the Riemann Zeta-Function}. Cambridge Studies in Advanced
+-Mathematics 14, 1988. Complete treatment of the Hadamard product
+-and explicit formula.
+-\item[Kim--Sarnak 2003.] Kim, H.~H.; Sarnak, P.~C. Appendix to
+-Kim, H.~H., \emph{Functoriality for the exterior square of \(GL_{4}\)
+-and the symmetric fourth of \(GL_{2}\)}. \emph{J.~Amer.~Math.~Soc.} 16
+-(2003), 139--183. Bound \(|a_{F}(p)|\leq 2p^{7/64}\) towards the
+-Ramanujan conjecture for \(GL_{2}/\mathbb{Q}\).
+-\item[Bump 1997.] Bump, D. \emph{Automorphic Forms and
+-Representations}. Cambridge Studies in Advanced Mathematics 55, 1997.
+-Comprehensive account of Rankin--Selberg, Whittaker models,
+-Petersson theory.
+-\item[Zagier 1981.] Zagier, D. \emph{The Rankin--Selberg method for
+-automorphic functions which are not of rapid decay}.
+-\emph{Bonner Math.~Schriften} 121 (1981). Rankin--Selberg unfolding
+-technique.
+-\end{description}
+-
+-\noindent\emph{Disjointness comparison.} The primary-source list
+-for the identities above (Weil 1952 for the explicit formula; Li 1997 for
+-Li coefficients; Rankin 1939 and Selberg 1940 for the Rankin--Selberg
+-identity; Hecke 1936 for Mellin--functional-equation duality;
+-Deligne 1974 for temperedness; Jacquet 1972 and Jacquet--Langlands
+-SLN~114 for adelic \(GL_{2}\) representation theory) is disjoint from
+-the lists underwriting P1 (Beilinson--Drinfeld 2004, Positselski
+-2009), P2 (Tate 1950), P3 / Koszul--Pet (Bost--Connes 1995,
+-Takesaki 1979, Jacquet--Piatetski-Shapiro--Shalika 1983,
+-Godement--Jacquet SLN~260, Moeglin--Waldspurger 1995, Arthur 1980,
+-Shahidi 2010), the Tate restricted tensor chapter (Lurie HA,
+-Fresse~2017, Ayala--Francis), and the HP\(^{\mathrm{Ar}}\) / VB\(^{*}\)
+-converse lists (Connes 1999 is a cross-reference cited for
+-context in both arguments; it does not appear on both sides of any
+-single identification).
++A Hilbert realization of the full Weil form consists of a positive
++Hilbert space $K$, a linear map $J:\mathscr A\to K$, and the identity
++\[
++ \langle Jf,Jg\rangle_K=W(f*g^*)\qquad(f,g\in\mathscr A).
++\]
++Such a realization exists if and only if $q_W$ is positive semidefinite.
++When it exists, its minimal realization is the completion of
++$\mathscr A/\{f:q_W(f,f)=0\}$. Its existence is RH-equivalent.
++Neither coefficient map in \eqref{v4-arith:w5-a:eq:upsilon}
++provides the pairing identity.
++\end{theorem}
++\begin{proof}
++A Hilbert realization implies nonnegativity. Conversely, positivity
++and polarization give Cauchy--Schwarz for $q_W$. Its nullspace is a
++linear subspace orthogonal to every vector. Quotienting and completing
++therefore gives the asserted Hilbert space and canonical map.
++Weil's criterion supplies the equivalence to RH. The coefficient
++maps construct holomorphic functions with specified coefficients.
++Their definitions contain no equality with the full Weil form, and
++the finite-prime counterexample excludes the proposed full-space
++positive realization of that separate term.
++\end{proof}
++
++The arithmetic problem asks for this pairing through a specified
++native carrier, its operators, and its realization maps. The compact
++formula, the exact coefficient calculation, and the two obstruction
++theorems retain those separate requirements.
+--- a/chapters/arithmetic/80_ATP_adelic_scattering.tex
++++ b/chapters/arithmetic/80_ATP_adelic_scattering.tex
+@@ -1,768 +1,343 @@
+-\chapter{A-TP via Adelic Scattering: Bost--Connes \(S\)-Matrix and Mellin-Unitary Closure}
++\chapter{Occupation Perturbations and the Weil Trace Comparison}
+ \label{v4-arith:w7-j:ATP-adelic-scattering}
+ 
+-\emph{The archimedean Tate positivity conjecture
+-A-TP of \Cref{v4-arith:w5-a:conj:archimedean-tate-positivity} is
+-RH-equivalent. Chapter~\ref{v4-arith:w6-a:ATP-direct-obstruction}
+-writes the negative archimedean part as a bounded-interval term
+-coupled to \(R[f]\). The scattering ansatz is conditional. If a
+-renormalised trace-class pair
+-\((D_{0},D_{\mathrm{BC}})\) on the idele class Hilbert space
+-\(\mathcal{K}=L^{2}(C_{\mathbb{Q}})\) has spectral shift equal to the
+-Weil distribution, then A-TP becomes positivity of the associated
+-spectral-shift measure. Bare unitarity of the scattering matrix is
+-not sufficient for A-TP. The Tate-Mellin calculation supplies only a
+-unitary phase on a zero-adapted sub-class; it does not prove Weil
+-positivity there without the spectral-shift positivity input.}
+-
+-\section{Scattering Domain}
+-\label{v4-arith:w7-j:domain}
+-
+-The Mellin--Rankin--Selberg isometry of
+-Chapter~\ref{v4-arith:w5-a:chapter} closes the prime side of the Weil
+-distribution inside Petersson positivity on the tempered cuspidal
+-core. Chapter~\ref{v4-arith:w6-a:ATP-direct-obstruction} reduces A-TP on
+-the archimedean side to a bounded-interval question for the digamma
+-kernel. The disjoint conditional construction recasts A-TP as
+-spectral-shift positivity for a renormalised adelic
+-scattering pair, compute the Tate-Mellin phase on a zero-adapted
+-sub-class, and locate the missing positivity inside the Connes
+-adele-class-space construction.
+-
+-\subsection{Independent Sources}
+-\label{v4-arith:w7-j:sources}
+-
+-The scattering obstruction draws on five classical sources, each disjoint
+-from the lists used in
+-Chapters~\ref{v4-arith:w5-a:chapter},
+-\ref{v4-arith:w6-a:ATP-direct-obstruction},
+-\ref{v4-arith:w5-b:hp-operator}.
+-
+-\begin{description}
+-\item[Connes 1999.] A.~Connes, \emph{Trace formula in noncommutative
+-geometry and the zeros of the Riemann zeta function}, Selecta
+-Math.~(N.~S.)~5 (1999), 29--106; arXiv:math/9811068. Adele-class-space
+-construction, cutoff regularisation, absorption-trace theorem
+-(\S IV, Thm.~1), Weil-positive trace identity (\S V).
+-\item[Meyer 2005.] R.~Meyer, \emph{On a representation of the idele
+-class group related to primes and zeros of \(L\)-functions}, Duke
+-Math.~J.~127 (2005), 519--595; arXiv:math/0311468. Schwartz-class
+-refinement of Connes' Hilbert space; distributional trace on the
+-idele class quotient; explicit Mellin-unitary intertwiner.
+-\item[Birman--Krein 1962.] M.S.~Birman and M.G.~Krein, \emph{On the
+-theory of wave operators and scattering operators}, Dokl.~Akad.~Nauk
+-SSSR 144 (1962), 475--478. Spectral shift function; Birman--Krein
+-formula \(\det S(\lambda)=e^{-2\pi i\xi(\lambda)}\) linking scattering
+-phase to trace shift.
+-\item[Enss 1978.] V.~Enss, \emph{Asymptotic completeness for quantum
+-mechanical potential scattering, I. Short range potentials},
+-Comm.~Math.~Phys.~61 (1978), 285--291. Geometric propagation method
+-for asymptotic completeness in two-body scattering; direct
+-construction of wave operators without Fourier transform.
+-\item[Reed--Simon III.] M.~Reed and B.~Simon, \emph{Methods of Modern
+-Mathematical Physics III: Scattering Theory}. Academic Press 1979.
+-Chapter XI for trace-class scattering, XI.3 for Kato--Birman theory,
+-XI.7 for Enss method; Chapter XIII for spectral deformations.
+-\end{description}
+-
+-These five sources form a scattering-theoretic list disjoint from
+-the Weil~1952 / Rankin 1939 / Petersson list driving the restricted-class comparison, from
+-the Hurwitz 1882 / Gauss 1813 / Whittaker--Watson 1927 elementary
+-digamma list of \Cref{v4-arith:w6-a:ATP-direct-obstruction}, and from
+-the Bost--Connes 1995 / Takesaki 1979 modular-theoretic list of
+-\Cref{v4-arith:w5-b:hp-operator}. The Connes 1999 paper is cited in
+-\Cref{v4-arith:w5-a:chapter} and \Cref{v4-arith:w5-b:hp-operator} for
+-context, not as a proof source; its decisive use occurs in
+-the scattering argument. Meyer 2005 was cited but not used as derivation in
+-Chapters~\ref{v4-arith:w5-b:hp-operator},
+-\ref{v4-arith:R-analytic-comparison}; its decisive use is here.
+-Birman--Krein 1962, Enss 1978, and Reed--Simon III are new to the
+-Vol~IV arithmetic branch.
+-
+-\section{Adelic Scattering Framework}
+-\label{v4-arith:w7-j:framework}
+-
+-The Weil distribution \(W\) is an explicit distribution on test functions
+-\(f\in\mathrm{PW}(\mathbb{R})\) (the Paley--Wiener class: entire functions
+-of exponential type with \(L^{2}\) restriction to the real line) encoding
+-the prime-side, archimedean, and polar contributions to the explicit
+-formula. A-TP asserts \(W(f*\widetilde{f})\geq 0\) for all such \(f\),
+-where \(\widetilde{f}(t):=\overline{f(-t)}\) is the involute. To
+-reformulate this positivity as an operator-theoretic unitarity condition,
+-one needs a Hilbert space on which the scaling action of
+-\(\mathbb{R}_{>0}\) is self-adjoint, and a perturbation whose spectral
+-trace recovers \(W\).
+-
+-\subsection{The Idele Class Hilbert Space}
+-\label{v4-arith:w7-j:framework:hilbert}
+-
+-\begin{definition}[idele class Hilbert space]
++Disjoint spectral intervals permit a full self-adjoint occupation
++perturbation of the dilation generator. Its compact Fourier tests
++have trace-class differences, even though the perturbation itself
++is not trace class. The resulting spectral distribution is supported
++on a half-line. This support excludes the full Weil zero functional.
++
++\section{The scaling space and the occupation embedding}
++
++\begin{definition}[idele norm coordinates]
+ \label{v4-arith:w7-j:def:H-idele}
+-\ClaimStatusDefinitional. Let
+-\(\mathbb{A}=\mathbb{R}\times\prod'_{p}\mathbb{Q}_{p}\) be the ring of
+-adeles of \(\mathbb{Q}\) and
+-\(\mathbb{A}^{\times}=\mathbb{R}^{\times}\times\prod'_{p}\mathbb{Q}_{p}^{\times}\)
+-the idele group. Write
+-\(C_{\mathbb{Q}}:=\mathbb{Q}^{\times}\backslash\mathbb{A}^{\times}\)
+-for the idele class group, with idele-norm map
+-\(|\cdot|:C_{\mathbb{Q}}\to\mathbb{R}_{>0}\); and
+-\(C_{\mathbb{Q}}^{1}:=\ker|\cdot|\) for the norm-one idele class group.
+-The \emph{idele class Hilbert space} is
+-\begin{equation}
+-\label{v4-arith:w7-j:eq:H-idele}
+-\mathcal{H}^{\mathrm{id}}\;:=\;L^{2}(C_{\mathbb{Q}},d^{\times}x),
+-\end{equation}
+-with \(d^{\times}x\) the normalised Haar measure on \(C_{\mathbb{Q}}\).
+-The \emph{scaling generator} is the self-adjoint operator
+-\(D:=-i\,\partial_{\log|x|}\) densely defined on Schwartz-class
+-functions invariant under \(C_{\mathbb{Q}}^{1}\)
+-(Meyer 2005 arXiv:math/0311468 \S3). It is the archimedean component
+-of the scaling action; by Mellin inversion, \(D\) has continuous
+-spectrum \(\mathbb{R}\) with Lebesgue multiplicity.
++Let $\mathbb A=\mathbb R\times\prod'_p\mathbb Q_p$ be the ring
++of rational adeles, and put
++$C_{\mathbb Q}=\mathbb Q^\times\backslash\mathbb A^\times$.
++Choose the representative with positive real component and finite
++components in $\widehat{\mathbb Z}^{\times}=\prod_p\mathbb Z_p^\times$.
++The real component is the idele norm $r>0$. Use Haar measure
++$dr/r\,d\mu_1$, with $\mu_1(\widehat{\mathbb Z}^{\times})=1$.
++Put
++\[
++ U=L^2(\widehat{\mathbb Z}^{\times},\mu_1),\qquad e_0=1\in U,
++ \qquad K=L^2(\mathbb R,d\tau)\otimes U.
++\]
++All tensor products of Hilbert spaces are completed.
++The normalized Fourier transform in $t=\log r$ identifies the
++scaling generator $-i\partial_t$ with $D_0=M_\tau\otimes1$.
++Its domain is
++\[
++ \operatorname{Dom}D_0=
++ \left\{v:\int_{\mathbb R}\tau^2\|v(\tau)\|_U^2d\tau<\infty\right\}.
++\]
+ \end{definition}
+ 
+-\begin{lemma}[Mellin decomposition of \(\mathcal{H}^{\mathrm{id}}\)]
+-\label{v4-arith:w7-j:lem:mellin-decomp}
+-\ClaimStatusProvedElsewhere \emph{(cite Meyer 2005 \S3.2)}.
+-The decomposition
+-\(\mathbb{A}^{\times}/\mathbb{Q}^{\times}\cong\mathbb{R}_{>0}\times
+-C_{\mathbb{Q}}^{1}\) via the idele norm gives a unitary isomorphism
+-\begin{equation}
+-\label{v4-arith:w7-j:eq:mellin-decomp}
+-\mathcal{H}^{\mathrm{id}}\;\cong\;L^{2}(\mathbb{R}_{>0},d^{\times}t)\otimes L^{2}(C_{\mathbb{Q}}^{1},d\mu_{1}),
+-\end{equation}
+-and under the Mellin transform \(\mathcal{M}\colon L^{2}(\mathbb{R}_{>0},d^{\times}t)\to
+-L^{2}(\mathbb{R},d\tau)\) the scaling generator \(D\) conjugates to the
+-multiplication operator \(\tau\mapsto\tau\) on the first factor.
++To obtain the representative, multiply an idele by the reciprocal
++of $\prod_pp^{v_p(a_p)}$, then by a sign. This makes every finite
++valuation zero and the real component positive. Uniqueness follows
++because a positive rational unit at every finite place is one.
++The resulting product coordinates are continuous group coordinates.
++Plancherel and the weak-derivative characterization of $H^1$
++prove the generator and domain assertions on the full tensor product.
++Functions constant on the second factor alone would not form a dense
++domain in that tensor product.
++
++Choose a real or complex $b\in C_c^\infty(0,1)$ with $\|b\|_2=1$.
++For $m\ge1$, put $b_m(\tau)=b(\tau-m)$ and
++$e_m=b_m\otimes e_0$. These are orthonormal. The map
++$I:\ell^2(\mathbb N_{\ge1})\to K$, $Iv_m=e_m$, is an isometry.
++For the occupation operator $Nv_m=(\log m)v_m$, use the maximal
++domain $\sum_m(\log m)^2|a_m|^2<\infty$.
++Its image gives
++\[
++ V_M=\sum_{m=1}^M(\log m)|e_m\rangle\langle e_m|,
++ \qquad D_M=D_0+V_M.
++\]
++Inner products are linear in the first variable, so
++$|e_m\rangle\langle e_m|v=\langle v,e_m\rangle e_m$.
++
++\begin{proposition}[the full occupation perturbation]
++\label{v4-arith:sc:full-domain}
++The series
++\[
++ Vv=\sum_{m\ge1}(\log m)\langle v,e_m\rangle e_m
++\]
++defines a positive self-adjoint operator on the maximal domain
++$\sum_m(\log m)^2|\langle v,e_m\rangle|^2<\infty$.
++This domain contains $\operatorname{Dom}D_0$.
++The operator $D=D_0+V$ is self-adjoint on $\operatorname{Dom}D_0$.
++For every nonreal $z$, $(D_M-z)^{-1}$ converges strongly to
++$(D-z)^{-1}$.
++\end{proposition}
++\begin{proof}
++The diagonal series proves the assertion about $V$.
++Decompose $K$ into the affected blocks
++$K_m=L^2((m,m+1))\otimes\mathbb Ce_0$ and their common orthogonal
++complement $K_{\mathrm{rest}}$. On $K_m$ write
++\[
++ A_m=M_\tau,\qquad
++ B_m=A_m+(\log m)|e_m\rangle\langle e_m|.
++\]
++These are bounded self-adjoint operators with
++$m\le A_m\le m+1$ and $m\le B_m\le m+1+\log m$.
++The direct sum of $B_m$, together with $D_0$ on $K_{\mathrm{rest}}$,
++is self-adjoint on its maximal direct-sum domain.
++Since
++\[
++ m\|v_m\|\le\|A_mv_m\|\le(m+1)\|v_m\|,
++ \qquad
++ m\|v_m\|\le\|B_mv_m\|\le3m\|v_m\|,
++\]
++that domain equals $\operatorname{Dom}D_0$.
++Bessel's inequality on each interval gives
++$\|Vv\|^2\le\sum_m(\log m)^2\|v_m\|^2$.
++Thus $V$ is defined there, and the direct sum equals $D_0+V$.
++
++The resolvents of $D_M$ and $D$ agree on every fixed finite sum
++of blocks once $M$ is sufficiently large. They agree on
++$K_{\mathrm{rest}}$ for every $M$ and have norm at most $|\Im z|^{-1}$.
++Finite block approximation of any vector proves strong convergence.
++\end{proof}
++
++The bounded perturbations satisfy
++\[
++ \|V_M\|=\log M,\quad
++ \|V_M\|_1=\sum_{m\le M}\log m,\quad
++ \|V_M\|_2^2=\sum_{m\le M}(\log m)^2.
++\]
++Thus $V$ is unbounded and is neither trace class nor Hilbert--Schmidt.
++Its self-adjoint construction uses the specified interval embedding.
++It does not identify that embedding with an arithmetic realization.
++
++\section{Wave operators on the full model}
++
++\begin{theorem}[existence of the occupation wave operators]
++\label{v4-arith:w7-j:prop:wave-existence}
++The strong limits
++\[
++ \Omega_\pm=\lim_{t\to\pm\infty}e^{itD}e^{-itD_0}
++\]
++exist on $K$ and are isometries. The same assertion holds with
++$D_M$ in place of $D$.
++\end{theorem}
++\begin{proof}
++Take $v$ in $C_c^\infty(\mathbb R)\otimes_{\mathrm{alg}}U$.
++Only finitely many $e_m$ meet its spectral support. Each coefficient
++of $Ve^{-itD_0}v$ is a constant multiple of
++$\int\overline{b_m(\tau)}v_0(\tau)e^{-it\tau}d\tau$.
++Two integrations by parts bound it by $C_v(1+|t|)^{-2}$.
++Consequently $\int_{\mathbb R}\|Ve^{-itD_0}v\|dt<\infty$.
++The common-domain identity
++\[
++ \frac d{dt}\bigl(e^{itD}e^{-itD_0}v\bigr)
++ =ie^{itD}Ve^{-itD_0}v
++\]
++proves the Cauchy property at both ends of the real line.
++The approximating operators are unitary. Their limits preserve
++norms on this dense subspace and extend to isometries on all of $K$.
++The finite sum gives the same proof for $D_M$.
++\end{proof}
++
++Completeness would additionally identify the ranges with the entire
++absolutely continuous subspace of $D$. Existence alone does not make
++that identification. If the two ranges are equal, then
++$S=\Omega_+^*\Omega_-$ is unitary. Indeed both wave operators are
++unitaries from $K$ onto their common closed range.
++
++\section{A continuous trace map on Schwartz spectral tests}
++
++\begin{lemma}[a block trace-norm estimate]
++\label{v4-arith:sc:trace-bound}
++For $h\in\mathscr S(\mathbb R)$ and every integer $N\ge1$,
++\[
++ \|h(B_m)-h(A_m)\|_1
++ \le C_N(\log m)\sqrt{3+\log m}\,(1+m)^{-N}
++ \max_{0\le j\le2}\sup_x(1+|x|)^N|h^{(j)}(x)|.
++\]
++Here the constant is independent of $m$ and $h$.
+ \end{lemma}
+-
+-\begin{proof}
+-Meyer 2005 \S3.2 constructs the Mellin isomorphism
+-\(\mathcal{M}: L^{2}(\mathbb{R}_{>0},d^{\times}t) \to
+-L^{2}(\mathbb{R},d\tau)\); \(D = -i\partial_{\log|x|}\) is the
+-infinitesimal generator of the \(\mathbb{R}_{>0}\)-scaling action,
+-and under \(\mathcal{M}\) the operator \(D\) conjugates to
+-multiplication by \(\tau\) on the Mellin-side. No new content added.
+-\end{proof}
+-
+-\subsection{The Bost--Connes Scattering Generator}
+-\label{v4-arith:w7-j:framework:generator}
+-
+-The occupation operator of \Cref{v4-arith:w5-b:occupation-comparison}
+-provides a sequence of finite perturbations once an embedding into the
+-scattering space is chosen. Such an embedding is additional data; the
+-product GNS construction does not supply a map to the idele-class space.
+-
+-\begin{definition}[scattering space and finite occupation perturbations]
+-\label{v4-arith:w7-j:def:scattering-space}
+-Write
+-\begin{equation}
+-\label{v4-arith:w7-j:eq:H-scatter}
+- \mathcal K=L^2(\mathbb R,d\tau)\otimes L^2(C_{\mathbb Q}^1,d\mu_1),
+- \qquad D_0=M_\tau\otimes1,
+-\end{equation}
+-with \(\mu_1(C_{\mathbb Q}^1)=1\) and maximal multiplication domain
+-\(\{f:\int\tau^2\|f(\tau)\|^2d\tau<\infty\}\).
+-Let \(P_0\) project onto the constant function in the second factor.
+-Choose an isometry \(I:\ell^2(\mathbb N^\times)\to L^2(\mathbb R)\).
+-For example, fix a smooth function \(h\), supported in \((0,1)\), with
+-\(\|h\|_2=1\), and put \(Iv_m=h_m\), where \(h_m(\tau)=h(\tau-m)\).
+-The disjoint supports make this an isometry. Let \(Q_M\) project onto
+-\(v_1,\ldots,v_M\), and define
+-\begin{equation}
+-\label{v4-arith:w7-j:eq:D-BC}
+- V_M=(I Q_MN_{\mathrm{occ}}Q_MI^*)\otimes P_0,
+- \qquad D_M=D_0+V_M \quad\hbox{on }\operatorname{Dom}D_0.
+-\end{equation}
+-A full arithmetic scattering operator \(D_{\mathrm{BC}}\) would be a
+-specified self-adjoint perturbation of \(D_0\), with a prescribed domain
+-and an arithmetic trace comparison. It is not defined by the formal
+-expression \(D_0+\iota_*N_{\mathrm{BC}}\otimes P_0\): an isometric
+-transport of either unbounded occupation or modular energy cannot be a
+-bounded perturbation.
++\begin{proof}
++Choose a smooth cutoff $\chi_m$ equal to one on
++$[m,m+1+\log m]$ and supported in $[m-1,m+2+\log m]$.
++Fixed smooth transitions of width one give uniformly bounded
++first and second derivatives. Put $q_m=\chi_m h$.
++Functional calculus gives $q_m(A_m)=h(A_m)$ and
++$q_m(B_m)=h(B_m)$.
++
++Duhamel's formula and Fourier inversion give
++\[
++ \|q_m(B_m)-q_m(A_m)\|_1
++ \le\frac{\log m}{2\pi}
++       \int_{\mathbb R}|t|\,|\mathcal F_-q_m(t)|dt.
++\]
++For negative $t$, reverse the time integral in Duhamel's formula.
++The same bound with $|t|$ follows. Cauchy--Schwarz with weight
++$(1+t^2)^{-1}$ and Plancherel bound this integral by
++$C(\|q_m'\|_2+\|q_m''\|_2)$.
++The support length and uniform cutoff bounds give the displayed
++estimate. For $m=1$ the difference is zero because $\log1=0$.
++\end{proof}
++
++\begin{theorem}[the occupation trace distribution]
++\label{v4-arith:sc:trace-map}
++The map
++\[
++ \mathcal T:\mathscr S(\mathbb R)\longrightarrow\mathcal S_1(K),
++ \qquad \mathcal T(h)=h(D)-h(D_0)
++\]
++is continuous and linear, where $\mathcal S_1(K)$ has the trace norm.
++Moreover,
++\[
++ T(h)=\operatorname{Tr}\mathcal T(h)
++   =\sum_{m\ge1}\operatorname{Tr}(h(B_m)-h(A_m))
++\]
++defines a tempered distribution supported in $[1,\infty)$.
++The trace differences for $D_M$ converge in trace norm to
++$\mathcal T(h)$ for every Schwartz test.
++\end{theorem}
++\begin{proof}
++Functional calculus respects the direct-sum decomposition.
++On $K_{\mathrm{rest}}$ the difference is zero. On $K_m$ it is the
++operator in Lemma~\ref{v4-arith:sc:trace-bound}.
++For $N=3$ the sum of its bounds is finite, because
++$\sum_m(\log m)\sqrt{3+\log m}(1+m)^{-3}<\infty$.
++The sum therefore converges in trace norm and supplies a continuous
++Schwartz seminorm bound. The finite truncations are its partial sums.
++The trace is continuous in trace norm, which proves the formula
++and temperedness. If $h$ is supported in $(-\infty,1)$, all affected
++block functional calculi vanish. This proves the support assertion.
++\end{proof}
++
++\section{The support obstruction to an arithmetic trace identity}
++
++\begin{theorem}[no lower-bounded tempered spectral realization]
++\label{v4-arith:sc:support-obstruction}
++There is no tempered distribution $T_0$ with support bounded below
++such that
++\[
++ T_0(\mathcal F_+f)=W(f)\qquad(f\in C_c^\infty(\mathbb R)),
++\]
++where $W$ is the full xi zero functional.
++In particular, the trace distribution of
++Theorem~\ref{v4-arith:sc:trace-map} does not satisfy that identity.
++\end{theorem}
++\begin{proof}
++Such an identity would extend $W$ to a tempered distribution in the
++additive variable. On $C_c^\infty(0,\infty)$ the explicit formula gives
++\[
++ \nu_{1/2}(f)=-W(f)-\int_0^\infty
++                \frac{e^{-t/2}}{e^{2t}-1}f(t)dt.
++\]
++Multiply by a smooth cutoff supported in $(0,\infty)$ and equal
++to one for $t\ge1$. The density then decays exponentially.
++The remainder of $\nu_{1/2}$ has compact support. Thus
++$\nu_{1/2}$ would be tempered, and
++Theorem~\ref{v4-arith:pm:centered} would imply RH.
++
++Under RH, $W(f)=\mu_{\mathrm{ord}}(\mathcal F_+f)$.
++Compact smooth functions are dense in the Schwartz space, and the
++Fourier transform is its continuous automorphism. Equality on their
++Fourier images therefore gives $T_0=\mu_{\mathrm{ord}}$ on all Schwartz tests.
++There are infinitely many xi zeros, all in a fixed vertical strip.
++Their ordinates are unbounded in absolute value. Conjugation gives
++ordinates tending to negative infinity. The positive measure
++$\mu_{\mathrm{ord}}$ therefore has support unbounded below, a contradiction.
++\end{proof}
++
++This argument excludes a proposed comparison for an explicitly
++constructed operator and trace map. It does not prove or disprove RH.
++An arithmetic realization must change the spectral carrier or the
++trace construction and prove the resulting comparison.
++
++\section{Scattering phases and the discrete spectral contribution}
++
++\begin{proposition}[unitary scattering with a negative square trace]
++\label{v4-arith:sc:unitary-counterexample}
++On $K'=L^2(\mathbb R)\oplus\mathbb C$, let
++$H_0=M_x\oplus0$ and $H_1=M_x\oplus1$ on the common maximal domain.
++The wave operators are complete and their scattering operator is
++the identity on the absolutely continuous subspace.
++There is an entire Fourier square $h$ such that
++\[
++ \operatorname{Tr}(h(H_1)-h(H_0))<0.
++\]
++\end{proposition}
++\begin{proof}
++The absolutely continuous subspace is $L^2(\mathbb R)\oplus0$ for
++both operators. On it $e^{itH_1}e^{-itH_0}$ is the identity for
++every $t$, proving existence and completeness of both wave operators.
++For a nonzero nonnegative $g\in C_c^\infty$, put
++$\phi=\mathcal F_+g$ and $h=\phi\phi^\sharp$.
++The functional-calculus difference is
++$0\oplus(|\phi(1)|^2-|\phi(0)|^2)$.
++Strict triangle inequality gives $|\phi(1)|<|\phi(0)|$, since
++$e^{it}$ is not constant on any interval where $g>0$.
++Thus the finite-rank trace is negative.
++\end{proof}
++
++For this pair the spectral-shift formula is the elementary identity
++\[
++ \operatorname{Tr}(h(H_1)-h(H_0))
++ =\int_0^1h'(u)du.
++\]
++The real spectral-shift function is $\mathbf1_{(0,1)}$.
++Its phase $\exp(-2\pi i\mathbf1_{(0,1)})$ is one almost everywhere.
++The scattering phase loses this integer-valued discrete contribution.
++
++\begin{proposition}[functional-equation phases]
++\label{v4-arith:sc:phase}
++The quotient $\xi(1/2+it)/\xi(1/2-it)$ equals one wherever defined
++and has the constant continuation through its common zeros.
++For an entire nonzero function $a$ satisfying
++$a(\bar s)=\overline{a(s)}$, the quotient
++$a(1/2+it)/a(1/2-it)$ has modulus one wherever defined.
++\end{proposition}
++\begin{proof}
++The first assertion is the functional equation.
++The second follows from conjugation. A common zero is isolated
++unless the entire function vanishes identically. Consequently the
++quotient, where unimodular, defines a unitary multiplication
++operator on the real $L^2$ line after arbitrary values on its
++measure-zero exceptional set. This does not identify it with wave
++operators for a specified pair.
++\end{proof}
++
++Reflection symmetry $a(s)=\overline{a(1-\bar s)}$ alone has a
++different meaning: it says that $a$ is real on the critical line.
++For example, choose real even nonzero $c\in C_c^\infty(\mathbb R)$
++and put
++\[
++ A(s)=\int c(t)e^{(s-1/2)t}dt,\qquad
++ a(s)=(1+i(s-1/2))A(s).
++\]
++Then $a(s)=\overline{a(1-\bar s)}$, and it is entire of exponential
++type with rapid decrease on closed vertical strips. Nevertheless
++its quotient on the line is $(1-t)/(1+t)$ wherever $A$ is nonzero.
++Reflection symmetry by itself does not give a unitary phase.
++
++\section{The remaining arithmetic comparison}
++
++\begin{definition}[the adele-class carrier]
++\label{v4-arith:w7-j:def:connes-ac-space}
++The adele-class quotient is $\mathbb Q^\times\backslash\mathbb A$,
++where rational multiplication also acts on noninvertible adeles.
++It differs from the idele-class group
++$\mathbb Q^\times\backslash\mathbb A^\times$ used above.
++A Hilbert or distributional realization on that quotient requires
++its own space, action, domain, and trace functional.
+ \end{definition}
+ 
+-\begin{proposition}[finite perturbations and the undamped limit]
+-\label{v4-arith:w7-j:finite-perturbation}
+-The operator \(D_M\) is self-adjoint on \(\operatorname{Dom}D_0\), and
+-\[
+- \|V_M\|=\log M,\qquad
+- \|V_M\|_1=\sum_{m=1}^M\log m,\qquad
+- \|V_M\|_2^2=\sum_{m=1}^M(\log m)^2.
+-\]
+-Here \(\|\cdot\|_1\) and \(\|\cdot\|_2\) are the trace and
+-Hilbert--Schmidt norms. The undamped sequence has no bounded,
+-trace-class or Hilbert--Schmidt limit. For real coefficients \(a_m\),
+-the diagonal series
+-\(V_a=\sum_m a_m|h_m\rangle\langle h_m|\otimes P_0\)
+-is trace class exactly when \(\sum_m|a_m|<\infty\), and is
+-Hilbert--Schmidt exactly when \(\sum_m|a_m|^2<\infty\).
+-\end{proposition}
+-\begin{proof}
+-The vectors \(h_m\otimes1\) are orthonormal. They diagonalize \(V_M\)
+-with eigenvalues \(\log m\); the operator is zero on their orthogonal
+-complement. This proves the three formulas and the series criteria.
+-For self-adjointness, \(V_M\) is bounded and self-adjoint. A vector
+-\(y\) is in the adjoint domain of \(D_0+V_M\) exactly when
+-\(x\mapsto\langle D_0x,y\rangle+\langle V_Mx,y\rangle\) is bounded
+-on \(\operatorname{Dom}D_0\) in the Hilbert norm. The second term is
+-already bounded, so this condition is precisely
+-\(y\in\operatorname{Dom}D_0^*=\operatorname{Dom}D_0\). The adjoint
+-therefore equals \(D_0+V_M\) on this domain.
+-\end{proof}
+-
+-The original occupation coefficients are \(a_m=\log m\).
+-Replacing them by \((\log m)/m\) produces a Hilbert--Schmidt series,
+-but changes the operator and still does not give a trace-class series.
+-A damping or subtraction must therefore be part of a new specified
+-arithmetic construction, together with its trace comparison.
+-
+-\begin{remark}[relation to \(H_{\mathrm{HP}}\)]
+-\label{v4-arith:w7-j:rem:relation-to-HHP}
+-The BC-perturbed scaling generator \(D_{\mathrm{BC}}\) is a
+-renormalised scattering ansatz on \(\mathcal{K}\), distinct from
+-\(H_{\mathrm{HP}}\) of \Cref{v4-arith:w5-b:def:twist}.
+-The operator \(H_{\mathrm{HP}}\) is the hypothetical operator whose
+-normal determinant divisor is \(\mathrm{div}\,\xi_{\mathbb R}\) and
+-whose Weil--Connes trace is supported at the zero ordinates after
+-zero-placement; \(D_{\mathrm{BC}}\) is the operator whose spectral
+-shift is required to reproduce the Weil distribution.
+-A relation between these two operators requires the arithmetic maps of
+-\Cref{v4-arith:w5-b:hyp:twist-existence} and a comparison of their
+-regularized traces. The scattering formulation additionally requires a
+-specified perturbation, complete wave operators and the relevant
+-spectral-shift identity. None follows from the occupation spectrum.
+-\end{remark}
+-
+-\subsection{Wave Operators and the \(S\)-Matrix}
+-\label{v4-arith:w7-j:framework:S-matrix}
+-
+-\begin{definition}[wave operators and \(S\)-matrix]
+-\label{v4-arith:w7-j:def:wave-operators}
+-\ClaimStatusDefinitional. Write \(P_{\mathrm{ac}}(D_{0})\) for the
+-spectral projection of \(D_{0}\) onto its absolutely continuous
+-subspace. The \emph{wave operators} (M\o{}ller operators) of the pair
+-\((D_{0},D_{\mathrm{BC}})\) on \(\mathcal{K}\) are the strong-operator
+-limits
+-\begin{equation}
+-\label{v4-arith:w7-j:eq:wave-operators}
+-W_{\pm}\;:=\;\mathrm{s}\text{-}\lim_{t\to\pm\infty}e^{itD_{\mathrm{BC}}}\,e^{-itD_{0}}\,P_{\mathrm{ac}}(D_{0}),
+-\end{equation}
+-provided the strong limits exist on \(P_{\mathrm{ac}}(D_{0})\mathcal{K}\)
+-(Reed--Simon III Thm.~XI.8). The \emph{scattering operator} is
+-\begin{equation}
+-\label{v4-arith:w7-j:eq:S-operator}
+-S\;:=\;W_{+}^{*}W_{-}\;:\;P_{\mathrm{ac}}(D_{0})\mathcal{K}\to P_{\mathrm{ac}}(D_{0})\mathcal{K},
+-\end{equation}
+-an operator that is unitary when both wave operators are complete,
+-meaning that each has range \(P_{\mathrm{ac}}(D_{\mathrm{BC}})\mathcal K\).
+-Existence alone does not assert completeness or unitarity.
+-\end{definition}
+-
+-\begin{proposition}[wave operators for the smooth finite model]
+-\label{v4-arith:w7-j:prop:wave-existence}
+-For the smooth, disjoint-support choice \(Iv_m=h_m\) above, the limits
+-\(W_\pm(D_M,D_0)\) exist and are isometries on \(\mathcal K\).
+-Completeness of a specified pair and its spectral-shift formula are
+-additional hypotheses for the scattering comparisons below.
+-\end{proposition}
+-\begin{proof}
+-It suffices first to take \(f\) in the algebraic tensor product of
+-\(C_c^\infty(\mathbb R)\) with \(L^2(C_{\mathbb Q}^1)\). Only its
+-component in the constant character contributes to \(V_M e^{-itD_0}f\).
+-Each coefficient is an integral
+-\(\int\overline{h_m(\tau)}f_0(\tau)e^{-it\tau}d\tau\).
+-Twice integrating by parts bounds its absolute value by
+-\(C_f(1+|t|)^{-2}\). The sum has finitely many terms, so
+-\(\int_\mathbb R\|V_Me^{-itD_0}f\|dt<\infty\).
+-Differentiating \(e^{itD_M}e^{-itD_0}f\) on this common smooth domain
+-gives \(i e^{itD_M}V_Me^{-itD_0}f\). Its integrable norm proves the
+-Cauchy property as \(t\to\pm\infty\). The approximating operators are
+-unitary. Thus the limits preserve norms on a dense subspace and extend
+-by the uniform norm bound to isometries on all of \(\mathcal K\).
+-\end{proof}
+-
+-\begin{remark}[the full scattering hypothesis]
+-\label{v4-arith:w7-j:rem:trace-class-domain}
+-A self-adjoint \(D_{\mathrm{BC}}\), complete wave operators, a
+-spectral-shift function and the asserted arithmetic trace matching
+-must be supplied for the full scattering problem. Trace class is a
+-condition on a bounded operator on a Hilbert space; convergence of a
+-subtracted distribution on Schwartz functions does not by itself
+-satisfy it. The finite construction proves existence of wave operators
+-for each \(M\); it does not prove convergence or completeness in an
+-arithmetic limit. Full modular energy is still further removed from
+-this finite-rank argument: each of its eigenprojections has infinite
+-rank. The choice of \(I\), the limiting or damped perturbation, and its
+-comparison with arithmetic phases are the first missing data.
+-\end{remark}
+-
+-\section{Scattering-Matrix Reformulation of A-TP}
+-\label{v4-arith:w7-j:reformulation}
+-
+-The scattering framework of Section~\ref{v4-arith:w7-j:framework}
+-places \(W\) in operator-theoretic form only under the trace-class
+-renormalisation hypothesis. The Birman--Krein formula then supplies a
+-spectral-shift function. A-TP is the positivity of the corresponding
+-quadratic form, not bare unitarity of \(S\).
+-
+-\subsection{Birman--Krein Spectral Shift}
+-\label{v4-arith:w7-j:reformulation:birman-krein}
+-
+-\begin{proposition}[Birman--Krein formula on \(\mathcal{K}\)]
+-\label{v4-arith:w7-j:prop:birman-krein}
+-\ClaimStatusProvedElsewhere \emph{(cite Birman--Krein 1962; Reed--Simon III XI.9.30)}.
+-Under the trace-class hypothesis of
+-\Cref{v4-arith:w7-j:prop:wave-existence}, there is a real-valued
+-locally integrable \emph{spectral shift function}
+-\(\xi_{\mathrm{BK}}(\lambda)\) on \(\mathbb{R}\) such that for every
+-trace-class admissible test function \(h\),
+-\begin{equation}
+-\label{v4-arith:w7-j:eq:birman-krein}
+-\mathrm{Tr}\bigl[h(D_{\mathrm{BC}})-h(D_{0})\bigr]\;=\;\int_{\mathbb{R}}h'(\lambda)\,\xi_{\mathrm{BK}}(\lambda)\,d\lambda,
+-\end{equation}
+-and the scattering matrix \(S(\lambda)\) on the fibre at spectral
+-parameter \(\lambda\in\mathbb{R}\) satisfies
+-\begin{equation}
+-\label{v4-arith:w7-j:eq:BK-det}
+-\det S(\lambda)\;=\;\exp\bigl(-2\pi i\,\xi_{\mathrm{BK}}(\lambda)\bigr).
+-\end{equation}
+-In particular, \(\xi_{\mathrm{BK}}(\lambda) = -\tfrac{1}{2\pi i}\log\det S(\lambda)\).
+-\end{proposition}
+-
+-\begin{proof}
+-Birman--Krein 1962 Thm.~1; Reed--Simon III Thm.~XI.9.30. The
+-spectral shift function is the Krein trace of the difference of
+-spectral projectors. No new content added.
+-\end{proof}
+-
+-\subsection{Identification of the Weil Distribution with \(\xi_{\mathrm{BK}}\)}
+-\label{v4-arith:w7-j:reformulation:identification}
+-
+-\begin{theorem}[Weil distribution as spectral shift]
+-\label{v4-arith:w7-j:thm:weil-as-shift}
+-\ClaimStatusProvedHereConditional \emph{(conditional on the trace-class
+-renormalisation of Meyer 2005 \S4.1 and the Connes cutoff regularisation
+-of Connes 1999 \S II.2)}. Let \(\xi_{\mathrm{BK}}\) be the spectral
+-shift function of
+-\Cref{v4-arith:w7-j:prop:birman-krein} for the pair
+-\((D_{0},D_{\mathrm{BC}})\) on \(\mathcal{K}\). For every
+-\(f\in\mathrm{PW}(\mathbb{R})\) (entire of exponential type, \(L^2\)
+-on \(\mathbb{R}\), with compactly supported Fourier transform
+-\(\widehat{f}\in L^{2}_{\mathrm{c}}(\mathbb{R})\)),
+-\begin{equation}
+-\label{v4-arith:w7-j:eq:weil-as-shift}
+-W(f*\widetilde{f})\;=\;\int_{\mathbb{R}}\bigl(|\widehat{f}|^{2}\bigr)'(\lambda)\,\xi_{\mathrm{BK}}(\lambda)\,d\lambda,
+-\end{equation}
+-where \(W\) is the Weil distribution of
+-\eqref{v4-arith:w5-a:eq:weil-explicit}. Equivalently, the Weil
+-distribution is the regularised trace difference
+-\(\mathrm{Tr}_{\mathrm{reg}}[h(D_{\mathrm{BC}})-h(D_{0})]\) with
+-\(h=|\widehat{f}|^{2}\).
+-\end{theorem}
+-
+-\begin{proof}
+-By Meyer 2005 Thm.~4.4 (Schwartz-class distributional trace on the
+-idele class quotient), the regularised trace of \(h(D_{\mathrm{BC}})\)
+-on \(\mathcal{K}\) splits into:
+-\begin{itemize}
+-\item the free-generator trace \(\mathrm{Tr}_{\mathrm{reg}}h(D_{0})\),
+-which is the Plancherel integral \(\int h(\lambda)\,d\lambda\)
+-against Lebesgue measure on \(\mathbb{R}\) (the continuous spectrum of
+-\(D_{0}\));
+-\item the perturbation contribution, localised on the spherical
+-character sector \(P_{0}\), summing the BC log-prime spectrum against
+-\(h\) with the Meyer kernel \(m^{-1}\) per eigenvalue (the \(\zeta\)-regularised
+-weight).
+-\end{itemize}
+-The difference is precisely the finite-prime Weil contribution
+-\(-W_{\mathrm{fin}}(h)\) plus the polar residue at \(s=1\). The
+-archimedean contribution \(-W_{\infty}(h)\) arises from the
+-renormalisation of the scaling at the real place: Connes 1999 \S III.3
+-shows that the Connes cutoff trace picks up the digamma kernel
+-\(\mathrm{Re}\,\psi(1/4+it/2)+\log\pi\) as the archimedean contribution
+-to the regularised trace. Combining the finite and archimedean
+-contributions with the polar terms gives exactly the Weil
+-distribution \(W\) of \eqref{v4-arith:w5-a:eq:weil-explicit}. Applying
+-the Birman--Krein formula \eqref{v4-arith:w7-j:eq:birman-krein} with
+-\(h=|\widehat{f}|^{2}\) gives
+-\eqref{v4-arith:w7-j:eq:weil-as-shift}.
+-\end{proof}
+-
+-\begin{remark}[what the identification buys]
+-\label{v4-arith:w7-j:rem:identification-buys}
+-\Cref{v4-arith:w7-j:thm:weil-as-shift} is the scattering-theoretic
+-analog of \Cref{v4-arith:w5-b:prop:weil-trace}: where the latter
+-requires a twist-existence hypothesis to identify
+-\(\mathrm{Tr}_{\mathrm{reg}}h(H_{\mathrm{HP}})\) with the zero-side of
+-the Weil formula, the former identifies the regularised trace of the
+-\emph{existing} self-adjoint operator \(D_{\mathrm{BC}}-D_{0}\) with
+-the full Weil distribution \(W\). The trade-off: the twist construction
+-would give the zero-side
+-\(\sum_{\rho}h(z_{\rho})\), \(z_{\rho}=-i(\rho-\tfrac12)\), directly;
+-the scattering construction gives \(W\), which by the Weil explicit
+-formula equals this zero-side functional. Replacing \(z_{\rho}\) by
+-the real ordinate \(\gamma_{\rho}\) is the RH-level step. The
+-decisive shift is
+-that the positivity of \(W\) on \(|\widehat{f}|^{2}\)-tests becomes the
+-unitarity of \(S\).
+-\end{remark}
+-
+-\subsection{A-TP as Unitarity of \(S\)}
+-\label{v4-arith:w7-j:reformulation:ATP-unitarity}
+-
+-\begin{theorem}[A-TP as spectral-shift positivity]
+-\label{v4-arith:w7-j:thm:ATP-iff-S-unitary}
+-\ClaimStatusProvedHereConditional \emph{(conditional on the trace-class
+-renormalisation of \Cref{v4-arith:w7-j:rem:trace-class-domain})}. The
+-following are equivalent.
+-\begin{enumerate}
+-\item The archimedean Tate positivity conjecture A-TP
+-(\Cref{v4-arith:w5-a:conj:archimedean-tate-positivity}) holds for
+-every \(f\in\mathrm{PW}(\mathbb{R})\).
+-\item For every \(f\in\mathrm{PW}(\mathbb{R})\),
+-\[
+-\int_{\mathbb{R}}\bigl(|\widehat f|^{2}\bigr)'(\lambda)
+-\xi_{\mathrm{BK}}(\lambda)\,d\lambda\geq0 .
+-\]
+-\item The signed spectral-shift distribution \(-d\xi_{\mathrm{BK}}\) is
+-non-negative on the Paley--Wiener convolution cone.
+-\item The Riemann Hypothesis.
+-\end{enumerate}
+-If the scattering matrix is unitary and the spectral-shift measure is
+-monotone, then the same condition may be expressed in scattering
+-language. Unitarity alone is not equivalent to A-TP.
+-\end{theorem}
+-
+-\begin{proof}
+-\((4)\Leftrightarrow(1)\): \Cref{v4-arith:w5-a:thm:ATP-equals-weil-positivity}.
+-
+-\((1)\Leftrightarrow(2)\): use
+-\Cref{v4-arith:w7-j:thm:weil-as-shift}. The displayed integral is
+-exactly \(W(f*\widetilde f)\).
+-
+-\((2)\Leftrightarrow(3)\): integration by parts gives, in the
+-distributional sense,
+-\[
+-W(f*\widetilde{f})\;=\;-\int|\widehat{f}(\lambda)|^{2}\,d\xi_{\mathrm{BK}}(\lambda)
+-\]
+-for Paley--Wiener convolution tests. Positivity for all such tests is
+-precisely non-negativity of \(-d\xi_{\mathrm{BK}}\) on that cone.
+-\end{proof}
+-
+-\begin{remark}[honest caveat on the last implication]
+-\label{v4-arith:w7-j:rem:honest-caveat}
+-The determinant relation \(\det S(\lambda)=\exp(-2\pi
+-i\xi_{\mathrm{BK}}(\lambda))\) records a phase. It does not force
+-\(-d\xi_{\mathrm{BK}}\ge0\). The missing monotonicity is exactly the
+-positivity of \(-d\xi_{\mathrm{BK}}\) required by A-TP in the scattering
+-language.
+-\end{remark}
+-
+-\section{Tate-Mellin Phase Calculation on the Sub-Class}
+-\label{v4-arith:w7-j:tate-mellin-closure}
+-
+-The spectral-shift reformulation of
+-\Cref{v4-arith:w7-j:thm:ATP-iff-S-unitary} is conditional. A
+-zero-adapted sub-class exists on which the Tate functional equation
+-computes a unitary phase. This phase calculation does not by itself
+-prove \(W(f*\widetilde f)\ge0\).
+-
+-\subsection{The Tate-Mellin Sub-Class}
+-\label{v4-arith:w7-j:sub-class}
+-
+-\begin{definition}[Tate-Mellin sub-class]
+-\label{v4-arith:w7-j:def:TM-subclass}
+-\ClaimStatusDefinitional. Write \(\xi_{\mathbb{R}}\) for the completed
+-Riemann xi-function \(\xi_{\mathbb{R}}(s):=\tfrac{1}{2}s(s-1)\pi^{-s/2}
+-\Gamma(s/2)\zeta(s)\), which satisfies the functional equation
+-\(\xi_{\mathbb{R}}(s)=\xi_{\mathbb{R}}(1-s)\) and vanishes exactly at
+-the non-trivial zeros of \(\zeta\). For \(f\in\mathrm{PW}(\mathbb{R})\),
+-write \(\mathcal{M}[f](s):=\int_{0}^{\infty}f(t)t^{s-1}\,dt\) for its
+-Mellin transform. Let
+-\(\mathrm{PW}^{\mathrm{TM}}\subset\mathrm{PW}(\mathbb{R})\) denote the
+-subspace of \(f\in\mathrm{PW}(\mathbb{R})\) satisfying:
+-\begin{itemize}
+-\item[(T1)] \(f\) is real-valued and even: \(\widetilde{f}=f\) (where
+-\(\widetilde{f}(t):=\overline{f(-t)}\) is the involute);
+-\item[(T2)] the Mellin transform \(\mathcal{M}[f](s)\) admits a
+-factorisation
+-\(\mathcal{M}[f](s)=\xi_{\mathbb{R}}(s)\cdot h(s)\) with \(h\) entire
+-of exponential type and rapid decay on vertical strips;
+-\item[(T3)] \(h\) satisfies the Hermite-type symmetry
+-\(h(s)=\overline{h(1-\overline{s})}\).
+-\end{itemize}
+-\end{definition}
+-
+-\begin{remark}[why (T2) is a restriction, not a vacuous hypothesis]
+-\label{v4-arith:w7-j:rem:T2-restriction}
+-Condition (T2) forces \(\mathcal{M}[f](s)\) to vanish at the
+-trivial zeros of \(\zeta\) (i.e.\ at \(s=-2,-4,-6,\ldots\)) and at the
+-non-trivial zeros of \(\zeta\) on the critical line. The latter is a
+-non-trivial restriction: typical \(f\in\mathrm{PW}(\mathbb{R})\) have
+-\(\mathcal{M}[f]\) with generic zero set, not aligned with the
+-non-trivial zeros. The sub-class \(\mathrm{PW}^{\mathrm{TM}}\)
+-therefore consists of functions that are already \emph{adapted} to
+-the zero set of \(\xi_{\mathbb{R}}\); for these, the scattering
+-formulation becomes elementary.
+-\end{remark}
+-
+-\subsection{Classical Mellin-Unitary on \(\mathrm{PW}^{\mathrm{TM}}\)}
+-\label{v4-arith:w7-j:classical-mellin}
+-
+-\begin{proposition}[Tate-Mellin \(S\)-matrix is classical]
+-\label{v4-arith:w7-j:prop:TM-S-classical}
+-\ClaimStatusProvedHereConditional. Fix \(f\in\mathrm{PW}^{\mathrm{TM}}\) with
+-Tate factorisation
+-\(\mathcal{M}[f](s)=\xi_{\mathbb{R}}(s)\cdot h(s)\). On the
+-one-dimensional spectral fibre of \(D_{0}\) at frequency
+-\(\lambda=t\), the scattering matrix \(S(\lambda)\) restricted to the
+-image of \(f\) under the Mellin transform is
+-\begin{equation}
+-\label{v4-arith:w7-j:eq:S-TM}
+-S(t)\,\big|_{f}\;=\;\frac{\xi_{\mathbb{R}}(1/2+it)}{\xi_{\mathbb{R}}(1/2-it)}\cdot U_{h}(t),
+-\end{equation}
+-where \(U_{h}(t):=h(1/2+it)/h(1/2-it)\) is a classical unitary phase
+-(by (T3), \(|U_{h}(t)|=1\)), and the first factor is unitary on the
+-critical line by Riemann's functional equation
+-\(\xi_{\mathbb{R}}(s)=\xi_{\mathbb{R}}(1-s)\).
+-\end{proposition}
+-
+-\begin{proof}
+-Tate 1950 local functional equations at all places (archimedean
+-digamma factor at \(\infty\), Euler local factors at each \(p\)) combine
+-to give a single global functional equation for \(\xi_{\mathbb{R}}\)
+-which, on the critical line, becomes the statement
+-\(\xi_{\mathbb{R}}(1/2+it)=\xi_{\mathbb{R}}(1/2-it)\), so the quotient
+-in \eqref{v4-arith:w7-j:eq:S-TM} has modulus \(1\) fibrewise. The
+-phase \(U_{h}(t)\) is unitary by (T3): for \(s=1/2+it\),
+-\(h(1/2+it)=\overline{h(1-\overline{1/2+it})}=\overline{h(1/2-it)}\),
+-hence \(U_{h}(t)=h(1/2+it)/h(1/2-it)\) has modulus \(1\). The scattering
+-matrix is the product, a unitary phase.
+-
+-The identification of this classical phase with the abstract
+-\(S\)-matrix of \Cref{v4-arith:w7-j:def:wave-operators} is by the
+-Meyer 2005 Schwartz-class distribution trace: on the sub-class
+-\(\mathrm{PW}^{\mathrm{TM}}\), the BC-perturbed scaling generator
+-\(D_{\mathrm{BC}}\) acts on the Mellin-transformed vector as
+-multiplication by \(\tau + \tfrac{1}{2}\arg\xi_{\mathbb{R}}(1/2+i\tau)\)
+-(the Mellin image of the perturbation is the logarithmic phase of
+-the Tate xi-factor; since \(\xi_{\mathbb{R}}\) is real on the critical
+-line, this phase is the jump of the real completed factor across its
+-zeros),
+-and the scattering theory becomes a one-dimensional phase-shift
+-computation (Reed--Simon III XI.3).
+-\end{proof}
+-
+-\begin{theorem}[Tate-Mellin phase unitarity]
+-\label{v4-arith:w7-j:thm:ATP-TM-closure}
+-\ClaimStatusProvedHereConditional \emph{(domain-restricted to
+-\(\mathrm{PW}^{\mathrm{TM}}\))}. For every
+-\(f\in\mathrm{PW}^{\mathrm{TM}}\), the Tate-Mellin phase
+-\(S(t)|_{f}\) has modulus one on the critical line. This is a
+-unitarity statement for the phase, not a proof of
+-\(W(f*\widetilde{f})\geq0\). Weil positivity follows only after the
+-spectral-shift positivity condition of
+-\Cref{v4-arith:w7-j:thm:ATP-iff-S-unitary}.
+-\end{theorem}
+-
+-\begin{proof}
+-By \Cref{v4-arith:w7-j:prop:TM-S-classical}, \(S(t)|_{f}\) is a unitary
+-phase on the spectral fibre. The final sentence is
+-\Cref{v4-arith:w7-j:rem:honest-caveat}: phase unitarity does not
+-imply monotonicity of \(d\xi_{\mathrm{BK}}\).
+-\end{proof}
+-
+-\begin{remark}[density of \(\mathrm{PW}^{\mathrm{TM}}\)]
+-\label{v4-arith:w7-j:rem:TM-density}
+-The Tate-Mellin sub-class \(\mathrm{PW}^{\mathrm{TM}}\) is not dense
+-in \(\mathrm{PW}(\mathbb{R})\) in the \(L^2\)-topology: condition (T2)
+-forces \(\mathcal{M}[f]\) to vanish at the non-trivial zeros of
+-\(\zeta\), a set of measure zero, so the sub-class is not a dense
+-subspace. Generic \(f\in\mathrm{PW}(\mathbb{R})\) has
+-\(\mathcal{M}[f]\) with generic zero set, hence \(f\notin
+-\mathrm{PW}^{\mathrm{TM}}\). The sub-class gives a phase calculation
+-for functions adapted to the zero set of \(\xi_{\mathbb{R}}\);
+-constructing such an \(f\) does require knowledge of those zeros, so
+-the sub-class theorem does not provide an independent proof of the
+-zero location.
+-Non-emptiness of a Paley--Wiener subspace satisfying all three
+-conditions is a separate analytic constraint. It is not supplied by
+-formal divisibility by \(\xi_{\mathbb R}\).
+-\end{remark}
+-
+-\section{Non-Commutative-Geometric Residual Located Precisely}
+-\label{v4-arith:w7-j:nc-residual}
+-
+-The Tate-Mellin phase calculation relies on a classical
+-functional-equation argument that does not extend to generic
+-\(\mathrm{PW}(\mathbb{R})\). The obstacle is precisely the content
+-Connes 1999 \S IV.3 identifies as the \emph{absorption-trace
+-property} of the adele-class-space dynamics.
+-
+-\subsection{Where the Connes Reduction Enters}
+-\label{v4-arith:w7-j:connes-reduction}
+-
+-\begin{definition}[Connes adele-class space]
+-\label{v4-arith:w7-j:def:connes-ac-space}
+-\ClaimStatusDefinitional \emph{(following Connes 1999 \S IV.1)}. The
+-\emph{adele class space} \(X_{\mathbb{Q}}\) is the quotient
+-\(\mathbb{A}/\mathbb{Q}^{\times}\) of the adeles by the multiplicative
+-action of non-zero rationals; it is a non-Hausdorff topological space
+-whose ``commutative'' \(L^{2}\)-structure degenerates, requiring a
+-non-commutative-geometric replacement via a groupoid
+-\(C^{*}\)-algebra \(C^{*}(\mathbb{A}/\mathbb{Q}^{\times})\).
+-\end{definition}
+-
+-\begin{proposition}[Connes absorption trace]
+-\label{v4-arith:w7-j:prop:connes-absorption}
+-\ClaimStatusProvedElsewhere \emph{(cite Connes 1999 Thm.~1)}. On the
+-adele class space, the scaling generator has absorption trace equal to
+-the zero distribution of \(\zeta\); after zero-placement the trace is
+-supported at the imaginary parts of the non-trivial zeros. The
+-Hilbert-space realisation requires the
+-non-commutative-geometric \(L^{2}\)-structure on
+-\(C^{*}(\mathbb{A}/\mathbb{Q}^{\times})\), not the classical
+-\(L^{2}(C_{\mathbb{Q}})\) of \Cref{v4-arith:w7-j:def:H-idele}.
+-\end{proposition}
+-
+-\begin{theorem}[obstruction located]
+-\label{v4-arith:w7-j:thm:obstruction-located}
+-\ClaimStatusProvedHereConditional. The scattering formulation of A-TP
+-(\Cref{v4-arith:w7-j:thm:ATP-iff-S-unitary}) reduces the conjecture to
+-positivity of the spectral-shift measure attached to the renormalised
+-pair \((D_{0},D_{\mathrm{BC}})\). On the Tate-Mellin sub-class
+-\(\mathrm{PW}^{\mathrm{TM}}\), the phase is elementary
+-(\Cref{v4-arith:w7-j:thm:ATP-TM-closure}), but this does not prove
+-Weil positivity. Extension to the full Paley--Wiener class
+-\(\mathrm{PW}(\mathbb{R})\) requires the Connes absorption-trace
+-property
+-(\Cref{v4-arith:w7-j:prop:connes-absorption}), which in turn
+-requires passage from the classical \(L^{2}(C_{\mathbb{Q}})\) to the
+-non-commutative-geometric \(L^{2}(X_{\mathbb{Q}})\) via
+-\(C^{*}(\mathbb{A}/\mathbb{Q}^{\times})\). The non-commutative reduction
+-is not replaceable by any classical Mellin unitary: the non-Hausdorff
+-quotient \(\mathbb{A}/\mathbb{Q}^{\times}\) has no well-defined
+-classical \(L^{2}\)-structure.
+-\end{theorem}
+-
+-\begin{proof}
+-The Tate-Mellin phase calculation
+-(\Cref{v4-arith:w7-j:thm:ATP-TM-closure}) uses the factorisation
+-\(\mathcal{M}[f]=\xi_{\mathbb{R}}\cdot h\) to force alignment with
+-non-trivial zeros. Absent this alignment (generic
+-\(f\in\mathrm{PW}(\mathbb{R})\)), the scattering fibre \(S(t)|_{f}\) is
+-not a single classical phase but a sum of phase contributions from
+-each non-trivial zero weighted by the residue of \(\log\mathcal{M}[f]\)
+-at that zero; the sum is not a priori a unitary on the classical
+-\(L^{2}(C_{\mathbb{Q}})\) spectral fibre, because
+-\(\mathcal{M}[f](1/2+it)\) and \(\mathcal{M}[f](1/2-it)\) need not
+-agree in modulus when \(f\notin\mathrm{PW}^{\mathrm{TM}}\).
+-
+-Connes 1999 Thm.~1 supplies the non-commutative Hilbert-space
+-framework in which the absorption trace is defined. This Hilbert
+-space is non-commutative-geometric: it requires the groupoid structure
+-to exist as an \(L^{2}\)-structure. The passage from classical
+-\(L^{2}(C_{\mathbb{Q}})\) to \(L^{2}(X_{\mathbb{Q}})\) is an additional
+-input, not a consequence of the Tate-Mellin phase calculation.
+-
+-Hence the residual A-TP on
+-\(\mathrm{PW}(\mathbb{R})\setminus\mathrm{PW}^{\mathrm{TM}}\) requires
+-the non-commutative-geometric input together with spectral-shift
+-positivity. Absent that input, the scattering formulation gives only
+-the conditional model above.
+-\end{proof}
+-
+-\subsection{Comparison with the Bounded-Interval Reduction}
+-\label{v4-arith:w7-j:comparison}
+-
+-\begin{remark}[three orthogonal reductions of A-TP]
+-\label{v4-arith:w7-j:rem:three-reductions}
+-A-TP admits three reductions with independent sources in the arithmetic
+-formalism.
+-\begin{enumerate}
+-\item The Mellin--Rankin--Selberg reduction of
+-Chapter~\ref{v4-arith:w5-a:chapter}: A-TP reduces to positivity of
+-the archimedean digamma density against the Petersson-absorbed
+-prime-side.
+-\item The elementary-digamma reduction of
+-Chapter~\ref{v4-arith:w6-a:ATP-direct-obstruction}: A-TP reduces to
+-\(B[f]\leq A[f]+2\pi R[f]\), with the high-frequency archimedean tail
+-controlled by the compact core and the residual.
+-\item The adelic-scattering reduction: A-TP
+-reduces conditionally to positivity of the spectral-shift measure for
+-\((D_{0},D_{\mathrm{BC}})\), with the non-commutative extension to
+-\(L^{2}(X_{\mathbb{Q}})\) as part of the residual input.
+-\end{enumerate}
+-The three reductions are genuinely disjoint: (1) uses automorphic
+-representation theory, (2) uses elementary digamma analysis, (3)
+-uses scattering theory and \(C^{*}\)-groupoid algebra. Each identifies
+-the residual in its own language. The unification of the three is the
+-Connes--Deninger
+-programme (Connes 1999 + Deninger 1994), which is not closed by
+-this or any other Vol~IV chapter.
+-\end{remark}
+-
+-\section{Equivalence Theorem and Mathematical Form of Each Component}
+-\label{v4-arith:w7-j:form}
+-
+-\begin{center}
+-\small
+-\begin{tabular}{p{0.45\textwidth}|p{0.2\textwidth}|p{0.3\textwidth}}
+-Component & Form & Reference \\
+-\hline
+-Wave operators for finite-rank truncations & Proved; adelic limit conditional & \Cref{v4-arith:w7-j:prop:wave-existence} \\
+-Trace-class renormalisation & Hypothesis & \Cref{v4-arith:w7-j:rem:trace-class-domain} \\
+-Birman--Krein identification of spectral shift with Weil distribution & Conditional & \Cref{v4-arith:w7-j:thm:weil-as-shift} \\
+-A-TP as spectral-shift positivity & Conditional; equivalent to RH & \Cref{v4-arith:w7-j:thm:ATP-iff-S-unitary} \\
+-Tate-Mellin phase on \(\mathrm{PW}^{\mathrm{TM}}\) & Proved conditionally; no A-TP closure & \Cref{v4-arith:w7-j:thm:ATP-TM-closure} \\
+-A-TP on full \(\mathrm{PW}(\mathbb{R})\) & Open (=RH) & \Cref{v4-arith:w7-j:thm:obstruction-located} \\
+-Extension via Connes absorption trace & Requires NC-geometric input & \Cref{v4-arith:w7-j:prop:connes-absorption} \\
+-Three disjoint reductions of A-TP in Vol~IV & Listed & \Cref{v4-arith:w7-j:rem:three-reductions}
+-\end{tabular}
+-\end{center}
+-
+-\begin{theorem}[adelic scattering reduction]
+-\label{v4-arith:w7-j:thm:summary}
+-\ClaimStatusProvedHereConditional{} (items conditional on the
+-Meyer--Connes trace-class renormalisation of
+-Remark~\ref{v4-arith:w7-j:rem:trace-class-domain}). The
+-adelic-scattering reformulation of A-TP yields the following.
+-\begin{enumerate}
+-\item \emph{Equivalence}: A-TP is equivalent to positivity of the
+-spectral-shift measure of the renormalised Bost--Connes scattering
+-pair on \(\mathcal{K}=L^{2}(C_{\mathbb{Q}})\)
+-(\Cref{v4-arith:w7-j:thm:ATP-iff-S-unitary}).
+-\item \emph{Phase calculation}: the Tate-Mellin sub-class
+-\(\mathrm{PW}^{\mathrm{TM}}\) gives a unitary phase
+-(\Cref{v4-arith:w7-j:thm:ATP-TM-closure}), not an unconditional A-TP
+-closure.
+-\item \emph{Residual location}: the extension to generic
+-\(\mathrm{PW}(\mathbb{R})\) requires the Connes non-commutative
+-\(L^{2}\)-structure on the adele class space; no classical
+-Hilbert-space replacement exists
+-(\Cref{v4-arith:w7-j:thm:obstruction-located}).
+-\end{enumerate}
+-The scattering obstruction does not prove A-TP. It reduces A-TP to
+-spectral-shift positivity for a conditional scattering pair. The
+-extension to the full class requires the Connes non-commutative
+-construction and the RH-equivalent positivity input.
+-\end{theorem}
+-
+-\begin{proof}
+-Assemble \Cref{v4-arith:w7-j:thm:ATP-iff-S-unitary},
+-\Cref{v4-arith:w7-j:thm:ATP-TM-closure},
+-\Cref{v4-arith:w7-j:thm:obstruction-located}.
+-\end{proof}
+-
+-\begin{remark}[Beilinson-principled closure]
+-\label{v4-arith:w7-j:rem:beilinson}
+-The conditional scattering pair gives a scattering-theoretic
+-reformulation of A-TP and isolates the missing input. It does not close
+-A-TP. It identifies A-TP with positivity of a spectral-shift measure,
+-disjoint from the Mellin--Rankin--Selberg and elementary-digamma
+-reductions. The three reductions, read together, pin A-TP to a single
+-open problem: realising the zero distribution of
+-\(\zeta\) as an absorption trace with the required positive trace
+-formula, a Connes-type input that remains open.
+-\end{remark}
++An arithmetic scattering comparison would specify self-adjoint
++operators $A_0,A_1$ on a common Hilbert space and a trace map on
++$\mathscr P$. If it uses an ordinary difference trace, it must prove
++$h(A_1)-h(A_0)\in\mathcal S_1$ for every $h\in\mathscr P$ and
++\[
++ \operatorname{Tr}(h(A_1)-h(A_0))
++ =P(f)-W_\infty(f)-W_{\mathrm{fin}}(f),\qquad h=\mathcal F_+f.
++\]
++If it uses a regularized or virtual trace, that functional and its
++continuity must instead be constructed on the stated carrier.
++The ordinary one-sided occupation model above fails the comparison
++by a proved support obstruction. Scattering unitarity supplies
++neither the missing trace identity nor positivity of its square class.

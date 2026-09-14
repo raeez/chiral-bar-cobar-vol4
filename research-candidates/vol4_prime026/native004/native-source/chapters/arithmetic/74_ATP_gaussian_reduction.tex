@@ -1,0 +1,166 @@
+\chapter{Gaussian Tests for the Signed Gamma Form}
+\label{v4-arith:w7-d:chapter}
+
+A Gaussian decays fast enough for every term of the explicit formula,
+although it is not compactly supported. This extension requires
+exponential control in the logarithmic variable. Ordinary Schwartz
+continuity cannot control the uncentered critical prime measure.
+
+\section{An exponential test space}
+\begin{definition}[rapid exponential decay]
+Let $\mathscr G$ consist of all smooth functions $f$ such that
+\[
+ p_{a,N,j}(f)=\sup_{t\in\mathbb R}
+ e^{a|t|}(1+|t|)^N|f^{(j)}(t)|<\infty
+ \quad(a,N,j\in\mathbb N).
+\]
+Give $\mathscr G$ the topology of these seminorms. Use
+$h_f(z)=\int f(t)e^{izt}dt$ and $f^*(t)=\overline{f(-t)}$.
+\end{definition}
+
+\begin{proposition}[extension of the explicit formula]
+\label{v4-arith:sc:gaussian-extension}
+The space $\mathscr G$ is a convolution algebra with continuous
+involution. Compact smooth functions are dense in $\mathscr G$.
+The explicit formula, its signed pairing, and both polar moments
+extend continuously to $\mathscr G$.
+In particular, for $f,g\in\mathscr G$,
+\[
+ W(f*g^*)=\sum_\rho h_f(z_\rho)\overline{h_g(\bar z_\rho)}
+ =P(f*g^*)-W_\infty(f*g^*)-W_{\mathrm{fin}}(f*g^*).
+\]
+The zero and prime sums are absolutely convergent. Positivity on
+all squares in $\mathscr G$ is equivalent to positivity on all
+squares in $\mathscr A$.
+\end{proposition}
+\begin{proof}
+The inequality $|t|\le|v|+|t-v|$, together with the corresponding
+polynomial weight inequality, bounds every convolution seminorm
+by a weighted supremum seminorm times a weighted integral seminorm.
+An additional exponential weight bounds that integral. This proves
+continuity of convolution. Reflection proves continuity of $*$.
+For a compact smooth cutoff $\chi=1$ near zero, put
+$f_R(t)=\chi(t/R)f(t)$. Leibniz's rule and one extra exponential
+weight give $p_{a,N,j}(f-f_R)\to0$ for every seminorm.
+
+Integration by parts gives rapid decay of $h_f$ in each fixed
+horizontal strip, continuously in these seminorms. The zero count
+then bounds the zero sum. The polar evaluations are continuous.
+The gamma density has logarithmic growth, so its integral is
+continuous. Finally, for example,
+\[
+ \sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}|f(\pm\log n)|
+ \le p_{2,0,0}(f)\sum_{n\ge2}\frac{\log n}{n^{5/2}}.
+\]
+The compact explicit formula therefore passes to the limit $f_R$.
+Convolution continuity gives the paired identity and passage of
+positivity. The reverse positivity implication uses
+$\mathscr A\subset\mathscr G$.
+\end{proof}
+
+\section{The normalized scalar integral}
+\begin{lemma}[Gaussian Fourier transform]
+For $\lambda>0$ set $f_\lambda(t)=e^{-\lambda t^2/2}$. Then
+\[
+ h_{f_\lambda}(u)=\sqrt{\frac{2\pi}{\lambda}}
+ e^{-u^2/(2\lambda)},\qquad
+ (f_\lambda*f_\lambda)(t)=\sqrt{\frac\pi\lambda}
+ e^{-\lambda t^2/4}.
+\]
+Consequently, with $k(u)=\log\pi-\Re\psi_\Gamma(1/4+iu/2)$,
+\[
+ W_\infty(f_\lambda*f_\lambda)
+ =\sqrt{\frac\pi\lambda}\,H(\lambda),\qquad
+ H(\lambda)=\frac1{\sqrt{\pi\lambda}}
+             \int e^{-u^2/\lambda}k(u)du.
+\]
+\end{lemma}
+\begin{proof}
+Completing the square gives both Gaussian integrals.
+Insert $|h_{f_\lambda}|^2=(2\pi/\lambda)e^{-u^2/\lambda}$
+in the gamma pairing with its coefficient $1/(2\pi)$.
+\end{proof}
+
+\begin{theorem}[convergent error-function series]
+\label{v4-arith:sc:erfc}
+Let $c_n=n+1/4$ and
+$\operatorname{erfc}(x)=\frac2{\sqrt\pi}\int_x^\infty e^{-v^2}dv$.
+For every $\lambda>0$,
+\[
+ H(\lambda)=k(0)-\sum_{n=0}^\infty
+ \left[\frac1{c_n}-\frac{2\sqrt\pi}{\sqrt\lambda}
+ e^{4c_n^2/\lambda}\operatorname{erfc}(2c_n/\sqrt\lambda)\right].
+\]
+Each bracket is nonnegative and at most $\lambda/(8c_n^3)$.
+The series converges uniformly on compact $\lambda$-intervals.
+\end{theorem}
+\begin{proof}
+The digamma series gives
+$k(0)-k(u)=\sum_n (u^2/4)/(c_n(c_n^2+u^2/4))$.
+Tonelli's theorem exchanges this nonnegative sum and the Gaussian
+integral. For $a>0$,
+\[
+ \int_{\mathbb R}\frac{e^{-u^2/\lambda}}{u^2+a^2}du
+ =\sqrt\pi\int_0^\infty\frac{e^{-a^2r}}{\sqrt{r+1/\lambda}}dr
+ =\frac\pi a e^{a^2/\lambda}\operatorname{erfc}(a/\sqrt\lambda).
+\]
+The first equality follows by integrating
+$\int_0^\infty e^{-r(u^2+a^2)}dr$ in either order.
+The substitution $v=a\sqrt{r+1/\lambda}$ gives the second.
+Set $a=2c_n$ and use
+$\int e^{-u^2/\lambda}u^2du=\sqrt\pi\lambda^{3/2}/2$.
+The estimate on each bracket follows by replacing
+$c_n^2+u^2/4$ by $c_n^2$. It proves uniform convergence.
+\end{proof}
+
+\begin{theorem}[the exact Gaussian sign range]
+\label{v4-arith:w7-d:thm:gauss-ATP}
+The continuous function $H$ is strictly decreasing on $(0,\infty)$,
+with limits $k(0)>0$ at zero and $-\infty$ at infinity.
+There is a unique $\lambda_c>0$ with $H(\lambda_c)=0$, and
+\[
+ W_\infty(f_\lambda*f_\lambda)\ge0
+ \quad\Longleftrightarrow\quad 0<\lambda\le\lambda_c.
+\]
+\end{theorem}
+\begin{proof}
+After $u=\sqrt\lambda v$,
+$H(\lambda)=\pi^{-1/2}\int e^{-v^2}k(\sqrt\lambda v)dv$.
+Strict radial decrease of $k$ gives strict decrease of this integral.
+Logarithmic growth gives a common integrable majorant on each compact
+$\lambda$-interval and on $0<\lambda\le1$.
+Thus $H$ is continuous and tends to $k(0)$ at zero.
+For each $v\ne0$, the nonnegative quantity
+$k(0)-k(\sqrt\lambda v)$ increases to infinity.
+Monotone convergence gives the limit at infinity.
+The intermediate value theorem completes the proof.
+\end{proof}
+
+\section{The arithmetic inequality on Gaussian squares}
+For these Gaussian tests the polar and prime contributions are
+\[
+ P(f_\lambda*f_\lambda)=\frac{4\pi}{\lambda}e^{1/(4\lambda)},
+ \qquad
+ W_{\mathrm{fin}}(f_\lambda*f_\lambda)
+ =2\sqrt{\frac\pi\lambda}\sum_{n\ge2}
+   \frac{\Lambda(n)}{\sqrt n}e^{-\lambda(\log n)^2/4}.
+\]
+These expressions converge for every $\lambda>0$ and give the
+complete value of $W(f_\lambda*f_\lambda)$ after subtracting the
+prime and gamma terms from the polar term.
+The gamma sign theorem alone does not determine that value.
+
+\begin{proposition}[a single Gaussian parameter does not test a quadratic form]
+For a Hermitian form, nonnegative values on a spanning collection
+of vectors do not imply nonnegative values on its linear span.
+In particular, Gaussian cross terms require their own comparison.
+\end{proposition}
+\begin{proof}
+The Hermitian matrix
+$\left(\begin{smallmatrix}1&2\\2&1\end{smallmatrix}\right)$
+is positive on each coordinate vector but has value $-2$ on $(1,-1)$.
+More generally, $q(f+g,f+g)=q(f,f)+q(g,g)+2\Re q(f,g)$.
+The signed arithmetic representation determines these cross terms
+on $\mathscr G$, but positivity of individual Gaussian squares
+does not bound them.
+\end{proof}

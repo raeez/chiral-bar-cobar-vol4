@@ -1,0 +1,924 @@
+\chapter{BZN\(^{\mathrm{Ar}}\): Formal Noetherian
+Hochschild and Derived Structure on Emerton--Gee}
+\label{v4-arith:bzn-sub}
+
+\emph{The arithmetic Ben-Zvi--Nadler comparison factors through four
+independent inputs. The finite-type theorem of Gaitsgory--Rozenblyum
+applies to smooth finite-type derived stacks. The Emerton--Gee
+spectral object is instead a formal Selmer deformation stack, and the
+formal comparison requires a categorical Hochschild-colimit hypothesis,
+an arithmetic loop-space hypothesis, and a flat-singular-support
+hypothesis. The inertia shadow does not contain the full
+Weil/\((\varphi,\Gamma)\) datum, and the primes \(2\) and \(3\) carry
+non-semisimple Hecke summands.}
+
+\section{Formal Boundary of the Comparison}
+\label{v4-arith:bzn-sub:context}
+
+\subsection{Structural Inputs}
+
+Chapter~\ref{v4-arith:arith-bzn} isolates the desired arithmetic
+Hochschild trace equivalence
+\begin{equation}
+\label{v4-arith:bzn-sub:eq:F3-statement}
+\mathrm{HH}_{\bullet}\bigl(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},\mathrm{glob}}\bigr)
+\;\simeq\;
+\mathcal{O}\bigl(\mathrm{LocSys}^{W,\varphi\Gamma}_{GL_{2}}\bigr)^{\mathrm{flat}}
+\end{equation}
+as an equivalence of \(E_{1}\)-algebras in stable presentable
+\(\infty\)-categories. The finite-type BZN theorem supplies only one
+factor of the argument. The arithmetic comparison requires the
+following additional inputs:
+\begin{description}
+\item[\textbf{R1.fin-type.}] The Gaitsgory--Rozenblyum theorem
+(AMS DAG Vol.~II Part~V Ch.~III) that
+\(\mathrm{HH}_{\bullet}(\mathrm{IndCoh}(\mathcal{X}))\simeq\mathcal{O}(L\mathcal{X})\)
+holds for smooth finite-type derived stacks \(\mathcal{X}\).
+\emph{Form: theorem} (Gaitsgory--Rozenblyum).
+The Selmer-derived stack
+\(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\)
+is formal Noetherian and not finite-type; R1.formal below is
+the required extension.
+\item[\textbf{R1.formal.}] The extension of the Gaitsgory--Rozenblyum
+theorem to formal Noetherian derived stacks. For
+\(\mathcal{X}\) a formal Noetherian derived algebraic stack and
+\(\mathcal{C}=\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X})\),
+\begin{equation}
+\mathrm{HH}_{\bullet}\bigl(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X})\bigr)
+\;\simeq\;
+\mathcal{O}\bigl(L^{\mathrm{Ar}}\mathcal{X}\bigr)^{\mathrm{flat}}.
+\end{equation}
+\emph{Form: conjectural; a genuinely open extension requiring new arguments beyond the finite-type case.}
+\item[\textbf{R2.}] The spectral target is the
+Selmer-derived global deformation stack
+\(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\), built from
+local Emerton--Gee/Weil/\((\varphi,\Gamma)\) stacks by derived
+Selmer fibre product, not by a product or colimit of local stacks.
+\emph{Form: the target and tangent complex are fixed by derived
+deformation theory; formal Noetherianity and nilpotent-support
+compatibility are hypotheses on the chosen local conditions.}
+\item[\textbf{R3.}] Comparison from the inertia shadow
+\(\mathrm{Map}(B\widehat{\mathbb{Z}},-)\) to the full
+Weil/\((\varphi,\Gamma)\) local-system target.
+\emph{Form: conjectural}; the inertia-only identification via
+\(\mathrm{Map}(B\widehat{\mathbb{Z}},-)\) constitutes a procyclic shadow of the full
+Weil/\((\varphi,\Gamma)\) target.
+\item[\textbf{R4.}] Non-semisimple summand at wild primes \(p=2,3\):
+\(\mathrm{Ext}^{1}\) contributions to
+\(\mathrm{HH}_{\bullet}(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p})\)
+invisible to semisimple templates. \emph{Form: conjectural}; carried
+by the wild Hecke category.
+\end{description}
+
+\subsection{R2 and R1.formal}
+
+The conditions R2 and R1.formal are:
+\begin{enumerate}
+\item \textbf{R2} identifies the global spectral target as the
+Selmer-derived stack. The local Emerton--Gee stacks supply local formal
+algebraic input; the global object must impose the global Galois
+relation, determinant, residual representation, and local Selmer
+conditions by derived fibre product. Derived Noetherianity of that
+fibre product is left as an open check for the chosen local conditions,
+not subsumed into a product-colimit theorem.
+\item \textbf{R1.formal} follows from three hypotheses
+(R1.formal.a, b, c). The first is a Hochschild trace theorem after
+the categorical colimit presentation of
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}\) is supplied. The second and third
+are respectively the arithmetic loop-space comparison and the
+flat-singular-support comparison.
+\end{enumerate}
+
+R1.fin-type is external. R3 is not definitional: it is the passage
+from the procyclic inertia shadow to the full
+Weil/\((\varphi,\Gamma)\) target. R4 is the non-semisimple wild-prime
+summand.
+
+\subsection{Derived Enhancement of the Emerton--Gee Stack}
+
+Emerton--Gee arXiv:1908.07185 is written in the language of
+Noetherian formal algebraic stacks in the sense of the
+Stacks Project, with the smoothness and mass-formula structure at
+the level of ordinary (non-derived) schemes. Gaitsgory--Rozenblyum
+DAG requires a derived enhancement: the cotangent complex must be
+computed as a perfect complex (or almost-perfect, in the formal
+case) in the \(\infty\)-category of quasi-coherent sheaves, and the
+ind-colimit presentation must preserve this structure at every
+stage. The translation is not automatic. It asks for
+cotangent-complex functoriality under the chosen formal presentation,
+compatibility with formal thickening, and preservation under the
+Selmer fibre product. These are hypotheses on the derived
+enhancement, not consequences of the underived mass formula alone.
+
+\subsection{Finite-Type Hypotheses in the Gaitsgory--Rozenblyum Argument}
+
+The Gaitsgory--Rozenblyum proof of
+\(\mathrm{HH}_{\bullet}(\mathrm{IndCoh}(\mathcal{X}))\simeq\mathcal{O}(L\mathcal{X})\)
+uses three ingredients that each rest on finite-type smoothness
+and require new arguments in the formal Noetherian setting:
+\begin{enumerate}
+\item Atiyah duality for \(\mathrm{IndCoh}\): the self-duality
+\(\mathrm{IndCoh}(\mathcal{X})^{\vee}\simeq\mathrm{IndCoh}(\mathcal{X})\)
+under the Atiyah pairing, which requires \(\mathcal{X}\) smooth
+finite-type.
+\item Smooth-base-change for \(\mathrm{IndCoh}\), which also uses
+finite-type.
+\item Loop-space duality: the free loop space \(L\mathcal{X}\) of a
+finite-type smooth stack is itself smooth (with dimension equal to
+\(\dim\mathcal{X}\), by the standard calculation).
+\end{enumerate}
+For formal Noetherian \(\mathcal{X}\), each ingredient requires a formal
+analogue: Atiyah duality must be extended to the formal setting (conjectural
+in general), smooth base-change must be replaced by formal-smooth
+base-change (subject of ongoing work, e.g., Mok 2025),
+and the loop space \(L\mathcal{X}\) is in general not smooth finite-type.
+
+The formal comparison therefore has the form of a criterion. Given
+the categorical colimit presentation of
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}\), Hochschild trace commutes with it;
+the loop and flat-locus comparisons remain separate geometric
+hypotheses.
+
+\section{Logical Form of the Inputs}
+\label{v4-arith:bzn-sub:table}
+
+The input structure is as follows:
+
+\begin{description}
+\item[\textbf{R2 cotangent complex.}]
+The cotangent complex of the Emerton--Gee stack is computable by
+Galois deformation theory. Mazur's deformation functor framework
+(Mazur 1989 \emph{Deforming Galois Representations}) computes the
+tangent complex at each closed \(\mathbb{F}_{p}\)-point; Lurie DAG~X
+builds this into a functorial cotangent complex on the pro-representable
+moduli stack. Emerton--Gee \S2.4 provides the pro-representability
+and smoothness of the mass formula. (See
+\Cref{v4-arith:bzn-sub:prop:EG-tangent-local}.)
+
+\item[\textbf{R2 global Galois constraint.}]
+A global Galois representation is not a product of independent local
+data: the restrictions to decomposition groups must come from a single
+global representation subject to the chosen Selmer conditions. The
+global object is the Selmer-derived fibre product
+\[
+\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}
+=
+\mathrm{Map}_{\bar\rho,\det}(G_{\mathbb{Q},S},GL_{2})
+\times^{\mathbf{R}}_{\prod_{v\in S}\mathrm{Map}(G_{\mathbb{Q}_{v}},GL_{2})}
+\prod_{v\in S}\mathcal{X}^{\mathcal{L}_{v}}_{v},
+\]
+whose tangent complex is the Selmer complex
+\(C^{\bullet}_{\mathcal{L}}(G_{\mathbb{Q},S},\mathrm{ad}\,\rho)[1]\).
+The displayed fibre product fixes the object; derived Noetherianity
+requires verification for the chosen local conditions.
+
+\item[\textbf{R2 derived enhancement.}]
+Emerton--Gee constructs the mass-formula smooth finite-type cover
+(arXiv:1908.07185 \S2.6, Thm.~B.0.1(1)): the stack is smooth and
+hence quasi-smooth. Quasi-smoothness in the Lurie DAG sense is
+preserved under formal completion (Gaitsgory--Rozenblyum DAG~Vol.~II
+Ch.~II \S3.3, formal-completion smoothness). For the Selmer fibre
+product one must still verify that the chosen local deformation
+conditions preserve formal Noetherianity, quasi-smoothness, and the
+nilpotent-support condition. The tangent complex is the Selmer
+complex; the required finiteness is an additional geometric input.
+See \Cref{v4-arith:bzn-sub:thm:R2-main}.
+
+\item[\textbf{R1.formal three inputs.}]
+The Gaitsgory--Rozenblyum theorem, ported from finite-type to formal
+Noetherian, requires three separate arguments: (i) HH-colim-continuity
+(whether \(\mathrm{HH}_{\bullet}\) commutes with the ind-colimit
+presentation of the formal stack); (ii) arithmetic loop-space formal
+computation (whether \(L^{\mathrm{Ar}}\mathcal{X}
+\simeq\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X})\) admits a workable
+formal description); (iii) flat-locus pullback (whether the
+nilpotent-singular-support-flat locus on the loop space matches
+the Emerton--Gee flat locus of \Cref{v4-arith:bzn:def:flat-locus}).
+The first is a trace theorem once the categorical colimit exists; the
+other two are geometric hypotheses.
+(See \Cref{v4-arith:bzn-sub:thm:R1-formal-reduction}.)
+
+\item[\textbf{R1.formal sub-reductions.}]
+R1.formal.a is the Hochschild trace statement for a given filtered
+colimit in the Morita \((\infty,2)\)-category.
+R1.formal.b reduces to the existence of a cotangent-complex formal
+loop-space identification (a precise statement in Lurie DAG and
+Gaitsgory--Rozenblyum Vol.~II). R1.formal.c reduces to the
+compatibility of Arinkin--Gaitsgory nilpotent singular support with
+the \((\varphi,\Gamma)\)-module Fargues--Scholze flat locus.
+(See \Cref{v4-arith:bzn-sub:thm:R1-formal-a-closes} and
+\Cref{v4-arith:bzn-sub:thm:R1-formal-bc-reduction}.)
+
+\item[\textbf{Consistency with the initial arithmetic comparison.}]
+The arithmetic comparison of \Cref{v4-arith:bzn:thm:HH-IndCoh-arith}
+uses a pro-\'etale extension of Ben-Zvi--Francis--Nadler integral
+transforms. In the present notation this is the R1.formal.b
+loop-space hypothesis together with the R1.formal.c flat-locus
+hypothesis.
+\end{description}
+
+\section{R2: The Emerton--Gee Cotangent Complex}
+\label{v4-arith:bzn-sub:R2}
+
+\subsection{Local Tangent Complex at a Closed Point}
+
+\begin{proposition}[local tangent complex of the Emerton--Gee stack]
+\label{v4-arith:bzn-sub:prop:EG-tangent-local}
+\ClaimStatusProvedHere. Let \(\overline{\rho}\in\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}(\overline{\mathbb{F}}_{p})\)
+be a closed point (= a mod-\(p\) Galois representation
+\(\overline{\rho}\colon\mathrm{Gal}(\overline{\mathbb{Q}}_{p}/\mathbb{Q}_{p})\to GL_{2}(\overline{\mathbb{F}}_{p})\)).
+The tangent complex \(T_{\overline{\rho}}\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}\)
+at \(\overline{\rho}\) is
+\begin{equation}
+T_{\overline{\rho}}\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}
+\;\simeq\;
+H^{*}_{\mathrm{cts}}\bigl(\mathrm{Gal}(\overline{\mathbb{Q}}_{p}/\mathbb{Q}_{p}),\mathrm{ad}\,\overline{\rho}\bigr)[1],
+\end{equation}
+continuous Galois cohomology of the adjoint representation, shifted
+by one.
+\end{proposition}
+
+\begin{proof}
+The Emerton--Gee stack \(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}\)
+parametrises rank-2 \((\varphi,\Gamma)\)-modules over the Fontaine
+period ring of \(\mathbb{Q}_{p}\) (Emerton--Gee arXiv:1908.07185~\S1.2).
+At a closed \(\overline{\mathbb{F}}_{p}\)-point \(\overline{\rho}\), the
+pro-representable universal deformation ring is Mazur's framed
+deformation ring \(R^{\square}_{\overline{\rho}}\) (Mazur 1989, Kisin
+Mazur 2000). The Zariski tangent space of the formal scheme
+\(\mathrm{Spf}\,R^{\square}_{\overline{\rho}}\) is
+\begin{equation}
+H^{1}_{\mathrm{cts}}\bigl(\mathrm{Gal}(\overline{\mathbb{Q}}_{p}/\mathbb{Q}_{p}),\mathrm{ad}\,\overline{\rho}\bigr),
+\end{equation}
+and the obstruction module is
+\(H^{2}_{\mathrm{cts}}(\mathrm{Gal}(\overline{\mathbb{Q}}_{p}/\mathbb{Q}_{p}),\mathrm{ad}\,\overline{\rho})\).
+
+In the Lurie DAG~X framework (Lurie \emph{Formal Moduli Problems},
+HA~App.~A.5 and DAG~X~\S1), a formal moduli functor's tangent
+complex at a point is the two-term complex
+\([H^{1}\text{ in deg.~0, }H^{2}\text{ in deg.~1}]\), which is
+\(H^{*}_{\mathrm{cts}}(\mathrm{Gal},\mathrm{ad}\,\overline{\rho})[1]\)
+up to the standard degree shift for cochains-vs-tangent.
+
+The stack-level statement is obtained by quotienting by the
+\(\mathrm{ad}\,\overline{\rho}\)-automorphisms of the universal
+deformation, which corresponds to the lowest degree
+\(H^{0}_{\mathrm{cts}}=\mathrm{ad}\,\overline{\rho}^{\,\mathrm{Gal}}\)
+being absorbed into the stack's automorphism group.
+\end{proof}
+
+\begin{remark}[perfectness and tor-amplitude]
+\label{v4-arith:bzn-sub:rem:perfect-tor}
+The continuous Galois cohomology
+\(H^{*}_{\mathrm{cts}}(\mathrm{Gal}(\overline{\mathbb{Q}}_{p}/\mathbb{Q}_{p}),\mathrm{ad}\,\overline{\rho})\)
+is concentrated in degrees \(0,1,2\) (local Galois cohomology of a
+\(p\)-adic local field is finite-dimensional, supported in
+degrees \(\leq 2\) by local duality; Serre \emph{Cohomologie Galoisienne}
+Ch.~II \S5.2). Hence \(T_{\overline{\rho}}\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}\)
+is a perfect complex of tor-amplitude \([-1,1]\), indeed of
+tor-amplitude \([-1,0]\) after removing the \(H^{0}\) factored into
+automorphisms. This is the key perfectness input for R2.
+\end{remark}
+
+\subsection{Ind-Level Cotangent Complex}
+
+\begin{proposition}[cotangent complex preserves ind-colimit]
+\label{v4-arith:bzn-sub:prop:cotangent-ind-level}
+\ClaimStatusProvedHere. Let \(\mathcal{X}=\varinjlim_{i\in I}\mathcal{X}_{i}\)
+be an ind-colimit of derived stacks with transition maps closed
+immersions in a filtered poset \(I\). Then the cotangent complex
+satisfies
+\begin{equation}
+\mathbb{L}_{\mathcal{X}}\;\simeq\;\varprojlim_{i\in I^{\mathrm{op}}}\mathbb{L}_{\mathcal{X}_{i}}|_{\mathcal{X}_{i}\to\mathcal{X}}
+\end{equation}
+as an object of \(\mathrm{IndCoh}(\mathcal{X})\), compatibly with
+the pullbacks along closed immersions.
+\end{proposition}
+
+\begin{proof}
+The cotangent complex functor \(\mathbb{L}\colon\mathrm{dSt}\to\mathrm{IndCoh}\)
+is a left adjoint (to the trivial-square-zero-extension functor, by
+Lurie HA~7.3.2.14 in the \(\infty\)-categorical setting; Illusie 1971
+\emph{Complexe cotangent et d\'eformations} Ch.~III for the
+classical analogue). Left adjoints preserve colimits; the filtered
+colimit \(\mathcal{X}=\varinjlim_{i}\mathcal{X}_{i}\) in derived stacks
+is sent to a filtered colimit in \(\mathrm{IndCoh}\), which by
+duality on \(\mathrm{IndCoh}\) (Gaitsgory--Rozenblyum Vol.~II Ch.~II
+\S3.6, Serre-duality-based duality swap) corresponds to a
+\(\mathrm{Pro}\)-limit
+\(\varprojlim_{i\in I^{\mathrm{op}}}\mathbb{L}_{\mathcal{X}_{i}}|_{\mathcal{X}_{i}\to\mathcal{X}}\)
+under the closed-immersion transitions.
+
+Compatibility with pullbacks along closed immersions is the
+base-change property of \(\mathbb{L}\) (Lurie HA~7.3.2; Illusie 1971
+Prop.~III.1.2.6.1), applied to the closed immersions
+\(\mathcal{X}_{i}\to\mathcal{X}\) indexing the ind-colimit.
+\end{proof}
+
+\begin{corollary}[cotangent complex preserves finite products]
+\label{v4-arith:bzn-sub:cor:cotangent-product}
+\ClaimStatusProvedHere. For derived stacks \(\mathcal{X},\mathcal{Y}\),
+\begin{equation}
+\mathbb{L}_{\mathcal{X}\times\mathcal{Y}}\;\simeq\;\mathbb{L}_{\mathcal{X}}\boxplus\mathbb{L}_{\mathcal{Y}},
+\end{equation}
+the external direct sum of cotangent complexes pulled back to
+\(\mathcal{X}\times\mathcal{Y}\).
+\end{corollary}
+
+\begin{proof}
+The finite product \(\mathcal{X}\times\mathcal{Y}\) in derived stacks
+is a finite limit; the cotangent complex is a left adjoint and
+sends finite limits to finite limits (= direct sums in the
+\(\infty\)-category of perfect complexes, by stability of the
+target). Lurie HA~7.3.2.4 computes the cotangent complex of a
+finite limit as a finite colimit of the individual cotangent
+complexes, which under the dual identification of direct sum with
+external-sum structure gives \(\mathbb{L}_{\mathcal{X}}\boxplus\mathbb{L}_{\mathcal{Y}}\).
+
+Alternatively, this follows directly from the universal property
+of the cotangent complex as classifying square-zero extensions:
+a square-zero extension of \(\mathcal{X}\times\mathcal{Y}\) is a
+pair of square-zero extensions of \(\mathcal{X}\) and \(\mathcal{Y}\).
+\end{proof}
+
+\subsection{R2 Main Theorem}
+
+\begin{theorem}[Selmer-derived spectral target]
+\label{v4-arith:bzn-sub:thm:R2-main}
+\ClaimStatusNeedsVerification. For fixed residual representation
+\(\bar\rho\), determinant, finite ramification set \(S\), and local
+conditions \(\mathcal{L}_{v}\), the global spectral target is
+the Selmer-derived stack
+\begin{equation}
+\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}
+=
+\mathrm{Map}_{\bar\rho,\det}(G_{\mathbb{Q},S},GL_{2})
+\times^{\mathbf{R}}_{\prod_{v\in S}\mathrm{Map}(G_{\mathbb{Q}_{v}},GL_{2})}
+\prod_{v\in S}\mathcal{X}^{\mathcal{L}_{v}}_{v}.
+\end{equation}
+At a point \(\rho\) its tangent complex is the Selmer tangent complex
+\begin{equation}
+T_{\rho}\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}
+\simeq
+C^{\bullet}_{\mathcal{L}}(G_{\mathbb{Q},S},\mathrm{ad}^{0}\rho)[1].
+\end{equation}
+The following items are the open checks that remain for
+the chosen local deformation problem:
+\begin{enumerate}
+\item Local conditions \(\mathcal{X}^{\mathcal{L}_{v}}_{v}\) are
+derived formal algebraic substacks of the full local
+Weil/\((\varphi,\Gamma)\) parameter stack.
+\item The derived fibre product is formal Noetherian/quasi-smooth in
+the Gaitsgory--Rozenblyum sense.
+\item The nilpotent-singular-support condition used in
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}\) is compatible with the Selmer
+cotangent complex.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The displayed stack is the derived fibre product defining the Selmer
+deformation functor with fixed determinant and local conditions.
+Linearising continuous Galois cochains gives the standard Selmer
+mapping cone, hence the tangent complex
+\(C^{\bullet}_{\mathcal{L}}(G_{\mathbb{Q},S},\mathrm{ad}^{0}\rho)[1]\).
+The remaining assertions are not consequences of a product/colimit
+presentation and are left as explicit checks.
+\end{proof}
+
+\begin{corollary}[the inertia shadow does not determine the full target]
+\label{v4-arith:bzn-sub:cor:R3-definitional}
+\ClaimStatusNeedsVerification. Given
+\Cref{v4-arith:bzn-sub:thm:R2-main}, R3 still requires
+the full-target comparison:
+\begin{equation}
+\mathrm{Map}\bigl(B\widehat{\mathbb{Z}},\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\bigr)
+\;\longrightarrow\;
+\mathrm{LocSys}^{\mathrm{Ar}}_{GL_{2}}\bigl(B\widehat{\mathbb{Z}}\bigr),
+\end{equation}
+as a procyclic shadow, and then a comparison with
+\(\mathrm{LocSys}^{W,\varphi\Gamma}_{GL_{2}}\).
+\end{corollary}
+
+\begin{proof}
+By \Cref{v4-arith:bzn:def:L-ar} and
+\Cref{v4-arith:bzn:cor:L-ar-BGL2-is-LocSys},
+\(\mathrm{LocSys}^{\mathrm{Ar}}_{GL_{2}}(B\widehat{\mathbb{Z}})=L^{\mathrm{Ar}}BGL_{2}=\mathrm{Map}(B\widehat{\mathbb{Z}},BGL_{2})\).
+The map from
+\(\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})\)
+is obtained only after choosing an inertia-shadow comparison morphism
+\(\iota^{\mathrm{Sel}}\colon\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\to\mathrm{LocSys}^{\mathrm{Ar}}_{GL_{2}}(B\widehat{\mathbb{Z}})\)
+(\Cref{v4-arith:bzn:prop:EG-to-LocSys}). That inertia-only morphism retains only the procyclic structure,
+discarding Frobenius and \((\varphi,\Gamma)\) data; the full comparison
+\(\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})\simeq\mathrm{LocSys}^{W,\varphi\Gamma}_{GL_{2}}\)
+requires a separate argument (R3).
+\end{proof}
+
+\subsection{Source and Convention Comparison for R2}
+\label{v4-arith:bzn-sub:R2-obstruction-analysis}
+
+\paragraph{Source independence.} The argument for R2 draws on five
+disjoint source lists: Emerton--Gee arXiv:1908.07185 (Noetherian
+formal algebraic structure); Mazur 1989 and Kisin--Mazur 2000
+(Galois deformation theory); Lurie HA / DAG~X (formal moduli problems
+and cotangent complex); Illusie 1971 (classical cotangent complex);
+Gaitsgory--Rozenblyum DAG Vol.~II Ch.~II (quasi-smoothness of derived
+formal algebraic stacks).
+
+\paragraph{Degree conventions.} Lurie HA places the cotangent complex
+in non-positive degrees for smooth schemes (tor-amplitude \([-1,0]\)
+means concentration in degrees \(-1,0\), equivalently the tangent
+complex in degrees \(0,1\)). The statement above uses the Lurie
+convention. Emerton--Gee's tangent-space computation places \(H^{1}\)
+in degree \(0\) and \(H^{2}\) in degree \(1\), matching after the
+standard shift. Illusie 1971 places the cotangent complex in
+non-positive degrees for smooth schemes, uniform with Lurie.
+
+\paragraph{Ambient category.} All objects live in derived algebraic
+stacks with pro-\'etale topology (To\"en--Vezzosi, Bhatt--Scholze,
+Gaitsgory--Rozenblyum). The cotangent complex is a left adjoint on
+this \(\infty\)-category. The \((\infty,2)\)-category of
+correspondences in which \(\mathrm{IndCoh}\) is valued
+(Gaitsgory--Rozenblyum Vol.~I Ch.~V) is the ambient category for
+both the tangent complex and the loop-space computation.
+
+\paragraph{Hypotheses.} Three hypotheses enter the formal Selmer
+target: Emerton--Gee Noetherian formal algebraic structure, Lurie
+DAG formal-moduli representability, and Gaitsgory--Rozenblyum
+formal-completion smoothness.  The derived Selmer fibre product also
+requires the local deformation conditions to preserve formal
+Noetherianity and nilpotent singular support.
+
+\paragraph{Functoriality.} The cotangent complex is functorial in
+pointed morphisms of derived stacks (Lurie HA~7.3.2, Illusie 1971
+Ch.~II); the ind-colimit and product structures are preserved
+(\Cref{v4-arith:bzn-sub:prop:cotangent-ind-level} and
+\Cref{v4-arith:bzn-sub:cor:cotangent-product}).
+
+\paragraph{Source of equivalences.} Derived deformation theory gives
+the displayed target and its tangent complex. It does not by itself
+prove the finiteness and singular-support hypotheses required by the
+formal BZN comparison.
+
+\begin{remark}[derived enhancement]
+\label{v4-arith:bzn-sub:rem:R2-novelty}
+Emerton--Gee do not explicitly formulate their stack in the
+Gaitsgory--Rozenblyum DAG language.  The tangent-complex computation
+comes from Mazur deformation theory and Lurie formal moduli.  The
+passage to the formal BZN theorem still needs the finiteness and
+singular-support hypotheses named in
+\Cref{v4-arith:bzn-sub:thm:R2-main}.
+\end{remark}
+
+\section{R1.formal: Formal Hochschild Criterion}
+\label{v4-arith:bzn-sub:R1formal-reduction}
+
+\subsection{The Three Inputs}
+
+\begin{theorem}[formal BZN criterion]
+\label{v4-arith:bzn-sub:thm:R1-formal-reduction}
+\ClaimStatusProvedHere. Let \(\mathcal{X}\) be a derived formal
+algebraic stack in the Gaitsgory--Rozenblyum sense, Noetherian,
+presented as an ind-colimit \(\mathcal{X}=\varinjlim_{i}\mathcal{X}_{i}\)
+of finite-type derived stacks under closed immersions (as in the
+Emerton--Gee structure theorem). Let
+\(\mathcal{C}(\mathcal{X})=\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X})\).
+Assume the finite-type BZN comparison on each \(\mathcal{X}_{i}\), and
+assume the three conditions below. Then
+\begin{equation}
+\label{v4-arith:bzn-sub:eq:R1-formal}
+\mathrm{HH}_{\bullet}\bigl(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X})\bigr)\;\simeq\;\mathcal{O}\bigl(L^{\mathrm{Ar}}\mathcal{X}\bigr)^{\mathrm{flat}},
+\end{equation}
+namely R1.formal, holds.
+\begin{itemize}
+\item[\textbf{(R1.formal.a)}] \emph{HH-colim continuity.} The
+Hochschild trace preserves the ind-colimit presentation of
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X})\):
+\begin{equation}
+\mathrm{HH}_{\bullet}\bigl(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X})\bigr)\;\simeq\;\varinjlim_{i}\mathrm{HH}_{\bullet}\bigl(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}_{i})\bigr),
+\end{equation}
+under the transition maps induced by closed immersions.
+\textbf{Form: theorem after the categorical colimit presentation is
+given} (trace continuity; proved in
+\Cref{v4-arith:bzn-sub:thm:R1-formal-a-closes}).
+\item[\textbf{(R1.formal.b)}] \emph{Arithmetic loop-space formal
+computation.} For a formal Noetherian derived stack \(\mathcal{X}\)
+as above, the free loop space admits a formal ind-colimit
+description
+\begin{equation}
+L^{\mathrm{Ar}}\mathcal{X}\;\simeq\;\varinjlim_{i}L^{\mathrm{Ar}}\mathcal{X}_{i}
+\end{equation}
+compatible with the closed immersions; equivalently,
+\(L^{\mathrm{Ar}}=\mathrm{Map}(B\widehat{\mathbb{Z}},-)\) commutes
+with the ind-colimit presentation.
+\textbf{Form: conjectural} (Lurie \(\infty\)-topos formalism in the
+pro-\'etale formal setting; see
+\Cref{v4-arith:bzn-sub:prop:R1-formal-b-domain}).
+\item[\textbf{(R1.formal.c)}] \emph{Flat-locus pullback
+compatibility.} The flat locus \(L^{\mathrm{Ar}}\mathcal{X}^{\mathrm{flat}}\)
+(cut out by the Arinkin--Gaitsgory nilpotent-singular-support
+condition lifted to the loop space) is compatible with the
+ind-colimit structure:
+\begin{equation}
+\mathcal{O}\bigl(L^{\mathrm{Ar}}\mathcal{X}\bigr)^{\mathrm{flat}}\;\simeq\;\varinjlim_{i}\mathcal{O}\bigl(L^{\mathrm{Ar}}\mathcal{X}_{i}\bigr)^{\mathrm{flat}},
+\end{equation}
+with the flat loci on finite-type pieces matching the
+\((\varphi,\Gamma)\)-module Fargues--Scholze flat locus of
+\Cref{v4-arith:bzn:def:flat-locus}.
+\textbf{Form: conjectural} (Arinkin--Gaitsgory singular support
+extended to this formal Selmer setting; see
+\Cref{v4-arith:bzn-sub:prop:R1-formal-c-domain}).
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+Assume (R1.formal.a), (R1.formal.b), and (R1.formal.c). By
+(R1.formal.a),
+\begin{equation}
+\mathrm{HH}_{\bullet}(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}))\;\simeq\;\varinjlim_{i}\mathrm{HH}_{\bullet}(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}_{i})).
+\end{equation}
+By the Gaitsgory--Rozenblyum theorem applied term-wise,
+\begin{equation}
+\varinjlim_{i}\mathrm{HH}_{\bullet}(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}_{i}))\;\simeq\;\varinjlim_{i}\mathcal{O}(L\mathcal{X}_{i})^{\mathrm{flat}}.
+\end{equation}
+By (R1.formal.b),
+\(\varinjlim_{i}L\mathcal{X}_{i}\simeq L^{\mathrm{Ar}}\mathcal{X}\)
+(noting \(L=L^{\mathrm{Ar}}\) on finite-type pieces via the
+reduction \(S^{1}\to B\widehat{\mathbb{Z}}\) in the pro-\'etale
+setting; this is the content of
+\Cref{v4-arith:bzn:thm:arith-fact-homology} on each finite-type
+piece). By (R1.formal.c),
+\begin{equation}
+\varinjlim_{i}\mathcal{O}(L\mathcal{X}_{i})^{\mathrm{flat}}\;\simeq\;\mathcal{O}(L^{\mathrm{Ar}}\mathcal{X})^{\mathrm{flat}}.
+\end{equation}
+Composing gives R1.formal.
+\end{proof}
+
+\subsection{R1.formal.a: HH Colimit Continuity}
+
+\begin{theorem}[Hochschild trace along a categorical colimit]
+\label{v4-arith:bzn-sub:thm:R1-formal-a-closes}
+\ClaimStatusProvedHere. Let \(\mathcal{X}=\varinjlim_{i}\mathcal{X}_{i}\)
+be a formal presentation by derived stacks under closed immersions.
+Assume that the canonical functor
+\[
+\varinjlim_i \mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}_i)
+\longrightarrow
+\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X})
+\]
+is an equivalence in the \(E_2\)-monoidal Morita
+\((\infty,2)\)-category of stable presentable categories. Then
+\begin{equation}
+\mathrm{HH}_{\bullet}\bigl(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X})\bigr)\;\simeq\;\varinjlim_{i}\mathrm{HH}_{\bullet}\bigl(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}_{i})\bigr)
+\end{equation}
+as \(E_{1}\)-algebras in stable presentable \(\infty\)-categories.
+\end{theorem}
+
+\begin{proof}
+Hochschild homology is the trace of the identity endofunctor in the
+Morita \((\infty,2)\)-category of stable presentable categories. The
+trace functor is symmetric monoidal and preserves filtered colimits of
+dualizable objects and dualizable morphisms; this is the form of
+Lurie HA~5.5.3 used here, and it is also obtained from the cyclic bar
+description of To\"en. Applying the trace to the assumed categorical
+colimit gives the displayed equivalence. The \(E_1\)-algebra structure
+is transported by Dunn additivity from the \(E_2\)-monoidal
+convolution structure.
+\end{proof}
+
+\begin{remark}[where the geometry enters]
+\label{v4-arith:bzn-sub:rem:R1-formal-a-unconditional}
+The theorem is purely categorical. It does not prove that
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X})\) is the filtered
+colimit of the categories on the finite pieces. That assertion is a
+geometric compatibility statement for formal completion, singular
+support, and the closed-immersion transition functors.
+\end{remark}
+
+\subsection{R1.formal.b: Arithmetic Loop-Space Formal Computation (Conditional)}
+
+\begin{proposition}[R1.formal.b domain]
+\label{v4-arith:bzn-sub:prop:R1-formal-b-domain}
+\ClaimStatusProvedHere. R1.formal.b reduces to:
+\begin{itemize}
+\item[\textbf{(b.1)}] The internal mapping stack
+\(\mathrm{Map}(B\widehat{\mathbb{Z}},-)\) commutes with filtered
+colimits in derived pro-\'etale stacks under closed immersions.
+\item[\textbf{(b.2)}] For a formal Noetherian derived stack
+\(\mathcal{X}\) with \(\mathcal{X}=\varinjlim_{i}\mathcal{X}_{i}\),
+the natural map
+\(\varinjlim_{i}\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X}_{i})\to\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X})\)
+is an equivalence in the pro-\'etale topology.
+\end{itemize}
+Both (b.1) and (b.2) are Conjectural.
+\end{proposition}
+
+\begin{proof}[Proof of reduction]
+R1.formal.b as stated is
+\(L^{\mathrm{Ar}}\mathcal{X}\simeq\varinjlim_{i}L^{\mathrm{Ar}}\mathcal{X}_{i}\).
+By \Cref{v4-arith:bzn:def:L-ar},
+\(L^{\mathrm{Ar}}\mathcal{X}=\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X})\).
+The ind-colimit compatibility of this mapping stack is precisely
+(b.1) (the general statement about the mapping functor) plus
+(b.2) (verification of the specific map for the ind-colimit
+presentation of \(\mathcal{X}\)). Conversely, given (b.1) and (b.2), R1.formal.b is
+immediate.
+\end{proof}
+
+\begin{remark}[compactness obstruction for \(B\widehat{\mathbb{Z}}\)]
+\label{v4-arith:bzn-sub:rem:R1-formal-b-not-automatic}
+In a general \(\infty\)-topos, \(\mathrm{Map}(M,-)\) commutes with
+filtered colimits precisely when \(M\) is compact (Lurie HTT~5.3.4.18:
+compactness means \(M\) is a retract of a finite colimit of
+compact-projective objects). The classifying stack
+\(B\widehat{\mathbb{Z}}\) is profinite and admits a pro-\'etale
+presentation \(B\widehat{\mathbb{Z}}=\varprojlim_{n}B(\mathbb{Z}/n\mathbb{Z})\).
+Each \(B(\mathbb{Z}/n\mathbb{Z})\) is compact; the pro-\'etale
+limit is a cofiltered limit of compact objects and compactness of
+the limit requires a separate argument for each class of target
+objects. Statements (b.1) and (b.2) therefore each demand an
+explicit pro-\'etale compatibility argument (Bhatt--Scholze
+arXiv:1309.1198 \S7); (b.2) further requires verification for the
+specific ind-colimit \(\mathcal{X}=\varinjlim_{i}\mathcal{X}_{i}\)
+from the formal-Noetherian structure.
+
+Chapter~\ref{v4-arith:arith-bzn}
+(\Cref{v4-arith:bzn:thm:arith-fact-homology}) implicitly assumed
+(b.1) via the framed-1-manifold presentation of
+\(B\widehat{\mathbb{Z}}\). The assumption is R1.formal.b and remains
+conjectural.
+\end{remark}
+
+\begin{remark}[size of the loop-space hypothesis]
+\label{v4-arith:bzn-sub:rem:R1-formal-b-domain-estimate}
+The hypothesis has three parts: compactness of
+\(B\widehat{\mathbb{Z}}\) against the relevant formal targets,
+commutation of \(\mathrm{Map}(B\widehat{\mathbb{Z}},-)\) with the
+chosen formal-Noetherian ind-colimits, and compatibility with
+\(\mathrm{IndCoh}\)-functoriality.  Each part is a statement in the
+pro-\'etale topology, not a formal consequence of finite-level
+compactness of \(B(\mathbb{Z}/n\mathbb{Z})\).
+\end{remark}
+
+\subsection{R1.formal.c: Flat-Locus Pullback Compatibility (Conditional)}
+
+\begin{proposition}[R1.formal.c domain]
+\label{v4-arith:bzn-sub:prop:R1-formal-c-domain}
+\ClaimStatusProvedHere. R1.formal.c reduces to:
+\begin{itemize}
+\item[\textbf{(c.1)}] \emph{Arinkin--Gaitsgory nilpotent singular
+support extends to derived formal algebraic stacks.} The conic
+subcategory \(\mathrm{IndCoh}_{\mathrm{Nilp}}\subset\mathrm{IndCoh}\)
+is defined for derived formal algebraic stacks in the GR DAG~Vol.~II
+sense, preserving the Arinkin--Gaitsgory
+functoriality (arXiv:1201.6343).
+\item[\textbf{(c.2)}] \emph{Flat locus preserved under ind-colimit.}
+For an ind-colimit \(\mathcal{X}=\varinjlim_{i}\mathcal{X}_{i}\),
+the flat locus on the loop space commutes with the ind-colimit:
+\(L^{\mathrm{Ar}}\mathcal{X}^{\mathrm{flat}}\simeq\varinjlim_{i}L^{\mathrm{Ar}}\mathcal{X}_{i}^{\mathrm{flat}}\).
+\item[\textbf{(c.3)}] \emph{Flat locus matches FS locus.} On each
+finite-type piece \(\mathcal{X}_{i}\), the
+Arinkin--Gaitsgory flat locus of the loop space coincides with the
+\((\varphi,\Gamma)\)-module Fargues--Scholze flat locus of
+\Cref{v4-arith:bzn:def:flat-locus}.
+\end{itemize}
+All three statements are hypotheses.
+\end{proposition}
+
+\begin{proof}[Proof of reduction]
+R1.formal.c as stated is
+\(\mathcal{O}(L^{\mathrm{Ar}}\mathcal{X})^{\mathrm{flat}}\simeq\varinjlim_{i}\mathcal{O}(L^{\mathrm{Ar}}\mathcal{X}_{i})^{\mathrm{flat}}\),
+with the flat loci on finite-type pieces matching
+\Cref{v4-arith:bzn:def:flat-locus}. Unpacking: this requires the
+flat locus to be \emph{defined} on each finite-type \(\mathcal{X}_{i}\)
+(which is a statement about nilpotent singular support extending to
+derived formal algebraic stacks; this is (c.1)), to \emph{commute
+with ind-colimit} (which is (c.2)), and to \emph{match the FS flat
+locus} on each finite-type piece (which is (c.3)). Conversely, (c.1)
+\(+\) (c.2) \(+\) (c.3) imply R1.formal.c by pasting the three
+statements together.
+\end{proof}
+
+\begin{remark}[flat support is a separate geometry]
+\label{v4-arith:bzn-sub:rem:R1-formal-c-precise}
+Arinkin--Gaitsgory singular support is defined by the cotangent
+geometry of a quasi-smooth stack.  The Fargues--Scholze flat locus is
+defined by \((\varphi,\Gamma)\)-module geometry.  Equality of the two
+loci on the Emerton--Gee finite pieces is a comparison theorem, not a
+definition.  Compatibility with the formal colimit is another theorem
+condition.
+\end{remark}
+
+\subsection{Sufficient Criterion for F3.BZN\texorpdfstring{\(^{\mathrm{Ar}}\)}{Ar}}
+
+\begin{theorem}[sufficient criterion for F3.BZN\(^{\mathrm{Ar}}\)]
+\label{v4-arith:bzn-sub:thm:R1-formal-bc-reduction}
+\ClaimStatusProvedHere. Suppose the structural splitting
+\Cref{v4-arith:sw:thm:BZN-Ar-split} is imposed. The conjunction
+\begin{itemize}
+\item R1.fin-type (Gaitsgory--Rozenblyum: theorem on smooth
+finite-type).
+\item R1.formal.a (Hochschild trace along the given categorical
+colimit).
+\item R1.formal.b (arithmetic loop-space formal computation:
+conjectural).
+\item R1.formal.c (flat-locus pullback compatibility: conjectural).
+\item R2 (Selmer-derived target, tangent complex, formal
+Noetherianity, and nilpotent-support compatibility).
+\item R3 (arithmetic free loop space identification: full-target
+comparison still required,
+\Cref{v4-arith:bzn-sub:cor:R3-definitional}).
+\item R4 (non-semisimple summand at wild primes \(p=2,3\):
+wild Hecke summands included).
+\end{itemize}
+implies F3.BZN\(^{\mathrm{Ar}}\).
+\end{theorem}
+
+\begin{proof}
+\Cref{v4-arith:sw:thm:BZN-Ar-split} expresses
+F3.BZN\(^{\mathrm{Ar}}\) as R1 \(+\) R2 \(+\) R3 \(+\) R4, where R1 further
+splits into R1.fin-type \(+\) R1.formal
+(\Cref{v4-arith:bzn-sub:context}). R1.fin-type is
+Gaitsgory--Rozenblyum; R1.formal splits into R1.formal.a
+(\Cref{v4-arith:bzn-sub:thm:R1-formal-a-closes}, theorem) plus
+R1.formal.b (\Cref{v4-arith:bzn-sub:prop:R1-formal-b-domain},
+conjectural) plus R1.formal.c
+(\Cref{v4-arith:bzn-sub:prop:R1-formal-c-domain}, conjectural) by
+\Cref{v4-arith:bzn-sub:thm:R1-formal-reduction}. R2 supplies the
+Selmer target and tangent complex and includes the required finiteness
+and singular-support hypotheses. R3 supplies the full
+Weil/\((\varphi,\Gamma)\) comparison. R4 inserts the wild-prime
+summands. These inputs are exactly the factors in the structural
+splitting, hence their conjunction implies F3.BZN\(^{\mathrm{Ar}}\).
+\end{proof}
+
+\subsection{Source and Convention Comparison for R1.formal}
+\label{v4-arith:bzn-sub:R1formal-obstruction-analysis}
+
+\paragraph{Source independence.} The argument for R1.formal draws on
+four disjoint source lists: Lurie HA~5.5.3 / 4.8 / 7.4 (HH,
+cotangent, colimits); Gaitsgory--Rozenblyum DAG Vol.~II Part~V
+Ch.~III (HH on smooth finite-type); Arinkin--Gaitsgory
+arXiv:1201.6343 (nilpotent singular support); Fargues--Scholze
+arXiv:2102.13459 (local Langlands).
+
+\paragraph{HH conventions.} Lurie HA places HH on symmetric monoidal
+stable presentable \(\infty\)-categories in spectra; Gaitsgory--Rozenblyum
+uses a derived-category trace on \(\mathrm{IndCoh}\); To\"en 2014
+uses a direct simplicial-object computation. All three are equivalent:
+HH of a stable \(\infty\)-category is the colimit over the cyclic
+category of the self-tensor-product sequence (McCarthy--Schwede,
+Blumberg--Mandell).
+
+\paragraph{Ambient category.} All objects live in derived pro-\'etale
+stacks with the \((\infty,2)\)-category of correspondences for
+\(\mathrm{IndCoh}\)-valued functoriality.
+
+\paragraph{Hypotheses.} The main hypothesis on \(\mathcal{X}\) is
+Noetherianness together with derived-formal-algebraic structure.  For
+the Selmer target this includes the formal Noetherian and
+nilpotent-support compatibility conditions of
+\Cref{v4-arith:bzn-sub:thm:R2-main}.
+
+\paragraph{Functoriality.} HH-colim continuity is a functorial
+statement on the \(\infty\)-category of stable presentable
+\(\infty\)-categories; the criterion by three inputs is
+itself functorial in \(\mathcal{X}\).
+
+\paragraph{Source of the implication.} The criterion
+\Cref{v4-arith:bzn-sub:thm:R1-formal-reduction} is one-way.  The
+finite-type theorem, Hochschild trace continuity, loop-space
+compatibility, and flat-locus compatibility imply the formal BZN
+comparison.  The converse is not used.
+
+\section{Conditional Form of F3.BZN\(^{\mathrm{Ar}}\)}
+\label{v4-arith:bzn-sub:consequence}
+
+\begin{corollary}[conditional arithmetic BZN comparison]
+\label{v4-arith:bzn-sub:cor:F3-BZN-closure-path}
+\ClaimStatusNeedsVerification. F3.BZN\(^{\mathrm{Ar}}\) follows from
+\Cref{v4-arith:bzn-sub:thm:R1-formal-bc-reduction} and the conjunction of:
+\begin{itemize}
+\item R1.formal.b (arithmetic loop-space formal computation,
+conjectural).
+\item R1.formal.c (flat-locus pullback compatibility, conjectural).
+\item R2 finiteness and nilpotent-support compatibility for the chosen
+Selmer deformation problem.
+\item R3 (full-target loop-space identification, including the
+Weil/\((\varphi,\Gamma)\) comparison).
+\item R4 (the non-semisimple Hecke summands at \(p=2,3\)).
+\end{itemize}
+R1.fin-type is the finite-type theorem. R1.formal.a is the trace
+theorem for a given categorical colimit. The other entries are
+geometric hypotheses.
+\end{corollary}
+
+\begin{proof}
+By \Cref{v4-arith:bzn-sub:thm:R1-formal-bc-reduction}: the
+conjunction R1.fin-type \(+\) R1.formal.a \(+\) R1.formal.b \(+\)
+R1.formal.c \(+\) R2 \(+\) R3 \(+\) R4 implies F3.BZN\(^{\mathrm{Ar}}\),
+where R2 includes the finiteness and support hypotheses of
+\Cref{v4-arith:bzn-sub:thm:R2-main}. The corollary is the same
+implication with the finite-type theorem and trace theorem separated
+from the geometric hypotheses.
+\end{proof}
+
+\begin{remark}[formal-loop and flat-support inputs]
+\label{v4-arith:bzn-sub:rem:domain-delta}
+The pro-\'etale extension used in
+\Cref{v4-arith:bzn:thm:HH-IndCoh-arith} contains two distinct
+geometries.  The first is the commutation of
+\(\mathrm{Map}(B\widehat{\mathbb Z},-)\) with the formal Selmer
+presentation.  The second is the equality between the
+Arinkin--Gaitsgory flat singular-support locus and the
+Fargues--Scholze \((\varphi,\Gamma)\)-flat locus.
+\end{remark}
+
+\begin{remark}[pro-\texorpdfstring{\'e}{e}tale extension]
+\label{v4-arith:bzn-sub:rem:wave1-consistency}
+Chapter~\ref{v4-arith:arith-bzn} Remark
+\ref{v4-arith:bzn:rem:arith-fact-homology-disjoint} notes that
+\Cref{v4-arith:bzn:thm:arith-fact-homology} uses a pro-\'etale
+extension of Ben-Zvi--Francis--Nadler that is formal but not in
+the literature. In the present notation that extension is the
+R1.formal.b hypothesis, together with the R1.formal.c comparison of
+flat loci.
+\end{remark}
+
+\section{Boundary Conditions}
+\label{v4-arith:bzn-sub:residuals}
+
+\subsection{Form of the Inputs}
+
+The seven inputs have different logical weights. R1.fin-type is the
+Gaitsgory--Rozenblyum finite-type theorem. R1.formal.a is a trace
+theorem after the categorical colimit presentation is known. R2 fixes
+the Selmer target and tangent complex, but its use in formal BZN
+requires formal Noetherianity and nilpotent-support compatibility for
+the chosen local conditions. R1.formal.b, R1.formal.c, R3, and R4 are
+geometric hypotheses.
+
+\subsection{Logical Consequence}
+
+The arithmetic BZN comparison is therefore not a consequence of a
+product formula for local stacks. It is a statement about a Selmer
+derived fibre product, a formal Hochschild trace, a pro-\'etale loop
+object, a flat singular-support locus, and wild Hecke summands.  The
+finite-type theorem and the trace theorem do not eliminate the loop,
+flat-locus, full-target, or wild-prime hypotheses.
+
+\subsection{Open Problems}
+
+The reduction of \Cref{v4-arith:bzn-sub:thm:R1-formal-bc-reduction}
+poses three precise open problems.
+
+\begin{enumerate}
+\item \textbf{R1.formal.b.} Does \(\mathrm{Map}(B\widehat{\mathbb{Z}},-)\)
+commute with ind-colimits under closed immersions in derived pro-\'etale
+stacks? The relevant tools are Lurie's \(\infty\)-topos formalism
+(HTT~6, HA~4.4) combined with Bhatt--Scholze pro-\'etale (\S7).
+A positive answer proves R1.formal.b; a counterexample restricts
+\Cref{v4-arith:bzn:thm:arith-fact-homology} to the cofinal
+finite-type subclass.
+\item \textbf{R1.formal.c.} Does the Arinkin--Gaitsgory nilpotent-singular-support
+flat locus coincide with the \((\varphi,\Gamma)\)-module Fargues--Scholze
+flat locus on each finite-type piece of the Emerton--Gee ind-colimit?
+The comparison between Fargues--Scholze arXiv:2102.13459 and
+Arinkin--Gaitsgory arXiv:1201.6343 can be checked on unramified
+crystalline representations with fixed Hodge--Tate weight.
+\item \textbf{R4.} What are the \(\mathrm{Ext}^{1}\)-contributions to
+\(\mathrm{HH}_{\bullet}(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p})\) at
+wild primes \(p=2,3\), and do they shift the arithmetic BZN
+identification? The Etingof--Ostrik 2004 finite-tensor-category
+framework applies; a model case is \(p=2\) with tame restriction
+to the depth-1 local category.
+\end{enumerate}
+
+\section{Formal Noetherian Boundary}
+\label{v4-arith:bzn-sub:summary}
+
+The global spectral target for F3.BZN\(^{\mathrm{Ar}}\) is the
+Selmer-derived stack
+\(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\) with tangent
+complex \(C^{\bullet}_{\mathcal{L}}(G_{\mathbb{Q},S},\mathrm{ad}^{0}\rho)[1]\)
+(\Cref{v4-arith:bzn-sub:thm:R2-main}); formal Noetherianity,
+quasi-smoothness, and nilpotent-support compatibility for the
+chosen local deformation problem remain hypotheses.
+R3 is a full-target hypothesis under R2
+(\Cref{v4-arith:bzn-sub:cor:R3-definitional}).
+
+R1.formal follows from three conditions
+(\Cref{v4-arith:bzn-sub:thm:R1-formal-reduction}).
+R1.formal.a is Hochschild trace continuity along the given
+categorical colimit (\Cref{v4-arith:bzn-sub:thm:R1-formal-a-closes}).
+R1.formal.b is the arithmetic loop-space formal computation, and
+R1.formal.c is flat-locus pullback compatibility
+(\Cref{v4-arith:bzn-sub:prop:R1-formal-b-domain} and
+\Cref{v4-arith:bzn-sub:prop:R1-formal-c-domain}).
+
+Thus F3.BZN\(^{\mathrm{Ar}}\) is conditional on R1.formal.b,
+R1.formal.c, the finiteness and support part of R2, R3, and R4
+(\Cref{v4-arith:bzn-sub:cor:F3-BZN-closure-path}). The pro-\'etale
+extension of Ben-Zvi--Francis--Nadler is not a formal theorem of the
+finite-type theory; in this notation it is the loop-space hypothesis
+together with the flat-locus comparison.

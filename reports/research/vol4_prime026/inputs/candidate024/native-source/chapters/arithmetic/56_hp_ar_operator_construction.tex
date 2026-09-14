@@ -1,0 +1,779 @@
+\chapter{Occupation and Modular Spectra in the Hilbert--P\'olya Problem}
+\label{v4-arith:w5-b:hp-operator}
+
+The prime character uses the nonnegative occupation energies
+$\log m$. The modular operator of a state acts on observables,
+so its energies are differences of occupation energies. We
+construct the comparison between these two operators before
+asking for a Hilbert--P\'olya realization. Their relation involves
+a closed creation subspace and a factor of two in the convention
+$N_{\mathrm{BC}}=-\tfrac12\log\Delta_1$. It is not an
+identification of the two full Hilbert spaces.
+
+\section{The Tensor Shift State}
+\label{v4-arith:w5-b:bc-setup}
+
+\begin{definition}[tensor shift algebra and state]
+\label{v4-arith:w5-b:def:bc-algebra}
+Let $\mathcal T_p$ be the represented prime shift algebra of
+\Cref{v4-arith:thermal:prop:normal-form}. For finite $F$ put
+$\mathcal T_F=\bigotimes_{p\in F}\mathcal T_p$, and form the
+algebraic union $\mathcal T_{\mathrm{fin}}$ under
+$a\mapsto a\otimes1$. Its time evolution is
+\begin{equation}
+ \alpha_t(S_p)=p^{it}S_p,\qquad
+ \alpha_t(R_p)=p^{-it}R_p.
+ \label{v4-arith:w5-b:eq:bc-time}
+\end{equation}
+At $\beta=1$, the normalized product state on each finite factor
+is $\Phi_{F,1}=\bigotimes_{p\in F}\Phi_{p^{-1}}$.
+\end{definition}
+
+\begin{lemma}[compatible normalized state]
+\label{v4-arith:w5-b:lem:kms-1}
+\ClaimStatusProvedHere. These functionals define a positive
+normalized KMS functional $\Phi_1$ on $\mathcal T_{\mathrm{fin}}$.
+Its values on the prime creation and division operators satisfy
+$\Phi_1(\mu_n^*\mu_m)=\delta_{nm}$ and
+$\Phi_1(\mu_n\mu_m^*)=\delta_{nm}m^{-1}$.
+\end{lemma}
+
+\begin{proof}
+A finite collection of observables lies in one $\mathcal T_F$.
+There positivity, normalization and the KMS identity follow by
+finite tensoring from \Cref{v4-arith:thermal:prop:thermal-values}.
+The state takes value one on every new unit, so the values agree
+under inclusions. The normal-word values in each prime factor
+give the two formulas.
+\end{proof}
+
+\begin{remark}[arithmetic phases and the convergence boundary]
+\label{v4-arith:w5-b:rem:wave4-ref}
+\label{v4-arith:w5-b:rem:partition-at-one}
+The algebra here is the tensor shift core. The presented local
+phase algebras and their represented quotients are distinguished
+in \Cref{v4-arith:kms-gns:cycle1:state}; the genuine arithmetic
+phase does not factor through the naive singleton inclusions by
+\Cref{v4-arith:thermal:prop:two-prime-phase}. Thus this product
+state is not a construction of the native adelic phase system.
+Nor is it a normalized global density at $\beta=1$ on the
+occupation space: its putative partition trace is the divergent
+series $\sum_m m^{-1}$. A finite part of the scalar pole at one
+is not a normalization of that divergent operator trace.
+\end{remark}
+
+\section{The Full Tensor GNS Spectrum}
+\label{v4-arith:w5-b:gns-modular}
+
+\begin{definition}[product GNS space]
+\label{v4-arith:w5-b:def:gns}
+Let $\mathcal H_1$ be the completion of the algebraic union of
+finite-prime GNS spaces, using the isometries
+$X\mapsto X\otimes\varrho_{\mathrm{new}}^{1/2}$.
+The reference vector is the tensor of the normalized local
+vectors $\Omega_p=\varrho_{p^{-1}}^{1/2}$, and the algebra acts
+by left multiplication. Equivalently this is the GNS space of
+$\Phi_1$, since its dense cyclic vectors have exactly those
+finite-factor inner products.
+\end{definition}
+
+\begin{lemma}[the Hilbert tensor carrier]
+\label{v4-arith:w5-b:lem:gns-restricted-tensor}
+\ClaimStatusProvedHere. There is a unitary identification
+\[
+ \mathcal H_1
+   =\bigotimes_{p}^{\Omega_p}\mathcal S_2(\mathscr H_p).
+\]
+The superscript specifies the incomplete Hilbert tensor product:
+elementary tensors have factor $\Omega_p$ outside a finite set,
+and their inner product is the finite product of local inner
+products. Every $\Omega_p$ has norm one.
+\end{lemma}
+
+\begin{proof}
+\Cref{v4-arith:thermal:gns-carrier} identifies each local GNS
+factor with its Hilbert--Schmidt space. The product state inner
+product on a finite set is the product inner product. The unit
+observable maps to $\Omega_p$ in each new factor, so these
+identifications agree with the isometric inclusions. Completing
+their common dense union proves the assertion.
+Finite tensors of right matrix multiplications are bounded, commute
+with the left algebra, and send the reference vector to a dense
+subspace. They still commute with its strong operator closure.
+If an operator \(a\) in that closure kills \(\Omega_1\), it therefore
+kills this dense right-cyclic subspace and is zero. Thus \(\Omega_1\)
+is separating as well as cyclic for the represented von Neumann
+algebra, as required for its modular operator.
+\end{proof}
+
+Choose an orthonormal basis of the diagonal Hilbert--Schmidt
+subspace at each prime which contains $\Omega_p$. Such a basis
+is obtained by applying Gram--Schmidt to
+$\Omega_p,E_{00},E_{11},\ldots$, omitting zero remainders.
+The coefficients can be real. Together with $E_{ij}$ for
+$i\ne j$, this gives a local orthonormal basis. Finite tensors
+of its elements, with $\Omega_p$ elsewhere, form a countable
+orthonormal basis of $\mathcal H_1$. Each diagonal basis vector
+has modular eigenvalue one, and each $E_{ij}$ has eigenvalue
+$p^{-(i-j)}$.
+
+\begin{lemma}[product modular operator]
+\label{v4-arith:w5-b:lem:modular}
+\ClaimStatusProvedHere. The positive diagonal operator determined
+on this tensor basis by
+\begin{equation}
+ \Delta_1E_{\mathbf i,\mathbf j}
+    =\prod_p p^{-(i_p-j_p)}E_{\mathbf i,\mathbf j},
+ \qquad \Delta_1^{it}[x]=[\alpha_{-t}(x)]
+ \label{v4-arith:w5-b:eq:Delta-basis}
+\end{equation}
+is the modular positive factor for the product GNS state.
+A diagonal factor in the chosen basis contributes exponent zero.
+The domain of $\Delta_1$ consists of expansions for which the
+sum of squared coefficients times the squared displayed
+eigenvalues is finite. Its conjugation $J_1$ is the continuous
+extension of the finite tensor conjugations.
+\end{lemma}
+
+\begin{proof}
+The local formulas are \Cref{v4-arith:thermal:modular}. Finite
+products of the local eigenvalues give the formula. Positivity
+and self-adjointness hold on the maximal weighted diagonal
+domain. Every tensor basis vector belongs to the algebraic GNS
+cyclic domain: a local off-diagonal matrix unit is a nonzero
+multiple of $[E_{ij}]$, and every chosen diagonal basis vector
+is a finite linear combination of $\Omega_p$ and $[E_{ii}]$.
+Thus finite spans of the tensor eigenbasis lie in that domain
+and form a core for $\Delta_1^{1/2}$. On the entire algebraic
+cyclic domain, the finite-prime calculation gives
+$[x]\mapsto[x^*]=J_1\Delta_1^{1/2}[x]$. Taking the closure
+proves the polar decomposition. The group formula follows on
+homogeneous cyclic vectors and extends by continuity.
+\end{proof}
+
+\begin{definition}[the specified log-modular normalization]
+\label{v4-arith:w5-b:def:N-BC}
+Keep the normalization
+\[
+ N_{\mathrm{BC}}=-\tfrac12\log\Delta_1.
+\]
+It is defined on the maximal diagonal domain of this real
+logarithm. In one prime factor,
+\begin{equation}
+ N_{\mathrm{BC}}E_{ij}=\tfrac12(i-j)\log p\,E_{ij}.
+ \label{v4-arith:w5-b:eq:N-BC}
+\end{equation}
+\end{definition}
+
+\begin{theorem}[spectrum of the full log-modular operator]
+\label{v4-arith:w5-b:thm:N-BC-self-adjoint}
+\ClaimStatusProvedHere. The finite tensor eigenbasis is a core
+for $N_{\mathrm{BC}}$, whose closure is self-adjoint. Its
+set of eigenvalues is
+\[
+ \left\{\tfrac12\log(a/b):a,b\in\mathbb N_{\geq1}\right\}.
+\]
+Each eigenvalue has countably infinite multiplicity. The spectrum
+as a closed subset of $\mathbb R$ is all of $\mathbb R$,
+although every spectral measure is atomic. Moreover
+$J_1N_{\mathrm{BC}}J_1=-N_{\mathrm{BC}}$.
+In particular the full log-modular operator is not nonnegative.
+\end{theorem}
+
+\begin{proof}
+The logarithm of a finite product of prime powers is the
+logarithm of a positive rational number; conversely every such
+rational is obtained from finite positive and negative occupation
+differences. This gives exactly the stated eigenvalues. Keeping
+a fixed difference and varying the common diagonal shift of
+$i,j$ gives infinitely many orthogonal eigenvectors; separability
+makes the multiplicity countable. The positive rational numbers
+are dense in the positive real numbers, and logarithm is
+continuous, so the eigenvalue set is dense in $\mathbb R$.
+For a diagonal self-adjoint operator, every limit of eigenvalues
+lies in the spectrum: unit eigenvectors at approaching eigenvalues
+are approximate null vectors for the shifted operator. A point
+at positive distance from the eigenvalues has a bounded diagonal
+resolvent. These two facts identify the spectrum with their
+closure. Self-adjointness and the core assertion follow by
+truncating the weighted square sum of coefficients.
+Finally $J_1$ reverses each occupation difference. Already in a
+single prime, $E_{10}$ and $E_{01}$ have opposite nonzero energies.
+\end{proof}
+
+\section{The Creation Subspace and the Occupation Hamiltonian}
+\label{v4-arith:w5-b:primary-heisenberg}
+
+Let $\mathcal H_{\mathrm{occ}}=\ell^2(\mathbb N_{\geq1})$
+with orthonormal basis $v_m$. Define
+\[
+ N_{\mathrm{occ}}v_m=\log m\,v_m,\qquad
+ \operatorname{Dom}N_{\mathrm{occ}}
+   =\left\{\sum_m c_mv_m:\sum_m(\log m)^2|c_m|^2<\infty\right\}.
+\]
+The same diagonal adjoint test proves self-adjointness. Its
+spectrum is $\{\log m:m\geq1\}$, with multiplicity one, and
+it is nonnegative.
+
+\begin{theorem}[occupation-to-GNS comparison]
+\label{v4-arith:w5-b:occupation-comparison}
+\ClaimStatusProvedHere. The map
+\[
+ W:\mathcal H_{\mathrm{occ}}\longrightarrow\mathcal H_1,
+ \qquad Wv_m=[\mu_m]
+\]
+is an isometry onto the closed creation subspace. It intertwines
+prime creation and satisfies
+\[
+ WN_{\mathrm{occ}}=2N_{\mathrm{BC}}W
+\]
+with equality of the maximal domains on that subspace. The
+creation subspace is reducing for $N_{\mathrm{BC}}$ but is not
+invariant under $J_1$. The full GNS algebra of observables does
+not preserve it.
+\end{theorem}
+
+\begin{proof}
+The state formula gives
+$\langle[\mu_n],[\mu_m]\rangle=\delta_{nm}$, so $W$ is an
+isometry on the algebraic basis and extends to its completion.
+Left creation sends $[\mu_m]$ to $[\mu_{pm}]$, proving its
+intertwining relation. Modular covariance gives
+$\Delta_1[\mu_m]=m^{-1}[\mu_m]$, hence the logarithmic identity.
+The closed span of these eigenvectors is reducing. Equality of
+the maximal domains follows from the same weighted coefficient
+sum on both sides.
+
+For $p>1$, $J_1[\mu_p]=p^{1/2}[\mu_p^*]$. The division vector
+is nonzero and orthogonal to every creation vector, because its
+inner products involve a nonconstant pure creation word.
+It therefore lies outside the creation subspace. Also left
+$\mu_p^*$ sends $\Omega_1$ to this division vector, so the
+full observable algebra does not preserve that subspace.
+\end{proof}
+
+\begin{lemma}[the weighted zero-mode embedding]
+\label{v4-arith:w5-b:lem:zero-mode-embeds-gns}
+\ClaimStatusProvedHere. The weighted lattice with basis
+$\delta_m$ of squared norm $m^{-1}$ has the isometric embedding
+\[
+ \iota_0\delta_m=m^{-1/2}[\mu_m].
+\]
+It lies in the creation subspace and has the same occupation
+energies there under $2N_{\mathrm{BC}}$.
+\end{lemma}
+\begin{proof}
+Rescale the orthonormal family of the preceding theorem.
+The scalar rescaling does not change its eigenvalues.
+\end{proof}
+
+\begin{remark}[the exact carrier distinction]
+\label{v4-arith:w5-b:rem:N-BC-not}
+\label{v4-arith:w5-b:rem:embedding-domain}
+The original positive log-prime target is realized by
+$N_{\mathrm{occ}}$ and by $2N_{\mathrm{BC}}$ on the creation
+subspace. It is not the full modular spectrum. No unitary
+intertwiner can identify the full $N_{\mathrm{BC}}$ with the
+nonnegative occupation operator, since the former has negative
+eigenvalues. Nor is the creation subspace a substitute for the
+full GNS space when division, modular conjugation, or genuine
+arithmetic phases are required.
+\end{remark}
+
+\begin{definition}[an oscillator enlargement and its lift]
+\label{v4-arith:w5-b:def:fock}
+\label{v4-arith:w5-b:def:bc-gns-heisenberg-lift}
+An oscillator enlargement is a specified Hilbert completion of
+finite-support number states $|\mathbf n\rangle\otimes\delta_m$,
+with creation and annihilation operators satisfying the chosen
+Heisenberg relations, a vacuum and a nonnegative diagonal energy
+$L_0^{\mathrm{osc}}$. Its zero-mode energy is $N_{\mathrm{occ}}$.
+A GNS lift of this enlargement is an isometry of its number-state
+core into $\mathcal H_1$ extending $\iota_0$, intertwining the
+specified operators on their domains and preserving the given
+inner products. The notation
+$\mathcal F^{\mathrm{Ar}}_{\mathrm{Heis},\mathrm{prim}}$ denotes
+such a chosen core when one is supplied.
+\end{definition}
+
+\begin{lemma}[completion of an oscillator lift]
+\label{v4-arith:w5-b:lem:fock-embeds-gns}
+\ClaimStatusProvedHereConditional. An oscillator lift extends
+uniquely to an isometry of its Hilbert completion onto the closed
+span of its image. It supplies no identification of that image
+with a native arithmetic Hochschild or automorphic carrier.
+\end{lemma}
+\begin{proof}
+An isometry sends Cauchy sequences to Cauchy sequences and
+preserves the norm of their limits. This gives the unique
+extension and identifies its closed image. The assertion uses
+only the specified lift maps, not a classification of additional
+GNS coordinates as automorphic sectors.
+\end{proof}
+
+\section{The Primary-Heisenberg Twist and the Determinant-Trace Operator}
+\label{v4-arith:w5-b:twist}
+
+The occupation operator \(N_{\mathrm{occ}}\) has spectrum
+\(\{\log m\}_{m\in\mathbb{N}^{\times}}\). The Hilbert--P\'olya
+condition asks for a self-adjoint operator \(A\) together with
+the determinant condition forcing the divisor of
+\(\tfrac12\mathrm{id}+iA\) to be the zero divisor of
+\(\xi_{\mathbb R}\). The \emph{primary-Heisenberg twist} names the
+data required to compare the first spectrum with this determinant
+divisor and its Weil--Connes trace. Its existence with the prescribed
+determinant-trace property is H-P\(^{\mathrm{Ar}}\).
+
+\subsection{Statement of the Twist}
+\label{v4-arith:w5-b:twist:statement}
+
+\begin{definition}[graded determinant-trace comparison data]
+\label{v4-arith:w5-b:def:twist}
+Let $\mathcal F$ be the Hilbert completion of a specified
+oscillator enlargement, with its dense number-state core and
+self-adjoint grading operator
+$G_{\mathcal F}=L_0^{\mathrm{osc}}+N_{\mathrm{occ}}$.
+A graded determinant-trace comparison consists of a Hilbert
+space $\mathcal H_\xi$, a unitary $U:\mathcal F\to\mathcal H_\xi$,
+and a self-adjoint operator $A$ on $\mathcal H_\xi$ with a
+specified invariant core $\mathcal D_\xi$. The transported
+grading operator is
+\begin{equation}
+ G_\xi=UG_{\mathcal F}U^*,\qquad
+ G_\xi Uv=UG_{\mathcal F}v
+       \quad(v\in\operatorname{Dom}G_{\mathcal F}),
+ \label{v4-arith:w5-b:eq:twist-intertwine}
+\end{equation}
+with $\operatorname{Dom}G_\xi=U\operatorname{Dom}G_{\mathcal F}$.
+If $\mathcal H_\xi$ is to be a native Petersson completion, its
+pairing realization maps are also required. The operator $A$
+is a separate operator from $G_\xi$; no equality or intertwining
+between them is included in the definition. Write
+\begin{align}
+ H_{\mathrm{HP}}&=A,
+ \label{v4-arith:w5-b:eq:H-HP-def}\\
+ \Theta_\xi&=\tfrac12\mathrm{id}+iA.
+ \label{v4-arith:w5-b:eq:Theta-xi-def}
+\end{align}
+The determinant and trace requirements on $A$ are additional
+hypotheses below.
+\end{definition}
+
+\begin{proposition}[the literal energy-intertwining obstruction]
+\label{v4-arith:w5-b:rem:what-iv-says}
+\label{v4-arith:w5-b:vacuum-obstruction}
+Suppose the source grading has a nonzero vacuum $v_1$ with
+$G_{\mathcal F}v_1=0$. Requiring
+$AUv=UG_{\mathcal F}v$ on a core containing $v_1$ is incompatible
+with the requirement that the eigenvalue divisor of
+$\tfrac12+iA$ equal the nontrivial zero divisor of $\xi_{\mathbb R}$.
+\end{proposition}
+
+\begin{proof}
+The proposed identity would give $AUv_1=0$, and $Uv_1\ne0$
+because $U$ is an isometry. Hence $1/2$ would be an eigenvalue
+of $\tfrac12+iA$ and would have to be a zero of $\xi_{\mathbb R}$.
+It is not. Indeed the alternating series
+\[
+ \eta(1/2)=\sum_{k\geq1}
+       \bigl((2k-1)^{-1/2}-(2k)^{-1/2}\bigr)
+\]
+converges and is positive: every term is positive, and the mean
+value estimate bounds the terms by a constant times $k^{-3/2}$.
+The identity
+$\zeta(s)=\eta(s)/(1-2^{1-s})$ follows first by separating even
+terms for $\operatorname{Re}s>1$ and continues near $s=1/2$
+by uniform Dirichlet convergence of the alternating series.
+Its denominator at $1/2$ is nonzero, so $\zeta(1/2)\ne0$.
+The gamma factor at $1/4$ is positive by its defining integral,
+and removing the Tate poles multiplies by the nonzero factor
+$\tfrac12s(s-1)$ at $s=1/2$. Thus $\xi_{\mathbb R}(1/2)\ne0$.
+\end{proof}
+
+The grading comparison \eqref{v4-arith:w5-b:eq:twist-intertwine}
+and the literal $A$-intertwining condition are therefore different
+targets. The former is explicitly constructed once $U$ is given.
+The latter is ruled out on a vacuum-preserving domain. Neither
+statement constructs, or excludes in general, a self-adjoint
+operator with the required zeta-zero determinant and trace.
+
+\subsection{Determinant-Trace Requirement: Hadamard Inversion}
+\label{v4-arith:w5-b:twist:hadamard-inversion}
+
+The condition on \(A\) is the Hilbert--P\'olya determinant-trace
+condition for \(\xi_{\mathbb R}\). Write a non-trivial zero as
+\(\rho=\beta_{\rho}+i\gamma_{\rho}\). The self-adjointness of \(A\)
+puts the normal operator \(\Theta_{\xi}=1/2+iA\) on the critical line.
+H-P\(^{\mathrm{Ar}}\) asks that its regularised determinant divisor be
+the original zero divisor and that its Weil--Connes trace be the zero
+distribution. Equivalently, the determinant identity forces
+\(\beta_{\rho}=1/2\) for every zero; after this zero-placement the
+trace of \(A\) is supported at the ordinates \(\gamma_{\rho}\). This is
+\emph{not} the spectrum of \(N_{\mathrm{occ}}\), which is
+\(\{\log m\}_{m\in\mathbb{N}^{\times}}\). The prime and zero sides are
+related by the Mellin transform of \(\xi\) through its Hadamard
+factorisation:
+\begin{equation}
+\label{v4-arith:w5-b:eq:hadamard}
+\xi_{\mathbb R}(s)\;=\;\frac{1}{2}\,e^{B s}\,\prod_{\rho}\Bigl(1-\frac{s}{\rho}\Bigr)e^{s/\rho}
+\end{equation}
+(Riemann 1859; Hadamard 1893), where the product is over non-trivial
+zeros and $B=\xi'(0)/\xi(0)=-1-\gamma/2+\tfrac12\log(4\pi)$,
+as computed in Proposition~\ref{v4-arith:pm:constant}.
+For $\Re s>1$, the primes appear through the absolutely convergent
+Dirichlet series in the \emph{logarithmic derivative}
+\begin{equation}
+\label{v4-arith:w5-b:eq:log-deriv-xi}
+-\frac{\xi_{\mathbb R}'(s)}{\xi_{\mathbb R}(s)}\;=\;-\frac{1}{s}-\frac{1}{s-1}+\frac{1}{2}\log\pi-\frac{1}{2}\Gamma'/\Gamma(s/2)+\sum_{n\geq1}\frac{\Lambda(n)}{n^{s}}
+\end{equation}
+(von Mangoldt 1895). Outside $\Re s>1$ the prime series is not
+silently retained: the continued logarithmic derivative is a
+meromorphic function, while the Weil formula uses the compact-test
+pairing and exponential weight of Theorem~\ref{v4-arith:pm:weil}. The twist \(A\) is the operator-level analogue of
+\emph{inverting this duality}: from the log-prime spectrum of
+\(N_{\mathrm{occ}}\), construct a normal zero-divisor operator whose
+determinant is governed by the Hadamard expansion and whose trace is
+the Weil--Connes zero distribution. The Hadamard expansion is a
+statement about an entire function. The assertion that a self-adjoint
+operator carries this determinant divisor and trace distribution is
+additional data, the content of H-P\(^{\mathrm{Ar}}\).
+
+\subsection{The Hilbert--P\'olya Hypothesis and Its Determinant-Trace Consequences}
+\label{v4-arith:w5-b:twist:consequences}
+
+\begin{hypothesis}[H-P\(^{\mathrm{Ar}}\)-twist]
+\label{v4-arith:w5-b:hyp:twist-existence}
+There exist graded determinant-trace comparison data \((\mathcal{H}_{\xi},U,A)\) in
+the sense of \Cref{v4-arith:w5-b:def:twist} with the additional
+zero-placement spectral property
+\begin{equation}
+\label{v4-arith:w5-b:eq:spec-A}
+\mathrm{Spec}(A)\;=\;\{\gamma_{\rho}\mid\rho=\beta_{\rho}+i\gamma_{\rho}
+\text{ is a non-trivial zero of }\xi_{\mathbb R}\},
+\end{equation}
+with multiplicities matching zero multiplicities, together with the
+determinant condition
+\(\mathrm{div}\,\det_{\infty}(s\mathrm{id}-(\tfrac12\mathrm{id}+iA))
+=\mathrm{div}\,\xi_{\mathbb R}\), and the
+\(\mathbb{Z}/2\)-symmetry \(\gamma_{\rho}\mapsto-\gamma_{\rho}\) acting on
+the spectrum as the arithmetic \(S\)-modular involution.
+\end{hypothesis}
+
+\begin{remark}[relation to H-P\(^{\mathrm{Ar}}\)]
+\label{v4-arith:w5-b:rem:equals-HPAr}
+\Cref{v4-arith:w5-b:hyp:twist-existence} is the functional-analytic
+content of \Cref{v4-arith:rh:hyp:HPAr}: an operator \(A\) with the
+specified determinant divisor and trace distribution is exactly
+\(H_{\mathrm{HP}}\) of the reformulation chapter, and
+\(\Theta_{\xi}=1/2+iA\) is the arithmetic zero-divisor operator.
+The arithmetic realization asks in addition for the specified occupation
+grading, native maps and arithmetic trace comparison. The grading
+intertwiner \(U\) in \Cref{v4-arith:w5-b:def:twist} does not intertwine
+\(A\) with \(N_{\mathrm{occ}}\). Imposing the latter identity on the
+vacuum contradicts \Cref{v4-arith:w5-b:vacuum-obstruction}.
+\end{remark}
+
+\section{Determinant Identity: Hadamard Factorisation}
+\label{v4-arith:w5-b:determinant}
+
+Assuming the twist of \Cref{v4-arith:w5-b:hyp:twist-existence}, the
+determinant divisor condition identifies the zeros of
+\(\xi_{\mathbb{R}}\) with the spectrum of \(\Theta_{\xi}\); the
+Hadamard product then determines
+\(\det_{\infty}(s\,\mathrm{id}-\Theta_{\xi})\) as a regularised
+determinant. The formal content and the independent
+regularisation input are separated in the proposition and remark
+below.
+
+\begin{proposition}[regularised determinant from Hadamard]
+\label{v4-arith:w5-b:prop:det-formal}
+\ClaimStatusProvedHere \emph{(conditional on
+\Cref{v4-arith:w5-b:hyp:twist-existence})}. Assume the twist
+\((\mathcal{H}_{\xi},U,A)\) has the spectral property
+\eqref{v4-arith:w5-b:eq:spec-A} and the determinant divisor condition
+of \Cref{v4-arith:w5-b:hyp:twist-existence}. Define the regularised determinant
+of the shifted operator by the \(\zeta\)-regularised prescription
+\[
+\log\det_{\infty}(s\mathrm{id}-\Theta_{\xi})\;:=\;-\partial_{u}\mathrm{Tr}_{\mathrm{reg}}\bigl((s\mathrm{id}-\Theta_{\xi})^{-u}\bigr)\Big|_{u=0},
+\]
+interpreted as a distribution on \(s\) in the admissible Weil--Connes
+Paley--Wiener class. Then
+\begin{equation}
+\label{v4-arith:w5-b:eq:det-identity}
+\det_{\infty}\bigl(s\mathrm{id}-\Theta_{\xi}\bigr)\;=\;\xi_{\mathbb R}(s).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Under
+\Cref{v4-arith:w5-b:hyp:twist-existence}, the determinant divisor
+condition says that the spectral multiset of
+\(\Theta_{\xi}=1/2+iA\) is the non-trivial zero divisor
+\(\{\rho\}\) with multiplicities matching. The Hadamard product
+\eqref{v4-arith:w5-b:eq:hadamard} expresses \(\xi_{\mathbb R}\) as a
+product over the same zeros, with the convergence factor
+\(e^{s/\rho}\) and the Hadamard constant \(B\) absorbing the sum over
+\(1/\rho\). The \(\zeta\)-regularised definition of \(\det_{\infty}\)
+(Ray--Singer 1971; Voros 1987) for an operator with positive
+Hadamard genus produces
+\(\prod_{\rho}(1-s/\rho)e^{s/\rho}\) after subtraction of the
+Hadamard terms. The remaining prefactor \(e^{Bs}/2\) is the
+regularisation ambiguity and is fixed by the Weil--Connes
+normalisation compatibility with the primary sector (the Tate-pole
+removal of \Cref{v4-arith:rh:rem:trivial-zero}). Combining these:
+\eqref{v4-arith:w5-b:eq:det-identity} holds as an equality of
+regularised determinants in the distributional Paley--Wiener sense,
+modulo explicit normalisation constants.
+\end{proof}
+
+\begin{remark}[formal content of the determinant identity]
+\label{v4-arith:w5-b:rem:det-does-not-buy}
+\Cref{v4-arith:w5-b:prop:det-formal} is \emph{conditional} on the
+spectral and determinant conditions of
+\Cref{v4-arith:w5-b:hyp:twist-existence}. Given those conditions, the
+Hadamard identity is formal: the regularised determinant of the normal
+operator whose divisor is the zero divisor of an entire function of
+order~\(1\) with genus~\(1\) is the function itself, up to a
+convergence-factor normalisation. The content of
+H-P\(^{\mathrm{Ar}}\) is the existence of a self-adjoint operator whose
+normal translate has this determinant divisor and whose regularised
+trace is the Weil--Connes zero distribution.
+\end{remark}
+
+\begin{remark}[comparison with Berry--Keating]
+\label{v4-arith:w5-b:rem:berry-keating-contrast}
+Berry--Keating (SIAM Review 41, 1999) propose \(H=xp+1/2\) on
+\(L^{2}(\mathbb{R}_{>0},dx/x)\) as the candidate \(H_{\mathrm{HP}}\).
+Their proposal reproduces the leading-order Riemann--von Mangoldt
+zero density via Bohr--Sommerfeld quantisation; the Planck-cell
+regularisation, however, requires a self-adjoint extension not supplied
+by the model. The present twist has the same logical form: the occupation
+log-prime spectrum \(\{\log m\}_{m\in\mathbb{N}^{\times}}\) is
+classical and self-adjoint, and the lift to the zero determinant
+divisor via the Hadamard-dual twist is the content of
+H-P\(^{\mathrm{Ar}}\). See
+\Cref{v4-arith:hpvbconv:rem:berry-keating} for the HPAr-converse analysis.
+\end{remark}
+
+\section{Trace Distribution: Weil--Connes Explicit Formula}
+\label{v4-arith:w5-b:trace}
+
+\begin{proposition}[the trace on the compact Fourier test class]
+\label{v4-arith:w5-b:prop:weil-trace}
+\ClaimStatusProvedHereConditional. Suppose the spectral realization
+of Hypothesis~\ref{v4-arith:w5-b:hyp:twist-existence} has been
+constructed: $H_{\mathrm{HP}}$ is self-adjoint with a complete
+orthonormal eigenbasis indexed by the actual xi zeros, including
+multiplicity, and $\rho=1/2+i\gamma_\rho$ is the eigenvalue of its
+shifted operator. For $f\in C_c^\infty(\mathbb R)$ put
+$h(z)=\int f(t)e^{izt}dt$. Then $h(H_{\mathrm{HP}})$ is trace-class
+and
+\begin{align}
+\label{v4-arith:w5-b:eq:trace-identity}
+ \operatorname{Tr}h(H_{\mathrm{HP}})
+ &=\sum_\rho h(\gamma_\rho)
+   =h(i/2)+h(-i/2)+\mathcal A_\infty(h)\notag\\
+ &\quad-\sum_{m\geq2}\frac{\Lambda(m)}{\sqrt m}
+                         (f(\log m)+f(-\log m)),
+\end{align}
+where
+\[
+ \mathcal A_\infty(h)=\frac1{2\pi}\int_{\mathbb R}
+ h(u)(\Re\psi_\Gamma(1/4+iu/2)-\log\pi)\,du.
+\]
+If a specified regularized trace agrees with the ordinary trace
+on trace-class operators, it has the same value here.
+Extension to a larger Paley--Wiener class requires the domain and
+continuity of that trace functional on the larger class.
+\end{proposition}
+\begin{proof}
+Repeated integration by parts makes $h$ rapidly decreasing on the
+real line. The zero count of Lemma~\ref{v4-arith:pm:zero-count}
+therefore gives $\sum_\rho|h(\gamma_\rho)|<\infty$.
+Functional calculus on the stipulated complete eigenbasis proves
+the trace-class assertion and the first equality.
+The actual-divisor hypothesis identifies $\gamma_\rho$ with
+$-i(\rho-1/2)$, so Theorem~\ref{v4-arith:pm:weil} proves the rest.
+The compatibility hypothesis gives the regularized-trace clause;
+it is not a consequence of an isometric embedding or of the scalar
+determinant normalization. For even $f$ the last sum reduces to
+$2\mu_{1/2}(f)$, with precisely the stated inverse Fourier convention.
+\end{proof}
+
+\begin{corollary}[positivity on the complete Fourier square class]
+\label{v4-arith:w5-b:cor:weil-positive}
+\ClaimStatusProvedHereConditional. Under the preceding realization,
+let $g\in C_c^\infty(\mathbb R)$,
+$\phi(z)=\int g(t)e^{izt}dt$, and
+$h(z)=\phi(z)\overline{\phi(\overline z)}$.
+Then $h$ is the Fourier transform of $g*g^*$ and
+\[
+ \operatorname{Tr}h(H_{\mathrm{HP}})
+                 =\sum_\rho|\phi(\gamma_\rho)|^2\geq0.
+\]
+Thus the actual Weil functional is positive on this entire square
+class. The realization itself implies RH, and hence classical Li
+positivity. Identifying a Petersson-positive cone with this full
+test class requires a separately specified map and its density and
+continuity properties.
+\end{corollary}
+\begin{proof}
+The convolution and involution identities of
+Definition~\ref{v4-arith:mc:test-algebra} give the stated entire
+function $h$. The preceding trace formula now has nonnegative
+eigenvalues and absolutely convergent sum. The real spectrum of
+$H_{\mathrm{HP}}$ places every actual zero on $\Re s=1/2$;
+Li positivity follows from the classical Li criterion
+in Theorem~\ref{v4-arith:rh:thm:Li-criterion}.
+An identity known only on an unspecified restricted cone does not
+supply the comparison with all compact Fourier squares.
+\end{proof}
+
+\section{Operator and Arithmetic Comparison Boundary}
+\label{v4-arith:w5-b:form}
+\label{v4-arith:w5-b:form:layer-1}
+\label{v4-arith:w5-b:form:layer-2}
+\label{v4-arith:w5-b:form:layer-3}
+\label{v4-arith:w5-b:form:summary}
+
+The tensor shift state at $\beta=1$ has a well-defined GNS
+space and modular operator. Its full log-modular spectrum is
+$\mathbb R$, with an atomic spectral resolution on the dense
+set $\tfrac12\log\mathbb Q_{>0}$. The occupation operator has
+the discrete nonnegative spectrum $\log\mathbb N_{\geq1}$.
+The map $W$ of \Cref{v4-arith:w5-b:occupation-comparison}
+identifies the latter with $2N_{\mathrm{BC}}$ on the creation
+subspace. Division and modular conjugation require the larger
+GNS carrier. Genuine arithmetic phases require their own
+compatible algebra before an adelic comparison can be made.
+
+\begin{proposition}[the remaining determinant-trace construction]
+\label{v4-arith:w5-b:thm:precise-obstruction}
+The local GNS and occupation constructions supply neither an
+operator $A$ with the zero-divisor property of
+\Cref{v4-arith:w5-b:hyp:twist-existence} nor a native pairing
+map into its Hilbert space. The requested additional data are
+that self-adjoint operator and core, the specified determinant
+and trace regularizations, and the native realization maps.
+The separate grading comparison is
+\eqref{v4-arith:w5-b:eq:twist-intertwine}; imposing it on $A$
+itself is excluded by \Cref{v4-arith:w5-b:vacuum-obstruction}.
+\end{proposition}
+
+\begin{proof}
+The constructions give the displayed diagonal operators and the
+isometry $W$. Their spectra, carriers and actions are computed
+above. The occupation operator retains its vacuum and the full
+modular operator has both signs and infinite eigenspace
+multiplicity. Neither has the asserted zeta-zero divisor.
+Transport of the grading only constructs $G_\xi$. It imposes
+no spectral condition on the separate operator $A$. The proposed
+stronger energy intertwining is the vacuum contradiction already
+proved. Thus the additional hypotheses remain the exact
+unconstructed comparison data, not consequences of the local
+state normalization.
+\end{proof}
+
+\begin{remark}[prime weights and native realization]
+\label{v4-arith:w5-b:rem:W-honest}
+The weight $k\log p$ is the occupation energy of $p^k$.
+It is obtained from $2N_{\mathrm{BC}}$ only after the stated
+creation-subspace restriction at $\beta=1$; at general inverse
+temperature $\beta$ the factor is $2/\beta$.
+A prescribed scalar partition determines neither the native
+pairing maps nor the full algebra of phases. In particular a
+local KMS normalization cannot establish uniqueness of an
+arithmetic Hilbert--P\'olya representative.
+\end{remark}
+
+\begin{remark}[scope of the Hilbert--P\'olya implication]
+\label{v4-arith:w5-b:rem:honest-conditional}
+If a self-adjoint $A$ has the required determinant divisor and
+trace, then $\tfrac12+iA$ is supported on the critical line and
+the assumed divisor comparison transfers this support to the
+zeros. Constructing such an $A$ remains the Hilbert--P\'olya
+problem in the specified carrier. The present normalization
+calculations do not decide that existence problem or the
+positivity of a distinct native arithmetic operator. Comparisons
+with absorption traces or motivic realizations additionally
+require maps to those particular carriers.
+\end{remark}
+
+\section{Bibliography and Source List}
+\label{v4-arith:w5-b:biblio}
+
+The argument draws on four disjoint source lists
+here with publisher/arXiv identifiers for reproducibility.
+
+\paragraph{Operator-algebra and KMS theory.}
+\begin{description}
+\item[Bost--Connes.] J.-B.~Bost and A.~Connes, \emph{Hecke algebras,
+type~III factors and phase transitions with spontaneous symmetry
+breaking in number theory}, Selecta Math.~1 (1995), 411--457.
+\item[Connes.] A.~Connes, \emph{Trace formula in noncommutative
+geometry and the zeros of the Riemann zeta function}, Selecta
+Math.~5 (1999), 29--106; arXiv:math/9811068.
+\item[Connes--Marcolli.] A.~Connes and M.~Marcolli, \emph{Noncommutative
+geometry, quantum fields, and motives}, AMS Colloquium Publications
+55 (2008). Ch.~3--4 for KMS states and rigidity; Ch.~5 for the
+adele class space.
+\item[Takesaki.] M.~Takesaki, \emph{Tomita's theory of modular
+Hilbert algebras and its applications}, Lecture Notes in Mathematics
+128 (Springer 1970); \emph{Theory of Operator Algebras~I}, (Springer
+1979), Ch.~IV \S5 (GNS), Ch.~VI \S1 (Tomita--Takesaki); \emph{Theory
+of Operator Algebras~II} (Springer 2003), Ch.~VIII \S1 (modular
+automorphism).
+\item[Meyer.] R.~Meyer, \emph{On a representation of the idele class
+group related to primes and zeros of \(L\)-functions}, Duke Math.~J.
+127 (2005), 519--595; arXiv:math/0311468.
+\end{description}
+
+	\paragraph{Hilbert--P\'olya candidates and determinant-trace realisations.}
+\begin{description}
+\item[Berry--Keating.] M.~V.~Berry and J.~P.~Keating, \emph{The
+Riemann zeros and eigenvalue asymptotics}, SIAM Review 41 (1999),
+236--266.
+\item[Reed--Simon.] M.~Reed and B.~Simon, \emph{Methods of Modern
+Mathematical Physics}, Vol.~I (Academic Press 1980),
+Thm.~VIII.11 (diagonal operators); Vol.~II (Academic Press 1975),
+Thm.~X.23 (Friedrichs extension).
+\item[Deninger.] C.~Deninger, \emph{Motivic \(L\)-functions and
+regularised determinants}, Proc.~Symp.~Pure Math.~55.1 (1994),
+707--743; \emph{A note on arithmetic topology and dynamical systems},
+Math.~Nachr.~205 (2001), 107--135.
+\item[Ray--Singer.] D.~B.~Ray and I.~M.~Singer, \emph{\(R\)-torsion
+and the Laplacian on Riemannian manifolds}, Advances in
+Mathematics 7 (1971), 145--210 (source of \(\zeta\)-regularised
+determinants).
+\item[Voros.] A.~Voros, \emph{Spectral functions, special functions
+and the Selberg zeta function}, Comm.~Math.~Phys.~110 (1987),
+439--465.
+\end{description}
+
+\paragraph{Hadamard factorisation and explicit formula.}
+\begin{description}
+\item[Riemann.] B.~Riemann, \emph{\"Uber die Anzahl der Primzahlen
+unter einer gegebenen Gr\"osse}, Monatsberichte der Berliner
+Akademie, 1859.
+\item[Hadamard.] J.~Hadamard, \emph{\'Etude sur les propri\'et\'es
+des fonctions enti\`eres et en particulier d'une fonction consid\'er\'ee
+par Riemann}, J.~Math.~Pures Appl.~9 (1893), 171--215.
+\item[von Mangoldt.] H.~von Mangoldt, \emph{Zu Riemann's Abhandlung
+``\"Uber die Anzahl der Primzahlen unter einer gegebenen Gr\"osse''},
+J.~Reine Angew.~Math.~114 (1895), 255--305.
+\item[Weil.] A.~Weil, \emph{Sur les ``formules explicites'' de la
+th\'eorie des nombres premiers}, Comm.~S\'em.~Math.~Univ.~Lund (1952),
+252--265.
+\item[Edwards.] H.~M.~Edwards, \emph{Riemann's Zeta Function},
+Academic Press 1974.
+\end{description}
+
+\paragraph{Chiral algebra and arithmetic Fock background.}
+\begin{description}
+\item[Beilinson--Drinfeld.] A.~Beilinson and V.~Drinfeld,
+\emph{Chiral Algebras}, AMS Colloquium Publications 51 (2004).
+\item[Bost--Connes~(cited above).]
+\item[Vol~IV chapters.] \Cref{v4-arith:kms-gns-full},
+\Cref{v4-arith:HPAr-vbconverse}, \Cref{v4-arith:hpar-det},
+\Cref{v4-arith:R-analytic-comparison}, \Cref{v4-arith:rh-reformulation}.
+\end{description}

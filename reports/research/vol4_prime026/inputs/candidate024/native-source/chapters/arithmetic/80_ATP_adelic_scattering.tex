@@ -1,0 +1,768 @@
+\chapter{A-TP via Adelic Scattering: Bost--Connes \(S\)-Matrix and Mellin-Unitary Closure}
+\label{v4-arith:w7-j:ATP-adelic-scattering}
+
+\emph{The archimedean Tate positivity conjecture
+A-TP of \Cref{v4-arith:w5-a:conj:archimedean-tate-positivity} is
+RH-equivalent. Chapter~\ref{v4-arith:w6-a:ATP-direct-obstruction}
+writes the negative archimedean part as a bounded-interval term
+coupled to \(R[f]\). The scattering ansatz is conditional. If a
+renormalised trace-class pair
+\((D_{0},D_{\mathrm{BC}})\) on the idele class Hilbert space
+\(\mathcal{K}=L^{2}(C_{\mathbb{Q}})\) has spectral shift equal to the
+Weil distribution, then A-TP becomes positivity of the associated
+spectral-shift measure. Bare unitarity of the scattering matrix is
+not sufficient for A-TP. The Tate-Mellin calculation supplies only a
+unitary phase on a zero-adapted sub-class; it does not prove Weil
+positivity there without the spectral-shift positivity input.}
+
+\section{Scattering Domain}
+\label{v4-arith:w7-j:domain}
+
+The Mellin--Rankin--Selberg isometry of
+Chapter~\ref{v4-arith:w5-a:chapter} closes the prime side of the Weil
+distribution inside Petersson positivity on the tempered cuspidal
+core. Chapter~\ref{v4-arith:w6-a:ATP-direct-obstruction} reduces A-TP on
+the archimedean side to a bounded-interval question for the digamma
+kernel. The disjoint conditional construction recasts A-TP as
+spectral-shift positivity for a renormalised adelic
+scattering pair, compute the Tate-Mellin phase on a zero-adapted
+sub-class, and locate the missing positivity inside the Connes
+adele-class-space construction.
+
+\subsection{Independent Sources}
+\label{v4-arith:w7-j:sources}
+
+The scattering obstruction draws on five classical sources, each disjoint
+from the lists used in
+Chapters~\ref{v4-arith:w5-a:chapter},
+\ref{v4-arith:w6-a:ATP-direct-obstruction},
+\ref{v4-arith:w5-b:hp-operator}.
+
+\begin{description}
+\item[Connes 1999.] A.~Connes, \emph{Trace formula in noncommutative
+geometry and the zeros of the Riemann zeta function}, Selecta
+Math.~(N.~S.)~5 (1999), 29--106; arXiv:math/9811068. Adele-class-space
+construction, cutoff regularisation, absorption-trace theorem
+(\S IV, Thm.~1), Weil-positive trace identity (\S V).
+\item[Meyer 2005.] R.~Meyer, \emph{On a representation of the idele
+class group related to primes and zeros of \(L\)-functions}, Duke
+Math.~J.~127 (2005), 519--595; arXiv:math/0311468. Schwartz-class
+refinement of Connes' Hilbert space; distributional trace on the
+idele class quotient; explicit Mellin-unitary intertwiner.
+\item[Birman--Krein 1962.] M.S.~Birman and M.G.~Krein, \emph{On the
+theory of wave operators and scattering operators}, Dokl.~Akad.~Nauk
+SSSR 144 (1962), 475--478. Spectral shift function; Birman--Krein
+formula \(\det S(\lambda)=e^{-2\pi i\xi(\lambda)}\) linking scattering
+phase to trace shift.
+\item[Enss 1978.] V.~Enss, \emph{Asymptotic completeness for quantum
+mechanical potential scattering, I. Short range potentials},
+Comm.~Math.~Phys.~61 (1978), 285--291. Geometric propagation method
+for asymptotic completeness in two-body scattering; direct
+construction of wave operators without Fourier transform.
+\item[Reed--Simon III.] M.~Reed and B.~Simon, \emph{Methods of Modern
+Mathematical Physics III: Scattering Theory}. Academic Press 1979.
+Chapter XI for trace-class scattering, XI.3 for Kato--Birman theory,
+XI.7 for Enss method; Chapter XIII for spectral deformations.
+\end{description}
+
+These five sources form a scattering-theoretic list disjoint from
+the Weil~1952 / Rankin 1939 / Petersson list driving the restricted-class comparison, from
+the Hurwitz 1882 / Gauss 1813 / Whittaker--Watson 1927 elementary
+digamma list of \Cref{v4-arith:w6-a:ATP-direct-obstruction}, and from
+the Bost--Connes 1995 / Takesaki 1979 modular-theoretic list of
+\Cref{v4-arith:w5-b:hp-operator}. The Connes 1999 paper is cited in
+\Cref{v4-arith:w5-a:chapter} and \Cref{v4-arith:w5-b:hp-operator} for
+context, not as a proof source; its decisive use occurs in
+the scattering argument. Meyer 2005 was cited but not used as derivation in
+Chapters~\ref{v4-arith:w5-b:hp-operator},
+\ref{v4-arith:R-analytic-comparison}; its decisive use is here.
+Birman--Krein 1962, Enss 1978, and Reed--Simon III are new to the
+Vol~IV arithmetic branch.
+
+\section{Adelic Scattering Framework}
+\label{v4-arith:w7-j:framework}
+
+The Weil distribution \(W\) is an explicit distribution on test functions
+\(f\in\mathrm{PW}(\mathbb{R})\) (the Paley--Wiener class: entire functions
+of exponential type with \(L^{2}\) restriction to the real line) encoding
+the prime-side, archimedean, and polar contributions to the explicit
+formula. A-TP asserts \(W(f*\widetilde{f})\geq 0\) for all such \(f\),
+where \(\widetilde{f}(t):=\overline{f(-t)}\) is the involute. To
+reformulate this positivity as an operator-theoretic unitarity condition,
+one needs a Hilbert space on which the scaling action of
+\(\mathbb{R}_{>0}\) is self-adjoint, and a perturbation whose spectral
+trace recovers \(W\).
+
+\subsection{The Idele Class Hilbert Space}
+\label{v4-arith:w7-j:framework:hilbert}
+
+\begin{definition}[idele class Hilbert space]
+\label{v4-arith:w7-j:def:H-idele}
+\ClaimStatusDefinitional. Let
+\(\mathbb{A}=\mathbb{R}\times\prod'_{p}\mathbb{Q}_{p}\) be the ring of
+adeles of \(\mathbb{Q}\) and
+\(\mathbb{A}^{\times}=\mathbb{R}^{\times}\times\prod'_{p}\mathbb{Q}_{p}^{\times}\)
+the idele group. Write
+\(C_{\mathbb{Q}}:=\mathbb{Q}^{\times}\backslash\mathbb{A}^{\times}\)
+for the idele class group, with idele-norm map
+\(|\cdot|:C_{\mathbb{Q}}\to\mathbb{R}_{>0}\); and
+\(C_{\mathbb{Q}}^{1}:=\ker|\cdot|\) for the norm-one idele class group.
+The \emph{idele class Hilbert space} is
+\begin{equation}
+\label{v4-arith:w7-j:eq:H-idele}
+\mathcal{H}^{\mathrm{id}}\;:=\;L^{2}(C_{\mathbb{Q}},d^{\times}x),
+\end{equation}
+with \(d^{\times}x\) the normalised Haar measure on \(C_{\mathbb{Q}}\).
+The \emph{scaling generator} is the self-adjoint operator
+\(D:=-i\,\partial_{\log|x|}\) densely defined on Schwartz-class
+functions invariant under \(C_{\mathbb{Q}}^{1}\)
+(Meyer 2005 arXiv:math/0311468 \S3). It is the archimedean component
+of the scaling action; by Mellin inversion, \(D\) has continuous
+spectrum \(\mathbb{R}\) with Lebesgue multiplicity.
+\end{definition}
+
+\begin{lemma}[Mellin decomposition of \(\mathcal{H}^{\mathrm{id}}\)]
+\label{v4-arith:w7-j:lem:mellin-decomp}
+\ClaimStatusProvedElsewhere \emph{(cite Meyer 2005 \S3.2)}.
+The decomposition
+\(\mathbb{A}^{\times}/\mathbb{Q}^{\times}\cong\mathbb{R}_{>0}\times
+C_{\mathbb{Q}}^{1}\) via the idele norm gives a unitary isomorphism
+\begin{equation}
+\label{v4-arith:w7-j:eq:mellin-decomp}
+\mathcal{H}^{\mathrm{id}}\;\cong\;L^{2}(\mathbb{R}_{>0},d^{\times}t)\otimes L^{2}(C_{\mathbb{Q}}^{1},d\mu_{1}),
+\end{equation}
+and under the Mellin transform \(\mathcal{M}\colon L^{2}(\mathbb{R}_{>0},d^{\times}t)\to
+L^{2}(\mathbb{R},d\tau)\) the scaling generator \(D\) conjugates to the
+multiplication operator \(\tau\mapsto\tau\) on the first factor.
+\end{lemma}
+
+\begin{proof}
+Meyer 2005 \S3.2 constructs the Mellin isomorphism
+\(\mathcal{M}: L^{2}(\mathbb{R}_{>0},d^{\times}t) \to
+L^{2}(\mathbb{R},d\tau)\); \(D = -i\partial_{\log|x|}\) is the
+infinitesimal generator of the \(\mathbb{R}_{>0}\)-scaling action,
+and under \(\mathcal{M}\) the operator \(D\) conjugates to
+multiplication by \(\tau\) on the Mellin-side. No new content added.
+\end{proof}
+
+\subsection{The Bost--Connes Scattering Generator}
+\label{v4-arith:w7-j:framework:generator}
+
+The occupation operator of \Cref{v4-arith:w5-b:occupation-comparison}
+provides a sequence of finite perturbations once an embedding into the
+scattering space is chosen. Such an embedding is additional data; the
+product GNS construction does not supply a map to the idele-class space.
+
+\begin{definition}[scattering space and finite occupation perturbations]
+\label{v4-arith:w7-j:def:scattering-space}
+Write
+\begin{equation}
+\label{v4-arith:w7-j:eq:H-scatter}
+ \mathcal K=L^2(\mathbb R,d\tau)\otimes L^2(C_{\mathbb Q}^1,d\mu_1),
+ \qquad D_0=M_\tau\otimes1,
+\end{equation}
+with \(\mu_1(C_{\mathbb Q}^1)=1\) and maximal multiplication domain
+\(\{f:\int\tau^2\|f(\tau)\|^2d\tau<\infty\}\).
+Let \(P_0\) project onto the constant function in the second factor.
+Choose an isometry \(I:\ell^2(\mathbb N^\times)\to L^2(\mathbb R)\).
+For example, fix a smooth function \(h\), supported in \((0,1)\), with
+\(\|h\|_2=1\), and put \(Iv_m=h_m\), where \(h_m(\tau)=h(\tau-m)\).
+The disjoint supports make this an isometry. Let \(Q_M\) project onto
+\(v_1,\ldots,v_M\), and define
+\begin{equation}
+\label{v4-arith:w7-j:eq:D-BC}
+ V_M=(I Q_MN_{\mathrm{occ}}Q_MI^*)\otimes P_0,
+ \qquad D_M=D_0+V_M \quad\hbox{on }\operatorname{Dom}D_0.
+\end{equation}
+A full arithmetic scattering operator \(D_{\mathrm{BC}}\) would be a
+specified self-adjoint perturbation of \(D_0\), with a prescribed domain
+and an arithmetic trace comparison. It is not defined by the formal
+expression \(D_0+\iota_*N_{\mathrm{BC}}\otimes P_0\): an isometric
+transport of either unbounded occupation or modular energy cannot be a
+bounded perturbation.
+\end{definition}
+
+\begin{proposition}[finite perturbations and the undamped limit]
+\label{v4-arith:w7-j:finite-perturbation}
+The operator \(D_M\) is self-adjoint on \(\operatorname{Dom}D_0\), and
+\[
+ \|V_M\|=\log M,\qquad
+ \|V_M\|_1=\sum_{m=1}^M\log m,\qquad
+ \|V_M\|_2^2=\sum_{m=1}^M(\log m)^2.
+\]
+Here \(\|\cdot\|_1\) and \(\|\cdot\|_2\) are the trace and
+Hilbert--Schmidt norms. The undamped sequence has no bounded,
+trace-class or Hilbert--Schmidt limit. For real coefficients \(a_m\),
+the diagonal series
+\(V_a=\sum_m a_m|h_m\rangle\langle h_m|\otimes P_0\)
+is trace class exactly when \(\sum_m|a_m|<\infty\), and is
+Hilbert--Schmidt exactly when \(\sum_m|a_m|^2<\infty\).
+\end{proposition}
+\begin{proof}
+The vectors \(h_m\otimes1\) are orthonormal. They diagonalize \(V_M\)
+with eigenvalues \(\log m\); the operator is zero on their orthogonal
+complement. This proves the three formulas and the series criteria.
+For self-adjointness, \(V_M\) is bounded and self-adjoint. A vector
+\(y\) is in the adjoint domain of \(D_0+V_M\) exactly when
+\(x\mapsto\langle D_0x,y\rangle+\langle V_Mx,y\rangle\) is bounded
+on \(\operatorname{Dom}D_0\) in the Hilbert norm. The second term is
+already bounded, so this condition is precisely
+\(y\in\operatorname{Dom}D_0^*=\operatorname{Dom}D_0\). The adjoint
+therefore equals \(D_0+V_M\) on this domain.
+\end{proof}
+
+The original occupation coefficients are \(a_m=\log m\).
+Replacing them by \((\log m)/m\) produces a Hilbert--Schmidt series,
+but changes the operator and still does not give a trace-class series.
+A damping or subtraction must therefore be part of a new specified
+arithmetic construction, together with its trace comparison.
+
+\begin{remark}[relation to \(H_{\mathrm{HP}}\)]
+\label{v4-arith:w7-j:rem:relation-to-HHP}
+The BC-perturbed scaling generator \(D_{\mathrm{BC}}\) is a
+renormalised scattering ansatz on \(\mathcal{K}\), distinct from
+\(H_{\mathrm{HP}}\) of \Cref{v4-arith:w5-b:def:twist}.
+The operator \(H_{\mathrm{HP}}\) is the hypothetical operator whose
+normal determinant divisor is \(\mathrm{div}\,\xi_{\mathbb R}\) and
+whose Weil--Connes trace is supported at the zero ordinates after
+zero-placement; \(D_{\mathrm{BC}}\) is the operator whose spectral
+shift is required to reproduce the Weil distribution.
+A relation between these two operators requires the arithmetic maps of
+\Cref{v4-arith:w5-b:hyp:twist-existence} and a comparison of their
+regularized traces. The scattering formulation additionally requires a
+specified perturbation, complete wave operators and the relevant
+spectral-shift identity. None follows from the occupation spectrum.
+\end{remark}
+
+\subsection{Wave Operators and the \(S\)-Matrix}
+\label{v4-arith:w7-j:framework:S-matrix}
+
+\begin{definition}[wave operators and \(S\)-matrix]
+\label{v4-arith:w7-j:def:wave-operators}
+\ClaimStatusDefinitional. Write \(P_{\mathrm{ac}}(D_{0})\) for the
+spectral projection of \(D_{0}\) onto its absolutely continuous
+subspace. The \emph{wave operators} (M\o{}ller operators) of the pair
+\((D_{0},D_{\mathrm{BC}})\) on \(\mathcal{K}\) are the strong-operator
+limits
+\begin{equation}
+\label{v4-arith:w7-j:eq:wave-operators}
+W_{\pm}\;:=\;\mathrm{s}\text{-}\lim_{t\to\pm\infty}e^{itD_{\mathrm{BC}}}\,e^{-itD_{0}}\,P_{\mathrm{ac}}(D_{0}),
+\end{equation}
+provided the strong limits exist on \(P_{\mathrm{ac}}(D_{0})\mathcal{K}\)
+(Reed--Simon III Thm.~XI.8). The \emph{scattering operator} is
+\begin{equation}
+\label{v4-arith:w7-j:eq:S-operator}
+S\;:=\;W_{+}^{*}W_{-}\;:\;P_{\mathrm{ac}}(D_{0})\mathcal{K}\to P_{\mathrm{ac}}(D_{0})\mathcal{K},
+\end{equation}
+an operator that is unitary when both wave operators are complete,
+meaning that each has range \(P_{\mathrm{ac}}(D_{\mathrm{BC}})\mathcal K\).
+Existence alone does not assert completeness or unitarity.
+\end{definition}
+
+\begin{proposition}[wave operators for the smooth finite model]
+\label{v4-arith:w7-j:prop:wave-existence}
+For the smooth, disjoint-support choice \(Iv_m=h_m\) above, the limits
+\(W_\pm(D_M,D_0)\) exist and are isometries on \(\mathcal K\).
+Completeness of a specified pair and its spectral-shift formula are
+additional hypotheses for the scattering comparisons below.
+\end{proposition}
+\begin{proof}
+It suffices first to take \(f\) in the algebraic tensor product of
+\(C_c^\infty(\mathbb R)\) with \(L^2(C_{\mathbb Q}^1)\). Only its
+component in the constant character contributes to \(V_M e^{-itD_0}f\).
+Each coefficient is an integral
+\(\int\overline{h_m(\tau)}f_0(\tau)e^{-it\tau}d\tau\).
+Twice integrating by parts bounds its absolute value by
+\(C_f(1+|t|)^{-2}\). The sum has finitely many terms, so
+\(\int_\mathbb R\|V_Me^{-itD_0}f\|dt<\infty\).
+Differentiating \(e^{itD_M}e^{-itD_0}f\) on this common smooth domain
+gives \(i e^{itD_M}V_Me^{-itD_0}f\). Its integrable norm proves the
+Cauchy property as \(t\to\pm\infty\). The approximating operators are
+unitary. Thus the limits preserve norms on a dense subspace and extend
+by the uniform norm bound to isometries on all of \(\mathcal K\).
+\end{proof}
+
+\begin{remark}[the full scattering hypothesis]
+\label{v4-arith:w7-j:rem:trace-class-domain}
+A self-adjoint \(D_{\mathrm{BC}}\), complete wave operators, a
+spectral-shift function and the asserted arithmetic trace matching
+must be supplied for the full scattering problem. Trace class is a
+condition on a bounded operator on a Hilbert space; convergence of a
+subtracted distribution on Schwartz functions does not by itself
+satisfy it. The finite construction proves existence of wave operators
+for each \(M\); it does not prove convergence or completeness in an
+arithmetic limit. Full modular energy is still further removed from
+this finite-rank argument: each of its eigenprojections has infinite
+rank. The choice of \(I\), the limiting or damped perturbation, and its
+comparison with arithmetic phases are the first missing data.
+\end{remark}
+
+\section{Scattering-Matrix Reformulation of A-TP}
+\label{v4-arith:w7-j:reformulation}
+
+The scattering framework of Section~\ref{v4-arith:w7-j:framework}
+places \(W\) in operator-theoretic form only under the trace-class
+renormalisation hypothesis. The Birman--Krein formula then supplies a
+spectral-shift function. A-TP is the positivity of the corresponding
+quadratic form, not bare unitarity of \(S\).
+
+\subsection{Birman--Krein Spectral Shift}
+\label{v4-arith:w7-j:reformulation:birman-krein}
+
+\begin{proposition}[Birman--Krein formula on \(\mathcal{K}\)]
+\label{v4-arith:w7-j:prop:birman-krein}
+\ClaimStatusProvedElsewhere \emph{(cite Birman--Krein 1962; Reed--Simon III XI.9.30)}.
+Under the trace-class hypothesis of
+\Cref{v4-arith:w7-j:prop:wave-existence}, there is a real-valued
+locally integrable \emph{spectral shift function}
+\(\xi_{\mathrm{BK}}(\lambda)\) on \(\mathbb{R}\) such that for every
+trace-class admissible test function \(h\),
+\begin{equation}
+\label{v4-arith:w7-j:eq:birman-krein}
+\mathrm{Tr}\bigl[h(D_{\mathrm{BC}})-h(D_{0})\bigr]\;=\;\int_{\mathbb{R}}h'(\lambda)\,\xi_{\mathrm{BK}}(\lambda)\,d\lambda,
+\end{equation}
+and the scattering matrix \(S(\lambda)\) on the fibre at spectral
+parameter \(\lambda\in\mathbb{R}\) satisfies
+\begin{equation}
+\label{v4-arith:w7-j:eq:BK-det}
+\det S(\lambda)\;=\;\exp\bigl(-2\pi i\,\xi_{\mathrm{BK}}(\lambda)\bigr).
+\end{equation}
+In particular, \(\xi_{\mathrm{BK}}(\lambda) = -\tfrac{1}{2\pi i}\log\det S(\lambda)\).
+\end{proposition}
+
+\begin{proof}
+Birman--Krein 1962 Thm.~1; Reed--Simon III Thm.~XI.9.30. The
+spectral shift function is the Krein trace of the difference of
+spectral projectors. No new content added.
+\end{proof}
+
+\subsection{Identification of the Weil Distribution with \(\xi_{\mathrm{BK}}\)}
+\label{v4-arith:w7-j:reformulation:identification}
+
+\begin{theorem}[Weil distribution as spectral shift]
+\label{v4-arith:w7-j:thm:weil-as-shift}
+\ClaimStatusProvedHereConditional \emph{(conditional on the trace-class
+renormalisation of Meyer 2005 \S4.1 and the Connes cutoff regularisation
+of Connes 1999 \S II.2)}. Let \(\xi_{\mathrm{BK}}\) be the spectral
+shift function of
+\Cref{v4-arith:w7-j:prop:birman-krein} for the pair
+\((D_{0},D_{\mathrm{BC}})\) on \(\mathcal{K}\). For every
+\(f\in\mathrm{PW}(\mathbb{R})\) (entire of exponential type, \(L^2\)
+on \(\mathbb{R}\), with compactly supported Fourier transform
+\(\widehat{f}\in L^{2}_{\mathrm{c}}(\mathbb{R})\)),
+\begin{equation}
+\label{v4-arith:w7-j:eq:weil-as-shift}
+W(f*\widetilde{f})\;=\;\int_{\mathbb{R}}\bigl(|\widehat{f}|^{2}\bigr)'(\lambda)\,\xi_{\mathrm{BK}}(\lambda)\,d\lambda,
+\end{equation}
+where \(W\) is the Weil distribution of
+\eqref{v4-arith:w5-a:eq:weil-explicit}. Equivalently, the Weil
+distribution is the regularised trace difference
+\(\mathrm{Tr}_{\mathrm{reg}}[h(D_{\mathrm{BC}})-h(D_{0})]\) with
+\(h=|\widehat{f}|^{2}\).
+\end{theorem}
+
+\begin{proof}
+By Meyer 2005 Thm.~4.4 (Schwartz-class distributional trace on the
+idele class quotient), the regularised trace of \(h(D_{\mathrm{BC}})\)
+on \(\mathcal{K}\) splits into:
+\begin{itemize}
+\item the free-generator trace \(\mathrm{Tr}_{\mathrm{reg}}h(D_{0})\),
+which is the Plancherel integral \(\int h(\lambda)\,d\lambda\)
+against Lebesgue measure on \(\mathbb{R}\) (the continuous spectrum of
+\(D_{0}\));
+\item the perturbation contribution, localised on the spherical
+character sector \(P_{0}\), summing the BC log-prime spectrum against
+\(h\) with the Meyer kernel \(m^{-1}\) per eigenvalue (the \(\zeta\)-regularised
+weight).
+\end{itemize}
+The difference is precisely the finite-prime Weil contribution
+\(-W_{\mathrm{fin}}(h)\) plus the polar residue at \(s=1\). The
+archimedean contribution \(-W_{\infty}(h)\) arises from the
+renormalisation of the scaling at the real place: Connes 1999 \S III.3
+shows that the Connes cutoff trace picks up the digamma kernel
+\(\mathrm{Re}\,\psi(1/4+it/2)+\log\pi\) as the archimedean contribution
+to the regularised trace. Combining the finite and archimedean
+contributions with the polar terms gives exactly the Weil
+distribution \(W\) of \eqref{v4-arith:w5-a:eq:weil-explicit}. Applying
+the Birman--Krein formula \eqref{v4-arith:w7-j:eq:birman-krein} with
+\(h=|\widehat{f}|^{2}\) gives
+\eqref{v4-arith:w7-j:eq:weil-as-shift}.
+\end{proof}
+
+\begin{remark}[what the identification buys]
+\label{v4-arith:w7-j:rem:identification-buys}
+\Cref{v4-arith:w7-j:thm:weil-as-shift} is the scattering-theoretic
+analog of \Cref{v4-arith:w5-b:prop:weil-trace}: where the latter
+requires a twist-existence hypothesis to identify
+\(\mathrm{Tr}_{\mathrm{reg}}h(H_{\mathrm{HP}})\) with the zero-side of
+the Weil formula, the former identifies the regularised trace of the
+\emph{existing} self-adjoint operator \(D_{\mathrm{BC}}-D_{0}\) with
+the full Weil distribution \(W\). The trade-off: the twist construction
+would give the zero-side
+\(\sum_{\rho}h(z_{\rho})\), \(z_{\rho}=-i(\rho-\tfrac12)\), directly;
+the scattering construction gives \(W\), which by the Weil explicit
+formula equals this zero-side functional. Replacing \(z_{\rho}\) by
+the real ordinate \(\gamma_{\rho}\) is the RH-level step. The
+decisive shift is
+that the positivity of \(W\) on \(|\widehat{f}|^{2}\)-tests becomes the
+unitarity of \(S\).
+\end{remark}
+
+\subsection{A-TP as Unitarity of \(S\)}
+\label{v4-arith:w7-j:reformulation:ATP-unitarity}
+
+\begin{theorem}[A-TP as spectral-shift positivity]
+\label{v4-arith:w7-j:thm:ATP-iff-S-unitary}
+\ClaimStatusProvedHereConditional \emph{(conditional on the trace-class
+renormalisation of \Cref{v4-arith:w7-j:rem:trace-class-domain})}. The
+following are equivalent.
+\begin{enumerate}
+\item The archimedean Tate positivity conjecture A-TP
+(\Cref{v4-arith:w5-a:conj:archimedean-tate-positivity}) holds for
+every \(f\in\mathrm{PW}(\mathbb{R})\).
+\item For every \(f\in\mathrm{PW}(\mathbb{R})\),
+\[
+\int_{\mathbb{R}}\bigl(|\widehat f|^{2}\bigr)'(\lambda)
+\xi_{\mathrm{BK}}(\lambda)\,d\lambda\geq0 .
+\]
+\item The signed spectral-shift distribution \(-d\xi_{\mathrm{BK}}\) is
+non-negative on the Paley--Wiener convolution cone.
+\item The Riemann Hypothesis.
+\end{enumerate}
+If the scattering matrix is unitary and the spectral-shift measure is
+monotone, then the same condition may be expressed in scattering
+language. Unitarity alone is not equivalent to A-TP.
+\end{theorem}
+
+\begin{proof}
+\((4)\Leftrightarrow(1)\): \Cref{v4-arith:w5-a:thm:ATP-equals-weil-positivity}.
+
+\((1)\Leftrightarrow(2)\): use
+\Cref{v4-arith:w7-j:thm:weil-as-shift}. The displayed integral is
+exactly \(W(f*\widetilde f)\).
+
+\((2)\Leftrightarrow(3)\): integration by parts gives, in the
+distributional sense,
+\[
+W(f*\widetilde{f})\;=\;-\int|\widehat{f}(\lambda)|^{2}\,d\xi_{\mathrm{BK}}(\lambda)
+\]
+for Paley--Wiener convolution tests. Positivity for all such tests is
+precisely non-negativity of \(-d\xi_{\mathrm{BK}}\) on that cone.
+\end{proof}
+
+\begin{remark}[honest caveat on the last implication]
+\label{v4-arith:w7-j:rem:honest-caveat}
+The determinant relation \(\det S(\lambda)=\exp(-2\pi
+i\xi_{\mathrm{BK}}(\lambda))\) records a phase. It does not force
+\(-d\xi_{\mathrm{BK}}\ge0\). The missing monotonicity is exactly the
+positivity of \(-d\xi_{\mathrm{BK}}\) required by A-TP in the scattering
+language.
+\end{remark}
+
+\section{Tate-Mellin Phase Calculation on the Sub-Class}
+\label{v4-arith:w7-j:tate-mellin-closure}
+
+The spectral-shift reformulation of
+\Cref{v4-arith:w7-j:thm:ATP-iff-S-unitary} is conditional. A
+zero-adapted sub-class exists on which the Tate functional equation
+computes a unitary phase. This phase calculation does not by itself
+prove \(W(f*\widetilde f)\ge0\).
+
+\subsection{The Tate-Mellin Sub-Class}
+\label{v4-arith:w7-j:sub-class}
+
+\begin{definition}[Tate-Mellin sub-class]
+\label{v4-arith:w7-j:def:TM-subclass}
+\ClaimStatusDefinitional. Write \(\xi_{\mathbb{R}}\) for the completed
+Riemann xi-function \(\xi_{\mathbb{R}}(s):=\tfrac{1}{2}s(s-1)\pi^{-s/2}
+\Gamma(s/2)\zeta(s)\), which satisfies the functional equation
+\(\xi_{\mathbb{R}}(s)=\xi_{\mathbb{R}}(1-s)\) and vanishes exactly at
+the non-trivial zeros of \(\zeta\). For \(f\in\mathrm{PW}(\mathbb{R})\),
+write \(\mathcal{M}[f](s):=\int_{0}^{\infty}f(t)t^{s-1}\,dt\) for its
+Mellin transform. Let
+\(\mathrm{PW}^{\mathrm{TM}}\subset\mathrm{PW}(\mathbb{R})\) denote the
+subspace of \(f\in\mathrm{PW}(\mathbb{R})\) satisfying:
+\begin{itemize}
+\item[(T1)] \(f\) is real-valued and even: \(\widetilde{f}=f\) (where
+\(\widetilde{f}(t):=\overline{f(-t)}\) is the involute);
+\item[(T2)] the Mellin transform \(\mathcal{M}[f](s)\) admits a
+factorisation
+\(\mathcal{M}[f](s)=\xi_{\mathbb{R}}(s)\cdot h(s)\) with \(h\) entire
+of exponential type and rapid decay on vertical strips;
+\item[(T3)] \(h\) satisfies the Hermite-type symmetry
+\(h(s)=\overline{h(1-\overline{s})}\).
+\end{itemize}
+\end{definition}
+
+\begin{remark}[why (T2) is a restriction, not a vacuous hypothesis]
+\label{v4-arith:w7-j:rem:T2-restriction}
+Condition (T2) forces \(\mathcal{M}[f](s)\) to vanish at the
+trivial zeros of \(\zeta\) (i.e.\ at \(s=-2,-4,-6,\ldots\)) and at the
+non-trivial zeros of \(\zeta\) on the critical line. The latter is a
+non-trivial restriction: typical \(f\in\mathrm{PW}(\mathbb{R})\) have
+\(\mathcal{M}[f]\) with generic zero set, not aligned with the
+non-trivial zeros. The sub-class \(\mathrm{PW}^{\mathrm{TM}}\)
+therefore consists of functions that are already \emph{adapted} to
+the zero set of \(\xi_{\mathbb{R}}\); for these, the scattering
+formulation becomes elementary.
+\end{remark}
+
+\subsection{Classical Mellin-Unitary on \(\mathrm{PW}^{\mathrm{TM}}\)}
+\label{v4-arith:w7-j:classical-mellin}
+
+\begin{proposition}[Tate-Mellin \(S\)-matrix is classical]
+\label{v4-arith:w7-j:prop:TM-S-classical}
+\ClaimStatusProvedHereConditional. Fix \(f\in\mathrm{PW}^{\mathrm{TM}}\) with
+Tate factorisation
+\(\mathcal{M}[f](s)=\xi_{\mathbb{R}}(s)\cdot h(s)\). On the
+one-dimensional spectral fibre of \(D_{0}\) at frequency
+\(\lambda=t\), the scattering matrix \(S(\lambda)\) restricted to the
+image of \(f\) under the Mellin transform is
+\begin{equation}
+\label{v4-arith:w7-j:eq:S-TM}
+S(t)\,\big|_{f}\;=\;\frac{\xi_{\mathbb{R}}(1/2+it)}{\xi_{\mathbb{R}}(1/2-it)}\cdot U_{h}(t),
+\end{equation}
+where \(U_{h}(t):=h(1/2+it)/h(1/2-it)\) is a classical unitary phase
+(by (T3), \(|U_{h}(t)|=1\)), and the first factor is unitary on the
+critical line by Riemann's functional equation
+\(\xi_{\mathbb{R}}(s)=\xi_{\mathbb{R}}(1-s)\).
+\end{proposition}
+
+\begin{proof}
+Tate 1950 local functional equations at all places (archimedean
+digamma factor at \(\infty\), Euler local factors at each \(p\)) combine
+to give a single global functional equation for \(\xi_{\mathbb{R}}\)
+which, on the critical line, becomes the statement
+\(\xi_{\mathbb{R}}(1/2+it)=\xi_{\mathbb{R}}(1/2-it)\), so the quotient
+in \eqref{v4-arith:w7-j:eq:S-TM} has modulus \(1\) fibrewise. The
+phase \(U_{h}(t)\) is unitary by (T3): for \(s=1/2+it\),
+\(h(1/2+it)=\overline{h(1-\overline{1/2+it})}=\overline{h(1/2-it)}\),
+hence \(U_{h}(t)=h(1/2+it)/h(1/2-it)\) has modulus \(1\). The scattering
+matrix is the product, a unitary phase.
+
+The identification of this classical phase with the abstract
+\(S\)-matrix of \Cref{v4-arith:w7-j:def:wave-operators} is by the
+Meyer 2005 Schwartz-class distribution trace: on the sub-class
+\(\mathrm{PW}^{\mathrm{TM}}\), the BC-perturbed scaling generator
+\(D_{\mathrm{BC}}\) acts on the Mellin-transformed vector as
+multiplication by \(\tau + \tfrac{1}{2}\arg\xi_{\mathbb{R}}(1/2+i\tau)\)
+(the Mellin image of the perturbation is the logarithmic phase of
+the Tate xi-factor; since \(\xi_{\mathbb{R}}\) is real on the critical
+line, this phase is the jump of the real completed factor across its
+zeros),
+and the scattering theory becomes a one-dimensional phase-shift
+computation (Reed--Simon III XI.3).
+\end{proof}
+
+\begin{theorem}[Tate-Mellin phase unitarity]
+\label{v4-arith:w7-j:thm:ATP-TM-closure}
+\ClaimStatusProvedHereConditional \emph{(domain-restricted to
+\(\mathrm{PW}^{\mathrm{TM}}\))}. For every
+\(f\in\mathrm{PW}^{\mathrm{TM}}\), the Tate-Mellin phase
+\(S(t)|_{f}\) has modulus one on the critical line. This is a
+unitarity statement for the phase, not a proof of
+\(W(f*\widetilde{f})\geq0\). Weil positivity follows only after the
+spectral-shift positivity condition of
+\Cref{v4-arith:w7-j:thm:ATP-iff-S-unitary}.
+\end{theorem}
+
+\begin{proof}
+By \Cref{v4-arith:w7-j:prop:TM-S-classical}, \(S(t)|_{f}\) is a unitary
+phase on the spectral fibre. The final sentence is
+\Cref{v4-arith:w7-j:rem:honest-caveat}: phase unitarity does not
+imply monotonicity of \(d\xi_{\mathrm{BK}}\).
+\end{proof}
+
+\begin{remark}[density of \(\mathrm{PW}^{\mathrm{TM}}\)]
+\label{v4-arith:w7-j:rem:TM-density}
+The Tate-Mellin sub-class \(\mathrm{PW}^{\mathrm{TM}}\) is not dense
+in \(\mathrm{PW}(\mathbb{R})\) in the \(L^2\)-topology: condition (T2)
+forces \(\mathcal{M}[f]\) to vanish at the non-trivial zeros of
+\(\zeta\), a set of measure zero, so the sub-class is not a dense
+subspace. Generic \(f\in\mathrm{PW}(\mathbb{R})\) has
+\(\mathcal{M}[f]\) with generic zero set, hence \(f\notin
+\mathrm{PW}^{\mathrm{TM}}\). The sub-class gives a phase calculation
+for functions adapted to the zero set of \(\xi_{\mathbb{R}}\);
+constructing such an \(f\) does require knowledge of those zeros, so
+the sub-class theorem does not provide an independent proof of the
+zero location.
+Non-emptiness of a Paley--Wiener subspace satisfying all three
+conditions is a separate analytic constraint. It is not supplied by
+formal divisibility by \(\xi_{\mathbb R}\).
+\end{remark}
+
+\section{Non-Commutative-Geometric Residual Located Precisely}
+\label{v4-arith:w7-j:nc-residual}
+
+The Tate-Mellin phase calculation relies on a classical
+functional-equation argument that does not extend to generic
+\(\mathrm{PW}(\mathbb{R})\). The obstacle is precisely the content
+Connes 1999 \S IV.3 identifies as the \emph{absorption-trace
+property} of the adele-class-space dynamics.
+
+\subsection{Where the Connes Reduction Enters}
+\label{v4-arith:w7-j:connes-reduction}
+
+\begin{definition}[Connes adele-class space]
+\label{v4-arith:w7-j:def:connes-ac-space}
+\ClaimStatusDefinitional \emph{(following Connes 1999 \S IV.1)}. The
+\emph{adele class space} \(X_{\mathbb{Q}}\) is the quotient
+\(\mathbb{A}/\mathbb{Q}^{\times}\) of the adeles by the multiplicative
+action of non-zero rationals; it is a non-Hausdorff topological space
+whose ``commutative'' \(L^{2}\)-structure degenerates, requiring a
+non-commutative-geometric replacement via a groupoid
+\(C^{*}\)-algebra \(C^{*}(\mathbb{A}/\mathbb{Q}^{\times})\).
+\end{definition}
+
+\begin{proposition}[Connes absorption trace]
+\label{v4-arith:w7-j:prop:connes-absorption}
+\ClaimStatusProvedElsewhere \emph{(cite Connes 1999 Thm.~1)}. On the
+adele class space, the scaling generator has absorption trace equal to
+the zero distribution of \(\zeta\); after zero-placement the trace is
+supported at the imaginary parts of the non-trivial zeros. The
+Hilbert-space realisation requires the
+non-commutative-geometric \(L^{2}\)-structure on
+\(C^{*}(\mathbb{A}/\mathbb{Q}^{\times})\), not the classical
+\(L^{2}(C_{\mathbb{Q}})\) of \Cref{v4-arith:w7-j:def:H-idele}.
+\end{proposition}
+
+\begin{theorem}[obstruction located]
+\label{v4-arith:w7-j:thm:obstruction-located}
+\ClaimStatusProvedHereConditional. The scattering formulation of A-TP
+(\Cref{v4-arith:w7-j:thm:ATP-iff-S-unitary}) reduces the conjecture to
+positivity of the spectral-shift measure attached to the renormalised
+pair \((D_{0},D_{\mathrm{BC}})\). On the Tate-Mellin sub-class
+\(\mathrm{PW}^{\mathrm{TM}}\), the phase is elementary
+(\Cref{v4-arith:w7-j:thm:ATP-TM-closure}), but this does not prove
+Weil positivity. Extension to the full Paley--Wiener class
+\(\mathrm{PW}(\mathbb{R})\) requires the Connes absorption-trace
+property
+(\Cref{v4-arith:w7-j:prop:connes-absorption}), which in turn
+requires passage from the classical \(L^{2}(C_{\mathbb{Q}})\) to the
+non-commutative-geometric \(L^{2}(X_{\mathbb{Q}})\) via
+\(C^{*}(\mathbb{A}/\mathbb{Q}^{\times})\). The non-commutative reduction
+is not replaceable by any classical Mellin unitary: the non-Hausdorff
+quotient \(\mathbb{A}/\mathbb{Q}^{\times}\) has no well-defined
+classical \(L^{2}\)-structure.
+\end{theorem}
+
+\begin{proof}
+The Tate-Mellin phase calculation
+(\Cref{v4-arith:w7-j:thm:ATP-TM-closure}) uses the factorisation
+\(\mathcal{M}[f]=\xi_{\mathbb{R}}\cdot h\) to force alignment with
+non-trivial zeros. Absent this alignment (generic
+\(f\in\mathrm{PW}(\mathbb{R})\)), the scattering fibre \(S(t)|_{f}\) is
+not a single classical phase but a sum of phase contributions from
+each non-trivial zero weighted by the residue of \(\log\mathcal{M}[f]\)
+at that zero; the sum is not a priori a unitary on the classical
+\(L^{2}(C_{\mathbb{Q}})\) spectral fibre, because
+\(\mathcal{M}[f](1/2+it)\) and \(\mathcal{M}[f](1/2-it)\) need not
+agree in modulus when \(f\notin\mathrm{PW}^{\mathrm{TM}}\).
+
+Connes 1999 Thm.~1 supplies the non-commutative Hilbert-space
+framework in which the absorption trace is defined. This Hilbert
+space is non-commutative-geometric: it requires the groupoid structure
+to exist as an \(L^{2}\)-structure. The passage from classical
+\(L^{2}(C_{\mathbb{Q}})\) to \(L^{2}(X_{\mathbb{Q}})\) is an additional
+input, not a consequence of the Tate-Mellin phase calculation.
+
+Hence the residual A-TP on
+\(\mathrm{PW}(\mathbb{R})\setminus\mathrm{PW}^{\mathrm{TM}}\) requires
+the non-commutative-geometric input together with spectral-shift
+positivity. Absent that input, the scattering formulation gives only
+the conditional model above.
+\end{proof}
+
+\subsection{Comparison with the Bounded-Interval Reduction}
+\label{v4-arith:w7-j:comparison}
+
+\begin{remark}[three orthogonal reductions of A-TP]
+\label{v4-arith:w7-j:rem:three-reductions}
+A-TP admits three reductions with independent sources in the arithmetic
+formalism.
+\begin{enumerate}
+\item The Mellin--Rankin--Selberg reduction of
+Chapter~\ref{v4-arith:w5-a:chapter}: A-TP reduces to positivity of
+the archimedean digamma density against the Petersson-absorbed
+prime-side.
+\item The elementary-digamma reduction of
+Chapter~\ref{v4-arith:w6-a:ATP-direct-obstruction}: A-TP reduces to
+\(B[f]\leq A[f]+2\pi R[f]\), with the high-frequency archimedean tail
+controlled by the compact core and the residual.
+\item The adelic-scattering reduction: A-TP
+reduces conditionally to positivity of the spectral-shift measure for
+\((D_{0},D_{\mathrm{BC}})\), with the non-commutative extension to
+\(L^{2}(X_{\mathbb{Q}})\) as part of the residual input.
+\end{enumerate}
+The three reductions are genuinely disjoint: (1) uses automorphic
+representation theory, (2) uses elementary digamma analysis, (3)
+uses scattering theory and \(C^{*}\)-groupoid algebra. Each identifies
+the residual in its own language. The unification of the three is the
+Connes--Deninger
+programme (Connes 1999 + Deninger 1994), which is not closed by
+this or any other Vol~IV chapter.
+\end{remark}
+
+\section{Equivalence Theorem and Mathematical Form of Each Component}
+\label{v4-arith:w7-j:form}
+
+\begin{center}
+\small
+\begin{tabular}{p{0.45\textwidth}|p{0.2\textwidth}|p{0.3\textwidth}}
+Component & Form & Reference \\
+\hline
+Wave operators for finite-rank truncations & Proved; adelic limit conditional & \Cref{v4-arith:w7-j:prop:wave-existence} \\
+Trace-class renormalisation & Hypothesis & \Cref{v4-arith:w7-j:rem:trace-class-domain} \\
+Birman--Krein identification of spectral shift with Weil distribution & Conditional & \Cref{v4-arith:w7-j:thm:weil-as-shift} \\
+A-TP as spectral-shift positivity & Conditional; equivalent to RH & \Cref{v4-arith:w7-j:thm:ATP-iff-S-unitary} \\
+Tate-Mellin phase on \(\mathrm{PW}^{\mathrm{TM}}\) & Proved conditionally; no A-TP closure & \Cref{v4-arith:w7-j:thm:ATP-TM-closure} \\
+A-TP on full \(\mathrm{PW}(\mathbb{R})\) & Open (=RH) & \Cref{v4-arith:w7-j:thm:obstruction-located} \\
+Extension via Connes absorption trace & Requires NC-geometric input & \Cref{v4-arith:w7-j:prop:connes-absorption} \\
+Three disjoint reductions of A-TP in Vol~IV & Listed & \Cref{v4-arith:w7-j:rem:three-reductions}
+\end{tabular}
+\end{center}
+
+\begin{theorem}[adelic scattering reduction]
+\label{v4-arith:w7-j:thm:summary}
+\ClaimStatusProvedHereConditional{} (items conditional on the
+Meyer--Connes trace-class renormalisation of
+Remark~\ref{v4-arith:w7-j:rem:trace-class-domain}). The
+adelic-scattering reformulation of A-TP yields the following.
+\begin{enumerate}
+\item \emph{Equivalence}: A-TP is equivalent to positivity of the
+spectral-shift measure of the renormalised Bost--Connes scattering
+pair on \(\mathcal{K}=L^{2}(C_{\mathbb{Q}})\)
+(\Cref{v4-arith:w7-j:thm:ATP-iff-S-unitary}).
+\item \emph{Phase calculation}: the Tate-Mellin sub-class
+\(\mathrm{PW}^{\mathrm{TM}}\) gives a unitary phase
+(\Cref{v4-arith:w7-j:thm:ATP-TM-closure}), not an unconditional A-TP
+closure.
+\item \emph{Residual location}: the extension to generic
+\(\mathrm{PW}(\mathbb{R})\) requires the Connes non-commutative
+\(L^{2}\)-structure on the adele class space; no classical
+Hilbert-space replacement exists
+(\Cref{v4-arith:w7-j:thm:obstruction-located}).
+\end{enumerate}
+The scattering obstruction does not prove A-TP. It reduces A-TP to
+spectral-shift positivity for a conditional scattering pair. The
+extension to the full class requires the Connes non-commutative
+construction and the RH-equivalent positivity input.
+\end{theorem}
+
+\begin{proof}
+Assemble \Cref{v4-arith:w7-j:thm:ATP-iff-S-unitary},
+\Cref{v4-arith:w7-j:thm:ATP-TM-closure},
+\Cref{v4-arith:w7-j:thm:obstruction-located}.
+\end{proof}
+
+\begin{remark}[Beilinson-principled closure]
+\label{v4-arith:w7-j:rem:beilinson}
+The conditional scattering pair gives a scattering-theoretic
+reformulation of A-TP and isolates the missing input. It does not close
+A-TP. It identifies A-TP with positivity of a spectral-shift measure,
+disjoint from the Mellin--Rankin--Selberg and elementary-digamma
+reductions. The three reductions, read together, pin A-TP to a single
+open problem: realising the zero distribution of
+\(\zeta\) as an absorption trace with the required positive trace
+formula, a Connes-type input that remains open.
+\end{remark}

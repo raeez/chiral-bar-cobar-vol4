@@ -1,0 +1,185 @@
+\chapter{The de Branges Sampling Comparison}
+\label{v4-arith:w7-c:chapter}
+
+\section{The model space}
+
+Write $F^\sharp(z)=\overline{F(\bar z)}$.
+Use the Hermite--Biehler condition $|E^\sharp(z)|<|E(z)|$ for $\Im z>0$.
+This convention permits common real zeros of $E$ and $E^\sharp$.
+The quotients below use their removable continuations.
+For such an $E$, put $\Theta=E^\sharp/E$ and
+\[
+ H^2=\left\{h\text{ holomorphic on }\mathbb C_+:
+      \sup_{y>0}\int_{\mathbb R}|h(x+iy)|^2dx<\infty\right\},
+ \qquad K_\Theta=H^2\ominus\Theta H^2.
+\]
+The de Branges space consists of entire $F$ with $F/E,F^\sharp/E\in H^2$,
+and has norm $\|F\|_{H(E)}=\|F/E\|_{L^2}$.
+Multiplication by $E$ is the isometry $K_\Theta\to H(E)$.
+These conventions are given in \href{https://arxiv.org/html/2301.00421v3}{Suzuki, Sections~2.3--2.4}.
+
+\begin{example}[a zero of arbitrary multiplicity]\label{v4-arith:db:ex:multiple}
+Let $A(z)=z^m$ for an integer $m\ge1$. Then
+\[
+ E=A+iA'=z^{m-1}(z+im),\qquad
+ \Theta(z)=\frac{z-im}{z+im},\qquad
+ e_0(z)=i\sqrt{\frac m\pi}\frac1{z+im}.
+\]
+The space $K_\Theta$ is one-dimensional, and $e_0$ is a unit vector because
+$\int_{\mathbb R}(x^2+m^2)^{-1}dx=\pi/m$.
+Also $e_0(0)=1/\sqrt{\pi m}$ and $\Theta'(0)=-2i/m$.
+Thus $\|h\|_{K_\Theta}^2=\pi m|h(0)|^2$ on this space.
+The multiplicity enters the sampling measure.
+It is compatible with a single normalized basis vector at the distinct zero.
+\end{example}
+
+\begin{theorem}[explicit de Branges sampling realization]\label{v4-arith:db:thm:db}
+\label{v4-arith:w7-c:thm:Mellin-dB-isometry}
+\label{v4-arith:w7-c:cor:ATP-as-dB-positivity}
+Assume that all zeros of $\xi$ lie on the critical line.
+Put $A(z)=\xi(1/2+iz)$, $E=A+iA'$, and $\Theta=E^\sharp/E$.
+Let $\Gamma$ be the distinct real zeros of $A$, with multiplicities $m_\gamma$.
+Then $E$ is Hermite--Biehler and
+\begin{equation}\label{v4-arith:db:eq:basis}
+ e_\gamma(z)=i\sqrt{\frac{m_\gamma}{\pi}}
+       \frac{A(z)}{(z-\gamma)E(z)},\qquad \gamma\in\Gamma,
+\end{equation}
+form an orthonormal basis of $K_\Theta$.
+For $f\in\mathscr A=C_c^\infty(\mathbb R)$, with
+$h_f(z)=\int f(t)e^{izt}dt$, the series
+\begin{equation}\label{v4-arith:db:eq:db-map}
+ T f=\sum_{\gamma\in\Gamma}\sqrt{\pi m_\gamma}\,
+              h_f(\gamma)e_\gamma\quad\text{in }K_\Theta,
+ \qquad \mathcal L f=\pi^{-1/2}E\,Tf\quad\text{in }H(E)
+\end{equation}
+converges and satisfies
+\begin{equation}\label{v4-arith:db:eq:db-pairing}
+ \langle\mathcal L f,\mathcal L g\rangle_{H(E)}=q_W(f,g).
+\end{equation}
+For every $h\in K_\Theta$,
+\begin{equation}\label{v4-arith:db:eq:sampling-norm}
+ \|Eh\|_{H(E)}^2=\|h\|_{L^2}^2
+            =\pi\sum_{\gamma\in\Gamma}m_\gamma|h(\gamma)|^2.
+\end{equation}
+\end{theorem}
+\begin{proof}
+The even order-one Hadamard product of $A$ gives, with positive zeros grouped,
+\[
+ A(z)=A(0)\prod_{\gamma>0}(1-z^2/\gamma^2)^{m_\gamma},\qquad
+ L(z):=\frac{A'(z)}{A(z)}
+   =\sum_{\gamma>0}m_\gamma
+          \left(\frac1{z-\gamma}+\frac1{z+\gamma}\right).
+\]
+The grouped sum converges locally uniformly off the zeros because
+$\sum m_\gamma/(1+\gamma^2)<\infty$.
+Evenness removes the linear exponential in the Hadamard product.
+There is no zero at the origin: $\zeta(1/2)\ne0$, as follows from
+the positive alternating eta series and $1-2^{1/2}<0$.
+For $\Im z>0$, each reciprocal has negative imaginary part.
+Thus $\Im L(z)<0$ and
+\[
+ |E(z)|^2-|E^\sharp(z)|^2=-4|A(z)|^2\Im L(z)>0.
+\]
+This proves the Hermite--Biehler condition.
+
+The boundary norm of $H^2$ uses $du$, so its kernel is
+$[2\pi i(\bar w-z)]^{-1}$.
+Orthogonal projection onto $K_\Theta$ therefore gives the model kernel
+\[
+ k_\Theta(w,z)=\frac{1-\overline{\Theta(w)}\Theta(z)}{2\pi i(\bar w-z)}.
+\]
+Since $\Theta=(1-iL)/(1+iL)$, direct algebra gives
+\begin{align*}
+ k_\Theta(w,z)
+ &=\frac{L(z)-\overline{L(w)}}{
+       \pi(\bar w-z)(1+iL(z))(1-i\overline{L(w)})}\\
+ &=\sum_{\gamma\in\Gamma}e_\gamma(z)\overline{e_\gamma(w)}.
+\end{align*}
+The difference of each pair of reciprocal terms cancels its linear denominator.
+The resulting series is absolutely locally convergent for $z,w\in\mathbb C_+$.
+
+Near $\gamma$, write $A(z)=(z-\gamma)^{m_\gamma}a(z)$ with $a(\gamma)\ne0$.
+Then
+\[
+ \frac{A(z)}{E(z)}=\frac{z-\gamma}{im_\gamma}+O((z-\gamma)^2),\qquad
+ \Theta'(\gamma)=-\frac{2i}{m_\gamma}.
+\]
+It follows that
+$e_\gamma(\gamma)=1/\sqrt{\pi m_\gamma}$ and
+$e_\gamma(\delta)=0$ for every distinct zero $\delta$.
+The kernel has the finite boundary limit
+$k_\Theta(\gamma,z)=e_\gamma(z)/\sqrt{\pi m_\gamma}$.
+These boundary evaluations are bounded: the kernels at $\gamma+iy$
+converge in norm, as the inner products of these kernels converge to their finite analytic limits.
+Consequently the $e_\gamma$ are normalized reproducing kernels and are orthonormal.
+
+For fixed $w\in\mathbb C_+$, the kernel expansion on its diagonal gives
+$\sum_\gamma|e_\gamma(w)|^2=k_\Theta(w,w)$.
+The orthogonal projection of $k_\Theta(w,\cdot)$ onto their closed span
+therefore has the full norm of that kernel.
+All reproducing kernels lie in the span, proving completeness.
+Parseval now gives \eqref{v4-arith:db:eq:sampling-norm}.
+The rapid strip decay of $h_f$ gives
+$\sum m_\gamma|h_f(\gamma)|^2<\infty$, so \eqref{v4-arith:db:eq:db-map} converges in norm.
+Its coefficients give
+$\langle Tf,Tg\rangle=\pi q_W(f,g)$.
+Multiplication by $E$ and division by $\sqrt\pi$ prove \eqref{v4-arith:db:eq:db-pairing}.
+\end{proof}
+
+The basis and its normalization also appear in
+\href{https://arxiv.org/html/2301.00421v3}{Suzuki, equation~(3.5), Proposition~4.1}.
+The theorem assumes real zeros before constructing a positive realization.
+Conversely, if this $E$ is Hermite--Biehler, a nonreal zero of $A$ is impossible.
+At an upper-half-plane zero, $E=iA'$ and $E^\sharp=-iA'$ have equal absolute value.
+Real conjugation excludes lower-half-plane zeros as well.
+Thus this Hermite--Biehler condition contains the real-zero requirement.
+
+\begin{proposition}[the Gaussian domain obstruction]
+\label{v4-arith:db:prop:hardy}
+For $f_\lambda(t)=e^{-\lambda t^2/2}$ with $\lambda>0$, one has
+$h_{f_\lambda}\notin H^2(\mathbb C_+)$.
+Consequently $E h_{f_\lambda}\notin H(E)$.
+\end{proposition}
+\begin{proof}
+The Gaussian Fourier formula gives
+\[
+ \int_{\mathbb R}|h_{f_\lambda}(x+iy)|^2dx
+ =\frac{2\pi^{3/2}}{\sqrt\lambda}e^{y^2/\lambda}.
+\]
+This is unbounded as $y\to\infty$.
+Membership of $E h_{f_\lambda}$ in $H(E)$ would require its quotient
+by $E$ to belong to $H^2$.
+\end{proof}
+
+For $h\in K_\Theta$, multiplication by $E$ transports the Lebesgue
+norm. For a compact arithmetic test, the sampling series $Tf$ is
+an explicit map into that model space. The identity
+$Tf=h_f$ requires $h_f\in K_\Theta$ and follows from equality of
+all samples in the displayed orthonormal basis.
+The construction therefore does not identify an arbitrary entire
+Fourier transform with a model-space vector.
+
+The signed comparison \eqref{v4-arith:sc:full-comparison} holds
+without the real-zero assumption. The positive map $\mathcal L$
+requires that assumption before its construction.
+A finite-prime Petersson norm on all compact tests is impossible by
+Proposition~\ref{v4-arith:sc:two-signs}. On its explicit positive line, the
+finite-prime form has the stated $L^2$ isometry.
+
+\begin{proposition}[sampling weights and operator multiplicities]
+The sampling model has one basis vector $e_\gamma$ per distinct
+zero $\gamma$. The diagonal operator $e_\gamma\mapsto\gamma e_\gamma$
+on its maximal domain therefore has simple eigenvalues.
+The weight $m_\gamma$ in the sampling identity does not give an
+$m_\gamma$-dimensional eigenspace.
+The occurrence carrier $K_Z$ does have the required multiplicities
+for the determinant \eqref{v4-arith:sc:normalized-det-formula}.
+\end{proposition}
+\begin{proof}
+The complete orthonormal basis determines every eigenspace of the
+first diagonal operator. Its coordinates are indexed by distinct
+zeros, so each eigenspace is one-dimensional.
+The coordinates of $K_Z$ instead contain each zero occurrence.
+Changing a scalar product weight changes the norm of a vector,
+but not the dimension of its eigenspace.
+\end{proof}

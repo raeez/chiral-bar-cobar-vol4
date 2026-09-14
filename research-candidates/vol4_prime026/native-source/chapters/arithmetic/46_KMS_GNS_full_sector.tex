@@ -1,0 +1,759 @@
+\chapter{Prime GNS Normalization and Arithmetic Pairings}
+\label{v4-arith:kms-gns-full}
+
+The finite primary character determines a partition trace. A
+Koszul--Petersson comparison additionally requires a Hilbert
+representation of the relevant observables and a map from the
+native pairing to its state. We first construct the local GNS
+representation and its modular conjugation with the normalization
+of \Cref{v4-arith:thermal:chapter}. We then identify the further
+comparison data needed for the arithmetic pairing problem.
+The operator calculation is valid at every real $\beta>0$;
+$\beta=1$ is a regular single-prime temperature.
+
+\section{The Local Comparison Problem}
+\label{v4-arith:kms-gns:statement-table}
+\label{v4-arith:kms-gns:residuals}
+\label{v4-arith:kms-gns:consequences}
+\label{v4-arith:kms-gns:P3-consequence}
+\label{v4-arith:kms-gns:table}
+
+Three constructions are required by the original arithmetic
+problem. The first is the state and its GNS modular involution.
+The second is a pairing-preserving map from the native local
+Koszul and Whittaker data to that representation, including
+ramified factors. The third is an adelic assembly compatible
+with the genuine arithmetic phases and the continuous-spectrum
+domains. The first construction below does not supply the other
+two. Temperedness and a local functional equation alone do not
+construct a map from a categorical Hochschild trace to a Hilbert
+space of arithmetic observables.
+
+\section{The Local State and Its Represented Quotient}
+\label{v4-arith:kms-gns:cycle1}
+\label{v4-arith:kms-gns:cycle1:state}
+
+Let $\Gamma_p=\mathbb Z[1/p]/\mathbb Z$. Its natural map to
+$\mathbb Q_p/\mathbb Z_p$ is an isomorphism: the finitely many
+negative $p$-adic digits give a rational representative with
+$p$-power denominator, and such a rational is $p$-integral
+precisely when its class in $\Gamma_p$ is zero. Consider the unital
+complex $*$-algebra $\mathcal B_p$ presented by an isometry $u$
+and unitaries $e(\gamma)$, $\gamma\in\Gamma_p$, with
+\[
+ u^*u=1,\quad e(\gamma)e(\eta)=e(\gamma+\eta),\quad
+ e(0)=1,\quad e(\gamma)^*=e(-\gamma),
+\]
+\[
+ u^*e(\gamma)u=e(p\gamma),\qquad
+ ue(\gamma)u^*=\frac1p\sum_{p\eta=\gamma}e(\eta).
+\]
+A presentation means the free unital $*$-algebra modulo the
+$*$-ideal of these relations. Put $\mu_{p^r}=u^r$.
+Its time evolution is
+\begin{equation}
+ \alpha_t(u)=p^{it}u,\qquad
+ \alpha_t(e(\gamma))=e(\gamma),\qquad
+ \alpha_t(u^*)=p^{-it}u^*.
+ \label{v4-arith:kms-gns:eq:sigma-time}
+\end{equation}
+Every relation is homogeneous in occupation degree, so these
+formulas define automorphisms. Finite algebra expressions have
+an entire continuation in $t$.
+
+For the fixed exponential character of
+\Cref{v4-arith:thermal:prop:phase}, there is a surjective
+$*$-homomorphism
+\[
+ \pi_+:\mathcal B_p\longrightarrow\mathcal T_p,
+ \qquad u\mapsto S_p,\quad e(\gamma)\mapsto D_\gamma.
+\]
+Indeed every displayed relation holds on the occupation basis,
+and $S_p,R_p$ generate the target. Define
+$\varphi_{p,\beta}=\Phi_{p^{-\beta}}\circ\pi_+$.
+This is a positive normalized functional: it is the pullback of
+the explicitly summed positive Gibbs functional. It also extends
+to the operator-norm completion of this represented quotient.
+No faithfulness of $\pi_+$ is assumed.
+
+\begin{lemma}[local KMS values]
+\label{v4-arith:kms-gns:lem:KMS-property}
+\ClaimStatusProvedHere. For real $\beta>0$, the functional satisfies
+\begin{equation}
+ \varphi_{p,\beta}(xy)
+   =\varphi_{p,\beta}(y\alpha_{i\beta}(x))
+       \qquad(x,y\in\mathcal B_p).
+ \label{v4-arith:kms-gns:eq:KMS}
+\end{equation}
+For $n,m\in p^{\mathbb N_0}$ and $p^h\gamma=0$, putting
+$q=p^{-\beta}$ gives
+\begin{align}
+ \varphi_{p,\beta}(\mu_n^*\mu_m e(\gamma))
+   &=\delta_{nm}\varphi_{p,\beta}(e(\gamma)),
+       \label{v4-arith:kms-gns:eq:phi-1}\\
+ \varphi_{p,\beta}(e(\gamma))
+   &=(1-q)\sum_{j=0}^{h-1}q^j e^{2\pi i p^j\gamma}+q^h.
+       \label{v4-arith:kms-gns:eq:phase-state}
+\end{align}
+In particular $\varphi_{p,\beta}(\mu_m^*\mu_m)=1$.
+\end{lemma}
+
+\begin{proof}
+The representation intertwines the time evolutions, so the
+KMS identity follows from the normal-word calculation in
+\Cref{v4-arith:thermal:prop:thermal-values}. If $n\ne m$,
+the represented product has nonzero occupation degree and zero
+diagonal entries. If $n=m$, its isometry product is one.
+The finite phase expansion and its geometric tail give the
+second formula. Taking $\gamma=0$ gives normalization at the
+identity.
+\end{proof}
+
+Even uniqueness of a local state must retain its algebra.
+Replacing the exponential character by its conjugate defines
+another representation $\pi_-$ and another normalized KMS
+functional. At $p=3$, $\beta=1$,
+\[
+ \varphi_{3,1}^+(e(1/3))=i\sqrt3/3,
+ \qquad \varphi_{3,1}^-(e(1/3))=-i\sqrt3/3.
+\]
+Both values follow from the same finite phase sum. Thus the
+presented local algebra has at least these two KMS states at
+$\beta=1$. Also $\pi_+$ is not faithful at $p=3$: the element
+\[
+ e(1/3)-1-(e^{2\pi i/3}-1)(1-uu^*)
+\]
+vanishes under $\pi_+$ but not under $\pi_-$, as evaluation on
+the vacuum shows. A statement about a particular represented
+prime quotient cannot be substituted for a statement about the
+full arithmetic algebra.
+
+\subsection{GNS carrier}
+\label{v4-arith:kms-gns:cycle1:GNS}
+
+Use the inner product linear in the second variable,
+$\langle[x],[y]\rangle=\varphi_{p,\beta}(x^*y)$.
+The GNS null space is exactly $\ker\pi_+$, because the Gibbs
+state on the represented algebra is faithful by
+\eqref{v4-arith:thermal:gns-norm}. The quotient therefore has
+precisely the GNS completion already constructed for $\mathcal T_p$.
+
+\begin{lemma}[the represented local GNS space]
+\label{v4-arith:kms-gns:lem:GNS-space}
+\ClaimStatusProvedHere. Let $\varrho_q=(1-q)q^{N_p}$ and
+$d_j=(1-q)q^j$. The unitary map and inner products are
+\begin{equation}
+ \mathscr G_{p,\beta}\cong\mathcal S_2(\mathscr H_p),
+ \qquad [x]\longmapsto\pi_+(x)\varrho_q^{1/2},
+ \qquad \Omega_{p,\beta}\longmapsto\varrho_q^{1/2},
+ \label{v4-arith:kms-gns:eq:GNS-iso}
+\end{equation}
+\begin{equation}
+ \langle[E_{ij}],[E_{kl}]\rangle
+      =\delta_{ik}\delta_{jl}d_j,
+ \qquad \langle[\mu_n],[\mu_m]\rangle=\delta_{nm}.
+ \label{v4-arith:kms-gns:eq:GNS-inner-product}
+\end{equation}
+Here matrix units denote their classes in the represented
+quotient. The local strong closure is left multiplication by
+$B(\mathscr H_p)$, and the vacuum is cyclic and separating.
+\end{lemma}
+
+\begin{proof}
+The null-space observation identifies the dense pre-Hilbert
+quotient with the one in \Cref{v4-arith:thermal:gns-carrier}.
+That theorem proves the unitary map, its dense range, all the
+inner products and the strong closure. In particular the creation
+vectors have norm one. The weights $m^{-\beta}$ occur on the
+division vectors $[\mu_m^*]$, whose inner products are
+$\delta_{nm}m^{-\beta}$. No independent orthogonal phase-coordinate
+factor is obtained: phase inner products are the finite sums
+\eqref{v4-arith:kms-gns:eq:phase-state}.
+\end{proof}
+
+\subsection{Modular sign and half-density}
+\label{v4-arith:kms-gns:cycle1:modular}
+
+\begin{lemma}[modular operator on the actual GNS carrier]
+\label{v4-arith:kms-gns:lem:Delta}
+\ClaimStatusProvedHere. On Hilbert--Schmidt matrix units,
+\begin{equation}
+ \Delta_{p,\beta}E_{ij}=p^{-\beta(i-j)}E_{ij},
+ \label{v4-arith:kms-gns:eq:Delta-basis}
+\end{equation}
+with the maximal domain of \Cref{v4-arith:thermal:modular}.
+Consequently
+\begin{equation}
+ \Delta_{p,\beta}^{it}[x]=[\alpha_{-\beta t}(x)],
+ \qquad \Delta_{p,\beta}[\mu_m]=m^{-\beta}[\mu_m].
+ \label{v4-arith:kms-gns:eq:Delta-formula}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The ratio of the density weights in rows $i$ and $j$ is
+$d_i/d_j=p^{-\beta(i-j)}$. The closed diagonal construction and
+its domain are proved in \Cref{v4-arith:thermal:modular}. Its
+imaginary powers therefore scale a degree-$r$ observable by
+$p^{-it\beta r}$, establishing the sign in the time parameter.
+\end{proof}
+
+The densely defined conjugate-linear map and its closure are
+\begin{equation}
+ \mathfrak S_0[x]=[x^*],\qquad
+ \overline{\mathfrak S_0}=J_{p,\beta}\Delta_{p,\beta}^{1/2}.
+ \label{v4-arith:kms-gns:eq:S-def}
+\end{equation}
+The closure and polar decomposition, including the weighted
+square-summability domain, were constructed by finite matrix
+truncations in \Cref{v4-arith:thermal:modular}.
+
+\begin{proposition}[modular conjugation of prime observables]
+\label{v4-arith:kms-gns:prop:J-equals-sigma-BC}
+\ClaimStatusProvedHere. The antiunitary $J_{p,\beta}$ is adjoint
+on the Hilbert--Schmidt carrier. On cyclic vectors,
+\begin{align}
+ J_{p,\beta}[\mu_m]&=m^{\beta/2}[\mu_m^*],
+       &J_{p,\beta}[\mu_m^*]&=m^{-\beta/2}[\mu_m],
+       \label{v4-arith:kms-gns:eq:J-basis}\\
+ J_{p,\beta}[e(\gamma)]&=[e(-\gamma)].
+       \label{v4-arith:kms-gns:eq:J-on-algebra}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+Apply \eqref{v4-arith:kms-gns:eq:S-def} to the eigenvectors of
+\eqref{v4-arith:kms-gns:eq:Delta-formula}. The positive factor on
+$[\mu_m]$ is $m^{-\beta/2}$, hence its inverse is the factor in
+$J_{p,\beta}[\mu_m]$. Phases have degree zero and are fixed by
+the modular positive factor. This also follows from the explicit
+adjoint formula on matrices.
+\end{proof}
+
+\begin{theorem}[local KMS/GNS normalization]
+\label{v4-arith:kms-gns:thm:KMS1-GNS-BC-identification}
+\ClaimStatusProvedHere. For the represented prime Gibbs state,
+$J_{p,\beta}$ is the antiunitary factor of the closed map
+$[x]\mapsto[x^*]$. It fixes the vacuum and sends the left strong
+operator algebra onto its commutant. At $\beta=1$, the factor on
+$\mu_m\Omega$ is $m^{1/2}$ and the factor on $\mu_m^*\Omega$
+is $m^{-1/2}$. This theorem constructs the modular normalization
+on the stated quotient and Hilbert space. A Koszul--Petersson
+identification additionally requires maps from the native pairing
+carriers which intertwine these operations.
+\end{theorem}
+
+\begin{proof}
+The Hilbert--Schmidt construction proves all operator assertions,
+including the commutant, in \Cref{v4-arith:thermal:gns-carrier}
+and \Cref{v4-arith:thermal:modular}. The half-density is also
+forced by $\|\mu_m\Omega\|=1$ and
+$\|\mu_m^*\Omega\|=m^{-\beta/2}$. Thus the inverse coefficient
+on a creation vector would violate antiunitarity. None of these
+calculations supplies a map from an arithmetic convolution category
+or a Whittaker model into this representation.
+\end{proof}
+
+\begin{remark}[the required pairing map]
+\label{v4-arith:kms-gns:rem:uniqueness}
+The weighted lattice with squared basis norms $m^{-1}$ embeds
+isometrically by sending its basis vector at $m=p^r$ to
+$[\mu_m^*]$ at $\beta=1$. Sending it to $[\mu_m]$ with the
+same normalization is not isometric. The first embedding reverses
+occupation energy. The second can be made isometric by multiplying
+$[\mu_m]$ by $m^{-1/2}$, but then it is a different comparison map.
+Their image of the involution must be tested separately. The
+uniqueness of the polar factor on a specified GNS space cannot
+choose a native arithmetic embedding.
+\end{remark}
+
+\subsection{Prime-set assembly}
+\label{v4-arith:kms-gns:cycle1:adelic}
+
+\begin{corollary}[tensor shift GNS conjugation]
+\label{v4-arith:kms-gns:cor:adelic-KMS-GNS}
+\ClaimStatusProvedHere. For finite prime sets, the normalized
+Gibbs GNS spaces tensor, and their modular conjugations tensor
+with respect to the cyclic unit vectors. The resulting isometric
+prime-set maps define an antiunitary involution on the incomplete
+Hilbert tensor product of these spaces. This is a construction
+for the tensor shift algebras and their specified reference states.
+It does not identify the genuine arithmetic phase algebra or the
+native adelic Hochschild object with that tensor product.
+\end{corollary}
+
+\begin{proof}
+The last construction in \Cref{v4-arith:thermal:gns-section}
+uses $X\mapsto X\otimes\varrho_{\mathrm{new}}^{1/2}$.
+The new factor has norm one and is fixed by adjoint, so the
+conjugations agree on the isometric inclusions and extend by
+continuity to the Hilbert completion. The two-prime calculation
+of \Cref{v4-arith:thermal:prop:two-prime-phase} proves that the
+represented local phase quotients do not admit the naive
+phase-preserving inclusions. Moreover, the occupation partition
+at all primes diverges at $\beta=1$. These are distinct obstacles
+to the stronger adelic identification.
+\end{proof}
+
+\section{Finite-Place Pairings and Representation Domains}
+\label{v4-arith:kms-gns:cycle2}
+\label{v4-arith:kms-gns:cycle2:ramified}
+
+The original finite-place target concerns a native representation
+factor, its Koszul dual, and a Whittaker or Kirillov function model.
+The radial shell comparison of
+\Cref{v4-arith:kp:radial-pairing-realization} constructs those
+pairing maps on one explicit function subspace. Extending it to
+an unramified or ramified principal series, or to a supercuspidal
+factor, requires a map on the actual representation domain.
+The state normalization alone cannot provide such an extension.
+
+\begin{lemma}[linearity of local integral comparisons]
+\label{v4-arith:kms-gns:lem:GJ-ramified}
+A nonzero local zeta integral $Z(s,W,\Phi)$ linear in the vector
+$W$ cannot have a formula
+\begin{equation}
+ Z(s,W,\Phi)=L(s)\int|\widehat\Phi(a)|^2\,d\mu_s(a)
+ \label{v4-arith:kms-gns:eq:GJ-ramified}
+\end{equation}
+for every $W$ with fixed $\Phi$, unless the right side vanishes.
+If a pairing is positive Hermitian, multiplying it by a scalar
+$c$ preserves that property only when $c$ is positive real.
+\end{lemma}
+
+\begin{proof}
+Replacing $W$ by $2W$ doubles the left side and leaves the
+right side unchanged. For the pairing claim, evaluate on any
+vector of positive squared norm. Its rescaled squared norm is
+$c$ times a positive real number, so positivity forces
+$c>0$. Conversely a positive real multiple preserves positivity.
+\end{proof}
+
+Thus a local functional equation must retain its vector and test
+function dependence. Its complex root number cannot simply be
+inserted as a common multiplier of two positive Hermitian norms.
+Scalar normalizations act differently on the two kinds of forms:
+rescaling one input of a bilinear form by $c$ multiplies its value
+by $c$, whereas rescaling a vector map in a Hermitian norm
+multiplies its squared norm by $|c|^2$.
+
+\begin{proposition}[local realization with specified normalizations]
+\label{v4-arith:kms-gns:lem:Koszul-ramified}
+\label{v4-arith:kms-gns:lem:Pet-ramified}
+\label{v4-arith:kms-gns:prop:local-match-ramified}
+\ClaimStatusProvedHereConditional. Let $V_{p,\pi}$ be a chosen
+native local representation core, with its dual and pairing
+maps satisfying \Cref{v4-arith:kp:hyp:native-pairing-maps}.
+Then its pairings obey
+\begin{align}
+ B_{p,\pi}(v,a)&=B_q(f_{p,\pi}v,g_{p,\pi}a),
+    \label{v4-arith:kms-gns:eq:Koszul-ramified}\\
+ h_{p,\pi}(v,w)&=h_q(f_{p,\pi}v,f_{p,\pi}w)
+                =B_{p,\pi}(v,c_{p,\pi}w).
+    \label{v4-arith:kms-gns:eq:Pet-ramified}
+\end{align}
+This statement applies to a ramified principal-series core when
+those maps, including its local measure and scalar normalizations,
+are constructed. It does not assert that they exist for every
+ramified factor.
+\end{proposition}
+
+\begin{proof}
+The first equality and the Hermitian equality are the specified
+realization conditions. Their compatibility with the native
+conjugate-linear map is the proved identity
+$B_q(X,J_qY)=h_q(X,Y)$, giving the last equality. This is
+\Cref{v4-arith:thermal:pairing-transfer}, with every carrier
+and scalar normalization fixed before composition.
+\end{proof}
+
+\subsection{Supercuspidal and non-tempered domains}
+\label{v4-arith:kms-gns:cycle2:supercuspidal}
+\label{v4-arith:kms-gns:cycle2:ramanujan}
+
+\begin{corollary}[supercuspidal conditional transfer]
+\label{v4-arith:kms-gns:lem:supercuspidal}
+\ClaimStatusProvedHereConditional. If the native pairing maps
+are supplied on a chosen supercuspidal factor, the same local
+pairing identity holds on that factor.
+\end{corollary}
+\begin{proof}
+The proof of the local transfer uses the displayed maps and
+pairings, and no principal-series presentation. It therefore
+applies to that specified core.
+\end{proof}
+
+\begin{proposition}[the role of temperedness in a transfer]
+\label{v4-arith:kms-gns:prop:non-tempered-residue}
+\ClaimStatusProvedHereConditional. Suppose compatible native
+pairing maps and their adelic assembly are constructed for every
+factor in a specified tempered cuspidal domain. Any theorem
+placing further automorphic representations in that domain allows
+the same transfer on those representations. In particular a
+Ramanujan-type temperedness hypothesis can enlarge that domain;
+it cannot replace the native pairing-map construction.
+\end{proposition}
+\begin{proof}
+Membership in the specified domain permits application of its
+constructed maps. The conclusion is their local transfer followed
+by their assumed adelic assembly. Membership alone contains no
+map between the native and GNS carriers.
+\end{proof}
+
+\begin{remark}[modular spectrum and automorphic bounds]
+\label{v4-arith:kms-gns:rem:partial-KS}
+Temperedness does not make the local modular operator bounded:
+$\Delta_qE_{0j}=q^{-j}E_{0j}$ is unbounded for every
+$0<q<1$. The GNS construction itself works at every positive
+real inverse temperature. Bounds on automorphic Satake parameters
+control a different representation problem and do not alter this
+matrix calculation.
+\end{remark}
+
+\begin{theorem}[conditional tempered cuspidal pairing transfer]
+\label{v4-arith:kms-gns:thm:ramified-cuspidal-tempered-extension}
+\ClaimStatusProvedHereConditional. Assume the native pairing
+maps of \Cref{v4-arith:kp:hyp:native-pairing-maps} on the
+chosen tempered cuspidal domain, including all its ramified
+factors and its convergent or specified regularized adelic
+assembly. Then
+\begin{equation}
+ \langle v,w\rangle^{\mathrm{Pet}}
+    =\langle v,cw\rangle^{\mathrm{Koszul}}
+ \label{v4-arith:kms-gns:eq:ramified-cuspidal-match}
+\end{equation}
+on that domain, with $c$ the native assembled conjugate-linear map.
+\end{theorem}
+\begin{proof}
+Apply the proved local transfer on every factor. The assumed
+assembly identifies the two products of local pairings with their
+global pairings, so equality persists on elementary tensors and
+on the specified completion or regularized domain. No independent
+identification of genuine arithmetic phases with the tensor shift
+algebra is used.
+\end{proof}
+
+\begin{remark}[native comparison boundary]
+\label{v4-arith:kms-gns:rem:w3-tightening}
+The explicit local state and the radial shell realization do not
+construct the maps for all native tempered cuspidal factors.
+That extension and the genuine arithmetic phase assembly remain
+part of the original Koszul--Petersson problem. The operator
+normalization provides a test for such maps, including their
+variance, norms and energy domains.
+\end{remark}
+
+\section{Langlands Decomposition of \(L^{2}([GL_{2}])\) and Placement of \(\mathcal{V}^{\mathrm{prim}}\)}
+\label{v4-arith:kms-gns:cycle3}
+
+\subsection{The Spectral Decomposition}
+\label{v4-arith:kms-gns:cycle3:spectral}
+
+The Langlands decomposition of \(L^{2}([GL_{2}])\), following
+Langlands 1966 and Moeglin--Waldspurger 1995, is:
+
+\begin{theorem}[spectral decomposition of \(L^{2}(\lbrack GL_{2}\rbrack)\)]
+\label{v4-arith:kms-gns:thm:spectral-decomposition}
+\ClaimStatusProvedElsewhere. There is an orthogonal decomposition of
+\(G(\mathbb{A})\)-modules:
+\begin{equation}
+\label{v4-arith:kms-gns:eq:L2-decomposition}
+L^{2}([GL_{2}])\;=\;L^{2}_{\mathrm{cusp}}([GL_{2}])\;\oplus\;L^{2}_{\mathrm{res}}([GL_{2}])\;\oplus\;L^{2}_{\mathrm{cont}}([GL_{2}]),
+\end{equation}
+where:
+\begin{itemize}
+\item \(L^{2}_{\mathrm{cusp}}([GL_{2}])\) is the cuspidal spectrum,
+a direct sum of irreducible unitary representations
+\(\pi=\bigotimes'_{v}\pi_{v}\) with \(\pi_{p}\) generic tempered at
+almost all primes;
+\item \(L^{2}_{\mathrm{res}}([GL_{2}])\) is the residual spectrum
+(in the \(GL_{2}\) case generated by one-dimensional characters
+pulled up from the determinant), consisting of \(GL_{2}(\mathbb{A})\)-reducible
+automorphic representations from residues of Eisenstein series at
+specific points;
+\item \(L^{2}_{\mathrm{cont}}([GL_{2}])\) is the continuous spectrum,
+realised as the direct integral
+\(\int^{\oplus}_{\mathrm{Re}(s)=1/2}\mathrm{Ind}_{B}^{G}(\chi_{s})\,|\xi(2s)|^{-2}ds\)
+for \(\chi_{s}=|\cdot|^{s}\otimes|\cdot|^{-s}\).
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+Langlands 1966 \emph{On the Functional Equations Satisfied by
+Eisenstein Series} \S6--7 for the construction; Moeglin--Waldspurger
+1995 \emph{Spectral Decomposition and Eisenstein Series for \(GL_{n}\)}
+for the published \(GL_{n}\) exposition; for \(GL_{2}\) specifically see
+Gelbart 1975 \emph{Automorphic Forms on Adele Groups} Ch.~II.
+\end{proof}
+
+\subsection{Placement of \(\mathcal{V}^{\mathrm{prim}}\)}
+\label{v4-arith:kms-gns:cycle3:placement}
+
+\begin{proposition}[a native spectral placement requires its maps]
+\label{v4-arith:kms-gns:prop:Vprim-placement}
+\ClaimStatusProvedHereConditional. Suppose a native discrete core
+has a direct-sum decomposition $V_{\mathrm{cusp}}\oplus V_{\mathrm{res}}$
+and injective maps $\iota_{\mathrm{cusp}},\iota_{\mathrm{res}}$
+into the corresponding orthogonal $L^2$ subspaces. Then
+\begin{equation}
+ \iota=\iota_{\mathrm{cusp}}\oplus\iota_{\mathrm{res}}
+   :V_{\mathrm{cusp}}\oplus V_{\mathrm{res}}
+       \longrightarrow L^2_{\mathrm{cusp}}\oplus L^2_{\mathrm{res}}
+ \label{v4-arith:kms-gns:eq:placement}
+\end{equation}
+is injective. A map from an Eisenstein parameter to distributions
+is a separate map and has no $L^2$ codomain unless square
+integrability is established. The local GNS construction supplies
+none of these native spectral maps.
+\end{proposition}
+\begin{proof}
+Orthogonality of the two target subspaces makes the kernel of
+$\iota$ the direct sum of the two kernels, hence zero. The
+distributional and Hilbert codomains differ by definition;
+square integrability must be checked before a distributional
+expression represents a Hilbert vector. The explicit GNS target
+is instead a space of operators with left multiplication.
+\end{proof}
+
+\section{Eisenstein Continuum: Koszul--Petersson Discrepancy}
+\label{v4-arith:kms-gns:cycle4}
+
+\subsection{The Maass--Selberg Inner Product}
+\label{v4-arith:kms-gns:cycle4:maass-selberg}
+
+The Maass--Selberg relations compute the Petersson-style inner
+product of two Eisenstein series. Following Langlands 1966 \S7 and
+Arthur 1980 Duke Math.~J.~45 \S3:
+
+\begin{lemma}[Maass--Selberg inner product]
+\label{v4-arith:kms-gns:lem:maass-selberg}
+\ClaimStatusProvedElsewhere. For Eisenstein series
+\(E(g,s_{1},\phi_{1})\) and \(E(g,s_{2},\phi_{2})\) with
+\(\phi_{1},\phi_{2}\) in the induced representation
+\(\mathrm{Ind}_{B}^{G}(\chi)\) and \(\mathrm{Re}(s_{1})=\mathrm{Re}(s_{2})=1/2\),
+their truncated inner product is
+\begin{equation}
+\label{v4-arith:kms-gns:eq:maass-selberg}
+\bigl\langle E(g,s_{1},\phi_{1}),E(g,s_{2},\phi_{2})\bigr\rangle^{\mathrm{Pet},\mathrm{trunc}}\;=\;\frac{1}{s_{1}+\overline{s_{2}}-1}\cdot\bigl\{\bigl\langle\phi_{1},\phi_{2}\bigr\rangle+\bigl\langle M(s_{1})\phi_{1},M(s_{2})\phi_{2}\bigr\rangle\bigr\},
+\end{equation}
+where \(M(s)\colon\mathrm{Ind}_{B}^{G}(\chi_{s})\to\mathrm{Ind}_{B}^{G}(\chi_{s}^{w})\)
+is the Eisenstein intertwining operator with (standard) normalisation
+\(M(s)=\xi(2s-1)/\xi(2s)\) in the unramified setting (Moeglin--Waldspurger
+\S II.1.7).
+\end{lemma}
+
+\begin{proof}
+Langlands 1966 \S7 (initial computation); Moeglin--Waldspurger 1995
+\S II.1.7 (modern exposition); Arthur 1980 \S3 (adelic assembly).
+The diagonal limit at \(s_{1}=s_{2}=s\), after removing the universal
+truncation divergence, gives the Maass--Selberg scattering
+normalisation at the Eisenstein parameter \(s\); it is not an ordinary
+\(L^{2}\) density before this regularisation.
+\end{proof}
+
+\subsection{Thermal ratios and native continuation}
+\label{v4-arith:kms-gns:cycle4:koszul-continuation}
+
+The local thermal calculation supplies a scalar ratio of traces. It
+must first be distinguished from a pairing on induced representations.
+For \(\operatorname{Re}u>1\), write
+\(Z_p(u)=\sum_{r\ge0}p^{-ur}=(1-p^{-u})^{-1}\). This is an ordinary
+operator trace; it is a state partition function only for real positive
+inverse temperature.
+
+\begin{lemma}[the scalar Euler ratio]
+\label{v4-arith:kms-gns:lem:Koszul-continued}
+For \(\operatorname{Re}u>2\), both global occupation traces converge and
+\[
+ \prod_p\frac{Z_p(u)}{Z_p(u-1)}
+ =\prod_p\frac{1-p^{1-u}}{1-p^{-u}}
+ =\frac{\zeta(u)}{\zeta(u-1)}.
+\]
+Define \(\Lambda(u)=\pi^{-u/2}\Gamma(u/2)\zeta(u)\). Its scalar
+completed ratio is
+\begin{equation}
+ R(u)=\frac{\Lambda(u)}{\Lambda(u-1)}
+ =\pi^{-1/2}\frac{\Gamma(u/2)}{\Gamma((u-1)/2)}
+                 \frac{\zeta(u)}{\zeta(u-1)}.
+ \label{v4-arith:kms-gns:eq:Koszul-continued}
+\end{equation}
+The meromorphic function \(R\) has a removable singularity at \(u=1\)
+with value \(-1\). The ratio of the entire completed functions
+\(\xi_{\mathbb R}(u)/\xi_{\mathbb R}(u-1)\) instead has value \(1\)
+there. Neither has the asserted simple pole at that point.
+\end{lemma}
+\begin{proof}
+Absolute convergence for \(\operatorname{Re}u>2\) follows by summing
+\(p^{1-\operatorname{Re}u}\) and \(p^{-\operatorname{Re}u}\).
+Dividing the two absolutely convergent Euler products gives the first
+identity. Multiplication by the gamma factors gives the second.
+The zeta residue at one is one, so
+\(\Lambda(1+z)=z^{-1}+O(1)\). The functional equation
+\(\Lambda(u)=\Lambda(1-u)\) gives
+\(\Lambda(z)=-z^{-1}+O(1)\), hence \(R(1+z)\to-1\).
+Since \(\xi_{\mathbb R}(u)=\tfrac12u(u-1)\Lambda(u)\), its values at
+zero and one are both \(1/2\), proving the last assertion.
+\end{proof}
+
+Analytic continuation extends these scalar functions. It does not
+extend a Gibbs density through the divergent global partition function
+at \(\beta=1\), and it does not construct a Koszul pairing on an induced
+representation. The latter requires maps from that representation and
+its native dual into specified pairing carriers. For a Hermitian
+parameter family the complex variables are \((s_1,\overline{s_2})\);
+meromorphy in those variables is not meromorphy in \((s_1,s_2)\).
+
+\begin{theorem}[conditional comparison of scalar normalizations]
+\label{v4-arith:kms-gns:thm:eisenstein-discrepancy}
+Suppose on a specified pair of parameter-dependent lines a common
+sesquilinear form \(h_0\), a regularized automorphic pairing \(h_P\), and
+a native bilinear pairing \(B\) with conjugate-linear duality \(c\) are
+constructed. Suppose, on their common regular domain, their scalar
+normalizations are
+\(h_P=P(s_1,\overline{s_2})h_0\) and
+\(B(\cdot,c\,\cdot)=R(s_1+\overline{s_2})h_0\). Then
+\begin{equation}
+ h_P-B(\cdot,c\,\cdot)
+ =\bigl(P(s_1,\overline{s_2})-R(s_1+\overline{s_2})\bigr)h_0.
+ \label{v4-arith:kms-gns:eq:continuum-discrepancy}
+\end{equation}
+At a pair where \(h_0\ne0\), equality of pairings is equivalent to
+\(P(s_1,\overline{s_2})=R(s_1+\overline{s_2})\).
+In particular, if \(P=A/(u-1)\), the difference is
+\((A/(u-1)-R(u))h_0\), not \((A-R(u))h_0/(u-1)\).
+\end{theorem}
+\begin{proof}
+Subtract the two assumed scalar multiples. Multiplication by a
+nonzero value of \(h_0\) is injective on the scalar field. The last
+formula is the same subtraction with the specified denominator.
+No pole cancellation or equality of residues follows unless the two
+Laurent expansions are also supplied.
+\end{proof}
+
+\begin{proposition}[a deciding scalar test on the critical line]
+\label{v4-arith:kms-gns:rem:match-is-FE}
+Put \(M(s)=\Lambda(2s-1)/\Lambda(2s)\). At every point
+\(s=1/2+it\) where both factors are finite and nonzero,
+\(\lvert M(s)\rvert=\lvert R(2s)\rvert=1\). Consequently the proposed
+scalar identity
+\begin{equation}
+       1+|M(s)|^2=R(2s)
+       \label{v4-arith:kms-gns:eq:continuum-match-condition}
+\end{equation}
+cannot hold at such a point.
+\end{proposition}
+\begin{proof}
+The real coefficients and completed functional equation give
+\(\Lambda(2it)=\Lambda(1-2it)=\overline{\Lambda(1+2it)}\).
+Thus \(M(s)\) is a quotient of a nonzero complex number's conjugate by
+that number and has modulus one; \(R(2s)=M(s)^{-1}\).
+The left side of the proposed identity is two and the right side has
+modulus one. This refutes the scalar identity, independently of any
+native pairing realization.
+\end{proof}
+
+\begin{corollary}[boundary of the continuum comparison]
+\label{v4-arith:kms-gns:cor:eisenstein-final}
+The thermal ratios do not determine a native Eisenstein pairing, and
+the displayed scalar test does not decide equality of the actual native
+and automorphic pairings. That equality requires the maps, domains,
+normalizations and regularized spectral measures used in the
+conditional comparison theorem.
+\end{corollary}
+\begin{proof}
+The trace ratio is a scalar function on the occupation representation.
+Its construction includes no map from an induced representation or its
+Koszul dual. The conditional theorem uses those maps as hypotheses;
+its proof does not produce them. The scalar contradiction therefore
+excludes the proposed normalization identity, not an independently
+constructed pairing with a different derived normalization.
+\end{proof}
+
+\begin{remark}[wave packets and their domains]
+\label{v4-arith:kms-gns:rem:continuum-honest-domain}
+Individual Eisenstein parameters generally represent distributions,
+whereas their suitably integrated wave packets can represent Hilbert
+vectors. To compare pairings on the continuum one must specify the test
+functions, convergence or truncation, the two spectral distributions,
+and their equality on those tests. A meromorphic scalar ratio alone
+establishes none of these statements. The conditional discrete-spectrum
+transfer does not use this continuum comparison.
+\end{remark}
+
+\section{Consequence for P3}
+\label{v4-arith:kms-gns:P3}
+
+\begin{theorem}[positive pairing transfer on a realized core]
+\label{v4-arith:kms-gns:thm:P3-tempered-cuspidal}
+\ClaimStatusProvedHereConditional. Suppose the chosen native
+cuspidal core has an injective square-integrable realization and
+satisfies the pairing-map and assembly hypotheses of
+\Cref{v4-arith:kms-gns:thm:ramified-cuspidal-tempered-extension}.
+Then its Petersson form is positive definite and equals
+$\langle v,cw\rangle^{\mathrm{Koszul}}$ on that core. This
+constructs a positive Hermitian form under the specified maps;
+it asserts no vertex-algebra structure or full-sector equivalence.
+\end{theorem}
+\begin{proof}
+For a nonzero native vector, injectivity gives a nonzero $L^2$
+function, whose integral squared norm is positive. Equality of
+pairings is the conditional transfer already proved. The local
+GNS positivity does not remove the hypothesis of a native
+square-integrable realization.
+\end{proof}
+
+\begin{remark}[domains of the pairing comparison]
+\label{v4-arith:kms-gns:rem:P3-domain-enlargement}
+The tempered cuspidal transfer requires native maps on that
+core. Further automorphic temperedness results do not create
+those maps. Eisenstein pairings require separate domains and
+regularizations. Neither the local KMS theorem nor an abstract
+Hilbert-space isomorphism supplies a full-sector extension.
+\end{remark}
+
+\subsection{The arithmetic implication}
+\label{v4-arith:kms-gns:P3:rh}
+\begin{corollary}[the pairing input remains conditional]
+\label{v4-arith:kms-gns:cor:rh-minimal-updated}
+The local GNS normalization does not close the native
+Koszul--Petersson input in a Hilbert--P\'olya or positivity
+argument. Such an implication retains the native pairing maps,
+their actual domain and their assembly as hypotheses.
+\end{corollary}
+\begin{proof}
+The local theorem constructs a represented quotient and its
+operator Hilbert space. The native transfer theorem explicitly
+requires the additional maps before its equations can be
+composed. Omitting them removes the first equality connecting
+native and represented pairings.
+\end{proof}
+
+\section{The Remaining Native Construction}
+\label{v4-arith:kms-gns:residual-list}
+\label{v4-arith:kms-gns:verification}
+\label{v4-arith:kms-gns:summary}
+
+The prime-power occupation algebra, its normalized state,
+Hilbert--Schmidt GNS realization, modular domains and conjugation
+are explicit. The radial shell model realizes a bilinear pairing,
+a Hermitian pairing and their anti-linear comparison by two
+separate maps with opposite dual energy degrees. These give
+concrete local constructions and decisive tests of normalization.
+
+The original native problem still requires maps from the
+arithmetic Hochschild and Koszul factors to the chosen operator
+and Whittaker carriers, with their actual Hecke and phase actions.
+It also requires a compatible adelic assembly. The represented
+single-prime phase quotients cannot supply that assembly by the
+naive inclusions, and a global occupation density at $\beta=1$
+is not nuclear. The finite-prime tensor GNS construction is
+therefore not an adelic arithmetic equivalence.
+
+The automorphic and continuous-spectrum questions remain
+separate. A local functional equation has to retain its vectors,
+test functions and complex normalization factors. A Hermitian
+norm has positive real normalization. A spectral distribution
+needs its test space and regularization before it can be compared
+with a Hilbert pairing. The GNS calculation neither proves these
+native comparisons nor decides positivity for a distinct
+arithmetic Hilbert--P\'olya operator.

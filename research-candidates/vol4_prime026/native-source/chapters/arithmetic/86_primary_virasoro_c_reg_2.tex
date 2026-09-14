@@ -1,0 +1,885 @@
+\chapter{Primary Fock Determinant: Rank Residue \(2\)}
+\label{v4-arith:w9-r3:chapter}
+
+\emph{Chapter~\ref{v4-arith:polyakov} separates the local conformal
+charge from the global arithmetic determinant. The naive sum
+\(\sum_{p}c^{(p)}\) diverges, and the \(\log p\)-weighted arithmetic
+Hamiltonian is not a Virasoro zero mode. The determinant assertion is
+the following: the primary Fock Euler product has
+rank residue \(2\) at \(s=1\). It does not construct a global Virasoro
+action on \(\mathcal{V}^{\mathrm{prim}}\), and it does not close
+\Cref{v4-arith:rh:conj:primary-Virasoro}.}
+
+\section{Local Virasoro and Arithmetic Hamiltonian}
+\label{v4-arith:w9-r3:local}
+
+\subsection{The per-prime chiral Heisenberg Fock}
+\label{v4-arith:w9-r3:per-prime-fock}
+
+\begin{definition}[per-prime Heisenberg and arithmetic Hamiltonian]
+\label{v4-arith:w9-r3:def:per-prime}
+\ClaimStatusDefinitional. At each finite place \(p\in\mathbb{P}\) the
+\emph{per-prime chiral Heisenberg} is the complex rank-2 Heisenberg
+vertex algebra \(\mathcal{H}^{(p)}\) with generators \(a^{(p)},b^{(p)}\), OPE
+\(a^{(p)}(z)a^{(p)}(w)\sim (z-w)^{-2}\),
+\(b^{(p)}(z)b^{(p)}(w)\sim (z-w)^{-2}\), mixed OPE vanishing, and Fock
+vacuum \(|0\rangle_{p}\)
+(Chapter~\ref{v4-arith:drinfeld-kapranov}; Kac 1998, \S 3.5).
+The local conformal vector is
+\begin{equation}
+\label{v4-arith:w9-r3:eq:omega-p}
+\omega_{p}^{\mathrm{conf}}\;:=\;\tfrac{1}{2}\bigl(a_{-1}^{(p)}a_{-1}^{(p)}+b_{-1}^{(p)}b_{-1}^{(p)}\bigr)|0\rangle_{p}.
+\end{equation}
+The state-field correspondence produces conformal modes
+\begin{equation}
+\label{v4-arith:w9-r3:eq:L-m-p}
+L_{m}^{\mathrm{conf},(p)}\;=\;\tfrac{1}{2}\sum_{k\in\mathbb{Z}}{:}a_{m-k}^{(p)}a_{k}^{(p)}{:}\;+\;\tfrac{1}{2}\sum_{k\in\mathbb{Z}}{:}b_{m-k}^{(p)}b_{k}^{(p)}{:}.
+\end{equation}
+The arithmetic Hamiltonian is
+\begin{equation}
+\label{v4-arith:w9-r3:eq:N-p}
+N_{p}\;:=\;(\log p)L_{0}^{\mathrm{conf},(p)}.
+\end{equation}
+\end{definition}
+
+\begin{remark}[convention: \(\log p\) is archimedean]
+\label{v4-arith:w9-r3:rem:log-p-archimedean}
+The factor \(\log p\) is archimedean-real scaling data, not an
+internal \(\mathbb{Q}_{p}\)-coefficient
+(\Cref{v4-arith:conv:log-p-archimedean}). Observation
+\Cref{v4-arith:obs:rescaling-breaks-virasoro} shows that rescaling
+\(T\mapsto\lambda T\) breaks the Virasoro OPE unless \(\lambda=1\).
+Thus \(N_{p}\) is a Hamiltonian used in the Mellin character, not a
+Virasoro generator.
+\end{remark}
+
+\subsection{Per-prime central charge}
+\label{v4-arith:w9-r3:per-prime-central}
+
+\begin{proposition}[per-prime central charge is \(2\)]
+\label{v4-arith:w9-r3:prop:per-prime-c-2}
+\ClaimStatusProvedHere. For every prime \(p\) and every pair \(m,n\)
+with \(m+n=0\) the Virasoro commutator on \(\mathcal{H}^{(p)}\) satisfies
+\begin{equation}
+\label{v4-arith:w9-r3:eq:per-prime-bracket}
+[L_{m}^{\mathrm{conf},(p)},L_{-m}^{\mathrm{conf},(p)}]\;=\;2m\,L_{0}^{\mathrm{conf},(p)}\;+\;\frac{c^{(p)}}{12}\,m(m^{2}-1)\cdot\mathrm{id},\qquad c^{(p)}\;=\;2.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Two independent Sugawara-type Heisenbergs tensor multiplicatively at
+the level of Virasoro central charge: the single chiral \(u(1)\)
+Heisenberg has \(c=1\) by Kac--Raina \S 3.5 / Frenkel--Ben-Zvi
+Chapter~2. The rank-2 Heisenberg is the product, so
+\(c^{(p)}=1+1=2\). The arithmetic Hamiltonian \(N_{p}\) in
+\eqref{v4-arith:w9-r3:eq:N-p} is external to this Virasoro
+calculation.
+\end{proof}
+
+\begin{remark}[independence of \(p\)]
+\label{v4-arith:w9-r3:rem:p-independence}
+\Cref{v4-arith:thm:per-prime-c} records \(c^{(p)}=2\) as a Polyakov
+observation. Proposition~\ref{v4-arith:w9-r3:prop:per-prime-c-2}
+derives it from the Sugawara tensor rule. The \(\log p\)-weighted
+Hamiltonian enters only the determinant.
+\end{remark}
+
+\section{Divergent Sum and Per-State Finiteness}
+\label{v4-arith:w9-r3:per-state}
+
+\subsection{The naive global sum diverges}
+\label{v4-arith:w9-r3:full-divergent}
+
+\begin{observation}[full global conformal central sum is \(+\infty\)]
+\label{v4-arith:w9-r3:obs:full-divergent}
+\ClaimStatusProvedHere. The naive \emph{full} sum of local conformal
+central charges
+\begin{equation}
+\label{v4-arith:w9-r3:eq:c-full-divergent}
+c_{\mathrm{full}}\;:=\;\sum_{p\in\mathbb{P}}c^{(p)}\;=\;\sum_{p\in\mathbb{P}}2\;=\;+\infty
+\end{equation}
+diverges. Equivalently, the formal stress tensor
+\(\sum_{p}\omega_{p}^{\mathrm{conf}}\) is not a vector of the
+restricted tensor product, and no Virasoro central extension with a
+finite scalar acts on \(\mathcal{V}^{\mathrm{prim}}\)
+(Chapter~\ref{v4-arith:polyakov}, \Cref{v4-arith:cor:no-virasoro}).
+\end{observation}
+
+\subsection{The primary core}
+\label{v4-arith:w9-r3:primary-core}
+
+\begin{definition}[primary Heisenberg core]
+\label{v4-arith:w9-r3:def:primary-core}
+\ClaimStatusDefinitional. The \emph{primary Heisenberg core} of
+\(\mathcal{V}^{\mathrm{prim}}\) is
+\begin{equation}
+\label{v4-arith:w9-r3:eq:primary-core}
+\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}\;:=\;\mathrm{span}_{\mathbb{C}}\Bigl\{\;v=\bigotimes_{p}v_{p}\;\Big|\;v_{p}=|0\rangle_{p}\text{ for all but finitely many }p\;\Bigr\},
+\end{equation}
+with \(|0\rangle_{p}\in\mathcal{H}^{(p)}\) the per-prime Fock vacuum
+(\Cref{v4-arith:w5-b:def:fock}). Each \(v\in\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}\)
+has a finite \emph{support set} \(\mathrm{supp}(v)\subset\mathbb{P}\),
+\(|\mathrm{supp}(v)|<\infty\).
+\end{definition}
+
+\begin{remark}[primary = finite-support]
+\label{v4-arith:w9-r3:rem:primary-is-fin-supp}
+The primary core is the algebraic restricted tensor product, before
+any Hilbert completion: the dense subspace on which every
+per-prime mode acts by zero at all but finitely many places. It is a
+\(\mathbb{C}\)-vector space (not a \(\mathbb{Q}_{p}\)-module) carrying the
+\(\mathbb{N}^{\times}\)-action by Adams operations
+\(\psi_{n}\) (Adams-Frobenius; \Cref{v4-arith:def:lambda-ring} and
+\Cref{v4-arith:thm:lambda-ring-descent}).
+\end{remark}
+
+\subsection{Finite Positive Modes and Divergent Negative Modes}
+\label{v4-arith:w9-r3:per-state-finite}
+
+\begin{proposition}[finite positive modes]
+\label{v4-arith:w9-r3:prop:per-state-finite}
+\ClaimStatusProvedHere. For every \(v\in\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}\)
+and every \(m\geq -1\) the conformal mode action
+\begin{equation}
+\label{v4-arith:w9-r3:eq:finite-acting}
+L_{m}^{\geq -1}v\;:=\;\sum_{p\in S_{v}(m)}L_{m}^{\mathrm{conf},(p)}v,\qquad S_{v}(m)\;\subset\;\mathbb{P},\quad |S_{v}(m)|<\infty,
+\end{equation}
+is a finite sum. For \(m\leq -2\), the sum
+\(\sum_{p}L_{m}^{\mathrm{conf},(p)}\) is not defined on the vacuum.
+Consequently the global Virasoro commutator is not an operator on the
+restricted tensor product. Only the local commutators exist, and their
+central scalar has divergent prime sum.
+\end{proposition}
+
+\begin{proof}
+Fix \(v=\bigotimes_{p}v_{p}\) with \(\mathrm{supp}(v)\subset\mathbb{P}\)
+finite. For \(p\notin\mathrm{supp}(v)\), \(v_{p}=|0\rangle_{p}\) and
+\(L_{m}^{\mathrm{conf},(p)}|0\rangle_{p}=0\) for every \(m\geq-1\)
+(Kac--Raina \S 3.5; the standard creation-annihilation normal
+ordering places any positive-mode on the vacuum to zero, and the
+\(L_{-1},L_{0}\) annihilation on vacuum is the standard vertex-algebra axiom).
+Thus only finitely many summands act non-trivially for \(m\geq-1\).
+For \(m\leq-2\), each vacuum factor contributes the non-zero descendant
+\(L_{m}^{\mathrm{conf},(p)}|0\rangle_{p}\). The sum over primes is then
+an infinite sum of mutually orthogonal one-prime descendants, not an
+element of the algebraic restricted tensor product. The local identity
+\[
+[L_{m}^{\mathrm{conf},(p)},L_{-m}^{\mathrm{conf},(p)}]|0\rangle_{p}
+=\frac{c^{(p)}}{12}m(m^{2}-1)|0\rangle_{p}
+\]
+therefore produces the divergent scalar
+\(\sum_{p}c^{(p)}\) when summed over all primes. This scalar is not an
+operator before regularisation.
+\end{proof}
+
+\begin{remark}[finite action, divergent scalar]
+\label{v4-arith:w9-r3:rem:central-term-decomposition}
+\Cref{v4-arith:w9-r3:prop:per-state-finite} proves only finite action
+of the conformal modes \(m\geq -1\). The formal central term
+\begin{equation}
+\label{v4-arith:w9-r3:eq:central-term-sum}
+\frac{1}{12}m(m^{2}-1)\cdot\Bigl(\sum_{p}c^{(p)}\Bigr)\cdot\mathrm{id}
+\end{equation}
+contains \(\sum_{p}c^{(p)}=\infty\). The residue calculation below
+assigns a scalar to the determinant; it does not turn the formal
+commutator into a Virasoro action.
+\end{remark}
+
+\section{Dirichlet-Series Regularisation}
+\label{v4-arith:w9-r3:dirichlet}
+
+\subsection{The naive prime-zeta attempt fails}
+\label{v4-arith:w9-r3:naive-fails}
+
+\begin{observation}[naive prime-zeta regularisation is not well-posed]
+\label{v4-arith:w9-r3:obs:prime-zeta-fails}
+\ClaimStatusProvedHere. Define the formal series
+\begin{equation}
+\label{v4-arith:w9-r3:eq:c-s-prime-zeta}
+c_{\mathbb{P}}(s)\;:=\;\sum_{p\in\mathbb{P}}c^{(p)}p^{-(s-1)}\;=\;2\sum_{p}p^{-(s-1)}\;=\;2\zeta_{\mathbb{P}}(s-1).
+\end{equation}
+The prime zeta \(\zeta_{\mathbb{P}}\) has natural boundary on
+\(\mathrm{Re}(w)=0\) by the Landau--Walfisz / Fr\"oberg theorem
+(\Cref{v4-arith:thm:prime-zeta-natural-boundary}). Thus \(c_{\mathbb{P}}(s)\)
+at \(s=1\) asks for \(2\zeta_{\mathbb{P}}(0)\), which is undefined
+(\Cref{v4-arith:cor:zeta-P-0-undefined}); at \(s\to 1^{+}\),
+\(c_{\mathbb{P}}(s)\to+\infty\) logarithmically.
+\end{observation}
+
+\begin{remark}[prime-zeta sum vs.\ Riemann-zeta residue]
+\label{v4-arith:w9-r3:rem:prime-zeta-error}
+The Dirichlet series \(c_{\mathbb{P}}(s)\) uses the prime-index set
+\(\mathbb{P}\) as its summation domain. The determinant-rank scalar is
+instead read from the Euler product for the Riemann zeta
+\(\zeta(s)\), which is meromorphic on \(\mathbb{C}\). The prime zeta
+\(\zeta_{\mathbb{P}}\) has a natural boundary at
+\(\mathrm{Re}(w)=0\), and therefore cannot define the value at
+\(w=0\). The finite-mode statement
+\Cref{v4-arith:w9-r3:prop:per-state-finite} gives only an algebraic
+domain for the modes \(m\geq -1\); the residue at \(s=1\) belongs to
+the determinant, not to a Virasoro commutator.
+\end{remark}
+
+\subsection{Arithmetic black-hole motivation: primon gas as the first determinant}
+\label{v4-arith:w9-r3:black-hole-primon-motivation}
+
+The partition function \(Z(s)=\prod_{p}\prod_{n\geq 1}(1-p^{-sn})^{-2}\)
+defined in \S\ref{v4-arith:w9-r3:partition-reg} is the arithmetic-Chern--Simons
+thermal determinant over prime knots before the zero-side trace formula is
+available. The following heuristic identifies its origin in the primon-gas
+thermodynamics of Julia; no black-hole existence theorem enters the proof of
+Lemma~\ref{v4-arith:w9-r3:lem:Z-is-zeta-prod}, and no positivity statement
+is inferred from the calculation.
+
+In ordinary three-dimensional gravity written as Chern--Simons
+theory, a black-hole sector is not a propagating local graviton. It is
+a flat connection with non-trivial holonomy around the cycles of a
+solid torus. Its one-loop determinant is built from the closed
+geodesics of the filling. The arithmetic replacement used throughout
+Chapters~\ref{v4-arith:3d-acs-E1bar}--\ref{v4-arith:w9-r1:wilson-frobenius}
+is:
+\begin{equation}
+\label{v4-arith:w9-r3:eq:black-hole-dictionary}
+\text{closed geodesic}\quad\rightsquigarrow\quad
+\text{prime knot }K_{p},\qquad
+\ell(K_{p})=\log p,\qquad
+\mathrm{hol}(K_{p})=\mathrm{Frob}_{p}.
+\end{equation}
+At the level relevant here, the arithmetic Chern--Simons thermal
+determinant is computed around a holonomy saddle, with the primitive
+closed orbits indexed by primes.
+
+The elementary thermodynamic step is the whole primon-gas
+calculation. A single bosonic occupation mode over the orbit \(K_{p}\)
+has energy
+\begin{equation}
+\label{v4-arith:w9-r3:eq:primon-energy}
+E_{p}=\ell(K_{p})=\log p .
+\end{equation}
+At inverse temperature \(s\), its local partition function is the
+geometric series
+\begin{equation}
+\label{v4-arith:w9-r3:eq:single-primon-factor}
+\sum_{m\geq0}e^{-smE_{p}}
+\;=\;\sum_{m\geq0}p^{-sm}
+\;=\;(1-p^{-s})^{-1}.
+\end{equation}
+Multiplying the independent local factors over all prime knots gives
+Julia's primon gas:
+\begin{equation}
+\label{v4-arith:w9-r3:eq:primon-zeta}
+Z_{\mathrm{primon}}(s)
+\;=\;\prod_{p}(1-p^{-s})^{-1}
+\;=\;\zeta(s),\qquad \mathrm{Re}(s)>1.
+\end{equation}
+For a rank-\(r\) free Heisenberg sector the same calculation gives
+\(\zeta(s)^{r}\). Here \(r=2\), because the local
+arithmetic Heisenberg is generated by two commuting \(u(1)\) fields.
+
+The oscillator refinement adds the usual Fock levels. Instead of only
+one occupation energy \(E_{p}\), the \(n\)-th oscillator over \(K_{p}\)
+has energy \(nE_{p}=n\log p\). Therefore the rank-\(2\) local factor is
+\begin{equation}
+\label{v4-arith:w9-r3:eq:oscillator-primon-factor}
+\prod_{n\geq1}(1-e^{-s n\log p})^{-2}
+\;=\;\prod_{n\geq1}(1-p^{-sn})^{-2}.
+\end{equation}
+Multiplication over all primes gives exactly the global Fock
+partition function defined below:
+\begin{equation}
+\label{v4-arith:w9-r3:eq:black-hole-to-fock}
+\prod_{p}\prod_{n\geq1}(1-p^{-sn})^{-2}.
+\end{equation}
+The primon gas is the \(n=1\) factor in the oscillator product: setting
+\(n=1\) in \eqref{v4-arith:w9-r3:eq:oscillator-primon-factor} and taking
+\(r=1\) recovers \((1-p^{-s})^{-1}\). The full rank-\(2\) Fock product
+\eqref{v4-arith:w9-r3:eq:black-hole-to-fock} is the arithmetic
+Chern--Simons thermal determinant used for the determinant
+rank-residue extraction in \S\ref{v4-arith:w9-r3:partition-reg}.
+
+The limitation is as important as the calculation. Equations
+\eqref{v4-arith:w9-r3:eq:primon-zeta}--\eqref{v4-arith:w9-r3:eq:black-hole-to-fock}
+recover the prime-side Euler product in its convergence half-plane.
+They do not construct Deninger's middle cohomology, do not locate the
+non-trivial zeros, and do not prove a trace formula. Those require the
+spectral-flow and positivity inputs isolated in
+Chapters~\ref{v4-arith:w8-a:deninger-chiral-homology} and
+\ref{v4-arith:tfe-gutzwiller}.
+
+\subsection{The partition function regularisation}
+\label{v4-arith:w9-r3:partition-reg}
+
+\begin{definition}[per-prime Fock partition]
+\label{v4-arith:w9-r3:def:per-prime-partition}
+\ClaimStatusDefinitional. For each prime \(p\) and complex parameter
+\(s\) with \(\mathrm{Re}(s)>0\) the \emph{per-prime Fock partition} is
+\begin{equation}
+\label{v4-arith:w9-r3:eq:per-prime-Z}
+Z^{(p)}(s)\;:=\;\mathrm{Tr}_{\mathcal{H}^{(p)}}\bigl(e^{-sN_{p}}\bigr)
+\;=\;\mathrm{Tr}_{\mathcal{H}^{(p)}}\bigl(p^{-sL_{0}^{\mathrm{conf},(p)}}\bigr)
+\;=\;\prod_{n\geq 1}(1-p^{-sn})^{-2},
+\end{equation}
+the final equality holding formally because \(L_{0}^{\mathrm{conf},(p)}\)
+on the rank-\(2\) Heisenberg Fock has generating function \(\eta\)-type with
+two commuting copies (Chapter~\ref{v4-arith:polyakov}, \S
+\ref{v4-arith:pol:c-as-residue}; Kac--Raina \S 3.5 for the rank-1
+generating series).
+\end{definition}
+
+\begin{definition}[global Fock partition: Euler product]
+\label{v4-arith:w9-r3:def:global-partition}
+\ClaimStatusDefinitional. The \emph{global Fock partition} is the
+formal Euler product
+\begin{equation}
+\label{v4-arith:w9-r3:eq:global-Z}
+Z(s)\;:=\;\prod_{p\in\mathbb{P}}Z^{(p)}(s)\;=\;\prod_{p}\prod_{n\geq 1}(1-p^{-sn})^{-2},
+\end{equation}
+convergent for \(\mathrm{Re}(s)>1\) by convergence of the log-sum
+\(\sum_{p,n}p^{-sn}\) (standard Euler-product estimate, Serre 1973
+Ch.~VI).
+\end{definition}
+
+\begin{lemma}[partition function is squared zeta product]
+\label{v4-arith:w9-r3:lem:Z-is-zeta-prod}
+\ClaimStatusProvedHere. In the region \(\mathrm{Re}(s)>1\),
+\begin{equation}
+\label{v4-arith:w9-r3:eq:Z-is-zeta-prod}
+Z(s)\;=\;\prod_{n\geq 1}\zeta(ns)^{2}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Interchange the two products in \eqref{v4-arith:w9-r3:eq:global-Z}:
+\[
+Z(s)\;=\;\prod_{n\geq 1}\prod_{p}(1-p^{-sn})^{-2}\;=\;\prod_{n\geq 1}\Bigl(\prod_{p}(1-p^{-sn})^{-1}\Bigr)^{2}\;=\;\prod_{n\geq 1}\zeta(ns)^{2}.
+\]
+Each inner factor is the standard Euler product of \(\zeta(ns)\) for
+\(\mathrm{Re}(ns)>1\), valid since \(\mathrm{Re}(s)>1\) implies
+\(\mathrm{Re}(ns)>1\) for every \(n\geq 1\). The interchange of infinite
+products is justified by absolute convergence of the double sum
+\(\sum_{p,n}p^{-\mathrm{Re}(s)n}\) on compact subsets of
+\(\{\mathrm{Re}(s)>1\}\).
+\end{proof}
+
+\begin{remark}[logarithmic derivative of \(Z\) and the rank pole]
+\label{v4-arith:w9-r3:rem:log-Z-central}
+From \(\log Z(s)=2\sum_{n\geq 1}\log\zeta(ns)\), the logarithmic derivative is
+\begin{equation}
+\label{v4-arith:w9-r3:eq:log-Z-prime}
+-\frac{d}{ds}\log Z(s)\;=\;2\sum_{n\geq 1}\frac{n\,\zeta'(ns)}{\zeta(ns)}\cdot(-1)\;=\;2\sum_{n\geq 1}n\,\frac{-\zeta'(ns)}{\zeta(ns)},
+\end{equation}
+convergent for \(\mathrm{Re}(s)>1\). The leading pole of \(-\frac{d}{ds}\log Z\) at
+\(s=1\) arises from the \(n=1\) term via \(\frac{-\zeta'(s)}{\zeta(s)}\sim (s-1)^{-1}\)
+near \(s=1\), with the higher-\(n\) terms holomorphic at \(s=1\).
+In the corrected Polyakov convention
+(\S\ref{v4-arith:pol:c-as-residue}), this residue is the rank scalar
+of the determinant, not a global central charge.
+\end{remark}
+
+\subsection{The Dirichlet-series rank residue}
+\label{v4-arith:w9-r3:dirichlet-reg}
+
+\begin{definition}[zeta rank residue]
+\label{v4-arith:w9-r3:def:c-reg}
+\ClaimStatusDefinitional. The \emph{zeta rank residue} is
+\begin{equation}
+\label{v4-arith:w9-r3:eq:c-reg-def}
+r_{\zeta}\;:=\;\mathrm{Res}_{s=1}\Bigl(-\frac{d}{ds}\log Z(s)\Bigr).
+\end{equation}
+Equivalently, if \(\log Z(s)=-r\log(s-1)+\mathrm{holomorphic}\) near \(s=1\),
+then \(r_{\zeta}:=r\), where \(r\) is the order of the logarithmic
+singularity.
+\end{definition}
+
+\begin{remark}[rationale for the residue definition]
+\label{v4-arith:w9-r3:rem:residue-rationale}
+Per Polyakov (Chapter~\ref{v4-arith:polyakov},
+\Cref{v4-arith:thm:regularised-c}), the honest
+regularisation is \emph{not} a sum-over-primes but the residue of
+the global partition-function pole. The definition
+\eqref{v4-arith:w9-r3:eq:c-reg-def} places this residue at the
+\(s=1\) pole of \(\zeta\), which is the dominant pole of \(Z\) since
+\(Z(s)=\zeta(s)^{2}\cdot\prod_{n\geq 2}\zeta(ns)^{2}\) and the \(n\geq 2\)
+factors are holomorphic at \(s=1\) (with \(\zeta(2n)\in\mathbb{Q}\pi^{2n}\)
+for \(n\geq 1\)).
+\end{remark}
+
+\section{Local Expansion at \(s=1\)}
+\label{v4-arith:w9-r3:continuation}
+
+\subsection{Decomposition of \(\log Z\) near \(s=1\)}
+\label{v4-arith:w9-r3:log-Z-decomp}
+
+\begin{theorem}[local Laurent expansion of \(\log Z\) at \(s=1\)]
+\label{v4-arith:w9-r3:thm:log-Z-laurent}
+\ClaimStatusProvedHere. In a punctured neighbourhood of \(s=1\) on a
+fixed logarithm branch, the function
+\(\log Z(s)=2\sum_{n\geq 1}\log\zeta(ns)\) has expansion
+\begin{equation}
+\label{v4-arith:w9-r3:eq:log-Z-laurent}
+\log Z(s)\;=\;-2\log(s-1)\;+\;2\sum_{n\geq 2}\log\zeta(n)
+\;+\;2\left(\gamma_{E}+\sum_{n\geq2}n\,{\zeta'(n)\over\zeta(n)}\right)(s-1)
+\;+\;O((s-1)^{2}),
+\end{equation}
+where \(\gamma_{E}=\lim_{N\to\infty}(\sum_{k=1}^{N}1/k-\log N)\) is
+the Euler--Mascheroni constant.
+\end{theorem}
+
+\begin{proof}
+Write \(\log Z(s)=2\log\zeta(s)+2\sum_{n\geq 2}\log\zeta(ns)\). For
+\(n\geq 2\) and \(s\) near \(1\), \(ns\geq 2\), so \(\zeta(ns)\) is
+holomorphic and nonzero at \(s=1\) (since
+\(\zeta(2),\zeta(3),\ldots\) are positive real and greater than \(1\)).
+The tail bound \(\sum_{n\geq 2}|\log\zeta(ns)|\leq C\sum_{n\geq 2}2^{-n\mathrm{Re}(s)}\)
+is uniform on \(\mathrm{Re}(s)\geq 1/2+\epsilon\), so \(\sum_{n\geq 2}\log\zeta(ns)\)
+is holomorphic at \(s=1\) and has first derivative
+\(\sum_{n\geq2}n\,\zeta'(n)/\zeta(n)\) there.
+
+For the \(n=1\) term: the Laurent expansion \(\zeta(s)=(s-1)^{-1}+\gamma_{E}+O(s-1)\)
+(Edwards 1974, \S 1.6) gives
+\[
+\log\zeta(s)=\log\bigl((s-1)^{-1}(1+\gamma_{E}(s-1)+O((s-1)^{2}))\bigr)
+=-\log(s-1)+\gamma_{E}(s-1)+O((s-1)^{2}),
+\]
+using \(\log(1+x)=x+O(x^{2})\). Therefore
+\[
+\log Z(s)
+=-2\log(s-1)+2\sum_{n\geq 2}\log\zeta(n)
++2\left(\gamma_{E}+\sum_{n\geq2}n\,{\zeta'(n)\over\zeta(n)}\right)(s-1)
++O((s-1)^{2}),
+\]
+which is \eqref{v4-arith:w9-r3:eq:log-Z-laurent}.
+\end{proof}
+
+\begin{remark}[why the rank residue is \(2\)]
+\label{v4-arith:w9-r3:rem:residue-is-2}
+The leading term \(-2\log(s-1)\) in \eqref{v4-arith:w9-r3:eq:log-Z-laurent}
+has a \(-2\) coefficient because \(Z(s)=\zeta(s)^{2}\cdot\mathrm{hol}\)
+near \(s=1\), and the double factor in \(\zeta\) comes from the
+rank-\(2\) Heisenberg: per-prime two-commuting-Heisenberg implies
+per-prime \(Z^{(p)}\) has a \emph{squared} \((1-p^{-s})^{-1}\) factor
+leading at \(n=1\), and on the Euler-product reshuffle this makes
+\(Z=\zeta^{2}\cdot\mathrm{hol}\). The power of \(\zeta\) at \(s=1\) is
+the per-prime rank, here \(2\). This rank agrees with the local
+Sugawara central charge prime by prime, but it is not a global central
+charge.
+\end{remark}
+
+\subsection{Residue extraction}
+\label{v4-arith:w9-r3:residue}
+
+\begin{theorem}[residue at \(s=1\)]
+\label{v4-arith:w9-r3:thm:residue-at-1}
+\ClaimStatusProvedHere. With the decomposition
+\eqref{v4-arith:w9-r3:eq:log-Z-laurent},
+\begin{equation}
+\label{v4-arith:w9-r3:eq:residue-extraction}
+\mathrm{Res}_{s=1}\Bigl(-\frac{d}{ds}\log Z(s)\Bigr)\;=\;2,
+\end{equation}
+and the zeta rank residue of
+\Cref{v4-arith:w9-r3:def:c-reg} evaluates to
+\begin{equation}
+\label{v4-arith:w9-r3:eq:c-reg-is-2}
+r_{\zeta}\;=\;2.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Differentiate \eqref{v4-arith:w9-r3:eq:log-Z-laurent}:
+\[
+-\frac{d}{ds}\log Z(s)=\frac{2}{s-1}
+-2\left(\gamma_{E}+\sum_{n\geq2}n\,{\zeta'(n)\over\zeta(n)}\right)
++O(s-1)
+\]
+near \(s=1\). The residue at \(s=1\) is \(2\).
+By Definition~\ref{v4-arith:w9-r3:def:c-reg},
+\(r_{\zeta}=\mathrm{Res}_{s=1}(-\frac{d}{ds}\log Z)=2\).
+\end{proof}
+
+\begin{corollary}[\(r_{\zeta}=2\cdot\mathrm{Res}_{s=1}\zeta(s)\)]
+\label{v4-arith:w9-r3:cor:c-reg-as-residue}
+\ClaimStatusProvedHere. Since \(\mathrm{Res}_{s=1}\zeta(s)=1\),
+\begin{equation}
+\label{v4-arith:w9-r3:eq:c-reg-polyakov-form}
+r_{\zeta}\;=\;2\cdot\mathrm{Res}_{s=1}\zeta(s)\;=\;2.
+\end{equation}
+\end{corollary}
+
+\begin{remark}[Dirichlet-series form of regularisation]
+\label{v4-arith:w9-r3:rem:dirichlet-form}
+The original informal heuristic was
+\(c(s)=\sum_{p}c^{(p)}p^{-(s-1)}=2\zeta_{\mathbb{P}}(s-1)\); we
+replaced it by the honest global-partition-function residue. The
+replacement is forced by
+\Cref{v4-arith:thm:prime-zeta-natural-boundary}: the prime zeta
+has natural boundary on \(\mathrm{Re}(w)=0\), so the informal
+prescription has no analytic continuation to \(s=1\). The
+partition-function prescription runs on \(\zeta(s)\) directly (which
+is meromorphic on \(\mathbb{C}\)), with residue \(1\) at \(s=1\); the
+total per-prime rank \(2\) and the partition-function-residue
+identity \eqref{v4-arith:w9-r3:eq:c-reg-polyakov-form} together
+deliver \(r_{\zeta}=2\). This is the determinant-rank residue of
+\Cref{v4-arith:pol:c-as-residue}, not a sum over primes and not a
+Virasoro central charge.
+\end{remark}
+
+\section{Polyakov Anomaly Connection}
+\label{v4-arith:w9-r3:polyakov-connection}
+
+\subsection{The Polyakov stress tensor and anomaly}
+\label{v4-arith:w9-r3:polyakov-stress}
+
+\begin{theorem}[Polyakov anomaly on the archimedean chiral Heisenberg]
+\label{v4-arith:w9-r3:thm:polyakov-anomaly}
+\ClaimStatusProvedElsewhere (Polyakov 1981; Belavin--Polyakov--Zamolodchikov
+1984; Friedan--Shenker 1987; archimedean Heisenberg: Kac 1998
+\S 3.5). On the archimedean Heisenberg \(\mathcal{H}^{(\infty)}\) with
+rank-\(2\) free-field presentation, the Polyakov conformal anomaly
+coefficient is
+\begin{equation}
+\label{v4-arith:w9-r3:eq:polyakov-anomaly}
+c^{(\infty)}_{\mathrm{anomaly}}\;=\;2,
+\end{equation}
+extracted from the \(T(z)T(w)\) OPE central term with
+\(T=\tfrac{1}{2}(a_{-1}^{(\infty)}a_{-1}^{(\infty)}+b_{-1}^{(\infty)}b_{-1}^{(\infty)})\),
+independently from trace-anomaly \(\langle T^{\mu}_{\mu}\rangle=-cR/24\pi\)
+and from Friedan--Shenker modular-invariance bootstrap.
+\end{theorem}
+
+\begin{remark}[archimedean vs.\ determinant]
+\label{v4-arith:w9-r3:rem:archimedean-vs-full}
+\(c^{(\infty)}_{\mathrm{anomaly}}=2\) is the anomaly of the
+\emph{archimedean} Heisenberg alone. Each per-prime place also satisfies
+\(c^{(p)}=2\), so the per-place charges are uniformly \(2\). The
+finite-prime determinant residue also equals \(2\). Equality of these
+two numbers is a rank comparison; it is not an addition of local
+central charges.
+\end{remark}
+
+\subsection{The Polyakov--regularisation identity}
+\label{v4-arith:w9-r3:polyakov-id}
+
+\begin{theorem}[Polyakov-rank comparison]
+\label{v4-arith:w9-r3:thm:polyakov-identity}
+\ClaimStatusProvedHere. The zeta rank residue of
+\Cref{v4-arith:w9-r3:def:c-reg} equals the Polyakov conformal anomaly
+coefficient of the archimedean rank-\(2\) Heisenberg:
+\begin{equation}
+\label{v4-arith:w9-r3:eq:polyakov-id}
+r_{\zeta}\;=\;c^{(\infty)}_{\mathrm{anomaly}}\;=\;2.
+\end{equation}
+Equivalently, the residue of the global Fock partition
+\(Z(s)=\prod_{p}\prod_{n\geq 1}(1-p^{-sn})^{-2}\) at \(s=1\)
+has the same value as the rank-\(2\) Polyakov-Friedan-Shenker anomaly
+computed on the archimedean completion \(\mathcal{H}^{(\infty)}\).
+\end{theorem}
+
+\begin{proof}
+Combine \Cref{v4-arith:w9-r3:cor:c-reg-as-residue} (\(r_{\zeta}=2\))
+with \Cref{v4-arith:w9-r3:thm:polyakov-anomaly}
+(\(c^{(\infty)}_{\mathrm{anomaly}}=2\)): both sides equal \(2\)
+independently, and their common value is
+\(2\cdot\mathrm{Res}_{s=1}\zeta(s)=2\).
+
+The two sides arise from different constructions: the left-hand side
+from a global partition-function Euler product over all finite primes,
+regularised through the residue of \(\zeta\) at its pole; the
+right-hand side from a Lagrangian stress-tensor computation on the
+archimedean fibre, regularised through Polyakov's short-distance anomaly. The identity is the arithmetic-branch
+expression of Polyakov's principle in the residue form
+(\Cref{v4-arith:thm:regularised-c}): the finite-prime determinant and
+the archimedean free-field anomaly have the same rank \(2\). No global
+Virasoro action on \(\mathcal{V}^{\mathrm{prim}}\) is produced.
+\end{proof}
+
+\begin{remark}[global compatibility]
+\label{v4-arith:w9-r3:rem:global-compatibility}
+Product formula phrasing: for the completed zeta
+\(\xi_{\mathbb{R}}(s)=\tfrac{1}{2}s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)\),
+the factor \(\pi^{-s/2}\Gamma(s/2)\) is the archimedean local
+\(\Gamma\)-factor and \(\zeta(s)\) is the Euler product over finite
+primes. The residue of \(\zeta\) at \(s=1\) is \(1\) by the standard
+prime-number-theorem residue; under the functional equation
+\(\xi(s)=\xi(1-s)\), this residue is mirrored to the residue at
+\(s=0\). On the conformal side, the Polyakov anomaly on the
+archimedean fibre equals the rank (\(=2\)) of the free-field
+Heisenberg; on the Euler-product side, the residue of \(Z\) at \(s=1\)
+equals the per-prime rank (\(=2\)). The identification in
+\Cref{v4-arith:w9-r3:thm:polyakov-identity} is rank \(=\) rank,
+made precise through the \(\zeta\)-residue dictionary.
+\end{remark}
+
+\subsection{Derivation and Residue Sources}
+\label{v4-arith:w9-r3:independence}
+
+\begin{remark}[disjoint derivation and residue sources]
+\label{v4-arith:w9-r3:rem:disjoint-sources}
+The local chiral calculation uses Kac--Raina \emph{Bombay Lectures on Highest
+Weight Representations of Infinite-Dimensional Lie Algebras}
+(World Scientific 1987), \S 3.5 (Sugawara central charge for
+bosonic Fock); Kac \emph{Vertex Algebras for Beginners} 2nd ed.
+(AMS 1998), Chapter 3 (rank-\(n\) Heisenberg vertex algebra and Virasoro
+central charge formula).
+The global residue calculation uses Edwards \emph{Riemann's Zeta Function}
+(Academic Press 1974), \S 1.6 (Laurent expansion of \(\zeta\) at
+\(s=1\)) for the residue-extraction half; Serre \emph{Cours
+d'Arithm\'etique} (PUF 1970) Ch.~VI (Euler product) for the
+global partition rewriting. The two source sets (Kac/Kac--Raina for
+the local central charge, Edwards/Serre for the global residue)
+are disjoint; the computed scalar (\(2\)) matches on both sides.
+\end{remark}
+
+\section{Main Theorem: \(r_{\zeta}=2\)}
+\label{v4-arith:w9-r3:main}
+
+\subsection{Statement}
+\label{v4-arith:w9-r3:main-statement}
+
+\begin{theorem}[primary Fock determinant has rank residue \(2\)]
+\label{v4-arith:w9-r3:thm:main}
+\ClaimStatusProvedHere. Let \(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}\)
+denote the primary Heisenberg core of
+\Cref{v4-arith:w9-r3:def:primary-core}. Then:
+\begin{enumerate}
+\item[\textnormal{(a)}] \emph{Finite positive modes.} For every
+\(v\in\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}\) and
+every \(m\geq -1\), the mode action
+\(L_{m}^{\geq -1}v=\sum_{p\in S_{v}(m)}L_{m}^{\mathrm{conf},(p)}v\)
+is a finite sum over \(|S_{v}(m)|<\infty\) primes. The modes
+\(m\leq -2\) do not form global operators on the restricted vacuum
+(\Cref{v4-arith:w9-r3:prop:per-state-finite}).
+\item[\textnormal{(b)}] \emph{Divergent conformal scalar.} The
+formal Virasoro central-term coefficient
+\(\sum_{p}c^{(p)}\) is \(+\infty\) as a naive sum
+(\Cref{v4-arith:w9-r3:obs:full-divergent}).
+\item[\textnormal{(c)}] \emph{Zeta rank residue.}
+The Dirichlet-series residue of the scalar via the global
+Fock partition \(Z(s)=\prod_{p}Z^{(p)}(s)\) yields
+\begin{equation}
+\label{v4-arith:w9-r3:eq:main-result}
+r_{\zeta}\;=\;\mathrm{Res}_{s=1}\Bigl(-\frac{d}{ds}\log Z(s)\Bigr)\;=\;2.
+\end{equation}
+\item[\textnormal{(d)}] \emph{Polyakov-rank comparison.} The rank
+residue equals the Polyakov conformal anomaly coefficient of the
+archimedean rank-\(2\) Heisenberg
+\(c^{(\infty)}_{\mathrm{anomaly}}=2\)
+(\Cref{v4-arith:w9-r3:thm:polyakov-identity}).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(a) is \Cref{v4-arith:w9-r3:prop:per-state-finite}. (b) is
+\Cref{v4-arith:w9-r3:obs:full-divergent}. (c) is
+\Cref{v4-arith:w9-r3:thm:residue-at-1} with
+\Cref{v4-arith:w9-r3:cor:c-reg-as-residue}. (d) is
+\Cref{v4-arith:w9-r3:thm:polyakov-identity}.
+\end{proof}
+
+\subsection{Falsification and correction of six potential objections}
+\label{v4-arith:w9-r3:obstruction-analysis}
+
+\begin{remark}[prime-zeta sum does not regularise the determinant rank]
+\label{v4-arith:w9-r3:obstruction-1}
+\textbf{Objection.} ``Define \(c(s)=\sum_{p}c^{(p)}p^{-(s-1)}\), take
+\(s\to 1\), get a finite number.''
+\textbf{Answer.} \(c(s)=2\zeta_{\mathbb{P}}(s-1)\); \(\zeta_{\mathbb{P}}\)
+has natural boundary on \(\mathrm{Re}(w)=0\)
+(\Cref{v4-arith:thm:prime-zeta-natural-boundary}); \(c(s)\to+\infty\)
+as \(s\to 1^{+}\). The correct regularisation is through the
+determinant-residue prescription of
+\Cref{v4-arith:w9-r3:def:c-reg}, which evaluates through
+\(\zeta\) (meromorphic on \(\mathbb{C}\)) rather than \(\zeta_{\mathbb{P}}\)
+(barrier at \(\mathrm{Re}(w)=0\)).
+\end{remark}
+
+\begin{remark}[\((\log p)\)-weighting is not a Virasoro rescaling]
+\label{v4-arith:w9-r3:obstruction-2}
+\textbf{Objection.} ``The \((\log p)\)-rescaling changes the central
+charge \(c^{(p)}\mapsto(\log p)^{2}\cdot c^{(p)}\).''
+\textbf{Answer.} The local stress tensor is not rescaled. The factor
+\(\log p\) defines \(N_{p}=(\log p)L_{0}^{\mathrm{conf},(p)}\), the
+Hamiltonian in the Mellin determinant. The local conformal charge
+remains \(c^{(p)}=2\), and \(N_{p}\) is not a Virasoro zero mode.
+\end{remark}
+
+\begin{remark}[the universal scalar is not per-state-finite]
+\label{v4-arith:w9-r3:obstruction-3}
+\textbf{Objection.} ``\Cref{v4-arith:w9-r3:prop:per-state-finite}
+establishes a global Virasoro commutator.''
+\textbf{Answer.} It establishes finite action only for
+\(m\geq -1\). For \(m\leq -2\) the global mode is not defined on the
+vacuum, and the formal central scalar is \(\infty\). The residue in
+\S\ref{v4-arith:w9-r3:dirichlet} targets the determinant scalar, not
+a commutator on a dense domain
+(\Cref{v4-arith:w9-r3:rem:central-term-decomposition}).
+\end{remark}
+
+\begin{remark}[the residue prescription is uniquely determined]
+\label{v4-arith:w9-r3:obstruction-4}
+\textbf{Objection.} ``The regularisation \(r_{\zeta}=2\) is
+arbitrary: many Dirichlet-series prescriptions yield different
+numbers.''
+\textbf{Answer.} The prescription
+\eqref{v4-arith:w9-r3:eq:c-reg-def} is fixed by two requirements:
+(i) the regularisation runs through the global Fock partition
+\(Z(s)\) whose pole structure is uniquely determined by the Euler
+product of \(\zeta^{2}\) at \(s=1\); (ii) the regularisation must
+match the Polyakov anomaly on the archimedean completion
+(\Cref{v4-arith:w9-r3:thm:polyakov-identity}). Together these
+single out the residue prescription; the prime-zeta prescription
+fails (i): \(\zeta_{\mathbb{P}}\) has a natural boundary at \(\mathrm{Re}(w)=0\);
+the sum-at-zero prescription fails (ii): a sum indexed by primes
+is not the same as a residue of the Riemann zeta at \(s=1\), which
+runs over all positive integers via the Euler product.
+\end{remark}
+
+\begin{remark}[the archimedean fibre enters through the completed-zeta \(\Gamma\)-factor]
+\label{v4-arith:w9-r3:obstruction-5}
+\textbf{Objection.} ``The partition \(Z(s)=\prod_{p}Z^{(p)}(s)\) omits
+the archimedean fibre \(\mathcal{H}^{(\infty)}\).''
+\textbf{Answer.} The archimedean contribution enters through the
+\(\Gamma\)-factor in the completed zeta
+\(\xi_{\mathbb{R}}(s)=\tfrac{1}{2}s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)\);
+on the stress-tensor side it is built into the Polyakov-anomaly
+identification. \Cref{v4-arith:w9-r3:thm:polyakov-identity}
+states only a rank equality between the finite-prime residue and the
+archimedean anomaly. It does not add two central charges.
+\end{remark}
+
+\begin{remark}[the order of the pole of \(\log Z\) at \(s=1\) is not a free parameter]
+\label{v4-arith:w9-r3:obstruction-6}
+\textbf{Objection.} ``The residue prescription is circular: the
+residue is \(2\) because the rank is chosen to be \(2\).''
+\textbf{Answer.} The order of the pole is \emph{not} a free parameter. It is
+computed from the Euler product: \(Z^{(p)}(s)=\prod_{n\geq 1}(1-p^{-sn})^{-2}\)
+has rank-\(2\) because the per-prime Heisenberg is rank-\(2\)
+(two free bosons); this is a \emph{fixed input} from the
+construction. The resulting \(Z(s)=\zeta(s)^{2}\cdot\mathrm{hol}\)
+near \(s=1\) has a pole of order \(2\) in \(\zeta\), hence a leading
+\(-2\log(s-1)\) term in \(\log Z\), hence
+\(\mathrm{Res}_{s=1}(-\frac{d}{ds}\log Z)=+2\). The input is the
+rank-\(2\) Heisenberg determinant. The output is the same rank read
+from the pole of \(\zeta(s)^{2}\).
+\end{remark}
+
+\begin{remark}[Iwasawa completion does not change the local rank]
+\label{v4-arith:w9-r3:obstruction-7}
+\textbf{Objection.} ``The Vol~IV arithmetic-Positselski chapter
+works with Iwasawa \(\Lambda_{p}\)-coefficients, where the local
+rank of the Heisenberg factor might change.''
+\textbf{Answer.} \(\Lambda_{p}=\mathbb{Z}_{p}[[T]]\) is the
+Iwasawa-algebra completion of the per-prime Heisenberg acting on
+the cyclotomic tower (Chapter~\ref{v4-arith:arith-positselski},
+\Cref{v4-arith:thm:arithmetic-positselski}). In the
+Gelfand--Kazhdan formal-geometry window the \(\Lambda_{p}\)-Heisenberg
+is rank-\(2\) over \(\mathbb{Q}_{p}\) (two
+free Iwasawa-generators; Fontaine 1991 \(B_{\mathrm{dR}}\) rank-\(2\)
+Hodge-Tate class). Completion preserves this rank. Thus the local
+Sugawara central charge remains \(2\), and the global trace class
+still has no Virasoro central charge.
+\end{remark}
+
+\subsection{Relation to the conditional Virasoro-bracket question}
+\label{v4-arith:w9-r3:bracket-relation}
+
+\begin{remark}[what is proved and what is not]
+\label{v4-arith:w9-r3:rem:proved-vs-not}
+\Cref{v4-arith:w9-r3:thm:main} proves the determinant scalar
+\(r_{\zeta}=2\). It does \emph{not} prove that a per-prime sum
+\(\sum_{p}L_{m}^{\mathrm{conf},(p)}\) satisfies a Virasoro bracket
+with this scalar. Two obstructions remain:
+\begin{enumerate}
+\item \emph{Domain.} The modes \(m\leq -2\) must first exist as
+dense operators on a completion of
+\(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}\) (the
+Petersson completion, \Cref{v4-arith:thm:P3-resolution}). The
+closure is not automatic: finite-support states do not form an
+invariant core unless a commutator estimate is given.
+\item \emph{Bracket identity.} After closure, the identity
+\([L_{m},L_{n}]=(m-n)L_{m+n}+(c/12)(m^{3}-m)\delta_{m+n,0}\cdot\mathrm{id}\)
+would still be a new theorem. The determinant scalar \(r_{\zeta}\)
+does not supply it.
+\end{enumerate}
+Both obstructions are open for the primary-Virasoro reconciliation.
+\end{remark}
+
+\subsection{Domain and logical form}
+\label{v4-arith:w9-r3:domain}
+
+\begin{remark}[determinant domain]
+\label{v4-arith:w9-r3:rem:domain}
+The determinant-rank identity is \(r_{\zeta}=2\).
+It does not prove either half of
+\Cref{v4-arith:rh:conj:primary-Virasoro}. The open content remains
+operator closure plus bracket identity on a dense domain
+(\Cref{v4-arith:w9-r3:rem:proved-vs-not}). The operator closure
+requires operator estimates on
+\(\mathcal{V}^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}\) with
+respect to the Petersson inner product of
+\Cref{v4-arith:thm:P3-resolution}.
+\end{remark}
+
+\section{Bibliography}
+\label{v4-arith:w9-r3:bibliography}
+
+\begin{thebibliography}{99}
+\bibitem{Belavin-Polyakov-Zamolodchikov-1984}
+A.~A.~Belavin, A.~M.~Polyakov, A.~B.~Zamolodchikov.
+\emph{Infinite conformal symmetry in two-dimensional quantum field
+theory.} Nuclear Physics B 241 (1984), 333--380.
+
+\bibitem{Edwards-1974}
+H.~M.~Edwards.
+\emph{Riemann's Zeta Function.}
+Pure and Applied Mathematics 58. Academic Press 1974.
+
+\bibitem{Friedan-Shenker-1987}
+D.~Friedan, S.~Shenker.
+\emph{The analytic geometry of two-dimensional conformal field
+theory.} Nuclear Physics B 281 (1987), 509--545.
+
+\bibitem{Frenkel-Ben-Zvi-2004}
+E.~Frenkel, D.~Ben-Zvi.
+\emph{Vertex Algebras and Algebraic Curves.} 2nd ed.
+Mathematical Surveys and Monographs 88. American Mathematical
+Society 2004. Chapter 2 (Heisenberg vertex algebras), Chapter 5
+(Sugawara construction).
+
+\bibitem{Iwasawa-1972}
+K.~Iwasawa.
+\emph{Lectures on p-adic L-functions.}
+Annals of Mathematics Studies 74. Princeton University Press 1972.
+
+\bibitem{Kac-1998}
+V.~G.~Kac.
+\emph{Vertex Algebras for Beginners.} 2nd ed.
+University Lecture Series 10. American Mathematical Society 1998.
+
+\bibitem{Kac-Raina-1987}
+V.~G.~Kac, A.~K.~Raina.
+\emph{Bombay Lectures on Highest Weight Representations of
+Infinite-Dimensional Lie Algebras.}
+Advanced Series in Mathematical Physics 2. World Scientific 1987.
+
+\bibitem{Landau-Walfisz-1920}
+E.~Landau, A.~Walfisz.
+\emph{\"Uber die Nichtfortsetzbarkeit einiger durch Dirichletsche
+Reihen definierten Funktionen.}
+Rendiconti del Circolo Matematico di Palermo 44 (1920), 82--86.
+
+\bibitem{Polyakov-1981}
+A.~M.~Polyakov.
+\emph{Quantum geometry of bosonic strings.}
+Physics Letters B 103 (1981), 207--210.
+
+\bibitem{Serre-1970}
+J.-P.~Serre.
+\emph{Cours d'Arithm\'etique.}
+Presses Universitaires de France 1970. Chapter VI (Dirichlet
+series, Euler products, analytic continuation of \(\zeta\)).
+
+\bibitem{Froberg-1968}
+C.-E.~Fr\"oberg.
+\emph{On the prime zeta function.}
+BIT Numerical Mathematics 8 (1968), 187--202.
+\end{thebibliography}

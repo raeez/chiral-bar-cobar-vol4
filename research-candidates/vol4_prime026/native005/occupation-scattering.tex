@@ -1,0 +1,343 @@
+\chapter{Occupation Perturbations and the Weil Trace Comparison}
+\label{v4-arith:w7-j:ATP-adelic-scattering}
+
+Disjoint spectral intervals permit a full self-adjoint occupation
+perturbation of the dilation generator. Its compact Fourier tests
+have trace-class differences, even though the perturbation itself
+is not trace class. The resulting spectral distribution is supported
+on a half-line. This support excludes the full Weil zero functional.
+
+\section{The scaling space and the occupation embedding}
+
+\begin{definition}[idele norm coordinates]
+\label{v4-arith:w7-j:def:H-idele}
+Let $\mathbb A=\mathbb R\times\prod'_p\mathbb Q_p$ be the ring
+of rational adeles, and put
+$C_{\mathbb Q}=\mathbb Q^\times\backslash\mathbb A^\times$.
+Choose the representative with positive real component and finite
+components in $\widehat{\mathbb Z}^{\times}=\prod_p\mathbb Z_p^\times$.
+The real component is the idele norm $r>0$. Use Haar measure
+$dr/r\,d\mu_1$, with $\mu_1(\widehat{\mathbb Z}^{\times})=1$.
+Put
+\[
+ U=L^2(\widehat{\mathbb Z}^{\times},\mu_1),\qquad e_0=1\in U,
+ \qquad K=L^2(\mathbb R,d\tau)\otimes U.
+\]
+All tensor products of Hilbert spaces are completed.
+The normalized Fourier transform in $t=\log r$ identifies the
+scaling generator $-i\partial_t$ with $D_0=M_\tau\otimes1$.
+Its domain is
+\[
+ \operatorname{Dom}D_0=
+ \left\{v:\int_{\mathbb R}\tau^2\|v(\tau)\|_U^2d\tau<\infty\right\}.
+\]
+\end{definition}
+
+To obtain the representative, multiply an idele by the reciprocal
+of $\prod_pp^{v_p(a_p)}$, then by a sign. This makes every finite
+valuation zero and the real component positive. Uniqueness follows
+because a positive rational unit at every finite place is one.
+The resulting product coordinates are continuous group coordinates.
+Plancherel and the weak-derivative characterization of $H^1$
+prove the generator and domain assertions on the full tensor product.
+Functions constant on the second factor alone would not form a dense
+domain in that tensor product.
+
+Choose a real or complex $b\in C_c^\infty(0,1)$ with $\|b\|_2=1$.
+For $m\ge1$, put $b_m(\tau)=b(\tau-m)$ and
+$e_m=b_m\otimes e_0$. These are orthonormal. The map
+$I:\ell^2(\mathbb N_{\ge1})\to K$, $Iv_m=e_m$, is an isometry.
+For the occupation operator $Nv_m=(\log m)v_m$, use the maximal
+domain $\sum_m(\log m)^2|a_m|^2<\infty$.
+Its image gives
+\[
+ V_M=\sum_{m=1}^M(\log m)|e_m\rangle\langle e_m|,
+ \qquad D_M=D_0+V_M.
+\]
+Inner products are linear in the first variable, so
+$|e_m\rangle\langle e_m|v=\langle v,e_m\rangle e_m$.
+
+\begin{proposition}[the full occupation perturbation]
+\label{v4-arith:sc:full-domain}
+The series
+\[
+ Vv=\sum_{m\ge1}(\log m)\langle v,e_m\rangle e_m
+\]
+defines a positive self-adjoint operator on the maximal domain
+$\sum_m(\log m)^2|\langle v,e_m\rangle|^2<\infty$.
+This domain contains $\operatorname{Dom}D_0$.
+The operator $D=D_0+V$ is self-adjoint on $\operatorname{Dom}D_0$.
+For every nonreal $z$, $(D_M-z)^{-1}$ converges strongly to
+$(D-z)^{-1}$.
+\end{proposition}
+\begin{proof}
+The diagonal series proves the assertion about $V$.
+Decompose $K$ into the affected blocks
+$K_m=L^2((m,m+1))\otimes\mathbb Ce_0$ and their common orthogonal
+complement $K_{\mathrm{rest}}$. On $K_m$ write
+\[
+ A_m=M_\tau,\qquad
+ B_m=A_m+(\log m)|e_m\rangle\langle e_m|.
+\]
+These are bounded self-adjoint operators with
+$m\le A_m\le m+1$ and $m\le B_m\le m+1+\log m$.
+The direct sum of $B_m$, together with $D_0$ on $K_{\mathrm{rest}}$,
+is self-adjoint on its maximal direct-sum domain.
+Since
+\[
+ m\|v_m\|\le\|A_mv_m\|\le(m+1)\|v_m\|,
+ \qquad
+ m\|v_m\|\le\|B_mv_m\|\le3m\|v_m\|,
+\]
+that domain equals $\operatorname{Dom}D_0$.
+Bessel's inequality on each interval gives
+$\|Vv\|^2\le\sum_m(\log m)^2\|v_m\|^2$.
+Thus $V$ is defined there, and the direct sum equals $D_0+V$.
+
+The resolvents of $D_M$ and $D$ agree on every fixed finite sum
+of blocks once $M$ is sufficiently large. They agree on
+$K_{\mathrm{rest}}$ for every $M$ and have norm at most $|\Im z|^{-1}$.
+Finite block approximation of any vector proves strong convergence.
+\end{proof}
+
+The bounded perturbations satisfy
+\[
+ \|V_M\|=\log M,\quad
+ \|V_M\|_1=\sum_{m\le M}\log m,\quad
+ \|V_M\|_2^2=\sum_{m\le M}(\log m)^2.
+\]
+Thus $V$ is unbounded and is neither trace class nor Hilbert--Schmidt.
+Its self-adjoint construction uses the specified interval embedding.
+It does not identify that embedding with an arithmetic realization.
+
+\section{Wave operators on the full model}
+
+\begin{theorem}[existence of the occupation wave operators]
+\label{v4-arith:w7-j:prop:wave-existence}
+The strong limits
+\[
+ \Omega_\pm=\lim_{t\to\pm\infty}e^{itD}e^{-itD_0}
+\]
+exist on $K$ and are isometries. The same assertion holds with
+$D_M$ in place of $D$.
+\end{theorem}
+\begin{proof}
+Take $v$ in $C_c^\infty(\mathbb R)\otimes_{\mathrm{alg}}U$.
+Only finitely many $e_m$ meet its spectral support. Each coefficient
+of $Ve^{-itD_0}v$ is a constant multiple of
+$\int\overline{b_m(\tau)}v_0(\tau)e^{-it\tau}d\tau$.
+Two integrations by parts bound it by $C_v(1+|t|)^{-2}$.
+Consequently $\int_{\mathbb R}\|Ve^{-itD_0}v\|dt<\infty$.
+The common-domain identity
+\[
+ \frac d{dt}\bigl(e^{itD}e^{-itD_0}v\bigr)
+ =ie^{itD}Ve^{-itD_0}v
+\]
+proves the Cauchy property at both ends of the real line.
+The approximating operators are unitary. Their limits preserve
+norms on this dense subspace and extend to isometries on all of $K$.
+The finite sum gives the same proof for $D_M$.
+\end{proof}
+
+Completeness would additionally identify the ranges with the entire
+absolutely continuous subspace of $D$. Existence alone does not make
+that identification. If the two ranges are equal, then
+$S=\Omega_+^*\Omega_-$ is unitary. Indeed both wave operators are
+unitaries from $K$ onto their common closed range.
+
+\section{A continuous trace map on Schwartz spectral tests}
+
+\begin{lemma}[a block trace-norm estimate]
+\label{v4-arith:sc:trace-bound}
+For $h\in\mathscr S(\mathbb R)$ and every integer $N\ge1$,
+\[
+ \|h(B_m)-h(A_m)\|_1
+ \le C_N(\log m)\sqrt{3+\log m}\,(1+m)^{-N}
+ \max_{0\le j\le2}\sup_x(1+|x|)^N|h^{(j)}(x)|.
+\]
+Here the constant is independent of $m$ and $h$.
+\end{lemma}
+\begin{proof}
+Choose a smooth cutoff $\chi_m$ equal to one on
+$[m,m+1+\log m]$ and supported in $[m-1,m+2+\log m]$.
+Fixed smooth transitions of width one give uniformly bounded
+first and second derivatives. Put $q_m=\chi_m h$.
+Functional calculus gives $q_m(A_m)=h(A_m)$ and
+$q_m(B_m)=h(B_m)$.
+
+Duhamel's formula and Fourier inversion give
+\[
+ \|q_m(B_m)-q_m(A_m)\|_1
+ \le\frac{\log m}{2\pi}
+       \int_{\mathbb R}|t|\,|\mathcal F_-q_m(t)|dt.
+\]
+For negative $t$, reverse the time integral in Duhamel's formula.
+The same bound with $|t|$ follows. Cauchy--Schwarz with weight
+$(1+t^2)^{-1}$ and Plancherel bound this integral by
+$C(\|q_m'\|_2+\|q_m''\|_2)$.
+The support length and uniform cutoff bounds give the displayed
+estimate. For $m=1$ the difference is zero because $\log1=0$.
+\end{proof}
+
+\begin{theorem}[the occupation trace distribution]
+\label{v4-arith:sc:trace-map}
+The map
+\[
+ \mathcal T:\mathscr S(\mathbb R)\longrightarrow\mathcal S_1(K),
+ \qquad \mathcal T(h)=h(D)-h(D_0)
+\]
+is continuous and linear, where $\mathcal S_1(K)$ has the trace norm.
+Moreover,
+\[
+ T(h)=\operatorname{Tr}\mathcal T(h)
+   =\sum_{m\ge1}\operatorname{Tr}(h(B_m)-h(A_m))
+\]
+defines a tempered distribution supported in $[1,\infty)$.
+The trace differences for $D_M$ converge in trace norm to
+$\mathcal T(h)$ for every Schwartz test.
+\end{theorem}
+\begin{proof}
+Functional calculus respects the direct-sum decomposition.
+On $K_{\mathrm{rest}}$ the difference is zero. On $K_m$ it is the
+operator in Lemma~\ref{v4-arith:sc:trace-bound}.
+For $N=3$ the sum of its bounds is finite, because
+$\sum_m(\log m)\sqrt{3+\log m}(1+m)^{-3}<\infty$.
+The sum therefore converges in trace norm and supplies a continuous
+Schwartz seminorm bound. The finite truncations are its partial sums.
+The trace is continuous in trace norm, which proves the formula
+and temperedness. If $h$ is supported in $(-\infty,1)$, all affected
+block functional calculi vanish. This proves the support assertion.
+\end{proof}
+
+\section{The support obstruction to an arithmetic trace identity}
+
+\begin{theorem}[no lower-bounded tempered spectral realization]
+\label{v4-arith:sc:support-obstruction}
+There is no tempered distribution $T_0$ with support bounded below
+such that
+\[
+ T_0(\mathcal F_+f)=W(f)\qquad(f\in C_c^\infty(\mathbb R)),
+\]
+where $W$ is the full xi zero functional.
+In particular, the trace distribution of
+Theorem~\ref{v4-arith:sc:trace-map} does not satisfy that identity.
+\end{theorem}
+\begin{proof}
+Such an identity would extend $W$ to a tempered distribution in the
+additive variable. On $C_c^\infty(0,\infty)$ the explicit formula gives
+\[
+ \nu_{1/2}(f)=-W(f)-\int_0^\infty
+                \frac{e^{-t/2}}{e^{2t}-1}f(t)dt.
+\]
+Multiply by a smooth cutoff supported in $(0,\infty)$ and equal
+to one for $t\ge1$. The density then decays exponentially.
+The remainder of $\nu_{1/2}$ has compact support. Thus
+$\nu_{1/2}$ would be tempered, and
+Theorem~\ref{v4-arith:pm:centered} would imply RH.
+
+Under RH, $W(f)=\mu_{\mathrm{ord}}(\mathcal F_+f)$.
+Compact smooth functions are dense in the Schwartz space, and the
+Fourier transform is its continuous automorphism. Equality on their
+Fourier images therefore gives $T_0=\mu_{\mathrm{ord}}$ on all Schwartz tests.
+There are infinitely many xi zeros, all in a fixed vertical strip.
+Their ordinates are unbounded in absolute value. Conjugation gives
+ordinates tending to negative infinity. The positive measure
+$\mu_{\mathrm{ord}}$ therefore has support unbounded below, a contradiction.
+\end{proof}
+
+This argument excludes a proposed comparison for an explicitly
+constructed operator and trace map. It does not prove or disprove RH.
+An arithmetic realization must change the spectral carrier or the
+trace construction and prove the resulting comparison.
+
+\section{Scattering phases and the discrete spectral contribution}
+
+\begin{proposition}[unitary scattering with a negative square trace]
+\label{v4-arith:sc:unitary-counterexample}
+On $K'=L^2(\mathbb R)\oplus\mathbb C$, let
+$H_0=M_x\oplus0$ and $H_1=M_x\oplus1$ on the common maximal domain.
+The wave operators are complete and their scattering operator is
+the identity on the absolutely continuous subspace.
+There is an entire Fourier square $h$ such that
+\[
+ \operatorname{Tr}(h(H_1)-h(H_0))<0.
+\]
+\end{proposition}
+\begin{proof}
+The absolutely continuous subspace is $L^2(\mathbb R)\oplus0$ for
+both operators. On it $e^{itH_1}e^{-itH_0}$ is the identity for
+every $t$, proving existence and completeness of both wave operators.
+For a nonzero nonnegative $g\in C_c^\infty$, put
+$\phi=\mathcal F_+g$ and $h=\phi\phi^\sharp$.
+The functional-calculus difference is
+$0\oplus(|\phi(1)|^2-|\phi(0)|^2)$.
+Strict triangle inequality gives $|\phi(1)|<|\phi(0)|$, since
+$e^{it}$ is not constant on any interval where $g>0$.
+Thus the finite-rank trace is negative.
+\end{proof}
+
+For this pair the spectral-shift formula is the elementary identity
+\[
+ \operatorname{Tr}(h(H_1)-h(H_0))
+ =\int_0^1h'(u)du.
+\]
+The real spectral-shift function is $\mathbf1_{(0,1)}$.
+Its phase $\exp(-2\pi i\mathbf1_{(0,1)})$ is one almost everywhere.
+The scattering phase loses this integer-valued discrete contribution.
+
+\begin{proposition}[functional-equation phases]
+\label{v4-arith:sc:phase}
+The quotient $\xi(1/2+it)/\xi(1/2-it)$ equals one wherever defined
+and has the constant continuation through its common zeros.
+For an entire nonzero function $a$ satisfying
+$a(\bar s)=\overline{a(s)}$, the quotient
+$a(1/2+it)/a(1/2-it)$ has modulus one wherever defined.
+\end{proposition}
+\begin{proof}
+The first assertion is the functional equation.
+The second follows from conjugation. A common zero is isolated
+unless the entire function vanishes identically. Consequently the
+quotient, where unimodular, defines a unitary multiplication
+operator on the real $L^2$ line after arbitrary values on its
+measure-zero exceptional set. This does not identify it with wave
+operators for a specified pair.
+\end{proof}
+
+Reflection symmetry $a(s)=\overline{a(1-\bar s)}$ alone has a
+different meaning: it says that $a$ is real on the critical line.
+For example, choose real even nonzero $c\in C_c^\infty(\mathbb R)$
+and put
+\[
+ A(s)=\int c(t)e^{(s-1/2)t}dt,\qquad
+ a(s)=(1+i(s-1/2))A(s).
+\]
+Then $a(s)=\overline{a(1-\bar s)}$, and it is entire of exponential
+type with rapid decrease on closed vertical strips. Nevertheless
+its quotient on the line is $(1-t)/(1+t)$ wherever $A$ is nonzero.
+Reflection symmetry by itself does not give a unitary phase.
+
+\section{The remaining arithmetic comparison}
+
+\begin{definition}[the adele-class carrier]
+\label{v4-arith:w7-j:def:connes-ac-space}
+The adele-class quotient is $\mathbb Q^\times\backslash\mathbb A$,
+where rational multiplication also acts on noninvertible adeles.
+It differs from the idele-class group
+$\mathbb Q^\times\backslash\mathbb A^\times$ used above.
+A Hilbert or distributional realization on that quotient requires
+its own space, action, domain, and trace functional.
+\end{definition}
+
+An arithmetic scattering comparison would specify self-adjoint
+operators $A_0,A_1$ on a common Hilbert space and a trace map on
+$\mathscr P$. If it uses an ordinary difference trace, it must prove
+$h(A_1)-h(A_0)\in\mathcal S_1$ for every $h\in\mathscr P$ and
+\[
+ \operatorname{Tr}(h(A_1)-h(A_0))
+ =P(f)-W_\infty(f)-W_{\mathrm{fin}}(f),\qquad h=\mathcal F_+f.
+\]
+If it uses a regularized or virtual trace, that functional and its
+continuity must instead be constructed on the stated carrier.
+The ordinary one-sided occupation model above fails the comparison
+by a proved support obstruction. Scattering unitarity supplies
+neither the missing trace identity nor positivity of its square class.

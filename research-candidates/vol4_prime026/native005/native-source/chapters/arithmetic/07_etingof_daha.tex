@@ -1,0 +1,253 @@
+\chapter{DAHA, Macdonald, and the Parameter Non-Uniformity}
+\label{v4-arith:etingof}
+
+Macdonald theory, DAHA, and elliptic Hall algebras depend on uniform
+parameters. The primon construction carries a prime-indexed family of
+parameters, and this non-uniformity is the obstruction.
+
+\section{Macdonald \((q,t)\) and the Prime-Indexed Alphabet}
+\label{v4-arith:et:macdonald-qt}
+
+The question is whether the primon construction \(\mathcal{V}^{\mathrm{prim}}\) admits an embedding
+into a standard Macdonald or elliptic-Hall framework. The first obstruction
+is domain-theoretic: the classical Macdonald theory lives on a single ring of
+symmetric functions, while \(\mathcal{V}^{\mathrm{prim}}\) is prime-stratified.
+
+\begin{theorem}[Macdonald I.6.19]
+\label{v4-arith:thm:macdonald-norm}
+\ClaimStatusProvedElsewhere. The Macdonald inner product on
+\(\Lambda\) (the ring of symmetric functions) is
+\begin{equation}
+\langle p_{\mu},p_{\nu}\rangle_{q,t}\;=\;\delta_{\mu\nu}\,z_{\mu}\prod_{i\geq 1}\frac{1-q^{\mu_{i}}}{1-t^{\mu_{i}}},
+\end{equation}
+where \(z_{\mu} = \prod_{i\geq 1} i^{m_i} m_i!\) for a partition
+\(\mu\) with \(m_i\) parts equal to \(i\), and \((q,t)\) are two
+global parameters on \(\Lambda\). The power-sum basis \(p_{\mu}\)
+does not factor over primes.
+\end{theorem}
+
+\begin{observation}[domain mismatch]
+\label{v4-arith:obs:domain-mismatch-macdonald}
+The proposal \(q=p^{-s}\), \(t=p^{-s-1}\) (per prime) assigns a
+single pair \((q,t)\) to the prime-agnostic ring \(\Lambda\), whereas
+the primon construction \(\mathcal{V}^{\mathrm{prim}}\) lives on
+\(\bigotimes'_{p}\Lambda_{(p)}\) (prime-stratified; the restricted tensor
+product over primes with almost all factors at the vacuum). The two
+domains are distinct; no map from \(\mathcal{V}^{\mathrm{prim}}\) to
+single-parameter Macdonald exists.
+\end{observation}
+
+The correct domain for the primon construction is the prime-stratified
+tensor product; the Macdonald pairing extends to it by assigning
+independent parameters \((q_p, t_p)\) at each prime.
+
+\begin{definition}[per-prime Macdonald]
+\label{v4-arith:def:per-prime-macdonald}
+Set \(\Lambda_{(p)} = \mathbb{Q}[p_{1}^{(p)}, p_{2}^{(p)}, \ldots]\),
+the ring of symmetric functions with power-sum generators indexed by the
+prime \(p\). Define
+\begin{equation}
+\Lambda^{\mathrm{prim}}\;:=\;\bigotimes'_{p}\Lambda_{(p)},
+\end{equation}
+the restricted tensor product (almost all factors equal to vacuum~\(1\)).
+The Macdonald pairing is per-prime:
+\begin{equation}
+\langle p_{\mu}^{(p)},p_{\nu}^{(p)}\rangle_{q_{p},t_{p}}\;=\;\delta_{\mu\nu}z_{\mu}\prod_{i\geq 1}\frac{1-q_{p}^{\mu_{i}}}{1-t_{p}^{\mu_{i}}};
+\end{equation}
+the global pairing on \(\Lambda^{\mathrm{prim}}\) is the tensor product
+over primes. The result is a multi-parameter
+\((q_{p},t_{p})_{p}\) Macdonald framework.
+\end{definition}
+
+\section{The \(\log p\) Rescaling as a Heisenberg Conformal Rescaling}
+\label{v4-arith:et:logp-not-in-qt}
+
+The per-prime Macdonald norm at generic \((q_p, t_p)\) is
+\(k(1-q_p^k)/(1-t_p^k)\), while the Heisenberg norm of the primon
+creation operator is \(k\). The question is how these match, and what
+role the \(\log p\) prefactor plays. The computation shows it is a
+Heisenberg conformal rescaling external to the \((q_p, t_p)\)
+parameters.
+
+\begin{computation}
+\label{v4-arith:comp:norm-vs-kesten-mckay}
+Under \(\mathcal{H}^{(p)}\cong\Lambda_{(p)}\otimes\mathbb{Q}\) with
+\(a^{(p)}_{-k}|0\rangle\leftrightarrow p_{k}^{(p)}/\sqrt{k}\), the
+Heisenberg norm is
+\begin{equation}
+\langle\!\langle a^{(p)}_{-k}|0\rangle,a^{(p)}_{-k}|0\rangle\!\rangle
+\;=\;1.
+\end{equation}
+Equivalently, the unnormalised vector \(p_{k}^{(p)}\) has norm \(k\).
+The Kesten--McKay \(k\)-th moment (tree branching at degree \(k\)) is
+a Catalan-type count scaling like \(p^{k}\); and the \(\log p\)
+rescaling adds a per-prime \((\log p)^{k}\) factor. Neither matches
+the Macdonald norm \(k(1-q_{p}^{k})/(1-t_{p}^{k})\) at generic
+\((q_{p},t_{p})\).
+\end{computation}
+
+\begin{theorem}[Heisenberg specialisation match]
+\label{v4-arith:thm:free-fermion-match}
+\ClaimStatusProvedHere. Setting \(t_{p}=q_{p}^{2}\) and sending
+\(q_{p}\to 0\):
+\begin{equation}
+\lim_{q_{p}\to 0}\frac{1-q_{p}^{k}}{1-q_{p}^{2k}}\;=\;1,
+\end{equation}
+giving \(\langle p_{k}^{(p)},p_{k}^{(p)}\rangle_{q_p,t_p} = k\), the
+free-boson Heisenberg norm for the unnormalised vector. The
+normalised vector \(p_k^{(p)}/\sqrt{k}\) has norm \(1\). A
+\(\log p\)-weighted arithmetic inner product, if imposed, is an
+external grading convention:
+\begin{equation}
+\langle\!\langle p_k^{(p)},p_k^{(p)}\rangle\!\rangle_{\mathrm{prim}}
+\;=\;k\cdot(\log p)^{k}.
+\end{equation}
+No Kesten--McKay measure is asserted at this limit. That measure is a
+graph-theoretic input, not a consequence of the Macdonald
+specialisation.
+\end{theorem}
+
+\begin{remark}
+The \(\log p\) rescaling is a Heisenberg conformal rescaling, not a
+Macdonald parameter; the \((q_{p},t_{p})\)-deformation parameters
+carry only the shape of the inner product, not the arithmetic weight.
+Arithmetic data sits in the tensor-indexing over primes, not in the
+deformation parameters.
+\end{remark}
+
+\section{DAHA Parameters and the Arithmetic Hall Algebra}
+\label{v4-arith:et:no-prime-daha}
+
+The per-prime \((q_p, t_p)\) framework raises the question of whether
+these parameters can be assembled into a single double affine Hecke
+algebra. The rank constraint of DAHA forecloses this.
+
+\begin{theorem}[DAHA rank constraint]
+\label{v4-arith:thm:DAHA-rank}
+\ClaimStatusProvedElsewhere (Cherednik, \emph{Double Affine Hecke
+Algebras}, CUP~2005, \S1.4). The double affine Hecke algebra (DAHA)
+\(\mathbb{H}(q,t)\) of type \(A_{n-1}\) has two parameters \((q,t)\)
+and acts on \(\mathbb{C}[x_{1}^{\pm},\ldots,x_{n}^{\pm}]\) via
+Dunkl--Cherednik operators.
+\end{theorem}
+
+\begin{observation}[DAHA-Adams incompatibility]
+\label{v4-arith:obs:DAHA-Adams-incompatible}
+Hecke--Adams operators \(\psi_{n}\) act uniformly on \(\Lambda\) and
+do not distinguish primes; DAHA Dunkl operators are \(W\)-equivariant
+for the Weyl group \(W\) acting symmetrically. The prime stratification
+of \(\Lambda^{\mathrm{prim}} = \bigotimes'_p \Lambda_{(p)}\) lives in
+the tensor-indexing, outside the \(W\)-action; the two structures
+occupy distinct tensorial positions.
+\end{observation}
+
+The correct object at each prime is the spherical elliptic Hall
+algebra of Schiffmann--Vasserot. Its degeneration is used only as a
+rank-one Hall degeneration; no prime is a DAHA rank.
+
+\begin{theorem}[Schiffmann--Vasserot, \(q\to 1\) degeneration]
+\label{v4-arith:thm:SV-at-q-to-1}
+\ClaimStatusProvedElsewhere (Schiffmann--Vasserot arXiv:0905.2555,
+arXiv:1202.2756, Theorem~1.2). Under the degeneration normalisation of
+Schiffmann--Vasserot, the spherical elliptic Hall algebra has
+\(W_{1+\infty}\) as its limiting rank-one algebra. This chapter uses
+only that limiting Hall algebra, not a prime-dependent Yangian
+identification.
+\end{theorem}
+
+\begin{definition}[arithmetic Hall algebra]
+\label{v4-arith:def:arithmetic-hall}
+\begin{equation}
+\mathbb{H}^{\mathrm{arith}}\;:=\;\bigotimes'_{p}\mathrm{SH}(q_{p},t_{p}),
+\end{equation}
+the restricted tensor product of spherical elliptic Hall algebras,
+one per prime. At each prime, the shuffle product on alphabet
+\((x^{(p)}_{1},x^{(p)}_{2},\ldots)\) uses the kernel
+\begin{equation}
+\omega_{p}(x,y)\;=\;\frac{(1-q_{p}x/y)(1-t_{p}^{-1}x/y)}{(1-x/y)(1-q_{p}t_{p}^{-1}x/y)}.
+\end{equation}
+Between primes \(p\neq \ell\) the shuffle kernel is~\(1\); primes do
+not mix.
+\end{definition}
+
+\section{Shuffle Structure Is Uncoupled Across Primes}
+\label{v4-arith:et:shuffle-uncoupled}
+
+By construction (\Cref{v4-arith:def:arithmetic-hall}), the shuffle
+kernel at a single prime is \(\omega_p\), while the kernel between
+distinct primes is \(1\). This factorisation is a theorem, not merely
+a definition: it rules out cross-prime algebraic interactions.
+
+\begin{theorem}
+\label{v4-arith:thm:shuffle-uncoupled}
+\ClaimStatusProvedHere. The shuffle structure on
+\(\mathbb{H}^{\mathrm{arith}}\) (\Cref{v4-arith:def:arithmetic-hall})
+factors across primes: for \(p\neq \ell\), the shuffle kernel is
+trivial (\(=1\)). Primes enter only as labels on non-interacting
+copies of the same shuffle data; there are no cross-prime shuffle
+relations.
+\end{theorem}
+
+\begin{remark}
+Primes enter \(\mathcal{V}^{\mathrm{prim}}\) as labels on
+non-interacting copies of the same Heisenberg data. The
+non-triviality of the \((q_{p},t_{p})\)-deformation is internal to
+each prime factor; the arithmetic content sits in the tensor-indexing
+over primes, not in algebraic interactions across them.
+\end{remark}
+
+\section{Arithmetic Macdonald Polynomials}
+\label{v4-arith:et:arithmetic-macdonald}
+
+The \(P^{\mathrm{arith}}\)-basis for \(\Lambda^{\mathrm{prim}}\) is forced by the
+per-prime tensor structure: each basis element is a tensor product of
+classical Macdonald polynomials, one per prime, with almost all factors
+equal to the empty-partition polynomial \(P_\varnothing = 1\).
+
+\begin{definition}[arithmetic Macdonald polynomial]
+\label{v4-arith:def:arithmetic-macdonald-poly}
+\begin{equation}
+P^{\mathrm{arith}}_{(\lambda_{p})_{p}}\;:=\;\bigotimes'_{p}P_{\lambda_{p}}(x^{(p)};q_{p},t_{p}),
+\end{equation}
+the restricted tensor product indexed by a family of partitions
+\((\lambda_{p})_{p}\) with almost all \(\lambda_{p}=\varnothing\).
+\end{definition}
+
+\begin{remark}[dimension count]
+At the 2-prime sector \(\{2,3\}\) at total level~\(2\), there are five
+\(P^{\mathrm{arith}}\)-basis vectors:
+\begin{align*}
+&P_{(2)}(x^{(2)})\otimes 1,\quad 1\otimes P_{(2)}(x^{(3)}),\quad
+P_{(1)}(x^{(2)})\otimes P_{(1)}(x^{(3)}), \\
+&P_{(1,1)}(x^{(2)})\otimes 1,\quad 1\otimes P_{(1,1)}(x^{(3)}),
+\end{align*}
+matching the five primon states at this level. A single-\(\Lambda\)
+Macdonald has only three monomials at level~\(2\) in two variables;
+the stratified tensor structure is essential.
+\end{remark}
+
+\begin{theorem}[parameter non-uniformity]
+\label{v4-arith:thm:parameter-non-uniformity}
+\ClaimStatusProvedHere. The Hochschild trace class
+\(\mathcal{V}^{\mathrm{prim}}\) on \(\Lambda^{\mathrm{prim}} = \bigotimes'_p \Lambda_{(p)}\)
+admits the following structure:
+\begin{enumerate}
+\item The Macdonald inner product on \(\Lambda^{\mathrm{prim}}\)
+  is the per-prime pairing with independent parameters
+  \((q_p, t_p)_p\) (\Cref{v4-arith:def:per-prime-macdonald}); the
+  naive scalar dictionary \(q = p^{-s}\) has the wrong domain.
+\item The \(\log p\) rescaling is a Heisenberg conformal
+  rescaling multiplicatively outside the \((q_p, t_p)\) parameters
+  (\Cref{v4-arith:thm:free-fermion-match}); it is not a Macdonald parameter.
+\item The correct algebra is \(\mathbb{H}^{\mathrm{arith}} = \bigotimes'_p \mathrm{SH}(q_p, t_p)\)
+  (\Cref{v4-arith:def:arithmetic-hall}); the shuffle structure
+  factors across primes (\Cref{v4-arith:thm:shuffle-uncoupled}).
+\item The basis \(\{P^{\mathrm{arith}}_{(\lambda_p)_p}\}\) is the
+  prime-factored tensor product of classical Macdonald polynomials
+  (\Cref{v4-arith:def:arithmetic-macdonald-poly}).
+\end{enumerate}
+The trace class \(\mathcal{V}^{\mathrm{prim}}\) is obtained from the
+Schiffmann--Vasserot rank-one degeneration in each prime factor;
+arithmetic data sits in the tensor-indexing over primes, not in the
+deformation parameters.
+\end{theorem}

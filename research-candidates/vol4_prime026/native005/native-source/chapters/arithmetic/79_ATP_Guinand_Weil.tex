@@ -1,0 +1,151 @@
+\chapter{Fourier and Mellin Comparisons in the Explicit Formula}
+\label{v4-arith:w7-i:chapter}
+
+The Guinand and Weil expressions use the same gamma density with
+opposite placement in the explicit formula. Fourier inversion gives
+a subtracted integral in the logarithmic variable. Poisson summation
+uses the Fourier transform of its test, whereas multiplicative
+inversion is a different operation.
+
+\section{The signed convention dictionary}
+\begin{theorem}[the compact Guinand formula]
+\label{v4-arith:w7-i:thm:guinand-explicit}
+For $f\in\mathscr A$ put $h=\mathcal F_+f$. Then
+\[
+ \sum_\rho h(z_\rho)=h(i/2)+h(-i/2)
+       +\int_{\mathbb R}h(u)\Phi_\infty^G(u)du
+       -\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}
+          \bigl(f(\log n)+f(-\log n)\bigr),
+\]
+where
+\[
+ \Phi_\infty^G(u)=\frac{\Re\psi_\Gamma(1/4+iu/2)-\log\pi}{2\pi}.
+\]
+The zero sum is absolutely convergent and the prime sum is finite.
+\end{theorem}
+\begin{proof}
+This is Theorem~\ref{v4-arith:pm:weil}, with
+$z_\rho=-i(\rho-1/2)$. In particular, the zero argument retains
+its imaginary part when $\Re\rho\ne1/2$.
+\end{proof}
+
+\begin{proposition}[exact kernel dictionary]
+\label{v4-arith:w7-i:prop:weil-vs-guinand}
+If $\Phi_\infty^W=k/(2\pi)$ denotes the density of $W_\infty$, then
+\[
+ \Phi_\infty^G=-\Phi_\infty^W.
+\]
+Their difference is $-k/\pi$, which is nonconstant.
+For the auxiliary density $g/(2\pi)$, the relation is instead
+$\Phi_\infty^G-g/(2\pi)=-\log\pi/\pi$.
+\end{proposition}
+\begin{proof}
+Insert $k=\log\pi-\Re\psi_\Gamma$ and
+$g=\log\pi+\Re\psi_\Gamma$. Strict radial monotonicity of $k$
+proves nonconstancy. The auxiliary density is not the density of
+$W_\infty$.
+\end{proof}
+
+\section{The exact time-variable gamma integral}
+\begin{theorem}[subtracted gamma pairing]
+\label{v4-arith:w7-i:prop:dual-kernel}
+For every $f\in\mathscr A$,
+\[
+ \begin{split}
+ W_\infty(f)={}&(\log\pi+\gamma)f(0)\\
+ &+\int_0^\infty
+ \frac{e^{-t/2}(f(t)+f(-t))-2e^{-2t}f(0)}{1-e^{-2t}}dt.
+ \end{split}
+\]
+The integral is absolutely convergent, including at zero.
+For tests vanishing near zero it reduces to the pairing against
+$e^{-|t|/2}/(1-e^{-2|t|})$ away from the origin.
+\end{theorem}
+\begin{proof}
+Use the integral
+\[
+ \psi_\Gamma(z)+\gamma
+ =\int_0^\infty\frac{e^{-v}-e^{-zv}}{1-e^{-v}}dv,
+ \qquad\Re z>0,
+\]
+from \href{https://dlmf.nist.gov/5.9.E16}{DLMF 5.9.16}.
+Truncate first to $\delta\le v\le M$. Fourier inversion gives
+\[
+ \frac1{2\pi}\int h(u)\cos(uv/2)du
+ =\frac{f(v/2)+f(-v/2)}2.
+\]
+The numerator in the digamma integrand is bounded near zero by
+$Cv(1+|u|)$; the Schwartz decay of $h$ gives an integrable bound
+after division by $1-e^{-v}$. Exponential decay handles infinity.
+Dominated convergence therefore removes both cutoffs.
+Set $v=2t$. The resulting numerator is $3tf(0)+O(t^2)$ near zero,
+while its denominator is $2t+O(t^2)$. At infinity the compact tests
+vanish and the subtracted term decays exponentially.
+\end{proof}
+
+\section{Poisson reciprocity and multiplicative inversion}
+For this section only, put
+$\widehat\varphi_{2\pi}(u)=\int\varphi(x)e^{-2\pi iux}dx$.
+This differs from the arithmetic transform by
+$\widehat\varphi_{2\pi}(u)=\mathcal F_+\varphi(-2\pi u)$.
+
+\begin{proposition}[the zero-moment Poisson identity]
+\label{v4-arith:w7-i:thm:burnol-copoisson}
+Let $\varphi$ be an even Schwartz function with $\varphi(0)=0$ and
+$\int_0^\infty\varphi(x)dx=0$.
+Set $C\varphi(y)=\sum_{n\ge1}\varphi(ny)$ for $y>0$.
+Then
+\[
+ C\varphi(y)=y^{-1}C\widehat\varphi_{2\pi}(1/y).
+\]
+Both sides decay faster than every power at zero and infinity.
+The Mellin integral of $C\varphi$ is entire, and on $\Re s>1$,
+\[
+ \int_0^\infty C\varphi(y)y^{s-1}dy
+ =\zeta(s)\int_0^\infty\varphi(y)y^{s-1}dy.
+\]
+\end{proposition}
+\begin{proof}
+The two zero moments imply
+$\widehat\varphi_{2\pi}(0)=0$ and
+$\int_0^\infty\widehat\varphi_{2\pi}(u)du=\varphi(0)/2=0$.
+Poisson summation, with its zero terms removed and even terms paired,
+gives the first identity. Schwartz estimates give rapid decay at
+infinity. The same estimates for the Fourier transform and the
+identity give rapid decay at zero. The Mellin integral therefore
+converges locally uniformly for all $s$.
+For $\Re s>1$, absolute convergence permits exchanging the sum and
+integral, and substitution $x=ny$ gives the Dirichlet series $\zeta(s)$.
+\end{proof}
+
+\begin{proposition}[reciprocal substitution is not Poisson reciprocity]
+Replacing $\widehat\varphi_{2\pi}(t)$ in the preceding identity by
+$t^{-1}\varphi(1/t)$ gives a false assertion, even for the stated
+zero-moment tests.
+\end{proposition}
+\begin{proof}
+Choose an even compact smooth $\varphi$ supported on the positive
+side in $(2.2,2.6)$, with integral zero and $\varphi(2.4)=1$.
+Two disjoint bumps in that interval, with adjusted integrals, give
+such a function. Then $C\varphi(2.4)=1$.
+With $\varphi^\vee(t)=t^{-1}\varphi(1/t)$ for $t>0$, the proposed
+right side equals
+\[
+ \frac1{2.4}\sum_{n\ge1}\varphi^\vee(n/2.4)
+ =\sum_{n\ge1}\frac1n\varphi(2.4/n)=1.
+\]
+At $y=1.2$, however, $C\varphi(1.2)=\varphi(2.4)=1$, while
+$\sum_{n\ge1}n^{-1}\varphi(1.2/n)=0$.
+This contradicts the proposed identity at $y=1.2$.
+\end{proof}
+
+\section{The arithmetic comparison}
+The signed zero map $E$ and the compressed translation operator
+$B_R$ give the exact comparison
+\[
+ \langle Ef,JEf\rangle
+ =P(f*f^*)-W_\infty(f*f^*)-\langle B_Rf,f\rangle.
+\]
+Poisson reciprocity does not remove either polar moment or change
+the sign of the gamma term. A proposed positive comparison must
+preserve this identity on its stated test space.

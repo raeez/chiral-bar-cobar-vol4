@@ -1,0 +1,164 @@
+\section{Signed arithmetic pairings and their operator representations}
+\label{v4-arith:sc:comparison}
+
+The finite-prime form has both signs even on a two-dimensional space.
+An exact arithmetic representation must retain that sign.
+All scalar products below are complex-linear in their first variable.
+The test algebra is $\mathscr A=C_c^\infty(\mathbb R)$, with convolution
+and $f^*(t)=\overline{f(-t)}$.
+Write $h_f(z)=\int f(t)e^{izt}dt$ and
+$q_\bullet(f,g)=W_\bullet(f*g^*)$.
+
+\begin{theorem}[the finite-prime operator on a support interval]
+\label{v4-arith:sc:prime-operator}
+For $R>0$, let $H_R=L^2([-R,R],dt)$.
+Let $j_R:H_R\to L^2(\mathbb R,dt)$ extend by zero, and let
+$(T_a u)(t)=u(t-a)$.
+Define the bounded self-adjoint operator
+\[
+ B_R=\sum_{2\le n\le e^{2R}}\frac{\Lambda(n)}{\sqrt n}
+          j_R^*(T_{\log n}+T_{-\log n})j_R .
+\]
+For $f,g\in C_c^\infty((-R,R))$,
+\begin{equation}
+ q_{\mathrm{fin}}(f,g)=\langle B_Rf,g\rangle
+ =\langle |B_R|^{1/2}f,\operatorname{sgn}(B_R)|B_R|^{1/2}g\rangle.
+ \label{v4-arith:sc:prime-comparison}
+\end{equation}
+The sign function has value zero at zero.
+For $R<S$, extension by zero $j_{R,S}:H_R\to H_S$ satisfies
+$j_{R,S}^*B_Sj_{R,S}=B_R$.
+These forms therefore give the original continuous Hermitian form on
+the complete test algebra $\mathscr A$.
+\end{theorem}
+\begin{proof}
+Each translation is unitary and $T_a^*=T_{-a}$.
+The sum is finite, with norm at most
+$2\sum_{n\le e^{2R}}\Lambda(n)n^{-1/2}$.
+A change of variables gives
+\[
+ (f*g^*)(a)=\int f(t)\overline{g(t-a)}dt
+           =\langle T_{-a}j_Rf,j_Rg\rangle.
+\]
+For $|a|\ge2R$ the integral vanishes. Summing at
+$a=\pm\log n$ proves the first identity.
+The spectral theorem for the bounded self-adjoint operator $B_R$
+gives $B_R=\operatorname{sgn}(B_R)|B_R|$ and the second identity.
+The same vanishing proves compatibility for $R<S$.
+On each fixed support the finite sum is continuous in the smooth
+topology. This is the distributional continuity of $W_{\mathrm{fin}}$.
+\end{proof}
+
+\begin{proposition}[positive and negative arithmetic subspaces]
+\label{v4-arith:sc:two-signs}
+Put $L=\log2$. Choose a nonzero real
+$b\in C_c^\infty((-\varepsilon,\varepsilon))$, where
+$2\varepsilon<\min\{L,\log(3/2)\}$.
+On $V_b=\operatorname{span}\{b,T_Lb\}$, the finite-prime form has matrix
+\[
+ \frac{\log2}{\sqrt2}\|b\|_2^2
+ \begin{pmatrix}0&1\\1&0\end{pmatrix}.
+\]
+In particular,
+\[
+ q_{\mathrm{fin}}(b\pm T_Lb,b\pm T_Lb)
+       =\pm\sqrt2\log2\,\|b\|_2^2.
+\]
+For $c=(\log2)/\sqrt2$, the map
+$a(b+T_Lb)\mapsto\sqrt{2c}\,a b$ is an isometry from the positive
+line to the ordinary $L^2$ line spanned by $b$.
+No linear map from all of $\mathscr A$ to a positive Hilbert space
+can pull its norm back to $q_{\mathrm{fin}}$.
+\end{proposition}
+\begin{proof}
+The autocorrelation $b*b^*$ is supported in
+$[-2\varepsilon,2\varepsilon]$ and has value $\|b\|_2^2$ at zero.
+On the two translated copies, only the prime-power logarithms
+$\pm L$ meet an off-diagonal correlation. Each cross pairing is
+$c\|b\|_2^2$, and the diagonal pairings vanish.
+The two displayed eigenvectors give the signs and the isometry.
+The negative vector contradicts every proposed positive norm identity.
+\end{proof}
+
+\begin{theorem}[the signed zero representation]
+\label{v4-arith:sc:zero-representation}
+Let $Z$ be the countable set of occurrences of zeros of $\xi$,
+including multiplicities. Choose the involution
+$\sigma\rho=1-\bar\rho$ on occurrences, fixing each occurrence on
+the critical line. Set
+\[
+ K_Z=\ell^2(Z),\quad z_\rho=-i(\rho-1/2),\quad
+ (Ju)_\rho=u_{\sigma\rho},\quad (Ef)_\rho=h_f(z_\rho).
+\]
+Then $J=J^*=J^{-1}$, $E:\mathscr A\to K_Z$ is continuous, and
+\begin{equation}
+ \langle Ef,JEg\rangle=q_W(f,g)
+ =P(f*g^*)-W_\infty(f*g^*)-\langle B_Rf,g\rangle
+ \label{v4-arith:sc:full-comparison}
+\end{equation}
+whenever $f,g$ have support in $(-R,R)$.
+The closed normal operator
+\[
+ (A_Zu)_\rho=z_\rho u_\rho,\qquad
+ \operatorname{Dom}A_Z=\{u:\sum_\rho|z_\rho u_\rho|^2<\infty\}
+\]
+satisfies $A_Z=JA_Z^*J$, with equality of domains.
+For real $a$, the bounded group $G_a=\operatorname{diag}(e^{iaz_\rho})$
+satisfies $\|G_a\|\le e^{|a|/2}$ and
+\[
+ E(T_af)=G_aEf,\qquad E(if')=A_ZEf,\qquad
+ \langle G_au,JG_av\rangle=\langle u,Jv\rangle.
+\]
+For $k,f\in\mathscr A$, $E(k*f)=h_k(A_Z)Ef$, where the diagonal
+multiplier $h_k(A_Z)$ is bounded.
+\end{theorem}
+\begin{proof}
+The zero symmetries give $z_{\sigma\rho}=\bar z_\rho$.
+Their imaginary parts have modulus at most $1/2$.
+Repeated integration by parts gives, on each fixed compact support,
+\[
+ |h_f(x+iy)|\le C_{R,N}(f)(1+|x|)^{-N},\qquad |y|\le1/2,
+\]
+where $C_{R,N}$ is a continuous smooth seminorm.
+The zero count in Lemma~\ref{v4-arith:pm:zero-count} proves square
+summability, continuity of $E$, and membership of $Ef$ in every
+power domain of $A_Z$.
+The involution is an isometric permutation. Its coordinate formula
+gives $JA_Z^*J=A_Z$ and preserves the maximal domain.
+Absolute convergence and the explicit formula give
+\[
+ \langle Ef,JEg\rangle
+ =\sum_\rho h_f(z_\rho)\overline{h_g(\bar z_\rho)}
+ =W(f*g^*).
+\]
+The last expression in \eqref{v4-arith:sc:full-comparison} follows
+from the polar, gamma, and finite-prime terms of that formula.
+Change of variables and integration by parts prove the two
+intertwining identities. The coordinate factors in the signed
+scalar product cancel. The strip estimate bounds $h_k(A_Z)$, and
+the convolution identity proves the final assertion.
+\end{proof}
+
+This construction uses the actual zero divisor as input. It does not
+construct an arithmetic cohomology group or a map from an arithmetic
+primary sector. The finite-prime and zero maps in
+\eqref{v4-arith:sc:full-comparison} are defined on the same compact
+test algebra, with both polar moments retained.
+
+\begin{corollary}[the precise positivity boundary]
+\label{v4-arith:sc:positivity-boundary}
+The operator $A_Z$ is self-adjoint for the ordinary positive scalar
+product on $K_Z$ if and only if RH holds.
+Positivity of $\langle Ef,JEf\rangle$ for all $f\in\mathscr A$
+is also equivalent to RH.
+Under RH, $J=1$ and $\|Ef\|^2=q_W(f,f)$.
+Without a positivity assumption, \eqref{v4-arith:sc:full-comparison}
+is an unconditional signed representation of the arithmetic form.
+\end{corollary}
+\begin{proof}
+A diagonal normal operator on its maximal domain is self-adjoint
+exactly when each diagonal entry is real. Here this means
+$\Re\rho=1/2$ for every zero. The second equivalence is precisely
+Weil's criterion, Corollary~\ref{v4-arith:w5-a:cor:weil-positivity-RH}.
+The specified choice of $\sigma$ is the identity under RH.
+\end{proof}

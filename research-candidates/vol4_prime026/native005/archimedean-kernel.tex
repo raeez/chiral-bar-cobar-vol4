@@ -1,0 +1,225 @@
+\chapter{The Signed Archimedean Kernel}
+\label{v4-arith:w6-a:ATP-direct-obstruction}
+
+The gamma term in the Weil formula has density
+$k(u)=\log\pi-\Re\psi_\Gamma(1/4+iu/2)$.
+It is positive near zero and negative at large frequency.
+This sign is fixed by Fourier inversion, independently of any
+positivity conjecture for the complete arithmetic form.
+
+\section{The two digamma kernels}
+\label{v4-arith:w6-a:context}
+\label{v4-arith:w6-a:sources}
+
+\begin{definition}[Fourier convention and gamma density]
+\label{v4-arith:w6-a:def:g}
+For $f\in\mathscr A=C_c^\infty(\mathbb R)$ put
+$h_f(u)=\int f(t)e^{iut}dt$. Define
+\begin{equation}
+ k(u)=\log\pi-\Re\psi_\Gamma(1/4+iu/2),\qquad
+ g(u)=\Re\psi_\Gamma(1/4+iu/2)+\log\pi=2\log\pi-k(u).
+ \label{v4-arith:w6-a:eq:g-definition}
+\end{equation}
+The auxiliary form $Q_g$ and the arithmetic gamma form satisfy
+\begin{equation}
+ \begin{split}
+ Q_g(f)&=\frac1{2\pi}\int |h_f(u)|^2g(u)du,\\
+ W_\infty(f*f^*)&=\frac1{2\pi}\int |h_f(u)|^2k(u)du
+              =2\log\pi\,\|f\|_2^2-Q_g(f).
+ \end{split}
+ \label{v4-arith:w6-a:eq:W-arch-as-g}
+\end{equation}
+Both integrals converge because the densities have logarithmic growth.
+\end{definition}
+
+\begin{lemma}[digamma series and monotonicity]
+\label{v4-arith:w6-a:lem:g-hurwitz}
+\label{v4-arith:w6-a:lem:g-monotone}
+\label{v4-arith:w6-a:prop:g-boundary}
+With $c_n=n+1/4$, one has
+\[
+ g(u)=-\gamma-\frac\pi2-3\log2+\log\pi
+       +\sum_{n=0}^\infty\frac{u^2/4}{c_n(c_n^2+u^2/4)}.
+\]
+The series and its derivative converge uniformly on compact intervals.
+The function $g$ is even and strictly increasing on $(0,\infty)$.
+The function $k$ is even and strictly decreasing there, with
+\[
+ k(0)=\log\pi+\gamma+\pi/2+3\log2>0,\qquad
+ k(u)=\log(2\pi/|u|)+O(|u|^{-2}).
+\]
+\end{lemma}
+\begin{proof}
+Subtract the digamma series at $1/4$ from its real part at
+$1/4+iu/2$. The difference is the displayed positive series.
+The value at $1/4$ follows from the reflection and duplication
+identities for $\Gamma$. These formulas are
+\href{https://dlmf.nist.gov/5.5.E4}{DLMF 5.5.4} and
+\href{https://dlmf.nist.gov/5.5.E8}{5.5.8}.
+For $|u|\le T$, the summands are $O_T((n+1)^{-3})$.
+Differentiation gives
+\[
+ g'(u)=\sum_{n=0}^\infty
+       \frac{c_nu/2}{(c_n^2+u^2/4)^2}>0\quad(u>0).
+\]
+The differentiated series has the same locally summable bound.
+The digamma asymptotic in
+\href{https://dlmf.nist.gov/5.11.E2}{DLMF 5.11.2}, in sectors away
+from the negative real axis, gives the stated logarithmic asymptotic.
+\end{proof}
+
+\begin{proposition}[distinct sign thresholds]
+\label{v4-arith:w6-a:thm:t-star}
+\label{v4-arith:w6-a:prop:t-star-numerical}
+There are unique positive numbers $t_*$ and $u_*$ such that
+$g(t_*)=0$ and $k(u_*)=0$. They satisfy $t_*<u_*$.
+The gamma density $k$ is positive for $|u|<u_*$ and negative for
+$|u|>u_*$. Its threshold is not $t_*$.
+\end{proposition}
+\begin{proof}
+The value $g(0)=-\gamma-\pi/2-3\log2+\log\pi$ is negative:
+$\log\pi<\pi/2$ and $\gamma,\log2>0$.
+The preceding lemma gives strict monotonicity and divergence to
+positive infinity. The intermediate value theorem proves the
+existence and uniqueness of $t_*$.
+The same argument applies to $k$, which decreases from a positive
+value to negative infinity. Since $g(u_*)=2\log\pi>0$, one has
+$t_*<u_*$.
+\end{proof}
+
+\section{The exact quadratic decomposition}
+\label{v4-arith:w6-a:decomposition}
+
+\begin{definition}[the auxiliary core and tail]
+\label{v4-arith:w6-a:def:core-tail}
+Set
+\[
+ A[f]=\int_{|u|<t_*}|h_f(u)|^2(-g(u))du,\qquad
+ B[f]=\int_{|u|>t_*}|h_f(u)|^2g(u)du.
+\]
+For the arithmetic kernel itself, set
+\[
+ C[f]=\int_{|u|<u_*}|h_f(u)|^2k(u)du,\qquad
+ D[f]=\int_{|u|>u_*}|h_f(u)|^2(-k(u))du.
+\]
+These four quantities are nonnegative.
+\end{definition}
+
+\begin{proposition}[signed decomposition]
+\label{v4-arith:w6-a:lem:decomposition}
+\[
+ Q_g(f)=\frac{B[f]-A[f]}{2\pi},\qquad
+ W_\infty(f*f^*)=\frac{C[f]-D[f]}{2\pi}
+ =2\log\pi\,\|f\|_2^2+\frac{A[f]-B[f]}{2\pi}.
+\]
+In particular, $B[f]\ge A[f]$ characterizes $Q_g(f)\ge0$.
+It does not characterize $W_\infty(f*f^*)\ge0$.
+\end{proposition}
+\begin{proof}
+Split the two integrals at their respective sign thresholds and
+use Plancherel in \eqref{v4-arith:w6-a:eq:W-arch-as-g}.
+\end{proof}
+
+\begin{definition}[frequency dominance conditions]
+\label{v4-arith:w6-a:def:HFD-class}
+Put $M=-g(0)>0$. The auxiliary high-frequency condition is
+\begin{equation}
+ 2t_*M\sup_{|u|\le t_*}|h_f(u)|^2\le B[f].
+ \label{v4-arith:w6-a:eq:HFD-condition}
+\end{equation}
+It implies $A[f]\le B[f]$, because $-g(u)\le M$ in the core.
+The positive gamma cone is $\{f\in\mathscr A:C[f]\ge D[f]\}$.
+\end{definition}
+
+\begin{theorem}[both signs on compact smooth squares]
+\label{v4-arith:w6-a:thm:HFD-ATP}
+\label{v4-arith:w6-a:rem:HFD-nonempty}
+For every nonzero $b\in\mathscr A$, the functions
+$f_L(t)=L^{-1}b(t/L)$ have $W_\infty(f_L*f_L^*)>0$ for sufficiently
+large $L$. The functions $b_v(t)=e^{-ivt}b(t)$ have
+$W_\infty(b_v*b_v^*)<0$ for sufficiently large positive $v$.
+They satisfy the auxiliary high-frequency condition for large $v$.
+For $u_0\in(t_*,u_*)$, the functions
+$g_L(t)=L^{-1}b(t/L)e^{-iu_0t}$ have both
+$Q_g(g_L)>0$ and $W_\infty(g_L*g_L^*)>0$ for large $L$.
+\end{theorem}
+\begin{proof}
+Since $h_{f_L}(u)=h_b(Lu)$, change of variables gives
+\[
+ L W_\infty(f_L*f_L^*)
+ =\frac1{2\pi}\int |h_b(y)|^2k(y/L)dy
+ \longrightarrow k(0)\|b\|_2^2>0.
+\]
+For $L\ge1$, logarithmic growth bounds the integrand by a fixed
+integrable Schwartz weight, so dominated convergence applies.
+For modulation, $h_{b_v}(u)=h_b(u-v)$, and
+$k(v+y)/\log v\to-1$ for every fixed $y$.
+For $v\ge2$, the bound
+$|k(v+y)|/\log v\le C(1+\log(2+|y|))$ permits dominated convergence.
+Thus
+\[
+ \frac{W_\infty(b_v*b_v^*)}{\log v}\longrightarrow-\|b\|_2^2.
+\]
+Equation~\eqref{v4-arith:w6-a:eq:W-arch-as-g} then makes $Q_g(b_v)$
+positive for large $v$. More precisely, $B[b_v]$ grows like
+$2\pi\|b\|_2^2\log v$, whereas the core supremum decays faster
+than every power of $v$. This proves the stronger high-frequency
+condition as stated. Finally,
+$h_{g_L}(u)=h_b(L(u-u_0))$. The same dominated convergence gives
+$LQ_g(g_L)\to g(u_0)\|b\|_2^2>0$ and
+$LW_\infty(g_L*g_L^*)\to k(u_0)\|b\|_2^2>0$.
+\end{proof}
+
+\section{The complete Weil inequality}
+\label{v4-arith:w6-a:bounded-interval}
+\label{v4-arith:w6-a:bounded-interval:ruled-out}
+
+Put
+\begin{equation}
+ R[f]=P(f*f^*)-W_{\mathrm{fin}}(f*f^*).
+ \label{v4-arith:w6-a:eq:R-definition}
+\end{equation}
+The polar form has both signs. The finite-prime form also has both
+signs by Proposition~\ref{v4-arith:sc:two-signs}.
+
+\begin{theorem}[the arithmetic inequality with all terms retained]
+\label{v4-arith:w6-a:thm:bounded-reduction}
+\label{v4-arith:w6-a:thm:irreducible-ATP}
+For each $f\in\mathscr A$, the inequality $W(f*f^*)\ge0$ is
+exactly either of the following equivalent inequalities:
+\begin{equation}
+ C[f]\le D[f]+2\pi R[f],\qquad
+ A[f]+4\pi\log\pi\,\|f\|_2^2\le B[f]+2\pi R[f].
+ \label{v4-arith:w6-a:eq:bounded-reduction-star}
+\end{equation}
+Requiring these inequalities for all $f\in\mathscr A$ is equivalent
+to RH. The separate positive gamma cone does not remove the terms
+in $R[f]$.
+\end{theorem}
+\begin{proof}
+Insert $W=R-W_\infty$ and the signed decomposition.
+The equivalence to RH is Weil's criterion on $\mathscr A$.
+\end{proof}
+
+\begin{proposition}[limits of frequency restrictions]
+\label{v4-arith:w6-a:prop:rule-out-projection}
+\label{v4-arith:w6-a:prop:rule-out-majorant}
+\label{v4-arith:w6-a:prop:rule-out-pw-shrinkage}
+No nonzero $f\in\mathscr A$ has $h_f$ supported in a bounded real
+frequency interval. Neither compact support of $f$ nor nonnegativity
+of the auxiliary form implies a fixed sign of the gamma form.
+\end{proposition}
+\begin{proof}
+The Fourier transform $h_f$ is entire. Vanishing on a real interval
+forces it to vanish identically, and Fourier inversion gives $f=0$.
+The dilation and modulation examples prove the sign assertions.
+\end{proof}
+
+\begin{remark}[comparison with the complete arithmetic form]
+\label{v4-arith:w6-a:rem:live-constructions}
+The exact signed representation
+\eqref{v4-arith:sc:full-comparison} places the gamma term, both polar
+moments, and the prime translations on a common test algebra.
+A positive realization of that complete form requires the full
+inequality \eqref{v4-arith:w6-a:eq:bounded-reduction-star}.
+\end{remark}

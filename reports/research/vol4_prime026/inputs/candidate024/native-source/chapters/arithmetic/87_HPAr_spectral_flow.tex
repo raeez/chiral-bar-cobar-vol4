@@ -1,0 +1,2344 @@
+\chapter{The Spectral Flow \(N_{\mathrm{occ}}\rightsquigarrow H_{\mathrm{HP}}\): Operator and Domain Comparisons}
+\label{v4-arith:w9-r4:hpar-spectral-flow}
+
+The positive occupation spectrum and the zero-ordinate spectrum belong
+to different operators. \Cref{v4-arith:w5-b:occupation-comparison}
+constructs \(N_{\mathrm{occ}}v_m=(\log m)v_m\) and its exact embedding
+in the product GNS space. The Hilbert--P\'olya target is a self-adjoint
+operator whose shifted determinant has the actual zero divisor of
+\(\xi_{\mathbb R}\). An intertwining problem must specify its carriers
+and domains before a Mellin or residue formula can address it.
+
+Two elementary obstructions are decisive. A bounded intertwiner from
+the atomic occupation dynamics to the continuous Mellin dynamics is
+zero. An injective intertwiner to a zero-divisor operator cannot
+include the occupation vacuum in its domain. The continuous Mellin,
+residue and rigged-space constructions below retain their own carriers;
+comparison with the atomic arithmetic source is an additional problem.
+
+\section{Setup: \(N_{\mathrm{occ}}\) and \(\Theta_{\xi}\) as Target Operators}
+\label{v4-arith:w9-r4:setup}
+
+The two endpoints of the spectral flow are the operators \(N_{\mathrm{occ}}\) and
+\(H_{\mathrm{HP}}\), and the Hilbert spaces that carry them are specified below.
+
+\subsection{Source: The Bost--Connes Log-Prime Operator}
+\label{v4-arith:w9-r4:setup:source}
+
+\begin{definition}[occupation Hilbert space and generator]
+\label{v4-arith:w9-r4:def:bc-data}
+Let \(\mathcal H_{\mathrm{BC}}=\ell^2(\mathbb N^\times)\), with
+orthonormal basis \(v_m\), and let
+\[
+ N_{\mathrm{occ}}v_m=(\log m)v_m,\qquad
+ \operatorname{Dom}N_{\mathrm{occ}}=
+ \left\{(a_m):\sum_m(\log m)^2|a_m|^2<\infty\right\}.
+\]
+This is the self-adjoint occupation operator. At \(\beta=1\), the map
+\(Wv_m=[\mu_m]\) is unitary onto the closed creation subspace
+\(\mathcal H_1^+\) of the tensor-core GNS space and satisfies
+\[
+ WN_{\mathrm{occ}}=(-\log\Delta_1)W=2N_{\mathrm{BC}}W.
+\]
+Thus \(N_{\mathrm{occ}}\) is twice the restriction of the full
+\(N_{\mathrm{BC}}=-\tfrac12\log\Delta_1\). The full space contains
+division and matrix-unit sectors and has both signs of modular energy.
+No global phase-algebra GNS identification is used here.
+\end{definition}
+
+\begin{remark}[weighted coordinates and prime factorization]
+\label{v4-arith:w9-r4:rem:bc-structure}
+For the weighted lattice \(\ell^2(\mathbb N^\times,dm/m)\), the
+coordinate vector \(\delta_m\) has norm \(m^{-1/2}\). The isometries are
+\(\delta_m\mapsto m^{-1/2}v_m\mapsto m^{-1/2}[\mu_m]\).
+Prime factorization identifies the orthonormal basis \(v_m\) with the
+finite-occupation tensor basis \(\bigotimes_p v_{v_p(m)}\), with
+reference \(v_0\). The energy is \(\sum_p v_p(m)\log p\).
+These Hilbert identifications concern the creation sector. It is not
+invariant under modular conjugation or the full represented algebra.
+At general \(\beta>0\), its modular eigenvalue is \(m^{-\beta}\),
+so \(-\tfrac12\log\Delta_\beta\) restricts to
+\((\beta/2)N_{\mathrm{occ}}\).
+\end{remark}
+
+\begin{proposition}[atomic-to-continuous intertwining obstruction]
+\label{v4-arith:w9-r4:atomic-continuous-obstruction}
+Let \(M_\tau\) be multiplication by \(\tau\) on \(L^2(\mathbb R,d\tau)\).
+If a bounded linear map \(I:\mathcal H_{\mathrm{BC}}\to L^2(\mathbb R)\)
+satisfies \(I e^{itN_{\mathrm{occ}}}=e^{itM_\tau}I\) for every real
+\(t\), then \(I=0\). The same conclusion holds with any fixed Hilbert
+space as multiplicity factor on the target.
+\end{proposition}
+\begin{proof}
+Put \(f_m=Iv_m\). For every rational \(t\),
+\((e^{it\tau}-e^{it\log m})f_m(\tau)=0\) almost everywhere.
+Discard the union of the countably many exceptional null sets. If
+\(\tau\ne\log m\), some rational \(t\) makes the parenthesis nonzero.
+Thus \(f_m\) is supported at \(\{\log m\}\), a null set, and is zero.
+Boundedness and density of the finite span of the \(v_m\)'s give
+\(I=0\). The proof applies verbatim to Hilbert-valued functions.
+\end{proof}
+
+An embedding into distributions can send \(v_m\) to a Dirac mass at
+\(\log m\), but a Dirac mass is not an \(L^2\) vector. Such a map
+therefore requires a new topology and cannot supply a Hilbert-space
+intertwiner without an additional comparison.
+
+\subsection{Target: The Hypothetical Zeta-Zero Divisor Operator}
+\label{v4-arith:w9-r4:setup:target}
+
+\begin{definition}[target Hilbert space and zero-divisor operator]
+\label{v4-arith:w9-r4:def:target-data}
+\ClaimStatusDefinitional. Let \(\mathcal{Z}\) denote the multiset of
+non-trivial zeros \(\rho=\beta_{\rho}+it_{\rho}\) of
+\(\xi_{\mathbb{R}}\), with multiplicities \(m_{\rho}\), and write
+\(\gamma_{\rho}:=t_{\rho}\) for the ordinate. The
+\emph{formal target Hilbert space} is
+\[
+\mathcal{H}_{\xi}^{\mathrm{formal}}\;:=\;\bigoplus_{\rho\in\mathcal{Z}}\mathbb{C}^{m_{\rho}},
+\]
+with inner product making the one-dimensional summands
+orthonormal. The \emph{formal ordinate multiplier} is the
+diagonal symmetric operator
+\[
+H_{\mathrm{ord}}^{\mathrm{formal}}\;:\;(\xi_{\rho})_{\rho}\;\mapsto\;(t_{\rho}\xi_{\rho})_{\rho}
+\]
+on the finite-support core; its spectrum is
+\(\{t_{\rho}\}\) with multiplicities. The \emph{critical-line
+projection operator} is
+\[
+\Theta_{\xi}^{\mathrm{proj}}=\tfrac12\mathrm{id}+iH_{\mathrm{ord}}^{\mathrm{formal}}.
+\]
+Its divisor is the projection of the zero divisor to the critical
+line; it is the actual zero divisor of \(\xi_{\mathbb R}\) exactly
+under RH.
+\end{definition}
+
+\begin{remark}[why ``formal'']
+\label{v4-arith:w9-r4:rem:why-formal}
+The triple \((\mathcal{H}_{\xi}^{\mathrm{formal}},H_{\mathrm{ord}}^{\mathrm{formal}},\Theta_{\xi}^{\mathrm{proj}})\)
+exists trivially as a diagonal construction. It carries no
+intrinsic arithmetic structure: the enumeration of
+\(\{t_{\rho}\}\) is read from the zero set itself, and the diagonal
+operator realises its spectrum by fiat. If one replaces
+\(\beta_{\rho}\) by \(1/2\), one has already projected the divisor to
+the critical line. The content of the Hilbert--P\'olya problem is
+not the existence of \(\mathcal{H}_{\xi}^{\mathrm{formal}}\); it is
+the existence of a Hilbert space \emph{with independent structure}
+whose spectral data force the original zero divisor to equal this
+projected divisor.
+\end{remark}
+
+\begin{definition}[non-formal target]
+\label{v4-arith:w9-r4:def:non-formal-target}
+\ClaimStatusDefinitional. A \emph{non-formal target} is a pair
+\((\mathcal{H}_{\xi},H_{\mathrm{HP}})\) where \(\mathcal{H}_{\xi}\) is a
+Hilbert space carrying structure inherited from the Bost--Connes
+framework (restricted-tensor adelic factorisation, Petersson inner
+product on cuspidal cores, GNS modular data, or another
+independently specified structure) and \(H_{\mathrm{HP}}\) is a
+self-adjoint operator on \(\mathcal{H}_{\xi}\) whose spectral
+resolution is canonical with respect to the inherited structure and
+whose regularised determinant
+\[
+\det\nolimits_{\infty}\bigl(s\mathrm{id}-(\tfrac12\mathrm{id}+iH_{\mathrm{HP}})\bigr)
+\]
+has the non-trivial zero divisor of \(\xi_{\mathbb R}\).
+\end{definition}
+
+\begin{remark}[domain of ``canonical'']
+\label{v4-arith:w9-r4:rem:canonical-domain}
+``Canonical'' means: the spectral resolution of \(H_{\mathrm{HP}}\) is
+determined by the inherited structure up to a unitary equivalence
+whose parameters are themselves determined by that structure. A
+diagonal construction with eigenvalues labelled by an arbitrary
+enumeration is not canonical; a diagonal construction whose
+eigenvectors are explicit functions of arithmetic data (adelic
+characters, automorphic forms, spectral projectors of a globally
+defined operator) is.
+\end{remark}
+
+\subsection{Spectral Flow as Intertwining Operator}
+\label{v4-arith:w9-r4:setup:flow}
+
+\begin{definition}[the spectral flow problem]
+\label{v4-arith:w9-r4:def:spectral-flow}
+\ClaimStatusDefinitional. The \emph{spectral flow problem} from
+\(N_{\mathrm{occ}}\) to \(H_{\mathrm{HP}}\) is the specification of:
+\begin{enumerate}
+\item a Hilbert space \(\mathcal{H}_{\xi}\) with a non-formal structure
+in the sense of \Cref{v4-arith:w9-r4:def:non-formal-target};
+\item a densely defined linear operator
+\(A:\mathcal{D}(A)\subset\mathcal{H}_{\mathrm{BC}}\to\mathcal{H}_{\xi}\)
+with dense range and injective on its domain;
+\item a self-adjoint operator \(H_{\mathrm{HP}}\) on \(\mathcal{H}_{\xi}\)
+with domain \(\mathcal{D}(H_{\mathrm{HP}})\supset\mathrm{Ran}(A)\);
+\item the intertwining identity
+\begin{equation}
+\label{v4-arith:w9-r4:eq:intertwine}
+A\,N_{\mathrm{occ}}\,A^{-1}\;=\;H_{\mathrm{HP}}\qquad\text{on }\mathrm{Ran}(A)\cap\mathcal{D}(H_{\mathrm{HP}}),
+\end{equation}
+interpreted in the closed-operator sense after specifying domain
+compatibility;
+\item the spectral identity
+\begin{equation}
+\label{v4-arith:w9-r4:eq:spec-id}
+\mathrm{Spec}(H_{\mathrm{HP}})\;=\;\{\gamma_{\rho}\mid\rho\in\mathcal{Z}\}
+\end{equation}
+with multiplicities matching.
+\end{enumerate}
+A \emph{solution} is a tuple \((\mathcal{H}_{\xi},A,H_{\mathrm{HP}})\)
+satisfying all five items. The \emph{Hilbert--P\'olya twist} is a
+solution.
+\end{definition}
+
+\begin{proposition}[vacuum obstruction to literal spectral flow]
+\label{v4-arith:w9-r4:vacuum-flow-obstruction}
+The spectral-flow conditions cannot hold if \(v_1\in\mathcal D(A)\)
+and the intertwining identity applies there, with a target whose
+shifted determinant has the actual divisor of \(\xi_{\mathbb R}\).
+\end{proposition}
+\begin{proof}
+Since \(N_{\mathrm{occ}}v_1=0\), intertwining gives
+\(H_{\mathrm{HP}}Av_1=0\). Injectivity gives \(Av_1\ne0\).
+The shifted operator then has eigenvalue \(1/2\), so its determinant
+divisor would contain \(1/2\). But \(\xi_{\mathbb R}(1/2)\ne0\), as
+proved in \Cref{v4-arith:w5-b:vacuum-obstruction}.
+\end{proof}
+
+Any remaining literal spectral-flow variant must specify a domain
+excluding this test or an altered comparison. A construction with a
+separate occupation grading and zero operator, as in
+\Cref{v4-arith:w5-b:def:twist}, does not assert literal intertwining.
+
+\begin{remark}[unitarity of \(A\)]
+\label{v4-arith:w9-r4:rem:unitarity-of-A}
+\Cref{v4-arith:w9-r4:def:spectral-flow} does \emph{not} require \(A\)
+to be bounded or unitary. The closed-operator intertwining
+\eqref{v4-arith:w9-r4:eq:intertwine} admits unbounded \(A\); in the
+regular case one asks for a polar decomposition \(A=U|A|\) with \(U\)
+partial isometry and \(|A|\) self-adjoint non-negative, on which the
+intertwining reads
+\(U|A|N_{\mathrm{occ}}|A|^{-1}U^{*}=H_{\mathrm{HP}}\) on its natural
+domain.  It becomes a unitary intertwining of one-parameter groups only
+when the polar partial isometry is unitary between the two Hilbert
+closures, the domains are invariant under the two Stone groups, and the
+closed-operator identity holds on a common core.  Then
+\(U\,\exp(it N_{\mathrm{occ}})\,U^{*}=\exp(itH_{\mathrm{HP}})\). We use
+the closed-operator form throughout; when the literature writes
+``\(A\) is a unitary twist'' it is the polar \(U\) in this restricted
+sense.
+\end{remark}
+
+\section{Prime-Zero Mangoldt-Hadamard Duality Recap}
+\label{v4-arith:w9-r4:mangoldt-hadamard}
+
+The formal bridge between the two spectra is the Riemann--von Mangoldt
+explicit formula and its Hadamard factorization. The prime measure acts on compact smooth
+tests; its Fourier use requires the explicit exponential weights
+and entire test carrier specified below. These identities are
+distributional pairings and do not construct a Hilbert-space operator.
+
+\subsection{Hadamard Factorisation of \(\xi_{\mathbb{R}}\)}
+\label{v4-arith:w9-r4:mh:hadamard}
+
+\begin{proposition}[Hadamard factorisation]
+\label{v4-arith:w9-r4:prop:hadamard}
+\ClaimStatusProvedElsewhere \emph{(Hadamard 1893;
+\Cref{v4-arith:w5-b:eq:hadamard})}. The completed Riemann zeta
+\(\xi_{\mathbb{R}}(s)=\tfrac12 s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)\) is
+entire of order \(1\), of genus \(1\), and admits the factorisation
+\begin{equation}
+\label{v4-arith:w9-r4:eq:hadamard-factor}
+\xi_{\mathbb{R}}(s)\;=\;\xi_{\mathbb{R}}(0)\,e^{Bs}\,\prod_{\rho}\Bigl(1-\frac{s}{\rho}\Bigr)e^{s/\rho},
+\end{equation}
+with \(\rho\) ranging over non-trivial zeros with multiplicity and
+\[
+ B=\frac{\xi_{\mathbb R}'(0)}{\xi_{\mathbb R}(0)}
+   =-1-\frac\gamma2+\frac12\log(4\pi).
+\]
+The product uses genus-one factors. Its convergence and this exact
+normalization are proved in Proposition~\ref{v4-arith:pm:constant}.
+\end{proposition}
+
+\subsection{Riemann-von Mangoldt Explicit Formula}
+\label{v4-arith:w9-r4:mh:rvm}
+
+\begin{proposition}[Riemann-von Mangoldt explicit formula]
+\label{v4-arith:w9-r4:prop:rvm}
+\ClaimStatusProvedElsewhere \emph{(von Mangoldt 1895; Edwards 1974 \S3)}.
+For \(x>1\) non-integer,
+\begin{equation}
+\label{v4-arith:w9-r4:eq:rvm}
+\sum_{n\leq x}\Lambda(n)\;=\;x\;-\;\sum_{\rho}\frac{x^{\rho}}{\rho}\;-\;\frac{\zeta'(0)}{\zeta(0)}\;-\;\tfrac12\log(1-x^{-2}),
+\end{equation}
+where \(\Lambda(n)=\log p\) if \(n=p^{k}\) and \(0\) otherwise.
+The zero sum is the symmetric height limit
+$\lim_{T\to\infty}\sum_{|\Im\rho|\leq T}x^\rho/\rho$.
+At a prime power the left side is replaced by the average of its
+left and right limits. The constant is
+$\zeta'(0)/\zeta(0)=\log(2\pi)$, distinct from the Hadamard constant
+$B$ of the preceding product. The smooth-test formulation, including
+all convergence and Fourier normalizations, is proved below.
+\end{proposition}
+
+\input{chapters/arithmetic/87c_prime_distributions}
+
+\subsection{Mellin-Dual Measures}
+\label{v4-arith:w9-r4:mh:mellin-dual}
+
+\begin{definition}[prime measure and full zero functional]
+\label{v4-arith:w9-r4:def:counting-measures}
+\ClaimStatusDefinitional. The unweighted prime measure is
+\begin{equation}
+\label{v4-arith:w9-r4:eq:mu-prime}
+ \mu_{\mathrm{prime}}=\mu_0
+ =\sum_{m\geq2}\Lambda(m)\delta_{\log m}
+ =\sum_p\sum_{k\geq1}(\log p)\delta_{k\log p}.
+\end{equation}
+It is a positive Radon measure on $[0,\infty)$ and a distribution
+on $C_c^\infty(\mathbb R)$, but it is not tempered.
+The weighted measure is exactly $\mu_\sigma=e^{-\sigma t}\mu_0$;
+Theorem~\ref{v4-arith:pm:weights} gives its temperedness threshold.
+The ordinate shadow is the tempered measure
+\begin{equation}
+\label{v4-arith:w9-r4:eq:mu-zero}
+ \mu_{\mathrm{ord}}=\sum_\rho\delta_{\gamma_\rho}.
+\end{equation}
+On the Fourier images $h(z)=\int f(t)e^{izt}dt$ of compact smooth
+tests, the actual zero functional is the absolutely convergent sum
+\[
+ \mathfrak Z_\xi(h)=\sum_\rho h(-i(\rho-1/2)).
+\]
+Its equality with $\mu_{\mathrm{ord}}(h)$ on this entire test
+class is equivalent to RH by Corollary~\ref{v4-arith:pm:shadow}.
+\end{definition}
+
+\begin{proposition}[the weighted prime term in the explicit formula]
+\label{v4-arith:w9-r4:prop:mellin-dual}
+\ClaimStatusProvedHere. Let $f\in C_c^\infty(\mathbb R)$ be even
+and $h(z)=\int f(t)e^{izt}dt$. Then
+\begin{equation}
+\label{v4-arith:w9-r4:eq:mellin-dual}
+ \mathfrak Z_\xi(h)=h(i/2)+h(-i/2)+\mathcal A_\infty(h)
+                         -2\mu_{1/2}(f),
+\end{equation}
+where
+\[
+ \mathcal A_\infty(h)=\frac1{2\pi}\int_{\mathbb R}
+ h(u)\bigl(\Re\psi_\Gamma(1/4+iu/2)-\log\pi\bigr)\,du.
+\]
+Here $f(t)=(2\pi)^{-1}\int h(u)e^{-iut}du$ is the inverse Fourier
+transform, with its normalization fixed. The two polar evaluations
+are separate from the real-line archimedean density.
+\end{proposition}
+\begin{proof}
+Apply Theorem~\ref{v4-arith:pm:weil} and use evenness of $f$.
+Only finitely many prime powers meet its support. The prime term
+therefore evaluates a locally finite measure on a compact test;
+it uses no tempered Fourier transform of $\mu_{1/2}$.
+\end{proof}
+
+\begin{remark}[distributional pairings and operator comparisons]
+\label{v4-arith:w9-r4:rem:duality-distributional}
+The explicit formula compares the full zero functional on an
+entire Fourier test class with a compact-test pairing against
+$e^{-t/2}\mu_{\mathrm{prime}}$, two polar evaluations, and the
+digamma density. It does not identify the unweighted measure with
+a tempered distribution. Weighting by $e^{-t}$ does give a
+tempered measure; centering at exponent $1/2$ gives a different
+distribution whose temperedness is the criterion of
+Theorem~\ref{v4-arith:pm:centered}. Neither operation is implicit
+in the formula. A map between Hilbert spaces and their operator
+domains still requires the separate constructions below.
+\end{remark}
+
+\section{Formal Spectral Flow \(A\) as Mellin-Inversion Symbol}
+\label{v4-arith:w9-r4:formal-flow}
+
+The candidate spectral-flow operator exists at the symbolic level as
+the composite of Mellin transform and Hadamard residue extraction;
+the two obstructions that prevent its promotion to a Hilbert-space
+operator are named below.
+
+\subsection{The Mellin-Hadamard Inversion Symbol}
+\label{v4-arith:w9-r4:formal-flow:symbol}
+
+\begin{definition}[formal Mellin-Hadamard inversion]
+\label{v4-arith:w9-r4:def:formal-MH}
+\ClaimStatusDefinitional. The \emph{formal Mellin-Hadamard inversion}
+is the composite symbol
+\begin{equation}
+\label{v4-arith:w9-r4:eq:formal-MH}
+A^{\mathrm{sym}}\;:=\;\mathcal{I}_{\mathrm{Had}}\circ\mathcal{M}
+\end{equation}
+where \(\mathcal{M}\) is the Mellin transform
+\((\mathcal{M}f)(s)=\int_{0}^{\infty}f(x)x^{s-1}dx\) on a suitable
+function class and \(\mathcal{I}_{\mathrm{Had}}\) is the
+Hadamard-inversion formal symbol
+\[
+(\mathcal{I}_{\mathrm{Had}}F)(\gamma_{\rho})\;:=\;\operatorname*{Res}_{s=\rho}\frac{F(s)}{\xi_{\mathbb{R}}(s)}
+\]
+reading the residue of \(F/\xi_{\mathbb{R}}\) at each non-trivial zero
+and writing it into the \(\rho\)-component of a formal sequence
+indexed by \(\mathcal{Z}\).
+\end{definition}
+
+\begin{remark}[domains of the residue map]
+\label{v4-arith:w9-r4:rem:Asym-not-operator}
+On $C_c^\infty(\mathbb R_{>0})$ the displayed formula is a linear
+map to all zero-indexed scalar sequences. On finite occupation
+sequences it becomes a linear map after the distributional embedding
+of Proposition~\ref{v4-arith:mo:occupation} has been specified.
+A Hilbert-space operator additionally requires a target norm,
+convergence of the full residue sequence, and a source domain.
+Closedness must be checked in those two norms.
+Theorem~\ref{v4-arith:mo:finite-graph} and Theorem~\ref{v4-arith:mo:all-jets} construct
+evaluation completions and compute their graphs explicitly.
+\end{remark}
+
+\subsection{Formal Mellin--Hadamard Obstruction}
+\label{v4-arith:w9-r4:formal-flow:formal-intertwine}
+
+\begin{lemma}[formal Mellin--Hadamard obstruction]
+\label{v4-arith:w9-r4:lem:formal-intertwine}
+\ClaimStatusProvedHere. On \(C_c^\infty(\mathbb R_{>0})\), define
+\((M_{\log}f)(x)=-(\log x)f(x)\). This continuous multiplication
+operator is distinct from the atomic occupation operator. Suppose \(f\in C_{c}^{\infty}(\mathbb{R}_{>0})\)
+has Mellin transform \(F(s)=(\mathcal{M}f)(s)\) entire, and suppose
+\(\rho\in\mathcal{Z}\) is a simple zero of \(\xi_{\mathbb R}\). Then
+\begin{equation}
+\label{v4-arith:w9-r4:eq:formal-intertwine}
+A^{\mathrm{sym}}\bigl(M_{\log}f\bigr)(\gamma_{\rho})
+\;=\;
+-\,\frac{F'(\rho)}{\xi_{\mathbb R}'(\rho)},
+\qquad
+A^{\mathrm{sym}}(f)(\gamma_{\rho})
+\;=\;
+\frac{F(\rho)}{\xi_{\mathbb R}'(\rho)}.
+\end{equation}
+On formal sequences indexed by the zeros, define
+$(M_\gamma a)_\rho=\gamma_\rho a_\rho$.
+Consequently the bare residue intertwining relation
+\[
+A^{\mathrm{sym}}M_{\log}
+\stackrel{?}{=}
+M_{\gamma}A^{\mathrm{sym}}
+\]
+holds at \(\rho\) only under the additional interpolation condition
+\[
+F'(\rho)=-\gamma_{\rho}F(\rho).
+\]
+This condition is not a consequence of RH.
+\end{lemma}
+
+\begin{proof}
+Differentiate the Mellin integral of the compactly supported function.
+The Mellin transform gives
+\((\mathcal{M}(M_{\log}f))(s)=-F'(s)\), where \(F'\) is the
+derivative in the spectral variable. Since \(\rho\) is a simple zero,
+\[
+\operatorname*{Res}_{s=\rho}\frac{F(s)}{\xi_{\mathbb R}(s)}
+=\frac{F(\rho)}{\xi_{\mathbb R}'(\rho)},
+\qquad
+\operatorname*{Res}_{s=\rho}\frac{-F'(s)}{\xi_{\mathbb R}(s)}
+=-\frac{F'(\rho)}{\xi_{\mathbb R}'(\rho)}.
+\]
+Multiplication by the zero ordinate would instead give
+\(\gamma_{\rho}F(\rho)/\xi_{\mathbb R}'(\rho)\). Equality is exactly
+the displayed first-order interpolation condition.
+\end{proof}
+
+\begin{remark}[RH is not enough for formal intertwining]
+\label{v4-arith:w9-r4:rem:formal-assumes-RH}
+\Cref{v4-arith:w9-r4:lem:formal-intertwine} shows that multiplication by $-\log x$
+differentiates the numerator before Hadamard residue
+extraction. RH would place \(\rho\) on the critical line, but it would
+not imply \(F'(\rho)=-\gamma_{\rho}F(\rho)\) for the Mellin transforms
+in the source class. Thus the bare symbol
+\(A^{\mathrm{sym}}\) is not a spectral-flow operator. A genuine
+operator construction must supply a new domain theorem or boundary
+condition that converts derivative residue data into zero-ordinate
+multiplication without inserting that conclusion by definition.
+\end{remark}
+
+\section{Obstacle 1: Hilbert-Space Completions on Both Sides}
+\label{v4-arith:w9-r4:obstacle-hilbert}
+
+The first obstruction is the choice of Hilbert-space completions on
+which the Mellin-Hadamard symbol lands as a closable operator. Both
+sides have canonical candidates; the candidates are mutually
+incompatible.
+
+\subsection{Source-Side Completion}
+\label{v4-arith:w9-r4:obstacle-hilbert:source}
+
+\begin{definition}[source-side candidate Hilbert space]
+\label{v4-arith:w9-r4:def:source-completion}
+\ClaimStatusDefinitional. In the weighted coordinates, the source completion is represented by
+\(\ell^{2}(\mathbb{N}^{\times},dm/m)\), isometric to
+\(\mathcal H_{\mathrm{BC}}\) through \(\delta_m\mapsto m^{-1/2}v_m\) as in
+\Cref{v4-arith:w9-r4:rem:bc-structure}. \(N_{\mathrm{occ}}\) acts as
+multiplication by \(\log m\) and is essentially self-adjoint on the
+finite-support core
+(\Cref{v4-arith:w5-b:occupation-comparison}).
+\end{definition}
+
+\begin{lemma}[Mellin normalization and occupation distributions]
+\label{v4-arith:w9-r4:lem:no-mellin-on-HBC}
+\ClaimStatusProvedHere. For real $c$, the normalized transform
+\[
+ f\longmapsto (2\pi)^{-1/2}\int_0^\infty f(x)x^{c+i\tau-1}\,dx
+\]
+extends from compact smooth tests to a unitary
+$L^2(\mathbb R_{>0},x^{2c-1}dx)\to L^2(\mathbb R,d\tau)$.
+Thus the line $c=1/2$ uses $dx$, while $c=0$ uses $dx/x$.
+The occupation map
+\[
+ Tv_m=m^{-1}\delta_{m^{-1}},\qquad
+ \mathcal M(Tv_m)(s)=m^{-s},\qquad
+ (-\log x)T=TN_{\mathrm{occ}}
+\]
+is an injective map into distributions, with additive convention
+$\langle\delta_a,\phi\rangle=\phi(a)$.
+Every nonzero finite occupation combination has a Mellin transform
+outside $L^2$ on every vertical line.
+\end{lemma}
+\begin{proof}
+Under $t=\log x$, $g(t)=e^{ct}f(e^t)$ identifies the source
+norm with $L^2(dt)$. The transform is the Fourier unitary with
+kernel $(2\pi)^{-1/2}e^{i\tau t}$, as proved in
+Lemma~\ref{v4-arith:mo:mellin-unitary}. Evaluation on a point mass
+gives the two occupation identities. On a fixed vertical line,
+a finite occupation combination is a nonzero exponential polynomial
+in $\tau$. It is not square-integrable by
+Lemma~\ref{v4-arith:mo:exponential-polynomials}.
+\end{proof}
+
+\begin{remark}[the occupation carrier]
+\label{v4-arith:w9-r4:rem:lattice-ill-suited}
+The distributional map $T$ is defined on occupation $\ell^2$ as
+a locally finite sum. Its Dirichlet series converges on
+$\operatorname{Re}s>1/2$, with every spectral derivative locally
+uniformly convergent. Boundary continuation requires additional
+data. These are the precise domain assertions of
+Proposition~\ref{v4-arith:mo:dirichlet-domain}.
+An additive Dirac distribution is not a vector of continuous
+$L^2(dx)$ or $L^2(dx/x)$. Thus $T$ is not an inclusion into
+either Mellin Hilbert space.
+\end{remark}
+
+\subsection{Target-Side Completion}
+\label{v4-arith:w9-r4:obstacle-hilbert:target}
+
+\begin{definition}[target-side candidates]
+\label{v4-arith:w9-r4:def:target-completion}
+\ClaimStatusDefinitional. Three candidate Hilbert spaces for
+\(\mathcal{H}_{\xi}\) in the non-formal sense:
+\begin{enumerate}
+\item \(\mathcal{H}_{\xi}^{\mathrm{idele}}=L^{2}(C_{\mathbb{Q}},d^{\times}x)\)
+the idele class Hilbert space of
+\Cref{v4-arith:w7-j:def:H-idele};
+\item \(\mathcal{H}_{\xi}^{\mathrm{adele}}=L^{2}(X_{\mathbb{Q}})\) the
+adele-class space with non-commutative-geometric \(L^{2}\)-structure
+via \(C^{*}(\mathbb{A}/\mathbb{Q}^{\times})\)
+(\Cref{v4-arith:w7-j:def:connes-ac-space});
+\item \(\mathcal{H}_{\xi}^{\mathrm{Petersson}}\) the Petersson
+completion of the sph-finite cuspidal core
+(\Cref{v4-arith:thm:P3-resolution}).
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}[Mellin transform on the idele norm factor]
+\label{v4-arith:w9-r4:lem:mellin-on-idele}
+\ClaimStatusProvedHereConditional. Fix a product decomposition
+$C_{\mathbb Q}\simeq C_{\mathbb Q}^1\times\mathbb R_{>0}$
+and the product Haar measure $dk\,dx/x$, with $dk$ of mass one.
+The transform on the norm factor is
+\[
+ (\mathcal U_0f)(k,\tau)=\frac1{\sqrt{2\pi}}
+             \int_0^\infty f(k,x)x^{i\tau}\,\frac{dx}{x}.
+\]
+It is unitary onto $L^2(C_{\mathbb Q}^1\times\mathbb R,dk\,d\tau)$.
+The normalized generator is $i x\partial_x$ on its tensor core.
+Writing the same transform on $\operatorname{Re}s=1/2$ requires
+replacing $f(k,x)$ by $x^{-1/2}f(k,x)$ and using $dx$ in that
+weighted source coordinate.
+\end{lemma}
+\begin{proof}
+The $c=0$ case of Lemma~\ref{v4-arith:mo:mellin-unitary}, tensored
+with the identity on $L^2(C_{\mathbb Q}^1)$, proves unitarity.
+Substitution into the $c=1/2$ Mellin integral proves the last formula.
+The closed generator and its domain follow from multiplication
+by $\tau$ under this unitary.
+\end{proof}
+
+\begin{remark}[operator comparison between the completions]
+\label{v4-arith:w9-r4:rem:completion-mismatch}
+The atomic and continuous Hilbert spaces are separable and have
+infinite dimension, so they admit abstract unitary isomorphisms.
+The specified dynamics impose a stronger condition: an occupation
+eigenvector cannot map to a nonzero continuous Mellin eigenvector.
+\Cref{v4-arith:w9-r4:atomic-continuous-obstruction} proves
+the bounded group-intertwiner obstruction. The explicit distribution
+map preserves logarithmic multiplication, while normalized dilation
+induces the full residue-jet operator of
+Proposition~\ref{v4-arith:mo:jet-comparison}. Their compositions are distinct.
+\end{remark}
+
+\section{Obstacle 2: Kernel of \(A\) as Bounded/Unbounded Operator}
+\label{v4-arith:w9-r4:obstacle-kernel}
+
+Even accepting a compatible Hilbert-space completion, \(A\) must have
+an explicit kernel making it closable. The Hadamard inversion step is
+the bottleneck.
+
+\subsection{The Hadamard Inversion Kernel}
+\label{v4-arith:w9-r4:obstacle-kernel:had}
+
+\begin{definition}[residue contours and full principal parts]
+\label{v4-arith:w9-r4:def:formal-had-kernel}
+\ClaimStatusDefinitional. Choose a positively oriented small circle
+$C_\rho$ around a zero $\rho$, enclosing no other zero. For an
+entire numerator $F$ and a zero of order $r_\rho$, put
+\[
+ R_{\rho,k}F=\frac1{2\pi i}\int_{C_\rho}
+       \frac{(s-\rho)^kF(s)}{\xi_{\mathbb R}(s)}\,ds,
+ \qquad 0\leq k<r_\rho.
+\]
+These are the full principal-part coordinates. Inserting an
+additional factor $(s-\rho)^{-1}$ would instead extract the
+constant Laurent coefficient of $F/\xi_{\mathbb R}$.
+\end{definition}
+
+\begin{lemma}[residue evaluation in the Mellin norm]
+\label{v4-arith:w9-r4:lem:had-not-HS}
+\ClaimStatusProvedHere. For every real $c$ and every nonempty finite
+zero set, full residue evaluation on compact smooth tests has
+dense graph in
+$L^2(\mathbb R_{>0},x^{2c-1}dx)\oplus\mathscr J_Z$.
+It has no closable extension agreeing on these tests. In particular
+it is neither bounded nor Hilbert--Schmidt in this source norm.
+\end{lemma}
+\begin{proof}
+This is Theorem~\ref{v4-arith:mo:finite-graph}. For a single simple zero
+$c+i\gamma$, its decisive sequence is
+$f_L(x)=x^{-c}L^{-1}\psi((\log x)/L)x^{-i\gamma}$,
+where $\psi$ is a compact smooth function of integral one.
+Its squared source norm is $L^{-1}\|\psi\|_2^2$, while its
+Mellin value at that zero remains one. The full finite-jet proof
+uses independent exponential-polynomial kernels and requires
+neither simplicity nor placement on the line.
+\end{proof}
+
+\begin{remark}[the target norm matters]
+\label{v4-arith:w9-r4:rem:unboundedness-intrinsic}
+Finite-coordinate nonclosability alone does not imply
+nonclosability of an arbitrary countable vector-valued map.
+Theorem~\ref{v4-arith:mo:countable-completion} and Theorem~\ref{v4-arith:mo:all-jets}
+give countable hypotheses and explicit weights for which the
+whole graph is dense. Their quotient evaluation norms instead
+give well-defined Hilbert spaces and closed dilation operators.
+\end{remark}
+
+\subsection{Occupation domains and analytic continuation}
+\label{v4-arith:w9-r4:obstacle-kernel:domain}
+
+\begin{proposition}[occupation domains for residue evaluation]
+\label{v4-arith:w9-r4:prop:candidate-domains}
+\ClaimStatusProvedHere. The finite occupation core maps under $T$
+to compact distributions with entire Dirichlet-polynomial Mellin
+transforms. If $|a_m|=O(m^{-N})$ for every $N$, then
+$F_a(s)=\sum_m a_m m^{-s}$ is entire and bounded on each closed
+vertical strip. This coefficient condition does not imply vertical
+decay. Given positive residue weights $w_\rho$, the precise
+scalar Hilbert domain is
+\[
+ \{a\in\ell^2:F_a\text{ extends holomorphically near every selected zero},
+       \ \sum_\rho w_\rho|R_{\rho,0}F_a|^2<\infty\}.
+\]
+The source norm and convergence convention for $F_a$ are specified
+before taking this domain. On occupation $\ell^2$, its initial
+holomorphic domain is $\operatorname{Re}s>1/2$.
+\end{proposition}
+\begin{proof}
+On a fixed strip, choose $N$ exceeding the absolute values of
+its real endpoints by two. Absolute convergence bounds the series
+uniformly there and gives entire continuation. The vector $v_1$
+has $F_{v_1}=1$ and satisfies every coefficient decay condition,
+but its transform does not decrease on a vertical line.
+Square summability is the definition of membership in the chosen
+residue target. It does not follow from coefficient decay without
+bounds on the inverse Laurent coefficients at the divisor.
+The half-plane assertion is Proposition~\ref{v4-arith:mo:dirichlet-domain}.
+\end{proof}
+
+\begin{remark}[closure and the occupation identity]
+\label{v4-arith:w9-r4:rem:no-domain-gives-SA}
+The finite-core residue identity already fails algebraically:
+Proposition~\ref{v4-arith:mo:occupation-defect} computes its defect, and
+Proposition~\ref{v4-arith:mo:occupation-jet-graph} shows that no finite full-jet
+quotient carries the induced occupation operator.
+Under summable positive simple-zero weights,
+Proposition~\ref{v4-arith:mo:occupation-positive-obstruction} excludes symmetry
+on the finite occupation core even when all selected zeros lie
+on the critical line. A different dense domain and a different
+comparison map require their own operator construction.
+For a closed densely defined map $A$, its natural operator $A^*A$
+is positive self-adjoint and its polar decomposition has a partial
+isometry. The arithmetic requirement is the construction of such
+an $A$ with the stipulated domains, dense range, injectivity,
+energy identity, and trace comparison.
+\end{remark}
+
+\section{Connes 1999 Partial Approach and Its Limitation}
+\label{v4-arith:w9-r4:connes-1999}
+
+Connes' adele class space construction gives an explicit Hilbert space
+and scaling generator together with the trace formula. The
+Hilbert--P\'olya input is the further assertion that its absorption
+trace distribution is the non-trivial zero distribution, with
+critical-line support.
+
+\subsection{The Connes Construction}
+\label{v4-arith:w9-r4:connes-1999:construction}
+
+\begin{definition}[Connes adele class data]
+\label{v4-arith:w9-r4:def:connes-data}
+\ClaimStatusDefinitional \emph{(Connes 1999 arXiv:math/9811068 \S IV)}.
+The \emph{Connes adele class Hilbert space} is
+\(\mathcal{H}_{\mathrm{Connes}}=L^{2}(X_{\mathbb{Q}},dx)\) with
+\(X_{\mathbb{Q}}=\mathbb{A}/\mathbb{Q}^{\times}\) the adele class space
+and \(dx\) the Haar measure inherited from \(\mathbb{A}\) modulo
+\(\mathbb{Q}^{\times}\); the quotient is non-Hausdorff, and the
+\(L^{2}\)-structure is realised via the crossed product
+\(C^{*}(\mathbb{A}/\mathbb{Q}^{\times})=C_{0}(\mathbb{A})\rtimes\mathbb{Q}^{\times}\).
+The \emph{Connes scaling generator} is
+\(D_{\mathrm{Connes}}=-i\partial_{\log\lambda}U(\lambda)\) at
+\(\lambda=1\), where \(U(\lambda)f(x)=|\lambda|^{-1/2}f(\lambda^{-1}x)\).
+On the cuspidal subspace
+\(\mathcal{E}\subset\mathcal{H}_{\mathrm{Connes}}\) (orthogonal to the
+Tate-regularised constants), \(D_{\mathrm{Connes}}\) is conjectured to
+have absorption trace equal to the zero distribution of
+\(\xi_{\mathbb R}\). Under zero-placement this trace is supported at
+the ordinate multiset \(\{\gamma_{\rho}\}\).
+\end{definition}
+
+\begin{theorem}[Connes trace formula equivalence]
+\label{v4-arith:w9-r4:thm:connes-trace-eq}
+\ClaimStatusProvedElsewhere \emph{(Connes 1999 \S V Thm.~1;
+\Cref{v4-arith:tfe:thm:connes-meyer})}. For
+\(h\in\mathcal{H}_{\mathrm{test}}\) (the even-Schwartz test class on
+\(\mathbb{R}\)), the regularised trace
+\(\mathrm{Tr}_{\mathrm{reg}}(h(D_{\mathrm{Connes}})|_{\mathcal{E}})\)
+equals the Weil distribution side, conditional on the
+absorption-trace identification. With zero-placement, the regularised
+trace is \(\sum_{\rho}h(\gamma_{\rho})\).
+\end{theorem}
+
+\subsection{The Limitation: Absorption Trace as RH}
+\label{v4-arith:w9-r4:connes-1999:limitation}
+
+\begin{theorem}[Connes absorption-trace conjecture]
+\label{v4-arith:w9-r4:thm:connes-absorption}
+\ClaimStatusConjectured \emph{(Connes 1999 \S IV Thm.~1 conditional
+form)}. The scaling generator \(D_{\mathrm{Connes}}\) on
+\(\mathcal{E}\subset\mathcal{H}_{\mathrm{Connes}}\) has absorption
+trace equal to the non-trivial zero distribution of
+\(\xi_{\mathbb R}\); after zero-placement this distribution is
+supported at the multiset
+\(\{\gamma_{\rho}\mid\rho\in\mathcal{Z}\}\) with multiplicity.
+\end{theorem}
+
+\begin{remark}[the source of an absorption comparison]
+\label{v4-arith:w9-r4:rem:connes-not-uncond}
+An operator on an adelic Hilbert space has its identity map as an
+endomorphism of that space. This does not give a map from
+$\mathcal H_{\mathrm{BC}}$ into it. An occupation comparison requires
+a separately defined map $A_{\mathrm C}$, its source domain, and
+$A_{\mathrm C}N_{\mathrm{occ}}=H_{\mathrm C}A_{\mathrm C}$ on a
+specified invariant subdomain. An absorption character and this
+operator identity are distinct requirements.
+\end{remark}
+
+\begin{proposition}[transport to an adelic Hilbert realization]
+\label{v4-arith:w9-r4:prop:connes-eq-HPAr}
+\ClaimStatusProvedHereConditional. Suppose an adelic Hilbert realization
+$(\mathcal H_{\mathrm C},H_{\mathrm C})$ and a Hilbert--P\'olya
+realization $(\mathcal H_{\mathrm{HP}},H_{\mathrm{HP}})$ have the
+unitary domain comparison $U_{\mathrm C}$ of
+Proposition~\ref{v4-arith:mc:transport}.
+Then $A_{\mathrm C}=U_{\mathrm C}^{-1}A_{\mathrm{HP}}$ transports
+a complete occupation comparison on the same specified source domain.
+Trace-class characters and equally normalized determinants transfer
+under Proposition~\ref{v4-arith:mc:transport} and
+Corollary~\ref{v4-arith:mc:determinant}.
+Equality of an absorption character with this operator trace is
+an additional arithmetic identity on its stated test class.
+\end{proposition}
+\begin{proof}
+The graph map $1\oplus U_{\mathrm C}^{-1}$ transports the occupation
+map. The exact domain conjugacy transports its energy identity and
+spectral resolution. The two cited transport results prove the trace
+and determinant clauses. They use no identification of a regularized
+absorption functional with an ordinary operator trace.
+\end{proof}
+
+\begin{remark}[the role of the adelic construction]
+\label{v4-arith:w9-r4:rem:adele-transfers}
+An independently constructed adelic carrier specifies a new source
+for arithmetic geometry. To compare it with the occupation model,
+one must prove the core isometry, operator-domain identity, and
+character comparison in the preceding proposition. The identity map
+on either target space cannot replace those maps.
+\end{remark}
+
+\section{Meyer 2005 Partial Approach and Its Limitation}
+\label{v4-arith:w9-r4:meyer-2005}
+
+Meyer's global representation supplies a character formula and
+spectral multiplicities on a nuclear bornological carrier. Continuous
+Mellin scaling supplies a separate Hilbert-space calculation. The
+comparison below specifies the maps needed to relate their operators.
+
+\subsection{The Meyer Construction}
+\label{v4-arith:w9-r4:meyer-2005:construction}
+
+\begin{definition}[continuous norm test space]
+\label{v4-arith:w9-r4:def:meyer-data}
+\ClaimStatusDefinitional. In the product Hilbert space of
+\Cref{v4-arith:w9-r4:lem:mellin-on-idele}, take the algebraic
+tensor core
+$\mathcal S_{\mathrm{norm}}=L^2(C_{\mathbb Q}^1)\otimes
+C_c^\infty(\mathbb R_{>0})$ and the operator
+$D_{\mathrm{norm}}=1\otimes ix\partial_x$ there.
+This specifies the continuous scaling calculation.
+An identification of a global arithmetic representation with
+this Hilbert space requires an additional map.
+\end{definition}
+
+\begin{theorem}[continuous Mellin scaling and the global character]
+\label{v4-arith:w9-r4:thm:meyer-intertwiner}
+\ClaimStatusProvedHere. On the norm factor
+$L^2(\mathbb R_{>0},dx/x)$, the unitary $\mathcal U_0$ of
+\Cref{v4-arith:w9-r4:lem:mellin-on-idele} conjugates the closure
+of $ix\partial_x$ to multiplication by $\tau$.
+This operator has continuous spectrum and no eigenvectors.
+
+Meyer's global virtual representation on nuclear bornological
+spaces has a different carrier. Its character equals the Weil
+distribution, and its spectral multiplicities equal the pole
+orders of the completed $L$-function. These are Theorems~5.8
+and~5.11 of Meyer (2005), arXiv:math/0311468v3, pp.~43 and~47.
+\end{theorem}
+\begin{proof}
+The operator assertion is the $c=0$ case of
+Lemma~\ref{v4-arith:mo:mellin-unitary}. The two assertions about the
+global virtual representation are the cited primary theorems.
+No identification of that representation with this continuous
+Hilbert space is used.
+\end{proof}
+
+\subsection{Local multiplicity and a Hilbert comparison}
+\label{v4-arith:w9-r4:meyer-2005:limitation}
+
+\begin{remark}[the local quotient map]
+\label{v4-arith:w9-r4:rem:meyer-not-A}
+At a zero $\rho$ of order $r$, the map
+$\mathcal O_\rho/(\xi_{\mathbb R})\to\mathbb C^r$ taking full
+principal parts is an isomorphism. Multiplication by $s$ acts
+as $\rho I+S$, with $(Sa)_k=a_{k+1}$.
+This follows directly from the invertible Taylor-to-residue
+matrix in Equation~\eqref{v4-arith:mo:jet-formula}.
+The trace on this block equals the trace on $r$ scalar copies
+of $\rho$, although their nilpotent actions differ when $r>1$.
+Thus a character identity alone does not identify the full
+representations or their positive pairings.
+\end{remark}
+
+\begin{proposition}[an operator-compatible arithmetic comparison]
+\label{v4-arith:w9-r4:thm:meyer-eq-HPAr}
+\ClaimStatusProvedHereConditional. Let $\mathscr D_N$ be an
+$N_{\mathrm{occ}}$-invariant subspace of its domain. Suppose linear
+maps $I:\mathscr D_N\to V$, $U:V\to W$, and
+$L:W\to\operatorname{Dom}H$ satisfy
+\[
+ IN_{\mathrm{occ}}=DI,\qquad UD=KU,\qquad LK=HL
+\]
+on their stated invariant domains, where $H$ is self-adjoint
+on a specified positive Hilbert space. Then $A=LUI$ satisfies
+$AN_{\mathrm{occ}}=HA$ on $\mathscr D_N$.
+Its closedness, injectivity, dense range, zero-divisor multiplicities,
+and arithmetic trace identity require separate hypotheses or proofs.
+\end{proposition}
+\begin{proof}
+Domain compatibility makes the compositions well-defined and gives
+$AN_{\mathrm{occ}}=LUIN_{\mathrm{occ}}=LUDI=LKUI=HLUI=HA$.
+This computation asserts none of the additional analytic properties.
+\end{proof}
+
+\begin{remark}[the positive Hilbert comparison]
+\label{v4-arith:w9-r4:rem:meyer-schwartz-only}
+The local quotient map preserves the full zero multiplicity.
+Theorem~\ref{v4-arith:mo:all-jets} completes these local data in an
+explicit positive norm. The resulting dilation is symmetric
+exactly for simple zeros on the chosen line.
+The construction chooses its norm from the divisor and interpolation
+data. An arithmetic realization additionally requires the actual
+global pairing and character maps, with their domains and continuity.
+Meyer's character theorem and the continuous Mellin unitary do not
+construct the occupation map in the preceding proposition.
+\end{remark}
+
+\input{chapters/arithmetic/87b_hilbert_comparisons}
+
+\section{Residue Factorization and Arithmetic Comparison}
+\label{v4-arith:w9-r4:residual}
+
+A scaling model and an occupation model are related by three
+separately specified maps. Their operator identity is proved on the
+common invariant domain below; an arithmetic trace requires further data.
+
+\subsection{The Three Comparison Maps}
+\label{v4-arith:w9-r4:residual:statement}
+
+\begin{theorem}[conditional passage through two test spaces]
+\label{v4-arith:w9-r4:thm:irreducible-residual}
+\ClaimStatusProvedHereConditional. Let $\mathcal D_N$ be an
+$N_{\mathrm{occ}}$-invariant subspace of its operator domain.
+Let $V,W$ be complex vector spaces with endomorphisms $D_V,D_W$.
+Suppose linear maps $I:\mathcal D_N\to V$, $U:V\to W$, and
+$T:W\to\operatorname{Dom}H_{\mathrm{HP}}$ satisfy
+\[
+ IN_{\mathrm{occ}}=D_VI,\qquad UD_V=D_WU,\qquad
+ TD_W=H_{\mathrm{HP}}T.
+\]
+Then $A=TUI$ satisfies $AN_{\mathrm{occ}}=H_{\mathrm{HP}}A$ on
+$\mathcal D_N$. Closedness, injectivity, dense range, and the
+arithmetic character are additional conditions. For the continuous
+specialization, fix real $c$ and take $V=\mathscr D$,
+$D_V=P_c$, $W=\mathcal M\mathscr D\subset\mathcal O(\mathbb C)$,
+$U=(2\pi)^{-1/2}\mathcal M$, and
+$(D_WF)(s)=i(c-s)F(s)$. These data construct the middle identity.
+\end{theorem}
+\begin{proof}
+All operators act on the displayed spaces, so
+$AN_{\mathrm{occ}}=TUD_VI=TD_WUI=H_{\mathrm{HP}}A$.
+The continuous specialization follows from
+\eqref{v4-arith:mo:dilation}; $P_c$ preserves $\mathscr D$, so
+$D_W$ preserves $W$. It does not change the occupation
+operator into that dilation generator.
+\end{proof}
+
+For the continuous Hilbert specialization, the first map \(I\)
+is not a bounded intertwining embedding of the occupation Hilbert
+space into the continuous scaling Hilbert space,
+by \Cref{v4-arith:w9-r4:atomic-continuous-obstruction}. Its
+possible distributional realization and the last map \(T\) remain
+separate constructions. The latter must identify the original zero
+divisor, not merely project ordinates to the critical line. These
+requirements are in addition to any absorption-trace or positivity
+condition imposed on a separately constructed scaling space.
+
+\begin{remark}[finite and archimedean comparison maps]
+\label{v4-arith:w9-r4:rem:residual-at-infty}
+The occupation shift \(\mu_p\) is a proper isometry; it is not the
+unitary multiplication operator \(p^{-it}\) on a Mellin line.
+For instance \(\mu_p^*\mu_p=1\) and
+\(\mu_p\mu_p^*\ne1\), whereas multiplication by \(p^{-it}\) has both
+products equal to one. Any comparison using a unitary dilation must
+state the enlarged space and its compression. The local and finite-prime
+phase comparisons of \Cref{v4-arith:thermal:prop:two-prime-phase} likewise
+precede an adelic identification. Absorption trace remains an
+analytic question on its specified scaling carrier; the occupation
+construction does not make it the sole comparison required for
+arithmetic realization.
+\end{remark}
+
+\subsection{The operator and arithmetic comparison data}
+\label{v4-arith:w9-r4:residual:table}
+
+The occupation operator is self-adjoint on its maximal weighted
+sequence domain. The continuous norm generator is unitarily Mellin
+diagonalized on $L^2(dx/x)$. The full residue map instead has the
+jet action of Proposition~\ref{v4-arith:mo:jet-comparison}, and its
+evaluation completions are those of
+Theorem~\ref{v4-arith:mo:all-jets}.
+
+To compare a global arithmetic carrier with a Hilbert realization,
+specify a complex test space $V$, a positive Hermitian form $h$ on it,
+and a linear map $J:V\to\mathcal H$ with dense range and
+$\langle Jv,Jw\rangle=h(v,w)$. If $h$ has a nullspace, the induced
+map is defined on its quotient. A scaling operator $D$ on an invariant
+subspace $V_0\subseteq V$ must satisfy
+$J(V_0)\subseteq\operatorname{Dom}H$ and $JD=HJ$ there.
+Graph-core and closure assertions require the corresponding domain
+hypotheses in Proposition~\ref{v4-arith:mc:core-unitary}.
+
+For two such Hilbert realizations, a core isometry satisfying those
+hypotheses extends to the actual unitary comparison. A closed
+occupation map transfers by $A_2=UA_1$ under
+Proposition~\ref{v4-arith:mc:transport}. An arithmetic character
+requires, in addition, equality with the specified trace functional
+on its complete test class. A regularized determinant requires the
+initial trace-class domain, branch, and continuation of
+Corollary~\ref{v4-arith:mc:determinant}.
+
+Meyer's global character theorem fixes a nuclear bornological
+representation. It does not provide $h$, $J$, or the occupation map.
+If a transported Weil functional is positive,
+Proposition~\ref{v4-arith:mc:positive-form} constructs its cyclic
+Hilbert space; comparison with the global representation and its
+ordinary trace multiplicities remains additional data.
+
+\subsection{The residue identity and the occupation comparison}
+\label{v4-arith:w9-r4:residual:why-irreducible}
+
+\begin{theorem}[the residue identity and its required comparison maps]
+\label{v4-arith:w9-r4:thm:irreducibility}
+\ClaimStatusProvedHere. The continuous scalar residue identity
+requires the stated first-order interpolation condition at every
+simple zero. A factorization of an occupation intertwiner through
+that residue map additionally requires an invariant occupation
+domain and both operator comparisons displayed below.
+The explicit distributional embedding constructs the first
+occupation-to-distribution map, but its residue composition fails
+the occupation energy identity on the finite occupation core.
+\end{theorem}
+
+\begin{proof}
+
+The residue test has a specific continuous domain. Put
+$\mathscr D=C_c^\infty(\mathbb R_{>0})$, and let $\mathcal Z_1$
+be the set of simple non-trivial zeros of $\xi_{\mathbb R}$.
+For $f\in\mathscr D$, write $F=\mathcal Mf$ and define
+\[
+ (A_1f)_\rho=\frac{F(\rho)}{\xi_{\mathbb R}'(\rho)},\qquad
+ (M_\gamma a)_\rho=\gamma_\rho a_\rho
+ \quad(\rho\in\mathcal Z_1).
+\]
+Here $A_1$ is the simple-zero restriction of $A^{\mathrm{sym}}$,
+with codomain the vector space $\mathbb C^{\mathcal Z_1}$ of all
+sequences. No summability norm is imposed. The map $M_\gamma$ is
+defined on this entire sequence space, while
+$M_{\log}f=-(\log x)f$ preserves $\mathscr D$.
+\Cref{v4-arith:w9-r4:lem:formal-intertwine} gives the exact identity
+\[
+ \bigl(A_1M_{\log}f-M_\gamma A_1f\bigr)_\rho
+ =\frac{-F'(\rho)-\gamma_\rho F(\rho)}
+        {\xi_{\mathbb R}'(\rho)}.
+\]
+Consequently the continuous residue relation holds for $f$ exactly
+when its numerator vanishes at every $\rho\in\mathcal Z_1$.
+Locating the zeros on the critical line does not impose this
+condition on $F$. Multiple zeros require the full residue and
+jet conditions, not this simple-zero formula.
+
+The stronger atomic target remains a different composition. It asks
+for a specified $N_{\mathrm{occ}}$-invariant domain
+$\mathscr D_{\mathrm{occ}}\subset\operatorname{Dom}N_{\mathrm{occ}}$
+and maps from that domain to a continuous function space and then
+to the actual zero-operator carrier. For a factorization through the
+present residue test, one would need a linear map
+$T:\mathscr D_{\mathrm{occ}}\to\mathscr D$ satisfying
+$TN_{\mathrm{occ}}=M_{\log}T$. One would also need
+$A_1M_{\log}T=M_\gamma A_1T$. This makes the sequence subspace
+$E=A_1T(\mathscr D_{\mathrm{occ}})$ invariant under $M_\gamma$,
+since $\mathscr D_{\mathrm{occ}}$ is invariant under $N_{\mathrm{occ}}$.
+Finally require a complex-linear map
+$L:E\to\operatorname{Dom}H_{\mathrm{HP}}$ satisfying
+$LM_\gamma=H_{\mathrm{HP}}L$ on $E$. Only then does
+$A=LA_1T$ satisfy
+\[
+ AN_{\mathrm{occ}}
+ =LA_1M_{\log}T=LM_\gamma A_1T=H_{\mathrm{HP}}A.
+\]
+These equalities specify the domains of every composition. They
+supply neither injectivity nor a closed operator realization.
+Moreover, if $v_m\in\mathscr D_{\mathrm{occ}}$, the first identity
+forces $(-\log x-\log m)Tv_m(x)=0$. A smooth function supported
+at the single point $x=m^{-1}$ is zero, so $Tv_m=0$.
+Thus this particular compactly supported smooth realization cannot
+be injective on a domain containing an occupation eigenvector.
+The distributional map of Proposition~\ref{v4-arith:mo:occupation} constructs
+that edge on every finite occupation sequence. Its residue composition
+still has the nonzero defect of Proposition~\ref{v4-arith:mo:occupation-defect}.
+The continuous dilation comparison instead uses $P_c=i(x\partial_x+c)$
+and the full jets of Proposition~\ref{v4-arith:mo:jet-comparison}.
+\end{proof}
+
+\begin{remark}[the remaining arithmetic construction]
+\label{v4-arith:w9-r4:rem:beilinson-closure}
+The logarithmic occupation Hamiltonian and the continuous Mellin
+generator have the explicitly different actions proved above.
+A complete arithmetic realization must construct the global pairing,
+the occupation map, and the character and determinant comparisons.
+Theorems~\ref{v4-arith:mo:all-jets} and
+\ref{v4-arith:w9-r4:thm:irreducibility} give the residue constructions
+and their limits. They do not assert that every further arithmetic
+comparison reduces to one positivity or scattering statement.
+\end{remark}
+
+\section{Placement in Triple-Identification Framework}
+\label{v4-arith:w9-r4:placement}
+
+The spectral-flow problem of \Cref{v4-arith:w9-r4:def:spectral-flow}
+has proposed comparisons with the constructions in
+Chapters~\ref{v4-arith:w8-a:deninger-chiral-homology},
+\ref{v4-arith:w7-j:ATP-adelic-scattering}, and
+\ref{v4-arith:3d-acs-E1bar}; the following statements specify their Hilbert maps and
+operator domains.
+
+\subsection{Spectral Flow as Deninger Spectral-Flow Theorem}
+\label{v4-arith:w9-r4:placement:deninger}
+
+\begin{proposition}[transport to a middle-cohomology realization]
+\label{v4-arith:w9-r4:prop:spectral-flow-eq-deninger}
+\ClaimStatusProvedHereConditional. Suppose a positive Hilbert completion
+$\mathcal H_{\mathrm{Den}}$ of the specified primary middle cohomology
+and a self-adjoint $H_{\mathrm{Den}}$ have been constructed.
+Fix a unitary $U_{\mathrm{Den}}:\mathcal H_{\mathrm{Den}}
+\to\mathcal H_{\mathrm{HP}}$ carrying their complete operator domains
+and satisfying $U_{\mathrm{Den}}H_{\mathrm{Den}}
+=H_{\mathrm{HP}}U_{\mathrm{Den}}$.
+Then the occupation map on this cohomological realization is
+$A_{\mathrm{Den}}=U_{\mathrm{Den}}^{-1}A_{\mathrm{HP}}$.
+It has the same source domain, closedness, injectivity, dense-range,
+and intertwining properties. The trace and determinant comparisons
+require the hypotheses of Proposition~\ref{v4-arith:mc:transport}
+and Corollary~\ref{v4-arith:mc:determinant}.
+\end{proposition}
+\begin{proof}
+Apply Proposition~\ref{v4-arith:mc:transport} to
+$U_{\mathrm{Den}}^{-1}$. A core isometry can construct this unitary
+only when it compares the actual positive pairings and the graph
+cores, as in Proposition~\ref{v4-arith:mc:core-unitary}.
+A chain or cohomology identification alone has no such Hilbert
+norm or adjoint-domain consequence.
+\end{proof}
+
+\begin{remark}[cohomology and Hilbert structure]
+\label{v4-arith:w9-r4:rem:deninger-renames}
+The middle-cohomology object, its positive pairing, and its completed
+scaling action are separate data. The preceding proposition states
+the exact map that would identify its operator problem with the
+specified Hilbert--P\'olya problem. Existence of that map is not
+a consequence of renaming the shifted generator.
+\end{remark}
+
+\subsection{Spectral Flow as A-TP Adelic-Scattering}
+\label{v4-arith:w9-r4:placement:atp}
+
+\begin{proposition}[scattering and arithmetic comparisons]
+\label{v4-arith:w9-r4:prop:spectral-flow-eq-atp}
+\ClaimStatusProvedHereConditional. Suppose a scaling realization
+$(\mathcal H_a,H_a)$ and a zero-operator realization
+$(\mathcal H_\xi,H_\xi)$ have the unitary domain comparison of
+Proposition~\ref{v4-arith:mc:transport}.
+Then a closed occupation intertwiner, its injectivity and dense range,
+and its trace-class character identities transfer between them.
+Their equally normalized regularized determinants transfer under
+Corollary~\ref{v4-arith:mc:determinant}.
+
+Separately, let $\Omega_\pm:\mathcal K_0\to\mathcal K_a$ be the
+isometric wave maps of a specified scattering pair. Their scattering
+operator is unitary exactly when their ranges agree.
+For an arithmetic test algebra $\mathscr A=C_c^\infty(\mathbb R)$,
+a map $C:\mathscr A\to\mathcal K_a$ with dense range and
+\[
+ W(f*g^*)=\langle Cf,Cg\rangle_{\mathcal K_a}
+\]
+identifies its positive convolution completion with $\mathcal K_a$.
+This pairing identity must hold on the full test algebra, including
+any complement of a specified Tate--Mellin test subspace.
+\end{proposition}
+\begin{proof}
+The first assertions are Proposition~\ref{v4-arith:mc:transport}
+and Corollary~\ref{v4-arith:mc:determinant}.
+Proposition~\ref{v4-arith:mc:scattering} proves the scattering
+range criterion. The displayed pairing identity gives positivity
+and the completed isometry of
+Proposition~\ref{v4-arith:mc:positive-form}.
+No implication between the range criterion and the arithmetic
+pairing identity is used. For a continuous arithmetic form, equality
+on a subspace extends to a larger test space only when that subspace
+is dense in the stated test topology and both forms are continuous.
+Without these hypotheses, the identity on the larger space is
+an additional condition.
+\end{proof}
+
+\begin{remark}[the scattering condition does not specify the divisor]
+\label{v4-arith:w9-r4:rem:scattering-transfers}
+The equality of wave-map ranges is a statement about a specified
+scattering pair. The one-dimensional example after
+Proposition~\ref{v4-arith:mc:scattering} has unitary scattering and
+the wrong xi divisor. Thus an arithmetic equivalence also requires
+the carrier isometry, the full pairing identity, and the character
+and determinant comparisons of the preceding proposition.
+The continuous Mellin unitary supplies none of these arithmetic maps.
+\end{remark}
+
+\subsection{Spectral Flow as 3D ACS Bulk-Boundary Correspondence}
+\label{v4-arith:w9-r4:placement:acs}
+
+\begin{proposition}[bulk and occupation operator types]
+\label{v4-arith:w9-r4:prop:spectral-flow-eq-acs}
+\ClaimStatusProvedHereConditional. Suppose a positive bulk Hilbert space
+$\mathcal H_{\mathrm B}$ and self-adjoint operator $H_{\mathrm B}$
+are provided by a specified arithmetic Chern--Simons construction.
+Suppose also that $U_{\mathrm B}:\mathcal H_{\mathrm B}\to
+\mathcal H_{\mathrm{HP}}$ is the unitary domain comparison of
+Proposition~\ref{v4-arith:mc:transport}.
+Then $A_{\mathrm B}=U_{\mathrm B}^{-1}A_{\mathrm{HP}}$ is the
+corresponding occupation map, with the transported properties proved
+there. A parameter derivative of bulk sections does not by itself
+define this map on occupation states or an operator on a single fiber.
+\end{proposition}
+\begin{proof}
+The transport assertions follow from the explicit formula and
+Proposition~\ref{v4-arith:mc:transport}.
+For the derivative assertion, trivialize a nonzero Hilbert bundle
+near a parameter $s_0$. Its $C^1$ sections include
+$a(s)=(s-s_0)v$ and the zero section, for $v\ne0$.
+Both have value zero at $s_0$, but their derivatives at $s_0$
+are $v$ and zero. Thus evaluation of the section derivative does
+not factor through the value in the fiber.
+A connection or a common-domain family of operators can specify
+a derivative on sections; a further map from occupation states
+is still required for the displayed occupation identity.
+\end{proof}
+
+\begin{remark}[partition functions and bulk comparisons]
+\label{v4-arith:w9-r4:rem:acs-wilson}
+An identity between a bulk partition function and $\xi_{\mathbb R}$
+is a scalar identity. The bulk Hilbert pairing, scaling generator,
+occupation map, and ordinary or regularized character require
+their own constructions. The arithmetic object
+$\mathcal V^{\mathrm{prim}}$ is a Hochschild trace class; its Hilbert
+realization is additional data. Under the unitary and trace hypotheses
+above, the complete operator realization transfers by the proved maps.
+\end{remark}
+
+\subsection{The Unified Residual}
+\label{v4-arith:w9-r4:placement:unified}
+
+\begin{theorem}[comparison of specified arithmetic realizations]
+\label{v4-arith:w9-r4:thm:unified-residual}
+\ClaimStatusProvedHereConditional. Suppose Hilbert realizations
+$(\mathcal H_j,H_j)$ have been constructed for the Hilbert--P\'olya,
+adelic absorption, global Meyer, and middle-cohomology descriptions,
+with self-adjoint $H_j$.
+Fix graph cores $\mathcal C_j$ and bijective core isometries
+$U_{j,0}:\mathcal C_j\to\mathcal C_{\mathrm{HP}}$ satisfying
+$U_{j,0}H_j=H_{\mathrm{HP}}U_{j,0}$ on those cores.
+Assume the invariant-core hypotheses of
+Proposition~\ref{v4-arith:mc:core-unitary}, or specify the equivalent
+unitary comparisons on the complete operator domains.
+Then these maps extend uniquely to unitaries $U_j$ and identify
+the following operator properties in all four realizations:
+\begin{enumerate}
+\item a closed injective occupation map on the same specified dense
+domain, with dense range and the occupation identity on its
+specified $N_{\mathrm{occ}}$-invariant subdomain;
+\item the full shifted spectral divisor, including eigenspace
+multiplicities;
+\item trace-class characters on the same bounded Borel test class;
+\item the equally normalized determinant, when the branch and
+continuation hypotheses of Corollary~\ref{v4-arith:mc:determinant} hold.
+\end{enumerate}
+The corresponding occupation maps are explicitly
+$A_j=U_j^{-1}A_{\mathrm{HP}}$.
+
+For the fifth description, arithmetic Tate positivity, suppose a
+specified continuous Weil functional satisfies the positivity
+hypothesis of Proposition~\ref{v4-arith:mc:positive-form}.
+That proposition constructs its cyclic Hilbert space. Its comparison
+with one of the preceding realizations requires a dense pairing map
+$C$ and the associated scaling-domain and character comparisons.
+Under those additional data, the same transport assertions apply.
+\end{theorem}
+\begin{proof}
+Complete the core isometries by Proposition~\ref{v4-arith:mc:core-unitary}.
+Their graph identities give equality on the self-adjoint domains.
+Proposition~\ref{v4-arith:mc:transport} applied to $U_j^{-1}$ proves
+the first three claims and the formula for $A_j$.
+Corollary~\ref{v4-arith:mc:determinant} proves the fourth.
+For the positivity description, the map $[f]\mapsto Cf$ extends
+to the unitary in Proposition~\ref{v4-arith:mc:positive-form}.
+The explicitly required operator and character identities then
+permit the same transport argument.
+\end{proof}
+
+\begin{remark}[critical-line placement and the comparison problem]
+\label{v4-arith:w9-r4:rem:honest-summary}
+If one self-adjoint $H_j$ has shifted spectral divisor equal to
+the entire zero divisor of $\xi_{\mathbb R}$, every such zero has
+real part $1/2$. This follows because the eigenvalues of $H_j$
+are real. It proves the Riemann Hypothesis from that realization.
+The converse does not supply the core isometries, the arithmetic
+pairing, or a closed occupation map. In particular, a positive
+cyclic form alone does not recover ordinary trace multiplicities,
+as the finite example after Proposition~\ref{v4-arith:mc:positive-form}
+shows. Proposition~\ref{v4-arith:mo:vacuum} excludes an injective
+literal occupation map on any domain containing $v_1$.
+These are additional construction conditions in the original
+spectral-flow question.
+\end{remark}
+
+\section{Polyakov--Dirac Normal Form for the Residual}
+\label{v4-arith:w9-r4:polyakov-dirac-normal-form}
+
+Under the stated primary Heisenberg hypotheses, the Polyakov
+rank-residue calculation fixes the scalar $r_\zeta=2$.
+For a specified symmetric core, the Dirac double tests essential
+self-adjointness of that same operator. The arithmetic determinant,
+positive Hilbert pairing, occupation map, and character comparison
+remain independent hypotheses. The following construction keeps
+these data separate and proves the fixed-core equivalence.
+
+\subsection{Polyakov Rigidity of the Rank Residue}
+\label{v4-arith:w9-r4:pdnf:polyakov}
+
+\begin{proposition}[Polyakov rank-residue rigidity]
+\label{v4-arith:w9-r4:prop:polyakov-scalar-rigidity}
+\ClaimStatusProvedHere. In the primary Heisenberg domain of
+Chapters~\ref{v4-arith:polyakov} and
+\ref{v4-arith:w9-r3:chapter}, any spectral-flow closure compatible
+with
+\begin{enumerate}
+\item the rank-\(2\) per-prime Sugawara Heisenberg stress tensor,
+\item the global Fock partition
+\(Z(s)=\prod_{p}\prod_{n\geq 1}(1-p^{-sn})^{-2}\), and
+\item the archimedean Polyakov anomaly of the rank-\(2\) free-field
+completion,
+\end{enumerate}
+has determinant rank residue
+\begin{equation}
+\label{v4-arith:w9-r4:eq:polyakov-rigid-c}
+r_{\zeta}\;=\;2.
+\end{equation}
+This determines the scalar under the stated primary Heisenberg
+hypotheses. The Hilbert pairing, operator domains, and arithmetic
+trace comparisons remain the separate data of
+Theorem~\ref{v4-arith:w9-r4:thm:unified-residual}.
+\end{proposition}
+
+\begin{proof}
+\Cref{v4-arith:w9-r3:thm:main} proves that the unrenormalised conformal scalar
+\(\sum_{p}c^{(p)}\) diverges, that the negative global modes do not act
+on the restricted vacuum, and that the global Fock-partition residue
+gives \(r_{\zeta}=2\). The same chapter proves the Polyakov
+rank comparison
+\Cref{v4-arith:w9-r3:thm:polyakov-identity}, identifying this
+finite-prime residue with the rank-\(2\) archimedean conformal
+anomaly. These inputs leave no determinant scalar parameter: changing
+\(r_{\zeta}\) would either abandon the Euler-product
+partition, abandon the Sugawara rank, or abandon the archimedean
+anomaly match. None of those changes is a spectral-flow closure
+inside the stated primary Heisenberg domain. This scalar argument
+contains no Hilbert isometry, graph-core theorem, or arithmetic
+character map. Those comparisons retain the independent hypotheses
+of Theorem~\ref{v4-arith:w9-r4:thm:unified-residual}.
+\end{proof}
+
+\begin{remark}[what Polyakov does and does not buy]
+\label{v4-arith:w9-r4:rem:polyakov-no-rh}
+Polyakov regularisation is decisive for the determinant rank,
+not for RH. It supplies the finite scalar \(r_{\zeta}=2\) and
+rules out the divergent prime-zeta prescription; it does not
+produce the Hilbert space on which the zero ordinates are a
+self-adjoint spectrum.
+\end{remark}
+
+\subsection{Dirac Closure of the Remaining Operator}
+\label{v4-arith:w9-r4:pdnf:dirac}
+
+\begin{definition}[a specified symmetric core]
+\label{v4-arith:w9-r4:def:residual-ordinate-core}
+\ClaimStatusDefinitional. Fix a complex positive Hilbert space
+$\mathcal H_{\mathrm{res}}$, a dense linear subspace
+$\mathcal C_{\mathrm{res}}$, and a symmetric operator
+$H_{\mathrm{res}}^{\mathrm{sym}}:\mathcal C_{\mathrm{res}}
+\to\mathcal H_{\mathrm{res}}$.
+These are the data for the Dirac construction below.
+
+A continuous Mellin chart for these data requires a specified
+unitary $B:\mathcal H_{\mathrm{res}}\to\mathscr H_c$ with
+$B\mathcal C_{\mathrm{res}}\subseteq\operatorname{Dom}P_c$ and
+$BH_{\mathrm{res}}^{\mathrm{sym}}=P_cB$ on the core.
+Then $\mathcal U_cB$ represents the core operator by multiplication
+by the real frequency. One may construct $B$ by completing a dense
+core isometry under Proposition~\ref{v4-arith:mc:core-unitary}.
+Neither the continuous Mellin unitary nor the global Meyer character
+theorem supplies that isometry from an arithmetic quotient.
+
+A residue boundary condition is a separate map on a specified
+test topology. Its full local action is the jet operator of
+Proposition~\ref{v4-arith:mo:jet-comparison}. It is not a restriction
+of ordinary $L^2$ point evaluation. If all full jets are retained,
+positive symmetry requires simple zeros on the chosen line by
+Theorem~\ref{v4-arith:mo:finite-symmetry}.
+\end{definition}
+
+\begin{definition}[Dirac double of the residual]
+\label{v4-arith:w9-r4:def:dirac-double}
+\ClaimStatusDefinitional. The \emph{Dirac double} of the residual
+ordinate core is the odd symmetric operator
+\begin{equation}
+\label{v4-arith:w9-r4:eq:dirac-double}
+\mathscr{D}_{\mathrm{res}}^{0}
+\;:=\;
+\begin{pmatrix}
+0 & H_{\mathrm{res}}^{\mathrm{sym}}\\
+H_{\mathrm{res}}^{\mathrm{sym}} & 0
+\end{pmatrix}
+\quad\text{on}\quad
+\mathcal{C}_{\mathrm{res}}\oplus\mathcal{C}_{\mathrm{res}},
+\end{equation}
+with grading
+\(\Gamma=\operatorname{diag}(1,-1)\). A \emph{Dirac closure} is a
+self-adjoint closure
+\(\mathscr{D}_{\mathrm{res}}=\overline{\mathscr{D}_{\mathrm{res}}^{0}}\)
+whose spectral measure satisfies the regularised determinant
+identity
+\begin{equation}
+\label{v4-arith:w9-r4:eq:dirac-det}
+\det\nolimits_{\infty}\bigl(s\cdot\mathrm{id}
+-({\tfrac12}\mathrm{id}+iH_{\mathrm{res}})\bigr)
+\;=\;\xi_{\mathbb{R}}(s),
+\end{equation}
+where \(H_{\mathrm{res}}\) is the off-diagonal component recovered
+from \(\mathscr{D}_{\mathrm{res}}\) by the grading.
+\end{definition}
+
+\begin{lemma}[Dirac double detects self-adjointness]
+\label{v4-arith:w9-r4:lem:dirac-double-detects-sa}
+\ClaimStatusProvedHere. Let \(H\) be a densely defined symmetric
+operator on a Hilbert space \(\mathcal{H}\) and
+\(\mathscr{D}_{H}^{0}=
+\left(\begin{smallmatrix}0&H\\H&0\end{smallmatrix}\right)\)
+on \(\mathcal{D}(H)\oplus\mathcal{D}(H)\). Then
+\(\mathscr{D}_{H}^{0}\) is essentially self-adjoint if and only if
+\(H\) is essentially self-adjoint. When this holds,
+\[
+\overline{\mathscr{D}_{H}^{0}}
+\;=\;
+\begin{pmatrix}
+0 & \overline{H}\\
+\overline{H} & 0
+\end{pmatrix},
+\qquad
+\overline{\mathscr{D}_{H}^{0}}^{\,2}
+\;=\;
+\begin{pmatrix}
+\overline{H}^{\,2} & 0\\
+0 & \overline{H}^{\,2}
+\end{pmatrix}.
+\]
+\end{lemma}
+
+\begin{proof}
+For a symmetric \(H\),
+\((\mathscr{D}_{H}^{0})^{*}=
+\left(\begin{smallmatrix}0&H^{*}\\H^{*}&0\end{smallmatrix}\right)\) on
+\(\mathcal{D}(H^{*})\oplus\mathcal{D}(H^{*})\). Hence the closure of
+\(\mathscr{D}_{H}^{0}\) is self-adjoint exactly when the closure of
+\(H\) has adjoint domain equal to its own domain, i.e.\ exactly when
+\(H\) is essentially self-adjoint. The displayed square is the usual
+block-matrix product on
+$\operatorname{Dom}(\overline H^2)\oplus\operatorname{Dom}(\overline H^2)$,
+as given by the spectral theorem for the self-adjoint operator
+\(\overline{H}\) (Reed--Simon I, Ch.~VIII).
+\end{proof}
+
+\begin{theorem}[Dirac normal form on a specified graph core]
+\label{v4-arith:w9-r4:thm:polyakov-dirac-normal-form}
+\ClaimStatusProvedHereConditional. Fix the positive Hilbert space
+and symmetric operator $T_0$ on $\mathcal C_{\mathrm{res}}$ in
+Definition~\ref{v4-arith:w9-r4:def:residual-ordinate-core}.
+Use one fixed determinant regularization and polar-factor convention.
+The following statements are equivalent:
+\begin{enumerate}
+\item $T_0$ is essentially self-adjoint and the determinant of
+$1/2+i\overline T_0$ exists in that convention and equals
+$\xi_{\mathbb R}$;
+\item the Dirac double of this same $T_0$ has a self-adjoint closure
+and its recovered off-diagonal operator has that determinant.
+\end{enumerate}
+Suppose further that a unitary $U:\mathcal H_{\mathrm{res}}
+\to\mathcal H_{\mathrm{HP}}$ maps $\mathcal C_{\mathrm{res}}$ onto
+a graph core of a self-adjoint $H_{\mathrm{HP}}$ and satisfies
+$UT_0=H_{\mathrm{HP}}U$ there. Then the two statements are equivalent
+to the same determinant identity for $H_{\mathrm{HP}}$.
+An arithmetic absorption-character identity transfers only under
+the trace hypotheses of Proposition~\ref{v4-arith:mc:transport}
+and the identification of that trace with the specified arithmetic
+character.
+\end{theorem}
+\begin{proof}
+The fixed unitary matrix
+$2^{-1/2}\left(\begin{smallmatrix}1&1\\1&-1\end{smallmatrix}\right)$
+conjugates the Dirac double on its exact product domain to
+$T_0\oplus(-T_0)$. Closure and adjoint preserve this unitary
+conjugacy. Thus essential self-adjointness is equivalent on the two
+sides, and the recovered component is exactly $\overline T_0$.
+The determinant clauses are consequently the same clause about
+the same closed operator.
+For the additional comparison, close the graph identity and use
+the assumed graph core to obtain
+$U\overline T_0U^{-1}=H_{\mathrm{HP}}$.
+Corollary~\ref{v4-arith:mc:determinant} transports the determinant
+when its analytic hypotheses hold. Trace invariance then gives
+only the stated character transfer. The scalar normalization does
+not construct $U$ or prove that an arbitrary dense subspace is a
+graph core.
+\end{proof}
+
+\begin{remark}[graph completion and the arithmetic determinant]
+\label{v4-arith:w9-r4:rem:single-estimate-left}
+On the specified symmetric core, the graph norm is
+\[
+ \|u\|_{\mathscr D}^{2}=\|u\|^{2}
+       +\|H_{\mathrm{res}}^{\mathrm{sym}}u\|^{2}.
+\]
+Completing this graph gives a closed operator. Essential
+self-adjointness further requires equality with its adjoint domain.
+After a closed Tate-polar operator quotient has been constructed,
+the same distinction applies to the quotient operator. Its determinant
+identity \eqref{v4-arith:w9-r4:eq:dirac-det}, the occupation map,
+and the arithmetic character comparison remain separate conditions.
+The fixed-core theorem identifies the Dirac and symmetric-operator
+conditions; it does not identify all these arithmetic constructions
+with graph completeness.
+\end{remark}
+
+\begin{definition}[closed Tate-polar operator quotient]
+\label{v4-arith:w9-r4:def:tate-polar-operator-quotient}
+\ClaimStatusConditional. A \emph{closed Tate-polar operator quotient}
+for \(H_{0}=H_{\mathrm{res}}^{\mathrm{sym}}\) is additional data of a
+Hilbert quotient
+\[
+\pi\colon \mathcal{H}_{\mathrm{res}}\longrightarrow
+\mathcal{H}_{\mathrm{res}}^{\circ}
+\]
+with closed finite-rank kernel \(P_{\mathrm{Tate}}\), an induced
+dense domain
+\[
+\mathcal{C}_{\mathrm{res}}^{\circ}:=\pi(\mathcal{C}_{\mathrm{res}}),
+\]
+and a symmetric operator \(H_{0}^{\circ}\) on
+\(\mathcal{C}_{\mathrm{res}}^{\circ}\) satisfying
+\[
+H_{0}^{\circ}\pi u=\pi H_{0}u,\qquad u\in\mathcal{C}_{\mathrm{res}}.
+\]
+The quotient is required to be compatible with closure and adjoint
+domains:
+\[
+\mathcal{D}(\overline{H_{0}^{\circ}})
+=\pi\mathcal{D}(\overline{H_{0}}),
+\qquad
+\mathcal{D}((H_{0}^{\circ})^{*})
+=\pi\mathcal{D}(H_{0}^{*}),
+\]
+with the displayed images understood in the corresponding graph
+topologies. A unitary Mellin chart on $\mathcal H_{\mathrm{res}}^\circ$
+is additional data as in
+Definition~\ref{v4-arith:w9-r4:def:meyer-coordinate-core}.
+If it is obtained from a chart before quotienting, the target must
+also be quotiented by the image of $P_{\mathrm{Tate}}$, and the
+induced pairing and operator domains must be compared. An injective
+chart cannot itself factor through a quotient with nonzero kernel.
+
+The quotient is not constructed here. Every phrase
+``after quotienting the Tate polar directions'' in the residual
+operator argument is to be read under this hypothesis.
+\end{definition}
+
+\begin{remark}[post-quotient notation]
+\label{v4-arith:w9-r4:rem:post-tate-notation}
+\ClaimStatusDefinitional. In the boundary and deficiency discussion
+below,
+\[
+T_{0}:=H_{0}^{\circ}\colon
+\mathcal{C}_{\mathrm{res}}^{\circ}\subset
+\mathcal{H}_{\mathrm{res}}^{\circ}\longrightarrow
+\mathcal{H}_{\mathrm{res}}^{\circ}
+\]
+denotes the post-Tate residual operator supplied by
+\Cref{v4-arith:w9-r4:def:tate-polar-operator-quotient}. The
+pre-quotient operator \(H_{0}=H_{\mathrm{res}}^{\mathrm{sym}}\) is only
+the source operator. Thus every adjoint, deficiency kernel, boundary
+quotient, and Mellin-coordinate graph statement below is a statement
+about \(T_{0}\). Without the closed Tate-polar quotient, these formulas
+are well-formed as conditional operator theory but not as an
+unconditional construction.
+\end{remark}
+
+\subsection{Boundary Form and Deficiency Kernels}
+\label{v4-arith:w9-r4:pdnf:what-remains}
+
+Under the stated primary Heisenberg hypotheses, scalar rigidity
+fixes \(r_{\zeta}=2\). For the specified symmetric operator, the
+boundary quotient \(\mathcal Q_{\mathrm{res}}\) tests essential
+self-adjointness. The arithmetic determinant, pairing, and occupation
+map are not determined by this quotient.
+
+\begin{definition}[residual boundary form]
+\label{v4-arith:w9-r4:def:residual-boundary-form}
+\ClaimStatusDefinitional. Under the post-quotient notation of
+\Cref{v4-arith:w9-r4:rem:post-tate-notation}, the adjoint-domain
+boundary form is the Hermitian symplectic form
+\begin{equation}
+\label{v4-arith:w9-r4:eq:boundary-form}
+\mathcal{B}_{\mathrm{res}}(u,v)
+\;:=\;
+\langle T_{0}^{*}u,v\rangle-\langle u,T_{0}^{*}v\rangle,
+\qquad
+u,v\in\mathcal{D}(T_{0}^{*}).
+\end{equation}
+The \emph{residual boundary space} is the quotient
+\begin{equation}
+\label{v4-arith:w9-r4:eq:boundary-space}
+\mathcal{Q}_{\mathrm{res}}
+\;:=\;
+\mathcal{D}(T_{0}^{*})/\mathcal{D}(\overline{T_{0}}),
+\end{equation}
+with the induced form still denoted \(\mathcal{B}_{\mathrm{res}}\).
+\end{definition}
+
+\begin{proposition}[the boundary quotient of a fixed symmetric operator]
+\label{v4-arith:w9-r4:prop:polyakov-boundary-target}
+\ClaimStatusProvedHere. For the specified densely defined symmetric
+operator $T_0$, essential self-adjointness is equivalent to
+\begin{equation}
+\label{v4-arith:w9-r4:eq:polyakov-boundary-target}
+ \mathcal Q_{\mathrm{res}}=0.
+\end{equation}
+The induced boundary form is nondegenerate on this quotient.
+Consequently, a bijection from a specified BV--BFV boundary space
+to $\mathcal Q_{\mathrm{res}}$ preserving the complete boundary
+pairing would identify vanishing of that pairing with essential
+self-adjointness. Cancellation of a variation merely on the original
+core proves only its isotropy. Neither conclusion identifies the
+arithmetic determinant or constructs an occupation map.
+\end{proposition}
+\begin{proof}
+Since $T_0$ is symmetric, it is closable and
+$\overline T_0\subseteq T_0^*$. The quotient vanishes exactly when
+their domains agree; their actions then agree, so
+$\overline T_0=(\overline T_0)^*$.
+If the class of $u\in\operatorname{Dom}T_0^*$ pairs to zero with
+every class, then
+$\langle T_0^*u,v\rangle=\langle u,T_0^*v\rangle$ for every
+$v\in\operatorname{Dom}T_0^*$. The adjoint definition gives
+$u\in\operatorname{Dom}(T_0^*)^*=\operatorname{Dom}\overline T_0$.
+Thus the quotient form is nondegenerate. A bijection preserving
+the pairing transfers its vanishing; isotropy of the original
+core alone says nothing about the remaining adjoint-domain classes.
+
+For the missing arithmetic implication, take $T_0=0$ on
+$\mathbb C$. Its boundary quotient is zero, while its shifted
+operator has eigenvalue $1/2$. Proposition~\ref{v4-arith:mo:vacuum}
+proves $\xi_{\mathbb R}(1/2)>1/4$, so this operator has the wrong
+zero divisor. Scalar normalization cannot change that divisor.
+The occupation and arithmetic character comparisons require
+the maps and hypotheses of Proposition~\ref{v4-arith:mc:transport}.
+\end{proof}
+
+\begin{definition}[deficiency spaces of the residual]
+\label{v4-arith:w9-r4:def:deficiency-spaces}
+\ClaimStatusDefinitional. The residual deficiency spaces are
+\begin{equation}
+\label{v4-arith:w9-r4:eq:deficiency-spaces}
+\mathcal{N}_{+}:=\ker(T_{0}^{*}-i),
+\qquad
+\mathcal{N}_{-}:=\ker(T_{0}^{*}+i).
+\end{equation}
+\end{definition}
+
+\begin{theorem}[two conditions on the fixed quotient operator]
+\label{v4-arith:w9-r4:thm:dirac-two-test}
+\ClaimStatusProvedHereConditional. Fix the positive quotient and
+symmetric operator $T_0$ above, with the determinant convention of
+Theorem~\ref{v4-arith:w9-r4:thm:polyakov-dirac-normal-form}.
+Its Dirac closure is equivalent to the following two statements:
+\begin{enumerate}
+\item \emph{Deficiency vanishing:}
+\begin{equation}
+\label{v4-arith:w9-r4:eq:deficiency-vanishing}
+\mathcal{N}_{+}=0=\mathcal{N}_{-}.
+\end{equation}
+\item \emph{Determinant identity for the closure:}
+\begin{equation}
+\label{v4-arith:w9-r4:eq:closure-det}
+\det\nolimits_{\infty}
+\bigl(s\cdot\mathrm{id}
+-({\tfrac12}\mathrm{id}+i\overline{T_{0}})\bigr)
+\;=\;
+\xi_{\mathbb{R}}(s).
+\end{equation}
+\end{enumerate}
+Equivalently, the Dirac double
+\(\mathscr{D}_{\mathrm{res}}^{0}\) has no deficiency states and its
+closed off-diagonal component has determinant \(\xi_{\mathbb R}\).
+\end{theorem}
+
+\begin{proof}
+By von Neumann's deficiency-index criterion, a densely defined
+symmetric operator \(T_{0}\) is essentially self-adjoint if and only
+if
+\(\ker(T_{0}^{*}-i)=\ker(T_{0}^{*}+i)=0\). Thus
+\eqref{v4-arith:w9-r4:eq:deficiency-vanishing} is exactly the
+essential self-adjointness part of
+\Cref{v4-arith:w9-r4:def:dirac-double}. By
+\Cref{v4-arith:w9-r4:lem:dirac-double-detects-sa}, the same
+condition is equivalent to essential self-adjointness of the Dirac
+double \(\mathscr{D}_{\mathrm{res}}^{0}\).
+
+For this specified symmetric core, after essential self-adjointness
+the remaining clause of its Dirac closure is the regularised
+determinant. Arithmetic carrier and occupation comparisons remain
+separate hypotheses. Equation
+\eqref{v4-arith:w9-r4:eq:closure-det} is precisely
+\eqref{v4-arith:w9-r4:eq:dirac-det} for the closure
+\(\overline{T_{0}}\). Combining deficiency vanishing with the
+determinant identity is therefore equivalent to the Dirac closure
+condition of
+\Cref{v4-arith:w9-r4:thm:polyakov-dirac-normal-form}, hence to the
+Dirac condition on the specified core. Arithmetic transport further
+requires Proposition~\ref{v4-arith:mc:transport}.
+\end{proof}
+
+\begin{remark}[the information in deficiency kernels]
+\label{v4-arith:w9-r4:rem:smartest-next-calculation}
+For the specified symmetric core, the kernels
+$\ker(T_0^*\mp i)$ test essential self-adjointness. Their vanishing
+gives a self-adjoint closure. A nonzero deficiency vector gives
+a nonzero class in $\mathcal Q_{\mathrm{res}}$.
+The determinant identity \eqref{v4-arith:w9-r4:eq:closure-det}
+and the arithmetic comparisons are independent additional conditions,
+as the one-dimensional example in
+Proposition~\ref{v4-arith:w9-r4:prop:polyakov-boundary-target} shows.
+The scalar identity $r_\zeta=2$ under its stated primary hypotheses
+does not determine these kernels or construct the comparison maps.
+\end{remark}
+
+\subsection{The Deficiency Calculation}
+\label{v4-arith:w9-r4:pdnf:deficiency-calculation}
+
+In specified Mellin coordinates the deficiency kernels are the orthogonal
+complements of the ranges of \((M_t \pm i)\) on the residual core,
+with the sign convention matching the conjugate-linear second slot in
+the inner product. The computation is unconditional given the specified
+Mellin chart and the closed Tate-polar operator quotient of
+\Cref{v4-arith:w9-r4:def:tate-polar-operator-quotient}; without those
+it is conditional operator theory. The obstruction is a graph-core
+question for the residual Hadamard domain, not an Euler-product
+calculation.
+
+\begin{definition}[Mellin-coordinate residual chart]
+\label{v4-arith:w9-r4:def:meyer-coordinate-core}
+\ClaimStatusDefinitional. Let
+\[
+M_{t}\colon \mathcal{D}(M_{t})\subset L^{2}(\mathbb{R},dt)\to
+L^{2}(\mathbb{R},dt),\qquad (M_{t}f)(t)=t f(t),
+\]
+be the self-adjoint multiplication operator. A \emph{Mellin-coordinate
+residual chart} is a unitary map, denoted \(U_{\mathrm{res}}\) by
+abuse of notation,
+\[
+U_{\mathrm{res}}\colon\mathcal{H}_{\mathrm{res}}^{\circ}
+\longrightarrow L^{2}(\mathbb{R},dt),
+\]
+from the residual quotient Hilbert space of
+\Cref{v4-arith:w9-r4:def:tate-polar-operator-quotient} such that the
+Mellin-coordinate residual core is
+\begin{equation}
+\label{v4-arith:w9-r4:eq:meyer-coordinate-core}
+\mathcal{C}_{\mathrm{res}}^{M}
+\;:=\;
+U_{\mathrm{res}}(\mathcal{C}_{\mathrm{res}}^{\circ})
+\;\subset\;
+\mathcal{D}(M_{t}),
+\end{equation}
+and
+\[
+T_{0}=H_{0}^{\circ}
+\quad\text{is represented by}\quad
+M_{t}|_{\mathcal{C}_{\mathrm{res}}^{M}} .
+\]
+This chart is additional Hilbert-space data. The continuous
+Mellin theorem provides $\mathcal U_c:\mathscr H_c\to L^2(\mathbb R)$,
+so a sufficient construction is a specified unitary
+$B:\mathcal H_{\mathrm{res}}^\circ\to\mathscr H_c$ satisfying
+$B\mathcal C_{\mathrm{res}}^\circ\subseteq\operatorname{Dom}P_c$
+and $BT_0=P_cB$ on that core. Then the chart is the actual composition
+$U_{\mathrm{res}}=\mathcal U_cB$.
+A dense isometric core map can construct $B$ under
+Proposition~\ref{v4-arith:mc:core-unitary}. Once the unitary and
+the exact core-domain identity are given, that proposition also
+transports adjoint domains and deficiency kernels. The global
+Meyer character theorem supplies no such map from the residual quotient.
+\end{definition}
+
+\begin{theorem}[deficiency kernels are range defects]
+\label{v4-arith:w9-r4:thm:deficiency-range-defect}
+\ClaimStatusProvedHereConditional. Assume a Mellin-coordinate residual chart in
+the sense of \Cref{v4-arith:w9-r4:def:meyer-coordinate-core}. Then
+\begin{equation}
+\label{v4-arith:w9-r4:eq:deficiency-range-defect-plus}
+U_{\mathrm{res}}\mathcal{N}_{+}
+\;=\;
+\bigl((M_{t}+i)\mathcal{C}_{\mathrm{res}}^{M}\bigr)^{\perp},
+\end{equation}
+and
+\begin{equation}
+\label{v4-arith:w9-r4:eq:deficiency-range-defect-minus}
+U_{\mathrm{res}}\mathcal{N}_{-}
+\;=\;
+\bigl((M_{t}-i)\mathcal{C}_{\mathrm{res}}^{M}\bigr)^{\perp}.
+\end{equation}
+Consequently \(\mathcal{N}_{+}=0=\mathcal{N}_{-}\) if and only if
+both ranges
+\[
+(M_{t}-i)\mathcal{C}_{\mathrm{res}}^{M},
+\qquad
+(M_{t}+i)\mathcal{C}_{\mathrm{res}}^{M}
+\]
+are dense in \(L^{2}(\mathbb{R},dt)\).
+\end{theorem}
+
+\begin{proof}
+We prove the \(+\) identity; the \(-\) identity is identical with
+\(i\) replaced by \(-i\). The inner product is linear in the first
+slot and conjugate-linear in the second. By definition,
+\(u\in\mathcal{N}_{+}\) means \(u\in\mathcal{D}(T_{0}^{*})\) and
+\((T_{0}^{*}-i)u=0\). Equivalently, for every
+\(f\in\mathcal{C}_{\mathrm{res}}^{\circ}\),
+\[
+\langle T_{0}f,u\rangle
+\;=\;
+\langle f,iu\rangle .
+\]
+Since the second slot is conjugate-linear,
+\(\langle f,iu\rangle=-i\langle f,u\rangle\).
+Transport by \(U_{\mathrm{res}}\). Write
+\(\tilde u=U_{\mathrm{res}}u\) and
+\(\tilde f=U_{\mathrm{res}}f\). Since \(T_{0}\) is represented by
+\(M_{t}\) on \(\mathcal{C}_{\mathrm{res}}^{M}\), the adjoint equation
+becomes
+\[
+\langle M_{t}\tilde f,\tilde u\rangle
+\;=\;
+\langle \tilde f,i\tilde u\rangle ,
+\qquad
+\tilde f\in\mathcal{C}_{\mathrm{res}}^{M}.
+\]
+Hence
+\[
+\langle (M_{t}+i)\tilde f,\tilde u\rangle=0
+\qquad
+\text{for all }\tilde f\in\mathcal{C}_{\mathrm{res}}^{M},
+\]
+which says precisely that
+\(\tilde u\in((M_{t}+i)\mathcal{C}_{\mathrm{res}}^{M})^{\perp}\).
+The converse is the same implication read backwards, so
+\eqref{v4-arith:w9-r4:eq:deficiency-range-defect-plus} follows.
+The density criterion follows because a subspace has zero orthogonal
+complement exactly when its closure is the full Hilbert space.
+\end{proof}
+
+\begin{corollary}[range density is graph density for \(M_t\)]
+\label{v4-arith:w9-r4:cor:bulk-deficiency-graph-core}
+\ClaimStatusProvedHere. For a subspace
+\(\mathcal{C}\subset\mathcal{D}(M_t)\), the following are equivalent:
+\[
+\overline{\mathcal{C}}^{\,\|\cdot\|_{M_t}}=\mathcal{D}(M_t),
+\qquad
+\overline{(M_t-i)\mathcal{C}}^{\,L^2}=L^2(\mathbb R,dt),
+\qquad
+\overline{(M_t+i)\mathcal{C}}^{\,L^2}=L^2(\mathbb R,dt).
+\]
+Consequently, under the specified Mellin chart hypothesis,
+\(\mathcal{C}_{\mathrm{res}}^{M}\) is a graph core for \(M_t\) if and
+only if
+\[
+\mathcal{N}_{+}=0=\mathcal{N}_{-}.
+\]
+\end{corollary}
+
+\begin{proof}
+For \(\operatorname{Im}z\neq0\), the map
+\[
+M_{t}-z\colon \mathcal{D}(M_{t})_{\mathrm{graph}}\to L^{2}(\mathbb{R},dt)
+\]
+is boundedly invertible: its inverse is multiplication by
+\((t-z)^{-1}\), which maps \(L^{2}\) into \(\mathcal{D}(M_{t})\) with
+bounded graph norm. Hence a subspace is dense in the graph norm if
+and only if its image under \(M_t-z\) is dense in \(L^2\). Apply this
+with \(z=i\) and \(z=-i\), then use
+\Cref{v4-arith:w9-r4:thm:deficiency-range-defect}.
+\end{proof}
+
+\begin{lemma}[rank-one graph-boundary model]
+\label{v4-arith:w9-r4:lem:rank-one-graph-boundary}
+\ClaimStatusProvedHere. Let
+\(\psi(t)=(1+|t|)^{-1}\). Then
+\(\psi\in L^{2}(\mathbb{R},dt)\) but
+\(\psi\notin\mathcal{D}(M_t)\). Define
+\[
+\mathcal{C}_{\psi}
+:=
+\{\,f\in\mathcal{D}(M_t)\mid
+\langle (M_t-i)f,\psi\rangle=0\,\}.
+\]
+Then \(\mathcal{C}_{\psi}\) is \(L^{2}\)-dense and graph-closed of
+codimension one, but it is not graph-dense. Its range defects are
+\[
+\bigl((M_t-i)\mathcal{C}_{\psi}\bigr)^{\perp}
+=\mathbb C\psi,
+\qquad
+\bigl((M_t+i)\mathcal{C}_{\psi}\bigr)^{\perp}
+=
+\mathbb C\,\frac{t+i}{t-i}\psi .
+\]
+\end{lemma}
+
+\begin{proof}
+The function \(\psi\) is square-integrable, while
+\(t\psi(t)\) is not square-integrable. Since
+\[
+M_t-i\colon\mathcal{D}(M_t)_{\mathrm{graph}}\to L^2(\mathbb R,dt)
+\]
+is a bounded isomorphism, \(\mathcal{C}_{\psi}\) is the inverse image
+of the closed hyperplane \(\psi^\perp\); hence it is graph-closed of
+codimension one and its first range defect is \(\mathbb C\psi\).
+The defining functional is not continuous for the \(L^2\)-topology on
+\(\mathcal{D}(M_t)\), because such continuity would represent it by
+an \(L^2\)-vector, equivalently would put \(\psi\) in
+\(\mathcal{D}(M_t)\). Therefore its kernel is \(L^2\)-dense.
+
+For the second range, write
+\[
+(M_t+i)(M_t-i)^{-1}
+\]
+as multiplication by \((t+i)/(t-i)\), a unitary multiplier on \(L^2\).
+The orthogonal complement of its image of \(\psi^\perp\) is the span
+of \((t+i)(t-i)^{-1}\psi\).
+\end{proof}
+
+\begin{lemma}[point conditions are graph-invisible]
+\label{v4-arith:w9-r4:lem:point-conditions-graph-invisible}
+\ClaimStatusProvedHere. Let \(\Gamma\subset\mathbb R\) be locally
+finite. Then \(C_c^\infty(\mathbb R\setminus\Gamma)\) is graph-dense
+in \(\mathcal{D}(M_t)\). In particular, a boundary condition that is
+only pointwise at the zero ordinates cannot obstruct graph density for
+the ordinary \(M_t\)-graph norm.
+\end{lemma}
+
+\begin{proof}
+The graph norm of \(M_t\) is the \(L^2\)-norm for the measure
+\((1+t^2)\,dt\). Locally finite sets have zero measure for this
+weight. Given \(f\in\mathcal{D}(M_t)\), truncate \(f\) to a compact
+interval, remove intervals of arbitrarily small weighted measure
+around the finitely many points of \(\Gamma\) in that interval, and
+then mollify. The approximants lie in
+\(C_c^\infty(\mathbb R\setminus\Gamma)\) and converge in the graph
+norm.
+\end{proof}
+
+\begin{definition}[Hadamard-supported graph functional]
+\label{v4-arith:w9-r4:def:hadamard-supported-graph-functional}
+\ClaimStatusDefinitional. Let
+\[
+\Gamma_{\xi}^{\mathrm{crit}}:=\{\,\gamma\in\mathbb R\mid
+\tfrac12+i\gamma\text{ is a non-trivial zero of }\zeta\,\}
+\]
+with multiplicities forgotten. This is the real critical-line
+ordinate support relevant to the Hilbert--P\'olya target; it is not an
+assertion that the full Hadamard divisor has already been realised on
+\(\mathbb R\). A continuous functional
+\[
+\beta\colon \mathcal{D}(M_t)_{\mathrm{graph}}\longrightarrow\mathbb C
+\]
+is \emph{Hadamard-supported on the zero ordinates} if
+\[
+\beta(\phi)=0
+\qquad
+\text{for every }
+\phi\in C_c^\infty(\mathbb R\setminus\Gamma_{\xi}^{\mathrm{crit}}).
+\]
+This is the graph-norm formulation of the idea that the boundary
+condition sees only point or finite-jet Hadamard residue data at the
+zero ordinates.
+\end{definition}
+
+\begin{theorem}[no Hadamard residue functional in the ordinary graph dual]
+\label{v4-arith:w9-r4:thm:no-hadamard-graph-dual}
+\ClaimStatusProvedHere. The ordinary \(M_t\)-graph dual contains no
+non-zero Hadamard-supported functional. Equivalently,
+\[
+\beta\in(\mathcal{D}(M_t)_{\mathrm{graph}})^{*},
+\qquad
+\operatorname{supp}\beta\subset\Gamma_{\xi}^{\mathrm{crit}}
+\quad\Longrightarrow\quad
+\beta=0
+\]
+in the sense of
+\Cref{v4-arith:w9-r4:def:hadamard-supported-graph-functional}.
+Thus there is no non-zero
+\[
+\beta_{\mathrm{Had}}\colon \mathcal{D}(M_t)_{\mathrm{graph}}\to\mathbb C
+\]
+whose graph-closed kernel is exactly a Hadamard-residue boundary
+condition supported only at the zero ordinates. The statement also
+rules out finite-jet residue data at those ordinates, if such data are
+asked to be continuous for the ordinary \(M_t\)-graph topology.
+\end{theorem}
+
+\begin{proof}
+The non-trivial zeros of \(\zeta\) form a discrete subset of the
+critical strip, and only finitely many have ordinate in a bounded
+interval. Hence \(\Gamma_{\xi}^{\mathrm{crit}}\) is locally finite as a subset of
+\(\mathbb R\). By
+\Cref{v4-arith:w9-r4:lem:point-conditions-graph-invisible},
+\[
+C_c^\infty(\mathbb R\setminus\Gamma_{\xi}^{\mathrm{crit}})
+\]
+is dense in \(\mathcal{D}(M_t)\) for the graph norm. If
+\(\beta\) is continuous for the graph norm and vanishes on this dense
+subspace, it vanishes on all of \(\mathcal{D}(M_t)\).
+
+Equivalently, the graph norm is the \(L^2\)-norm for the weighted
+measure \((1+t^2)\,dt\), so the graph dual is represented by weighted
+\(L^2\)-functions, or, after the isometric resolvent chart
+\[
+M_t-i\colon \mathcal{D}(M_t)_{\mathrm{graph}}\xrightarrow{\sim}
+L^2(\mathbb R,dt),
+\]
+by \(L^2\)-vectors. No non-zero \(L^2\)-vector is supported on the
+locally finite set \(\Gamma_{\xi}^{\mathrm{crit}}\), which has Lebesgue measure zero.
+\end{proof}
+
+\begin{corollary}[Hadamard residue data is graph-invisible]
+\label{v4-arith:w9-r4:cor:beta-had-no-go}
+\ClaimStatusProvedHere. In the ordinary Mellin graph topology,
+\(\beta_{\mathrm{Had}}\) does not exist as a non-zero graph-dual
+boundary functional. Therefore a boundary condition whose only data are
+point or finite-jet Hadamard residues at the locally finite real
+ordinate set \(\Gamma_{\xi}^{\mathrm{crit}}\) is graph-invisible: it
+cannot by itself obstruct graph density of
+\(\mathcal{C}_{\mathrm{res}}^{M}\) in \(\mathcal{D}(M_t)\).
+\end{corollary}
+
+\begin{remark}[surviving branches after the graph-dual no-go]
+\label{v4-arith:w9-r4:rem:beta-had-surviving-branches}
+The preceding corollary is not an exhaustive boundary-state
+classification. It eliminates only the ordinary point-supported graph-dual path. Assuming
+the closed Tate-polar quotient and specified Mellin chart have been
+constructed, a surviving operator obstruction must take a different form.
+The known nonexclusive presentations are:
+\begin{enumerate}
+\item the exact Hadamard residue or finite-jet trace lives in a stronger
+rigged, Paley--Wiener, de Branges, or reproducing-kernel topology
+\(\Phi_{\xi}\subset\mathcal{D}(M_t)_{\mathrm{graph}}\), where point
+evaluation is continuous;
+\item the ordinary graph obstruction is nonlocal, represented under the
+resolvent chart by an \(L^2\)-vector or closed \(L^2\)-subspace as in
+\Cref{v4-arith:w9-r4:lem:rank-one-graph-boundary}, and is therefore
+not point-residue data;
+\item a physical Ward/BV--BFV argument supplies extra boundary phase
+space not yet identified with
+\(\mathcal{Q}_{\mathrm{res}}\); this is a physics residual, not an
+operator-theoretic graph-dual boundary functional.
+\end{enumerate}
+These alternatives use different topologies and boundary spaces.
+Identifying any one with a specified arithmetic Tate-positivity or
+Burnol--de Branges construction requires a pairing isometry, an exact
+operator-domain comparison, and the arithmetic trace identity.
+No such identification follows from the list of alternatives.
+The stronger-topology construction requires, at minimum, a continuous
+Hadamard trace-and-jet map
+\(\Phi_{\xi}\to\ell^{2}(\Gamma_{\xi}^{\mathrm{crit}},w)\), compatibility
+with the post-Tate quotient and adjoint domains, and a proof that the
+resulting closed condition is not a tautological insertion of the zero
+divisor.
+\end{remark}
+
+\begin{remark}[answer of the calculation]
+\label{v4-arith:w9-r4:rem:deficiency-calculation-answer}
+The maximal multiplication operator on ordinary $L^2$ is
+self-adjoint. For a restriction transported by the specified quotient
+chart, essential self-adjointness asks exactly for graph density:
+\[
+\overline{\mathcal{C}_{\mathrm{res}}^{M}}^{\,\|\cdot\|_{M_{t}}}
+\stackrel{?}{=}
+\mathcal{D}(M_{t}),
+\qquad
+\|f\|_{M_{t}}^{2}:=\|f\|_{2}^{2}+\|t f\|_{2}^{2},
+\]
+in the quotient graph norm. A genuine boundary state must therefore
+come from a graph-dual functional of the kind modeled in
+\Cref{v4-arith:w9-r4:lem:rank-one-graph-boundary}, not from mere
+point conditions at the zero ordinates, which are graph-invisible by
+\Cref{v4-arith:w9-r4:lem:point-conditions-graph-invisible}. The direct
+Hadamard-residue candidate \(\beta_{\mathrm{Had}}\) is ruled out in
+the ordinary graph dual by
+\Cref{v4-arith:w9-r4:thm:no-hadamard-graph-dual}.
+\end{remark}
+
+\subsection{Graph Norm and Arithmetic Determinant}
+\label{v4-arith:w9-r4:pdnf:execution-attempt}
+
+The continuous Mellin operator has absolutely continuous spectrum
+$\mathbb R$. A positive atomic model takes its zero divisor and
+weights as input. A quotient constructed from arithmetic data would
+require its own positive pairing, graph domain, and trace comparison.
+The following calculations distinguish the first two constructions
+and the conditions required to compare either with the third.
+
+\begin{lemma}[continuous Mellin-line graph closure]
+\label{v4-arith:w9-r4:lem:meyer-line-graph-closure}
+\ClaimStatusProvedHere. Let
+\[
+M_{t}^{0}:C_{c}^{\infty}(\mathbb{R})\subset L^{2}(\mathbb{R},dt)
+\longrightarrow L^{2}(\mathbb{R},dt),
+\qquad
+(M_{t}^{0}f)(t)=t f(t).
+\]
+Then \(M_{t}^{0}\) is essentially self-adjoint. Its graph-norm
+closure is multiplication by \(t\) on
+\[
+\mathcal{D}(M_{t})
+\;=\;
+\{\,f\in L^{2}(\mathbb{R},dt)\mid t f(t)\in L^{2}(\mathbb{R},dt)\,\}.
+\]
+The spectrum is the absolutely continuous spectrum
+\(\mathrm{Spec}(M_{t})=\mathbb{R}\).
+\end{lemma}
+
+\begin{proof}
+The operator \(M_{t}\) with the displayed maximal domain is
+self-adjoint by the spectral theorem for multiplication operators.
+The core \(C_{c}^{\infty}(\mathbb{R})\) is dense in the graph norm:
+truncate \(f\) by compactly supported cutoffs and then mollify; both
+\(f\) and \(t f\) converge in \(L^{2}\). Hence the closure of
+\(M_{t}^{0}\) is \(M_{t}\). Since \(M_{t}\) is multiplication by the
+coordinate on \(L^{2}(\mathbb{R},dt)\), its spectrum is the essential
+range of \(t\), namely \(\mathbb{R}\), with absolutely continuous
+spectral measure.
+\end{proof}
+
+\begin{proposition}[why the classical closure is insufficient]
+\label{v4-arith:w9-r4:prop:classical-closure-insufficient}
+\ClaimStatusProvedHere. The closure of
+\Cref{v4-arith:w9-r4:lem:meyer-line-graph-closure} does not solve
+the spectral-flow problem. Its graph norm is complete and its
+operator is self-adjoint, but its spectrum is continuous
+\(\mathbb{R}\), not a divisor with zero multiplicities of
+\(\xi_{\mathbb R}\).
+Consequently it cannot satisfy
+\[
+\det\nolimits_{\infty}
+\bigl(s\cdot\mathrm{id}-({\tfrac12}\mathrm{id}+iM_{t})\bigr)
+=\xi_{\mathbb{R}}(s)
+\]
+as a zero-eigenvalue determinant.
+\end{proposition}
+
+\begin{proof}
+The determinant identity in
+\Cref{v4-arith:w9-r4:eq:closure-det} has divisor
+\(\mathrm{div}\,\xi_{\mathbb R}\). The multiplication operator
+\(M_{t}\) on \(L^{2}(\mathbb{R},dt)\) has Lebesgue spectral measure on
+the line, not this determinant divisor. Thus the closure obtained by
+ordinary Mellin-line graph completion has continuous spectral
+type and no point eigenvalues. This statement concerns the continuous
+Hilbert space. Meyer's global nuclear bornological representation
+has the separate character and multiplicity theorem recorded in
+Theorem~\ref{v4-arith:w9-r4:thm:meyer-intertwiner}; it is not
+identified with this Hilbert closure.
+\end{proof}
+
+\begin{proposition}[formal zero-space closure is tautological]
+\label{v4-arith:w9-r4:prop:formal-zero-closure-tautological}
+\ClaimStatusProvedHere. On the formal zero Hilbert space
+\(\mathcal{H}_{\xi}^{\mathrm{formal}}\) of
+\Cref{v4-arith:w9-r4:def:target-data}, the diagonal ordinate
+operator has graph-norm closure. Its projected operator
+\(\Theta_{\xi}^{\mathrm{proj}}\) satisfies the regularised
+determinant identity for \(\xi_{\mathbb R}\) only if the original
+zero divisor already lies on the critical line. This proves no
+non-formal spectral-flow closure.
+\end{proposition}
+
+\begin{proof}
+The finite-support diagonal operator on
+\(\bigoplus_{\rho}\mathbb{C}^{m_{\rho}}\) closes in the graph norm to
+the maximal diagonal multiplication operator by the real numbers
+\(t_{\rho}=\mathrm{Im}(\rho)\); its closure is self-adjoint. The
+operator \(\Theta_{\xi}^{\mathrm{proj}}=\tfrac12+iH_{\mathrm{ord}}^{\mathrm{formal}}\)
+has spectral divisor
+\(\{\tfrac12+it_{\rho}\}\). Hadamard factorisation identifies its
+regularised determinant with \(\xi_{\mathbb R}\) only when
+\(\beta_{\rho}=1/2\) for every \(\rho\). Otherwise it is the
+determinant of the projected divisor, not of \(\xi_{\mathbb R}\).
+The construction has therefore used the zero divisor and then
+discarded its real-part defect. It supplies no Bost--Connes, Meyer,
+Connes, Deninger, or chiral-homological source for the Hilbert space
+or the Weil--Connes trace; it is the formal target explicitly excluded
+by \Cref{v4-arith:w9-r4:rem:why-formal}.
+\end{proof}
+
+\begin{theorem}[the Dirac criterion on the fixed quotient]
+\label{v4-arith:w9-r4:thm:execution-result}
+\ClaimStatusProvedHereConditional. Suppose the positive quotient
+Hilbert space and densely defined symmetric operator
+$T_0=H_0^\circ$ have been constructed as above.
+Fix the determinant convention of
+Theorem~\ref{v4-arith:w9-r4:thm:polyakov-dirac-normal-form}.
+Then the following statements are equivalent:
+\begin{enumerate}
+\item $T_0$ is essentially self-adjoint and its closure satisfies
+\eqref{v4-arith:w9-r4:eq:closure-det};
+\item $\ker(T_0^*-i)=0=\ker(T_0^*+i)$, and the self-adjoint closure
+has the same determinant identity;
+\item the Dirac double of this same $T_0$ has the Dirac closure
+of Definition~\ref{v4-arith:w9-r4:def:dirac-double}.
+\end{enumerate}
+Under a specified unitary graph-core comparison with an arithmetic
+Hilbert--P\'olya operator, these conditions transfer to that operator.
+They do not construct this comparison or an arithmetic trace map.
+\end{theorem}
+\begin{proof}
+The equivalence of the first two statements is the deficiency-index
+criterion for a densely defined symmetric operator.
+The equivalence with the third is the fixed-domain Dirac
+conjugacy proved in
+Theorem~\ref{v4-arith:w9-r4:thm:polyakov-dirac-normal-form}.
+The additional unitary transports closures, adjoints, and the
+determinant under the hypotheses of
+Proposition~\ref{v4-arith:mc:core-unitary} and
+Corollary~\ref{v4-arith:mc:determinant}.
+\end{proof}
+
+\begin{remark}[the arithmetic significance of the divisor]
+\label{v4-arith:w9-r4:rem:failed-execution-record}
+A self-adjoint realization with the complete xi zero divisor
+implies critical-line placement, because its shifted eigenvalues
+have real part $1/2$. A graph closure on the ordinary Mellin line
+has continuous spectral type. A Hilbert space built by prescribing
+the zeros requires an additional arithmetic pairing and trace
+comparison. The preceding fixed-core equivalence distinguishes
+these constructions and preserves the original arithmetic question.
+\end{remark}
+
+\section{Bibliography}
+\label{v4-arith:w9-r4:biblio}
+
+The references below are grouped by the four mathematical
+constructions used above.
+
+\paragraph{Hilbert-P\'olya foundational literature.}
+\begin{description}
+\item[P\'olya.] G.~P\'olya, correspondence with Landau (1914),
+transcribed in Pintz and S\'ark\"ozy, \emph{On the work of P\'olya in
+analytic number theory}, Stud.~Sci.~Math.~Hungar.~26 (1991), 201--226.
+\item[Hilbert.] D.~Hilbert, G\"ottingen seminar notes (1914, 1916),
+recorded by E.~Landau, \emph{Handbuch der Lehre von der Verteilung der
+Primzahlen}, Teubner (1909), 2nd ed.~1953.
+\item[Berry--Keating.] M.~V.~Berry and J.~P.~Keating, \emph{The
+Riemann zeros and eigenvalue asymptotics}, SIAM Review 41 (1999),
+236--266.
+\item[Montgomery.] H.~L.~Montgomery, \emph{The pair correlation of zeros
+of the zeta function}, Proc.~Sympos.~Pure Math.~24 (1973), 181--193.
+\end{description}
+
+\paragraph{Adelic and idele-class operator constructions.}
+\begin{description}
+\item[Connes.] A.~Connes, \emph{Trace formula in noncommutative
+geometry and the zeros of the Riemann zeta function}, Selecta
+Math.~(N.~S.)~5 (1999), 29--106; arXiv:math/9811068. \S IV for the
+absorption-trace conjecture; \S V for the Weil-positive trace
+identity.
+\item[Connes--Marcolli.] A.~Connes and M.~Marcolli, \emph{Noncommutative
+Geometry, Quantum Fields, and Motives}, AMS Colloq.~Publ.~55 (2008).
+Ch.~3 for KMS states; Ch.~4 for rigidity; Ch.~5 for the adele class
+space.
+\item[Meyer.] R.~Meyer, \emph{On a representation of the idele class
+group related to primes and zeros of \(L\)-functions}, Duke Math.~J.
+127 (2005), 519--595; arXiv:math/0311468v3. Theorem~5.8,
+p.~43, gives the character formula. Lemma~5.10, p.~45, concerns
+Fourier--Laplace transforms. Theorem~5.11, p.~47, gives spectral
+multiplicities. Page locators refer to the arXiv text.
+\item[Deninger.] C.~Deninger, \emph{Motivic \(L\)-functions and
+regularized determinants}, Proc.~Sympos.~Pure Math.~55.1 (1994),
+707--743; \emph{Some analogies between number theory and dynamical
+systems on foliated spaces}, Proc.~ICM~Berlin~1 (1998), 163--186.
+\end{description}
+
+\paragraph{Mellin and Hadamard classical analysis.}
+\begin{description}
+\item[Mellin.] H.~Mellin, \emph{Die Dirichletschen Reihen, die
+zahlentheoretischen Funktionen und die unendlichen Produkte von
+endlichem Geschlecht}, Acta Soc.~Sci.~Fenn.~31, no.~2 (1904).
+\item[Hadamard.] J.~Hadamard, \emph{\'Etude sur les propri\'et\'es
+des fonctions enti\`eres et en particulier d'une fonction consid\'er\'ee
+par Riemann}, J.~Math.~Pures Appl.~9 (1893), 171--215.
+\item[Titchmarsh.] E.~C.~Titchmarsh, \emph{Introduction to the Theory
+of Fourier Integrals}, 2nd ed., Oxford (1948); \emph{The Theory of
+the Riemann Zeta-Function}, 2nd ed., revised D.~R.~Heath-Brown, Oxford
+(1986).
+\item[von Mangoldt.] H.~von Mangoldt, \emph{Zu Riemann's Abhandlung
+``\"Uber die Anzahl der Primzahlen unter einer gegebenen Gr\"osse''},
+J.~Reine Angew.~Math.~114 (1895), 255--305.
+\item[Edwards.] H.~M.~Edwards, \emph{Riemann's Zeta Function},
+Academic Press (1974). \S2.7 for Hadamard product; \S3 for the
+explicit formula.
+\item[Patterson.] S.~J.~Patterson, \emph{An Introduction to the Theory
+of the Riemann Zeta-Function}, Cambridge (1988). Ch.~3 for the Weil
+explicit formula.
+\end{description}
+
+\paragraph{Bost--Connes and GNS modular theory.}
+\begin{description}
+\item[Bost--Connes.] J.-B.~Bost and A.~Connes, \emph{Hecke algebras,
+type~III factors and phase transitions with spontaneous symmetry
+breaking in number theory}, Selecta Math.~1 (1995), 411--457.
+\item[Takesaki.] M.~Takesaki, \emph{Theory of Operator Algebras~II},
+Springer (2003). Ch.~VIII for modular automorphism groups.
+\item[Julia.] B.~Julia, \emph{Statistical theory of numbers}, Springer
+Proc.~Phys.~47 (1990), 276--293. Primon-gas interpretation of the
+Bost--Connes spectrum.
+\end{description}
+
+\paragraph{First-order and Dirac normal-form sources.}
+\begin{description}
+\item[Dirac.] P.~A.~M.~Dirac, \emph{The quantum theory of the
+electron}, Proc.~Roy.~Soc.~Lond.~A 117 (1928), 610--624, and
+118 (1928), 351--361. Source for the first-order square-root
+principle used here only as a normal-form discipline.
+\item[Reed--Simon.] M.~Reed and B.~Simon, \emph{Methods of Modern
+Mathematical Physics I: Functional Analysis}, Academic Press (1980).
+Ch.~VIII for adjoints, closures, block operators, and the
+self-adjointness criterion used in
+\Cref{v4-arith:w9-r4:lem:dirac-double-detects-sa}.
+\end{description}
+
+\paragraph{Vol~IV earlier sources used here.}
+\begin{description}
+\item \Cref{v4-arith:w5-b:hp-operator}: Bost--Connes GNS and
+log-modular operator construction (Ch.~\ref{v4-arith:w5-b:hp-operator}).
+\item \Cref{v4-arith:rh:hyp:HPAr}: Hilbert--P\'olya hypothesis
+(Ch.~\ref{v4-arith:rh-reformulation}).
+\item \Cref{v4-arith:HPAr-vbconverse}: H-P\(^{\mathrm{Ar}}\) equivalence bundle, approach~2
+(Ch.~\ref{v4-arith:HPAr-vbconverse}).
+\item \Cref{v4-arith:hpar-det}: determinant realisation of H-P\(^{\mathrm{Ar}}\), approach~3
+(Ch.~\ref{v4-arith:hpar-det}).
+\item \Cref{v4-arith:w7-j:ATP-adelic-scattering}: adelic-scattering
+formulation (Ch.~\ref{v4-arith:w7-j:ATP-adelic-scattering}).
+\item \Cref{v4-arith:w8-a:deninger-chiral-homology}: Deninger-chiral
+triple identification (Ch.~\ref{v4-arith:w8-a:deninger-chiral-homology}).
+\item \Cref{v4-arith:3d-acs-E1bar}: 3D arithmetic Chern-Simons
+(Ch.~\ref{v4-arith:3d-acs-E1bar}).
+\end{description}

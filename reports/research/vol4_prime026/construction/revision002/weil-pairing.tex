@@ -1,0 +1,431 @@
+\chapter{Weil Pairings and Automorphic Coefficient Multipliers}
+\label{v4-arith:w5-a:chapter}
+
+The Weil functional acts on compact smooth functions of the logarithmic
+variable. Its zero formula evaluates their entire Fourier transforms.
+Keeping these two spaces distinct fixes the prime weights and the
+archimedean sign. It also distinguishes two coefficient multipliers,
+one of which can produce only finite Fourier polynomials.
+
+\section{The compact test algebra and its Fourier image}
+\label{v4-arith:w5-a:weil-explicit}
+\label{v4-arith:w5-a:weil-explicit:PW}
+
+\begin{definition}[test spaces and involutions]
+\label{v4-arith:w5-a:def:PW}
+Put $\mathscr A=C_c^\infty(\mathbb R)$, with its usual
+inductive-limit topology, and put $\mathscr P=\mathcal F_+\mathscr A$,
+where
+\[
+ h(z)=\mathcal F_+f(z)=\int_{\mathbb R}f(t)e^{izt}dt,
+ \qquad
+ f(t)=\frac1{2\pi}\int_{\mathbb R}h(u)e^{-iut}du.
+\]
+Give $\mathscr P$ the transported topology. Its elements are entire
+functions, rapidly decreasing in each horizontal strip.
+For $f,g\in\mathscr A$, define
+\[
+ (f*g)(t)=\int f(v)g(t-v)dv,\qquad
+ f^*(t)=\overline{f(-t)},\qquad h^\sharp(z)=\overline{h(\bar z)}.
+\]
+Thus $\mathcal F_+(f*g)=(\mathcal F_+f)(\mathcal F_+g)$ and
+$\mathcal F_+(f^*)=(\mathcal F_+f)^\sharp$.
+\end{definition}
+
+The identities follow from Fubini and a change of variables. A second
+real Fourier transform of $h\in\mathscr P$ is a reflected compact
+smooth function. It is generally not an entire function available for
+evaluation at complex zeros.
+
+\begin{theorem}[the signed archimedean contribution]
+\label{v4-arith:w5-a:thm:weil-explicit}
+Set $\xi(s)=\tfrac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)$ and
+$\psi_\Gamma=\Gamma'/\Gamma$.
+For $f\in\mathscr A$, write $h=\mathcal F_+f$ and
+$z_\rho=-i(\rho-1/2)$, where $\rho$ ranges over the zeros of $\xi$
+with multiplicity.
+Define
+\begin{align}
+ P(f)&=h(i/2)+h(-i/2),\notag\\
+ W_\infty(f)&=\frac1{2\pi}\int_{\mathbb R}h(u)
+       \bigl(\log\pi-\Re\psi_\Gamma(1/4+iu/2)\bigr)du,
+ \label{v4-arith:w5-a:eq:weil-archimedean}\\
+ W_{\mathrm{fin}}(f)&=\sum_{m\ge2}\frac{\Lambda(m)}{\sqrt m}
+                   \bigl(f(\log m)+f(-\log m)\bigr).
+ \label{v4-arith:w5-a:eq:weil-finite}
+\end{align}
+Then the continuous distribution $W:\mathscr A\to\mathbb C$ is
+\begin{equation}
+ W(f)=\sum_\rho h(z_\rho)=P(f)-W_\infty(f)-W_{\mathrm{fin}}(f).
+ \label{v4-arith:w5-a:eq:weil-explicit}
+\end{equation}
+The zero sum converges absolutely and the prime sum is finite.
+For even $f$, the prime sum is $2\mu_{1/2}(f)$.
+\end{theorem}
+\begin{proof}
+Theorem~\ref{v4-arith:pm:weil} gives the formula with
+$\mathcal A_\infty(h)=(2\pi)^{-1}\int h(\Re\psi_\Gamma-\log\pi)$.
+The definition here is $W_\infty(f)=-\mathcal A_\infty(h)$.
+This accounts for both signs in \eqref{v4-arith:w5-a:eq:weil-explicit}.
+The compact-test estimates in that theorem prove the convergence and
+continuity assertions. No tempered extension of $\mu_{1/2}$ is used.
+\end{proof}
+
+\begin{proposition}[a compact test determining the sign]
+\label{v4-arith:wc:sign-test}
+Let $0<a<b<\log2$. Suppose $f\ne0$ is even, nonnegative, smooth,
+and supported in $(-b,-a)\cup(a,b)$. Then
+\[
+ W_{\mathrm{fin}}(f)=0,\qquad
+ W_\infty(f)=2\int_a^b\frac{e^{-t/2}}{1-e^{-2t}}f(t)dt>0.
+\]
+\end{proposition}
+\begin{proof}
+There are no prime-power logarithms in the support. Since $f(0)=0$,
+the constant terms of the digamma integral vanish after Fourier
+inversion. The substitution $v=2t$ in
+\[
+ \psi_\Gamma(z)+\gamma
+ =\int_0^\infty\frac{e^{-v}-e^{-zv}}{1-e^{-v}}dv
+ \quad(\Re z>0)
+\]
+gives the displayed positive integral. The identity is
+\href{https://dlmf.nist.gov/5.9.E16}{DLMF 5.9.16}.
+The denominator is positive and $f$ is positive on an interval.
+\end{proof}
+
+\section{The Hermitian form and the two polar moments}
+\label{v4-arith:w5-a:irreducible-obstruction}
+
+Define $q_W(f,g)=W(f*g^*)$, with the first variable linear.
+The zero multiset is invariant under $z\mapsto\bar z$, by the
+functional equation and conjugation of $\xi$. Absolute convergence
+therefore gives $W(f^*)=\overline{W(f)}$. Consequently $q_W$ is Hermitian.
+
+\begin{corollary}[Weil's positivity criterion]
+\label{v4-arith:w5-a:cor:weil-positivity-RH}
+The Riemann Hypothesis is equivalent to
+\begin{equation}
+ q_W(f,f)\ge0\qquad(f\in\mathscr A).
+ \label{v4-arith:w5-a:eq:weil-positivity}
+\end{equation}
+\end{corollary}
+\begin{proof}
+This is Weil's criterion on compact smooth additive tests, with the
+Fourier convention above. It is stated in
+\href{https://arxiv.org/html/2301.00421v3#S1}{Suzuki,
+\emph{On the Hilbert space derived from the Weil distribution},
+Section~1, equations~(1.1)--(1.2)}.
+In that convention the zeros of $\xi(1/2-iz)$ are evaluated with
+the opposite sign. Their reflected multiset is exactly $\{z_\rho\}$
+here. Under RH the assertion follows directly from
+$q_W(f,f)=\sum_\rho|\mathcal F_+f(\gamma_\rho)|^2$.
+The converse is the cited positivity criterion, not an assertion of
+positivity for this arithmetic form.
+\end{proof}
+
+\begin{proposition}[the polar Hermitian form]
+\label{v4-arith:w5-a:rem:H3-removable}
+Put $a(f)=\int f(t)e^{-t/2}dt$ and $b(f)=\int f(t)e^{t/2}dt$.
+Then
+\[
+ P(f*g^*)=a(f)\overline{b(g)}+b(f)\overline{a(g)}.
+\]
+The moment map $(a,b):\mathscr A\to\mathbb C^2$ is continuous and
+surjective. The polar form has rank two and both signs. It vanishes
+on the common kernel of the two moments.
+\end{proposition}
+\begin{proof}
+Evaluate $h_fh_g^\sharp$ at $i/2$ and $-i/2$.
+If a linear combination of $a$ and $b$ vanished on every test, the
+smooth function $c_1e^{-t/2}+c_2e^{t/2}$ would vanish identically.
+Its value and derivative at zero force $c_1=c_2=0$. The moment map
+therefore has two-dimensional range. On that range the form has
+matrix $\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$,
+with eigenvalues $1$ and $-1$.
+\end{proof}
+
+The use of the entire function $\xi$ does not remove these polar
+evaluations from its explicit formula. Removing a rank-two term
+changes the form. It does not preserve positivity automatically.
+
+\begin{conjecture}[archimedean Tate positivity]
+\label{v4-arith:w5-a:conj:archimedean-tate-positivity}
+For every $f\in\mathscr A$,
+\begin{equation}
+ W_\infty(f*f^*)\le P(f*f^*)-W_{\mathrm{fin}}(f*f^*).
+ \label{v4-arith:w5-a:eq:archimedean-tate-positivity}
+\end{equation}
+\end{conjecture}
+
+\begin{theorem}[the full positivity inequality]
+\label{v4-arith:w5-a:thm:ATP-equals-weil-positivity}
+\label{v4-arith:w5-a:thm:HPLi-restricted}
+For all $f\in\mathscr A$,
+\begin{equation}
+ P(f*f^*)-W_{\mathrm{fin}}(f*f^*)=q_W(f,f)+W_\infty(f*f^*).
+ \label{v4-arith:w5-a:eq:restricted-HPLi}
+\end{equation}
+Thus archimedean Tate positivity is equivalent to Weil positivity
+and to RH. The equality applies to any specified restricted class
+as well, but asserts no positivity on that class.
+\end{theorem}
+\begin{proof}
+Apply \eqref{v4-arith:w5-a:eq:weil-explicit} to $f*f^*\in\mathscr A$
+and rearrange. Then apply Weil's criterion.
+\end{proof}
+
+\section{Coefficient multipliers on the two carriers}
+\label{v4-arith:w5-a:mellin-lift}
+
+Fix a holomorphic cusp form $F(z)=\sum_{n\ge1}a_F(n)q^n$ of weight
+$k>0$ for $\mathrm{SL}_2(\mathbb Z)$, where $k$ is even and $q=e^{2\pi iz}$.
+Its coefficients have polynomial growth. Indeed the invariant
+function $y^{k/2}|F(z)|$ is bounded on a fundamental domain and
+hence on the upper half-plane. The Fourier coefficient integral
+at $y=1/n$ gives $|a_F(n)|\le C n^{k/2}$.
+
+\begin{definition}[the two coefficient maps]
+\label{v4-arith:w5-a:def:upsilon}
+For $f\in\mathscr A$ and $h=\mathcal F_+f\in\mathscr P$, set
+\begin{equation}
+ \begin{aligned}
+ U_F(f)(z)&=\sum_{n\ge1}f(\log n)a_F(n)n^{(k-1)/2}q^n,\\
+ \Upsilon_F(h)(z)&=\sum_{n\ge1}h(\log n)a_F(n)n^{(k-1)/2}q^n.
+ \end{aligned}
+ \label{v4-arith:w5-a:eq:upsilon}
+\end{equation}
+The first sum is finite. The second converges locally uniformly
+on the upper half-plane, by polynomial coefficient growth and
+the factor $e^{-2\pi n\Im z}$.
+Neither definition asserts modularity.
+\end{definition}
+
+\begin{theorem}[the compact multiplier obstruction]
+\label{v4-arith:w5-a:lem:upsilon-cuspidal}
+The function $U_F(f)$ is a cusp form of weight $k$ for
+$\mathrm{SL}_2(\mathbb Z)$ only if it vanishes identically.
+Thus the compact multiplier is modular exactly on
+$\{f:f(\log n)a_F(n)=0\text{ for all }n\}$.
+The entire multiplier $\Upsilon_F(h)$ is a distinct construction.
+Its modularity requires the transformation law of its resulting
+holomorphic series.
+\end{theorem}
+\begin{proof}
+Write $G(z)=\sum_{n=1}^N b_n e^{2\pi inz}$ for a nonzero finite
+Fourier polynomial. Then $G(iy)$ is analytic as a function of $y$
+near zero. If $G$ were modular of positive weight $k$,
+\[
+ G(i/y)=(iy)^kG(iy).
+\]
+The finite sum on the left is $O(e^{-2\pi/y})$ as $y\downarrow0$.
+Hence $G(iy)=O(y^{-k}e^{-2\pi/y})$. Every Taylor coefficient at
+zero must vanish, contradicting the nonzero analytic function.
+This proves the first assertion. The coefficient condition is
+exactly vanishing of the finite Fourier polynomial.
+\end{proof}
+
+\begin{remark}[Mellin domains]
+\label{v4-arith:w5-a:rem:H2-obstruction}
+\label{v4-arith:w5-a:rem:domain-PW-hol}
+For $f\in\mathscr A$, the multiplicative Mellin integral
+\[
+ \int_0^\infty f(\log x)x^{s-1}dx=\int_{\mathbb R}f(t)e^{st}dt
+\]
+is entire and rapidly decreasing on every closed vertical strip.
+This follows by integration by parts on the fixed compact support.
+Strip holomorphy imposes no additional condition on this carrier.
+For the entire multiplier $h(\log n)$, the analogous Mellin integral
+has a different domain and must be specified separately.
+\end{remark}
+
+\section{The exact Rankin--Selberg coefficient calculation}
+\label{v4-arith:w5-a:petersson}
+\label{v4-arith:w5-a:mellin-lift:RS}
+
+\begin{theorem}[unfolding for an actual cusp form]
+\label{v4-arith:w5-a:thm:RS-integral}
+Let $G(z)=\sum_{n\ge1}b_n e^{2\pi inz}$ be a holomorphic cusp form
+of weight $k>0$ for $\mathrm{SL}_2(\mathbb Z)$.
+Put $\Gamma=\mathrm{PSL}_2(\mathbb Z)$ and $d\mu=dx\,dy/y^2$.
+Use the Eisenstein series
+$E(z,s)=\sum_{\Gamma_\infty\backslash\mathrm{PSL}_2(\mathbb Z)}
+\Im(\gamma z)^s$, where $\Gamma_\infty$ is the translation subgroup.
+For real $s>1$,
+\begin{equation}
+ \int_{\Gamma\backslash\mathbb H}|G(z)|^2y^kE(z,s)d\mu
+ =\frac{\Gamma(s+k-1)}{(4\pi)^{s+k-1}}
+       \sum_{n\ge1}\frac{|b_n|^2}{n^{s+k-1}}.
+ \label{v4-arith:w5-a:eq:KF-kernel}
+\end{equation}
+\end{theorem}
+\begin{proof}
+The Eisenstein series converges for $s>1$. Its cusp growth is
+polynomial, while $G$ decreases exponentially, so the integral is
+finite. Nonnegative summands permit unfolding by Tonelli:
+the integral becomes
+$\int_0^\infty\int_0^1|G(x+iy)|^2y^{s+k-2}dx\,dy$.
+Fourier orthogonality gives $\sum|b_n|^2e^{-4\pi ny}$.
+A second application of Tonelli and the gamma integral prove the formula.
+\end{proof}
+
+\begin{proposition}[positive norm and native pairing maps]
+\label{v4-arith:w5-a:thm:petersson-positive}
+The Petersson norm of an actual cusp form is positive definite.
+If a complex vector space $E$ has an injective linear map
+$I:E\to L^2(\Gamma\backslash\mathbb H,y^k d\mu)$, then
+\begin{equation}
+ \langle v,w\rangle_I=\int (Iv)(z)\overline{(Iw)(z)}y^k d\mu
+ \label{v4-arith:w5-a:eq:petersson}
+\end{equation}
+is a positive definite form. Identifying another specified form
+with this one requires the corresponding pairing identity for $I$.
+\end{proposition}
+\begin{proof}
+These assertions follow from the norm property of $L^2$ and
+injectivity. The unfolding formula computes the coefficients
+of $G$ itself. For $G=\Upsilon_F(h)$ it therefore uses
+$|h(\log n)a_F(n)n^{(k-1)/2}|^2$, whenever this series is modular.
+\end{proof}
+
+\begin{theorem}[a negative finite-prime square]
+\label{v4-arith:w5-a:thm:prime-side}
+There exists $f\in\mathscr A$ with $W_{\mathrm{fin}}(f*f^*)<0$.
+Thus no linear map into a positive Hilbert space can realize
+$W_{\mathrm{fin}}(f*g^*)$ as its inner product on all of $\mathscr A$.
+\end{theorem}
+\begin{proof}
+Put $L=\log2$. Choose a nonzero real smooth $b$, supported in
+$(-\varepsilon,\varepsilon)$, where
+$2\varepsilon<\min(L,\log3-L)$. Write $b_L(t)=b(t-L)$ and
+$f=b-b_L$. If $c=b*b^*$, then
+\[
+ f*f^*=2c-c(\,\cdot-L)-c(\,\cdot+L).
+\]
+The support meets the nonzero prime logarithms only at $L$ and
+$-L$. At each, its value is $-c(0)=-\|b\|_2^2$. Therefore
+\[
+ W_{\mathrm{fin}}(f*f^*)=-\sqrt2\log2\,\|b\|_2^2<0.
+\]
+A Hilbert norm cannot have that value.
+\end{proof}
+
+\begin{corollary}[restricted automorphic comparisons]
+\label{v4-arith:w5-a:cor:HPLi-restricted}
+A positive realization of the finite-prime form on a restricted
+subspace requires a proved restriction on that subspace.
+The existence of an automorphic coefficient multiplier or an
+interpolating function alone does not give a realization on
+the full compact test algebra.
+\end{corollary}
+\begin{proof}
+The preceding test excludes the full-space realization.
+The Rankin--Selberg calculation identifies a different coefficient
+kernel and supplies no equality with the displayed negative value.
+\end{proof}
+
+\section{Archimedean and interpolation obstructions}
+\label{v4-arith:w5-a:sec:obstruction}
+
+\begin{definition}[the archimedean density]
+\label{v4-arith:w5-a:def:tate-archimedean}
+The sign convention in \eqref{v4-arith:w5-a:eq:weil-explicit} uses
+\begin{equation}
+ \mathcal T_\infty(u)=
+ \frac{\log\pi-\Re\psi_\Gamma(1/4+iu/2)}{2\pi}.
+ \label{v4-arith:w5-a:eq:tate-archimedean-distribution}
+\end{equation}
+\end{definition}
+
+\begin{proposition}[the gamma density is not the Weil density]
+\label{v4-arith:w5-a:prop:archimedean-not-absorbed}
+The functions $|\Gamma(1/4+iu/2)|^2$ and $\mathcal T_\infty(u)$
+are not constant multiples. In fact $\mathcal T_\infty$ has both signs.
+For a local continuous argument of the nonvanishing gamma function,
+\[
+ \frac{d}{du}\arg\Gamma(1/4+iu/2)=\frac12\Re\psi_\Gamma(1/4+iu/2),
+ \qquad
+ \frac{d}{du}\log|\Gamma(1/4+iu/2)|^2=-\Im\psi_\Gamma(1/4+iu/2).
+\]
+\end{proposition}
+\begin{proof}
+Differentiate $\log\Gamma(1/4+iu/2)$ to obtain $(i/2)\psi_\Gamma$.
+Taking real and imaginary parts proves the identities.
+The digamma series gives $\psi_\Gamma(1/4)<-\gamma<0$.
+For $y\ge1$, its real part is
+\[
+ -\gamma+\sum_{n\ge0}
+ \left(\frac1{n+1}-\frac{n+1/4}{(n+1/4)^2+y^2}\right).
+\]
+The first $\lfloor y\rfloor$ terms have sum at least $\log y-C$:
+the harmonic part has this growth, and the subtracted part is bounded
+by $y^{-2}\sum_{n\le y}(n+1/4)\le C$.
+In the remaining terms the possible negative part is at most
+$C\sum_{n>y}n^{-2}$. Thus the real part tends to positive infinity.
+The density $\mathcal T_\infty$ is positive at zero and negative
+for sufficiently large $|u|$. The gamma absolute square is positive.
+\end{proof}
+
+\begin{proposition}[rational Li tests are not compact Fourier tests]
+\label{v4-arith:w5-a:prop:li-via-weil}
+For any integer $n\ge1$, there is no $f\in\mathscr A$ such that
+\[
+ (\mathcal F_+f)(-i(\rho-1/2))=1-(1-1/\rho)^n
+\]
+for every nontrivial zero $\rho$.
+\end{proposition}
+\begin{proof}
+The right side is $n/\rho+O_n(|\rho|^{-2})$ as $|\rho|\to\infty$.
+The left side decreases faster than every inverse power of
+$|\Im\rho|$, uniformly in the zero strip. There are infinitely many
+zeros and only finitely many in any bounded set. Since their real
+parts lie in $[0,1]$, these two estimates contradict one another.
+\end{proof}
+
+\begin{proposition}[continuous-spectrum pairing data]
+\label{v4-arith:w5-a:prop:eisenstein-residual}
+Let $\int^\oplus E_u\,d\mu(u)$ be a specified Hilbert direct integral.
+An identity between its norm and an arithmetic Hermitian form requires
+a map into that direct integral and equality of the two pairings.
+A scalar gamma factor determines neither that map nor its measure.
+\end{proposition}
+\begin{proof}
+The direct-integral norm is $\int\|v(u)\|_{E_u}^2d\mu(u)$.
+Changing $\mu$ or multiplying the proposed realization map by a
+nonconstant function changes the pairing. A single scalar factor
+does not select either datum. The sign-changing density above also
+cannot equal an unspecified positive norm by scalar rescaling.
+\end{proof}
+
+\section{The arithmetic pairing requirement}
+\label{v4-arith:w5-a:form}
+
+\begin{theorem}[the remaining positive comparison]
+\label{v4-arith:w5-a:thm:hpli-form}
+A Hilbert realization of the full Weil form consists of a positive
+Hilbert space $K$, a linear map $J:\mathscr A\to K$, and the identity
+\[
+ \langle Jf,Jg\rangle_K=W(f*g^*)\qquad(f,g\in\mathscr A).
+\]
+Such a realization exists if and only if $q_W$ is positive semidefinite.
+When it exists, its minimal realization is the completion of
+$\mathscr A/\{f:q_W(f,f)=0\}$. Its existence is RH-equivalent.
+Neither coefficient map in \eqref{v4-arith:w5-a:eq:upsilon}
+provides the pairing identity.
+\end{theorem}
+\begin{proof}
+A Hilbert realization implies nonnegativity. Conversely, positivity
+and polarization give Cauchy--Schwarz for $q_W$. Its nullspace is a
+linear subspace orthogonal to every vector. Quotienting and completing
+therefore gives the asserted Hilbert space and canonical map.
+Weil's criterion supplies the equivalence to RH. The coefficient
+maps construct holomorphic functions with specified coefficients.
+Their definitions contain no equality with the full Weil form, and
+the finite-prime counterexample excludes the proposed full-space
+positive realization of that separate term.
+\end{proof}
+
+The arithmetic problem asks for this pairing through a specified
+native carrier, its operators, and its realization maps. The compact
+formula, the exact coefficient calculation, and the two obstruction
+theorems retain those separate requirements.

@@ -1,0 +1,406 @@
+\subsection{Normalization and the spaces of prime distributions}
+\label{v4-arith:pm:chapter}
+
+The exponential coordinate $m=e^t$ changes the growth of a counting
+measure. It also fixes the weight appearing in a Fourier formula.
+We use additive Dirac masses on $\mathbb R$, the test space
+$\mathscr A=C_c^\infty(\mathbb R)$ with its usual inductive-limit
+topology, and the Schwartz space $\mathscr S(\mathbb R)$.
+Distributions are complex-linear in their test functions.
+Write $\gamma$ for Euler's constant and
+\[
+ \xi(s)=\xi_{\mathbb R}(s)
+   =\tfrac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s).
+\]
+
+\begin{lemma}[growth and zero counting from the theta integral]
+\label{v4-arith:pm:zero-count}
+For $R\geq2$ one has
+$\log\max_{|s|\leq R}|\xi(s)|\leq CR\log(R+2)$.
+Consequently the number of its zeros in $|s|\leq R$, with
+multiplicity, is $O(R\log(R+2))$, and
+$\sum_\rho|\rho|^{-2}<\infty$.
+There are infinitely many zeros. All lie in $0\leq\Re s\leq1$.
+\end{lemma}
+\begin{proof}
+In the theta integral \eqref{v4-arith:mo:xi-integral}, the theta
+tail on $x\geq1$ is bounded by $C e^{-\pi x}$. For $|s|\leq R$
+the powers of $x$ in that integral are bounded by $2x^{(R+1)/2}$.
+The estimate
+$\sup_{x>0}x^A e^{-\pi x/2}=(2A/(\pi e))^A$
+bounds the integral by $\exp(CR\log(R+2))$; the quadratic
+prefactor does not change this bound. Jensen's formula at radius
+$2R$, using $\xi(0)=1/2$, bounds each zero in radius $R$ by a
+contribution at least $\log2$. This proves the zero count.
+Dyadic summation then proves the inverse-square assertion.
+
+The growth bound gives entire order at most one. If there were
+only finitely many zeros, Hadamard's factorization theorem would
+give $\xi(s)=e^{a+bs}P(s)$ with a polynomial $P$.
+For real $s\geq2$, however, $\zeta(s)\geq1$ and integration of
+the gamma integral just over $[s/2,s/2+1]$ gives
+$\log\xi(s)\geq(s/2)\log s-Cs$. This contradicts that finite
+factorization. Finally, the Euler product excludes zeros for
+$\Re s>1$, and the functional equation excludes $\Re s<0$.
+\end{proof}
+
+\begin{proposition}[the constant in the genus-one product]
+\label{v4-arith:pm:constant}
+For this normalization, $\xi(0)=1/2$, and the constant multiplying
+$s$ in the canonical genus-one product is
+\[
+ B=\frac{\xi'(0)}{\xi(0)}
+   =-1-\frac\gamma2+\frac12\log(4\pi).
+\]
+Thus, with zeros counted with multiplicity,
+\[
+ \xi(s)=\tfrac12e^{Bs}\prod_\rho(1-s/\rho)e^{s/\rho},\qquad
+ \frac{\xi'(s)}{\xi(s)}
+   =B+\sum_\rho\left(\frac1{s-\rho}+\frac1\rho\right).
+\]
+The factors and the paired summands converge locally uniformly away
+from their indicated zeros or poles. The individual sum
+$\sum_\rho1/\rho$ is not separated from its partner without a
+specified summation convention.
+\end{proposition}
+\begin{proof}
+The identity $\Gamma(1+s/2)=(s/2)\Gamma(s/2)$ removes the apparent
+singularity at zero:
+\[
+ \xi(s)=(s-1)\Gamma(1+s/2)\pi^{-s/2}\zeta(s).
+\]
+The values $\zeta(0)=-1/2$, $\zeta'(0)=-\tfrac12\log(2\pi)$,
+and $\Gamma'(1)=-\gamma$ give
+\[
+ \frac{\xi'(0)}{\xi(0)}
+ =-1-\frac\gamma2-\frac12\log\pi+\log(2\pi).
+\]
+For example, the two zeta values follow directly by expanding
+$\zeta(s)=2^s\pi^{s-1}\sin(\pi s/2)\Gamma(1-s)\zeta(1-s)$:
+the constant terms cancel in
+$\Gamma(1-s)\zeta(1-s)=-s^{-1}+O(s)$.
+The remaining factor is
+$\tfrac s2(1+s\log(2\pi)+O(s^2))$.
+The exact special values are also recorded in
+\href{https://dlmf.nist.gov/25.6.E1}{DLMF 25.6.1},
+\href{https://dlmf.nist.gov/25.6.E11}{25.6.11}, and
+\href{https://dlmf.nist.gov/5.4.E11}{5.4.11}.
+
+Lemma~\ref{v4-arith:pm:zero-count} supplies the growth and zero bound
+for the order-one factorization. On a compact set with
+$|s/\rho|\leq1/2$, the logarithm of a factor and its logarithmic
+derivative are bounded by a constant times $|\rho|^{-2}$.
+Hence the product and paired derivative converge normally there.
+Every canonical factor has derivative zero at $s=0$, so its
+exponential constant is precisely the logarithmic derivative just
+computed. This also specifies the normalization of the product.
+\end{proof}
+
+\begin{lemma}[an elementary lower bound for logarithmic prime mass]
+\label{v4-arith:pm:growth}
+Put $\psi(x)=\sum_{m\leq x}\Lambda(m)$. For every integer $n\geq1$,
+\[
+ 2n\log2-\log(2n+1)\leq\psi(2n),
+ \qquad \psi(x)\leq x\log x\quad(x\geq2).
+\]
+Consequently there are positive constants $c,x_0$ with
+$\psi(x)\geq cx$ for $x\geq x_0$.
+\end{lemma}
+\begin{proof}
+The largest of the $2n+1$ binomial coefficients in $(1+1)^{2n}$
+is $\binom{2n}{n}$, so it is at least $4^n/(2n+1)$.
+For every prime $p$, its valuation is
+\[
+ v_p\binom{2n}{n}
+ =\sum_{k\geq1}\left(\left\lfloor\frac{2n}{p^k}\right\rfloor
+                 -2\left\lfloor\frac n{p^k}\right\rfloor\right).
+\]
+Each summand is zero or one and vanishes when $p^k>2n$.
+Taking logarithms therefore gives
+$\log\binom{2n}{n}\leq\psi(2n)$.
+The upper bound uses $0\leq\Lambda(m)\leq\log m$.
+For arbitrary sufficiently large $x$, take $n=\lfloor x/2\rfloor$
+and use monotonicity. No prime-number asymptotic is needed.
+\end{proof}
+
+\begin{theorem}[the exact exponential weight for temperedness]
+\label{v4-arith:pm:weights}
+For real $\sigma$, define the positive Radon measure
+\[
+ \mu_\sigma=\sum_{m\geq2}\Lambda(m)m^{-\sigma}\delta_{\log m}.
+\]
+Every $\mu_\sigma$ is a distribution on $\mathscr A$.
+It is a tempered distribution exactly when $\sigma\geq1$.
+It is finite exactly when $\sigma>1$; $\mu_1$ has infinite total mass.
+In particular, $\mu_0=\mu_{\mathrm{prime}}$ is unchanged as a
+locally finite measure, and $\mu_{1/2}$ is not tempered.
+\end{theorem}
+\begin{proof}
+Only finitely many atoms meet any compact interval. Their total
+variation bounds evaluation by the supremum norm on that interval,
+which proves continuity on $\mathscr A$.
+For $\sigma\geq1$,
+\[
+ |\mu_\sigma(\varphi)|
+ \leq\sup_t(1+|t|)^3|\varphi(t)|
+       \sum_{m\geq2}\frac{\log m}{m(1+\log m)^3}.
+\]
+The last series converges by the integral test. If $\sigma>1$,
+$\sum(\log m)m^{-\sigma}<\infty$ also gives finiteness.
+Partial summation gives
+\[
+ \sum_{m\leq X}\frac{\Lambda(m)}m
+ =\frac{\psi(X)}X+\int_1^X\frac{\psi(x)}{x^2}\,dx,
+\]
+which diverges by Lemma~\ref{v4-arith:pm:growth}.
+
+If a positive measure supported in $[0,\infty)$ is tempered, choose
+a nonnegative smooth compact cutoff equal to one on $[0,1]$ and
+rescale it by $t\mapsto t/T$. The finite Schwartz seminorm bound
+for a tempered distribution then implies
+$\mu([0,T])\leq C(1+T)^M$ for some $C,M$ and all $T\geq1$.
+For $0\leq\sigma<1$, however,
+\[
+ \mu_\sigma([0,T])\geq e^{-\sigma T}\psi(e^T)
+                  \geq c e^{(1-\sigma)T}
+\]
+for large $T$. For $\sigma<0$, use $\mu_\sigma\geq\mu_0$.
+Both contradict polynomial mass growth.
+\end{proof}
+
+Multiplication by $e^{-\sigma t}$ is explicit here; it is not a
+coordinate relabelling. Equivalently, for $\sigma\geq1$ the
+unweighted $\mu_0$ acts continuously on
+$\mathscr S_\sigma=e^{-\sigma t}\mathscr S(\mathbb R)$ with the
+transported Schwartz topology. It acts on $C_c^\infty$ without any
+choice of weight. The change $x=e^t$ pulls a compact smooth test
+back by $f(t)=g(e^t)$ and gives the exact pairing
+$\mu_\sigma(f)=\sum\Lambda(m)m^{-\sigma}g(m)$.
+These are maps between specified test spaces, not Hilbert-space
+intertwiners.
+
+\begin{proposition}[Laplace and Fourier transforms on their domains]
+\label{v4-arith:pm:laplace}
+For $\Re s>1$,
+\[
+ \int e^{-st}\,d\mu_0(t)
+ =\sum_{m\geq2}\frac{\Lambda(m)}{m^s}
+ =-\frac{\zeta'(s)}{\zeta(s)}.
+\]
+With Fourier convention $\mathcal F_-f(u)=\int f(t)e^{-iut}dt$,
+the finite measure $\mu_\sigma$, $\sigma>1$, has Fourier transform
+$-\zeta'(\sigma+iu)/\zeta(\sigma+iu)$.
+As $\sigma\downarrow1$ these transforms converge in the weak
+tempered-distribution sense to $\mathcal F_-\mu_1$.
+The unweighted and critically weighted measures do not have Fourier
+transforms in $\mathscr S'$ by this construction.
+\end{proposition}
+\begin{proof}
+The absolutely convergent Euler product for $\Re s>1$ may be
+logarithmically differentiated on compact subsets there, giving
+the displayed Dirichlet series. Absolute convergence also permits
+integration of the finite weighted measure against the Fourier
+kernel. For every Schwartz test, dominated convergence in the
+seminorm estimate of Theorem~\ref{v4-arith:pm:weights} gives
+$\mu_{1+\varepsilon}\to\mu_1$ weakly in $\mathscr S'$.
+Fourier continuity proves the boundary assertion. Meromorphic
+continuation of the right side does not change the abscissa of
+absolute convergence of the original positive-measure integral.
+\end{proof}
+
+\subsection{The explicit formula on compact Fourier tests}
+\label{v4-arith:pm:explicit-section}
+
+For $f\in\mathscr A$, use the entire function
+$h(z)=\int f(t)e^{izt}dt$, so that
+$f(t)=(2\pi)^{-1}\int h(u)e^{-iut}du$.
+This is the Fourier test carrier of
+Definition~\ref{v4-arith:mc:test-algebra}.
+For $\rho=\beta+i\gamma_\rho$ put
+$z_\rho=-i(\rho-1/2)=\gamma_\rho-i(\beta-1/2)$.
+Lemma~\ref{v4-arith:pm:zero-count} gives
+$\#\{\rho:|\gamma_\rho|\leq T\}=O(T\log(T+2))$, with multiplicity.
+It follows that $\mu_{\mathrm{ord}}=\sum_\rho\delta_{\gamma_\rho}$
+is tempered. Since $0\leq\beta\leq1$, integration by parts gives rapid
+decay of $h(z_\rho)$ uniformly in this horizontal strip.
+Thus $\mathfrak Z_\xi(h)=\sum_\rho h(z_\rho)$ converges absolutely
+and is continuous on $\mathscr A$ through $f\mapsto h$.
+The estimates therefore follow from the theta integral without
+requiring an asymptotic prime-counting formula.
+
+\begin{theorem}[the full polar and archimedean terms]
+\label{v4-arith:pm:weil}
+For every $f\in C_c^\infty(\mathbb R)$ and its transform $h$ above,
+\begin{align*}
+ \mathfrak Z_\xi(h)
+ &=h(i/2)+h(-i/2)
+   +\frac1{2\pi}\int_{\mathbb R}
+       h(u)\bigl(\Re\psi_\Gamma(1/4+iu/2)-\log\pi\bigr)\,du\\
+ &\quad-\sum_{m\geq2}\frac{\Lambda(m)}{\sqrt m}
+                  \bigl(f(\log m)+f(-\log m)\bigr),
+\end{align*}
+where $\psi_\Gamma=\Gamma'/\Gamma$ is the digamma function.
+The prime sum is finite. In particular, it is evaluation of
+$\mu_{1/2}$ on compact tests and does not assert temperedness of
+that measure. The values $h(\pm i/2)$ are the polar terms, separate
+from the real-line digamma density.
+\end{theorem}
+\begin{proof}
+Set $H(s)=h(-i(s-1/2))=\int f(t)e^{(s-1/2)t}dt$ and choose $a>1$.
+The residue theorem and $\xi(s)=\xi(1-s)$ give
+\[
+ \sum_\rho H(\rho)
+ =\frac1{2\pi i}\int_{\Re s=a}
+             (H(s)+H(1-s))\frac{\xi'(s)}{\xi(s)}\,ds.
+\]
+Here is a convergence justification. The zero count allows heights
+$T_j\in[j,j+1]$ at distance at least $j^{-2}$ from every zero
+ordinate: the excluded intervals have total length $O(\log j/j)$.
+The paired logarithmic derivative in
+Proposition~\ref{v4-arith:pm:constant} is polynomially bounded on
+the horizontal segments at these heights. For $|\rho|\leq2T_j$
+bound each denominator by the stated distance and sum
+$O(T_j\log T_j)$ terms; for $|\rho|>2T_j$ use
+$|s/\{\rho(s-\rho)\}|\leq C T_j/|\rho|^2$.
+Repeated integration by parts makes $H$ decrease faster than any
+power, uniformly on the fixed strip. The horizontal integrals
+therefore vanish, and the zero sum converges absolutely.
+
+On the right line decompose
+\[
+ \frac{\xi'}\xi(s)
+ =\frac1s+\frac1{s-1}-\frac12\log\pi
+       +\frac12\psi_\Gamma(s/2)+\frac{\zeta'}\zeta(s).
+\]
+Fourier inversion and the absolutely convergent Dirichlet series
+give the negative prime sum from the last term. For the remaining
+terms move the line to $\Re s=1/2$. The crossed pole at $s=1$
+contributes $H(1)+H(0)$. On the new line the rational sum
+$1/s+1/(s-1)$ is odd in the imaginary coordinate, while
+$H(s)+H(1-s)$ is even; its integral is zero. Changing $u$ to $-u$
+in half of the gamma integral gives precisely its real part in the
+displayed formula. Digamma growth is $O(\log(|u|+2))$ on this
+line: in
+$\psi_\Gamma(z)=-\gamma+\sum_{n\geq0}((n+1)^{-1}-(n+z)^{-1})$,
+split the sum at $n=|u|+1$ for $z=1/4+iu/2$. The initial sum
+is $O(\log(|u|+2))$ and the tail is bounded by
+$C(|u|+1)\sum_{n>|u|+1}n^{-2}=O(1)$.
+Thus all resulting integrals converge absolutely.
+\end{proof}
+
+When $f$ is even, $h$ is even and the prime term is
+$-2\mu_{1/2}(f)$. The functional
+$h\mapsto h(i/2)+h(-i/2)$ cannot be silently included in a density
+on the real line. Likewise, $\mathfrak Z_\xi(h)$ uses the full
+complex numbers $z_\rho$, whereas
+$\mu_{\mathrm{ord}}(h)=\sum h(\gamma_\rho)$ uses their real parts.
+Under RH these are equal. No projection is used in the theorem.
+
+\subsection{Centering and the critical exponent}
+\label{v4-arith:pm:centered-section}
+
+For real $\sigma$ define, initially on compact smooth tests,
+\[
+ \nu_\sigma=\mu_\sigma
+       -\mathbf1_{[0,\infty)}(t)e^{(1-\sigma)t}\,dt.
+\]
+This subtracts an explicit density and is a different distribution.
+For $\sigma\geq1$ it is tempered by
+Theorem~\ref{v4-arith:pm:weights}. In particular its transform at
+$\sigma=1$ is the weak boundary value
+\[
+ \mathcal F_-\nu_1
+ =\lim_{\varepsilon\downarrow0}
+    \left(-\frac{\zeta'(1+\varepsilon+iu)}
+                 {\zeta(1+\varepsilon+iu)}
+                    -\frac1{\varepsilon+iu}\right).
+\]
+The removed half-line density has Fourier transform
+$\pi\delta_0-i\,\mathrm{pv}(1/u)$, by taking the real and imaginary
+parts of $(\varepsilon+iu)^{-1}$. Thus centering specifies both the
+Dirac and principal-value boundary terms.
+
+\begin{theorem}[critical centering as a distributional criterion]
+\label{v4-arith:pm:centered}
+The distribution $\nu_{1/2}$ is tempered if and only if every
+nontrivial zero of $\zeta$ has real part $1/2$.
+This is a criterion for a specified centered distribution; it
+constructs no arithmetic Hilbert pairing or occupation intertwiner.
+\end{theorem}
+\begin{proof}
+First restrict a test $f$ to $C_c^\infty(0,\infty)$.
+The digamma integral representation
+\[
+ \psi_\Gamma(z)=-\gamma+
+  \int_0^\infty\frac{e^{-v}-e^{-zv}}{1-e^{-v}}\,dv
+ \qquad(\Re z>0)
+\]
+is \href{https://dlmf.nist.gov/5.9.E16}{DLMF 5.9.16}.
+This identity
+and Fourier inversion, with $v=2t$, turn the archimedean integral
+of Theorem~\ref{v4-arith:pm:weil} into
+$-\int_0^\infty f(t)e^{-t/2}/(1-e^{-2t})\,dt$.
+The constant terms vanish since $f(0)=0$; near $v=0$ the
+subtracted representation is integrable, and compact support away
+from zero justifies the Fourier inversion. The term $h(i/2)$
+cancels the first exponential in this denominator. Hence, on
+$(0,\infty)$,
+\[
+ \nu_{1/2}(f)
+ =-\sum_\rho\int f(t)e^{(\rho-1/2)t}\,dt
+   -\int_0^\infty\frac{e^{-t/2}}{e^{2t}-1}f(t)\,dt.
+\]
+Under RH the zero sum extends to a tempered distribution on the
+whole real line by the exact map
+$f\mapsto\mu_{\mathrm{ord}}(\mathcal F_+f)$, where
+$\mathcal F_+f(u)=\int f(t)e^{iut}dt$.
+Multiply this distribution by a smooth cutoff that vanishes near
+zero and is one for $t\geq1$. The last displayed density then
+decays exponentially. The difference from $\nu_{1/2}$ has compact
+support and is a distribution, so it too is tempered. This proves
+the forward construction under RH.
+
+Conversely suppose $\nu_{1/2}\in\mathscr S'$. Its support is
+contained in $[0,\infty)$. Choose a smooth function $\eta$ that
+is one there and zero on $(-\infty,-1]$. For $\Re s>0$ define
+$L(s)=\nu_{1/2}(\eta(t)e^{-st})$.
+The tests and all their $s$-derivatives lie in $\mathscr S$, locally
+uniformly for $\Re s>0$; hence $L$ is holomorphic there.
+For $\Re s>1/2$ the convergent integral gives
+\[
+ L(s)=-\frac{\zeta'(s+1/2)}{\zeta(s+1/2)}
+                         -\frac1{s-1/2}.
+\]
+Meromorphic uniqueness extends this equality to $\Re s>0$.
+The pole at $s=1/2$ cancels, but any zero with $\Re\rho>1/2$
+would leave a pole of nonzero integer residue at $s=\rho-1/2$.
+Holomorphy excludes these zeros. The functional equation excludes
+zeros with $\Re\rho<1/2$ as well.
+\end{proof}
+
+The unweighted centered distribution $\nu_0$ is not tempered.
+Indeed the same Laplace argument would make
+$-\zeta'(s)/\zeta(s)-1/(s-1)$ holomorphic for $\Re s>0$.
+The infinitely many xi zeros of Lemma~\ref{v4-arith:pm:zero-count},
+together with reflection in $\Re s=1/2$, provide a zero with
+positive real part, and hence an uncancelled pole.
+
+\begin{corollary}[the ordinate shadow on the full test class]
+\label{v4-arith:pm:shadow}
+Equality $\mathfrak Z_\xi(h)=\mu_{\mathrm{ord}}(h)$ for every
+$h(z)=\int f(t)e^{izt}dt$, $f\in C_c^\infty(\mathbb R)$,
+is equivalent to RH.
+\end{corollary}
+\begin{proof}
+Under RH the equality is termwise. Conversely the equality makes
+the zero functional on compact Fourier tests the restriction of a
+tempered Fourier transform. The cutoff argument in
+Theorem~\ref{v4-arith:pm:centered} then proves
+$\nu_{1/2}\in\mathscr S'$. That theorem implies RH.
+\end{proof}
+
+The uncentered critical measure remains non-tempered even under RH.
+Centering subtracts its exponentially growing main density; a
+statement about this difference does not change the carrier of the
+original prime measure. These distinctions are required before
+any Fourier, Mellin, or spectral comparison can be made.

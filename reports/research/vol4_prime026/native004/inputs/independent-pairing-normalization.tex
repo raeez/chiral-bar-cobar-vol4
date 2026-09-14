@@ -1,0 +1,577 @@
+\documentclass[11pt]{article}
+\usepackage{raeez-math-template}
+\title{Signed Archimedean Pairings and Canonical Determinants}
+\author{Raeez Lorgat}
+\date{}
+\begin{document}
+\maketitle
+
+The logarithmic derivative of the gamma factor defines a signed form.
+Its translation formula determines the Gaussian sign exactly.
+A de Branges norm requires a separate map and a Hardy-space domain.
+For a discrete operator, a canonical product fixes the divisor and two initial values.
+These constructions give explicit pairing and determinant identities with their hypotheses stated.
+
+\section{The signed translation form}
+
+All vector spaces are over $\mathbb C$, and inner products are linear in the first variable.
+Lebesgue measure on $\mathbb R$ is denoted by $dt$ or $du$.
+For $f$ in the Schwartz space $\mathcal S(\mathbb R)$, use
+\[
+ h_f(u)=\mathcal F_+f(u)=\int_{\mathbb R}f(t)e^{iut}dt,
+ \qquad
+ f(t)=\frac1{2\pi}\int_{\mathbb R}h_f(u)e^{-iut}du.
+\]
+Define $f^*(t)=\overline{f(-t)}$, $\tau_t f(x)=f(x-t)$, and
+$(f*g)(x)=\int f(v)g(x-v)dv$.
+Then $\mathcal F_+(f*g^*)=h_f\overline{h_g}$ on the real line.
+Put
+\[
+ w(u)=\log\pi-\Re\psi(1/4+iu/2),\qquad
+ c_0=\log\pi-\psi(1/4),\qquad
+ \kappa(t)=\frac{e^{-t/2}}{1-e^{-2t}}\quad(t>0),
+\]
+where $\psi=\Gamma'/\Gamma$ and $\gamma$ denotes Euler's constant.
+
+\begin{theorem}[signed archimedean form]\label{thm:translation}
+The continuous sesquilinear form
+\begin{equation}\label{eq:pairing}
+ B_\infty(f,g)=\frac1{2\pi}\int_{\mathbb R}
+        h_f(u)\overline{h_g(u)}w(u)du
+\end{equation}
+on $\mathcal S(\mathbb R)$ is Hermitian. It satisfies
+\begin{equation}\label{eq:translation}
+ B_\infty(f,g)=c_0\langle f,g\rangle_{L^2}
+ -\int_0^\infty\kappa(t)
+       \langle\tau_t f-f,\tau_t g-g\rangle_{L^2}dt,
+ \qquad
+ c_0=\log\pi+\gamma+\frac\pi2+3\log2>0.
+\end{equation}
+Both integrals converge absolutely.
+\end{theorem}
+\begin{proof}
+The digamma integral, valid for $\Re z>0$, is
+\[
+ \psi(z)+\gamma=\int_0^\infty
+           \frac{e^{-v}-e^{-zv}}{1-e^{-v}}dv
+ \quad\text{\cite[Eq.~5.9.16]{dlmf}}.
+\]
+Subtract its value at $z=1/4$, take real parts, and set $v=2t$.
+This gives
+\begin{equation}\label{eq:multiplier}
+ w(u)=c_0-2\int_0^\infty\kappa(t)(1-\cos ut)dt.
+\end{equation}
+The inner integral is finite. Near zero, $1-\cos ut=O_u(t^2)$ and
+$\kappa(t)=O(t^{-1})$. At infinity, $\kappa(t)=O(e^{-t/2})$.
+The digamma series also gives
+\begin{equation}\label{eq:positive-series}
+ c_0-w(u)=\sum_{n=0}^\infty
+ \frac{u^2/4}{(n+1/4)((n+1/4)^2+u^2/4)}.
+\end{equation}
+Each summand is nonnegative.
+The series converges locally uniformly and is $O(1+\log(2+|u|))$.
+For example, split it at $n=\lceil|u|\rceil$ and bound the remaining cubic tail.
+Thus $w$ has logarithmic growth, so \eqref{eq:pairing} converges and is continuous on Schwartz space.
+Its real multiplier makes it Hermitian.
+
+Plancherel and Tonelli give \eqref{eq:translation} first for $g=f$.
+The Fourier multiplier of $\tau_t-I$ has squared absolute value $2(1-\cos ut)$.
+For general $f,g$, polarization gives the equality.
+Absolute convergence also follows directly from
+\[
+ \|\tau_t f-f\|_2\le\min(t\|f'\|_2,2\|f\|_2).
+\]
+Finally, differentiation of gamma reflection and duplication gives
+$\psi(1/4)=-\gamma-\pi/2-3\log2$.
+These identities are \cite[Eqs.~5.5.4, 5.5.8]{dlmf}.
+\end{proof}
+
+For $\phi\in\mathcal S(\mathbb R)$, define
+$W_\infty(\phi)=(2\pi)^{-1}\int(\mathcal F_+\phi)(u)w(u)du$.
+Fourier inversion in the preceding proof gives two equivalent formulas:
+\begin{align}
+ W_\infty(\phi)
+ &=c_0\phi(0)-\int_0^\infty\kappa(t)
+                 (2\phi(0)-\phi(t)-\phi(-t))dt,\label{eq:distribution}\\
+ &=(\log\pi+\gamma)\phi(0)
+   +\int_0^\infty
+    \frac{e^{-t/2}(\phi(t)+\phi(-t))-2e^{-2t}\phi(0)}{1-e^{-2t}}dt.
+    \label{eq:subtraction}
+\end{align}
+For \eqref{eq:distribution}, the numerator vanishes to second order at zero.
+For \eqref{eq:subtraction}, it vanishes to first order.
+The difference between their constant terms equals the digamma integral at $1/4$.
+In particular, if $\phi(0)=0$, then
+$W_\infty(\phi)=\int_0^\infty\kappa(t)(\phi(t)+\phi(-t))dt$.
+The subtraction at zero is part of the distribution.
+
+\begin{proposition}[the density and the form have both signs]\label{prop:sign}
+The even function $w$ is strictly decreasing on $(0,\infty)$.
+It has exactly one positive zero.
+The form $B_\infty$ takes both signs on nonzero compact smooth functions.
+\end{proposition}
+\begin{proof}
+Differentiate \eqref{eq:positive-series} locally uniformly:
+\[
+ w'(u)=-\frac u2\sum_{n=0}^\infty
+       \frac{n+1/4}{((n+1/4)^2+u^2/4)^2}<0\quad(u>0).
+\]
+The digamma asymptotic \cite[Eq.~5.11.2]{dlmf} gives
+$w(u)=\log(2\pi)-\log|u|+O(|u|^{-2})$ as $|u|\to\infty$.
+Since $w(0)=c_0>0$, continuity proves the first two assertions.
+The Gaussian calculation below gives a Schwartz function with each sign.
+If $\chi$ is a smooth cutoff equal to one near zero, then
+$\chi(t/R)f(t)\to f(t)$ in Schwartz space for a Gaussian $f$.
+Continuity of $B_\infty$ preserves either strict sign for all sufficiently large $R$.
+\end{proof}
+
+\section{Gaussian pairing and an explicit remainder}
+
+For $\lambda>0$, put $f_\lambda(t)=e^{-\pi\lambda t^2}$.
+Completing the square gives
+\[
+ h_{f_\lambda}(u)=\lambda^{-1/2}e^{-u^2/(4\pi\lambda)},\qquad
+ (f_\lambda*f_\mu^*)(t)=\frac{e^{-\pi\lambda\mu t^2/(\lambda+\mu)}}{\sqrt{\lambda+\mu}}.
+\]
+In particular, $\|f_\lambda\|_2^2=(2\lambda)^{-1/2}$.
+These functions belong to Schwartz space and do not have compact support.
+
+\begin{theorem}[Gaussian sign threshold]\label{thm:gaussian}
+Define
+\begin{equation}\label{eq:gaussian}
+ R(\lambda)=\frac{B_\infty(f_\lambda,f_\lambda)}{\|f_\lambda\|_2^2}
+   =c_0-2\int_0^\infty\kappa(t)(1-e^{-\pi\lambda t^2/2})dt.
+\end{equation}
+Then $R$ is smooth and strictly decreasing on $(0,\infty)$, with
+\[
+ \lim_{\lambda\downarrow0}R(\lambda)=c_0,\qquad
+ \lim_{\lambda\to\infty}R(\lambda)=-\infty.
+\]
+There is a unique $\lambda_c>0$ with $R(\lambda_c)=0$.
+The Gaussian pairing is positive for $0<\lambda<\lambda_c$ and negative for $\lambda>\lambda_c$.
+For $\lambda,\mu>0$, the polarized formula is
+\begin{equation}\label{eq:gaussian-cross}
+ B_\infty(f_\lambda,f_\mu)
+   =\frac1{\sqrt{\lambda+\mu}}
+          R\left(\frac{2\lambda\mu}{\lambda+\mu}\right).
+\end{equation}
+\end{theorem}
+\begin{proof}
+Substitute the Gaussian autocorrelation into \eqref{eq:distribution}.
+Differentiation under the integral, locally uniformly in $\lambda>0$, gives
+\[
+ R'(\lambda)=-\pi\int_0^\infty t^2\kappa(t)e^{-\pi\lambda t^2/2}dt<0.
+\]
+All higher derivatives have integrable majorants on compact parameter intervals.
+For the limit at zero, use
+$1-e^{-\pi\lambda t^2/2}\le\pi\lambda t^2/2$ and $\int t^2\kappa(t)dt<\infty$.
+For the limit at infinity, monotone convergence gives
+\[
+ \int_0^\infty\kappa(t)(1-e^{-\pi\lambda t^2/2})dt
+       \longrightarrow\int_0^\infty\kappa(t)dt=\infty.
+\]
+The divergence occurs at zero, where $\kappa(t)\sim1/(2t)$.
+The intermediate value theorem gives the unique threshold.
+The convolution formula gives \eqref{eq:gaussian-cross}.
+\end{proof}
+
+\begin{proposition}[convergent complementary-error-function formula]\label{prop:erfc}
+Put $\alpha=(2\pi\lambda)^{-1}$, $M=\sqrt{\pi/\alpha}$, and $c_n=n+1/4$.
+Then
+\begin{equation}\label{eq:erfc-series}
+ R(\lambda)=c_0-\sum_{n=0}^\infty d_n(\lambda),\qquad
+ d_n(\lambda)=\frac1{c_n}-\frac{2\pi}{M}
+                  e^{4\alpha c_n^2}\operatorname{erfc}(2c_n\sqrt\alpha).
+\end{equation}
+Each $d_n$ is positive. For $N\ge1$,
+\begin{equation}\label{eq:tail}
+ 0\le\sum_{n=N}^\infty d_n(\lambda)
+    \le\frac{\pi\lambda}{8(N-1+1/4)^2}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+For $a,\alpha>0$, the identity
+$(a^2+u^2)^{-1}=\int_0^\infty e^{-v(a^2+u^2)}dv$ and Tonelli give
+\[
+ \int_{\mathbb R}\frac{e^{-\alpha u^2}}{a^2+u^2}du
+ =\sqrt\pi\int_0^\infty\frac{e^{-a^2v}}{\sqrt{\alpha+v}}dv
+ =\frac\pi a e^{\alpha a^2}\operatorname{erfc}(a\sqrt\alpha).
+\]
+The last step uses $r=\sqrt{\alpha+v}$.
+Integrate \eqref{eq:positive-series} against $M^{-1}e^{-\alpha u^2}du$.
+The normalized Gaussian second moment is $1/(2\alpha)=\pi\lambda$.
+Tonelli gives \eqref{eq:erfc-series} and
+$0<d_n\le\pi\lambda/(4c_n^3)$.
+Finally,
+$\sum_{n=N}^\infty c_n^{-3}\le\int_{N-1}^\infty(x+1/4)^{-3}dx$.
+This proves \eqref{eq:tail}.
+\end{proof}
+
+The normalization in \eqref{eq:gaussian} can also be written as
+\[
+ R(\lambda)=\frac1{\sqrt{2\pi}}
+          \int_{\mathbb R}e^{-v^2/2}w(\sqrt{\pi\lambda}\,v)dv.
+\]
+These signed formulas concern the archimedean term alone.
+The full Weil form also contains its polar and finite-prime terms.
+
+\section{A signed realization on the full zero multiset}
+
+Let $\xi(s)=\tfrac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)$.
+Let $\mathcal Z$ be its distinct zeros, with multiplicities $m_\rho$,
+and put $z_\rho=-i(\rho-1/2)$.
+Use $\mathscr A=C_c^\infty(\mathbb R)$ with its usual test-function topology.
+Its Fourier transforms are entire.
+Integration by parts gives rapid decay in every fixed horizontal strip.
+The zero counting estimate $N(T)=O(T\log(2+T))$ therefore implies
+\[
+ \sum_{\rho\in\mathcal Z}m_\rho|h_f(z_\rho)|^2<\infty
+ \qquad(f\in\mathscr A).
+\]
+The absolute zero sums and the Fourier convention are those of
+\cite[Eqs.~(1.1)--(1.2)]{suzuki}.
+
+\begin{proposition}[zero involution pairing]\label{prop:zero-involution}
+On $\mathcal K=\ell^2(\mathcal Z,m)$, define
+$(Jv)(\rho)=v(1-\bar\rho)$ and $(Sf)(\rho)=h_f(z_\rho)$.
+Then $J$ is a self-adjoint unitary and
+\begin{equation}\label{eq:zero-pairing}
+ q_W(f,g):=\sum_{\rho\in\mathcal Z}m_\rho
+ h_f(z_\rho)\overline{h_g(\bar z_\rho)}
+       =\langle Sf,J Sg\rangle_{\mathcal K}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+The functional equation and conjugation preserve the zero multiset.
+The map $\rho\mapsto1-\bar\rho$ is an involution preserving multiplicity.
+Moreover $z_{1-\bar\rho}=\bar z_\rho$.
+Thus $J^2=I$, $J^*=J$, and direct substitution gives the identity.
+Absolute convergence follows from Cauchy--Schwarz.
+\end{proof}
+
+If all zeros lie on the critical line, then $J=I$ and the zero form is nonnegative.
+An off-line orbit gives a matrix $\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$
+on the corresponding coordinates of $\mathcal K$.
+Its negative eigenspace alone does not identify the range $S(\mathscr A)$.
+The converse positivity theorem requires Weil's criterion.
+
+\section{The de Branges map and its domain}
+
+Write $F^\sharp(z)=\overline{F(\bar z)}$.
+Use the Hermite--Biehler condition $|E^\sharp(z)|<|E(z)|$ for $\Im z>0$.
+This convention permits common real zeros of $E$ and $E^\sharp$.
+The quotients below use their removable continuations.
+Lagarias calls an $E$ without real zeros a strict de Branges function
+\cite[Section~2, pp.~2--4]{lagarias}.
+For such an $E$, put $\Theta=E^\sharp/E$ and
+\[
+ H^2=\left\{h\text{ holomorphic on }\mathbb C_+:
+      \sup_{y>0}\int_{\mathbb R}|h(x+iy)|^2dx<\infty\right\},
+ \qquad K_\Theta=H^2\ominus\Theta H^2.
+\]
+The de Branges space consists of entire $F$ with $F/E,F^\sharp/E\in H^2$,
+and has norm $\|F\|_{H(E)}=\|F/E\|_{L^2}$.
+Multiplication by $E$ is the isometry $K_\Theta\to H(E)$.
+These conventions are given in \cite[Sections~2.3--2.4]{suzuki}.
+
+\begin{example}[a zero of arbitrary multiplicity]\label{ex:multiple}
+Let $A(z)=z^m$ for an integer $m\ge1$. Then
+\[
+ E=A+iA'=z^{m-1}(z+im),\qquad
+ \Theta(z)=\frac{z-im}{z+im},\qquad
+ e_0(z)=i\sqrt{\frac m\pi}\frac1{z+im}.
+\]
+The space $K_\Theta$ is one-dimensional, and $e_0$ is a unit vector because
+$\int_{\mathbb R}(x^2+m^2)^{-1}dx=\pi/m$.
+Also $e_0(0)=1/\sqrt{\pi m}$ and $\Theta'(0)=-2i/m$.
+Thus $\|h\|_{K_\Theta}^2=\pi m|h(0)|^2$ on this space.
+The multiplicity enters the sampling measure.
+It is compatible with a single normalized basis vector at the distinct zero.
+\end{example}
+
+\begin{theorem}[explicit de Branges sampling realization]\label{thm:db}
+Assume that all zeros of $\xi$ lie on the critical line.
+Put $A(z)=\xi(1/2+iz)$, $E=A+iA'$, and $\Theta=E^\sharp/E$.
+Let $\Gamma$ be the distinct real zeros of $A$, with multiplicities $m_\gamma$.
+Then $E$ is Hermite--Biehler and
+\begin{equation}\label{eq:basis}
+ e_\gamma(z)=i\sqrt{\frac{m_\gamma}{\pi}}
+       \frac{A(z)}{(z-\gamma)E(z)},\qquad \gamma\in\Gamma,
+\end{equation}
+form an orthonormal basis of $K_\Theta$.
+For $f\in\mathscr A$, the series
+\begin{equation}\label{eq:db-map}
+ T f=\sum_{\gamma\in\Gamma}\sqrt{\pi m_\gamma}\,
+              h_f(\gamma)e_\gamma\quad\text{in }K_\Theta,
+ \qquad \mathcal L f=\pi^{-1/2}E\,Tf\quad\text{in }H(E)
+\end{equation}
+converges and satisfies
+\begin{equation}\label{eq:db-pairing}
+ \langle\mathcal L f,\mathcal L g\rangle_{H(E)}=q_W(f,g).
+\end{equation}
+For every $h\in K_\Theta$,
+\begin{equation}\label{eq:sampling-norm}
+ \|Eh\|_{H(E)}^2=\|h\|_{L^2}^2
+            =\pi\sum_{\gamma\in\Gamma}m_\gamma|h(\gamma)|^2.
+\end{equation}
+\end{theorem}
+\begin{proof}
+The even order-one Hadamard product of $A$ gives, with positive zeros grouped,
+\[
+ A(z)=A(0)\prod_{\gamma>0}(1-z^2/\gamma^2)^{m_\gamma},\qquad
+ L(z):=\frac{A'(z)}{A(z)}
+   =\sum_{\gamma>0}m_\gamma
+          \left(\frac1{z-\gamma}+\frac1{z+\gamma}\right).
+\]
+The grouped sum converges locally uniformly off the zeros because
+$\sum m_\gamma/(1+\gamma^2)<\infty$.
+The order and factorization are stated in \cite[Theorem~1 and proof, p.~9]{lagarias}.
+Evenness removes the linear exponential in the Hadamard product.
+There is no zero at the origin: $\zeta(1/2)\ne0$, as follows from
+the positive alternating eta series and $1-2^{1/2}<0$.
+For $\Im z>0$, each reciprocal has negative imaginary part.
+Thus $\Im L(z)<0$ and
+\[
+ |E(z)|^2-|E^\sharp(z)|^2=-4|A(z)|^2\Im L(z)>0.
+\]
+This proves the Hermite--Biehler condition.
+
+The boundary norm of $H^2$ uses $du$, so its kernel is
+$[2\pi i(\bar w-z)]^{-1}$.
+Orthogonal projection onto $K_\Theta$ therefore gives the model kernel
+\[
+ k_\Theta(w,z)=\frac{1-\overline{\Theta(w)}\Theta(z)}{2\pi i(\bar w-z)}.
+\]
+Since $\Theta=(1-iL)/(1+iL)$, direct algebra gives
+\begin{align*}
+ k_\Theta(w,z)
+ &=\frac{L(z)-\overline{L(w)}}{
+       \pi(\bar w-z)(1+iL(z))(1-i\overline{L(w)})}\\
+ &=\sum_{\gamma\in\Gamma}e_\gamma(z)\overline{e_\gamma(w)}.
+\end{align*}
+The difference of each pair of reciprocal terms cancels its linear denominator.
+The resulting series is absolutely locally convergent for $z,w\in\mathbb C_+$.
+
+Near $\gamma$, write $A(z)=(z-\gamma)^{m_\gamma}a(z)$ with $a(\gamma)\ne0$.
+Then
+\[
+ \frac{A(z)}{E(z)}=\frac{z-\gamma}{im_\gamma}+O((z-\gamma)^2),\qquad
+ \Theta'(\gamma)=-\frac{2i}{m_\gamma}.
+\]
+It follows that
+$e_\gamma(\gamma)=1/\sqrt{\pi m_\gamma}$ and
+$e_\gamma(\delta)=0$ for every distinct zero $\delta$.
+The kernel has the finite boundary limit
+$k_\Theta(\gamma,z)=e_\gamma(z)/\sqrt{\pi m_\gamma}$.
+These boundary evaluations are bounded: the kernels at $\gamma+iy$
+converge in norm, as the inner products of these kernels converge to their finite analytic limits.
+Consequently the $e_\gamma$ are normalized reproducing kernels and are orthonormal.
+
+For fixed $w\in\mathbb C_+$, the kernel expansion on its diagonal gives
+$\sum_\gamma|e_\gamma(w)|^2=k_\Theta(w,w)$.
+The orthogonal projection of $k_\Theta(w,\cdot)$ onto their closed span
+therefore has the full norm of that kernel.
+All reproducing kernels lie in the span, proving completeness.
+Parseval now gives \eqref{eq:sampling-norm}.
+The rapid strip decay of $h_f$ gives
+$\sum m_\gamma|h_f(\gamma)|^2<\infty$, so \eqref{eq:db-map} converges in norm.
+Its coefficients give
+$\langle Tf,Tg\rangle=\pi q_W(f,g)$.
+Multiplication by $E$ and division by $\sqrt\pi$ prove \eqref{eq:db-pairing}.
+\end{proof}
+
+The basis and its normalization also appear in
+\cite[Eq.~(3.5), Proposition~4.1]{suzuki}.
+The theorem assumes real zeros before constructing a positive realization.
+Conversely, if this $E$ is Hermite--Biehler, a nonreal zero of $A$ is impossible.
+At an upper-half-plane zero, $E=iA'$ and $E^\sharp=-iA'$ have equal absolute value.
+Real conjugation excludes lower-half-plane zeros as well.
+Thus this Hermite--Biehler condition contains the real-zero requirement.
+
+\begin{proposition}[sampling mass and spectral multiplicity]\label{prop:multiplicity}
+Under the hypotheses of Theorem~\ref{thm:db}, the diagonal operator
+\[
+ A_K\Bigl(\sum_\gamma a_\gamma e_\gamma\Bigr)
+       =\sum_\gamma\gamma a_\gamma e_\gamma,\qquad
+ D(A_K)=\left\{\sum_\gamma a_\gamma e_\gamma:
+                \sum_\gamma\gamma^2|a_\gamma|^2<\infty\right\}
+\]
+is self-adjoint and has simple eigenvalues at the distinct zeros $\gamma$.
+The sampling factor $m_\gamma$ does not change that multiplicity.
+\end{proposition}
+\begin{proof}
+The orthonormal basis identifies $A_K$ with real diagonal multiplication on $\ell^2(\Gamma)$.
+Its eigenspace at $\gamma$ is the one-dimensional span of $e_\gamma$.
+Thus its resolvent determinant has one zero at $1/2+i\gamma$.
+If $m_\gamma>1$, the full zero divisor requires additional eigendirections.
+An explicit enlargement is $\bigoplus_\gamma\mathbb C^{m_\gamma}$,
+with diagonal eigenvalue $\gamma$ on each summand.
+The sampling vector has equal coordinates $h_f(\gamma)$ within that summand.
+Its squared norm is $m_\gamma|h_f(\gamma)|^2$.
+The orthogonal complement of the equal-coordinate line has dimension $m_\gamma-1$.
+It contributes to the determinant while remaining orthogonal to every sampling vector.
+\end{proof}
+
+\begin{proposition}[the Gaussian domain obstruction]\label{prop:hardy}
+For every $\lambda>0$, $h_{f_\lambda}\notin H^2(\mathbb C_+)$.
+Consequently $E h_{f_\lambda}\notin H(E)$ for every Hermite--Biehler $E$.
+\end{proposition}
+\begin{proof}
+The Gaussian Fourier formula gives
+\[
+ \int_{\mathbb R}|h_{f_\lambda}(x+iy)|^2dx
+    =\pi\sqrt{\frac2\lambda}\,e^{y^2/(2\pi\lambda)}.
+\]
+This is unbounded as $y\to\infty$.
+Membership of $E h_{f_\lambda}$ in $H(E)$ would require its quotient by $E$ to belong to $H^2$.
+\end{proof}
+
+For $h\in K_\Theta$, the map $h\mapsto Eh$ transports the Lebesgue norm exactly.
+Transport of $B_\infty$ instead gives its weighted multiplier $w/(2\pi)$ on the domain
+$\int(1+|w|)|h|^2<\infty$.
+Equation~\eqref{eq:pairing} and Proposition~\ref{prop:sign} show why that signed form cannot equal a positive norm on all compact tests.
+
+\section{Canonical genus-one determinant}
+
+Let $H$ be a separable complex Hilbert space.
+Assume a specified self-adjoint operator $A$ has an orthonormal eigenbasis $(v_j)$,
+real eigenvalues $\lambda_j$, and finite multiplicities.
+Its domain is
+\[
+ D(A)=\left\{\sum_j a_jv_j:\sum_j\lambda_j^2|a_j|^2<\infty\right\}.
+\]
+Assume $\sum_j(1+\lambda_j^2)^{-1}<\infty$.
+Define $\Theta=\tfrac12 I+iA$ on $D(A)$, $\rho_j=\tfrac12+i\lambda_j$, and
+$T=\Theta^{-1}$.
+Then $T$ is bounded and Hilbert--Schmidt.
+For a Hilbert--Schmidt operator $K$, use
+$\det_2(I+K)=\det((I+K)e^{-K})$.
+The operator inside the last determinant differs from the identity by a trace-class operator.
+
+\begin{theorem}[product and regularized resolvent]\label{thm:det}
+The function
+\begin{equation}\label{eq:det}
+ D(s)=\det_2(I-sT)=\prod_j(1-s/\rho_j)e^{s/\rho_j}
+\end{equation}
+is entire, with its zeros exactly the $\rho_j$, counted with multiplicity.
+It satisfies $D(0)=1$, $D'(0)=0$, and, off the zero set,
+\begin{align}
+ \frac{D'(s)}{D(s)}
+   &=\operatorname{Tr}\bigl((sI-\Theta)^{-1}+\Theta^{-1}\bigr),\label{eq:resolvent}\\
+ \left(\frac{D'}D\right)'(s)
+   &=-\operatorname{Tr}\bigl((sI-\Theta)^{-2}\bigr).\label{eq:second}
+\end{align}
+The sum in \eqref{eq:resolvent} is trace class as one operator.
+\end{theorem}
+\begin{proof}
+Write $E_1(z)=(1-z)e^z$. For $|z|\le1/2$,
+$\log E_1(z)=-\sum_{k\ge2}z^k/k$ and $|\log E_1(z)|\le|z|^2$.
+On each compact set of $s$, the tails of \eqref{eq:det} therefore converge uniformly.
+Finite initial factors show the claimed divisor.
+Diagonalizing $(I-sT)e^{sT}$ identifies its Fredholm determinant with the product.
+At zero, every logarithmic linear term vanishes.
+Termwise logarithmic differentiation gives
+\[
+ \frac{D'}D=\sum_j\left(\frac1{s-\rho_j}+\frac1{\rho_j}\right),\qquad
+ \left(\frac{D'}D\right)'=-\sum_j\frac1{(s-\rho_j)^2}.
+\]
+Both series converge absolutely and locally uniformly off the divisor.
+Indeed their tails are bounded by constant multiples of $\sum_j|\rho_j|^{-2}$.
+The resolvent identity gives
+\[
+ (sI-\Theta)^{-1}+\Theta^{-1}
+      =s(sI-\Theta)^{-1}\Theta^{-1}.
+\]
+Both factors on the right are Hilbert--Schmidt, so their product is trace class.
+Taking traces in the eigenbasis proves the identities.
+\end{proof}
+
+\begin{proposition}[base-point normalization]\label{prop:basepoint}
+Suppose the multiset $(\rho_j)$ equals the zero divisor of $\xi$.
+Then
+\begin{equation}\label{eq:xi-det}
+ \xi(s)=\frac12e^{bs}\det_2(I-s\Theta^{-1}),\qquad
+ b=\log(2\sqrt\pi)-1-\frac\gamma2.
+\end{equation}
+More generally, for $s_0$ off the divisor,
+\begin{equation}\label{eq:basepoint}
+ \frac{\xi(s)}{\xi(s_0)}
+  =\exp\left((s-s_0)\frac{\xi'(s_0)}{\xi(s_0)}\right)
+       \det_2\left(I+(s-s_0)(s_0I-\Theta)^{-1}\right).
+\end{equation}
+\end{proposition}
+\begin{proof}
+The order-one Hadamard factorization of $\xi$ gives
+$\xi(s)=e^{a+bs}\prod_j E_1(s/\rho_j)$.
+See \cite[proof of Theorem~1, p.~9]{lagarias}.
+At zero, $e^a=\xi(0)$ and $b=\xi'(0)/\xi(0)$.
+The expansions
+\[
+ \Gamma(s/2)=2/s-\gamma+O(s),\qquad
+ \zeta(s)=-\frac12-\frac12\log(2\pi)s+O(s^2)
+\]
+give $\xi(0)=1/2$ and the displayed $b$.
+The zeta values are \cite[Eqs.~25.6.1, 25.6.11]{dlmf}.
+For the base-point formula, both logarithmic second derivatives equal
+$-\sum_j(s-\rho_j)^{-2}$.
+The ratio of the two sides is holomorphic and nonvanishing across their identical zeros.
+Its logarithmic derivative is constant on the connected complement of the divisor.
+The value and first logarithmic derivative at $s=s_0$ make that ratio one.
+\end{proof}
+
+The eigenvalue hypothesis in Proposition~\ref{prop:basepoint} is separate from the normalization.
+It supplies the full divisor before \eqref{eq:xi-det} is deduced.
+The two initial values fix the remaining exponential factor.
+The determinant formula does not construct an operator with the required eigenvalues.
+
+\begin{example}[spectral zeta and canonical normalization]
+On a one-dimensional space, let $\Theta=\rho I$ with $\rho\ne0$.
+On any domain with a chosen branch of $\log(s-\rho)$, the spectral zeta function is
+$Z(u;s)=(s-\rho)^{-u}$, so
+\[
+ e^{-\partial_u Z(0;s)}=s-\rho,
+ \qquad
+ \det_2(I-s\Theta^{-1})=(1-s/\rho)e^{s/\rho}.
+\]
+Their ratio is $-\rho e^{-s/\rho}$.
+The divisor alone does not identify these two normalizations.
+\end{example}
+
+A spectral zeta determinant requires a spectral cut, a domain for its powers,
+and meromorphic continuation regular at the differentiation point.
+For self-adjoint operators bounded below, \cite[Theorem~4.5, Eq.~(4.7)]{hartmann-lesch}
+states the additional analytic hypotheses and the exponential polynomial relating the determinants.
+The normal operator $\Theta=\tfrac12+iA$ requires its own such analysis.
+The canonical product in Theorem~\ref{thm:det} already gives
+\eqref{eq:xi-det} under the stated divisor hypothesis.
+
+\begin{thebibliography}{9}
+\bibitem{dlmf}
+NIST Digital Library of Mathematical Functions.
+\href{https://dlmf.nist.gov/5.7.E6}{Equation 5.7.6},
+\href{https://dlmf.nist.gov/5.9.E16}{Equation 5.9.16},
+\href{https://dlmf.nist.gov/5.11.E2}{Equation 5.11.2}, and
+\href{https://dlmf.nist.gov/5.5}{Section 5.5}.
+Zeta values: \href{https://dlmf.nist.gov/25.6.E1}{Equation 25.6.1} and
+\href{https://dlmf.nist.gov/25.6.E11}{Equation 25.6.11}.
+
+\bibitem{suzuki}
+M.~Suzuki, \emph{On the Hilbert space derived from the Weil distribution}.
+\href{https://arxiv.org/html/2301.00421v3}{arXiv:2301.00421v3}.
+Sections 2.3--2.4, equation (3.5), Proposition 4.1, and Theorem 1.1.
+
+\bibitem{hartmann-lesch}
+L.~Hartmann and M.~Lesch,
+\emph{Zeta and Fredholm determinants of self-adjoint operators}.
+\href{https://arxiv.org/html/2106.02444v2}{arXiv:2106.02444v2}.
+Theorems 4.3 and 4.5, equations (4.4)--(4.7).
+
+\bibitem{lagarias}
+J.~C.~Lagarias,
+\emph{Hilbert Spaces of Entire Functions and Dirichlet $L$-Functions}.
+In \emph{Frontiers in Number Theory, Physics and Geometry I},
+Springer, 2006, pp.~365--377.
+\href{https://websites.umich.edu/~lagarias/doc/debranges-houches.pdf}{Author's version},
+Section~2, pp.~2--4 and 7, and Theorem~1, p.~9.
+\end{thebibliography}
+\end{document}
