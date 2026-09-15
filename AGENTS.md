@@ -80,3 +80,25 @@ Template deployment belongs to its assigned owner and requires publication autho
 Complete the authorized task with evidence covering its full scope.
 Report changed paths, checks and results, remaining mathematical obligations, and exact downstream work requiring another owner.
 Do not start persistent goals or publish merely because a local task finishes.
+
+## Required research exposition review
+
+Before mathematical or physical writing, read
+`~/ecosystem/policies/research-exposition-ledger.md` and apply its numbered
+requirements to the complete target. This includes the preface, body,
+proofs, examples, appendices, captions, and metadata.
+
+Begin with the governing problem, prerequisites, and content to preserve.
+Use explicit attack–heal cycles: test truth and scope, then the whole
+composition, transitions, definitions, calculations, sentences, and words.
+Repair every justified finding and reread the changed material in context.
+Each new object must be motivated, defined before use, and needed at its
+point of introduction. Preserve physical context and substantive mathematics.
+Remove mannered prose and operational scaffolding. Inspect the final render.
+Record findings, dispositions, source hashes, and unresolved obligations
+outside all manuscript sources and reader archives. A pass count or a clean
+build does not establish convergence or mathematical correctness.
+
+Read the canonical ledger once per unchanged hash; do not substitute this
+short routing block for it. If it is unavailable, report that source gap
+and follow the available requirements without claiming full conformance.
