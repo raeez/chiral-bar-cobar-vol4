@@ -1,0 +1,1111 @@
+\documentclass[11pt]{article}
+\usepackage[localtheorems]{raeez-math-template}
+\usepackage{cleveref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{openproblem}[theorem]{Open problem}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\GammaR}{\Gamma_{\mathbb R}}
+\newcommand{\Adele}{\mathbb A_{\mathbb Q}}
+\newcommand{\vmLambda}{\Lambda_{\mathrm{vM}}}
+\newcommand{\psiGamma}{\psi_{\Gamma}}
+\newcommand{\one}{\mathbf 1}
+
+\title{Local Euler Factors and the Arithmetic-Chiral/Deninger Problem}
+\author{Raeez Lorgat}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The Euler factors of the Riemann zeta function have both adelic integral
+representations and elementary operator realizations.  The problem is to
+decide whether these scalar coincidences determine the chain-level and
+spectral objects required by an arithmetic cohomology theory.  We give the
+fully typed Tate--Mellin calculation and the normalized prime Toeplitz
+KMS state, and we state Deninger's determinant formula only under its
+spectral-zeta hypotheses.  Weil's complete explicit formula, with its
+polar and prime terms and the kernel
+\(\operatorname{Re}\psiGamma(1/4+it/2)-\log\pi\), supplies the exact positivity
+criterion for the Riemann Hypothesis.  A pair of augmented algebras with the
+same heat trace and different bar homology shows that these results do not
+construct arithmetic chiral homology.  Kim's classical arithmetic
+Chern--Simons functional survives under its finite-gauge and coefficient
+hypotheses; the chiral, continuous-quantum, and determinant comparisons
+remain open construction problems.
+\end{abstract}
+
+\section{The problem exposed by one Euler factor}
+
+For a prime \(p\), the same scalar function appears as a local Tate integral
+and as a heat trace:
+\[
+ \int_{\mathbb Q_p^\times}\one_{\mathbb Z_p}(x)|x|_p^s\,d^\times x
+ =\operatorname{Tr}_{\ell^2(\mathbb N_0)}(e^{-sN_p})
+ =\frac{1}{1-p^{-s}},
+ \qquad \operatorname{Re}s>0.
+\]
+This equality is useful, but it compares numbers rather than their carriers.
+The integral requires a test function, a quasi-character, and a Haar
+measure.  The trace requires a Hilbert space, a closed operator, and a
+trace-class half-plane.  Neither side supplies a multiplication or an
+augmentation, so neither side by itself has a bar construction.
+
+The distinction determines the organization of this paper.  We first fix
+all local and global Tate data and then construct the finite-place operator
+system.  A concrete two-algebra calculation identifies the exact information
+missing from a putative arithmetic-chiral bar.  After that separation,
+Deninger's determinant formalism and the Hilbert--P\'olya implication can be
+stated with their full conditional hypotheses, while Weil's criterion gives
+an unconditional analytic test for the Riemann Hypothesis.  The final
+section records the precise classical arithmetic Chern--Simons invariant and
+the additional data needed for any quantum or chiral comparison.
+
+Thus the established bridge in this paper is scalar and operator-theoretic.
+No arithmetic-chiral cohomology theory, global zero operator, or continuous
+arithmetic gauge theory is asserted to exist.
+
+\section{The scalar Tate calculation}
+
+\subsection{Characters, measures, and test functions}
+
+Let \(\Adele\) be the adele ring of \(\mathbb Q\).  For
+\(x_p\in\mathbb Q_p\), let \(\{x_p\}_p\in\mathbb Z[1/p]\cap[0,1)\) be the
+\(p\)-primary fractional part.  Fix the additive character
+\[
+ \psi((x_v)_v)
+ =\exp\!\left(2\pi i\left(x_\infty-\sum_p\{x_p\}_p\right)\right)
+ \quad\text{on }\Adele/\mathbb Q.
+\]
+Let \(dx_v\) be the self-dual additive Haar measure for \(\psi_v\).
+Then \(dx_\infty\) is Lebesgue measure and
+\(\operatorname{vol}_{dx_p}(\mathbb Z_p)=1\).  We use the multiplicative
+Haar measures
+\[
+ d^\times x_\infty=\frac{dx_\infty}{|x_\infty|},
+ \qquad
+ d^\times x_p=(1-p^{-1})^{-1}\frac{dx_p}{|x_p|_p},
+\]
+so that \(\operatorname{vol}_{d^\times x_p}(\mathbb Z_p^\times)=1\).
+
+Put
+\[
+ \phi_\infty(x)=e^{-\pi x^2},\qquad
+ \phi_p=\one_{\mathbb Z_p},\qquad
+ \phi=\phi_\infty\otimes\bigotimes_p\phi_p\in\mathcal S(\Adele).
+\]
+For \(s\in\mathbb C\), the local quasi-character is
+\(x\mapsto |x|_v^s\), and the local zeta integral is
+\[
+ Z_v(\phi_v,s)
+ =\int_{\mathbb Q_v^\times}\phi_v(x)|x|_v^s\,d^\times x.
+\]
+The function \(\phi_v\), the quasi-character, and the measure are three
+different inputs.
+
+\begin{proposition}[The local factors]
+\label{prop:local-tate}
+For \(\operatorname{Re}s>0\),
+\[
+ Z_p(\phi_p,s)=\frac{1}{1-p^{-s}},
+ \qquad
+ Z_\infty(\phi_\infty,s)
+ =\GammaR(s):=\pi^{-s/2}\Gamma(s/2).
+\]
+\end{proposition}
+
+\begin{proof}
+The disjoint decomposition
+\(\mathbb Q_p^\times=\coprod_{r\in\mathbb Z}p^r\mathbb Z_p^\times\)
+and multiplicative invariance give
+\[
+ Z_p(\phi_p,s)=\sum_{r\geq0}p^{-rs}.
+\]
+This series converges exactly in the stated half-plane.  At the real place,
+the substitution \(u=\pi x^2\) gives
+\[
+ \int_{\mathbb R}e^{-\pi x^2}|x|^{s-1}\,dx
+ =\pi^{-s/2}\int_0^\infty e^{-u}u^{s/2-1}\,du.
+\]
+The integral at both endpoints converges exactly when
+\(\operatorname{Re}s>0\).
+\end{proof}
+
+\begin{remark}[Why the measure is visible]
+With additive rather than multiplicative measure one obtains
+\[
+ \int_{\mathbb Z_p}|x|_p^{s-1}\,dx_p
+ =\frac{1-p^{-1}}{1-p^{-s}},
+ \qquad \operatorname{Re}s>0.
+\]
+The numerator disappears in Proposition~\ref{prop:local-tate} precisely
+because \(\mathbb Z_p^\times\) has multiplicative volume one.
+\end{remark}
+
+\subsection{The global integral}
+
+Let \(d^\times x=\prod_vd^\times x_v\) on \(\Adele^\times\), with the
+normalizations above, and put
+\[
+ |x|_{\Adele}=|x_\infty|\prod_p|x_p|_p
+ \qquad (x\in\Adele^\times).
+\]
+Define
+\[
+ Z(\phi,s)=\int_{\Adele^\times}\phi(x)|x|_{\Adele}^{s}\,d^\times x.
+\]
+
+\begin{theorem}[Tate's scalar identity]
+\label{thm:tate}
+For \(\operatorname{Re}s>1\), the global integral is absolutely convergent
+and
+\[
+ Z(\phi,s)=\GammaR(s)\prod_p(1-p^{-s})^{-1}
+ =\GammaR(s)\zeta(s)=:\Lambda(s).
+\]
+It has a meromorphic continuation to \(\mathbb C\), with simple poles at
+\(0\) and \(1\), and satisfies
+\[
+ \Lambda(s)=\Lambda(1-s).
+\]
+Consequently
+\[
+ \xi_{\mathbb R}(s)=\frac12s(s-1)\Lambda(s)
+\]
+is entire and obeys \(\xi_{\mathbb R}(s)=\xi_{\mathbb R}(1-s)\).
+\end{theorem}
+
+\begin{proof}
+Absolute convergence in \(\operatorname{Re}s>1\) permits factorization of
+the restricted product integral.  Proposition~\ref{prop:local-tate} then
+gives the displayed Euler product.  Fix the Fourier transform
+\[
+ \widehat F(y)=\int_{\Adele}F(x)\overline{\psi(xy)}\,dx,
+ \qquad dx=\prod_vdx_v.
+\]
+With the chosen character and self-dual measures, the Fourier transform of
+\(\phi\) is \(\phi\): this is the ordinary Gaussian
+identity at infinity and the conductor-\(\mathbb Z_p\) identity
+\(\widehat{\one_{\mathbb Z_p}}=\one_{\mathbb Z_p}\) at every finite place.
+Tate's global zeta-integral theorem gives meromorphic continuation and
+\(Z(\phi,s)=Z(\widehat\phi,1-s)\), hence the functional equation
+\cite[Chapter~II, \S\S2.2--2.6 and Chapter~IV, \S4.4]{Tate1950}.
+Multiplication by \(s(s-1)/2\) removes the two poles.
+\end{proof}
+
+\begin{remark}
+The continuation in Theorem~\ref{thm:tate} is a continuation of a scalar
+zeta integral.  It does not continue a heat operator as a trace-class
+operator and does not define a bar or chiral character.
+\end{remark}
+
+\section{The finite-place equilibrium system}
+
+Fix a prime \(p\).  Let \(\mathscr H_p=\ell^2(\mathbb N_0)\) with
+orthonormal basis \((e_{p,r})_{r\geq0}\), and set
+\[
+ S_pe_{p,r}=e_{p,r+1},\qquad \mathcal T_p=C^*(S_p)
+ \subset\mathcal B(\mathscr H_p).
+\]
+Thus \(S_p^*S_p=1\) but \(S_pS_p^*\ne1\).  Define the positive operator
+\[
+ N_pe_{p,r}=r\log p\,e_{p,r}
+\]
+on its maximal domain
+\[
+ \mathcal D(N_p)=
+ \left\{\sum_{r\geq0}a_re_{p,r}:
+ \sum_{r\geq0}r^2(\log p)^2|a_r|^2<\infty\right\}.
+\]
+This diagonal operator is self-adjoint, and the finite linear span of the
+basis is a core.
+
+\begin{proposition}[Prime heat trace and Toeplitz KMS state]
+\label{prop:prime-kms}
+The unitaries \(U_{p,t}=e^{itN_p}\) define a strongly continuous dynamics
+\[
+ \alpha_{p,t}(a)=U_{p,t}aU_{p,t}^*,\qquad
+ \alpha_{p,t}(S_p)=p^{it}S_p
+\]
+on \(\mathcal T_p\).  For \(s\in\mathbb C\),
+\(e^{-sN_p}\) is trace class exactly when \(\operatorname{Re}s>0\), and
+then
+\[
+ \operatorname{Tr}_{\mathscr H_p}(e^{-sN_p})=(1-p^{-s})^{-1}.
+\]
+For every real \(\beta>0\), \((\mathcal T_p,\alpha_p)\) has the unique
+KMS\(_\beta\) state
+\[
+ \varphi_{\beta,p}(a)
+ =(1-p^{-\beta})
+ \operatorname{Tr}_{\mathscr H_p}(e^{-\beta N_p}a).
+\]
+On the dense analytic star algebra
+\(\mathcal P_p=\operatorname{span}\{S_p^mS_p^{*n}:m,n\geq0\}\),
+\[
+ \varphi_{\beta,p}(S_p^mS_p^{*n})
+ =\delta_{m,n}p^{-\beta m}.
+\]
+\end{proposition}
+
+\begin{proof}
+The formula for the dynamics follows on the basis vectors and extends by
+norm density from \(\mathcal P_p\).  The singular values of
+\(e^{-sN_p}\) are \(p^{-r\operatorname{Re}s}\), so their sum is finite
+exactly when \(\operatorname{Re}s>0\); summing the diagonal entries gives
+the trace formula.
+
+For \(q=p^{-\beta}\), the operator
+\((1-q)e^{-\beta N_p}\) is positive and has trace one.  Every monomial in
+\(\mathcal P_p\) is entire analytic, and
+\[
+ e^{-\beta N_p}a=\alpha_{p,i\beta}(a)e^{-\beta N_p}.
+\]
+Cyclicity of the trace gives
+\(\varphi_{\beta,p}(ab)=
+\varphi_{\beta,p}(b\alpha_{p,i\beta}(a))\), the KMS identity in this
+convention.  Direct evaluation gives the monomial formula.
+
+Conversely, every KMS state is invariant under \(\alpha_p\), so a monomial
+of nonzero frequency has expectation zero.  For the remaining monomials,
+the KMS identity gives
+\[
+ \varphi(S_p^mS_p^{*m})
+ =p^{-\beta m}\varphi(S_p^{*m}S_p^m)=p^{-\beta m}.
+\]
+Density of \(\mathcal P_p\) proves uniqueness.  These formulas agree with
+the prime system of Bost and Connes
+\cite[\S2, Propositions~7--8]{BostConnes1995}.
+\end{proof}
+
+\begin{remark}[Heat flow is not observable dynamics]
+For \(t>0\), the assignment \(S_p\mapsto p^{-t}S_p\) cannot be a unital
+star-homomorphism because
+\[
+ (p^{-t}S_p)^*(p^{-t}S_p)=p^{-2t}1\ne1.
+\]
+The observable evolution is the automorphism group
+\(S_p\mapsto p^{it}S_p\).  The unnormalized partition trace is not a
+state, since its value at the identity is \((1-p^{-\beta})^{-1}\).
+\end{remark}
+
+\subsection{The prime tensor subsystem and the full system}
+
+For a finite set \(F\) of primes, put
+\[
+ \mathcal T_F=\bigotimes_{p\in F}^{\min}\mathcal T_p,
+ \qquad
+ \mathcal T_{\mathrm{fin}}=\varinjlim_F\mathcal T_F,
+\]
+where the transition maps are \(a\mapsto a\otimes1\), and use the product
+dynamics.  Relative to the vacuum vectors \(e_{p,0}\), unique
+factorization gives
+\[
+ \bigotimes_p^{e_{p,0}}\mathscr H_p\simeq\ell^2(\mathbb N^\times).
+\]
+The compatible tensor-product representations define
+\[
+ \pi_{\mathrm{fin}}:\mathcal T_{\mathrm{fin}}
+ \longrightarrow\mathcal B(\ell^2(\mathbb N^\times)),
+ \qquad \pi_{\mathrm{fin}}(S_p)e_n=e_{pn}.
+\]
+On the latter space define
+\[
+ He_n=(\log n)e_n,\qquad
+ \mathcal D(H)=
+ \left\{\sum_{n\geq1}a_ne_n:
+ \sum_{n\geq1}(\log n)^2|a_n|^2<\infty\right\}.
+\]
+
+\begin{proposition}[The noninteracting prime subsystem]
+\label{prop:prime-product}
+For every \(\beta>0\), \((\mathcal T_{\mathrm{fin}},\alpha)\) has one
+KMS\(_\beta\) state \(\Phi_\beta\), characterized by
+\[
+ \Phi_\beta|_{\mathcal T_F}
+ =\bigotimes_{p\in F}\varphi_{\beta,p}.
+\]
+The operator \(H\) is positive and self-adjoint on the displayed domain and
+implements the dynamics in the precise sense
+\[
+ \pi_{\mathrm{fin}}(\alpha_t(a))
+ =e^{itH}\pi_{\mathrm{fin}}(a)e^{-itH}
+ \qquad(a\in\mathcal T_{\mathrm{fin}}).
+\]
+It satisfies
+\[
+ e^{-sH}\text{ is trace class}
+ \quad\Longleftrightarrow\quad \operatorname{Re}s>1.
+\]
+In that half-plane,
+\[
+ \operatorname{Tr}(e^{-sH})=\sum_{n\geq1}n^{-s}=\zeta(s).
+\]
+For \(\beta>1\), but not for \(0<\beta\leq1\), the product state is the
+normal Gibbs state
+\[
+ \Phi_\beta(a)=\zeta(\beta)^{-1}
+ \operatorname{Tr}(\pi_{\mathrm{fin}}(a)e^{-\beta H}).
+\]
+\end{proposition}
+
+\begin{proof}
+On a finite tensor product, invariance kills every monomial except those
+with zero total frequency.  Unique factorization of integers makes zero
+total frequency equivalent to zero frequency at every prime.  Repeated use
+of the KMS identity then forces the product of the local values in
+Proposition~\ref{prop:prime-kms}.  This proves existence and uniqueness at
+each finite stage and hence on the inductive limit.
+
+Under the displayed unitary, the sum of the local energies is \(\log n\).
+The maximal diagonal domain is therefore \(\mathcal D(H)\), and the
+singular values of \(e^{-sH}\) are \(n^{-\operatorname{Re}s}\).  Their
+sum is finite exactly for \(\operatorname{Re}s>1\).  Normalizing by this
+sum gives the Gibbs formula in that half-plane.  Below it, the abstract
+product KMS state still exists, but no trace-class density
+\(e^{-\beta H}\) exists in this representation.
+\end{proof}
+
+The full Bost--Connes algebra \(\mathcal A_{\mathrm{BC}}\) is the universal
+unital \(C^*\)-algebra generated by isometries \(\mu_n\), \(n\geq1\), and
+unitaries \(e(r)\), \(r\in\mathbb Q/\mathbb Z\), subject to
+\[
+\begin{gathered}
+ \mu_n^*\mu_n=1,\qquad \mu_n\mu_m=\mu_{nm},\qquad
+ \mu_n\mu_m^*=\mu_m^*\mu_n\quad ((n,m)=1),\\
+ e(0)=1,\qquad e(r)^*=e(-r),\qquad e(r)e(s)=e(r+s),\\
+ e(r)\mu_n=\mu_ne(nr),\qquad
+ \mu_ne(r)\mu_n^*=\frac1n\sum_{n\delta=r}e(\delta).
+\end{gathered}
+\]
+Thus the \(e(r)\) generate the phase algebra
+\(C^*(\mathbb Q/\mathbb Z)\).  Its dynamics is
+\[
+ \sigma_t(\mu_n)=n^{it}\mu_n,
+ \qquad \sigma_t(e(r))=e(r).
+\]
+The subalgebra generated by the \(\mu_p\) is
+\(\mathcal T_{\mathrm{fin}}\), not the whole system.
+
+\begin{theorem}[Bost--Connes equilibrium classification]
+\label{thm:bc}
+The full system has a unique KMS\(_\beta\) state for
+\(0<\beta\leq1\).  For \(\beta>1\), its KMS states form a simplex whose
+extreme points are indexed by
+\(\operatorname{Gal}(\mathbb Q^{\mathrm{cycl}}/\mathbb Q)\).  If
+\(\pi_\gamma\) is the corresponding extremal representation on
+\(\ell^2(\mathbb N^\times)\), it is given on generators by
+\[
+ \pi_\gamma(\mu_m)e_n=e_{mn},\qquad
+ \pi_\gamma(e(r))e_n=\gamma(e^{2\pi i nr})e_n.
+\]
+Then
+\[
+ \Phi_{\beta,\gamma}(a)=\zeta(\beta)^{-1}
+ \operatorname{Tr}(\pi_\gamma(a)e^{-\beta H}),
+ \qquad \beta>1.
+\]
+All these states have the same restriction \(\Phi_\beta\) to
+\(\mathcal T_{\mathrm{fin}}\).
+\end{theorem}
+
+\begin{proof}
+This is the equilibrium classification of Bost and Connes
+\cite[Propositions~18, 21, 23--25 and \S7]{BostConnes1995}.  The displayed
+normalization is forced by
+\(\operatorname{Tr}(e^{-\beta H})=\zeta(\beta)\), which is finite exactly
+for \(\beta>1\).  The representations differ only on the phase algebra,
+so their restrictions to the prime Toeplitz subsystem coincide.
+\end{proof}
+
+The phase transition in Theorem~\ref{thm:bc} is therefore not a property
+of a single Euler factor.  Nor does the meromorphic continuation of
+\(\zeta(s)\) extend the trace-class range in
+Proposition~\ref{prop:prime-product}.
+
+\section{What a chain-level bridge would require}
+
+A two-sided bar is attached to an algebra and modules, not to a vector
+space.  Let \((\mathcal C,\widehat\otimes,\one)\) be a stable, closed,
+\(\mathbb C\)-linear symmetric monoidal category with a dg model.  Assume
+that it admits geometric realizations and filtered colimits and that
+tensoring preserves them separately in each variable.  For an
+\(E_1\)-algebra \(A\), a right \(A\)-module \(M\), and a left
+\(A\)-module \(N\), the simplicial two-sided bar has
+\[
+ \operatorname{Bar}_A(M,N)_n
+ =M\widehat\otimes A^{\widehat\otimes n}\widehat\otimes N.
+\]
+Its faces use the multiplication and module actions, while its degeneracies
+use the unit.  Its realization computes \(M\widehat\otimes_A N\) under the
+stated hypotheses
+\cite[Construction~4.4.2.7 and Theorem~4.4.2.8]{LurieHA}.  An augmentation
+\(\epsilon:A\to\one\) makes \(\one\) into both boundary modules and hence
+defines the reduced bar \(B(A)=\operatorname{Bar}_A(\one,\one)\).
+
+\begin{proposition}[One heat trace, inequivalent bars]
+\label{prop:two-bars}
+Fix \(p\) and let
+\(V_p=\bigoplus_{r\geq0}\mathbb C e_r\), with
+\(N_pe_r=r\log p\,e_r\).  The same pointed graded vector space carries the
+two augmented associative algebra structures
+\[
+ A_p^{\mathrm{pol}}=\mathbb C[u],\quad e_r=u^r,
+ \qquad
+ A_p^{\mathrm{sq}}=\mathbb C\oplus I,\quad
+ I=\bigoplus_{r\geq1}\mathbb C e_r,\quad I^2=0,
+\]
+with unit \(e_0\) and augmentation \(e_0\mapsto1\),
+\(e_r\mapsto0\) for \(r>0\).  In both cases \(N_p\) is a derivation, and
+on the common Hilbert completion both algebras give the heat trace
+\[
+ \operatorname{Tr}(e^{-sN_p})=(1-p^{-s})^{-1},
+ \qquad \operatorname{Re}s>0.
+\]
+Nevertheless, their reduced bars are not quasi-isomorphic.  For the
+augmentation module \(\mathbb C\),
+\[
+ \operatorname{Tor}^{A_p^{\mathrm{pol}}}_n(\mathbb C,\mathbb C)
+ =\begin{cases}
+   \mathbb C,&n=0,\\
+   \mathbb C\eta_p,&n=1,\\
+   0,&n\geq2,
+  \end{cases}
+ \qquad
+ \operatorname{Tor}^{A_p^{\mathrm{sq}}}_n(\mathbb C,\mathbb C)
+ =I^{\otimes n}\quad(n\geq0).
+\]
+Thus the energy spectrum and its trace do not select an \(E_1\)-algebra or
+a bar construction.
+\end{proposition}
+
+\begin{proof}
+The two-term Koszul resolution of \(\mathbb C\) over \(\mathbb C[u]\)
+gives the first calculation.  In the normalized bar of
+\(\mathbb C\oplus I\), every multiplication face on the augmentation ideal
+vanishes because \(I^2=0\), so the reduced bar differential is zero and its
+degree-\(n\) term is \(I^{\otimes n}\).  The derivation identity is immediate
+for the polynomial product and is still valid when two positive-degree
+elements have zero product.  The heat trace depends only on the common
+diagonal operator.
+\end{proof}
+
+\begin{remark}
+The Toeplitz algebra does not remove this ambiguity.  It has no augmentation
+sending \(S_p\) to zero, since \(S_p^*S_p=1\).  Every character sends
+\(S_p\) to a scalar of modulus one, and no such character is invariant under
+\(S_p\mapsto p^{it}S_p\).  A Toeplitz bar therefore requires explicitly
+chosen boundary modules; it cannot silently inherit the polynomial
+augmentation.
+\end{remark}
+
+\begin{openproblem}[Arithmetic-chiral realization]
+\label{problem:bar}
+Construct a nontrivial system with all of the following data and
+compatibilities.
+
+\begin{enumerate}
+\item Fix one category
+\((\mathcal C,\widehat\otimes,\one)\) as above, including the completion
+functor or tensor topology.  For every place \(v\), give an augmented
+\(E_1\)-algebra \((A_v,\eta_v,\epsilon_v)\), or give explicit right and
+left boundary modules when no augmentation is intended.  At infinity,
+also give the realization functor from the chosen chiral or factorization
+algebra to \(\mathcal C\).
+
+\item Construct each local bar through simplicial length three, with its
+grading and signs.  For a finite set \(S\) of places containing infinity,
+form the declared completed tensor product \(B_S\) of the local bars.
+
+\item Give a coaugmented conilpotent dg coalgebra
+\[
+ P_S\in\operatorname{CoAlg}_{\mathrm{conil}}(\mathcal C),
+ \qquad \eta_{P_S}:\one\longrightarrow P_S,
+\]
+set
+\(E_S=\underline{\operatorname{End}}_{\mathcal C}(B_S)\), and construct a
+continuous degree-one map
+\[
+ \tau_S:P_S\longrightarrow E_S.
+\]
+Require the normalization \(\tau_S\circ\eta_{P_S}=0\).  Equip these
+objects with complete separated descending filtrations for which the
+differentials, coproduct, composition, and action on \(B_S\) are continuous.
+Require the resulting twisting summand \(T_{\tau_S}\) either to be locally
+nilpotent before completion or to satisfy
+\(T_{\tau_S}(F^r)\subseteq F^{r+1}\), so that every iterated expression in
+the completed tensor product converges.
+For homogeneous maps use the declared convolution product and Hom
+differential
+\[
+ (f\star g)(c)=
+ \sum(-1)^{|g||c_{(1)}|}f(c_{(1)})g(c_{(2)}),
+ \qquad
+ d_{\mathrm{Hom}}f=d_Ef-(-1)^{|f|}f d_P.
+\]
+Prove the Maurer--Cartan equation
+\[
+ d_{\mathrm{Hom}}\tau_S+\tau_S\star\tau_S=0,
+\]
+write the induced twisted differential on
+\(P_S\widehat\otimes B_S\) with all Koszul signs, and verify its square
+directly.
+
+\item If \(\tau_S\) is to come from tame symbols, construct its
+chain-level factorization through a specified residue-unit group algebra
+and an action of that algebra on \(B_S\).  A multiplicative reciprocity
+identity alone is not a Maurer--Cartan proof.
+
+\item For every inclusion \(S\subset T\), construct a chain map
+\[
+ j_{S,T}:(P_S\widehat\otimes B_S,D_{\tau_S})
+ \longrightarrow(P_T\widehat\otimes B_T,D_{\tau_T})
+\]
+with strict or specified homotopy-coherent composition.  Prove that it
+intertwines the twisting operators.  Only then form the filtered colimit
+and its cohomology.  Any claimed concentration in degrees \(0,1,2\) must
+be proved; three untwisted polynomial prime factors already have the
+nonzero class \(\eta_p\wedge\eta_q\wedge\eta_r\) in degree three.
+
+\item Relate a finite-place algebra to the Toeplitz carrier by an actual
+representation on the dense space \(\bigoplus_{r\geq0}\mathbb C e_{p,r}\)
+and an Euler derivation \(E_p\) satisfying
+\[
+ [N_p,\pi_p(a)]=\pi_p(E_pa)
+\]
+on a common invariant domain.  Equality of scalar traces is not this
+comparison map.
+\end{enumerate}
+
+No system with the stated arithmetic, archimedean-chiral, tame-symbol, and
+transition properties is constructed here.  Until one is constructed, its
+colimit and cohomology are specifications rather than arithmetic-chiral
+invariants.
+\end{openproblem}
+
+\section{Deninger's determinant package}
+
+The global determinant formula is conditional on a cohomology theory and
+an operator with strong analytic properties.  We first fix the determinant
+normalization used in that condition.
+
+\begin{definition}[Zeta-regularized determinant]
+\label{def:det}
+Let \(V=\bigoplus_\alpha V_\alpha\) be a countable algebraic direct sum of
+finite-dimensional \(T\)-invariant complex vector spaces.  Eigenvalues are
+counted with algebraic multiplicity.  Use
+\[
+ \lambda^{-z}=\exp\!\bigl(-z(\log|\lambda|+i\arg\lambda)\bigr),
+ \qquad -\pi<\arg\lambda\leq\pi.
+\]
+If \(0\) is an eigenvalue, set \(\det_\infty(T\mid V)=0\).  Otherwise
+suppose
+\[
+ \zeta_T(z)=\sum_{\lambda\in\operatorname{Spec}_{\mathrm{alg}}T}
+ m_T(\lambda)\lambda^{-z}
+\]
+converges in a right half-plane, extends meromorphically to
+\(\operatorname{Re}z>-\varepsilon\) for some \(\varepsilon>0\), and is
+holomorphic at zero.  Then
+\[
+ \det_\infty(T\mid V)=\exp(-\zeta_T'(0)).
+\]
+For a real space, this definition is applied after complexification.
+\end{definition}
+
+For \(c>0\), compatible branches give
+\[
+ \det_\infty(cT)=c^{\zeta_T(0)}\det_\infty(T).
+\]
+Thus a factor such as \(2\pi\) has a scale anomaly and cannot be suppressed
+without computing \(\zeta_T(0)\).
+
+\begin{theorem}[Conditional Deninger determinant formula]
+\label{thm:deninger}
+Assume that real vector spaces \(H^i\), concentrated in degrees
+\(i=0,1,2\), and endomorphisms \(\Theta_i\) are given, and that each
+complexification is a countable algebraic direct sum of finite-dimensional
+\(\Theta_i\)-invariant subspaces as in Definition~\ref{def:det}.  For
+\(s\notin\operatorname{Spec}_{\mathrm{alg}}(\Theta_i)\), apply
+Definition~\ref{def:det} to the pencil
+\[
+ D_i(s)=\det_\infty\left(
+ \frac{s-\Theta_i}{2\pi}\,\middle|\,H^i\right).
+\]
+Assume that each locally defined determinant is the restriction of a
+single-valued meromorphic function \(D_i\) on \(\mathbb C\), with the zero
+value of Definition~\ref{def:det} at spectral parameters, and that
+\[
+ (H^0,\Theta_0)=(\mathbb R,0),
+ \qquad (H^2,\Theta_2)=(\mathbb R,1),
+\]
+and that Deninger's cohomological identity holds in his normalization:
+\[
+ \widehat\zeta_D(s)=\frac{D_1(s)}{D_0(s)D_2(s)},
+ \qquad \widehat\zeta_D(s)=2^{-1/2}\Lambda(s).
+\]
+Then
+\[
+ D_0(s)=\frac{s}{2\pi},\qquad
+ D_2(s)=\frac{s-1}{2\pi},
+\]
+and
+\[
+ \Lambda(s)=\sqrt2\,\frac{D_1(s)}{D_0(s)D_2(s)},
+ \qquad
+ \xi_{\mathbb R}(s)=2\sqrt2\,\pi^2D_1(s).
+\]
+\end{theorem}
+
+\begin{proof}
+The determinants in degrees zero and two are ordinary one-dimensional
+determinants.  Substitution into the assumed alternating determinant formula
+gives
+\[
+ D_1(s)=2^{-1/2}\Lambda(s)\frac{s(s-1)}{4\pi^2}
+ =\frac{\xi_{\mathbb R}(s)}{2\sqrt2\,\pi^2}.
+\]
+This is exactly Deninger's convention
+\cite[\S3, equation~(3)]{Deninger1998}.
+\end{proof}
+
+The theorem is an implication from the displayed package.  It does not
+construct \(H^1\), \(\Theta_1\), or their determinant.  In particular,
+\(\det_\infty(\Theta_1)\) is a scalar, whereas
+\(\xi_{\mathbb R}(s)\) is a function; the parameter belongs in the pencil
+\((s-\Theta_1)/(2\pi)\).
+
+\begin{corollary}[Conditional Hilbert--P\'olya consequence]
+\label{cor:hp}
+In addition to Theorem~\ref{thm:deninger}, suppose \(H^1_{\mathbb C}\) has a
+Hilbert completion \(\mathscr H^1\) on which \(\Theta_1\) has a densely
+defined closed extension with compact resolvent.  Assume, with algebraic
+multiplicities, the exact multiset equality
+\[
+ \operatorname{Spec}(\Theta_1)
+ =\{\rho:\xi_{\mathbb R}(\rho)=0\},
+ \qquad
+ m_{\mathrm{alg}}(\rho,\Theta_1)
+ =\operatorname{ord}_{s=\rho}\xi_{\mathbb R}(s),
+\]
+and assume that there is no additional point, continuous, or residual
+spectrum.  Then
+\[
+ \operatorname{Spec}(\Theta_1)\subset\tfrac12+i\mathbb R
+\]
+is equivalent to the Riemann Hypothesis.
+
+If, for a positive-definite Hilbert inner product,
+\[
+ \mathcal D(\Theta_1^*)=\mathcal D(\Theta_1),
+ \qquad \Theta_1^*=1-\Theta_1,
+\]
+then \(H_{\mathrm{HP}}=-i(\Theta_1-\tfrac12)\) is self-adjoint.  Under the
+same exact spectral comparison, this adjoint identity implies the Riemann
+Hypothesis.
+\end{corollary}
+
+\begin{proof}
+The first equivalence is the stated equality of multisets rewritten in
+spectral language.  For the last assertion, put
+\(A=\Theta_1-\tfrac12\).  The domain equality and adjoint identity say
+\(A^*=-A\), so \(-iA\) is self-adjoint and
+\(\operatorname{Spec}(A)\subset i\mathbb R\).
+\end{proof}
+
+For an unbounded operator, an adjoint formula merely checked on a common
+core proves only skew-symmetry unless essential skew-adjointness is also
+shown.  Likewise a nondegenerate indefinite pairing gives spectral symmetry,
+not critical-line confinement.  In multiplicative language the eigenvalues
+of \(e^{\Theta_1}\), not of \(\Theta_1\), would have modulus
+\(e^{1/2}\) under the conclusion of Corollary~\ref{cor:hp}.
+
+\section{Weil's full criterion}
+
+\begin{definition}[Weil test class]
+\label{def:weil-class}
+Let \(\mathcal W\) consist of complex-valued functions
+\(f:\mathbb R\to\mathbb C\) which are continuously differentiable away
+from finitely many points, have finite one-sided limits there for both
+\(f\) and \(f'\), and satisfy the convention
+\[
+ f(a)=\tfrac12\bigl(f(a+)+f(a-)\bigr)
+\]
+at every exceptional point \(a\).  Suppose also that, for some \(b>0\),
+\[
+ f(u),f'(u)=O(e^{-(1/2+b)|u|}).
+\]
+For \(f\in\mathcal W\), set
+\[
+ \widetilde f(u)=\overline{f(-u)},\qquad g=f*\widetilde f,
+\]
+and fix the Fourier convention
+\[
+ h(t)=\widehat g(t)=\int_{\mathbb R}g(u)e^{itu}\,du,
+ \qquad
+ g(u)=\frac1{2\pi}\int_{\mathbb R}h(t)e^{-itu}\,dt.
+\]
+\end{definition}
+
+For every \(0<b'<b\), the convolution \(g\) satisfies the same conditions
+with \(b'\) in place of \(b\).  Piecewise integration by parts, uniformly
+for \(|\eta|\leq\tfrac12\), gives
+\[
+ \widehat f(t+i\eta)=O((1+|t|)^{-1}).
+\]
+The Fourier transform extends to the strip needed below, and
+\[
+ h(z)=\widehat f(z)\overline{\widehat f(\overline z)},
+ \qquad h(t)=|\widehat f(t)|^2\quad(t\in\mathbb R).
+\]
+Equivalently, for the centered Mellin transform
+\[
+ \Phi_f(s)=\int_{\mathbb R}f(u)e^{(s-1/2)u}\,du,
+\]
+one has
+\[
+ h\!\left(-i(s-\tfrac12)\right)
+ =\Phi_f(s)\overline{\Phi_f(1-\overline s)}.
+\]
+
+\begin{theorem}[Weil explicit formula and positivity criterion]
+\label{thm:weil}
+Let \(f\in\mathcal W\), \(g=f*\widetilde f\), and
+\(h=\widehat g\).  Write a nontrivial zero as
+\(\rho=\beta_\rho+i\gamma_\rho\), with multiplicity \(m(\rho)\), and set
+\[
+ \sum_\rho^{*}h\!\left(-i(\rho-\tfrac12)\right)
+ :=\lim_{\substack{T\to\infty\\
+                    T\notin\{|\gamma_\rho|\}}}
+ \sum_{|\gamma_\rho|<T}m(\rho)
+ h\!\left(-i(\rho-\tfrac12)\right).
+\]
+This limit is in fact absolute for the stated convolution-square class.
+Then
+\[
+\begin{aligned}
+ \sum_\rho^{*}h\!\left(-i(\rho-\tfrac12)\right)
+ ={}&h(i/2)+h(-i/2)\\
+ &+\frac1{2\pi}\int_{\mathbb R}h(t)
+ \left[\operatorname{Re}\psiGamma\!\left(\frac14+\frac{it}{2}\right)
+ -\log\pi\right]dt\\
+ &-\sum_{n\geq2}\frac{\vmLambda(n)}{\sqrt n}
+ \bigl(g(\log n)+g(-\log n)\bigr),
+\end{aligned}
+\]
+where \(\psiGamma=\Gamma'/\Gamma\) is the digamma function and
+\(\vmLambda\) is the von Mangoldt function.  The Riemann Hypothesis
+holds if and only if this full common value is nonnegative for every
+\(f\in\mathcal W\).
+\end{theorem}
+
+\begin{proof}
+Moving the logarithmic-derivative contour across the two poles of
+\(\Lambda(s)\) gives \(h(i/2)+h(-i/2)\).  Fourier inversion applied to
+\[
+ -\frac{\zeta'}{\zeta}(s)
+ =\sum_{n\geq2}\frac{\vmLambda(n)}{n^s}
+\]
+gives the two prime-power terms.  Finally,
+\[
+ \frac{\GammaR'}{\GammaR}(s)
+ =-\frac12\log\pi+\frac12\psiGamma(s/2),
+\]
+so the two sides of the critical line give the kernel
+\[
+ 2\operatorname{Re}\frac{\GammaR'}{\GammaR}
+ \left(\frac12+it\right)
+ =\operatorname{Re}\psiGamma\!\left(\frac14+\frac{it}{2}\right)-\log\pi.
+\]
+The decay in Definition~\ref{def:weil-class} justifies the contour passage,
+the prime sum, and the archimedean integral.  The estimate preceding the
+theorem gives
+\(h(-i(\rho-\tfrac12))=O((1+|\gamma_\rho|)^{-2})\); together with
+the standard bound \(N(T)=O(T\log T)\), it also proves the asserted absolute
+convergence.  This is Weil's formula~(11)
+in the present Fourier normalization
+\cite[pp.~259--260, formula~(11)]{Weil1952}.
+
+If the Riemann Hypothesis holds, write
+\(\rho=\tfrac12+i\gamma\); every zero contributes
+\(h(\gamma)=|\widehat f(\gamma)|^2\geq0\).  Conversely, Weil's
+Gaussian-polynomial construction associated with an off-line zero produces
+an \(f\in\mathcal W\) for which the zero-side sum is negative
+\cite[pp.~260--261, lemma following formula~(11)]{Weil1952}.
+\end{proof}
+
+When \(g\) is real and even, the last line of the formula becomes
+\[
+ -2\sum_p\sum_{m\geq1}\frac{\log p}{p^{m/2}}g(m\log p).
+\]
+Both the polar terms and this prime sum are essential to the criterion.
+
+\begin{proposition}[The gamma term is not positive by itself]
+\label{prop:gamma-negative}
+Set
+\[
+ k(t)=\operatorname{Re}\psiGamma\!\left(\frac14+\frac{it}{2}\right)-\log\pi.
+\]
+There are functions \(f\in C_c^\infty(\mathbb R)\subset\mathcal W\) for
+which
+\[
+ \frac1{2\pi}\int_{\mathbb R}|\widehat f(t)|^2k(t)\,dt<0.
+\]
+\end{proposition}
+
+\begin{proof}
+The special value
+\[
+ k(0)=-\gamma-\frac\pi2-3\log2-\log\pi
+\]
+is negative.  Choose nonzero \(\varphi\in C_c^\infty(\mathbb R)\) and put
+\(f_R(u)=R^{-1/2}\varphi(u/R)\).  Then
+\[
+ |\widehat f_R(t)|^2=R|\widehat\varphi(Rt)|^2
+\]
+and therefore
+\[
+ \frac1{2\pi}\int_{\mathbb R}|\widehat f_R(t)|^2k(t)\,dt
+ =\frac1{2\pi}\int_{\mathbb R}|\widehat\varphi(v)|^2k(v/R)\,dv.
+\]
+Since \(k(t)=O(\log(2+|t|))\) and \(\widehat\varphi\) is rapidly
+decreasing, dominated convergence makes the last expression tend to
+\[
+ \frac{k(0)}{2\pi}
+ \int_{\mathbb R}|\widehat\varphi(v)|^2\,dv<0.
+\]
+It is therefore negative for all sufficiently large \(R\).
+\end{proof}
+
+Proposition~\ref{prop:gamma-negative} shows that the isolated gamma term is
+not nonnegative on all Weil convolution squares and therefore cannot replace
+the full form in Theorem~\ref{thm:weil}.  The theorem-level criterion uses
+the entire test class and every local term.
+
+\section{Arithmetic duality and the classical Chern--Simons invariant}
+
+The notation \(\overline{\operatorname{Spec}\mathcal O_F}\) is not enough
+to select a cohomology theory.  We therefore separate the compactified site
+from the ordinary small \'etale site used in Kim's basic construction.
+
+Let \(F\) be a number field, \(X=\operatorname{Spec}\mathcal O_F\), and
+let \(X_\infty\) be the set of real embeddings and conjugate pairs of
+complex embeddings.  The Artin--Verdier site \(\widetilde X_{\mathrm{et}}\)
+has objects \((Y,M)\), where \(Y\to X\) is separated and \'etale,
+\(M\subset Y_\infty\), and a complex point of \(M\) does not map to a real
+point of \(X_\infty\).  A morphism carries the chosen infinite subset into
+the chosen infinite subset.  A family covers when it jointly covers both
+the schemes and those subsets.  Coefficients in an Artin--Verdier duality
+statement below would mean specified constructible torsion sheaves on this
+site, not unnamed coefficients on a topological compactification
+\cite[\S1]{Bienenfeld1987}.
+
+At a real place the decomposition group is \(C_2\).  For the trivial
+module \(\mathbb Z/2\),
+\[
+ H^q(C_2,\mathbb Z/2)\cong\mathbb Z/2\qquad(q\geq0),
+\]
+whereas for odd-order coefficients the higher groups vanish by averaging.
+Thus ordinary cohomology at a real place has no finite
+\(2\)-cohomological dimension.  A three-dimensional duality statement for
+a field with real places must specify one of three distinct frameworks:
+ordinary small-site cohomology with the \(2\)-primary part excluded;
+modified cohomology whose real-place terms are Tate cohomology; or ordinary
+derived sheaf cohomology on an explicitly defined extended
+Artin--Verdier site, with a specified constructible torsion sheaf, its
+extension to that site, and its infinite-place specialization data.  The
+last two alternatives are not the same construction.  Mazur's unmodified
+form, and the theorem below, avoid the distinction by assuming that \(F\)
+is totally imaginary
+\cite[\S2]{Mazur1973}.
+
+\begin{theorem}[Kim's classical arithmetic Chern--Simons functional]
+\label{thm:kim}
+Let \(F\) be totally imaginary, put
+\(X=\operatorname{Spec}\mathcal O_F\), and work on the small \'etale site
+\(X_{\mathrm{et}}\).  Fix \(n\geq1\), assume
+\(\mu_n(\overline F)\subset F\), and choose a primitive root, equivalently
+an isomorphism
+\[
+ \zeta_n:\tfrac1n\mathbb Z/\mathbb Z\xrightarrow{\sim}\mu_n(F).
+\]
+Artin--Verdier duality and this choice give an orientation
+\[
+ \operatorname{inv}_{F,n}:
+ H^3_{\mathrm{et}}(X,\mathbb Z/n)
+ \xrightarrow{\sim}\tfrac1n\mathbb Z/\mathbb Z.
+\]
+
+Let \(A\) be a finite group, let
+\(c\in H^3(A,\mathbb Z/n)\) for the trivial \(A\)-module
+\(\mathbb Z/n\), and choose a geometric base point \(b\) of \(X\).  Then
+\[
+ \mathcal M_X(A)=
+ \operatorname{Hom}_{\mathrm{cont}}(\pi_1^{\mathrm{et}}(X,b),A)/A
+\]
+parametrizes unramified principal \(A\)-bundles up to isomorphism, and
+\[
+ \operatorname{CS}_c:\mathcal M_X(A)
+ \longrightarrow\tfrac1n\mathbb Z/\mathbb Z,
+ \qquad
+ [\rho]\longmapsto
+ \operatorname{inv}_{F,n}(\rho^*c)
+\]
+is a well-defined function.
+\end{theorem}
+
+\begin{proof}
+For a constructible finite sheaf \(\mathbb Z/n\), arithmetic duality pairs
+\(H^3_{\mathrm{et}}(X,\mathbb Z/n)\) perfectly with
+\[
+ \operatorname{Hom}_X(\mathbb Z/n,\mathbb G_m)=\mu_n(F)
+\]
+into \(\mathbb Q/\mathbb Z\).  Evaluation at the chosen primitive root
+gives \(\operatorname{inv}_{F,n}\).  A continuous \(\rho\) defines a
+finite \'etale \(A\)-torsor, hence a classifying morphism to \(BA\) and a
+pullback
+\(\rho^*:H^3(A,\mathbb Z/n)\to H^3_{\mathrm{et}}(X,\mathbb Z/n)\).
+Inner automorphisms act trivially on group cohomology, so the value depends
+only on the conjugacy class of \(\rho\).  This is Kim's basic construction
+\cite[\S1]{Kim2016}.
+\end{proof}
+
+Theorem~\ref{thm:kim} contains no ramified representations, Wilson
+observables, or quantum partition sum.  For a finite set \(S\) of finite
+places, Kim instead uses
+\(X_S=\operatorname{Spec}\mathcal O_F[1/S]\), assumes that \(S\) contains
+every place above \(n\), and constructs boundary torsors from the local
+restriction groupoids \cite[\S2]{Kim2016}.  That is a different, additional
+set of data.
+
+\begin{openproblem}[From the classical invariant to a chiral determinant]
+\label{problem:acs}
+A comparison with Sections~4--5 requires the following constructions.
+
+\begin{enumerate}
+\item Fix one cohomological framework: \(X_{\mathrm{et}}\) under the totally
+imaginary hypotheses of Theorem~\ref{thm:kim}; ordinary small-site
+cohomology with odd-order coefficients when real places are present;
+explicitly defined modified cohomology with Tate-cohomological real terms;
+or ordinary derived cohomology on \(\widetilde X_{\mathrm{et}}\) with a
+specified constructible torsion sheaf, an extension to the site, and
+infinite-place specialization maps.  Specify separately any ramification
+set and its boundary torsors.
+
+\item For a continuous or non-finite gauge object, define an arithmetic
+field groupoid, an action functional, measures or finite sums, state spaces,
+gluing maps, and anomaly data.  Assemble them into a symmetric monoidal
+functor on a specified arithmetic bordism category.  Kim's finite classical
+function does not provide these objects.
+
+\item Construct complexes \(C_{\mathrm{Ar}}\), \(C_{\mathrm{Den}}\), and
+\(C_{\mathrm{ACS}}\) in one named derived category and chain maps
+\[
+ C_{\mathrm{Ar}}\longrightarrow C_{\mathrm{Den}}
+ \longrightarrow C_{\mathrm{ACS}}
+\]
+with stated degrees, completions, quasi-isomorphism hypotheses, and
+intertwining relations for the relevant operators.  The first complex must
+in particular solve Open Problem~\ref{problem:bar}, and the middle complex
+must supply the data assumed in Theorem~\ref{thm:deninger}.
+
+\item To compare a partition object with \(\xi_{\mathbb R}(s)\), construct
+the complex parameter \(s\), a holomorphic or meromorphic family of
+partition objects, and a proof of the determinant identity.  A single
+closed-theory partition number cannot equal a nonconstant function of an
+undeclared parameter.
+
+\item A Wilson surface requires higher gauge data: at minimum a crossed
+module or \(2\)-group, a \(2\)-connection or arithmetic replacement, and a
+surface-holonomy/transgression construction.  It is not defined by an
+ordinary finite \(A\)-torsor or by Theorem~\ref{thm:kim}.
+
+\item Any extension to a completed motivic \(L\)-function must begin with
+a specified motive, its local factors and archimedean factor, its weight,
+and a no-cancellation determinant comparison.  A genus label alone supplies
+none of these data.
+\end{enumerate}
+\end{openproblem}
+
+\section{Conclusion}
+
+The local calculation is exact: the Gaussian Tate integral and the
+finite-prime Euler integrals assemble to \(\GammaR(s)\zeta(s)\) in
+\(\operatorname{Re}s>1\), and Tate's theorem continues that scalar
+function.  The same finite Euler factor is the heat trace of \(N_p\) in
+\(\operatorname{Re}s>0\), while its normalized density gives the unique
+prime Toeplitz KMS state.  These statements have different carriers and
+different domains.
+
+Deninger's global determinant formula becomes the exact identity in
+Theorem~\ref{thm:deninger} only after its cohomology, operator pencil, and
+spectral-zeta hypotheses are assumed.  A positive Hilbert structure with
+the full adjoint-domain identity would then give the Hilbert--P\'olya
+mechanism.  Independently, Weil's full explicit formula gives the precise
+RH-equivalent positivity statement; its isolated gamma term is not
+positive.
+
+Proposition~\ref{prop:two-bars} is the obstruction that prevents these
+scalar and operator results from defining arithmetic chiral homology.  The
+remaining bridge is therefore the concrete construction problem stated in
+Open Problems~\ref{problem:bar} and~\ref{problem:acs}, not a consequence of
+the Euler product.  The classical finite-gauge invariant of
+Theorem~\ref{thm:kim} supplies one arithmetic endpoint, but no continuous
+quantum theory or chain comparison is presently obtained from it.
+
+\begin{thebibliography}{99}
+
+\bibitem{Bienenfeld1987}
+M.~Bienenfeld,
+\emph{An \'etale cohomology duality theorem for number fields with a real
+embedding}, Trans. Amer. Math. Soc. 303 (1987), no.~1, 71--96.
+
+\bibitem{BostConnes1995}
+J.-B.~Bost and A.~Connes,
+\emph{Hecke algebras, type III factors and phase transitions with
+spontaneous symmetry breaking in number theory}, Selecta Math. 1 (1995),
+no.~3, 411--457.
+
+\bibitem{Deninger1998}
+C.~Deninger,
+\emph{Some analogies between number theory and dynamical systems on
+foliated spaces}, in Proceedings of the ICM 1998, Vol.~I, 163--186.
+
+\bibitem{Kim2016}
+M.~Kim,
+\emph{Arithmetic Chern--Simons theory I}, arXiv:1510.05818v4 (2016).
+
+\bibitem{LurieHA}
+J.~Lurie,
+\emph{Higher Algebra}, 2017, \S4.4.2,
+\texttt{https://www.math.ias.edu/{\string~}lurie/papers/HA.pdf}.
+
+\bibitem{Mazur1973}
+B.~Mazur,
+\emph{Notes on \'etale cohomology of number fields}, Ann. Sci. \'Ecole
+Norm. Sup. (4) 6 (1973), 521--552.
+
+\bibitem{Tate1950}
+J.~T.~Tate,
+\emph{Fourier analysis in number fields and Hecke's zeta-functions},
+Ph.D. thesis, Princeton University, 1950.
+
+\bibitem{Weil1952}
+A.~Weil,
+\emph{Sur les ``formules explicites'' de la th\'eorie des nombres
+premiers}, Meddelanden fr\aa n Lunds Univ. Mat. Sem., supplement (1952),
+252--265.
+
+\end{thebibliography}
+
+\end{document}

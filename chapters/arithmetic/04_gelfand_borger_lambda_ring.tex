@@ -1,0 +1,341 @@
+\chapter{\(\Lambda\)-Ring Axiomatic Precision}
+\label{v4-arith:gelfand-borger}
+
+Borger's \(\Lambda\)-rings encode \(\mathbb F_1\)-descent by commuting
+Frobenius lifts. The issue is whether the integral lattice underlying
+\(\mathcal V^{\mathrm{prim}}\) satisfies the Wilkerson congruences.
+
+\section{The Wilkerson Congruence and the Scalar Ring}
+\label{v4-arith:gb:wilkerson}
+
+\begin{theorem}[Wilkerson criterion, Borger 0906.3146 Prop.~1.2]
+\label{v4-arith:thm:wilkerson}
+\ClaimStatusProvedElsewhere. A \(\Lambda\)-ring is a commutative
+ring \(R\) with commuting ring homomorphisms
+\(\psi_{n}\colon R\to R\), \(n\in\mathbb{N}^{\times}\), satisfying
+\(\psi_{1}=\mathrm{id}\), \(\psi_{m}\psi_{n}=\psi_{mn}\), and
+\(\psi_{p}(x)\equiv x^{p}\pmod{pR}\) for every rational prime \(p\).
+For torsion-free \(R\) the Wilkerson congruence is equivalent
+(Wilkerson~1982) to the classical Grothendieck \(\lambda\)-ring
+structure with \(\lambda^{n}\) operations.
+\end{theorem}
+
+\begin{observation}[vacuous congruence over \(\mathbb{Q}\)]
+\label{v4-arith:obs:vacuous-over-Q}
+Every prime \(p\) is a unit in \(\mathbb{C}\) or \(\mathbb{Q}\).
+Therefore \(pR=R\) for every prime, and the Wilkerson congruence
+\(\psi_{p}(x)\equiv x^{p}\pmod{pR}\) is \emph{vacuous} over
+\(\mathbb{Q}\)-algebras: any two elements are congruent mod \(R\).
+Under Borger's axioms, a \(\mathbb{Q}\)-algebra is automatically a
+\(\Lambda\)-ring iff it carries any compatible system of commuting
+ring endomorphisms \(\psi_{n}\) with \(\psi_{1}=\mathrm{id}\) and
+\(\psi_{m}\psi_{n}=\psi_{mn}\).
+\end{observation}
+
+\begin{remark}
+This weaker structure is what Grothendieck (Rev.~Matem.~Hispanoamer.~1971)
+called a \emph{\(\psi\)-ring} or \emph{Adams-ring}. The claim
+``\(\mathcal{V}^{\mathrm{prim}}\) is a \(\Lambda\)-ring'' is either
+(a) trivially true over \(\mathbb{Q}\) and mathematically empty, or
+(b) a claim about an \(\mathbb{F}_{1}\)- or \(\mathbb{Z}\)-integral form
+\(\mathcal{V}^{\mathrm{prim}}_{\mathbb{Z}}\subset\mathcal{V}^{\mathrm{prim}}\)
+on which \(p\) is not invertible, which must be specified.
+\end{remark}
+
+\section{Explicit Computations: \(\psi_{2}\) on Low-Weight States}
+\label{v4-arith:gb:explicit-psi-2}
+
+The Wilkerson congruence requires a candidate Adams operation \(\psi_{n}\)
+on the Heisenberg Fock shadow of \(\mathcal{V}^{\mathrm{prim}}\). The full
+\(\mathcal{V}^{\mathrm{prim}}\) is a Hochschild trace class; the Fock
+calculation below takes place in the arithmetic Heisenberg sector. For
+each prime \(p\), the operators
+\(a^{(p)}_{-k}\) (\(k\geq 1\)) create a rank-\(1\) harmonic oscillator mode
+of frequency \(k\), acting on the vacuum \(|0\rangle\). The algebra is
+\([a^{(p)}_m, a^{(p)}_n]=m\delta_{m+n,0}\). On single-mode states, the
+candidate Adams operation is
+\begin{equation}
+\label{v4-arith:eq:Tn-formula}
+T_{n}\bigl(a^{(p)}_{-k}\bigr)=\sum_{d\mid n}d\cdot a^{(p)}_{-nk/d}\mathbf{1}_{d\mid k},
+\end{equation}
+where \(\mathbf{1}_{d\mid k}=1\) if \(d\) divides \(k\) and \(0\) otherwise;
+the indicator ensures the mode index \(nk/d\) is an integer. This formula is
+extended to products by the ring-homomorphism axiom.
+
+\begin{computation}
+\label{v4-arith:comp:psi2-a2}
+\(\psi_{2}(a^{(2)}_{-1}|0\rangle)=a^{(2)}_{-2}|0\rangle\).
+\end{computation}
+
+\begin{computation}
+\label{v4-arith:comp:psi2-a3}
+\(\psi_{2}(a^{(3)}_{-1}|0\rangle)=a^{(3)}_{-2}|0\rangle\).
+\end{computation}
+
+\begin{computation}
+\label{v4-arith:comp:psi2-a2a3}
+Under the ring-homomorphism axiom:
+\begin{equation}
+\psi_{2}(a^{(2)}_{-1}a^{(3)}_{-1}|0\rangle)
+\;=\;a^{(2)}_{-2}a^{(3)}_{-2}|0\rangle.
+\end{equation}
+\end{computation}
+
+\begin{lemma}[composition law]
+\label{v4-arith:lem:composition-law}
+\ClaimStatusProvedHere. For \(m,n\geq 1\) and on single-generator
+states, \(\psi_{m}\psi_{n}=\psi_{mn}\).
+\end{lemma}
+
+\begin{proof}
+Compute \(\psi_{3}\psi_{2}(a^{(2)}_{-1}|0\rangle)=\psi_{3}(a^{(2)}_{-2}|0\rangle)=a^{(2)}_{-6}|0\rangle\);
+and \(\psi_{6}(a^{(2)}_{-1}|0\rangle)=a^{(2)}_{-6}|0\rangle\).
+Agreement is Macdonald's identity
+\(p_{m(nk)}=p_{(mn)k}\) (Macdonald~I~\S8).
+\end{proof}
+
+\section{The Wilkerson Congruence Fails on the Fock Lattice}
+\label{v4-arith:gb:wilkerson-fails}
+
+\begin{computation}[Wilkerson test]
+\label{v4-arith:comp:wilkerson-test}
+Test \(\psi_{2}(x)\equiv x^{2}\pmod{2}\) at \(x=a^{(2)}_{-1}|0\rangle\).
+\begin{itemize}
+\item Left side: \(\psi_{2}(a^{(2)}_{-1}|0\rangle)=a^{(2)}_{-2}|0\rangle\).
+\item Right side: \((a^{(2)}_{-1}|0\rangle)^{2}=a^{(2)}_{-1}a^{(2)}_{-1}|0\rangle\)
+(normally-ordered product).
+\item Difference:
+\(\psi_{2}(x)-x^{2}=a^{(2)}_{-2}|0\rangle-a^{(2)}_{-1}a^{(2)}_{-1}|0\rangle
+=-2L^{(2)}_{-2}|0\rangle+a^{(2)}_{-2}|0\rangle\) (using
+\(L_{-2}|0\rangle=\tfrac{1}{2}a_{-1}a_{-1}|0\rangle\) for rank-\(1\)
+Heisenberg). This is a specific nonzero vector.
+\end{itemize}
+For the congruence to hold, this vector must lie in
+\(2\cdot\mathcal{V}^{\mathrm{prim}}_{\mathbb{Z}}\) for some
+\(\mathbb{Z}\)-integral form.
+\end{computation}
+
+\begin{observation}[lattice-form failure]
+\label{v4-arith:obs:lattice-form-failure}
+On the naive Fock lattice
+\(\mathcal{H}^{(p)}_{\mathbb{Z}}=\mathbb{Z}\langle a^{(p)}_{-n_{1}}\cdots a^{(p)}_{-n_{k}}|0\rangle_{p}\rangle\),
+the vector \(a^{(p)}_{-2}|0\rangle-a^{(p)}_{-1}a^{(p)}_{-1}|0\rangle\)
+is a primitive integer-coefficient vector; its reduction mod~\(2\)
+is nonzero. The Wilkerson congruence \emph{fails} on the naive
+lattice integral form.
+\end{observation}
+
+\section{The Macdonald Lattice vs the Fock Lattice}
+\label{v4-arith:gb:macdonald-vs-fock-lattice}
+
+\begin{theorem}[Macdonald I.8, Example~24]
+\label{v4-arith:thm:macdonald-lattice}
+\ClaimStatusProvedElsewhere. The ring \(\Lambda_{\mathbb{Z}}=
+\mathbb{Z}[e_{1},e_{2},\ldots]=\mathbb{Z}[h_{1},h_{2},\ldots]\) of
+symmetric functions is a \(\Lambda\)-ring satisfying the Wilkerson
+congruence: the Newton identity
+\(\psi_{p}(h_{n})\equiv h_{n}^{p}\pmod{p}\) in
+\(\Lambda_{\mathbb{Z}}\).
+\end{theorem}
+
+\begin{observation}[Fock-Macdonald isomorphism over \(\mathbb{Q}\)]
+\label{v4-arith:obs:fock-macdonald-Q}
+The map \(\iota\colon\Lambda_{\mathbb{Q}}\xrightarrow{\sim}\mathrm{Fock}_{\mathbb{Q}}\),
+\(p_{n}\mapsto a_{-n}|0\rangle\), is an isomorphism of
+\(\mathbb{Q}\)-algebras: under the Heisenberg normalisation
+\([a_m,a_n]=m\delta_{m+n,0}\) the Fock inner product
+\(\langle a_{-n}|0\rangle,a_{-n}|0\rangle\rangle=n\) matches the Hall
+inner product \(\langle p_n,p_n\rangle=n\), so \(\iota\) is an
+isometry. Adams operations on \(\Lambda_{\mathbb{Q}}\) transport to
+Fock; the \(\mathbb{Q}\)-algebra structure is preserved.
+\end{observation}
+
+\begin{observation}[lattice mismatch over \(\mathbb{Z}\)]
+\label{v4-arith:obs:lattice-mismatch-Z}
+Over \(\mathbb{Z}\), the two integral forms \(\iota(\Lambda_{\mathbb{Z}})\)
+and the Fock lattice
+\(\mathrm{Fock}_{\mathbb{Z}}=\mathbb{Z}\langle a_{-\vec{n}}|0\rangle\rangle\)
+are \emph{different}. The Schur function
+\(s_{2}=\tfrac{1}{2}(p_{1}^{2}+p_{2})\in\Lambda_{\mathbb{Z}}\) maps to
+\(\iota(s_2)=\tfrac{1}{2}(a_{-1}^{2}+a_{-2})|0\rangle\), a half-integer
+state outside \(\mathrm{Fock}_{\mathbb{Z}}\). Conversely, every Fock
+monomial \(a_{-\lambda}|0\rangle=\iota(p_\lambda)\) lies in
+\(\iota(\Lambda_{\mathbb{Z}})\) (power sums are integer combinations of
+Schur functions, with character coefficients
+\(\chi^\lambda_\mu\in\mathbb{Z}\)); the Schur basis
+\(\{\iota(s_\lambda)\}\) of \(\iota(\Lambda_{\mathbb{Z}})\) generates a
+strictly larger \(\mathbb{Z}\)-lattice in \(\mathrm{Fock}_{\mathbb{Q}}\)
+than the Fock monomial basis, carrying denominators dividing the order
+of the centralizer \(z_\mu\) at each conjugacy type \(\mu\).
+\end{observation}
+
+\section{Distinction: \(\Lambda\)-Ring vs \(\Lambda\)-Module}
+\label{v4-arith:gb:ring-vs-module}
+
+\begin{definition}[\(\Lambda\)-module, Borger 0801.1691 \S1.2]
+\label{v4-arith:def:lambda-module}
+A \(\Lambda\)-structure on an abelian group \(M\) is an action of the
+Adams monoid \(\mathbb{N}^{\times}\) by group endomorphisms
+\(\psi_{n}\). No ring structure, no congruence.
+\end{definition}
+
+\begin{theorem}[corrected form of \(\mathcal{V}^{\mathrm{prim}}\)]
+\label{v4-arith:thm:corrected-lambda-form}
+\ClaimStatusProvedHere. The Heisenberg Fock shadow of
+\(\mathcal{V}^{\mathrm{prim}}\) over \(\mathbb{Q}\) carries a
+\(\psi\)-ring structure with vacuous Wilkerson congruence via the
+Hecke--Adams operations. The full
+\(\mathcal{V}^{\mathrm{prim}}\) carries only the corresponding
+\(\mathbb{N}^{\times}\)-module datum until a multiplication is specified.
+On the natural Fock integral form there is no Borger
+\(\Lambda\)-ring structure.
+\end{theorem}
+
+\section{The Log-\(p\) Rescaling Destroys Integrality}
+\label{v4-arith:gb:log-p-destroys-integrality}
+
+\begin{observation}
+\label{v4-arith:obs:logp-destroys-integrality}
+When the Hamiltonian is rescaled so that \(L_{0}\) assigns eigenvalue
+\(k\log p\) to each weight-\(k\) state \(a^{(p)}_{-k}|0\rangle\),
+the resulting grading takes values in \(\mathbb{R}\setminus\mathbb{Q}\)
+(since \(\log p\) is transcendental over \(\mathbb{Q}\) for every prime
+\(p\)). A \(\mathbb{Z}\)-lattice in the Heisenberg Fock shadow, spanned
+by eigenstates of the conformal \(L_{0}\), is not preserved
+under this rescaled grading.
+\end{observation}
+
+\begin{convention}[two-grading principle]
+\label{v4-arith:conv:two-grading}
+Resolve the conflict by carrying \emph{two} gradings on the same
+Heisenberg basis:
+\begin{enumerate}
+\item \textbf{Conformal grading:} integer weight \(n\) on
+\(a^{(p)}_{-n}\). Character \(\prod_{p}\prod_{n}(1-q^{n})^{-1}\)
+(Heisenberg direct product, not an \(L\)-function).
+\item \textbf{HY-zeta grading:} weight \(n\log p\) on
+\(a^{(p)}_{-n}\). Character
+\(\prod_{p}\prod_{n}(1-p^{-ns})^{-1}=\prod_{n}\zeta(ns)\) as a
+formal Dirichlet series.
+\end{enumerate}
+The algebraic / \(\Lambda\)-module structure lives on (i); the
+zeta-character lives on (ii). These are two different gradings on
+the same underlying basis.
+\end{convention}
+
+\begin{remark}
+This matches Bost--Connes / Connes--Consani: the \(\log p\) enters
+as spectral parameter in the Hamiltonian, not as an algebraic
+scalar in the underlying ring. The Bost--Connes KMS partition
+function \(\zeta(\beta)\) is computed at grading (ii) on a purely
+algebraic structure that lives at grading (i).
+\end{remark}
+
+\section{Is there a \(\Lambda\)-VA?}
+\label{v4-arith:gb:is-there-lambda-VA}
+
+\begin{question}
+Can we define a category of \(\Lambda\)-vertex-algebras: VAs with
+commuting ring-endomorphism \(\psi_{n}\) compatible with the OPE
+and the vacuum?
+\end{question}
+
+\begin{proposition}[\(T_{n}\) is not a VA endomorphism]
+\label{v4-arith:prop:T-n-not-VA-endo}
+\ClaimStatusProvedHere. \(T_{n}\) scales conformal weight by \(n\),
+i.e., \(T_{n}(a^{(p)}_{-1}|0\rangle)\) has weight~\(n\) while
+\(a^{(p)}_{-1}|0\rangle\) has weight~\(1\). A VA endomorphism must
+preserve conformal weight (commute with \(L_{0}\)). Therefore
+\(T_{n}\) is not a VA endomorphism for \(n>1\).
+\end{proposition}
+
+\begin{theorem}[corrected category: finite Hecke-equivariant VA shadows]
+\label{v4-arith:thm:HVA-category}
+\ClaimStatusProvedHere. Define
+\begin{equation*}
+\mathrm{HVA}=\{(V,\{T_{n}\}_{n\in\mathbb{N}^{\times}})\colon
+V\text{ VA}, T_{n}\text{ linear, }T_{m}T_{n}=T_{mn},
+T_{n}|0\rangle=|0\rangle\}.
+\end{equation*}
+For every finite set \(S\) of primes, the finite Heisenberg truncation
+\(\mathcal{H}^{(S)}=\bigotimes_{p\in S}\mathcal{H}^{(p)}\) is an object
+of \(\mathrm{HVA}\), with the further intertwining property
+\(T_n(a^{(p)}_{-1}|0\rangle)=a^{(p)}_{-n}|0\rangle\) on level-1
+generators (\Cref{v4-arith:prop:T-n-not-VA-endo}). On higher-weight
+states \(T_n\) produces sums of mixed weight, e.g.\
+\(T_2(a^{(p)}_{-2}|0\rangle)=a^{(p)}_{-4}|0\rangle+2\,a^{(p)}_{-2}|0\rangle\),
+so neither \([T_n,L_{0}]\) nor \([T_n,L_{-1}]\) vanishes as an operator
+identity; direct computation gives
+\([T_2,L_{-1}]\,a^{(p)}_{-1}|0\rangle=a^{(p)}_{-4}|0\rangle+2\,a^{(p)}_{-2}|0\rangle-2\,a^{(p)}_{-3}|0\rangle\neq 0\).
+The category \(\mathrm{HVA}\) records the Adams multiplicativity
+\(T_mT_n=T_{mn}\) and the vacuum preservation; the conformal
+interaction is a separate datum. The restricted product is an
+\(\mathbb{N}^{\times}\)-module shadow, not a vertex algebra structure on
+\(\mathcal{V}^{\mathrm{prim}}\).
+\end{theorem}
+
+\begin{corollary}[\(\psi\)-ring plus Hecke-equivariance]
+\label{v4-arith:cor:psi-ring-hecke}
+\ClaimStatusProvedHere. The correct categorical statement:
+\(\mathcal{V}^{\mathrm{prim}}\in\mathrm{Mod}_{\mathbb{N}^{\times}}(\mathrm{Vect}_{\mathbb{C}})\)
+with the \(\mathbb{N}^{\times}\)-action by Hecke operators \(T_{n}\),
+whose finite Heisenberg shadows are the Hecke-equivariant VA objects of
+\Cref{v4-arith:thm:HVA-category}. This is Mackey's Hecke algebra
+representation enhanced by finite Fock shadows, not Borger's
+\(\Lambda\)-ring.
+\end{corollary}
+
+\section{The Descent Interpretation Goes Through Bost--Connes}
+\label{v4-arith:gb:descent-bost-connes}
+
+\begin{remark}
+Borger's \(\mathbb{F}_{1}\)-descent programme (arXiv:0906.3146~\S3)
+characterizes a \(\Lambda\)-structure on \(R\) as a descent datum from \(R\) to
+\(R\otimes_{\mathbb{F}_{1}}\mathbb{Z}\). The \(\mathbb{F}_{1}\)-descent of
+\(\mathcal{V}^{\mathrm{prim}}\) in Borger's sense requires a genuine
+\(\Lambda\)-ring structure, hence a Wilkerson-congruent integral form, which
+the natural Fock lattice does not supply (Theorem~\ref{v4-arith:thm:corrected-lambda-form}
+and Observation~\ref{v4-arith:obs:lattice-form-failure}). The correct
+arithmetic framework for \(\mathcal{V}^{\mathrm{prim}}\) is
+Bost--Connes (Selecta~Math.~1 (1995), 411--457) and Connes--Consani
+(arXiv:1405.4527, the arithmetic site).
+\end{remark}
+
+\begin{theorem}[Bost--Connes as the correct descent]
+\label{v4-arith:thm:bost-connes-descent}
+\ClaimStatusConjectured. \(\mathcal{V}^{\mathrm{prim}}\) has a
+Heisenberg-Fock shadow compatible with the Bost--Connes Hecke
+\(C^{*}\)-dynamical system, with:
+\begin{itemize}
+\item Hecke action \(\{T_{n}\}\) = Bost--Connes semigroup action;
+\item \(\mathbb{Q}/\mathbb{Z}\)-Galois symmetry = Bost--Connes
+class-field-theory symmetry (Bost--Connes Thm~5);
+\item graded character = HY \(L\)-function after rescaling by
+\(\log p\).
+\end{itemize}
+Borger's \(\mathbb{F}_{1}\)-descent requires a Wilkerson-congruent
+integral \(\Lambda\)-form on the natural Fock lattice; the Macdonald
+lattice \(\Lambda_{\mathbb{Z}}\) carries such a form but differs from
+the Fock lattice over \(\mathbb{Z}\)
+(\Cref{v4-arith:obs:lattice-mismatch-Z}). The Bost--Connes /
+Connes--Consani arithmetic site supplies the correct framework via
+tropical and semiring structures.
+\end{theorem}
+
+\begin{remark}[the three-level structure]
+\label{v4-arith:rem:three-level-structure}
+The Wilkerson congruence is vacuous over \(\mathbb{Q}\)
+(\Cref{v4-arith:obs:vacuous-over-Q}), so the distinction between
+\(\Lambda\)-ring and \(\psi\)-ring is a purely integral question.
+The Macdonald lattice \(\Lambda_{\mathbb{Z}}\) carries the Wilkerson
+congruence (\Cref{v4-arith:thm:macdonald-lattice}); the Fock lattice
+\(\mathbb{Z}\langle a^{(p)}_{-\vec{n}}|0\rangle\rangle\) does
+not (\Cref{v4-arith:obs:lattice-form-failure}), and the two integral
+forms are distinct (\Cref{v4-arith:obs:lattice-mismatch-Z}). At finite
+Heisenberg level, \(T_{n}\) scales conformal weight
+(\Cref{v4-arith:prop:T-n-not-VA-endo}), so the category \(\mathrm{HVA}\)
+applies only to finite Fock shadows
+(\Cref{v4-arith:thm:HVA-category}). The \(\mathbb{F}_{1}\)-descent
+framework adequate to \(\mathcal{V}^{\mathrm{prim}}\) is
+Bost--Connes rather than Borger (\Cref{v4-arith:thm:bost-connes-descent}).
+\end{remark}

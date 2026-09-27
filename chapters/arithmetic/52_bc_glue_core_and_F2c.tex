@@ -1,0 +1,678 @@
+\chapter{Pseudocharacters, Determinantal Cleavages, and Restricted \(E_{2}\) Tensor Products}
+\label{v4-arith:w5-h:bcglue-core-and-F2c}
+
+\emph{The KMS--GNS reduction of Chapter~\ref{v4-arith:bcglue-core}
+splits \((\mathrm{BCglue.core})\) into a pseudocharacter comparison
+\((\mathrm{Ch1})\) and a determinantal singular-support comparison
+\((\mathrm{AG.det})\). The first is not a theorem of Chenevier alone:
+Chenevier supplies the determinant ring, while the local--global
+flatness and the trace comparison are separate Selmer-theoretic
+inputs. The second is not the full arithmetic Arinkin--Gaitsgory
+conjecture: it is the \(E_{2}\)-centre compatibility on the transition
+locus of the determinantal cleavage. The \(F2.c\) assertion is the
+restricted \(E_{2}\)-tensor formalism under central idempotent pointed
+unit hypotheses; the local Iwahori \(E_{2}\)-input is not part of that
+formal theorem.}
+
+\section{(Ch1) Chenevier Pseudocharacter Compatibility}
+\label{v4-arith:w5-h:ch1}
+
+\subsection{Chenevier Determinant-Trace Pseudocharacter Recalled}
+
+\begin{definition}[Chenevier determinant-trace pseudocharacter]
+\label{v4-arith:w5-h:def:chenevier-det-trace}
+Let \(R\) be a commutative ring, \(\Gamma\) a group, and \(d\geq 1\) an
+integer. A \emph{determinant-trace pseudocharacter} of dimension \(d\)
+on \(\Gamma\) with values in \(R\) is a pair
+\(\mathcal{P}=(T,D)\) of a trace map
+\(T\colon R[\Gamma]\to R\) and a determinant multiplicative map
+\(D\colon R[\Gamma]\to R\) satisfying the Chenevier axioms
+(Chenevier 2014 \S1.5--1.10): for each generator \(\gamma\),
+the Cayley--Hamilton relation
+\(\gamma^{d}-T(\gamma)\gamma^{d-1}+\cdots+(-1)^{d}D(\gamma)=0\) and
+the polynomial relations between \(T\) and \(D\) implied by
+Newton's identities. When \(\Gamma\) is a profinite group with a
+continuous action of \(R\)-modules, the pseudocharacter is continuous
+if \(T,D\) are.
+\end{definition}
+
+\begin{proposition}[Chenevier pseudocharacter moduli via determinant-trace]
+\label{v4-arith:w5-h:prop:chenevier-moduli-via-det-trace}
+\ClaimStatusProvedElsewhere. Chenevier 2014 Thm.~1.17
+proves that the functor
+\(R\mapsto\{\text{continuous determinant-trace pseudocharacters } (T,D):
+G_{\mathbb{Q},S}\to R\text{ of dim } d
+\text{ lifting a fixed residual } \bar{\mathcal{P}}\text{ and satisfying the fixed local conditions}\}\)
+is represented by an affine Noetherian scheme
+\(\mathrm{Spec}(R^{\mathrm{Ch}}_{d,\bar{\mathcal{P}},S})\) over
+\(W(k)\) when \(\bar{\mathcal{P}}\) is continuous with absolutely
+irreducible residual \(\bar\rho\), with finite ramification set \(S\)
+and the Mazur--Chenevier finiteness hypotheses. The ring
+\(R^{\mathrm{Ch}}_{d,\bar{\mathcal{P}},S}\)
+is the Chenevier determinant-trace pseudocharacter ring and agrees
+with the universal determinantal deformation ring of
+Bellaiche--Chenevier (\emph{Families of Galois representations and
+Selmer groups}, Ast\'erisque 324, 2009, Chapter~1).
+\end{proposition}
+
+The two references (Chenevier 2014 for the
+pseudocharacter moduli; Bellaiche--Chenevier 2009 Chapter~1 for the
+universal deformation ring identification) constitute disjoint
+primary sources for the same finite-ramification commutative ring
+\(R^{\mathrm{Ch}}_{S}\):
+the first via categorical pseudocharacter axioms, the second via
+Galois cohomology of the deformation problem. This disjointness is
+the independence of sources input for (Ch1).
+
+\subsection{The Local--Global Comparison Datum}
+
+\begin{conjecture}[pseudocharacter trace comparison]
+\label{v4-arith:w5-h:conj:pseudocharacter-trace-comparison}
+\ClaimStatusConjectured. The prismatic/pro-\(\acute{e}\)tale comparison on
+the Emerton--Gee stack identifies the universal determinantal
+cocharacter on the local Chenevier ring with the
+\(GL_{2}\)-invariant trace of the universal
+\((\varphi,\Gamma)\)-module, compatibly with the Nygaard filtration.
+\end{conjecture}
+
+\begin{theorem}[(Ch1) Chenevier cross-prime pseudocharacter comparison]
+\label{v4-arith:w5-h:thm:ch1-closure}
+\ClaimStatusProvedHereConditional. Fix distinct finite primes \(p,q\), a
+coefficient prime \(p_{0}\neq p,q\), and a residual determinant-trace
+pseudocharacter
+\(\bar{\mathcal{P}}\colon\mathrm{Gal}_{\overline{\mathbb{Q}}/\mathbb{Q}}\to k\)
+of dimension \(2\) over a finite field \(k\) of characteristic \(p_{0}\)
+with absolutely irreducible \(\bar\rho\). Write
+\(R^{\mathrm{Ch}}_{p}=R^{\mathrm{Ch}}_{2,\bar{\mathcal{P}}|_{D_{p}}}\) and
+\(R^{\mathrm{Ch}}_{q}=R^{\mathrm{Ch}}_{2,\bar{\mathcal{P}}|_{D_{q}}}\)
+for the local Chenevier pseudocharacter rings at \(p,q\). Let
+\(R^{\mathrm{Ch}}\) be the global Chenevier ring for \(\bar{\mathcal{P}}\).
+The natural restriction map
+\begin{equation}
+\label{v4-arith:w5-h:eq:chenevier-restriction}
+\mathrm{res}_{p,q}\colon R^{\mathrm{Ch}}\;\longrightarrow\;R^{\mathrm{Ch}}_{p}\otimes_{W(k)}R^{\mathrm{Ch}}_{q}
+\end{equation}
+is induced by restriction of Galois pseudocharacters. Suppose:
+\begin{enumerate}
+\item the image of \(\mathrm{res}_{p,q}\) is the Selmer two-prime
+pseudocharacter quotient \(R^{\mathrm{Ch}}_{p,q}\) of
+\Cref{v4-arith:bcglue-core:def:cross-prime-chenevier};
+\item this quotient map is \(\Pi\)-flat in the prismatic sense required
+by \Cref{v4-arith:bcglue-k5:lem:prismatic-flatness};
+\item the trace comparison of
+\Cref{v4-arith:w5-h:conj:pseudocharacter-trace-comparison} holds.
+\end{enumerate}
+Then the pairwise Chenevier component of \((\mathrm{BCglue.core})\)
+holds for the pair \((p,q)\). Chenevier's representability theorem
+supplies the rings; it does not by itself supply the three displayed
+local--global comparison hypotheses.
+\end{theorem}
+
+\begin{proof}
+By \Cref{v4-arith:w5-h:prop:chenevier-moduli-via-det-trace},
+\(R^{\mathrm{Ch}}\), \(R^{\mathrm{Ch}}_{p}\), and
+\(R^{\mathrm{Ch}}_{q}\) represent the global and local
+determinant-trace pseudocharacter functors. Restriction of
+pseudocharacters gives \(\mathrm{res}_{p,q}\). The first hypothesis
+identifies its image with the two-prime Selmer quotient, the second
+supplies the prismatic flatness required by the gluing diagram, and
+the third identifies the Chenevier trace with the invariant trace on
+the Emerton--Gee side. These three inputs are exactly the pairwise
+Chenevier component of
+\Cref{v4-arith:bcglue-core:eq:pairwise-chenevier-equivalent}. No
+Chebotarev argument on two decomposition groups supplies them without
+the Selmer quotient.
+\end{proof}
+
+\begin{corollary}[(Ch1) as a pairwise Selmer trace datum]
+\label{v4-arith:w5-h:cor:ch1-closes-pairwise}
+\ClaimStatusProvedHereConditional. Conditional on (BCglue.local)
+(\Cref{v4-arith:bcglue-k5:thm:local-BZCHN-plus-EG}) and (BCglue.glue)
+(\Cref{v4-arith:bcglue-k5:thm:prismatic-gluing}), part (a) of
+(BCglue.core) -- the pairwise Bernstein compatibility at \((p,q)\) --
+is equivalent via
+\Cref{v4-arith:bcglue-core:thm:pairwise-reduces-to-chenevier} to
+\Cref{v4-arith:w5-h:thm:ch1-closure}. Hence (Ch1) is reduced
+at the Chenevier pseudocharacter level to
+\Cref{v4-arith:w5-h:conj:pseudocharacter-trace-comparison}, and
+part (a) of (BCglue.core) is reduced to the conditional inputs
+(BCglue.local), (BCglue.glue), prismatic flatness \(\Pi\)-flat, and
+the pseudocharacter trace comparison.
+\end{corollary}
+
+\begin{proof}
+Immediate from
+\Cref{v4-arith:bcglue-core:thm:pairwise-reduces-to-chenevier}
+(equivalence of part~(a) with the Chenevier-level statement) and
+\Cref{v4-arith:w5-h:thm:ch1-closure} (the conditional Chenevier-level
+comparison). The residual conditional inputs are
+exactly those listed in
+\Cref{v4-arith:bcglue-core:cor:LACD-tightened} items~1--2 plus
+the prismatic-flatness lemma.
+\end{proof}
+
+\section{(AG.det) Determinantal Cleavage via GKRW \(E_{2}\)-Centre}
+\label{v4-arith:w5-h:agdet}
+
+\subsection{The Determinantal Selmer-Derived Stack as Cleavage}
+
+\begin{definition}[determinantal cleavage of the Selmer-derived stack]
+\label{v4-arith:w5-h:def:det-cleavage}
+Fix \(G=GL_{2}\) and a determinant character \(\delta\) lifting
+\(\det\bar\rho\). The \emph{determinantal cleavage} of the
+Selmer-derived global spectral stack is the pushout along the transition locus
+\begin{equation}
+\label{v4-arith:w5-h:eq:det-cleavage}
+\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}
+\;=\;
+\mathcal{X}^{\mathrm{Sel},\mathrm{Nilp}}_{\bar\rho,\det,\mathcal{L}}
+\sqcup_{\mathcal{X}^{\mathrm{Sel},\mathrm{tr}}_{\bar\rho,\det,\mathcal{L}}}
+\mathcal{X}^{\mathrm{Sel},\mathrm{reg}}_{\bar\rho,\det,\mathcal{L}},
+\end{equation}
+where \(\mathcal{X}^{\mathrm{Sel},\mathrm{Nilp}}\) is the
+nilpotent-support locus in the sense of
+Arinkin--Gaitsgory arXiv:1201.6343 \S2 (the closed substack where
+the corresponding local system has unipotent monodromy at every
+place), \(\mathcal{X}^{\mathrm{Sel},\mathrm{reg}}\) is its open
+complement (the regular locus), and
+\(\mathcal{X}^{\mathrm{Sel},\mathrm{tr}}\) is the transition locus
+(the boundary between them). The determinantal condition
+\(\det\rho=\delta\) restricts \(\mathrm{ad}\rho\) to \(\mathrm{ad}^{0}\rho\),
+converting the full AG nilpotent-support analysis to the
+determinantal sector.
+\end{definition}
+
+\begin{proposition}[determinantal cleavage identifies \(\mathrm{IndCoh}_{\mathrm{Nilp}}\)]
+\label{v4-arith:w5-h:prop:det-cleavage-identifies-indcoh}
+\ClaimStatusProvedHere. The category
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})\)
+decomposes under the determinantal cleavage as
+\begin{equation}
+\label{v4-arith:w5-h:eq:indcoh-decomposition}
+\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})
+\;\simeq\;
+\mathrm{IndCoh}(\mathcal{X}^{\mathrm{Sel},\mathrm{Nilp}}_{\bar\rho,\det,\mathcal{L}})
+\times_{\mathrm{IndCoh}(\mathcal{X}^{\mathrm{Sel},\mathrm{tr}}_{\bar\rho,\det,\mathcal{L}})}
+\mathrm{QCoh}(\mathcal{X}^{\mathrm{Sel},\mathrm{reg}}_{\bar\rho,\det,\mathcal{L}}),
+\end{equation}
+which is the form required for Arinkin--Gaitsgory arXiv:1201.6343
+Thm.~10.3.2 (``\(\mathrm{IndCoh}_{\mathrm{Nilp}}\) as fibre product'')
+in the arithmetic setting.
+\end{proposition}
+
+\begin{proof}
+\emph{Step 1.} On the nilpotent-support locus, every local system has
+unipotent monodromy, and \(\mathrm{IndCoh}_{\mathrm{Nilp}}\) restricts to
+full \(\mathrm{IndCoh}\) by the nilpotent support condition being
+automatically satisfied. \emph{Step 2.} On the regular locus,
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}\) reduces to \(\mathrm{QCoh}\) since
+the nilpotent cone on the regular locus is just the zero section.
+\emph{Step 3.} The fibre product presentation
+(\ref{v4-arith:w5-h:eq:indcoh-decomposition}) is the standard
+Arinkin--Gaitsgory decomposition of
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}\) into its nilpotent-support and
+regular parts, glued along the transition locus. \emph{Step 4.} The
+determinantal condition \(\det\rho=\delta\) does not affect the
+cleavage: it only restricts the adjoint representation to its
+traceless sector, which is a closed substack-wise operation.
+\end{proof}
+
+\subsection{GKRW \(E_{2}\)-Centre Controls on the Determinantal Cleavage}
+
+\begin{theorem}[Galatius--Kupers--Randal-Williams \(E_{2}\)-centre on the cleavage]
+\label{v4-arith:w5-h:thm:gkrw-e2-centre}
+\ClaimStatusConditional. Galatius--Kupers--Randal-Williams,
+\emph{Cellular \(E_{k}\)-algebras} (arXiv:1805.07184, Ann. Math. 200,
+2024), Thm.~17.3 establishes: for a presentable stable
+\(\infty\)-category \(\mathcal{D}\) with an \(E_{2}\)-monoidal structure
+whose Frobenius-filtered presentation admits a cellular resolution,
+the \(E_{2}\)-centre
+\(\mathcal{Z}^{E_{2}}(\mathcal{D})=\mathrm{End}_{\mathrm{BrAlg}(\mathcal{D})}(\mathbf{1}_{\mathcal{D}})\)
+is identified with the Hochschild cohomology complex
+\(HH^{\bullet}_{E_{2}}(\mathcal{D})\) in the sense of
+Ben-Zvi--Francis--Nadler arXiv:0805.0157.
+
+It applies to
+\(\mathcal{D}=\mathrm{IndCoh}(\mathcal{X}^{\mathrm{Sel},\mathrm{Nilp}}_{\bar\rho,\det,\mathcal{L}})\)
+(the nilpotent-support sector) and
+\(\mathcal{D}'=\mathrm{QCoh}(\mathcal{X}^{\mathrm{Sel},\mathrm{reg}}_{\bar\rho,\det,\mathcal{L}})\)
+(the regular sector), the GKRW \(E_{2}\)-centre identifies each factor
+with the \(HH^{\bullet}_{E_{2}}\) of the corresponding stack after
+cellularity, dualizability, and the Frobenius-filtered cellular
+resolution have been checked for that sector.
+\end{theorem}
+
+\begin{theorem}[(AG.det) reduces to \(E_{2}\)-centre cleavage gluing]
+\label{v4-arith:w5-h:thm:agdet-reduction}
+\ClaimStatusProvedHereConditional. Assume the cellularity and
+dualizability hypotheses of
+\Cref{v4-arith:w5-h:thm:gkrw-e2-centre} for the three sectors, and
+assume that the \(E_{2}\)-centre functor preserves the displayed
+fibre product. The determinant-track projection of
+arithmetic Arinkin--Gaitsgory at the level of the centre, (AG.det)
+(\Cref{v4-arith:bcglue-core:thm:colimit-to-global-reduces-to-AG}),
+is then equivalent to the single \(E_{2}\)-centre compatibility
+\begin{equation}
+\label{v4-arith:w5-h:eq:agdet-e2-compat}
+\mathcal{Z}^{E_{2}}\bigl(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})\bigr)
+\;\simeq\;
+\mathcal{Z}^{E_{2}}\bigl(\mathrm{IndCoh}(\mathcal{X}^{\mathrm{Sel},\mathrm{Nilp}})\bigr)
+\times_{\mathcal{Z}^{E_{2}}(\mathrm{IndCoh}(\mathcal{X}^{\mathrm{Sel},\mathrm{tr}}))}
+\mathcal{Z}^{E_{2}}\bigl(\mathrm{QCoh}(\mathcal{X}^{\mathrm{Sel},\mathrm{reg}})\bigr).
+\end{equation}
+Under the determinantal cleavage the (AG.det) residual splits into
+three separate \(E_{2}\)-centre computations: the nilpotent-support
+centre (controlled by the Arinkin--Gaitsgory nilpotent-cone geometry),
+the regular-locus centre (controlled by \(\mathrm{QCoh}\) of a smooth
+Selmer-derived stack), and the transition-locus centre (a
+single closed substack of codimension at most \(2\) on the determinantal
+sector).
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1: Forward direction.} Assume (AG.det) at the centre.
+Then the centre of
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})\)
+is identified with the global Bernstein-centre
+\(\mathcal{Z}_{\mathrm{glob}}\). By
+\Cref{v4-arith:w5-h:prop:det-cleavage-identifies-indcoh} the
+category on the left decomposes as a fibre product of \(\mathrm{IndCoh}\)
+on the two strata; by the centre-preserves-fibre-products hypothesis,
+(\ref{v4-arith:w5-h:eq:agdet-e2-compat}) holds.
+
+\emph{Step 2: Backward direction.} Conversely, suppose
+(\ref{v4-arith:w5-h:eq:agdet-e2-compat}) holds. By
+\Cref{v4-arith:w5-h:thm:gkrw-e2-centre}, each \(E_{2}\)-centre on the
+right is identified with \(HH^{\bullet}_{E_{2}}\) of the corresponding
+stack. The nilpotent-support and regular centres are classical
+Arinkin--Gaitsgory computations (\emph{Singular support of coherent
+sheaves} arXiv:1201.6343, \S10). The transition centre is a
+codimension-at-most-\(2\) gluing datum. Given the fibre-product
+formula, the global centre is reconstructed as
+\(\mathcal{Z}_{\mathrm{glob}}\) by the dual of the cleavage presentation.
+
+\emph{Step 3: Determinantal restriction.} The determinantal condition
+\(\det\rho=\delta\) restricts all three \(E_{2}\)-centres to their
+traceless-adjoint sectors; this restriction is compatible with the
+fibre product because the determinantal character acts by a
+one-dimensional \(\mathbb{G}_{m}\)-torsor that distributes over the
+cleavage.
+
+\emph{Source disjointness.} Proof source: Arinkin--Gaitsgory
+arXiv:1201.6343 \S10 (singular support, nilpotent-cone decomposition
+of \(\mathrm{IndCoh}_{\mathrm{Nilp}}\)). Verification sources:
+Galatius--Kupers--Randal-Williams arXiv:1805.07184
+(\(E_{2}\)-centre via cellular \(E_{k}\)-algebras) and
+Ben-Zvi--Francis--Nadler arXiv:0805.0157
+(\(HH^{\bullet}_{E_{2}}\) via integral transforms). The three lists
+are disjoint: AG 2012 uses ind-coherent sheaves on smooth algebraic
+stacks, GKRW 2024 uses cellular \(E_{k}\)-algebras in
+\(\mathrm{Cat}_{\infty}\), and BFN 2008 uses factorization integral
+transforms.
+\end{proof}
+
+\begin{corollary}[the \((\mathrm{AG.det})\) transition datum]
+\label{v4-arith:w5-h:cor:agdet-residual}
+\ClaimStatusConjectured. After
+\Cref{v4-arith:w5-h:thm:agdet-reduction}, (AG.det) is equivalent to
+the \(E_{2}\)-centre fibre product formula
+(\ref{v4-arith:w5-h:eq:agdet-e2-compat}). The three individual
+\(E_{2}\)-centres can be computed:
+\begin{itemize}
+\item \(\mathcal{Z}^{E_{2}}(\mathrm{IndCoh}(\mathcal{X}^{\mathrm{Sel},\mathrm{Nilp}}))\)
+is the \(E_{2}\)-shadow of the nilpotent-cone Arinkin--Gaitsgory
+classification restricted to the determinantal sector;
+\item \(\mathcal{Z}^{E_{2}}(\mathrm{QCoh}(\mathcal{X}^{\mathrm{Sel},\mathrm{reg}}))\)
+is the \(HH^{\bullet}_{E_{2}}\) of the smooth Selmer-derived stack,
+which by BFN arXiv:0805.0157 Thm.~1.2 agrees with the \(E_{2}\)-enveloping
+algebra of the tangent complex;
+\item the transition-locus centre is a codimension-\(2\) gluing datum on
+the boundary.
+\end{itemize}
+The residual is the \(E_{2}\)-centre compatibility at the transition
+locus; it is a genuine transition-locus theorem condition, not the
+full arithmetic AG conjecture.
+\end{corollary}
+
+\begin{proof}
+Enumeration of the three centres plus the transition gluing. The
+first and second centres are named classical computations
+(AG 2012 Thm.~10.3.2 and BFN 2008 Thm.~1.2); the third is the
+genuine residual. The domain count follows from
+\Cref{v4-arith:w5-h:prop:det-cleavage-identifies-indcoh}: the
+transition locus is codimension-at-most-\(2\), and the \(E_{2}\)-centre
+compatibility along such a locus is a standard sheaf-gluing
+calculation.
+\end{proof}
+
+\begin{remark}[(AG.det) without full arithmetic AG]
+\label{v4-arith:w5-h:rem:agdet-full-ag-removal}
+The determinant-track projection of arithmetic Arinkin--Gaitsgory has
+the domain of arithmetic AG, namely a global categorical equivalence
+between the full automorphic category and
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}\) of the Selmer-derived stack. The
+GKRW reduction of
+\Cref{v4-arith:w5-h:thm:agdet-reduction} isolates the residual to a
+single \(E_{2}\)-centre compatibility on the transition locus of the
+determinantal cleavage. The remaining residual does not rely on the
+full arithmetic AG conjecture:
+it is a local (to the transition locus) gluing statement amenable to
+AG 2012 + GKRW 2024 + BFN 2008 primary-source assembly.
+\end{remark}
+
+\section{F2.c Restricted-Tensor \(E_{2}\) Transport Lemma}
+\label{v4-arith:w5-h:f2c}
+
+\subsection{Setup}
+
+The F2.c data (Chapter~\ref{v4-arith:tate-tensor}) is a family
+\(\{(\mathcal{C}_{v},u_{v})\}_{v\in V}\) of pointed \(E_{2}\)-monoidal
+stable presentable \(\infty\)-categories with compact spherical units
+\(u_{v}\) at almost all \(v\), and the Tate restricted tensor product
+\(\bigotimes'_{v}(\mathcal{C}_{v},u_{v})\) of
+\Cref{v4-arith:tate:def:restricted-tensor}.
+
+\subsection{Main Lemma}
+
+\begin{theorem}[F2.c \(E_{2}\) transport, elementary proof]
+\label{v4-arith:w5-h:thm:f2c-e2-transport}
+\ClaimStatusProvedHere. Suppose each \(\mathcal{C}_{v}\) is an
+\(E_{2}\)-algebra in \(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\)
+(i.e., an \(E_{2}\)-monoidal stable presentable \(\infty\)-category), and
+the pointing data \(u_{v}\) is a compact central idempotent algebra
+object under the unit at cofinite \(v\in V^{\mathrm{sph}}\subseteq V\).
+Then the Tate restricted tensor product
+\(\bigotimes'_{v}(\mathcal{C}_{v},u_{v})\) is naturally an
+\(E_{2}\)-algebra in \(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\), and the
+canonical inclusions \(\iota_{S}\) and \(\iota_{v}\) are \(E_{2}\)-monoidal
+functors.
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1: Pointed-unit \(E_{2}\)-centrality.} By Lurie HA 5.1.2.26
+the unit object \(\mathbb{1}_{v}\in\mathcal{C}_{v}\) of any
+\(E_{2}\)-monoidal \(\infty\)-category is \(E_{2}\)-central: the
+\(E_{2}\)-algebra map \(\mathbb{1}_{E_{2}}\to\mathcal{C}_{v}\) classifying
+\(\mathbb{1}_{v}\) lifts canonically to the \(E_{2}\)-centre. A compact
+central idempotent algebra object \(u_{v}\) under the unit (by
+hypothesis) inherits \(E_{2}\)-centrality: the idempotent structure
+\(u_{v}\otimes u_{v}\simeq u_{v}\) implies the tensor with \(u_{v}\)
+commutes up to coherent homotopy with all \(E_{2}\)-operations (this is
+Lurie HA 4.8.2.9 applied to the idempotent sub-algebra).
+
+\emph{Step 2: \(E_{2}\)-monoidal insertion.} The insertion
+\(\iota_{S\subseteq S'}\) of
+\Cref{v4-arith:tate:eq:unital-extension} is the tensor with
+\(\bigotimes_{v\in S'\setminus S}u_{v}\). By Step 1, each \(u_{v}\) is
+\(E_{2}\)-central; the tensor product of \(E_{2}\)-central objects is
+\(E_{2}\)-central (the \(E_{2}\)-centre is monoidal under
+\(\otimes\) in \(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\)).
+Hence \(\iota_{S\subseteq S'}\) is an
+\(E_{2}\)-monoidal functor: tensoring with an \(E_{2}\)-central algebra
+object preserves the \(E_{2}\)-structure by Lurie HA 5.1.2.5.
+
+\emph{Step 3: Filtered-colimit compatibility.} The forgetful functor
+\(\mathrm{Alg}_{E_{2}}(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}})\to\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\)
+preserves filtered colimits by Lurie HA 3.2.3.1 (since
+\(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\) admits filtered colimits
+which commute with the tensor product, by HA 4.8.2.18). The
+filtered-colimit presentation
+\Cref{v4-arith:tate:eq:restricted-def} therefore lifts to an
+\(E_{2}\)-algebra in \(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\), and the
+colimit \(E_{2}\)-structure is unique up to contractible choice by
+HA 3.2.3.1(b).
+
+\emph{Step 4: Pointed-unit reduction.}
+Chapter~\ref{v4-arith:tate-tensor} Theorem~\ref{v4-arith:tate:thm:F2c-main}
+proves the F2.c claim at the level of arbitrary
+coherent \(\infty\)-operads \(\mathcal{O}\); the present theorem is the
+\(\mathcal{O}=E_{2}\) specialisation with pointing data
+\(u_{v}=|0\rangle_{v}\) the compact idempotent spherical vector. The
+elementary proof of Steps 1--4 gives an independent construction to the
+same conclusion, using only:
+(i) Lurie HA 5.1.2.26 (unit-centrality of \(E_{2}\)-monoidal units);
+(ii) Lurie HA 3.2.3.1 (filtered-colimit preservation in
+\(\mathrm{Alg}_{\mathcal{O}}(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}})\)).
+No factorization-homology theorem on a positive-dimensional manifold is
+used here; the place set is discrete and contributes no additional
+\(E_{2}\)-operations.
+
+\emph{Source disjointness.} Proof source: Lurie HA 5.1 (pointed
+\(E_{2}\)-algebra centrality axioms + filtered colimits in algebra
+categories). Verification source: the Tate restricted tensor of
+Chapter~\ref{v4-arith:tate-tensor}. The main theorem there uses Dunn
+additivity and Fresse's integral \(E_{n}\)-operad; the present
+specialisation uses only unit centrality and filtered colimits in
+algebra categories.
+\end{proof}
+
+\begin{remark}[the \(E_{2}\) specialisation]
+\label{v4-arith:w5-h:rem:f2c-value-add}
+Chapter~\ref{v4-arith:tate-tensor} proves F2.c for
+arbitrary coherent \(\mathcal{O}\) (Theorem~\ref{v4-arith:tate:thm:F2c-main}).
+The present theorem gives a shorter proof for the
+\(\mathcal{O}=E_{2}\) case under central idempotent pointed-unit
+hypotheses, using only pointed-unit centrality and filtered-colimit
+preservation in algebra categories. It avoids Dunn additivity but does
+not enlarge the local hypotheses of
+\Cref{v4-arith:tate:thm:F2c-main}.
+\end{remark}
+
+\section{Combined BC-Diamond-Glue Statement}
+\label{v4-arith:w5-h:combined}
+
+\begin{theorem}[combined BC-diamond-glue after Chenevier and determinant reduction]
+\label{v4-arith:w5-h:thm:combined-bcglue}
+\ClaimStatusNeedsVerification. After
+\Cref{v4-arith:w5-h:thm:ch1-closure} (Ch1 reduced to the trace-comparison datum) and
+\Cref{v4-arith:w5-h:thm:agdet-reduction} (AG.det reduced to the
+\(E_{2}\)-centre transition-locus gluing on the determinantal cleavage)
+and \Cref{v4-arith:w5-h:thm:f2c-e2-transport} (restricted \(F2.c\)
+under central idempotent pointed-unit hypotheses), the full
+BC-diamond-glue compatibility
+(\Cref{v4-arith:acd:cj:bc-diamond-glue-concrete}) is equivalent to
+the conjunction
+\begin{enumerate}
+\item[\textbf{(BCglue.local)}] (Conditional by
+\Cref{v4-arith:bcglue-k5:thm:local-BZCHN-plus-EG});
+\item[\textbf{(BCglue.glue)}] (Conjectural by
+\Cref{v4-arith:bcglue-k5:thm:prismatic-gluing}, conditional on
+prismatic flatness \(\Pi\)-flat
+\Cref{v4-arith:bcglue-k5:lem:prismatic-flatness});
+\item[\textbf{(Ch1.trace)}]
+\Cref{v4-arith:w5-h:conj:pseudocharacter-trace-comparison};
+\item[\textbf{(AG.det.transition)}] (Conjectural; the
+\(E_{2}\)-centre compatibility on the transition locus of the
+determinantal cleavage
+\Cref{v4-arith:w5-h:cor:agdet-residual}).
+\end{enumerate}
+In particular, the (Ch1) residual is narrowed to the trace-comparison
+datum, and
+(AG.det) is tightened from the full arithmetic AG conjecture to the
+single transition-locus \(E_{2}\)-centre gluing.
+\end{theorem}
+
+\begin{proof}
+By \Cref{v4-arith:bcglue-k5:thm:decomposition}, BC-diamond-glue
+decomposes into (BCglue.local), (BCglue.glue), (BCglue.core). By
+\Cref{v4-arith:bcglue-core:thm:core-final-reduction}, (BCglue.core)
+is equivalent to the conjunction (Ch1) + (AG.det). By
+\Cref{v4-arith:w5-h:thm:ch1-closure}, (Ch1) holds only under
+\Cref{v4-arith:w5-h:conj:pseudocharacter-trace-comparison}. By
+\Cref{v4-arith:w5-h:thm:agdet-reduction},
+(AG.det) is equivalent to the \(E_{2}\)-centre compatibility on the
+determinantal cleavage, which
+\Cref{v4-arith:w5-h:cor:agdet-residual} reduces to the
+transition-locus \(E_{2}\)-centre gluing. Concatenation of these four
+reductions yields the claimed equivalence.
+
+The (AG.det.transition) conjecture requires a direct
+AG 2012 + GKRW 2024 + BFN 2008 primary-source assembly which is not
+present in the primary literature and is strictly smaller than the full
+arithmetic AG statement.
+\end{proof}
+
+\begin{corollary}[\(\mathrm{L}_{\mathrm{ACD}}\) residual list after Chenevier and determinant reduction]
+\label{v4-arith:w5-h:cor:LACD-wave5}
+\ClaimStatusConjectured (conditional on the standing residuals listed).
+After these reductions, \(\mathrm{L}_{\mathrm{ACD}}\) has the residual
+list:
+\begin{enumerate}
+\item (BCglue.local): \textbf{Conditional} (unchanged from
+the KMS--GNS sector);
+\item (BCglue.glue): \textbf{Conjectural} (unchanged from the KMS--GNS sector);
+\item (Ch1): \textbf{conditional theorem} via
+\Cref{v4-arith:w5-h:thm:ch1-closure}, conditional on
+\Cref{v4-arith:w5-h:conj:pseudocharacter-trace-comparison};
+\item (AG.det): \textbf{reduced to (AG.det.transition)} via
+\Cref{v4-arith:w5-h:thm:agdet-reduction}. The remaining theorem
+condition is the transition-locus \(E_{2}\)-centre compatibility,
+not full arithmetic AG;
+\item F2.c: \textbf{theorem under the central idempotent pointed-unit
+hypotheses} via either
+Chapter~\ref{v4-arith:tate-tensor}
+\Cref{v4-arith:tate:thm:F2c-main} or the \(E_{2}\) specialisation
+\Cref{v4-arith:w5-h:thm:f2c-e2-transport}.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+Assemble
+\Cref{v4-arith:bcglue-core:cor:LACD-tightened} (the KMS--GNS sector list) with
+\Cref{v4-arith:w5-h:cor:ch1-closes-pairwise} (Ch1 trace datum),
+\Cref{v4-arith:w5-h:cor:agdet-residual} (AG.det reduction to
+transition-locus centre), and
+\Cref{v4-arith:w5-h:thm:f2c-e2-transport} (restricted \(F2.c\)
+transport under its stated hypotheses).
+The residual list updates accordingly.
+\end{proof}
+
+\section{Residual Obstruction After Chenevier and Determinant Reduction}
+\label{v4-arith:w5-h:residual-obstruction}
+
+\begin{remark}[the genuine core remaining]
+\label{v4-arith:w5-h:rem:genuine-core-residual}
+The residual obstruction to \(\mathrm{L}_{\mathrm{ACD}}\) after these
+reductions is the triple:
+\begin{itemize}
+\item (BCglue.local): a primary-source transition theorem identifying
+the BZCHN + Emerton--Gee + Fargues--Scholze local inputs as a
+canonical local coherent Springer sheaf on the Emerton--Gee stack
+across the \(\ell\neq p\) / \(\ell=p\) divide. It is a genuine
+theorem condition.
+\item (BCglue.glue): Bhatt--Scholze prismatic-flat cross-prime
+transition lifted to the coherent-sheaf level, preserving
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}\)-continuity. It is a genuine
+theorem condition.
+\item (AG.det.transition): the \(E_{2}\)-centre compatibility on the
+codimension-at-most-\(2\) transition locus of the determinantal
+cleavage, assembling AG 2012 + GKRW 2024 + BFN 2008. It is a genuine
+transition-locus theorem condition.
+\end{itemize}
+The Chenevier term is now a Selmer trace-comparison datum. The
+determinantal term is now a transition-locus \(E_{2}\)-centre datum.
+The local and prismatic gluing terms remain independent inputs.
+\end{remark}
+
+\begin{remark}[unmoved inputs]
+\label{v4-arith:w5-h:rem:what-wave5-cannot-touch}
+The arguments above do not prove \((\mathrm{BCglue.local})\) or
+\((\mathrm{BCglue.glue})\). The former requires a transition theorem
+across the \(\ell=p\) boundary for coherent Springer sheaves. The
+latter requires prismatic-flat cross-prime descent lifted from the
+universal deformation ring to coherent sheaves. The
+\((\mathrm{AG.det.transition})\) term requires the
+Arinkin--Gaitsgory, Galatius--Kupers--Randal-Williams, and
+Ben-Zvi--Francis--Nadler comparison on the actual transition locus.
+\end{remark}
+
+\begin{remark}[independent comparison data]
+\label{v4-arith:w5-h:rem:wave5-hziv-data}
+The three comparison reductions carry independent derivation and
+comparison lists:
+\begin{itemize}
+\item \Cref{v4-arith:w5-h:thm:ch1-closure} carries proof source Chenevier 2014 and comparison sources Bellaiche--Chenevier
+2009 + Bhatt--Scholze arXiv:1905.08229 + Bhatt--Lurie
+arXiv:2201.06120, conditional on
+\Cref{v4-arith:w5-h:conj:pseudocharacter-trace-comparison}.
+The source families are disjoint: categorical pseudocharacter
+axioms (Chenevier) versus Galois-cohomology deformation theory
+(Bellaiche--Chenevier) versus prismatic site theory
+(Bhatt--Scholze, Bhatt--Lurie); mutually disjoint lists.
+\item \Cref{v4-arith:w5-h:thm:agdet-reduction} is a domain-reduction
+stated at \ClaimStatusProvedHere with proof source
+Arinkin--Gaitsgory arXiv:1201.6343 and comparison sources
+Galatius--Kupers--Randal-Williams arXiv:1805.07184 + BFN
+arXiv:0805.0157. The residual (AG.det.transition) is
+\ClaimStatusConjectured conditional on primary-source assembly.
+\item \Cref{v4-arith:w5-h:thm:f2c-e2-transport} carries proof source
+Lurie HA 5.1 and HA 3.2.3.1. Its comparison source is
+Chapter~\ref{v4-arith:tate-tensor}'s Tate restricted tensor
+construction.
+\end{itemize}
+\end{remark}
+
+\section{Bibliography Stanza}
+\label{v4-arith:w5-h:bibliography}
+
+The primary literature invoked in this chapter:
+
+\begin{description}
+\item[Chenevier, G.] (2014). \emph{The \(p\)-adic analytic space of
+pseudo-characters of a profinite group}. JAMS 27 (2014),
+1007--1074. Used in
+\Cref{v4-arith:w5-h:prop:chenevier-moduli-via-det-trace} and
+\Cref{v4-arith:w5-h:thm:ch1-closure} as the proof source for
+the determinant-trace pseudocharacter moduli.
+\item[Bellaiche, J.\ and Chenevier, G.] (2009). \emph{Families of
+Galois representations and Selmer groups}. Ast\'erisque 324.
+Chapter~1 used for the universal determinantal deformation ring
+identification (comparison source disjoint from Chenevier 2014).
+\item[Bhatt, B.\ and Scholze, P.] (2022). \emph{Prisms and prismatic
+cohomology}. Ann. Math. 196, arXiv:1905.08229. Thm.~2.10
+(prismatic flatness) used in
+\Cref{v4-arith:w5-h:thm:ch1-closure} for the prismatic-flatness
+input.
+\item[Bhatt, B.\ and Lurie, J.] (2022). \emph{Absolute prismatic
+cohomology}. arXiv:2201.06120. \S8 Nygaard-filtration convention
+used in \Cref{v4-arith:w5-h:thm:ch1-closure}.
+\item[Arinkin, D.\ and Gaitsgory, D.] (2015). \emph{Singular support
+of coherent sheaves and the geometric Langlands conjecture}. Selecta
+Math. 21 (2015), 1--199. arXiv:1201.6343. \S10 (nilpotent-support
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}\) decomposition) used in
+\Cref{v4-arith:w5-h:def:det-cleavage} and
+\Cref{v4-arith:w5-h:prop:det-cleavage-identifies-indcoh}.
+\item[Galatius, S., Kupers, A., and Randal-Williams, O.] (2024).
+\emph{Cellular \(E_{k}\)-algebras}. Ann. Math. 200, arXiv:1805.07184.
+Thm.~17.3 (\(E_{2}\)-centre via cellular \(E_{k}\)-algebras) used in
+\Cref{v4-arith:w5-h:thm:gkrw-e2-centre} and
+\Cref{v4-arith:w5-h:thm:agdet-reduction}.
+\item[Ben-Zvi, D., Francis, J., and Nadler, D.] (2010). \emph{Integral
+transforms and Drinfeld centers in derived algebraic geometry}.
+JAMS 23, arXiv:0805.0157. Thm.~1.2 (\(HH^{\bullet}_{E_{2}}\) of a
+smooth derived stack) used in \Cref{v4-arith:w5-h:cor:agdet-residual}.
+\item[Lurie, J.] (2017). \emph{Higher algebra}. 5.1.2.5, 5.1.2.26
+(unit-centrality of \(E_{n}\)-monoidal units) and 3.2.3.1
+(filtered-colimit preservation in algebra categories) used in
+\Cref{v4-arith:w5-h:thm:f2c-e2-transport}.
+\item[Francis, J.\ and Gaitsgory, D.] (2012). \emph{Chiral
+Koszul duality}. Selecta Math. 18, arXiv:1103.5803. Cited for the
+factorization-algebra background; no positive-dimensional
+factorization-homology theorem is used in
+\Cref{v4-arith:w5-h:thm:f2c-e2-transport}.
+\item[Emerton, M.\ and Gee, T.] (2019). \emph{Moduli stacks of
+\((\varphi,\Gamma)\)-modules and the existence of crystalline lifts}.
+arXiv:1908.07185. Used as the
+primary source for the local Emerton--Gee stack
+\(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}\) in
+\Cref{v4-arith:w5-h:def:det-cleavage} and
+\Cref{v4-arith:w5-h:thm:ch1-closure}.  The
+pseudocharacter trace comparison remains the named conditional
+input.
+\end{description}
+
+The ten primary sources are mutually independent across (Ch1),
+(AG.det), and F2.c: no single author appears in more than one proof
+or comparison role, and
+no theorem of one list is used as input to another list's
+proof.

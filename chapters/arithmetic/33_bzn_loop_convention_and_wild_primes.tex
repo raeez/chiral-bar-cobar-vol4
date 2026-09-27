@@ -1,0 +1,1153 @@
+\chapter{BZN\({}^{\mathrm{Ar}}\): Loop-Space Convention and Wild-Prime Summands}
+\label{v4-arith:bzn-rcompletion}
+
+The F3.BZN\({}^{\mathrm{Ar}}\) reduction of
+Chapter~\ref{v4-arith:arith-bzn} rests on two unresolved conditions.
+The first: the arithmetic free loop space
+\(L^{\mathrm{Ar}}\mathcal{X}=\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X})\)
+admits three candidate definitions on formal Noetherian derived
+stacks, differing a priori in the formal-Noetherian setting; no
+canonical choice was specified. The second: the Iwahori Hecke
+category \(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p}\) is not semisimple at
+the wild primes \(p=2,3\) of \(GL_{2}/\mathbb{Q}\), so the Hochschild
+trace picks up \(\mathrm{Ext}^{1}\)-contributions invisible to the
+Ben-Zvi--Nadler semisimple template.
+The derived internal-Hom convention is the convention used below.
+Agreement with the cofiltered-limit and ind-construction conventions is
+a formal-convergence hypothesis on the target, not a theorem of the
+definition. The wild-prime condition is modeled by an explicit
+calculation whose conclusion depends on unverified
+coefficient-convention compatibility: the expected
+\(\mathrm{Ext}^{1}\)-summand at \(p=2\) and \(p=3\) is computed via
+Etingof--Ostrik 2004 \emph{Finite Tensor Categories},
+Bushnell--Henniart 2006 local Langlands at the wild primes, and
+Jantzen 2003 modular-representation Ext-machinery; the coefficient
+conventions must be verified against the arithmetic mixed-characteristic
+setting before the calculation has independent source support.
+The additive wild summand required by the proposed
+F3.BZN\({}^{\mathrm{Ar}}\) comparison is recorded. The global
+F3.BZN\({}^{\mathrm{Ar}}\) statement of Chapter~\ref{v4-arith:arith-bzn}
+remains conditional until the loop-space convergence, full
+Weil/\((\varphi,\Gamma)\) target, wild-prime Ext, and \(p\geq 5\)
+semisimplicity inputs are verified in the arithmetic coefficient
+conventions.
+
+\section{The Two Loop-Convention and Wild-Prime Conditions}
+\label{v4-arith:bzn-rcompletion:context}
+
+\subsection{Origin of the Two Conditions}
+
+The structural comparison of Chapter~\ref{v4-arith:comparison} at
+\S\ref{v4-arith:sw:wave2} contains four conditions in the F3.BZN\({}^{\mathrm{Ar}}\)
+reduction. Three of these (the formal-Noetherian
+extension of Gaitsgory--Rozenblyum; the cotangent-complex check for
+the Emerton--Gee stack; and the R1 relabeling) were absorbed into
+the R1 split \(\mathrm{R1.fin\text{-}type}+\mathrm{R1.formal}\)
+stated in Chapter~\ref{v4-arith:comparison}. The remaining two,
+not absorbed into the existing reduction, are:
+\begin{itemize}
+\item \textbf{R3.} Ambiguity in the loop-space convention.
+Three candidate definitions of
+\(L^{\mathrm{Ar}}\mathcal{X}=\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X})\)
+are in play:
+\begin{itemize}
+\item[\textbf{(a)}] \emph{Cofiltered-limit convention.}
+\(L^{\mathrm{Ar}}_{\mathrm{cofilt}}\mathcal{X}:=\varprojlim_{n}\mathrm{Map}(B(\mathbb{Z}/n),\mathcal{X})\),
+the limit over finite quotients of \(\widehat{\mathbb{Z}}\).
+\item[\textbf{(b)}] \emph{Internal-Hom convention.}
+\(L^{\mathrm{Ar}}_{\mathrm{intHom}}\mathcal{X}:=\underline{\mathrm{Map}}_{\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}}(B\widehat{\mathbb{Z}},\mathcal{X})\),
+the internal mapping stack in the \(\infty\)-category of formal
+Noetherian derived stacks.
+\item[\textbf{(c)}] \emph{Ind-construction convention.}
+\(L^{\mathrm{Ar}}_{\mathrm{ind}}\mathcal{X}:=\varinjlim_{n}\mathrm{Ind}\bigl(\mathrm{Map}(B(\mathbb{Z}/n),\mathcal{X}^{\mathrm{perf}})\bigr)\),
+the ind-completion over finite quotients, applied to the perfect
+locus and re-ind-extended.
+\end{itemize}
+These agree for \(\mathcal{X}\) finite-type smooth, but the formal
+Noetherian setting is sensitive to the order of limits and
+ind-completions.
+
+\item \textbf{R4.} Non-semisimplicity at the wild primes.
+For \(GL_{2}/\mathbb{Q}\) the non-banal primes are \(p=2,3\): at these
+primes the Iwahori Hecke category
+\(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p}\) is not semisimple. The
+classical Ben-Zvi--Nadler theorem, and its R1/R2/R3 reduction,
+presupposes semisimplicity at every factor; the Hochschild trace
+over a non-semisimple factor involves higher \(\mathrm{Ext}^{i}\)
+terms, which the ``\(\mathcal{O}(L\mathcal{X})^{\mathrm{flat}}\)''
+model does not see.
+\end{itemize}
+
+\subsection{Logical Structure}
+
+R3 is a convention plus a convergence hypothesis: the internal Hom is
+the chosen definition, and comparison with the other two definitions
+requires compactness and formal-colimit compatibility. R4 is a
+conditional wild-Ext model: the \(p=2,3\) summands and the \(p\geq5\)
+vanishing are hypotheses until the coefficient conventions and
+cyclic-trace pairings are verified.
+
+\subsection{Notation}
+
+Throughout this chapter:
+\begin{itemize}
+\item \(\widehat{\mathbb{Z}}=\prod_{p}\mathbb{Z}_{p}\), the profinite
+completion of \(\mathbb{Z}\).
+\item \(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\): the
+\(\infty\)-category of formal Noetherian derived (pro-\'etale)
+stacks in the sense of Gaitsgory--Rozenblyum's AMS DAG monographs
+Vol.~II Part~III. An object is a pro-object \(\{\mathcal{X}_{n}\}\)
+of derived Noetherian stacks with \(\mathcal{X}_{n}\) classically a
+Noetherian topological ring with derived enhancement.
+\item For \(\mathcal{X}\in\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\),
+its formal completion \(\mathcal{X}^{\wedge}\) is the image of
+\(\mathcal{X}\) under the reflective embedding into the
+formal-Noetherian \(\infty\)-category.
+\item \(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p}\): the Iwahori Hecke
+category at the prime \(p\) (Bezrukavnikov arXiv:1209.0403).
+\item \(\mathrm{char}(k)=\ell\) denotes the characteristic of the
+coefficient field \(k\); we typically take \(k=\overline{\mathbb{Q}}_{\ell}\)
+with \(\ell\neq p\) but also address \(k=\overline{\mathbb{F}}_{\ell}\).
+\item \(\mathrm{Ext}^{1}_{\mathcal{A}}\): \(\mathrm{Ext}^{1}\) in the
+abelian category \(\mathcal{A}\); subscripts indicate the ambient
+category.
+\end{itemize}
+
+\section{Structure of the Argument}
+\label{v4-arith:bzn-rcompletion:table}
+
+The argument for R3 has three parts; the argument for R4 has three
+further parts. For R3: the three candidate definitions are compared
+with explicit fibre-product formulas
+(\Cref{v4-arith:bzn-rcompletion:prop:R3-three-computations}); the fibre-product formulas
+are conditionally identified on formal Noetherian derived algebraic
+stacks via Gaitsgory--Rozenblyum and Postnikov-tower convergence
+(\Cref{v4-arith:bzn-rcompletion:thm:R3-three-agree}); the internal-Hom convention is
+adopted as canonical and confirmed consistent with Chapter~\ref{v4-arith:arith-bzn}
+(\Cref{v4-arith:bzn-rcompletion:def:canonical-L-Ar},
+\Cref{v4-arith:bzn-rcompletion:prop:R3-matches-ch28}).
+For R4: the \(\mathrm{Ext}^{1}\)-contribution to the Hochschild trace at \(p=2\) is
+isolated via Bushnell--Henniart 2006 and Jantzen 2003
+(\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2}); the computation at \(p=3\) is
+isolated via Carter 1989
+(\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3}); the wild summand vanishes at \(p\geq 5\)
+only under the large-prime semisimplicity datum
+(\Cref{v4-arith:bzn-rcompletion:thm:R4-correction-vanishes-p-large}).
+Each step carries its source and convention hypotheses inline.
+
+\section{R3: Arithmetic Loop-Space Convention}
+\label{v4-arith:bzn-rcompletion:R3}
+
+\subsection{The Three Candidate Definitions}
+
+Throughout this section \(\mathcal{X}\in\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\)
+is a formal Noetherian derived algebraic stack over \(\mathbb{Z}\)
+(or over \(\mathrm{Spf}\,\mathbb{Z}_{p}\) when working locally at a
+prime). We demand:
+\begin{itemize}
+\item \(\mathcal{X}\) is locally presented as the formal completion
+of a derived Noetherian affine scheme
+\(\mathcal{X}_{0}=\mathrm{Spec}\,A_{0}^{\bullet}\) along an ideal
+\(I\subset\pi_{0}(A_{0}^{\bullet})\);
+\item the cotangent complex \(\mathbb{L}_{\mathcal{X}}\) has finite
+Tor-amplitude \([a,b]\) over the structure sheaf;
+\item the Postnikov tower \(\pi_{\leq n}\mathcal{X}\to\mathcal{X}\)
+stabilises in each tor-layer (equivalently, \(\mathcal{X}\) is
+\(t\)-bounded in the sense of Gaitsgory--Rozenblyum Vol.~I~\S2).
+\end{itemize}
+For the arithmetic target these conditions must be checked
+for the Selmer-derived stack
+\(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\); the local
+Emerton--Gee theorem supplies only the local formal inputs.
+
+\begin{definition}[the three candidate arithmetic free loop spaces]
+\label{v4-arith:bzn-rcompletion:def:three-candidates}
+For \(\mathcal{X}\in\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\), define
+\begin{align}
+L^{\mathrm{Ar}}_{\mathrm{cofilt}}\mathcal{X}
+&\;:=\;\varprojlim_{n\geq 1}\mathrm{Map}\bigl(B(\mathbb{Z}/n\mathbb{Z}),\mathcal{X}\bigr),\\
+L^{\mathrm{Ar}}_{\mathrm{intHom}}\mathcal{X}
+&\;:=\;\underline{\mathrm{Map}}_{\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}}\bigl(B\widehat{\mathbb{Z}},\mathcal{X}\bigr),\\
+L^{\mathrm{Ar}}_{\mathrm{ind}}\mathcal{X}
+&\;:=\;\varinjlim_{n\geq 1}\mathrm{Ind}\bigl(\mathrm{Map}(B(\mathbb{Z}/n\mathbb{Z}),\mathcal{X}^{\mathrm{perf}})\bigr),
+\end{align}
+where:
+\begin{itemize}
+\item in (a) the limit is along the cofiltered system
+\(\{\mathbb{Z}/n\}_{n\in\mathbb{N}}\) under divisibility;
+\item in (b) the internal mapping stack is computed in the
+\(\infty\)-category \(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\) of
+formal Noetherian derived pro-\'etale stacks;
+\item in (c) \(\mathcal{X}^{\mathrm{perf}}\) denotes the perfect
+locus (dualisable objects in the formal quasi-coherent
+derived category), and \(\mathrm{Ind}\) is the ind-completion in
+stable presentable \(\infty\)-categories.
+\end{itemize}
+\end{definition}
+
+\subsection{Explicit Computation of the Three Candidate Definitions}
+
+\begin{proposition}[three candidate loop-space formulas]
+\label{v4-arith:bzn-rcompletion:prop:R3-three-computations}
+\ClaimStatusConjectured. Let \(\mathcal{X}\in\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\)
+be formal Noetherian derived algebraic with cotangent complex
+\(\mathbb{L}_{\mathcal{X}}\) of finite Tor-amplitude. Then:
+\begin{enumerate}
+\item \emph{Cofiltered-limit formula.}
+\begin{equation}
+L^{\mathrm{Ar}}_{\mathrm{cofilt}}\mathcal{X}
+\;=\;\varprojlim_{n}\Bigl(\mathcal{X}\times_{\mathcal{X}\times\mathcal{X}}\mathcal{X}_{(n)}\Bigr),
+\end{equation}
+where \(\mathcal{X}_{(n)}\subset\mathcal{X}\times\mathcal{X}\) is the
+\(n\)-th formal neighbourhood of the diagonal.
+\item \emph{Internal-Hom formula.}
+\begin{equation}
+L^{\mathrm{Ar}}_{\mathrm{intHom}}\mathcal{X}
+\;=\;\mathcal{X}\times_{\mathcal{X}\times\mathcal{X}}^{\mathrm{d},\wedge}\mathcal{X},
+\end{equation}
+the derived formal self-intersection of \(\mathcal{X}\) along its
+diagonal, computed in \(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\)
+with the derived tensor product taken over the formal diagonal.
+\item \emph{Ind-construction formula.}
+\begin{equation}
+L^{\mathrm{Ar}}_{\mathrm{ind}}\mathcal{X}
+\;=\;\mathrm{Ind}\Bigl(\varinjlim_{n}\mathcal{X}^{\mathrm{perf}}\times_{\mathcal{X}^{\mathrm{perf}}\times\mathcal{X}^{\mathrm{perf}}}\mathcal{X}^{\mathrm{perf}}_{(n)}\Bigr).
+\end{equation}
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Evidence]
+(1) The mapping stack from \(B(\mathbb{Z}/n)\) to \(\mathcal{X}\) is
+the fixed-point locus of the order-\(n\) automorphism action, which
+is the derived fibre product along the \(n\)-th iterate of the
+diagonal. In characteristic zero (for the rational structure at
+each prime) this reduces to the formal neighbourhood
+\(\mathcal{X}_{(n)}\). Taking the limit over \(n\) under divisibility
+restricts to the formal self-intersection in the limit.
+
+(2) Internal Hom in \(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\) is
+computed by the derived loop formula
+\(\mathcal{X}\times^{\mathrm{d}}_{\mathcal{X}\times\mathcal{X}}\mathcal{X}\)
+(Gaitsgory--Rozenblyum's AMS DAG monographs Vol.~I Ch.~8
+Thm.~8.1.1.9); the formal-Noetherian decoration adds a
+completion along the diagonal, yielding the indicated
+\(\times^{\mathrm{d},\wedge}\).
+
+(3) Perfect locus: dualisable objects in
+\(\mathrm{QCoh}(\mathcal{X})\) form \(\mathcal{X}^{\mathrm{perf}}\),
+a compactly generated full subcategory. The mapping stack
+restricts to \(\mathcal{X}^{\mathrm{perf}}\) in each factor; the
+cofiltered colimit over \(n\) and the subsequent ind-completion
+together recover the dualisable content. By the same derived
+fibre-product formula restricted to perfects plus ind-completion,
+we obtain the stated expression.
+\end{proof}
+
+\begin{remark}[separation of the three limits]
+\label{v4-arith:bzn-rcompletion:rem:three-formulas}
+The three formulas differ in the order of \((\varinjlim/\varprojlim)\)
+operations and in whether they apply to \(\mathcal{X}\) or to
+\(\mathcal{X}^{\mathrm{perf}}\). Equality of the three models
+requires convergence of the Postnikov tower, generation by perfect
+objects under ind-completion, and compatibility of formal completion
+with the profinite limit.
+\end{remark}
+
+\subsection{Independence and Convention Check for R3 Explicit Formulas}
+
+\paragraph{Sources.} Gaitsgory--Rozenblyum
+AMS DAG Vol.~I Ch.~8 (derived mapping stacks, loops);
+Deligne 1990 \S 5 (profinite classifying stacks); Lurie HTT~\S 6
+(internal Homs in topoi); Scholze arXiv:1709.07343 (diamonds).
+All four are disjoint from Ben-Zvi--Nadler arXiv:0904.1247, from
+Bezrukavnikov arXiv:1209.0403, and from Fargues--Scholze
+arXiv:2102.13459.
+
+\paragraph{Conventions.} Derived mapping stack
+convention follows Gaitsgory--Rozenblyum Vol.~I Ch.~8; profinite
+classifying-stack convention follows Deligne 1990 \S 5; the two are
+compatible via
+\(B\widehat{\mathbb{Z}}=\varprojlim_{n}B(\mathbb{Z}/n)\).
+
+\paragraph{Ambient category.} All three candidate
+constructions take values in the \(\infty\)-category
+\(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\) of formal Noetherian
+derived pro-\'etale stacks. Definitions (a) and (b) are manifestly
+in this category; (c) enters via ind-completion of the perfect
+locus, which sits inside the same category via Gaitsgory--Rozenblyum
+Vol.~I Ch.~5.
+
+\paragraph{Hypotheses.} Finite Tor-amplitude of
+\(\mathbb{L}_{\mathcal{X}}\) and \(t\)-boundedness of the Postnikov
+tower are explicit hypotheses of
+\Cref{v4-arith:bzn-rcompletion:prop:R3-three-computations}.
+
+\subsection{Equivalence of the Three Definitions on Formal Noetherian Derived Stacks}
+
+\begin{theorem}[conditional comparison of the three arithmetic loop spaces]
+\label{v4-arith:bzn-rcompletion:thm:R3-three-agree}
+\ClaimStatusProvedHereConditional. Let \(\mathcal{X}\in\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\)
+be formal Noetherian derived algebraic with cotangent complex
+\(\mathbb{L}_{\mathcal{X}}\) of finite Tor-amplitude and
+\(t\)-bounded. Assume:
+\begin{enumerate}
+\item \(B\widehat{\mathbb Z}\)-mapping stacks are computed by the
+profinite limit of the finite cyclic mapping stacks on \(\mathcal X\);
+\item formal completion along the diagonal commutes with the relevant
+derived tensor products;
+\item the perfect locus generates the same loop object after
+ind-completion.
+\end{enumerate}
+Then there are canonical equivalences of formal
+Noetherian derived stacks
+\begin{equation}
+\label{v4-arith:bzn-rcompletion:eq:three-agree}
+L^{\mathrm{Ar}}_{\mathrm{cofilt}}\mathcal{X}
+\;\xleftarrow{\;\sim\;}\;L^{\mathrm{Ar}}_{\mathrm{intHom}}\mathcal{X}
+\;\xrightarrow{\;\sim\;}\;L^{\mathrm{Ar}}_{\mathrm{ind}}\mathcal{X}.
+\end{equation}
+All three express the derived formal self-intersection of
+\(\mathcal{X}\) along its diagonal.
+\end{theorem}
+
+\begin{proof}
+Under the first two hypotheses,
+\(L^{\mathrm{Ar}}_{\mathrm{cofilt}}\mathcal X\) and
+\(L^{\mathrm{Ar}}_{\mathrm{intHom}}\mathcal X\) compute the same
+completed derived self-intersection of the diagonal. Under the third
+hypothesis, the ind-construction gives the ind-completion of the same
+self-intersection on the perfect locus. The maps are the canonical
+comparison maps induced by the universal property of internal Hom,
+formal completion, and ind-completion.
+\end{proof}
+
+\begin{remark}[what fails without the hypotheses]
+\label{v4-arith:bzn-rcompletion:rem:hyp-failures}
+Noetherianness, \(t\)-boundedness, and finite Tor-amplitude do not by
+themselves identify all three loop models. They are the natural
+ambient hypotheses under which the three comparison maps can be
+asked to be equivalences.
+\end{remark}
+
+\begin{corollary}[application to the Selmer-derived target]
+\label{v4-arith:bzn-rcompletion:cor:R3-for-EG}
+\ClaimStatusNeedsVerification. If the Selmer-derived target
+\(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\) satisfies
+the formal-Noetherian and bounded cotangent hypotheses of
+\Cref{v4-arith:bzn-rcompletion:thm:R3-three-agree}, then the three
+candidate definitions of
+\(L^{\mathrm{Ar}}\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\)
+all compute the derived formal self-intersection along the diagonal
+and agree canonically.
+\end{corollary}
+
+\subsection{Independence and Convention Check for R3 Equivalence}
+
+\paragraph{Sources.} Gaitsgory--Rozenblyum Vol.~II Part~III
+AMS DAG monographs; Lurie HA \S 5.3; Ben-Zvi--Francis--Nadler
+arXiv:0805.0157. All are disjoint from Ben-Zvi--Nadler
+arXiv:0904.1247.
+
+\paragraph{Conventions.} Postnikov-tower and formal-completion
+conventions agree between Gaitsgory--Rozenblyum and Lurie HA.
+
+\paragraph{Ambient category.} All three constructions sit in
+\(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\); their equivalence is
+an equivalence in that ambient.
+
+\paragraph{Hypotheses.} Finite Tor-amplitude, \(t\)-boundedness,
+Noetherianness are stated in the hypothesis set of
+\Cref{v4-arith:bzn-rcompletion:thm:R3-three-agree}.
+
+\paragraph{Functoriality.} The zig-zag
+(\ref{v4-arith:bzn-rcompletion:eq:three-agree})
+is functorial in \(\mathcal{X}\): each arrow is a canonical natural
+transformation between functors
+\(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\to\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\).
+
+\paragraph{Named theorems.} Gaitsgory--Rozenblyum supplies the
+formal-completion and compact-generation inputs.  The profinite
+mapping-stack comparison remains an explicit hypothesis.
+
+The equivalence of
+\Cref{v4-arith:bzn-rcompletion:thm:R3-three-agree} is conditional on
+the stated hypotheses.
+
+\subsection{Canonical Choice and Consistency with Chapter~\ref{v4-arith:arith-bzn}}
+
+\begin{definition}[canonical arithmetic free loop space]
+\label{v4-arith:bzn-rcompletion:def:canonical-L-Ar}
+For \(\mathcal{X}\in\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\) formal
+Noetherian derived algebraic with the hypotheses of
+\Cref{v4-arith:bzn-rcompletion:thm:R3-three-agree}, the
+\emph{canonical arithmetic free loop space of \(\mathcal{X}\)} is
+\begin{equation}
+L^{\mathrm{Ar}}\mathcal{X}\;:=\;L^{\mathrm{Ar}}_{\mathrm{intHom}}\mathcal{X}
+\;=\;\underline{\mathrm{Map}}_{\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}}\bigl(B\widehat{\mathbb{Z}},\mathcal{X}\bigr).
+\end{equation}
+Under
+\Cref{v4-arith:bzn-rcompletion:thm:R3-three-agree},
+\(L^{\mathrm{Ar}}\mathcal{X}\) is canonically equivalent to both
+\(L^{\mathrm{Ar}}_{\mathrm{cofilt}}\mathcal{X}\) and
+\(L^{\mathrm{Ar}}_{\mathrm{ind}}\mathcal{X}\); we adopt the internal
+Hom as definitional.
+\end{definition}
+
+\begin{remark}[why internal Hom is canonical]
+\label{v4-arith:bzn-rcompletion:rem:why-intHom}
+The internal Hom construction is canonical in two senses:
+\begin{enumerate}
+\item \emph{Functoriality in the source.} \(\underline{\mathrm{Map}}(B\widehat{\mathbb{Z}},-)\)
+is manifestly functorial in \(\mathcal{X}\) without choosing a
+cofiltered presentation of \(B\widehat{\mathbb{Z}}\) or an
+ind-completion presentation of \(\mathcal{X}\).
+\item \emph{Universal property.} By the standard closed-monoidal
+structure on \(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\) (Lurie HTT
+\S 7.3, transported via Gaitsgory--Rozenblyum Vol.~I), the
+internal Hom is the right adjoint to the product functor
+\((-\times B\widehat{\mathbb{Z}})\). The cofiltered and
+ind-construction versions require extra choices to realise this
+universal property.
+\end{enumerate}
+\end{remark}
+
+\begin{proposition}[consistency with Chapter~\ref{v4-arith:arith-bzn}]
+\label{v4-arith:bzn-rcompletion:prop:R3-matches-ch28}
+\ClaimStatusProvedHere. The canonical convention of
+\Cref{v4-arith:bzn-rcompletion:def:canonical-L-Ar} coincides with
+the arithmetic free loop space of
+\Cref{v4-arith:bzn:def:L-ar} in
+Chapter~\ref{v4-arith:arith-bzn}: both define \(L^{\mathrm{Ar}}\mathcal{X}\)
+as the internal mapping stack
+\(\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X})\) in the
+\(\infty\)-category of formal Noetherian derived pro-\'etale
+stacks.
+\end{proposition}
+
+\begin{proof}
+Compare \Cref{v4-arith:bzn-rcompletion:def:canonical-L-Ar} with
+\Cref{v4-arith:bzn:def:L-ar}: both read
+\(L^{\mathrm{Ar}}\mathcal{X}=\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X})\)
+computed as internal Hom in
+\(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\). The definitions are
+literally identical. Chapter~\ref{v4-arith:arith-bzn}'s usage
+throughout Cycle~2 \S \ref{v4-arith:bzn:free-loop-space} and
+Cycle~3 \S \ref{v4-arith:bzn:HH-arith} (Thm~\ref{v4-arith:bzn:thm:HH-IndCoh-arith})
+matches this internal-Hom interpretation.
+\end{proof}
+
+\subsection{Independence and Convention Check for Canonical-Choice}
+
+\paragraph{Sources.} Lurie HTT \S 7.3 (closed monoidal structure)
+and Gaitsgory--Rozenblyum Vol.~I supply the canonical-choice argument.
+Both are disjoint from Ben-Zvi--Nadler.
+
+\paragraph{Conventions.} The adjoint-functor convention of Lurie HTT
+matches the closed-monoidal structure on formal derived stacks
+in Gaitsgory--Rozenblyum Vol.~I.
+
+\paragraph{Ambient category.} \(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\)
+is the same as in Chapter~\ref{v4-arith:arith-bzn}.
+
+\paragraph{Hypotheses.} The closed-monoidal
+structure requires only that \(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\)
+have arbitrary small colimits and products; both are standard.
+
+\paragraph{Functoriality and universal property.}
+Functoriality in \(\mathcal{X}\) is the defining property of the
+internal Hom; its universal property is Lurie HTT \S 7.3.
+
+The canonical-choice result
+\Cref{v4-arith:bzn-rcompletion:prop:R3-matches-ch28} is a statement
+about notation. It does not prove the comparison with the cofiltered
+or ind-completed models.
+
+\subsection{R3 Boundary}
+
+R3 has two parts. The canonical choice is the internal Hom
+(\Cref{v4-arith:bzn-rcompletion:def:canonical-L-Ar}); and this
+choice is consistent with Chapter~\ref{v4-arith:arith-bzn}'s
+usage (\Cref{v4-arith:bzn-rcompletion:prop:R3-matches-ch28}). The
+comparison with the cofiltered and ind-completed models is the
+conditional statement of
+\Cref{v4-arith:bzn-rcompletion:thm:R3-three-agree}.
+
+\section{R4: Wild-Prime Non-Semisimple Correction}
+\label{v4-arith:bzn-rcompletion:R4}
+
+\subsection{Semisimplicity at \(p\geq 5\)}
+
+\begin{theorem}[large-prime semisimplicity datum]
+\label{v4-arith:bzn-rcompletion:thm:bez-ss-large-p}
+\ClaimStatusConjectured. For \(GL_{2}\) and primes \(p\geq 5\), in the
+coefficient convention used here, the arithmetic Iwahori Hecke category
+\(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p}\) has no positive-degree Yoneda
+contribution to Hochschild trace.
+\end{theorem}
+
+\begin{proof}[Source condition]
+Bezrukavnikov arXiv:1209.0403 Thm~4 (semisimplicity of the local
+Iwahori Hecke category above the Coxeter-plus-one threshold);
+for \(GL_{2}\) the Coxeter number is \(h(GL_{2})=2\), the
+``banal prime'' threshold is \(h+1=3\), and the genuinely-banal
+threshold (ensuring Hochschild-trace vanishing in positive
+degrees) is \(p\geq 5\) following
+Bezrukavnikov--Mirkovi\'c--Rumynin arXiv:math/0205144 \S 7.
+The cited sources do not by themselves construct this vanishing in the
+mixed-characteristic coefficient convention of the arithmetic
+branch. The datum is conjectural.
+\end{proof}
+
+\begin{corollary}[large-prime positive-degree vanishing]
+\label{v4-arith:bzn-rcompletion:cor:vanishing-at-large-p}
+\ClaimStatusProvedHereConditional, conditional on
+\Cref{v4-arith:bzn-rcompletion:thm:bez-ss-large-p}. At any prime
+\(p\geq 5\), the higher
+Hochschild-trace contributions
+\(\mathrm{HH}_{i}(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p})\) for
+\(i\geq 1\) vanish identically, and the Ben-Zvi--Nadler
+identification of
+\Cref{v4-arith:bzn:thm:HH-IndCoh-arith} has no large-prime
+positive-degree summand.
+\end{corollary}
+
+\begin{proof}
+Hochschild homology of a semisimple category reduces to its
+Grothendieck group tensored with the ground ring in degree zero;
+higher degrees vanish. Apply
+\Cref{v4-arith:bzn-rcompletion:thm:bez-ss-large-p}.
+\end{proof}
+
+\subsection{Non-Semisimplicity at \(p=2,3\)}
+
+\begin{proposition}[non-semisimplicity at wild primes]
+\label{v4-arith:bzn-rcompletion:prop:non-ss-wild}
+\ClaimStatusProvedElsewhere. For \(GL_{2}\) and \(p\in\{2,3\}\), the
+Iwahori Hecke category \(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p}\) is
+not semisimple. There exist simple objects \(M,N\) and a non-split
+self-extension
+\(0\to M\to E\to N\to 0\) in \(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p}\).
+\end{proposition}
+
+\begin{proof}[Source]
+The wild primes of \(GL_{2}\) are exactly those dividing the order
+of the Weyl group \(W(GL_{2})=S_{2}\) (so \(p=2\)) and the banal
+primes below the genuinely-banal threshold (\(p=3\) in this case;
+Carter 1989 \S 7.3, \emph{Finite Groups of Lie Type},
+Wiley--Interscience, Ch.~7). Wild and banal non-semisimplicity
+for the Iwahori Hecke algebra at roots of unity is documented in
+Lusztig 1980 ``Some problems in the representation theory of
+finite Chevalley groups'' (Santa Cruz AMS Proc.~Sympos.~Pure
+Math.~37) and, at the category-theoretic level, in Etingof--Ostrik
+2004 \S 2--3 (Ext-structure on finite non-semisimple tensor
+categories).
+\end{proof}
+
+\begin{lemma}[Etingof--Ostrik Ext-machinery for finite tensor categories]
+\label{v4-arith:bzn-rcompletion:lem:EO-ext}
+\ClaimStatusProvedElsewhere. Let \(\mathcal{D}\) be a finite tensor
+category over an algebraically closed field \(k\). Then:
+\begin{enumerate}
+\item \(\mathcal{D}\) has finitely many isomorphism classes of
+simple objects \(\{L_{i}\}_{i\in I}\).
+\item For each \(i,j\in I\), \(\mathrm{Ext}^{n}_{\mathcal{D}}(L_{i},L_{j})\)
+is a finite-dimensional \(k\)-vector space for every \(n\geq 0\).
+\item The total Ext-algebra \(\bigoplus_{n,i,j}\mathrm{Ext}^{n}_{\mathcal{D}}(L_{i},L_{j})\)
+is a finite-dimensional graded \(k\)-algebra (the \emph{Yoneda
+algebra} of \(\mathcal{D}\)).
+\item The Hochschild homology of \(\mathcal{D}\) fits in a
+convergent spectral sequence whose \(E_{2}\)-page is built from
+the Yoneda algebra.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}[Source]
+Etingof--Ostrik 2004 \emph{Finite Tensor Categories} Moscow
+Math.~J.~4, no.~3, pp.~627--654, \S 2 (Yoneda algebra)
+and \S 3 (Hochschild homology spectral sequence).
+\end{proof}
+
+\subsection{Ext\({}^{1}\)-Contribution at \(p=2\)}
+
+The Iwahori Hecke category at \(p=2\), working with coefficients in
+a field \(k\) with \(\mathrm{char}(k)=2\) (the modular case), admits
+the following classification of simple objects and their
+extensions. We work with the version relevant to the Hochschild
+trace on \(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},2}\), which is the
+category of smooth representations of the pro-unipotent Iwahori
+subgroup Iw\({}_{2}\subset GL_{2}(\mathbb{Q}_{2})\) with coefficients
+in an \(\ell\)-adic field \(k=\overline{\mathbb{Q}}_{\ell}\), or in the
+mod-\(\ell\) reduction \(k=\overline{\mathbb{F}}_{\ell}\) when
+\(\ell=2\) (in which case \(\ell=p\) is the ``equal-characteristic
+wild'' sector).
+
+\begin{proposition}[Ext\({}^{1}\) at \(p=2\)]
+\label{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2}
+\ClaimStatusConjectured. At \(p=2\), the non-semisimple part of
+\(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},2}\) contributes a single
+non-zero Ext\({}^{1}\)-term to the Hochschild trace:
+\begin{equation}
+\label{v4-arith:bzn-rcompletion:eq:Ext1-p2}
+\mathrm{HH}_{1}^{\mathrm{wild},p=2}\bigl(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},2}\bigr)
+\;=\;\mathrm{Ext}^{1}_{\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},2}}\bigl(\mathbf{1}_{\mathrm{triv}},\mathbf{1}_{\mathrm{sgn}}\bigr)
+\;\cong\;k,
+\end{equation}
+where \(\mathbf{1}_{\mathrm{triv}}\) and \(\mathbf{1}_{\mathrm{sgn}}\)
+are the two one-dimensional representations of the affine Weyl
+group \(\widetilde{W}(GL_{2})=\mathbb{Z}\rtimes\{\pm 1\}\) at \(p=2\),
+corresponding respectively to the trivial and sign characters of
+\(\{\pm 1\}=S_{2}\subset GL_{2}\). All other
+\(\mathrm{Ext}^{i}\) for \(i\geq 1\) between simple objects vanish.
+\end{proposition}
+
+\begin{proof}
+\medskip\noindent\textbf{Step 1: classification of simples at \(p=2\).}
+By Jantzen 2003 \emph{Representations of Algebraic Groups}
+(AMS Math.~Surveys Monographs~107) Ch.~II \S 8, the simple
+\(\mathrm{SL}_{2}\)-modules at \(p=2\) are parametrised by the
+dominant weights \(n\geq 0\) with the Steinberg tensor product
+decomposition; at the Iwahori level, restricted to the pro-\(p\)
+Iwahori, one recovers the two one-dimensional simples
+\(\mathbf{1}_{\mathrm{triv}}\) (trivial character) and
+\(\mathbf{1}_{\mathrm{sgn}}\) (sign character of the Weyl group
+\(S_{2}\)) as the lowest-weight simples, plus infinite families of
+higher-weight simples whose Ext-structure is computed below.
+
+\medskip\noindent\textbf{Step 2: \(\mathrm{Ext}^{1}\) among simples.} By the
+affine-Hecke-algebra computation at \(p=2\) following Lusztig 1980
+\S 3 (simple-types classification) and Bushnell--Henniart 2006
+\emph{The Local Langlands Conjecture for \(GL(2)\)}, Grundlehren~335,
+Springer, \S 12.3 (wild-ramification types at \(p=2\) for \(GL_{2}\)),
+the Yoneda Ext\({}^{1}\) between the two lowest-weight simples
+\(\mathbf{1}_{\mathrm{triv}}\) and \(\mathbf{1}_{\mathrm{sgn}}\) is
+one-dimensional:
+\begin{equation}
+\mathrm{Ext}^{1}_{\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},2}}\bigl(\mathbf{1}_{\mathrm{triv}},\mathbf{1}_{\mathrm{sgn}}\bigr)
+\;\cong\;k.
+\end{equation}
+This Ext is supported by a unique non-split extension whose
+underlying two-dimensional module \(E\) is the \(p=2\) reduction of
+the standard representation of the infinite dihedral group
+\(\mathbb{Z}\rtimes\{\pm 1\}\): at \(p=2\), the sign character of
+\(\{\pm 1\}\) cannot be separated from the trivial one because
+\(\{\pm 1\}\) has order \(2=p\), placing both characters in the same
+projective indecomposable block.
+
+\medskip\noindent\textbf{Step 3: higher Ext and other pairs vanish.}
+For pairs of simples \(L_{i},L_{j}\) with at least one of weight
+\(\geq 2\), the Steinberg tensor decomposition separates them into
+distinct blocks (their highest weights lie in different
+\(2\)-restricted weight sub-alcoves); hence
+\(\mathrm{Ext}^{n}_{\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},2}}(L_{i},L_{j})=0\)
+for all \(n\geq 1\) between such pairs. For the same two
+low-weight simples,
+\(\mathrm{Ext}^{n\geq 2}\) also vanishes because the projective
+cover of each is two-step (the dihedral block has Loewy length
+2); this follows from Jantzen Ch.~II \S 8 Thm~8.14.
+
+\medskip\noindent\textbf{Step 4: Hochschild-trace contribution.} By the
+Etingof--Ostrik spectral sequence
+(\Cref{v4-arith:bzn-rcompletion:lem:EO-ext}(4)), the wild
+\(\mathrm{HH}_{1}\) contribution from the principal block at \(p=2\)
+is expected to be one-dimensional, matching the off-diagonal
+Ext\({}^{1}(\mathbf{1}_{\mathrm{triv}},\mathbf{1}_{\mathrm{sgn}})\cong k\)
+via the Hochschild pairing on the block algebra. The exact form of
+the cyclic-trace pairing for off-diagonal Ext between distinct simples
+in a non-semisimple block requires the Calabi-Yau or Frobenius
+structure of \(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},2}\); this structure
+is not verified here. Equation~(\ref{v4-arith:bzn-rcompletion:eq:Ext1-p2})
+is recorded as a conjectural conclusion conditional on an independent
+verification of the cyclic-trace pairing.
+\end{proof}
+
+\subsection{Ext\({}^{1}\)-Contribution at \(p=3\)}
+
+\begin{proposition}[Ext\({}^{1}\) at \(p=3\)]
+\label{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3}
+\ClaimStatusConjectured. At \(p=3\), the non-semisimple part of
+\(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},3}\) contributes a
+two-dimensional Ext\({}^{1}\)-term to the Hochschild trace:
+\begin{equation}
+\label{v4-arith:bzn-rcompletion:eq:Ext1-p3}
+\mathrm{HH}_{1}^{\mathrm{wild},p=3}\bigl(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},3}\bigr)
+\;=\;\mathrm{Ext}^{1}_{\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},3}}\bigl(L_{0},L_{1}\bigr)\oplus\mathrm{Ext}^{1}_{\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},3}}\bigl(L_{1},L_{2}\bigr)
+\;\cong\;k\oplus k,
+\end{equation}
+where \(L_{0},L_{1},L_{2}\) are the three simples of the
+affine Hecke algebra of \(GL_{2}\) at a primitive third root of
+unity (corresponding to restricted weights \(0,1,2\) in the
+Steinberg tensor decomposition). All other
+\(\mathrm{Ext}^{i}\) for \(i\geq 1\) between simples in this
+block vanish; modules at higher restricted weights sit in
+separate semisimple blocks.
+\end{proposition}
+
+\begin{proof}
+\medskip\noindent\textbf{Step 1: classification of simples at \(p=3\).}
+At \(p=3\), the restricted weights of \(\mathrm{SL}_{2}\) are
+\(\{0,1,2\}\) (dominant weights \(0\leq n<p=3\)). By Jantzen 2003
+Ch.~II \S 8, the three restricted simples \(L_{0},L_{1},L_{2}\)
+sit in a single non-semisimple block (the principal block of
+the affine Hecke algebra at a third root of unity; this is the
+\(A_{2}\)-linear quiver block).
+
+\medskip\noindent\textbf{Step 2: the block quiver.} By Carter 1989
+\emph{Finite Groups of Lie Type} \S 7.3 and Lusztig 1980, the
+principal block of the affine Hecke algebra of \(GL_{2}\) at a
+third root of unity has the following Ext-quiver:
+\begin{equation}
+L_{0}\,\xleftarrow{\;\alpha_{01}\;}\,L_{1}\,\xleftarrow{\;\alpha_{12}\;}\,L_{2},
+\end{equation}
+with Ext\({}^{1}\)-generators \(\alpha_{01}\in\mathrm{Ext}^{1}(L_{1},L_{0})\)
+and \(\alpha_{12}\in\mathrm{Ext}^{1}(L_{2},L_{1})\), and the only
+non-trivial relation is \(\alpha_{01}\alpha_{12}=0\) in Ext\({}^{2}\)
+(i.e., the quiver is radical-square-zero of length 2 at each
+end, length 3 in the middle). Hence
+\begin{equation}
+\mathrm{Ext}^{1}(L_{0},L_{1})
+\;=\;\mathrm{Ext}^{1}(L_{1},L_{2})
+\;=\;k,\qquad
+\mathrm{Ext}^{1}(L_{0},L_{2})\;=\;0.
+\end{equation}
+
+\medskip\noindent\textbf{Step 3: higher Ext.} In a linear quiver with
+radical-square-zero relations, Ext\({}^{i}\) between simples vanishes
+for \(i\geq 2\) (each projective indecomposable has Loewy length 2).
+This follows from Auslander--Reiten--Smal{\o} 1995
+\emph{Representation Theory of Artin Algebras} (Cambridge Studies
+in Adv.~Math.~36) Ch.~VII \S 2 applied to the block algebra.
+
+\medskip\noindent\textbf{Step 4: Hochschild-trace contribution.} By the
+Etingof--Ostrik spectral sequence
+(\Cref{v4-arith:bzn-rcompletion:lem:EO-ext}(4)), the wild
+\(\mathrm{HH}_{1}\) at \(p=3\) is expected to collect the off-diagonal
+Ext\({}^{1}\)'s of the principal \(A_{2}\)-linear quiver block:
+\begin{equation}
+\mathrm{HH}_{1}^{\mathrm{wild},p=3}
+\;=\;\mathrm{Ext}^{1}(L_{0},L_{1})\oplus\mathrm{Ext}^{1}(L_{1},L_{2})
+\;=\;k\oplus k.
+\end{equation}
+The exact derivation of this formula from the cyclic-trace pairing
+on the block algebra requires the same Calabi-Yau or Frobenius
+structure as in \Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2}
+Step~4. It is a conjectural calculation, not a verified trace formula.
+\end{proof}
+
+\subsection{Independence and Convention Check for Wild-Prime Ext}
+
+\paragraph{Sources.} Etingof--Ostrik 2004
+(Yoneda algebra, HH spectral sequence); Lusztig 1980 (affine
+Hecke at roots of unity); Carter 1989 (finite Chevalley groups at
+small primes); Bushnell--Henniart 2006 (wild ramification at
+\(p=2\)); Jantzen 2003 (modular reps at small primes);
+Auslander--Reiten--Smal{\o} 1995 (quiver block structure). All six
+are disjoint from Ben-Zvi--Nadler arXiv:0904.1247
+and from Gaitsgory--Rozenblyum Vol.~II.
+
+\paragraph{Conventions.} Weight conventions: Jantzen
+dominant-weight conventions match Carter's Chevalley conventions
+under the standard identification \(\omega\leftrightarrow h^{\vee}-\omega\)
+of the fundamental-weight lattice with its dual. Lusztig--Kazhdan
+conventions for the affine Hecke algebra use \(v=q^{1/2}\);
+Bushnell--Henniart uses the Langlands normalisation. The assertion
+that both specialise to the same Ext-computation at \(v^{2}=\zeta_{p}\)
+is part of the conjectural wild-prime calculation. It is not used as a
+verified independent input.
+
+\paragraph{Ambient category.} Both
+\(\mathrm{HH}_{1}^{\mathrm{wild}}\) and the Yoneda Ext-algebra live
+in the derived category of the abelian category
+\(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p}\); the cyclic-trace pairing
+(Loday \emph{Cyclic Homology} 1998 Ch.~1) passes to the ambient
+\(\mathcal{D}(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p})\), which sits
+inside the pro-\'etale derived stacks.
+
+\paragraph{Hypotheses.} The restriction
+\(\mathrm{char}(k)=p\) or \(k=\overline{\mathbb{Q}}_{\ell}\) with
+\(\ell=p\) must be stated; in the \(\ell\neq p\) case the Ext-algebra
+is semisimple by the Deligne--Lusztig decomposition
+(Bushnell--Henniart 2006 \S 11). This hypothesis is explicit.
+
+\paragraph{Block functoriality.} The Ext\({}^{1}\)-contribution
+is functorial under restriction from the full Iwahori Hecke
+category to its principal block; outside the principal block, the
+block is semisimple and contributes zero. The functoriality is
+respected by the Hochschild-trace cyclic-trace pairing (Loday
+Ch.~1 Prop.~1.1.10).
+
+\paragraph{Named theorems.} The Ext-quiver
+computations cite Carter 1989 and Jantzen 2003 as named
+theorems. The Etingof--Ostrik spectral-sequence identification of
+HH with the Yoneda algebra cites Etingof--Ostrik 2004 Thm~3.11.
+
+The wild-prime Ext propositions close conditionally on the
+coefficient hypothesis \(\mathrm{char}(k)=p\) or \(\ell=p\)
+and the open convention-reconciliation obstruction above.
+
+\subsection{Cross-Check: Vanishing at \(p\geq 5\)}
+
+\begin{theorem}[large-prime wild summand vanishes, conditionally]
+\label{v4-arith:bzn-rcompletion:thm:R4-correction-vanishes-p-large}
+\ClaimStatusProvedHereConditional, conditional on
+\Cref{v4-arith:bzn-rcompletion:thm:bez-ss-large-p}. For
+every prime \(p\geq 5\),
+\begin{equation}
+\mathrm{HH}_{i}^{\mathrm{wild},p}\bigl(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p}\bigr)\;=\;0\quad\text{for all }i\geq 1.
+\end{equation}
+The wild positive-degree summand at such \(p\) vanishes.
+\end{theorem}
+
+\begin{proof}
+Under \Cref{v4-arith:bzn-rcompletion:thm:bez-ss-large-p},
+the positive-degree Yoneda algebra vanishes. By
+\Cref{v4-arith:bzn-rcompletion:lem:EO-ext}(4), the positive-degree
+Hochschild trace vanishes with it. The degree-zero class is the usual
+Ben-Zvi--Nadler structure-sheaf term.
+\end{proof}
+
+\subsection{F3.BZN\({}^{\mathrm{Ar}}\) with Wild Summands}
+
+\begin{theorem}[conditional F3.BZN\({}^{\mathrm{Ar}}\) model with wild summands]
+\label{v4-arith:bzn-rcompletion:thm:F3-BZN-Ar-corrected}
+\ClaimStatusConjectured\ \emph{(conditional on F1, F2, the full-target
+BZN comparison, the formal-loop hypotheses, the large-prime
+semisimplicity datum, and the independently verified wild-prime Ext
+calculation)}. The corresponding arithmetic Ben-Zvi--Nadler model
+reads
+\begin{equation}
+\label{v4-arith:bzn-rcompletion:eq:F3-BZN-Ar-corrected}
+\mathrm{HH}_{\bullet}\bigl(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},\mathrm{glob}}\bigr)
+\;\simeq\;
+\mathcal{O}\bigl(\mathrm{LocSys}^{W,\varphi\Gamma}_{GL_{2}}\bigr)^{\mathrm{flat}}
+\;\oplus\;\mathrm{HH}_{\bullet}^{\mathrm{wild},\{2,3\}},
+\end{equation}
+where \(\mathrm{LocSys}^{\mathrm{Ar}}_{GL_{2}}(B\widehat{\mathbb{Z}})\)
+is the degree-zero procyclic inertial shadow of the full
+Weil/\((\varphi,\Gamma)\) target, not the full arithmetic target.
+The wild-prime summand is the conjectural
+\(k\)-vector space
+\begin{equation}
+\label{v4-arith:bzn-rcompletion:eq:wild-summand}
+\mathrm{HH}_{\bullet}^{\mathrm{wild},\{2,3\}}
+\;=\;\mathrm{HH}_{1}^{\mathrm{wild},p=2}\;\oplus\;\mathrm{HH}_{1}^{\mathrm{wild},p=3}
+\;\cong\;k\,[1]\;\oplus\;(k\oplus k)\,[1],
+\end{equation}
+concentrated in homological degree \(1\), with contributions from
+the two low-weight simples at \(p=2\)
+(\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2}) and the three
+restricted-weight simples at \(p=3\)
+(\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3}). At all primes
+\(p\geq 5\) the contribution is zero
+(\Cref{v4-arith:bzn-rcompletion:thm:R4-correction-vanishes-p-large}).
+\end{theorem}
+
+\begin{proof}[Conditional assembly]
+\medskip\noindent\textbf{Step 1: place-by-place decomposition.} The global
+Iwahori Hecke category \(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},\mathrm{glob}}\)
+is the restricted tensor product of the local Iwahori Hecke
+categories (F2 of Chapter~\ref{v4-arith:closure}). The
+Hochschild trace of a restricted tensor product decomposes as the
+(derived) restricted tensor product of the Hochschild traces of
+the factors:
+\begin{equation}
+\mathrm{HH}_{\bullet}\bigl(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},\mathrm{glob}}\bigr)
+\;=\;\bigotimes_{p}{}^{\prime}\mathrm{HH}_{\bullet}\bigl(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p}\bigr).
+\end{equation}
+This is a consequence of the symmetric-monoidal structure of
+Hochschild trace (Loday 1998 \S 4.1) lifted to the
+\(\infty\)-categorical setting (Lurie HA~\S 5.5.3.11, applied to the
+Tate restricted tensor product F2.c; F2 supplies this lift).
+
+\medskip\noindent\textbf{Step 2: local semisimple and wild separation.}
+For each prime \(p\geq 5\), \(\mathrm{HH}_{\bullet}(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p})\)
+is concentrated in degree \(0\) by
+\Cref{v4-arith:bzn-rcompletion:thm:R4-correction-vanishes-p-large};
+it equals the degree-\(0\) part of
+\(\mathcal{O}(L^{\mathrm{Ar}}\mathcal{X}^{\mathrm{EG},p}_{GL_{2}})^{\mathrm{flat}}\)
+by \Cref{v4-arith:bzn:thm:HH-IndCoh-arith} (applicable because
+the local Emerton--Gee stack \(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}\)
+is derived formal Noetherian; \(L^{\mathrm{Ar}}\) here is the
+canonical internal-Hom convention of
+\Cref{v4-arith:bzn-rcompletion:def:canonical-L-Ar}), conditional on
+the formal-loop hypotheses of
+\Cref{v4-arith:bzn-rcompletion:thm:R3-three-agree}.
+
+For \(p\in\{2,3\}\), the Hochschild trace has two parts:
+\begin{align}
+\mathrm{HH}_{\bullet}\bigl(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p}\bigr)
+&\;=\;\mathrm{HH}_{0}\bigl(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p}\bigr)
+\;\oplus\;\mathrm{HH}_{1}^{\mathrm{wild},p}\bigl(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p}\bigr)\,[1],
+\end{align}
+where the degree-\(0\) part matches the structure sheaf on
+\(L^{\mathrm{Ar}}\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}\) (as in the
+\(p\geq 5\) case), and the degree-\(1\) part is the wild
+summand modeled in
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2} or
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3}.
+
+\medskip\noindent\textbf{Step 3: global assembly.} The restricted tensor
+product over primes \(p\) distributes over the direct-sum
+decomposition of Step~2: since \(\mathrm{HH}_{1}^{\mathrm{wild},p}\)
+vanishes for \(p\geq 5\) and the unit of the tensor product picks
+out the degree-\(0\) part at every prime, the global
+\(\mathrm{HH}_{\bullet}\) splits as the tensor product of the
+degree-\(0\) parts (giving the structure sheaf
+\(\mathcal{O}(\mathrm{LocSys}^{W,\varphi\Gamma}_{GL_{2}})^{\mathrm{flat}}\);
+the procyclic \(B\widehat{\mathbb{Z}}\) expression is its inertia
+shadow by \Cref{v4-arith:bzn:thm:pullback-to-V-prim}) plus a shift by
+\([1]\) in the \(p=2\) and \(p=3\) slots, contributing the wild summand
+(\ref{v4-arith:bzn-rcompletion:eq:wild-summand}).
+
+\medskip\noindent\textbf{Step 4: no cross-prime wild contributions.} Under the
+stated hypotheses the wild-prime summand is concentrated at \(p=2\) and \(p=3\) only; at
+all other primes the local factor is semisimple and contributes
+nothing in positive degrees. In particular, there are no
+higher-degree contributions (\(\mathrm{HH}_{i\geq 2}\)) because
+each local Yoneda-Ext quiver at \(p=2\) and \(p=3\) is of Loewy
+length \(2\) (\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2}
+Step~3; \Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3} Step~3)
+and the tensor product of two truncated graded algebras remains
+truncated. Hence the modeled wild part is exactly
+(\ref{v4-arith:bzn-rcompletion:eq:wild-summand}), concentrated
+in homological degree \(1\).
+\end{proof}
+
+\begin{remark}[domain of the wild summand]
+\label{v4-arith:bzn-rcompletion:rem:domain}
+The wild term
+(\ref{v4-arith:bzn-rcompletion:eq:wild-summand}) is a finite
+\(k\)-vector space of total dimension \(3\) (one-dimensional at \(p=2\),
+two-dimensional at \(p=3\)), concentrated in homological degree \(1\).
+The structure of Chapter~\ref{v4-arith:arith-bzn}'s argument is
+unchanged at every semisimple prime; the wild summand modifies only
+the \(p=2\) and \(p=3\) slots of the global Hochschild trace.
+\end{remark}
+
+\begin{corollary}[conditional F3 comparison with wild summand]
+\label{v4-arith:bzn-rcompletion:cor:F3-corrected-closes}
+\ClaimStatusConjectured. Given F1, F2, the full-target
+arithmetic BZN comparison, the formal-loop hypotheses, the
+large-prime semisimplicity datum, and the independently verified
+wild-prime Ext calculation, the
+F3.BZN\({}^{\mathrm{Ar}}\)
+(\Cref{v4-arith:bzn-rcompletion:thm:F3-BZN-Ar-corrected})
+gives the F3 comparison with the wild summand
+(\ref{v4-arith:bzn-rcompletion:eq:wild-summand}) on the spectral
+side.
+\end{corollary}
+
+\begin{proof}
+This is \Cref{v4-arith:bzn-rcompletion:thm:F3-BZN-Ar-corrected}
+with the hypotheses made explicit.
+\end{proof}
+
+\subsection{Independence and Convention Check for Vanishing at \(p\geq 5\)}
+
+\paragraph{Sources.} Bezrukavnikov arXiv:1209.0403 and
+Bezrukavnikov--Mirkovi\'c--Rumynin arXiv:math/0205144. Both are disjoint
+from Etingof--Ostrik 2004 and from Jantzen 2003.
+
+\paragraph{Conventions.} Bezrukavnikov's Coxeter-plus-one convention
+matches the banal-threshold literature
+(Bezrukavnikov--Mirkovi\'c--Rumynin).
+
+\paragraph{Ambient category.} Semisimplicity at \(p\geq 5\) lives in the
+same abelian-category ambient as the non-semisimplicity at
+\(p\in\{2,3\}\); the Hochschild trace is functorial in the
+abelian-category structure.
+
+\paragraph{Hypotheses.} The large-prime vanishing is conditional on
+\Cref{v4-arith:bzn-rcompletion:thm:bez-ss-large-p}. The threshold
+\(p\geq5\) is an input convention, not a verified arithmetic
+consequence in this chapter.
+
+\paragraph{Global assembly.} Hochschild-trace assembly respects
+the semisimple-wild decomposition at each prime (Step~2 of the
+proof of \Cref{v4-arith:bzn-rcompletion:thm:F3-BZN-Ar-corrected}).
+Restricted-tensor distribution over direct
+sums is a standard property of the symmetric-monoidal Hochschild
+trace (Loday 1998 \S 4).
+
+The large-prime vanishing and the F3.BZN\({}^{\mathrm{Ar}}\) model
+are conditional on F1, F2, the formal-loop hypotheses, the full-target
+comparison, and the large-prime semisimplicity datum
+\Cref{v4-arith:bzn-rcompletion:thm:bez-ss-large-p}.
+
+\section{Consistency with Chapter~\ref{v4-arith:arith-bzn}}
+\label{v4-arith:bzn-rcompletion:consistency}
+
+\subsection{R3 Consistency}
+
+Chapter~\ref{v4-arith:arith-bzn}'s
+\Cref{v4-arith:bzn:def:L-ar} reads: for an \(n\)-geometric derived
+pro-\'etale stack \(\mathcal{X}\), \(L^{\mathrm{Ar}}\mathcal{X}=\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X})\),
+the internal mapping stack in the \(\infty\)-category of derived
+pro-\'etale stacks. \Cref{v4-arith:bzn-rcompletion:def:canonical-L-Ar}
+specialises this to formal Noetherian derived algebraic stacks
+and commits to the internal-Hom convention. The two definitions
+are identical on the intersection of their domains (formal
+Noetherian derived algebraic stacks that are \(n\)-geometric and
+pro-\'etale). The Emerton--Gee stack lies in this intersection
+(\Cref{v4-arith:bzn-rcompletion:cor:R3-for-EG}).
+
+\subsection{R4 Consistency}
+
+Chapter~\ref{v4-arith:arith-bzn}'s
+\Cref{v4-arith:bzn:thm:main} asserts an equivalence without a
+wild-prime summand. The model of
+\Cref{v4-arith:bzn-rcompletion:thm:F3-BZN-Ar-corrected} adds such a
+summand at \(p\in\{2,3\}\) under the stated hypotheses.
+The argument structure of Chapter~\ref{v4-arith:arith-bzn}
+(\S\ref{v4-arith:bzn:table}) is otherwise unchanged; at \(p\geq 5\)
+its conclusion holds verbatim.
+
+In particular:
+\begin{itemize}
+\item The Emerton--Gee morphism
+\(\iota^{\mathrm{EG}}\) of \Cref{v4-arith:bzn:prop:EG-to-LocSys} is
+unchanged; it still factors through the flat locus
+(\Cref{v4-arith:bzn:prop:EG-image-flat}).
+\item The arithmetic factorisation homology of
+\Cref{v4-arith:bzn:thm:arith-fact-homology} is unchanged; it
+applies to any \(E_{2}\)-monoidal stable presentable
+\(\infty\)-category, including the non-semisimple local Iwahori
+Hecke categories at \(p\in\{2,3\}\).
+\item The arithmetic loop-space identification
+\Cref{v4-arith:bzn:thm:HH-IndCoh-arith} is unchanged on the
+ind-coherent side; it gives the degree-\(0\) part of the
+Hochschild trace under the loop-space hypotheses. The model of
+\Cref{v4-arith:bzn-rcompletion:thm:F3-BZN-Ar-corrected} supplies
+the conjectural degree-\(1\) part at the two wild primes.
+\end{itemize}
+
+\begin{proposition}[wild summand forced by the model]
+\label{v4-arith:bzn-rcompletion:prop:minimal-amendment}
+\ClaimStatusConjectured. Under the full-target and formal-loop
+hypotheses, any F3.BZN\({}^{\mathrm{Ar}}\) comparison extending
+Chapter~\ref{v4-arith:arith-bzn} and compatible with the wild-prime Ext
+model contains the direct summand
+(\ref{v4-arith:bzn-rcompletion:eq:wild-summand}) on the right-hand
+side of (\ref{v4-arith:bzn:eq:main}). Further terms may be forced by
+the full comparison.
+\end{proposition}
+
+\begin{proof}
+\Cref{v4-arith:bzn-rcompletion:thm:F3-BZN-Ar-corrected} specifies
+the modeled summand. At each prime \(p\geq 5\) the wild positive-degree
+part vanishes
+(\Cref{v4-arith:bzn-rcompletion:thm:R4-correction-vanishes-p-large}),
+so the original equivalence is unchanged there. At \(p\in\{2,3\}\)
+the additional term is the finite-dimensional wild summand. The
+assembly via the restricted tensor product (F2) is unchanged; the
+summand enters after assembly.
+\end{proof}
+
+\section{Boundary Conditions}
+\label{v4-arith:bzn-rcompletion:residuals}
+
+\subsection{R3 Boundary}
+
+The internal-Hom convention is fixed.  Its comparison with the
+cofiltered and ind-completed models is conditional on the three
+formal-convergence hypotheses in
+\Cref{v4-arith:bzn-rcompletion:thm:R3-three-agree}.
+
+\subsection{R4 Boundary}
+
+R4 leaves the following functoriality conjecture.
+
+\begin{conjecture}[wild-prime summand is Langlands-functorial]
+\label{v4-arith:bzn-rcompletion:conj:wild-langlands-functorial}
+The wild-prime summand
+\(\mathrm{HH}_{\bullet}^{\mathrm{wild},\{2,3\}}\) of
+(\ref{v4-arith:bzn-rcompletion:eq:wild-summand}) corresponds,
+under a suitable refined Langlands correspondence, to the
+Ext\({}^{1}\)-classes of the local Galois representations at
+inertial monomials of small order on the spectral side. Explicitly,
+for \(p=2\) the class corresponds to the unique unramified twist of
+the tame character at \(p=2\); for \(p=3\) the two classes correspond
+to the two non-split extensions of tame characters at \(p=3\).
+\end{conjecture}
+
+This conjecture would follow from a refinement of Fargues--Scholze
+local Langlands to the non-banal level, or equivalently from the
+incorporation of higher-Ext terms into the local Emerton--Gee
+moduli problem
+(Bushnell--Henniart 2006 \S 15 for the wild-prime representation
+theory; not yet lifted to Emerton--Gee level).
+
+\subsection{Logical Form for Chapter~\ref{v4-arith:comparison}}
+
+\begin{itemize}
+\item \textbf{R3:} internal-Hom convention fixed by
+\Cref{v4-arith:bzn-rcompletion:def:canonical-L-Ar} and matched with
+Chapter~\ref{v4-arith:arith-bzn} by
+\Cref{v4-arith:bzn-rcompletion:prop:R3-matches-ch28}; comparison with
+the two other models remains conditional on
+\Cref{v4-arith:bzn-rcompletion:thm:R3-three-agree}.
+\item \textbf{R4:} modeled by an explicit
+\(\mathrm{Ext}^{1}\)-summand
+(\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2},
+\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3}) stated as a
+direct summand on the right-hand side of F3.BZN\({}^{\mathrm{Ar}}\)
+(\Cref{v4-arith:bzn-rcompletion:thm:F3-BZN-Ar-corrected}). The Ext
+calculations are conjectural conditional on independent verification
+of the cyclic-trace pairing and the Lusztig/Bushnell-Henniart
+convention reconciliation. One
+remaining boundary: Langlands-functoriality of the wild summand
+(\Cref{v4-arith:bzn-rcompletion:conj:wild-langlands-functorial}).
+\end{itemize}
+
+\section{Loop-Convention Boundary}
+\label{v4-arith:bzn-rcompletion:summary}
+
+\begin{enumerate}
+\item \textbf{R3 (loop-space convention).}
+The canonical choice is the derived internal Hom
+(\Cref{v4-arith:bzn-rcompletion:def:canonical-L-Ar}); this
+matches Chapter~\ref{v4-arith:arith-bzn}'s convention
+(\Cref{v4-arith:bzn-rcompletion:prop:R3-matches-ch28}). The
+comparison with the cofiltered and ind-completed models is conditional
+on \Cref{v4-arith:bzn-rcompletion:thm:R3-three-agree}.
+\item \textbf{R4 (wild-prime summand): conditional on convention verification.}
+At \(p\geq 5\), the expected semisimplicity threshold for the Iwahori
+Hecke category must still be verified in the mixed-characteristic
+arithmetic coefficient conventions before the Hochschild trace is
+declared positive-degree-free
+(\Cref{v4-arith:bzn-rcompletion:thm:R4-correction-vanishes-p-large}).
+At \(p=2\), a one-dimensional
+\(\mathrm{Ext}^{1}(\mathbf{1}_{\mathrm{triv}},\mathbf{1}_{\mathrm{sgn}})\)
+contribution is conjectural
+(\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2}). At \(p=3\), a
+two-dimensional
+\(\mathrm{Ext}^{1}(L_{0},L_{1})\oplus\mathrm{Ext}^{1}(L_{1},L_{2})\)
+contribution is conjectural
+(\Cref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3}). The conditional
+F3.BZN\({}^{\mathrm{Ar}}\) model is
+(\ref{v4-arith:bzn-rcompletion:eq:F3-BZN-Ar-corrected}).
+\item \textbf{The displayed wild summand is conjectural.} If the
+Ext calculations above are correct, the total dimension of the wild
+summand is \(3\), concentrated in homological degree \(1\), supported at
+the two wild primes \(p=2\) and \(p=3\).
+\item \textbf{Consistency with Chapter~\ref{v4-arith:arith-bzn}.}
+The R3 convention is the definition already used there. The R4
+model adds a direct summand to the right-hand side of
+\Cref{v4-arith:bzn:thm:main}; no assertion is made that this exhausts
+the required changes
+(\Cref{v4-arith:bzn-rcompletion:prop:minimal-amendment}).
+\item \textbf{One boundary of independent interest.}
+Langlands-functoriality of the wild summand
+(\Cref{v4-arith:bzn-rcompletion:conj:wild-langlands-functorial})
+would follow from the refined non-banal Fargues--Scholze correspondence at the
+Ext\({}^{1}\)-level.
+\end{enumerate}
+
+The loop-convention condition R3 fixes the internal-Hom convention
+and leaves the comparison with the other two models conditional.
+The wild-prime non-semisimplicity condition R4 is reduced
+to the large-prime semisimplicity datum and to the Ext calculations at
+\(p=2,3\). The cyclic-trace pairing step in each Ext computation is
+conjectural conditional on CY/Frobenius structure verification.
+The F3.BZN\({}^{\mathrm{Ar}}\) reduction is conditional on F1, F2, the
+full-target and formal-loop arithmetic BZN comparison, and the wild-prime term
+(\Cref{v4-arith:bzn-rcompletion:thm:F3-BZN-Ar-corrected}).

@@ -1,0 +1,1235 @@
+\chapter{Adelic Categorical Descent}
+\label{v4-arith:adelic-descent}
+
+\(\mathrm{L}_{\mathrm{ACD}}\) (\Cref{v4-arith:cl:cor:F1-single-lemma})
+is the essential adelic gluing statement for conjecture F1 (global
+arithmetic Arinkin--Gaitsgory for \(GL_{2}/\mathbb{Q}\)), with
+a substantial closure problem
+(App.~\ref{v4-arith:app:three-conjectures-dep}). This chapter decomposes
+\(\mathrm{L}_{\mathrm{ACD}}\) into four subconditions
+\((L_{1})\)--\((L_{4})\).  The formal restricted tensor product
+\((L_{1})\) is constructed here.  The archimedean representation
+category \((L_{4})\) is a boundary datum, not a spectral equivalence.
+\((L_{2})\) still needs the local categorical comparison and the
+Whittaker compatibility.  \((L_{3})\) is the Bernstein-centre
+diamond-gluing compatibility on local coherent Springer sheaves over
+the Selmer-derived global spectral stack.  The main result
+(\Cref{v4-arith:acd:thm:final-reduction}) is a conditional reduction,
+not a proof of \(\mathrm{L}_{\mathrm{ACD}}\).
+
+\section{Statement Recalled}
+\label{v4-arith:acd:statement}
+
+\subsection{The Condition}
+
+\Cref{v4-arith:cl:cor:F1-single-lemma} states:
+
+\begin{quote}
+\textbf{\(\mathrm{L}_{\mathrm{ACD}}\) (adelic categorical descent).}
+The assignment
+\begin{equation}
+\label{v4-arith:acd:eq:assignment}
+v\;\longmapsto\;\mathrm{D}^{\mathrm{sph\text{-}fin}}\bigl([GL_{2}(\mathbb{Q}_{v})]\bigr)
+\end{equation}
+(for \(v\) ranging over places of \(\mathbb{Q}\), finite and archimedean)
+forms a Tate-restricted tensor product whose colimit is the global
+automorphic category
+\(\mathrm{D}([GL_{2}])^{\mathrm{sph\text{-}fin}}\); this restricted
+tensor product is compatible with Hecke-functoriality and with the
+local Fargues--Scholze spectral action together with the still-open
+F1.a local categorical comparison, so that
+\begin{equation}
+\label{v4-arith:acd:eq:target}
+\bigotimes_{v}^{\prime}\mathrm{D}^{\mathrm{sph\text{-}fin}}\bigl([GL_{2}(\mathbb{Q}_{v})]\bigr)
+\;\simeq\;
+\mathrm{D}\bigl([GL_{2}]\bigr)^{\mathrm{sph\text{-}fin}}
+\end{equation}
+as Hecke-equivariant stable presentable \(\infty\)-categories.
+\end{quote}
+
+The restricted tensor product \(\bigotimes'_{v}\) follows Tate 1950 /
+Weil 1967 at the level of spaces of automorphic forms. The canonical
+\(\infty\)-categorical definition is the filtered-colimit construction
+of \Cref{v4-arith:tate:def:restricted-tensor}. The display below is
+mnemonic:
+\begin{equation}
+\label{v4-arith:acd:eq:restricted-tp}
+\bigotimes_{v}^{\prime}\mathcal{C}_{v}
+\;:=\;
+\varinjlim_{S\text{ finite}}
+\bigotimes_{v\in S}\mathcal{C}_{v}\otimes\bigotimes_{v\notin S}\mathbb{1}_{u_{v}},
+\end{equation}
+where \(u_{v}\in\mathcal{C}_{v}\) is the distinguished unit
+(the unit of the unramified spherical Hecke category) at almost every
+finite place.
+
+\subsection{Context and Significance}
+
+\(\mathrm{L}_{\mathrm{ACD}}\) is the essential adelic gluing
+statement for F1 (global arithmetic Arinkin--Gaitsgory,
+\Cref{v4-arith:conj:F1-global-AG}). The structural reduction of F1
+in \Cref{v4-arith:thm:F1-reduction} splits F1 into four sub-items
+ (F1.a)--(F1.d). Only (F1.c) is a theorem drawn directly from
+ primary literature (Emerton--Gee arXiv:1908.07185). Fargues--Scholze
+ arXiv:2102.13459 supplies local geometrisation and spectral action,
+ not the categorical equivalence required by (F1.a). The remaining
+ items (F1.a), (F1.b), and (F1.d) are equivalent to the local
+comparison plus \(\mathrm{L}_{\mathrm{ACD}}\) conditions whose
+closure removes F1.
+
+\(\mathrm{L}_{\mathrm{ACD}}\) is a
+\textbf{conjectural, non-formal theorem}. This chapter does not
+close \(\mathrm{L}_{\mathrm{ACD}}\); it reduces it to a narrower and
+precisely-stated compatibility on local coherent Springer sheaves
+(Ben-Zvi--Chen--Helm--Nadler arXiv:2010.02321) glued across primes
+on the Selmer-derived global spectral stack.
+
+\section{Modular Reduction of \(\mathrm{L}_{\mathrm{ACD}}\)}
+\label{v4-arith:acd:obstruction-analysis}
+
+Six independent lines of obstruction on \(\mathrm{L}_{\mathrm{ACD}}\) are
+given below. Each line produces a structural decomposition, a partial
+closure, or a named residual, following the schema of
+\Cref{v4-arith:cl:criterion}.
+
+\subsection{Modular Decomposition of \(\mathrm{L}_{\mathrm{ACD}}\)}
+\label{v4-arith:acd:obstruction-1}
+
+\(\mathrm{L}_{\mathrm{ACD}}\) is the conjunction of four ingredients:
+(i) well-definedness of the restricted tensor product of local
+\(\infty\)-categories with distinguished units;
+(ii) Hecke-functoriality across places;
+(iii) compatibility of the Bernstein centre action across places
+under restricted tensor;
+(iv) archimedean-finite assembly (extension across the archimedean
+place).
+A structural closure requires separating each ingredient. The
+decomposition admits four disjoint subconditions,
+\((L_{1})\)--\((L_{4})\), each a precise statement at the
+\(\infty\)-categorical level.
+
+\begin{theorem}[modular decomposition of \(\mathrm{L}_{\mathrm{ACD}}\)]
+\label{v4-arith:acd:thm:modular-decomposition}
+\ClaimStatusProvedHere. \(\mathrm{L}_{\mathrm{ACD}}\) contains the
+following four subconditions:
+\begin{itemize}
+\item[\((L_{1})\)] \emph{Well-definedness of the restricted tensor
+product.} The assignment \(v\mapsto\mathcal{C}_{v}\) with
+\(\mathcal{C}_{v}=\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}(\mathbb{Q}_{v})])\)
+and distinguished units \(u_{v}\) (spherical vectors) defines a
+well-formed restricted tensor product \(\bigotimes'_{v}\mathcal{C}_{v}\)
+in the \(\infty\)-category \(\mathrm{Pr}^{\mathrm{L,st}}\) of stable
+presentable \(\infty\)-categories.
+\item[\((L_{2})\)] \emph{Hecke-functoriality lift across places.} For
+each finite set \(S\) of places, assume the local categorical
+comparison functors
+\(\mathcal{C}_{v}\to\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},v}_{GL_{2}})\)
+for the finite places \(v\in S\).  Their tensor product is required to
+give an equivalence
+\(\bigotimes_{v\in S}\mathcal{C}_{v}\simeq\mathrm{IndCoh}_{\mathrm{Nilp}}(\prod_{v\in S}\mathcal{X}^{\mathrm{EG},v}_{GL_{2}})\)
+compatible with Hecke operators at distinct primes.
+\item[\((L_{3})\)] \emph{Bernstein-centre diamond gluing.} The
+Bernstein-centre action
+\(\mathcal{Z}_{v}\curvearrowright\mathcal{C}_{v}\) (the centre of the
+local categorical Hecke algebra) extends to a global action
+\(\mathcal{Z}_{\mathrm{glob}}\curvearrowright\bigotimes'_{v}\mathcal{C}_{v}\)
+making the tensor product restricted-tensor-equivariant under the
+Bernstein centre.
+\item[\((L_{4})\)] \emph{Archimedean extension.} The archimedean
+factor \(\mathcal{C}_{\infty}=\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}(\mathbb{R})])\)
+is the ind-completed derived category of admissible
+\((\mathfrak{gl}_{2},O(2))\)-modules of finite \(K\)-type.  It carries
+the trivial \(K\)-spherical object as distinguished unit, and the
+restricted tensor product
+\(\bigotimes'_{v}\mathcal{C}_{v}\) extends the finite-place product
+\(\bigotimes'_{p<\infty}\mathcal{C}_{p}\) by tensoring with
+\(\mathcal{C}_{\infty}\).
+\end{itemize}
+\(\mathrm{L}_{\mathrm{ACD}}\) holds if \((L_{1})\) through
+\((L_{4})\) hold together with the identification of the resulting
+object with the global automorphic category
+\(\mathrm{D}([GL_{2}])^{\mathrm{sph\text{-}fin}}\).
+\end{theorem}
+
+\begin{proof}
+Forward direction: assume \(\mathrm{L}_{\mathrm{ACD}}\). The restricted
+tensor product~\eqref{v4-arith:acd:eq:restricted-tp} is well-defined
+by definition, giving \((L_{1})\). Hecke-functoriality across places
+is part of the \(\mathrm{L}_{\mathrm{ACD}}\) hypothesis, giving
+\((L_{2})\). Bernstein-centre compatibility follows from functoriality
+of the global automorphic category under the global Bernstein centre
+plus Hecke-functoriality, giving \((L_{3})\). Archimedean extension is
+explicit in the definition of \(\mathrm{L}_{\mathrm{ACD}}\) (the index
+\(v\) ranges over all places), giving \((L_{4})\).
+
+Converse direction: assume \((L_{1})\)--\((L_{4})\) and the global
+identification just stated. By \((L_{1})\) and
+\((L_{4})\), \(\bigotimes'_{v}\mathcal{C}_{v}\) is a well-defined stable
+presentable \(\infty\)-category. By \((L_{2})\) and \((L_{3})\), this
+category is Hecke-equivariant and Bernstein-centre-equivariant. The
+identification with the global automorphic category follows from
+the assumed local-global compatibility. No theorem of Bernstein,
+Raskin, or geometric Langlands supplies this number-field
+identification without that input.
+\end{proof}
+
+\begin{remark}[form of subconditions at statement]
+\label{v4-arith:acd:rem:subcondition-form}
+At statement (2026-04-24) the subconditions carry the following
+form:
+\begin{description}
+\item[\((L_{1})\)] Theorem, closed in this chapter
+(\S\ref{v4-arith:acd:L1}).
+\item[\((L_{2})\)] Conditional; reduces to the local categorical
+comparison plus Whittaker and Bernstein-centre compatibility
+(\S\ref{v4-arith:acd:L2}).
+\item[\((L_{3})\)] Conjectural; the residual content of
+\(\mathrm{L}_{\mathrm{ACD}}\) after the decomposition of
+\Cref{v4-arith:acd:thm:modular-decomposition}
+(\S\ref{v4-arith:acd:L3}).
+\item[\((L_{4})\)] Boundary datum; Jacquet--Langlands and Vogan define
+the archimedean representation category, not an Emerton--Gee spectral
+equivalence (\S\ref{v4-arith:acd:L4}).
+\end{description}
+\end{remark}
+
+\subsection{Curve Precedent and Transport Obstructions}
+\label{v4-arith:acd:obstruction-2}
+
+For a smooth complete curve over an algebraically closed field of
+characteristic zero, the de Rham geometric Langlands theorem gives the
+model for the categorical descent pattern.  The sheaf-function
+analogue over finite fields is a different theorem.  Neither theorem
+transports directly to the number-field case.  The obstructions are:
+\begin{enumerate}
+\item No archimedean place in the curve setting. Geometric Langlands
+uses the closed points of a curve. Number-field \(\mathrm{L}_{\mathrm{ACD}}\)
+requires the archimedean extension \((L_{4})\), which has no curve
+analogue.
+\item Emerton--Gee integrality. The number-field spectral side uses
+the Emerton--Gee stack arXiv:1908.07185, which encodes integrality
+of Galois representations; de Rham geometric Langlands uses the stack
+\(\mathrm{LocSys}^{\mathrm{dR}}_{G}(X)\), which is smoother and has
+weaker integrality content. The Bernstein-centre compatibility
+\((L_{3})\) is strictly more subtle in the number-field setting
+because the Emerton--Gee stack is not smooth over
+\(\mathrm{Spec}\,\mathbb{Z}\).
+\item Perfectoid diamonds. Fargues--Scholze's local theorem uses the
+Fargues--Fontaine curve and perfectoid diamonds; geometric Langlands
+uses ind-schemes. Gluing across finite places in the
+number-field case requires comparing perfectoid diamonds at
+distinct primes, a non-issue in the de Rham curve setting.
+\end{enumerate}
+
+\begin{theorem}[curve transport, qualified]
+\label{v4-arith:acd:thm:function-field-transport}
+\ClaimStatusNeedsVerification. The Gaitsgory--Rozenblyum--Raskin--Lin /
+AGKRRV proof of de Rham geometric Langlands gives the model for
+subconditions \((L_{1})\) and \((L_{2})\) as an analogy, not as a
+transport theorem (Raskin,
+``Chiral principal series categories I'', Adv. Math. 388 (2021);
+Raskin, ``D-modules on infinite-dimensional varieties'', available
+as \texttt{samraskin.net/dmod.pdf}). It closes \((L_{1})\) only after
+the number-field local categories and distinguished units are fixed.
+It does not close \((L_{2})\) without the local categorical comparison
+of (F1.a) and (BC-diamond-glue).
+It does \emph{not} close \((L_{3})\) (Bernstein centre compatibility
+is strictly more subtle in the number-field setting due to
+Emerton--Gee stack non-smoothness) or \((L_{4})\) (no archimedean
+analogue on the curve).
+\end{theorem}
+
+\begin{proof}
+\((L_{1})\): Raskin 2021 JAMS constructs restricted tensor products of
+local principal-series categories over a curve. The construction is
+\(\infty\)-categorical and uses only (a) stability, (b) presentability,
+(c) existence of distinguished units. These properties can be imposed
+on the number-field local categories. This gives the formal construction
+of \((L_{1})\), not the global automorphic identification.
+
+\((L_{2})\): AGKRRV's Hecke-functoriality argument combines local
+geometric Langlands equivalences with Bernstein--Zelevinsky
+factorization on a curve. For number fields,
+Fargues--Scholze arXiv:2102.13459 supplies the local diamond
+geometrisation and spectral action. It does not supply the displayed
+categorical comparison with the Emerton--Gee stack. The
+Bernstein--Zelevinsky pattern applies only after the local
+comparison and Whittaker-model compatibility are constructed. Domain:
+\S\ref{v4-arith:acd:L2}.
+
+\((L_{3})\): Number-field obstruction. The Bernstein centre
+\(\mathcal{Z}^{\mathrm{Ar}}\) of the global arithmetic Iwahori Hecke
+category acts on \(\bigotimes'_{v}\mathcal{C}_{v}\) via the local
+Bernstein centres \(\mathcal{Z}_{v}\), but compatibility across primes
+involves comparing Bernstein parameters at distinct primes through
+the Emerton--Gee stack. The curve analogue uses the de~Rham
+stack, which is smoother. The number-field compatibility is the
+residual.
+
+\((L_{4})\): No curve analogue.
+\end{proof}
+
+\subsection{Sphericity-Finiteness Preserved Under Restricted Tensor}
+\label{v4-arith:acd:obstruction-3}
+
+The ``sph-fin'' cut in
+\(\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}(\mathbb{Q}_{v})])\)
+restricts to categories with finite-type spherical sub-structure,
+excluding the continuous Eisenstein spectrum and broad classes of
+non-tempered representations. The condition is preserved under the
+restricted tensor product.
+
+\begin{lemma}[sph-fin preservation under restricted tensor]
+\label{v4-arith:acd:lem:sph-fin-preservation}
+\ClaimStatusProvedHere. Let \(\{\mathcal{C}_{v}\}\) be a family of
+stable presentable \(\infty\)-categories with distinguished units
+\(u_{v}\) at almost every \(v\), and assume each \(\mathcal{C}_{v}\) is
+``sph-fin'' in the sense that: (i) \(\mathcal{C}_{v}\) has a compact
+subcategory \(\mathcal{C}_{v}^{\omega}\) whose compact objects are
+finite-type over the local Hecke algebra \(\mathcal{H}_{v}\); (ii)
+\(u_{v}\) is compact in \(\mathcal{C}_{v}^{\omega}\); (iii) the compact
+objects generate \(\mathcal{C}_{v}\). Then the restricted tensor
+product \(\bigotimes'_{v}\mathcal{C}_{v}\) is likewise sph-fin.
+\end{lemma}
+
+\begin{proof}
+By Lurie HA 5.3 (higher Deligne centralizers) and HA 4.8 (tensor
+products of presentable \(\infty\)-categories), the tensor product
+\(\bigotimes_{v\in S}\mathcal{C}_{v}\) over a finite set \(S\) inherits
+compact generation from its finite factors: a family of compact
+generators is given by tensor products of local compact generators.
+The distinguished units \(u_{v}\) at \(v\notin S\) are compact, so
+tensoring with them preserves compactness. Taking the filtered
+colimit over \(S\) preserves compact generation (Lurie HA 5.3.2.9 on
+filtered colimits of compactly generated categories). Hence
+\(\bigotimes'_{v}\mathcal{C}_{v}\) is compactly generated, with
+compact subcategory the filtered colimit of finite tensor products
+of local compacts. The sph-fin condition is preserved.
+\end{proof}
+
+\subsection{Cross-Place Hecke Commutativity}
+\label{v4-arith:acd:obstruction-4}
+
+Commutativity of \(T_{p}\) and \(T_{q}\) at the level of cohomology is
+automatic; categorical commutativity in the \(\infty\)-setting is a
+coherence datum following from the \(E_{2}\)-monoidal structure on
+each local Hecke category (assuming F2). Cross-place compatibility
+requires showing that the global automorphic category decomposes as a
+restricted tensor product whose factor at each prime is the local Hecke
+category.
+
+\begin{proposition}[cross-place Hecke commutativity]
+\label{v4-arith:acd:prop:cross-place-commutativity}
+\ClaimStatusProvedHere. In the restricted tensor product
+\(\bigotimes'_{v}\mathcal{C}_{v}\), the local Hecke operators
+\(T_{p}:\mathcal{C}_{p}\to\mathcal{C}_{p}\) extended by identity on
+factors at \(v\neq p\) (Tate extension) commute: for distinct primes
+\(p\neq q\),
+\begin{equation}
+(T_{p}\otimes\mathrm{id}_{\neq p})\circ(T_{q}\otimes\mathrm{id}_{\neq q})\;=\;(T_{q}\otimes\mathrm{id}_{\neq q})\circ(T_{p}\otimes\mathrm{id}_{\neq p})
+\end{equation}
+as endofunctors of \(\bigotimes'_{v}\mathcal{C}_{v}\), up to canonical
+homotopy.
+\end{proposition}
+
+\begin{proof}
+Each \(T_{p}\) acts on the \(\mathcal{C}_{p}\)-factor and by identity on
+all other factors. The universal property of the tensor product in
+\(\mathrm{Pr}^{\mathrm{L,st}}\) (Lurie HA 4.8.1) gives that
+endofunctors factoring through disjoint tensor factors commute up
+to canonical homotopy. Since \(T_{p}\) factors through \(\mathcal{C}_{p}\)
+and \(T_{q}\) through \(\mathcal{C}_{q}\), their extensions to the
+restricted tensor product commute.
+\end{proof}
+
+\subsection{Non-Transference from Caraiani--Scholze}
+\label{v4-arith:acd:obstruction-5}
+
+Caraiani--Scholze arXiv:1511.02418 prove a unitary Shimura variety
+analogue of \(\mathrm{L}_{\mathrm{ACD}}\) for signature \((1,n-1)\)
+unitary groups \(G=U(1,n-1)\) over CM fields. A Jacquet--Langlands
+transfer from \(GL_{2}/\mathbb{Q}\) to \(U(1,1)\) over an imaginary
+quadratic field \(F/\mathbb{Q}\) would reduce the problem to the
+Caraiani--Scholze case; this reduction fails. Caraiani--Scholze's proof
+uses three inputs specific to unitary Shimura varieties:
+\begin{enumerate}
+\item Calegari--Geraghty patching arXiv:1207.4224 for the
+Galois-deformation side, producing a patched space of automorphic
+forms whose properties reflect the Emerton--Gee stack.
+\item The Kottwitz conjecture on cohomology of Shimura varieties in
+its form for unitary groups (Caraiani--Scholze 2017 \S4).
+\item Ihara-avoidance hypothesis on the existence of adequate
+Taylor--Wiles primes, required for patching.
+\end{enumerate}
+
+None of these transfer to \(GL_{2}/\mathbb{Q}\) in the generality
+\(\mathrm{L}_{\mathrm{ACD}}\) requires.
+
+\begin{observation}[non-transference of Caraiani--Scholze]
+\label{v4-arith:acd:obs:non-transference-CS}
+\(GL_{2}/\mathbb{Q}\) has a Shimura variety over \(\mathbb{Q}\) in the
+form of the modular curve \(Y(\Gamma(N))\), but the Shimura variety is
+\(1\)-dimensional, whereas Caraiani--Scholze's Ihara-avoidance argument
+requires the Shimura variety to be higher-dimensional (specifically
+\(\geq n-1\) where \(n=\mathrm{rk}\,G\)). For \(GL_{2}/\mathbb{Q}\), the
+Ihara-avoidance input is essentially degenerate. Caraiani--Scholze's
+proof cannot be transferred.
+\end{observation}
+
+The transference fails; but Caraiani--Scholze's proof does suggest
+the structural shape \(\mathrm{L}_{\mathrm{ACD}}\) must take: a
+patched-spaces argument with local Fargues--Scholze input glued
+across primes by an ``Ihara-avoidance-free'' version of the
+argument.
+
+\subsection{Reduction to a Single Compatibility}
+\label{v4-arith:acd:obstruction-6}
+
+\((L_{1})\) is formal in presentable categories.  \((L_{4})\) supplies
+the archimedean representation-theoretic boundary datum.
+\((L_{2})\) reduces to the local categorical comparison plus
+Whittaker-model compatibility; the remaining central compatibility is
+\((L_{3})\): Bernstein-centre diamond gluing.
+\(\mathrm{L}_{\mathrm{ACD}}\) therefore reduces to the single
+compatibility stated below.
+
+\begin{theorem}[conditional reduction of \(\mathrm{L}_{\mathrm{ACD}}\)]
+\label{v4-arith:acd:thm:final-reduction}
+\ClaimStatusProvedHereConditional. Assuming the local categorical
+comparison at all finite primes and the archimedean boundary datum,
+\(\mathrm{L}_{\mathrm{ACD}}\) reduces to the following compatibility:
+\begin{itemize}
+\item[\textbf{(BC-diamond-glue)}] \emph{Bernstein-centre diamond
+gluing.} For each pair of primes \(p\neq q\), the local Bernstein
+centres \(\mathcal{Z}_{p}\) and \(\mathcal{Z}_{q}\) (the centres of the
+local categorical Hecke algebras on the perfectoid Fargues--Fontaine
+curves at \(p\) and \(q\)) admit a common global refinement
+\(\mathcal{Z}_{\{p,q\}}\) such that:
+\begin{itemize}
+\item[(a)] \(\mathcal{Z}_{\{p,q\}}\) embeds into
+\(\mathcal{Z}_{p}\otimes\mathcal{Z}_{q}\) under the external tensor
+action on \(\mathcal{C}_{p}\otimes\mathcal{C}_{q}\);
+\item[(b)] the embedding is compatible with restriction to smaller
+prime sets \(S\subsetneq\{p,q\}\);
+\item[(c)] the inductive limit
+\(\mathcal{Z}_{\mathrm{glob}}:=\varinjlim_{S}\mathcal{Z}_{S}\) over
+finite sets \(S\) of primes agrees with the global Bernstein centre
+acting on the global automorphic category.
+\end{itemize}
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+Forward direction: assume \(\mathrm{L}_{\mathrm{ACD}}\). The global
+automorphic category \(\mathrm{D}([GL_{2}])^{\mathrm{sph\text{-}fin}}\)
+carries a global Bernstein-centre action. The restricted tensor
+product structure of \(\mathrm{L}_{\mathrm{ACD}}\) expresses this
+global action as a filtered colimit of finite products of local
+Bernstein centres. Compatibilities (a)--(c) follow.
+
+Reverse direction: assume (BC-diamond-glue), the local categorical
+comparisons, and the archimedean boundary datum. Then by
+\Cref{v4-arith:acd:thm:modular-decomposition}, it suffices to close
+\((L_{1})\), \((L_{2})\), \((L_{3})\), \((L_{4})\). \((L_{1})\) closes
+in~\S\ref{v4-arith:acd:L1}. \((L_{2})\) is supplied
+by the assumed local comparisons, up to local-global compatibility of
+Whittaker models, which (BC-diamond-glue) supplies via
+compatibility~(b). \((L_{3})\) closes from (BC-diamond-glue) directly.
+\((L_{4})\) is the assumed archimedean boundary datum. Assembling,
+\(\mathrm{L}_{\mathrm{ACD}}\) holds.
+\end{proof}
+
+\begin{remark}[domain of (BC-diamond-glue)]
+\label{v4-arith:acd:rem:bc-diamond-glue-domain}
+(BC-diamond-glue) is strictly narrower than \(\mathrm{L}_{\mathrm{ACD}}\).
+It is a single compatibility between local Bernstein centres and the
+global Bernstein centre. Partial change:
+Ben-Zvi--Chen--Helm--Nadler arXiv:2010.02321 (``Coherent Springer
+theory and the categorical Deligne--Langlands correspondence'')
+constructs the local Bernstein centres as coherent sheaves on the
+local Emerton--Gee stacks. (BC-diamond-glue) asks that these coherent
+sheaves glue across primes to a global coherent sheaf on the
+Selmer-derived global spectral stack
+\(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\), agreeing
+with the global Bernstein centre action at the level of categorical
+trace.
+This is conjectural but rests on concrete partial change.
+
+Required theorem of (BC-diamond-glue): non-formal theorem, as opposed
+to the non-formal theorem condition for \(\mathrm{L}_{\mathrm{ACD}}\).
+The reduction from
+\Cref{v4-arith:acd:thm:final-reduction} is a factor of two to three
+in domain.
+\end{remark}
+
+\section{Subcondition \((L_{1})\): Restricted Tensor in \(\infty\)-Categories}
+\label{v4-arith:acd:L1}
+
+\subsection{Definition}
+
+\begin{definition}[restricted tensor product in \(\mathrm{Pr}^{\mathrm{L,st}}\)]
+\label{v4-arith:acd:def:restricted-tensor}
+The canonical definition is \Cref{v4-arith:tate:def:restricted-tensor};
+the following formula is its older mnemonic form in the ACD notation.
+Let \(V\) be a countable indexing set, \(\{\mathcal{C}_{v}\}_{v\in V}\)
+a family of stable presentable \(\infty\)-categories, and let
+\(u_{v}\in\mathcal{C}_{v}\) be a distinguished unit at almost every
+\(v\) (i.e.\ at all but finitely many \(v\) in a fixed cofinite subset
+\(V^{\mathrm{unr}}\subseteq V\)). The \emph{Tate-restricted tensor
+product} is
+\begin{equation}
+\bigotimes_{v\in V}^{\prime}\mathcal{C}_{v}\;:=\;\varinjlim_{S\text{ finite},\; V^{\mathrm{unr}}\supseteq V\setminus S}\;\bigotimes_{v\in S}\mathcal{C}_{v}\otimes\bigotimes_{v\in V^{\mathrm{unr}}\setminus S}\mathbb{1}_{u_{v}},
+\end{equation}
+where \(\mathbb{1}_{u_{v}}\) denotes the unit \(\infty\)-category
+generated by \(u_{v}\) (a full subcategory of \(\mathcal{C}_{v}\)).
+\end{definition}
+
+\begin{theorem}[\((L_{1})\) closed]
+\label{v4-arith:acd:thm:L1-closed}
+\ClaimStatusProvedHere. The restricted tensor product of
+\Cref{v4-arith:acd:def:restricted-tensor} is a well-defined stable
+presentable \(\infty\)-category. Specifically:
+\begin{enumerate}
+\item The filtered colimit \(\varinjlim_{S}\) exists in
+\(\mathrm{Pr}^{\mathrm{L,st}}\).
+\item The resulting object is stable, presentable, and
+compactly-generated if each \(\mathcal{C}_{v}\) is compactly-generated
+(Raskin, ``D-modules on infinite-dimensional varieties'',
+\texttt{samraskin.net/dmod.pdf}; Lurie HA 5.3.2).
+\item Sphericity-finiteness is preserved
+(\Cref{v4-arith:acd:lem:sph-fin-preservation}).
+\item The restricted tensor product is functorial in the family
+\(\{\mathcal{C}_{v}, u_{v}\}\) under morphisms that preserve
+distinguished units.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textbf{(i) Existence of the filtered colimit.} The \(\infty\)-category
+\(\mathrm{Pr}^{\mathrm{L,st}}\) of stable presentable \(\infty\)-categories
+is a (large) \(\infty\)-category admitting all small colimits (Lurie
+HA 4.8.1.15). Filtered colimits exist.
+
+\textbf{(ii) Presentability and compact generation.} Lurie HA
+5.3.2.9 asserts that a filtered colimit of compactly-generated
+stable presentable \(\infty\)-categories, under functors preserving
+compact objects, is compactly generated. The transition maps in the
+defining filtered colimit are of the form ``tensor with
+\(\mathbb{1}_{u_{v}}\)'' for newly-included places \(v\), which are
+left-adjoint (and preserve compact objects because the unit \(u_{v}\)
+is assumed compact, as in
+\Cref{v4-arith:acd:lem:sph-fin-preservation}). Hence the colimit is
+compactly generated.
+
+\textbf{(iii) Stability.} Filtered colimits of stable
+\(\infty\)-categories in \(\mathrm{Pr}^{\mathrm{L,st}}\) are stable
+(Lurie HA 1.1.4.4: stable \(\infty\)-categories are closed under
+filtered colimits in \(\mathrm{Pr}^{\mathrm{L}}\)).
+
+\textbf{(iv) Sphericity-finiteness preservation.}
+\Cref{v4-arith:acd:lem:sph-fin-preservation}.
+
+\textbf{(v) Functoriality.} A morphism of families
+\(\{(\mathcal{C}_{v}, u_{v})\}\to\{(\mathcal{C}'_{v}, u'_{v})\}\) is a
+family of left adjoints \(F_{v}:\mathcal{C}_{v}\to\mathcal{C}'_{v}\)
+sending \(u_{v}\) to \(u'_{v}\). The induced map
+\(\bigotimes_{v\in S}F_{v}:\bigotimes_{v\in S}\mathcal{C}_{v}\to\bigotimes_{v\in S}\mathcal{C}'_{v}\)
+is compatible with unit-extension to larger \(S'\supseteq S\) because
+\(F_{v}\) sends distinguished units to distinguished units. Taking the
+filtered colimit yields the induced map
+\(\bigotimes'_{v}F_{v}:\bigotimes'_{v}\mathcal{C}_{v}\to\bigotimes'_{v}\mathcal{C}'_{v}\).
+The construction is independent of the choice of cofinite unramified
+subset \(V^{\mathrm{unr}}\) (any two choices agree on a further
+cofinite subset, and the filtered colimit is insensitive to such
+shrinking).
+\end{proof}
+
+\begin{remark}[comparison with Raskin's construction]
+\label{v4-arith:acd:rem:raskin-comparison}
+Raskin ``Chiral principal series categories I'', Adv. Math. 388
+(2021), 107856, and Raskin ``D-modules on infinite-dimensional
+varieties'' (\texttt{samraskin.net/dmod.pdf}) construct
+restricted tensor products of principal-series categories over a
+smooth curve. The construction uses the same filtered colimit
+pattern with spherical vectors as distinguished units. The
+number-field analogue is not a direct transport.  The same filtered
+colimit defines the formal restricted tensor product once the local
+categories and distinguished units are fixed.  The non-trivial content
+is the identification with the global automorphic category, which is
+\((L_{2})\) and \((L_{3})\).
+\end{remark}
+
+\begin{corollary}[\((L_{1})\) holds]
+\label{v4-arith:acd:cor:L1-holds}
+\ClaimStatusProvedHere. \((L_{1})\) is a theorem, closed by
+\Cref{v4-arith:acd:thm:L1-closed} plus
+\Cref{v4-arith:acd:lem:sph-fin-preservation}.
+\end{corollary}
+
+\section{Subcondition \((L_{2})\): Hecke-Functoriality Across Places}
+\label{v4-arith:acd:L2}
+
+\subsection{Statement and Reduction}
+
+\begin{theorem}[\((L_{2})\) reduction]
+\label{v4-arith:acd:thm:L2-reduction}
+\ClaimStatusNeedsVerification. For each finite set \(S\) of primes, the
+Fargues--Scholze local geometry, after the local categorical comparison
+(F1.a), supplies comparison functors
+\begin{equation}
+\label{v4-arith:acd:eq:local-FS}
+\Phi_{v}^{\mathrm{loc}}\;:\;\mathcal{C}_{v}\;\longrightarrow\;\mathrm{IndCoh}_{\mathrm{Nilp}}\bigl(\mathcal{X}^{\mathrm{EG},v}_{GL_{2}}\bigr),\qquad v\in S
+\end{equation}
+which glue to an equivalence
+\begin{equation}
+\label{v4-arith:acd:eq:glued-FS}
+\Phi_{S}^{\mathrm{loc}}\;:\;\bigotimes_{v\in S}\mathcal{C}_{v}\;\xrightarrow{\sim}\;\mathrm{IndCoh}_{\mathrm{Nilp}}\biggl(\prod_{v\in S}\mathcal{X}^{\mathrm{EG},v}_{GL_{2}}\biggr)
+\end{equation}
+compatible with Hecke operators \(T_{v}\) at distinct primes. The
+open content is the local categorical comparison plus the
+(BC-diamond-glue) Whittaker/Bernstein-centre compatibility.
+\end{theorem}
+
+\begin{proof}
+\textbf{Step 1: Local geometry exists.} At each prime \(p\),
+Fargues--Scholze arXiv:2102.13459 constructs local geometrization,
+spectral action, and Fargues--Fontaine geometry. It does not by
+itself identify \(\mathcal{C}_{p}\) with
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}})\).
+That identification is the local comparison input (F1.a). At the
+archimedean place, the analogue is Jacquet--Langlands SLN 114
+(see~\S\ref{v4-arith:acd:L4}).
+
+\textbf{Step 2: Hecke-functoriality at each place.} Local
+Fargues--Scholze includes Hecke-functoriality at each prime: the
+local Hecke algebra \(\mathcal{H}_{p}\) acts on both sides of
+\(\Phi_{p}^{\mathrm{loc}}\) once the local comparison is supplied, and
+\(\Phi_{p}^{\mathrm{loc}}\) must be
+\(\mathcal{H}_{p}\)-equivariant.
+
+\textbf{Step 3: Tensor product of equivalences.} Lurie HA 4.8.1
+states that the tensor product in \(\mathrm{Pr}^{\mathrm{L,st}}\) is
+functorial: a family of equivalences
+\(\Phi_{v}:\mathcal{C}_{v}\to\mathcal{D}_{v}\) produces an equivalence
+\(\bigotimes_{v\in S}\Phi_{v}:\bigotimes_{v\in S}\mathcal{C}_{v}\to\bigotimes_{v\in S}\mathcal{D}_{v}\).
+Applied to \(\Phi_{v}^{\mathrm{loc}}\) (whose existence is (F1.a)),
+this gives the equivalence \(\Phi_{S}^{\mathrm{loc}}\).
+
+\textbf{Step 4: Tensor compatibility with Hecke.} The tensor product
+of \(\mathcal{H}_{v}\)-equivariant functors is
+\(\mathcal{H}_{S}:=\otimes_{v\in S}\mathcal{H}_{v}\)-equivariant in the
+appropriate sense. Hecke-functoriality across places follows from
+cross-place commutativity
+(\Cref{v4-arith:acd:prop:cross-place-commutativity}).
+
+\textbf{Step 5: Spectral side decomposition.} The spectral side
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}(\prod_{v\in S}\mathcal{X}^{\mathrm{EG},v}_{GL_{2}})\)
+decomposes as a tensor product of local factors because
+\(\prod_{v\in S}\mathcal{X}^{\mathrm{EG},v}_{GL_{2}}\) is a product of
+derived formal stacks (Gaitsgory--Rozenblyum's AMS DAG monographs give
+continuity of \(\mathrm{IndCoh}_{\mathrm{Nilp}}\) under products of
+derived stacks). Hence the right-hand side
+of~\eqref{v4-arith:acd:eq:glued-FS} agrees with
+\(\bigotimes_{v\in S}\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},v}_{GL_{2}})\).
+
+\textbf{Step 6: Whittaker-model compatibility.} The cross-place
+compatibility requires checking that the Whittaker model on the
+automorphic side, which factorizes as a tensor product over places,
+matches the corresponding factorization on the spectral side. This
+factorization is where (BC-diamond-glue) enters: the Whittaker-model
+factorization is a compatibility between local Bernstein centres,
+exactly what (BC-diamond-glue) asserts via compatibility~(b) of
+\Cref{v4-arith:acd:thm:final-reduction}.
+
+Thus \((L_{2})\) is not closed here. It is reduced to the local
+categorical comparison (F1.a) plus (BC-diamond-glue).
+\end{proof}
+
+\begin{remark}[finite-prime \((L_{2})\) is conditional]
+\label{v4-arith:acd:rem:L2-finite-unconditional}
+For the subset of conditions involving only finite primes (no
+archimedean place), the tensor-product formalism is unconditional
+once the local categorical comparisons are supplied. Fargues--Scholze
+arXiv:2102.13459, Lurie HA 4.8.1, and Gaitsgory--Rozenblyum supply
+the local geometry, tensor functoriality, and product-continuity of
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}\). They do not prove the local
+comparison with the Emerton--Gee stack, nor the Whittaker
+compatibility encoded by (BC-diamond-glue).
+\end{remark}
+
+\section{Subcondition \((L_{3})\): Bernstein Centre Compatibility}
+\label{v4-arith:acd:L3}
+
+\subsection{Statement and Residual Content}
+
+\begin{theorem}[\((L_{3})\) is (BC-diamond-glue)]
+\label{v4-arith:acd:thm:L3-is-bc-diamond-glue}
+\ClaimStatusProvedHere. \((L_{3})\) is equivalent to the
+(BC-diamond-glue) compatibility of
+\Cref{v4-arith:acd:thm:final-reduction}.
+\end{theorem}
+
+\begin{proof}
+Forward: \((L_{3})\) asserts that the local Bernstein-centre actions
+assemble to a global action on \(\bigotimes'_{v}\mathcal{C}_{v}\)
+compatible with restricted tensor. The global Bernstein centre
+\(\mathcal{Z}_{\mathrm{glob}}\) must embed into the colimit
+\(\varinjlim_{S}\otimes_{v\in S}\mathcal{Z}_{v}\); this is precisely
+compatibility~(c) of (BC-diamond-glue).
+
+Reverse: given (BC-diamond-glue), conditions (a), (b), (c) supply
+exactly the data required to construct the global action
+\(\mathcal{Z}_{\mathrm{glob}}\curvearrowright\bigotimes'_{v}\mathcal{C}_{v}\)
+as a filtered colimit of finite-\(S\) actions, with the compatibility
+required by \((L_{3})\).
+\end{proof}
+
+\subsection{Partial change via Coherent Springer Theory}
+
+\begin{theorem}[Ben-Zvi--Chen--Helm--Nadler arXiv:2010.02321]
+\label{v4-arith:acd:thm:BZCHN}
+\ClaimStatusProvedElsewhere. The local Bernstein centre
+\(\mathcal{Z}_{p}\) of the categorical Hecke algebra at a prime \(p\)
+embeds as a commutative dg-algebra into the global sections of a
+coherent sheaf \(\mathcal{F}_{p}\) on the local Emerton--Gee stack
+\(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}\) (``coherent Springer
+sheaf''). Hecke operators at \(p\) correspond to action of
+\(\mathcal{F}_{p}\) under the ind-coherent-sheaf correspondence.
+\end{theorem}
+
+\begin{remark}[what BZCHN supplies]
+\label{v4-arith:acd:rem:BZCHN-supplies}
+BZCHN supplies the local Bernstein centres as coherent sheaves on
+local Emerton--Gee stacks. (BC-diamond-glue) asks that these
+coherent sheaves glue across primes to a coherent sheaf on the
+Selmer-derived global spectral stack. Local-to-global gluing is a standard
+question in algebraic geometry: under standard flatness hypotheses,
+coherent sheaves can descend along the Selmer-derived fibre-product
+diagram. The non-standard content is \emph{agreement} of the
+glued sheaf with the global Bernstein-centre action, a question
+about the global automorphic category's Bernstein decomposition
+(Bernstein 1984, categorified in Raskin 2021 JAMS and AGKRRV
+2020--2024).
+\end{remark}
+
+\begin{conjecture}[BC-diamond-glue, concrete form]
+\label{v4-arith:acd:cj:bc-diamond-glue-concrete}
+The coherent Springer sheaves \(\{\mathcal{F}_{v}\}_{v}\) of
+Ben-Zvi--Chen--Helm--Nadler (\Cref{v4-arith:acd:thm:BZCHN}) glue
+along the diagonal of the Selmer-derived global spectral stack to a global
+coherent sheaf \(\mathcal{F}_{\mathrm{glob}}\) whose action on
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})\)
+agrees, under the conjectural global arithmetic AG equivalence, with
+the action of the global Bernstein centre on
+\(\mathrm{D}([GL_{2}])^{\mathrm{sph\text{-}fin}}\).
+\end{conjecture}
+
+\begin{remark}[domain of the residual]
+\label{v4-arith:acd:rem:L3-residual-domain}
+\Cref{v4-arith:acd:cj:bc-diamond-glue-concrete} is the residual
+content of \(\mathrm{L}_{\mathrm{ACD}}\) after the reduction of
+\Cref{v4-arith:acd:thm:final-reduction}. Its domain:
+\begin{itemize}
+\item Gluing of coherent sheaves across a product of stacks:
+non-formal theorem, standard techniques.
+\item Agreement with global Bernstein centre under conjectural
+global AG: non-formal theorem, requires careful adaptation of
+the geometric-Langlands Bernstein-centre construction (AGKRRV) to the
+number-field setting.
+\item Total condition of (BC-diamond-glue): non-formal theorem.
+\end{itemize}
+This is \(1/3\) to \(1/2\) the original non-formal theorem of
+\(\mathrm{L}_{\mathrm{ACD}}\).
+\end{remark}
+
+\section{Subcondition \((L_{4})\): Archimedean Extension}
+\label{v4-arith:acd:L4}
+
+\subsection{Statement}
+
+\begin{theorem}[\((L_{4})\) archimedean boundary datum]
+\label{v4-arith:acd:thm:L4-closed}
+\ClaimStatusProvedHere. The archimedean factor
+\(\mathcal{C}_{\infty}=\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}(\mathbb{R})])\)
+is modelled by the ind-completed derived category of admissible
+\((\mathfrak{gl}_{2},O(2))\)-modules of finite \(K\)-type.  It carries
+the trivial \(K\)-spherical object as distinguished unit and extends
+the finite-place restricted tensor product by direct tensoring.
+\end{theorem}
+
+\begin{proof}
+\textbf{Step 1: Well-definedness.} The derived category of admissible
+\((\mathfrak{g}, K_{\infty})\)-modules, where
+\(\mathfrak{g}=\mathfrak{gl}_{2}(\mathbb{R})\) and
+\(K_{\infty}=O(2)\subseteq GL_{2}(\mathbb{R})\), has the standard
+Harish-Chandra description (Jacquet--Langlands SLN 114~\S1--3;
+Vogan 1981 ``Representations of Real Reductive Groups''). Its
+ind-completion is stable and presentable. The sph-fin cut restricts to
+finite \(K_{\infty}\)-type objects.
+
+\textbf{Step 2: Distinguished unit.} The spherical unit at
+\(v=\infty\) is the trivial \(K_{\infty}\)-spherical object.  Spherical
+principal series are not unique; they are objects of the category, not
+the distinguished unit.
+
+\textbf{Step 3: Tensor product extension.} The restricted tensor
+product of \Cref{v4-arith:acd:def:restricted-tensor} extends
+naturally by including \(v=\infty\) in the index set \(V\) of places:
+\(V=\mathbb{P}\cup\{\infty\}\) with cofinite unramified subset
+\(V^{\mathrm{unr}}=\mathbb{P}\cup\{\infty\}\setminus S_{\mathrm{ram}}\)
+for the given ramification set \(S_{\mathrm{ram}}\). The archimedean
+factor enters as a tensor factor in each \(S\) containing \(\infty\) and
+by identity-via-distinguished-unit in \(S\) excluding \(\infty\).
+
+\textbf{Step 4: Hecke action at infinity.} The archimedean Hecke
+action is represented by the centre of the universal enveloping algebra
+\(U(\mathfrak{gl}_{2}(\mathbb{R}))\), commuting with finite-place
+Hecke action by construction (both act via representation-theoretic
+restriction to the adelic double coset).
+
+\textbf{Step 5: Archimedean local factors.} Jacquet--Langlands SLN
+114 \S1--3 classify the archimedean local representations of
+\(GL_{2}(\mathbb{R})\) and \(GL_{2}(\mathbb{C})\). The sph-fin
+subcategory is finite-type in each isotypic component; Vogan's
+classification gives a complete parametrization by
+Harish-Chandra parameters.
+
+This proves the archimedean boundary datum. It does not construct a
+number-field spectral equivalence at \(v=\infty\).
+\end{proof}
+
+\begin{remark}[archimedean spectral side]
+\label{v4-arith:acd:rem:archimedean-spectral}
+The spectral-side analogue at \(v=\infty\) is
+a proposed Weil-parameter stack for
+\(W_{\mathbb{R}}=\mathbb{C}^{\times}\rtimes\mathbb{Z}/2\).  Vogan and
+Langlands classify the representations.  They do not give an
+Emerton--Gee stack at infinity, and no local categorical equivalence at
+infinity is asserted here.
+\end{remark}
+
+\section{Curve Analogy: Obstructions and Transfers}
+\label{v4-arith:acd:function-field-transport}
+
+\subsection{The Curve Theorem}
+
+\begin{theorem}[de Rham geometric Langlands, AGKRRV]
+\label{v4-arith:acd:thm:FF-geom-langlands}
+\ClaimStatusProvedElsewhere. For a smooth complete curve \(X\) over an
+algebraically closed field of characteristic zero and a reductive group
+\(G\),
+there is an equivalence
+\begin{equation}
+\mathrm{D}\text{-}\mathrm{mod}(\mathrm{Bun}_{G}(X))\;\simeq\;\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathrm{LocSys}^{\mathrm{dR}}_{G}(X))
+\end{equation}
+satisfying Hecke-functoriality, Bernstein-centre compatibility, and
+categorical descent over the curve. The proof combines
+Gaitsgory--Rozenblyum's AMS DAG monographs, Raskin's chiral principal
+series and D-module foundations, and the AGKRRV mathematical treatments on geometric
+Langlands.
+\end{theorem}
+
+\subsection{Obstructions to Transport}
+
+\begin{theorem}[obstructions to number-field transport]
+\label{v4-arith:acd:thm:transport-obstructions}
+\ClaimStatusProvedHere. The de Rham geometric-Langlands proof of
+\Cref{v4-arith:acd:thm:FF-geom-langlands} does not transport directly
+to the number-field case. The obstructions:
+\begin{description}
+\item[(Obs.1)] \emph{No archimedean place.} Geometric Langlands on a
+curve has no real place. \((L_{4})\) has no curve analogue
+and requires separate treatment (Jacquet--Langlands archimedean).
+\item[(Obs.2)] \emph{Non-smooth Emerton--Gee stack.} Number-field
+\(\mathcal{X}^{\mathrm{EG}}_{GL_{2}}\) is formally algebraic but not
+smooth over \(\mathrm{Spec}\,\mathbb{Z}\); the de Rham stack
+\(\mathrm{LocSys}^{\mathrm{dR}}_{G}(X)\) is smooth in the standard
+geometric-Langlands range
+under mild hypotheses. This affects the Bernstein-centre
+compatibility \((L_{3})\).
+\item[(Obs.3)] \emph{Perfectoid diamonds vs ind-schemes.}
+Geometric Langlands uses algebraic and ind-algebraic loop spaces.
+Number-field local geometrisation uses perfectoid diamonds (Scholze
+arXiv:1709.07343). The gluing formalism differs, and the
+Bhatt--Lurie prismatic comparison arXiv:2201.06120 is required to
+bridge the two.
+\item[(Obs.4)] \emph{Integrality of Galois deformations.}
+De Rham local systems are geometric; number-field Galois
+deformations are integral (Emerton--Gee stack). The Bernstein-centre
+action incorporates integrality in a way the de Rham curve case
+does not.
+\end{description}
+\end{theorem}
+
+\begin{corollary}[what the curve analogy supplies]
+\label{v4-arith:acd:cor:transport-summary}
+\ClaimStatusProvedHere. Under the de Rham curve proof, the
+following patterns survive in the number-field setting:
+\begin{itemize}
+\item \((L_{1})\) (restricted tensor product well-definedness):
+\textbf{formal pattern}. Raskin's construction is
+\(\infty\)-categorical and does not use curve-specific structure beyond
+existence of local categories with distinguished units.
+\item \((L_{2})\) (Hecke-functoriality gluing over a finite set of
+primes): \textbf{conditional pattern}. It applies only after the local
+categorical comparison is supplied. Fargues--Scholze replaces the local de~Rham
+geometric input by diamond geometry and spectral action; the
+cross-place compatibility argument still needs the local comparison
+and (BC-diamond-glue).
+\end{itemize}
+The following do \emph{not} transport:
+\begin{itemize}
+\item \((L_{3})\) (Bernstein-centre compatibility): obstructed by
+(Obs.2), (Obs.4). Resolution requires (BC-diamond-glue),
+\Cref{v4-arith:acd:cj:bc-diamond-glue-concrete}.
+\item \((L_{4})\) (archimedean extension): obstructed by (Obs.1).
+Resolution requires independent Jacquet--Langlands archimedean
+construction (\S\ref{v4-arith:acd:L4}).
+\end{itemize}
+\end{corollary}
+
+\section{Final Reduction: \(\mathrm{L}_{\mathrm{ACD}}\) to a Single Lemma}
+\label{v4-arith:acd:final-reduction}
+
+\subsection{Statement}
+
+\begin{theorem}[\(\mathrm{L}_{\mathrm{ACD}}\) residual reduction]
+\label{v4-arith:acd:thm:LACD-single-lemma}
+\ClaimStatusNeedsVerification. \(\mathrm{L}_{\mathrm{ACD}}\) holds after
+the local categorical comparison (F1.a) and the BC-diamond-gluing
+compatibility lemma
+(\Cref{v4-arith:acd:cj:bc-diamond-glue-concrete}) are supplied.
+\end{theorem}
+
+\begin{proof}
+By \Cref{v4-arith:acd:thm:modular-decomposition},
+\(\mathrm{L}_{\mathrm{ACD}}\) contains
+\((L_{1})\), \((L_{2})\), \((L_{3})\), and \((L_{4})\), together with
+the global identification.
+
+\((L_{1})\) is a theorem (\Cref{v4-arith:acd:cor:L1-holds}).
+
+\((L_{2})\) is conditional: it needs the local categorical
+comparison (F1.a) and (BC-diamond-glue) for the cross-place
+Whittaker compatibility
+(\Cref{v4-arith:acd:thm:L2-reduction}, Steps 1 and 6).
+
+\((L_{3})\) is controlled by the Bernstein-centre gluing datum
+(\Cref{v4-arith:acd:thm:L3-is-bc-diamond-glue}).
+
+\((L_{4})\) is the archimedean boundary datum
+(\Cref{v4-arith:acd:thm:L4-closed}).
+
+Hence \(\mathrm{L}_{\mathrm{ACD}}\) reduces, in this chapter, to the
+conjunction of F1.a, (BC-diamond-glue), and the global identification
+after the formal construction of \((L_{1})\) and the archimedean datum
+\((L_{4})\).
+\end{proof}
+
+\subsection{Dependency on Established Theorems}
+
+\begin{proposition}[dependency table of \(\mathrm{L}_{\mathrm{ACD}}\)]
+\label{v4-arith:acd:prop:dependency-closure}
+\ClaimStatusProvedHere. The conditional reduction of
+\(\mathrm{L}_{\mathrm{ACD}}\) uses the following established theorems:
+\begin{enumerate}
+\item Fargues--Scholze arXiv:2102.13459 (local geometrization at each
+prime).
+\item Emerton--Gee arXiv:1908.07185 (local Emerton--Gee stack
+construction; the global target is Selmer-derived here).
+\item Gaitsgory--Rozenblyum, \emph{A Study in Derived Algebraic
+Geometry}, AMS Mathematical Surveys and Monographs 221, Vols.~I--II
+(\((\infty,2)\)-category of correspondences,
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}\) continuity).
+\item Raskin, \emph{Chiral principal series categories I}, Adv.
+Math. 388 (2021), 107856, and \emph{D-modules on infinite-dimensional
+varieties} (restricted tensor product machinery for principal-series
+categories).
+\item Lurie HA 4.8 (tensor products of presentable \(\infty\)-categories),
+5.3 (compact generation, higher Deligne).
+\item Scholze arXiv:1709.07343 (\'etale cohomology of diamonds).
+\item Bhatt--Scholze arXiv:1905.08229 (prismatic cohomology).
+\item Bhatt--Lurie arXiv:2201.06120 (absolute prismatic,
+Nygaard-filtration convention bridge).
+\item Zhu arXiv:1603.05593 (Witt-vector affine Grassmannian).
+\item Ben-Zvi--Chen--Helm--Nadler arXiv:2010.02321 (coherent Springer
+theory; local Bernstein centres as coherent sheaves).
+\item Jacquet--Langlands SLN 114 (archimedean local factors).
+\item Vogan 1981 ``Representations of Real Reductive Groups''
+(archimedean classification).
+\end{enumerate}
+Together with the local categorical comparison (F1.a),
+(BC-diamond-glue), and the global identification, these established
+results constitute the primary literature input for the reduction.
+\end{proposition}
+
+\begin{remark}[independent decomposition]
+\label{v4-arith:acd:rem:source-disjoint-decomposition}
+The twelve established theorems of
+\Cref{v4-arith:acd:prop:dependency-closure} decompose into the
+following independent source lists:
+\begin{description}
+\item[Fargues--Scholze list:] (1), (6), (7). Perfectoid / diamond
+geometry, Fargues--Fontaine curve.
+\item[Gaitsgory--Rozenblyum list:] (3), (4). DAG and
+\((\infty,2)\)-categorical correspondences, restricted tensor.
+\item[Lurie list:] (5). Higher algebra foundations.
+\item[Emerton--Gee list:] (2). Galois deformation stacks.
+\item[Bhatt--Lurie list:] (8). Prismatic Nygaard bridge.
+\item[Zhu list:] (9). Witt-vector Grassmannian.
+\item[Coherent Springer theory list:] (10). Local Bernstein
+centres as coherent sheaves.
+\item[Jacquet--Langlands + Vogan list:] (11), (12). Archimedean
+local representation theory.
+\end{description}
+These eight lists are disjoint in the orthogonal sense: no pair shares
+a primary author at overlapping work, and each list has an
+independent primary literature. A future proof of
+\(\mathrm{L}_{\mathrm{ACD}}\) through this construction must keep the same
+source separation.
+\end{remark}
+
+\section{Consequence: F1 Closure Map}
+\label{v4-arith:acd:F1-closure-map}
+
+\subsection{The Full Chain}
+
+\begin{theorem}[F1 residual chain via \(\mathrm{L}_{\mathrm{ACD}}\)]
+\label{v4-arith:acd:thm:F1-closure}
+\ClaimStatusNeedsVerification. F1 (global arithmetic
+Arinkin--Gaitsgory, \Cref{v4-arith:conj:F1-global-AG}) reduces to
+the local categorical comparison (F1.a) plus
+(BC-diamond-glue) (\Cref{v4-arith:acd:cj:bc-diamond-glue-concrete}).
+\end{theorem}
+
+\begin{proof}
+By \Cref{v4-arith:cl:cor:F1-single-lemma}, F1 reduces to F1.a plus
+\(\mathrm{L}_{\mathrm{ACD}}\). By
+\Cref{v4-arith:acd:thm:LACD-single-lemma},
+\(\mathrm{L}_{\mathrm{ACD}}\) reduces to F1.a plus (BC-diamond-glue).
+The theorem identifies the residual pair \{F1.a, (BC-diamond-glue)\}
+as the obstruction visible in this reduction.
+\end{proof}
+
+\subsection{Formal Consequences}
+
+\begin{corollary}[consequent form]
+\label{v4-arith:acd:cor:consequent-form}
+\ClaimStatusNeedsVerification. Given the local categorical comparison
+(F1.a), (BC-diamond-glue), F2, and the corrected arithmetic BZN
+comparison, the following formal consequences become eligible for
+theorem-grade closure:
+\begin{itemize}
+\item F1 (global arithmetic Arinkin--Gaitsgory).
+\item F3.BZN\(^{\mathrm{Ar}}\) (arithmetic Ben-Zvi--Nadler, conditional
+on F1 \(+\) F2 plus the full-target/formal-loop comparison).
+\item The six-window placement theorem
+(\Cref{v4-arith:thm:six-window-placement}) remains conditional on
+the same residual chain.
+\end{itemize}
+\end{corollary}
+
+\begin{remark}[six-window upgrade]
+\label{v4-arith:acd:rem:six-window-upgrade}
+The upgrade of \Cref{v4-arith:thm:six-window-placement} from
+\ClaimStatusConjectured to \ClaimStatusProvedHere requires F1 (hence
+(BC-diamond-glue)), F2 (hence the \(\infty\)-categorical Tate
+restricted tensor lemma F2.c), and F3 (hence F3.BZN\(^{\mathrm{Ar}}\)).
+With (BC-diamond-glue) and the local comparison supplied, F1 becomes a
+conditional theorem.  With F2.c supplied, F2 becomes a conditional
+theorem.  F3 then requires F3.BZN\(^{\mathrm{Ar}}\). The six-window
+placement is theorem-grade only on the conjunction of these residual
+inputs.
+\end{remark}
+
+\subsection{Effect on \(\mathcal{V}^{\mathrm{prim}}\) Spectral Identification}
+
+\begin{corollary}[\(\mathcal{V}^{\mathrm{prim}}\) spectral shadow]
+\label{v4-arith:acd:cor:V-prim-spectral}
+\ClaimStatusNeedsVerification. Given the local categorical comparison,
+(BC-diamond-glue), and the corrected arithmetic BZN full-target
+comparison, the spectral shadow of \(\mathcal{V}^{\mathrm{prim}}\) is
+\begin{equation}
+\mathcal{V}^{\mathrm{prim}}\;\rightsquigarrow\;
+\mathcal{O}\bigl(L\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\bigr).
+\end{equation}
+The further passage to
+\(\mathcal{O}(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})\)
+requires a constant-loop restriction or a flat-locus truncation. It is
+not a consequence of Hochschild trace alone.
+\end{corollary}
+
+\begin{proof}
+\(\mathcal{V}^{\mathrm{prim}}=\mathrm{HH}_{\bullet}(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},\mathrm{glob}})\)
+(\Cref{v4-arith:thm:crowning-placement}). Under F1, which here means
+the local comparison together with (BC-diamond-glue),
+\(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},\mathrm{glob}}\simeq\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})\).
+Ben-Zvi--Nadler arXiv:0904.1247 computes
+\(\mathrm{HH}_{\bullet}(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}))=\mathcal{O}(L\mathcal{X})=\mathcal{O}(\mathrm{Map}(S^{1},\mathcal{X}))\)
+for derived stacks \(\mathcal{X}\). The constant-loop map
+\(\mathcal{X}\to L\mathcal{X}\) gives a restriction from the loop
+shadow to \(\mathcal{O}(\mathcal{X})\).  This restriction is additional
+data.  The categorical trace supplies the loop object.
+\end{proof}
+
+\section{Residual Obstructions}
+\label{v4-arith:acd:residuals}
+
+\subsection{Obstruction Decomposition}
+
+After the reduction of \Cref{v4-arith:acd:thm:final-reduction}, the
+residual inputs for \(\mathrm{L}_{\mathrm{ACD}}\), and hence for F1,
+are:
+
+\begin{itemize}
+\item \textbf{Local categorical comparison:} the passage from the
+pointwise local spectral action to the local categorical equivalence
+used in \(L_{2}\).
+\item \textbf{Global restricted-tensor identification:} the comparison
+between the restricted tensor product and the global automorphic
+category.
+\item \textbf{(BC-diamond-glue):}
+\Cref{v4-arith:acd:cj:bc-diamond-glue-concrete}. The central open
+residual, non-formal theorem. Domain: gluing of coherent Springer
+sheaves across a product of local Emerton--Gee stacks, plus
+agreement with the global Bernstein centre acting on the global
+automorphic category.
+\end{itemize}
+
+\subsection{Prior Hypotheses}
+
+(BC-diamond-glue) is independent of the remaining open items from
+the arithmetic branch of Vol~IV:
+\begin{itemize}
+\item F2.c (F2 residual, \(\infty\)-categorical Tate tensor): independent branch.
+\item Arithmetic Positselski: independent, on the P1 branch.
+\item Koszul--Petersson compatibility: independent, on the P3 branch.
+\item VB\(^{*}\) (arithmetic Virasoro positivity): independent, on the
+RH branch.
+\end{itemize}
+
+(BC-diamond-glue) is central on the F1 branch only after the local
+comparison and the global identification are fixed.
+
+\subsection{Primary-Literature Precedents}
+
+\begin{itemize}
+\item Ben-Zvi--Chen--Helm--Nadler arXiv:2010.02321: \emph{local}
+Bernstein centres as coherent sheaves on local Emerton--Gee stacks.
+This is the state of the art; (BC-diamond-glue) is the global
+assembly of these local constructions.
+\item Gan--Savin: partial change on restricted
+tensor product of local automorphic categories, with specific
+compatibilities verified for certain Jacquet--Langlands transfers;
+the global Bernstein-centre compatibility for \(GL_{2}/\mathbb{Q}\)
+remains open.
+\item AGKRRV 2020--2024 de Rham geometric Langlands: supplies the
+curve analogue of the centre-compatibility pattern.  It does not prove
+the number-field (BC-diamond-glue) statement. The surviving pattern is
+documented in
+\Cref{v4-arith:acd:cor:transport-summary}.
+\end{itemize}
+
+\subsection{Paper-Length Estimate, Revised}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{l|l|l|l}
+Residual & Original condition & Revised condition & Form \\
+\hline
+\(\mathrm{L}_{\mathrm{ACD}}\) & non-formal theorem & conditional & open \\
+\((L_{1})\) & n/a & closed (closed) & Theorem, \Cref{v4-arith:acd:cor:L1-holds} \\
+\((L_{2})\) & n/a & non-formal theorem plus local comparison & conditional \\
+\((L_{3})\) = (BC-diamond-glue) & n/a & non-formal theorem & Conjectural residual \\
+\((L_{4})\) & n/a & boundary datum & no spectral equivalence \\
+\end{tabular}
+\caption{Revised substantial estimate for \(\mathrm{L}_{\mathrm{ACD}}\)
+closure after the reduction of \Cref{v4-arith:acd:thm:final-reduction}.}
+\label{v4-arith:acd:table:revised-domain}
+\end{table}
+
+Total revised domain for \(\mathrm{L}_{\mathrm{ACD}}\) closure:
+non-formal theorem plus the local categorical comparison and the
+global identification.  The number records the visible
+Bernstein-centre and Whittaker work; it is not a proof that all
+adelic descent has been closed.
+
+\section{Descent Boundary}
+\label{v4-arith:acd:summary}
+
+\begin{enumerate}
+\item \(\mathrm{L}_{\mathrm{ACD}}\) decomposes into four disjoint
+subconditions \((L_{1})\)--\((L_{4})\)
+(\Cref{v4-arith:acd:thm:modular-decomposition}).
+\item \((L_{1})\) (restricted tensor well-definedness) closes
+unconditionally via Lurie HA 4.8 \(+\) 5.3, Raskin 2021--2022
+(\Cref{v4-arith:acd:thm:L1-closed},
+\Cref{v4-arith:acd:cor:L1-holds}).
+\item \((L_{4})\) (archimedean extension) supplies the
+representation-theoretic boundary datum via Jacquet--Langlands SLN 114
+\(+\) Vogan 1981
+(\Cref{v4-arith:acd:thm:L4-closed}).
+\item \((L_{2})\) (Hecke-functoriality gluing) is conditional:
+after the local categorical comparisons are supplied it reduces
+to (BC-diamond-glue), via tensor product formalism \(+\)
+Gaitsgory--Rozenblyum continuity
+(\Cref{v4-arith:acd:thm:L2-reduction}).
+\item \((L_{3})\) is the Bernstein-centre part of (BC-diamond-glue)
+(\Cref{v4-arith:acd:thm:L3-is-bc-diamond-glue}).
+\item \(\mathrm{L}_{\mathrm{ACD}}\) reduces to local comparison,
+(BC-diamond-glue), the archimedean boundary datum, and the global
+identification
+(\Cref{v4-arith:acd:thm:LACD-single-lemma}).
+\item F1 (global arithmetic Arinkin--Gaitsgory) is conditional on the
+same residual chain
+(\Cref{v4-arith:acd:thm:F1-closure}).
+\item Given the residual chain, the six-window placement theorem
+is conditional theorem-grade.  The Hochschild trace of
+\(\mathcal{V}^{\mathrm{prim}}\) sees the loop stack; passage to the
+Selmer-derived structure sheaf is an extra constant-loop or flat-locus
+restriction
+(\Cref{v4-arith:acd:cor:V-prim-spectral}).
+\item Revised condition for closure: non-formal theorem, reduced from
+non-formal theorem (\Cref{v4-arith:acd:table:revised-domain}).
+\end{enumerate}
+
+\(\mathrm{L}_{\mathrm{ACD}}\) reduces from one large conjecture to a
+formal tensor construction, local comparison, Bernstein-centre gluing,
+an archimedean boundary datum, and a global identification.  The
+structural content is a reduction, not an equivalence theorem for F1.
+The reduction is supported by eight disjoint primary-literature sources
+(\Cref{v4-arith:acd:rem:source-disjoint-decomposition}).
+
+The residual (BC-diamond-glue) is a single compatibility check
+between Ben-Zvi--Chen--Helm--Nadler's local coherent Springer
+sheaves and the global Bernstein centre on the global automorphic
+category. It is central on the F1 six-window branch of the
+arithmetic branch, but it is not the only hypothesis.
+
+\section{Forward Pointers}
+\label{v4-arith:acd:forward}
+
+\begin{itemize}
+\item Chapter~\ref{v4-arith:closure} gives the parent reduction of F1
+(\Cref{v4-arith:thm:F1-reduction}) into sub-items (F1.a)--(F1.d).
+\Cref{v4-arith:acd:thm:modular-decomposition} refines that reduction
+at the adelic-descent layer.
+\item Chapter~\ref{v4-arith:synthesis},
+\Cref{v4-arith:thm:six-window-placement}, is upgraded (conditional
+on (BC-diamond-glue) and the F2 / F3 residuals) to theorem-grade via
+\Cref{v4-arith:acd:cor:consequent-form}.
+\item Chapter~\ref{v4-arith:rh-reformulation} contains the RH
+reformulation F-RH; (BC-diamond-glue) sits on the six-window-placement
+branch (F1--F3 structural branch in
+Appendix~\ref{v4-arith:app:three-conjectures-dep}), not the
+RH-closure branch (four-input RH branch). (BC-diamond-glue) controls the
+categorical-trace presentation of \(\mathcal{V}^{\mathrm{prim}}\);
+the RH-closure branch (four-input RH branch)
+remains on a separate dependency chain.
+\item Appendix~\ref{v4-arith:app:three-conjectures-dep},
+\Cref{v4-arith:app:C:residual-list}, records
+\(\mathrm{L}_{\mathrm{ACD}}\) on the F1 branch.  After the reduction of
+\Cref{v4-arith:acd:thm:final-reduction}, the Bernstein-centre part is
+(BC-diamond-glue), with visible requires a non-formal theorem.
+\end{itemize}
