@@ -1,0 +1,791 @@
+\chapter{Arithmetic Positselski: Duals, Completion and Pairings}
+\label{v4-arith:w5-d:chapter}
+
+The arithmetic comparison involves continuous duals, derived completion,
+lifting, a character pairing and a Bost--Connes algebra model. The first
+three are local categorical constructions with their own coefficient
+and finiteness hypotheses. The last two require maps on the intended
+arithmetic object. The one-mode Euler product and Gaussian Mellin
+calculation of Chapter~\ref{v4-arith:prim-zeta-char} determine a scalar;
+they do not supply the character or algebra comparison. We separate the
+explicit shift representation and a necessary same-prime relation test
+from the remaining arithmetic construction.
+
+\section{Continuous Duals}
+\label{v4-arith:w5-d:sec:continuous-duals}
+
+\subsection{Iwasawa Algebra and Pontryagin Dual}
+\label{v4-arith:w5-d:cts-dual:iwasawa}
+
+Fix a prime \(p\). Let \(G_{p}=\mathrm{Gal}(\mathbb{Q}_{p}^{\mathrm{ab}}/\mathbb{Q}_{p})\)
+and
+\begin{equation}
+\label{v4-arith:w5-d:eq:iwasawa-def}
+\Lambda_{p}\;:=\;\mathbb{Z}_{p}[[G_{p}]]\;=\;\varprojlim_{U}\mathbb{Z}_{p}[G_{p}/U],
+\end{equation}
+the inverse limit over open normal subgroups \(U\trianglelefteq G_{p}\)
+of finite index. By local class field theory (Serre 1962,
+\emph{Corps locaux}, Ch.~XIV \S5), \(G_{p}\) is a profinite group and
+\(\Lambda_{p}\) is a compact topological ring in the inverse-limit
+topology (each \(\mathbb{Z}_{p}[G_{p}/U]\) is a finite \(\mathbb{Z}_{p}\)-module
+in the \(p\)-adic topology). The underlying additive group is a compact
+topological abelian group; in the notation of Weil 1940 \emph{L'int\'egration}
+Ch.~II, \(\Lambda_{p}\in\mathrm{LCA}\), the category of locally compact
+abelian groups.
+
+\begin{definition}[continuous Pontryagin dual]
+\label{v4-arith:w5-d:cts-dual:def:pontryagin}
+For \(A\in\mathrm{LCA}\), the
+\emph{continuous Pontryagin dual} is
+\begin{equation}
+\label{v4-arith:w5-d:eq:pontryagin-def}
+A^{\ast}\;:=\;\mathrm{Hom}_{\mathrm{cts}}(A,\mathbb{R}/\mathbb{Z}),
+\end{equation}
+the group of continuous homomorphisms into the circle, topologised by
+compact-open convergence. For \(A\) compact, \(A^{\ast}\) is discrete;
+for \(A\) discrete, \(A^{\ast}\) is compact (Pontryagin 1934, Weil 1940
+Ch.~II \S2). For \(A\) a \(p\)-primary torsion group (a \(\mathbb{Z}_{p}\)-module
+in the sense that \(p^{n}A\to 0\)), \(A^{\ast}\) takes values in
+\(\mathbb{Q}_{p}/\mathbb{Z}_{p}\subset\mathbb{R}/\mathbb{Z}\) and one
+writes
+\begin{equation}
+\label{v4-arith:w5-d:eq:p-pontryagin}
+A^{\vee}\;:=\;\mathrm{Hom}_{\mathrm{cts}}(A,\mathbb{Q}_{p}/\mathbb{Z}_{p}),
+\end{equation}
+the \emph{\(p\)-adic Pontryagin dual}.
+\end{definition}
+
+\begin{theorem}[Pontryagin double duality, LCA version]
+\label{v4-arith:w5-d:cts-dual:thm:pontryagin}
+The contravariant functor \(A\mapsto A^{\ast}\)
+from \(\mathrm{LCA}\) to \(\mathrm{LCA}\) is an anti-equivalence of
+categories: the double-dual natural transformation
+\(A\to A^{\ast\ast}\), \(a\mapsto\mathrm{ev}_{a}\), is an isomorphism of
+topological groups for every \(A\in\mathrm{LCA}\). Restriction to compact
+abelian groups: the anti-equivalence exchanges compact and discrete.
+Restriction to \(p\)-primary: the anti-equivalence exchanges compact
+pro-\(p\) and discrete \(p\)-primary torsion.
+\end{theorem}
+
+The proof is Pontryagin 1934 (originally for separable compact abelian
+groups); the general LCA formulation is Weil 1940 Ch.~II \S5 and
+Folland 1995 \emph{A Course in Abstract Harmonic Analysis} Ch.~4,
+Thm.~4.31 (the latter has the cleanest topological-group-valued
+statement).
+
+\subsection{The Continuous Dual of \(\Lambda_{p}\)}
+\label{v4-arith:w5-d:cts-dual:dual-of-Lambda}
+
+\begin{proposition}[continuous dual of Iwasawa algebra]
+\label{v4-arith:w5-d:cts-dual:prop:main}
+The continuous Pontryagin dual of
+\(\Lambda_{p}\) is naturally isomorphic to the discrete \(p\)-primary
+torsion module of continuous \(\mathbb{Q}_{p}/\mathbb{Z}_{p}\)-valued
+functions on \(G_{p}\):
+\begin{equation}
+\label{v4-arith:w5-d:eq:dual-of-lambda}
+(\Lambda_{p})^{\ast}\;=\;\Lambda_{p}^{\vee}\;=\;C(G_{p},\mathbb{Q}_{p}/\mathbb{Z}_{p}),
+\end{equation}
+equipped with the discrete topology and the \(G_{p}\)-module structure
+induced by translation: \((g\cdot f)(h)=f(g^{-1}h)\).
+\end{proposition}
+
+\begin{proof}
+The first equality \((\Lambda_{p})^{\ast}=\Lambda_{p}^{\vee}\) is
+immediate: \(\Lambda_{p}\) is pro-\(p\) (compact pro-\(p\) group), so every
+continuous homomorphism \(\Lambda_{p}\to\mathbb{R}/\mathbb{Z}\) factors
+through the pro-\(p\) part \(\mathbb{Q}_{p}/\mathbb{Z}_{p}\) of the circle
+(Definition~\ref{v4-arith:w5-d:cts-dual:def:pontryagin} ad finem).
+
+The second equality \(\Lambda_{p}^{\vee}=C(G_{p},\mathbb{Q}_{p}/\mathbb{Z}_{p})\)
+is the content. Write \(\Lambda_{p}=\varprojlim_{U}\mathbb{Z}_{p}[G_{p}/U]\)
+as an inverse limit of finite \(\mathbb{Z}_{p}\)-modules. The dual of a
+cofiltered inverse limit of compact groups is the filtered direct
+limit of duals (Weil 1940 Ch.~II \S5 Prop.~7; Bourbaki \emph{TG} III
+\S3.5 Prop.~7):
+\begin{equation}
+\label{v4-arith:w5-d:eq:dual-limit}
+\Lambda_{p}^{\vee}\;=\;\bigl(\varprojlim_{U}\mathbb{Z}_{p}[G_{p}/U]\bigr)^{\vee}\;=\;\varinjlim_{U}\mathbb{Z}_{p}[G_{p}/U]^{\vee}.
+\end{equation}
+At each finite level, \(\mathbb{Z}_{p}[G_{p}/U]\) is a finitely generated
+free \(\mathbb{Z}_{p}\)-module of rank \(|G_{p}/U|\); its \(p\)-adic
+Pontryagin dual is
+\begin{equation}
+\label{v4-arith:w5-d:eq:finite-level-dual}
+\mathbb{Z}_{p}[G_{p}/U]^{\vee}\;=\;\mathrm{Hom}(\mathbb{Z}_{p}[G_{p}/U],\mathbb{Q}_{p}/\mathbb{Z}_{p})\;=\;\mathrm{Maps}(G_{p}/U,\mathbb{Q}_{p}/\mathbb{Z}_{p}),
+\end{equation}
+the group of all maps on the finite coset space \(G_{p}/U\) with values
+in \(\mathbb{Q}_{p}/\mathbb{Z}_{p}\); no continuity hypothesis because
+\(G_{p}/U\) is finite discrete. Taking the direct limit over
+\(U\trianglelefteq G_{p}\):
+\begin{equation}
+\label{v4-arith:w5-d:eq:direct-limit-maps}
+\varinjlim_{U}\mathrm{Maps}(G_{p}/U,\mathbb{Q}_{p}/\mathbb{Z}_{p})\;=\;\mathrm{Maps}_{\mathrm{loc.cst.}}(G_{p},\mathbb{Q}_{p}/\mathbb{Z}_{p})\;=\;C(G_{p},\mathbb{Q}_{p}/\mathbb{Z}_{p}),
+\end{equation}
+the space of locally constant \(\mathbb{Q}_{p}/\mathbb{Z}_{p}\)-valued
+functions on \(G_{p}\). The last equality uses that on a profinite
+group, continuous = locally constant for \(\mathbb{Q}_{p}/\mathbb{Z}_{p}\)-values
+(compactness plus discreteness of the target: every continuous
+function from a compact to a discrete space has finite image and
+therefore factors through a finite quotient, Bourbaki \emph{TG} I
+\S10 Prop.~8).
+
+The \(G_{p}\)-action on \(\Lambda_{p}\) by right translation induces an
+action on \(\Lambda_{p}^{\vee}\) by the dual (left) translation,
+recovering the standard \(G_{p}\)-module structure on
+\(C(G_{p},\mathbb{Q}_{p}/\mathbb{Z}_{p})\).
+\end{proof}
+
+\subsection{Compact Modules and Discrete Comodules for the Dual Tensor Product}
+\label{v4-arith:w5-d:cts-dual:positselski-dual}
+
+Let \(D=\mathbb Q_p/\mathbb Z_p\). Compact \(\mathbb Z_p\)-modules
+and discrete \(p\)-primary torsion modules are exchanged by
+\(M\mapsto M^\vee=\operatorname{Hom}_{\mathrm{cts}}(M,D)\).
+On compact modules use the completed tensor product, the inverse
+limit of tensor products of finite quotient modules. On discrete
+modules define
+\[
+ M\odot N=(M^\vee\widehat\otimes_{\mathbb Z_p}N^\vee)^\vee.
+\]
+The unit for \(\odot\) is \(D\), since \(D^\vee=\mathbb Z_p\).
+Associativity, symmetry and the unit maps are the duals of those
+for the completed tensor product, using the natural double-dual
+isomorphisms.
+
+\begin{theorem}[continuous duality with its monoidal carrier]
+\label{v4-arith:w5-d:cts-dual:thm:positselski}
+Let \(\Lambda\) be a compact unital \(\mathbb Z_p\)-algebra with
+continuous multiplication, and put \(C=\Lambda^\vee\).
+Multiplication and unit dualize to
+\[
+ \Delta:C\longrightarrow C\odot C,
+ \qquad \varepsilon:C\longrightarrow D.
+\]
+These make \(C\) a counital coalgebra for \(\odot\). Continuous
+compact right \(\Lambda\)-modules are contravariantly equivalent
+to discrete right \(C\)-comodules for \(\odot\), by exact
+Pontryagin duality. For \(\Lambda=\Lambda_p\),
+\(C=C(G_p,D)\). On bounded derived categories the equivalence is
+\begin{equation}
+\label{v4-arith:w5-d:eq:cts-positselski}
+\mathrm D^b(\mathrm{Mod}^{\mathrm{comp}}\!\text{-}\Lambda_p)
+ \simeq
+\mathrm D^b(\mathrm{Comod}_{\odot}(C(G_p,D)))^{\mathrm{op}}.
+\end{equation}
+This statement concerns the dual tensor product, not ordinary
+\(\mathbb Z_p\)-coalgebras.
+\end{theorem}
+
+\begin{proof}
+At finite \(p\)-group level evaluation identifies every module with
+its double dual. Pontryagin duality exchanges the inverse limits of
+finite compact quotients with the direct limits of their discrete
+duals. It is exact: at finite level a character on a subgroup extends
+because \(D\) is divisible, and passage through these dual limits
+preserves the resulting short exact sequences.
+
+Dualize associativity and the unit identities of \(\Lambda\).
+The resulting diagrams are precisely coassociativity and the counit
+identities for \(C\) with respect to \(\odot\).
+For a compact right module \(M\), dualizing its action gives
+\[
+ (M\widehat\otimes\Lambda\longrightarrow M)^\vee:
+ M^\vee\longrightarrow M^\vee\odot C.
+\]
+The module axioms become the comodule axioms. Conversely, dualize a
+coaction and use double duality to recover the continuous action.
+The two constructions are inverse on objects and morphisms, so give
+an exact anti-equivalence.
+
+For a bounded cochain complex \(M^\bullet\), use
+\((M^\vee)^n=(M^{-n})^\vee\) with differential
+\(d(f)=(-1)^{n+1}f\,d_M\). Exactness gives
+\(H^n(M^\vee)=H^{-n}(M)^\vee\), so acyclic complexes and
+quasi-isomorphisms are preserved. Passing to the bounded derived
+categories proves \eqref{v4-arith:w5-d:eq:cts-positselski}.
+\end{proof}
+
+\begin{remark}[ordinary tensor obstruction and reduction modulo \(p\)]
+\label{v4-arith:w5-d:cts-dual:rem:domain}
+Already for \(\Lambda=\mathbb Z_p\), the dual is \(D\), and
+\(D\otimes_{\mathbb Z_p}D=0\): if \(p^nx=0\), write
+\(y=p^nz\), so \(x\otimes y=p^nx\otimes z=0\).
+Also \(\operatorname{Hom}_{\mathbb Z_p}(D,\mathbb Z_p)=0\).
+Thus this nonzero module admits no ordinary counital
+\(\mathbb Z_p\)-coalgebra structure. The counit above has target
+\(D\), the unit of the correct dual monoidal category.
+
+For a compact module there is the elementary natural identity
+\begin{equation}
+\label{v4-arith:w5-d:eq:base-change-square}
+ (M/pM)^\vee\cong M^\vee[p].
+\end{equation}
+A character factors through \(M/pM\) exactly when it is killed by
+\(p\). This degree-zero identity supplies neither a derived
+base-change equivalence nor the ordinary field-coalgebra
+comodule--contramodule correspondence. To use continuous duality in
+the arithmetic Positselski comparison of
+Remark~\ref{v4-arith:pos:rem:open-sub-items}, one must construct the
+appropriate completed monoidal carrier, its bar and cobar functors,
+and their compatibility with the stated Selmer and pairing data.
+The compact/discrete duality above is a concrete input to that
+construction, not its completion.
+\end{remark}
+
+\section{Derived Completion}
+\label{v4-arith:w5-d:sec:derived-completion}
+
+\subsection{Derived Completion over a Noetherian Ring}
+\label{v4-arith:w5-d:der-compl:greenlees-may}
+
+Let \(R\) be a commutative Noetherian ring and \(I\subset R\)
+an ideal. For \(M\in\mathrm D(R)\), put
+\begin{equation}
+\label{v4-arith:w5-d:eq:derived-completion-def}
+ \mathrm L\Lambda_I(M)=
+ \operatorname{Rlim}_{n}\bigl(M\otimes_R^{\mathbb L}R/I^n\bigr).
+\end{equation}
+The tensor product and inverse limit are both derived.
+A complex \(N\) is derived \(I\)-complete when
+\(\operatorname{RHom}_R(R[1/f],N)=0\) for every \(f\in I\).
+For the Noetherian ring considered here, the displayed construction
+is the reflection into these complexes.
+Without the Noetherian hypothesis, that identification needs
+additional conditions on the ideal.
+
+\begin{theorem}[Noetherian derived completion]
+\label{v4-arith:w5-d:der-compl:thm:greenlees-may}
+The functor \(\mathrm L\Lambda_I\) is left adjoint to the
+inclusion of derived \(I\)-complete complexes in \(\mathrm D(R)\).
+If every \(H^j(M)\) is finitely generated over \(R\), then
+\[
+ H^j(\mathrm L\Lambda_I M)
+ \cong\varprojlim_n H^j(M)/I^nH^j(M).
+\]
+In particular, the natural map from \(M\) to its derived
+completion is an equivalence when these finite cohomology
+modules are already \(I\)-adically complete.
+\end{theorem}
+\begin{proof}
+The adjunction is Stacks Project, Tag~0922.
+Its proof compares the towers of Koszul complexes and ideal
+quotients using the Noetherian hypothesis.
+
+The cohomology assertion is Tag~0A06.
+For a bounded above complex with finite cohomology, choose
+finite free resolutions. Completion is exact on the finite
+modules occurring in their kernels and images, by Artin--Rees.
+It therefore commutes with their cohomology.
+Truncation and the finite cohomological dimension of derived
+completion give the stated unbounded version.
+\end{proof}
+
+This theorem concerns cohomology modules and derived quotients.
+It does not identify completion of every chosen complex term
+by term with its derived completion.
+The following calculation records exactly the inverse-limit
+term that must be controlled.
+
+\subsection{Tor Amplitude and Reduction Towers}
+\label{v4-arith:w5-d:der-compl:tor-hypothesis}
+
+\begin{definition}[bounded Tor amplitude]
+\label{v4-arith:w5-d:der-compl:def:bdd-tor}
+A complex \(A\in\mathrm D(R)\) has
+\emph{bounded Tor amplitude} if there are integers \(a\le b\)
+such that \(H^j(A\otimes_R^{\mathbb L}N)=0\) outside \([a,b]\)
+for every \(R\)-module \(N\) in degree zero.
+For an ordinary flat algebra \(A\), this interval is \([0,0]\).
+For a dg algebra the condition refers to its underlying complex.
+It does not assert a Tor bound for every \(A\)-module.
+\end{definition}
+
+\begin{theorem}[cohomology of a reduction tower]
+\label{v4-arith:w5-d:der-compl:thm:main}
+For \(M\in\mathrm D(R)\), write
+\(K_n=M\otimes_R^{\mathbb L}R/I^n\).
+There is a natural exact sequence
+\begin{equation}
+\label{v4-arith:w5-d:eq:der-compl-main}
+ 0\longrightarrow\varprojlim_n{}^1 H^{j-1}(K_n)
+ \longrightarrow H^j(\mathrm L\Lambda_I M)
+ \longrightarrow\varprojlim_n H^j(K_n)
+ \longrightarrow0.
+\end{equation}
+If the transition maps on \(H^{j-1}(K_n)\) are surjective,
+the left term vanishes.
+More generally it vanishes under the Mittag--Leffler condition:
+for each fixed \(n\), the images from all sufficiently large
+indices in \(H^{j-1}(K_n)\) are equal.
+\end{theorem}
+\begin{proof}
+Choose a complex model of the tower. Its derived limit has
+the defining triangle
+\begin{equation}
+\label{v4-arith:w5-d:eq:der-compl-ss}
+ \operatorname{Rlim}_n K_n\longrightarrow\prod_nK_n
+ \xrightarrow{\ 1-s\ }\prod_nK_n
+ \longrightarrow(\operatorname{Rlim}_nK_n)[1],
+\end{equation}
+where the \(n\)-th component of \(s\) is the transition
+map applied to the \((n+1)\)-st component.
+Products of \(R\)-modules are exact, so the cohomology of
+these products is the product of their cohomologies.
+The long exact sequence identifies the outer terms with
+the kernel and cokernel of \(1-s\).
+These are \(\varprojlim\) and \(\varprojlim^1\), respectively.
+
+For a surjective tower, one solves \((1-s)x=y\) recursively,
+choosing each next component by surjectivity.
+Thus its cokernel vanishes. The same vanishing for a
+Mittag--Leffler tower is Stacks Project, Tag~07KV, Lemma~15.88.1.
+Consequently, under the stated hypothesis,
+\begin{equation}
+\label{v4-arith:w5-d:eq:collapse}
+ H^j(\mathrm L\Lambda_I M)\cong\varprojlim_nH^j(K_n).
+\end{equation}
+\end{proof}
+
+Flatness of the coefficient algebra does not imply surjectivity
+on this cohomology tower. Take \(R=A=\mathbb Z_p\) and
+\(M=[R\xrightarrow{p}R]\), in degrees zero and one.
+Then
+\[
+ H^0(M\otimes_R^{\mathbb L}R/p^n)
+   =p^{n-1}R/p^n\cong\mathbb F_p.
+\]
+Every transition on these groups is zero, hence is not surjective.
+The tower is nevertheless Mittag--Leffler, with eventual image zero.
+This example separates surjectivity from the weaker condition
+actually used in the theorem.
+
+Ordinary quotients can also miss the entire answer.
+For \(D=\mathbb Q_p/\mathbb Z_p\), multiplication by \(p^n\)
+is surjective with kernel \(D[p^n]\cong\mathbb Z/p^n\).
+Thus \(D/p^nD=0\), whereas
+\[
+ D\otimes_{\mathbb Z_p}^{\mathbb L}\mathbb Z/p^n
+   \simeq D[p^n][1],
+ \qquad
+ \mathrm L\Lambda_{(p)}D\simeq\mathbb Z_p[1].
+\]
+
+The transition on the kernels is multiplication by \(p\).
+Writing an element as \(a/p^n\) identifies this transition
+with reduction \(\mathbb Z/p^{n+1}\to\mathbb Z/p^n\).
+Its inverse limit is \(\mathbb Z_p\), and its first derived
+limit vanishes by surjectivity.
+The coefficient algebra \(A=\mathbb Z_p\) is flat in this
+example as well.
+
+\begin{remark}[the arithmetic bar requires its coefficient model]
+\label{v4-arith:w5-d:der-compl:rem:verify-hypothesis}
+To apply these results to an arithmetic bar construction,
+one must specify its complex over the chosen Noetherian ring.
+Its residue, differential, and completed tensor operations must
+be actual maps on that complex.
+Torsion-freeness over \(\mathbb Z_p\) does not imply flatness
+over \(\mathbb Z_p[[T]]\): the module \(\Lambda/(T)\) has
+\(\operatorname{Tor}_1^\Lambda(\Lambda/(T),\Lambda/(T))
+=\Lambda/(T)\).
+The arithmetic coefficient modules cannot be replaced by free
+oscillator coefficients without a comparison.
+
+For a chosen procyclic \(\Gamma\cong\mathbb Z_p\),
+\(\mathbb Z_p[[\Gamma]]/p\cong\mathbb F_p[[T]]\).
+The full local group \(G_p\) in
+\eqref{v4-arith:w5-d:eq:iwasawa-def} is a different input.
+A map to a procyclic quotient does not identify its completed
+group algebra with the one-variable power-series ring.
+\end{remark}
+
+\begin{corollary}[complete finite coefficient complexes]
+\label{v4-arith:w5-d:der-compl:cor:subitem-2}
+Let \(R=\mathbb Z_p[[T]]\), and suppose
+\(M\in\mathrm D(R)\) has finitely generated cohomology in
+every degree. Then \(M\to\mathrm L\Lambda_{(p)}M\) is an
+equivalence. The same holds for its derived reduction
+\(M\otimes_R^{\mathbb L}R/p\).
+\end{corollary}
+\begin{proof}
+The ring \(R\) is Noetherian and \(p\)-adically complete.
+Finite \(R\)-modules are therefore \(p\)-adically complete.
+Apply Theorem~\ref{v4-arith:w5-d:der-compl:thm:greenlees-may}
+to the cohomology of \(M\).
+The two-term free resolution of \(R/p\) shows that the
+reduced complex also has finite cohomology in every degree.
+The same theorem applies to it.
+\end{proof}
+
+For a coderived or contraderived arithmetic recipient,
+completion must instead be checked internally, as in
+Theorem~\ref{v4-arith:thm:arithmetic-positselski}.
+A comparison with ordinary derived complexes must detect the
+unit and counit cofibers before the preceding corollary can
+be used there. These remain requirements of
+Remark~\ref{v4-arith:pos:rem:open-sub-items}(2).
+
+\section{Reduction and Lifting}
+\label{v4-arith:w5-d:sec:faithful-lifting}
+
+\subsection{Matlis Duality on the Compact Heart}
+\label{v4-arith:w5-d:lift:matlis}
+
+Let \(R\) be a complete Noetherian local ring with maximal ideal
+\(\mathfrak{m}\) and residue field \(k=R/\mathfrak{m}\). The
+\emph{Matlis dual} of an \(R\)-module \(M\) is
+\begin{equation}
+\label{v4-arith:w5-d:eq:matlis-def}
+M^{\mathrm{M}}\;:=\;\mathrm{Hom}_{R}(M,E(k)),
+\end{equation}
+where \(E(k)\) is the injective hull of \(k\) as \(R\)-module
+(Matlis 1958 Pacific J.~Math.~8, \S3).
+
+\begin{theorem}[Matlis duality]
+\label{v4-arith:w5-d:lift:thm:matlis}
+Let \(R\) be a complete Noetherian local
+ring with residue field \(k\). The Matlis dual \((-)^{\mathrm{M}}\) is a
+contravariant exact functor
+\(R\mathrm{-mod}\to R\mathrm{-mod}\), and restricts to an anti-equivalence
+between the categories of finitely generated (Noetherian)
+\(R\)-modules and Artinian \(R\)-modules. \((-)^{\mathrm{M}\mathrm{M}}\)
+is the identity on both categories: finitely generated modules are
+reflexive, and Artinian modules are reflexive, under Matlis dualisation.
+\end{theorem}
+
+The proof is Matlis 1958 Thm.~4.2 and Thm.~5.2; modern accounts in
+Bruns--Herzog 1993 \emph{Cohen--Macaulay Rings} Ch.~3 \S2, and
+Enochs--Jenda 2000 \emph{Relative Homological Algebra} Ch.~5.
+
+\subsection{Lifting from Mod-\(p\) to Characteristic Zero}
+\label{v4-arith:w5-d:lift:mod-p-to-char-zero}
+
+Let \(\Lambda_{p}\to\mathbb{F}_{p}\) be the augmentation to the residue
+field (reduction modulo \(p\) combined with augmentation of the group
+algebra). A \emph{mod-\(p\) representation} of \(\Lambda_{p}\) is an
+\(\mathbb{F}_{p}\)-vector space \(\overline{V}\) with a continuous
+\(\Lambda_{p}\)-action factoring through \(\mathbb{F}_{p}\). A
+\emph{lift} of \(\overline{V}\) to characteristic zero is a continuous
+\(\Lambda_{p}\)-module \(V\) with \(V\otimes_{\Lambda_{p}}\mathbb{F}_{p}=\overline{V}\).
+
+\begin{theorem}[conservativity on a regular local coefficient model]
+\label{v4-arith:w5-d:lift:thm:faithful}
+Let \(R=\mathbb Z_p[[T]]\), with maximal ideal
+\(\mathfrak m=(p,T)\) and residue field \(k=\mathbb F_p\).
+On bounded complexes with finitely generated cohomology,
+\begin{equation}
+\label{v4-arith:w5-d:eq:base-change-functor}
+ -\otimes_R^{\mathbb L}k:
+ \mathrm D^b_{\mathrm{fg}}(R)\longrightarrow
+ \mathrm D^b_{\mathrm{fg}}(k)
+\end{equation}
+is conservative: it detects equivalences.
+It is not faithful on morphisms.
+\end{theorem}
+\begin{proof}
+The resolution bound of
+Proposition~\ref{v4-arith:pos:prop:proj-resolution} makes
+these complexes perfect, so the displayed functor has its
+stated target. Let \(K\) be the cone of a map whose reduction
+is an equivalence. If \(K\ne0\), choose the largest \(n\)
+with \(H^n(K)\ne0\).
+The top cohomology of \(K\otimes_R^{\mathbb L}k\) is
+\(H^n(K)\otimes_R k\).
+Its vanishing contradicts Nakayama's lemma for the nonzero
+finite module \(H^n(K)\). Thus \(K=0\).
+
+For failure of faithfulness, multiplication by \(p\) on \(R\)
+is nonzero and becomes zero after reduction.
+\end{proof}
+
+This is a theorem about the specified regular local ring.
+Applying it to an arithmetic completed group algebra requires
+its actual coefficient model and a comparison of recipients.
+Its residue field is obtained by killing both \(p\) and \(T\).
+Under Matlis duality, the dual of \(M/\mathfrak m M\)
+is the \(\mathfrak m\)-annihilated submodule, not merely the
+\(p\)-torsion submodule.
+
+\begin{corollary}[detection for a supplied comparison map]
+\label{v4-arith:w5-d:lift:cor:subitem-3}
+A supplied map in \(\mathrm D^b_{\mathrm{fg}}(R)\) is an
+equivalence if its derived reduction to \(k\) is.
+For intrinsic derived \(p\)-complete recipients, the corresponding
+criterion is Proposition~\ref{v4-arith:pos:prop:lifting}.
+\end{corollary}
+\begin{proof}
+Apply the preceding theorem to the map in the first case,
+and the cited proposition to its complete cofiber in the second.
+\end{proof}
+
+Neither statement constructs a lift of an arbitrary residual
+representation. For instance, \(R/(T)\) and \(R/(T-p)\)
+are distinct \(\mathbb Z_p\)-free lifts of the same module
+modulo \(p\). Completion of an inflated residual module also
+does not remove its \(p\)-torsion.
+The arithmetic adjunction and the comparison of its reduced
+unit and counit remain required in
+Remark~\ref{v4-arith:pos:rem:open-sub-items}(3).
+
+\section{Koszul-Dual Bost--Connes}
+\label{v4-arith:w5-d:sec:koszul-dual-BC}
+
+\subsection{Bost--Connes System}
+\label{v4-arith:w5-d:bc-koszul:BC-system}
+
+On \(\mathcal K=\ell^2(\mathbb N_{>0})\) define
+\(\mu_n\delta_N=\delta_{nN}\) and
+\(e(r)\delta_N=\exp(2\pi i rN)\delta_N\) for \(r\in\mathbb Q/\mathbb Z\).
+Use the concrete operator algebra
+\begin{equation}
+\label{v4-arith:w5-d:eq:BC-def}
+ \mathcal A_{\mathrm{rep}}=C^*(\mu_n,e(r):n\ge1,r\in\mathbb Q/\mathbb Z)
+ \subset\mathcal B(\mathcal K).
+\end{equation}
+The shifts are isometries, \(\mu_m\mu_n=\mu_{mn}\), and
+\[
+ \mu_n^*e(r)\mu_n=e(nr),\qquad
+ \mu_ne(r)\mu_n^*=\frac1n\sum_{ns=r}e(s).
+\]
+The first identity follows on each \(\delta_N\); for the second the
+sum of the \(n\) roots of unity vanishes unless \(n\mid N\), in
+which case both sides multiply \(\delta_N\) by
+\(\exp(2\pi i rN/n)\).
+For \(H\delta_N=\log N\,\delta_N\), conjugation by \(e^{itH}\)
+fixes \(e(r)\) and sends \(\mu_n\) to \(n^{it}\mu_n\).
+The heat trace is \(\sum_NN^{-\beta}=\zeta(\beta)\) for \(\beta>1\).
+These formulas specify the bounded operator model needed for the local
+comparison. They do not identify an arithmetic cobar algebra with it,
+or assert a classification of KMS states or a group-algebra presentation.
+Write \(\mathbb A^{\mathrm{BC}}\) for an intended Bost--Connes algebra
+only after specifying its presentation and representation comparison.
+
+\subsection{Adele Class Space and Enveloping Sheaf}
+\label{v4-arith:w5-d:bc-koszul:adele-class}
+
+The \emph{adele class space} of Connes 1999 (Selecta Math.~5,
+\S1.4; Consani--Marcolli 2006 \emph{Noncommutative Geometry, Arithmetic,
+and Related Topics} \S2) is
+\begin{equation}
+\label{v4-arith:w5-d:eq:adele-class-def}
+X_{\mathrm{AC}}\;:=\;\mathbb{A}_{\mathbb{Q}}/\mathbb{Q}^{\ast},
+\end{equation}
+the quotient of the full adele ring by the diagonal multiplicative
+action. Its non-Hausdorff quotient geometry is different from the
+occupation-basis representation of \eqref{v4-arith:w5-d:eq:BC-def}.
+A comparison with a noncommutative algebra model requires the specified
+site, algebra, representation and trace maps. A common zeta scalar
+does not construct a Hilbert duality between these models.
+
+\begin{definition}[sheaf comparison data]
+\label{v4-arith:w5-d:bc-koszul:def:env-sheaf}
+A sheaf comparison requires a specified site on the adele-class object,
+a sheaf of algebras \(\mathcal E^{\mathrm{BC}}\) on that site, and an
+identification of its appropriate global sections with the chosen
+operator algebra. It also requires a sheaf model of the arithmetic
+cobar construction and a map preserving multiplication, differential,
+coefficients and the stated completion. These are hypotheses on a
+comparison. A phrase such as support on an adelic fibre does not define
+restriction maps or such an identification.
+\end{definition}
+
+\subsection{Koszul-Dual Description}
+\label{v4-arith:w5-d:bc-koszul:koszul-dual}
+
+\begin{question}[arithmetic cobar and Bost--Connes comparison]
+\label{v4-arith:w5-d:bc-koszul:thm:main}
+Specify the coefficients, differential and topology of the primary
+arithmetic cobar algebra \(A_{\mathrm{prim}}\). Construct a comparison
+with a specified dg model of the intended Bost--Connes algebra whose
+chosen operator representation is compatible with
+\eqref{v4-arith:w5-d:eq:BC-def}. The desired quasi-isomorphism is
+\begin{equation}
+\label{v4-arith:w5-d:eq:BC-koszul-dual}
+ A_{\mathrm{prim}}\ \simeq\ B_{\mathrm{BC}}
+ \qquad\text{in a common specified category of dg algebras}.
+\end{equation}
+The problem includes coefficient comparison and completion; a
+\(C^*\)-algebra is not automatically a dg \(\mathbb Z_p[[\Gamma]]\)-algebra.
+The sheaf data in
+Definition~\ref{v4-arith:w5-d:bc-koszul:def:env-sheaf} are additional requirements
+for a geometric realization of this comparison.
+\end{question}
+
+There is a necessary test on the proposed prime-power generator map.
+The equality of energies \(\log(p^k)=k\log p\), using
+Convention~\ref{v4-arith:conv:two-grading}(ii), permits the proposed association
+\(b_{p,k}\mapsto\mu_{p^k}\). It does not prove the algebra relation.
+For an explicit algebraic example, let
+\(Q=\mathbb Q[b_{p,k}:p\text{ prime},k\ge1]\). Its map to
+\(\mathbb Q[t_p:p\text{ prime}]\), \(b_{p,k}\mapsto t_p^k\), has kernel
+\[
+ (b_{p,k}-b_{p,1}^k:p\text{ prime},k\ge2).
+\]
+Indeed quotienting by these relations leaves a polynomial ring freely
+generated by the classes of \(b_{p,1}\); the evident inverse sends
+\(t_p\) to that class. Thus this map is surjective but not injective.
+Graded commutativity alone does not impose these relations. In a dg
+model one would instead need explicit boundaries or homotopies and a
+proof that the induced map is a quasi-isomorphism. The restricted-dual
+calculation \(\eta_1^k=k!\eta_k\) of
+Theorem~\ref{v4-arith:pos:thm:weight-comp} also shows the effect of integral
+normalization. Phase operators, adjoints and their covariance require
+further generators and relations beyond the commuting shift subalgebra.
+
+\begin{remark}[pairing compatibility]
+\label{v4-arith:w5-d:bc-koszul:cor:subitem-5}
+If the comparison in \eqref{v4-arith:w5-d:eq:BC-koszul-dual} is
+constructed together with compatible pairing maps, those maps transport
+the specified pairing. This formal consequence does not construct the
+comparison or its compatibility. In particular, the numerical energy
+match does not settle the Koszul-dual Bost--Connes requirement of
+Remark~\ref{v4-arith:pos:rem:open-sub-items}(5).
+\end{remark}
+
+\section{Local Constructions and Arithmetic Comparison Hypotheses}
+\label{v4-arith:w5-d:sec:combined-theorem}
+
+\subsection{Combined Theorem}
+\label{v4-arith:w5-d:combined:theorem}
+
+\begin{remark}[distinct comparison inputs]
+\label{v4-arith:w5-d:combined:thm:four-subitems}
+The continuous-dual, derived-completion and lifting constructions have
+their stated coefficient and finiteness hypotheses. Their application
+to an arithmetic object must verify those hypotheses. The scalar
+calculation in Chapter~\ref{v4-arith:prim-zeta-char} concerns a selected
+one-mode Euler product and a Gaussian Mellin pairing. It does not
+identify the arithmetic cobar character or its pairing. The
+Bost--Connes comparison remains
+Question~\ref{v4-arith:w5-d:bc-koszul:thm:main}; it is not reduced to a match of
+generator energies or to an unnamed sheaf duality.
+\end{remark}
+
+\subsection{Arithmetic Positselski Comparison}
+\label{v4-arith:w5-d:combined:closure}
+\begin{question}[equivalence on the intended arithmetic carrier]
+\label{v4-arith:w5-d:combined:thm:closure}
+For the specified arithmetic dg coalgebra and completed dual, establish
+\begin{equation}
+\label{v4-arith:w5-d:eq:arith-positselski-closure}
+ \mathrm D^{\mathrm{co}}_{\Lambda_p}(C\text{-}\mathrm{comod})
+ \simeq
+ \mathrm D^{\mathrm{ctr}}_{\Lambda_p}(C^\vee\text{-}\mathrm{contramod})
+\end{equation}
+with the coefficient, topology and finiteness hypotheses required by
+Theorem~\ref{v4-arith:thm:arithmetic-positselski}. Its comparison with the
+Bost--Connes representation additionally requires
+\eqref{v4-arith:w5-d:eq:BC-koszul-dual}, and the character and pairing
+intertwiners. Neither a scalar Euler product nor the local divisor
+substitution supplies these maps.
+\end{question}
+
+\begin{question}[central classes and Tate duality]
+\label{v4-arith:w5-d:combined:cor:G-row-upgrade}
+The intended arithmetic relation is
+\begin{equation}
+\label{v4-arith:w5-d:eq:G-row-biconditional}
+ \kappa^{\mathrm{Ar}}_{\mathsf G}+(\kappa^!)^{\mathrm{Ar}}_{\mathsf G}=0
+ \quad\Longleftrightarrow\quad \xi(s)=\xi(1-s).
+\end{equation}
+The right side is the classical functional equation. A proof relating
+it to the left side must identify the arithmetic obstruction classes
+under a compatible pairing. Energy-zero evaluation on a polynomial
+restricted dual does not provide this identification. The noncommutative
+Iwahori extension requires its own additional comparisons.
+\end{question}
+
+\subsection{The Five Comparison Requirements}
+\label{v4-arith:w5-d:combined:table}
+\begin{table}[h]
+\centering\small
+\begin{tabular}{c|p{5.6cm}|p{4.4cm}}
+Input & Construction & Arithmetic requirement\\\hline
+(1) & Continuous duals & Specified topology and duality\\
+(2) & Derived completion & Applicable hypotheses and base change\\
+(3) & Lifting & Existence and the required morphism properties\\
+(4) & Selected scalar character & Character and pairing comparison maps\\
+(5) & Bost--Connes comparison & dg algebra, coefficients and completion\\
+\end{tabular}
+\caption{The constructions required on the intended arithmetic carrier.
+The scalar one-mode calculation does not supply the last two comparisons.}
+\label{v4-arith:w5-d:tab:residual-table}
+\end{table}
+\begin{remark}[domain and comparison]
+\label{v4-arith:w5-d:combined:rem:honesty}
+The local compactness, completion and duality results must be used on
+their actual carriers. Even when those local hypotheses hold, an
+arithmetic identification must preserve the operators and pairings in
+question. These requirements remain in the abelian sector; they are
+not all consequences of excluding the nonabelian Iwahori case.
+\end{remark}
+
+\section{Bibliography}
+\label{v4-arith:w5-d:sec:bibliography}
+
+The sources are:
+
+\begin{description}
+\item[\emph{Positselski}] Positselski 2011 ``Two kinds of derived
+categories'', Mem.~AMS 996 (arXiv:0905.2621): classical Positselski
+comodule--contramodule correspondence over a field, separate from the compact/discrete duality for the dual tensor
+product \(\odot\) constructed here
+(\S\ref{v4-arith:w5-d:sec:continuous-duals}). \item[\emph{Bost--Connes 1995}] J.-B. Bost and A. Connes,
+\emph{Hecke algebras, type III factors and phase transitions with
+spontaneous symmetry breaking in number theory}, Selecta Math.~1
+(1995), 411--457. The concrete shift and phase operators used here are
+specified in \eqref{v4-arith:w5-d:eq:BC-def}; no arithmetic cobar
+comparison is imported from this reference.
+\item[\emph{Consani--Marcolli}] C. Consani and M. Marcolli,
+\emph{Noncommutative geometry, dynamics, and infinity-adic Arakelov
+geometry}, Selecta Math.~10 (2004), 167--251. Background for adele-class
+geometry. The sheaf and pairing comparison needed here is the explicit
+construction problem in
+Definition~\ref{v4-arith:w5-d:bc-koszul:def:env-sheaf} and Question~\ref{v4-arith:w5-d:bc-koszul:thm:main}.
+\item[\emph{Derived completion}] Stacks Project, Tags~0922
+and~0A06: Noetherian derived completion and its effect on finite
+cohomology modules. Tag~07KV gives the derived-limit triangle
+and the Mittag--Leffler vanishing used in
+Section~\ref{v4-arith:w5-d:sec:derived-completion}.
+\item[\emph{Pontryagin / Weil}] L.S. Pontryagin, \emph{Topological
+Groups}, Princeton 1939 (orig.\ 1934); A. Weil, \emph{L'int\'egration
+dans les groupes topologiques et ses applications}, Hermann 1940,
+Ch.~II \S2 (Pontryagin duality on LCA) and \S5 (duality of inverse
+limits). G.B. Folland, \emph{A Course in Abstract Harmonic Analysis},
+CRC 1995, Ch.~4 Thm.~4.31 (modern cleanly stated Pontryagin
+anti-equivalence). Used in
+\S\ref{v4-arith:w5-d:sec:continuous-duals}.
+\item[\emph{Matlis}] E. Matlis, ``Injective modules over Noetherian
+rings'', Pacific J.~Math.~8 (1958) 511--528, \S3--5: Matlis duality
+on complete Noetherian local rings. Modern account in
+W. Bruns, J. Herzog, \emph{Cohen--Macaulay Rings}, Cambridge 1993,
+Ch.~3 \S2. Used in \S\ref{v4-arith:w5-d:sec:faithful-lifting}.
+\item[\emph{Matsumura}] H. Matsumura, \emph{Commutative Ring Theory},
+Cambridge 1989. Background on finite modules, local rings and
+completion. The reduction theorem above uses Nakayama's lemma
+over the specified ring \(\mathbb Z_p[[T]]\).
+\item[\emph{Iwasawa algebra Noetherianity}] M. Lazard, ``Groupes
+analytiques \(p\)-adiques'', IHES Publ.~26 (1965).
+O. Venjakob, ``A
+noncommutative Weierstrass preparation theorem and applications to
+Iwasawa theory'', J.~Reine Angew.~Math.~559 (2003) 153--191,
+Thm.~3.1. Group-algebra applications require the appropriate
+compact \(p\)-adic Lie hypothesis on \(G\).
+The regular local model used here is the chosen procyclic
+algebra \(\mathbb Z_p[[T]]\).
+\item[\emph{Nekov\'a\v{r}}] J. Nekov\'a\v{r}, \emph{Selmer
+Complexes}, Ast\'erisque 310 (2006). Background for the arithmetic
+Selmer complexes. Their continuous derived recipients and any
+comparison with the ordinary derived coefficient model must be
+specified separately.
+\end{description}
+
+\begin{remark}[roles of the constructions]
+\label{v4-arith:w5-d:rem:disjointness}
+Continuous duals, derived completion, lifting, and arithmetic operator
+comparison answer different questions. A scalar identity obtained from
+Tate's Mellin transform and the one-mode Euler product does not establish
+an algebra or pairing comparison. The missing maps remain the objects
+of Question~\ref{v4-arith:w5-d:bc-koszul:thm:main}.
+\end{remark}

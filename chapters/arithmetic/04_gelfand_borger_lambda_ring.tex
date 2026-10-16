@@ -1,0 +1,1062 @@
+\chapter{Divisor sums and Adams operations on polynomial Fock space}
+\label{v4-arith:ado:chapter}
+\label{v4-arith:gelfand-borger}
+
+An arithmetic operation on a Fock space must be specified before it can
+be compared with Frobenius, a Hecke correspondence, or a vertex operation.
+Two integral substitutions are relevant here. One sums over divisors of a
+mode index; the other multiplies that index. They agree on the first mode,
+but their compositions differ. We compute the divisor substitutions, then
+construct the Adams action and identify the structures retained by each.
+The calculation concerns a polynomial oscillator representation. A map to
+an arithmetic Hochschild trace class remains additional data.
+
+\section{The two substitutions}
+\label{v4-arith:ado:carriers}
+
+Let \(R\) be a commutative unital ring and let \(S\) be a finite set of
+oscillator species. Put
+\[
+ M_R=\bigoplus_{s\in S,\ k\ge1}R x_{s,k},\qquad
+ P_R=\operatorname{Sym}_R(M_R)=R[x_{s,k}:s\in S,k\ge1].
+\]
+All polynomials and all sums defining an image of a generator have finite
+support. The vacuum is \(1\). Particle degree assigns degree one to every
+\(x_{s,k}\); weight assigns weight \(k\). The species index can label an
+arithmetic place, but is independent of the integer indexing an operation.
+Suppress it when there is only one species. Define unital \(R\)-algebra maps
+\begin{equation}
+\label{v4-arith:eq:Tn-formula}
+ T_n(x_{s,k})=\sum_{d\mid n,\ d\mid k}d\,x_{s,nk/d},
+ \qquad \psi_n(x_{s,k})=x_{s,nk}\qquad(n\ge1).
+\end{equation}
+The divisibility condition \(d\mid k\) restricts the sum; integrality of
+\(nk/d\) already follows from \(d\mid n\). Write \(t_n=T_n|_{M_R}\)
+for the underlying linear map. Thus \(T_n=\operatorname{Sym}(t_n)\).
+These definitions commute with change of coefficient ring. They also
+extend to any set of species as an algebraic direct limit of finite sets.
+For an empty set of species all maps are the identity on \(R\).
+Counterexamples below use a nonempty species set and characteristic zero,
+unless a coefficient ring is specified otherwise.
+
+\subsection{First-mode calculations}
+\label{v4-arith:gb:explicit-psi-2}
+For species indexed by the primes \(2\) and \(3\), the first-mode identities are
+\begin{computation}
+\label{v4-arith:comp:psi2-a2}
+\(T_2x_{2,1}=\psi_2x_{2,1}=x_{2,2}\).
+\end{computation}
+\begin{computation}
+\label{v4-arith:comp:psi2-a3}
+\(T_2x_{3,1}=\psi_2x_{3,1}=x_{3,2}\).
+\end{computation}
+\begin{computation}
+\label{v4-arith:comp:psi2-a2a3}
+Both substitutions send \(x_{2,1}x_{3,1}\) to
+\(x_{2,2}x_{3,2}\), by their polynomial product rule.
+\end{computation}
+These first-mode equalities do not determine the higher compositions.
+
+\begin{example}
+For a prime \(p\),
+\[
+ T_p x_1=x_p,\quad T_p x_p=x_{p^2}+p x_p,\quad
+ T_{p^2}x_1=x_{p^2}.
+\]
+Consequently \(T_p^2\ne T_{p^2}\). The usual weight-two Hecke recursion
+also fails: its discrepancy on \(x_1\) is
+\(p(x_p-x_1)\). Neither statement is a failure of the distinct maps
+\(\psi_n\), which satisfy \(\psi_m\psi_n=\psi_{mn}\) on every generator
+and therefore on \(P_R\).
+\end{example}
+
+\section{Composition on a prime chain}
+\label{v4-arith:ado:composition}
+
+Fix a prime \(p\) and an integer \(u\ge1\) prime to \(p\).
+The submodule with basis \(e_r=x_{up^r}\), \(r\ge0\), is invariant under
+\(t_{p^a}\). Denote its restriction by \(A_a\), including \(A_0=1\).
+Then
+\begin{equation}
+\label{v4-arith:ado:prime-chain}
+ A_a e_r=\sum_{i=0}^{\min(a,r)}p^i e_{r+a-i}.
+\end{equation}
+The indices never decrease. This boundary at \(r=0\) is responsible for
+the noncommutativity.
+
+\begin{theorem}[prime-valuation composition]
+\label{v4-arith:ado:composition-theorem}
+\label{v4-arith:lem:composition-law}
+For \(a,b,r\ge0\), set \([v]_+=\max(v,0)\) for an integer \(v\), and put
+\[
+ N_{a,b}(r,t)=\mathbf1_{t\le r+b}
+ \bigl[\min(b,r,t)-\max(0,t-a)+1\bigr]_+.
+\]
+Then, over every coefficient ring,
+\begin{equation}
+\label{v4-arith:ado:composition-formula}
+ A_a A_b e_r=\sum_{t=0}^{a+b}p^tN_{a,b}(r,t)e_{r+a+b-t}.
+\end{equation}
+Subtracting the same expression with \(a,b\) interchanged gives the
+commutator. Over \(\mathbb Z\) or a characteristic-zero field,
+\(A_a\) and \(A_b\) commute precisely when \(a=b\) or \(ab=0\).
+\end{theorem}
+
+\begin{proof}
+Apply \(A_b\) first. A term is specified by
+\(0\le i\le\min(b,r)\), followed by
+\(0\le j\le\min(a,r+b-i)\). Its coefficient is \(p^{i+j}\) and
+its index is \(r+a+b-i-j\). For fixed \(t=i+j\), the second upper
+bound is equivalent to \(t\le r+b\), and the remaining bounds are
+\[
+ \max(0,t-a)\le i\le\min(b,r,t).
+\]
+Counting these integers proves the formula without division.
+If \(0<a<b\), take \(r=a\) and \(t=2a\). In the commutator the
+coefficient of \(e_b\) is
+\(-p^{2a}\min(a,b-a)\), which is nonzero over the stated rings.
+The cases \(a=b\) and \(ab=0\) commute by definition; interchanging
+\(a,b\) covers the remaining case.
+\end{proof}
+
+In particular,
+\begin{equation}
+\label{v4-arith:ado:first-commutator}
+ [A_1,A_2]e_r=
+ \begin{cases}-p^2 e_2,&r=1,\\0,&r\ne1.\end{cases}
+\end{equation}
+For \(r\ge2\) this follows either from the formula or from the
+polynomials \(U+p\) and \(U^2+pU+p^2\), where \(Ue_r=e_{r+1}\).
+Direct substitution checks \(r=0,1\).
+
+\begin{corollary}[different primes and arbitrary indices]
+\label{v4-arith:ado:global-composition}
+Families belonging to different primes commute. If \((m,n)=1\),
+then \(T_mT_n=T_{mn}\). More generally, write
+\(a_p=v_p(m)\), \(b_p=v_p(n)\), and \(r_p=v_p(k)\). On a generator,
+\begin{equation}
+\label{v4-arith:ado:global-formula}
+ T_mT_n x_k=
+ \sum_{(t_p)}
+ \left(\prod_{p\mid mn}p^{t_p}N_{a_p,b_p}(r_p,t_p)\right)
+ x_{mnk/\prod_{p\mid mn}p^{t_p}},
+ \quad 0\le t_p\le a_p+b_p.
+\end{equation}
+Terms with zero coefficient are omitted. All nonzero terms have integral
+indices. On a monomial the image is the product of these finite sums.
+\end{corollary}
+
+\begin{proof}
+Multiplication or division of an index by a power of \(p\) does not change
+its valuation at another prime. Thus the choices of divisors at distinct
+primes are independent. The divisor formula factors \(t_n\) as the product
+of the \(A_{v_p(n)}\) acting in these independent coordinates. Apply the
+theorem in each coordinate and extend the resulting equality on generators
+multiplicatively. For coprime \(m,n\), one of \(a_p,b_p\) vanishes at each
+prime, so the product is exactly the formula for \(T_{mn}\).
+\end{proof}
+
+These formulas include coefficient exceptions. In characteristic \(p\),
+\(T_{p^a}=\psi_{p^a}\), since every summand with \(i>0\) vanishes.
+Over other rings a displayed commutator coefficient may vanish through
+torsion. Formula~\eqref{v4-arith:ado:composition-formula}, rather than the
+characteristic-zero noncommutativity assertion, determines those cases.
+
+More generally, for \(1\le a<b\), direct expansion gives
+\begin{equation}
+\label{v4-arith:ado:boundary-commutator}
+ [A_a,A_b]e_1=-p^{a+1}e_b.
+\end{equation}
+Indeed \(A_be_1=e_{b+1}+pe_b\), so applying \(A_a\) gives
+successive coefficients \(1,2p,\ldots,2p^a,p^{a+1}\).
+In the reverse order \(A_ae_1=e_{a+1}+pe_a\); since \(b\ge a+1\),
+the expansion ends with \(2p^{a+1}\) instead of \(p^{a+1}\).
+
+Over any nonzero characteristic-zero ring, the global criteria are
+\[
+ T_mT_n=T_{mn}\ \Longleftrightarrow\ (m,n)=1,
+\]
+and
+\[
+ [T_m,T_n]=0\ \Longleftrightarrow\
+ \text{for each }p,\quad a_pb_p=0\ \text{or}\ a_p=b_p.
+\]
+For the first necessity, on \(x_1\) a common prime contributes
+\(A_aA_be_0=\sum_{j=0}^{\min(a,b)}p^je_{a+b-j}\), whereas
+\(A_{a+b}e_0=e_{a+b}\). Select its \(j=1\) term and the coefficient-one
+highest terms at the other primes; it cannot vanish. For the second,
+if \(0<a_p<b_p\), apply the commutator to \(x_p\). At every other
+prime the two orders agree on \(e_0\); selecting their highest terms
+and using \eqref{v4-arith:ado:boundary-commutator} gives a nonzero
+coefficient. Sufficiency follows from the independent prime factors.
+Over \(\mathbb F_\ell\), both criteria have the corresponding exception
+at \(p=\ell\): that prime imposes no condition. At every other prime,
+the same nonzero power-of-\(p\) test proves necessity. These assertions
+concern the polynomial carrier; reducing the larger Hall lattice below
+is a different operation.
+
+The interaction with the Adams shifts is equally explicit:
+\[
+ \psi_mT_nx_k=\sum_{d\mid n,\ d\mid k}d x_{mnk/d},\qquad
+ T_n\psi_mx_k=\sum_{d\mid n,\ d\mid mk}d x_{mnk/d}.
+\]
+In characteristic zero these commute exactly for coprime \(m,n\).
+Sufficiency follows from equality of the divisor conditions, and \(k=1\)
+detects an extra positive coefficient when the indices have a common prime.
+
+One can instead retain the prime substitutions and change the higher
+operations: define \(U_n=\prod_pT_p^{v_p(n)}\). Then
+\(U_mU_n=U_{mn}\), because different prime substitutions commute.
+This is another monoid action, distinct from both \(T_n\) and \(\psi_n\).
+Its prime-power formula is
+\[
+ T_p^a e_r=\sum_{j=0}^a\binom ajp^je_{r+a-j}\quad(r\ge1),\qquad
+ T_p^a e_0=\sum_{j=0}^{a-1}\binom{a-1}jp^je_{a-j}\quad(a\ge1).
+\]
+The first is the binomial theorem for \(U+p\) on the invariant tail
+\(r\ge1\); the second follows after the first step \(e_0\mapsto e_1\).
+Its prime maps still fail the Frobenius tests below, so this change
+repairs only the composition law.
+
+
+\section{An explicit presentation of the prime-chain algebra}
+\label{v4-arith:ado:presentation}
+
+A presentation should distinguish relations in linear operators on
+\(M_R\) from composition of ring maps on \(P_R\). We give a finite
+coefficient test for every proposed linear relation. It describes the
+entire prime-chain operator algebra, including its boundary terms.
+
+A useful ambient realization uses \(Ue_r=e_{r+1}\) and
+\(Be_0=0\), \(Be_r=e_{r-1}\) for \(r\ge1\). They satisfy \(BU=1\),
+and \(U^iB^i\) projects onto the tail \(r\ge i\). Therefore
+\[
+ A_a=\sum_{i=0}^a p^iU^{a-i}U^iB^i
+     =U^a\sum_{i=0}^a p^iB^i,
+ \qquad A_{a+1}=UA_a+p^{a+1}U^{a+1}B^{a+1}.
+\]
+These identities locate the generated algebra inside the integral
+shift-and-partial-inverse operator algebra. They do not identify the
+subalgebra generated by the \(A_a\) with that whole ambient algebra.
+
+
+For \(a\ge1\), put \(q_a(z)=\sum_{i=0}^a p^i z^{a-i}\).
+For a word \(w=Z_{a_\ell}\cdots Z_{a_1}\), write
+\(D_w=\sum_j a_j\) and \(q_w=\prod_jq_{a_j}\); the rightmost letter
+acts first. For \(r,s\ge0\), define the integer
+\begin{equation}
+\label{v4-arith:ado:word-coefficient}
+ B_w(r,s)=
+ \sum_{\substack{0\le i_j\le a_j,\ \sum_j(a_j-i_j)=s\\
+ i_j\le r+\sum_{h<j}(a_h-i_h)\ \text{for every }j}}
+ p^{\sum_j i_j}.
+\end{equation}
+For the empty word set \(D_w=0\), \(q_w=1\), and
+\(B_w(r,s)=\mathbf1_{s=0}\). Every sum is finite, and
+\(B_w(r,s)=0\) if \(s>D_w\).
+
+\begin{theorem}[finite-test presentation]
+\label{v4-arith:ado:finite-presentation}
+Let \(\mathcal F_R=R\langle Z_1,Z_2,\ldots\rangle\).
+For a finite expression \(F=\sum_w c_w w\), put
+\(D=\max_wD_w\), taking \(D=0\) for the zero expression.
+Define \(I_{p,R}\) by the following explicit coefficient conditions:
+\begin{align}
+ &\sum_wc_wq_w(z)=0\quad\text{in }R[z],
+ \label{v4-arith:ado:tail-relation}\\
+ &\sum_wc_wB_w(r,s)=0\quad
+ (0\le r<D,\ 0\le s\le D).
+ \label{v4-arith:ado:boundary-relation}
+\end{align}
+Then \(I_{p,R}\) is a two-sided ideal and
+\[
+ R[A_1,A_2,\ldots]\ \cong\ \mathcal F_R/I_{p,R}.
+\]
+Here the left side is the unital \(R\)-subalgebra of
+\(\operatorname{End}_R(\bigoplus_{r\ge0}Re_r)\) generated by the indicated
+linear maps. This is an explicit, generally infinite presentation, not
+an assertion of finite generation or a finite list of relations.
+\end{theorem}
+
+\begin{proof}
+Repeated use of \eqref{v4-arith:ado:prime-chain} gives
+\(w(A)e_r=\sum_sB_w(r,s)e_{r+s}\). If \(r\ge D\), every intermediate
+index is at least \(r\), hence every choice \(0\le i_j\le a_j\) is
+allowed. In that range \(B_w(r,s)\) is the coefficient of \(z^s\) in
+\(q_w(z)\). Thus \eqref{v4-arith:ado:tail-relation} says exactly that
+\(F(A)e_r=0\) for all \(r\ge D\), and
+\eqref{v4-arith:ado:boundary-relation} says the same for the remaining
+basis vectors. These conditions are therefore exactly the kernel of
+evaluation \(Z_a\mapsto A_a\). The kernel is a two-sided ideal and the
+first isomorphism theorem proves the assertion. This argument works over
+any commutative \(R\); all tests are finite equalities in \(R\).
+\end{proof}
+
+Equivalently, an evaluated expression has a unique form
+\(q(U)+E\), where \(q\in R[z]\) and \(E\) is a finite matrix supported
+in columns \(r<D\) and rows \(r\le r+s\le r+D\). Uniqueness follows
+by applying the difference to arbitrarily large \(e_r\).
+The symbol map onto \(R[z]\) is surjective because \(q_1=z+p\).
+Its kernel consists of the finite matrices that occur in the generated
+algebra. No assertion that all finite matrices occur is needed.
+For \(R=\mathbb Z\), the commutator in
+\eqref{v4-arith:ado:first-commutator} is a nonzero element of this kernel.
+
+For finitely many primes, the same coefficient construction applies on
+the basis indexed by their valuation vectors. Operators at different
+primes commute; their word coefficients are products of
+\eqref{v4-arith:ado:word-coefficient}. Tail and boundary tests in each
+coordinate give an explicit presentation there as well. Every word in
+the full family involves only finitely many primes.
+
+The multiplicative extension to \(P_R\) preserves composition and is
+faithful on the monoid of the generator maps: equality is tested on
+\(M_R\). It does not preserve addition of operators. For example, if
+\(L\) is a generator map, then
+\(\operatorname{Sym}(2L)(x^2)=4(Lx)^2\), whereas
+\(2\operatorname{Sym}(L)(x^2)=2(Lx)^2\).
+Thus a linear relation from this presentation is not automatically a
+linear relation between operators on the entire polynomial ring.
+
+\section{Integral Adams operations and the Hall lattice}
+\label{v4-arith:ado:integral-adams}
+\label{v4-arith:gb:wilkerson-fails}
+
+\begin{proposition}[Adams action on the monomial carrier]
+\label{v4-arith:thm:corrected-lambda-form}
+The maps \(\psi_n\) form a monoid action by ring endomorphisms on every
+\(P_R\). Over \(\mathbb Z\), however, this action is not a system of
+Frobenius lifts:
+\[
+ \psi_p(x_1)-x_1^p=x_p-x_1^p\notin pP_{\mathbb Z}.
+\]
+\label{v4-arith:comp:wilkerson-test}
+\label{v4-arith:obs:lattice-form-failure}
+The two distinct monomials remain distinct modulo \(p\).
+This excludes this particular Adams action from defining a special
+\(\lambda\)-ring on the monomial lattice. It does not exclude other
+\(\lambda\)-structures on that ring. For example,
+\(\phi_n(x_{s,k})=x_{s,k}^n\), with the identity on \(\mathbb Z\), gives
+commuting Frobenius lifts and the special \(\lambda\)-structure in which
+each variable is a line element.
+\end{proposition}
+
+
+\begin{theorem}[torsion-free Adams criterion]
+\label{v4-arith:gb:wilkerson}
+\label{v4-arith:thm:wilkerson}
+The torsion-free criterion is the following:
+a commuting system of unital ring endomorphisms with
+\(\psi_m\psi_n=\psi_{mn}\), \(\psi_1=1\), and
+\(\psi_p(f)\equiv f^p\pmod {pR}\) determines a unique special
+\(\lambda\)-structure on a \(\mathbb Z\)-torsion-free ring.
+This is Wilkerson's Proposition~1.2, as identified in Borger,
+\emph{The basic geometry of Witt vectors, I}, \S1.17.
+Borger's \S\S1.5--1.6 distinguish commuting operations from Frobenius
+lifts. No torsion-free converse is asserted for arbitrary torsion rings.
+\end{theorem}
+\begin{observation}[rational coefficients]
+\label{v4-arith:obs:vacuous-over-Q}
+Over a \(\mathbb Q\)-algebra the congruences are vacuous, but the
+commuting action is still substantive data. Its operations are determined by
+\[
+ \lambda_t(f)=\exp\left(\sum_{n\ge1}
+             \frac{(-1)^{n-1}\psi_n(f)t^n}{n}\right).
+\]
+
+\end{observation}
+
+\subsection{The two integral lattices}
+\label{v4-arith:gb:macdonald-vs-fock-lattice}
+Inside \(P_{\mathbb Q}\) for one species, define
+\[
+ H(t)=\sum_{r\ge0}h_rt^r
+     =\exp\left(\sum_{k\ge1}\frac{x_kt^k}{k}\right),\qquad
+ L_{\mathbb Z}=\mathbb Z[h_1,h_2,\ldots].
+\]
+\begin{observation}[integral and rational lattices]
+\label{v4-arith:obs:fock-macdonald-Q}
+\label{v4-arith:obs:lattice-mismatch-Z}
+The symmetric-function identification \(x_k=p_k\) gives
+\(P_{\mathbb Z}\subsetneq L_{\mathbb Z}\) and
+\(P_{\mathbb Q}=L_{\mathbb Z}\otimes\mathbb Q\).
+For instance \(h_2=(x_1^2+x_2)/2\) belongs to the second lattice but
+not the first. These are the Newton and Hall lattice conventions of
+Macdonald, I.2, equations (2.10)--(2.14), and I.4, equations (4.5)--(4.9).
+For several species take the tensor product of these integral lattices.
+\end{observation}
+
+\begin{theorem}[Adams operations on the Hall lattice]
+\label{v4-arith:thm:macdonald-lattice}
+The standard Adams action on symmetric functions substitutes
+\((z_1,z_2,\ldots)\mapsto(z_1^n,z_2^n,\ldots)\); hence it preserves
+\(L_{\mathbb Z}\) and acts on power sums by \(x_k\mapsto x_{nk}\).
+For a prime \(p\), reducing symmetric polynomials in finitely many
+variables modulo \(p\) proves the Frobenius congruence; passage through
+stable symmetric degrees proves it on \(L_{\mathbb Z}\).
+\end{theorem}
+
+
+\begin{proposition}[integrality of the divisor substitutions]
+\label{v4-arith:ado:hall-integrality}
+Every \(T_n\) also preserves \(L_{\mathbb Z}\). Its complete-symmetric
+series satisfies
+\begin{equation}
+\label{v4-arith:ado:series}
+ T_n H(t)=\prod_{d\mid n}\psi_n H(t^d).
+\end{equation}
+Nevertheless \(T_p\) is not a Frobenius lift on this lattice:
+\[
+ T_ph_p=\psi_ph_p+\psi_ph_1
+       \equiv h_p^p+h_1^p\not\equiv h_p^p\pmod{pL_{\mathbb Z}}.
+\]
+\end{proposition}
+
+\begin{proof}
+In the logarithm of \(T_nH(t)\), set \(k=dj\) in the summand indexed
+by \(d\mid n\). This gives
+\[
+ \sum_{k\ge1}\frac{T_n(x_k)t^k}{k}
+ =\sum_{d\mid n}\sum_{j\ge1}\frac{x_{nj}t^{dj}}{j}.
+\]
+Exponentiating proves \eqref{v4-arith:ado:series} in
+\(P_{\mathbb Q}[[t]]\). Each factor has coefficients in
+\(L_{\mathbb Z}\), so comparison of coefficients proves integrality.
+For \(n=p\), the coefficient of \(t^p\) in the two factors is exactly
+the displayed sum. The Frobenius congruence for \(\psi_p\) gives its
+reduction, and \(h_1^p\) is nonzero in the polynomial ring
+\(L_{\mathbb Z}/pL_{\mathbb Z}\).
+\end{proof}
+
+Thus passing to the Hall lattice repairs the integral Frobenius condition
+for \(\psi_n\), but does not make the family \(T_n\) an Adams action.
+Both lattices and their reductions remain available for \(T_n\), with
+the distinct fibres specified rather than identified.
+
+\section{Products, coproducts, and gradings}
+\label{v4-arith:ado:structures}
+
+Equip \(P_R\) with its primitive Hopf structure:
+\(\Delta x_{s,k}=x_{s,k}\otimes1+1\otimes x_{s,k}\),
+\(\epsilon(x_{s,k})=0\), and antipode \(x_{s,k}\mapsto-x_{s,k}\).
+Both families are Hopf endomorphisms: their generator images are primitive,
+and equality of algebra maps can be checked on those generators. They
+preserve the unit, augmentation, and particle degree. On \(L_{\mathbb Z}\)
+the same coproduct has
+\(\Delta h_r=\sum_{i+j=r}h_i\otimes h_j\); its preservation follows
+from the rational identity and the torsion-free integral inclusion.
+This is the ordinary symmetric-function coproduct, not a constructed
+arithmetic Hall correspondence.
+
+Over a characteristic-zero field both maps are injective and, for
+\(n>1\), not surjective. Indeed, on a polynomial of highest nonzero
+weight \(w\), the highest-weight part of \(T_n\) is \(\psi_n\) applied
+to that part and has weight \(nw\). The index substitution is injective,
+so that part cannot cancel. This proves injectivity and shows that \(x_1\)
+has no preimage for \(n>1\). The same argument in fact works over any
+nonzero coefficient ring on the free polynomial carrier.
+
+The Adams map carries weight \(w\) to weight \(nw\). The divisor map
+carries a weight-\(w\) polynomial into weights between \(w\) and \(nw\).
+It is generally inhomogeneous; already \(T_px_p=x_{p^2}+px_p\).
+For \(n>1\), neither map preserves a nontrivial finite cutoff of the mode generators.
+Both preserve the ideals of weights greater than \(W\), so they induce
+maps on the finite-weight quotient. For finite \(S\), these quotients
+have finite rank over \(R\). They also extend continuously to the weight
+completion \(\prod_{w\ge0}P_{R,w}\), since an output of weight at most
+\(W\) depends only on inputs of weight at most \(W\). Their integral
+matrices give continuous extensions to
+\(\varprojlim_j P_{\mathbb Z}/p^jP_{\mathbb Z}\) as well. This last
+completion imposes finite support modulo each \(p^j\), and is not the
+unrestricted product over weights.
+
+Other symmetric-function structures have different answers. Over
+\(\mathbb Q\), the internal coproduct \(\delta x_k=x_k\otimes x_k\)
+is preserved by \(\psi_n\). For \(T_n\), \(n>1\), take \(k=n\):
+its image contains the distinct terms \(x_{n^2}\) and \(n x_n\), and
+\((T_n\otimes T_n)\delta x_n\) has cross terms absent from
+\(\delta T_nx_n\). Neither family preserves the internal product
+normalized by \(x_k*x_l=\mathbf1_{k=l}k x_k\), since its value on the
+images of \(x_1,x_1\) is \(n x_n\), not \(x_n\), for \(n>1\).
+These assertions are over characteristic zero; no nonvanishing statement
+is transferred to a torsion fibre without checking its coefficient.
+
+\section{Oscillators and vertex operations}
+\label{v4-arith:ado:vertex}
+\label{v4-arith:gb:is-there-lambda-VA}
+
+On the polynomial representation set
+\(a_{-k}f=x_kf\), \(a_kf=k\partial_{x_k}f\) for \(k\ge1\), and
+\(a_0=0\). Then \([a_k,a_{-l}]=k\delta_{kl}\), with central element
+acting as one. Species are independent. These integral identities,
+and the Hall form
+\(\langle x_\lambda,x_\mu\rangle=\delta_{\lambda\mu}z_\lambda\),
+where \(z_\lambda=\prod_k k^{m_k}m_k!\), fix the normalization.
+
+The substitutions intertwine creation with creation by their generator
+images. They do not intertwine the fixed annihilation operators.
+For the Adams maps the exact formulas are
+\[
+ \psi_n a_{-k}=a_{-nk}\psi_n,\qquad
+ a_{nk}\psi_n=n\psi_n a_k,\qquad
+ a_j\psi_n=0\quad(n\nmid j).
+\]
+They follow by differentiation. If both positive and negative modes are
+sent to their index multiples, their commutator is multiplied by \(n\);
+this is not a central-charge-one Heisenberg map. Over \(\mathbb Q\),
+sending \(a_k\) to \(a_{nk}/n\), \(a_{-k}\) to \(a_{-nk}\), and the
+central element to itself does give a Heisenberg embedding, intertwined
+by \(\psi_n\). It does not preserve the involution
+\(a_k^*=a_{-k}\).
+
+There is also a precise non-adjoint oscillator lift for a fixed \(T_n\).
+It illustrates what extra choices of annihilation entail. Define integers
+\(c_{k,i}\), in increasing order of \(i\), by
+\[
+ c_{k,i}=0\ (n\nmid i),\qquad
+ c_{k,nj}=k\delta_{kj}
+          -\sum_{\substack{d\mid n,\ d\mid j\\d>1}}d\,c_{k,nj/d}.
+\]
+Every term on the right has smaller index. The derivation
+\(D_k^{(n)}=\sum_{i\ge1}c_{k,i}\partial_{x_i}\) is defined on every
+polynomial, since only its finitely many variables contribute. By
+construction
+\[
+ D_k^{(n)}(T_nx_j)=k\delta_{kj},\qquad
+ [D_k^{(n)},\text{multiplication by }T_nx_j]=k\delta_{kj}.
+\]
+These derivations commute, as do the creation maps. The chain rule gives
+\(D_k^{(n)}T_n=T_na_k\). Thus they give a central-charge-one oscillator
+representation in polynomial endomorphisms, generally using infinite
+locally finite sums of annihilation modes over \(\mathbb Q\):
+\(D_k^{(n)}=\sum_i(c_{k,i}/i)a_i\). Over \(\mathbb Z\), integrality
+refers to the polynomial derivation, not to its coefficients in the
+\(a_i\). This is not an identification with the fixed Heisenberg
+generators or their adjoints. For instance,
+both \(T_n\) and \(\psi_n\) send \(x_1\) to \(x_n\), whose norm squared
+is \(n\); its creation operator and its Hall adjoint have commutator
+\(n\), rather than one. Therefore the adjoint-preserving assignment fails
+for \(n>1\).
+
+\begin{proposition}[translation and vertex operations]
+\label{v4-arith:prop:T-n-not-VA-endo}
+Over \(\mathbb Q\) or \(\mathbb C\), the usual Heisenberg vertex algebra
+has translation \(D x_k=kx_{k+1}\). A vertex-algebra homomorphism preserves
+translation, because \(Dv=v_{(-2)}1\), irrespective of whether it
+preserves a chosen conformal vector. Here
+\[
+ D\psi_nx_1=nx_{n+1},\qquad \psi_nDx_1=x_{2n},
+\]
+and
+\[
+ DT_nx_1=nx_{n+1},\qquad
+ T_nDx_1=x_{2n}+2\mathbf1_{2\mid n}x_n.
+\]
+For \(n>1\) these disagree. Equivalently, writing
+\(a(z)=Y(x_1,z)\), one has
+\[
+ Y(x_n,z)=\frac{\partial_z^{n-1}a(z)}{(n-1)!},\qquad
+ Y(x_n,z)Y(x_n,w)\sim
+ \frac{(-1)^{n-1}(2n-1)!}{((n-1)!)^2(z-w)^{2n}}.
+\]
+This is the derivative of \(a(z)a(w)\sim(z-w)^{-2}\), and it cannot
+be the image of the latter OPE for \(n>1\). Thus neither family consists
+of vertex-algebra endomorphisms. Ordinary polynomial multiplication and
+primitive coproduct remain preserved; they do not encode all vertex
+products. When \(n=1\), both maps are the identity and all these
+obstructions disappear.
+\end{proposition}
+
+\begin{proposition}[underlying monoid action on a finite vertex carrier]
+\label{v4-arith:thm:HVA-category}
+For a finite set of species the underlying vector space of the
+Heisenberg vertex algebra, with its vacuum and maps \(\psi_n\), is a
+vacuum-preserving \(\mathbb N^\times\)-module. The action is not by
+vertex endomorphisms for \(n>1\). The divisor family \(T_n\) is not
+such a monoid action in characteristic zero.
+\end{proposition}
+\begin{proof}
+The index substitutions preserve \(1\) and obey the monoid law on
+polynomial generators. The preceding translation calculation proves the
+vertex assertion; \(T_p^2x_1\ne T_{p^2}x_1\) proves the last statement.
+\end{proof}
+
+
+\section{Hilbert completion and arithmetic energy}
+\label{v4-arith:ado:hilbert}
+\label{v4-arith:gb:log-p-destroys-integrality}
+
+Over \(\mathbb C\), use the positive Hermitian Hall form with
+\(\|x_{s,k}\|^2=k\), and complete to the symmetric Hilbert Fock space
+\(\mathcal F=\bigoplus_{j\ge0}\mathcal F^{(j)}\), with the above
+monomial factorial normalization. On the one-particle space,
+\(\psi_n/\sqrt n\) is an isometry. Each summand
+\(d\,\mathbf1_{d\mid k}x_{nk/d}\) of \(t_nx_k\) has operator norm
+\(\sqrt{nd}\): its nonzero basis images are orthogonal and have that
+constant norm ratio. Hence
+\[
+ \|t_n\|\le\sum_{d\mid n}\sqrt{nd}.
+\]
+This proves boundedness on one particle, and therefore on each fixed
+particle sector after taking its symmetric tensor power.
+
+On the full Fock space both substitutions are unbounded for \(n>1\):
+\[
+ \frac{\|T_nx_1^j\|}{\|x_1^j\|}
+ =\frac{\|\psi_nx_1^j\|}{\|x_1^j\|}=n^{j/2}.
+\]
+Their polynomial-domain operators are closable. More precisely, for
+\(A=t_n\) or \(A=\psi_n|_{M_{\mathbb C}}\), the closure is the direct
+sum of the bounded sector maps \(\operatorname{Sym}^j(A)\), with domain
+\[
+ \left\{(v_j)\in\mathcal F:
+        \sum_{j\ge0}\|\operatorname{Sym}^j(A)v_j\|^2<\infty\right\}.
+\]
+Indeed this direct sum is closed. Finite particle truncation, followed by
+finite-mode polynomial approximation in each bounded sector, approximates
+both a vector and its image, so the polynomial domain is a core.
+For \(\psi_n\) the domain condition is exactly
+\(\sum_j n^j\|v_j\|^2<\infty\).
+Thus neither map is a bounded Hilbert-space isometry or a bounded
+Bost--Connes isometry on this normalization.
+
+The separately normalized substitution
+\(\widetilde\psi_n(x_{s,k})=n^{-1/2}x_{s,nk}\) is a Hilbert isometry
+on every particle sector and on their direct sum. It is a complex
+polynomial Hopf map and a monoid action, but it changes the integral
+structure and still fails the translation identity for \(n>1\).
+Its existence alone supplies no Bost--Connes representation or trace
+comparison.
+
+\begin{convention}[integer weight and arithmetic energy]
+\label{v4-arith:gb:two-gradings}
+\label{v4-arith:conv:two-grading}
+For a finite species set consisting of arithmetic primes, use:
+\begin{enumerate}
+\item[(i)] Integer oscillator weight \(k\) on \(x_{p,k}\), extended
+additively to monomials.
+\item[(ii)] Arithmetic energy \(k\log p\) on \(x_{p,k}\), again extended
+additively. This real grading is distinct from the integer weight.
+\end{enumerate}
+\end{convention}
+The corresponding energy operator on monomials is
+\[
+ H\left(\prod_{p,k}x_{p,k}^{m_{p,k}}\right)
+ =\left(\sum_{p,k}k m_{p,k}\log p\right)
+   \prod_{p,k}x_{p,k}^{m_{p,k}}.
+\]
+\begin{observation}[energy and integral states]
+\label{v4-arith:obs:logp-destroys-integrality}
+The associated eigenspaces are spanned by integral monomials. The operator
+\(H\) itself need not preserve their integral lattice, but the real
+energy grading does not destroy that lattice. It does not rescale the
+vertex-algebra conformal vector. On polynomials,
+\(H\psi_n=n\psi_nH\); \(T_n\) generally mixes energies.
+\end{observation}
+ For one
+oscillator species per arithmetic prime and a finite set \(S\), direct
+summation of the occupation basis gives, for real \(\beta>0\),
+\[
+ \operatorname{Tr}_{\mathcal F_S}(e^{-\beta H})
+ =\prod_{p\in S}\prod_{k\ge1}(1-p^{-k\beta})^{-1}.
+\]
+The logarithm converges by geometric comparison for finite \(S\).
+For all arithmetic primes it converges for \(\beta>1\): the logarithm
+is bounded by a constant times \(\sum_p p^{-\beta}\), which converges.
+The resulting product is \(\prod_{k\ge1}\zeta(k\beta)\), not
+\(\zeta(\beta)\). At \(0<\beta\le1\), already the \(k=1\) factors
+diverge. Multiple oscillator species change the exponents of the
+factors. An infinite set of equally weighted species instead has
+infinite multiplicity in weight one and no finite conformal character.
+
+For the energy operator just defined, its self-adjoint domain is the
+set of occupation expansions \(\sum_\nu c_\nu e_\nu\) with
+\(\sum_\nu E(\nu)^2|c_\nu|^2<\infty\), where \(e_\nu\) are normalized
+occupation vectors. The finite-support span is a core by truncation.
+The trace statements concern this positive diagonal operator.
+For all primes the Gibbs operator is not trace class at
+\(\beta\le0\) either, since its diagonal entries do not tend to zero.
+Keeping only modes \(k=1\) identifies occupation states with positive
+integers \(N=\prod_pp^{m_p}\), with energy \(\log N\), and gives
+\(\zeta(\beta)\) for \(\beta>1\). That subspace is not preserved by
+\(T_n\) or \(\psi_n\), which send \(x_{p,1}\) to \(x_{p,n}\).
+
+On \(\ell^2(\mathbb N_{>0})\), the different operators
+\(\mu_n\delta_N=\delta_{nN}\) are commuting isometries and satisfy
+\([H_{\mathrm{BC}},\mu_n]=\log(n)\mu_n\) on finite-support vectors,
+where \(H_{\mathrm{BC}}\delta_N=\log N\,\delta_N\).
+This follows immediately by applying both sides to \(\delta_N\).
+They move \(\delta_1\) to \(\delta_n\), whereas both polynomial
+substitutions fix the vacuum. Thus even the normalized Adams action
+does not yield a vacuum- and energy-preserving identification with these
+multiplicative shifts: its energy relation is dilation, and its vacuum
+is fixed. Other representations or operations require separate comparison.
+
+
+\section{The Common Algebraic Image and the Hilbert Kernel}
+\label{v4-arith:ado:triangular-hilbert}
+
+The divisor maps and the index shifts have different composition laws,
+but have the same algebraic images. The difference can be expressed by
+a triangular change of generators. That change ceases to be invertible
+on the Hilbert completion, so polynomial injectivity must be kept
+separate from injectivity of the completed operator.
+
+\begin{proposition}[triangular factorization]
+\label{v4-arith:ado:triangular-factorization}
+On the polynomial carrier over a commutative ring \(R\), define
+\[
+ C_n(x_{s,k})=\sum_{d\mid n,\ d\mid k}d\,x_{s,k/d},
+\]
+and extend as a unital \(R\)-algebra map. Then \(C_n\) is an integral
+triangular Hopf automorphism and
+\begin{equation}
+\label{v4-arith:ado:T-psi-C}
+ T_n=\psi_n C_n,\qquad T_n(P_R)=\psi_n(P_R).
+\end{equation}
+For the Hall lattice \(L_{\mathbb Z}\) of one species,
+\begin{equation}
+\label{v4-arith:ado:C-H}
+ C_nH(t)=\prod_{d\mid n}H(t^d).
+\end{equation}
+Thus \(C_n\) is also an automorphism of that integral lattice, and
+\(T_n(L_{\mathbb Z})=\psi_n(L_{\mathbb Z})\).
+For finitely many species the statement holds on their tensor product.
+\end{proposition}
+\begin{proof}
+The term \(d=1\) is \(x_{s,k}\); every other term has smaller mode
+index. Inductively solve for each \(x_{s,k}\) in terms of the
+\(C_n(x_{s,j})\), \(j\le k\). This constructs an inverse with integer
+coefficients, finite on every generator. Hence it defines an inverse
+on the countable polynomial ring and after every coefficient change.
+The generator images are primitive, so \(C_n\) is a Hopf map and its
+inverse is a Hopf map. Applying \(\psi_n\) to those images gives the
+literal divisor formula, proving \eqref{v4-arith:ado:T-psi-C}.
+
+To prove \eqref{v4-arith:ado:C-H}, take the logarithm in
+\(P_{\mathbb Q}[[t]]\), set \(k=dj\) in each divisor summand, and obtain
+\[
+ \sum_{k\ge1}\frac{C_n(x_k)t^k}{k}
+ =\sum_{d\mid n}\sum_{j\ge1}\frac{x_jt^{dj}}j.
+\]
+Exponentiation proves the identity. Its coefficient of \(t^r\) is
+\(h_r\) plus an integral polynomial in \(h_1,\ldots,h_{r-1}\):
+only the factor with \(d=1\) can contribute \(h_r\), and it does so
+with coefficient one. Induction therefore constructs an integral inverse
+on the Hall generators as well. The asserted image equalities follow
+from surjectivity of \(C_n\) on the respective carriers.
+\end{proof}
+
+This is a change of generators, not an identification of the two
+operator families. For example, \(T_p^2\ne T_{p^2}\), whereas
+\(\psi_p^2=\psi_{p^2}\). Equal images do not equate their actions.
+
+\begin{theorem}[one-particle Hilbert kernel and range]
+\label{v4-arith:ado:Hilbert-kernel-range}
+Over \(\mathbb C\), complete the one-particle span with
+\(\|x_k\|^2=k\). The linear restriction \(c_n=C_n|_M\) extends to
+a bounded surjection on this Hilbert space. The bounded divisor
+operator \(t_n\) has closed range
+\[
+ \operatorname{Ran}(t_n)=
+ \overline{\operatorname{span}}\{x_{nk}:k\ge1\}
+ =\operatorname{Ran}(\psi_n|_M),
+ \qquad \ker t_n=\ker c_n.
+\]
+For \(n>1\) that kernel is nonzero and, on the full one-species
+one-particle space, infinite-dimensional.
+
+More precisely, on a prime chain \(e_r=x_{up^r}\), \((u,p)=1\),
+write \(Be_0=0\), \(Be_r=e_{r-1}\) for \(r\ge1\). For \(a\ge1\),
+\[
+ c_{p^a}=\sum_{j=0}^a p^jB^j,
+ \qquad
+ \ker c_{p^a}=\operatorname{span}_{\mathbb C}
+ \left\{v_\omega=\sum_{r\ge0}(\omega/p)^r e_r:
+ \omega^{a+1}=1,\ \omega\ne1\right\}.
+\]
+Its dimension on that chain is \(a\). For \(a=0\) the operator is the
+identity with zero kernel. For \(n=1\), all the global operators are
+identities.
+\end{theorem}
+\begin{proof}
+Define \(B_d x_k=x_{k/d}\) when \(d\mid k\), and zero otherwise.
+Its nonzero images are orthogonal with norm ratio \(d^{-1/2}\).
+Thus \(c_n=\sum_{d\mid n}dB_d\) is bounded, with norm at most
+\(\sum_{d\mid n}\sqrt d\). The identities \(B_dB_e=B_{de}\) imply
+\(c_n=\prod_{p\mid n}c_{p^{v_p(n)}}\).
+
+On the stated prime chain, \(\|e_r\|^2=up^r\), so \(B\) has norm
+\(p^{-1/2}\) and the forward shift \(Ue_r=e_{r+1}\) has norm
+\(p^{1/2}\), with \(BU=1\). Each displayed \(v_\omega\) is nonzero
+and square-summable, since
+\(\|v_\omega\|^2=u\sum_{r\ge0}p^{-r}=u/(1-p^{-1})\).
+It satisfies \(Bv_\omega=(\omega/p)v_\omega\), whence
+\(c_{p^a}v_\omega=(\sum_{j=0}^a\omega^j)v_\omega=0\).
+Conversely a vector \(\sum_rb_re_r\) in the kernel satisfies
+\(\sum_{j=0}^ap^jb_{r+j}=0\) for all \(r\ge0\).
+The first \(a\) coefficients determine the rest. The \(a\) distinct
+roots \(\omega/p\) give independent solutions by the Vandermonde
+determinant, so these square-summable solutions exhaust the kernel.
+
+Surjectivity also has an explicit bounded proof. For
+\(\lambda=\omega/p\),
+\[
+ (B-\lambda)U=1-\lambda U,\qquad
+ R_\lambda=U(1-\lambda U)^{-1}
+\]
+is a right inverse of \(B-\lambda\), since
+\(\|\lambda U\|=p^{-1/2}<1\). The inverse is its norm-convergent
+Neumann series. Factoring
+\(c_{p^a}=p^a\prod_{\omega\ne1,\ \omega^{a+1}=1}(B-\omega/p)\)
+and multiplying these right inverses in reverse order, then multiplying
+by \(p^{-a}\), gives a bounded right inverse for \(c_{p^a}\). Its norm bound is independent of the
+prime-free index \(u\), so the construction extends to the orthogonal
+sum of all prime chains. Products over the finitely many primes
+therefore make \(c_n\) surjective. Since \(\psi_n|_M\) is
+\(\sqrt n\) times an isometry, the factorization \(t_n=\psi_nc_n\)
+proves the range and kernel assertions.
+For \(n>1\), a prime-power factor has the kernels just exhibited;
+all other factors commute with it. Choosing infinitely many mutually
+disjoint prime chains gives infinitely many independent vectors in
+\(\ker c_n\).
+\end{proof}
+
+The inverse of \(C_n\) on polynomials is not a bounded inverse on this
+Hilbert space. For example,
+\[
+ C_p^{-1}e_r=\sum_{j=0}^r(-p)^j e_{r-j},\qquad
+ \frac{\|C_p^{-1}e_r\|^2}{\|e_r\|^2}=\sum_{j=0}^r p^j.
+\]
+These identities follow by cancellation of successive terms in
+\((1+pB)\sum_{j=0}^r(-pB)^j e_r=e_r\).
+More generally, the algebraic inverse on the finite one-particle span
+is not even closable when \(n>1\). Indeed, choose a nonzero
+\(v\in\ker c_n\) and finite truncations \(v_N\to v\).
+Boundedness gives \(y_N=c_nv_N\to0\), whereas the polynomial inverse
+satisfies \(C_n^{-1}y_N=v_N\to v\ne0\). Thus the closure of its graph
+contains \((0,v)\), which cannot belong to the graph of a linear
+operator. The same argument applies to the algebraic inverse of
+\(t_n\) on its polynomial image.
+
+For \(n>1\), the closed full-Fock divisor operator \(\Gamma(t_n)\)
+described in Section~\ref{v4-arith:ado:hilbert} also has nonzero kernel:
+any of these one-particle vectors lies in its domain and is annihilated.
+The corresponding closed operator \(\Gamma(\psi_n|_M)\) is injective,
+since each particle sector is a nonzero scalar multiple of an isometry.
+Neither assertion contradicts injectivity of the polynomial maps.
+Nor does it claim that multiplication extends to all Hilbert vectors.
+
+\subsection{A Weighted Hilbert Threshold}
+\label{v4-arith:ado:weighted-threshold}
+
+The kernel vectors above contain arbitrarily high modes. Requiring
+additional decay of their coefficients can exclude them. On a single
+prime chain the exact boundary is accessible because both operators
+are polynomials in a backward shift.
+
+Fix a prime \(p\), an integer \(u\ge1\) coprime to \(p\), and an
+integer \(a\ge1\). Retain \(e_r=x_{up^r}\) and
+\(\|e_r\|_0^2=up^r\), and write \(D\) for their finite linear span.
+Let \(E\) be the positive diagonal operator
+\(Ee_r=up^r e_r\). This \(E\) is the mode-index operator on the chain;
+it is distinct from the logarithmic arithmetic energy used in the
+partition functions. For a real number \(s\ge0\), define
+\begin{equation}
+\label{v4-arith:ado:weighted-space}
+ \mathcal H_s=
+ \left\{\sum_{r\ge0}d_re_r:
+   \sum_{r\ge0}(up^r)^{1+2s}|d_r|^2<\infty\right\},
+ \qquad \|v\|_s=\|E^sv\|_0.
+\end{equation}
+Thus \(\mathcal H_s=\operatorname{Dom}(E^s)\) as a subspace of
+\(\mathcal H_0\), endowed with the displayed norm. Since \(E\ge1\),
+this norm is equivalent to its graph norm. Define the closed tail
+\(\mathcal H_{s,\ge a}=\overline{\operatorname{span}}\{e_r:r\ge a\}\),
+of codimension \(a\) in \(\mathcal H_s\).
+
+\begin{theorem}[weighted kernel, range, and inverse]
+\label{v4-arith:ado:weighted-inverse}
+The polynomial operators \(c_{p^a}\) and \(t_{p^a}\) extend boundedly
+to every \(\mathcal H_s\). Their behavior on these completions is as
+follows.
+\begin{enumerate}
+\item If \(0\le s<\tfrac12\), then \(c_{p^a}\) is onto
+\(\mathcal H_s\), and \(t_{p^a}\) is onto
+\(\mathcal H_{s,\ge a}\). Both have the same \(a\)-dimensional
+kernel, spanned by
+\[
+ g_\zeta=\sum_{r\ge0}(\zeta/p)^r e_r,
+ \qquad \zeta^{a+1}=1,\quad \zeta\ne1.
+\]
+Their polynomial inverses, defined on \(D\) and on
+\(D\cap\mathcal H_{s,\ge a}\), respectively, are not closable.
+\item If \(s=\tfrac12\), both maps are injective.
+The range of \(c_{p^a}\) is dense, proper, and nonclosed in
+\(\mathcal H_s\); the range of \(t_{p^a}\) is dense, proper, and
+nonclosed in \(\mathcal H_{s,\ge a}\).
+Their inverses on their actual ranges are closed and unbounded.
+The polynomial inverses are closable, and their graph closures are
+precisely these inverses.
+\item If \(s>\tfrac12\), then \(c_{p^a}\) is boundedly invertible
+on \(\mathcal H_s\), and \(t_{p^a}\) is a bounded isomorphism from
+\(\mathcal H_s\) onto \(\mathcal H_{s,\ge a}\).
+These bounded inverses extend the polynomial inverses.
+\end{enumerate}
+For \(a=0\), both maps are the identity for every \(s\ge0\).
+\end{theorem}
+\begin{proof}
+Put \(b=p^{s+1/2}\), \(q=p^{1/2-s}\), and
+\(Q_a(z)=1+z+\cdots+z^a\). The vectors
+\[
+ f_r=\frac{e_r}{u^{s+1/2}b^r},\qquad r\ge0,
+\]
+form an orthonormal basis of \(\mathcal H_s\). Let \(Vf_r=f_{r+1}\)
+and \(L=V^*\). The raw forward shift on the \(e_r\) is \(bV\),
+and the raw backward shift satisfies \(pB=qL\). Consequently
+\begin{equation}
+\label{v4-arith:ado:weighted-shift-model}
+ c_{p^a}=Q_a(qL),\qquad
+ t_{p^a}=b^a V^aQ_a(qL).
+\end{equation}
+This proves boundedness, with norm bounds
+\(\sum_{j=0}^aq^j\) and \(b^a\sum_{j=0}^aq^j\), respectively.
+The isometry \(V^a\) identifies \(\mathcal H_s\) with its closed tail,
+so it suffices to analyze \(Q_a(qL)\).
+
+Suppose first that \(q>1\). For
+\(v=\sum_{r\ge0}\gamma_rf_r\), the kernel equation is
+\(\sum_{j=0}^aq^j\gamma_{r+j}=0\) for every \(r\ge0\).
+Its characteristic roots are the distinct numbers \(\zeta/q\),
+where \(\zeta^{a+1}=1\) and \(\zeta\ne1\).
+The first \(a\) coefficients determine all others, and the
+Vandermonde determinant shows that the corresponding geometric
+sequences form a basis of the solution space. All belong to
+\(\ell^2\), since \(q>1\). In raw coordinates these are the displayed
+\(g_\zeta\), with
+\[
+ \|g_\zeta\|_s^2=
+ \frac{u^{1+2s}}{1-p^{2s-1}}.
+\]
+For each root, \(L-\zeta/q\) has the bounded right inverse
+\(V(I-(\zeta/q)V)^{-1}\), where the inverse is the norm-convergent
+Neumann series. Since
+\(Q_a(qL)=q^a\prod_\zeta(L-\zeta/q)\), a bounded right inverse
+\(G\) of \(c_{p^a}\) is \(q^{-a}\) times the product of these right
+inverses in reverse order. Then
+\[
+ t_{p^a}\bigl(b^{-a}G L^a\bigr)=V^aL^a,
+\]
+which is the orthogonal projection onto the tail. This proves both
+surjectivity statements. Finite truncations of any nonzero
+\(g_\zeta\) give the nonclosability argument above, now in
+\(\mathcal H_s\), for both polynomial inverses.
+
+At \(q=1\), the same recurrence has solutions that are linear
+combinations of the periodic sequences \(\zeta^r\).
+A nonzero periodic sequence is not square-summable, so the kernel
+is zero. The constant coefficient of \(Q_a\) is one. Its formal
+reciprocal therefore acts on \(D\), because \(L\) is locally
+nilpotent there. Thus \(c_{p^a}(D)=D\), and its range is dense.
+Likewise \(t_{p^a}(D)=D\cap\mathcal H_{s,\ge a}\).
+To see that the range is not closed, fix a root \(\zeta\ne1\) and
+let
+\[
+ v_N=N^{-1/2}\sum_{r=0}^{N-1}\zeta^r f_r,\qquad N>a.
+\]
+Its norm is one. The first \(N-a\) coefficients of
+\(Q_a(L)v_N\) vanish, and the remaining at most \(a\) coefficients
+have absolute value at most \((a+1)/\sqrt N\). Hence
+\[
+ \|Q_a(L)v_N\|_s\le\frac{\sqrt a\,(a+1)}{\sqrt N}\longrightarrow0.
+\]
+An injective bounded operator with closed range is bounded below:
+its inverse on that range is bounded by the bounded inverse theorem.
+The displayed sequence rules this out, and therefore the dense range
+is both proper and nonclosed. Multiplication by \(b^aV^a\) gives
+the same assertion within the tail for \(t_{p^a}\).
+
+An injective bounded operator has a closed inverse on its range,
+since interchanging the two coordinates of its closed graph preserves
+closedness. These inverses are unbounded by the preceding sequence.
+Their polynomial restrictions have those full inverse graphs as their
+closures: for any \(x\in\mathcal H_s\), choose \(x_N\in D\) with
+\(x_N\to x\). Boundedness gives \(c_{p^a}x_N\to c_{p^a}x\), so
+\((c_{p^a}x_N,x_N)\to(c_{p^a}x,x)\); the same argument applies to
+\(t_{p^a}\). This also proves closability of the restrictions.
+
+Finally suppose \(q<1\). The polynomial identity
+\((1-z)Q_a(z)=1-z^{a+1}\) gives
+\[
+ c_{p^a}^{-1}=(I-qL)\bigl(I-(qL)^{a+1}\bigr)^{-1},
+ \qquad
+ \|c_{p^a}^{-1}\|\le\frac{1+q}{1-q^{a+1}}.
+\]
+The inverse is defined by a norm-convergent Neumann series. On the
+tail the inverse of \(t_{p^a}\) is
+\(c_{p^a}^{-1}b^{-a}L^a\). Both inverses agree on finite vectors
+with the locally finite polynomial inverses, as follows either from
+the same formulas or from uniqueness of the inverse.
+\end{proof}
+
+All these bounded maps preserve the common finite domain \(D\),
+which is a core for them in each \(\mathcal H_s\). The polynomial
+maps have not changed. Their completed kernels and the possible
+extensions of their inverses depend on the norm: for \(s\ge\tfrac12\)
+the vectors \(g_\zeta\) no longer belong to the carrier. This change
+of domain neither removes the kernel on \(\mathcal H_0\) nor
+identifies these weighted spaces with an arithmetic realization.
+
+\section{The arithmetic comparison problem}
+\label{v4-arith:ado:arithmetic-boundary}
+\label{v4-arith:gb:ring-vs-module}
+\label{v4-arith:gb:descent-bost-connes}
+
+\begin{remark}[local arithmetic structures]
+\label{v4-arith:cor:psi-ring-hecke}
+There are now two explicit local inputs: the integral divisor
+substitutions with the composition law
+\eqref{v4-arith:ado:global-formula}, and the honest Adams action on
+\(P_{\mathbb Q}\) with its Frobenius-compatible Hall lattice
+\(L_{\mathbb Z}\). Neither is a vertex action. On the polynomial
+underlying vector space, \(\psi_n\) gives an
+\(\mathbb N^{\times}\)-module; this terminology records only the monoid
+action, not a separate notion of a \(\Lambda\)-module or a trace theory.
+\end{remark}
+\begin{definition}[module with multiplicative-monoid action]
+\label{v4-arith:def:lambda-module}
+An \(\mathbb N^\times\)-module is a module with endomorphisms
+\(\psi_n\) satisfying \(\psi_1=1\) and \(\psi_m\psi_n=\psi_{mn}\).
+This specifies no ring product or Frobenius congruence.
+\end{definition}
+
+
+\begin{question}[arithmetic realization]
+\label{v4-arith:thm:bost-connes-descent}
+An arithmetic realization must specify its native carrier, integral
+form, operations, and comparison maps. Transporting \(\psi_n\) to a
+Hochschild trace class requires an actual intertwining map and the
+operations on that class; a polynomial presentation of another object
+does not supply them. If the proposed operations are instead \(T_n\),
+their same-prime noncommutativity must be respected. In characteristic
+zero they cannot be identified by an injective intertwiner with commuting
+Adams operations or a commuting semigroup of Bost--Connes isometries.
+The commutator \eqref{v4-arith:ado:first-commutator} is already an
+obstruction. A quotient or restricted subspace would require a specified
+map and a new calculation of its kernel and preserved operations.
+\end{question}
+
+
+\begin{remark}[integral descent and operator comparison]
+\label{v4-arith:rem:three-level-structure}
+Borger's descent interpretation concerns \(\Lambda\)-structures and their
+forgetful functor, not an automatic tensor product with a field of one
+element. See \emph{Lambda-rings and the field with one element},
+\S\S1.1--1.2. A Bost--Connes comparison additionally requires a
+\(C^*\)-representation, adjoints, time evolution, and trace or state
+intertwiners. Its standard \(\zeta(\beta)\) partition function cannot be
+inferred from the full oscillator partition function above. The arithmetic
+trace comparison and the choice of an integral realization therefore
+remain specific construction problems; the local polynomial calculations
+neither settle nor rule out all their possible solutions.
+\end{remark}

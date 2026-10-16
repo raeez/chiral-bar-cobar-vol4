@@ -1,0 +1,1488 @@
+\chapter{Arithmetic Co--Contra Comparison}
+\label{v4-arith:arith-positselski}
+
+An arithmetic co--contra comparison must specify its coalgebra,
+continuous dual, completion, and derived categories over a common
+coefficient ring. The classical field-coefficient correspondence
+provides a model for this question. The module-theoretic
+\(\mu\)-invariant does not characterize conilpotence, as shown in
+Proposition~\ref{v4-arith:coefficients:prop:mu}.
+
+For the proposed arithmetic Heisenberg application, a categorical
+comparison must also preserve the relevant pairing and central
+classes. Theorem~\ref{v4-arith:thm:P1-resolution} isolates the further
+Mellin evaluation and defect-detection hypotheses that imply
+\(\kappa+\kappa^!=0\Longleftrightarrow\xi(s)=\xi(1-s)\).
+The scalar functional equation and the oscillator energy calculation
+do not construct those arithmetic maps.
+
+\section{Statement and Motivation}
+\label{v4-arith:pos:statement}
+
+\subsection{Review: Classical Positselski}
+\label{v4-arith:pos:classical}
+
+Let \(k\) be a field and \(C\) a dg coalgebra over \(k\).
+A left \(C\)-comodule has a coaction \(M\to C\otimes_k M\).
+A left \(C\)-contramodule has a contraaction
+\(\pi:\operatorname{Hom}_k(C,P)\to P\).
+The latter satisfies the associativity identity induced by
+\(\Delta:C\to C\otimes_k C\) and the unit identity induced by
+\(\epsilon:C\to k\). All maps commute with differentials,
+and tensor--Hom adjunctions use the Koszul signs.
+
+The \emph{coacyclic} dg comodules form the smallest triangulated
+subcategory containing totalizations of exact triples and closed
+under arbitrary direct sums. The \emph{contraacyclic} dg
+contramodules are defined using products instead.
+Their Verdier quotients are the coderived and contraderived
+categories. These quotients need not agree with the ordinary
+derived categories, even though the coefficient ring is a field.
+
+For a right comodule \(N\) and a left contramodule \(P\), define
+\[
+ N\odot_C P=
+ \operatorname{coker}\bigl(
+ N\otimes_k\operatorname{Hom}_k(C,P)
+ \rightrightarrows N\otimes_k P\bigr).
+\]
+The arrows use the contraaction and the right coaction followed
+by evaluation, respectively. On homogeneous elements the latter
+evaluation is \(c\otimes f\mapsto(-1)^{|c||f|}f(c)\).
+This quotient is the \emph{contratensor product}.
+Write \(\operatorname{Hom}_C\) for colinear homogeneous maps,
+with their Hom differential.
+
+\begin{theorem}[Positselski, \emph{Two kinds of derived categories}, \S5.2]
+\label{v4-arith:pos:thm:classical-positselski}
+The derived functors of
+\[
+ \Psi_C(M)=\operatorname{Hom}_C(C,M),\qquad
+ \Phi_C(P)=C\odot_C P
+\]
+give mutually inverse equivalences
+\begin{equation}
+\label{v4-arith:pos:eq:classical}
+ \mathrm D^{\mathrm{co}}(C\text{-comod}_k)
+ \simeq
+ \mathrm D^{\mathrm{ctr}}(C\text{-contra}_k).
+\end{equation}
+The functor \(\Phi_C\) is left adjoint to \(\Psi_C\).
+\end{theorem}
+\begin{proof}
+Positselski's resolution theorem, \S4.4, represents the two
+quotients by dg objects that are injective or projective after
+forgetting the differential. Graded injective comodules are
+summands of cofree objects \(C\otimes_k V\). Graded projective
+contramodules are summands of free objects
+\(\operatorname{Hom}_k(C,V)\).
+The two functors exchange these free and cofree objects, with
+natural inverse maps. They therefore exchange their summands
+and the corresponding dg objects. The resulting equivalence
+of these homotopy categories proves the assertion.
+\end{proof}
+
+This correspondence is covariant in \(M\).
+For \(C=k\), its right adjoint is \(M\mapsto M\), not the
+contravariant vector-space dual. The coalgebra dual \(C^\vee\)
+and the cobar algebra \(\Omega C\) are also different constructions.
+A topological description using \(C^\vee\) must specify its
+continuous duality and its contramodules.
+
+\subsection{The \texorpdfstring{\(\Lambda\)}{Lambda}-Coefficient Target}
+\label{v4-arith:pos:lambda-target}
+
+Fix a prime \(p\), a procyclic group \(\Gamma\cong\mathbb Z_p\),
+and a topological generator \(\gamma\). Set
+\[
+ \Lambda=\mathbb Z_p[[\Gamma]]\cong\mathbb Z_p[[T]],
+ \qquad T=\gamma-1,\qquad \mathfrak m=(p,T).
+\]
+For the cyclotomic application, \(\Gamma\) is the Galois group
+of a chosen cyclotomic \(\mathbb Z_p\)-extension.
+The full cyclotomic Galois group may also have a finite factor.
+The ring \(\Lambda\) is complete, Noetherian, local and regular
+of dimension two, with residue field \(\mathbb F_p\).
+
+A pseudo-isomorphism is a map with finite kernel and cokernel.
+Every finitely generated \(\Lambda\)-module \(M\) admits one
+of the form
+\begin{equation}
+\label{v4-arith:pos:eq:lambda-structure}
+ M\longrightarrow\Lambda^r
+ \oplus\bigoplus_i\Lambda/p^{a_i}\Lambda
+ \oplus\bigoplus_j\Lambda/f_j^{b_j}\Lambda.
+\end{equation}
+Here \(r\ge0\), \(a_i,b_j\ge1\), and each \(f_j\in\mathbb Z_p[T]\)
+is irreducible and distinguished.
+A monic polynomial is distinguished when its other coefficients
+are divisible by \(p\).
+The Iwasawa invariants are
+\(\mu(M)=\sum_i a_i\) and
+\(\lambda(M)=\sum_j b_j\deg f_j\).
+Proposition~\ref{v4-arith:pos:prop:lambda-structure}
+recalls the structure theorem.
+
+\begin{definition}[arithmetic dg \(\Lambda\)-coalgebra]
+\label{v4-arith:pos:def:arith-dg-coalgebra}
+An \emph{arithmetic dg \(\Lambda\)-coalgebra} is a coaugmented
+dg coalgebra \(C=\Lambda\mathbf1\oplus\overline C\) over
+\(\Lambda\), with \(\overline C=\ker\epsilon\), satisfying:
+\begin{enumerate}
+\item \emph{Local finiteness over \(\Lambda\)}: the underlying
+graded \(\Lambda\)-module \(C\) is a filtered union of finitely
+generated \(\Lambda\)-submodules \(C_{\leq n}\) with
+\(C=\varinjlim_{n}C_{\leq n}\) and each \(C_{\leq n}/C_{\leq n-1}\)
+finitely generated.
+\item \emph{Comultiplication}: a graded \(\Lambda\)-linear map
+\(\Delta\colon C\to C\otimes_{\Lambda}C\) with counit
+\(\epsilon\colon C\to\Lambda\), satisfying the standard
+coassociativity / counit axioms, and compatible with the
+differential \(d\).
+\item \emph{Conilpotence}: for every \(c\in\overline C\), some
+iterated reduced coproduct vanishes on \(c\). The reduced coproduct is
+\[
+ \overline\Delta(c)=\Delta(c)-\mathbf1\otimes c-c\otimes\mathbf1
+ \in\overline C\otimes_\Lambda\overline C.
+\]
+\end{enumerate}
+The notation \(\mu(C)=\mu(\overline C)\) requires
+\(\overline C\) to be a finitely generated torsion
+\(\Lambda\)-module. For an infinite graded or completed object,
+one must instead specify the coefficient modules whose invariants
+are being taken.
+\end{definition}
+
+\begin{definition}[\(\mu=0\) arithmetic \(\Lambda\)-coalgebra]
+\label{v4-arith:pos:def:mu-zero}
+Suppose \(M=\overline C\) is a finitely generated torsion
+\(\Lambda\)-module. Then \(C\) is \emph{\(\mu=0\)} when
+\[
+ \mu(M)=\operatorname{length}_{\Lambda_{(p)}}M_{(p)}=0.
+\]
+Equivalently, its structure theorem has no
+\(\Lambda/p^a\Lambda\) summand. This is a statement up to
+pseudo-isomorphism, not the absence of all \(p\)-torsion.
+For example, \(M=\Lambda/(p,T)\) is nonzero and killed by \(p\),
+but \(M_{(p)}=0\) because \(T\) becomes invertible.
+\end{definition}
+
+\begin{remark}[the role of \(\mu=0\)]
+\label{v4-arith:pos:rem:why-mu-zero}
+The invariant measures torsion at the height-one prime \((p)\).
+It does not control all torsion or derived base change.
+The module \(\Lambda/(p,T)\) has \(\mu=0\) and nonzero
+\(p\)-torsion. The module \(\Lambda/(T)\) also has \(\mu=0\),
+but its first Tor with itself is \(\Lambda/(T)\).
+Proposition~\ref{v4-arith:pos:prop:resolutions-cohere} computes
+these effects. Completion and reduction must therefore be
+checked on the actual comparison maps.
+\end{remark}
+
+A precise lifting criterion uses completion inside the recipient
+category. In a stable \(\Lambda\)-linear \(\infty\)-category with
+sequential limits, put
+\[
+ X/p^n=\operatorname{cofib}(p^n:X\to X).
+\]
+Call \(X\) \emph{derived \(p\)-complete} when the natural map
+\(X\to\varprojlim_n X/p^n\) is an equivalence.
+For \(X\in\mathrm D(\Lambda)\), the quotient is
+\(X\otimes_\Lambda^{\mathbb L}\Lambda/p^n\).
+In a coderived recipient, its intrinsic cofiber and limit are
+required. An underlying ordinary derived complex may forget
+information.
+
+\begin{theorem}[lifting an arithmetic comparison]
+\label{v4-arith:thm:arithmetic-positselski}
+Let \(\mathcal C\) and \(\mathcal D\) be specified stable
+\(\Lambda\)-linear \(\infty\)-categories with sequential limits.
+Suppose an exact \(\Lambda\)-linear adjunction
+\(\Phi:\mathcal D\rightleftarrows\mathcal C:\Psi\) has been
+constructed. Write its unit and counit as
+\[
+ \eta_P:P\longrightarrow\Psi\Phi P,
+ \qquad
+ \varepsilon_M:\Phi\Psi M\longrightarrow M.
+\]
+Assume their cofibers are derived \(p\)-complete in their
+respective categories, and that \(\eta_P/p\) and
+\(\varepsilon_M/p\) are equivalences for every \(P,M\).
+Then
+\begin{equation}
+\label{v4-arith:pos:eq:arith-positselski}
+ \Psi:\mathcal C\xrightarrow{\ \sim\ }\mathcal D,
+ \qquad \Phi\simeq\Psi^{-1}.
+\end{equation}
+\end{theorem}
+
+The proof is given in Section~\ref{v4-arith:pos:assembly}.
+For the arithmetic problem, one must construct \(\mathcal C\)
+and \(\mathcal D\) from the intended integral comodules and
+contramodules, with their exact structures and topology.
+One must then construct the adjunction and verify these
+hypotheses. Module-theoretic \(\mu=0\) does not supply them.
+Compatibility with the algebraic bar--cobar adjunction is a
+further comparison of functors.
+
+\begin{remark}[data for the arithmetic comparison]
+\label{v4-arith:pos:rem:open-sub-items}
+The categorical construction and its zeta interpretation require
+different data:
+\begin{enumerate}
+\item \emph{Continuous duals.} Specify the coalgebra, its topology,
+its dual recipient, and the exact comodule and contramodule
+categories. Identify any proposed topological-algebra description
+with these categories.
+\item \emph{Derived completion.} Prove completeness of the unit
+and counit cofibers in those recipients. Ordinary module
+completion need not detect coderived equivalences.
+\item \emph{Reduction of the adjunction.} Construct the comparison
+with an actual adjunction over \(\Lambda/p\), preserving its
+unit and counit. Prove that the reduced maps are equivalences.
+This requires detection of equivalences, not faithfulness of
+reduction on morphisms.
+\item \emph{Character and pairing.} Identify the selected
+one-mode character with \(\zeta\) and construct its arithmetic
+pairing. The full oscillator character is
+\(\prod_{k\ge1}\zeta(k\beta)\). Neither scalar character
+constructs the central-defect or Mellin maps.
+\item \emph{Bost--Connes comparison.} Construct the cobar algebra
+in the chosen coefficient category and compare it with the
+specified Bost--Connes algebra, action and pairing.
+Question~\ref{v4-arith:cor:koszul-dual-BC} retains this problem.
+The continuous dual is not the cobar algebra by definition.
+\end{enumerate}
+The first three requirements concern the lifting criterion.
+The last two concern its arithmetic interpretation.
+They are not an exhaustion theorem for all possible arithmetic
+realizations.
+\end{remark}
+
+Section~\ref{v4-arith:pos:main-theorem} presents the proposed
+co--contra construction. Its six coefficient and completion
+comparisons are in Section~\ref{v4-arith:pos:obstruction-analysis-table}.
+Section~\ref{v4-arith:pos:iwasawa-preliminaries} fixes the required
+\(\Lambda\)-module notions.
+
+The arithmetic Heisenberg application and its level comparison
+are in Section~\ref{v4-arith:pos:heisenberg-application}.
+Section~\ref{v4-arith:pos:residual-domain} retains the non-abelian
+Iwahori and Whittaker comparison conditions.
+
+\section{Obstruction Analysis Table}
+\label{v4-arith:pos:obstruction-analysis-table}
+
+The following comparisons specify the coefficient, completion and
+pairing conditions in the arithmetic statement.
+
+\subsection{Obstruction 1: Base-Change Lift}
+\label{v4-arith:pos:att-1-base-change}
+
+The field correspondence is not a theorem over
+\(\mathbb F_p[[T]]\), which is a discrete valuation ring.
+There is no unital map from a field to \(\mathbb Z_p[[T]]\):
+positive characteristic is incompatible with characteristic zero,
+and a characteristic-zero field would make \(p\) invertible.
+Thus extension of scalars from a field cannot construct the
+integral comparison directly.
+
+Reduction \(\Lambda\to\Lambda/p\) is nevertheless useful.
+On derived \(p\)-complete objects, it detects equivalences,
+by Proposition~\ref{v4-arith:pos:prop:lifting}.
+This proves a lifting criterion once the functors and their
+reduced unit and counit are available.
+It does not construct these functors, and reduction is not
+faithful on morphisms.
+
+\subsection{Obstruction 2: Exact Structures and Derived Recipients}
+\label{v4-arith:pos:att-2-co-contra}
+
+Over \(\Lambda\), an arithmetic comparison must select the
+admissible exact sequences of comodules and contramodules.
+The coacyclic and contraacyclic subcategories are then formed
+using these sequences and the appropriate sums or products.
+An injective resolution over the coefficient ring need not be
+an injective resolution in the comodule category.
+The corresponding distinction holds for projectives.
+
+Selmer complexes furnish arithmetic complexes with specified
+local conditions. To use them here requires functors into the
+chosen comodule or contramodule recipient, preserving those
+conditions. Their existence does not follow from the notation
+\(\mathrm D(\Lambda)\), or from a vanishing \(\mu\)-invariant.
+Definitions~\ref{v4-arith:pos:def:co-derived} and
+\ref{v4-arith:pos:def:contra-derived} state the exact-category
+construction used below.
+
+\subsection{Obstruction 3: \texorpdfstring{\(\mu\)}{mu}-Invariant Vanishing for the Heisenberg Bar}
+\label{v4-arith:pos:att-3-mu-heisenberg}
+
+For a defined arithmetic bar object, the first question is which
+finitely generated torsion \(\Lambda\)-module carries the proposed
+\(\mu\)-invariant. A filtered or completed complex has no single
+such invariant until the relevant cohomology or graded coefficient
+modules are specified.
+
+There is an elementary vanishing calculation on a fixed coefficient
+model. Let \(\Lambda=\mathbb Z_p[[T]]\), and let \(M\) be a finite
+free \(\mathbb Z_p\)-module of rank \(d\), with trivial
+\(\Gamma\)-action. Then
+\[
+ M\cong(\Lambda/(T))^d,
+ \qquad M_{(p)}=0,
+ \qquad \mu(M)=0.
+\]
+Indeed, \(T\notin(p)\), so localization at \((p)\) makes the
+annihilator \(T\) invertible. This proves vanishing for this module
+without identifying it with a cyclotomic Iwasawa module.
+
+Given an actual augmented coefficient algebra with augmentation ideal
+\(I\), one can form finite bar-length pieces
+\[
+ B_{\leq n}=\bigoplus_{j=0}^n(I[1])^{\otimes_\Lambda j},
+\]
+with cohomological shift \(I[1]^q=I^{q+1}\).
+For positive bar lengths, applying that calculation requires the
+selected coefficients to be finite free over \(\mathbb Z_p\) with
+trivial action. The length-zero coefficient is \(\Lambda\) itself. A residue
+complex can be tensored into this construction only after its
+\(\Lambda\)-module structure and total differential have been supplied.
+Finite tame symbols, by themselves, provide neither structure.
+
+Ferrero--Washington gives a vanishing theorem for specified
+cyclotomic Iwasawa modules. Its use requires identifying the arithmetic coefficient module
+with one in that theorem's domain. The identification must preserve
+the action and topology. Neither the name Heisenberg nor commutativity of
+\(\Gamma\) supplies such an identification.
+Proposition~\ref{v4-arith:coefficients:prop:mu} further separates
+module-theoretic vanishing from coalgebra conilpotence.
+
+\subsection{Obstruction 4: Weight Compatibility Under Bar--Cobar}
+\label{v4-arith:pos:att-4-weights}
+
+\paragraph{Weight comparison.} The proposed arithmetic pairing
+would relate bar coefficients of energy \(\log p\) to independently
+defined dual coefficients of energy \(-\log n\).
+To interpret energy cancellation as
+\(\kappa^{\mathrm{Ar}}+(\kappa^!)^{\mathrm{Ar}}=0\), one must
+construct the central-defect identity and evaluation of
+Theorem~\ref{v4-arith:thm:P1-resolution}. Compatibility with a
+Bost--Connes Hecke operator \(\mu_n\) is an additional action map.
+
+A cyclotomic character supplies a Galois action only after that
+action is specified on the coefficient object.
+Its compatibility with a co--contra functor is additional data.
+Oscillator energies \(k\log p\) belong to a different grading.
+The ungraded correspondence does not identify the two.
+
+\paragraph{Weight calculation.}
+Convention~\ref{v4-arith:conv:two-grading}(ii) assigns energy
+\(k\log p\) to \(x_{p,k}=\alpha^{(p)}_{-k}\). Its linear dual can be
+given the negative energy. Evaluation then has total energy zero,
+as constructed in Theorem~\ref{v4-arith:pos:thm:weight-comp}.
+The numerical identity \(\log(p^k)=k\log p\) is also compatible with
+assigning \(-\log(p^k)\) to a proposed dual symbol. It does not identify
+that symbol with a Bost--Connes isometry, construct a twisting cochain,
+or identify oscillator energy with a central level.
+
+The full one-species-per-prime oscillator trace is
+\(\prod_{k\ge1}\zeta(k\beta)\) for \(\beta>1\). The selected mode-one
+occupation space has trace \(\zeta(\beta)\), but is not invariant under
+the divisor or index-shift operations for index greater than one
+(Section~\ref{v4-arith:ado:hilbert}). A pairing or arithmetic comparison must
+specify which of these carriers it uses.
+
+\subsection{Obstruction 5: Archimedean Completion}
+\label{v4-arith:pos:att-5-archimedean}
+
+The completed zeta function contains the real factor
+\(\pi^{-s/2}\Gamma(s/2)\). Fourier self-duality of the Gaussian
+and Poisson summation provide its analytic input.
+Theorem~\ref{v4-arith:thm:arithmetic-modular-invariance}
+proves the scalar reflection with its polar terms.
+
+A categorical interpretation needs an archimedean coalgebra or
+algebra, its modules and its pairing. It also needs a
+comparison to the Fourier model.
+The local Fock space does not specify these data by itself.
+Section~\ref{v4-arith:pos:archimedean} gives the Gaussian
+calculation and a conditional assembly of actual local
+equivalences over a common coefficient ring.
+
+\subsection{Obstruction 6: Noncommutative Coefficients}
+\label{v4-arith:pos:att-6-noncommutative}
+
+For a compact \(p\)-adic group \(G\), the completed group algebra
+\(\mathbb Z_p[[G]]\) is a possible noncommutative coefficient ring.
+Its use for an Iwahori Hecke category requires an actual action
+and a comparison with that category. These are not consequences
+of the name of the group.
+
+A coalgebra over a noncommutative base must specify left and
+right module structures. The resulting coring has a coproduct
+into its tensor square over the base.
+Its conilpotence, continuous Hom, completion and exact structures
+must be stated in that setting. The commutative structure theorem
+below does not provide them. The noncommutative and Whittaker
+questions in Section~\ref{v4-arith:pos:residual-domain} retain
+these additional constructions.
+
+\subsection{Comparison Table}
+\label{v4-arith:pos:table-summary}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{@{}p{.10\linewidth}|p{.34\linewidth}|p{.47\linewidth}@{}}
+Input & Content & Conclusion \\
+\hline
+1 & Reduction and lifting & complete cofibers and actual maps \\
+2 & Derived recipients & specify exact structures \\
+3 & \(\mu=0\) for specified bar modules & requires the module comparison \\
+4 & Weight pairing & oscillator evaluation constructed \\
+5 & Archimedean comparison & Fourier model. Categorical map needed \\
+6 & Noncommutative coefficients & coring and action required \\
+\end{tabular}
+\caption{Arithmetic Positselski comparisons. The abelian comparison retains
+ the data of Remark~\ref{v4-arith:pos:rem:open-sub-items}
+ and the pairing and invariant maps of
+ Question~\ref{v4-arith:pos:thm:P1-full-unconditional}.
+ Non-abelian Iwahori level requires further data
+ (Section~\ref{v4-arith:pos:non-abelian}).}
+\label{v4-arith:pos:tab:table}
+\end{table}
+
+\section{Iwasawa Preliminaries}
+\label{v4-arith:pos:iwasawa-preliminaries}
+
+The coefficient calculations use three facts about finitely
+generated \(\Lambda\)-modules:
+the structure theorem, the resolution bounds, and the actual
+Tor groups governing reduction. These module calculations do not
+identify the derived comodule and contramodule recipients.
+
+\subsection{\texorpdfstring{\(\Lambda\)}{Lambda}-Modules and Structure Theorem}
+\label{v4-arith:pos:lambda-modules}
+
+\begin{proposition}[\(\Lambda\)-module structure theorem]
+\label{v4-arith:pos:prop:lambda-structure}
+Let \(\Lambda=\mathbb{Z}_{p}[[\Gamma]]\)
+and let \(M\) be a finitely generated \(\Lambda\)-module. Then
+there is a pseudo-isomorphism (morphism with finite kernel and
+cokernel)
+\begin{equation}
+M\sim \Lambda^{r}\oplus\bigoplus_{i=1}^{s}\Lambda/p^{a_{i}}\Lambda\oplus\bigoplus_{j=1}^{t}\Lambda/f_{j}^{b_{j}}\Lambda,
+\end{equation}
+where \(r,s,t\in\mathbb{Z}_{\geq 0}\), \(a_{i}\in\mathbb{Z}_{\geq 1}\),
+and \(f_{j}\in\mathbb{Z}_{p}[\gamma-1]\) are distinguished
+irreducible polynomials (Weierstrass polynomials). The invariants
+\(r\), \(\mu(M)=\sum a_{i}\), \(\lambda(M)=\sum b_{j}\deg f_{j}\) are
+well-defined.
+\end{proposition}
+
+\begin{proof}
+Apply Serre, \emph{Classes des corps cyclotomiques}, \S6,
+Lemmas~5--6. Up to finite kernel and cokernel, a finitely
+generated module splits into a reflexive module and height-one
+primary factors. The reflexive module is free because \(\Lambda\)
+is regular local of dimension two. Localization at a height-one
+prime is a discrete valuation ring, so each primary factor has
+its elementary-divisor decomposition. Weierstrass preparation
+identifies the height-one primes as \((p)\) and the ideals
+\((f)\) for distinguished irreducible \(f\).
+Their localized multiplicities give the stated invariants.
+\end{proof}
+
+\begin{corollary}[\(\mu=0\) criterion]
+\label{v4-arith:pos:cor:mu-zero-criterion}
+For a finitely generated \(\Lambda\)-module \(M\), the invariant
+\(\mu(M)\) is the length of the torsion submodule of \(M_{(p)}\).
+It vanishes exactly when \(M_{(p)}\) is free over
+\(\Lambda_{(p)}\). If \(M\) is torsion, this is equivalent
+to \(M_{(p)}=0\).
+\end{corollary}
+\begin{proof}
+Finite modules vanish after localization at \((p)\).
+The structure theorem therefore becomes an isomorphism there.
+The summand \(\Lambda/p^a\) contributes length \(a\).
+A distinguished polynomial reduces modulo \(p\) to a nonzero
+power of \(T\), so it does not lie in \((p)\) and becomes a
+unit. Its summand vanishes. The remaining free summand has
+rank \(r\), proving all assertions.
+\end{proof}
+
+\subsection{Injective and Projective Resolutions Over \texorpdfstring{\(\Lambda\)}{Lambda}}
+\label{v4-arith:pos:resolutions}
+
+\begin{proposition}[projective resolution bound]
+\label{v4-arith:pos:prop:proj-resolution}
+Every finitely generated \(\Lambda\)-module \(M\) has a finite
+free resolution of length at most two.
+\end{proposition}
+\begin{proof}
+The regular sequence \((p,T)\) gives the Koszul resolution
+\[
+ 0\longrightarrow\Lambda
+ \xrightarrow{\binom{-T}{p}}\Lambda^2
+ \xrightarrow{(p\ \ T)}\Lambda
+ \longrightarrow\mathbb F_p\longrightarrow0.
+\]
+It follows that \(\operatorname{Tor}_i^\Lambda(\mathbb F_p,M)=0\)
+for \(i>2\). Construct a minimal free resolution of \(M\)
+by successively choosing minimal generators of its kernels.
+Each free module is finite because \(\Lambda\) is Noetherian.
+Every differential reduces to zero modulo \(\mathfrak m\),
+so its \(i\)-th free module modulo \(\mathfrak m\) is the
+\(i\)-th Tor group. Nakayama's lemma makes those free modules
+zero for \(i>2\).
+\end{proof}
+
+\begin{proposition}[injective resolution bound]
+\label{v4-arith:pos:prop:inj-resolution}
+Every \(\Lambda\)-module \(M\) has an injective resolution
+\(0\to M\to I^0\to I^1\to I^2\to0\).
+No finite-generation condition on the injective terms is asserted.
+\end{proposition}
+\begin{proof}
+For every ideal \(J\), the preceding proposition gives
+\(\operatorname{Ext}^3_\Lambda(\Lambda/J,M)=0\).
+Start an injective resolution and let \(Q\) be the cokernel
+of its first two injective terms, so that
+\(0\to M\to I^0\to I^1\to Q\to0\) is exact.
+Dimension shifting gives
+\(\operatorname{Ext}^1_\Lambda(\Lambda/J,Q)=0\) for every \(J\).
+Baer's criterion makes \(Q\) injective.
+\end{proof}
+
+These are resolutions of modules over \(\Lambda\).
+They do not supply the required injectives or projectives in
+an arithmetic comodule or contramodule category.
+In particular, the residue field is not an injective
+\(\Lambda\)-module: the same Koszul complex gives
+\(\operatorname{Ext}^1_\Lambda(\mathbb F_p,\mathbb F_p)
+\cong\mathbb F_p^2\).
+
+\begin{proposition}[derived reduction and its torsion]
+\label{v4-arith:pos:prop:resolutions-cohere}
+Put \(B=\Lambda/p=\mathbb F_p[[T]]\).
+For every \(\Lambda\)-module \(M\),
+\[
+ M\otimes_\Lambda^{\mathbb L}B
+ \simeq[\,M\xrightarrow{p}M\,],
+ \qquad
+ \operatorname{Tor}_1^\Lambda(M,B)=M[p],
+\]
+where the displayed complex lies in degrees \(-1,0\), and
+\(M[p]=\ker(p:M\to M)\). Higher Tor groups vanish.
+Reduction of a projective resolution therefore resolves the
+ordinary module \(M/pM\) exactly when \(M[p]=0\).
+The corresponding statements for \(\Lambda/(T)\) use the
+map \(T\) and its kernel \(M[T]\).
+\end{proposition}
+\begin{proof}
+Tensor the free resolution
+\(0\to\Lambda\xrightarrow{p}\Lambda\to B\to0\) with \(M\).
+Its homology gives the assertion. Multiplication by \(T\) is
+also injective on \(\Lambda\), so the same argument applies
+to \(\Lambda/(T)\).
+\end{proof}
+
+For \(M=\Lambda/(p,T)\), one has \(\mu(M)=0\) and
+\(M[p]=M\ne0\). Thus the positive-degree Tor term survives.
+For \(N=\Lambda/(T)\), one has \(\mu(N)=0\) and
+\[
+ \operatorname{Tor}_1^\Lambda(N,N)=N\ne0.
+\]
+This second module is free over \(\mathbb Z_p\) but is not
+flat over \(\Lambda\). Neither \(\mu=0\) nor
+\(\mathbb Z_p\)-freeness can replace the required Tor calculation.
+
+\subsection{Co-Derived and Contra-Derived \texorpdfstring{\(\Lambda\)}{Lambda}-Categories}
+\label{v4-arith:pos:co-contra-lambda}
+
+Let \(C\) be a specified dg \(\Lambda\)-coalgebra.
+Fix exact structures on its dg comodules and dg contramodules,
+including the admissible exact triples.
+For example, one may use triples split as graded
+\(\Lambda\)-modules. This gives a relative exact structure.
+An abelian or continuous version requires its own hypotheses.
+
+Assume the chosen comodule category has admissible arbitrary
+sums and the contramodule category has admissible arbitrary
+products. Write \(\mathrm{Hot}\) for the homotopy category
+of these dg objects.
+
+\begin{definition}[\(\Lambda\)-coderived recipient]
+\label{v4-arith:pos:def:co-derived}
+Let \(\mathrm{Ac}^{\mathrm{co}}_\Lambda(C)\) be the smallest
+thick triangulated subcategory of
+\(\mathrm{Hot}(C\text{-comod}_\Lambda)\) containing the
+totalizations of admissible exact triples and closed under
+arbitrary sums. Define
+\[
+ \mathrm D^{\mathrm{co}}_\Lambda(C\text{-comod})
+ =\mathrm{Hot}(C\text{-comod}_\Lambda)
+       /\mathrm{Ac}^{\mathrm{co}}_\Lambda(C).
+\]
+The chosen exact structure is part of this notation.
+\end{definition}
+
+\begin{definition}[\(\Lambda\)-contraderived recipient]
+\label{v4-arith:pos:def:contra-derived}
+Let \(\mathrm{Ac}^{\mathrm{ctr}}_\Lambda(C)\) be the smallest
+thick triangulated subcategory of
+\(\mathrm{Hot}(C\text{-contra}_\Lambda)\) containing the
+totalizations of admissible exact triples and closed under
+arbitrary products. Define
+\[
+ \mathrm D^{\mathrm{ctr}}_\Lambda(C\text{-contra})
+ =\mathrm{Hot}(C\text{-contra}_\Lambda)
+       /\mathrm{Ac}^{\mathrm{ctr}}_\Lambda(C).
+\]
+A description by continuous \(C^\vee\)-contramodules requires
+an identification with this specified recipient.
+\end{definition}
+
+\begin{remark}[comparison with Selmer complexes]
+\label{v4-arith:pos:rem:nekovar}
+A Selmer complex is an object of an ordinary derived category
+with specified local-condition maps.
+Chapter~\ref{v4-arith:coefficients:chapter} constructs such
+complexes and their coefficient comparisons.
+A realization in the recipients above must preserve those maps
+and specify which acyclic objects are annihilated.
+The distinction between acyclic and coacyclic objects already
+occurs for coalgebras over a field. Coefficient linear algebra
+does not remove it.
+\end{remark}
+
+\begin{question}[enhancements and compact objects]
+\label{v4-arith:pos:lem:representability}
+For the intended arithmetic coalgebra and exact structures,
+construct the stable enhancements of these recipients.
+Determine the complete subcategories on which the co--contra
+functors exist and the compact objects, if the relevant
+coproducts exist.
+\end{question}
+
+Compactness cannot mean concentration in degree zero.
+Compact objects in a stable category are closed under shifts.
+For example, \(\Lambda[1]\) is compact in
+\(\mathrm D(\Lambda)\) and is not a module concentrated in
+degree zero. The module resolution bounds do not resolve
+Question~\ref{v4-arith:pos:lem:representability}.
+
+\subsection{Iwasawa \texorpdfstring{\(\mu\)}{mu}-Invariant and Ferrero--Washington}
+\label{v4-arith:pos:mu-FW}
+
+\begin{theorem}[Ferrero--Washington 1979, Ann.~Math. 109]
+\label{v4-arith:pos:thm:FW}
+Let \(K\) be an abelian number field, let \(K_\infty/K\)
+be its cyclotomic \(\mathbb Z_p\)-extension, and let \(K_n\)
+be its finite layers. With norm transition maps, put
+\[
+ X_K=\varprojlim_n\mathrm{Cl}(K_n)_p.
+\]
+Identify \(\operatorname{Gal}(K_\infty/K)\) with the chosen
+\(\Gamma\). Then \(X_K\) is a finitely generated torsion
+\(\Lambda\)-module and \(\mu(X_K)=0\).
+\end{theorem}
+
+\begin{remark}[applicability to Heisenberg bar]
+\label{v4-arith:pos:rem:FW-applicability}
+An application to an arithmetic Heisenberg bar must first specify
+its finitely generated torsion coefficient module \(M\) and
+its continuous \(\Gamma\)-action. It must then identify the
+relevant localization with that of a module in
+Theorem~\ref{v4-arith:pos:thm:FW}. Commuting creation operators
+and a trivial action on an oscillator lattice supply no such
+identification. The full Heisenberg Lie algebra itself has a
+nonzero central commutator.
+
+Section~\ref{v4-arith:pos:att-3-mu-heisenberg} proves vanishing for
+finite free \(\mathbb Z_p\)-modules with trivial \(\Gamma\)-action
+directly. The next statement gives a different, conditional
+arithmetic route. Neither route supplies a conilpotence criterion.
+\end{remark}
+
+\begin{corollary}[transport of arithmetic \(\mu\)-vanishing]
+\label{v4-arith:pos:cor:mu-zero-heisenberg}
+Let \(M\) be a finitely generated torsion \(\Lambda\)-module
+selected from a specified arithmetic bar construction.
+Suppose \(M\) admits a pseudo-isomorphism to \(X_K^{\oplus d}\),
+where \(K\) is abelian and \(X_K\) is as in
+Theorem~\ref{v4-arith:pos:thm:FW}. Then \(\mu(M)=0\).
+\end{corollary}
+
+\begin{proof}
+The finite kernel and cokernel have support at \((p,T)\).
+They vanish after localization at \((p)\), giving
+\[
+ M_{(p)}\cong(X_K)_{(p)}^{\oplus d}=0.
+\]
+The last equality is Theorem~\ref{v4-arith:pos:thm:FW}.
+Taking length proves the assertion. The pseudo-isomorphism is
+an input, not a consequence of the name of the bar construction.
+\end{proof}
+
+\section{Constructing and Detecting the Comparison}
+\label{v4-arith:pos:main-theorem}
+
+\subsection{The Functors and Their Comparison Maps}
+\label{v4-arith:pos:proof-overview}
+
+The algebraic functors can be written before choosing a completed
+recipient. Their descent to a derived category, compatibility with
+reduction, and equivalence are separate assertions.
+We first give the functors, then prove the completion criterion.
+The algebraic bar--cobar adjunction and compatible quotient towers
+provide two further comparisons.
+
+\subsection{Step 1: The Algebraic Functors}
+\label{v4-arith:pos:step-1}
+
+Use the algebraic tensor product over \(\Lambda\) in this
+subsection. Let \(C\) be a dg coalgebra and use its left and
+right regular coactions. The contramodule and contratensor
+definitions above extend by replacing \(k\) with \(\Lambda\).
+A continuous version requires its own Hom and tensor objects.
+
+\begin{definition}[the colinear Hom functor]
+\label{v4-arith:pos:def:psi}
+For a dg left comodule \(M\), put
+\[
+ \Psi_C(M)=\operatorname{Hom}_C(C,M)
+ \subset\operatorname{Hom}_\Lambda(C,M),
+ \qquad
+ \operatorname{Hom}_\Lambda(C,M)^n
+ =\prod_i\operatorname{Hom}_\Lambda(C^i,M^{i+n}).
+\]
+The differential is
+\(d(f)=d_Mf-(-1)^{|f|}fd_C\).
+The right coaction on \(C\) induces the left contraaction on
+this colinear Hom complex. On morphisms, \(\Psi_C\) acts by
+postcomposition.
+\end{definition}
+
+\begin{definition}[the contratensor functor]
+\label{v4-arith:pos:def:phi}
+For a dg left contramodule \(P\), put
+\[
+ \Phi_C(P)=C\odot_C P
+ =\operatorname{coker}\bigl(
+ C\otimes_\Lambda\operatorname{Hom}_\Lambda(C,P)
+ \rightrightarrows C\otimes_\Lambda P\bigr).
+\]
+The two arrows are the contraaction and the right coaction
+followed by signed evaluation. The differential and the left
+coaction descend from \(C\otimes_\Lambda P\).
+\end{definition}
+
+Tensor--Hom adjunction identifies maps from this cokernel to
+\(M\) with contramodule maps from \(P\) to
+\(\operatorname{Hom}_C(C,M)\). Thus \(\Phi_C\dashv\Psi_C\)
+on the algebraic dg categories. Completion is not part of
+this calculation.
+
+\begin{lemma}[descent through chosen resolution models]
+\label{v4-arith:pos:lem:well-defined}
+Suppose full triangulated resolution subcategories
+\(\mathcal J\subset\mathrm{Hot}(C\text{-comod}_\Lambda)\)
+and \(\mathcal P\subset\mathrm{Hot}(C\text{-contra}_\Lambda)\)
+map equivalently to the chosen coderived and contraderived
+recipients. If \(\Psi_C(\mathcal J)\subset\mathcal P\) and
+\(\Phi_C(\mathcal P)\subset\mathcal J\), the restricted
+adjunction transports to those recipients.
+\end{lemma}
+\begin{proof}
+Compose each restricted functor with the two specified
+resolution equivalences and their inverses.
+The Hom adjunction transports along the same equivalences,
+as do its unit, counit and triangle identities.
+\end{proof}
+
+Over a field, Theorem~\ref{v4-arith:pos:thm:classical-positselski}
+supplies these resolution models and their equivalence.
+Over \(\Lambda\), the models and their preservation must be
+constructed. Injectivity over \(\Lambda\) alone does not prove
+the lemma's hypotheses.
+
+The contratensor quotient matters already in dimension two.
+Over a field, let \(C=k\mathbf1\oplus kc\), with
+\(\Delta c=\mathbf1\otimes c+c\otimes\mathbf1\).
+The colinear endomorphisms of \(C\) have basis
+\[
+ f_0=\mathrm{id}_C,
+ \qquad f_1(\mathbf1)=0,\quad f_1(c)=\mathbf1.
+\]
+Evaluation \(C\otimes\operatorname{Hom}_C(C,C)\to C\)
+is surjective and has kernel
+\[
+ k(\mathbf1\otimes f_1)
+ \oplus k(c\otimes f_1-\mathbf1\otimes f_0).
+\]
+These are precisely the contratensor relations, so the
+quotient is \(C\). Omitting the quotient leaves a
+four-dimensional space in place of a two-dimensional one.
+
+\subsection{Step 2: Coefficient Change}
+\label{v4-arith:pos:step-2}
+
+\begin{lemma}[two coefficient comparisons]
+\label{v4-arith:pos:lem:base-change}
+Let \(R\to S\) be a map of commutative rings.
+\begin{enumerate}
+\item If \(C\) is a coaugmented conilpotent dg \(R\)-coalgebra,
+then the algebraic scalar extension \(C\otimes_R S\)
+is a coaugmented conilpotent dg \(S\)-coalgebra.
+\item If \(E\) is a perfect complex of \(R\)-modules, then
+for every \(M\in\mathrm D(R)\), the natural map
+\[
+ \operatorname{RHom}_R(E,M)\otimes_R^{\mathbb L}S
+ \longrightarrow
+ \operatorname{RHom}_S
+   (E\otimes_R^{\mathbb L}S,M\otimes_R^{\mathbb L}S)
+\]
+is an equivalence.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+The coaugmentation splitting commutes with algebraic scalar
+extension. Each element of its reduced part is a finite sum
+of tensors \(c_i\otimes s_i\). A common bound on the vanishing
+of the iterated reduced coproducts of the finitely many \(c_i\)
+proves conilpotence. No flatness of \(S\) is needed for this
+algebraic assertion.
+
+For the second assertion, represent \(E\) by a bounded complex
+of finite projective modules. Its Hom complex is
+\(E^\vee\otimes_R M\), and
+\(E^\vee\otimes_R S\cong(E\otimes_R S)^\vee\).
+These identities give the stated derived map and its inverse.
+\end{proof}
+
+The second assertion concerns coefficient Hom.
+The functor \(\Psi_C\) also imposes colinearity, and a
+continuous version may involve an inverse limit.
+Indeed, \(\operatorname{Hom}_\Lambda(\varinjlim C_i,M)
+=\varprojlim\operatorname{Hom}_\Lambda(C_i,M)\).
+Commutation of this limit, its derived functors and coefficient
+change requires an additional proof.
+
+For \(B=\Lambda/p\), a proposed comparison has the form
+\begin{equation}
+\label{v4-arith:pos:eq:base-change-diagram}
+\begin{tikzcd}
+ \mathcal C\arrow[r,"\Psi"]\arrow[d,"R_{\mathcal C}"']
+ &\mathcal D\arrow[d,"R_{\mathcal D}"]\\
+ \overline{\mathcal C}\arrow[r,"\overline\Psi"']
+ &\overline{\mathcal D}.
+\end{tikzcd}
+\end{equation}
+Here the barred recipients and the reduction functors must be
+defined. A natural equivalence making this square commute is
+part of the comparison. The corresponding square for \(\Phi\)
+must also identify the units and counits.
+An equivalence over \(B\), when supplied, is not the
+field-coefficient theorem: \(B\) is not a field.
+
+\subsection{Step 3: Detection by Derived Completion}
+\label{v4-arith:pos:step-3}
+
+\begin{proposition}[complete objects and reduction]
+\label{v4-arith:pos:prop:lifting}
+In a stable \(\Lambda\)-linear \(\infty\)-category with sequential limits,
+a derived \(p\)-complete object \(X\) is zero if \(X/p=0\).
+Consequently, a map whose cofiber is derived \(p\)-complete
+is an equivalence if its reduction modulo \(p\) is.
+\end{proposition}
+\begin{proof}
+The factorization \(p^n=p\,p^{n-1}\) gives a cofiber sequence
+\[
+ X/p^{n-1}\longrightarrow X/p^n\longrightarrow X/p.
+\]
+Induction gives \(X/p^n=0\) for every \(n\).
+Derived completeness then gives
+\(X\simeq\varprojlim_n X/p^n=0\).
+Apply this result to the cofiber of the given map.
+\end{proof}
+
+This proves conservativity on the stated complete objects.
+Faithfulness on morphisms fails.
+Take \(M=\Lambda/(T)\cong\mathbb Z_p\).
+It is derived \(p\)-complete and has \(\mu(M)=0\), yet
+\[
+ p\,\mathrm{id}_M\ne0,
+ \qquad
+ (p\,\mathrm{id}_M)\otimes_\Lambda^{\mathbb L}B=0.
+\]
+The two-term free resolution with differential \(T\)
+verifies the second equality directly after reduction.
+
+Lifts are not unique either.
+The modules \(\Lambda/(T)\) and \(\Lambda/(T-p)\)
+are \(\mathbb Z_p\)-free, derived \(p\)-complete, and have
+\(\mu=0\). Their reductions are both \(B/(T)\).
+They are not isomorphic over \(\Lambda\): \(T\) acts as zero
+on the first and as multiplication by \(p\) on the second.
+Even the first lift has the nonidentity automorphism
+\((1+p)\mathrm{id}\) reducing to the identity.
+
+\begin{corollary}[lifting a specified adjunction]
+\label{v4-arith:pos:cor:psi-equivalence}
+Consider an exact adjunction as in
+Theorem~\ref{v4-arith:thm:arithmetic-positselski}.
+Assume its unit and counit cofibers are derived \(p\)-complete
+and its reduced unit and counit are equivalences.
+Then the adjunction is an equivalence.
+\end{corollary}
+\begin{proof}
+Proposition~\ref{v4-arith:pos:prop:lifting} makes the unit
+and counit equivalences. The triangle identities identify
+the two adjoint functors as inverses.
+\end{proof}
+
+An arithmetic application must verify these conditions in
+its specified recipients. Applying ordinary reduction to
+underlying complexes does not suffice unless that comparison
+is itself conservative on the relevant cofibers.
+
+\subsection{Step 4: The Algebraic Bar--Cobar Adjunction}
+\label{v4-arith:pos:step-4}
+
+Let \(A\) be an augmented dg \(\Lambda\)-algebra and \(C\)
+a coaugmented conilpotent dg \(\Lambda\)-coalgebra.
+Write \(\overline A=\ker\epsilon_A\) and
+\(\overline C=\ker\epsilon_C\), and use cohomological shifts
+\(V[1]^i=V^{i+1}\).
+A twisting cochain is a degree-one map
+\(\tau:\overline C\to\overline A\) satisfying
+\[
+ d_A\tau+\tau d_C+\mu_A(\tau\otimes\tau)\overline\Delta_C=0.
+\]
+The tensor of homogeneous maps includes its Koszul sign.
+
+\begin{theorem}[algebraic \(\Lambda\)-bar--cobar adjunction]
+\label{v4-arith:pos:thm:lambda-bar-cobar}
+With algebraic tensors and direct sums, the constructions
+\[
+ B^\Lambda A=\bigoplus_{n\ge0}(\overline A[1])^{\otimes_\Lambda n},
+ \qquad
+ \Omega^\Lambda C=\bigoplus_{n\ge0}(\overline C[-1])^{\otimes_\Lambda n}
+\]
+carry their bar and cobar differentials and satisfy
+\[
+ \operatorname{Hom}_{\mathrm{dgAlg}^{\mathrm{aug}}_\Lambda}
+       (\Omega^\Lambda C,A)
+ \cong\operatorname{Tw}_\Lambda(C,A)
+ \cong
+ \operatorname{Hom}_{\mathrm{dgCoalg}^{\mathrm{conil}}_\Lambda}
+       (C,B^\Lambda A).
+\]
+Thus \(\Omega^\Lambda\dashv B^\Lambda\) on these algebraic
+dg categories.
+\end{theorem}
+\begin{proof}
+An algebra map from the tensor algebra \(\Omega^\Lambda C\)
+is determined by its restriction to \(\overline C[-1]\).
+It commutes with differentials exactly when the corresponding
+\(\tau\) satisfies the displayed twisting equation.
+
+A coalgebra map to the tensor coalgebra \(B^\Lambda A\)
+is determined by projection to \(\overline A[1]\).
+Its length-\(n\) component applies that projection to the
+\(n\)-fold reduced coproduct.
+Conilpotence makes the resulting sum finite on each element.
+The chain-map condition is the same twisting equation.
+These two constructions are inverse and natural.
+\end{proof}
+
+No completion or derived equivalence is asserted by this
+algebraic adjunction. A completed version must justify the
+convergence of its sums and the weak equivalences it preserves.
+It is also distinct from the module adjunction
+\(\Phi_C\dashv\Psi_C\).
+
+\subsection{Step 5: Unit and Counit}
+\label{v4-arith:pos:step-5}
+
+\begin{theorem}[a complete criterion for unit and counit]
+\label{v4-arith:pos:thm:unit-counit-qi}
+For the algebraic adjunction, the natural maps have types
+\[
+ \eta_C:C\longrightarrow B^\Lambda\Omega^\Lambda C,
+ \qquad
+ \varepsilon_A:\Omega^\Lambda B^\Lambda A\longrightarrow A.
+\]
+Suppose the cone of either map, viewed in \(\mathrm D(\Lambda)\),
+is derived \(p\)-complete, and that its derived reduction
+modulo \(p\) is a quasi-isomorphism. Then that map is a
+quasi-isomorphism over \(\Lambda\).
+\end{theorem}
+\begin{proof}
+Apply Proposition~\ref{v4-arith:pos:prop:lifting} in
+\(\mathrm D(\Lambda)\) to the specified cone.
+The maps exist by the algebraic adjunction. Their completeness
+and reduction hypotheses must be checked for the chosen
+\(A\) and \(C\).
+\end{proof}
+
+The coalgebra unit uses iterated \emph{reduced} coproducts.
+The full coproduct of a primitive element retains terms with
+\(\mathbf1\) in every arity, so conilpotence cannot truncate
+that full coproduct. Nor does an equivalence in a chosen
+coderived localization assert an ordinary quasi-isomorphism
+without a comparison of the two notions.
+
+\subsection{Step 6: Compatible Quotient Towers}
+\label{v4-arith:pos:step-6}
+
+\begin{lemma}[limits of compatible equivalences]
+\label{v4-arith:pos:lem:independence}
+Let \((\mathcal C_n)\) and \((\mathcal D_n)\) be inverse
+diagrams of stable categories. A compatible equivalence of
+diagrams \(\Psi_n:\mathcal C_n\simeq\mathcal D_n\) induces
+\[
+ \varprojlim_n\mathcal C_n\simeq\varprojlim_n\mathcal D_n.
+\]
+Restriction along a coinitial indexing functor preserves these
+limits. In particular, cofinal systems of open ideals give
+the same limit for a fixed diagram on those ideals.
+\end{lemma}
+\begin{proof}
+The limit functor preserves equivalences of diagrams.
+Its universal property also gives invariance under coinitial
+restriction. For two systems of open ideals \(I_n,J_m\),
+the quotients by \(I_n\cap J_m\) give a common refinement
+with maps to the original quotients.
+\end{proof}
+
+The lemma requires the diagram and its compatibility maps.
+Separate equivalences at individual quotients do not supply
+a compatible equivalence of diagrams.
+Identifying an arithmetic recipient with this inverse limit
+is another hypothesis. The lemma gives no uniqueness for
+arbitrary lifts of a residual object.
+
+\subsection{The Comparison Criterion}
+\label{v4-arith:pos:assembly}
+
+\begin{proof}[Proof of Theorem~\ref{v4-arith:thm:arithmetic-positselski}]
+Let \(K_P=\operatorname{cofib}(\eta_P)\) in \(\mathcal D\)
+and \(L_M=\operatorname{cofib}(\varepsilon_M)\) in
+\(\mathcal C\). They are derived \(p\)-complete by hypothesis.
+Their reductions vanish because the reduced unit and counit
+are equivalences. Proposition~\ref{v4-arith:pos:prop:lifting}
+gives \(K_P=L_M=0\).
+Thus both natural transformations are equivalences, and the
+adjunction exhibits \(\Phi\) and \(\Psi\) as inverse functors.
+\end{proof}
+
+\begin{remark}[the dual arithmetic module]
+\label{v4-arith:pos:rem:dual-mu}
+A Selmer \(\mu\)-invariant requires a specified finitely
+generated torsion Iwasawa module.
+Comparing it with the invariant on another coefficient object
+requires an arithmetic duality map and control of its kernel
+and cokernel. A pseudo-isomorphism of the relevant modules
+would identify their height-one localizations and hence their
+\(\mu\)-invariants. Formal vector-space duality alone gives
+no such arithmetic pseudo-isomorphism.
+\end{remark}
+
+\section{Application: Pairings and Arithmetic Levels}
+\label{v4-arith:pos:heisenberg-application}
+
+\subsection{The Required Arithmetic Comparison}
+\label{v4-arith:pos:step-3-residual}
+
+For Theorem~\ref{v4-arith:thm:P1-resolution} to apply to arithmetic
+duality, the following assignments must be constructed:
+\begin{itemize}
+\item the arithmetic level \(\kappa^{\mathrm{Ar}}_{\mathsf G}\)
+as a central invariant of a specified bar object.
+\item the dual level \((\kappa^!)^{\mathrm{Ar}}_{\mathsf G}\)
+as a central invariant of its specified dual object.
+\item an involution and Mellin evaluation carrying their common
+central defect to the difference of the two completed characters.
+\end{itemize}
+The converse also requires that evaluation to detect the defect.
+A cobar algebra and a continuous dual algebra have different
+constructions. A comparison with a Bost--Connes algebra must specify
+which is used. The local weight calculation below proves evaluation
+compatibility for its oscillator model. It supplies none of these
+arithmetic identifications.
+
+\subsection{The Explicit Weight Computation}
+\label{v4-arith:pos:weight-comp}
+
+\begin{theorem}[evaluation pairing and arithmetic energy]
+\label{v4-arith:pos:thm:weight-comp}
+For a finite set \(S\) of arithmetic primes let
+\(P_S=\mathbb Z[x_{p,k}:p\in S,k\ge1]\), with oscillator weight
+\(k\) and energy \(k\log p\) on \(x_{p,k}\).
+Each weight component \(P_{S,w}\) is finite free. Its restricted dual
+\[
+ P_S^\circ=\bigoplus_{w\ge0}\operatorname{Hom}_{\mathbb Z}
+                              (P_{S,w},\mathbb Z)
+\]
+has a perfect evaluation pairing in each weight. Give the dual of a
+monomial energy equal to the negative of that monomial's energy.
+Then evaluation has total energy zero.
+
+If an arithmetic bar--cobar pairing and comparison maps identify these
+particular weight components and their pairings with \(P_{S,w}\) and
+its restricted dual, the same energy cancellation holds on their images.
+An identification of a dual generator with \(\mu_{p^k}\), and an
+identification of this energy cancellation with
+\(\kappa^{\mathrm{Ar}}_{\mathsf G}+(\kappa^!)^{\mathrm{Ar}}_{\mathsf G}=0\),
+are separate comparison hypotheses.
+\end{theorem}
+\begin{proof}
+There are finitely many monomials of a given oscillator weight because
+\(S\) is finite. Write \(x^\nu\) for their monomial basis and
+\(\eta_\nu\) for the dual basis. Evaluation is
+\(\eta_\mu(x^\nu)=\delta_{\mu\nu}\), hence perfect in every weight.
+Its only nonzero basis pairings have energies
+\(E(\nu)\) and \(-E(\nu)\), whose sum is zero. Transport through the
+specified pairing-preserving maps proves the conditional assertion.
+No arithmetic map is constructed by this transport calculation.
+
+The distinction from a polynomial generator algebra can already be seen
+in one variable: dualizing the primitive coproduct of \(\mathbb Z[x]\)
+gives \(\eta_a\eta_b=\binom{a+b}{a}\eta_{a+b}\), so
+\(\eta_1^k=k!\eta_k\). This follows by evaluating on
+\(\Delta x^{a+b}=\sum_j\binom{a+b}{j}x^j\otimes x^{a+b-j}\).
+It is not the relation \(\mu_{p^k}=\mu_p^k\) with the same integral
+basis. A different normalization or cobar differential requires its own
+construction.
+\end{proof}
+
+\subsection{Global Euler-Product Check}
+\label{v4-arith:pos:euler-check}
+
+\begin{proposition}[global weight sum]
+\label{v4-arith:pos:prop:global-weight}
+The formal cancellation of opposite energy labels over prime-power
+indices is
+\begin{equation}
+\sum_{p\text{ prime}}\sum_{n\geq 1}\bigl[n\log p\cdot p^{-ns}+(-n\log p)\cdot p^{-ns}\bigr]\;=\;0,
+\end{equation}
+convergent absolutely for \(\mathrm{Re}(s)>1\). After termwise
+pairing it is the zero function, hence extends as zero. No
+meromorphic continuation of the unpaired prime-indexed sum is asserted.
+\end{proposition}
+
+\begin{proof}
+Term-by-term: at each prime \(p\) and each \(n\geq 1\), the two
+weights \(n\log p\) and \(-n\log p\) sum to zero. For \(\sigma=\operatorname{Re}s>1\), the unpaired absolute sum is
+\[
+ \sum_p(\log p)\frac{p^{-\sigma}}{(1-p^{-\sigma})^2}
+ \le (1-2^{-\sigma})^{-2}\sum_{m\ge2}(\log m)m^{-\sigma}<\infty.
+\]
+Thus pairing terms is justified in that half-plane, and their sum is
+zero. This scalar identity supplies no arithmetic pairing or level map. The identity
+\(-\zeta'(s)/\zeta(s)=\sum_{p,k\geq1}(\log p)p^{-ks}\) is a prime-power
+identity, not an identity for the prime-indexed sum alone.
+\end{proof}
+
+\begin{remark}[pairing and level comparison]
+\label{v4-arith:pos:cor:step-3-unconditional}
+The local evaluation theorem proves energy cancellation. To use it in
+Theorem~\ref{v4-arith:thm:P1-resolution}, one must construct the
+arithmetic pairing, the central-defect identity, and the Mellin
+evaluation, including its detection of the defect. Opposite energy
+labels alone do not identify these central classes.
+The five conditions of Remark~\ref{v4-arith:pos:rem:open-sub-items} must be
+realized with those compatibility maps; a named categorical equivalence
+alone does not identify its numerical invariants.
+\end{remark}
+
+\subsection{The Arithmetic Comparison Required for P1}
+\label{v4-arith:pos:p1-closes}
+\begin{question}[level cancellation and the functional equation]
+\label{v4-arith:pos:thm:P1-full-unconditional}
+Construct the arithmetic pairing, its integral and completed coefficient
+models, and the comparison of its central obstruction classes with the
+Tate functional equation. The intended conclusion remains
+\[
+ \kappa^{\mathrm{Ar}}_{\mathsf G}+(\kappa^!)^{\mathrm{Ar}}_{\mathsf G}=0
+ \quad\Longleftrightarrow\quad \xi(s)=\xi(1-s).
+\]
+The scalar functional equation is a theorem. The oscillator energy
+calculation does not prove either identification of the arithmetic
+classes with its two sides.
+\end{question}
+
+\begin{remark}[dependencies of the arithmetic comparison]
+\label{v4-arith:pos:rem:form-prop}
+The pairing and invariant comparisons are required whenever
+Remark~\ref{v4-arith:cl:rem:P1-conditional} and Question~\ref{v4-arith:thm:G-row-complementarity} and Theorem~\ref{v4-arith:rh:thm:sufficient-path} invoke the arithmetic Positselski
+input. The continuous-dual, completion, lifting, character and
+Bost--Connes requirements remain distinct. Neither the formal sum of
+opposite energies nor the scalar zeta identity removes these maps.
+\end{remark}
+
+\section{Fourier Pairings and Adelic Assembly}
+\label{v4-arith:pos:archimedean}
+
+\subsection{The Archimedean Fourier Model}
+\label{v4-arith:pos:archimedean-analogue}
+
+The real local factor enters the scalar functional equation
+through the Gaussian. Fix the Fourier convention
+\[
+ \widehat f(y)=\int_{\mathbb R}f(x)e^{-2\pi ixy}\,dx.
+\]
+This integral uses real analysis and a specified measure.
+A comparison with an algebraic pairing must preserve that
+normalization.
+
+\begin{theorem}[Gaussian Fourier identity]
+\label{v4-arith:pos:thm:gaussian-positselski}
+For \(t>0\) and \(f_t(x)=e^{-\pi t x^2}\),
+\[
+ \widehat f_t(y)=t^{-1/2}e^{-\pi y^2/t}.
+\]
+\end{theorem}
+\begin{proof}
+For \(t=1\), differentiate under the integral and integrate
+by parts. The Gaussian decay eliminates the boundary term
+and gives \(\widehat f_1'(y)=-2\pi y\widehat f_1(y)\).
+The value at zero is one: the square of the positive Gaussian
+integral is \(2\pi\int_0^\infty r e^{-\pi r^2}\,dr=1\).
+Solving the differential equation gives the formula at \(t=1\).
+The substitution \(u=\sqrt t\,x\) proves the general case.
+\end{proof}
+
+Poisson summation gives
+\(\theta(t)=t^{-1/2}\theta(1/t)\) for
+\(\theta(t)=\sum_{m\in\mathbb Z}e^{-\pi m^2t}\).
+The theta series counts a lattice quadratic form.
+The oscillator Fock space
+\(\mathbb C[\alpha_{-1},\alpha_{-2},\ldots]|0\rangle\),
+with weight \(n\) on \(\alpha_{-n}\), has character
+\(\prod_{n\ge1}(1-q^n)^{-1}\).
+The two series already differ at the coefficient of \(q\):
+\(\sum_{m\in\mathbb Z}q^{m^2}\) has coefficient two,
+whereas the oscillator character has coefficient one.
+
+To compare the Fourier identity with co--contra duality,
+specify an archimedean coalgebra and a pairing-preserving map.
+Theorem~\ref{v4-arith:pos:thm:classical-positselski}
+applies to an actual dg coalgebra over \(\mathbb C\).
+It does not turn a Fock module, a theta series or a Fourier
+transform into that coalgebra or its categorical pairing.
+
+\subsection{Adelic Assembly}
+\label{v4-arith:pos:adelic-assembly}
+
+Fix a commutative coefficient ring \(R\).
+For each place \(v\), let \(\mathcal C_v,\mathcal D_v\)
+be presentable stable \(R\)-linear categories, with chosen
+objects \(c_v,d_v\). Use the tensor product of such categories
+characterized by \(R\)-bilinear functors preserving colimits
+in each variable.
+
+For a finite place set \(F\), put
+\[
+ \mathcal C_F=\bigotimes_{v\in F,R}\mathcal C_v,
+ \qquad
+ \mathcal D_F=\bigotimes_{v\in F,R}\mathcal D_v.
+\]
+The empty tensor is \(\mathrm{Mod}_R\).
+Insertion of \(c_v\), respectively \(d_v\), defines the
+transition functors when a new place is added.
+Define the corresponding restricted tensor categories as
+colimits over these finite place sets.
+
+\begin{theorem}[assembly of pointed local equivalences]
+\label{v4-arith:pos:thm:adelic-positselski}
+Suppose \(R\)-linear equivalences
+\(\Psi_v:\mathcal C_v\simeq\mathcal D_v\) and identifications
+\(\Psi_v(c_v)\simeq d_v\) give a compatible equivalence of
+the finite tensor diagrams. Then
+\begin{equation}
+\label{v4-arith:pos:eq:adelic-positselski}
+ \varinjlim_F\mathcal C_F
+ \xrightarrow{\ \sim\ }
+ \varinjlim_F\mathcal D_F.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Tensoring finitely many equivalences gives an equivalence
+\(\mathcal C_F\simeq\mathcal D_F\).
+The pointing identifications and their assumed coherence make
+these maps an equivalence of diagrams. Taking the colimit
+preserves that equivalence.
+\end{proof}
+
+For arithmetic local categories, the common coefficient action,
+tensor recipient, local equivalences and compatible pointings
+must be constructed. The symbols \(\mathbb Q_p\) and
+\(\mathbb C\) do not provide a common field by themselves.
+The chosen objects also need not be scalar augmentations or
+vacua of an independently specified field theory.
+Identifying this categorical colimit with an analytic adelic
+restricted tensor product is a further comparison.
+
+\begin{remark}[the adelic pairing and the functional equation]
+\label{v4-arith:pos:rem:adelic-fe}
+The theta--Mellin calculation of
+Theorem~\ref{v4-arith:thm:arithmetic-modular-invariance} retains
+its polar terms and proves the scalar functional equation.
+To interpret it through an adelic bar pairing, construct an
+evaluation identifying the duality involution with Mellin reflection.
+The forward implication also requires the central-defect identity.
+The converse requires that evaluation to detect the specified defect,
+as in Theorem~\ref{v4-arith:thm:P1-resolution}.
+
+An adelic co--contra equivalence is a separate categorical
+comparison. Identifying its pairing with Fourier self-duality
+requires the actual coefficient and pairing maps.
+The scalar theta calculation does not construct them.
+\end{remark}
+
+\section{Residual Conditions}
+\label{v4-arith:pos:residual-domain}
+
+The integral lifting criterion and the local assembly theorem
+apply only after their functors, recipients and comparison
+maps have been supplied. The following questions ask for further arithmetic structures.
+The commutative comparison remains subject to the preceding
+hypotheses.
+
+\subsection{Non-Abelian Iwahori Level}
+\label{v4-arith:pos:non-abelian}
+
+For a compact \(p\)-adic group \(G\), write
+\(A=\mathbb Z_p[[G]]\). An \(A\)-coring is an
+\(A\)-bimodule \(C\) with counit \(C\to A\) and a
+coassociative coproduct \(C\to C\otimes_A C\).
+A continuous version replaces the tensor by a specified
+completed tensor and requires continuous structure maps.
+
+\begin{question}[noncommutative arithmetic co--contra comparison]
+\label{v4-arith:pos:cj:non-commutative}
+For an arithmetic coring over \(A\), construct exact comodule
+and contramodule recipients and an adjunction between them.
+Determine a coefficient and completion domain on which its
+unit and counit are equivalences.
+For \(G=GL_2(\mathbb Z_p)\), construct the required comparison
+with the intended Iwahori Hecke category and its actions.
+If a noncommutative \(\mu\)-invariant is used, specify its
+module and prove the precise role of its vanishing.
+\end{question}
+
+\begin{remark}[module structure and categorical comparison]
+\label{v4-arith:pos:rem:non-commutative-form}
+A noncommutative module structure theorem has its own hypotheses
+on the group, ring and torsion class.
+It does not by itself compare comodule and contramodule
+resolutions. Such a comparison needs the actual tensor and
+Hom functors, with the correct module sides.
+Even over the commutative ring \(\Lambda\),
+Proposition~\ref{v4-arith:pos:prop:resolutions-cohere}
+shows why \(\mu=0\) cannot replace the necessary Tor conditions.
+\end{remark}
+
+\subsection{Whittaker Model Compatibility}
+\label{v4-arith:pos:whittaker}
+
+A Whittaker condition requires a specified unipotent group
+\(N\), a character \(\psi\), and an action on the recipient.
+It also requires a choice of equivariant or derived
+coinvariant construction. The coefficient ring must support
+that character.
+
+\begin{question}[Whittaker-compatible co--contra comparison]
+\label{v4-arith:pos:cj:whittaker-compat}
+Construct an arithmetic co--contra comparison equipped with
+compatible \((N,\psi)\)-actions and the required Hecke actions.
+Show that it induces an equivalence between the resulting
+Whittaker recipients,
+\[
+ \mathcal C^{N,\psi}\simeq\mathcal D^{N,\psi},
+\]
+and construct its comparison with the chosen Satake and
+Whittaker functors. A scalar character identity alone does
+not define these equivariant functors.
+\end{question}
+
+\subsection{Extension to Higher Rank}
+\label{v4-arith:pos:higher-rank}
+
+Replacing \(\Gamma\cong\mathbb Z_p\) by \(\mathbb Z_p^d\)
+changes the coefficient ring to
+\(\Lambda_d=\mathbb Z_p[[T_1,\ldots,T_d]]\).
+The co--contra comparison then needs categories and resolution
+hypotheses over this ring. An arithmetic vanishing theorem also
+requires a specified module attached to the chosen tower.
+The cyclotomic theorem does not supply that module or an induction
+in \(d\).
+
+\begin{remark}[higher-rank extension]
+\label{v4-arith:pos:rem:higher-rank}
+For a finitely generated torsion \(\Lambda_d\)-module, the
+length of its localization at \((p)\) gives a corresponding
+height-one invariant. The module \(\Lambda_d/(p)\) has length
+one there, although \(\Gamma\) is abelian. Thus abelianity alone
+does not force this invariant to vanish. Determining its value
+for an arithmetic tower and comparing that module with a bar
+coefficient are separate problems.
+\end{remark}
+
+\section{Positselski Boundary}
+\label{v4-arith:pos:summary}
+
+\begin{enumerate}
+\item Theorem~\ref{v4-arith:thm:arithmetic-positselski} gives
+a lifting criterion for a specified adjunction.
+Its unit and counit cofibers must be derived \(p\)-complete,
+and their reductions must vanish.
+The integral arithmetic categories and functors remain
+additional constructions. The field correspondence does
+not establish them by scalar extension or faithful reduction.
+\item The comparisons of Section~\ref{v4-arith:pos:obstruction-analysis-table}
+have separate hypotheses. In particular, the weight calculation needs
+arithmetic pairing and invariant maps even in the abelian case.
+The nonabelian Iwahori extension is a further problem
+(Section~\ref{v4-arith:pos:residual-domain}).
+\item The hypothesis \(\mu(C)=0\) concerns the specified torsion
+coefficient module. Section~\ref{v4-arith:pos:att-3-mu-heisenberg}
+proves a local lattice calculation.
+Corollary~\ref{v4-arith:pos:cor:mu-zero-heisenberg} gives an
+arithmetic consequence under an actual module comparison.
+Neither statement identifies an unspecified Heisenberg bar with
+a cyclotomic class-group module or characterizes conilpotence.
+\item Theorem~\ref{v4-arith:pos:thm:weight-comp} constructs the restricted
+integral dual and its energy-zero evaluation pairing on finite-species
+polynomial components. Identifying this pairing with arithmetic
+bar--cobar data and its energies with central obstruction classes is
+additional work.
+\item The intended P1 comparison remains
+Question~\ref{v4-arith:pos:thm:P1-full-unconditional}. Its operator and invariant
+maps are not consequences of the scalar functional equation.
+\item Adelic extension retains the local categorical hypotheses
+and their compatible pointings. Its interpretation through the
+functional equation additionally requires the evaluation and
+central-defect maps of Remark~\ref{v4-arith:pos:rem:adelic-fe}.
+Gaussian Fourier self-duality and the scalar theta calculation
+provide analytic models, not those arithmetic identifications.
+\item Residual condition
+(Section~\ref{v4-arith:pos:residual-domain}): non-commutative arithmetic
+Positselski for non-abelian Iwahori level
+(Question~\ref{v4-arith:pos:cj:non-commutative}), Whittaker compatibility
+(Question~\ref{v4-arith:pos:cj:whittaker-compat}) and higher-rank
+Iwasawa coefficients (Remark~\ref{v4-arith:pos:rem:higher-rank}).
+\end{enumerate}
+
+The intended arithmetic comparison relates central obstruction classes
+to the classical functional equation. The local constructions above do
+not identify those classes with the explicitly computed scalar pairing.
+The continuous-dual, completion, lifting, character and Bost--Connes
+requirements must therefore be supplied as actual compatible maps on
+the intended carrier. The arithmetic Positselski input on the sufficient
+path of Theorem~\ref{v4-arith:rh:thm:sufficient-path} includes that comparison;
+it is not discharged by the equality of opposite energy labels.

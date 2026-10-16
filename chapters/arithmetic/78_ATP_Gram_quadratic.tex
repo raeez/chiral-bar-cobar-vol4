@@ -1,0 +1,709 @@
+\chapter{A-TP as Gram Matrix Positivity: Hermite Basis Reduction}
+\label{v4-arith:w7-h:chapter}
+
+The full Weil inequality can be tested on a countable family of
+compactly supported Hermite functions. Their finite Gram matrices
+retain the signed gamma, prime, and polar terms.
+Fixed cutoffs and continuous moment projections give dense families
+in the compact test algebra and its specified moment kernels.
+The uncut Hermite functions instead belong to the exponential test
+space and supply a separate Gaussian matrix.
+
+\section{Hermite Cutoff}
+\label{v4-arith:w7-h:context}
+A test family determines the Weil inequality only when its span is
+dense for a topology in which the form is continuous.
+Multiplication of Hermite expansions by a fixed compact cutoff gives
+convergence of every derivative with a common support.
+This proves the required density in the compact test topology.
+A finite list of Li coefficient inequalities concerns different tests.
+A comparison with a finite Hermite matrix requires an actual
+change-of-family map and control of any remaining error.
+
+\subsection{Quadratic Reduction}
+\label{v4-arith:w7-h:objective}
+Negative semidefiniteness of all compact Gram blocks is equivalent
+to the full Weil inequality. Projection onto a moment kernel gives
+the restricted inequality on that kernel.
+
+\subsection{Classical references}
+\label{v4-arith:w7-h:sources}
+
+\begin{description}
+\item[Weber 1869.] Weber, H. \emph{\"Uber die Integration der
+partiellen Differentialgleichung
+\(\partial^{2}u/\partial x^{2}+\partial^{2}u/\partial y^{2}+k^{2}u=0\)}.
+\emph{Math.~Annalen} 1 (1869), 1--36. Parabolic cylinder functions
+and Weber--Hermite basis for \(L^{2}(\mathbb{R})\).
+\item[Bombieri--Lagarias 1999.] Bombieri, E.; Lagarias, J.~C.
+\emph{Complements to Li's criterion for the Riemann hypothesis}.
+\emph{J.~Number Theory} 77 (1999), 274--287.
+The Li positivity criterion and its generalizations.
+\item[Coffey 2005.] Coffey, M.~W. \emph{Toward verification of the
+Riemann hypothesis: application of the Li criterion}.
+\emph{Math.~Phys.~Analysis \& Geometry} 8 (2005), 211--255.
+Series decompositions of Li coefficients and approximate values
+for $1\le n\le100$ in Appendix~D, pp.~29--32 of the preprint.
+\item[Erd\'elyi 1954.] Erd\'elyi, A. (ed.) \emph{Tables of Integral
+Transforms} (Bateman Manuscript Project) Vol.~I, McGraw-Hill 1954.
+Mellin transform of Weber--Hermite functions as parabolic cylinder
+functions / confluent hypergeometric expressions.
+\item[Mehler 1866.] Mehler, F.G. \emph{\"Uber die Entwicklung einer
+Function von beliebig vielen Variabeln nach Laplaceschen Functionen
+h\"oherer Ordnung}. \emph{Crelle's Journal} 66 (1866), 161--176.
+Mehler kernel identity for the physicist's Hermite polynomials
+(DLMF~18.18.28, $|t|<1$),
+\(\sum_{n\geq 0}H_{n}(x)H_{n}(y)t^{n}/(2^n n!)=(1-t^{2})^{-1/2}\exp((2txy-t^{2}(x^{2}+y^{2}))/(1-t^{2}))\).
+\end{description}
+
+\section{The Weil form and its moment subspaces}
+\label{v4-arith:w7-h:quadratic-form}
+\label{v4-arith:w7-h:quadratic-form:weil-as-q}
+\begin{definition}[Weil quadratic form]
+\label{v4-arith:w7-h:def:weil-quadratic}
+For $f,h\in\mathscr A=C_c^\infty(\mathbb R;\mathbb C)$ put
+$q(f,h)=-W(f*h^*)$, linear in the first argument, and
+$\mathcal Q[f]=q(f,f)$.
+Write $M_f(s)=\int f(x)e^{sx}dx$ and $\psi_\Gamma=\Gamma'/\Gamma$.
+With $h_f(u)=\int f(x)e^{iux}dx$ and
+$k(u)=\log\pi-\Re\psi_\Gamma(1/4+iu/2)$, one has
+\begin{equation}
+\label{v4-arith:w7-h:eq:weil-quadratic}
+ \mathcal Q[f]=W_\infty(f*f^*)+W_{\mathrm{fin}}(f*f^*)-P(f*f^*).
+\end{equation}
+\end{definition}
+\begin{proposition}[integral representation]
+\label{v4-arith:w7-h:prop:integral-rep}
+The form $q$ is continuous and Hermitian in the compact test topology.
+For all $f,h\in\mathscr A$,
+\begin{equation}
+\label{v4-arith:w7-h:eq:integral-rep}
+ q(f,h)=\frac1{2\pi}\int h_f(u)\overline{h_h(u)}k(u)du
+       +W_{\mathrm{fin}}(f*h^*)
+       -a(f)\overline{b(h)}-b(f)\overline{a(h)},
+\end{equation}
+where $a(f)=M_f(-1/2)$ and $b(f)=M_f(1/2)$.
+\end{proposition}
+\begin{proof}
+Apply the compact explicit formula to $f*h^*$.
+The Fourier convolution identity gives the integral, and evaluation
+at $\pm i/2$ gives the polar terms.
+Continuity follows from continuity of convolution and the three
+explicit-formula distributions. Their involution identities give
+Hermitian symmetry.
+\end{proof}
+\label{v4-arith:w7-h:quadratic-form:operator}
+\begin{definition}[the map to the continuous antidual]
+\label{v4-arith:w7-h:def:Q-operator}
+Let $\mathscr A^\times$ denote the continuous conjugate-linear
+functionals on $\mathscr A$. Define the linear map
+$Q:\mathscr A\to\mathscr A^\times$ by
+\begin{equation}
+\label{v4-arith:w7-h:eq:Q-operator}
+ (Qf)(h)=q(f,h).
+\end{equation}
+This is a Hermitian form map. A self-adjoint operator on a Hilbert
+space requires a Hilbert realization and an operator domain.
+\end{definition}
+\begin{remark}[domains and the auxiliary form]
+\label{v4-arith:w7-h:rem:domain}
+Compact smooth tests have rapidly decreasing angular Fourier transforms
+on the real axis. This proves convergence against $k(u)=O(\log(2+|u|))$.
+For $g(u)=2\log\pi-k(u)$, define
+$G_g(f,h)=(2\pi)^{-1}\int h_f\overline{h_h}g$.
+Then $W_\infty(f*h^*)=2\log\pi\langle f,h\rangle_2-G_g(f,h)$.
+The real even moment class $\mathscr A_{13}$ imposes moments
+at $0,1$, whereas $\mathscr A_{\mathrm{pol}}=\ker(a,b)$ imposes
+moments at $\pm1/2$. These are different subspaces.
+The latter is a closed complex subspace of codimension two.
+To construct its projection, take a nonnegative compact even bump $b_0$
+and two distinct translates $b_j(x)=b_0(x-t_j)$.
+Their moment columns are
+$(e^{-t_j/2}a(b_0),e^{t_j/2}b(b_0))^t$, hence are independent.
+Writing this matrix as $C$, set
+$R_{\mathrm{pol}}v=\sum_{j=1}^2b_j(C^{-1}v)_j$ and
+$\Pi_{\mathrm{pol}}f=f-R_{\mathrm{pol}}(a(f),b(f))^t$.
+It is continuous and projects onto $\mathscr A_{\mathrm{pol}}$.
+The real projection $\Pi$ onto $\mathscr A_{13}$ is given in
+\Cref{v4-arith:consumer75:moment-projection}.
+\end{remark}
+
+\section{The Weber--Hermite Basis and Gram Matrix}
+\label{v4-arith:w7-h:hermite-basis}
+
+The Hermite functions are Fourier eigenfunctions and form an orthonormal
+basis of $L^2(\mathbb R)$. Their rapidly convergent expansions of
+compact smooth tests become compact approximations after multiplication
+by a fixed cutoff.
+
+\subsection{Weber--Hermite Basis}
+\label{v4-arith:w7-h:hermite-basis:def}
+
+\begin{definition}[Weber--Hermite functions]
+\label{v4-arith:w7-h:def:hermite}
+\ClaimStatusDefinitional. For \(n\geq 0\), set
+\begin{equation}
+\label{v4-arith:w7-h:eq:hermite}
+\phi_{n}(x)\;:=\;(2^{n}n!\sqrt{\pi})^{-1/2}H_{n}(x)e^{-x^{2}/2},
+\qquad x\in\mathbb{R},
+\end{equation}
+where \(H_{n}\) is the physicist's Hermite polynomial
+\(H_{n}(y)=(-1)^{n}e^{y^{2}}\frac{d^{n}}{dy^{n}}e^{-y^{2}}\).
+The normalization is chosen so that \(\{\phi_{n}\}_{n\geq 0}\) is
+orthonormal in \(L^{2}(\mathbb{R})\) for the angular Fourier
+normalization used in \Cref{v4-arith:w5-a:def:PW}.
+\end{definition}
+
+\begin{proposition}[Hermite self-reciprocity]
+\label{v4-arith:w7-h:prop:hermite-self-reciprocal}
+\ClaimStatusProvedElsewhere. Under the Fourier normalization
+\(\widehat{f}(t)=\int f(x)e^{itx}\,dx\),
+\begin{equation}
+\label{v4-arith:w7-h:eq:hermite-fourier-factor}
+\widehat{\phi_{n}}(t)=(2\pi)^{1/2}i^{n}\phi_{n}(t).
+\end{equation}
+Equivalently, the unitary angular Fourier transform
+\((2\pi)^{-1/2}\widehat{\phantom f}\) has eigenvalue \(i^{n}\) on
+\(\phi_{n}\).
+\end{proposition}
+
+\begin{proof}
+Hermite 1864; see Whittaker--Watson 1927 \S16.61. The Hermite
+functions diagonalize the harmonic oscillator \(-\partial_{x}^{2}+x^{2}\)
+which commutes with the Fourier transform (conjugated by the
+appropriate scaling).
+\end{proof}
+
+\begin{remark}[Schwartz convergence and compact support]
+\label{v4-arith:w7-h:rem:hermite-dense}
+Their finite span is dense in Schwartz space and in $L^2(\mathbb R)$.
+For $f\in\mathscr A$ with
+\(\operatorname{supp}(f)\subset[-T,T]\), the Hermite expansion
+\(f=\sum_{n}c_{n}\phi_{n}\) converges in Schwartz topology with
+\(|c_{n}|\leq C_{T,N}n^{-N}\) for every \(N\): this is the classical
+Hermite-series rapid decay for Schwartz functions (Reed--Simon~II
+Thm.~V.13). However, the Hermite functions are \emph{not} compactly
+supported, so the expansion does not preserve Paley--Wiener support;
+the truncation
+\(f_{N}:=\sum_{n=0}^{N}c_{n}\phi_{n}\) belongs to the Schwartz class
+but generally not to $\mathscr A$.
+\end{remark}
+
+The subtlety of \Cref{v4-arith:w7-h:rem:hermite-dense} is essential:
+a Schwartz expansion alone does not preserve the compact-test topology.
+The fixed-cutoff construction below supplies that convergence, without
+asserting a compact Hilbert-space operator.
+
+\subsection{The Gram Matrix \(Q_{mn}\)}
+\label{v4-arith:w7-h:hermite-basis:gram}
+
+\begin{definition}[compact Hermite Gram family]
+\label{v4-arith:w7-h:def:gram}
+Fix a real even $\chi\in C_c^\infty(\mathbb R)$ equal to one on
+$[-1,1]$. Set $\chi_R(x)=\chi(x/R)$ for integers $R\ge1$ and
+$e_{R,n}=\chi_R\phi_n$ for $n\ge0$.
+Enumerate the pairs $(R,n)$ by $j\ge0$, and write $e_j=e_{R,n}$.
+Define the Hermitian matrix
+\begin{equation}
+\label{v4-arith:w7-h:eq:gram-definition}
+ Q_{ij}=q(e_i,e_j),\qquad
+ q\left(\sum_i c_i e_i,\sum_j c_j e_j\right)
+       =\sum_{i,j}c_i\overline{c_j}Q_{ij}.
+\end{equation}
+Its finite principal matrices need no removed-cutoff limit.
+The projected families $\Pi e_{R,2n}$ and
+$\Pi_{\mathrm{pol}}e_{R,n}$ give, respectively, real moment
+matrices and complex polar-kernel matrices.
+\end{definition}
+
+\begin{theorem}[completeness of the compact families]
+\label{v4-arith:consumer78:compact-density}
+The complex span of the $e_{R,n}$ is dense in $\mathscr A$.
+The real span of $\Pi e_{R,2n}$ is dense in $\mathscr A_{13}$.
+The complex span of $\Pi_{\mathrm{pol}}e_{R,n}$ is dense in
+$\mathscr A_{\mathrm{pol}}$.
+All three statements use the respective compact test topologies.
+\end{theorem}
+\begin{proof}
+Let $f$ be compact smooth and choose $R$ with $\chi_R=1$ on its support.
+Its Hermite coefficients satisfy
+\[
+ |\langle f,\phi_n\rangle_2|
+ \le (2n+1)^{-m}\|(-D^2+x^2)^m f\|_2
+ \quad(m\ge0).
+\]
+This follows by integration by parts and the oscillator eigenvalue
+identity. The ladder identities for multiplication by $x$ and
+application of $D$ bound the $L^2$ norms of
+$x^aD^b\phi_n$ by a polynomial in $n$ for each fixed $a,b$.
+The one-dimensional estimate
+$\|v\|_\infty^2\le2\|v\|_2\|v'\|_2$ gives the corresponding
+supremum bounds. Arbitrarily rapid coefficient decay therefore
+makes the Hermite series and all its Schwartz seminorms converge.
+Its $L^2$ limit is $f$, by completeness of the Hermite functions.
+If $s_N$ is its partial sum, then $\chi_Rs_N\to f$ with a common
+compact support and uniform convergence of every derivative.
+This is convergence in the compact test topology.
+For real even $f$ only even indices occur and the coefficients are real.
+Applying the continuous projection $\Pi$, or $\Pi_{\mathrm{pol}}$,
+proves the corresponding kernel-density statements.
+\end{proof}
+
+\begin{theorem}[compact Gram formula]
+\label{v4-arith:w7-h:thm:gram-formula}
+For $d_i=e_i$, or for either projected family, write
+$h_i=\mathcal F_+d_i$ and $F_{ij}=d_i*d_j^*$.
+Then
+\begin{equation}
+\label{v4-arith:w7-h:eq:gram-formula}
+ q(d_i,d_j)=\frac1{2\pi}\int h_i(u)\overline{h_j(u)}k(u)du
+             +(Q_{\mathrm{fin}})_{ij}-(Q_{\mathrm{polar}})_{ij},
+\end{equation}
+where
+\begin{align}
+\label{v4-arith:w7-h:eq:gram-fin}
+ (Q_{\mathrm{fin}})_{ij}
+ &=\sum_{m\ge2}\frac{\Lambda(m)}{\sqrt m}
+        (F_{ij}(\log m)+F_{ij}(-\log m)),\\
+\label{v4-arith:w7-h:eq:gram-polar}
+ (Q_{\mathrm{polar}})_{ij}
+ &=a(d_i)\overline{b(d_j)}+b(d_i)\overline{a(d_j)}.
+\end{align}
+The prime sum is finite. The polar term vanishes for the
+$\Pi_{\mathrm{pol}}$ family, but need not vanish for the $\Pi$ family.
+\end{theorem}
+\begin{proof}
+Apply \eqref{v4-arith:w7-h:eq:integral-rep} to the two compact tests.
+Compact support bounds the prime-power logarithms in the sum.
+\end{proof}
+\begin{remark}[reality and the Gaussian extension]
+\label{v4-arith:w7-h:rem:reality}
+Every even Hermite index occurs for real even tests, including
+$n\equiv2\pmod4$. Its Fourier eigenvalue is real and needs no pairing
+with another index. Compact cutoffs need not be Fourier eigenfunctions.
+For uncut Hermites, convergence $\chi_R\phi_n\to\phi_n$ holds in
+$\mathscr G$ of \Cref{v4-arith:sc:gaussian-extension}.
+The extended form consequently gives well-defined entries
+$q(\phi_m,\phi_n)$ as a separate Gaussian matrix.
+Its signed archimedean entry is
+$i^{m-n}\int\phi_m(u)\phi_n(u)k(u)du$.
+\end{remark}
+
+\subsection{The uncut auxiliary diagonal}
+\label{v4-arith:w7-h:hermite-basis:arch-diagonal}
+\begin{proposition}[auxiliary and signed Hermite moments]
+\label{v4-arith:w7-h:prop:arch-diagonal}
+For each $n\ge0$ the auxiliary uncut moment is
+\begin{equation}
+\label{v4-arith:w7-h:eq:arch-diagonal}
+ A_n:=G_g(\phi_n,\phi_n)=\int_{\mathbb R}|\phi_n(u)|^2g(u)du.
+\end{equation}
+The corresponding signed gamma diagonal is $2\log\pi-A_n$.
+These are moments of the uncut Hermites in $\mathscr G$.
+\end{proposition}
+\begin{proof}
+Use $h_{\phi_n}=\sqrt{2\pi}i^n\phi_n$ and $\|\phi_n\|_2=1$.
+The Gaussian times polynomial decay of $\phi_n$ proves absolute
+convergence against the logarithmic weight. The identity
+$k+g=2\log\pi$ gives the signed diagonal.
+\end{proof}
+\begin{lemma}[the zeroth auxiliary moment]
+\label{v4-arith:w7-h:lem:arch-diagonal-sign}
+\begin{equation}
+\label{v4-arith:w7-h:eq:arch-00}
+ A_0=\frac1{\sqrt\pi}\int_{\mathbb R}e^{-u^2}g(u)du<0.
+\end{equation}
+If $I(L)=\int e^{-2\pi u^2/L}g(u)du$, then
+$A_0=I(2\pi)/\sqrt\pi$. In particular, the signed zeroth gamma
+moment $2\log\pi-A_0$ is positive.
+\end{lemma}
+\begin{proof}
+The normalized Gaussian measure $e^{-u^2}du/\sqrt\pi$ has second
+moment $1/2$. The digamma series gives, for $c_n=n+1/4$,
+\[
+ g(u)=g(0)+\sum_{n\ge0}
+       \frac{u^2/4}{c_n(c_n^2+u^2/4)}.
+\]
+All increments are nonnegative, so Tonelli applies.
+The function $y/(c^2+y)$ is concave on $y\ge0$.
+For $n=0$, Jensen's inequality bounds the Gaussian mean by
+\[
+ \frac{1/8}{(1/4)((1/4)^2+1/8)}=\frac83.
+\]
+For $n\ge1$ the mean is at most $1/(8c_n^3)$, and
+\[
+ \frac18\sum_{n\ge1}(n+1/4)^{-3}
+ \le\frac18\left((5/4)^{-3}+\int_{5/4}^\infty x^{-3}dx\right)
+ =\frac{13}{125}.
+\]
+Finally $g(0)=-\gamma-\pi/2-3\log2+\log\pi<-3$.
+For example, $\gamma>0.57$, $\pi>3.14$, $\log2>0.69$, and
+$\log\pi<1.15$ give this strict bound.
+Hence $A_0<-3+8/3+13/125<0$.
+Substituting $L=2\pi$ proves the stated normalization.
+\end{proof}
+\begin{remark}[arithmetic interpretation of a diagonal]
+\label{v4-arith:w7-h:rem:negative-is-necessary}
+The auxiliary sign does not determine the Weil sign.
+For an uncut Hermite test the full diagonal is
+\[
+ q(\phi_n,\phi_n)=2\log\pi-A_n
+       +W_{\mathrm{fin}}(\phi_n*\phi_n^*)-P(\phi_n*\phi_n^*).
+\]
+The prime and polar terms converge in the exponential test topology.
+For compact projected tests the formula in
+\Cref{v4-arith:w7-h:thm:gram-formula} gives their separate diagonals.
+\end{remark}
+
+\section{Hadamard Factorization and the Zero-Sum Decomposition}
+\label{v4-arith:w7-h:hadamard}
+
+Applying the explicit formula to each pair of compact tests expresses
+its Gram entry as minus the corresponding zero sum. The definition
+of the form has already subtracted the polar term.
+
+\begin{theorem}[zero decomposition of the Gram matrix]
+\label{v4-arith:w7-h:thm:hadamard}
+Put $z_\rho=-i(\rho-1/2)$, where $\rho$ runs over the zeros of
+$\xi$ with multiplicity. For the compact family $d_i$ of
+\Cref{v4-arith:w7-h:thm:gram-formula},
+\begin{equation}
+\label{v4-arith:w7-h:eq:hadamard}
+ q(d_i,d_j)=-\sum_\rho h_i(z_\rho)
+                           \overline{h_j(\bar z_\rho)}.
+\end{equation}
+The sum converges absolutely. The same identity holds for uncut
+Hermite tests using the extension to $\mathscr G$.
+\end{theorem}
+\begin{proof}
+The explicit formula gives $W=P-W_\infty-W_{\mathrm{fin}}$.
+The form $q=-W=W_\infty+W_{\mathrm{fin}}-P$ therefore equals
+minus the zero sum. Its polar contribution has already been subtracted.
+The compact formula and the continuous extension to $\mathscr G$
+prove the two assertions.
+\end{proof}
+
+\begin{corollary}[complete compact Gram criterion]
+\label{v4-arith:w7-h:cor:RH-equivalence}
+The Riemann Hypothesis is equivalent to negative semidefiniteness
+of every finite principal matrix for the full complex compact family
+$e_{R,n}$. Equivalently, every finitely supported complex vector $c$
+satisfies
+\begin{equation}
+\label{v4-arith:w7-h:eq:Q-NSD}
+ \sum_{i,j}c_i\overline{c_j}Q_{ij}
+ =-\sum_\rho\left(\sum_i c_i h_i(z_\rho)\right)
+       \overline{\left(\sum_i c_i h_i(\bar z_\rho)\right)}\le0.
+\end{equation}
+For either projected family the same criterion characterizes
+nonpositivity on its specified moment kernel only.
+\end{corollary}
+\begin{proof}
+Matrix nonpositivity is nonpositivity of $q$ on the corresponding
+finite span. Density from \Cref{v4-arith:consumer78:compact-density}
+and continuity of $q$ extend it to the stated test space.
+The converse follows by restriction. On all of $\mathscr A$,
+Weil's criterion identifies this condition with RH.
+Under RH the zero expression is minus a sum of absolute squares.
+\end{proof}
+
+\begin{remark}[restriction and the full form]
+\label{v4-arith:w7-h:rem:tautology}
+A continuous projection $\Pi=1-RL$ gives
+$f=\Pi f+RLf$. Consequently
+\[
+ q(f,f)=q(\Pi f,\Pi f)+2\Re q(\Pi f,RLf)+q(RLf,RLf).
+\]
+A sign theorem on the moment kernel supplies only the first term.
+The mixed terms and the finite-dimensional complement remain in the
+full form. The complete compact Gram family retains all of them.
+\end{remark}
+
+\section{Finite-\(N\) Truncation and Bombieri--Lagarias Numerical Content}
+\label{v4-arith:w7-h:finite-N}
+
+At each finite truncation, $Q_N$ is a computable Hermitian matrix
+for its specified compact tests. A finite comparison with Li tests
+requires the corresponding change-of-family map. The infinite criterion
+uses every principal block.
+
+\begin{definition}[truncated Gram matrix]
+\label{v4-arith:w7-h:def:truncated}
+\ClaimStatusDefinitional. For \(N\geq 0\), set
+\(Q_{N}:=(Q_{mn})_{m,n\leq N}\), the \((N+1)\times(N+1)\) upper-left
+block of the full Gram matrix. It is Hermitian. On a real even
+projected family it is real symmetric.
+\end{definition}
+
+\begin{theorem}[finite-\(N\) Hermite blocks do not follow from Li positivity]
+\label{v4-arith:w7-h:thm:finite-N-li}
+\ClaimStatusProvedHere. Negative-semidefiniteness of the Hermite block
+\(Q_{N}\) is not a formal consequence of the inequalities
+\(\lambda_{n}\geq0\) for \(1\leq n\leq N\). Such a transfer would require
+an explicit finite change-of-test-family matrix between the
+Hermite cutoff functions and the Li test functions, together with
+control of the cutoff error. No such matrix is constructed here.
+\end{theorem}
+
+\begin{proof}
+Li positivity is a family of scalar inequalities for a distinguished
+Li test family. Negative-semidefiniteness of \(Q_{N}\) is a matrix
+inequality for the first \(N+1\) Hermite cutoff tests. Positivity of
+one finite list of scalar evaluations does not imply negativity of a
+different finite Gram block without a proved change of basis and error
+bound. The Hermite functions are not themselves Paley--Wiener tests,
+so the cutoff error is part of the statement, not a harmless
+normalization.
+\end{proof}
+
+\begin{proposition}[finite Li inequalities with error bounds]
+\label{v4-arith:w7-h:thm:coffey}
+Suppose real approximations $a_n$ and proven bounds $\varepsilon_n$
+satisfy $|\lambda_n-a_n|\le\varepsilon_n<a_n$ for $1\le n\le N$.
+Then $\lambda_n>0$ for those indices. This certifies only that
+finite list of Li inequalities, not a distinct compact Gram block.
+\end{proposition}
+\begin{proof}
+For each index, $\lambda_n\ge a_n-\varepsilon_n>0$.
+A Gram-block assertion involves the quadratic form on all linear
+combinations of its specified tests, as established above.
+\end{proof}
+Coffey~2005, Appendix~D, pp.~29--32 of arXiv:math-ph/0505052,
+tabulates approximate Li values for $1\le n\le100$.
+The displayed values are positive. A claim through $N=10^5$ requires
+its own values and rigorous error bounds; a stated decimal precision
+alone is not an error bound. The analytic series and Li-test
+comparisons of Coffey and Bombieri--Lagarias remain distinct from
+the compact Hermite matrices constructed here.
+
+\begin{proposition}[a three-mode Gaussian matrix]
+\label{v4-arith:w7-h:prop:small-N}
+For $m,n\in\{0,4,8\}$ define the uncut Gaussian matrix
+$\widetilde Q_{mn}=q(\phi_m,\phi_n)$ using the extension to
+$\mathscr G$. Its entries are
+\[
+ \widetilde Q_{mn}
+ =i^{m-n}\int_{\mathbb R}\phi_m(u)\phi_n(u)k(u)du
+ +W_{\mathrm{fin}}(\phi_m*\phi_n^*)-P(\phi_m*\phi_n^*).
+\]
+All three terms converge absolutely. This real symmetric
+$3\times3$ matrix is distinct from $Q_2$, the first three entries
+of the chosen compact enumeration. All even Hermite indices are
+real even tests; the choice $0,4,8$ is a selected three-mode example.
+\end{proposition}
+\begin{proof}
+Each Hermite function lies in $\mathscr G$, so the extended explicit
+formula defines the entries and proves convergence of the prime and
+polar terms. Fourier self-reciprocity gives the displayed gamma integral,
+which converges by Gaussian decay. Hermitian symmetry and reality of
+the chosen tests give a real symmetric matrix.
+The compact matrix $Q_2$ instead uses the first three specified
+functions $\chi_R\phi_n$ in its enumeration.
+\end{proof}
+
+Determining the sign of $\widetilde Q$ requires estimates for its
+own gamma integrals, prime tails, and polar evaluations.
+No sign assertion for this Gaussian matrix or for $Q_2$ follows
+from the definition or from a finite list of Li coefficients alone.
+
+\subsection{The Uniform Bound Obstruction}
+\label{v4-arith:w7-h:finite-N:uniform}
+
+\begin{theorem}[all compact Gram blocks]
+\label{v4-arith:w7-h:thm:uniform}
+For the enumeration of the full compact family, let $Q_N$ be its
+first $N+1$ principal matrix. Then
+\[
+ \sup_N\lambda_{\max}(Q_N)\le0
+ \quad\Longleftrightarrow\quad
+ q(f,f)\le0\ \ (f\in\mathscr A).
+\]
+The latter condition is equivalent to RH.
+For either moment-projected family, the same statement characterizes
+nonpositivity on that moment space.
+\end{theorem}
+\begin{proof}
+A finitely supported vector lies in some initial block.
+Thus the displayed eigenvalue condition is exactly nonpositivity on
+the finite span. Apply compact-topology density and continuity.
+No uniform strict spectral gap is used.
+\end{proof}
+\begin{remark}[coefficient norms]
+\label{v4-arith:w7-h:rem:uniform-ceiling}
+These compact families need not be linearly independent.
+A strict bound $Q_N\preceq-cI$ for $c>0$ refers to the chosen
+coefficient norm and can fail because of linear dependence alone.
+It is not equivalent to the Weil inequality.
+\end{remark}
+
+\section{Three Natural Regularizations and Their Failure}
+\label{v4-arith:w7-h:regularizations}
+
+Tikhonov shifts, diagonal damping, and finite-rank perturbations change
+the finite matrices in different ways. The complete compact criterion
+still requires all principal blocks. Compact completeness has been
+proved above.
+
+\subsection{Tikhonov Regularization}
+\label{v4-arith:w7-h:regularizations:tikhonov}
+
+\begin{definition}[Tikhonov regularized Gram]
+\label{v4-arith:w7-h:def:tikhonov}
+\ClaimStatusDefinitional. For \(\varepsilon>0\), set
+\(Q_{N}^{\varepsilon}:=Q_{N}-\varepsilon\cdot I_{N+1}\)
+(a negative shift by \(\varepsilon\)).
+\end{definition}
+
+\begin{proposition}[Tikhonov shift and the ceiling]
+\label{v4-arith:w7-h:prop:tikhonov-pos}
+\ClaimStatusProvedHere. For fixed \(N\) and \(\varepsilon>0\),
+\(Q_{N}^{\varepsilon}\prec0\) if and only if
+\(\lambda_{\max}(Q_{N})<\varepsilon\). This is a finite-dimensional
+shift, not a proof of \(Q_{N}\preceq0\), and no unshifted Gram conclusion follows from a finite list of
+Li coefficients alone.
+\end{proposition}
+
+\begin{proof}
+\(Q_{N}^{\varepsilon}c=(Q_{N}-\varepsilon I)c\), and
+\(\langle Q_{N}^{\varepsilon}c,c\rangle=\langle Q_{N}c,c\rangle-\varepsilon\|c\|^{2}\);
+it is strictly negative for every non-zero \(c\) exactly when every
+eigenvalue of \(Q_N\) is \(<\varepsilon\).
+\end{proof}
+
+\begin{remark}[Tikhonov does not reach A-TP]
+\label{v4-arith:w7-h:rem:tikhonov-ceiling}
+Tikhonov regularization with \(\varepsilon\)-dependent shift does not
+extend to \(N\to\infty\): the uniform bound
+\(\lambda_{\max}(Q_{N})\leq\varepsilon\) uniformly in \(N\) does not imply
+the desired unshifted inequality unless \(\varepsilon\downarrow0\) is
+controlled. The regularization changes the question.
+\end{remark}
+
+\subsection{Gaussian Windowing}
+\label{v4-arith:w7-h:regularizations:gaussian}
+
+\begin{definition}[diagonally damped Gram form]
+\label{v4-arith:w7-h:def:gaussian-window}
+For $\sigma>0$, define $Q^\sigma_{mn}=e^{-(m+n)\sigma/2}Q_{mn}$.
+On finitely supported complex sequences put
+\[
+ q_{Q^\sigma}(c)=\sum_{m,n}c_m\overline{c_n}
+                 Q_{mn}e^{-(m+n)\sigma/2}.
+\]
+This is the coefficient form $q_Q(T_\sigma c)$ with
+$(T_\sigma c)_n=e^{-n\sigma/2}c_n$.
+\end{definition}
+
+\begin{lemma}[diagonal damping on finite vectors]
+\label{v4-arith:w7-h:lem:gaussian-no-help}
+For any $\sigma>0$, put $(T_\sigma c)_n=e^{-n\sigma/2}c_n$.
+On finitely supported complex sequences,
+$q_{Q^\sigma}(c)=q_Q(T_\sigma c)$.
+Thus $Q^\sigma$ is negative semidefinite on every finite vector
+if and only if $Q$ is.
+\end{lemma}
+\begin{proof}
+The map $T_\sigma$ and its coordinatewise inverse both preserve
+finite support. The equality follows by expanding the finite sums.
+No assertion that the infinite matrix defines an operator on all
+of $\ell^2$ is required.
+\end{proof}
+
+\subsection{Finite-Rank Perturbation Ceiling}
+\label{v4-arith:w7-h:regularizations:finite-rank}
+
+\begin{theorem}[finite-rank perturbations of the coefficient form]
+\label{v4-arith:w7-h:thm:finite-rank-ceiling}
+Let $V=c_{00}(\mathbb N_0;\mathbb C)$ and define
+\[
+ q_Q(c,d)=\sum_{i,j}c_i\overline{d_j}Q_{ij}.
+\]
+Here $Q_{ij}=q(e_i,e_j)$ is the compact Gram family and both sums
+are finite. Let $V^\times$ be the algebraic conjugate-linear dual.
+Suppose $p:V\times V\to\mathbb C$ is Hermitian, linear in its first
+argument, and its linear map
+\[
+ P:V\to V^\times,\qquad (Pc)(d)=p(c,d),
+\]
+has finite rank $r$. Put $K=\ker P$.
+Then $K$ has codimension $r$ and is infinite-dimensional. For $c\in K$,
+\[
+ (q_Q+p)(c,c)=q_Q(c,c).
+\]
+Consequently, nonpositivity of $q_Q+p$ on $V$ implies
+nonpositivity of $q_Q$ on $K$.
+The same identity holds on any specified common vector domain of
+two Hermitian forms, with $K$ the kernel of the second form map.
+\end{theorem}
+\begin{proof}
+The map $P$ identifies $V/K$ with its $r$-dimensional image.
+Thus $K$ has finite codimension in the infinite-dimensional space $V$.
+For $c\in K$, the functional $Pc$ vanishes on every vector, including
+$c$. Hence $p(c,c)=0$, which proves the identity and sign implication.
+Hermitian symmetry also gives $p(d,c)=0$ for every $d\in V$.
+No boundedness, closability, or operator realization on $\ell^2$
+is needed for these finite coefficient sums.
+\end{proof}
+
+\begin{remark}[existence and the remaining sign condition]
+Finite-rank forms exist: if $L:V\to\mathbb C^r$ is linear and
+$A$ is an $r\times r$ Hermitian matrix, then
+$p(c,d)=\sum_{a,b}(Lc)_a\overline{(Ld)_b}A_{ab}$ has rank at most $r$.
+A specified such form changes no diagonal value on its kernel.
+The existence of a finite-rank $p$ with $q_Q+p\le0$ remains a
+separate assertion. The displayed identity supplies a necessary
+condition on its infinite-dimensional kernel, not that existence.
+\end{remark}
+
+\begin{remark}[what the three modifications determine]
+\label{v4-arith:w7-h:rem:three-failures}
+The Tikhonov shift gives an exact finite eigenvalue criterion.
+Invertible diagonal damping preserves the sign condition on finite
+vectors. A finite-rank perturbation leaves the form unchanged on
+its kernel. These statements give no sign theorem on the complete
+compact test family without the remaining quadratic inequalities.
+They do not exclude additional arguments using a specified perturbation.
+\end{remark}
+
+\section{The full form and restricted realizations}
+\label{v4-arith:w7-h:irreducible}
+\begin{theorem}[compact matrix criterion]
+\label{v4-arith:w7-h:thm:ceiling}
+The complete compact Gram family characterizes the full Weil inequality.
+Its two projected families characterize the respective $(0,1)$ Mellin
+moment and polar-moment restrictions.
+Every compact entry is given by the signed gamma integral, a finite
+prime sum, and the polar Hermitian form.
+Its zero decomposition is minus the full zero sum.
+\end{theorem}
+\begin{proof}
+The entry formula and zero decomposition were proved above.
+The density theorem and continuity of the form give the three
+matrix criteria on their stated carriers.
+\end{proof}
+\begin{remark}[finite comparisons]
+\label{v4-arith:w7-h:rem:honest-form}
+\label{v4-arith:w7-h:rem:compare-w6}
+A finite matrix calculation establishes its own finite inequality.
+An inference from Li coefficients requires a proved finite comparison.
+A Tikhonov shift changes the finite eigenvalues. Invertible diagonal
+damping preserves the finite sign question. A finite-rank perturbation
+leaves the quadratic form unchanged on its kernel.
+The auxiliary integral-energy criterion controls $G_g$, with
+$W_\infty=2\log\pi\langle\ ,\ \rangle_2-G_g$.
+It does not determine the remaining prime and polar contributions.
+\end{remark}
+\section{Gram forms and pairing maps}
+\label{v4-arith:w7-h:summary}
+\begin{remark}[positive Hilbert realization]
+\label{v4-arith:w7-h:rem:beilinson}
+If a linear map $I:E\to H$ into a positive Hilbert space satisfies
+$\langle If,Ih\rangle_H=W(f*h^*)$, then the Weil form is nonnegative
+on $E$. For $E=\mathscr A$, such a realization is equivalent to the
+full inequality by quotienting its nullspace and completing.
+A realization of an arithmetic or automorphic sector additionally
+requires its native carrier, the map $I$, and this exact pairing identity.
+Moment projection and Hermite expansion supply test functions, but
+neither construction supplies that native pairing identity.
+\end{remark}
+

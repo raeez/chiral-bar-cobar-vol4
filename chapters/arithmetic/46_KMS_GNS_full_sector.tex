@@ -1,0 +1,644 @@
+\chapter[Koszul--Petersson and the Prime Gibbs Model][Prime Gibbs model and pairings]{Koszul--Petersson and the Prime Gibbs Model}
+\label{v4-arith:kms-gns-full}
+
+A single prime admits an explicit Gibbs state for every inverse
+temperature \(\beta>0\), including \(\beta=1\). Its GNS space is a
+Hilbert--Schmidt space, its modular conjugation is adjunction, and
+its modular operator has a maximal weighted-matrix domain. These
+objects can be computed without identifying an arithmetic Koszul
+pairing with a Petersson pairing. The latter comparison requires
+additional maps between the actual carriers.
+
+\section{The Prime State and the Arithmetic Comparison}
+\label{v4-arith:kms-gns:statement-table}
+\label{v4-arith:kms-gns:residuals}
+\label{v4-arith:kms-gns:consequences}
+\label{v4-arith:kms-gns:P3-consequence}
+\label{v4-arith:kms-gns:table}
+
+The occupation model of Chapter~\ref{v4-arith:prim-zeta-char} has
+Hamiltonian \(j\log p\) at a prime. We first construct its GNS
+representation and an actual unitary onto the prime-generated
+cyclic subspace of any specified global KMS representation.
+Neither this subspace comparison nor uniqueness of a polar
+decomposition supplies an automorphic realization.
+
+\begin{hypothesis}[arithmetic placement and pairing comparison]
+\label{v4-arith:kms-gns:hyp:arithmetic-pairing}
+Fix a primitive arithmetic carrier, its coefficient field
+\(\mathbb C\), its completion and a dense test domain. Specify:
+\begin{enumerate}
+\item an injective placement \(\iota\) of the selected domain into a
+fixed-central-character automorphic Hilbert space, with its Haar
+and Tamagawa normalizations;
+\item at each place, comparison maps for the independently defined
+Koszul and automorphic carriers, intertwining the stated algebra
+or Hecke actions and transporting the bilinear Koszul form and
+antilinear involution to the stated local Hermitian form;
+\item preservation of the chosen reference vectors at almost all
+places, factorization on elementary tensors, and continuous or
+explicitly regularized extension of the resulting pairing identity;
+\item on every included residual sector, its specified placement and
+normalization, and orthogonality of the sector decomposition for
+both transported forms.
+\end{enumerate}
+Any modular comparison must additionally intertwine the represented
+algebra, state or cyclic vector, and the closed modular operators
+on their actual domains. Ramified sectors require their own local
+maps; they are not consequences of the prime shift computation.
+\end{hypothesis}
+
+\begin{question}[constructing the arithmetic pairing maps]
+\label{v4-arith:kms-gns:question:arithmetic-pairing}
+Construct these maps from the arithmetic bar--cobar carrier and
+prove their compatibility with the independently defined Petersson
+pairing. Determine their precise discrete and continuous domains.
+The conditional transfers below retain this question; the prime
+Gibbs calculation does not complete it.
+\end{question}
+
+\section{The One-Prime Gibbs State}
+\label{v4-arith:kms-gns:cycle1}
+\subsection{State and Physical Time}
+\label{v4-arith:kms-gns:cycle1:state}
+
+Fix a prime \(p\) and \(\beta>0\). Put
+\(K=\ell^2(\mathbb N_0)\), \(Ve_j=e_{j+1}\), and
+\(He_j=j\log p\,e_j\), with
+\(\operatorname{Dom}H=\{x:\sum_jj^2|x_j|^2<\infty\}\).
+Let \(\mathcal T=C^*(V)\subset B(K)\),
+\(q=p^{-\beta}\), \(r_j=(1-q)q^j\), and
+\(\rho=(1-q)q^{H/\log p}\). Physical time is
+\begin{equation}
+\label{v4-arith:kms-gns:eq:sigma-time}
+\alpha_t(a)=e^{itH}ae^{-itH},\qquad \alpha_t(V)=p^{it}V.
+\end{equation}
+The positive injective trace-class operator \(\rho\) has trace one.
+Its faithful normal state on \(B(K)\), restricted to \(\mathcal T\), is
+\begin{equation}
+\label{v4-arith:kms-gns:eq:phi-1}
+\varphi_{p,\beta}(a)=\operatorname{Tr}(\rho a),\qquad
+\varphi_{p,\beta}(V^mV^{*n})=\delta_{m,n}q^m.
+\end{equation}
+In particular \(\varphi_{p,\beta}(V^*V)=1\) and
+\(\varphi_{p,\beta}(VV^*)=q\). The order of the isometry and its
+adjoint is essential.
+
+\begin{lemma}[prime KMS state]
+\label{v4-arith:kms-gns:lem:KMS-property}
+The state \(\varphi_{p,\beta}\) is the unique \(\beta\)-KMS state
+on \((\mathcal T,\alpha)\), with convention
+\begin{equation}
+\label{v4-arith:kms-gns:eq:KMS}
+\varphi_{p,\beta}(ab)=\varphi_{p,\beta}(b\alpha_{i\beta}(a))
+\end{equation}
+for analytic elements.
+\end{lemma}
+\begin{proof}
+The analytic monomials \(V^mV^{*n}\) span a dense star algebra.
+On them \(\rho a=\alpha_{i\beta}(a)\rho\), so trace cyclicity
+proves the KMS identity. Conversely, applying that identity with
+\(b=1\) forces the expectation of a monomial of nonzero degree
+to vanish. Taking \(a=V^m,b=V^{*m}\) gives expectation \(q^m\)
+for \(V^mV^{*m}\), since \(V^{*m}V^m=1\). Thus every KMS state
+has the values in \eqref{v4-arith:kms-gns:eq:phi-1}; density gives
+uniqueness.
+\end{proof}
+
+\subsection{The Hilbert--Schmidt GNS Carrier}
+\label{v4-arith:kms-gns:cycle1:GNS}
+
+Use inner products linear in the first variable.
+\begin{lemma}[GNS realization of the prime state]
+\label{v4-arith:kms-gns:lem:GNS-space}
+The GNS representation is
+\begin{equation}
+\label{v4-arith:kms-gns:eq:GNS-iso}
+\mathcal H_{p,\beta}=\operatorname{HS}(K),\quad
+\pi(a)X=aX,\quad \Omega=\rho^{1/2},
+\end{equation}
+with
+\begin{equation}
+\label{v4-arith:kms-gns:eq:GNS-inner-product}
+\langle X,Y\rangle=\operatorname{Tr}(XY^*),\qquad
+[a]\longmapsto a\rho^{1/2}.
+\end{equation}
+The vector \(\Omega\) is cyclic and separating for left \(B(K)\),
+which is \(\pi(\mathcal T)''\).
+\end{lemma}
+\begin{proof}
+The displayed map is isometric because its inner product is
+\(\operatorname{Tr}(\rho b^*a)=\varphi_{p,\beta}(b^*a)\).
+The matrix units \(E_{ij}=V^i(1-VV^*)V^{*j}\) belong to
+\(\mathcal T\), and \(E_{ij}\rho^{1/2}=\sqrt{r_j}E_{ij}\).
+Their images span a dense subspace of \(\operatorname{HS}(K)\).
+Finite matrix corners strongly approximate bounded operators,
+so the weak closure is left \(B(K)\). If \(a\Omega=0\), every
+column of \(a\) vanishes because every \(r_j>0\); hence \(a=0\).
+\end{proof}
+
+\subsection{Closed Modular Operators}
+\label{v4-arith:kms-gns:cycle1:modular}
+
+Define the densely defined antilinear operator
+\begin{equation}
+\label{v4-arith:kms-gns:eq:S-def}
+S_0(a\Omega)=a^*\Omega,\qquad a\in\mathcal T.
+\end{equation}
+\begin{lemma}[modular operator and maximal domains]
+\label{v4-arith:kms-gns:lem:Delta}
+For \(X=\sum x_{ij}E_{ij}\), set \(JX=X^*\) and
+\begin{equation}
+\label{v4-arith:kms-gns:eq:Delta-basis}
+\Delta E_{ij}=q^{i-j}E_{ij},\qquad
+\operatorname{Dom}(\Delta^a)=
+\left\{X:\sum_{i,j}q^{2a(i-j)}|x_{ij}|^2<\infty\right\},\quad a\in\mathbb R.
+\end{equation}
+Then \(\overline{S_0}=J\Delta^{1/2}\), on the displayed domain for
+\(a=1/2\), and
+\begin{equation}
+\label{v4-arith:kms-gns:eq:Delta-formula}
+\Delta^{it}X=e^{-i\beta tH}Xe^{i\beta tH}.
+\end{equation}
+Thus the modular action on left multiplication is physical time
+\(\alpha_{-\beta t}\). Both \(\Delta\) and \(\Delta^{-1}\) are
+unbounded. The generator \(\log\Delta\) has eigenvalue
+\((i-j)\log q\) and domain defined by square summability with
+weight \(|(i-j)\log q|^2\).
+\end{lemma}
+\begin{proof}
+On matrix units, \(S_0E_{ij}=q^{(i-j)/2}E_{ji}\), antilinearly.
+Finite matrix sums are graph-dense for the maximal weighted
+operator, by truncation of the convergent double sum. For any
+bounded \(a\), the matrix \(a\Omega\) lies in its domain and the
+formula gives \(a^*\Omega\); its weighted norm is
+\(\|a^*\Omega\|_{\mathrm{HS}}<\infty\). Therefore the closure is
+exactly \(J\Delta^{1/2}\). Diagonal spectral calculus gives all
+powers, domains and the unitary group. The eigenvalues \(q^{i-j}\)
+range through \(q^{\mathbb Z}\), proving both unboundedness claims.
+\end{proof}
+
+\begin{proposition}[modular conjugation and the prime shift]
+\label{v4-arith:kms-gns:prop:J-equals-sigma-BC}
+For \(k\geq0\),
+\begin{align}
+\label{v4-arith:kms-gns:eq:J-basis}
+J(V^k\Omega)&=p^{\beta k/2}V^{*k}\Omega,\\
+\label{v4-arith:kms-gns:eq:J-on-algebra}
+JL_aJ&=R_{a^*},\qquad a\in B(K),
+\end{align}
+where \(L\) and \(R\) denote left and right multiplication.
+The continuous bilinear form \(B(X,Z)=\operatorname{Tr}(XZ)\)
+on \(\operatorname{HS}(K)^2\) satisfies
+\(B(X,JY)=\langle X,Y\rangle\).
+\end{proposition}
+\begin{proof}
+Expand \(V^k\Omega=\sum_j\sqrt{r_j}E_{j+k,j}\) and use
+\(\sqrt{r_{j+k}}=q^{k/2}\sqrt{r_j}\). Adjunction gives the first
+identity and \(J L_aJ(X)=Xa^*\) gives the second.
+Products of two Hilbert--Schmidt operators are trace class with
+\(|\operatorname{Tr}(XZ)|\leq\|X\|_2\|Z\|_2\), proving continuity
+and the asserted pairing identity. In particular the half-power
+has positive exponent: \(\|V^k\Omega\|=1\), whereas
+\(\|V^{*k}\Omega\|=q^{k/2}\).
+\end{proof}
+
+\begin{theorem}[comparison with a prime cyclic subspace]
+\label{v4-arith:kms-gns:thm:KMS1-GNS-BC-identification}
+Let \((\mathcal A,\alpha,\psi_\beta)\) be a specified dynamical
+\(C^*\)-algebra with a \(\beta\)-KMS state and an isometry
+\(\mu_p\) satisfying \(\alpha_t(\mu_p)=p^{it}\mu_p\).
+Let \(\iota_p:\mathcal T\to\mathcal A\) send \(V\) to \(\mu_p\).
+There is a canonical unitary
+\[
+U_p:\operatorname{HS}(K)\longrightarrow
+\overline{\pi_{\psi_\beta}(C^*(\mu_p))\Omega_{\psi_\beta}},\qquad
+U_p(a\rho^{1/2})=\pi_{\psi_\beta}(\iota_p(a))\Omega_{\psi_\beta}.
+\]
+It intertwines the prime algebra actions and cyclic vectors, and
+transports the closed modular operators of the restricted cyclic
+representation. This holds at \(\beta=1\) as well.
+\end{theorem}
+\begin{proof}
+The pulled-back state \(\psi_\beta\circ\iota_p\) is a KMS state
+on \(\mathcal T\), hence equals \(\varphi_{p,\beta}\) by the
+unique-state calculation. The displayed map preserves inner
+products on \(\mathcal T\rho^{1/2}\) and has dense image in the
+specified cyclic subspace. It therefore extends to a unitary.
+It intertwines multiplication and the operation
+\(a\Omega\mapsto a^*\Omega\) on its core, hence its closure and
+polar decomposition.
+\end{proof}
+
+\begin{remark}[scope of modular uniqueness]
+\label{v4-arith:kms-gns:rem:uniqueness}
+This unitary targets the prime cyclic subspace, not the whole
+\(\psi_\beta\)-GNS space. It does not identify the phase operators,
+an automorphic representation or an arithmetic Koszul form.
+Uniqueness of modular conjugation on a fixed cyclic representation
+supplies no additional identification between those carriers.
+\end{remark}
+
+\subsection{Finite Prime Sets and the Critical Global Boundary}
+\label{v4-arith:kms-gns:cycle1:adelic}
+\begin{corollary}[finite-prime Gibbs and GNS products]
+\label{v4-arith:kms-gns:cor:adelic-KMS-GNS}
+For a finite prime set \(F\), the density
+\(\rho_F=\bigotimes_{p\in F}\rho_p\) has trace one for every
+\(\beta>0\). Its GNS space and modular operators are the finite
+tensor products of the preceding constructions. On the full
+occupation space \(\ell^2(\mathbb N^{\times})\), the heat trace is
+\(\zeta(\beta)\) for \(\beta>1\), and diverges at \(\beta=1\).
+Thus the full occupation representation has no normalized
+trace-class Gibbs density at the critical temperature.
+\end{corollary}
+\begin{proof}
+Finite tensor products multiply traces and tensor the explicit
+matrix formulas. Unique prime factorization identifies occupations
+with integers and gives \(\sum_{n\geq1}n^{-\beta}\). At
+\(\beta=1\) this is the divergent harmonic series.
+\end{proof}
+The divergence does not preclude a critical Bost--Connes KMS state
+in another representation. For any such specified state the
+prime cyclic comparison above still applies. Neither argument
+identifies its entire GNS space or factor type with the finite-prime
+Gibbs model.
+
+\section{Local Pairing Models and Arithmetic Transport}
+\label{v4-arith:kms-gns:cycle2}
+\subsection{Ramified Principal-Series Comparison}
+\label{v4-arith:kms-gns:cycle2:ramified}
+
+\begin{lemma}[a normalized local Hermitian carrier]
+\label{v4-arith:kms-gns:lem:GJ-ramified}
+Fix Haar measure \(d^\times a\) on \(\mathbb Q_p^\times\).
+On \(E_p=C_c^\infty(\mathbb Q_p^\times,\mathbb C)\), put
+\begin{equation}
+\label{v4-arith:kms-gns:eq:GJ-ramified}
+ I_p(v,w)=\int_{\mathbb Q_p^\times}v(a)\overline{w(a)}
+ |a|^{-1}\,d^\times a.
+\end{equation}
+This is positive definite and extends to the corresponding
+\(L^2\)-completion. The bilinear form
+\(b_p(v,z)=\int v(a)z(a)|a|^{-1}\,d^\times a\) satisfies
+\(b_p(v,\overline w)=I_p(v,w)\).
+\end{lemma}
+\begin{proof}
+Compact support in \(\mathbb Q_p^\times\) gives finite integrals.
+The measure is positive, and a nonzero locally constant function
+is nonzero on an open set of positive measure. Cauchy--Schwarz
+extends the forms to \(L^2\), and complex conjugation gives the
+last identity.
+\end{proof}
+
+The Whittaker realization of a given representation, its scalar
+normalization and its identification with an arithmetic Koszul
+carrier are further data. In particular an epsilon factor from a
+local functional equation is not automatically a positive
+normalization of a Hermitian form.
+
+\begin{hypothesis}[local Koszul comparison]
+\label{v4-arith:kms-gns:lem:Koszul-ramified}
+For the chosen ramified arithmetic domain \(V_{p,\pi}\), specify a
+linear map \(c_{p,\pi}\) into the local Hilbert carrier, a compatible
+map on its Koszul dual, a positive constant \(c_\pi\), and the
+antilinear map \(\sigma_p\). Require that the actual Koszul pairing
+satisfy
+\begin{equation}
+\label{v4-arith:kms-gns:eq:Koszul-ramified}
+ \langle v,\sigma_p(w)\rangle^{\mathrm{Koszul}}_{p,\pi}
+ =c_\pi b_p(c_{p,\pi}v,\overline{c_{p,\pi}w}).
+\end{equation}
+The maps must preserve the specified local actions, domains and
+completion. This is an arithmetic comparison hypothesis.
+\end{hypothesis}
+
+\begin{hypothesis}[local automorphic normalization]
+\label{v4-arith:kms-gns:lem:Pet-ramified}
+For the same carrier, maps, measure and positive constant, require
+\begin{equation}
+\label{v4-arith:kms-gns:eq:Pet-ramified}
+ \langle\iota_p v,\iota_p w\rangle^{\mathrm{Pet}}_{p,\pi}
+ =c_\pi I_p(c_{p,\pi}v,c_{p,\pi}w).
+\end{equation}
+Neither Whittaker uniqueness nor a scalar local functional equation
+alone identifies the map \(c_{p,\pi}\) with the Koszul comparison.
+\end{hypothesis}
+
+\begin{proposition}[conditional local Koszul--Petersson comparison]
+\label{v4-arith:kms-gns:prop:local-match-ramified}
+Under the two local comparison hypotheses above,
+\(\langle\iota_pv,\iota_pw\rangle^{\mathrm{Pet}}_{p,\pi}
+=\langle v,\sigma_p(w)\rangle^{\mathrm{Koszul}}_{p,\pi}\)
+on the specified domain.
+\end{proposition}
+\begin{proof}
+Substitute \(b_p(x,\overline y)=I_p(x,y)\) into the two displayed
+identities. The common constant and measure are part of the
+hypotheses, not a conclusion of matching the names of the pairings.
+\end{proof}
+
+\subsection{Supercuspidal Comparison}
+\label{v4-arith:kms-gns:cycle2:supercuspidal}
+\begin{lemma}[conditional supercuspidal transport]
+\label{v4-arith:kms-gns:lem:supercuspidal}
+The same conclusion holds on a supercuspidal domain for which the
+local Koszul and automorphic comparison hypotheses have been
+constructed with a common Hilbert carrier and normalization.
+\end{lemma}
+\begin{proof}
+The proof of the preceding proposition uses only the common forms
+and maps, so applies on that specified domain. It supplies no new
+comparison map for the supercuspidal representation.
+\end{proof}
+
+\subsection{Temperedness and Assembly}
+\label{v4-arith:kms-gns:cycle2:ramanujan}
+\begin{proposition}[conditional extension under temperedness]
+\label{v4-arith:kms-gns:prop:non-tempered-residue}
+Assume Hypothesis~\ref{v4-arith:kms-gns:hyp:arithmetic-pairing} on a
+tempered cuspidal domain. Any further cuspidal domain contained in
+it inherits its pairing comparison. Applying this to Maass forms
+requires the appropriate Ramanujan temperedness assumption as well
+as the arithmetic comparison maps.
+\end{proposition}
+\begin{proof}
+Restrict the specified maps and pairing equality to the subdomain.
+Temperedness is a domain condition and does not construct the maps.
+\end{proof}
+
+\begin{remark}[local exponent bounds]
+\label{v4-arith:kms-gns:rem:partial-KS}
+The Kim--Sarnak exponent bound \(\theta\leq7/64\) is a local
+bound. It is neither an arithmetic pairing map nor a summable
+prime error on the critical line. The exponent \(-25/64\) gives
+\(\sum_p p^{-25/64}=\infty\); it cannot be used as an absolutely
+convergent adelic error majorant.
+\end{remark}
+
+\begin{theorem}[conditional cuspidal pairing assembly]
+\label{v4-arith:kms-gns:thm:ramified-cuspidal-tempered-extension}
+Assume Hypothesis~\ref{v4-arith:kms-gns:hyp:arithmetic-pairing},
+including the local comparisons at every ramified place and the
+specified adelic extension. On the resulting tempered cuspidal
+domain,
+\begin{equation}
+\label{v4-arith:kms-gns:eq:ramified-cuspidal-match}
+ \langle\iota v,\iota w\rangle^{\mathrm{Pet}}
+ =\langle v,\sigma^{\mathrm{BC}}(w)\rangle^{\mathrm{Koszul}}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+On elementary restricted tensors the forms factor, and the local
+identities give equality of every finite product with the specified
+reference-vector normalization. The assumed continuous or
+regularized extension carries this equality to its stated domain.
+Finiteness of the ramified set alone does not justify the infinite
+product normalization or its extension.
+\end{proof}
+
+\begin{remark}[scope of the domain]
+\label{v4-arith:kms-gns:rem:w3-tightening}
+The normalized local Hilbert models and the finite-prime Gibbs
+models are explicit. Enlarging an arithmetic domain to ramified,
+residual or Maass sectors requires its actual comparison maps.
+The theorem above is their conditional assembly, not an
+unconditional enlargement of the arithmetic pairing theorem.
+\end{remark}
+
+\section{Langlands Decomposition of \(L^{2}([GL_{2}])\) and Placement of \(\mathcal{V}^{\mathrm{prim}}\)}
+\label{v4-arith:kms-gns:cycle3}
+
+\subsection{The Spectral Decomposition}
+\label{v4-arith:kms-gns:cycle3:spectral}
+
+The Langlands decomposition of \(L^{2}([GL_{2}])\), following
+Langlands 1966 and Moeglin--Waldspurger 1995, is:
+
+\begin{theorem}[spectral decomposition of \(L^{2}(\lbrack GL_{2}\rbrack)\)]
+\label{v4-arith:kms-gns:thm:spectral-decomposition}
+There is an orthogonal decomposition of
+\(G(\mathbb{A})\)-modules:
+\begin{equation}
+\label{v4-arith:kms-gns:eq:L2-decomposition}
+L^{2}([GL_{2}])\;=\;L^{2}_{\mathrm{cusp}}([GL_{2}])\;\oplus\;L^{2}_{\mathrm{res}}([GL_{2}])\;\oplus\;L^{2}_{\mathrm{cont}}([GL_{2}]),
+\end{equation}
+where:
+\begin{itemize}
+\item \(L^{2}_{\mathrm{cusp}}([GL_{2}])\) is the cuspidal spectrum,
+a direct sum of irreducible unitary representations
+\(\pi=\bigotimes'_{v}\pi_{v}\) with \(\pi_{p}\) generic tempered at
+almost all primes;
+\item \(L^{2}_{\mathrm{res}}([GL_{2}])\) is the residual spectrum
+(in the \(GL_{2}\) case generated by one-dimensional characters
+pulled up from the determinant), consisting of \(GL_{2}(\mathbb{A})\)-reducible
+automorphic representations from residues of Eisenstein series at
+specific points;
+\item \(L^{2}_{\mathrm{cont}}([GL_{2}])\) is the continuous spectrum,
+realised as the direct integral
+\(\int^{\oplus}_{\mathrm{Re}(s)=1/2}\mathrm{Ind}_{B}^{G}(\chi_{s})\,|\xi(2s)|^{-2}ds\)
+for \(\chi_{s}=|\cdot|^{s}\otimes|\cdot|^{-s}\).
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+Langlands 1966 \emph{On the Functional Equations Satisfied by
+Eisenstein Series} \S6--7 for the construction; Moeglin--Waldspurger
+1995 \emph{Spectral Decomposition and Eisenstein Series for \(GL_{n}\)}
+for the published \(GL_{n}\) exposition; for \(GL_{2}\) specifically see
+Gelbart 1975 \emph{Automorphic Forms on Adele Groups} Ch.~II.
+\end{proof}
+
+\subsection{Placement of \(\mathcal{V}^{\mathrm{prim}}\)}
+\label{v4-arith:kms-gns:cycle3:placement}
+
+\begin{hypothesis}[discrete arithmetic placement]
+\label{v4-arith:kms-gns:prop:Vprim-placement}
+Choose the primitive arithmetic vector carrier, its dense domain
+and its completion. The discrete placement required in
+Hypothesis~\ref{v4-arith:kms-gns:hyp:arithmetic-pairing} is an
+injective map
+\begin{equation}
+\label{v4-arith:kms-gns:eq:placement}
+ \iota:\mathcal V^{\mathrm{prim}}_{\mathrm{disc}}
+ \longrightarrow L^2_{\mathrm{cusp}}\oplus L^2_{\mathrm{res}},
+\end{equation}
+with fixed central character and specified Haar normalization.
+Its chosen residual component and vacuum normalization are part of
+the datum. The Langlands decomposition of the target does not
+construct this map. A continuous-spectrum comparison requires its
+own direct-integral or distributional carrier and is not a map of
+a distribution into \(L^2\) without further hypotheses.
+\end{hypothesis}
+
+\section{Scalar Continuum Models and the Pairing Problem}
+\label{v4-arith:kms-gns:cycle4}
+\subsection{The Scalar Coefficient Domain}
+\label{v4-arith:kms-gns:cycle4:maass-selberg}
+
+Use the Riemann completed function \(\xi\) with
+\(\xi(1-z)=\xi(z)\) and \(\xi(\overline z)=\overline{\xi(z)}\).
+Let \(U\) be the points \(s\) on \(\operatorname{Re}s=1/2\)
+where \(\xi(2s)\) and \(\xi(2s-1)\) are finite and nonzero.
+
+\begin{definition}[scalar scattering coefficient model]
+\label{v4-arith:kms-gns:lem:maass-selberg}
+For \(s\in U\), set \(d(s)=|\xi(2s)|^{-2}>0\) and
+\(M(s)=\xi(2s-1)/\xi(2s)\). Define
+\begin{equation}
+\label{v4-arith:kms-gns:eq:maass-selberg}
+ P(s)=(1+|M(s)|^2)d(s).
+\end{equation}
+This is a scalar model. Identifying it with a coefficient of an
+actual truncated Petersson pairing requires that pairing, its
+truncation parameter and its measure normalization.
+\end{definition}
+
+\subsection{The Proposed Koszul Coefficient}
+\label{v4-arith:kms-gns:cycle4:koszul-continuation}
+\begin{definition}[scalar Koszul coefficient model]
+\label{v4-arith:kms-gns:lem:Koszul-continued}
+On the same domain define
+\begin{equation}
+\label{v4-arith:kms-gns:eq:Koszul-continued}
+ K(s)=M(s)^{-1}d(s)
+ =\frac{\xi(2s)}{\xi(2s-1)}|\xi(2s)|^{-2}.
+\end{equation}
+This scalar is not asserted to be the spectral measure of an
+arithmetic Koszul pairing. Such a comparison requires the
+continuous carrier, coefficient map and regularization.
+\end{definition}
+
+\begin{theorem}[strict discrepancy of the two scalar models]
+\label{v4-arith:kms-gns:thm:eisenstein-discrepancy}
+For every \(s\in U\), one has \(|M(s)|=1\), \(P(s)=2d(s)\), and
+\begin{equation}
+\label{v4-arith:kms-gns:eq:continuum-discrepancy}
+ P(s)-K(s)=d(s)(2-M(s)^{-1}).
+\end{equation}
+In particular
+\begin{equation}
+\label{v4-arith:kms-gns:eq:continuum-match-condition}
+ d(s)\leq |P(s)-K(s)|\leq3d(s),
+\end{equation}
+so the models are unequal everywhere on \(U\).
+\end{theorem}
+\begin{proof}
+Write \(s=1/2+it\). Functional equation and conjugation give
+\(\xi(2s)=\xi(1+2it)=\xi(-2it)=\overline{\xi(2it)}\).
+The numerator and denominator of \(M\) therefore have equal
+nonzero modulus. Substitution gives the difference, and the
+triangle and reverse triangle inequalities give the two bounds.
+\end{proof}
+
+\begin{remark}[phase and scale]
+\label{v4-arith:kms-gns:rem:match-is-FE}
+Multiplication by the phase \(M\) gives \(MK=d=P/2\), not \(P\).
+Multiplication by \(2M\) matches these scalar models. Neither
+scalar identity constructs a positive spectral measure, an
+isometry, or an arithmetic bar--cobar comparison.
+\end{remark}
+
+\begin{corollary}[scope of the scalar obstruction]
+\label{v4-arith:kms-gns:cor:eisenstein-final}
+A proposed continuous pairing comparison whose coefficients are
+exactly \(P\) and \(K\) on \(U\), with the same measure and no
+additional transport, cannot identify them. A comparison using
+another normalization must construct that normalization and its
+maps; the scalar discrepancy does not exclude such a construction.
+\end{corollary}
+\begin{proof}
+Their difference has modulus at least \(d>0\). The last assertion
+only separates this fixed-normalization obstruction from a
+comparison with different data.
+\end{proof}
+
+\begin{remark}[continuous pairings require more than one coefficient]
+\label{v4-arith:kms-gns:rem:continuum-honest-domain}
+The scalar functions above specify no bivariate pairing kernel.
+In particular they do not determine an off-diagonal truncated
+Eisenstein pairing or its diagonal limit. On the critical line,
+\(s_1+\overline{s_2}-1=i(t_1-t_2)\), which vanishes exactly when
+\(s_1=s_2\). Any formula dividing by this quantity must treat that
+diagonal with its actual truncation and limit. The classical
+Maass--Selberg and Arthur identities concern the automorphic
+side; they supply no integrated equality with an arithmetic
+Koszul pairing without the missing comparison maps.
+\end{remark}
+
+\section{Conditional Arithmetic Pairing Consequences}
+\label{v4-arith:kms-gns:P3}
+
+\begin{theorem}[conditional P3 on the specified cuspidal domain]
+\label{v4-arith:kms-gns:thm:P3-tempered-cuspidal}
+Assume Hypothesis~\ref{v4-arith:kms-gns:hyp:arithmetic-pairing} and
+the discrete placement of
+Hypothesis~\ref{v4-arith:kms-gns:prop:Vprim-placement} on the chosen
+tempered cuspidal carrier. Then the pullback of the Petersson form
+is positive definite and agrees there with the transported Koszul
+form composed with the specified antilinear involution.
+\end{theorem}
+\begin{proof}
+Injectivity of \(\iota\) makes the pullback of a positive-definite
+form positive definite. The local pairing comparisons and their
+specified adelic extension give equality of forms by
+Theorem~\ref{v4-arith:kms-gns:thm:ramified-cuspidal-tempered-extension}.
+The prime GNS theorem alone does not supply either hypothesis.
+\end{proof}
+
+\begin{remark}[domain of arithmetic transport]
+\label{v4-arith:kms-gns:rem:P3-domain-enlargement}
+The prime Gibbs and Hilbert--Schmidt calculations are unconditional
+on their stated carriers. Extension of the arithmetic pairing to
+ramified, holomorphic, Maass or residual sectors requires its
+placement and pairing maps on each sector. Ramanujan controls a
+temperedness condition; it is not the missing isometry. Continuous
+spectrum additionally requires its measure comparison.
+\end{remark}
+
+\subsection{The Sufficient RH Implication}
+\label{v4-arith:kms-gns:P3:rh}
+\begin{corollary}[conditional use in a sufficient RH implication]
+\label{v4-arith:kms-gns:cor:rh-minimal-updated}
+A sufficient RH implication that assumes P3 may use the preceding
+conditional theorem only on its specified domain and with all of
+its arithmetic comparison hypotheses. Identifying the relevant
+Li or Weil trace with that domain is a further spectral comparison.
+The other hypotheses of the sufficient implication remain in force.
+\end{corollary}
+\begin{proof}
+Substitute the conditional pairing conclusion for the P3 premise
+only after its hypotheses and the shared trace domain are supplied.
+This logical substitution constructs neither set of hypotheses.
+\end{proof}
+
+\section{Prime Models and Remaining Maps}
+\label{v4-arith:kms-gns:residual-list}
+\label{v4-arith:kms-gns:verification}
+
+The positive constructions are the normalized prime Gibbs state,
+its Hilbert--Schmidt GNS realization, the closed modular operators,
+the finite-prime product, and the unitary onto a specified global
+state's prime cyclic subspace. Their domains and state
+normalizations are explicit. The local integral form
+\eqref{v4-arith:kms-gns:eq:GJ-ramified} is another independently
+defined positive Hermitian model.
+
+The arithmetic construction still requires the maps in
+Hypothesis~\ref{v4-arith:kms-gns:hyp:arithmetic-pairing}. The
+residual-spectrum vacuum, ramified Whittaker models and continuous
+spectral measures must be identified on their actual carriers.
+A scalar partition function, the uniqueness of modular conjugation,
+and a spectral decomposition of the target do not provide those
+maps.
+
+\section{The Arithmetic Comparison Problem}
+\label{v4-arith:kms-gns:summary}
+
+Question~\ref{v4-arith:kms-gns:question:arithmetic-pairing} retains
+the intended Koszul--Petersson comparison. The finite and prime
+models specify normalization tests and actual Hilbert-space maps;
+the arithmetic placement and pairing compatibility remain to be
+constructed. At the critical global temperature, the prime cyclic
+comparison continues to hold for a specified KMS state even though
+the full occupation Gibbs trace diverges.

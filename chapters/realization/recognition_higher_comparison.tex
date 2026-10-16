@@ -1,0 +1,605 @@
+\chapter{Recognition and higher comparison}
+\label{v4-ch:recognition-higher-comparison}
+
+Two products can agree on cohomology while their primitives
+produce different triple operations. The cubic example in the
+prologue makes this distinction inside a strict differential
+graded algebra: \(U^2=DH\), but
+\(UH+HU=-V\) represents a nonzero cohomology class. Strict
+associativity has encoded the higher operation; it has not
+removed it. A comparison must transport the primitive as well as
+the binary product.
+
+Collision geometry imposes a further requirement. When the first
+and third positions meet, the second input remains between them.
+Moving an endpoint past that input uses an exchange map. Two
+binary products can agree while these exchanges permit different
+normal poles. We construct this example below, then give the
+complexes and equations that decide whether a specified partial
+comparison extends. The obstruction belongs to the operations
+allowed by that comparison, with its boundary values fixed.
+
+\section{Simultaneous operations and their recipients}
+\label{v4-sec:recognition-operations}
+
+Let \(k\) have characteristic zero and let \(X\) be the smooth
+curve of Chapter~\ref{v4-ch:words-collisions-units}. For a finite
+nonempty set \(I\), write
+\(j_I:U_I\hookrightarrow X^I\) for the open immersion of the
+locus where every pair of positions is distinct, and
+\(\Delta_I:X\hookrightarrow X^I\) for the small diagonal.
+For complexes of right differential modules \(M_i,N\) on \(X\),
+define the complex of \emph{simultaneous chiral operations} by
+\begin{equation}\label{v4-eq:recognition-chiral-operations}
+ \mathcal Q_X(M_i;i\in I;N)
+  =\operatorname{RHom}_{\mathcal D(X^I)}
+       \left(j_{I,*}j_I^!\!\mathop{\boxtimes}_{i\in I}M_i,
+                         \Delta_{I,*}N\right).
+\end{equation}
+The external tensors and geometric functors are derived. The
+output retains the whole differential module on the diagonal,
+including its normal derivatives. Degree-zero cycles represent
+cochain operations in a chosen differential graded model; a
+degree-minus-one cochain is a possible homotopy between such
+operations. Passing to a scalar residue is a further map.
+For ordinary modules, the degree-zero construction is the chiral
+operation space of Beilinson and Drinfeld.\footnote{
+A.~Beilinson and V.~Drinfeld, \emph{Chiral Algebras},
+\S\S3.1.1--3.1.2, pp.~157--158. The composition below is the
+derived form of their displayed composition of chiral operations.}
+
+To compose, let \(\pi:I\twoheadrightarrow A\) have nonempty
+fibres \(I_a\), so that \(I=\coprod_{a\in A}I_a\), and let
+\(d_\pi:X^A\to X^I\) identify positions in each block.
+Let \(j_\pi:U_\pi\hookrightarrow X^I\) be the open immersion
+where positions in different blocks are distinct. Given operations
+\[
+ g_a\in\mathcal Q_X(M_i;i\in I_a;L_a),\qquad
+ f\in\mathcal Q_X(L_a;a\in A;N),
+\]
+their composite is induced by
+\begin{equation}\label{v4-eq:recognition-chiral-substitution}
+ \begin{split}
+ j_{I,*}j_I^!\!\mathop{\boxtimes}_I M_i
+ &\simeq j_{\pi,*}j_\pi^!
+       \mathop{\boxtimes}_A\left(j_{I_a,*}j_{I_a}^!
+                                      \!\mathop{\boxtimes}_{I_a}M_i\right)\\
+ &\xrightarrow{\,\boxtimes g_a\,}
+       j_{\pi,*}j_\pi^!\!\mathop{\boxtimes}_A\Delta_{I_a,*}L_a\\
+ &\simeq d_{\pi,*}j_{A,*}j_A^!\!\mathop{\boxtimes}_A L_a
+       \xrightarrow{\,d_{\pi,*}f\,}\Delta_{I,*}N.
+ \end{split}
+\end{equation}
+The middle equivalence is open--closed base change. Every
+parenthesization of a nested partition uses the same disjoint
+open set and the same composite diagonal map. Coherent base
+change therefore makes these compositions associative, with all
+their homotopies. The unary identity is the identity of a
+differential module. Permuting labels transports the same
+diagram. Thus the operation complexes form a coherent coloured operad:
+the colours are the chosen differential modules, and an
+operation has its indicated list of input colours and output
+colour. Forgetting permutations leaves its nonsymmetric operad
+on ordered inputs. For equations between cochains, choose a
+differential graded operad model compatible with these geometric
+functors and their base-change maps.
+
+The word carrier has a different endomorphism operad. For word
+systems \(F_\lambda\in\mathcal W_X\), its complexes are
+\begin{equation}\label{v4-eq:recognition-word-operations}
+ \mathcal P_F(\lambda_1,\ldots,\lambda_r;\nu)
+   =\operatorname{RHom}_{\mathcal W_X}
+       (F_{\lambda_1}\star\cdots\star F_{\lambda_r},F_\nu),
+ \qquad r\geq0,
+\end{equation}
+where \(\star=\star_{\mathrm{cut}}\) and the empty tensor is
+\(K\). Substitution is
+\(f\circ(g_1\star\cdots\star g_r)\), with the coherent cut
+associator. On homogeneous blocks \(x_i\), the tensor of maps
+has sign \((-1)^{\sum_{i<j}|g_j||x_i|}\). The cut construction
+of Chapter~\ref{v4-ch:words-collisions-units} proves its operad
+coherences: both composites retain the same final consecutive
+decomposition and localized coefficient. Its arity-zero maps
+have source \(K\), not the local vacuum \(J\).
+
+A field comparison has to relate independently specified
+operations to \eqref{v4-eq:recognition-word-operations}. For a
+chosen family whose operations are represented by a differential
+graded operad \(\mathcal Q^{\mathrm{adm}}\), it includes maps
+\begin{equation}\label{v4-eq:recognition-comparison}
+ \rho_r:\mathcal Q^{\mathrm{adm}}
+                 (\lambda_1,\ldots,\lambda_r;\nu)
+       \longrightarrow
+                 \mathcal P_F(\lambda_1,\ldots,\lambda_r;\nu)
+\end{equation}
+compatible with differentials and the required substitutions.
+Here \emph{admissible} means a specified complex of operations, with
+its coefficient domains, pole conditions and topology. In a
+meromorphic differential-module family it can be a subcomplex
+of \eqref{v4-eq:recognition-chiral-operations}; closure under the
+required substitutions must be proved. A fixed pole bound need
+not have this property, since compositions can increase pole
+order. Monodromic or analytic fields require their own coefficient
+recipient before such a map is defined.
+
+Collision restrictions, exchanges, translation and local-vacuum
+insertion give additional diagrams for \(\rho\). When their
+commutativity is only up to homotopy, the homotopies and their
+higher compatibilities are part of the comparison. The
+construction of either operad above does not produce
+\eqref{v4-eq:recognition-comparison}. Nor does the singleton
+\(F_1\) determine its target, which uses the whole word system.
+
+\begin{example}[An undetected positive component]
+\label{v4-ex:recognition-singleton}
+For a differential module \(M\), let
+\(I(M)_n=\Delta_{n,*}M\) for \(n>0\), with zero empty
+component. Closed base change gives its monotone collision
+equivalences. Put \(I=I(J_X)\), where \(J_X=p_X^!k\), and
+\(H=I\star I\). Then \(H_1=0\), while \(H_2\) is nonzero
+on the separated two-point locus. The free augmented cut
+algebras
+\[
+ \mathbb T(I)\longrightarrow\mathbb T(I\oplus H),
+ \qquad \mathbb T(E)=K\oplus\bigoplus_{r\geq1}E^{\star r},
+\]
+agree at the singleton and differ at two positions by the extra
+summand \(H_2\). Each sum is finite in every geometric arity.
+Consequently singleton evaluation is not conservative even on
+connected augmented cut algebras.
+\end{example}
+
+\section{The endpoint exchange at a ternary collision}
+\label{v4-sec:recognition-spectator}
+
+Let \(B=k[\epsilon]/(\epsilon^2)\), concentrated in
+cohomological degree zero. Give it an auxiliary parity by making
+\(1\) even and \(\epsilon\) odd. For \(\sigma=\pm1\), define
+\[
+ R_\sigma(a\otimes b)=\sigma^{p(a)p(b)}b\otimes a
+\]
+on the two homogeneous basis vectors, and extend linearly.
+The parity here specifies the exchange; it is not a
+cohomological Koszul sign. Both exchanges have the same unit
+crossings, are involutive, and satisfy the braid relation.
+For three basis vectors the two braid words have the same sign
+\(\sigma^{p(a)p(b)+p(a)p(c)+p(b)p(c)}\).
+They also satisfy the two multiplication compatibility identities
+\[
+ \begin{split}
+ R_\sigma(1\otimes\mu)
+   &=(\mu\otimes1)(1\otimes R_\sigma)(R_\sigma\otimes1),\\
+ R_\sigma(\mu\otimes1)
+   &=(1\otimes\mu)(R_\sigma\otimes1)(1\otimes R_\sigma).
+ \end{split}
+\]
+When the multiplied entries are not both \(\epsilon\), their
+parities add; when both are \(\epsilon\), both sides vanish.
+This proves the identities on a basis. The binary multiplication
+\(\mu\) is the same for both signs, and \(\mu R_\sigma=\mu\).
+
+To collide the first and third input while retaining the middle
+input, define
+\begin{equation}\label{v4-eq:recognition-outer-quotient}
+ q_\sigma=(\mu\otimes1)(1\otimes R_\sigma):
+              B^{\otimes3}\longrightarrow B\otimes B.
+\end{equation}
+The first output is the product of the endpoints; the second is
+the unchanged middle state after exchange. For
+\(\xi=\epsilon\otimes\epsilon\otimes1
+          -1\otimes\epsilon\otimes\epsilon\), one obtains
+\begin{equation}\label{v4-eq:recognition-spectator-witness}
+ q_+(\xi)=0,\qquad q_-(\xi)=2\epsilon\otimes\epsilon.
+\end{equation}
+Thus an operation that vanishes for one exchange need not vanish
+for the other, although the binary products agree.
+
+This discrepancy gives actual differential modules with different
+allowed poles. On the affine-line three-point chart put
+\[
+ Y=\operatorname{Spec}
+ k[z_1,z_2,z_3,(z_1-z_2)^{-1},(z_2-z_3)^{-1}],
+ \qquad u=z_1-z_3,\qquad T=B^{\otimes3}.
+\]
+Inside \(T\otimes_k\omega_Y[u^{-1}]\), define right
+differential modules
+\begin{equation}\label{v4-eq:recognition-polar-extensions}
+ \mathcal M_\sigma
+   =T\otimes_k\omega_Y
+        +(\ker q_\sigma)\otimes_k\omega_Y[u^{-1}].
+\end{equation}
+The kernels are constant coefficient spaces, so multiplication
+by regular functions and differentiation preserve these modules.
+In a coordinate density, the right derivative differentiates
+the coefficient with a minus sign. Every finite normal
+derivative of an allowed pole remains allowed.
+
+\begin{proposition}[Binary agreement and a ternary failure]
+\label{v4-prop:recognition-ternary-poles}
+Both modules in \eqref{v4-eq:recognition-polar-extensions} restrict
+to the same meromorphic module off \(u=0\). The identity of that
+module extends to no map \(\mathcal M_+\to\mathcal M_-\), and
+to no map in the opposite direction. Their common binary
+coefficient extension, obtained from \(\ker\mu\), does not
+decide this ternary extension problem.
+\end{proposition}
+
+\begin{proof}
+Localizing at \(u\) makes the first summand in
+\eqref{v4-eq:recognition-polar-extensions} the whole meromorphic
+module. The target is a submodule of that localization and has
+no \(u\)-torsion. A map restricting to the identity must therefore
+be the identity on every section: the difference vanishes after
+localization and hence vanishes already.
+
+But \(u^{-1}\xi\,dz_1dz_2dz_3\) belongs to \(\mathcal M_+\)
+and not to \(\mathcal M_-\), by
+\eqref{v4-eq:recognition-spectator-witness}. A nonzero constant
+coefficient of \(u^{-1}\) cannot become regular at \(u=0\).
+For the reverse direction, use
+\(\eta=\epsilon\otimes\epsilon\otimes1
+          +1\otimes\epsilon\otimes\epsilon\):
+\(q_-(\eta)=0\) and \(q_+(\eta)=2\epsilon\otimes\epsilon\).
+At two inputs the construction uses the common map
+\(\mu:B^{\otimes2}\to B\), so its kernel extension is identical.
+\end{proof}
+
+The proposition fixes the identity on the marked meromorphic
+coefficient space. It makes no assertion about isomorphisms that
+change those markings. It also constructs binary and ternary
+coefficient extensions, not a complete field system in every
+arity. An all-arity realization must additionally supply the
+collision maps and verify every substitution among them.
+
+\section{The complex controlling a higher comparison}
+\label{v4-sec:recognition-comparison-tower}
+
+Let \(R\) be a commutative ring. We use the suspended convention
+of Chapter~\ref{v4-ch:bar-cobar-topology}. An augmented
+\(A_\infty\)-algebra is specified here by a complex
+\(V=s\bar A\) and a degree-one coderivation
+\[
+ b_A:T_R^c(V)\longrightarrow T_R^c(V),\qquad b_A^2=0,
+ \qquad b_A(1)=0.
+\]
+Its Taylor components are maps \(b_{A,r}:V^{\otimes r}\to V\)
+of degree one, with \(b_{A,1}\) the differential on \(V\).
+The augmented state algebra is the unitization
+\(R\oplus V[-1]\): its new unit acts by the identity under
+binary multiplication, and every higher operation vanishes when
+one of its inputs is that unit. All displayed inputs belong to
+the augmentation ideal. For a differential graded
+algebra, only \(b_1,b_2\) occur, with
+\(b_1(sa)=-s(da)\) and \(b_2(sa,sb)=(-1)^{|a|}s(ab)\).
+
+For a second such algebra put \(W=s\bar B\). A normalized
+\(A_\infty\)-map is a coaugmentation-preserving degree-zero
+coalgebra map
+\(F:T_R^c(V)\to T_R^c(W)\) satisfying
+\(b_BF=Fb_A\). Its components
+\(f_r:V^{\otimes r}\to W\) determine it by consecutive
+subdivisions. Define the actual cochain complex
+\begin{equation}\label{v4-eq:recognition-hom-complex}
+ E_r=\operatorname{Hom}_R(V^{\otimes r},W),\qquad
+ \partial f=b_{B,1}f-(-1)^{|f|}f\,b_{A,1}^{(r)},
+\end{equation}
+where \(b_{A,1}^{(r)}\) is the tensor differential. For derived
+comparisons use specified cofibrant coefficient models, or
+replace this Hom by its derived model. The formulas below concern
+the chosen chain models, with no unmentioned resolution change.
+
+Suppose \(f_1,\ldots,f_{n-1}\) already satisfy the comparison
+equations below length \(n\). Define
+\begin{equation}\label{v4-eq:recognition-obstruction}
+ \begin{split}
+ O_n={}&
+ \sum_{\substack{q\geq2,\ i_1+\cdots+i_q=n\\i_j\geq1}}
+       b_{B,q}(f_{i_1}\otimes\cdots\otimes f_{i_q})\\
+ &-\sum_{\substack{u+v+w=n\\v\geq2}}
+       f_{u+1+w}(1^{\otimes u}\otimes b_{A,v}\otimes1^{\otimes w})
+       \in E_n^1.
+ \end{split}
+\end{equation}
+All components on the right have index less than \(n\), except
+the already specified algebra operations. The signs are tensor
+composition signs: insertion of \(b_{A,v}\) after a homogeneous
+prefix has the sign given by its total degree. No division by
+two occurs.
+
+\begin{theorem}[One higher component]
+\label{v4-thm:recognition-one-step}
+The cochain \(O_n\) is closed. A component \(f_n\) extending
+the comparison through length \(n\) exists precisely when
+\([O_n]=0\) in \(H^1(E_n)\). It must satisfy
+\[
+ \partial f_n=-O_n.
+\]
+When a solution exists, all solutions form a torsor for
+\(Z^0(E_n)\). Modulo changes \(f_n\mapsto f_n+\partial h\),
+with \(h\in E_n^{-1}\) and all lower components fixed, they
+form a torsor for \(H^0(E_n)\).
+\end{theorem}
+
+\begin{proof}
+Extend the chosen components to a coalgebra map by setting the
+remaining Taylor components to zero. Put \(D=b_BF-Fb_A\).
+The square-zero equations imply
+\[
+ b_BD+Db_A=0.
+\]
+The map \(D\) is a coderivation over \(F\). Since its
+length-one output vanishes on inputs shorter than \(n\), the
+only part of this identity with \(n\) inputs and one output is
+\(b_{B,1}O_n+O_n b_{A,1}^{(n)}=0\). This is
+\(\partial O_n=0\). In the equation with one output and
+\(n\) inputs, the new \(f_n\) occurs only in the unary terms;
+all other terms are \eqref{v4-eq:recognition-obstruction}.
+This gives the displayed equation. Subtracting two solutions
+gives a degree-zero cocycle, and quotienting by degree-zero
+boundaries gives the final assertion.
+\end{proof}
+
+For strict differential graded inputs, the first equation is
+\[
+ \partial f_2
+   =f_1b_{A,2}-b_{B,2}(f_1\otimes f_1).
+\]
+Thus \(f_2\) is the multiplicativity homotopy in suspended
+coordinates. At length three, \(f_2\) enters on both sides of
+the next equation. Choosing its cohomology class independently
+of that equation can obstruct the extension.
+
+\begin{example}[A nonzero first ternary obstruction]
+\label{v4-ex:recognition-minimal-ternary}
+Let \(R=k\), and take \(V=kx\oplus ky\) with
+\(|x|=-1\), \(|y|=-2\). On \(T^c(V)\), let the first
+coderivation be zero and let the second have the sole component
+\[
+ b_{B,3}(x,x,x)=y,
+\]
+vanishing on inputs containing \(y\). Its square is zero:
+nested insertions vanish, while disjoint degree-one insertions
+cancel. With \(f_1=1_V\), both unary and binary comparison
+equations hold, for any \(f_2\). But \(O_3(x,x,x)=y\),
+and \(\partial=0\) on \(E_3\). Hence no higher comparison
+with this linear term exists. The corresponding unsuspended
+states have degrees zero and minus one.
+\end{example}
+
+There is a version on the actual word carrier. Take the positive
+system \(I=I(J_X)\) of
+Example~\ref{v4-ex:recognition-singleton}, put \(H=I^{\star3}\),
+and use reduced states \(G=I\oplus H[1]\). On the suspended
+states \(G[1]=I[1]\oplus H[2]\), define \(b_3\) to be the
+degree-one shifted identity
+\[
+ (I[1])^{\star3}\simeq H[3]\longrightarrow H[2],
+\]
+and zero if an input belongs to \(H[2]\). Together with the
+internal differential it squares to zero by the same cancellation.
+Compare it to the structure with \(b_3=0\) and the same unary
+differential and zero binary product. The first ternary defect
+projects to the identity of \(H\). It is not a boundary, because
+\(H_3\) is nonzero on the separated three-point locus. Thus
+the identity of the underlying word system and the agreement of
+binary operations do not extend to an \(A_\infty\)-map. This
+example uses positive systems and lies within the geometric
+finiteness regime; coefficient completion is not its obstruction.
+
+\section{Fixed boundary values and allowed homotopies}
+\label{v4-sec:recognition-relative-complex}
+
+Geometric conditions restrict the possible \(f_n\). A
+restriction to an open set, a prescribed normal coefficient or
+a vacuum value can be represented, on fixed chain models, by a
+cochain map
+\(r_n:E_n\to T_n\). Let \(t_n\in T_n^0\) be the
+prescribed value of the new component. Compatibility with its
+chain equation requires
+\[
+ \partial t_n=-r_nO_n.
+\]
+Several restrictions can be placed in the same target diagram;
+its maps and compatibility homotopies must be included when
+forming the derived restriction map.
+
+First suppose \(r_n\) is degreewise surjective and require the
+strict boundary value \(r_nf_n=t_n\). Put \(K_n=\ker r_n\),
+and choose any degree-zero lift \(\widetilde f_n\) of \(t_n\).
+
+\begin{theorem}[The relative obstruction]
+\label{v4-thm:recognition-relative}
+The cochain
+\[
+ o_n=O_n+\partial\widetilde f_n
+\]
+is a degree-one cocycle in \(K_n\). Its class in \(H^1(K_n)\)
+is independent of the lift. The comparison extends with the
+prescribed boundary value if and only if this class vanishes.
+When it does, solutions modulo homotopies in \(K_n^{-1}\),
+with all lower data fixed, form a torsor for \(H^0(K_n)\).
+\end{theorem}
+
+\begin{proof}
+The boundary equation gives \(r_no_n=0\), and
+\(\partial O_n=0\) gives \(\partial o_n=0\). Changing the
+lift by \(a\in K_n^0\) changes \(o_n\) by \(\partial a\).
+A correction \(a\in K_n^0\) makes
+\(f_n=\widetilde f_n+a\) a solution precisely when
+\(\partial a=-o_n\). Subtraction of two solutions and then
+quotienting by relative boundaries gives the asserted torsor.
+\end{proof}
+
+Without surjectivity, a strict lift of \(t_n\) is a separate
+first requirement. If the boundary is instead allowed to agree
+up to a specified homotopy, the correct complex is the
+\emph{homotopy fibre}
+\begin{equation}\label{v4-eq:recognition-fibre}
+ \operatorname{Fib}(r_n)^q=E_n^q\oplus T_n^{q-1},
+ \qquad d(e,h)=(\partial e,r_ne-\partial h).
+\end{equation}
+The pair \((O_n,-t_n)\) is closed. Its class vanishes precisely
+when there are \(f_n\in E_n^0\), \(h_n\in T_n^{-1}\) with
+\[
+ \partial f_n=-O_n,\qquad
+ r_nf_n=t_n-\partial h_n.
+\]
+Indeed, take the negative of the \(E_n\)-component of a
+primitive of \((O_n,-t_n)\), and retain its \(T_n[-1]\)
+component. This proves the equivalence directly, including the
+sign of the boundary homotopy. Replacing a strict boundary
+condition by this homotopy condition changes the comparison
+problem unless that replacement was allowed.
+
+\begin{example}[An inadmissible primitive]
+\label{v4-ex:recognition-forbidden-primitive}
+Let \(E\) have basis \(h\) in degree zero and \(c\) in
+degree one, with \(\partial h=c\). Let \(T=kh\) in degree
+zero and let \(r:E\to T\) be the quotient by \(kc\).
+The obstruction \(O=c\) is exact in \(E\). With prescribed
+boundary \(t=0\), however, \(K=kc\) has
+\(H^1(K)=kc\), so no allowed primitive exists. The unique
+ambient solution \(-h\) has the wrong boundary value. This is
+the distinction between finding a primitive and finding one in
+the permitted support or vacuum sector.
+\end{example}
+
+\begin{corollary}[Extension through all lengths]
+\label{v4-cor:recognition-all-lengths}
+Suppose the restriction complexes are specified at every length,
+each \(r_n\) is degreewise surjective, and \(H^1(K_n)=0\)
+for \(n\geq2\). An admissible unary comparison extends to a
+normalized \(A_\infty\)-map if compatible boundary values can
+be supplied successively for its partial lifts. If contracting homotopies
+\(h_n:K_n\to K_n[-1]\), satisfying
+\(\partial h_n+h_n\partial=1\), are supplied, one can take
+\[
+ f_n=\widetilde f_n-h_no_n.
+\]
+Over a field, a quasi-isomorphism \(f_1\) gives a
+quasi-isomorphism of the resulting direct-sum bar complexes.
+\end{corollary}
+
+\begin{proof}
+Apply Theorem~\ref{v4-thm:recognition-relative} recursively. For
+the displayed choice, closedness of \(o_n\) gives
+\(\partial h_no_n=o_n\). At each finite word length the
+coalgebra formula uses only finitely many components, so the
+resulting map is defined on the direct-sum bars and satisfies
+the chain identity there.
+
+Filter these bars by word length. On the associated graded, the
+comparison is \(f_1^{\otimes r}\) in length \(r\). Over a
+field tensor powers preserve quasi-isomorphisms. Finite-stage
+induction and exact filtered unions prove the final assertion.
+\end{proof}
+
+The hypotheses include compatibility of the prescribed boundary
+values with the partial solution chosen at the previous stage.
+Vanishing cohomology does not supply incompatible boundary data.
+Nor does it by itself imply uniqueness in a full mapping space:
+\(H^0(K_n)\) describes this stage's choices, and negative-degree
+cohomology can describe homotopies between those choices. For
+completed coefficient bars, the same construction must also
+satisfy the continuity conditions of
+Chapter~\ref{v4-ch:bar-cobar-topology}.
+
+\section{Operations, deformations, and a recognition problem}
+\label{v4-sec:recognition-deformations}
+
+There is a parallel obstruction for constructing the operations
+themselves. Fix \(b_1\) on a suspended coefficient complex \(V\)
+and choose \(b_2,\ldots,b_{n-1}\) satisfying \(b^2=0\) below
+length \(n\). Then
+\[
+ C_n=\sum_{\substack{i+j=n+1\\i,j\geq2}}
+       \sum_{u=0}^{i-1}
+       b_i(1^{\otimes u}\otimes b_j\otimes1^{\otimes(i-1-u)})
+       \in\operatorname{Hom}_R(V^{\otimes n},V)^2.
+\]
+Its differential is zero. To see this without dividing by any
+integer, use the identity \(b\,b^2=b^2b\) for the partial
+coderivation. Its first nonzero component is
+\(b_1C_n-C_nb_1^{(n)}=0\). A new operation \(b_n\) must
+satisfy \(\partial b_n=-C_n\), so the obstruction is in
+degree two and the choices, modulo boundaries, are in degree
+one. This differs by one degree from the comparison problem,
+where \(f_n\) has degree zero.
+
+In characteristic zero these equations also have a Lie-algebra
+form. Let
+\[
+ \mathfrak g=\prod_{r\geq2}
+                   \operatorname{Hom}_k(V^{\otimes r},V),
+ \qquad d_{\mathfrak g}=[b_1,-].
+\]
+Identify a collection with its coderivation of \(T^c(V)\).
+The bracket is the graded commutator of coderivations, projected
+back to one output. Give arity \(r\) weight \(r-1\), and
+let \(F^p\mathfrak g\) consist of collections supported in
+weights at least \(p\). Then
+\([F^p,F^q]\subset F^{p+q}\), and the product is complete
+and separated for this filtration. Each fixed-arity bracket
+coefficient is a finite sum.
+
+A degree-one \(\alpha\in\mathfrak g\) gives square-zero
+\(b_1+\alpha\) precisely when
+\[
+ d_{\mathfrak g}\alpha+\tfrac12[\alpha,\alpha]=0.
+\]
+If \(\alpha\) solves this equation modulo \(F^p\), its
+curvature in \(F^p/F^{p+1}\) is a degree-two cocycle.
+The identity
+\(d_{\mathfrak g}C+[\alpha,C]=0\) follows by expanding the
+curvature, and its leading term proves closedness. A correction
+\(\beta\in F^p\mathfrak g^1\) changes that class by
+\(d_{\mathfrak g}\beta\). This gives the same extension
+criterion as the integral coderivation equation. For
+deformations around a complete nonzero solution, the controlling
+differential is instead
+\(d_\alpha=d_{\mathfrak g}+[\alpha,-]\); retaining that twist
+is essential. These formulas apply to an admissible operation
+subcomplex only if it is closed under the differential and the
+required insertions.
+
+To compare an entire coloured operation system, one can specify
+a differential graded operad resolution \(\mathcal R\) with
+successive free generators \(e\), each having differential in
+the previously constructed part. If a partial map
+\(\rho:\mathcal R\to\mathcal P_F\) is fixed, extending it
+over a generator of degree \(d\) asks for
+\[
+ x\in\mathcal P_F^d,\qquad dx=\rho(de).
+\]
+The right side is closed because \(d^2e=0\). Its class in
+\(H^{d+1}(\mathcal P_F)\), or in the relative complex with
+the prescribed boundary values, is exactly the obstruction.
+Freeness then extends the map to composites; the chain identity
+on generators implies it on every composite by the Leibniz
+rule. This is an explicit obstruction calculation once the
+generators, their differentials and their operation recipients
+are supplied. A name for an operad or a Hochschild group supplies
+none of those data.
+
+\begin{question}[Recognition of an arithmetic family]
+\label{v4-qn:recognition-arithmetic}
+For an independently specified arithmetic coefficient family,
+construct its simultaneous operation complexes and their
+geometric recipients, then the maps
+\eqref{v4-eq:recognition-comparison} on their full coefficient
+domains. Compare every differential, supported restriction,
+normal derivative, endpoint exchange and local-vacuum insertion
+used by the family, with compatible nested substitutions.
+Retain arithmetic operators and a state or trace when these
+marks have been independently defined. Determine the image of
+the resulting comparison, or prove an equivalence on a stated
+class of objects and full mapping spaces.
+\end{question}
+
+The preceding constructions locate this question's successive
+equations and give an extension theorem when their relative
+cohomology vanishes. The ternary pole example shows why the
+binary field product cannot replace the simultaneous operation
+system. The cubic example shows why a strict presentation cannot
+replace the comparison of primitives. Both distinctions persist
+when a scalar character or trace already agrees.

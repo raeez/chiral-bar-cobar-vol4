@@ -1,0 +1,690 @@
+\chapter{Adelic Scaling, Scattering, and the Weil Trace}
+\label{v4-arith:w7-j:ATP-adelic-scattering}
+
+The Weil pairing is positive precisely when the nontrivial zeta zeros
+lie on the critical line. A scattering operator instead compares two
+self-adjoint dynamics on their absolutely continuous subspaces.
+The question is whether arithmetic dynamics can produce the full signed
+Weil trace. The distinction between these two constructions already
+appears in a positive rank-one perturbation.
+
+\section{A Rank-One Trace Difference}
+\label{v4-arith:w7-j:domain}
+
+Use the complex test algebra
+\(\mathscr A=C_c^\infty(\mathbb R)\), with additive convolution and
+\(f^*(u)=\overline{f(-u)}\). Put
+\[
+ h_f(z)=\int_{\mathbb R}f(u)e^{izu}\,du,\qquad
+ \mathscr P=\{h_f:f\in\mathscr A\},\qquad
+ h^\sharp(z)=\overline{h(\bar z)}.
+\]
+Then \(h_{f*f^*}=h_fh_f^\sharp\), whose restriction to the real
+line is \(|h_f|^2\). The signed Weil distribution is
+\(W=P-W_\infty-W_{\mathrm{fin}}\), with all three terms as in
+\Cref{v4-arith:w5-a:thm:weil-explicit}.
+Its positivity condition is \(W(f*f^*)\geq0\) for every
+\(f\in\mathscr A\). No evenness restriction is imposed.
+
+\begin{proposition}[Complete scattering with a signed trace]
+\label{v4-arith:w7-j:prop:rank-one-sign}
+On \(L^2(\mathbb R,d\lambda)\oplus\mathbb C\), let
+\[
+ A_0=M_\lambda\oplus0,\qquad A_1=M_\lambda\oplus a,
+ \qquad a>0,
+\]
+with common domain \(\operatorname{Dom}M_\lambda\oplus\mathbb C\),
+where \(\operatorname{Dom}M_\lambda=\{g:\lambda g\in L^2\}\).
+The difference is positive and has rank one. The wave operators are
+complete and the scattering operator is the identity. For every
+\(h\in\mathscr S(\mathbb R)\), however,
+\[
+ \operatorname{Tr}(h(A_1)-h(A_0))=h(a)-h(0)
+ =\int_0^a h'(\lambda)\,d\lambda.
+\]
+The corresponding spectral shift is
+\(\xi=\mathbf1_{(0,a)}\), and \(-d\xi=\delta_a-\delta_0\)
+is not positive, even on the tests \(|h_f|^2\), \(f\in\mathscr A\).
+\end{proposition}
+\begin{proof}
+The absolutely continuous subspace of each operator is the first
+summand. On that summand
+\(e^{itA_1}e^{-itA_0}=1\), so both wave operators have exactly
+that range. Functional calculus gives the displayed trace difference
+on the one-dimensional second summand. The integral identity fixes
+its spectral-shift sign.
+Choose \(\phi\in\mathscr A\) with \(\int\phi=1\), and set
+\(f(u)=\phi(u)+\phi(u-\pi/a)\).
+Then \(h_f(z)=(1+e^{i\pi z/a})h_\phi(z)\), so
+\(|h_f(a)|^2-|h_f(0)|^2=-4\).
+Also \(e^{-2\pi i\xi}=1\) almost everywhere, despite the negative
+atom of \(-d\xi\).
+\end{proof}
+
+The example separates a unitary scattering phase from a positive
+trace distribution. To test an arithmetic comparison, the Hilbert
+spaces, domains, and perturbation must first be specified.
+
+\section{The Idele Scaling Operator}
+\label{v4-arith:w7-j:framework}
+\label{v4-arith:w7-j:framework:hilbert}
+
+\begin{definition}[Idele carrier and measure]
+\label{v4-arith:w7-j:def:H-idele}
+Let \(\mathbb A\) be the adele ring of \(\mathbb Q\), let
+\(C_{\mathbb Q}=\mathbb Q^\times\backslash\mathbb A^\times\), and put
+\(C_{\mathbb Q}^1=\ker(|\cdot|:C_{\mathbb Q}\to\mathbb R_{>0})\).
+The section represented by the idele \((x,1,1,\ldots)\), \(x>0\),
+gives \(C_{\mathbb Q}\cong\mathbb R_{>0}\times C_{\mathbb Q}^1\).
+Give the compact group \(C_{\mathbb Q}^1\) Haar probability measure
+\(d\mu_1\), and use \(dx/x\) on the first factor. Define
+\begin{equation}
+\label{v4-arith:w7-j:eq:H-idele}
+ \mathcal K=L^2(C_{\mathbb Q},d^\times x)
+ =L^2(\mathbb R,du;E),\qquad
+ E=L^2(C_{\mathbb Q}^1,d\mu_1),\quad u=\log x.
+\end{equation}
+Here \(d^\times x\) is the product measure, of infinite total mass.
+Let \(P_0\) be the rank-one orthogonal projection of \(E\) onto
+its constant functions.
+\end{definition}
+
+\begin{lemma}[Unitary Mellin transform and domain]
+\label{v4-arith:w7-j:lem:mellin-decomp}
+The transform
+\begin{equation}
+\label{v4-arith:w7-j:eq:mellin-decomp}
+ (\mathcal Mg)(\tau)=(2\pi)^{-1/2}
+ \int_0^\infty g(x)x^{-i\tau}\,\frac{dx}{x}
+\end{equation}
+extends to a unitary from \(\mathcal K\) to
+\(L^2(\mathbb R,d\tau;E)\). On the logarithmic side put
+\(D_0=-i\partial_u\), with domain \(H^1(\mathbb R;E)\).
+It is self-adjoint, has purely absolutely continuous spectrum
+\(\mathbb R\), and transforms to \(M_\tau\otimes1_E\), with domain
+\(\{F:\int\tau^2\|F(\tau)\|_E^2d\tau<\infty\}\).
+A core is \(\mathscr S(\mathbb R)\otimes_{\mathrm{alg}}E\).
+\end{lemma}
+\begin{proof}
+The substitution \(x=e^u\) preserves the stated measures.
+The ordinary Fourier Plancherel theorem, applied in each coordinate
+of an orthonormal basis of \(E\), proves unitarity.
+Integration by parts on the Schwartz core gives
+\(\mathcal M(-i\partial_u g)=\tau\mathcal Mg\).
+Real multiplication on its maximal domain is self-adjoint:
+its adjoint has the same domain, as testing against compactly
+supported functions shows. Truncate in \(\tau\) and in finitely many
+\(E\)-coordinates, then approximate the resulting functions by smooth
+compactly supported functions. This gives graph-norm density of the
+stated core. Each spectral measure has density
+\(\|F(\tau)\|_E^2\) with respect to Lebesgue measure. Every real
+interval has nonzero spectral projection, proving the spectrum claim.
+\end{proof}
+
+The spherical space \(L^2(\mathbb R)\otimes\operatorname{im}P_0\)
+is a reducing subspace. Its Schwartz functions are not a dense
+operator core for all of \(\mathcal K\).
+The transform above uses the unitary character \(x^{-i\tau}\).
+A formula with exponent \(1/2+i\tau\) requires an additional
+weight in the source measure or a specified multiplication by
+\(x^{1/2}\).
+
+\section{The Critical Modular Generator on a Common Carrier}
+\label{v4-arith:w7-j:framework:generator}
+
+The critical Bost--Connes generator acts on a different Hilbert space.
+By \Cref{v4-arith:w5-b:def:N-BC}, its orthonormal basis and domain are
+\[
+ \begin{gathered}
+ N_{\mathrm{BC}}v_{q,r}=\nu_qv_{q,r},\qquad
+ \nu_q=\tfrac12\log q,\qquad
+ (q,r)\in\mathbb Q_{>0}\times\mathbb Q/\mathbb Z,\\
+ \operatorname{Dom}N_{\mathrm{BC}}
+ =\left\{\sum c_{q,r}v_{q,r}:
+               \sum\nu_q^2|c_{q,r}|^2<\infty\right\}.
+ \end{gathered}
+\]
+Every eigenvalue has infinite multiplicity. The simple occupation
+energies \(\log m\) instead occur in the reducing space
+\(K_2=\overline{\operatorname{span}}\{v_{m^2,0}:m\geq1\}\),
+as in \Cref{v4-arith:w5-b:lem:zero-mode-embeds-gns}.
+
+\begin{definition}[Tensor comparison operators]
+\label{v4-arith:w7-j:def:scattering-space}
+Define
+\begin{equation}
+\label{v4-arith:w7-j:eq:H-scatter}
+ \widetilde{\mathcal K}
+ =L^2(\mathbb R,d\tau)\widehat\otimes\mathcal H_1
+ =L^2\bigl(\mathbb R;\ell^2(\mathbb Q_{>0}\times\mathbb Q/\mathbb Z)\bigr).
+\end{equation}
+The joint multiplication operators are
+\begin{equation}
+\label{v4-arith:w7-j:eq:D-BC}
+ (\widetilde D_0F)_{q,r}(\tau)=\tau F_{q,r}(\tau),\qquad
+ (\widetilde D_{\mathrm{BC}}F)_{q,r}(\tau)
+   =(\tau+\nu_q)F_{q,r}(\tau).
+\end{equation}
+Each has its maximal multiplication domain. In particular,
+\[
+ \operatorname{Dom}\widetilde D_{\mathrm{BC}}
+ =\left\{F:\int_{\mathbb R}\sum_{q,r}
+ |\tau+\nu_q|^2|F_{q,r}(\tau)|^2\,d\tau<\infty\right\}.
+\]
+This operator is the closure of
+\(M_\tau\otimes1+1\otimes N_{\mathrm{BC}}\) on finite channel Schwartz
+functions. The common tensor construction does not identify
+\(\widetilde{\mathcal K}\) with an arithmetic quotient of \(\mathcal K\).
+\end{definition}
+
+\begin{proposition}[Tensor wave obstruction]
+\label{v4-arith:w7-j:prop:tensor-wave-obstruction}
+Both tensor operators are self-adjoint and purely absolutely
+continuous. The strong limits of
+\(e^{it\widetilde D_{\mathrm{BC}}}e^{-it\widetilde D_0}\), as
+\(t\to+\infty\) or \(t\to-\infty\), exist on precisely the
+closed subspace supported on \(q=1\). They equal the identity there.
+\end{proposition}
+\begin{proof}
+The maximal multiplication argument in the preceding lemma applies
+on each channel. Finite channel truncations followed by smooth
+compact approximations converge in the graph norm of either
+operator, proving the assertion about closures. The spectral measure
+of \(F\) for \(\widetilde D_{\mathrm{BC}}\) is the sum of the translated
+measures \(|F_{q,r}(\lambda-\nu_q)|^2d\lambda\), hence is absolutely
+continuous. The free case is identical without translation.
+On each channel the wave family is multiplication by
+\(e^{it\nu_q}\). If this family converges on a vector, its projection
+onto any nonzero channel also converges. For \(\nu_q\ne0\), choose
+\(s\) with \(e^{is\nu_q}\ne1\). The norm of the difference at times
+\(t+s\) and \(t\) is the nonzero constant
+\(|e^{is\nu_q}-1|\|F_{q,r}\|\), which contradicts convergence.
+Thus all such channels vanish. Since \(\nu_q=0\) exactly when
+\(q=1\), the remaining assertion follows.
+\end{proof}
+
+\begin{remark}[Transport and the zero divisor]
+\label{v4-arith:w7-j:rem:relation-to-HHP}
+An isometry intertwining \(N_{\mathrm{BC}}\) with a bounded operator
+cannot exist: the unit vectors \(v_{q,r}\) have unbounded eigenvalues.
+An isometry intertwining it with \(D_0\) cannot exist either,
+since \(D_0\) has no eigenvectors. Abstract isomorphism of separable
+Hilbert spaces asserts neither intertwining property.
+The hypothetical zero-divisor operator of
+\Cref{v4-arith:w5-b:def:twist} requires its separately stated
+operator, domain, and determinant comparison. The tensor
+construction supplies none of those zero-divisor data.
+\end{remark}
+
+\section{Trace-Class Scattering}
+\label{v4-arith:w7-j:framework:S-matrix}
+\label{v4-arith:w7-j:reformulation}
+\label{v4-arith:w7-j:reformulation:birman-krein}
+
+\begin{definition}[Wave operators]
+\label{v4-arith:w7-j:def:wave-operators}
+For self-adjoint operators \(A_0,A_1\) on one complex Hilbert space,
+write \(P_{\mathrm{ac}}(A_j)\) for the absolutely continuous spectral
+projection. When the strong limits exist, define
+\begin{equation}
+\label{v4-arith:w7-j:eq:wave-operators}
+ W_\pm(A_1,A_0)=\mathop{\mathrm{s}\!\!-
+ lim}_{t\to\pm\infty}e^{itA_1}e^{-itA_0}P_{\mathrm{ac}}(A_0).
+\end{equation}
+Completeness means that both ranges equal
+\(P_{\mathrm{ac}}(A_1)\mathcal H\). In that case
+\begin{equation}
+\label{v4-arith:w7-j:eq:S-operator}
+ S=W_+^*W_-
+\end{equation}
+is unitary on \(P_{\mathrm{ac}}(A_0)\mathcal H\).
+\end{definition}
+
+\begin{theorem}[Trace-class scattering and spectral shift]
+\label{v4-arith:w7-j:prop:birman-krein}
+Let \(A_0\) be self-adjoint and let \(V=V^*\) be trace class.
+Set \(A_1=A_0+V\) on \(\operatorname{Dom}A_0\).
+The wave operators exist and are complete. There is a real
+\(\xi\in L^1(\mathbb R)\), with
+\(\|\xi\|_1\leq\|V\|_1\), such that for \(h\in\mathscr S(\mathbb R)\),
+\begin{equation}
+\label{v4-arith:w7-j:eq:birman-krein}
+ \operatorname{Tr}(h(A_1)-h(A_0))
+ =\int_{\mathbb R}h'(\lambda)\xi(\lambda)\,d\lambda.
+\end{equation}
+In a direct-integral spectral representation of \(A_0\) on its
+absolutely continuous subspace, \(S\) has unitary fibres
+\(S(\lambda)\), with \(S(\lambda)-1\) trace class almost everywhere,
+and
+\begin{equation}
+\label{v4-arith:w7-j:eq:BK-det}
+ \det S(\lambda)=e^{-2\pi i\xi(\lambda)}\quad\text{almost everywhere}.
+\end{equation}
+The normalization of \(\xi\) is specified by
+\[
+ \Delta_V(z)=\det(1+V(A_0-z)^{-1}),\qquad
+ \xi(\lambda)=\pi^{-1}\operatorname{Im}\log\Delta_V(\lambda+i0),
+\]
+where the analytic logarithm in the upper half-plane tends to zero
+as \(\operatorname{Im}z\to+\infty\).
+\end{theorem}
+
+These are the Kato--Rosenblum, Krein trace, and Birman--Krein
+scattering theorems with the sign convention of
+\Cref{v4-arith:w7-j:prop:rank-one-sign}.
+The operator and logarithm hypotheses are recorded in
+\href{https://arxiv.org/pdf/0712.3120}{Behrndt--Malamud--Neidhardt},
+pp.~2--3, equations~(1.1)--(1.5); their Theorem~2.7, p.~15,
+also treats finite-deficiency self-adjoint extension pairs.
+The determinant relation by itself determines \(\xi\) only modulo
+integer-valued functions. It does not replace the normalized
+perturbation determinant.
+
+\begin{proposition}[A specified rank-one pair on the idele carrier]
+\label{v4-arith:w7-j:prop:wave-existence}
+On the Mellin realization of \(\mathcal K\), choose
+\(g\in C_c^\infty(\mathbb R)\) with \(\|g\|_2=1\), and \(a\in\mathbb R\).
+Let \(Q_gF=g\int\overline{g(\lambda)}F(\lambda)\,d\lambda\), and set
+\[
+ V_a=aQ_g\otimes P_0,\qquad D_a=D_0+V_a,
+ \qquad\operatorname{Dom}D_a=\operatorname{Dom}D_0.
+\]
+This pair has complete wave operators. Its perturbation determinant is
+\[
+ \Delta_a(z)=1+a\int_{\mathbb R}
+ \frac{|g(\lambda)|^2}{\lambda-z}\,d\lambda.
+\]
+Almost everywhere, the scattering matrix is the identity on
+\((1-P_0)E\) and is multiplication on \(P_0E\) by
+\[
+ s_a(\lambda)=
+ \frac{\overline{\Delta_a(\lambda+i0)}}{\Delta_a(\lambda+i0)}.
+\]
+The spectral shift is the boundary argument of \(\Delta_a\) with
+exactly the preceding logarithm normalization.
+\end{proposition}
+\begin{proof}
+The operator \(Q_g\otimes P_0\) is an orthogonal projection of
+rank one. Hence \(V_a\) is bounded self-adjoint and trace class,
+with trace norm \(|a|\). The general theorem applies.
+The rank-one determinant formula \(\det(1+u\ell)=1+\ell(u)\)
+gives the displayed determinant. On the complementary compact
+channels both dynamics are identical. The remaining channel has
+spectral multiplicity one for \(D_0\), so its scattering fibre
+is its determinant. The Birman--Krein formula and
+\(\xi_a=\pi^{-1}\arg\Delta_a(\lambda+i0)\) give the stated quotient.
+The boundary values and the quotient are understood almost
+everywhere, as in the general theorem.
+\end{proof}
+
+\begin{remark}[Finite truncations and trace ideals]
+\label{v4-arith:w7-j:rem:trace-class-domain}
+Any specified finite-rank self-adjoint perturbation of \(D_0\)
+satisfies the same theorem. A limit requires its own trace-ideal
+estimate. For example, on orthonormal vectors \(u_j\), the diagonal
+operator \(\sum_j b_j|u_j\rangle\langle u_j|\) is trace class exactly
+when \(\sum_j|b_j|<\infty\). Square summability gives only the
+Hilbert--Schmidt ideal. Neither a formal cutoff nor nuclearity
+between different Schwartz spaces proves this Hilbert trace-class
+condition. The functions \(g\) and coefficients \(a\) above have
+not been identified with the Bost--Connes generator.
+\end{remark}
+
+\section{Positivity of a Spectral-Shift Distribution}
+\label{v4-arith:w7-j:reformulation:ATP-unitarity}
+
+\begin{theorem}[The ordinary trace-class positivity obstruction]
+\label{v4-arith:w7-j:thm:ATP-iff-S-unitary}
+Let \(\xi\in L^1(\mathbb R)\) be real, and define
+\(T(h)=\int h'\xi\) on \(\mathscr S(\mathbb R)\).
+The following conditions are equivalent:
+\[
+ T(|h_f|^2)\geq0\quad(f\in\mathscr A),
+ \qquad -d\xi\geq0,
+ \qquad \xi=0\text{ almost everywhere}.
+\]
+In particular, a nonzero positive trace distribution cannot arise
+as the ordinary trace difference of a trace-class perturbation.
+\end{theorem}
+\begin{proof}
+The map \(T\) is Schwartz-continuous, since
+\(|T(h)|\leq\|\xi\|_1\|h'\|_\infty\).
+Compactly supported smooth functions are dense in Schwartz space:
+for a Schwartz function \(f\), multiplication by
+\(\chi(u/R)\), where \(\chi=1\) near zero, converges to \(f\)
+in every Schwartz seminorm. Fourier transformation is a Schwartz
+isomorphism. Thus the first inequality implies
+\(T(|g|^2)\geq0\) for every \(g\in\mathscr S\).
+
+Let \(\varphi\in C_c^\infty\) be nonnegative. Choose a nonnegative
+compact smooth function \(\eta\) equal to one on a neighborhood
+of \(\operatorname{supp}\varphi\). The function
+\(g_\varepsilon=(\varphi+\varepsilon\eta^2)^{1/2}\) is smooth:
+on a neighborhood of the support of \(\varphi\) its argument is
+positive, and outside that neighborhood it equals
+\(\sqrt\varepsilon\eta\). It has compact support. Consequently
+\(T(\varphi)+\varepsilon T(\eta^2)\geq0\).
+Letting \(\varepsilon\downarrow0\) proves that \(-d\xi\) is a
+positive distribution.
+
+For a nonnegative smooth approximate identity \(\rho_\varepsilon\),
+\(\xi*\rho_\varepsilon\) is a real, nonincreasing, integrable
+smooth function. Such a function is zero: a positive value forces
+an infinite integral on its left, and a negative value forces one
+on its right. Hence \(\xi*\rho_\varepsilon=0\) for every
+\(\varepsilon\), and convergence in \(L^1\) gives \(\xi=0\).
+The reverse implications follow directly.
+\end{proof}
+
+\begin{remark}[The phase and its derivative]
+\label{v4-arith:w7-j:rem:honest-caveat}
+For locally integrable \(\xi\), its distributional derivative is
+defined on smooth compact tests by
+\(\langle-d\xi,h\rangle=\int\xi h'\).
+It need not initially be a signed measure. Positivity makes it
+a positive measure and forces \(\xi\) to have a nonincreasing
+representative. The additional global \(L^1\) condition in the
+theorem forces that measure to vanish. A regularized trace outside
+this class requires a separate theorem, including its test space
+and normalization.
+\end{remark}
+
+\section{Mellin Divisibility and Multiplication Phases}
+\label{v4-arith:w7-j:tate-mellin-closure}
+\label{v4-arith:w7-j:sub-class}
+
+An ordinary Mellin integral near zero records the Taylor
+coefficients of an entire function as poles. This constrains a
+proposed divisibility by the entire completed xi-function before
+any zero-location argument is available.
+
+\begin{definition}[The entire-Mellin test class]
+\label{v4-arith:w7-j:def:TM-subclass}
+Let \(\mathrm{PW}_2\) denote the entire functions of exponential
+type whose real restrictions belong to \(L^2(\mathbb R)\).
+Define \(\mathrm{PW}^{\mathrm{TM}}\) to consist of its real even
+functions \(f\) for which the ordinary Mellin integral continues as
+\[
+ Mf(s)=\xi_{\mathbb R}(s)b(s),\qquad
+ b(s)=\overline{b(1-\bar s)},
+\]
+where \(b\) is entire of exponential type and decreases faster than
+every inverse power on each closed vertical strip. Here
+\(\xi_{\mathbb R}(s)=\tfrac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)\)
+with its entire continuation. This Mellin integral uses \(f(t)\)
+on \(t>0\); it is distinct from the Fourier transform of the
+logarithmic compact test algebra \(\mathscr A\).
+\end{definition}
+
+\begin{theorem}[Entire continuation forces the zero function]
+\label{v4-arith:w7-j:thm:ATP-TM-closure}
+If \(f\) is entire, \(f|_{\mathbb R}\in L^2\), and its ordinary
+Mellin transform is entire, then \(f=0\).
+In particular, \(\mathrm{PW}^{\mathrm{TM}}=\{0\}\).
+\end{theorem}
+\begin{proof}
+The Mellin integral converges absolutely on \(0<\Re s<1/2\).
+Near zero this follows from boundedness of \(f\). At infinity,
+Cauchy--Schwarz applies because
+\(\int_1^\infty t^{2\Re s-2}dt<\infty\).
+Both estimates are locally uniform on smaller strips, including
+logarithmic factors from differentiation, so the integral is
+holomorphic there. Write \(a_n=f^{(n)}(0)/n!\). For each \(N\geq0\),
+\[
+ \begin{split}
+ Mf(s)={}&\int_1^\infty f(t)t^{s-1}dt
+ +\int_0^1\left(f(t)-\sum_{n=0}^Na_nt^n\right)t^{s-1}dt
+ +\sum_{n=0}^N\frac{a_n}{s+n}.
+ \end{split}
+\]
+The first integral is holomorphic for \(\Re s<1/2\).
+The Taylor remainder makes the second holomorphic for
+\(\Re s>-N-1\). The residue at \(s=-n\) is therefore \(a_n\).
+Entire continuation forces every coefficient to vanish.
+The identity theorem gives \(f=0\). The divisibility condition
+makes \(Mf\) entire, proving the final assertion.
+\end{proof}
+
+\begin{remark}[Zeros and the test topology]
+\label{v4-arith:w7-j:rem:T2-restriction}
+\label{v4-arith:w7-j:rem:TM-density}
+The completed xi-function vanishes at all nontrivial zeros, with
+multiplicity. It does not vanish at the trivial zeros of \(\zeta\),
+where gamma poles cancel those zeros.
+The zero-class theorem uses neither this divisor nor RH.
+It implies nondensity of \(\mathrm{PW}^{\mathrm{TM}}\) in every
+nonzero normed \(\mathrm{PW}_2\) space. A measure-zero condition
+on values of a transform, by itself, would not imply nondensity
+in an \(L^2\) topology.
+\end{remark}
+
+\subsection{Functional equations and wave limits}
+\label{v4-arith:w7-j:classical-mellin}
+
+\begin{proposition}[The completed functional-equation ratio]
+\label{v4-arith:w7-j:prop:TM-S-classical}
+The meromorphic ratio
+\begin{equation}
+\label{v4-arith:w7-j:eq:S-TM}
+ \frac{\xi_{\mathbb R}(1/2+iz)}{\xi_{\mathbb R}(1/2-iz)}
+\end{equation}
+has the removable continuation \(1\) on \(\mathbb C\).
+For an entire function of real type, \(b(\bar s)=\overline{b(s)}\),
+the ratio \(b(1/2+it)/b(1/2-it)\) has modulus one wherever defined.
+The distinct symmetry \(b(s)=\overline{b(1-\bar s)}\) alone does
+not imply this modulus identity.
+\end{proposition}
+\begin{proof}
+The functional equation \(\xi_{\mathbb R}(s)=\xi_{\mathbb R}(1-s)\)
+identifies numerator and denominator as entire functions, including
+their zero orders. The real-type assertion follows by complex
+conjugation. For the last assertion take
+\(b(s)=1+i(s-1/2)\). It has the stated reflection symmetry, whereas
+the ratio on the critical line is \((1-t)/(1+t)\).
+This example tests the algebraic implication of that symmetry;
+it is not an element of the entire-Mellin test class.
+\end{proof}
+
+\begin{proposition}[Multiplication perturbations]
+\label{v4-arith:w7-j:prop:multiplication-waves}
+Let \(v:\mathbb R\to\mathbb R\) be measurable and finite almost
+everywhere. On \(L^2(\mathbb R)\), give \(M_\lambda\) and
+\(M_{\lambda+v(\lambda)}\) their maximal domains.
+Their ordinary wave operators exist on the full free space if
+and only if \(v=0\) almost everywhere.
+\end{proposition}
+\begin{proof}
+The wave family is \(M_{e^{itv}}\).
+If it converges strongly, then for every real \(s\) and every
+\(g\in L^2\),
+\[
+ \|(e^{isv}-1)g\|
+ =\|e^{i(t+s)v}g-e^{itv}g\|\longrightarrow0.
+\]
+Thus \(e^{isv}=1\) almost everywhere for every rational \(s\).
+The intersection of these countably many full-measure sets forces
+\(v=0\). The converse follows because the two operators coincide.
+\end{proof}
+
+A functional-equation ratio therefore needs a separately constructed
+scattering realization. Replacing \(D_0\) by multiplication by
+\(\tau+\tfrac12\arg\xi_{\mathbb R}(1/2+i\tau)\) does not supply
+one unless that perturbation vanishes almost everywhere.
+
+\section{Arithmetic Trace Carriers}
+\label{v4-arith:w7-j:nc-residual}
+\label{v4-arith:w7-j:connes-reduction}
+\label{v4-arith:w7-j:sources}
+
+\begin{definition}[The adele quotient and a Hilbert seminorm]
+\label{v4-arith:w7-j:def:connes-ac-space}
+The adele class space is the quotient
+\(X_{\mathbb Q}=\mathbb A/\mathbb Q^\times\).
+Let \(\mathscr S(\mathbb A)\) be the Bruhat--Schwartz space for the
+additive adeles, with self-dual additive Haar measure. Put
+\[
+ \mathscr S(\mathbb A)_0
+ =\{\phi:\phi(0)=0,\ \int_{\mathbb A}\phi(x)dx=0\},\qquad
+ (E\phi)(x)=|x|^{1/2}\sum_{q\in\mathbb Q^\times}\phi(qx).
+\]
+For \(\delta>1\), give this space the seminorm
+\[
+ \|\phi\|_\delta^2
+ =\int_{C_{\mathbb Q}}|E\phi(x)|^2
+ (1+\log^2|x|)^{\delta/2}\,d^\times x.
+\]
+Quotient by its nullspace and complete. This is the Hilbert
+construction in Connes, \emph{Trace formula in noncommutative
+geometry and the zeros of the Riemann zeta function},
+\href{https://arxiv.org/pdf/math/9811068}{\S III, (6)--(19), pp.~10--12}.
+Write \(L^2_\delta(C_{\mathbb Q})\) for the weighted target space
+with measure \((1+\log^2|x|)^{\delta/2}d^\times x\).
+The completed map \(E\) is isometric and has closed image.
+Its cokernel \(H_\delta=L^2_\delta(C_{\mathbb Q})/\operatorname{im}E\)
+carries the quotient of \(V(a)\eta(x)=\eta(a^{-1}x)\).
+The identity \(EU(a)=|a|^{1/2}V(a)E\), for
+\(U(a)\phi(x)=\phi(a^{-1}x)\), makes the image invariant.
+The weighted norm-direction representation is polynomially bounded,
+not asserted to be unitary. The quotient generator in Connes's
+convention is the derivative of \(V(e^t)\); its critical-zero
+spectral values are imaginary. This is distinct from the
+self-adjoint free generator on unweighted \(L^2(C_{\mathbb Q})\).
+\end{definition}
+
+\begin{proposition}[Scope of the critical-zero realization]
+\label{v4-arith:w7-j:prop:connes-absorption}
+In the quotient representation on \(H_\delta\), Connes's \S III, Theorem~1, p.~13, realizes the zeros
+on the critical line in each norm-one character sector.
+For \(\delta>1\), the multiplicity of a critical zero of
+multiplicity \(m\) is the largest integer \(n\) satisfying
+\(n<(1+\delta)/2\) and \(n\leq m\).
+Its Corollary~2 gives the trace of integrated Schwartz operators
+with these multiplicities. This theorem is a critical-zero
+realization, not a self-adjoint realization of every nontrivial zero.
+\end{proposition}
+
+Meyer's \emph{On a representation of the idele class group related
+to primes and zeros of \(L\)-functions},
+\href{https://arxiv.org/pdf/math/0311468}{Theorems~5.8 and~5.11,
+pp.~43 and~47}, uses a different carrier: a smooth summable
+virtual representation \(\pi_+\ominus\pi_-\).
+Its character is the raw Weil distribution, with poles and zeros
+having opposite signed multiplicities. His \S3.2, p.~17, descends
+suitable equivariant operators to weighted idele-class spaces.
+His Proposition~4.4, p.~26, gives Schwartz restriction and Fourier
+maps. These statements specify neither a bounded transport of
+\(N_{\mathrm{BC}}\) nor the perturbation of an idele scaling operator.
+Passing between the raw character and \(W=P-W_\infty-W_{\mathrm{fin}}\)
+requires the central twist, sign, and test-function normalization.
+
+\section{The Full Signed Trace Comparison}
+\label{v4-arith:w7-j:reformulation:identification}
+\label{v4-arith:w7-j:comparison}
+
+\begin{theorem}[Transfer on the specified arithmetic test algebra]
+\label{v4-arith:w7-j:thm:weil-as-shift}
+Suppose independently specified self-adjoint operators
+\(A_0,A_1=A_0+V\), with \(V=V^*\) trace class, satisfy
+\begin{equation}
+\label{v4-arith:w7-j:eq:weil-as-shift}
+ W(f)=\operatorname{Tr}(h_f(A_1)-h_f(A_0))
+ \qquad(f\in\mathscr A).
+\end{equation}
+Then, for their normalized spectral shift \(\xi\),
+\[
+ W(f*f^*)=\int_{\mathbb R}(|h_f|^2)'(\lambda)\xi(\lambda)d\lambda.
+\]
+If this form is nonnegative on all \(\mathscr A\), the trace
+functional vanishes on every Schwartz spectral test. In particular,
+a nonzero positive Weil functional cannot have this ordinary
+trace-class realization.
+\end{theorem}
+\begin{proof}
+Apply the stipulated identity to \(f*f^*\), use
+\(h_{f*f^*}=h_fh_f^\sharp\), and apply the trace formula.
+The positivity obstruction forces \(\xi=0\), which makes the
+trace formula zero for every Schwartz function. Under Weil
+positivity, RH holds by \Cref{v4-arith:w5-a:cor:weil-positivity-RH}.
+The zero-side formula then is a sum of \(|h_f(\gamma_\rho)|^2\).
+It is nonzero for some \(f\): choose a nontrivial zero ordinate
+\(\gamma_0\), a compact smooth \(\phi\) of integral one, and
+\(f(u)=e^{-i\gamma_0u}\phi(u)\). The term at \(\gamma_0\) is
+positive, and the other terms are nonnegative. Existence of
+nontrivial zeros is part of \Cref{v4-arith:pm:zero-count}.
+This contradicts vanishing and proves the last assertion.
+\end{proof}
+
+\begin{remark}[Required arithmetic data]
+\label{v4-arith:w7-j:rem:identification-buys}
+The trace identity in the theorem is additional arithmetic data.
+Trace-class estimates, wave completeness, and a functional equation
+do not imply it. A proposed regularized replacement must specify
+its carrier, scaling action, dense test domain, subtraction terms,
+and trace functional before imposing equality with \(W\).
+If it uses Bost--Connes data, it must also construct the map from
+\(\mathcal H_1\), or its stated occupation restriction, and prove
+which domains and operations that map preserves. Nuclear characters
+on locally convex spaces and Hilbert trace differences are distinct
+constructions.
+\end{remark}
+
+\begin{proposition}[Independent conditions on an arithmetic trace]
+\label{v4-arith:w7-j:thm:obstruction-located}
+Let \(\mathcal T:\mathscr A\to\mathbb C\) be a linear distribution
+obtained from a specified arithmetic trace construction.
+If \(\mathcal T(f)=W(f)\) for every \(f\in\mathscr A\), then
+\(\mathcal T(f*f^*)\geq0\) for every \(f\) is equivalent to A-TP,
+and hence to RH. Existence of \(\mathcal T\), the comparison
+identity, and this positivity condition are separate requirements.
+The tensor and multiplication constructions above fail the wave
+requirement; the rank-one construction satisfies it but supplies
+no arithmetic trace identity.
+\end{proposition}
+\begin{proof}
+Substitute \(f*f^*\) in the stated identity and apply the Weil
+positivity criterion on \(\mathscr A\). The final assertions are
+the tensor wave obstruction, the multiplication proposition, and
+the explicit rank-one construction, respectively.
+\end{proof}
+
+\begin{remark}[Comparison with the other analytic formulations]
+\label{v4-arith:w7-j:rem:three-reductions}
+The bounded-interval digamma inequality and the restricted
+automorphic comparison concern the same full signed distribution
+only when their stated test maps and residual terms agree with
+\(P-W_\infty-W_{\mathrm{fin}}\).
+A scattering comparison additionally needs the trace identity above.
+Connes's cutoff trace and Meyer's virtual character supply precise
+alternative trace settings; neither is identified here with the
+critical BC generator by a unitary map. The non-Hausdorff quotient
+alone proves no impossibility theorem for other Hilbert realizations.
+\end{remark}
+
+\section{Consequences for the Arithmetic Realization Problem}
+\label{v4-arith:w7-j:form}
+
+\begin{theorem}[Scaling and scattering constructions]
+\label{v4-arith:w7-j:thm:summary}
+The idele scaling operator has the self-adjoint domain and Mellin
+realization specified above. Coupling it by tensor addition to the
+full critical BC generator gives self-adjoint dynamics but no full
+ordinary wave operators. Specified finite-rank perturbations do
+have complete scattering; their unitary matrices do not imply
+positivity of the trace difference. The ordinary entire-Mellin
+class \(\mathrm{PW}^{\mathrm{TM}}\) is zero. A nonzero positive
+Weil trace therefore requires a construction beyond the ordinary
+trace-class comparison stated here, with its arithmetic test
+identity and positivity proved on all of \(\mathscr A\).
+\end{theorem}
+\begin{proof}
+Apply the Mellin-domain lemma, the tensor wave obstruction, the
+rank-one pair and signed-trace propositions, the entire-Mellin
+vanishing theorem, and the trace-comparison theorem.
+\end{proof}
+
+\begin{remark}[Arithmetic comparison problem]
+\label{v4-arith:w7-j:rem:beilinson}
+An arithmetic BC comparison must realize
+\(W=P-W_\infty-W_{\mathrm{fin}}\) on \(\mathscr A\).
+Positivity of this trace is the full Weil condition.
+\end{remark}

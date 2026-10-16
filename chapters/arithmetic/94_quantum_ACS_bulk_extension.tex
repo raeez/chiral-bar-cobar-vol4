@@ -1,0 +1,1342 @@
+\chapter{Quantum Arithmetic Chern--Simons: Bulk Extension and Residual Obstruction}
+\label{v4-arith:w10-a:chapter}
+
+\emph{Chapter~\ref{v4-arith:3d-acs-E1bar} states
+\Cref{v4-arith:3d-acs:conj:qu-acs}, the profinite
+\(GL_{2}(\widehat{\mathbb Z})\) quantum arithmetic Chern--Simons
+theory on \(\overline{\mathrm{Spec}\,\mathbb{Z}}\), as three linked
+bulk-boundary axioms. Every formal consequence depends on its
+resolution: Ch.~\ref{v4-arith:w9-r1:wilson-frobenius}'s continuous
+Wilson-Frobenius identity at \(\varprojlim_{N}^{\mathrm{ren}}\),
+Ch.~\ref{v4-arith:w9-r2:archimedean-wilson-surface}'s specified
+unitary conjugacy between \(F_{\infty}^{\mathrm{WS}}\) and
+\(F_{\infty}\), the partition formula
+\(Z_{\mathrm{ACS}^{\mathrm{qu}}}=\xi\) of
+\Cref{v4-arith:3d-acs:cor:partition-bar}, and the triangle of
+\Cref{v4-arith:w8-a:cor:triangle}. The bulk measure is examined through
+five constructions: (i) state-sum renormalisation along the congruence
+tower; (ii) Reshetikhin--Turaev theory for a modular trace lift of the
+boundary trace class; (iii) Costello--Gwilliam factorization algebras on the
+\'etale site of \(\overline{\mathrm{Spec}\,\mathbb{Z}}\); (iv) Lurie
+cobordism hypothesis on an \'etale arithmetic cobordism category;
+(v) Scholze six-functor on a conjectural arithmetic diamond. For a specified finite field groupoid and action, its weighted sum
+is defined. Coherent tower measures and an open-site factorization
+structure require their own maps and descent. The archimedean Hilbert
+realization, modular trace lift and arithmetic diamond add further
+comparison data.}
+
+\section{Setup and Axiomatic Target}
+\label{v4-arith:w10-a:setup}
+
+\begin{definition}[arithmetic space and boundary data]
+\label{v4-arith:w10-a:def:3space}
+Write \(M=\overline{\mathrm{Spec}\,\mathbb Z}\) for the intended
+arithmetic compactification. An ACS realization must specify a site
+\(\mathscr X\) for \(M\), a boundary object \(\mathscr B_\infty\),
+and a boundary morphism \(j:\mathscr B_\infty\to\mathscr X\).
+It must state a dualizing coefficient object \(\mathcal L\), its
+cohomological degree and a trace map for pairing the action with
+an arithmetic fundamental class.
+At infinity it must also specify a smooth oriented surface
+\(\Sigma_\infty\), a comparison to \(\mathscr B_\infty\), and a
+metric whose curvature pulls back to a specified real two-form
+\(\omega_\infty\). The smooth disk in
+\Cref{v4-arith:w9-r2:def:Sigma-infty} supplies one local metric
+model with area \(1/2\). Its existence does not construct the
+arithmetic boundary morphism or its metric pullback.
+For that disk, boundary integrals use its counterclockwise orientation;
+a closed surface requires a separately specified surface.
+\end{definition}
+\begin{definition}[congruence tower and gauge tower]
+\label{v4-arith:w10-a:def:tower}
+\ClaimStatusDefinitional. The \emph{gauge tower} is the inverse
+system of finite groups
+\[
+\mathcal{T}:=\Bigl\{
+G_{N}:=GL_{2}(\mathbb Z/N\mathbb Z),\qquad N\in\mathbb Z_{\geq 1}
+\Bigr\}
+\]
+ordered by divisibility \(M\mid N\) giving reductions \(G_{N}\twoheadrightarrow G_{M}\), with
+\[
+\varprojlim_{N\in\mathcal{T}}G_{N}\;=\;GL_{2}(\widehat{\mathbb{Z}}).
+\]
+A \emph{level datum} is a compatible system
+\(\alpha_{\bullet}=\{\alpha_{N}\in H^{3}(BG_{N},\mathbb C^{\times})\}_{N}\)
+whose inverse-limit class is the arithmetic level
+\(k^{\mathrm{Ar}}=\kappa^{\mathrm{Ar}}_{\mathsf G}\) of
+Ch.~\ref{v4-arith:3d-acs-E1bar}.
+\end{definition}
+
+\begin{remark}[the three axioms recalled]
+\label{v4-arith:w10-a:rem:axioms}
+\Cref{v4-arith:3d-acs:conj:qu-acs} asks for a renormalised profinite
+limit
+\[
+\mathrm{ACS}^{\mathrm{qu}}_{k^{\mathrm{Ar}}}
+:=\varprojlim_{N}^{\mathrm{ren}}Z^{\mathrm{Ar}}_{G_{N},\alpha_{N}}
+\]
+satisfying:
+\textbf{(WZW)}
+\(\operatorname{HH}_{0}
+(\partial\,\mathrm{ACS}^{\mathrm{qu}}_{k^{\mathrm{Ar}}})
+\simeq\mathcal{V}^{\mathrm{prim}}\) on the archimedean boundary, where
+\(\mathcal{V}^{\mathrm{prim}}\) is the Hochschild trace class of the
+identity on the global arithmetic Iwahori--Hecke category of \(GL_{2}\)
+(Ch.~\ref{v4-arith:3d-acs-E1bar});
+\textbf{(Z)} \(Z_{\mathrm{ACS}^{\mathrm{qu}}}(\overline{\mathrm{Spec}\,\mathbb Z};k^{\mathrm{Ar}})=\xi(k^{\mathrm{Ar}})\),
+where \(\xi\) is the completed Riemann zeta function
+(\Cref{v4-arith:3d-acs:cor:partition-bar});
+\textbf{(W)} \(\langle W_{\rho}(K_{p})\rangle=\mathrm{tr}\,\rho(\mathrm{Frob}_{p})\),
+where \(W_{\rho}(K_{p})\) is the Wilson-loop observable at the prime knot \(K_{p}\subset\overline{\mathrm{Spec}\,\mathbb{Z}}\)
+in representation \(\rho\) (Ch.~\ref{v4-arith:w9-r1:wilson-frobenius}).
+\end{remark}
+
+\section{Construction I: Tower Renormalisation via Kan Extension}
+\label{v4-arith:w10-a:construction-I}
+
+The most direct construction is the one inherited from the finite-level
+state-sum construction of
+\Cref{v4-arith:3d-acs:thm:finite-level-ACS}. For specified finite field groupoids and compatible action phases,
+each $Z^{\mathrm{Ar}}_{G_N,\alpha_N}$ is the corresponding finite sum. The obstruction is the existence of a profinite
+functor compatible with (WZW), (Z), (W).
+
+\subsection{Finite-level Kan tower}
+\label{v4-arith:w10-a:kan-tower}
+
+\begin{lemma}[finite reduction and lifting mass]
+\label{v4-arith:w10-a:lem:reduction}
+Let $\pi:G_N\twoheadrightarrow G_M$ be a surjection of finite groups.
+It induces pullback of level classes and extension of structure group
+on field groupoids. Suppose the chosen arithmetic space $M'$ has
+finite field groupoids, with compatible phases
+$\alpha_N=\pi^*\alpha_M$.
+For a $G_M$ field $b$, write $\mathcal L_b$ for the homotopy fibre
+of its lifting groupoid, including the isomorphism to $b$.
+If all these fibres have the same finite cardinality $m_{N,M}(M')$,
+then
+\begin{equation}
+\label{v4-arith:w10-a:eq:reduction-compat}
+ Z^{\mathrm{Ar}}_{G_N,\alpha_N}(M')
+ =m_{N,M}(M')Z^{\mathrm{Ar}}_{G_M,\alpha_M}(M').
+\end{equation}
+For a central abelian kernel $K$, if a lift exists and the lifting
+fibre is the groupoid of $K$-torsors, its cardinality is
+$|H^1(M',K)|/|H^0(M',K)|$, when these groups are finite.
+\end{lemma}
+\begin{proof}
+Finite-groupoid integration weights each isomorphism class by the
+reciprocal order of its automorphism group. Fubini over homotopy
+fibres gives the sum over $b$ of its phase times
+$|\mathcal L_b|/|\operatorname{Aut}b|$.
+Constant fibre mass gives the displayed identity.
+For the stated torsor groupoid, the isomorphism classes form
+$H^1(M',K)$ and each automorphism group is $H^0(M',K)$.
+Their cardinality ratio proves the second assertion.
+A nonempty lifting fibre is a hypothesis: centrality does not
+remove an obstruction to lifting a $G_M$ field.
+\end{proof}
+
+\begin{remark}[the measure in a reduction tower]
+\label{v4-arith:w10-a:rem:divergence-factor}
+For $K\cong(\mathbb F_\ell)^d$ with trivial action, the torsor
+mass above is $|K|^{b_1-b_0}$, where
+$b_i=\dim_{\mathbb F_\ell}H^i(M',\mathbb F_\ell)$.
+For example, over a point the lifting fibre is $BK$, of mass
+$1/|K|$, although $b_1=0$. Thus central-abelian reduction alone
+does not give the factor $|K|^{b_1}$.
+The profinite construction must determine the actual lifting
+obstructions, stabilizers, phases and normalization at every transition.
+\end{remark}
+
+\begin{definition}[a chosen tower normalization]
+\label{v4-arith:w10-a:def:renorm-tower}
+For a specified finite Euler characteristic $\chi(M')$, define
+\begin{equation}
+\label{v4-arith:w10-a:eq:renorm-tower}
+ \widetilde Z_N(M')=|G_N|^{-\chi(M')}Z_N(M').
+\end{equation}
+This scalar definition does not assert transition compatibility.
+The cohomology theory, coefficients and any compact-support or
+boundary conditions used to define $\chi$ are part of the datum.
+\end{definition}
+
+\begin{proposition}[the normalized transition factor]
+\label{v4-arith:w10-a:prop:renorm-compat}
+Under the constant-mass hypothesis of the lemma, with $K=\ker\pi$,
+\begin{equation}
+\label{v4-arith:w10-a:eq:renorm-compat}
+ \widetilde Z_N(M')=|K|^{-\chi(M')}m_{N,M}(M')\widetilde Z_M(M').
+\end{equation}
+Thus the equality of normalized scalar values follows when
+$|K|^{-\chi}m_{N,M}=1$.
+This scalar condition is additional to the coherent transition maps
+required for state spaces and bordism assignments.
+\end{proposition}
+\begin{proof}
+Use $|G_N|=|K||G_M|$ in the defining normalization and the preceding
+mass identity. No division by a possibly zero partition value is needed.
+\end{proof}
+For a connected torsor model with $b_1=0$ and $\chi=0$, the factor
+is $|K|^{-1}$, not one. A different arithmetic measure or a
+renormalization yielding compatible values must therefore be specified.
+Nonabelian congruence kernels additionally require their full lifting
+fibres. The arithmetic cohomology and duality needed to compute
+these quantities are separate inputs; no numerical value of
+$\chi(\overline{\mathrm{Spec}\,\mathbb Z})$ is needed here.
+
+\begin{theorem}[a coherent inverse tower defines a pro-object]
+\label{v4-arith:w10-a:thm:profinite-exists}
+Suppose a cofiltered small category indexes actual state-sum functors
+and coherent transition natural transformations in a specified target
+category. This inverse diagram defines a pro-object in that functor
+category. It does not by itself define a represented Hilbert limit
+or a topological arithmetic field theory.
+\end{theorem}
+\begin{proof}
+An object of the pro-category is precisely such a cofiltered diagram.
+An ordinary limit or a right Kan extension in a chosen target requires
+that target to admit the relevant limits. Representation by a Hilbert
+space is a further assertion, not part of the pro-object definition.
+\end{proof}
+
+\begin{remark}[tower and descent requirements]
+\label{v4-arith:w10-a:rem:construction-I-domain}
+The arithmetic construction must supply the lifting measures and
+coherent transition maps just specified. A topological state functor
+further requires a represented limit and compatible gluing.
+Its boundary trace must be identified with the designated primary
+trace realization. Neither an inverse diagram nor the name of a
+Kan extension constructs these data.
+\end{remark}
+
+\subsection{Sources and Hypotheses for Construction I}
+\label{v4-arith:w10-a:ah:construction-I}
+
+Kim's arithmetic action and its nonabelian extensions motivate
+the finite field groupoids. Dijkgraaf--Witten and Freed--Quinn give
+finite-groupoid integration models. The lifting-mass computation
+above states the transition datum needed in the arithmetic tower.
+A condensed or Tate realization additionally requires its topology,
+transition maps and pairing. The finite sum and the represented
+Hilbert limit are distinct constructions.
+
+\begin{theorem}[Construction I conditional closure]
+\label{v4-arith:w10-a:thm:construction-I-closure}
+\ClaimStatusProvedHereConditional \emph{(on a choice of condensed
+topology on the Kan-limit and its descent to a concrete
+topological state-functor)}. Under the profinite-Hilbert descent
+hypothesis and a coherent tower as specified above, the represented limit of
+\Cref{v4-arith:w10-a:thm:profinite-exists} defines
+\(\mathrm{ACS}^{\mathrm{qu}}_{k^{\mathrm{Ar}}}\) satisfying the
+reduction-coherence portion of
+\Cref{v4-arith:3d-acs:conj:qu-acs}. The three axioms (WZW), (Z),
+(W) reduce to: (WZW) restriction of the Kan-limit boundary functor
+at \(\Sigma_{\infty}\) identifies with
+\(\mathcal V^{\mathrm{prim}}\); (Z) evaluation of the Kan-limit on
+the closed class \([M]\) reproduces \(\xi(k^{\mathrm{Ar}})\);
+(W) evaluation on prime-knot insertions reproduces Frobenius traces.
+Each of (WZW), (Z), (W) becomes a \emph{comparison statement} at the
+Kan-limit, not a new existence statement.
+\end{theorem}
+
+\begin{proof}
+The assumed coherent tower defines the pro-object of
+\Cref{v4-arith:w10-a:thm:profinite-exists}.
+Under a chosen condensed topology descending the pro-vector-space
+structure to a Hilbert-space functor, (WZW), (Z), (W) become
+comparison claims at the limit. Each is in principle checkable by
+comparing the limit with the right-hand sides of the three axioms
+using the finite-level comparisons of Chs.~\ref{v4-arith:w9-r1:wilson-frobenius}
+and \ref{v4-arith:3d-acs-E1bar}. The existence of the descent is
+hypothetical.
+\end{proof}
+
+\section{Construction II: Reshetikhin--Turaev from an Arithmetic Boundary Category}
+\label{v4-arith:w10-a:construction-II}
+
+The Reshetikhin--Turaev construction (Turaev 1994
+\emph{Quantum Invariants of Knots and 3-Manifolds}, de Gruyter;
+Reshetikhin--Turaev 1991 \emph{Invent.~Math.}~103, 547--597)
+constructs topological invariants and the associated bordism functor
+from a modular tensor category (MTC), with the required framing or
+anomaly data. An arithmetic bordism interpretation requires an
+additional comparison functor. In the arithmetic problem the input
+cannot be the category of modules over \(\mathcal V^{\mathrm{prim}}\),
+because \(\mathcal V^{\mathrm{prim}}\) is a Hochschild trace class, not
+a vertex algebra. The possible Reshetikhin--Turaev input is instead a
+modular tensor category whose Hochschild trace and regularised
+character have \(\mathcal V^{\mathrm{prim}}\) as their boundary shadow.
+
+\subsection{The arithmetic MTC candidate}
+\label{v4-arith:w10-a:arith-MTC}
+
+\begin{definition}[arithmetic modular tensor category candidate]
+\label{v4-arith:w10-a:def:arith-MTC}
+\ClaimStatusDefinitional. The \emph{arithmetic modular tensor
+category candidate} is
+\[
+\mathcal{MTC}^{\mathrm{Ar}}_{k^{\mathrm{Ar}}}
+\;:=\;
+\mathcal B^{\mathrm{Ar}}_{k^{\mathrm{Ar}}},
+\]
+a finite semisimple ribbon category equipped with a trace comparison
+\[
+        \operatorname{HH}_{0}
+        \bigl(\mathcal B^{\mathrm{Ar}}_{k^{\mathrm{Ar}}}\bigr)
+        \simeq
+        \mathcal V^{\mathrm{prim}}
+\]
+and with Frobenius-labelled simple objects at the finite places. This
+definition is a lifting problem from a Hochschild trace class to a
+boundary category; it is not a module category over
+\(\mathcal V^{\mathrm{prim}}\).
+\end{definition}
+
+\begin{remark}[the modular trace lift is conditional]
+\label{v4-arith:w10-a:rem:modularity-cond}
+Modularity of \(\mathcal{MTC}^{\mathrm{Ar}}_{k^{\mathrm{Ar}}}\)
+requires a non-degenerate braiding, a spherical trace, and compatibility
+of the categorical trace with the Iwahori--Hecke Hochschild trace.
+The completed-zeta character and finite-prime Fock characters are trace
+statements. They do not construct a braided category whose trace is
+\(\mathcal V^{\mathrm{prim}}\).
+\end{remark}
+
+\subsection{Reshetikhin--Turaev state-sum}
+\label{v4-arith:w10-a:RT-state-sum}
+
+\begin{theorem}[transport of a specified Reshetikhin--Turaev theory]
+\label{v4-arith:w10-a:thm:RT-construction}
+Suppose the modular category and anomaly data define an RT functor
+$Z_{\mathrm{RT}}$ on its topological bordism category $\mathsf B_{\mathrm{RT}}$.
+Suppose an arithmetic bordism category $\mathsf B_{\mathrm{Ar}}$ and a
+symmetric monoidal comparison $C:\mathsf B_{\mathrm{Ar}}\to\mathsf B_{\mathrm{RT}}$
+are constructed. Then
+$Z_{\mathrm{RT}}^{\mathrm{Ar}}=Z_{\mathrm{RT}}\circ C$
+is a symmetric monoidal arithmetic assignment.
+It has the intended primary boundary trace and Frobenius Wilson values
+if its boundary trace maps and label comparisons identify those values.
+\end{theorem}
+\begin{proof}
+Composition preserves the functorial and monoidal identities.
+The last assertion is the stated equality of the trace and observable
+maps under that composition. The ordinary RT construction does not
+supply $C$ or those arithmetic equalities.
+\end{proof}
+The trace of a boundary category, the state space of a surface and
+a scalar closed-bordism invariant have different types. Their proposed
+arithmetic comparison must specify the maps between these objects.
+
+\begin{remark}[closure of (WZW) and (W) modulo modularity]
+\label{v4-arith:w10-a:rem:RT-closes-WZW-W}
+Under the RT and arithmetic bordism data just specified, and the trace
+comparison of \Cref{v4-arith:w10-a:def:arith-MTC},
+\Cref{v4-arith:w10-a:thm:RT-construction} gives the categorical
+form of (WZW). The Wilson-line/Frobenius identity is the
+Reshetikhin--Turaev quantum-trace formula only after the finite-place
+label comparison is supplied. The remaining axiom (Z) is not
+automatic: the partition function of an RT TQFT is the
+\emph{Reshetikhin--Turaev invariant}, which is a finite complex
+number, not an entire function of the level. Matching it with
+\(\xi(k^{\mathrm{Ar}})\) requires a separate analytic input.
+\end{remark}
+
+\subsection{Partition Identification via the Regularised Boundary Character}
+\label{v4-arith:w10-a:zhu-mod}
+
+\begin{proposition}[conditional arithmetic partition identification]
+\label{v4-arith:w10-a:prop:RT-Zhu}
+Assume the preceding RT transport data. Suppose the closed arithmetic
+object has a specified decomposition whose state-space endomorphism
+has trace $\chi_{\mathrm{reg}}(k^{\mathrm{Ar}})$, and its RT evaluation
+is that trace. If the arithmetic character comparison identifies
+$\chi_{\mathrm{reg}}(k)=\xi(k)$, then its partition value is
+$\xi(k^{\mathrm{Ar}})$.
+\end{proposition}
+\begin{proof}
+Compose the assumed evaluation-to-trace and trace-to-character
+identities. A topological Heegaard formula applies only after the
+corresponding arithmetic bordism and decomposition maps have been given.
+\end{proof}
+The existence of this decomposition, regularized trace prescription
+and analytic level family is part of the partition comparison problem.
+Modularity of a finite category alone supplies none of these data.
+
+\subsection{Sources and Hypotheses for Construction II}
+\label{v4-arith:w10-a:ah:construction-II}
+
+Reshetikhin--Turaev theory supplies a 3D TQFT from a modular tensor
+category. Huang--Lepowsky theory is the complex-analytic model in
+which a VOA produces such a category. In the arithmetic case the input
+is not a module category over \(\mathcal V^{\mathrm{prim}}\), but a
+modular trace lift
+\(\operatorname{HH}_{0}(\mathcal{MTC}^{\mathrm{Ar}}_{k^{\mathrm{Ar}}})
+\simeq\mathcal V^{\mathrm{prim}}\), together with non-degenerate
+braiding, spherical trace, finite-place Frobenius labels, and the
+regularised character comparison.
+
+\begin{theorem}[Construction II conditional implication]
+\label{v4-arith:w10-a:thm:construction-II-closure}
+\ClaimStatusProvedHereConditional \emph{(on a modular trace lift,
+finite-place Frobenius labels, and the regularised-character
+comparison, together with the arithmetic bordism transport data)}.
+Under these hypotheses, the Reshetikhin--Turaev functor
+of \Cref{v4-arith:w10-a:thm:RT-construction} gives the boundary trace
+condition, the Wilson-line trace condition, and the scalar partition
+identity of \Cref{v4-arith:3d-acs:conj:qu-acs}. Modularity alone does
+not imply the zeta partition identity.
+\end{theorem}
+
+\begin{proof}
+(WZW) is the MTC-boundary identification of
+\Cref{v4-arith:w10-a:def:arith-MTC}. (W) is the RT quantum-trace
+formula evaluated at the Frobenius conjugacy class via Morishita.
+(Z) is \Cref{v4-arith:w10-a:prop:RT-Zhu}. The hypotheses are exactly
+the modular trace lift, the finite-place label comparison, and the
+regularised-character comparison.
+\end{proof}
+
+\section{Construction III: Costello--Gwilliam Factorization on \texorpdfstring{\((\mathrm{Spec}\,\mathbb{Z})_{\mathrm{\acute et}}\)}{the etale site}}
+\label{v4-arith:w10-a:construction-III}
+
+The Costello--Gwilliam formalism
+(Costello--Gwilliam 2017 \emph{Factorization Algebras in Quantum
+Field Theory I}, Cambridge Univ.~Press; vol.~II 2021) builds
+perturbative QFTs as factorization algebras on a site. The
+\'etale site of \(\mathrm{Spec}\,\mathbb Z\) is a natural substitute
+for the usual differential-geometric site in the arithmetic
+setting.
+
+\subsection{\'Etale factorization algebra}
+\label{v4-arith:w10-a:CG-etale}
+
+\begin{definition}[an arithmetic factorization candidate]
+\label{v4-arith:w10-a:def:CG-prefactor}
+Let $X=\mathrm{Spec}\,\mathbb Z$. Specify a category of arithmetic
+regions with disjoint embeddings and a chosen factorization coverage.
+A prefactorization candidate assigns a complex $\mathcal F(U)$ to each
+region and maps $\bigotimes_i\mathcal F(U_i)\to\mathcal F(V)$ for
+specified disjoint embeddings $U_i\to V$, with the required unit,
+symmetry and composition coherences. A factorization object must also
+satisfy descent for the chosen coverage. An arithmetic construction
+must state this coverage and its relation to the etale site.
+Ordinary descent of local systems does not replace this specification.
+\end{definition}
+
+\begin{definition}[finite field functions and their action functional]
+\label{v4-arith:w10-a:def:CG-Kim-prefactor}
+For each specified finite field groupoid $\mathcal F_{G_N}(U)$, let
+$\mathcal V_N(U)$ be the complex functions on its isomorphism classes.
+Given an isomorphism-invariant phase $a_N(b)$, define
+\[
+ \mathcal I_{N,U}(v)=\sum_{[b]\in\pi_0\mathcal F_{G_N}(U)}
+       \frac{a_N(b)v(b)}{|\operatorname{Aut}b|},\qquad
+ Z_N(U)=\mathcal I_{N,U}(1).
+\]
+When the arithmetic action is defined, $a_N(b)$ is its exponential.
+This requires the action's coefficient object, boundary conditions
+and trace pairing from \Cref{v4-arith:w10-a:def:3space}.
+\end{definition}
+
+\begin{proposition}[finite products and weighted integration]
+\label{v4-arith:w10-a:thm:CG-open}
+Suppose disjoint unions of specified arithmetic regions give products
+of their finite field groupoids, and their phases multiply.
+Then
+\[
+ \mathcal V_N(U\sqcup V)\cong\mathcal V_N(U)\otimes\mathcal V_N(V),
+ \qquad \mathcal I_{N,U\sqcup V}=\mathcal I_{N,U}\otimes\mathcal I_{N,V}.
+\]
+In particular $Z_N(U\sqcup V)=Z_N(U)Z_N(V)$.
+The vector space $\mathcal V_N(U)$ has dimension
+$|\pi_0\mathcal F_{G_N}(U)|$; its scalar integral is not that vector space.
+\end{proposition}
+\begin{proof}
+Delta functions on isomorphism classes give a basis. The product
+classes are pairs, and their automorphism orders multiply.
+The tensor basis gives the first isomorphism; finite Fubini gives
+the identity of integration functionals and the partition values.
+\end{proof}
+
+\begin{remark}[the open-site factorization problem]
+\label{v4-arith:w10-a:rem:construction-III-uncond}
+The disjoint-product calculation is a part of the proposed
+Costello--Gwilliam construction on the arithmetic site.
+A factorization algebra additionally needs covariant structure maps
+for disjoint embeddings, their coherences, and the appropriate
+factorization descent condition. Descent of field groupoids does
+not by itself prove these assertions after passing to functions
+or weighted pushforwards. The action pairing on an open arithmetic
+region also requires its own compact-support or relative duality.
+Constructing these data on $X=\mathrm{Spec}\,\mathbb Z$ is a
+separate problem from the archimedean extension. The finite-product
+identity neither localizes every obstruction at infinity nor gives
+an unconditional factorization algebra.
+\end{remark}
+
+\subsection{Archimedean extension}
+\label{v4-arith:w10-a:CG-infty}
+
+\begin{proposition}[data for an archimedean operator extension]
+\label{v4-arith:w10-a:prop:CG-infty-obstruction}
+Suppose a specified arithmetic factorization object has an extension
+to the boundary geometry of \Cref{v4-arith:w10-a:def:3space}.
+A Hilbert realization of its primary boundary sector requires a
+complex vector space \(E_\infty\) extracted in a specified degree
+and completion from that trace sector, a Hermitian positive
+semidefinite pairing \(q_\infty\), linear in its first variable,
+and a complex-linear realization map
+\[
+ I_\infty:E_\infty\to H_B,\qquad
+ \langle I_\infty v,I_\infty w\rangle=q_\infty(v,w),
+ \qquad\overline{I_\infty E_\infty}=H_B.
+\]
+It identifies \(H_B\) with the Hilbert completion of
+\(E_\infty/\{v:q_\infty(v,v)=0\}\).
+Boundary operations must preserve this nullspace to descend.
+Their asserted closed generators require domains and closures in
+\(H_B\); a quantum surface comparison further requires the data of
+\Cref{v4-arith:pres90:quantization}.
+\end{proposition}
+\begin{proof}
+Cauchy--Schwarz for a positive semidefinite Hermitian form makes
+its nullspace orthogonal to every vector. The displayed identity
+therefore induces an isometry on the quotient, which extends to
+its completion. The dense-range assumption makes this extension
+onto. If an operation does not preserve the nullspace, equivalent
+representatives have inequivalent images, so it cannot descend.
+The construction specifies neither an unbounded operator domain nor
+an exponential until the corresponding operator data are supplied.
+\end{proof}
+
+\begin{remark}[native boundary realization]
+\label{v4-arith:w10-a:rem:construction-III-stop}
+A finite field groupoid supplies finite-place state data. The passage
+to an arithmetic boundary Hilbert space additionally uses the geometry,
+native pairing and realization map above. A Hilbert completion alone
+does not supply the factorization gluing maps or a quantum observable.
+The desired boundary is a realization of a primary Hochschild trace
+sector, not a vertex algebra specified by that trace class.
+A proposed identification with an ordinary Fock representation must
+state the operations it preserves. Its occupation energy has
+eigenvectors and cannot be intertwined unitarily with continuous
+Mellin scaling, by \Cref{v4-arith:w9-r2:lem:L0-Mellin}.
+Consequently Hilbert descent, native pairing, boundary extension and
+surface transport are separate required comparisons.
+\end{remark}
+\subsection{Sources and Hypotheses for Construction III}
+\label{v4-arith:w10-a:ah:construction-III}
+
+Costello--Gwilliam provides the factorization-algebra framework.
+Finite field groupoids and a specified Kim action give the functions
+and finite integration above. To use them as a factorization object
+one must construct its structure maps and descent, including the
+arithmetic support conditions. Its boundary realization then requires
+\Cref{v4-arith:w10-a:prop:CG-infty-obstruction}.
+
+\begin{theorem}[conditional factorization and tower assignment]
+\label{v4-arith:w10-a:thm:construction-III-closure}
+Suppose the finite field-function assignments have been equipped with
+factorization structure and descent, and their scalar integration
+maps agree with the specified arithmetic action and Wilson insertions.
+Suppose also that coherent reduction maps define an inverse diagram
+of these factorization objects. Then this diagram is a pro-object
+in the stated factorization category, and its levelwise scalar and
+Wilson values are the assumed arithmetic ones.
+A represented limit and passage of global sections to that limit
+require additional continuity and descent theorems.
+\end{theorem}
+\begin{proof}
+The supplied coherent diagram defines its pro-object. The integration
+identities hold at each level by hypothesis. No exchange of an
+inverse limit with global sections is used in this conclusion.
+\end{proof}
+
+\section{Construction IV: Cobordism Hypothesis}
+\label{v4-arith:w10-a:construction-IV}
+
+Lurie's cobordism hypothesis (Lurie 2008 arXiv:0905.0465, Thm.~2.4.6)
+classifies extended \(n\)-dimensional TQFTs as fully dualizable
+objects in a symmetric monoidal \((\infty,n)\)-category. For
+\(n=3\) and a target
+\(\mathcal{C}=\mathrm{ArithTC}\) the arithmetic tensor category, a
+quantum ACS is specified by a fully dualizable object of \(\mathcal{C}\).
+
+\subsection{Fully dualizable object candidate}
+\label{v4-arith:w10-a:cobord-candidate}
+
+\begin{definition}[arithmetic target \((\infty,3)\)-category]
+\label{v4-arith:w10-a:def:arith-target}
+\ClaimStatusDefinitional. The \emph{arithmetic target} is the
+symmetric monoidal \((\infty,3)\)-category
+\(\mathrm{ArithTC}\) of arithmetic braided tensor categories:
+objects are braided tensor categories equipped with a trace functor to
+arithmetic Hochschild trace classes; 1-morphisms are bimodule
+categories compatible with trace; 2-morphisms are bimodule functors;
+3-morphisms are natural transformations; with symmetric monoidal
+structure from the Tate restricted tensor of
+Ch.~\ref{v4-arith:tate-tensor}.
+\end{definition}
+
+\begin{proposition}[duality data for a specified arithmetic target]
+\label{v4-arith:w10-a:prop:fully-dualizable-candidate}
+Suppose the proposed target $\mathrm{ArithTC}$ is constructed as a
+symmetric monoidal $(\infty,3)$-category, with its trace-compatible
+composition and coherences. An object is fully dualizable when it
+has a dual with evaluation and coevaluation and the required adjoints
+through the three morphism levels, satisfying their coherence identities.
+Supplying these data for the modular trace candidate is an additional
+arithmetic requirement.
+\end{proposition}
+The result of Douglas--Schommer-Pries--Snyder concerns fusion
+categories of nonzero global dimension in their tensor-category
+Morita setting. It does not construct the proposed arithmetic target
+or prove that a trace-compatible lift preserves the requisite dualities.
+This comparison must specify a monoidal functor and transport the
+actual evaluation, coevaluation and adjunction data.
+
+\begin{theorem}[the framed cobordism output on specified data]
+\label{v4-arith:w10-a:thm:cobord-output}
+Given such a target and a fully dualizable object $A$ in it,
+the framed cobordism hypothesis gives a symmetric monoidal functor
+$Z_A:\mathrm{Bord}_3^{\mathrm{fr}}\to\mathrm{ArithTC}$ with $Z_A(pt)=A$,
+classified by this fully dualizable datum.
+An arithmetic assignment follows if a compatible arithmetic bordism
+category and comparison functor into $\mathrm{Bord}_3^{\mathrm{fr}}$
+are supplied. An oriented version requires the corresponding
+homotopy fixed-point structure.
+\end{theorem}
+\begin{proof}
+Apply the framed cobordism hypothesis to the stated fully dualizable
+object, then compose with the assumed arithmetic comparison functor.
+The oriented extension uses its extra tangential structure.
+Equality with a particular RT theory further requires agreement
+of their extended data in a common target; it does not follow
+merely because both theories use a modular category.
+\end{proof}
+
+\begin{remark}[arithmetic cobordism category]
+\label{v4-arith:w10-a:rem:arith-cobord}
+The cobordism hypothesis applies to a cobordism category
+of smooth manifolds. Its arithmetic counterpart requires an
+\emph{arithmetic cobordism category} whose objects are
+arithmetic 2-surfaces and morphisms are arithmetic 3-spaces.
+Construction of such a category is \Cref{v4-arith:3d-acs:residual}
+(item 1 of the residual list in Ch.~\ref{v4-arith:3d-acs-E1bar}):
+finite arithmetic cobordism functoriality. This is the Construction IV
+analogue of Construction III's archimedean extension obstruction.
+\end{remark}
+
+\subsection{Sources and Hypotheses for Construction IV}
+\label{v4-arith:w10-a:ah:construction-IV}
+
+The cobordism-hypothesis presentation uses Lurie's theorem and the
+Douglas--Schommer-Pries--Snyder dualizability theorem in its
+specified tensor-category setting. It also uses the Reshetikhin--Turaev state sum on
+the resulting modular tensor category. The required inputs are an
+arithmetic cobordism category, the modular trace lift, finite-place
+label compatibility, and the regularised-character comparison.
+
+\begin{theorem}[Construction IV conditional closure]
+\label{v4-arith:w10-a:thm:construction-IV-closure}
+\ClaimStatusProvedHereConditional \emph{(on the arithmetic cobordism
+category, modular trace lift, finite-place label comparison, and
+regularised-character comparison, the fully dualizable target data
+and the arithmetic bordism comparison above)}. Given these hypotheses, the
+cobordism hypothesis produces a unique extended 3D TQFT
+\(Z_{\mathrm{coh}}^{\mathrm{Ar}}\) whose trace, Wilson, and scalar
+partition data satisfy the axioms of
+\Cref{v4-arith:3d-acs:conj:qu-acs}.
+\end{theorem}
+
+\begin{proof}
+Apply \Cref{v4-arith:w10-a:thm:cobord-output} and the specified
+arithmetic comparison. The assumed trace, Wilson and regularized
+character maps give the three scalar and boundary clauses.
+Identification with an RT theory requires the extended-data
+comparison stated in that theorem.
+\end{proof}
+
+\section{Construction V: Six-Functor Formalism on an Arithmetic Diamond}
+\label{v4-arith:w10-a:construction-V}
+
+Scholze's six-functor formalism (Scholze 2020--2022
+\emph{Lectures on Condensed Mathematics}, Bonn; Scholze 2022
+\emph{Six-Functor Formalisms} lecture notes) applies to diamonds and
+to a broad class of stacks. A quantum field theory on a space is
+given by a ``theory'' in the sense of six-functor formalism:
+an association of \(\infty\)-categories with the six operations
+\(\otimes,\operatorname{Hom},f^{*},f_{*},f_{!},f^{!}\). For 3D
+CS on a diamond, Scholze et al.\ have outlined the six-functor
+formalism as the natural home (Fargues--Scholze 2021
+arXiv:2102.13459).
+
+\subsection{Diamond of \texorpdfstring{\(\overline{\mathrm{Spec}\,\mathbb Z}\)}{Spec Z bar}}
+\label{v4-arith:w10-a:diamond}
+
+\begin{conjecture}[arithmetic diamond]
+\label{v4-arith:w10-a:conj:arith-diamond}
+\ClaimStatusConjectured. There exists a diamond
+\(\overline{\mathrm{Spec}\,\mathbb Z}^{\diamond}\) in the sense of
+Scholze 2020 \emph{Etale Cohomology of Diamonds}
+(arXiv:1709.07343, \S11) which is a globalisation of the
+Fargues--Fontaine curves at each prime, with an archimedean
+completion at \(\{\infty\}\) given by a continuous version of
+\(\Sigma_{\infty}\). The diamond carries a six-functor formalism
+with values in condensed \(\mathbb{Z}_{\ell}\)-sheaves.
+\end{conjecture}
+
+\begin{remark}[form of the arithmetic diamond]
+\label{v4-arith:w10-a:rem:diamond-form}
+\Cref{v4-arith:w10-a:conj:arith-diamond} is a conjecture with no
+known construction in the cited literature. The closest object is the
+Clausen--Scholze analytic \(\mathbb{Z}\)-spectrum
+(Clausen--Scholze 2020 \emph{Condensed Mathematics} lecture notes),
+which builds the condensed structure on the arithmetic side but does
+not supply the diamond-plus-archimedean-completion we would need.
+\end{remark}
+
+\subsection{Six-functor ACS}
+\label{v4-arith:w10-a:six-fun-ACS}
+
+\begin{proposition}[a specified six-functor trace expression]
+\label{v4-arith:w10-a:prop:six-fun-ACS}
+Suppose the proposed arithmetic space $X^\diamond$ has a specified
+six-functor theory $\mathcal C(-)$ and structure map $f:X^\diamond\to pt$
+for which $f^!$ and $f_!$ are defined. Choose an object
+$B\in\mathcal C(pt)$; relating it to a boundary category or its
+Hochschild trace requires a specified realization functor.
+Then $\mathcal T=f^!B$ and $f_!\mathcal T\in\mathcal C(pt)$ are defined.
+If $f_!\mathcal T$ is dualizable, its identity has a trace in
+$\operatorname{End}_{\mathcal C(pt)}(1)$.
+A scalar value requires a specified map from this endomorphism ring
+to the scalar coefficient field.
+\end{proposition}
+\begin{proof}
+Apply the two assumed functors in order. Dualizability supplies
+evaluation and coevaluation, whose trace composite is the stated
+endomorphism of the unit. Applying the chosen scalar map gives
+its scalar trace. Without dualizability or a separate regularized
+trace prescription this final operation is not defined.
+\end{proof}
+Identifying this trace with $\xi(k^{\mathrm{Ar}})$ requires the
+local-global trace comparison, including the archimedean factor
+and pole normalization. The arithmetic diamond, boundary object,
+coefficient realization and this trace identity are separate inputs.
+Local geometric Langlands does not supply them by formal application
+of $f^!$.
+
+\begin{remark}[geometric and trace inputs for Construction V]
+\label{v4-arith:w10-a:rem:construction-V-form}
+Write $B_{k^{\mathrm{Ar}}}\in\mathcal C(pt)$ for the specified coefficient realization of the boundary datum $\mathscr B_{k^{\mathrm{Ar}}}$. Construction V places \Cref{v4-arith:3d-acs:conj:qu-acs} inside
+the arithmetic diamond, a coefficient and boundary trace object,
+the requisite traceability data, and
+the local-global trace formula. The diamond is
+\Cref{v4-arith:w10-a:conj:arith-diamond}; the trace object lifts
+\(\mathcal V^{\mathrm{prim}}\); the trace formula supplies the completed
+Euler product.
+\end{remark}
+
+\subsection{Sources and Hypotheses for Construction V}
+\label{v4-arith:w10-a:ah:construction-V}
+
+The six-functor presentation uses Scholze diamonds, Clausen--Scholze
+condensed sheaves, and the Fargues--Scholze spectral category at finite
+places. Its inputs are the arithmetic diamond, a boundary trace object
+\(\mathscr B_{k^{\mathrm{Ar}}}\), the local-global trace formula, and
+finite-place Frobenius compatibility. Proper pushforward and shriek
+pullback then give the trace expression
+\(\operatorname{Tr}(f_!f^!B_{k^{\mathrm{Ar}}})\).
+
+\begin{theorem}[Construction V conditional closure]
+\label{v4-arith:w10-a:thm:construction-V-closure}
+\ClaimStatusProvedHereConditional \emph{(on the arithmetic diamond,
+boundary and coefficient realization, traceability, local-global
+trace formula, and finite-place Frobenius compatibility)}. Under these hypotheses, the six-functor ACS
+\(\mathcal T_{k^{\mathrm{Ar}}}=f^{!}B_{k^{\mathrm{Ar}}}\)
+satisfies (WZW), (Z), (W) of
+\Cref{v4-arith:3d-acs:conj:qu-acs}.
+\end{theorem}
+
+\begin{proof}
+(WZW) is the trace comparison
+\(\operatorname{HH}_{0}(\mathscr B_{k^{\mathrm{Ar}}})
+\simeq\mathcal V^{\mathrm{prim}}\). (Z) is the local-global trace
+formula for
+\(\operatorname{Tr}(f_{!}f^{!}B_{k^{\mathrm{Ar}}})\). (W) is
+the finite-place spectral-Hecke compatibility producing the Frobenius
+trace on local Galois representations.
+\end{proof}
+
+\section{Construction Comparison and Isolation of the Residual}
+\label{v4-arith:w10-a:comparison}
+
+\begin{theorem}[construction comparison]
+\label{v4-arith:w10-a:thm:construction-comparison}
+\ClaimStatusProvedHere. The five constructions to
+\Cref{v4-arith:3d-acs:conj:qu-acs} decompose as follows.
+\begin{itemize}
+\item Given finite field groupoids and phases, their integrals and
+disjoint-product identities are defined. Construction I requires
+lifting measures and coherent transitions. Construction III further
+requires actual factorization maps and descent on the open site.
+\item Conditional on a modular trace lift, finite-place Frobenius
+labels, and the regularised-character comparison: Constructions II and
+IV, with their stated arithmetic bordism and duality data, give
+Reshetikhin--Turaev and cobordism-hypothesis realizations of
+the same boundary, Wilson, and scalar data.
+\item Conditional on the arithmetic diamond, boundary trace object,
+local-global trace formula, and finite-place Frobenius compatibility:
+Construction V, with the specified coefficient and traceability data,
+gives the six-functor form of the same axioms on
+\(\overline{\mathrm{Spec}\,\mathbb Z}^{\diamond}\).
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+\Cref{v4-arith:w10-a:thm:profinite-exists},
+\Cref{v4-arith:w10-a:thm:CG-open},
+\Cref{v4-arith:w10-a:thm:construction-II-closure},
+\Cref{v4-arith:w10-a:thm:construction-IV-closure},
+\Cref{v4-arith:w10-a:thm:construction-V-closure} respectively.
+\end{proof}
+
+\subsection{The Common Archimedean Term}
+\label{v4-arith:w10-a:common-residual}
+
+\begin{theorem}[comparison of two boundary Hilbert realizations]
+\label{v4-arith:w10-a:thm:common-residual}
+Write \(H_c=L^2(\mathbb R_{>0},dx/x)\) and
+\(\Theta_c=1/2+iD_c\), with \(D_c\) and its domain as in
+\Cref{v4-arith:w9-r2:def:scaling}.
+Let \((E_\infty,q_\infty)\) be a specified positive semidefinite
+primary trace realization as in
+\Cref{v4-arith:w10-a:prop:CG-infty-obstruction}.
+Suppose a descended state space \(H_B\) and a primary Hilbert space
+\(H_{\mathrm{prim}}\) have complex-linear dense-range maps \(I_B,I_{\mathrm{prim}}\)
+from \(E_\infty\), both preserving \(q_\infty\).
+Then there is a unique unitary \(T:H_B\to H_{\mathrm{prim}}\)
+with \(TI_B=I_{\mathrm{prim}}\).
+Suppose closed normal generators \(\Theta_B,\Theta_{\mathrm{prim}}\)
+have cores \(I_B\mathcal D,I_{\mathrm{prim}}\mathcal D\), for a
+specified \(\mathcal D\subset E_\infty\), and their actions agree
+under \(T\) on these cores. Then
+\[
+ T\operatorname{Dom}\Theta_B=\operatorname{Dom}\Theta_{\mathrm{prim}},
+ \qquad T\Theta_B=\Theta_{\mathrm{prim}}T.
+\]
+If a further unitary \(V_{\mathrm{prim}}:H_{\mathrm{prim}}\to H_c\)
+intertwines \(\Theta_{\mathrm{prim}}\) with the continuous generator
+\(\Theta_c\), including domains, then
+\(V_\Sigma=V_{\mathrm{prim}}T\) gives the surface comparison in
+\Cref{v4-arith:w10-a:thm:wilson-surface-compat}.
+\end{theorem}
+\begin{proof}
+The formula \(I_Bv\mapsto I_{\mathrm{prim}}v\) is well defined:
+both kernels are the nullspace of \(q_\infty\). It is an isometry
+on dense subspaces and extends uniquely to an onto unitary.
+The graph of each generator is the closure of its graph on the
+stated core. Applying \(T\oplus T\) to these graphs proves domain
+equality and intertwining. Composition with \(V_{\mathrm{prim}}\)
+proves the last assertion.
+\end{proof}
+
+\begin{remark}[boundary comparisons for the different constructions]
+\label{v4-arith:w10-a:rem:aliases}
+The inverse-limit, factorization and six-functor constructions each
+ask for a native boundary realization. They can be identified through
+the preceding theorem when they realize the same trace space,
+pairing and operator cores. Establishing such identifications
+requires actual maps from their respective boundary objects.
+A topology on a pro-vector space does not define those maps.
+Likewise a modular trace lift requires its own trace-to-boundary
+realization before it supplies this Hilbert comparison.
+No implication between the modular lift, the arithmetic diamond and
+the Hilbert descent follows from their common intended trace class.
+\end{remark}
+\subsection{Relation to the Hilbert--P\'olya/Connes--Deninger obstruction}
+\label{v4-arith:w10-a:HP-relation}
+
+\begin{remark}[Hilbert descent and arithmetic spectral realization]
+\label{v4-arith:w10-a:rem:weaker-than-RH}
+Hilbert descent asks for a limit state space and its native pairing.
+The arithmetic Hilbert--P\'olya realization further specifies an
+arithmetic middle-cohomology carrier, a self-adjoint operator
+\(H_{\mathrm{HP}}\), and the determinant and trace normalization of
+\(\Theta_\xi=\tfrac12+iH_{\mathrm{HP}}\).
+These data are not clauses of Hilbert descent.
+In particular, the zero-occurrence generator cannot be realized as
+the restriction of continuous \(\Theta_c\) to an invariant Hilbert
+subspace by an injective generator intertwiner: each occurrence has
+a nonzero eigenvector, whereas \(\Theta_c\) has none.
+An arithmetic cohomology comparison instead uses its own carrier,
+as in \Cref{v4-arith:pres90:cohomology}.
+\end{remark}
+
+The purity condition depends on the operator and its carrier.
+For continuous scaling, set
+\[
+ H_c=L^2(\mathbb R_{>0},dx/x),\qquad
+ (U_a f)(x)=f(e^{-a}x),\qquad a\in\mathbb R.
+\]
+In the logarithmic coordinate \(t=\log x\), the self-adjoint generator is
+\[
+ D_c=-i\partial_t,\qquad
+ \operatorname{Dom}D_c=\{f\in H_c:f(e^t)\in H^1(\mathbb R,dt)\}.
+\]
+Thus \(U_a=e^{-iaD_c}\),
+\(\Theta_c=\tfrac12+iD_c\) has the same domain, and
+\(F_\infty=e^{-\Theta_c}=e^{-1/2}U_1\).
+Transport to a descended Hilbert space \(H_B\) requires a specified
+unitary \(V:H_B\to H_c\). For a generator \(\Theta_B\), the required
+comparison is
+\[
+ V\operatorname{Dom}\Theta_B=\operatorname{Dom}\Theta_c,
+ \qquad V\Theta_B=\Theta_c V
+ \quad\hbox{on }\operatorname{Dom}\Theta_B.
+\]
+It then gives \(e^{-\Theta_B}=V^{-1}F_\infty V\).
+
+The arithmetic operator instead uses the multiset \(Z\) of nontrivial
+zeta zeros, with one coordinate for each occurrence. On \(K_Z=\ell^2(Z)\), set
+\[
+ (\Theta_Z v)_\rho=\rho v_\rho,\qquad
+ \operatorname{Dom}\Theta_Z=
+ \left\{v\in\ell^2(Z):\sum_{\rho\in Z}|\rho v_\rho|^2<\infty\right\}.
+\]
+Its bounded exponential is \((F_Zv)_\rho=e^{-\rho}v_\rho\).
+These operators distinguish continuous purity from arithmetic purity.
+
+\begin{theorem}[Clausen--Scholze condensed-Hilbert descent plus A-TP \(\Rightarrow\) RH]
+\label{v4-arith:w10-a:thm:descent-plus-ATP-equals-RH}
+\ClaimStatusProvedHereConditional \emph{(on the archimedean
+condensed-Hilbert descent of
+\Cref{v4-arith:w10-a:conj:condensed-descent} and the
+A-TP archimedean positivity of
+Ch.~\ref{v4-arith:w5-a:conj:archimedean-tate-positivity})}. Under
+both the Clausen--Scholze condensed-Hilbert descent and A-TP, the Riemann
+Hypothesis holds.
+\end{theorem}
+
+\begin{proof}
+For \(f\in C_c^\infty(\mathbb R)\), with
+\(f^*(t)=\overline{f(-t)}\), A-TP states
+\[
+ W_\infty(f*f^*)\le P(f*f^*)-W_{\mathrm{fin}}(f*f^*).
+\]
+The signed explicit formula therefore gives \(W(f*f^*)\ge0\) for
+every such \(f\). By Weil's criterion, all nontrivial zeros satisfy
+\(\Re\rho=1/2\), which is RH.
+On the coordinate vector at \(\rho\), the absolute value \(|F_Z|\)
+has eigenvalue \(e^{-\Re\rho}\). Hence the same conclusion is precisely
+\( |F_Z|=e^{-1/2}1_{K_Z}\), the arithmetic purity of
+\Cref{v4-arith:w9-r2:thm:purity-ATP-RH}.
+Conversely this equality forces \(\Re\rho=1/2\) at every occurrence,
+and Weil's criterion recovers A-TP.
+
+On \(H_c\), unitarity gives
+\(F_\infty^*F_\infty=e^{-1}1_{H_c}\) without A-TP.
+The specified unitary \(V\) transports this identity to \(H_B\)
+by functional calculus, including the stated generator domains.
+Thus descent provides the continuous Hilbert realization when its
+comparison data exist. A-TP alone supplies the zero-placement
+implication used above.
+\end{proof}
+
+\begin{remark}[the archimedean Hilbert descent does not imply RH alone]
+\label{v4-arith:w10-a:rem:what-resolves}
+Resolving the archimedean Hilbert descent alone does not
+resolve RH: it constructs
+\(\mathrm{ACS}^{\mathrm{qu}}_{k^{\mathrm{Ar}}}\) only on the
+descended Hilbert-trace clauses (WZW), (Z), and (W); it does not
+supply the full cobordism functor or the full Weil inequality A-TP.
+The continuous scaling exponential is already pure. Under both descent
+and A-TP, RH follows through the separate arithmetic operator \(F_Z\).
+The archimedean Hilbert descent is the bulk-construction
+obstruction; A-TP is the separate positivity obstruction. After the
+descent, the remaining bulk gluing assertions stay separate; the
+RH-equivalent condition in this construction is A-TP.
+\end{remark}
+
+\section{Refinement: The Condensed-Hilbert Bulk}
+\label{v4-arith:w10-a:condensed-bulk}
+
+\subsection{Condensed-Hilbert setup}
+\label{v4-arith:w10-a:condensed-setup}
+
+\begin{definition}[condensed Hilbert pro-system]
+\label{v4-arith:w10-a:def:condensed-pro-system}
+Specify finite-level boundary Hilbert spaces
+$\mathcal H^{(\infty)}_{G_N,\alpha_N}$ and coherent bounded linear
+transition maps, including their normalization.
+Their associated condensed complex vector spaces form an inverse
+diagram, denoted $\mathcal H^{(\infty)}_\bullet$.
+Here $\mathrm{Cond}_{\mathrm{Hilb}}(\mathbb C)$ denotes the chosen
+category of condensed realizations of complex Hilbert spaces with
+bounded linear maps. A limit in condensed vector spaces need not be
+represented by a Hilbert space. Such representability, its norm and
+its compatibility with the native pairing are the additional descent
+requirements below. A scalar normalization of partition values does
+not by itself define transition maps on these state spaces.
+\end{definition}
+
+\begin{definition}[target archimedean Hilbert realization]
+\label{v4-arith:w10-a:def:target-Hilbert}
+Specify a primary trace space \(E_\infty\), its Hermitian positive
+semidefinite form \(q_\infty\), and its arithmetic operations.
+The target \(H_{\mathrm{prim}}\) is the completion of its quotient
+by the nullspace, with its quotient map \(I_{\mathrm{prim}}\).
+Its condensed realization is the condensed object associated with
+this Hilbert topology. Specifying the trace degree, the form and
+its native realization is part of the arithmetic construction in
+\Cref{v4-arith:pres57:native-pairing}.
+An identification with a Heisenberg representation additionally
+requires the operators, domains, central action and pairing map of
+\Cref{v4-arith:pres90:primary-virasoro}.
+\end{definition}
+\subsection{The Condensed Hilbert--Trace Package}
+\label{v4-arith:w10-a:named-obstruction}
+
+\begin{conjecture}[archimedean condensed-Hilbert descent and trace]
+\label{v4-arith:w10-a:conj:condensed-descent}
+The arithmetic boundary geometry, primary trace realization and
+positive pairing of \Cref{v4-arith:w10-a:def:target-Hilbert} exist.
+The specified finite-level transition maps and renormalization admit
+a condensed limit represented by a Hilbert space
+\(H_B=\mathcal H^{(\infty)}_\infty\), with a complex-linear dense-range realization
+\(I_B:E_\infty\to H_B\) preserving \(q_\infty\).
+Consequently the native comparison is
+\begin{equation}
+ H_B\xrightarrow{\ T\ } H_{\mathrm{prim}},\qquad
+ TI_B=I_{\mathrm{prim}}.
+ \label{v4-arith:w10-a:eq:condensed-descent}
+\end{equation}
+The arithmetic boundary operations descend and agree on specified
+cores under \(T\). The global trace prescription, including the
+finite-place factors and pole normalization, gives
+\(Z_{\mathrm{ACS}^{\mathrm{qu}}}(k^{\mathrm{Ar}})=\xi(k^{\mathrm{Ar}})\).
+The finite-place Wilson insertions obey the Frobenius trace identity
+in the stated geometric Frobenius convention.
+A comparison of the quantum surface generator with \(\Theta_c\)
+requires the additional unitary and domains in
+\Cref{v4-arith:w10-a:thm:wilson-surface-compat}.
+\end{conjecture}
+\begin{theorem}[condensed Hilbert--trace package supplies the matching ACS clauses]
+\label{v4-arith:w10-a:thm:descent-equivalent}
+\ClaimStatusProvedHereConditional \emph{(after choosing the same
+bulk-boundary ACS model)}. \Cref{v4-arith:w10-a:conj:condensed-descent}
+supplies the archimedean Hilbert, trace, and Wilson clauses of
+\Cref{v4-arith:3d-acs:conj:qu-acs}. It is not, by itself, the full
+topological ACS functor.
+\end{theorem}
+
+\begin{proof}
+Given \Cref{v4-arith:w10-a:conj:condensed-descent},
+the limit \(\mathcal H^{(\infty)}_{\infty}\) is the archimedean
+boundary Hilbert space in the chosen model. Its native trace
+comparison is the Hilbert boundary clause of (WZW). A factorization
+structure and its gluing remain the additional data of Construction III. The
+partition function (Z) is the regularised trace clause. The Wilson-line
+axiom (W) is the finite-place descent clause.
+The remaining assertion of \Cref{v4-arith:3d-acs:conj:qu-acs} is the
+existence of the full cobordism functor with gluing; it is not implied
+by the condensed Hilbert limit alone.
+\end{proof}
+
+\begin{remark}[form of the condensed statement]
+\label{v4-arith:w10-a:rem:named-theorem}
+\Cref{v4-arith:w10-a:conj:condensed-descent} is a condensed Hilbert
+limit together with a trace identity and finite-place endomorphism
+compatibility. The Hilbert limit alone gives only the archimedean
+state space; the trace and Wilson clauses carry the scalar and
+finite-prime content of the quantum ACS axioms.
+\end{remark}
+
+\section{Wilson-Observable Compatibility}
+\label{v4-arith:w10-a:wilson-compat}
+
+\begin{theorem}[Wilson-line compatibility]
+\label{v4-arith:w10-a:thm:wilson-line-compat}
+\ClaimStatusProvedHereConditional \emph{(on
+\Cref{v4-arith:w10-a:conj:condensed-descent})}. Under the
+condensed-Hilbert descent, the Wilson-line observable at a prime
+knot \(K_{p}\) in the bulk \(\mathrm{ACS}^{\mathrm{qu}}_{k^{\mathrm{Ar}}}\),
+evaluated on the limit state space
+\(H_B\xrightarrow{T}H_{\mathrm{prim}}\),
+is exactly the Frobenius trace \(\mathrm{tr}\,\rho(\mathrm{Frob}_{p})\)
+of \Cref{v4-arith:w9-r1:thm:main}(2), as a Wilson clause of the
+descent.
+\end{theorem}
+
+\begin{proof}
+\Cref{v4-arith:w10-a:thm:descent-equivalent} supplies the Wilson
+clause of the chosen descended ACS model. Axiom (W) in that model is
+the Wilson-line Frobenius identity. Here the finite-place equality is expressly part of the descent
+conjecture, including its label and trace comparison. A finite-state
+sum alone would not give that identification.
+\end{proof}
+
+\begin{theorem}[Wilson-surface compatibility]
+\label{v4-arith:w10-a:thm:wilson-surface-compat}
+Assume the condensed-Hilbert descent of
+\Cref{v4-arith:w10-a:conj:condensed-descent}, and write
+\(H_B=\mathcal H^{(\infty)}_\infty\).
+Suppose the arithmetic boundary quantization of
+\Cref{v4-arith:pres90:quantization} constructs a closed normal
+\(\Theta_B\) and its surface observable
+\(F_\infty^{\mathrm{WS}}=e^{-\Theta_B}\).
+Suppose a unitary \(V_\Sigma:H_B\to H_c\) satisfies
+\[
+ V_\Sigma\operatorname{Dom}\Theta_B=\operatorname{Dom}\Theta_c,
+ \qquad V_\Sigma\Theta_B=\Theta_cV_\Sigma.
+\]
+Then the exponential is bounded and
+\[
+ F_\infty^{\mathrm{WS}}=V_\Sigma^{-1}F_\infty V_\Sigma,
+ \qquad |F_\infty^{\mathrm{WS}}|=e^{-1/2}1_{H_B}.
+\]
+The quantization must contain this Tate normalization: a unitary
+curvature phase alone has absolute value one.
+\end{theorem}
+\begin{proof}
+The domain and operator equalities identify the normal spectral
+measures. The function \(e^{-s}\) is bounded on
+\(1/2+i\mathbb R\). Functional calculus proves the conjugacy, and
+\(F_\infty=e^{-1/2}U_1\) proves the absolute-value formula.
+This transports an already constructed quantum observable.
+Defining a transported operator on an abstract Hilbert space alone
+does not identify it with the arithmetic quantization.
+\end{proof}
+
+\begin{proposition}[native pairing and the full Weil form]
+\label{v4-arith:consumer94:native-Weil}
+Let \(I_B:E_\infty\to H_B\) realize the native positive pairing
+\(q_\infty\). Suppose a complex-linear map
+\(R:\mathscr A=C_c^\infty(\mathbb R)\to E_\infty\) satisfies
+\[
+ q_\infty(Rf,Rh)=P(f*h^*)-W_\infty(f*h^*)-W_{\mathrm{fin}}(f*h^*)
+ \qquad(f,h\in\mathscr A),
+\]
+with \(h^*(t)=\overline{h(-t)}\) and the Fourier and measure
+conventions of \Cref{v4-arith:w5-a:thm:weil-explicit}.
+Then \(J=I_BR\) realizes the full Weil form on \(H_B\), and RH follows.
+If the identity is specified only on a complex subspace
+\(E\subset\mathscr A\), it proves positivity only on \(E\).
+It extends to the full criterion if \(E\) is dense in the compact
+test topology. A mere density of its span in a different Hilbert
+norm does not give that implication.
+\end{proposition}
+\begin{proof}
+The native isometry and the signed explicit formula give
+\(\langle Jf,Jh\rangle=W(f*h^*)\). Taking \(h=f\) gives
+nonnegativity, and Weil's criterion implies RH. For a restricted
+subspace, continuity of convolution, involution and \(W\) in the
+compact test topology permits passage from approximating tests to
+all compact tests. No such limit follows from an unspecified norm.
+\end{proof}
+
+This comparison asks for an arithmetic map \(R\), including all
+polar, gamma and prime terms. The positivity of the target Hilbert
+space and the continuous surface comparison do not construct \(R\).
+The Gaussian extension in \Cref{v4-arith:sc:gaussian-extension}
+provides another valid test topology only when the complete pairing
+identity is transported there; a gamma sign alone does not do so.
+\begin{corollary}[Wilson observables on the descended model]
+\label{v4-arith:w10-a:cor:wilson-one-residual}
+Under the condensed-Hilbert descent, the Wilson-line Frobenius identity
+is its finite-place Wilson clause. With the additional unitary and
+generator-domain comparison in
+\Cref{v4-arith:w10-a:thm:wilson-surface-compat}, the archimedean
+surface operator is unitarily conjugate to the continuous scaling
+exponential on \(H_c\).
+\end{corollary}
+
+\begin{proof}
+Apply \Cref{v4-arith:w10-a:thm:wilson-line-compat} to the finite-place
+clause and \Cref{v4-arith:w10-a:thm:wilson-surface-compat} to the
+specified archimedean comparison.
+\end{proof}
+
+\section{Comparison of the Five Presentations}
+\label{v4-arith:w10-a:ah:synthesis}
+
+\Cref{v4-arith:w10-a:thm:common-residual} gives a comparison theorem
+for boundary Hilbert realizations carrying the same native pairing.
+The inverse-limit construction must supply its transition maps,
+renormalization and represented limit. The factorization construction
+must supply boundary restriction and gluing. The categorical
+constructions must supply their trace-to-boundary maps, and the
+six-functor construction its arithmetic space and trace formula.
+
+When these constructions realize a common \((E_\infty,q_\infty)\),
+the theorem constructs their Hilbert unitary. Agreement of generator
+cores gives operator transport. Their existence and arithmetic
+identification are additional to this implication. In particular,
+a passage from vector spaces to pro-objects and then to a condensed
+Hilbert space does not specify the native pairing or the quantum
+surface observable.
+\section{Remaining Inputs}
+\label{v4-arith:w10-a:residual}
+
+\begin{enumerate}
+\item The condensed-Hilbert descent of
+\Cref{v4-arith:w10-a:conj:condensed-descent} includes native boundary
+geometry, a positive trace-sector pairing, a represented limit and
+its realization maps. The trace and Wilson clauses must be proved
+with the stated global normalization.
+\item A quantum surface realization further requires its fields,
+curvature coupling, boundary conditions and quantization. The
+unitary \(V_\Sigma\) and its generator-domain identity give the
+continuous comparison in
+\Cref{v4-arith:w10-a:thm:wilson-surface-compat}.
+\item The modular trace lift for the categorical constructions needs
+a trace-to-boundary map compatible with the native pairing and
+operations. Its relationship to Hilbert descent must be proved
+through these maps.
+\item The arithmetic diamond construction needs its space, boundary
+trace object and local-global trace formula. These are its own
+geometric and categorical hypotheses.
+\item An arithmetic positivity consequence requires the map \(R\)
+and complete pairing identity in
+\Cref{v4-arith:consumer94:native-Weil}, or an independently proved
+full Weil inequality. The determinant route instead requires its
+native cohomology and domain-preserving spectral realization.
+\end{enumerate}
+
+\begin{remark}[relations among the required constructions]
+\label{v4-arith:w10-a:rem:partial-order}
+The comparison theorem constructs a unitary when the native pairing
+and dense realization maps agree. It does not prove a strict logical
+ordering among the modular lift, Hilbert descent and arithmetic
+diamond. Each proposed implication must specify the corresponding
+geometric, trace and operator maps.
+\end{remark}
+\section{Constructed implications and remaining data}
+\label{v4-arith:w10-a:what-closes}
+
+\subsection*{Consequences on specified data}
+
+\begin{enumerate}
+\item An actually coherent inverse tower defines a pro-object
+(\Cref{v4-arith:w10-a:thm:profinite-exists}).
+\item Finite groupoid functions and their integration factor over
+disjoint products; the additional factorization descent is a
+separate construction
+(\Cref{v4-arith:w10-a:thm:CG-open}).
+\item The construction comparison theorem
+(\Cref{v4-arith:w10-a:thm:construction-comparison}) and the
+boundary comparison theorem
+(\Cref{v4-arith:w10-a:thm:common-residual}) supplies a unitary when
+the different constructions realize the same native pairing on
+dense subspaces, with operator transport under the stated core condition.
+\item The descent comparison theorem
+(\Cref{v4-arith:w10-a:thm:descent-equivalent}) shows that the
+condensed-Hilbert descent supplies the Hilbert, trace, and Wilson
+clauses of the chosen ACS model; the full cobordism functor and gluing
+remain separate.
+\item Under the descent and the specified archimedean unitary
+comparison, the Wilson-line and Wilson-surface identities hold
+inside the descended model
+(\Cref{v4-arith:w10-a:cor:wilson-one-residual}).
+\end{enumerate}
+
+\subsection*{Conditional on the condensed-Hilbert descent}
+
+\begin{enumerate}
+\item The represented Hilbert object and the trace and finite-Wilson
+clauses in \Cref{v4-arith:w10-a:thm:descent-equivalent}.
+The full (WZW) axiom of \Cref{v4-arith:3d-acs:conj:qu-acs}
+additionally requires the factorization, boundary comparison and gluing
+maps of the chosen quantum ACS model.
+\item Ch.~\ref{v4-arith:w9-r1:wilson-frobenius} profinite
+Wilson-Frobenius identity.
+\item Ch.~\ref{v4-arith:w9-r2:archimedean-wilson-surface}
+Wilson-surface conjugacy to Arakelov scaling, with the additional
+unitary and generator-domain comparison of
+\Cref{v4-arith:w10-a:thm:wilson-surface-compat}.
+\item The specified scalar partition and trace clauses. A further
+identification with a Deninger complex requires that complex and
+its determinant comparison; a Hilbert limit alone does not supply it.
+\end{enumerate}
+
+\subsection*{Arithmetic positivity and spectral comparison}
+
+\begin{enumerate}
+\item The A-TP archimedean positivity of
+Ch.~\ref{v4-arith:w5-a:chapter} (equivalent to RH by
+\Cref{v4-arith:w9-r2:thm:purity-ATP-RH}).
+\item The Hilbert--P\'olya determinant-trace realisation H-P\(^{\mathrm{Ar}}\)
+of \Cref{v4-arith:rh:hyp:HPAr} (equivalent to zero-placement
+determinant identity).
+\item The Deninger spectral-flow hypothesis
+\Cref{v4-arith:3d-acs:conj:spectral-flow} (equivalent to the full
+Weil--Guinand distribution).
+\end{enumerate}
+
+The chapter does not reduce the RH-level obstructions. It identifies
+the condensed-Hilbert descent as the common archimedean term in the
+bulk comparison.
+
+\section{Boundary realization and arithmetic comparison}
+\label{v4-arith:w10-a:summary}
+
+The boundary construction asks for arithmetic geometry, a positive
+primary pairing, a Hilbert realization and a quantum observable.
+If two constructions realize the same pairing on dense subspaces,
+\Cref{v4-arith:w10-a:thm:common-residual} supplies their unitary
+comparison. The trace and finite-place clauses of
+\Cref{v4-arith:w10-a:conj:condensed-descent} retain their own
+arithmetic content; the full cobordism gluing remains additional.
+
+With the specified quantum generator and unitary \(V_\Sigma\),
+continuous surface purity follows by functional calculus.
+Arithmetic purity concerns the separate zero-occurrence operator
+\(F_Z\), and follows from the full Weil inequality A-TP.
+The native sufficient comparison is \(J=I_BR\) in
+\Cref{v4-arith:consumer94:native-Weil}. It retains every polar,
+gamma and prime contribution. Constructing this arithmetic map,
+or the native middle-cohomology determinant realization, is the
+remaining arithmetic positivity problem.
+\section{Bibliography}
+\label{v4-arith:w10-a:bibliography}
+
+\begin{description}
+\item[Clausen--Scholze 2020.] Clausen, D.; Scholze, P. \emph{Condensed
+Mathematics}. Lecture notes, Bonn; available at Scholze's homepage.
+\item[Costello--Gwilliam 2017.] Costello, K.; Gwilliam, O.
+\emph{Factorization Algebras in Quantum Field Theory}, Vol.~I.
+Cambridge Univ.~Press, 2017.
+\item[Costello--Gwilliam 2021.] Costello, K.; Gwilliam, O.
+\emph{Factorization Algebras in Quantum Field Theory}, Vol.~II.
+Cambridge Univ.~Press, 2021.
+\item[Douglas--Schommer-Pries--Snyder 2013.] Douglas, C.~L.;
+Schommer-Pries, C.~J.; Snyder, N. \emph{Dualizable tensor
+categories}. arXiv:1312.7188.
+\item[Fargues--Scholze 2021.] Fargues, L.; Scholze, P.
+\emph{Geometrization of the local Langlands correspondence}.
+arXiv:2102.13459.
+\item[Freed--Quinn 1993.] Freed, D.~S.; Quinn, F. \emph{Chern--Simons
+theory with finite gauge group}. Commun.~Math.~Phys.~\textbf{156}
+(1993), 435--472.
+\item[Huang--Lepowsky 1994.] Huang, Y.-Z.; Lepowsky, J.
+\emph{Tensor products of modules for a vertex operator algebra and
+vertex tensor categories}. In: \emph{Lie Theory and Geometry}
+(Brylinski et al., eds.), Birkhauser, 1994, 349--383.
+\item[Kim 2015.] Kim, M. \emph{Arithmetic Chern--Simons theory I}.
+arXiv:1510.05818.
+\item[Lurie 2008.] Lurie, J. \emph{On the classification of
+topological field theories}. arXiv:0905.0465.
+\item[Lurie HTT.] Lurie, J. \emph{Higher Topos Theory}. Princeton
+Univ.~Press, 2009.
+\item[Milne 1980.] Milne, J.~S. \emph{Etale Cohomology}. Princeton
+Univ.~Press, 1980.
+\item[Reshetikhin--Turaev 1991.] Reshetikhin, N.; Turaev, V.~G.
+\emph{Invariants of 3-manifolds via link polynomials and quantum
+groups}. Invent.~Math.~\textbf{103} (1991), 547--597.
+\item[Scholze 2017.] Scholze, P. \emph{Etale cohomology of diamonds}.
+arXiv:1709.07343.
+\item[Scholze 2020.] Scholze, P. \emph{Six-functor formalism}.
+Lecture notes, Bonn.
+\item[Turaev 1994.] Turaev, V.~G. \emph{Quantum Invariants of Knots
+and 3-Manifolds}. de Gruyter, 1994.
+\end{description}

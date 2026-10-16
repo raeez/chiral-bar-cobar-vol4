@@ -1,0 +1,890 @@
+\chapter{Weil--Petersson Kernel Comparison: Dense Test-Class Limits}
+\label{v4-arith:w6-b:chapter}
+
+
+The compact-test moment conditions admit explicit projections and
+precise closure theorems. These depend on the topology: all three
+moments persist under compact convergence, whereas only the mean
+persists under unrestricted Schwartz convergence. Automorphic
+weight limits require their own maps and measures. The complete
+Weil form retains its polar, finite-prime, and signed gamma terms.
+\section{Restricted-Class Baseline and Residual}
+\label{v4-arith:w6-b:baseline}
+
+
+Use $\mathscr A=C_c^\infty(\mathbb R)$, $\mathscr P=\mathcal F_+\mathscr A$,
+and $q_W(f,g)=W(f*g^*)$ as in \Cref{v4-arith:w5-a:def:PW}.
+The topology on $\mathscr A$ is the usual inductive-limit topology.
+The full form contains its polar, signed gamma, and finite-prime terms.
+
+\begin{theorem}[the compact coefficient comparison]
+\label{v4-arith:w6-b:thm:baseline}
+The compact multiplier $U_F(f)$ of
+\Cref{v4-arith:w5-a:def:upsilon} is a finite Fourier polynomial.
+It is a cusp form of the specified positive weight only when it
+vanishes. The distinct entire multiplier $\Upsilon_F(h)$ requires
+its own modular transformation law. For an actual cusp form, the
+Rankin--Selberg unfolding is
+\Cref{v4-arith:w5-a:thm:RS-integral}.
+\end{theorem}
+\begin{proof}
+The compact multiplier obstruction and exact unfolding in
+Chapter~\ref{v4-arith:w5-a:chapter} give the assertions.
+\end{proof}
+
+\begin{remark}[three comparison requirements]
+\label{v4-arith:w6-b:rem:domain-boundary}
+For compact tests, Mellin transforms are entire and rapidly decreasing
+on every closed vertical strip. Thus their strip holomorphy does not
+depend on the modular weight. Three separate requirements remain.
+A coefficient prescription must satisfy the modular transformation
+law. A comparison with holomorphic or Maass forms must specify its
+archimedean representation and realization map. A projection to the
+discrete spectrum must come from a specified Hilbert decomposition.
+The last projection is constructed in
+\Cref{v4-arith:pres57:discrete-projection}. None of these maps follows
+from the moment conditions defining $\mathscr A_{13}$.
+\end{remark}
+\section{Construction I: Maass-Form Lift on Tempered Eigenforms}
+\label{v4-arith:w6-b:construction-I}
+
+\subsection{Archimedean Local Factor for Principal-Series Maass}
+\label{v4-arith:w6-b:construction-I:local}
+
+Let \(\phi\) be a Maass cuspidal Hecke eigenform on
+\(\mathrm{SL}_{2}(\mathbb{Z})\backslash\mathbb{H}\) with Laplace
+eigenvalue \(\lambda_{\phi}=1/4+r_{\phi}^{2}\), \(r_{\phi}\in\mathbb{R}\)
+tempered at \(\infty\). The Fourier--Whittaker expansion is
+\begin{equation}
+\label{v4-arith:w6-b:eq:maass-expansion}
+\phi(z)
+\;=\;\sum_{n\neq 0}a_{\phi}(n)\,\sqrt{y}\,K_{ir_{\phi}}(2\pi|n|y)\,e^{2\pi inx},
+\end{equation}
+where \(K_{\nu}\) is the Macdonald \(K\)-Bessel function (Iwaniec 2002
+\emph{Spectral Methods of Automorphic Forms} \S1.9). The normalised
+Hecke eigenvalues \(\widetilde{a}_{\phi}(n)=a_{\phi}(n)/a_{\phi}(1)\), for \(n>0\), satisfy
+\(\widetilde{a}_{\phi}(1)=1\) and are real if \(\phi\) is a newform at
+level~\(1\). Deligne's bound is not available for Maass forms; the
+Kim--Sarnak estimate is \(\theta_{\phi}\leq 7/64\), and temperedness
+at every prime is the Ramanujan conjecture, open at
+\(\mathrm{GL}_{2}/\mathbb{Q}\).
+
+\begin{definition}[Maass Mellin lift]
+\label{v4-arith:w6-b:def:upsilon-maass}
+\ClaimStatusDefinitional. Fix a tempered Maass Hecke eigenform \(\phi\)
+of eigenvalue \(\lambda=1/4+r^{2}\) with \(r\in\mathbb{R}\). For
+$f\in\mathscr A$, put
+\begin{equation}
+\label{v4-arith:w6-b:eq:upsilon-maass}
+\Upsilon_{\phi}(f)(z)
+\;:=\;\sum_{n\geq 1}f(\log n)\,\widetilde{a}_{\phi}(n)\,\sqrt{y}\,K_{ir}(2\pi ny)\cos(2\pi nx).
+\end{equation}
+The cosine is the symmetrisation under \(\phi\) even (the \(+\) part of
+the Maass space; the odd case replaces cosine by sine with the same $K$-Bessel factor).
+\end{definition}
+
+
+For compact tests, put $M_f(s)=\int_{\mathbb R}f(t)e^{st}dt$.
+\begin{lemma}[the compact Maass coefficient series]
+\label{v4-arith:w6-b:lem:upsilon-maass-cusp}
+Use the compact real even moment space
+\begin{equation}
+\label{v4-arith:w6-b:eq:PW-maass}
+ \mathscr A_{13}=\{f\in C_c^\infty(\mathbb R):f\text{ real and even},
+                  \ M_f(0)=M_f(1)=M_f'(1)=0\}.
+\end{equation}
+For every such $f$, the series
+\eqref{v4-arith:w6-b:eq:upsilon-maass} has only finitely many terms.
+It is smooth on $\mathbb H$, periodic in $x$, decreases exponentially
+as $y\to\infty$, and satisfies the local weight-zero Laplace
+eigenvalue equation of parameter $r$. These assertions require
+no finite-prime temperedness hypothesis. They do not establish
+invariance under $z\mapsto-1/z$.
+\end{lemma}
+\begin{proof}
+Compact support bounds the positive integers with $f(\log n)\ne0$.
+Each summand is smooth and periodic. The modified Bessel equation
+$u^2K_{ir}''+uK_{ir}'-(u^2-r^2)K_{ir}=0$ gives eigenvalue
+$1/4+r^2$ for $-y^2(\partial_x^2+\partial_y^2)$ on
+$\sqrt yK_{ir}(2\pi ny)\cos(2\pi nx)$.
+The decay of $K_{ir}$ at infinity gives the cusp decay of the
+finite sum. These computations impose no modular transformation
+under inversion. A quotient-space Petersson integral requires
+that transformation law separately.
+\end{proof}
+The Mellin transform of a compact smooth test is entire, so the
+Kim--Sarnak parameter bound supplies no additional strip condition
+on this carrier. The moment equations are independent of the
+modular transformation law and do not cancel the actual polar
+moments at $\pm1/2$.
+\begin{proposition}[the local Bessel norm and its Mellin transform]
+\label{v4-arith:w6-b:thm:maass-RS}
+For real $r$ and $\Re s>0$,
+\[
+ B_r(s):=\int_0^\infty K_{ir}(u)^2u^{s-1}du
+ =\frac{2^{s-3}\Gamma(s/2)^2
+          \Gamma(s/2+ir)\Gamma(s/2-ir)}{\Gamma(s)}.
+\]
+For a finite cosine series $V(z)=\sum_{n\ge1}c_n\sqrt y
+K_{ir}(2\pi ny)\cos(2\pi nx)$ and a real $s>0$,
+\[
+ \int_0^\infty\int_{-1/2}^{1/2}|V(x+iy)|^2y^{s-1}
+ \frac{dx\,dy}{y}
+ =\frac{B_r(s)}{2(2\pi)^s}\sum_{n\ge1}|c_n|^2n^{-s}.
+\]
+This is a strip integral, not an integral over a modular fundamental domain.
+\end{proposition}
+\begin{proof}
+Use the Schlaefli integral representation of $K_\nu$
+(DLMF~10.32.10) with orders $ir$ and $-ir$.
+Their powers of $u/2$ cancel since $K_{-ir}=K_{ir}$.
+Integration in $u$ gives
+\[
+ 2^{s-3}\Gamma(s/2)\int_0^\infty\int_0^\infty
+ e^{-v-w}v^{s/2-ir-1}w^{s/2+ir-1}(v+w)^{-s/2}dv\,dw.
+\]
+Absolute convergence holds for $\Re s>0$.
+Set $v=xq$, $w=x(1-q)$, where $x>0$ and $0<q<1$.
+The $x$ integral is $\Gamma(s/2)$, and the $q$ integral is
+$\Gamma(s/2-ir)\Gamma(s/2+ir)/\Gamma(s)$.
+This proves the first formula. For the second, orthogonality of
+cosines on $[-1/2,1/2]$ gives a factor $1/2$ on each diagonal.
+The substitution $u=2\pi ny$ gives the stated factor $n^{-s}$.
+Only finitely many terms occur.
+\end{proof}
+
+\begin{remark}[the Maass critical-line comparison]
+A proposed arithmetic comparison would specify a complex test domain
+$D_\phi\subset\mathscr A$ and a linear automorphic realization
+$I_\phi:D_\phi\to L^2_{\mathrm{cusp}}(SL_2(\mathbb Z)\backslash\mathbb H)$.
+The intended critical-line norm identity is
+\begin{equation}
+\label{v4-arith:w6-b:eq:maass-RS}
+ \langle I_\phi f,I_\phi g\rangle_{\mathrm{Pet}}
+ =\int_{\mathbb R}h_f(t)\overline{h_g(t)}
+                K_\phi^{\mathrm{prop}}(1/2+it)dt,
+ \qquad f,g\in D_\phi.
+\end{equation}
+One scalar prescription to compare with such an integral is
+\begin{equation}
+\label{v4-arith:w6-b:eq:Kphi}
+ K_\phi^{\mathrm{prop}}(s)=
+ \frac{\zeta(2s)L(s,\phi\otimes\overline\phi)}
+ {\zeta(s)\xi_{\mathbb R}(s)\xi_{\mathbb R}(1-s)}G_\phi^{\mathrm{prop}}(s),
+\end{equation}
+where the auxiliary scalar factor is
+\[
+ G_\phi^{\mathrm{prop}}(s)=
+ \frac{|\Gamma(s/2+ir)\Gamma(s/2-ir)|}
+ {|\Gamma(s/4+ir/2)\Gamma(s/4-ir/2)|^2}
+\]
+where finite. Absolute values make this prescription different from
+the holomorphic Bessel Mellin transform $B_r(s)$ above.
+Constructing $I_\phi$, proving the critical-line identity, and
+specifying a convergent domain or regularization at every singularity
+are unresolved requirements. A nonnegative norm does not make an
+unidentified scalar expression pointwise nonnegative.
+The finite coefficient series alone supplies no modular inversion law.
+On a fundamental domain the lower $y$ boundary depends on $x$,
+so the cosine orthogonality used on the strip cannot be applied there.
+Rankin--Selberg unfolding requires an actual automorphic function and
+an Eisenstein integral with its convergence hypotheses
+(Iwaniec, \emph{Spectral Methods}, Ch.~10; Zagier~1981).
+\end{remark}
+
+\begin{corollary}[positivity on an actual Maass carrier]
+\label{v4-arith:w6-b:cor:maass-closure}
+Any specified linear map $I_\phi:D_\phi\to L^2_{\mathrm{cusp}}$
+defines the positive semidefinite form
+$\langle I_\phi f,I_\phi g\rangle$ without a Ramanujan hypothesis.
+It realizes the Weil form on $D_\phi$ only if its full pairing
+identity with $P-W_\infty-W_{\mathrm{fin}}$ is proved.
+\end{corollary}
+\begin{proof}
+The diagonal is $\|I_\phi f\|_2^2\ge0$.
+The finite-prime counterexample in
+\Cref{v4-arith:w5-a:thm:prime-side} excludes an identification of
+$W_{\mathrm{fin}}$ alone with a positive norm on all compact tests.
+Bounds on the Hecke parameters do not change that counterexample.
+\end{proof}
+
+\begin{remark}[domains across Maass eigenforms]
+\label{v4-arith:w6-b:rem:maass-union}
+The cuspidal subspace of $L^2(\mathrm{SL}_2(\mathbb Z)\backslash
+\mathbb H,dx\,dy/y^2)$ has a complete orthonormal basis of Maass
+cusp eigenfunctions for the positive Laplacian
+$\Delta=-y^2(\partial_x^2+\partial_y^2)$.
+Count eigenvalues with multiplicity, using both parities, and choose
+one parameter $r_j\ge0$ for every eigenvalue $1/4+r_j^2\ge1/4$;
+the finitely many lower eigenvalues do not change the asymptotic.
+Then $N(R)=\#\{j:0\le r_j\le R\}\sim R^2/12$.
+Indeed Selberg's cuspidal Weyl law, as stated in M\"uller,
+\emph{Annals of Mathematics} 165 (2007), p.~277, equation~(0.1),
+is $N_{\mathrm{cusp}}(\lambda)\sim
+\operatorname{area}(\mathrm{SL}_2(\mathbb Z)\backslash\mathbb H)
+\lambda/(4\pi)$. The standard domain has area
+$\int_{-1/2}^{1/2}(1-x^2)^{-1/2}dx=\pi/3$;
+putting $\lambda=1/4+R^2$ gives the coefficient $1/12$.
+This statement concerns the full cuspidal spectrum, not one parity
+and not the continuous Eisenstein spectrum.
+The same compact moment space $\mathscr A_{13}$ can parameterize
+finite coefficient series for different Maass eigenforms.
+Changing their spectral parameters or finite-prime bounds does not
+alter its Mellin holomorphy. Automorphic realization domains must
+instead be determined by actual transformation laws and maps.
+A union of such domains is not known to be dense merely from
+these coefficient prescriptions.
+\end{remark}
+
+\section{Moment-preserving approximation and varying weights}
+\label{v4-arith:w6-b:construction-II}
+\label{v4-arith:w6-b:construction-II:family}
+
+The moment equations restrict the test space independently of a
+modular weight. Their kernel admits an explicit continuous projection.
+Write $\mathscr A_{\mathbb R}^{\mathrm{ev}}$ for real even compact smooth
+tests, and define
+\[
+ \ell(f)=\left(\int f(t)dt,\ \int f(t)\cosh t\,dt,
+                   \ \int f(t)t\sinh t\,dt\right).
+\]
+Then $\mathscr A_{13}=\ker\ell$. Indeed these are
+$M_f(0),M_f(1),M_f'(1)$, and $M_f'(0)=0$ by evenness.
+
+\begin{proposition}[a continuous moment projection]
+\label{v4-arith:w6-b:lem:strip-width}
+\label{v4-arith:w6-b:prop:union-density-weight}
+There exist real even compact smooth functions $\eta_0,\eta_1,\eta_2$
+with $\ell_i(\eta_j)=\delta_{ij}$. The map
+\begin{equation}
+\label{v4-arith:w6-b:eq:union-weight}
+ \Pi f=f-\sum_{j=0}^2\ell_j(f)\eta_j
+\end{equation}
+is a continuous projection onto $\mathscr A_{13}$.
+This kernel is closed of codimension three in
+$\mathscr A_{\mathbb R}^{\mathrm{ev}}$.
+If $f_n\to f\in\mathscr A_{13}$ in the compact-test topology, then
+$\Pi f_n\to f$ in the same topology. The same construction holds
+on the real even part of $\mathscr G$.
+\end{proposition}
+\begin{proof}
+Let $w(t)=(1,\cosh t,t\sinh t)$. The matrix with columns
+$w(0),w(1),w(2)$ has determinant
+$2\sinh(1)(\cosh(1)-1)^2>0$.
+Choose a nonnegative even mollifier $b_\varepsilon$ of integral one,
+supported in $[-\varepsilon,\varepsilon]$. Use the three functions
+$b_\varepsilon(t)$ and
+$[b_\varepsilon(t-j)+b_\varepsilon(t+j)]/2$ for $j=1,2$.
+Their moment matrix tends to the displayed invertible matrix.
+For sufficiently small $\varepsilon$, invert that moment matrix
+to obtain the $\eta_j$.
+All moments are continuous on compact tests, so $\Pi$ is continuous,
+$\ell\Pi=0$, and $\Pi f=f$ on the kernel. Surjectivity of $\ell$
+gives codimension three. These statements imply the approximation
+assertion. On $\mathscr G$, an exponential seminorm controls each
+moment integral, so the same proof applies.
+\end{proof}
+
+
+\begin{proposition}[a projection preserving a prescribed support]
+Fix $a>0$. The moment right inverse can be chosen with all
+$\eta_j$ supported in $[-a,a]$. The resulting projection preserves
+the space of smooth real even tests supported in this interval.
+\end{proposition}
+\begin{proof}
+Choose a smooth even function $\chi\ge0$, supported in $[-a,a]$
+and positive on $(-a,a)$. With $w_0=1$, $w_1=\cosh t$,
+$w_2=t\sinh t$, form
+$G_{ij}=\int\chi(t)w_i(t)w_j(t)dt$.
+For a nonzero real vector $c$, the analytic function $\sum c_iw_i$
+cannot vanish on an interval: independence follows, for example,
+from its growth at positive infinity. Therefore
+$c^TGc=\int\chi(\sum c_iw_i)^2>0$.
+Set $\eta_j=\chi\sum_i(G^{-1})_{ij}w_i$.
+Then $\ell_i(\eta_j)=\delta_{ij}$, and the support assertion follows.
+\end{proof}
+
+\begin{proposition}[the moment quotient algebra]
+On the complex even compact convolution algebra, the map
+\[
+ f\longmapsto\bigl(M_f(0),M_f(1)+M_f'(1)\epsilon\bigr),
+ \qquad \epsilon^2=0,
+\]
+is a continuous surjective algebra homomorphism onto
+$\mathbb C\times\mathbb C[\epsilon]/(\epsilon^2)$.
+Its kernel is the complexification of $\mathscr A_{13}$.
+The involution is coefficient conjugation with $\epsilon^*=\epsilon$.
+A linear functional on this quotient is positive on $xx^*$
+exactly when it has the form
+$\lambda(a,b+c\epsilon)=\alpha a+\beta b$ with
+$\alpha,\beta\ge0$.
+\end{proposition}
+\begin{proof}
+Compact support permits Fubini, giving $M_{f*g}=M_fM_g$.
+Differentiating at one gives the dual-number multiplication rule.
+The moment right inverse proves surjectivity. Evenness makes the
+involution coefficient conjugation at these real evaluation points.
+Write a linear functional as $\alpha a+\beta b+\gamma c$.
+Since the quotient is unital, positivity on squares makes it
+Hermitian: expanding $(1+t x)(1+t x)^*$ and $(1+itx)(1+itx)^*$
+for real $t$ gives $\lambda(x^*)=\overline{\lambda(x)}$.
+Thus its three coefficients are real.
+For $x=(a,b+c\epsilon)$ its squared value is
+$\alpha|a|^2+\beta|b|^2+2\gamma\Re(b\overline c)$.
+Varying $c$ with $b=1$ forces $\gamma=0$.
+Varying $a,b$ independently then gives $\alpha,\beta\ge0$,
+which also suffices. No factorization of the Weil functional
+through this finite-dimensional quotient is assumed.
+\end{proof}
+
+For every compact $f$, differentiation under the integral makes
+$M_f(s)=\int f(t)e^{st}dt$ entire. Integration by parts gives rapid
+decay on each closed vertical strip. Consequently, imposing the
+reality, evenness, and double-zero conditions at $0,1$ for any
+family of weights always gives $\mathscr A_{13}$. This union is
+not dense in the compact-test space. It is not dense in its ambient
+real even Schwartz topology either: the continuous functional
+$f\mapsto\int f$ vanishes on the union and not on a nonnegative bump.
+A bounded moment correction need not tend to zero. The projection
+above converges to the original limit only when that limit has the
+required moments.
+
+
+\begin{theorem}[the closure in the weaker Schwartz topology]
+The closure of $\mathscr A_{13}$ in the real even Schwartz space is
+\[
+ \{f\in\mathcal S(\mathbb R):f\text{ real and even},\ \int f=0\}.
+\]
+In the relative Schwartz topology on compact tests, intersect this
+space with $\mathscr A$. The exponential moments need not vanish
+at a limit in this weaker topology.
+\end{theorem}
+\begin{proof}
+The mean is Schwartz-continuous, so every limit has mean zero.
+Choose a nonnegative even compact smooth $\beta$ with $\int\beta=1$.
+Put $A=\int\beta(t)\cosh t\,dt>0$ and
+$B=\int\beta(t)t\sinh t\,dt$.
+For $R>0$ define $\beta_R(t)=[\beta(t-R)+\beta(t+R)]/2$ and
+$v_R=\beta_R-\beta$. Direct translation gives
+\[
+ \ell(v_R)=(0,A(\cosh R-1),
+                 B(\cosh R-1)+AR\sinh R).
+\]
+The determinant of the last two moments of $v_R,v_{2R}$ is
+\[
+ A^2[(\cosh R-1)2R\sinh(2R)
+       -(\cosh(2R)-1)R\sinh R]
+ =2A^2R\sinh R(\cosh R-1)^2>0.
+\]
+Thus any fixed pair of moments can be prescribed by
+$c_Rv_R+d_Rv_{2R}$ with
+$c_R=O(e^{-R})$ and $d_R=O(e^{-2R})$ as $R\to\infty$.
+Every Schwartz seminorm of $v_R$ grows at most polynomially in $R$,
+so this prescribed-moment correction tends to zero in Schwartz space.
+For a compact real even mean-zero $f$, choose the correction with
+moments $-(\ell_1(f),\ell_2(f))$. Its sum with $f$ lies in
+$\mathscr A_{13}$ and converges to $f$ in Schwartz space.
+Finally, real even compact mean-zero tests are dense in the
+mean-zero real even Schwartz space: use even cutoffs and subtract
+their mean times $\beta$. For the $n$th such approximation, choose
+$R$ large enough that the correction has its first $n$ Schwartz
+seminorms below $1/n$. This diagonal choice proves the full assertion.
+\end{proof}
+
+\begin{definition}[a family of cusp forms with varying weights]
+\label{v4-arith:w6-b:def:compatible-family}
+Choose an increasing sequence of even weights $k_j\to\infty$ for
+which $S_{k_j}(SL_2(\mathbb Z))\ne0$, and normalized Hecke cusp forms
+$F_j$ in these spaces. Define probability measures on
+$Y=SL_2(\mathbb Z)\backslash\mathbb H$ by
+\[
+ d\nu_j=\frac{|F_j(z)|^2y^{k_j}d\mu(z)}{\|F_j\|_{\mathrm{Pet}}^2},
+ \qquad d\mu=dx\,dy/y^2.
+\]
+Their masses equal one by definition.
+\end{definition}
+
+\subsection{Pairing limits on a common carrier}
+\label{v4-arith:w6-b:construction-II:petersson-limit}
+For a bounded measurable scalar function $a$ on $Y$, multiplication
+by $a$ defines a section $J_ja=aF_j/\|F_j\|_{\mathrm{Pet}}$ of the
+weight-$k_j$ line bundle. It is square integrable, and
+\[
+ \langle J_ja,J_jb\rangle=\int_Ya\overline b\,d\nu_j.
+\]
+Holomorphy is not required for this Hilbert-space map.
+
+\begin{proposition}[limits of the actual normalized measures]
+\label{v4-arith:w6-b:prop:Kk-asymptotic}
+If $\nu_j$ converges weakly to a probability measure $\nu$ against
+bounded continuous functions on $Y$, then for bounded continuous
+$a,b$,
+\begin{equation}
+\label{v4-arith:w6-b:eq:Kk-asymptotic}
+ \lim_j\langle J_ja,J_jb\rangle=\int_Ya\overline b\,d\nu.
+\end{equation}
+The limiting form is positive semidefinite.
+\end{proposition}
+\begin{proof}
+The product $a\overline b$ is bounded and continuous, so weak
+convergence gives the equality. Its diagonal is an integral of $|a|^2$.
+\end{proof}
+
+A limit of total mass one on this noncompact quotient requires
+control of escape into the cusp. Weight growth alone supplies
+neither weak convergence nor this control.
+
+\begin{theorem}[limits of specified positive pairings]
+\label{v4-arith:w6-b:thm:weight-limit}
+Let $D$ be a complex vector space. Let $I_j:D\to H_j$ be linear
+maps to positive Hilbert spaces and $c_j>0$.
+Suppose $Q(f)=\lim_j c_j^{-1}\|I_jf\|^2$ exists and is finite
+for every $f\in D$. Then $Q$ is the diagonal of a positive
+semidefinite Hermitian form $q$ on $D$, and
+\begin{equation}
+\label{v4-arith:w6-b:eq:weight-limit}
+ q(f,g)=\lim_jc_j^{-1}\langle I_jf,I_jg\rangle.
+\end{equation}
+\end{theorem}
+\begin{proof}
+For a form linear in its first variable, polarization is
+$q(f,g)=\frac14\sum_{r=0}^3i^r Q(f+i^rg)$.
+Apply this finite sum to the assumed limits. The resulting pointwise
+limit of sesquilinear forms is sesquilinear and Hermitian.
+The diagonal is nonnegative as a limit of nonnegative real numbers.
+\end{proof}
+
+\begin{remark}[the proposed symmetric-square density]
+\label{v4-arith:w6-b:conj:sym2-weight-limit}
+\label{v4-arith:w6-b:rem:weight-limit-trace}
+For the unitary Hecke normalization one may consider the proposed
+meromorphic ratio $K_{F_j}^{\mathrm{prop}}$ in
+\Cref{v4-arith:pres57:kernel-question} and the proposed real density
+\[
+ R(t)=\frac{\zeta(1+2it)\zeta(1-2it)}
+ {\xi_{\mathbb R}(1/2+it)\xi_{\mathbb R}(1/2-it)}.
+\]
+For a level-one holomorphic eigenform with unitary automorphic
+normalization, the Euler factors give
+$L(s,\pi_j\times\overline\pi_j)=\zeta(s)L(s,\operatorname{sym}^2\pi_j)$.
+Indeed the tensor Satake parameters are $1,1,\alpha_p^2,\alpha_p^{-2}$,
+where $\alpha_p\alpha_p^{-1}=1$; the symmetric square has parameters
+$\alpha_p^2,1,\alpha_p^{-2}$.
+The weight-limit question asks for a normalized factorization
+$K_j(1/2+it)=c_jR(t)A_j(t)$ with $c_j>0$ and $A_j(t)\to1$
+locally uniformly away from singularities, together with domination
+of the complete tested integrands. The scalar $c_j$ must be fixed
+by the actual pairing normalization. This factorization and limit
+are additional requirements, not consequences of the Euler factors.
+An identity with normalized Petersson pairings requires actual maps
+$I_j$ on a common domain, all local factors, and a proved integral
+identity. A density limit additionally requires convergence and an
+integrable majorant for the complete integrands, including varying
+tests and singular factors. The ratio $R$ has a singularity at zero
+from the pole of $\zeta(1+2it)$, and may have further singularities
+at critical-line zeros of $\xi$. Thus no integral of $|h|^2R$ is
+specified without a domain or regularization. A Selberg trace
+identification would also have to match its spectral and geometric
+terms. None of these assertions follows from moment projection.
+\end{remark}
+
+\begin{corollary}[the arithmetic comparison for a limit]
+\label{v4-arith:w6-b:cor:weight-limit-positive}
+Under the preceding limit theorem, the quotient of $D$ by the
+nullspace of $q$, followed by completion, is a positive Hilbert
+realization of $q$. It realizes the restricted Weil form exactly
+when $q(f,g)=W(f*g^*)$ on $D$.
+\end{corollary}
+\begin{proof}
+Use Cauchy--Schwarz for $q$ to form its Hilbert quotient.
+The last equality is the required pairing identity.
+\end{proof}
+
+\section{The polar form and its finite-dimensional realization}
+\label{v4-arith:w6-b:construction-III}
+\label{v4-arith:w6-b:construction-III:residual}
+
+The two evaluations in the Weil formula determine a signed
+finite-dimensional form. Write
+$a(f)=M_f(-1/2)$, $b(f)=M_f(1/2)$ and $r(f)=(a(f),b(f))$.
+
+\begin{lemma}[the exact polar map]
+\label{v4-arith:w6-b:lem:residual-absorption}
+For $f,g\in\mathscr A$,
+\begin{equation}
+\label{v4-arith:w6-b:eq:constant-mode}
+ P(f*g^*)=a(f)\overline{b(g)}+b(f)\overline{a(g)}.
+\end{equation}
+The map $r:\mathscr A\to\mathbb C^2$ is continuous and surjective.
+Its common kernel is closed of codimension two.
+\end{lemma}
+\begin{proof}
+Evaluate $h_fh_g^\sharp$ at $\pm i/2$.
+The functions $e^{-t/2},e^{t/2}$ are linearly independent, so the
+two moment functionals are independent. This makes $r$ surjective.
+Their continuity gives the remaining assertions.
+\end{proof}
+
+\begin{proposition}[signed polar realization and even restriction]
+\label{v4-arith:w6-b:prop:residual-covers-polar}
+The polar form is the pullback by $r$ of the Hermitian matrix
+$\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$.
+It has one positive and one negative direction, so no map into a
+positive Hilbert space realizes it on all compact tests.
+On the complex even tests it has the one-dimensional positive
+realization $f\mapsto\sqrt2\,M_f(1/2)$.
+\end{proposition}
+\begin{proof}
+The matrix eigenvalues are $1,-1$, and surjectivity gives both
+signs on compact tests. For even functions $a=b$, so the pairing
+is $2a(f)\overline{a(g)}$, proving the last assertion.
+\end{proof}
+
+\begin{remark}[moment restrictions and arithmetic residual sectors]
+\label{v4-arith:w6-b:rem:construction-III}
+The H3 moments at $0,1$ are different from these polar moments.
+For a nonzero nonnegative even bump $v$, set
+$f=D^2(D^2-1)^2v$, where $D=d/dt$. Then $f\in\mathscr A_{13}$ but
+$M_f(1/2)=9M_v(1/2)/64>0$.
+Thus $P(f*f^*)=2M_f(1/2)^2>0$ despite H3.
+The exact polar kernel can instead be projected onto by choosing
+a right inverse $S:\mathbb C^2\to\mathscr A$ of $r$ and using
+$\Pi_{\mathrm{pol}}=1-Sr$.
+The vector $M_f(1)|0\rangle$ has norm square $|M_f(1)|^2$ and
+does not realize the polar form. A comparison with an automorphic
+residual spectrum must specify its central character, subspace,
+measure, and map. The finite-dimensional signed realization above
+supplies the complete polar pairing without making that identification.
+\end{remark}
+\section{Construction IV: Jacquet--Piatetski-Shapiro--Shalika on \(GL_{n}\times GL_{m}\)}
+\label{v4-arith:w6-b:construction-IV}
+
+\subsection{Higher-Rank Rankin--Selberg}
+\label{v4-arith:w6-b:construction-IV:higher-rank}
+
+
+Higher-rank Rankin--Selberg integrals compare specified automorphic
+representations through Whittaker models and local factors.
+Their convergence regions concern those integrals. Compact test
+Mellin transforms are already entire at every rank.
+\begin{definition}[higher-rank coefficient prescription]
+\label{v4-arith:w6-b:def:upsilon-GLn}
+Fix a cuspidal automorphic representation $\pi$ of $GL_r/\mathbb Q$
+and Hecke coefficients $a_\pi(m)$ in a specified unitary Satake
+normalization. A vector-valued coefficient prescription requires
+actual vectors $v_{\pi,m}$ in a specified representation space:
+\begin{equation}
+\label{v4-arith:w6-b:eq:upsilon-GLn}
+ U_\pi(f)=\sum_{m\ge1}f(\log m)a_\pi(m)v_{\pi,m},\qquad f\in\mathscr A.
+\end{equation}
+This sum is finite. A scalar Whittaker value $W_\pi(m)$ instead
+gives a scalar-valued sum; it does not by itself define an
+automorphic vector. Choosing Whittaker vectors, their translates,
+and a global realization is part of the higher-rank problem.
+\end{definition}
+
+\begin{proposition}[a specified higher-rank pairing]
+\label{v4-arith:w6-b:thm:higher-rank-RS}
+Suppose a complex test domain $D_\pi\subset\mathscr A$ has a linear
+map $I_\pi$ to a cuspidal automorphic Hilbert space with fixed
+central character and quotient measure. Suppose a measurable
+function $\kappa_\pi(t)$ satisfies the absolutely convergent identity
+\begin{equation}
+\label{v4-arith:w6-b:eq:higher-rank-RS}
+ \langle I_\pi f,I_\pi g\rangle_{\mathrm{Pet}}
+ =\int_{\mathbb R}h_f(t)\overline{h_g(t)}\kappa_\pi(t)dt
+ \qquad(f,g\in D_\pi).
+\end{equation}
+Then the tested form on the right is positive semidefinite.
+This conclusion does not require temperedness of $\pi$.
+\end{proposition}
+\begin{proof}
+Its diagonal equals $\|I_\pi f\|_{\mathrm{Pet}}^2$.
+\end{proof}
+The required comparison with JPSS Rankin--Selberg integrals is open
+for this coefficient prescription. In particular the suggested ratio
+$L(s,\pi\times\overline\pi)/(\zeta(rs)\prod_vG_{v,\pi}(s))$
+needs specified normalized local factors $G_{v,\pi}$, a convergence
+meaning for their product, and a proof that its critical-line value
+is $\kappa_\pi$. The local Whittaker models and measures, the
+Eisenstein or Rankin--Selberg integration domain, and any continuation
+or regularization must be fixed before that equality can be tested.
+JPSS integrals provide their own $L$-function identities; they do
+not identify an arbitrary coefficient prescription with a norm.
+Temperedness alone does not imply positivity of an unconstructed
+critical-line scalar ratio.
+
+\begin{proposition}[compact Mellin transforms and local convergence]
+\label{v4-arith:w6-b:prop:JPSS-strip}
+For $f\in\mathscr A$, its Mellin transform $M_f(s)$ is entire and
+rapidly decreasing on each closed vertical strip, independently
+of a rank parameter. A convergence half-plane of a specified
+Rankin--Selberg integral does not impose a strip of holomorphy on
+this compact test transform.
+\end{proposition}
+\begin{proof}
+Differentiate the integral $M_f(s)=\int f(t)e^{st}dt$ on its fixed
+compact support. Repeated integration by parts gives rapid decay
+in $\Im s$, uniformly on a bounded range of $\Re s$.
+The rank does not appear in this calculation.
+\end{proof}
+A higher-rank comparison must still specify its automorphic map,
+Whittaker vectors, local measures, convergence region and analytic
+continuation. Those are properties of the specified integral, not
+additional holomorphy restrictions on $M_f$.
+\begin{remark}[temperedness and the higher-rank comparison]
+\label{v4-arith:w6-b:rem:JPSS-Ramanujan}
+A separate parameter question asks for temperedness of the chosen
+cuspidal representation at every finite place. For a functorial
+symmetric-power lift of a holomorphic eigenform, unit-modulus
+normalized Satake parameters give unit-modulus symmetric-power
+parameters. This follows directly by taking their monomials.
+Constructing the lift and deciding its cuspidal decomposition are
+additional automorphic questions; references include
+Gelbart--Jacquet, Kim--Shahidi, Kim and Newton--Thorne.
+For a general Maass or higher-rank representation, the required
+parameter assertion remains a Ramanujan hypothesis.
+Neither this assertion nor its special symmetric-power cases
+constructs $I_\pi$ or proves the critical-line pairing identity.
+\end{remark}
+
+\section{Closed moment kernels and full positivity}
+\label{v4-arith:w6-b:union-density}
+\label{v4-arith:w6-b:union-density:closure}
+
+\begin{definition}[domains of specified comparisons]
+\label{v4-arith:w6-b:def:extended-class}
+For each constructed comparison map $I_\alpha:D_\alpha\to H_\alpha$,
+let $D_\alpha\subset\mathscr A$ be its actual domain and put
+\begin{equation}
+\label{v4-arith:w6-b:eq:extended-class}
+ D_{\mathrm{ext}}=\bigcup_\alpha D_\alpha.
+\end{equation}
+An identity with $W(f*g^*)$ must be specified on each $D_\alpha$.
+The union is a set of tests and is not necessarily a vector space.
+\end{definition}
+
+\begin{theorem}[moment-preserving density]
+\label{v4-arith:w6-b:thm:density}
+If $S$ is dense in $\mathscr A_{\mathbb R}^{\mathrm{ev}}$ in the
+compact-test topology, then $\Pi S$ is dense in $\mathscr A_{13}$.
+The kernel $\mathscr A_{13}$ is a proper closed subspace.
+On the real even exponential space, its compact members are dense
+in the corresponding moment kernel.
+\end{theorem}
+\begin{proof}
+Apply the continuous projection $\Pi$ to an approximating net for
+any member of its image. Closedness and properness follow from its
+three independent moments. In $\mathscr G$, use even compact cutoffs
+$f_R$ and then $\Pi f_R$. The cutoff convergence of
+\Cref{v4-arith:sc:gaussian-extension} and continuity of $\Pi$ prove
+$\Pi f_R\to f$ for a member of the kernel.
+\end{proof}
+
+\begin{proposition}[positivity on a union of comparison domains]
+\label{v4-arith:w6-b:thm:ext-positivity-available}
+Suppose each specified map $I_\alpha$ satisfies
+$W(f*g^*)=\langle I_\alpha f,I_\alpha g\rangle$ on $D_\alpha$.
+Then $q_W(f,f)\ge0$ on $D_{\mathrm{ext}}$ and its closure.
+Positivity on the linear span additionally requires control of
+cross terms between different domains.
+\end{proposition}
+\begin{proof}
+Each diagonal is a norm square. Continuity passes its sign to the
+closure. For tests from two domains, their sum has diagonal
+$q_W(f,f)+2\Re q_W(f,g)+q_W(g,g)$. The separate norm identities
+specify no bound on that cross term.
+\end{proof}
+
+\begin{theorem}[continuity of the complete Weil form]
+\label{v4-arith:w6-b:thm:schwartz-closure}
+If sequences $f_j\to f$ and $g_j\to g$ in $\mathscr A$ or $\mathscr G$, then
+\begin{equation}
+\label{v4-arith:w6-b:eq:schwartz-closure}
+ W(f_j*g_j^*)\longrightarrow W(f*g^*).
+\end{equation}
+The same convergence holds separately for $P,W_\infty,W_{\mathrm{fin}}$.
+\end{theorem}
+\begin{proof}
+For compact convergence all supports lie in one compact interval,
+and the prime functional is a finite sum of continuous evaluations.
+For exponential convergence, the bound
+\[
+ \sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}|v(\pm\log n)|
+ \le p_{2,0,0}(v)\sum_{n\ge2}\frac{\log n}{n^{5/2}}
+\]
+proves continuity of the prime term. The polar and gamma terms,
+convolution and involution are continuous by
+\Cref{v4-arith:sc:gaussian-extension}. The formula follows.
+\end{proof}
+
+\begin{remark}[the topology of the prime term]
+\label{v4-arith:w6-b:rem:no-RH}
+Ordinary Schwartz seminorms give only inverse powers of
+$1+|\log n|$ at prime arguments. Such bounds do not supply the
+summable majorant above. The stated continuity therefore uses the
+compact-test or exponential topology. It does not assert a tempered
+extension of the uncentered critical prime measure.
+\end{remark}
+
+\begin{theorem}[extension across a finite moment complement]
+\label{v4-arith:w6-b:thm:residual-sharp}
+Let $D$ be a complex vector space with a Hermitian form $q$,
+linear in the first variable. Let $\Pi:D\to K$ be a projection,
+and put $E=(1-\Pi)D$, so $D=K\oplus E$.
+Then $q$ is positive semidefinite on $D$ if and only if
+\[
+ q(u,u)\ge0,\quad q(e,e)\ge0,\quad
+ |q(u,e)|^2\le q(u,u)q(e,e)
+ \qquad(u\in K,\ e\in E).
+\]
+\end{theorem}
+\begin{proof}
+Necessity is Cauchy--Schwarz for a positive semidefinite form.
+For sufficiency, the cross bound gives
+$q(u+e,u+e)\ge(\sqrt{q(u,u)}-\sqrt{q(e,e)})^2\ge0$.
+Every member of $D$ has this decomposition.
+\end{proof}
+
+For the complexification of $\mathscr A_{13}$ inside the complex
+even tests, the projection has a three-dimensional complement.
+Thus positivity on that kernel leaves a finite complement and
+all its cross terms to determine. Odd tests require their own
+comparison when the target is the full complex space $\mathscr A$.
+The polar kernel on the full space has the two-dimensional complement
+constructed above. Neither finite codimension nor a projection
+establishes the missing cross inequalities.
+
+\section{The arithmetic realization problem}
+\label{v4-arith:w6-b:residual-obstruction}
+\label{v4-arith:w6-b:form}
+\label{v4-arith:w6-b:source-comparison}
+\label{v4-arith:w6-b:summary}
+
+\begin{theorem}[the full comparison criterion]
+\label{v4-arith:w6-b:thm:wave6b-form}
+A positive Hilbert realization of $q_W$ on $\mathscr A$ exists
+if and only if
+\begin{equation}
+\label{v4-arith:w6-b:eq:A-TP-reduced}
+ W_\infty(f*f^*)\le P(f*f^*)-W_{\mathrm{fin}}(f*f^*)
+ \qquad(f\in\mathscr A).
+\end{equation}
+This condition is equivalent to RH.
+\end{theorem}
+\begin{proof}
+The signed explicit formula identifies the difference with
+$q_W(f,f)$. A positive form has its Hilbert quotient realization,
+as in \Cref{v4-arith:w5-a:thm:hpli-form}. Weil's criterion gives RH.
+\end{proof}
+
+\begin{corollary}[a sufficient comparison route]
+\label{v4-arith:w6-b:cor:sufficient-path}
+A dense family of tests with proved nonnegative full Weil diagonals
+in the compact or exponential topology suffices for RH.
+For a dense linear span, positivity must hold for every finite
+linear combination, not only the chosen generators.
+\end{corollary}
+\begin{proof}
+Use continuity and \Cref{v4-arith:w6-b:thm:wave6b-form}.
+\end{proof}
+
+\begin{remark}[native comparison requirements]
+\label{v4-arith:w6-b:rem:gain-and-not}
+A holomorphic comparison requires modularity of the entire
+coefficient multiplier. A Maass comparison requires an automorphic
+realization with its correct Whittaker expansion. A higher-rank
+comparison requires its Whittaker model, integral domain, and
+normalized local factors. Ordinary cusp-form $L^2$ norms are positive
+without a Ramanujan hypothesis. Bounds on Hecke parameters address
+different questions. None of these norms identifies a zeta pairing
+without an explicit map and equality of all its terms.
+Weight variation admits the actual probability measures and
+conditional pairing limit above. The residual polar term has its
+explicit signed rank-two realization. These constructions retain
+the holomorphic, Maass, residual, and higher-rank comparison questions,
+with their domains and maps specified separately.
+\end{remark}
+\section{Bibliography}
+\label{v4-arith:w6-b:bibliography}
+
+Primary references for the automorphic comparison problems:
+
+\begin{description}
+\item[JPSS 1983.] Jacquet, H.; Piatetski-Shapiro, I.; Shalika, J.
+\emph{Rankin--Selberg convolutions}. \emph{Amer.~J.~Math.}~105
+(1983), 367--464. \(GL_{n}\times GL_{m}\) Rankin--Selberg integrals and
+local factors.
+\item[Kim--Shahidi 2002.] Kim, H.; Shahidi, F. \emph{Functorial
+products for \(GL_{2}\times GL_{3}\) and the symmetric cube for
+\(GL_{2}\)}. \emph{Ann.~Math.}~155 (2002), 837--893. Symmetric-cube
+functorial lift.
+\item[Kim 2003.] Kim, H.~H. \emph{Functoriality for the exterior
+square of \(GL_{4}\) and the symmetric fourth of \(GL_{2}\)}.
+\emph{J.~Amer.~Math.~Soc.}~16 (2003), 139--183. Symmetric-fourth-power
+lift.
+\item[Kim--Sarnak 2003.] Kim, H.~H.; Sarnak, P. Appendix to Kim 2003.
+\(\theta\leq 7/64\) Ramanujan bound.
+\item[Newton--Thorne 2021.] Newton, J.; Thorne, J.
+\emph{Symmetric power functoriality for holomorphic modular forms}.
+\emph{Publ.~Math.~IHES}~134 (2021), 1--116. Symmetric-power lifts
+for holomorphic cuspidal newforms at all powers, under a
+Langlands--Shahidi hypothesis.
+\item[Iwaniec 2002.] Iwaniec, H. \emph{Spectral Methods of
+Automorphic Forms} (second edition). AMS Graduate Studies~53, 2002.
+Maass cusp forms, Kuznetsov, Rankin--Selberg.
+\item[Moeglin--Waldspurger 1995.] Moeglin, C.; Waldspurger, J.-L.
+\emph{Spectral Decomposition and Eisenstein Series}. Cambridge
+Tracts~113, 1995. \(L^{2}\)-decomposition, intertwining operators.
+\item[Gelbart 1975.] Gelbart, S. \emph{Automorphic Forms on Adele
+Groups}. Ann.~Math.~Studies~83, 1975. \(GL_{2}\) adelic harmonic
+analysis, Plancherel.
+\item[Shahidi 2010.] Shahidi, F. \emph{Eisenstein Series and
+Automorphic \(L\)-Functions}. AMS Colloquium~58, 2010.
+Langlands--Shahidi method.
+\item[Shimura 1975.] Shimura, G. \emph{On the holomorphy of certain
+Dirichlet series}. \emph{Proc.~London Math.~Soc.}~(3)~31 (1975),
+79--98; and \emph{The special values of the zeta functions associated
+with cusp forms}. \emph{Comm.~Pure Appl.~Math.}~29 (1976), 783--804.
+Symmetric-square factorisation.
+\item[Conrey--Ghosh 1993.] Conrey, B.; Ghosh, A. \emph{On the
+Selberg class of Dirichlet series: small degrees}. \emph{Duke
+Math.~J.}~72 (1993), 673--693. Selberg-class framework.
+\item[Iwaniec--Luo--Sarnak 2000.] Iwaniec, H.; Luo, W.; Sarnak, P.
+\emph{Low lying zeros of families of \(L\)-functions}.
+\emph{Publ.~Math.~IHES}~91 (2000), 55--131. Petersson-trace-formula
+weight-aspect bounds for symmetric-square \(L\)-values.
+\item[Zagier 1981.] Zagier, D. \emph{The Rankin--Selberg method for
+automorphic functions which are not of rapid decay}.
+\emph{Bonner Math.~Schriften}~121 (1981). Rankin--Selberg unfolding.
+\item[Selberg 1956.] Selberg, A. \emph{Harmonic analysis and
+discontinuous groups in weakly symmetric Riemannian spaces with
+applications to Dirichlet series}. \emph{J.~Indian Math.~Soc.}~20
+(1956), 47--87. Weyl-law density for Maass eigenvalues.
+\item[Gelbart--Jacquet 1978.] Gelbart, S.; Jacquet, H. \emph{A
+relation between automorphic representations of \(GL_{2}\) and
+\(GL_{3}\)}. \emph{Ann.~Sci.~ENS}~11 (1978), 471--542.
+Symmetric-square lift.
+\item[Shalika 1974.] Shalika, J. \emph{The multiplicity one theorem
+for \(GL_{n}\)}. \emph{Ann.~Math.}~100 (1974), 171--193. Uniqueness of
+Whittaker models for cuspidal \(GL_{n}\).
+\item[Casselman--Shalika 1980.] Casselman, W.; Shalika, J.
+\emph{The unramified principal series of \(p\)-adic groups.~II.}
+\emph{Compositio Math.}~41 (1980), 207--231. Whittaker-model
+uniqueness at unramified places.
+\item[Bump 1997.] Bump, D. \emph{Automorphic Forms and
+Representations}. Cambridge Studies~55, 1997. Rankin--Selberg for
+Maass.
+\item[Iwaniec 1997.] Iwaniec, H. \emph{Topics in Classical Automorphic
+Forms}. AMS Graduate Studies~17, 1997. Petersson normalisation.
+\item[Weil 1967.] Weil, A. \emph{Basic Number Theory}. Springer 1967.
+Tamagawa measure.
+\item[Gradshteyn--Ryzhik.] Gradshteyn, I.~S.; Ryzhik, I.~M.
+\emph{Table of Integrals, Series, and Products}, 7th ed., 2007.
+\(K\)-Bessel Mellin integrals.
+\end{description}
+
+\paragraph{Further references.}
+The explicit formula and coefficient calculations also use Weil~1952,
+Rankin~1939, Selberg~1940, Hecke~1936, Deligne~1974 and Tate~1950.
+Bost--Connes~1995 supplies the separate arithmetic dynamics.

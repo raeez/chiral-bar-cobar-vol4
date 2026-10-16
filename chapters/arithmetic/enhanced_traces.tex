@@ -1,0 +1,3339 @@
+\chapter{Enhanced traces and sewing}
+\label{v4-arith:traces:chapter}
+
+A matrix trace annihilates commutators. The trace of a category can retain
+an entire complex and a circle action. An arithmetic comparison must specify
+which of these objects it uses, which class it evaluates, and how the
+evaluation reaches a scalar partition function. Sewing requires compatible
+gluing maps as well.
+
+Two elementary examples distinguish these data. In a matrix algebra, the
+identity need not generate degree-zero Hochschild homology. In a Frobenius
+algebra, changing the functional can change the sphere value without
+changing multiplication. Both phenomena matter when a local vacuum or a
+distinguished arithmetic class is part of the comparison.
+
+We begin with ordinary algebras over a field. Tensor products in the first
+constructions are algebraic. The later categorical, completed, and Hilbert
+constructions will have their own coefficients and domains. The centers and
+actions of Chapter~\ref{v4-arith:centers:chapter} act on specified objects.
+Passing to their traces is a further operation.
+
+\section{A trace and the class it evaluates}
+
+Let $k$ be a field and $A$ a nonzero unital associative $k$-algebra. Write
+$[A,A]$ for the $k$-linear span of commutators $ab-ba$. Define
+\[
+ HH_0(A)=A/[A,A].
+\]
+This quotient is a vector space. In general $[A,A]$ is not an ideal, so the
+quotient has no multiplication induced by $A$.
+
+A \emph{cyclic functional} on $A$ is a $k$-linear map $\tau:A\to k$
+satisfying $\tau(ab)=\tau(ba)$ for every $a,b$. It is equivalent to a linear
+functional on $HH_0(A)$. The class $[1_A]$ and the value $\tau(1_A)$ are
+separate data. A normalized cyclic functional has $\tau(1_A)=1$.
+
+\begin{proposition}[Matrix trace and the regular object]
+\label{v4-arith:traces:matrix-class}
+For every integer $d\geq1$, matrix trace induces an isomorphism
+\[
+ HH_0(M_d(A))\longrightarrow HH_0(A),\qquad
+ [X]\longmapsto\left[\sum_i X_{ii}\right].
+\]
+Its inverse sends $[a]$ to $[aE_{11}]$. Under this isomorphism,
+\[
+ [1_{M_d(A)}]\longmapsto d[1_A].
+\]
+Here $E_{ij}$ is the matrix with entry one in position $(i,j)$ and zero
+elsewhere.
+\end{proposition}
+\begin{proof}
+The trace of a matrix commutator is a sum of commutators in $A$:
+\[
+ \operatorname{Tr}(XY-YX)=\sum_{i,j}[X_{ij},Y_{ji}].
+\]
+Thus trace descends to the quotient.
+
+Conversely, $[a,b]E_{11}=[aE_{11},bE_{11}]$, so the proposed inverse is well
+defined. For $i\ne j$,
+\[
+ aE_{ij}=[aE_{ij},E_{jj}],
+\]
+and for $i\ne1$,
+\[
+ aE_{ii}-aE_{11}=[aE_{i1},E_{1i}].
+\]
+Every matrix class therefore equals the class of its trace placed in the
+$(1,1)$ entry. The two maps are inverse. The formula for the identity
+follows by adding its $d$ diagonal entries.
+\end{proof}
+
+For $A=k$ of characteristic two and $d=2$, the space $HH_0(M_2(k))$ is one
+dimensional, but its identity class is zero. Consequently no cyclic
+functional on this algebra has value one on the identity. Over a field in
+which $d$ is invertible, the normalized matrix functional
+$d^{-1}\operatorname{Tr}$ does have that value. The division by $d$ is part
+of its normalization.
+
+The matrix comparison has an object-theoretic interpretation. The usual
+equivalence between perfect $M_d(A)$-modules and perfect $A$-modules carries
+the regular matrix module to $A^{\oplus d}$. Its identity class accordingly
+becomes $d[1_A]$. An equivalence of categories does not require these two
+regular objects to correspond. An additional object marking can impose that
+requirement.
+
+\section{Chains, cyclic rotation, and completion}
+
+Put $\overline A=A/k1$. The normalized Hochschild chains are
+\[
+ C_n(A)=A\otimes_k\overline A^{\otimes n}\quad(n\geq0),
+ \qquad C_n(A)=0\quad(n<0).
+\]
+Write an elementary tensor as $a_0[a_1|\cdots|a_n]$. An entry equal to $1$
+inside the brackets is zero. The differential lowers degree and is
+\begin{align}
+\label{v4-arith:traces:boundary}
+ b\bigl(a_0[a_1|\cdots|a_n]\bigr)
+ ={}&a_0a_1[a_2|\cdots|a_n]\\
+ &+\sum_{i=1}^{n-1}(-1)^i
+     a_0[a_1|\cdots|a_ia_{i+1}|\cdots|a_n]\\
+ &+(-1)^na_na_0[a_1|\cdots|a_{n-1}].\notag
+\end{align}
+
+The formula in positive degree descends from the unnormalized chains
+$A^{\otimes(n+1)}$ by quotienting the tensors with a unit in a bracket
+position. Set $b=0$ on degree zero.
+
+\begin{definition}[The regular Hochschild trace]
+\label{v4-arith:traces:regular-complex}
+The \emph{Hochschild chain complex with regular coefficients} is
+$(C_\bullet(A),b)$. Its homology is $HH_\bullet(A)$. The coefficient
+bimodule is $A$ itself, with left and right multiplication. Replacing that
+bimodule changes the trace complex.
+\end{definition}
+
+Associativity proves $b^2=0$. In the unnormalized complex, composing two
+multiplication faces in either order gives the same result after renumbering
+the later face. Their alternating signs are opposite. This includes the face
+multiplying the last entry into the first. In degree zero the resulting
+homology is exactly $A/[A,A]$.
+
+The circle operation is already visible on these chains. Define Connes'
+operator $B:C_n(A)\to C_{n+1}(A)$ by
+\begin{equation}
+\label{v4-arith:traces:connes}
+ B\bigl(a_0[a_1|\cdots|a_n]\bigr)
+ =\sum_{i=0}^{n}(-1)^{ni}
+   1[a_i|\cdots|a_n|a_0|\cdots|a_{i-1}].
+\end{equation}
+For $i=0$, the bracket is $[a_0|a_1|\cdots|a_n]$. Thus
+\[
+ B(a)=1[a],\qquad
+ B(a_0[a_1])=1[a_0|a_1]-1[a_1|a_0].
+\]
+
+\begin{proposition}[The mixed complex]
+\label{v4-arith:traces:mixed-complex}
+The operators satisfy
+\[
+ b^2=0,\qquad B^2=0,\qquad bB+Bb=0.
+\]
+In particular the pair of differentials $(b,B)$ contains more information
+than $HH_\bullet(A)$ as a graded vector space.
+\end{proposition}
+\begin{proof}
+The multiplication-face cancellation proves the first identity. Every term
+of $B$ has leading coefficient one. Applying $B$ again places that
+coefficient inside the bracket, so every resulting term is degenerate. This
+proves $B^2=0$.
+
+For the remaining identity, expand the boundary of each cyclic rotation in
+\eqref{v4-arith:traces:connes}. Its two outer faces cancel the corresponding
+outer faces from the adjacent rotation. Each interior multiplication then
+occurs once in $bB$ and once in $Bb$. Moving the multiplication past the
+cyclic starting point changes its face index by one, with the rotation sign
+$(-1)^{ni}$ accounting for the wrap. The signs of these two terms are
+opposite. All terms cancel, proving $bB=-Bb$.
+\end{proof}
+
+More generally, a \emph{mixed complex} over $k$ is a homologically graded
+vector space $C$ with two operators. They have degrees $|b|=-1$, $|B|=1$ and
+satisfy these three identities. This definition also applies to the cyclic
+complexes of differential graded categories. Their internal differentials
+and permutations carry the Koszul signs of their graded morphisms.
+
+For a mixed complex, let $u$ have degree $-2$. Define its negative cyclic
+complex by
+\begin{equation}
+\label{v4-arith:traces:negative-cyclic}
+ CC^-_m(C)=\prod_{j\geq0} C_{m+2j}u^j,
+ \qquad d=b+uB.
+\end{equation}
+The mixed identities give $d^2=0$. The product in this formula is part of
+the definition.
+
+Its periodic cyclic complex is $CC^{\mathrm{per}}(C)=CC^-(C)[u^{-1}]$, with
+the same differential. Inverting $u$ is a filtered colimit after forming the
+displayed product. These two limiting operations must be respected by any
+comparison involving these complexes.
+
+\begin{example}[A product created by negative cyclic completion]
+\label{v4-arith:traces:sum-product}
+For $i\geq0$, let $C^{(i)}$ be one copy of $k$ in homological degree $2i$,
+with $b=B=0$. Then
+\[
+ CC^-_0\left(\bigoplus_{i\geq0}C^{(i)}\right)
+   =\prod_{i\geq0}k,
+ \qquad
+ \left(\bigoplus_{i\geq0}CC^-(C^{(i)})\right)_0
+   =\bigoplus_{i\geq0}k.
+\]
+The natural map is the inclusion of finite-support sequences and is not
+surjective. All differentials vanish, so the discrepancy also occurs in
+homology. An equivariant direct-sum decomposition of Hochschild chains
+therefore does not, by itself, give a direct-sum decomposition after
+negative cyclic completion.
+\end{example}
+
+A cyclic functional $\tau:A\to k$ is a map of mixed complexes from
+$C_\bullet(A)$ to $k$ in degree zero, with zero $B$ on the target. The chain
+condition is $\tau b(a_0[a_1])=0$. All other degrees give zero, and the
+compatibility with $B$ follows from the degrees. This functional is an
+evaluation of the mixed complex, rather than the complex itself.
+
+\subsection{Categorical trace and Morita comparison}
+
+For a dg algebra $A$ over a commutative ring $k$, the derived regular trace
+is $A\otimes_{A^e}^{\mathrm L}A$. Choose a dg model with $K$-flat morphism
+complexes over $k$: tensoring with each complex must preserve
+quasi-isomorphisms. A cofibrant replacement provides such a model for the
+bar tensors.
+
+This is the Hochschild trace of the identity of its perfect-module category.
+The complex, with its circle action, is distinct from a single class
+associated to an object. For example a perfect object has its Hochschild
+Chern character, giving the additive map $K_0(\operatorname{Perf}A)\to
+HH_0(A)$. For the regular object $A$, this class is $[1_A]$.
+
+The derived mixed complex is invariant under dg Morita equivalence. More
+precisely, Keller's Theorem 5.2 in \emph{On differential graded categories}
+makes the mixed-complex construction a functor on the Morita category and
+identifies $C(A)$ with $C(\operatorname{Perf}_{\mathrm{dg}}A)$. This theorem
+concerns the enhanced dg categories and their derived equivalences. An
+equivalence of lists of simple objects does not meet its hypotheses.
+
+For matrix algebras the comparison has an explicit cyclic-chain formula. On
+unnormalized degree-$n$ chains, set
+\[
+ \operatorname{tr}_{\mathrm{cyc}}
+       (X_0\otimes\cdots\otimes X_n)
+   =\sum_{i_0,\ldots,i_n}
+       (X_0)_{i_0i_1}\otimes
+       (X_1)_{i_1i_2}\otimes\cdots\otimes
+       (X_n)_{i_ni_0}.
+\]
+
+Matrix multiplication proves compatibility with every face, including the
+cyclic last face. Inserting an identity matrix collapses an adjacent index
+and gives the scalar-unit degeneracy. Rotating the indices proves
+compatibility with cyclic rotation. Thus it descends to a map of mixed
+complexes. In degree zero it is precisely
+Proposition~\ref{v4-arith:traces:matrix-class}.
+
+The corner inclusion used there gives an inverse on $HH_0$. It is not a
+unital cyclic inverse on normalized chains. It sends $1_A$ to $E_{11}$,
+whereas the matrix-algebra unit is $\sum_iE_{ii}$. The enhanced Morita
+comparison accounts for the full units and their homotopies. It preserves
+the derived trace while transporting each chosen object marking to the
+object actually corresponding under the equivalence.
+
+\section{A functional that supplies sewing}
+
+To contract two boundary entries, a functional needs a nondegenerate
+pairing. This condition can be imposed and calculated in finite dimension
+before asking for an arithmetic or analytic realization.
+
+\begin{definition}[Commutative Frobenius algebra]
+\label{v4-arith:traces:frobenius}
+A \emph{commutative Frobenius algebra} over $k$ is a finite-dimensional
+commutative unital $k$-algebra $A$ with a linear functional
+$\varepsilon:A\to k$ such that
+\[
+ (a,b)_\varepsilon=\varepsilon(ab)
+\]
+is nondegenerate. Choose dual bases $e_i,f_i$ for this pairing and put
+\[
+ c=\sum_i e_i\otimes f_i,\qquad
+ E=\sum_i e_if_i.
+\]
+The tensor $c$ is the inverse pairing, and $E$ is the \emph{handle element}.
+Both are independent of the chosen dual bases.
+\end{definition}
+
+The multiplication $m$ joins two inputs. The pairing contracts two entries,
+and $c$ supplies the reverse contraction. Define
+\[
+ \Delta(a)=(a\otimes1)c.
+\]
+This is the linear map adjoint to multiplication for the Frobenius pairing.
+In particular its normalization is determined by $\varepsilon$, not by
+multiplication alone.
+
+\begin{proposition}[Finite sewing identities]
+\label{v4-arith:traces:finite-sewing}
+The maps $m$, $\Delta$, the algebra unit and $\varepsilon$ satisfy the unit
+and counit identities, associativity and coassociativity, and
+\[
+ \Delta(ab)=(a\otimes1)\Delta(b)
+            =(1\otimes b)\Delta(a).
+\]
+Furthermore,
+\[
+ m\Delta(a)=aE.
+\]
+The closed contraction formed from one unit, $g$ successive handles and one
+counit is
+\[
+ Z_g=\varepsilon(E^g)\qquad(g\geq0).
+\]
+\end{proposition}
+\begin{proof}
+The inverse-pairing identity is $\sum_i\varepsilon(af_i)e_i=a$. It proves
+the counit identity and shows that the adjoint of $m$ is the displayed
+$\Delta$. Taking adjoints of associativity proves coassociativity, since the
+tensor-product pairing is nondegenerate.
+
+The inverse tensor obeys $(a\otimes1)c=(1\otimes a)c$. To verify this
+equality, pair both tensors with $x\otimes y$. Each value is
+$\varepsilon(axy)$. Nondegeneracy proves the equality, and then proves both
+Frobenius identities for $\Delta(ab)$. Multiplying the two factors of
+$\Delta(a)$ gives $aE$. Iterating this handle map on $1$ and applying
+$\varepsilon$ gives the formula for $Z_g$.
+\end{proof}
+
+\begin{example}[Semisimple weights]
+\label{v4-arith:traces:semisimple-weights}
+Let $A=k^r$, with orthogonal primitive idempotents $e_i$. Choose nonzero
+$w_i\in k$ and set $\varepsilon(e_i)=w_i$. The dual basis is $w_i^{-1}e_i$,
+so
+\[
+ \Delta(e_i)=w_i^{-1}e_i\otimes e_i,\qquad
+ E=\sum_i w_i^{-1}e_i,\qquad
+ Z_g=\sum_i w_i^{1-g}.
+\]
+In particular $Z_0=\sum_i w_i$ and $Z_1=r$ in $k$. The algebra does not
+determine the weights. The counit and the inverse pairing retain them
+through every contraction.
+\end{example}
+
+\begin{example}[A nilpotent algebra with a nondegenerate pairing]
+\label{v4-arith:traces:nilpotent-frobenius}
+Let $A=k[\epsilon]/(\epsilon^2)$ and choose $\varepsilon(1)=a$,
+$\varepsilon(\epsilon)=1$. Its Gram matrix in the basis $(1,\epsilon)$ is
+\[
+ \begin{pmatrix}a&1\\1&0\end{pmatrix},
+\]
+whose determinant is $-1$ in every characteristic. The dual basis is
+$(\epsilon,1-a\epsilon)$. Consequently
+\[
+ E=2\epsilon,\qquad Z_0=a,\qquad Z_1=2,
+ \qquad Z_g=0\quad(g\geq2).
+\]
+
+These are algebraic contractions. Over $\mathbb R$, the displayed Gram
+matrix is indefinite. Nondegeneracy supplies sewing, but does not assert
+positivity of a Hilbert-space pairing.
+\end{example}
+
+The finite identities specify what must be transported in a larger
+comparison: the functional, inverse pairing, unit, and gluing maps. An
+equality of closed scalar values cannot recover all these maps. For
+infinite-dimensional or completed objects, defining the inverse pairing and
+proving convergence of its contractions are additional parts of the
+construction.
+
+\section{Spherical traces and marked closures}
+
+A spherical category supplies a trace by its duality maps. It need not
+supply a cyclic functional on an algebra used to present its objects. The
+arithmetic fusion example makes this distinction explicit.
+
+Let $\mathcal C$ be a split spherical fusion category over a
+characteristic-zero field $k$. Thus $\mathcal C$ is a rigid semisimple
+$k$-linear tensor category with finitely many simple objects,
+finite-dimensional morphism spaces, and simple unit. Splitness means
+$\operatorname{End}(S)=k$ for each simple $S$. Its chosen pivotal duality
+identifies left and right categorical traces. Write $S_i$ for its simple
+representatives and
+\[
+ d_i=\operatorname{tr}_{S_i}(1_{S_i})
+\]
+for their spherical dimensions. For an object $X\simeq\bigoplus_i
+S_i^{\oplus m_i}$, an endomorphism has multiplicity matrices $f_i\in
+M_{m_i}(k)$.
+
+\begin{proposition}[Trace on multiplicity spaces]
+\label{v4-arith:traces:spherical-matrices}
+The categorical trace is
+\[
+ \operatorname{tr}_X(f)=\sum_i d_i\operatorname{Tr}_k(f_i).
+\]
+In particular it is a cyclic functional on $\operatorname{End}(X)$. The
+coefficients $d_i$ are determined by the chosen duality.
+\end{proposition}
+\begin{proof}
+Choose inclusions $u_{i\alpha}:S_i\to X$ and projections $v_{i\alpha}:X\to
+S_i$ with
+\[
+ v_{i\alpha}u_{j\beta}
+   =\delta_{ij}\delta_{\alpha\beta}1_{S_i},
+ \qquad
+ \sum_{i,\alpha}u_{i\alpha}v_{i\alpha}=1_X.
+\]
+Expand $f$ using these splittings. Cyclicity of the spherical trace gives
+$\operatorname{tr}_X(u_{i\alpha}v_{i\beta})
+=\operatorname{tr}_{S_i}(v_{i\beta}u_{i\alpha}) =\delta_{\alpha\beta}d_i$.
+The diagonal matrix entries therefore give the displayed sum. Ordinary
+matrix trace is cyclic, proving the last assertion.
+\end{proof}
+
+For the order-two arithmetic category of Chapter~\ref{v4-arith:mf:chapter},
+the fusion rules are
+\[
+ g^2=1,\qquad g\rho=\rho g=\rho,\qquad
+ \rho^2=1+g+2\rho.
+\]
+The constructed spherical structures have $d_1=d_g=1$ and
+\[
+ d_\rho=1-\sqrt3
+ \quad\hbox{or}\quad
+ d_\rho=1+\sqrt3
+\]
+at the two indicated embeddings of the coefficient field. Indeed
+multiplicativity and additivity of dimension require $d_\rho^2=2+2d_\rho$.
+Their global dimensions and traces on the sum of the simples are
+respectively
+\[
+ \sum_i d_i^2=6\mp2\sqrt3,\qquad
+ \operatorname{tr}_{1\oplus g\oplus\rho}(1)=3\mp\sqrt3.
+\]
+
+These are different contractions. The unitary realization in
+Chapter~\ref{v4-arith:centers:chapter} uses $1+\sqrt3$. The original
+arithmetic embedding retains $1-\sqrt3$ and the nonunitary realization of
+Chapter~\ref{v4-arith:asi:chapter}.
+
+One cannot change the sign of a single dimension while keeping that category
+and its pivotal structure. More precisely, any tensor automorphism of the
+identity functor acts on the three simples by scalars
+$\eta_1=1,\eta_g,\eta_\rho$. The unit and $\rho$ summands of $\rho^2$
+require
+\[
+ \eta_\rho^2=1,\qquad \eta_\rho^2=\eta_\rho.
+\]
+Hence $\eta_\rho=1$, and the $g$ summand gives $\eta_g=1$. Two pivotal
+structures differ by such an automorphism, so the existing pivotal structure
+is unique. Passing to the other field embedding changes the coefficient data
+of the category.
+
+The algebra $\operatorname{End}(\bigoplus_i S_i)$ is $k^r$. When every $d_i$
+is nonzero, its spherical trace makes this commutative algebra a Frobenius
+algebra with weights $w_i=d_i$.
+Example~\ref{v4-arith:traces:semisimple-weights} then gives its finite
+contractions. This construction records a trace on the sum of the simples.
+Recovering the fusion tensor, its associator or its geometric sewing
+requires those maps as additional data.
+
+\subsection{The scalar unit of a Leavitt algebra}
+
+Let $L_r$ be the unital algebra with generators
+$s_1,\ldots,s_r,t_1,\ldots,t_r$ and relations
+\[
+ t_is_j=\delta_{ij}1,\qquad \sum_i s_it_i=1.
+\]
+The $t_i$ are algebraic dual generators. No complex conjugation is part of
+this notation.
+
+\begin{proposition}[A vanishing unit class]
+\label{v4-arith:traces:leavitt-unit}
+If $r-1$ is invertible in $k$, then $[1]=0$ in $HH_0(L_r)$. Consequently
+every cyclic functional on $L_r$ vanishes at $1$.
+\end{proposition}
+\begin{proof}
+The defining relations give the literal commutator identity
+\[
+ \sum_{i=1}^r[t_i,s_i]
+   =r1-\sum_i s_it_i=(r-1)1.
+\]
+Divide by $r-1$ and pass to $L_r/[L_r,L_r]$.
+\end{proof}
+
+This argument concerns one class. It does not assert that $HH_0(L_r)$ is
+zero. It also has the stated coefficient restriction. If $r=1$, the algebra
+is $k[s,s^{-1}]$, and the identity class is nonzero.
+
+For the arithmetic algebra $\mathcal B_I$ of
+Section~\ref{v4-arith:mf:leavitt}, one has $r=2N$. Its characteristic-zero
+coefficient field makes $2N-1$ invertible. Nevertheless its marked
+categorical closure recovers the arithmetic values. Retain the object
+$\rho$, its duality maps $X_0,X'_0$, and the scalar network $\mathcal
+N_g=b_g1_\rho$. With $d=-1/b_0$ and $e_g=b_g/b_0$, the closure is
+\[
+ \operatorname{cl}_\rho(a)=dX'_0\rho(a)X_0,\qquad
+ -\operatorname{cl}_\rho(\mathcal N_g)=e_g.
+\]
+
+The second identity follows from $X'_0X_0=1$ and the fact that $\rho$ fixes
+scalars. This functional has domain $\operatorname{End}(\rho)$ and uses its
+specified duality. Its value is compatible with the vanishing ambient unit
+class because it is a different trace construction.
+
+The finite balanced-tensor realization of
+Theorem~\ref{v4-arith:mf:finite-functor} retains this network as well. Its
+matrix detector is
+\[
+ M_g=b_g1_{\omega(\rho)},\qquad
+ b_g=\frac{\operatorname{Tr}_k(M_g)}{3N}.
+\]
+This formula uses the scalar endomorphism and the particular dimension
+$\dim_k\omega(\rho)=3N$. It is not a replacement for categorical trace on
+arbitrary diagrams. The functor takes values in bimodules over $k^{N+1}$,
+with their balanced tensor. It is not a finite-dimensional unital
+representation of $\mathcal B_I$.
+
+\section{Extensions and regular Hochschild traces}
+
+The trace of a nonsemisimple category requires its actual complex.
+Extensions between simple modules give useful information, but they need not
+survive regular Hochschild trace. Two small algebras show both behaviors.
+
+Let $A$ be a finite-dimensional algebra over a field $k$. There are finitely
+many simple right $A$-modules up to isomorphism: each occurs among the
+composition factors of the regular module. If $M,N$ are finite-dimensional,
+then $\operatorname{Ext}^n_A(M,N)$ is finite-dimensional for each $n$.
+Indeed successive surjections from finite free modules give a projective
+resolution with finite-dimensional terms. Applying
+$\operatorname{Hom}_A(-,N)$ proves degreewise finiteness. There is no
+resulting bound on the total graded dimension.
+
+\subsection{The dual numbers}
+
+Put $A=k[\epsilon]/(\epsilon^2)$ and $S=A/(\epsilon)$. Multiplication by
+$\epsilon$ has kernel and image $k\epsilon$, so
+\[
+ \cdots\xrightarrow{\epsilon} A\xrightarrow{\epsilon} A
+ \xrightarrow{\epsilon} A\longrightarrow S\longrightarrow0
+\]
+is an exact free resolution. Applying $\operatorname{Hom}_A(-,S)$ makes
+every differential zero. Thus
+\[
+ \operatorname{Ext}^n_A(S,S)=k\qquad(n\geq0).
+\]
+The algebra has radical square zero, but its simple module has infinite
+projective dimension. In characteristic two it is also $k[C_2]$, under
+$\epsilon\mapsto g-1$.
+
+For the regular trace, use the enveloping algebra $A^e=A\otimes_k
+A^{\mathrm{op}}$ and the coefficient bimodule $A$. The bar resolution
+identifies
+\[
+ HH_n(A)=\operatorname{Tor}^{A^e}_n(A,A).
+\]
+Here both occurrences of $A$ retain their regular actions.
+
+\begin{proposition}[The complete regular trace of the dual numbers]
+\label{v4-arith:traces:dual-numbers}
+For every field $k$,
+\[
+ HH_0(A)=A,\qquad
+ HH_{2r+1}(A)=A/(2\epsilon A)\quad(r\geq0),\qquad
+ HH_{2r}(A)=\operatorname{ann}_A(2\epsilon)\quad(r\geq1).
+\]
+If $\operatorname{char}k\ne2$, each positive-degree group has dimension one.
+If $\operatorname{char}k=2$, then $HH_n(A)=A$ in every nonnegative degree.
+\end{proposition}
+\begin{proof}
+Write $A^e=k[x,y]/(x^2,y^2)$, with $x$ acting on the left and $y$ on the
+right. Set $u=x-y$ and $v=x+y$. There is a free bimodule complex
+\[
+ \cdots\xrightarrow{u}A^e\xrightarrow{v}A^e
+ \xrightarrow{u}A^e\xrightarrow{\mu}A\longrightarrow0,
+ \qquad \mu(x)=\mu(y)=\epsilon.
+\]
+The differential out of odd degree is $u$ and that out of positive even
+degree is $v$. Their composites vanish.
+
+For $z=\alpha+\beta x+\gamma y+\eta xy$,
+\[
+ uz=\alpha(x-y)+(\gamma-\beta)xy,\qquad
+ vz=\alpha(x+y)+(\beta+\gamma)xy.
+\]
+Consequently
+\[
+ \ker u=\langle x+y,xy\rangle=\operatorname{im}v,\qquad
+ \ker v=\langle x-y,xy\rangle=\operatorname{im}u.
+\]
+
+Also $\ker\mu=\langle x-y,xy\rangle$. These statements remain valid in
+characteristic two, and prove exactness.
+
+Tensoring with the regular $A$ sends $u$ to zero and $v$ to $2\epsilon$. The
+resulting alternating differential gives the asserted quotients and
+annihilators. If two is invertible, the annihilator is $\epsilon A$. If two
+is zero, every differential vanishes.
+
+The normalized Hochschild formula gives the same calculation without a
+change of resolution. Since $\overline A=k\epsilon$, interior products in a
+normalized chain vanish, and the two outer faces give
+\[
+ b_n\bigl(c[\epsilon|\cdots|\epsilon]\bigr)
+  =(1+(-1)^n)c\epsilon[\epsilon|\cdots|\epsilon].
+\]
+The bracket on the right has $n-1$ entries. In particular the cyclic last
+face is responsible for the factor two in even degree.
+\end{proof}
+
+In characteristic two, the simple-module Ext groups have dimension one while
+the regular Hochschild groups have dimension two. The coefficient module and
+the traced resolution are indispensable parts of either statement.
+
+\subsection{A directed algebra and cyclic endpoint matching}
+
+Let $Q$ be a finite quiver, $J$ its arrow ideal, and $B=kQ/J^2$. Concatenate
+paths from left to right and use right modules. For a vertex $i$, put
+$P_i=e_iB$ and $S_i=e_iB/e_iJ$. The radical of $P_i$ is one copy of $S_j$
+for each arrow $i\to j$. Iterating projective covers therefore gives
+\begin{equation}
+\label{v4-arith:traces:path-ext}
+ \dim_k\operatorname{Ext}^n_B(S_i,S_j)
+  =\#\{\text{oriented length-}n\text{ paths from }i\text{ to }j\}.
+\end{equation}
+
+To justify the last step, every differential in this minimal resolution
+lands in a radical. A map to a simple module kills that radical, so the Hom
+complex has zero differential. All groups of degree at least two vanish
+precisely when the quiver has no composable pair of arrows.
+
+Take
+\[
+ Q=(0\xrightarrow{a}1\xrightarrow{b}2),\qquad B=kQ/(ab).
+\]
+Then $P_0=\langle e_0,a\rangle$, $P_1=\langle e_1,b\rangle$, and
+$P_2=\langle e_2\rangle$. The sequence
+\[
+ 0\longrightarrow P_2\xrightarrow{e_2\mapsto b}P_1
+ \xrightarrow{e_1\mapsto a}P_0\longrightarrow S_0
+ \longrightarrow0
+\]
+is exact: the middle kernel is $kb$ because $ab=0$. It gives
+\[
+ \operatorname{Ext}^1_B(S_0,S_1)=k,\qquad
+ \operatorname{Ext}^1_B(S_1,S_2)=k,\qquad
+ \operatorname{Ext}^2_B(S_0,S_2)=k.
+\]
+
+The product of the two adjacent degree-one classes is nonzero. The exact
+sequence $0\to S_1\to P_0\to S_0\to0$ identifies its Yoneda product with the
+dimension-shifting isomorphism $\operatorname{Ext}^1_B(S_1,S_2)\simeq
+\operatorname{Ext}^2_B(S_0,S_2)$. Thus the algebra relation $ab=0$ does not
+make this product zero.
+
+For comparison, the path algebra $kQ$ before imposing $ab=0$ has
+$\operatorname{rad}P_0\simeq P_1$ and $\operatorname{rad}P_1\simeq P_2$. Its
+simple modules have projective resolutions of length at most one. It is a
+different algebra, and its $P_0$ has Loewy length three.
+
+\begin{proposition}[Regular trace of the directed model]
+\label{v4-arith:traces:directed-model}
+For $B=kQ/(ab)$ as above,
+\[
+ HH_0(B)=ke_0\oplus ke_1\oplus ke_2,\qquad
+ HH_n(B)=0\quad(n\geq1).
+\]
+\end{proposition}
+\begin{proof}
+Set $S=ke_0\oplus ke_1\oplus ke_2$ and $J=ka\oplus kb$. The relative
+normalized bar terms $P_n=B\otimes_S J^{\otimes_S n}\otimes_S B$ are
+\begin{align*}
+ P_0&=\bigoplus_{i=0}^2 Be_i\otimes_k e_iB,\\
+ P_1&=(Be_0\otimes_k e_1B)\oplus(Be_1\otimes_k e_2B),\\
+ P_2&=Be_0\otimes_k e_2B,
+\end{align*}
+and $P_n=0$ for $n\geq3$. Each summand is a projective bimodule, being an
+idempotent summand of $B\otimes_k B$. The differentials are
+\begin{align*}
+ d_1(l\otimes j\otimes r)&=lj\otimes r-l\otimes jr,\\
+ d_2(l\otimes a\otimes b\otimes r)
+   &=la\otimes b\otimes r+l\otimes a\otimes br.
+\end{align*}
+The interior term of $d_2$ vanishes because $ab=0$.
+
+For completeness, the dimensions of these terms are $8,4,1$. A basis of
+$P_1$ consists of
+\begin{align*}
+ q_1&=e_0\otimes a\otimes e_1,&
+ q_2&=e_0\otimes a\otimes b,\\
+ q_3&=e_1\otimes b\otimes e_2,&
+ q_4&=a\otimes b\otimes e_2.
+\end{align*}
+Their images are
+\[
+ a\otimes e_1-e_0\otimes a,\quad a\otimes b,\quad
+ b\otimes e_2-e_1\otimes b,\quad -a\otimes b.
+\]
+The first three are independent. The kernel of $d_1$ is $k(q_2+q_4)$, and
+$d_2$ sends its generator to $q_2+q_4$.
+
+Multiplication $P_0\to B$ is surjective with a three-dimensional kernel.
+This proves exactness in every characteristic.
+
+Regular trace sends each summand to
+\[
+ B\otimes_{B^e}(Be_i\otimes_k e_jB)\simeq e_jBe_i.
+\]
+The forward map is $c\otimes(l\otimes r)\mapsto rcl$. The inverse is
+$t\mapsto t\otimes(e_i\otimes e_j)$. The balancing relations prove that
+these maps are inverse.
+
+All off-diagonal terms here vanish, because a directed path has no return
+path. The diagonal terms are $ke_i$. The traced complex is consequently
+$k^3$ in degree zero and zero in every positive degree.
+\end{proof}
+
+The relation contributes a nonzero degree-two bimodule-resolution term.
+Taking the regular trace kills that term by its endpoints. An arithmetic use
+of simple-module extensions must therefore construct the map into its trace
+complex and determine the image of the Yoneda products.
+
+\section{Tensoring local trace complexes}
+
+Local degree bounds do not simply add their positive parts. Fix a
+commutative ring $R$. We use homological shifts, so a module $M[1]$ is
+concentrated in degree one. Suppose two complexes have specified splittings
+\[
+ C_2\simeq B_2\oplus W_2[1],\qquad
+ C_3\simeq B_3\oplus W_3[1],
+\]
+Here $B_2,W_2,B_3,W_3$ are $R$-modules in degree zero. The subscripts label
+two local factors.
+
+\begin{proposition}[All four tensor terms]
+\label{v4-arith:traces:four-terms}
+There is an equivalence
+\begin{align*}
+ C_2\otimes_R^{\mathrm L}C_3\simeq{}&
+ B_2\otimes_R^{\mathrm L}B_3\\
+ &\oplus(W_2\otimes_R^{\mathrm L}B_3)[1]\\
+ &\oplus(B_2\otimes_R^{\mathrm L}W_3)[1]\\
+ &\oplus(W_2\otimes_R^{\mathrm L}W_3)[2].
+\end{align*}
+If all remaining local factors assemble into a degree-zero complex $D$,
+their contribution is the derived tensor of $D$ with every displayed term.
+\end{proposition}
+\begin{proof}
+Choose projective resolutions of the modules. Distribute the tensor product
+over the two finite direct sums. The tensor differential is $d(x\otimes
+y)=dx\otimes y+(-1)^{|x|}x\otimes dy$, and the two shifts in the last term
+add to two. Associativity of derived tensor gives the assertion about $D$.
+\end{proof}
+
+Over a field, take $B_2=B_3=k$, $W_2=k$, and $W_3=k^2$. The result is
+\[
+ k\oplus k^3[1]\oplus k^2[2].
+\]
+If $x$ spans $W_2$ and $y,z$ form a basis of $W_3$, then $x\otimes y$ and
+$x\otimes z$ are independent degree-two cycles. Every differential is zero,
+so they are not boundaries. Anticommutativity does not cancel products in
+distinct factors. Taking unit reference vectors at almost all primes still
+permits non-unit entries at both selected primes.
+
+Integral coefficients can give a different result, for a specific algebraic
+reason.
+
+\begin{proposition}[Distinct-primary vanishing]
+\label{v4-arith:traces:primary-vanishing}
+If $M_2$ is a $2$-primary torsion abelian group and $M_3$ is a $3$-primary
+torsion abelian group, then
+\[
+ M_2\otimes_{\mathbb Z}^{\mathrm L}M_3=0.
+\]
+If $B_2,B_3$ are flat abelian groups, the tensor of $B_2\oplus M_2[1]$ and
+$B_3\oplus M_3[1]$ is concentrated in degrees zero and one.
+\end{proposition}
+\begin{proof}
+The free resolution of $\mathbb Z/2^a$ is $[\mathbb
+Z\xrightarrow{2^a}\mathbb Z]$. After tensoring with $\mathbb Z/3^b$, its
+differential is invertible. Its tensor product and first Tor therefore
+vanish. Finite primary groups are sums of such cyclic groups. Every primary
+torsion abelian group is the filtered union of its finite subgroups, and
+tensor and Tor commute with these filtered colimits.
+
+There is no higher Tor over $\mathbb Z$: the kernel of a surjection from a
+free abelian group is free. This proves the first assertion. Flatness
+removes higher Tor from the other three terms of
+Proposition~\ref{v4-arith:traces:four-terms}.
+\end{proof}
+
+For $B_2=B_3=\mathbb Z$, $M_2=\mathbb Z/2$, and $M_3=(\mathbb Z/3)^2$, the
+result is
+\[
+ \mathbb Z\oplus
+   \bigl(\mathbb Z/2\oplus(\mathbb Z/3)^2\bigr)[1].
+\]
+This calculation does not replace the common-field example. They have
+different coefficients. An arithmetic comparison needs its integral models,
+change-of-coefficient maps, and a proof that the chosen completion preserves
+the asserted tensor.
+
+\begin{question}[Arithmetic trace assembly]
+\label{v4-arith:traces:arithmetic-assembly}
+Construct the local arithmetic categories and regular trace complexes, the
+maps from their extension data, and the completed restricted tensor that
+assembles them globally. Determine whether the mixed term survives, vanishes
+by a coefficient argument, or is removed by a specified quotient. In the
+last case, construct the quotient map and prove its compatibility with the
+trace operations. A degree-one truncation and the full trace have different
+comparison problems.
+\end{question}
+
+\section{Orthogonal blocks and cyclic decomposition}
+
+Let $k$ now be a commutative ring, and let $(\mathcal A_i)_{i\in I}$ be
+small $k$-linear differential graded categories with $K$-flat morphism
+complexes. Here $K$-flat means that tensoring with the complex preserves
+quasi-isomorphisms. This hypothesis lets ordinary tensor products compute
+the derived tensors used below.
+
+Form the orthogonal union $\mathcal A$: objects belong to one of the
+$\mathcal A_i$, and the morphism complex between different blocks is zero.
+Let $\operatorname{Perf}(\mathcal A)$ be the category obtained from its
+representable modules by finite sums, shifts, cones and retracts.
+Write $C_\bullet(\mathcal B)$ for the derived Hochschild mixed complex
+of a dg category $\mathcal B$.
+
+\begin{proposition}[Cyclic block decomposition]
+\label{v4-arith:traces:blocks}
+There is an $S^1$-equivariant equivalence
+\[
+ C_\bullet(\operatorname{Perf}(\mathcal A))
+ \simeq\bigoplus_{i\in I}
+       C_\bullet(\operatorname{Perf}(\mathcal A_i)).
+\]
+Every perfect module has finite block support.
+\end{proposition}
+\begin{proof}
+In cyclic degree $n$, the bar construction is the sum of
+\[
+ \mathcal A(X_n,X_0)\otimes_k
+ \mathcal A(X_{n-1},X_n)\otimes_k\cdots\otimes_k
+ \mathcal A(X_0,X_1)
+\]
+over its cyclic words of objects. A word using two blocks has a zero
+morphism factor, including when the change of block occurs at the closing
+pair. Every surviving word therefore lies in one block. Composition faces,
+unit degeneracies, internal differentials and cyclic rotation preserve it.
+
+Thus the cyclic object itself decomposes as the direct sum of the block
+cyclic objects. The $K$-flat assumption computes the derived tensors, and
+realization commutes with direct sums. The cyclic structure, hence the
+circle action, is preserved. Passing to perfect modules is the dg Morita
+invariance of this derived trace.
+
+A representable is supported in one block. Each finite sum, shift, cone or
+retract preserves finite support, so every perfect object has it.
+Conversely, a finite-support family of perfect block modules is perfect over
+$\mathcal A$. This identifies the compact model used in the formula.
+\end{proof}
+
+For a compactly generated presentable category, this statement applies when
+its compact objects have the specified model. A product description of a
+presentable category alone does not identify the relevant trace or its
+compact support. Moreover the proposition is an equivalence of cyclic
+complexes. A multiplicative trace comparison needs a compatible monoidal
+enhancement and preservation of its operations.
+
+Even coordinatewise multiplication on the right has a unit only under an
+additional finiteness condition. If infinitely many blocks are nonzero
+unital algebras, every element of their direct sum omits some block. It
+cannot act as identity on that block. The infinite coordinatewise direct sum
+is then nonunital. Finally, negative cyclic completion need not preserve
+this sum, as Example~\ref{v4-arith:traces:sum-product} shows.
+
+For arithmetic block comparisons, the coefficient ring, dg models and
+indexing maps must be given before applying this decomposition. The
+perfect-stack loop comparisons of Chapter~\ref{v4-arith:ic:chapter} also
+retain their own geometric hypotheses. The topological circle, a finite
+cyclic classifying stack, and a profinite mapping object define different
+constructions. Passing between them requires comparison maps and continuity
+theorems on the chosen carriers.
+
+\subsection{Filtered continuity on a specified trace carrier}
+
+The same finite-word argument applies to a filtered union of dg categories.
+Every cyclic word, morphism tensor and relation appears at a common finite
+stage. For $K$-flat models over a common ring, tensoring and filtered
+colimits commute. Thus the cyclic complex of that union is the filtered
+colimit of its cyclic complexes, before taking homology or cyclic
+completion.
+
+There is also a categorical version with a different output. Let $\mathcal
+V$ be a presentable symmetric monoidal category whose tensor preserves
+colimits separately. For an associative algebra object $A$ of $\mathcal V$,
+define
+\[
+ \operatorname{Tr}_{\mathcal V}(A)
+    =\left|[n]\longmapsto A^{\otimes(n+1)}\right|.
+\]
+The faces multiply adjacent entries, including the cyclic closing pair, and
+the degeneracies insert the unit. The bars denote geometric realization of
+the cyclic object.
+
+For $\mathcal V=D(k)$ this is a derived Hochschild complex. For $\mathcal
+V=\mathrm{Pr}^{\mathrm L}_{k,\mathrm{st}}$ it is a category, as in
+Section~\ref{v4-arith:ic:traces}.
+
+\begin{proposition}[Filtered continuity of cyclic realization]
+\label{v4-arith:traces:filtered-continuity}
+Let $(A_i)_{i\in I}$ be a filtered diagram of associative algebra objects in
+$\mathcal V$, and let $A$ be its colimit. Then there is a natural
+circle-equivariant equivalence
+\[
+ \operatorname*{colim}_i\operatorname{Tr}_{\mathcal V}(A_i)
+       \simeq\operatorname{Tr}_{\mathcal V}(A).
+\]
+If the diagram has compatible $E_2$ structures, this equivalence preserves
+the induced $E_1$ multiplication on the trace.
+\end{proposition}
+\begin{proof}
+Filtered colimits of associative algebras are computed on their underlying
+objects. Indeed all operations have finite arity, and the diagonal $I\to
+I^m$ is cofinal for every finite $m$. Separate preservation of colimits
+therefore gives
+\[
+ A^{\otimes(n+1)}
+   \simeq\operatorname*{colim}_i A_i^{\otimes(n+1)}.
+\]
+These equivalences preserve multiplication, the unit and permutations. They
+consequently identify every cyclic face, degeneracy and rotation.
+
+Geometric realization is a colimit and commutes with the filtered colimit.
+Realizing the degreewise equivalence proves the assertion with its circle
+action. For $E_2$ inputs, use their description as associative algebras in
+associative algebras. The cyclic construction in one direction retains the
+multiplication in the other, with its interchange coherences. The same
+colimit argument preserves these operations and proves the last assertion.
+\end{proof}
+
+To apply this result to an arithmetic formal presentation, one must identify
+its category with the stated colimit of its finite-stage categories. The
+transition functors must preserve the convolution structure being used. A
+closed immersion of parameter spaces does not by itself establish this
+categorical equivalence or its support conditions.
+
+After that input, the trace-continuity step is positive. If $T_i\simeq Q_i$
+are compatible finite-stage trace comparisons and
+$\operatorname*{colim}_iQ_i\simeq Q$ is independently proved, their colimits
+give $T\simeq Q$. The loop-space computation and passage of a
+singular-support condition to $Q$ remain separate hypotheses. Functions on
+an inverse limit, a pro-\'etale mapping object, and negative cyclic
+completion cannot be exchanged with these colimits without their own
+arguments.
+
+An arithmetic determinant trace is different again. The trace coefficient of
+a universal Chenevier determinant is a function on a deformation ring.
+Identifying it with the invariant trace of a universal
+$(\varphi,\Gamma)$-module requires a comparison of those coefficient
+objects. Compatibility with a specified Nygaard filtration is an additional
+equation on that comparison. Neither scalar Hochschild continuity nor the
+categorical trace theorem constructs it.
+
+\section{Arithmetic shifts, phases, and occupation traces}
+
+The Bost--Connes algebra gives a concrete arithmetic representation. Its
+occupation trace, algebraic Hochschild cochains, and smooth Hochschild
+cochains can all be studied. Relating any of them to an independently
+defined arithmetic trace category is a further comparison.
+
+\begin{definition}[The Bost--Connes algebra]
+\label{v4-arith:traces:bc-algebra}
+Let $A_{\mathrm{BC}}$ be the complex unital $C^*$-algebra generated by
+isometries $\mu_n$, for $n\geq1$, and unitaries $e(\gamma)$, for
+$\gamma\in\mathbb Q/\mathbb Z$, with relations
+\begin{align*}
+ \mu_1&=1,& \mu_m\mu_n&=\mu_{mn},&
+ \mu_n^*\mu_n&=1,\\
+ e(0)&=1,& e(\gamma)e(\eta)&=e(\gamma+\eta),&
+ e(\gamma)^*&=e(-\gamma),\\
+ \mu_m^*\mu_n&=\mu_n\mu_m^* &&\text{if }(m,n)=1,\\
+ \mu_ne(\gamma)\mu_n^*
+   &=\frac1n\sum_{n\delta=\gamma}e(\delta).
+\end{align*}
+In particular $\mu_n\mu_n^*=e_n=n^{-1}\sum_{n\delta=0}e(\delta)$. The time
+evolution is
+\[
+ \sigma_t(\mu_n)=n^{it}\mu_n,\qquad
+ \sigma_t(e(\gamma))=e(\gamma).
+\]
+\end{definition}
+
+On $\mathcal L=\ell^2(\mathbb N^\times)$, with orthonormal basis $\delta_m$,
+define
+\[
+ \mu_n\delta_m=\delta_{nm},\qquad
+ e(\gamma)\delta_m=\exp(2\pi i m\gamma)\delta_m.
+\]
+We use the same notation for the abstract generators and these operators
+once faithfulness is proved.
+
+\begin{proposition}[The faithful occupation representation]
+\label{v4-arith:traces:bc-faithful}
+These operators define a faithful representation of $A_{\mathrm{BC}}$ on
+$\mathcal L$. The range projection $\mu_n\mu_n^*$ selects the integers
+divisible by $n$. Its spectrum is $\{0,1\}$ for $n>1$.
+\end{proposition}
+\begin{proof}
+The adjoint shift sends $\delta_m$ to $\delta_{m/n}$ if $n\mid m$, and to
+zero otherwise. This gives the isometry, semigroup and coprime-adjoint
+relations. The transfer relation is the finite character identity
+\[
+ \frac1n\sum_{n\delta=\gamma}\exp(2\pi i m\delta)
+  =
+  \begin{cases}
+   \exp(2\pi i(m/n)\gamma),&n\mid m,\\
+   0,&n\nmid m.
+  \end{cases}
+\]
+It also gives the range projection. For $n>1$, its range contains $\delta_n$
+and its kernel contains $\delta_1$, so both spectral values occur.
+
+To prove faithfulness, let $K=\prod_p U(1)$, with the product topology. For
+$z\in K$, write $z(n)=\prod_p z_p^{v_p(n)}$. The gauge action $\alpha_z$
+fixes the phases and sends $\mu_n$ to $z(n)\mu_n$. It preserves the defining
+relations.
+
+The finite normal sums
+\[
+ A_{\mathrm{alg}}
+  =\operatorname{span}_{\mathbb C}
+     \{\mu_r e(\gamma)\mu_s^*:r,s\geq1,\ %
+                              \gamma\in\mathbb Q/\mathbb Z\}
+\]
+form a dense star subalgebra. Indeed the transfer identities give
+$e(\gamma)\mu_n=\mu_ne(n\gamma)$ and its adjoint. If $s=ds'$, $u=du'$, and
+$(s',u')=1$, multiplication becomes
+\[
+ (\mu_re(\gamma)\mu_s^*)(\mu_ue(\eta)\mu_v^*)
+   =\mu_{ru'}e(u'\gamma+s'\eta)\mu_{vs'}^*.
+\]
+Adjoint exchanges $r,s$ and negates $\gamma$. The gauge orbit of each normal
+term is continuous. Density and isometry prove continuity on every element
+of $A_{\mathrm{BC}}$.
+
+A normal term has gauge character $z(r/s)$. Haar averaging therefore kills
+it unless $r=s$, in which case the transfer relation puts it in the phase
+algebra $D$. Thus $E(a)=\int_K\alpha_z(a)\,dz$ is a conditional expectation
+onto $D$. The representation of $C^*(\mathbb Q/\mathbb Z)=C(\widehat{\mathbb
+Z})$ on $\mathcal L$ evaluates at the positive integers. Those integers meet
+every residue class and are dense in $\widehat{\mathbb Z}$. Their
+evaluations are faithful, so $D=C(\widehat{\mathbb Z})$ and the
+representation is faithful on $D$.
+
+The expectation itself is faithful. For $a\geq0$ and a state $\omega$, the
+function $z\mapsto\omega(\alpha_z(a))$ is continuous and nonnegative. If
+$E(a)=0$, its integral vanishes. Full support of Haar measure makes its
+value at the identity zero. States separate positive elements, so $a=0$.
+
+Finally, $V_z\delta_m=z(m)\delta_m$ implements $\alpha_z$ in the occupation
+representation $\pi$. If $\pi(a)=0$, then $\pi(E(a^*a))=0$. Faithfulness on
+$D$, followed by faithfulness of $E$, gives $a^*a=0$ and $a=0$.
+\end{proof}
+
+\subsection{Normalized creation and higher modes}
+
+For each prime $p$, let $\mathscr F_p=\ell^2(\mathbb N_0)$, with number
+states $|r\rangle_p$. Form the Hilbert restricted tensor product with vacuum
+reference vectors $|0\rangle_p$. On finite occupation vectors, define
+\[
+ a_p|r\rangle_p=\sqrt r\,|r-1\rangle_p,\qquad
+ a_p^\dagger|r\rangle_p=\sqrt{r+1}\,|r+1\rangle_p,\qquad
+ N_p=a_p^\dagger a_p.
+\]
+
+Unique prime factorization gives a unitary
+\[
+ U:\mathcal L\longrightarrow
+       \widehat{\bigotimes}'_p\mathscr F_p,\qquad
+ U\delta_m=\bigotimes_p|v_p(m)\rangle_p.
+\]
+The arithmetic prime shift is
+\[
+ U\mu_pU^{-1}=a_p^\dagger(N_p+1)^{-1/2}.
+\]
+The diagonal factor cancels the creation coefficient, leaving an isometry.
+This identity begins on finite occupation vectors and extends boundedly. The
+unnormalized creation operator is unbounded.
+
+For $z\in\mathbb C$, the coherent vector
+\[
+ \exp(-|z|^2/2)\sum_{k\geq0}
+     \frac{z^k}{\sqrt{k!}}U\delta_{p^k}
+\]
+has norm one. It lies in the arithmetic algebra orbit of the vacuum: apply
+the norm-convergent series
+$\exp(-|z|^2/2)\sum_{k\geq0}z^k(U\mu_pU^{-1})^k/\sqrt{k!}$. The ratio test
+proves convergence of its scalar coefficient norms.
+
+For a finite prime set $F$, consider the bosonic current Fock space
+\[
+ \mathscr F_F^{\mathrm{cur}}
+   =\Gamma_s\bigl(\ell^2(F\times\mathbb N_{\geq1})\bigr).
+\]
+Here $\Gamma_s$ is the Hilbert direct sum of symmetric powers. Mode $j$
+corresponds to the normalized Heisenberg creation operator
+$a_{-j}^{(p)}/\sqrt j$. Splitting the one-particle space into modes $j=1$
+and $j\geq2$ gives
+\[
+ \mathscr F_F^{\mathrm{cur}}
+  \simeq L_F\widehat\otimes\mathscr F_F^{\geq2},
+ \qquad
+ L_F=\widehat\bigotimes_{p\in F}\mathscr F_p.
+\]
+The orthonormal number-state bases prove this unitary directly, and it
+preserves the grading assigning degree $j$ to a mode-$j$ creation.
+
+Let $\mathbb N_F$ be the integers supported on $F$. The phases and shifts
+$\mu_n$, $n\in\mathbb N_F$, act on $L_F\simeq\ell^2(\mathbb N_F)$ and extend
+by the identity on $\mathscr F_F^{\geq2}$. Every closed subspace
+$L_F\widehat\otimes K_0$, with $K_0\subset\mathscr F_F^{\geq2}$, is
+invariant under these operators and their adjoints. If $F$ is nonempty, the
+higher-mode vacuum is properly contained in larger such stable sectors.
+
+This restricted representation need not be faithful on all phases. If
+$q\notin F$, the nonzero projection
+\[
+ e_q=\frac1q\sum_{j=0}^{q-1}e(j/q)
+\]
+acts as zero on $L_F$, since no integer in $\mathbb N_F$ is divisible by
+$q$. Also the higher-mode factor by itself is not the full vacuum Heisenberg
+vertex algebra: it omits every mode-one creation.
+
+\subsection{The Gibbs trace and its domain}
+
+Define the occupation Hamiltonian by
+\[
+ H\delta_m=(\log m)\delta_m,\qquad
+ \operatorname{Dom}H
+  =\left\{\xi:\sum_m(\log m)^2|\xi_m|^2<\infty\right\}.
+\]
+This is a self-adjoint diagonal operator with finite-support core. For a
+real $\beta>1$,
+\begin{equation}
+\label{v4-arith:traces:gibbs-zeta}
+ \operatorname{Tr}(e^{-\beta H})
+   =\sum_{m\geq1}m^{-\beta}
+   =\prod_p(1-p^{-\beta})^{-1}
+   =\zeta(\beta).
+\end{equation}
+The series is positive and convergent. Unique factorization proves the Euler
+product by increasing finite prime sets. At $\beta=1$ the trace is the
+divergent harmonic series.
+
+With the KMS convention $\varphi(ab)=\varphi(b\sigma_{i\beta}(a))$ for
+analytic elements, the Gibbs state is
+\[
+ \varphi_\beta(a)
+   =\zeta(\beta)^{-1}\operatorname{Tr}(a e^{-\beta H}).
+\]
+Indeed $e^{-\beta H}a=\sigma_{i\beta}(a)e^{-\beta H}$ on analytic normal
+terms, and trace cyclicity proves the identity. The full Bost--Connes
+classification gives a unique $\beta$-KMS state for $0<\beta\leq1$. For
+$\beta>1$ its extremal states are indexed by embeddings of the cyclotomic
+field into $\mathbb C$. These are Bost--Connes, Theorems 5 and 25, with the
+critical case in Section 7. At the critical temperature, existence of a KMS
+state does not give a trace-class density in the occupation representation.
+
+The spherical $GL_2(\mathbb Q_p)$ measure and the Jordan-quiver groupoid
+mass have their own constructions in Chapters~\ref{v4-arith:hecke:chapter}
+and~\ref{v4-arith:hall:chapter}. Relating those objects to the Bost--Connes
+system requires an operator or categorical comparison preserving their
+states and normalizations. Their prime indexing supplies no such map.
+
+\section{Gauge classes in Hochschild cohomology}
+
+We now use cochains with regular coefficients on $A_{\mathrm{alg}}$. These
+compute a cohomology algebra, whereas the earlier cyclic chains compute a
+trace complex. All cochains in this first calculation are algebraic $\mathbb
+C$-multilinear maps.
+
+Let
+\[
+ W=\operatorname{Hom}_{\mathbb Z}
+        (\mathbb Q_{>0}^{\times},(\mathbb C,+))
+   =\prod_p\mathbb C.
+\]
+A family $\lambda=(\lambda_p)_p$ evaluates on a positive rational by
+$\lambda(g)=\sum_p v_p(g)\lambda_p$. Every such sum has finite support, even
+if the family does not.
+
+\begin{proposition}[Algebraic gauge derivations]
+\label{v4-arith:traces:gauge-derivations}
+The formula
+\[
+ D_\lambda(\mu_re(\gamma)\mu_s^*)
+  =\lambda(r/s)\mu_re(\gamma)\mu_s^*
+\]
+defines a derivation. The map $\lambda\mapsto[D_\lambda]$ injects $W$ into
+$HH^1_{\mathrm{alg}}(A_{\mathrm{alg}},A_{\mathrm{alg}})$. Every nonzero
+$D_\lambda$ is unbounded in the inherited $C^*$-norm and has no bounded
+spatial implementer on $\mathcal L$. Moreover
+$HH^0_{\mathrm{alg}}(A_{\mathrm{alg}},A_{\mathrm{alg}}) =\mathbb C$.
+\end{proposition}
+\begin{proof}
+Gauge averaging against characters decomposes the normal algebra as
+\[
+ A_{\mathrm{alg}}
+  =\bigoplus_{g\in\mathbb Q_{>0}^{\times}}(A_{\mathrm{alg}})_g,
+ \qquad
+ (A_{\mathrm{alg}})_g(A_{\mathrm{alg}})_h
+       \subseteq(A_{\mathrm{alg}})_{gh}.
+\]
+This uses homogeneous components, and does not assert independence of normal
+terms of the same degree. Multiplying the component of degree $g$ by
+$\lambda(g)$ is consequently well defined. Since
+$\lambda(gh)=\lambda(g)+\lambda(h)$, it is a derivation.
+
+One-cocycles are derivations and one-coboundaries are inner derivations. If
+$D_\lambda=[b,-]$ for a bounded operator $b$, the norm-one isometries
+$\mu_p^k$ give
+\[
+ k|\lambda_p|=\|D_\lambda(\mu_p^k)\|
+      \leq2\|b\|\qquad(k\geq1).
+\]
+Thus $\lambda_p=0$ for every prime. This also proves injectivity on classes
+by taking differences, and proves unboundedness for every nonzero family.
+
+An operator commuting with all phases is diagonal: any two distinct integer
+indices are separated by some character $\exp(2\pi i m\gamma)$. Write it as
+$T\delta_m=t_m\delta_m$. Commutation with every shift requires $t_{nm}=t_m$,
+hence $t_n=t_1$. The represented commutant is scalar. Faithfulness gives the
+asserted center and degree-zero cohomology.
+\end{proof}
+
+The derivation preserves adjoint exactly when every $\lambda_p$ is purely
+imaginary. This follows by comparing its values on $\mu_p$ and $\mu_p^*$.
+The product $\prod_p\mathbb C$ parametrizes algebraic derivations. It is not
+a convergent sum of bounded operators.
+
+\subsection{Finite cycles detecting every exterior degree}
+
+There is a character $\varepsilon:A_{\mathrm{BC}}\to\mathbb C$ defined by
+\[
+ \varepsilon(\mu_n)=\varepsilon(\mu_n^*)
+  =\varepsilon(e(\gamma))=1.
+\]
+The presentation verifies every relation, including the transfer average of
+$n$ ones. This is a norm-one unital star homomorphism. It is different from
+the vacuum vector state, which takes $\mu_p$ to zero.
+
+Let $\mathbb C_\varepsilon$ be the bimodule with left and right actions
+through $\varepsilon$. Composition of a regular-coefficient cochain with
+$\varepsilon$ is a cochain map. For clarity, the two differentials are
+\begin{align*}
+ (bF)(a_1,\ldots,a_{n+1})={}&
+    a_1F(a_2,\ldots,a_{n+1})\\
+ &+\sum_{i=1}^n(-1)^i
+     F(a_1,\ldots,a_ia_{i+1},\ldots,a_{n+1})\\
+ &+(-1)^{n+1}F(a_1,\ldots,a_n)a_{n+1},
+\end{align*}
+and
+\begin{align*}
+ b\bigl(c[a_1|\cdots|a_n]\bigr)={}&
+    c\varepsilon(a_1)[a_2|\cdots|a_n]\\
+ &+\sum_{i=1}^{n-1}(-1)^i
+       c[a_1|\cdots|a_ia_{i+1}|\cdots|a_n]\\
+ &+(-1)^n\varepsilon(a_n)c[a_1|\cdots|a_{n-1}].
+\end{align*}
+Evaluation makes these formulas dual after changing cochain coefficients by
+$\varepsilon$.
+
+For distinct primes $P=(p_1,\ldots,p_n)$, write $s_j=\mu_{p_j}$ and set
+\[
+ c_P=\sum_{\pi\in S_n}\operatorname{sgn}(\pi)
+                 1[s_{\pi(1)}|\cdots|s_{\pi(n)}].
+\]
+
+This is a cycle with coefficients in $\mathbb C_\varepsilon$. For an
+interior face, exchange the adjacent multiplied factors: they commute and
+their permutation signs are opposite. For the outer faces, pair a word with
+its cyclic rotation. Rotation has sign $(-1)^{n-1}$ and the last face has
+sign $(-1)^n$, so those terms cancel as well. For $n=1$ the boundary is
+directly zero.
+
+Therefore
+\[
+ L_P(F)=\sum_{\pi\in S_n}\operatorname{sgn}(\pi)
+       \varepsilon\bigl(F(s_{\pi(1)},\ldots,s_{\pi(n)})\bigr)
+\]
+vanishes on every regular-coefficient coboundary.
+
+\begin{theorem}[An exterior algebra of gauge classes]
+\label{v4-arith:traces:exterior-gauge}
+Cup product defines an injective graded-algebra map
+\[
+ \Lambda_{\mathbb C}^*W
+   \longhookrightarrow
+ HH^*_{\mathrm{alg}}(A_{\mathrm{alg}},A_{\mathrm{alg}}),
+ \qquad \lambda\longmapsto[D_\lambda].
+\]
+The exterior algebra consists of finite sums of finite wedges. It has no
+completion in this statement.
+\end{theorem}
+\begin{proof}
+The cup of $n$ derivations is the cochain
+\[
+ F_{\lambda_1,\ldots,\lambda_n}(a_1,\ldots,a_n)
+   =D_{\lambda_1}(a_1)\cdots D_{\lambda_n}(a_n).
+\]
+The cochain differential obeys the graded product rule, as follows by
+cancellation of its interior multiplication terms. Hence this cup is a
+cocycle. For two derivations $D,E$, expansion of the Leibniz rules gives
+\[
+ b(DE)(a,b)=-D(a)E(b)-E(a)D(b).
+\]
+Their classes anticommute, and their squares vanish over $\mathbb C$. This
+constructs the exterior-algebra map.
+
+The finite cycle evaluation is exactly
+\[
+ L_P(F_{\lambda_1,\ldots,\lambda_n})
+   =\det\bigl(\lambda_i(p_j)\bigr)_{1\leq i,j\leq n}.
+\]
+
+Every exterior element belongs to $\Lambda^*U$ for some finite-dimensional
+subspace $U\subset W$. Prime-coordinate functionals separate points of $U$,
+so they span $U^*$. Otherwise their span would have a nonzero annihilator
+whose every prime coordinate vanished. A finite selection already spans
+$U^*$, and its exterior products detect every nonzero element of
+$\Lambda^nU$.
+
+The corresponding $L_P$ proves injectivity in degree $n$. The character
+detects degree zero.
+\end{proof}
+
+For two distinct primes, the cycle is $1[\mu_p|\mu_q]-1[\mu_q|\mu_p]$. Its
+boundary is zero term by term after commuting the shifts, and
+$L_{(p,q)}(D_p\smile D_q)=1$, where $D_p$ is the coordinate derivation. For
+three primes the six-term alternating cycle gives $L_{(p,q,r)}(D_p\smile
+D_q\smile D_r)=1$. Thus these lower bounds are nonzero in every degree. They
+are not a classification of all Hochschild classes.
+
+\section{Smooth algebras and the time generator}
+
+The topological domain changes the gauge calculation. For a finite prime set
+$F$, let $B_F$ consist of the elements whose orbit under the finite torus
+$\mathbb T^F\subset K$ is norm-smooth. Angular derivatives are denoted
+$\delta_p$, so $\delta_p(\mu_q)=i\delta_{pq}\mu_q$ and $D_p=\delta_p/i$. For
+a nonnegative multiindex $\alpha$ supported in $F$, put
+\[
+ q_\alpha(a)=\|\delta^\alpha a\|,\qquad
+ q_0(a)=\|a\|.
+\]
+Define
+\[
+ B_{\mathrm g}=\bigcap_{F\ \mathrm{finite}}B_F
+\]
+with all these finite-support seminorms. This uses smoothness on ordinary
+finite-dimensional tori.
+
+\begin{proposition}[Smooth gauge cohomology]
+\label{v4-arith:traces:gauge-smooth}
+The spaces $B_F$ and $B_{\mathrm g}$ are Fr\'echet star algebras, norm-dense
+in $A_{\mathrm{BC}}$. For jointly continuous multilinear cochains with
+regular coefficients, there are injections
+\[
+ \Lambda^*\left(\bigoplus_{p\in F}\mathbb C D_p\right)
+       \longhookrightarrow HH^*_{\mathrm{cont}}(B_F,B_F),
+ \qquad
+ \Lambda^*\left(\bigoplus_p\mathbb C D_p\right)
+       \longhookrightarrow HH^*_{\mathrm{cont}}(B_{\mathrm g},B_{\mathrm g}).
+\]
+\end{proposition}
+\begin{proof}
+For $B_F$, a Cauchy sequence in every seminorm gives orbit maps that are
+Cauchy in every uniform derivative norm. Smooth Banach-valued functions on a
+compact torus are complete. The fundamental theorem of calculus identifies
+the uniform limit of first derivatives with the derivative of the uniform
+limit. Iteration handles every order. The limit orbit is $\alpha_z(a)$ for
+the norm limit $a$. Thus $B_F$ is complete.
+
+There are countably many finite-support multiindices. A Cauchy sequence for
+$B_{\mathrm g}$ converges in every $B_F$, and all limits agree with its norm
+limit. This proves completeness and metrizability. The iterated product rule
+\[
+ \delta^\alpha(ab)=
+   \sum_{\beta\leq\alpha}\binom{\alpha}{\beta}
+       (\delta^\beta a)(\delta^{\alpha-\beta}b)
+\]
+proves continuous multiplication. Real angular derivatives commute with
+adjoint. Normal sums lie in every smooth algebra and are norm-dense.
+
+Each permitted $D_p$ is continuous, with its seminorm bounded by the
+seminorm having one additional $p$ derivative. For $B_{\mathrm g}$ this
+follows by differentiating on $F\cup\{p\}$ before restricting to $F$. Finite
+cup cochains are consequently continuous. The character is continuous
+because $|\varepsilon(a)|\leq q_0(a)$. The finite cycles and determinant
+evaluations of Theorem~\ref{v4-arith:traces:exterior-gauge} therefore detect
+these continuous cohomology classes as well.
+\end{proof}
+
+\begin{proposition}[The continuity criterion]
+\label{v4-arith:traces:gauge-continuity}
+The algebraic $D_\lambda$ extends to a continuous linear map $B_{\mathrm
+g}\to A_{\mathrm{BC}}$ exactly when $\lambda$ has finite support. It then
+extends as a continuous derivation $B_{\mathrm g}\to B_{\mathrm g}$. On
+$B_F$ the criterion is support contained in $F$.
+\end{proposition}
+\begin{proof}
+Continuity would give
+\[
+ \|D_\lambda(a)\|
+   \leq C\max_{\alpha\in E}q_\alpha(a)
+\]
+for some finite set $E$ of multiindices, including zero. Let $F_0$ contain
+their supports. For $q\notin F_0$, every positive derivative on the right
+vanishes on $\mu_q^k$, while its norm is one. Hence $k|\lambda_q|\leq C$ for
+all $k$, forcing $\lambda_q=0$. On $B_F$ the same argument excludes every
+$q\notin F$. Conversely a finite linear combination of the permitted
+continuous derivatives has the required extension.
+\end{proof}
+
+This criterion concerns this particular family of derivations. It does not
+classify every continuous derivation of these algebras.
+
+It also separates gauge smoothness from physical-time smoothness. Enumerate
+distinct primes $p_j$ and form
+\[
+ a=\sum_{j\geq1}2^{-j}\mu_{p_j}^{\,2^j}.
+\]
+The series converges in norm. Only finitely many terms move under any fixed
+finite prime torus, so $a\in B_{\mathrm g}$.
+
+If its time derivative existed in norm, applying it to $\delta_1$ would give
+coordinate $i\log p_j$ at each distinct basis vector $\delta_{p_j^{2^j}}$.
+Those coordinates are not square summable. Thus $a$ is not even
+norm-differentiable under $\sigma$.
+
+\subsection{Closed differentiation in physical time}
+
+Let $\delta$ be the norm generator of $\sigma$:
+\[
+ \operatorname{Dom}\delta
+  =\left\{a:\lim_{t\to0}\frac{\sigma_t(a)-a}{t}
+                         \text{ exists in norm}\right\}.
+\]
+Every normal term is entire analytic, and
+\[
+ \delta(\mu_re(\gamma)\mu_s^*)
+   =i\log(r/s)\mu_re(\gamma)\mu_s^*.
+\]
+The domain is dense and proper. For a direct one-prime example of
+properness, use $\sum_{j\geq1}2^{-j}\mu_p^{2^j}$. The derivative on
+$\delta_1$ would have the same nonzero coordinate $i\log p$ at infinitely
+many states.
+
+The generator is closed. For $a$ in its domain, differentiating the orbit
+gives the Bochner integral identity
+\[
+ \sigma_t(a)-a=\int_0^t\sigma_s(\delta a)\,ds.
+\]
+If $a_n\to a$ and $\delta a_n\to b$ in norm, isometry permits passage to the
+limit. Division by $t$ and norm continuity then give $\delta a=b$.
+
+The norm-smooth orbit algebra is
+\[
+ A_\sigma^\infty=\bigcap_{j\geq0}\operatorname{Dom}\delta^j,
+ \qquad
+ p_k(a)=\sum_{j=0}^k\|\delta^j a\|.
+\]
+Repeated differentiation identifies this intersection with smoothness of the
+orbit. Closedness of $\delta$, applied successively to a Cauchy sequence of
+derivatives, proves completeness. The iterated Leibniz rule proves
+continuous multiplication, and adjoint is continuous. Thus it is a dense
+Fr\'echet star algebra. The estimate $p_k(\delta a)\leq p_{k+1}(a)$ makes
+$\delta$ continuous on it.
+
+The class of $\delta$ in
+$HH^1_{\mathrm{cont}}(A_\sigma^\infty,A_\sigma^\infty)$ is nonzero. An inner
+implementer would be a bounded element of $A_{\mathrm{BC}}$, contrary to the
+prime-power estimate in Proposition~\ref{v4-arith:traces:gauge-derivations}.
+Here the algebraic family is $\lambda_p=i\log p$. Its infinite support also
+explains why it does not extend continuously from the gauge-smooth topology.
+
+In the occupation representation it has an unbounded spatial implementer.
+Normal terms preserve $\operatorname{Dom}H$, since their nonzero action
+changes the logarithmic weight by the constant $\log(r/s)$. On that domain,
+\[
+ [H,\mu_re(\gamma)\mu_s^*]
+    =\log(r/s)\mu_re(\gamma)\mu_s^*,\qquad
+ \delta=i[H,-].
+\]
+Truncation in the weighted norm proves the finite-support core assertion for
+$H$ and justifies passage from basis vectors to its maximal domain. The
+scalar commutant computed above and the bicommutant theorem give
+$A_{\mathrm{BC}}''=B(\mathcal L)$ in this representation. A GNS
+representation from a specified KMS state is another carrier and need not
+have this weak closure.
+
+\subsection{Logarithmic dilation and an actual circle quotient}
+
+Logarithmic coordinates give a useful comparison of continuous actions. The
+map
+\[
+ Uf(t)=f(e^t):L^2(\mathbb R_{>0},dr/r)
+           \xrightarrow{\sim}L^2(\mathbb R,dt)
+\]
+is unitary. For $D_af(r)=f(e^{-a}r)$, substitution gives
+$UD_aU^{-1}F(t)=F(t-a)$.
+
+Fix $L>0$. The quotient group $\mathbb R_{>0}/e^{L\mathbb Z}$ instead
+becomes $\mathbb R/L\mathbb Z$. With measure $dt$ on $[0,L)$, its
+orthonormal Fourier basis is
+\[
+ L^{-1/2}e^{2\pi int/L},\qquad n\in\mathbb Z.
+\]
+Inverse translation has eigenvalue $e^{-2\pi ina/L}$ on this basis. The
+logarithm gives the quotient isomorphism, and Fourier orthogonality proves
+the normalization.
+
+This circle Hilbert space is not a nonzero periodic subspace of $L^2(\mathbb
+R,dt)$. The squared norm of a periodic function is the sum of its identical
+integrals over disjoint periods. It is finite only when the function is zero
+almost everywhere.
+
+A period $L$ for Bost--Connes time would require $L\log n\in2\pi\mathbb Z$
+for every surviving shift. It cannot hold for both $n=2$ and $n=3$.
+Otherwise $\log2/\log3$ would be rational, implying $2^a=3^b$ for positive
+integers $a,b$, contrary to unique factorization. A circle KMS comparison
+therefore needs its actual quotient or representation, periodic dynamics,
+state and intertwiner. The logarithmic coordinate alone does not construct
+these data.
+
+\begin{question}[The arithmetic Hochschild comparison]
+\label{v4-arith:traces:bc-comparison}
+Specify an arithmetic category or algebra, its coefficient ring, trace
+bimodule, grading, topology and completion. Construct its comparison with
+the Bost--Connes normal algebra or one of the stated smooth algebras.
+Determine which gauge classes survive and whether the arithmetic theory has
+an integral degree-one carrier generated by logarithmic prime data. An
+integral lattice, a degree bound, or a map to a Witt cotangent complex
+requires its own construction.
+\end{question}
+
+For a Hilbert realization, fix a pre-Hilbert space $L_{\mathrm{alg}}$ and an
+arithmetic trace complex $(C_\bullet,b)$. Give a cycle map
+$J:L_{\mathrm{alg}}\to Z_d(C_\bullet)$ and a positive semidefinite form $q$
+on $H_d(C_\bullet)$. If
+\[
+ q([Jv],[Jw])=\langle v,w\rangle,
+\]
+then $v\mapsto[Jv]$ induces an isometry from the completion of
+$L_{\mathrm{alg}}$ into the completion of $H_d(C_\bullet)/\ker q$. Density
+is needed for surjectivity onto a proposed sector. The action on homology
+and its intertwining with $J$ are additional data. The occupation
+representation by itself does not supply them.
+
+\section{Explicit positive local pairings}
+
+A bilinear evaluation becomes a Hermitian form only after specifying an
+antilinear map in one slot. We use inner products linear in the first
+variable throughout this section. The following models calculate the map,
+its normalization, and its domain.
+
+\subsection{The Segal form and an archimedean line}
+
+Let $\mathscr F_{\mathrm{alg}}$ be the Heisenberg vacuum module generated by
+$\alpha_{-n}$, $n\geq1$, with
+\[
+ [\alpha_m,\alpha_n]=m\delta_{m+n,0},\qquad
+ \alpha_n\Omega=0\quad(n>0).
+\]
+Normalize $H_\infty(\Omega,\Omega)=1$ and impose
+$\alpha_{-n}^\dagger=\alpha_n$. For a finite occupation array $\mathbf
+r=(r_1,r_2,\ldots)$, put $v_{\mathbf r}=\prod_n\alpha_{-n}^{r_n}\Omega$.
+Commuting each annihilation operator to the right gives
+\begin{equation}
+\label{v4-arith:traces:segal-gram}
+ H_\infty(v_{\mathbf r},v_{\mathbf s})
+  =\delta_{\mathbf r,\mathbf s}\prod_n n^{r_n}r_n!.
+\end{equation}
+
+The factorial counts repeated contractions of the same mode. The factor $n$
+comes from its commutator. Equivalently, for two monomials of lengths $k,l$,
+\[
+ H_\infty(\alpha_{-n_1}\cdots\alpha_{-n_k}\Omega,
+          \alpha_{-m_1}\cdots\alpha_{-m_l}\Omega)
+  =\delta_{kl}\sum_{\pi\in S_k}
+                   \prod_{i=1}^k n_i\delta_{n_i,m_{\pi(i)}}.
+\]
+This defines a positive form and its Segal Hilbert completion.
+
+Let $J_\infty$ conjugate coefficients in the monomial basis. The Gram matrix
+is real, so $J_\infty$ is an isometric antilinear involution. The bilinear
+form
+\[
+ B_\infty(v,w)=H_\infty(v,J_\infty w)
+\]
+is bounded by $\|v\|\|w\|$, extends to the completion, and satisfies
+$B_\infty(v,J_\infty w)=H_\infty(v,w)$. The complex-linear identity cannot
+replace $J_\infty$: on the vacuum, $B_\infty(\Omega,i\Omega)=i$ while
+$H_\infty(\Omega,i\Omega)=-i$.
+
+There is also an explicit archimedean comparison of lines. On $\mathbb
+R^\times$ use measure $da/|a|$ and set
+\[
+ W_0(a)=|a|^{1/2}K_0(2\pi|a|),\qquad
+ K_0(x)=\int_0^\infty e^{-x\cosh u}\,du\quad(x>0).
+\]
+This is the parameter-zero spherical Whittaker function in the chosen
+normalization. Its squared norm is $\pi/4$. To see the constant, Tonelli
+gives
+\[
+ \int_0^\infty K_0(x)^2\,dx
+  =\int_0^\infty\int_0^\infty
+                \frac{du\,dv}{\cosh u+\cosh v}.
+\]
+
+Put $a=(u+v)/2$ and $b=(u-v)/2$. The Jacobian is two, the region is
+$a\geq0$, $|b|\leq a$, and the denominator is $2\cosh a\cosh b$. With
+$F(a)=\int_0^a\operatorname{sech}b\,db$, the integral is
+\[
+ 2\int_0^\infty F'(a)F(a)\,da
+   =F(\infty)^2=\frac{\pi^2}{4}.
+\]
+
+Scaling $x=2\pi|a|$ and including both signs gives $\|W_0\|^2=\pi/4$.
+
+Hence
+\[
+ \mathbb C\Omega\longrightarrow\mathbb C W_0,\qquad
+ z\Omega\longmapsto\frac{2z}{\sqrt\pi}W_0
+\]
+is an isometry. Extending it to a full Whittaker or arithmetic
+representation requires an intertwiner for the specified actions. A line
+isometry does not determine one.
+
+\subsection{Weighted occupations and two isometries}
+
+Fix a prime $p$, and define
+\[
+ H_{\mathrm{occ},p}=\ell^2(\mathbb N_0,p^{-j}),\qquad
+ H_{\mathrm{occ}}(v,w)=\sum_{j\geq0}p^{-j}v_j\overline{w_j}.
+\]
+Its coordinate vector $\delta_j$ has squared norm $p^{-j}$. The raw shift
+$R\delta_j=\delta_{j+1}$ has norm $p^{-1/2}$, and $\sqrt p\,R$ is an
+isometry. Coordinate conjugation $J_{\mathrm{occ}}$ gives the continuous
+bilinear form
+\[
+ B_{\mathrm{occ}}(v,w)=\sum_{j\geq0}p^{-j}v_jw_j,\qquad
+ B_{\mathrm{occ}}(v,J_{\mathrm{occ}}w)=H_{\mathrm{occ}}(v,w).
+\]
+Cauchy--Schwarz proves absolute convergence and continuity.
+
+Let $E_{ij}$ be the matrix units on $\ell^2(\mathbb N_0)$. Choose a
+multiplicative Haar measure on $\mathbb Q_p^\times$ and put
+$m_p=\operatorname{vol}(\mathbb Z_p^\times)>0$. There are isometries
+\begin{equation}
+\label{v4-arith:traces:local-isometries}
+ D\delta_j=p^{-j/2}E_{jj},\qquad
+ T\delta_j=p^{-j/2}m_p^{-1/2}\mathbf1_{p^j\mathbb Z_p^\times}.
+\end{equation}
+Their ranges are the diagonal Hilbert--Schmidt subspace and the closed
+radial-function subspace supported on nonnegative valuations, respectively.
+
+Indeed matrix units are Hilbert--Schmidt orthonormal. The disjoint shells
+$p^j\mathbb Z_p^\times$ each have multiplicative measure $m_p$. Both
+displayed families therefore have Gram matrix $p^{-j}\delta_{jk}$. Finite
+spans are dense in the stated ranges, proving the isometric extensions.
+
+Their basis vectors are fixed by adjunction or function conjugation. Thus
+\[
+ H_{\mathrm{occ}}(v,w)
+  =\operatorname{Tr}(Dv(Dw)^*)
+  =\int_{\mathbb Q_p^\times}Tv(a)\overline{Tw(a)}\,d^\times a.
+\]
+Also $B_{\mathrm{occ}}(v,w)=\operatorname{Tr}(DvDw)$.
+
+The diagonal Hilbert--Schmidt range is not invariant under left
+multiplication by the shift. For example, $VE_{jj}=E_{j+1,j}$. Consequently
+this isometry does not identify the whole prime GNS representation. Nor can
+its dual basis be realized as $\mu_{p^j}^*\delta_1$ in the occupation
+representation: those vectors vanish for $j>0$.
+
+\subsection{The spherical norm depends on the representation}
+
+Fix a normalized unramified tempered representation $\pi_p$ of $GL_2(\mathbb
+Q_p)$, with Satake parameters $|\alpha|=|\beta|=1$ and an additive character
+of conductor $\mathbb Z_p$. Its spherical Whittaker function normalized by
+$W(1)=1$ has shell values
+\[
+ W(\operatorname{diag}(p^j,1))
+   =p^{-j/2}h_j(\alpha,\beta),\qquad
+ h_j(\alpha,\beta)=\sum_{r=0}^j\alpha^{j-r}\beta^r
+ \quad(j\geq0),
+\]
+and vanishes at negative valuations. We use this standard spherical
+Whittaker formula with the stated normalization.
+
+\begin{proposition}[The full spherical norm]
+\label{v4-arith:traces:spherical-norm}
+For $\operatorname{Re}s>0$,
+\[
+ Z_p(s)=\int_{\mathbb Q_p^\times}|W(a)|^2|a|^{s-1}\,d^\times a
+   =m_p\frac{L_p(s,\pi_p\times\widetilde\pi_p)}{\zeta_p(2s)}.
+\]
+In particular,
+\[
+ C_p=\|W\|^2
+   =m_p(1+p^{-1})L_p(1,\operatorname{Ad}\pi_p)>0.
+\]
+\end{proposition}
+\begin{proof}
+Shell integration gives $Z_p(s)=m_p\sum_{j\geq0}|h_j|^2p^{-js}$. The bound
+$|h_j|\leq j+1$ proves absolute convergence on the indicated half-plane. Put
+$r=\alpha/\beta$. For $|x|<1$, geometric summation gives
+\[
+ \sum_{j\geq0}|h_j|^2x^j
+   =\frac{1+x}{(1-x)(1-rx)(1-r^{-1}x)}.
+\]
+For $r\ne1$, expand $|h_j|^2=(2-r^{j+1}-r^{-j-1})/|1-r|^2$ and sum its three
+geometric series. For $r=1$, use $\sum_{j\geq0}(j+1)^2x^j=(1+x)/(1-x)^3$.
+
+The Rankin--Selberg denominator is $(1-x)^2(1-rx)(1-r^{-1}x)$.
+Multiplication by $1-x^2$ proves the formula with $x=p^{-s}$. Since
+\[
+ L_p(s,\pi_p\times\widetilde\pi_p)
+  =\zeta_p(s)L_p(s,\operatorname{Ad}\pi_p),
+\]
+evaluation at one gives $C_p$. It is a positive norm, and its denominator
+factors are nonzero because $p^{-1}<1$.
+\end{proof}
+
+For $d^\times a=da/|a|$ with additive unit volume, $m_p=1-p^{-1}$ and
+$C_p=(1-p^{-2})L_p(1,\operatorname{Ad}\pi_p)$. In contrast, the compact
+subgroup volume for the invariant matrix measure $|\det g|^{-2}\prod
+dg_{ij}$ is
+\[
+ \operatorname{vol}(GL_2(\mathbb Z_p))
+    =\frac{(p^2-1)(p^2-p)}{p^4}
+    =(1-p^{-1})(1-p^{-2}).
+\]
+Reduction modulo $p$ proves this formula by counting the two independent
+columns. It is not the Whittaker norm, which depends on $\alpha/\beta$.
+Inserting an additional $|a|^{-1}$ into the norm integral changes the
+question to $Z_p(0)$. For $\alpha=\beta=1$, the resulting shell series is
+$m_p\sum_{j\geq0}(j+1)^2$ and diverges.
+
+The radial isometry of \eqref{v4-arith:traces:local-isometries} identifies
+\[
+ W=T\left(\sqrt{m_p}\sum_{j\geq0}h_j(\alpha,\beta)\delta_j\right).
+\]
+This vector converges in $H_{\mathrm{occ},p}$ and has squared norm $C_p$. It
+is generally different from $T\delta_0$. Unit normalization uses
+$W/\sqrt{C_p}$. Dividing a pairing by the adjoint factor alone gives
+spherical squared norm $m_p(1+p^{-1})$, rather than one.
+
+\section{The prime Gibbs state and its modular conjugation}
+
+The full prime cyclic space can also be constructed explicitly. Let
+$K_0=\ell^2(\mathbb N_0)$, $Ve_j=e_{j+1}$, and $H_pe_j=j\log p\,e_j$, with
+maximal domain $\{\xi:\sum j^2|\xi_j|^2<\infty\}$. For $\beta>0$, put
+\[
+ q=p^{-\beta},\qquad
+ r_j=(1-q)q^j,\qquad
+ \rho e_j=r_je_j.
+\]
+The positive injective operator $\rho$ has trace one. Its state on the
+Toeplitz algebra $\mathcal T=C^*(V)$ is
+\[
+ \varphi_{p,\beta}(a)=\operatorname{Tr}(\rho a),\qquad
+ \varphi_{p,\beta}(V^mV^{*n})=\delta_{mn}q^m.
+\]
+The physical time is $\alpha_t(a)=e^{itH_p}ae^{-itH_p}$, with
+$\alpha_t(V)=p^{it}V$.
+
+This is the unique $\beta$-KMS state on $(\mathcal T,\alpha)$. On analytic
+monomials, $\rho a=\alpha_{i\beta}(a)\rho$, so the KMS identity follows by
+trace cyclicity. Conversely that identity with second entry one kills each
+monomial of nonzero degree. With first entry $V^m$ and second entry
+$V^{*m}$, it gives the value $q^m$. Density of the analytic monomials proves
+uniqueness.
+
+\begin{proposition}[The Hilbert--Schmidt GNS model]
+\label{v4-arith:traces:prime-gns}
+The GNS space and representation are
+\[
+ \mathcal H_{p,\beta}=\operatorname{HS}(K_0),\qquad
+ \pi(a)X=aX,\qquad
+ \Omega=\rho^{1/2},
+\]
+with inner product $\langle X,Y\rangle=\operatorname{Tr}(XY^*)$. The GNS map
+is $[a]\mapsto a\rho^{1/2}$. The vector $\Omega$ is cyclic and separating
+for left $B(K_0)=\pi(\mathcal T)''$.
+\end{proposition}
+\begin{proof}
+The map is isometric because its inner product is $\operatorname{Tr}(\rho
+b^*a)=\varphi_{p,\beta}(b^*a)$. The matrix units $E_{ij}=V^i(1-VV^*)V^{*j}$
+belong to $\mathcal T$, and $E_{ij}\rho^{1/2}=\sqrt{r_j}E_{ij}$. They span a
+dense subspace of $\operatorname{HS}(K_0)$. Finite matrix corners strongly
+approximate bounded operators, proving the weak-closure assertion. If
+$a\Omega=0$, every column of $a$ vanishes because $r_j>0$ for all $j$. Thus
+$\Omega$ is separating.
+\end{proof}
+
+Define the antilinear operator $S_0(a\Omega)=a^*\Omega$ on $\mathcal
+T\Omega$.
+
+\begin{proposition}[Closed modular operators and their domains]
+\label{v4-arith:traces:prime-modular}
+Set $JX=X^*$. For $X=\sum x_{ij}E_{ij}$, the positive modular operator
+satisfies
+\[
+ \Delta E_{ij}=q^{i-j}E_{ij},\qquad
+ \operatorname{Dom}\Delta^a
+  =\left\{X:\sum_{i,j}q^{2a(i-j)}|x_{ij}|^2<\infty\right\}
+       \quad(a\in\mathbb R).
+\]
+One has $\overline{S_0}=J\Delta^{1/2}$ and
+\[
+ \Delta^{it}X=e^{-i\beta tH_p}Xe^{i\beta tH_p}.
+\]
+The modular action on left multiplication is physical time $\alpha_{-\beta
+t}$. Both $\Delta$ and $\Delta^{-1}$ are unbounded.
+\end{proposition}
+\begin{proof}
+On matrix units, $S_0E_{ij}=q^{(i-j)/2}E_{ji}$ antilinearly. Truncation of a
+convergent weighted double sum makes finite matrix sums graph-dense in the
+displayed domain for $a=1/2$. For bounded $a$, the vector $a\Omega$ belongs
+to that domain and the formula gives $a^*\Omega$. It follows that the
+closure is precisely $J\Delta^{1/2}$. Diagonal spectral calculus proves all
+powers and the unitary group. Its eigenvalues range through $q^{\mathbb Z}$,
+proving both unboundedness assertions.
+\end{proof}
+
+The logarithm has eigenvalue $(i-j)\log q$ on $E_{ij}$ and maximal domain
+$\{X:\sum |(i-j)\log q|^2|x_{ij}|^2<\infty\}$. The conjugation acts on
+prime-shift vectors by
+\[
+ J(V^k\Omega)=p^{\beta k/2}V^{*k}\Omega,\qquad
+ J(V^{*k}\Omega)=p^{-\beta k/2}V^k\Omega.
+\]
+Expand $V^k\Omega=\sum_j\sqrt{r_j}E_{j+k,j}$ and use $r_{j+k}=q^kr_j$ to
+verify the factors. In particular $\|V^k\Omega\|=1$ and
+$\|V^{*k}\Omega\|=q^{k/2}$. The algebra star operation alone is not this
+antiunitary on the cyclic space.
+
+For left and right multiplication, $JL_aJ=R_{a^*}$. The continuous bilinear
+form $B(X,Z)=\operatorname{Tr}(XZ)$ satisfies
+\[
+ B(X,JY)=\operatorname{Tr}(XY^*)=\langle X,Y\rangle.
+\]
+The product of two Hilbert--Schmidt operators is trace class and
+$|\operatorname{Tr}(XZ)|\leq\|X\|_2\|Z\|_2$, which proves the asserted
+continuity.
+
+\begin{proposition}[Comparison with a specified prime cyclic space]
+\label{v4-arith:traces:prime-cyclic-comparison}
+Let $(\mathcal A,\alpha,\psi_\beta)$ be a dynamical $C^*$-algebra with a
+$\beta$-KMS state and an isometry $\mu_p$ satisfying
+$\alpha_t(\mu_p)=p^{it}\mu_p$. The map $\iota_p:\mathcal T\to\mathcal A$
+sending $V$ to $\mu_p$ induces a unitary
+\[
+ U_p:\operatorname{HS}(K_0)
+   \longrightarrow
+   \overline{\pi_{\psi_\beta}(C^*(\mu_p))\Omega_{\psi_\beta}},
+ \qquad
+ a\rho^{1/2}\longmapsto
+ \pi_{\psi_\beta}(\iota_p(a))\Omega_{\psi_\beta}.
+\]
+It preserves the prime algebra action, cyclic vector, and closed modular
+operators of this restricted cyclic representation, including when
+$\beta=1$.
+\end{proposition}
+\begin{proof}
+The pulled-back state is a KMS state on $\mathcal T$, so uniqueness
+identifies it with $\varphi_{p,\beta}$. The displayed map is therefore
+isometric on $\mathcal T\rho^{1/2}$ and has dense image in the specified
+cyclic subspace. It extends to a unitary. It intertwines multiplication and
+$a\Omega\mapsto a^*\Omega$ on the core, hence their closures and polar
+decompositions.
+\end{proof}
+
+The target is the prime-generated cyclic subspace, not the whole global GNS
+space. Its identification says nothing yet about additional phase operators
+or an arithmetic automorphic placement. For finitely many primes, tensoring
+the densities and matrix formulas gives their finite Gibbs and GNS products
+for every $\beta>0$. The global occupation heat trace still diverges at
+$\beta=1$, as \eqref{v4-arith:traces:gibbs-zeta} shows.
+
+\section{Restricted tensor pairings and arithmetic placement}
+
+Choose complex Hilbert spaces $(H_v,e_v)$ indexed by the places, with unit
+reference vectors. Suppose each has a conjugation $J_v$, with $J_ve_v=e_v$,
+and a bilinear form $B_v(x,J_vy)=H_v(x,y)$. The algebraic restricted tensor
+consists of elementary tensors equal to $e_v$ outside a finite set.
+
+\begin{proposition}[Assembly of normalized forms]
+\label{v4-arith:traces:pairing-assembly}
+There are forms
+\[
+ H(\otimes'_v x_v,\otimes'_v y_v)
+     =\prod_v H_v(x_v,y_v),\qquad
+ B(\otimes'_v x_v,\otimes'_v y_v)
+     =\prod_v B_v(x_v,y_v),
+\]
+and a conjugation $J=\otimes'_v J_v$. They extend to the Hilbert restricted
+tensor product, where $H(x,y)=B(x,Jy)$. Its reference vector has squared
+norm one.
+\end{proposition}
+\begin{proof}
+At each finite set of places, use the Hilbert tensor form. Enlarging the set
+tensors with unit reference vectors, so its insertion maps are isometries.
+The directed union is a pre-Hilbert space. The local conjugations give
+compatible antilinear isometries, whose square is the identity. They extend
+to a conjugation on its completion.
+
+Define $B(x,y)=H(x,Jy)$ there. It is bounded and agrees with the displayed
+finite products. All omitted reference factors equal one.
+\end{proof}
+
+Raw local norms cannot be multiplied without addressing convergence. For the
+invariant matrix measure on $GL_n(\mathbb Q_p)$,
+\[
+ \operatorname{vol}(GL_n(\mathbb Z_p))
+     =\prod_{j=1}^n(1-p^{-j}).
+\]
+Counting independent columns modulo $p$ proves this identity. The product of
+its $j=1$ factors tends to zero. The factors with $j\geq2$ multiply to
+$\prod_{j=2}^n\zeta(j)^{-1}$.
+
+A Tamagawa measure inserts its convergence factors, global residue
+normalization, and rational-character quotient. It is not the raw product of
+these volumes. Nor does the volume of an automorphic quotient determine the
+Petersson norm of a specified cusp form.
+
+For example, with the Tamagawa measure disintegrated along $|\det|$ using
+$dt/t$, the volume of
+\[
+ GL_2(\mathbb Q)\backslash GL_2(\mathbb A)^1,\qquad
+ GL_2(\mathbb A)^1=\ker|\det|_{\mathbb A},
+\]
+is one. This is the classical Tamagawa number in its rational-character
+normalization, as in Lai, Section 1.7 and Theorem 7.1.
+
+In that formula the split diagonal torus has Tamagawa number one.
+Restricting its character $(a,b)$ to the scalar torus and the derived
+diagonal torus gives $(a+b,a-b)$, a sublattice of index two. The central
+characters trivial on their intersection $\mu_2$ are also a sublattice of
+index two. The two index factors cancel, giving $\tau(GL_2)=\tau(\mathbb
+G_m^2)=1$.
+
+This global volume calculation does not normalize the vector $W$ or an
+individual automorphic form.
+
+The local spherical factors are likewise representation dependent. If a
+specified global adjoint $L$-function continues holomorphically to one with
+$c_\pi=L(1,\operatorname{Ad}\pi)\ne0$, then $c_\pi^{-1}B$ is a well-defined
+rescaled pairing. Rescaling both sides of a pairing identity by that same
+scalar preserves the identity. It does not prove ordinary convergence of the
+local product at one.
+
+For tempered unramified parameters and $\sigma>1$, the adjoint logarithmic
+series has the bound
+\[
+ \sum_p\sum_{j\geq1}\frac{3p^{-j\sigma}}j
+   \leq\frac{3}{1-2^{-\sigma}}\sum_p p^{-\sigma}<\infty.
+\]
+This gives an initial half-plane of absolute convergence. Continuation and
+nonvanishing at one are additional analytic inputs for the representation in
+question. Finitely many ramified factors require their own normalization and
+pole conditions.
+
+\begin{hypothesis}[Arithmetic pairing comparison]
+\label{v4-arith:traces:pairing-hypothesis}
+Fix an arithmetic state space $V$, a dual coefficient space $V^!$, a
+bilinear evaluation $B^{\mathrm{Ar}}:V\otimes V^!\to\mathbb C$, and an
+antilinear map $\sigma:V\to V^!$. Specify an injective placement $\iota$ of
+a common dense domain into an automorphic Hilbert space with fixed central
+character and fixed Haar normalization. At each place require maps on both
+pairing carriers, preserving the stated actions. They must carry the
+evaluation to a chosen local model and $\sigma$ to its conjugation.
+
+Require the maps to preserve the reference vectors at almost all places and
+to identify the placed local Petersson form with the model Hermitian form.
+Specify the resulting adelic factorization with a common global scalar.
+Finally require continuous extension on the stated completion, or a
+specified regularized extension compatible with those maps. Every included
+ramified, residual, or continuous sector requires its own local maps and
+normalization.
+\end{hypothesis}
+
+\begin{proposition}[The conditional Koszul--Petersson identity]
+\label{v4-arith:traces:arithmetic-pairing}
+Under Hypothesis~\ref{v4-arith:traces:pairing-hypothesis}, on its specified
+domain,
+\[
+ \langle\iota v,\iota w\rangle_{\mathrm{Pet}}
+      =B^{\mathrm{Ar}}(v,\sigma w).
+\]
+If the placement is into an actual $L^2$ space, this transported Hermitian
+form is positive definite.
+\end{proposition}
+\begin{proof}
+For elementary restricted tensors, the local model identity
+$H_v(x,y)=B_v(x,J_vy)$ gives equality at each place. The reference
+normalization and common global scalar make their finite products equal. The
+stipulated extension carries the equality to its stated domain. If $v\ne0$,
+injectivity gives $\|\iota v\|^2>0$, proving positivity.
+\end{proof}
+
+The holomorphic sector supplies concrete local examples. Let
+$f=\sum_{n\geq1}a_nq^n$ be a normalized holomorphic cuspidal newform of
+weight $k\geq2$, level $N$ and nebentypus $\chi$. At $p\nmid N$, write
+\[
+ X^2-a_pX+\chi(p)p^{k-1}
+   =(X-\alpha_p^{\mathrm{alg}})(X-\beta_p^{\mathrm{alg}}).
+\]
+Deligne's Theorem 8.2 in \emph{La conjecture de Weil I} gives
+$|\alpha_p^{\mathrm{alg}}|=|\beta_p^{\mathrm{alg}}| =p^{(k-1)/2}$. The
+unitary parameters $\alpha_p=p^{-(k-1)/2}\alpha_p^{\mathrm{alg}}$ and
+$\beta_p=p^{-(k-1)/2}\beta_p^{\mathrm{alg}}$ therefore satisfy the
+hypotheses of the spherical norm calculation.
+
+For a cuspidal weight-one eigenform, Deligne--Serre's Theorem 4.1 constructs
+the associated continuous complex Galois representation. Its finite-image
+Frobenius eigenvalues are roots of unity, giving the same unitary conclusion
+at unramified primes. This is their Corollary 4.2. The archimedean
+weight-one representation is a limit of discrete series. It is not a
+discrete-series representation of weight at least two.
+
+These theorems identify the unramified local parameters. They do not supply
+the arithmetic placement, ramified pairing maps or adelic extension in
+Hypothesis~\ref{v4-arith:traces:pairing-hypothesis}. Once those data are
+given on a selected holomorphic sector, the preceding proposition proves its
+pairing identity. The same implication applies to a selected Maass sector
+with its own local models and maps.
+
+The positivity implication itself needs no temperedness assumption.
+Temperedness enters the separate local spherical model above. Using that
+model for a Maass sector requires the relevant local bounds as well as the
+arithmetic maps. A local exponent estimate is neither such a map nor an
+adelic summability statement. For example $\sum_p p^{-25/64}$ diverges, so
+this power cannot be an absolutely summable prime error bound.
+
+The hypothesis preserves the original comparison problem even on a
+normalized cuspidal core. An adjunction alone does not identify its counit
+target with $\mathbb C$, its dual carrier with Bost--Connes operators, or
+its conjugation with an automorphic one. If a placement $U$ intertwines the
+model conjugation with function conjugation on a dense domain, continuity
+extends that equality to the completion. In a fixed central-character space,
+function conjugation naturally lands in the conjugate-character space, which
+must be included in the specified target.
+
+Positive forms also do not by themselves make an action unitary. One must
+prove the adjoint identities for its operators on invariant domains and
+establish any closures used by the representation. The bounded local
+isometries above provide the pairings and lines they state. The arithmetic
+intertwiners remain to be constructed.
+
+\begin{proposition}[Two dense realizations of one pairing]
+\label{v4-arith:traces:dense-pairing}
+Let $E$ be a complex vector space with a positive semidefinite Hermitian
+form $q$. Suppose linear maps $I:E\to H_1$ and $J:E\to H_2$ have dense
+images in Hilbert spaces and satisfy
+\[
+ q(v,w)=\langle Iv,Iw\rangle_1=\langle Jv,Jw\rangle_2.
+\]
+Then $Iv\mapsto Jv$ extends uniquely to a unitary $H_1\to H_2$.
+\end{proposition}
+\begin{proof}
+Both kernels are $\{v:q(v,v)=0\}$. The proposed map is consequently well
+defined and isometric on the dense image of $I$. Extend by continuity. An
+isometry from a complete space has closed range, and this range contains the
+dense image of $J$. It is therefore all of $H_2$. Density proves uniqueness.
+\end{proof}
+
+For a Petersson--chiral comparison, one must construct $E,B,\sigma,I,J$ with
+$q(v,w)=B(v,\sigma w)$ on the stated automorphic and chiral carriers. An
+Arnold or Knizhnik--Zamolodchikov connection further requires bundles over
+an identified base and a map preserving their connections. A Hilbert-space
+isometry does not by itself compare those connections.
+
+\subsection{Meromorphic comparison}
+
+Suppose two scalar pairings of specified meromorphic families of vectors
+extend to meromorphic functions on a connected parameter domain. If the
+actual comparison identifies them on a nonempty open subset, they agree
+everywhere meromorphically. Locally clear their poles and apply the identity
+theorem. Their Laurent coefficients, pole orders and residues then agree.
+
+This implication requires both families and the comparison. The local
+spherical function $Z_p(s)=m_pL_p(s,\pi_p\times\widetilde\pi_p)/\zeta_p(2s)$
+uses a rank-four Rankin--Selberg factor. It is not the rank-two standard
+factor $(1-\alpha p^{-s})^{-1}(1-\beta p^{-s})^{-1}$. It does not imply a
+universal assertion that every arithmetic pairing has only two Tate boundary
+poles. A meromorphic line bundle alone has no pole divisor: that divisor
+belongs to a specified meromorphic section in its local trivializations.
+
+\section{Instanton sums, Fock traces, and their comparison}
+
+An equivariant instanton integral and a trace on symmetric powers weight
+partitions differently. Their distinction is visible before taking an
+arithmetic product.
+
+Let $\lambda=(\lambda_1\geq\lambda_2\geq\cdots)$ be a partition, with
+$\lambda_i=0$ beyond its last row. For a box $s=(i,j)$, define
+\[
+ A_\lambda(s)=\lambda_i-j,\qquad
+ L_\lambda(s)=\lambda'_j-i.
+\]
+For a box outside the diagram these integers can be negative. In particular
+the leg of a box in one partition, measured against a different partition,
+is not necessarily nonnegative.
+
+For a rank $r$ framing, let
+$\boldsymbol\lambda=(\lambda^{(1)},\ldots,\lambda^{(r)})$,
+$|\boldsymbol\lambda|=\sum_\alpha|\lambda^{(\alpha)}|$, and choose
+equivariant parameters $a_1,\ldots,a_r,\epsilon_1,\epsilon_2$. Write
+$\epsilon_+=\epsilon_1+\epsilon_2$ and
+\[
+ E_{\alpha\beta}(s)
+  =a_\alpha-a_\beta-\epsilon_1L_{\lambda^{(\beta)}}(s)
+                  +\epsilon_2(A_{\lambda^{(\alpha)}}(s)+1).
+\]
+The pure vector-multiplet fixed-point sum is
+\begin{equation}
+\label{v4-arith:traces:instanton}
+ Z_{\mathrm{inst}}
+   =\sum_{\boldsymbol\lambda}q^{|\boldsymbol\lambda|}
+     \prod_{\alpha,\beta=1}^r
+     \prod_{s\in\lambda^{(\alpha)}}
+       \frac1{E_{\alpha\beta}(s)
+                    (\epsilon_+-E_{\alpha\beta}(s))}.
+\end{equation}
+
+This is a formal series in the instanton-counting parameter $q$, with
+rational equivariant coefficients. Specialization requires its denominators
+to be defined. In the pure-gauge scale convention of Nekrasov--Okounkov,
+$q=\Lambda^{2r}$. Keeping $q$ explicit avoids confusing that convention with
+a change in rank. Matter multiplets contribute additional fixed-point
+factors.
+
+The localization construction uses framed sheaves on $\mathbb C^2$, or its
+projective compactification with a framing at infinity. This is the
+equivariant instanton sum of Nekrasov and Okounkov. For the signed arm
+and leg convention, see Alday, Gaiotto and Tachikawa, Appendix B.1.
+
+\begin{proposition}[The fixed-parameter large-equivariant limit]
+\label{v4-arith:traces:instanton-limit}
+For $r=1$, the one-box coefficient is $1/(\epsilon_1\epsilon_2)$. If
+$\epsilon_1\ne0$ and $q$ are fixed while $\epsilon_2\to\infty$, the series
+\eqref{v4-arith:traces:instanton} tends coefficientwise in $q$ to $1$.
+\end{proposition}
+\begin{proof}
+For the single box, $A=L=0$ and $E=\epsilon_2$, $\epsilon_+-E=\epsilon_1$.
+For a general box in a single partition,
+\[
+ E=-\epsilon_1L+\epsilon_2(A+1),\qquad
+ \epsilon_+-E=\epsilon_1(L+1)-\epsilon_2A.
+\]
+Here $A,L\geq0$. The first factor has nonzero leading coefficient in
+$\epsilon_2$. If $A>0$, the second also grows linearly. If $A=0$, it is the
+nonzero constant $\epsilon_1(L+1)$.
+
+Every nonempty partition therefore contributes a coefficient tending to
+zero. There are only finitely many partitions of each fixed size, so their
+sum tends to zero as well.
+\end{proof}
+
+Thus retaining a term $1+q$ requires a different scaling or normalization.
+Such a scaling must be specified and tested on all charges. Even an actual
+two-term local series would not be the bosonic Euler factor $(1-q)^{-1}$.
+
+\subsection{The hook-weighted specialization}
+
+On the slice $\epsilon_1=-\epsilon_2=\hbar\ne0$, the rank-one denominator of
+each box is $-\hbar^2h_\lambda(s)^2$, where
+$h_\lambda(s)=A_\lambda(s)+L_\lambda(s)+1$. After setting $x=q/(-\hbar^2)$,
+the normalized sum is
+\[
+ Z_{\mathrm{hook}}(x)
+    =\sum_\lambda
+        \frac{x^{|\lambda|}}{\prod_{s\in\lambda}h_\lambda(s)^2}.
+\]
+
+The hook-length formula for the irreducible $S_n$-representation indexed by
+$\lambda$ says $f^\lambda=n!/\prod_s h_\lambda(s)$. Decomposing the regular
+representation of $S_n$ gives $\sum_{\lambda\vdash n}(f^\lambda)^2=n!$.
+Consequently
+\[
+ \sum_{\lambda\vdash n}
+          \prod_{s\in\lambda}h_\lambda(s)^{-2}
+     =\frac1{n!},\qquad
+ Z_{\mathrm{hook}}(x)=e^x.
+\]
+
+This is the Plancherel specialization in Nekrasov--Okounkov, Section 3.2.
+For $n=2$, the two diagrams each contribute $1/4$, so the coefficient is
+$1/2$, already different from the coefficient one of $(1-x)^{-1}$.
+
+Substituting $x=p^{-s}$ and multiplying over primes gives $\exp(\sum_p
+p^{-s})$ when $\operatorname{Re}s>1$. It retains the first prime-power term
+of the logarithm of the Euler product. The higher prime powers are different
+coefficients.
+
+\subsection{The all-charge Fock trace}
+
+Let $V$ be finite-dimensional over $\mathbb C$, and let
+$T\in\operatorname{End}(V)$. Then
+\begin{equation}
+\label{v4-arith:traces:fock-determinant}
+ \sum_{n\geq0}q^n\operatorname{Tr}(\operatorname{Sym}^nT)
+    =\det(1-qT)^{-1}
+\end{equation}
+as a formal series. Triangularize $T$. On monomials in a triangular basis,
+the diagonal entries are products of its eigenvalues. Summing their
+nonnegative multiplicities gives the product of geometric series, proving
+the identity without a semisimplicity assumption. For the Hilbert direct sum
+of symmetric powers, $|q|\|T\|<1$ is a sufficient trace-class condition.
+
+For one oscillator with $T=1$, every charge occurs once, so its trace is
+$(1-q)^{-1}$. At $q=p^{-s}$ this is the primon local factor. For a specified
+unramified Frobenius operator $F_p$ on a rank-$r$ space, the corresponding
+local trace is $\det(1-p^{-s}F_p)^{-1}$. This rank is the dimension of that
+coefficient space. It is not inferred from the number of primes in an
+indexing set.
+
+For $\operatorname{Re}s>1$, choose the logarithm of $\zeta(s)$ that tends to
+zero as $\operatorname{Re}s\to+\infty$. Absolute convergence gives
+\begin{equation}
+\label{v4-arith:traces:euler-log}
+ \log\zeta(s)=\sum_p\sum_{k\geq1}\frac{p^{-ks}}k.
+\end{equation}
+The bound $\sum_{p,k}p^{-k\sigma}/k \leq(1-2^{-\sigma})^{-1}\sum_p
+p^{-\sigma}$ justifies rearrangement. The identical argument applies to the
+specified unramified factors of a character in a half-plane of absolute
+convergence.
+
+One may define a local scalar $\mathcal W_p(s)=-\log(1-p^{-s})$ by this
+formula. Identifying it with a Nekrasov--Shatashvili superpotential requires
+an equivariant family and the actual scaled limit defining that
+superpotential. The equality \eqref{v4-arith:traces:euler-log} alone does
+not construct such a family.
+
+\subsection{The arithmetic instanton comparison}
+
+An arithmetic curve and the framed complex surface used in localization are
+different geometric inputs. A proposed arithmetic self-product must specify
+its base category, structure sheaf, moduli problem, equivariant action,
+fixed loci and integration theory. Listing prime pairs does not construct
+those data. Likewise a countable family of local oscillators does not
+determine a gauge group or its Coulomb branch.
+
+The real parameter in a metrized arithmetic line can be recorded by its
+Arakelov degree. A unitary character supplies separate phase data. This
+gives meaningful scalar parameters, but no identification with the Coulomb
+differences $a_\alpha-a_\beta$ in \eqref{v4-arith:traces:instanton} until
+the comparison maps are supplied. An arithmetic intersection pairing must
+first specify its arithmetic surface, metrized bundles, and cycle classes.
+
+\begin{question}[From an arithmetic moduli problem to Euler factors]
+\label{v4-arith:traces:arithmetic-instantons}
+Construct an arithmetic moduli problem with an equivariant or motivic
+integration theory and a comparison to the framed instanton construction.
+Specify the coefficient ring, potential or vanishing-cycle data when used,
+and every parameter scaling. Determine whether its all-charge trace is the
+prescribed Frobenius determinant and prove that comparison on the actual
+objects. The fixed-parameter limit and hook-weighted specialization above do
+not supply it.
+\end{question}
+
+\section{Geometric transfer operators and Liouville scaling}
+
+The geometric $R$-matrix construction contains commuting transfer operators,
+but it retains more than their scalar traces. Suppose $R_{F,W}(u)$ is a
+compatible family of invertible $R$-matrices satisfying the Yang--Baxter
+equation. For a finite-dimensional auxiliary space $F$ and an endomorphism
+$g_F$, define
+\[
+ T_F(g,u)=\operatorname{Tr}_F
+                  \bigl((g_F\otimes1)R_{F,W}(u)\bigr).
+\]
+
+Assume the family $g$ commutes with the $R$-matrices on each pair of
+auxiliary spaces. The Yang--Baxter equation conjugates the two ordered
+products by the auxiliary $R$-matrix. Taking the trace over both auxiliary
+factors therefore gives
+\[
+ [T_{F_1}(g,u_1),T_{F_2}(g,u_2)]=0.
+\]
+
+For infinite-dimensional auxiliary spaces, the trace needs its specified
+grading, completion, or convergence condition.
+
+Maulik--Okounkov construct such operators from stable envelopes of Nakajima
+varieties. Their Theorem 1.3.1 identifies the cohomological degree-two part
+of the Baxter algebra with modified quantum multiplication by tautological
+degree-two classes. The modification includes the theta-characteristic sign
+on curve classes. In the divisor formula, the nonclassical part has the form
+\[
+ -\hbar\sum_{\theta\cdot\alpha>0}
+     (\lambda,\alpha)\frac{q^\alpha}{1-q^\alpha}
+                   e_\alpha e_{-\alpha},
+\]
+with dual root-space bases and the scalar term fixed by the unit condition.
+This is a geometric theorem on its equivariant cohomology carrier.
+
+For the Jordan quiver, with one vertex and one loop, the variety $\mathcal
+M(r,n)$ parametrizes framed rank-$r$ torsion-free sheaves on $\mathbb P^2$
+with second Chern class $n$. Its Yangian belongs to the affine
+$\widehat{\mathfrak{gl}}_1$ construction. The integer $r$ is the framing
+rank and labels the representation. It does not replace the quiver by affine
+$\mathfrak{gl}_r$. At $r=1$, the Hilbert-scheme cohomology has its
+Heisenberg Fock realization. Stable envelopes relate the rank-$r$ cohomology
+to $r$ such bosonic factors on the equivariant domain.
+
+A comparison with arithmetic Hecke operators must specify the geometric
+representation, arithmetic representation, parameter map and intertwiner.
+Commutativity of a Baxter algebra does not erase the $R$-matrix or its
+tensor structure. Identifying a scalar instanton partition sum with a
+holonomy trace requires another comparison. These are additional equalities
+to construct.
+
+\subsection{The semiclassical Liouville equation}
+
+For Liouville theory with a reference metric $\widetilde g$, use
+\[
+ S_L(\phi)=\frac1{4\pi}\int
+    \left(|d\phi|_{\widetilde g}^2+
+          Q\widetilde R\phi+4\pi\mu e^{2b\phi}\right)
+                         d\operatorname{vol}_{\widetilde g},
+ \qquad Q=b+b^{-1}.
+\]
+The stress tensor and primary weights are
+\[
+ T(z)=-(\partial\phi)^2+Q\partial^2\phi,\qquad
+ c=1+6Q^2,\qquad
+ \Delta_\alpha=\alpha(Q-\alpha)
+\]
+for $V_\alpha=e^{2\alpha\phi}$. These formulas retain the background charge.
+
+Set $\phi_c=2b\phi$ and hold $\lambda=\pi\mu b^2$ fixed as $b\to0$. Then the
+leading rescaled action is
+\[
+ b^2S_L=
+ \frac1{16\pi}\int
+   \left(|d\phi_c|^2+2\widetilde R\phi_c+
+                    16\lambda e^{\phi_c}\right)
+                   d\operatorname{vol}_{\widetilde g}
+   +O(b^2),
+\]
+with the corresponding boundary terms when the surface is represented by a
+punctured or unbounded coordinate chart. In a flat coordinate its equation
+of motion is
+\[
+ \partial\bar\partial\phi_c=2\lambda e^{\phi_c}.
+\]
+
+The exponential interaction survives at fixed nonzero $\lambda$. Thus this
+semiclassical limit is not a free-boson equation. Sending $b$ to zero also
+sends $c$ to infinity. It does not by itself construct a contraction of
+Virasoro conformal blocks to free-boson correlators.
+
+The distinction is visible in primary weights. For a heavy scaling
+$\alpha=\eta/b$,
+\[
+ \Delta_\alpha=\frac{\eta(1-\eta)}{b^2}+\eta.
+\]
+For a light scaling $\alpha=b\sigma$,
+\[
+ \Delta_\alpha=\sigma+b^2\sigma(1-\sigma).
+\]
+An unscaled nonzero $\alpha$ has a different asymptotic behavior. A proposed
+limiting operator must specify which scaling it uses.
+
+The original Alday--Gaiotto--Tachikawa correspondence relates specified
+four-dimensional gauge theories and their matter to Liouville blocks, with
+the required $U(1)$ factors and parameter conventions. The relation
+$b^2=\epsilon_1/\epsilon_2$ is part of such conventions. Applying it does
+not turn every rank-one instanton sum into an oscillator trace. An
+arithmetic version would require its own theory, comparison functor, and
+controlled parameter limit. The positive geometric constructions and the
+failed fixed-parameter limit leave that question open.
+
+\section{Tate integrals and meromorphic lines}
+
+Tate theory supplies local integrals, Euler products, and a global
+functional equation. These are precise scalar constructions. We first retain
+them on their actual domains, then describe what geometric sewing would
+require in addition.
+
+Normalize multiplicative Haar measure on $\mathbb Q_p^\times$ by
+$\operatorname{vol}(\mathbb Z_p^\times)=1$. For an unramified character
+$\chi_p$ with $\chi_p(p)=\alpha_p$, shell integration gives
+\[
+ Z_p(\mathbf1_{\mathbb Z_p},\chi_p,s)
+  :=\int_{\mathbb Q_p^\times}
+       \mathbf1_{\mathbb Z_p}(x)\chi_p(x)|x|^s\,d^\times x
+  =\sum_{j\geq0}\alpha_p^jp^{-js}
+  =\frac1{1-\alpha_pp^{-s}}
+\]
+when $|\alpha_pp^{-s}|<1$. Using $\mathbf1_{\mathbb Z_p^\times}$ instead
+gives one. Thus changing the local test function can remove the unramified
+Euler factor.
+
+At the real place, with $dx/|x|$ and $\Phi_\infty(x)=e^{-\pi x^2}$,
+\[
+ Z_\infty(\Phi_\infty,1,s)
+  =2\int_0^\infty e^{-\pi x^2}x^{s-1}\,dx
+  =\pi^{-s/2}\Gamma(s/2)
+       \qquad(\operatorname{Re}s>0).
+\]
+The substitution $u=\pi x^2$ proves the last equality. For the trivial
+global character, their product is
+\[
+ \Lambda_\zeta(s)=\pi^{-s/2}\Gamma(s/2)\zeta(s)
+       \qquad(\operatorname{Re}s>1).
+\]
+
+\begin{proposition}[Finite removal and reinsertion]
+\label{v4-arith:traces:euler-removal}
+For a finite prime set $S$, put
+\[
+ P_S(s)=\prod_{p\in S}(1-p^{-s}),\qquad
+ \Phi_S(s)=P_S(s)\Lambda_\zeta(s).
+\]
+Using the unit-shell test function at the places in $S$ gives $\Phi_S$ in
+the half-plane of absolute convergence. Reinserting their standard
+unramified tests multiplies by $P_S(s)^{-1}$. The identities extend
+meromorphically.
+\end{proposition}
+\begin{proof}
+The local shell computation replaces precisely the factors indexed by $S$.
+Absolute convergence allows the finite factors to be separated from the
+remaining product. The meromorphic continuation of both sides preserves the
+identity.
+\end{proof}
+
+For $S=\{2,3\}$, replacing the two factors by specified local parameters
+gives
+\[
+ \Lambda_\zeta(s)
+  \frac{(1-2^{-s})(1-3^{-s})}
+       {(1-\alpha_2 2^{-s})(1-\alpha_3 3^{-s})}.
+\]
+It equals $\Lambda_\zeta(s)$ when both parameters are one. Otherwise it is
+the stated partial replacement. A full character $L$-function needs its
+Euler factors at every place, its conductor, and the archimedean parity
+factor. Arbitrary choices at two primes do not specify a global character.
+
+\subsection{The functional equation and its normalization}
+
+For completeness, the scalar zeta symmetry follows from the Gaussian Poisson
+identity
+\[
+ \theta(t)=\sum_{n\in\mathbb Z}e^{-\pi n^2t}
+          =t^{-1/2}\theta(t^{-1}).
+\]
+For $\operatorname{Re}s>1$, termwise integration gives
+\[
+ \Lambda_\zeta(s)
+   =\frac12\int_0^\infty(\theta(t)-1)t^{s/2}\frac{dt}{t}.
+\]
+
+Split at one and apply the theta identity to the first integral. The result
+is
+\begin{equation}
+\label{v4-arith:traces:theta-continuation}
+ \Lambda_\zeta(s)=\frac1{s(s-1)}
+ +\frac12\int_1^\infty(\theta(t)-1)
+       \bigl(t^{s/2}+t^{(1-s)/2}\bigr)\frac{dt}{t}.
+\end{equation}
+The tail decays exponentially, so the integral is entire in $s$, locally
+uniformly with all derivatives. This proves meromorphic continuation, simple
+poles at zero and one with residues $-1$ and $1$, and
+$\Lambda_\zeta(s)=\Lambda_\zeta(1-s)$.
+
+The entire normalization is $\xi(s)=\tfrac12s(s-1)\Lambda_\zeta(s)$.
+
+For a primitive Dirichlet character $\chi$ of conductor $f$, let
+$\chi(-1)=(-1)^a$, $a\in\{0,1\}$. The completed function and root number are
+\[
+ \Lambda(s,\chi)
+   =\left(\frac f\pi\right)^{(s+a)/2}
+         \Gamma\left(\frac{s+a}{2}\right)L(s,\chi),
+ \qquad
+ \varepsilon(\chi)=\frac{\tau(\chi)}{i^a\sqrt f},
+\]
+where $\tau(\chi)=\sum_{x\bmod f}\chi(x)e^{2\pi ix/f}$. Tate's global
+functional equation, with these conventions, is
+\[
+ \Lambda(s,\chi)
+     =\varepsilon(\chi)\Lambda(1-s,\overline\chi).
+\]
+Its adelic proof uses Fourier transform and Poisson summation, together with
+the local character and measure data. An imprimitive character requires the
+corresponding removed local factors. It cannot be inserted unchanged in the
+primitive formula.
+
+These identities construct meromorphic sections of scalar lines. For
+instance, let $\mathcal M$ be the field of meromorphic functions of $s$, and
+attach the line $\mathcal M e_S$ to each finite set $S$. The map deleting a
+prime $p\in S$ is multiplication by $(1-p^{-s})^{-1}$. Maps for different
+primes commute, so this is a functor from the finite-deletion category to
+meromorphic lines. The sections $\Phi_S e_S$ are compatible with deletion.
+
+The unmarked involution is $s\mapsto1-s$. On a marked section it has the
+explicit factor
+\[
+ \Phi_S(s)=\frac{P_S(s)}{P_S(1-s)}\Phi_S(1-s).
+\]
+This is an actual comparison of the specified lines and sections. Its source
+is the finite-deletion category. It is not yet a category of arithmetic
+surfaces with boundary sewings.
+
+\subsection{A scattering phase and a positive measure}
+
+The two completed zeta normalizations also give different scattering ratios.
+Put
+\[
+ m_\Lambda(s)=\frac{\Lambda_\zeta(2s-1)}{\Lambda_\zeta(2s)},
+ \qquad
+ m_\xi(s)=\frac{\xi(2s-1)}{\xi(2s)}.
+\]
+For the standard weight-zero Eisenstein series on $SL_2(\mathbb
+Z)\backslash\mathbb H$, the constant term is $y^s+m_\Lambda(s)y^{1-s}$. The
+ratio using the entire function instead satisfies
+\begin{equation}
+\label{v4-arith:traces:scattering-normalizations}
+ m_\xi(s)=\frac{s-1}{s}m_\Lambda(s).
+\end{equation}
+This follows by substituting $\xi(w)=\tfrac12w(w-1)\Lambda_\zeta(w)$ and
+cancelling. Thus the two scalar conventions cannot be interchanged in a
+claimed normalization of an intertwining operator.
+
+Both ratios satisfy $m(s)m(1-s)=1$ meromorphically. On $s=1/2+it$, their
+modulus is one wherever they are finite and nonzero. Indeed the functional
+equation and real conjugation give
+\[
+ \xi(2s-1)=\xi(1-2it)
+          =\overline{\xi(2s)},
+\]
+and the same calculation applies to $\Lambda_\zeta$. The rational factor
+$(s-1)/s$ also has unit modulus on this line. At the removable central
+value, $m_\Lambda(1/2)=-1$ and $m_\xi(1/2)=1$. The residues $-1,1$ in
+\eqref{v4-arith:traces:theta-continuation} prove the first value, and
+$\xi(0)=\xi(1)=1/2$ proves the second.
+
+Write $\Gamma_{\mathbb R}(w)=\pi^{-w/2}\Gamma(w/2)$. There is a precise
+Euler product for the first ratio:
+\[
+ m_\Lambda(s)
+   =\frac{\Gamma_{\mathbb R}(2s-1)}{\Gamma_{\mathbb R}(2s)}
+      \prod_p\frac{1-p^{-2s}}{1-p^{1-2s}}
+          \qquad(\operatorname{Re}s>1).
+\]
+Both zeta products converge absolutely on this half-plane, so taking their
+quotient proves the formula.
+
+Meromorphic continuation defines its other values. It does not assert
+absolute Euler-product convergence on $\operatorname{Re}s=1/2$. Ramified
+representations require their actual local $L$- and epsilon-factors,
+character and measure data. They are not obtained by appending arbitrary
+phases to this unramified zeta ratio.
+
+To see what phase removal proves, work on a domain of the unitary axis where
+$\xi(2s)\ne0$ and put
+\[
+ d(s)=|\xi(2s)|^{-2},\qquad
+ P(s)=2d(s),\qquad K(s)=m_\xi(s)^{-1}d(s).
+\]
+These are specified scalar functions. They satisfy
+\begin{equation}
+\label{v4-arith:traces:phase-density}
+ d(s)\leq|P(s)-K(s)|\leq3d(s),\qquad
+ m_\xi(s)K(s)=d(s)=P(s)/2.
+\end{equation}
+The triangle and reverse-triangle inequalities prove the bounds, since
+$|m_\xi|=1$ and $d>0$.
+
+Multiplication by the phase removes that phase. It leaves the factor two in
+the proposed positive coefficient. Realizing either scalar as an actual
+continuous-spectrum pairing remains another question.
+
+A measured comparison must preserve more than its diagonal density. For
+example, suppose $P,K$ are positive measurable functions on a measured space
+$(X,\nu)$. If $|c|^2P=K$ almost everywhere, then
+\[
+ f\longmapsto cf:\ L^2(X,K\,d\nu)
+       \xrightarrow{\sim}L^2(X,P\,d\nu)
+\]
+is unitary. Integrating $|cf|^2P=|f|^2K$ proves isometry. Division by the
+nonzero $c$ gives its inverse. For the phase-valued $K$ above, positivity is
+not available before the form and its normalization have been specified.
+
+A proposed arithmetic extension therefore needs a bivariate Hermitian
+pairing, its domain, the measured spectral decomposition, and an intertwiner
+realizing the positive form. Multiplication by $m((s_1+s_2)/2)$ alone need
+not preserve the Hermitian symmetry in the two parameters. A norm identity
+on individual formal spectral vectors does not provide the mixed pairings or
+convergence of wave packets.
+
+On a specified decomposition $V=V_{\mathrm{disc}}\oplus V_{\mathrm{cont}}$,
+one may define the correction to be the identity on the first summand. If
+both pairings make the summands orthogonal, comparisons on the two summands
+combine to a comparison on $V$. Expanding the pairing of $v_d+v_c$ and
+$w_d+w_c$ proves this assertion: both mixed terms vanish. Without that
+orthogonality, the mixed comparisons must also be given.
+
+A selected residual line is a particularly simple case. If the placement
+carries its arithmetic vector $v_0$ to a unit vector and
+$B^{\mathrm{Ar}}(v_0,\sigma v_0)=1$, then both forms on $av_0,bv_0$ equal
+$a\overline b$. This calculation does not identify every residual
+automorphic summand with one vacuum. Nor does discreteness of a zeta zero
+set place its trace in this automorphic discrete summand. That placement
+requires the actual spectral comparison.
+
+Finally, a scalar functional equation does not transport obstruction
+classes. A specified linear map $F:H\to H_{\mathrm{Ar}}$ does carry a
+relation $c+c^!=0$ to $F(c)+F(c^!)=0$. Applying this fact to duality classes
+requires the obstruction complexes and a comparison defined for the
+corrected pairing. The identity $m(s)m(1-s)=1$ supplies no such map.
+
+\subsection{Discriminants and residues}
+
+Let $K$ be a number field of signature $(r_1,r_2)$ and discriminant $d_K$.
+In the standard Minkowski embedding $K\hookrightarrow\mathbb
+R^{r_1}\times\mathbb C^{r_2}$, use Lebesgue measure $dx\,dy$ on each complex
+coordinate. Then
+\begin{equation}
+\label{v4-arith:traces:minkowski-volume}
+ \operatorname{covol}(\mathcal O_K)
+      =2^{-r_2}\sqrt{|d_K|}.
+\end{equation}
+
+To prove the factor, choose an integral basis and form its complex embedding
+matrix. Its determinant has absolute value $\sqrt{|d_K|}$ by the
+discriminant identity. Replacing each conjugate pair by real and imaginary
+parts divides the absolute determinant by two. There are $r_2$ such pairs,
+giving \eqref{v4-arith:traces:minkowski-volume}.
+
+Thus
+\[
+ \log\operatorname{covol}(\mathcal O_K)
+    =\frac12\log|d_K|-r_2\log2.
+\]
+In particular $\tfrac12\log|d_K|$ is neither an integer genus nor the
+half-logarithm of this covolume.
+
+Metrics and measure conventions matter for arithmetic Euler characteristics
+as well. One can define the real discriminant expression
+\[
+ D_K=\log|d_K|-r_1\log(\pi/4)-r_2\log(\pi/2).
+\]
+It is a specified normalization of discriminant data. Identifying it with a
+metrized determinant of cohomology or an arithmetic Euler characteristic
+requires the actual complex, metrics and comparison formula. The expression
+alone supplies none of them.
+
+The analytic class-number formula gives the positive residue
+\[
+ \operatorname*{Res}_{s=1}\zeta_K(s)
+  =\frac{2^{r_1}(2\pi)^{r_2}h_KR_K}
+          {w_K\sqrt{|d_K|}}.
+\]
+Here $h_K$ is the ideal class number, $R_K$ the regulator, and $w_K$ the
+number of roots of unity. The standard rank-zero regulator convention is
+$R_K=1$. This is a scalar residue. For example, for $K=\mathbb Q(i)$ it is
+$\pi/4$, using $h_K=R_K=1$, $w_K=4$, and $|d_K|=4$. It is therefore not in
+general an integer dimension of conformal blocks.
+
+\section{The maps required for sewing}
+
+The finite Frobenius construction supplied an inverse pairing and explicit
+gluing maps. For a family of geometric or arithmetic objects, sewing
+requires their analogues, compatible under repeated gluing.
+
+One possible coefficient for an anomaly is a determinant line. For a bounded
+complex $C^\bullet$ of finite-dimensional spaces, define
+\[
+ \det C^\bullet
+   =\bigotimes_i(\det C^i)^{(-1)^i}.
+\]
+Odd exponents mean dual lines. Cancellation of the boundary and coboundary
+subspaces gives its canonical identification with $\bigotimes_i(\det
+H^i(C))^{(-1)^i}$. Exact sequences or exact triangles give corresponding
+determinant-line isomorphisms with their graded signs.
+
+A trivialization, compatible with those isomorphisms, is additional data. It
+cannot be replaced just by an orientation word or by a scalar functional
+equation.
+
+\subsection{Intermediate labels and coends}
+
+The intermediate objects in sewing belong to a specified category. For a
+small $k$-linear category $\mathcal C$, a right module $F:\mathcal
+C^{\mathrm{op}}\to\operatorname{Vect}_k$ and a left module $G:\mathcal
+C\to\operatorname{Vect}_k$ have a coend
+\[
+ F\otimes_{\mathcal C}G
+    =\int^{a\in\mathcal C}F(a)\otimes_kG(a).
+\]
+Concretely it is the quotient of $\bigoplus_a F(a)\otimes_kG(a)$ by the
+relations $F(f)(x)\otimes y=x\otimes G(f)(y)$ for $f:a\to b$, $x\in F(b)$
+and $y\in G(a)$. In a dg setting, the derived coend is computed by its bar
+construction with all strings of composable morphisms.
+
+If $\mathcal C$ is split finite semisimple, the expression reduces to a
+finite sum over its simples with the specified endomorphism-field balancing.
+Without semisimplicity, replacing the derived coend by a sum over simple
+isomorphism classes can lose extensions and higher Tor. A measured direct
+integral instead requires a measurable family, a measure, Hilbert
+completions and a convergence theorem. It is a different construction.
+
+For local Weil--Deligne data, one must fix the local field, coefficient
+field, rank, topology, Frobenius convention, monodromy, and allowable
+inertia types. A list of all such isomorphism classes does not specify a
+coend or a measure. Likewise local Langlands does not, by itself, construct
+a sewing functor on arithmetic surfaces or identify its objects with WZW
+labels.
+
+The finite and archimedean actions also have different types. A change of
+coefficient embedding can transport Galois labels when its semilinear maps
+are given. A Hecke correspondence acts on its specified automorphic or
+sheaf-theoretic carrier. The quotient $G(\mathbb A)/G(K)$ is not a group in
+general, so it cannot serve as a symmetry group without a separate action
+construction. Inertia and wild inertia remain part of ramified local data.
+
+\begin{question}[Arithmetic sewing]
+\label{v4-arith:traces:sewing-question}
+Construct the source category of marked arithmetic objects and its gluing
+operations. Give the intermediate coefficient category, the two variances of
+the boundary modules, and the derived coend or measured integral that
+supplies their gluing. Construct its map to the coefficient object of the
+glued arithmetic space. Require compatible units, dualities, determinant
+lines and repeated-sewing isomorphisms.
+
+Compare the resulting scalar evaluations with the Tate sections on their
+common domains, including the conductor, archimedean and local normalization
+factors. Both the separating sewing and the self-gluing that creates a
+handle are part of this question.
+\end{question}
+
+The meromorphic-line functor above provides finite Euler-factor
+compatibility and functional-equation symmetry. Those results leave the
+stated geometric maps to be constructed. Conversely, a geometric sewing
+theorem can exist on a different specified coefficient category without yet
+giving the arithmetic comparison.
+
+\subsection{A finite analytic sewing construction}
+
+There is a positive analytic example already constructed in
+Theorem~\ref{v4-arith:asi:finite-analytic-realization}. It uses the
+holomorphic lattice algebra $W=V_{E_8}$ and the finite marked coefficient
+objects $(P,\lambda)$ of the arithmetic fusion category. For a compatible
+junction $f:P\otimes_{R_0}Q\to S$, the field is
+\[
+ \mathcal J_f(u\otimes p,z)(v\otimes q)
+    =Y_W(u,z)v\otimes f(p\otimes_{R_0}q).
+\]
+The coefficient tensor is balanced over the boundary algebra $R_0$. Its
+duality maps and associators retain the original finite fusion data.
+
+The sewing domain is explicit. Start with finitely many compact pointed
+Riemann surfaces, possibly disconnected. Choose disjoint coordinate discs of
+radii $r_j,r'_j$ at each paired marking and glue by $u_jv_j=t_j$, with
+$0<|t_j|<r_jr'_j$. Each initial connected component retains an unsewn marked
+point. Fix the initial conformal block, contragredient pairings, coordinates
+and branches for fractional powers.
+
+On this domain the descendant propagator sums converge absolutely and
+locally uniformly, including simultaneous sewings that create handles. The
+reason is that each coefficient contraction is finite-dimensional: the sewn
+expression is a finite linear combination of ordinary $W$ conformal block
+sewings. The lattice algebra is rational and $C_2$-cofinite, and its modules
+here are finite sums of the vacuum module. Gui's sewing theorem applies with
+the stated retained-marking hypothesis. Finite sums preserve its convergence
+and sewing identities.
+
+If an initial component has no unsewn mark, propagation of vacua first
+inserts one. Its propagation isomorphism removes it afterward. The
+hypothesis is not removed by silently omitting the point. This theorem
+supplies actual analytic sewing for the constructed marked fusion
+realization. It does not choose a globally normalized partition scalar or
+the arithmetic coend in Question~\ref{v4-arith:traces:sewing-question}.
+
+\section{Genus, rank, and coefficient data}
+
+The genus of a smooth proper curve controls the rank of its first
+cohomology. A field degree, a framing rank, and a Siegel parameter are
+different inputs, even when their numerical values coincide.
+
+For a smooth projective curve $C/K$ of genus $g$, the Jacobian has dimension
+$g$ and its first cohomology has rank $2g$. At a complex embedding its Hodge
+dimensions are $(g,g)$, and $\deg\omega_C=2g-2$. Arithmetic intersection and
+determinant formulas additionally use a regular arithmetic model, metrics,
+singular fiber contributions and analytic torsion. The topological formula
+$2-2g$ is not by itself an arithmetic Euler characteristic or a Koszul level
+identity.
+
+Several possible coefficient constructions should therefore be kept
+distinct.
+
+\begin{enumerate}
+\item A smooth proper curve gives its Jacobian's weight-one cohomology. An
+arithmetic surface model permits metrized intersections and a determinant of
+cohomology, subject to their actual hypotheses. \item A totally imaginary
+field $K$ of degree $2g$ gives a Minkowski lattice in $\mathbb C^g$ after
+selecting one embedding from each conjugate pair. Its quotient is a complex
+torus. An abelian variety requires a positive integral Riemann form. In a CM
+construction one specifies a CM type and polarization. This torus is not the
+weight-zero motive whose $L$-function is $\zeta_K$. \item A rank-$2g$
+ordinary crystalline representation has its coefficient field, Hodge--Tate
+multiset, ordinary filtration and semilinear Frobenius. Its moduli dimension
+depends on the imposed type and deformation conditions. Frobenius is not
+automatically an operator with square $-1$. \item A theta construction on a
+principally polarized abelian $g$-fold uses a chosen level and theta line.
+Its level-$n$ section space has dimension $n^g$, whereas its first
+cohomology has rank $2g$. Comparing these carriers requires an actual map.
+The Steinberg relation $\{a,1-a\}=0$ in $K_2^M(K)$, for $a\ne0,1$, is a
+field relation and does not supply that map. \item A surface factorization
+construction needs both local operations and their interchange coherences.
+Two separately named $E_1$ structures do not give an $E_2$ structure until
+the hypotheses of the iterated-algebra construction hold. Double-residue and
+completed duality comparisons must preserve the specified coefficients and
+signs. \item A Siegel or other Shimura construction uses its actual
+automorphic representation and $L$-group representation. For
+$\mathrm{GSp}_{2g}$, the standard representation of the dual
+$\mathrm{GSpin}_{2g+1}$ has dimension $2g+1$, while the spin representation
+has dimension $2^g$. Neither is automatically the rank-$2g$ Jacobian
+representation.
+\end{enumerate}
+
+These alternatives name different objects. They permit comparison problems.
+They do not define six presentations of an already identified arithmetic
+object. In particular an almost-complex structure belongs to a real tangent
+bundle of an analytic space, whereas a crystalline Frobenius belongs to its
+specified coefficient realization. An arithmetic scheme does not acquire the
+former from the latter by notation.
+
+\subsection{Weights and the zero-rank case}
+
+For a weight-$m$ realization in motivic normalization, the expected
+functional-equation involution is $s\mapsto m+1-s$. Its existence and
+normalization must be established for the chosen $L$-function. The Dedekind
+zeta function is weight zero and has $s\mapsto1-s$, independently of
+$[K:\mathbb Q]$. The Jacobian $H^1$ function is weight one and, when its
+completed functional equation is available, uses $s\mapsto2-s$. A spin or
+standard automorphic function has the shifts and conductor of its own chosen
+normalization.
+
+Gamma factors likewise come from the Hodge or archimedean representation.
+The number $g$ alone does not select them. For example, with
+$\Gamma_{\mathbb R}(s)=\pi^{-s/2}\Gamma(s/2)$ and $\Gamma_{\mathbb
+C}(s)=2(2\pi)^{-s}\Gamma(s)$, the Dedekind completion is
+\[
+ \Lambda_K(s)=|d_K|^{s/2}
+       \Gamma_{\mathbb R}(s)^{r_1}
+       \Gamma_{\mathbb C}(s)^{r_2}\zeta_K(s).
+\]
+A curve's weight-one completion also requires its conductor and all local
+factors, including bad reduction.
+
+At rank zero the determinant $\det(1-tF\mid0)$ is one and
+$\operatorname{Sym}(0)=k$. Its all-charge trace is one. For $\mathbb P^1$,
+the Jacobian is trivial and $H^1=0$. Its $H^1$ Euler factor is also one.
+
+The full zeta function of $\mathbb P^1_{\mathbb F_q}$ is instead
+\[
+ Z(\mathbb P^1_{\mathbb F_q},t)
+    =\frac1{(1-t)(1-qt)},
+\]
+because $\#\mathbb P^1(\mathbb F_{q^n})=q^n+1$. It includes degrees zero and
+two. Over a number field the corresponding finite Euler product is
+$\zeta_K(s)\zeta_K(s-1)$ in its initial half-plane. None of these is the
+$H^1$ factor.
+
+A number field cannot have degree zero. Thus setting $2g=0$ in a totally
+imaginary degree-$2g$ family does not produce $\mathbb Q$. A Riemann Tate
+sector or a rank-two Wilson label can be added as separate data. The empty
+tensor contributes only its scalar unit.
+
+For positive rank, specify the Frobenius carrier as well. If $V_\ell J$ is
+the Tate module of an abelian variety, its dual $H^1_{\mathrm{\acute
+et}}(J,\mathbb Q_\ell)$ has the dual action. Arithmetic and geometric
+Frobenius are inverse. On the cohomological geometric convention for weight
+one, polarization pairs eigenvalues with product $q$. On the Tate-module
+geometric convention the product is $q^{-1}$. These distinctions persist
+through the determinant trace and any Wilson comparison.
+
+\section{Naturality and stabilization}
+
+A genus-wise identity of scalar functions does not define maps between
+coefficient objects of different rank. We state the chain-level construction
+that does give such comparisons when its maps are known.
+
+Let $\mathcal D$ be a specified category of arithmetic coefficient systems.
+An object includes its local complexes, reference vectors, local actions,
+completed or algebraic tensors, and all merger and residue maps being used.
+Morphisms preserve these data. If conformal vectors or pairings are part of
+the structure, their preservation is an additional equation. Composition of
+such morphisms remains compatible because its defining squares compose. No
+compatibility of a completion is inferred solely from the presence of
+almost-everywhere reference vectors.
+
+Suppose two stage constructions have differentials
+$D^{(a)}_S=D^{(a)}_{0,S}+\tau^{(a)}_S$, $a=1,2$, with
+\[
+ (D^{(a)}_{0,S})^2=0,\qquad
+ D^{(a)}_{0,S}\tau^{(a)}_S+
+ \tau^{(a)}_SD^{(a)}_{0,S}
+       +(\tau^{(a)}_S)^2=0.
+\]
+The second identity is the precise condition for the total differential to
+square to zero. Its validity for two complexes does not yet give a map
+between them.
+
+\begin{proposition}[Comparison from natural stage maps]
+\label{v4-arith:traces:stage-comparison}
+Over a common coefficient ring, suppose quasi-isomorphisms $\Xi_{\mathsf
+A,S}:C^{(1)}_S(\mathsf A) \to C^{(2)}_S(\mathsf A)$ are given. Require
+naturality in $\mathsf A$, compatibility with the stage transitions, and
+\[
+ \Xi D^{(1)}_{0,S}=D^{(2)}_{0,S}\Xi,\qquad
+ \Xi\tau^{(1)}_S=\tau^{(2)}_S\Xi.
+\]
+Then their algebraic filtered colimits are naturally quasi-isomorphic. Any
+additional completed comparison requires preservation of this
+quasi-isomorphism by the chosen completion.
+\end{proposition}
+\begin{proof}
+Adding the two equations gives the chain-map identity. Transition
+compatibility defines the colimit map. Filtered colimits of modules are
+exact, so homology commutes with these colimits and the map remains a
+quasi-isomorphism. The naturality squares descend from those at each stage.
+The final assertion specifies the extra limiting operation and its needed
+property.
+\end{proof}
+
+For ordered, arithmetic-chiral, Deninger-type and bulk-boundary
+constructions, the complexes and stage maps must each be given on their
+independent carriers. Defining one assignment to be another produces an
+identity natural transformation, but not an independent geometric
+comparison. An independently defined bulk theory also needs its boundary
+functor and the comparison of its operations. Frobenius and duality pairings
+are transported only when the specified maps preserve them.
+
+\subsection{Changing the rank}
+
+For categories $\mathcal D_g$, supply an actual stabilization functor
+$S_g:\mathcal D_g\to \mathcal D_{g+1}$. Let $F_{\star,g}$ be specified chain
+functors and $V_2$ a fixed graded coefficient space with zero differential.
+Suppose there are natural quasi-isomorphisms
+\[
+ q_{\star,g}:F_{\star,g}(\mathsf A)\otimes V_2
+       \longrightarrow
+       F_{\star,g+1}(S_g\mathsf A).
+\]
+Over a field, algebraic tensoring with $V_2$ gives
+\[
+ H(F_{\star,g}\otimes V_2)
+     \simeq H(F_{\star,g})\otimes V_2.
+\]
+
+One proof splits each complex as its cohomology and a contractible complex.
+Tensor its contracting homotopy with $1_{V_2}$. For other coefficients or
+completed tensors, the corresponding K\"unneth statement is an additional
+hypothesis.
+
+If the maps $q_{\star,g}$ commute with the comparison maps $\eta$ up to
+specified chain homotopies, then their cohomology isomorphisms commute with
+$\eta$. In particular,
+\[
+ \eta_{g+1}q_{\mathrm{ch},g}
+   \simeq q_{\partial,g}(\eta_g\otimes1)
+\]
+becomes equality on homology. The same argument transports specified
+Frobenius actions, retractions and pairings, provided their compatibility is
+included. This gives uniformity for every $g$ where all those data exist.
+
+An oscillator splitting alone does not construct the maps $q_{\star,g}$ for
+a differential whose differential includes maps coupling residues at different places. Even a trivial action does
+not imply flatness: for $\Lambda=\mathbb Z_p[[T]]$ and $M=\Lambda/(T)$, the
+resolution
+\[
+ 0\longrightarrow\Lambda
+   \xrightarrow{T}\Lambda
+   \longrightarrow M\longrightarrow0
+\]
+gives $\operatorname{Tor}_1^\Lambda(M,M)=M$. The $p$-primary Iwasawa
+$\mu$-invariant of this module is zero, but $M$ is not $\Lambda$-flat. In
+several variables the corresponding completion and duality hypotheses must
+still be proved.
+
+A block-diagonal group map $GL_{2g}\times GL_2 \hookrightarrow GL_{2g+2}$
+also does not give a tensor decomposition of the ambient current algebra.
+The latter has off-diagonal matrix currents absent from the two block Lie
+algebras. A retraction of coefficient complexes requires a chosen splitting
+and a chain map. It is not an automatic retraction of vertex algebras.
+
+\subsection{Three different diagonal constructions}
+
+For a rank-$r$ Heisenberg vertex algebra $V_r$ at level one, the tensor
+$V_r\otimes V_r$ has rank $2r$ and standard central charge $2r$. Writing the
+two current families as $J_i^{(1)}$ and $J_i^{(2)}$, their unscaled sums
+obey
+\[
+ (J_i^{(1)}+J_i^{(2)})(z)
+ (J_j^{(1)}+J_j^{(2)})(w)
+       \sim\frac{2\delta_{ij}}{(z-w)^2}.
+\]
+They therefore do not give a level-one diagonal map. The normalized sums
+$(J_i^{(1)}+J_i^{(2)})/\sqrt2$ do give a Heisenberg embedding, but its image
+conformal vector is the Sugawara vector of only the diagonal currents. It is
+different from the full tensor conformal vector: the complementary
+anti-diagonal currents contribute central charge $r$.
+
+The coordinatewise product $V_r\times V_r$ is a different vertex algebra.
+Its vacuum is $(1,1)$ and its conformal vector is $(\omega,\omega)$. The map
+$v\mapsto(v,v)$ preserves both and all products. Its central term is
+$(r/2)(1,1)$, so the central charge remains $r$. Its weight-zero space is
+two-dimensional, unlike that of the rank-$2r$ Heisenberg tensor product.
+Neither construction is the free product merely by its notation.
+
+Nor is the reduced bar an additive construction on arbitrary coefficient
+algebras. Let $A=k\oplus kx$ and $B=k\oplus ky$ have square-zero
+augmentation ideals. The square-zero algebra $C=k\oplus(kx\oplus ky)$ has
+zero reduced-bar differential. Its bar length-two term has basis
+\[
+ [x|x],\quad[x|y],\quad[y|x],\quad[y|y].
+\]
+
+The direct sum of the positive reduced bars of $A$ and $B$ has only the
+first and last terms in that length. The mixed terms survive in homology.
+Thus an additive diagonal claim for bar constructions needs the actual
+carrier and comparison. It cannot follow from linearity of one residue
+operator.
+
+\subsection{Evaluating a duality defect}
+
+The same requirement applies to a proposed all-genus level identity. Suppose
+an independently defined defect $\mathfrak d_g$ has a specified scalar
+evaluation $\mathcal E_g$ such that
+\[
+ \mathcal E_g(\mathfrak d_g)(s)
+   =\Lambda_g(s)
+       -\varepsilon_g\Lambda_g(w_g-s).
+\]
+If the functional equation holds, the evaluated defect vanishes. Concluding
+$\mathfrak d_g=0$ requires that $\mathcal E_g$ detect zero on the actual
+defect space. This criterion is immediate from injectivity, and preserves
+the need to construct both the evaluation and detection. Euler factors,
+weights, and a scalar functional equation alone do not provide them.
+
+\section{The level-dependent Hecke trace}
+
+A Hecke trace on a finite space of cusp forms is another concrete scalar.
+Its relation to a categorical arithmetic trace requires a map carrying the
+chosen endomorphism to that Hecke operator. The classical trace itself
+retains the level in both its elliptic and cusp terms.
+
+Let $N\geq1$, $k\geq2$, and $n\geq1$. Write
+\[
+ \Gamma_1(N)=
+ \left\{\begin{pmatrix}a&b\\c&d\end{pmatrix}
+  \in SL_2(\mathbb Z):
+     a\equiv d\equiv1,\ c\equiv0\pmod N\right\}.
+\]
+Let $S_k(\Gamma_1(N))$ be its holomorphic cusp forms and $T_n$ the usual
+Hecke operator. One precise normalization is obtained by decomposing under
+diamond characters $\chi$ and using on $S_k(\Gamma_0(N),\chi)$
+\[
+ f|T_n=
+  \sum_{\sigma\in\Gamma_0(N)\backslash\Delta_n}
+    (\det\sigma)^{k-1}\chi(a_\sigma)\,f|_k\sigma,
+\]
+where
+\begin{align*}
+ \Delta_n&=
+ \{\sigma\in M_2(\mathbb Z):
+       \det\sigma=n,\ N\mid c_\sigma,\ (a_\sigma,N)=1\},\\
+ f|_k\begin{pmatrix}a&b\\c&d\end{pmatrix}(z)
+       &=(cz+d)^{-k}f\left(\frac{az+b}{cz+d}\right).
+\end{align*}
+This convention includes indices not coprime to $N$.
+
+Define the polynomials $P_j(t,n)$ by
+\[
+ \frac1{1-tx+nx^2}
+      =\sum_{j\geq0}P_j(t,n)x^j.
+\]
+Thus $P_0=1$, $P_1=t$, and $P_j=tP_{j-1}-nP_{j-2}$. If $\alpha+\beta=t$ and
+$\alpha\beta=n$, then $P_{k-2}(t,n)=
+(\alpha^{k-1}-\beta^{k-1})/(\alpha-\beta)$ when the roots are distinct. The
+polynomial defines the repeated-root value.
+
+Let $\varphi$ be Euler's totient, and put
+\[
+ I(N)=N\prod_{p\mid N}(1+p^{-1}),\qquad
+ \sigma_{1,N}(n)=
+     \sum_{\substack{d\mid n\\(d,N)=1}}\frac nd.
+\]
+For $u\mid N$ and $u^2\mid t^2-4n$, define
+\[
+ B_N(u,t,n)=
+  \begin{cases}
+    I(N)/I(N/u),&Nu\mid t-n-1,\\
+    0,&\text{otherwise},
+  \end{cases}
+ \qquad
+ D_N(u,t,n)=\sum_{d\mid u}\mu(d)B_N(u/d,t,n).
+\]
+Here $\mu$ is the M\"obius function. For integers $a,d$, set
+\[
+ \Psi_N(a,d)=
+ \sum_{\substack{rs=N\\r\mid a-1,\ s\mid d-1}}
+       \varphi((r,s))\varphi(N/(r,s)).
+\]
+
+For $D>0$, let $H(D)$ be the Hurwitz class number of positive definite
+integral binary quadratic forms of discriminant $-D$, including imprimitive
+forms. A class has weight the reciprocal of its stabilizer order in
+$PSL_2(\mathbb Z)$. Thus $H(3)=1/3$, $H(4)=1/2$. Set $H(0)=-1/12$, and set
+$H(D)=0$ for a nonintegral argument or an inadmissible discriminant.
+
+\begin{theorem}[Eichler--Selberg at level $\Gamma_1(N)$]
+\label{v4-arith:traces:hecke-level}
+With the preceding conventions,
+\begin{align*}
+ \operatorname{Tr}(T_n|S_k(\Gamma_1(N)))
+  ={}&\delta_{k,2}\sigma_{1,N}(n)\\
+ &-\frac{\varphi(N)}2
+   \sum_{\substack{t\in\mathbb Z\\t^2\leq4n}}
+     P_{k-2}(t,n)
+     \sum_{\substack{u\mid N\\u^2\mid t^2-4n}}
+       H\left(\frac{4n-t^2}{u^2}\right)D_N(u,t,n)\\
+ &-\frac14\sum_{\substack{a,d>0\\ad=n}}
+      \min(a,d)^{k-1}
+       \bigl(\Psi_N(a,d)+(-1)^k\Psi_N(-a,-d)\bigr).
+\end{align*}
+This holds for all $n\geq1$, including bad-level indices.
+\end{theorem}
+
+The formula is Popa's Theorem 5 in \emph{On the trace formula for Hecke
+operators on congruence subgroups, II}. Its elliptic level factor is $D_N$.
+The terms $t^2=4n$ include the scalar contribution through $H(0)$. The last
+line and the weight-two term retain the cusp and Eisenstein corrections.
+
+For $N=1$, $D_1=1$, $\Psi_1=1$, and the even-weight formula reduces to
+\[
+ \delta_{k,2}\sigma_1(n)
+ -\frac12\sum_{t^2\leq4n}
+                P_{k-2}(t,n)H(4n-t^2)
+ -\frac12\sum_{ad=n}\min(a,d)^{k-1}.
+\]
+At $n=1$, $k=2$, the class-number sum is $2H(0)+2H(3)+H(4)=1$. The three
+contributions are $1,-1/2,-1/2$, giving $\dim S_2(SL_2(\mathbb Z))=0$. At
+$k=12$, the class-number sum is $-3$, and the trace is $3/2-1/2=1$. These
+finite examples check the normalization. They do not replace the
+level-dependent formula.
+
+A universal arithmetic trace family needs a coefficient space over its
+actual weight and level base. Its specializations to cusp-form spaces must
+commute with every $T_n$. Matching the traces does not construct the
+eigenobjects, their extensions, or their categorical endomorphisms.
+
+\section{Trace functionals and their analytic domains}
+
+To compare an ordered bar character with an analytic trace, first turn its
+homology into a scalar on a specified domain. For example, suppose $H_i$ are
+Hilbert realizations and $T_i(s)$ are holomorphic trace-class families on a
+half-plane $\Omega$, with $\sum_i\|T_i(s)\|_1$ locally uniformly convergent.
+Then
+\[
+ Z(s)=\sum_i(-1)^i\operatorname{Tr}T_i(s)
+\]
+is holomorphic there. Continuity of trace and locally uniform convergence
+prove the assertion. A regularized character needs its own prescription and
+normalization. Homology itself is not this scalar.
+
+Suppose a comparison identifies the local factors and proves $Z(s)=\xi(s)$
+after the archimedean and polar normalizations. If both sides have
+meromorphic continuations, the identity theorem preserves that equality. The
+argument principle then computes the same zero distribution. It does not add
+an independent Hilbert spectral realization.
+
+\subsection{A common compact test class}
+
+Take an even $f\in C_c^\infty(\mathbb R)$ and define
+\[
+ h(z)=\int_{\mathbb R}f(u)e^{izu}\,du,\qquad
+ H(s)=h(-i(s-\tfrac12)).
+\]
+The function $h$ is entire and rapidly decreasing in each horizontal strip.
+With $\psi_\Gamma=\Gamma'/\Gamma$, the compact Weil explicit formula is
+\begin{align*}
+ \sum_\rho H(\rho)={}&h(i/2)+h(-i/2)\\
+ &+\frac1{2\pi}\int_{\mathbb R}h(t)
+       \bigl(\operatorname{Re}\psi_\Gamma(1/4+it/2)
+                              -\log\pi\bigr)\,dt\\
+ &-\sum_p\sum_{j\geq1}
+       (\log p)p^{-j/2}
+       \bigl(f(j\log p)+f(-j\log p)\bigr).
+\end{align*}
+
+Zeros are counted with multiplicity, without assuming they are on the
+critical line. The prime sum is finite because $f$ is compactly supported.
+Rapid decay in strips and the classical $O(T\log(T+2))$ zero count give
+absolute convergence of the zero sum.
+
+The gamma integral converges by its logarithmic growth.
+
+For a positively oriented rectangle $\Gamma_T$ avoiding zeros on its
+boundary, the argument principle gives
+\[
+ \frac1{2\pi i}
+    \int_{\Gamma_T}H(s)\frac{\xi'(s)}{\xi(s)}\,ds
+   =\sum_{\rho\ \mathrm{inside}\ \Gamma_T}H(\rho).
+\]
+The entire function $\xi$ is nonzero at zero and one. Its logarithmic
+derivative has no polar residues there. If one instead uses $\Lambda_\zeta$,
+its poles at zero and one contribute with negative multiplicity. The choice
+determines the boundary terms.
+
+When an independent arithmetic construction has $Z=\xi$ on the proved common
+domain, its argument-principle functional is the one just displayed. A
+comparison with a distributional scaling trace also requires equality of
+that trace on this same test class, including the gamma, prime and polar
+terms. No expansion of $-\zeta'/\zeta$ on the critical line is used: its
+Dirichlet series starts in $\operatorname{Re}s>1$.
+
+\subsection{A finite trace difference with a negative value}
+
+Even complete unitary scattering does not force a positive trace
+distribution. On $L^2(\mathbb R,d\lambda)\oplus\mathbb C$, take
+\[
+ A_0=M_\lambda\oplus0,\qquad
+ A_1=M_\lambda\oplus a,\qquad a>0,
+\]
+with common maximal domain $\operatorname{Dom}M_\lambda\oplus\mathbb C$.
+Their difference is positive and rank one.
+
+Both absolutely continuous subspaces are the first summand. The wave
+operators are the identity there, so scattering is complete and its
+scattering operator is one.
+
+Nevertheless,
+\[
+ \operatorname{Tr}(h(A_1)-h(A_0))
+       =h(a)-h(0)
+       =\int_0^a h'(\lambda)\,d\lambda.
+\]
+
+The spectral shift is $\mathbf1_{(0,a)}$. The corresponding trace
+distribution is $\delta_a-\delta_0$.
+
+This distribution is negative on an explicit Fourier square. Choose $\phi\in
+C_c^\infty(\mathbb R)$ with $\int\phi=1$, and put
+$f(u)=\phi(u)+\phi(u-\pi/a)$. Then
+\[
+ h_f(z)=(1+e^{i\pi z/a})h_\phi(z),\qquad
+ |h_f(a)|^2-|h_f(0)|^2=-4.
+\]
+The scattering phase is still $e^{-2\pi i\mathbf1_{(0,a)}}=1$ almost
+everywhere. Thus its unit modulus does not determine the sign of the trace
+functional.
+
+A restriction to a smaller test space needs its own comparison. If a
+Hermitian form is known on $\ker m$ for a moment functional $m$, and
+$m(\psi)=1$, write $f=f_0+m(f)\psi$. Then
+\[
+ q(f,f)=q(f_0,f_0)
+  +2\operatorname{Re}
+       \bigl(\overline{m(f)}\,q(f_0,\psi)\bigr)
+  +|m(f)|^2q(\psi,\psi).
+\]
+The complementary value and mixed pairing are needed to extend a positivity
+statement. They cannot be discarded by a mean-zero reduction. The complete
+arithmetic Weil form and its spectral comparison retain these terms.
+
+\section{The enhanced arithmetic comparisons}
+
+The constructions above provide several actual traces: a mixed complex, a
+marked categorical closure, finite Frobenius contractions, Gibbs traces, and
+classical Hecke traces. Each has its own coefficients, unit, completion and
+evaluation. Their arithmetic comparison must retain those data.
+
+The enhanced Hall question asks for a functor realizing the correspondence
+operations and their collision coherences on an independently defined
+arithmetic carrier. The marked-center question asks for the map preserving
+the chosen center, object and action. Nonlinear norm transport requires its
+maps on parameters and their multiplicative distribution laws. These are
+different from constructing all-genus sewing.
+
+An integral Frobenius trace comparison further requires the commuting square
+between the chiral operations, their arithmetic sheaf realizations, the
+Frobenius actions and the trace evaluations. An automorphy comparison must
+identify the actual chiral functions with independently arithmetic ones,
+including their Euler factors, analytic continuation, functional equation
+and bounds. Neither follows from an equal scalar character.
+
+These maps are the remaining mathematical questions. The finite
+counterexamples specify what a comparison must preserve. The positive
+constructions specify data available for such a comparison. The gluing maps,
+their inverses where an equivalence is claimed, and their compatibility
+under sewing still have to be constructed on the stated arithmetic domains.
+
+
+\section*{References}
+
+For the dg mixed complex and its Morita invariance, see Keller, \emph{On
+differential graded categories}, Section 5.3, Theorem 5.2. The categorical
+perfect-stack and Hecke character theorems have their separate sources and
+hypotheses in Section~\ref{v4-arith:ic:traces}.
+
+See Bost--Connes, \emph{Hecke algebras, type III factors and phase
+transitions with spontaneous symmetry breaking in number theory}.
+The phase transition is in Theorems 5 and 25 and Section 7. The spherical norm uses the unramified
+Whittaker formula of Casselman--Shalika, \emph{The unramified principal
+series of p-adic groups II: The Whittaker function}. For the global volume
+normalization, see Lai, \emph{Tamagawa number of reductive algebraic
+groups}, Section 1.7 and Theorem 7.1.
+
+The holomorphic parameter bounds are Deligne, \emph{La conjecture de Weil
+I}, Theorem 8.2, and Deligne--Serre, \emph{Formes modulaires de poids 1},
+Theorem 4.1 and Corollary 4.2. The Tate integrals and functional equation
+use Tate, \emph{Fourier analysis in number fields and Hecke's
+zeta-functions}, in Cassels--Fr\"ohlich, \emph{Algebraic Number Theory}. The
+compact explicit formula uses the normalization of
+Theorem~\ref{v4-arith:w5-a:thm:weil-explicit}.
+
+The fixed-point sum and hook specialization are Nekrasov--Okounkov,
+\emph{Seiberg--Witten theory and random partitions}, arXiv:hep-th/0306238,
+Sections 3.1--3.2. The matter and rank-two gauge/Liouville conventions are
+Alday--Gaiotto--Tachikawa, \emph{Liouville correlation functions from
+four-dimensional gauge theories}, arXiv:0906.3219, including Appendix B.1.
+The geometric transfer operators and divisor theorem are Maulik--Okounkov,
+\emph{Quantum groups and quantum cohomology}, arXiv:1211.1287, Theorem
+1.3.1. For the Liouville action and heavy/light limits, see
+Harlow--Maltz--Witten, \emph{Analytic continuation of Liouville theory},
+arXiv:1108.4417, Section 2.
+
+The analytic sewing input is Gui, \emph{Convergence of sewing conformal
+blocks}, arXiv:2011.07450, Theorem 13.1, with its component-marking
+hypothesis. The finite fusion and conformal realizations used here are
+constructed in Chapters~\ref{v4-arith:mf:chapter}
+and~\ref{v4-arith:asi:chapter}. The level-dependent Hecke formula is Popa,
+\emph{On the trace formula for Hecke operators on congruence subgroups, II},
+arXiv:1706.02691, Theorem 5. Its conventions include indices divisible by
+the level.

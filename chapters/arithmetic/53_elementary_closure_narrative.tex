@@ -1,0 +1,956 @@
+\chapter{Elementary Reductions of the Riemann Hypothesis}
+\label{v4-arith:w5-direct:closure-path}
+
+The arithmetic Koszul reductions isolate the zero-placement problem
+inside the Weil distribution.  The classical equivalences are recalled
+with their hypotheses, and the restricted Paley--Wiener class is kept
+separate from the full Weil cone.
+
+\section{The Riemann Hypothesis in Classical Form}
+\label{v4-arith:w5-direct:RH-classical}
+
+\begin{definition}[the zeta function]
+\label{v4-arith:w5-direct:def:zeta}
+For \(\mathrm{Re}(s)>1\), the Riemann zeta function is the absolutely
+convergent sum
+\begin{equation}
+\label{v4-arith:w5-direct:eq:zeta-dirichlet}
+\zeta(s)\;:=\;\sum_{n=1}^{\infty}\frac{1}{n^{s}}.
+\end{equation}
+Its Euler product, equivalent on \(\mathrm{Re}(s)>1\), is
+\begin{equation}
+\label{v4-arith:w5-direct:eq:zeta-euler}
+\zeta(s)\;=\;\prod_{p}\bigl(1-p^{-s}\bigr)^{-1},
+\end{equation}
+the product taken over all prime numbers.
+\end{definition}
+
+\begin{definition}[completed zeta and xi]
+\label{v4-arith:w5-direct:def:xi}
+Set
+\begin{align}
+\label{v4-arith:w5-direct:eq:Lambda}
+\Lambda_{\zeta}(s)
+&\;:=\;\pi^{-s/2}\,\Gamma(s/2)\,\zeta(s),
+\\[2pt]
+\label{v4-arith:w5-direct:eq:xi}
+\xi_{\mathbb{R}}(s)
+&\;:=\;\tfrac{1}{2}\,s(s-1)\,\Lambda_{\zeta}(s).
+\end{align}
+The function \(\Lambda_{\zeta}\) is meromorphic with simple poles at
+\(s=0\) and \(s=1\); \(\xi_{\mathbb{R}}\) is entire. Both satisfy the
+functional equation
+\begin{equation}
+\label{v4-arith:w5-direct:eq:functional-equation}
+\Lambda_{\zeta}(s)\;=\;\Lambda_{\zeta}(1-s),
+\qquad
+\xi_{\mathbb{R}}(s)\;=\;\xi_{\mathbb{R}}(1-s).
+\end{equation}
+\end{definition}
+
+\begin{remark}[functional equation via Poisson summation]
+\label{v4-arith:w5-direct:rem:Poisson}
+Let $\theta(t)=\sum_{n\in\mathbb Z}e^{-\pi n^2t}$ for $t>0$.
+Poisson summation gives $\theta(1/t)=t^{1/2}\theta(t)$.
+For $\Re s>1$, termwise integration gives
+$\Lambda_\zeta(s)=\frac12\int_0^\infty(\theta(t)-1)t^{s/2}dt/t$.
+Splitting at $1$ and substituting $t\mapsto1/t$ in the lower
+integral yields its meromorphic continuation
+\[
+ \Lambda_\zeta(s)=\frac1{s(s-1)}+
+ \frac12\int_1^\infty(\theta(t)-1)
+       \bigl(t^{s/2}+t^{(1-s)/2}\bigr)\frac{dt}{t}.
+\]
+The remaining integral is entire by exponential decay. This formula
+is invariant under $s\mapsto1-s$; multiplication by $s(s-1)/2$
+removes the two poles and proves the functional equation for
+$\xi_{\mathbb R}$.
+Sources: B.~Riemann, ``\"{U}ber die Anzahl der Primzahlen unter einer gegebenen Gr\"{o}\ss e'', Monatsber.~Berlin.~Akad.~(1859); E.~C.~Titchmarsh, ``The Theory of the Riemann Zeta-Function'', Oxford 1951, Ch.~2.
+\end{remark}
+
+\begin{conjecture}[Riemann Hypothesis]
+\label{v4-arith:w5-direct:conj:RH}
+All non-trivial zeros of \(\zeta\) have real part \(1/2\). Equivalently,
+the zeros of \(\xi_{\mathbb{R}}\) have real part \(1/2\).
+\end{conjecture}
+
+\section{Four Classical Equivalents}
+\label{v4-arith:w5-direct:four-equivalents}
+
+Four classical restatements of
+\Cref{v4-arith:w5-direct:conj:RH} are used below.  They do not
+identify the same object; they identify the same zero-placement
+condition through different test categories.
+
+
+\begin{theorem}[Weil positivity]
+\label{v4-arith:w5-direct:thm:weil-positivity}
+Let $\mathscr A=C_c^\infty(\mathbb R)$ with its inductive-limit
+ topology, and put $f^*(t)=\overline{f(-t)}$ and
+$h_f(z)=\int_{\mathbb R}f(t)e^{izt}dt$.
+The Mellin coordinates are $\Phi_f(s)=h_f(-i(s-1/2))$.
+With $\phi(x)=f(\log x)$, the change of variables $x=e^t$ gives
+$\Phi_f(s)=\int_0^\infty\phi(x)x^{s-1/2}dx/x$.
+For the zeros $\rho$ of $\xi_{\mathbb R}$, counted with multiplicity,
+put $z_\rho=-i(\rho-1/2)$. Then
+\begin{equation}
+\label{v4-arith:w5-direct:eq:weil-distribution}
+ W(f)=\sum_\rho h_f(z_\rho)
+     =h_f(i/2)+h_f(-i/2)-W_\infty(f)-W_{\mathrm{fin}}(f),
+\end{equation}
+where
+\[
+\begin{aligned}
+ W_\infty(f)&=\frac1{2\pi}\int_{\mathbb R}h_f(u)
+ (\log\pi-\Re\psi(1/4+iu/2))du,\\
+ W_{\mathrm{fin}}(f)&=\sum_{m\ge2}\frac{\Lambda(m)}{\sqrt m}
+ [f(\log m)+f(-\log m)].
+\end{aligned}
+\]
+Write $P(f)=h_f(i/2)+h_f(-i/2)$ for the polar functional.
+Here $\Lambda(m)$ is the von Mangoldt function and $\psi=\Gamma'/\Gamma$.
+The prime sum is finite. The zero sum converges absolutely.
+RH is equivalent to $W(f*f^*)\ge0$ for every $f\in\mathscr A$.
+\end{theorem}
+\begin{proof}
+These are the compact-test formula and Weil criterion of
+\Cref{v4-arith:w5-a:thm:weil-explicit}, \Cref{v4-arith:w5-a:cor:weil-positivity-RH}.
+The Fourier image of $f*f^*$ is $h_fh_f^\sharp$, where
+$h^\sharp(z)=\overline{h(\bar z)}$. On the real line this product
+is $|h_f|^2$.
+\end{proof}
+\begin{theorem}[Li positivity]
+\label{v4-arith:w5-direct:thm:li-positivity}
+\ClaimStatusProvedElsewhere. Define
+\begin{equation}
+\label{v4-arith:w5-direct:eq:li-coef}
+\lambda_{n}\;:=\;\sum_{\rho}\left(1-\Bigl(1-\frac{1}{\rho}\Bigr)^{n}\right)
+\;=\;\frac{1}{(n-1)!}\frac{d^{n}}{ds^{n}}
+\bigl[s^{n-1}\log\xi_{\mathbb{R}}(s)\bigr]\Big|_{s=1}.
+\end{equation}
+Then RH holds if and only if \(\lambda_{n}\geq 0\) for all \(n\geq 1\).
+Source: X.-J. Li, ``The positivity of a sequence of numbers and the
+Riemann hypothesis'', J.~Number Theory 65 (1997), 325--333.
+\end{theorem}
+
+Let $\gamma$ denote the Euler--Mascheroni constant. For a normal
+Hilbert--Schmidt operator $T$, its regularized determinant is
+\[
+ \det{}_2(I-sT)=\prod_j(1-s\lambda_j)e^{s\lambda_j},
+\]
+where the nonzero eigenvalues $\lambda_j$ are repeated with their
+multiplicities. The product converges locally uniformly in $s\in\mathbb C$:
+$\sum_j|\lambda_j|^2<\infty$ and
+$(1-s\lambda_j)e^{s\lambda_j}=1+O_K(|\lambda_j|^2)$ uniformly on
+each compact set $K\subset\mathbb C$.
+
+\begin{theorem}[normalized Hilbert--P\'olya spectral form]
+\label{v4-arith:w5-direct:thm:HP-form}
+RH is equivalent to the existence of a separable Hilbert space
+$H$ and a densely defined self-adjoint operator $A$ such that, for
+$\Theta=\tfrac12I+iA$, the inverse $\Theta^{-1}$ is Hilbert--Schmidt
+and the prescribed entire determinant is
+\[
+ \frac12e^{Bs}\det{}_2(1-s\Theta^{-1})=\xi_{\mathbb R}(s),
+ \qquad B=-1-\frac\gamma2+\frac12\log(4\pi).
+\]
+Zeros of the determinant are counted with their spectral
+multiplicities. The prescription fixes both its value $1/2$ at zero
+and its logarithmic derivative $B$ there.
+\end{theorem}
+\begin{proof}
+For a self-adjoint $A$, the bounded inverse of $\tfrac12I+iA$
+is normal. If it is Hilbert--Schmidt it is compact; its nonzero
+eigenvalues are $(1/2+ia_j)^{-1}$ for real eigenvalues $a_j$,
+with their multiplicities. The regularized product therefore has
+zeros only at $1/2+ia_j$. Its asserted equality with $\xi_{\mathbb R}$
+implies RH.
+Conversely, on the zero-occurrence carrier $K_Z=\ell^2(Z)$ of
+\Cref{v4-arith:sc:determinant}, use the closed normal operator
+$\Theta_Z$ with maximal domain
+$\{u:\sum_\rho|\rho u_\rho|^2<\infty\}$.
+Under RH write $\rho=1/2+i\gamma_\rho$, with $\gamma_\rho\in\mathbb R$.
+The diagonal operator
+\[
+ (Au)_\rho=\gamma_\rho u_\rho,\qquad
+ \operatorname{Dom}A=\{u:\sum_\rho|\gamma_\rho u_\rho|^2<\infty\}
+\]
+is self-adjoint, and $\Theta_Z=\tfrac12I+iA$ on the same domain.
+Its inverse is Hilbert--Schmidt, and
+\Cref{v4-arith:sc:normalized-det} proves exactly the stated
+normalized genus-one determinant. That construction uses the zero
+divisor as input. Constructing an arithmetic operator and an
+intertwiner with this carrier remains an additional problem.
+\end{proof}
+The Hilbert--P\'olya question asks for such an independent arithmetic
+realization; the abstract zero-occurrence construction does not supply
+it. Connes, \emph{Selecta Mathematica} 5 (1999), arXiv:math/9811068,
+treats a separate trace-formula framework.
+
+\paragraph{Entire functions and the zero divisor.}
+Write $F(z)=\Xi(z)=\xi_{\mathbb R}(1/2+iz)$ and
+$G^\#(z)=\overline{G(\bar z)}$ for an entire function $G$.
+The functional equation and reality of $\xi_{\mathbb R}$ make $F$
+even and real entire. RH says precisely that all its zeros are real.
+Use the convention that an entire function $E$ belongs to
+$\mathrm{HB}$ if it has no real zeros and
+$|E^\#(z)|<|E(z)|$ for $\Im z>0$.
+No finite-exponential-type condition is included in this definition.
+
+\begin{theorem}[a shift-family Hermite--Biehler criterion]
+\label{v4-arith:w5-direct:thm:dB-form}
+For $h>0$ put
+\[
+ E_h(z)=F(z+ih)=\xi_{\mathbb R}(1/2+h-iz).
+\]
+The following conditions are equivalent: RH; $E_h\in\mathrm{HB}$
+for every $h>0$; and $E_{h_n}\in\mathrm{HB}$ for some positive
+sequence $h_n\downarrow0$. The recovery identities are
+\[
+ E_h^\#(z)=F(z-ih),\qquad F(z)=E_h(z-ih).
+\]
+Thus a zero $w$ of $E_h$ gives the zero $w+ih$ of $F$ with exactly
+the same multiplicity. No simplicity assumption is needed.
+\end{theorem}
+\begin{proof}
+One has $F(0)\ne0$. Indeed the alternating series at $1/2$ can be
+paired as
+$\eta(1/2)=\sum_{n\ge1}[(2n-1)^{-1/2}-(2n)^{-1/2}]>0$;
+$\zeta(1/2)=\eta(1/2)/(1-\sqrt2)$ is consequently nonzero.
+Under RH the genus-one factorization and evenness give
+\[
+ F(z)=F(0)\prod_{\gamma>0}
+       (1-z^2/\gamma^2)^{m_\gamma},\qquad
+ \sum_{\gamma>0}m_\gamma\gamma^{-2}<\infty.
+\]
+Here $\pm\gamma$ are the zeros of $F$, with multiplicity
+$m_\gamma$. The inverse-square convergence follows from
+\Cref{v4-arith:pm:zero-count}. Pairing the factors at $\gamma$ and
+$-\gamma$ cancels their genus-one exponentials; the remaining linear
+exponential is constant by evenness. The product converges locally
+uniformly.
+For $z=x+iy$, $y>0$, every real $\gamma$ satisfies
+\[
+ |z+ih-\gamma|^2-|z-ih-\gamma|^2=4yh>0.
+\]
+Apply this to both members of every paired factor. If
+$F(z-ih)\ne0$, each factor in the ratio of absolute values exceeds
+one. Its limiting product remains strictly greater than one by
+retaining one strict factor and bounding all other factors below by
+one. If $F(z-ih)=0$, the inequality is immediate, since $F(z+ih)$
+cannot vanish in the upper half-plane under RH.
+Hence $|E_h(z)|>|E_h^\#(z)|$.
+All zeros of $E_h$ are $\gamma-ih$, so none is real.
+This proves the assertion for every $h>0$, and therefore for any
+sequence decreasing to zero.
+Conversely, a nonreal zero of the real entire function $F$ gives a
+zero $w$ in the upper half-plane. For $h_n<\Im w$, the point
+$w-ih_n$ is an upper-half-plane zero of $E_{h_n}$, contradicting the
+strict HB inequality. The two recovery identities follow directly
+from reality, translation and the functional equation.
+\end{proof}
+
+\begin{remark}[one shift and a family of shifts]
+\label{v4-arith:consumer53:fixed-shift}
+For $F_a(z)=z^2+a^2$, $a>0$, and $h>a$,
+\[
+ F_a(z+ih)=(z+i(h-a))(z+i(h+a))\in\mathrm{HB},
+\]
+although $F_a$ has nonreal zeros. Each factor has the strict
+upper-half-plane modulus inequality because
+$|z+ib|^2-|z-ib|^2=4b\Im z>0$ for $b>0$.
+Thus one fixed shift does not characterize real-rootedness.
+For $\Xi$ itself, Lagarias, arXiv:math/0601653, Lemma~2.1,
+pp.~5--6, proves the shift inequality unconditionally for
+$h\ge1/2$, and under RH for every $h>0$; the change of variable is
+$s=1/2-iz$. Section~6 relates these functions to de Branges spaces.
+The family tending to zero, not one large shift, is the RH criterion.
+\end{remark}
+
+\begin{theorem}[the derivative criterion and real multiplicities]
+\label{v4-arith:consumer53:derivative-HB}
+Set $D(z)=F(z)+iF'(z)$. Then
+\[
+ D^\#(z)=F(z)-iF'(z),\qquad
+ F(z)=\tfrac12(D(z)+D^\#(z)).
+\]
+RH is equivalent to $|D(z)|>|D^\#(z)|$ for every $\Im z>0$,
+where real zeros of $D$ are allowed. With the no-real-zero convention
+above, $D\in\mathrm{HB}$ is instead equivalent to RH together with
+simplicity of all zeros of $F$.
+\end{theorem}
+\begin{proof}
+Under RH, logarithmic differentiation of the paired product gives
+for $z=x+iy$, $y>0$,
+\[
+ \Im\frac{F'(z)}{F(z)}
+ =-y\sum_{\gamma\in\mathbb R}
+           \frac{m_\gamma}{|z-\gamma|^2}<0.
+\]
+The imaginary-part series is absolutely convergent by the
+inverse-square estimate. There is at least one zero, indeed
+infinitely many by \Cref{v4-arith:pm:zero-count}. Consequently
+\[
+ |D(z)|^2-|D^\#(z)|^2
+ =-4|F(z)|^2\Im\frac{F'(z)}{F(z)}>0.
+\]
+Conversely, at an upper-half-plane zero $w$ of $F$ the two values
+$D(w)=iF'(w)$ and $D^\#(w)=-iF'(w)$ have equal modulus.
+This contradicts the strict inequality, also when both vanish at a
+multiple zero. Conjugation symmetry excludes lower-half-plane zeros
+as well.
+For a real zero write $F(z)=(z-\gamma)^m g(z)$ with $g(\gamma)\ne0$.
+Then
+\[
+ D(z)=(z-\gamma)^{m-1}
+ \bigl((z-\gamma)g(z)+i[m g(z)+(z-\gamma)g'(z)]\bigr).
+\]
+The bracket is nonzero at $\gamma$, so the real multiplicity in
+$D$ is exactly $m-1$. On the real axis $F,F'$ are real, hence a
+real zero of $D$ occurs only where both vanish. This proves the
+simplicity qualification and the stated recovery identity.
+\end{proof}
+
+\begin{proposition}[the growth required by the zeta divisor]
+\label{v4-arith:consumer53:exponential-type}
+No nonzero entire function of finite exponential type can have a
+zero divisor containing the full divisor of $F=\Xi$.
+In particular no nonzero real or imaginary component of a
+finite-exponential-type function can have that divisor.
+The functions $F$ and each fixed translate $E_h$ have order one
+and infinite exponential type.
+\end{proposition}
+\begin{proof}
+Let $N(T)$ count the nontrivial zeta zeros with $0<\Im\rho\le T$,
+with multiplicity. The Riemann--von Mangoldt estimate is
+$N(T)=\frac{T}{2\pi}\log\frac{T}{2\pi e}+O(\log T)$.
+For a precise primary bound see Hasanalizade--Shen--Wong,
+arXiv:2107.06506, Corollary~1.2, equation~(1.5), p.~2.
+The strip $0\le\Re\rho\le1$ and conjugation give, for the number
+$n_F(r)$ of zeros in $|z|\le r$,
+\[
+ 2N(\sqrt{r^2-1/4})\le n_F(r)\le2N(r),\qquad
+ n_F(r)=\frac r\pi\log\frac r{2\pi e}+O(\log r).
+\]
+If $G$ is nonzero entire with $|G(z)|\le Ce^{\tau|z|}$ and
+$G(0)\ne0$, Jensen's formula at radius $2r$ gives
+\[
+ n_G(r)\log2\le
+ \frac1{2\pi}\int_0^{2\pi}\log|G(2re^{i\theta})|d\theta
+ -\log|G(0)|=O(r).
+\]
+Factoring out a zero at the origin changes the count by a constant.
+Thus $G$ cannot contain the $r\log r$ divisor of $F$.
+If $E$ has finite exponential type, so do its components
+$(E+E^\#)/2$ and $(E^\#-E)/(2i)$; apply the same argument to every
+nonzero component.
+Finally the functional equation, Stirling's formula and
+$\zeta(\sigma)\to1$ give
+\[
+ \log F(iy)=\log\xi_{\mathbb R}(1/2+y)
+ =\frac y2\log y-\frac y2(1+\log(2\pi))+O(\log y)
+ \quad(y\to+\infty).
+\]
+Together with the order-at-most-one bound in
+\Cref{v4-arith:pm:zero-count}, this proves order one and infinite
+exponential type, also after any fixed translation.
+\end{proof}
+The general Hilbert-space theory of entire functions is developed in
+de Branges, \emph{Hilbert Spaces of Entire Functions} (1968).
+The explicit constructions above specify the recovery of the zeta
+divisor and retain its actual growth and multiplicities.
+
+\begin{remark}[four precise equivalences]
+\label{v4-arith:w5-direct:rem:four-equivalents}
+Weil positivity on all compact tests, Li positivity, the normalized
+spectral realization of \Cref{v4-arith:w5-direct:thm:HP-form}, and
+the shift-family condition of \Cref{v4-arith:w5-direct:thm:dB-form}
+are each equivalent to RH. The derivative inequality gives the
+same zero condition with its real-zero convention stated explicitly.
+These criteria use different carriers: test functions, a coefficient
+sequence, a spectral operator and entire functions. None of their
+abstract equivalences constructs the native arithmetic pairing or
+operator maps required below.
+\end{remark}
+
+\section{The Arithmetic Reduction}
+\label{v4-arith:w5-direct:programme-elementary}
+
+The arithmetic Koszul construction supplies five comparison objects.
+Each object is defined on its own domain, and no implication from a
+restricted domain to the full Weil cone is used without an extension
+theorem.
+
+\subsection{Step 1: The arithmetic Heisenberg Koszul pair}
+\label{v4-arith:w5-direct:step-1}
+
+\begin{question}[the arithmetic Heisenberg coefficient object]
+\label{v4-arith:w5-direct:def:heisenberg}
+Construct local coefficient objects \(\mathsf H_v\), a common
+coefficient category, pointings and a completion that define
+\begin{equation}
+\label{v4-arith:w5-direct:eq:heis}
+ \mathsf H^{\mathrm{Ar}}
+ =\mathsf H_\infty\widehat\otimes
+                    \widehat\bigotimes_p\mathsf H_p.
+\end{equation}
+Compare the infinite-place factor with the Heisenberg field and
+the finite factors with their continuous Galois coefficient
+models. An associative bar construction additionally requires
+an augmented algebra, or a specified curved replacement.
+The pointed tensor construction of
+\Cref{v4-arith:tate:setup:data} applies once its inputs are given.
+\end{question}
+
+\begin{definition}[central invariants and comparison functors]
+\label{v4-arith:w5-direct:def:koszul}
+For a specified arithmetic object and its specified dual,
+write \(\kappa^{\mathrm{Ar}}_{\mathsf H}\) and
+\((\kappa^!)^{\mathrm{Ar}}_{\mathsf H}\) for their chosen
+scalar central invariants. These are not the bar and cobar
+complexes themselves.
+An integral co--contra adjunction and an algebraic bar--cobar
+adjunction have the distinct carriers described in
+Chapter~\ref{v4-arith:arith-positselski}.
+\end{definition}
+
+\begin{theorem}[P1 under the central-defect comparison]
+\label{v4-arith:w5-direct:thm:P1-elementary}
+Assume the objects, involution, central-defect identity and
+Mellin evaluation of Theorem~\ref{v4-arith:thm:P1-resolution}
+realize these arithmetic invariants, with \(E(w)\ne0\).
+Then
+\[
+ \kappa^{\mathrm{Ar}}_{\mathsf H}
+       +(\kappa^!)^{\mathrm{Ar}}_{\mathsf H}=0
+ \quad\Longleftrightarrow\quad
+ \xi_{\mathbb R}(s)=\xi_{\mathbb R}(1-s).
+\]
+\end{theorem}
+\begin{proof}
+Applying \(E\) to the defect identity identifies the difference
+of the two completed Mellin functions with
+\((\kappa^{\mathrm{Ar}}_{\mathsf H}
+ +(\kappa^!)^{\mathrm{Ar}}_{\mathsf H})E(w)\).
+The nonzero meromorphic function \(E(w)\) detects the scalar
+coefficient. Multiplication by the reflection-invariant
+factor \(s(s-1)/2\) gives the equivalent identity for \(\xi\).
+\end{proof}
+
+\begin{remark}[the scalar and categorical comparisons]
+\label{v4-arith:w5-direct:rem:P1-elementary}
+Poisson summation proves the scalar functional equation.
+An arithmetic interpretation requires maps identifying the
+duality involution with Mellin reflection and the central
+classes with the specified defect.
+Equality of two scalar characters need not detect a nonzero
+vector defect, as in Theorem~\ref{v4-arith:thm:P1-resolution}.
+Neither the scalar equality nor a categorical equivalence
+alone supplies those identifications.
+\end{remark}
+
+\subsection{Archimedean Heisenberg Character}
+\label{v4-arith:w5-direct:step-2}
+
+\begin{definition}[archimedean Heisenberg character]
+\label{v4-arith:w5-direct:def:zhu}
+The archimedean fibre \(\mathsf{H}_{\infty}\) is the standard Heisenberg
+vertex operator algebra on \(\mathbb{C}_{\infty}\) with Virasoro zero-mode
+\(L_{0}\) and central charge \(c_{\infty}=1\) (one free boson). For the
+primary \(\mathsf{H}_{\infty}\)-module \(V_{\infty}\) (the vacuum
+representation), the Zhu character is
+\begin{equation}
+\label{v4-arith:w5-direct:eq:zhu-char}
+\chi_{V_{\infty}}(\tau)\;:=\;\mathrm{tr}_{V_{\infty}}\bigl(q^{L_{0}-c_{\infty}/24}\bigr),
+\qquad q=e^{2\pi i\tau},
+\end{equation}
+a standard VOA Zhu trace on the archimedean fibre. The global object
+\(\mathcal{V}^{\mathrm{prim}}\) is the Hochschild trace class of the
+identity on the arithmetic Hecke category; it is \emph{not} a vertex
+algebra. The quantity \(\Lambda_{\zeta}(s)\) arises as its Hochschild
+character via Tate's adelic construction, not as a VOA module trace.
+\end{definition}
+
+\begin{theorem}[P2: Hochschild character and functional equation]
+\label{v4-arith:w5-direct:thm:P2-elementary}
+\ClaimStatusProvedHere. The Hochschild character of
+\(\mathcal{V}^{\mathrm{prim}}\) equals \(\Lambda_{\zeta}(s)\) under the
+identification of the Hochschild trace with Tate's adelic zeta integral
+(\Cref{v4-arith:thm:G-row-Riemann-functional-equation}). The primary
+determinant carries rank residue \(r_{\zeta}=2\), the residue at
+\(s=1\) of \(2\zeta(s)\) (\Cref{v4-arith:thm:c-as-residue}). The adelic
+functional equation \(\Lambda_{\zeta}(s)=\Lambda_{\zeta}(1-s)\) follows
+from Poisson summation applied to the Schwartz--Bruhat function at each
+place.  The Heisenberg vacuum character is the local eta-factor; the
+theta transformation enters only after the lattice Schwartz sector is
+adjoined.
+\end{theorem}
+
+\begin{remark}[elementary content of P2]
+\label{v4-arith:w5-direct:rem:P2-elementary}
+On the archimedean fibre,
+\[
+\chi_{V_{\infty}}(\tau)=q^{-1/24}\prod_{n\geq1}(1-q^{n})^{-1}.
+\]
+This eta-character is not Tate's theta integral.  Tate's local factor is
+obtained from the Schwartz function on \(\mathbb{R}\) and the theta sum
+\(\theta(t)=\sum_{n\in\mathbb{Z}}e^{-\pi n^{2}t}\); Poisson summation is
+the identity \(\theta(t)=t^{-1/2}\theta(1/t)\).  No finite Zhu
+\(S\)-matrix or rational-VOA modularity is used in the Hochschild trace.
+Tate (1950) identified \(\Lambda_{\zeta}\) with the adelic zeta integral;
+the present step repackages Tate's computation as a Hochschild-trace
+identity on \(\mathcal{V}^{\mathrm{prim}}\), with VOA language confined
+to \(\mathsf{H}_{\infty}\). Source: J.~T.~Tate, thesis, Princeton 1950
+(reprinted in Cassels--Fr\"{o}hlich, ``Algebraic Number Theory'',
+Academic Press 1967).
+\end{remark}
+
+\subsection{Step 3: Petersson positivity}
+\label{v4-arith:w5-direct:step-3}
+
+
+\begin{definition}[adelic Petersson form]
+\label{v4-arith:w5-direct:def:petersson}
+Fix a unitary central character and quotient Tamagawa measure $dh$ on
+$[GL_2]=Z(\mathbb A)GL_2(\mathbb Q)\backslash GL_2(\mathbb A)$.
+On the corresponding cuspidal $L^2$ space set
+\begin{equation}
+\label{v4-arith:w5-direct:eq:petersson}
+ \langle v,w\rangle_{\mathrm{Pet}}=
+ \int_{[GL_2]}v(h)\overline{w(h)}dh.
+\end{equation}
+For a proposed complex realization $E$ of the primary Hochschild
+trace sector, a Petersson pairing on $E$ requires a complex-linear map
+$I:E\to L^2_{\mathrm{cusp}}([GL_2],dh)$.
+\end{definition}
+
+\begin{theorem}[positive pullback and Koszul comparison]
+\label{v4-arith:w5-direct:thm:P3-elementary}
+The pullback $\langle Iv,Iw\rangle_{\mathrm{Pet}}$ is positive
+semidefinite, and is definite precisely when $I$ is injective.
+If $B_{\mathrm{Kos}}:E\times E\to\mathbb C$ is bilinear and
+$\sigma:E\to E$ is an antilinear involution, the identity
+\[
+ B_{\mathrm{Kos}}(v,\sigma w)=\langle Iv,Iw\rangle_{\mathrm{Pet}}
+\]
+transports this positivity to the specified Koszul pairing.
+\end{theorem}
+\begin{proof}
+Its diagonal is $\|Iv\|_2^2$, which vanishes exactly on $\ker I$.
+The displayed equality then gives the last assertion.
+\end{proof}
+
+\begin{remark}[local and global realization data]
+\label{v4-arith:w5-direct:rem:P3-elementary}
+For a restricted Hilbert tensor product with unit reference vectors
+$e_p$, the inner product on elementary tensors is
+\begin{equation}
+\label{v4-arith:w5-direct:eq:petersson-factorized}
+ \langle v,w\rangle=\langle v_\infty,w_\infty\rangle
+ \prod_p\langle v_p,w_p\rangle,
+\end{equation}
+where all but finitely many factors equal one.
+This defines a positive Hilbert completion. Identifying it with
+$E$ and with the adelic Petersson space requires local maps,
+normalizations on $e_p$, and the global pairing identity above.
+The primary Hochschild trace class is not itself a space of
+functions on $[GL_2]$. Its degree, completion, realization map,
+and pairing are the additional data specified in
+\Cref{v4-arith:pres57:native-pairing}.
+\end{remark}
+\subsection{Step 4: Bost--Connes and the Hilbert--P\'olya Boundary}
+\label{v4-arith:w5-direct:step-4}
+
+\begin{definition}[Bost--Connes system and KMS convention]
+\label{v4-arith:w5-direct:def:BC}
+Let $D=C^*(\mathbb Q/\mathbb Z)$, with group unitaries $e(r)$,
+and put
+\[
+ \alpha_n(e(r))=\frac1n\sum_{nt=r}e(t),\qquad n\in\mathbb N^\times.
+\]
+The Bost--Connes algebra is the semigroup crossed product
+$\mathcal A_{\mathrm{BC}}=D\rtimes_\alpha\mathbb N^\times$.
+Its multiplicative generators $\mu_n$ are isometries, with
+\[
+ \mu_n^*\mu_n=1,\quad \mu_m\mu_n=\mu_{mn},\quad
+ \mu_n d\mu_n^*=\alpha_n(d),\quad
+ \mu_n^*e(r)\mu_n=e(nr).
+\]
+The time evolution fixes $D$ and satisfies
+$\sigma_t(\mu_n)=n^{it}\mu_n$.
+For $\beta>0$ and entire analytic elements the KMS$_\beta$ identity is
+$\varphi(ab)=\varphi(b\sigma_{i\beta}(a))$.
+In particular
+$\varphi(\mu_n\mu_n^*)=n^{-\beta}$ whereas
+$\varphi(\mu_n^*\mu_n)=1$; for $n>1$ the KMS state is nontracial
+and $\mu_n$ is not unitary.
+The crossed-product description is that of Laca--Raeburn,
+arXiv:math/9911134, \S2, p.~3.
+\end{definition}
+
+At $\beta=1$ let $\varphi_1$ be the unique KMS state and
+$(\pi,H,\Omega)$ its GNS representation. Its restriction to $D$ is
+$\varphi_1(e(r))=\delta_{r,0}$; see Connes,
+\emph{Noncommutative Geometry}, V~\S11, Theorem~5(a), p.~528.
+Invariance and the KMS identity give, on the dense monomial algebra,
+\[
+ \varphi_1(\mu_a e(r)\mu_b^*)
+       =\delta_{a,b}\,a^{-1}\delta_{r,0}.
+\]
+Indeed unequal $a,b$ give a nontrivial time character, while for
+$a=b$ one moves $\mu_a$ around the state by the KMS identity.
+For this canonical state its normal extension to
+$M=\pi(\mathcal A_{\mathrm{BC}})''$ is faithful, and $\Omega$ is
+cyclic and separating. We use its Tomita modular operator $\Delta_1$,
+with support $1$ in $M$ and convention
+\[
+ \Delta_1^{it}\pi(a)\Delta_1^{-it}=\pi(\sigma_{-t}(a)),
+ \qquad \Delta_1^{it}\Omega=\Omega.
+\]
+This sign is the canonical Hecke-state convention in Connes,
+V~\S11, Proposition~4, p.~527. In vectors below, $a\Omega$ means
+$\pi(a)\Omega$.
+
+\begin{theorem}[the full critical-temperature modular generator]
+\label{v4-arith:w5-direct:thm:HPAr-elementary}
+Define $N_{\mathrm{BC}}=-\tfrac12\log\Delta_1$ by self-adjoint
+functional calculus. There is an orthogonal Hilbert sum
+\[
+ H=\widehat{\bigoplus}_{q\in\mathbb Q_{>0}}H_q,
+ \qquad N_{\mathrm{BC}}|_{H_q}=\tfrac12\log q,
+\]
+where every $H_q$ has countably infinite dimension. Its maximal domain is
+\[
+ \operatorname{Dom}N_{\mathrm{BC}}
+ =\left\{\xi=\sum_q\xi_q:
+            \sum_q(\log q)^2\|\xi_q\|^2<\infty\right\}.
+\]
+Its point spectrum is $\tfrac12\log\mathbb Q_{>0}$ and its closed
+spectrum is $\mathbb R$. All spectral measures are pure point.
+\end{theorem}
+\begin{proof}
+Each monomial $x=\mu_a e(r)\mu_b^*$ is entire analytic with
+$\sigma_t(x)=(a/b)^{it}x$. The modular identity therefore gives
+$\Delta_1^{it}x\Omega=(a/b)^{-it}x\Omega$.
+Take $H_q$ to be the closed span of these eigenvectors with $a/b=q$.
+Different eigenvalues are orthogonal, and the monomials are dense
+in the GNS space. Functional calculus gives the displayed direct
+sum and maximal domain. Every $q=a/b$ occurs, since
+\[
+ \|\mu_a\mu_b^*\Omega\|^2
+       =\varphi_1(\mu_b\mu_b^*)=b^{-1}>0.
+\]
+The closed spectrum is the closure of these diagonal eigenvalues,
+which is $\mathbb R$ because the positive rationals are dense.
+The diagonal spectral projections make every spectral measure
+atomic on that countable set.
+For multiplicity fix a prime $p$, and set
+$P_k=\mu_{p^k}\mu_{p^k}^*$ and $d_k=P_k-P_{k+1}$, $k\ge0$.
+The $P_k$ are nested fixed-point projections; hence the $d_k$ are
+orthogonal projections with
+$\|d_k\Omega\|^2=p^{-k}-p^{-k-1}>0$.
+For fixed-point elements $x,y$, cancellation of $\mu_a^*\mu_a$ and
+the KMS identity give
+\[
+ \varphi_1\bigl((\mu_a y\mu_b^*)^*(\mu_a x\mu_b^*)\bigr)
+     =b^{-1}\varphi_1(y^*x).
+\]
+Thus $\mu_a d_k\mu_b^*\Omega$ are infinitely many nonzero orthogonal
+vectors in $H_{a/b}$. The algebra, and hence $H$, is separable,
+so its eigenspace dimensions are countably infinite.
+\end{proof}
+
+\begin{proposition}[a reducing occupation subspace]
+\label{v4-arith:consumer53:occupation-subspace}
+For an integer $s\ge1$ put
+\[
+ K_s=\overline{\operatorname{span}}
+       \{\mu_{m^s}\Omega:m\in\mathbb N^\times\}.
+\]
+The displayed vectors are an orthonormal basis and $K_s$ reduces
+$N_{\mathrm{BC}}$. The unitary
+$V_s:\ell^2(\mathbb N^\times)\to K_s$,
+$V_s\delta_m=\mu_{m^s}\Omega$, satisfies
+\[
+ V_s^*(N_{\mathrm{BC}}|_{K_s})V_s=\tfrac s2 H_{\mathrm{occ}},
+ \qquad (H_{\mathrm{occ}}c)_m=(\log m)c_m,
+\]
+including the domain identity, where
+\[
+ \operatorname{Dom}H_{\mathrm{occ}}
+       =\{c:\sum_m(\log m)^2|c_m|^2<\infty\}.
+\]
+Thus $K_1$ gives half the occupation energy and $K_2$ gives exactly
+$\log m$.
+\end{proposition}
+\begin{proof}
+Each vector has norm one because $\mu_{m^s}$ is an isometry.
+For $m\ne n$, invariance of $\varphi_1$ gives
+$\varphi_1(\mu_{m^s}^*\mu_{n^s})=0$, since $(n/m)^{ist}$ is a nontrivial time character. These orthonormal eigenvectors have energies
+$(s/2)\log m$. Their closed span reduces every spectral projection
+of $N_{\mathrm{BC}}$, proving reduction and the maximal diagonal
+domain formula.
+\end{proof}
+
+\begin{proposition}[compressed shifts and the observable obstruction]
+\label{v4-arith:consumer53:BC-compression}
+Let $P_s$ be the orthogonal projection onto $K_s$, and set
+$T_n=\pi(\mu_{n^s})|_{K_s}$. Under $V_s$, these operators and their
+Hilbert adjoints act as
+\[
+ V_s^*T_nV_s\delta_m=\delta_{nm},\qquad
+ V_s^*T_n^*V_s\delta_m=
+ \begin{cases}\delta_{m/n},&n\mid m,\\0,&n\nmid m.\end{cases}
+\]
+The adjoint here is $T_n^*=P_s\pi(\mu_{n^s}^*)|_{K_s}$.
+The original adjoints do not preserve $K_s$, and compression of the
+BC algebra to $K_s$ is not a $*$-representation.
+\end{proposition}
+\begin{proof}
+The semigroup identity gives
+$\mu_{n^s}\mu_{m^s}\Omega=\mu_{(nm)^s}\Omega$.
+Taking inner products of these basis vectors gives the adjoint formula.
+For $n>1$ the vector $\mu_{n^s}^*\Omega$ has norm squared $n^{-s}$
+and strictly negative modular energy, so it is nonzero and orthogonal
+to $K_s$. In particular it cannot be the zero compressed adjoint
+$T_n^*\Omega$.
+For the group unitaries, time invariance makes the off-diagonal
+matrix coefficients of $e(r)$ between the $K_s$ basis vectors vanish.
+The transfer relation and the state on $D$ give the diagonal entries:
+\[
+ P_s\pi(e(r))|_{K_s}\,\mu_{m^s}\Omega
+   =\mathbf1_{\{m^s r=0\ \mathrm{in}\ \mathbb Q/\mathbb Z\}}
+       \mu_{m^s}\Omega.
+\]
+At $r=1/2$ the compressed operator kills $\Omega$, although $e(r)$
+is unitary. Thus the unital compression preserves adjoints but does not preserve
+products, and is not a representation of the BC algebra.
+\end{proof}
+Writing $m=\prod_p p^{k_p}$ identifies the occupation basis with
+finitely supported nonnegative prime occupations. On their finite
+linear span,
+\[
+ N_{\mathrm{BC}}|_{K_s}=\frac s2\sum_p(\log p)K_p,
+ \qquad K_p\mu_{m^s}\Omega=k_p\mu_{m^s}\Omega.
+\]
+The closure is the maximal diagonal operator already specified.
+This identifies a Hilbert space and its occupation generator; it
+does not turn the compressed BC observables into a BC representation
+or into bosonic creation operators.
+
+\begin{remark}[occupation trace and the Hilbert--P\'olya boundary]
+\label{v4-arith:w5-direct:rem:HPAr-stop}
+On the reducing subspace $K_2$ the spectral theorem gives
+\[
+ \operatorname{Tr}_{K_2}(e^{-tN_{\mathrm{BC}}})
+       =\sum_{m\ge1}m^{-t}=\zeta(t),\qquad t>1.
+\]
+At $t=1$ this trace diverges. On the full GNS space the exponential
+$e^{-tN_{\mathrm{BC}}}$ is unbounded for every $t>0$, since its
+spectrum contains all negative rational logarithmic energies.
+There is also a separate standard BC representation on
+$\ell^2(\mathbb N^\times)$, with
+$\pi_0(\mu_n)\delta_m=\delta_{nm}$ and
+$\pi_0(e(r))\delta_m=e^{2\pi i m r}\delta_m$.
+The root-of-unity average in $\alpha_n$ is zero unless $n\mid m$,
+and otherwise is $e^{2\pi i(m/n)r}$, proving the covariance relation.
+The occupation Hamiltonian implements $\sigma_t$ there and has
+partition function $\operatorname{Tr}(e^{-tH_{\mathrm{occ}}})=\zeta(t)$
+for $t>1$. This is the type-I Gibbs realization underlying
+Connes, V~\S11, Theorem~5(b), p.~528; it is not the compression of
+$\pi$ to $K_2$, whose $e(r)$ matrices were computed above.
+The occupation trace is consequently not the full modular trace
+and not the signed Weil functional. A comparison with
+\Cref{v4-arith:w5-direct:thm:HP-form}, including the arithmetic
+question of \Cref{v4-arith:w5-b:hyp:twist-existence}, must supply
+an actual test-algebra map, its involution and complete
+$P-W_\infty-W_{\mathrm{fin}}$ pairing, an operator-domain comparison,
+and the normalized zero divisor with its multiplicities.
+The reducing subspace and its zeta trace do not supply those maps.
+\end{remark}
+
+\subsection{Restricted Weil pairings}
+\label{v4-arith:w5-direct:step-5}
+
+\begin{definition}[compact coefficient multiplier]
+\label{v4-arith:w5-direct:def:mellin-lift}
+For $f\in\mathscr A$, define
+\begin{equation}
+\label{v4-arith:w5-direct:eq:mellin-lift}
+ U(f)(z)=\sum_{n\ge1}f(\log n)n^{1/2}e^{2\pi inz}.
+\end{equation}
+This is a finite holomorphic Fourier polynomial with exponential
+decay as $\Im z\to\infty$.
+\end{definition}
+
+\begin{proposition}[modularity of the compact multiplier]
+A nonzero $U(f)$ cannot be a cusp form of positive weight for
+$SL_2(\mathbb Z)$.
+\end{proposition}
+\begin{proof}
+A finite Fourier polynomial is analytic in $y$ at $z=iy=0$.
+The modular transformation $z\mapsto-1/z$ would imply
+$U(f)(iy)=O(y^{-k}e^{-2\pi/y})$. All its Taylor coefficients
+would vanish. This is the compact multiplier obstruction of
+\Cref{v4-arith:w5-a:lem:upsilon-cuspidal}.
+\end{proof}
+
+\begin{theorem}[restricted positive realizations]
+\label{v4-arith:w5-direct:thm:WP-isometry}
+Let $D\subset\mathscr A$ be a complex vector subspace.
+Put $q_D(f,g)=W(f*g^*)$ for $f,g\in D$.
+A linear map $J:D\to K$ to a positive Hilbert space satisfying
+\begin{equation}
+\label{v4-arith:w5-direct:eq:WP-isometry}
+ \langle Jf,Jg\rangle_K=q_D(f,g)
+ =P(f*g^*)-W_\infty(f*g^*)-W_{\mathrm{fin}}(f*g^*)
+\end{equation}
+exists exactly when $q_D$ is positive semidefinite.
+When it exists, the completion of $D/\{f:q_D(f,f)=0\}$ gives
+its minimal realization.
+\end{theorem}
+\begin{proof}
+A Hilbert realization gives positivity. Conversely the
+Cauchy--Schwarz inequality for a positive semidefinite Hermitian
+form makes its nullspace orthogonal to $D$. The quotient is an
+inner-product space, and its completion provides $J$.
+\end{proof}
+
+\begin{corollary}[restricted positivity from a native pairing]
+\label{v4-arith:w5-direct:thm:HPLi-elementary}
+Suppose $T:D\to E$ and $I:E\to L^2_{\mathrm{cusp}}([GL_2],dh)$
+are linear maps with
+$W(f*g^*)=\langle ITf,ITg\rangle_{\mathrm{Pet}}$ for $f,g\in D$.
+Then $W(f*f^*)\ge0$ on $D$.
+\end{corollary}
+\begin{proof}
+Take $g=f$. The resulting value is $\|ITf\|_2^2$.
+\end{proof}
+The construction of $T,I$ and this equality is the restricted
+arithmetic comparison problem. Neither the multiplier $U$ nor
+moment conditions supply these maps. A restricted Li trace additionally
+requires explicit Li test approximants and convergence of their zero
+sums. The rational Li tests are not compact Fourier tests, by
+\Cref{v4-arith:w5-a:prop:li-via-weil}.
+
+\section{The restricted test class and its closure}
+\label{v4-arith:w5-direct:closing-restricted}
+\begin{theorem}[closure of restricted Weil positivity]
+\label{v4-arith:w5-direct:thm:restricted-RH}
+Under the preceding pairing hypothesis, $q_W$ is nonnegative on
+the closure of $D$ in $\mathscr A$. If that closure is all of
+$\mathscr A$, RH follows. The same assertion holds in the
+exponential space $\mathscr G$ of
+\Cref{v4-arith:sc:gaussian-extension}.
+\end{theorem}
+\begin{proof}
+Convolution, involution, and $W$ are continuous on these spaces.
+Thus $f\mapsto q_W(f,f)$ is continuous and its nonnegative locus
+is closed. Apply Weil's criterion when the closure is the full space.
+\end{proof}
+
+\begin{remark}[domain and spectrum]
+\label{v4-arith:w5-direct:rem:what-not-proved}
+The real even moment class $\mathscr A_{13}$ of
+\Cref{v4-arith:pres57:moment-class} is a proper closed subspace
+of the real even compact tests. Increasing a modular weight does
+not remove its moment equations. An extension through Maass,
+residual, or Eisenstein sectors requires maps into the specified
+spectral summands and the same full pairing equality. A separate
+comparison is required for each sector. None is logically necessary
+for an independent proof of the full Weil inequality.
+\end{remark}
+\section{Restricted-Class Comparison}
+\label{v4-arith:w5-direct:construction~5-map}
+
+The restricted-class comparison partitions the conditions of
+\Cref{v4-arith:w5-direct:rem:what-not-proved} into related
+mathematical comparisons.
+
+\begin{center}
+\small
+\begin{tabular}{p{0.45\textwidth}|p{0.50\textwidth}}
+Condition & Reduction \\
+\hline
+F1.a.1 Banerjee--Clozel ideal &
+\Cref{v4-arith:w5-e:chapter} \\
+F1.a.2 small-prime extension (\(p=2,3\)) &
+\Cref{v4-arith:w5-e:chapter} \\
+F1.a.3.A block-Hochschild comparison &
+\Cref{v4-arith:w5-f:F1a3-AB} \\
+F1.a.3.B Paskunas \(\mathrm{Ext}^{1}\) vanishing &
+\Cref{v4-arith:w5-f:F1a3-AB} \\
+F1.a.3.C wild-EG compact generation (\(p=2,3\)) &
+\Cref{v4-arith:w5-g:f1a3-C} \\
+\(\mathrm{L}_{\mathrm{ACD}}\) adelic categorical descent &
+\Cref{v4-arith:w5-e:chapter} \\
+BC-diamond-glue (Ch1) Chenevier pseudochar &
+\Cref{v4-arith:w5-h:bcglue-core-and-F2c} \\
+BC-diamond-glue (AG.det) Arinkin--Gaitsgory split &
+\Cref{v4-arith:w5-h:bcglue-core-and-F2c} \\
+F2.c restricted-tensor \(E_{2}\) transport &
+\Cref{v4-arith:w5-h:bcglue-core-and-F2c} \\
+Arith.~Positselski: continuous duals &
+\Cref{v4-arith:w5-d:chapter} \\
+Arith.~Positselski: derived completion &
+\Cref{v4-arith:w5-d:chapter} \\
+Arith.~Positselski: detection on complete cofibers &
+\Cref{v4-arith:w5-d:chapter} \\
+Arith.~Positselski: Koszul-dual BC &
+\Cref{v4-arith:w5-d:chapter} \\
+Full \(\mathcal{V}^{\mathrm{prim}}\) P3: non-tempered (Ramanujan) &
+\Cref{v4-arith:w5-c:full-vprim-P3} \\
+Full \(\mathcal{V}^{\mathrm{prim}}\) P3: Eisenstein density correction &
+\Cref{v4-arith:w5-c:full-vprim-P3} \\
+H-P\(^{\mathrm{Ar}}\) (W) weight existence &
+\Cref{v4-arith:w5-b:hp-operator} \\
+(H) Weil formula at Gaussians &
+\Cref{v4-arith:w5-i:chapter} \\
+R\(_{\mathrm{analytic}}\) density-of-zeros frontier &
+\Cref{v4-arith:w5-i:chapter} \\
+R1.formal.b/c formal-Noetherian residuals &
+\Cref{v4-arith:w5-i:chapter} \\
+VB\(^{\ast}\) main direction primary Fock &
+\Cref{v4-arith:w5-j:VBstar-spectral-positivity} \\
+Restricted Weil pairing realization &
+\Cref{v4-arith:w5-direct:thm:WP-isometry} \\
+\end{tabular}
+\end{center}
+
+
+\section{The full Weil cone}
+\label{v4-arith:w5-direct:irreducible-residual}
+\begin{theorem}[full-domain Weil positivity]
+\label{v4-arith:w5-direct:thm:irreducible-residual}
+RH is equivalent to
+\begin{equation}
+\label{v4-arith:w5-direct:eq:irreducible}
+ W(f*f^*)\ge0\qquad(f\in\mathscr A).
+\end{equation}
+It is also equivalent to existence of a positive Hilbert realization
+of this full form. A realization through a specified arithmetic
+sector requires the native maps and pairing equality in addition.
+\end{theorem}
+\begin{proof}
+Use Weil's criterion and
+\Cref{v4-arith:w5-direct:thm:WP-isometry} with $D=\mathscr A$.
+\end{proof}
+\begin{remark}[domain of the reduction]
+\label{v4-arith:w5-direct:rem:reduction-honesty}
+An identity on a proper restricted class does not supply this
+full-domain assertion. Density must use a topology in which
+$P,W_\infty,W_{\mathrm{fin}}$ and convolution are continuous.
+The compact and exponential topologies above have that property.
+\end{remark}
+\section{Classical boundary}
+\label{v4-arith:w5-direct:recap}
+The functional equation, Hochschild character, Koszul pairing,
+Bost--Connes dynamics, and coefficient multipliers address different
+comparison problems. The coefficient construction gives a finite
+holomorphic series. The integral pairing is positive on its actual
+$L^2$ carrier. Their arithmetic relation requires specified maps.
+For a fixed restricted carrier, a proved pairing identity gives
+Weil positivity there and on its closure. The full Weil inequality
+is RH-equivalent. A full abstract Hilbert realization follows from
+that inequality by completion, while a realization in the specified
+native arithmetic sector retains its additional structural requirements.

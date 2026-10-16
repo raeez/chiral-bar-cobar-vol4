@@ -1,0 +1,312 @@
+\chapter{Marked realization problems}
+\label{v4-ch:marked-realizations}
+
+An arithmetic construction can determine an algebra, a module, and a
+trace without determining a geometric realization of them. A comparison
+must specify which of these data it preserves. It must also specify the
+maps used when the inputs vary. These requirements are already distinct
+for two-dimensional modules over the dual numbers.
+
+\section{A character does not determine a module}
+\label{v4-marked:sec:characters}
+
+Let \(k\) be a field of characteristic zero, and put
+\(A=k[\epsilon]/(\epsilon^2)\). On the vector space \(k^2\),
+with basis \(e_1,e_2\), consider the representations
+\[
+ \rho_0(a+b\epsilon)=aI,
+ \qquad
+ \rho_1(a+b\epsilon)=aI+bN,
+ \qquad
+ N=\begin{pmatrix}0&1\\0&0\end{pmatrix}.
+\]
+Both are unital algebra maps, since \(N^2=0\). Their characters,
+the functions obtained by taking the matrix trace, agree on every
+element of \(A\):
+\begin{equation}\label{v4-marked:eq:characters}
+ \operatorname{Tr}\rho_0(a+b\epsilon)
+ =\operatorname{Tr}\rho_1(a+b\epsilon)=2a.
+\end{equation}
+They are nevertheless nonisomorphic as \(A\)-modules. An
+intertwining isomorphism \(g\) would satisfy \(g\rho_0(\epsilon)
+=\rho_1(\epsilon)g\), hence \(Ng=0\), contradicting
+invertibility. This remains impossible if one permits an automorphism
+of \(A\): such an automorphism sends \(\epsilon\) to
+\(c\epsilon\) for some \(c\in k^\times\), so its nonzero
+nilpotent action remains nonzero.
+
+The vector \(e_2\) gives a further useful mark. It generates the
+whole module under \(\rho_1\), since \(Ne_2=e_1\); under
+\(\rho_0\) it generates only \(ke_2\). The common character has
+forgotten an extension and a cyclic-vector condition. Even equality of
+all these scalar evaluations does not provide the module comparison.
+
+\section{The data carried by a comparison}
+\label{v4-marked:sec:data}
+
+Fix a commutative ring \(R\). Complexes are cohomological and all
+tensor products in this section are over \(R\). A \emph{marked
+algebra with module and functional} is a tuple
+\[
+ \mathcal A=(A,M,v,\tau),
+\]
+where \(A\) is a unital associative differential graded algebra,
+\(M\) is a left differential graded \(A\)-module,
+\(v:R\to M\) is a chain map, and \(\tau:A\to R\) is a
+chain map of degree zero. The chosen vector \(v(1)\) is therefore
+closed. If the functional is required to be cyclic, this means
+\[
+ \tau(ab)=(-1)^{|a||b|}\tau(ba)
+\]
+for homogeneous inputs. Cyclicity is an extra hypothesis; it is not
+part of the meaning of an arbitrary functional.
+
+A comparison \((f,g):\mathcal A\to\mathcal A'\) consists of a
+unital differential graded algebra map \(f:A\to A'\) and a
+chain map \(g:M\to M'\) such that
+\begin{equation}\label{v4-marked:eq:comparison}
+ g(am)=f(a)g(m),\qquad
+ g\circ v=v',\qquad
+ \tau'\circ f=\tau.
+\end{equation}
+An isomorphism requires both maps to be invertible. A comparison need
+not be an isomorphism: its image and the operations lost in its kernel
+can be part of the question.
+
+The two distinguished maps in this tuple have different types. The
+algebra unit is a map \(R\to A\). The selected vector is a map
+\(R\to M\). Unitality of the action says \(1_Am=m\); it does
+not choose \(v\). In geometric constructions an empty coefficient
+and a local vacuum likewise need their own maps on their respective
+carriers.
+
+Additional operations enlarge the tuple and the equations
+\eqref{v4-marked:eq:comparison}. For example, an endomorphism
+\(F_A:A\to A\) is preserved when \(fF_A=F_{A'}f\); an
+operator \(F_M\) on the module requires \(gF_M=F_{M'}g\).
+An involution requires its own compatibility. If a multiplication is
+associative only through specified higher homotopies, the comparison
+contains components compatible with those homotopies. Keeping only
+its first component is then a different comparison problem.
+
+\begin{proposition}\label{v4-marked:prop:composition}
+The displayed marked objects and their comparisons form a category.
+Every comparison preserves an ordered module operation and its final
+evaluation whenever the latter is defined by the retained maps. In
+particular,
+\[
+ g(a_1\cdots a_r v(1))
+ =f(a_1)\cdots f(a_r)v'(1),
+ \qquad
+ \tau'(f(a_1)\cdots f(a_r))=\tau(a_1\cdots a_r).
+\]
+\end{proposition}
+
+\begin{proof}
+Compose the algebra maps and the module maps separately. Substitution
+in each equation of \eqref{v4-marked:eq:comparison} verifies it for
+the composite; identity maps satisfy the same equations. Ordinary
+composition of chain maps gives associativity. The first displayed
+identity follows by induction using the module equation. The second
+uses multiplicativity of \(f\) and then \(\tau'f=\tau\).
+No factors have been interchanged, so no new Koszul sign occurs.
+\end{proof}
+
+The converse is false if only scalar identities are retained. Equation
+\eqref{v4-marked:eq:characters} gives characters agreeing on every
+input while the modules are not isomorphic. The ordered matrix calculation
+in the prologue shows why even a scalar identity at one arity may fail
+to survive insertion into a larger operation.
+
+\section{Coefficient change and geometric carriers}
+\label{v4-marked:sec:coefficients}
+
+A change of coefficient ring begins with an actual unital map
+\(R\to S\) of commutative rings. Ordinary extension gives
+\[
+ A_S=S\otimes_R A,\qquad M_S=S\otimes_R M,
+ \qquad v_S=1\otimes v,\qquad \tau_S=1\otimes\tau,
+\]
+using \(S\otimes_R R\cong S\). Its algebra product and action
+are the induced ones. Tensoring the equations
+\eqref{v4-marked:eq:comparison} gives a comparison over \(S\).
+This algebraic construction does not require flatness. Extension
+depending only on quasi-isomorphism classes uses derived tensor
+products, with compatible algebra and module resolutions when needed.
+
+For a prime \(\ell\) and \(r\ge1\), there is no unital ring
+map \(\mathbb Z/\ell^r\to K\) to a field \(K\) of
+characteristic zero: the relation \(\ell^r1=0\) would have to
+hold in \(K\). More generally, if an abelian group \(V\) is
+annihilated by \(\ell^r\), then
+\[
+ V\otimes_{\mathbb Z}K=0,
+\]
+because
+\(v\otimes c=\ell^rv\otimes(c/\ell^r)=0\).
+Thus direct rationalization of finite-torsion cochains loses their
+coefficients.
+
+The inverse-limit construction is different. With the usual reduction
+maps,
+\[
+ \mathbb Z_\ell=\varprojlim_r\mathbb Z/\ell^r,
+ \qquad \mathbb Q_\ell=\mathbb Z_\ell[1/\ell].
+\]
+Every term of the inverse system tensors to zero over \(\mathbb Z\)
+with \(\mathbb Q\), whereas
+\(\mathbb Z_\ell\otimes_{\mathbb Z}\mathbb Q
+\cong\mathbb Q_\ell\ne0\): an integer prime to \(\ell\)
+is already a unit in \(\mathbb Z_\ell\). Tensoring with
+\(\mathbb Q\) has therefore not commuted with this inverse
+limit. There is also no continuous unital field map
+\(\mathbb Q_\ell\to\mathbb C\) with their usual topologies.
+Such a map fixes the rational numbers, but the sequence \(\ell^n\)
+tends to zero in \(\mathbb Q_\ell\) and has unbounded complex
+absolute value. This argument concerns continuity, not the existence
+of an abstract field embedding.
+
+Geometry introduces another change of carrier. If an arithmetic input
+is defined over \(R\) and the position curve \(X\) is defined
+over a field \(k\), the coefficient functor and its interaction with the
+operations must be specified. Even after a scalar map \(R\to k\)
+has been chosen, a coefficient algebra alone gives no sheaves on
+the Cartesian powers \(X^I\), for finite ordered sets \(I\), no
+restrictions to collision strata, and no maps for
+inserting one configuration into another.
+
+For a chosen family of sheaves \(A_I\), write
+\(\mathcal Q_n(A_{I_1},\ldots,A_{I_n};A_J)\) for its declared
+complex of allowed operations. The definition of \(\mathcal Q_n\)
+must specify supports, pole or growth bounds, tensor products and
+completions, as appropriate to the example. A geometric comparison
+is then a system of maps on these actual complexes preserving their
+differentials, substitutions and specified units. A primitive in a
+larger Hom complex need not belong to \(\mathcal Q_n\).
+Consequently an obstruction being exact after forgetting support or
+continuity does not provide a comparison in the chosen category.
+
+\section{Existence, uniqueness, and coherent choice}
+\label{v4-marked:sec:spaces}
+
+Suppose that a category of realizations and a category of retained
+data have been constructed, together with a forgetful functor.
+A groupoid is a category in which every arrow is invertible.
+To ask for realizations up to isomorphism, retain all objects and
+only invertible arrows. Denote the resulting groupoids by
+\(\mathscr R\) and \(\mathscr D\), and the functor between
+them by \(U:\mathscr R\to\mathscr D\).
+For \(d\in\mathscr D\), its \emph{realization groupoid}
+has objects
+\begin{equation}\label{v4-marked:eq:fibre}
+ \operatorname{Ob}\operatorname{Real}_U(d)
+ =\{(r,\alpha):r\in\mathscr R,
+                 \ \alpha:U(r)\xrightarrow{\sim}d\}.
+\end{equation}
+An arrow from \((r,\alpha)\) to \((r',\alpha')\) is an
+arrow \(h:r\to r'\) satisfying \(\alpha' U(h)=\alpha\).
+This description is the homotopy fibre of the map of classifying
+spaces of the two groupoids.
+
+Existence means that this groupoid has an object. Uniqueness up to
+isomorphism means that it is connected. Uniqueness with a unique
+compatible isomorphism means that it is equivalent to the one-object
+groupoid with only its identity arrow; its classifying space is then
+contractible. Automorphisms of a realization can prevent this last
+condition even when every realization is isomorphic to it.
+
+In a setting with higher morphisms the analogous definition is
+\[
+ \operatorname{Real}_U(d)
+ =\operatorname{hofib}_d
+   (U^\simeq:\mathscr R^\simeq\to\mathscr D^\simeq),
+\]
+where the superscript denotes the space retaining objects and all
+equivalences. That formula presupposes the categories and \(U\);
+it does not construct them. A comparison required to be noninvertible
+belongs to the relevant category of arrows, with its prescribed
+source and target, rather than to the displayed space of
+identifications.
+
+A functor is fully faithful when its maps on all sets of arrows are
+bijections. It is essentially surjective when every target object
+is isomorphic to an image object.
+
+\begin{proposition}\label{v4-marked:prop:contractible-fibres}
+For a functor between groupoids, every realization groupoid is
+equivalent to a point if and only if the functor is fully faithful
+and essentially surjective.
+\end{proposition}
+
+\begin{proof}
+Essential surjectivity supplies an object \((r,\alpha)\) in
+each fibre. Full faithfulness supplies the unique arrow between any
+two such objects, namely the lift of \((\alpha')^{-1}\alpha\).
+This makes each fibre equivalent to a point.
+
+Conversely, nonemptiness of the fibres gives essential surjectivity.
+Given \(\beta:U(r)\to U(r')\), consider the two objects
+\((r,\beta)\) and \((r',1)\) in the fibre over \(U(r')\).
+Its equivalence to a point supplies exactly one arrow between them.
+By its defining equation, this is exactly one lift of \(\beta\).
+Thus \(U\) is fully faithful.
+\end{proof}
+
+Objectwise existence alone does not give coherent choices. For an
+explicit example, let \(C_n=\mathbb Z/n\mathbb Z\), written
+additively, and let \(BC_n\) be the groupoid with one object and
+automorphism group \(C_n\). Reduction modulo two gives
+\[
+ U:BC_4\longrightarrow BC_2.
+\]
+Its realization groupoid has two objects, corresponding to the two
+identifications in \(C_2\). Reduction \(C_4\to C_2\) is
+surjective, so they are isomorphic. The automorphism group of either
+is the kernel \(\{0,2\}\cong C_2\). Thus the fibre is
+equivalent to \(BC_2\); in particular it is nonempty.
+
+A functorial section, even one whose composite with \(U\) is
+only naturally isomorphic to the identity, would give a group
+homomorphism \(s:C_2\to C_4\) splitting reduction. The natural
+isomorphism changes the composite by conjugation, which is trivial
+in \(C_2\). But the image of the nonzero element would have to
+have order dividing two, so it is \(0\) or \(2\); both reduce
+to zero. No such section exists. The missing compatibility is on
+arrows, although the objectwise existence problem has been solved.
+
+\section{Evaluation after the comparison}
+\label{v4-marked:sec:evaluation}
+
+The functional equation in \eqref{v4-marked:eq:comparison} is a
+commutative triangle on a common domain. If the two functionals are
+defined independently, its proof identifies their evaluations.
+If instead \(\tau\) is defined to be \(\tau'f\), the same
+triangle holds by definition and gives a transported functional.
+It has not identified an independently prescribed arithmetic one.
+Both constructions are legitimate, with different conclusions.
+
+For positivity the algebraic structure being preserved is decisive.
+Let \(A,B\) be complex algebras with conjugate-linear involutions
+\(*\) satisfying \((ab)^*=b^*a^*\), and let
+\(f:A\to B\) preserve the product and involution. Suppose that
+\(\tau_B\) is linear on a subspace containing every
+\(f(a)^*f(a)\), and
+\(\tau_B(f(a)^*f(a))\ge0\) for all \(a\in A\).
+If \(\tau_A(a^*a)=\tau_B(f(a^*a))\) on the same inputs, then
+\[
+ \tau_A(a^*a)=\tau_B(f(a)^*f(a))\ge0.
+\]
+This implication uses the actual product and involution identities.
+For an unbounded weight, the displayed expressions must lie in its
+domain; no value at the unit is inferred. A proposed positive trace
+realization of the Weil functional must supply this map and this
+evaluation identity on its full test domain.
+
+The construction of each side is part of the comparison problem.
+Two arguments may use the same homological algebra without being
+circular; disjoint lists of references can still conceal a target
+defined from the desired answer. Independence here requires the
+arithmetic input and the comparison object to be specified without
+defining one by the invariant that the comparison is meant to
+explain. The remaining task is to construct the operation-preserving
+maps and their coherent behavior under change of inputs.

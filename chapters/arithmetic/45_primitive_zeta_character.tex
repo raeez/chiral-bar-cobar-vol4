@@ -1,0 +1,442 @@
+\chapter{The Primary Euler Product and Its Arithmetic Comparison}
+\label{v4-arith:prim-zeta-char}
+
+The one-mode occupation space has a zeta heat trace. A Gaussian test
+function has a gamma Mellin integral. Their product is the completed
+zeta function. These are three precise scalar calculations; identifying
+them with the character of an arithmetic bar or cobar object requires
+additional maps. In particular, ordinary graded duality reverses energy
+and does not by itself shift a Mellin parameter from \(s\) to \(1-s\).
+We specify the carriers before making the comparison.
+
+\section{The Selected Primary Model}
+\label{v4-arith:prim-zeta:primary-subspace}
+\label{v4-arith:prim-zeta:att-1-primary}
+\subsection{Finite places}
+\label{v4-arith:prim-zeta:local-primary}
+
+\begin{definition}[one-mode primary tower]
+\label{v4-arith:prim-zeta:def:p-primary}
+Inside the polynomial oscillator representation at a prime \(p\), set
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:p-primary}
+ \mathcal H^{(p)}_{\mathrm{prim}}
+ =\bigoplus_{j\ge0}\mathbb C e_{j,p},\qquad
+ e_{j,p}=(a^{(p)}_{-1})^j|0\rangle_p.
+\end{equation}
+The vector \(e_{0,p}=|0\rangle_p\) is the unit. Give \(e_{j,p}\) energy
+\(j\log p\), as in Convention~\ref{v4-arith:conv:two-grading}(ii).
+This is a selected vector subspace; it excludes all modes \(a_{-k}^{(p)}\)
+with \(k>1\) and any second oscillator species.
+\end{definition}
+
+\begin{remark}[selection and operators]
+\label{v4-arith:prim-zeta:rem:exclude-doubles}
+\label{v4-arith:prim-zeta:rem:why-primary}
+One full oscillator species at a prime has heat trace
+\(\prod_{k\ge1}(1-p^{-k\beta})^{-1}\), while the selected tower has
+\((1-p^{-\beta})^{-1}\). Two species square the full factor.
+The selected tower contains every occupation of mode one, including
+its vacuum, and no higher modes. Both \(T_n\) and \(\psi_n\) of
+Chapter~\ref{v4-arith:gelfand-borger} send its generator to mode \(n\);
+for \(n>1\) they do not preserve this selected space. No equivariant
+arithmetic identification follows from the selection.
+\end{remark}
+
+\begin{proposition}[local shifts and Gibbs weights]
+\label{v4-arith:prim-zeta:prop:BC-ergodic}
+Normalize the Hall basis by \(u_{j,p}=e_{j,p}/\sqrt{j!}\) and complete
+it to \(\ell^2(\mathbb N_0)\). The shift
+\(S_pu_{j,p}=u_{j+1,p}\) is an isometry, and the diagonal operator
+\(H_pu_{j,p}=j\log p\,u_{j,p}\) has partition function
+\[
+ Z_p(\beta)=\operatorname{Tr}(e^{-\beta H_p})
+            =(1-p^{-\beta})^{-1}\qquad(\beta>0).
+\]
+Its normalized Gibbs state on bounded operators is
+\[
+ \varphi_{p,\beta}(A)=(1-p^{-\beta})
+ \sum_{j\ge0}p^{-j\beta}\langle Au_{j,p},u_{j,p}\rangle.
+\]
+In particular a rank-one occupation projection has probability
+\((1-p^{-\beta})p^{-j\beta}\).
+\end{proposition}
+\begin{proof}
+The shift preserves the displayed orthonormal basis and has range its
+tail. The heat trace is a convergent geometric series. Dividing the
+positive trace-class operator by that trace gives a positive functional
+with value one on the identity, proving the state formula.
+A state is a functional on operators, not an assignment of an
+unnormalized Boltzmann weight to a state vector. No classification of
+Bost--Connes KMS states is needed for this calculation.
+\end{proof}
+
+\subsection{The Gaussian test line}
+\label{v4-arith:prim-zeta:archimedean-primary}
+\begin{definition}[archimedean primary datum]
+\label{v4-arith:prim-zeta:def:arch-primary}
+Use the specified test function \(g(x)=e^{-\pi x^2}\) and its line
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:arch-primary}
+ \mathcal G=\mathbb Cg\subset\mathcal S(\mathbb R).
+\end{equation}
+The datum includes its Mellin pairing, defined below. It is not an
+identification of the full countable-mode Heisenberg representation
+with a single coordinate oscillator. Multiplying by arbitrary Hermite
+polynomials leaves this line and gives further test functions.
+\end{definition}
+
+\begin{proposition}[Gaussian Mellin integral]
+\label{v4-arith:prim-zeta:prop:arch-char}
+For \(\operatorname{Re}s>0\),
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:arch-char}
+ \int_0^\infty e^{-\pi x^2}x^{s-1}\,dx
+ =\frac12\pi^{-s/2}\Gamma(s/2).
+\end{equation}
+The full real integral against \(|x|^{s-1}\) is twice this value.
+It is a Mellin pairing, not the heat trace of an operator on the
+one-dimensional line \(\mathcal G\).
+\end{proposition}
+\begin{proof}
+Near zero integrability requires \(\operatorname{Re}s>0\), and the
+Gaussian gives decay at infinity. Substitute \(u=\pi x^2\); then
+\(x^{s-1}dx=\frac12\pi^{-s/2}u^{s/2-1}du\).
+The gamma integral gives the formula. The integrand with absolute
+value is even, so the full real integral doubles it.
+\end{proof}
+
+\subsection{The restricted tensor and its scalar pairing}
+\label{v4-arith:prim-zeta:adelic-primary}
+\begin{definition}[selected primary model]
+\label{v4-arith:prim-zeta:def:primary-subspace}
+Set
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:adelic-primary}
+ P_{\mathrm{fin}}=\bigotimes_p'\mathcal H^{(p)}_{\mathrm{prim}},\qquad
+ \mathcal V^{\mathrm{prim}}_{\mathrm{Heis},\mathrm{prim}}
+ :=\mathcal G\otimes_{\mathbb C}P_{\mathrm{fin}}.
+\end{equation}
+The tensor product here is algebraic, with reference vectors \(e_{0,p}\).
+Each elementary occupation has finite prime support. Its normalized
+basis is indexed by \(N=\prod_pp^{j_p}\), and its finite energy is
+\(\log N\). Its Hilbert completion is consequently
+\(\ell^2(\mathbb N_{>0})\). Define the completed scalar pairing by
+\[
+ Z_{\mathrm{prim}}(s)=M_g(s)Z_{\mathrm{fin}}(s),\qquad
+ M_g(s)=\int_{\mathbb R}g(x)|x|^{s-1}\,dx,
+ \quad Z_{\mathrm{fin}}(s)=\sum_{N\ge1}N^{-s}.
+\]
+The common convergence region is \(\operatorname{Re}s>1\).
+This definition uses a finite heat trace and an archimedean Mellin
+pairing. It makes no claim that their product is the ordinary graded
+character of the tensor product with a one-dimensional representation.
+An Iwasawa action on this model, or a comparison with an arithmetic
+Hochschild trace object, must be specified separately.
+\end{definition}
+
+\begin{remark}[operator domains]
+\label{v4-arith:prim-zeta:rem:consistency-vb}
+On the finite Hilbert completion the energy operator is self-adjoint on
+\(\{(c_N):\sum_N(\log N)^2|c_N|^2<\infty\}\); finite-support
+vectors form a core for every power. Thus its polynomial expressions,
+including \(H^n-(H-1)^n\), are defined on that common core. These
+are distinct from both \(T_n\) and \(\psi_n\) of
+\eqref{v4-arith:eq:Tn-formula}. A Mellin variable \(s\) is not an
+eigenvalue of a fixed operator on \(\mathcal G\).
+Identification with the operator of
+Definition~\ref{v4-arith:vb:def:T_n} requires its stated spectral comparison.
+\end{remark}
+\begin{remark}[Virasoro comparison]
+\label{v4-arith:prim-zeta:rem:Virasoro-reconciliation}
+A selected one-mode tower is not invariant under the full Heisenberg
+vertex operations. No global Virasoro action is constructed here.
+The determinant-rank residue \(r_\zeta=2\) in
+Theorem~\ref{v4-arith:thm:regularised-c} and a proposed central charge are
+different data until a compatible operator construction identifies them.
+\end{remark}
+
+\section{The Scalar Calculation}
+\label{v4-arith:prim-zeta:statement}
+\label{v4-arith:prim-zeta:character-primary}
+\label{v4-arith:prim-zeta:table}
+\subsection{The finite Euler product}
+\label{v4-arith:prim-zeta:finite-char}
+\begin{theorem}[finite primary character]
+\label{v4-arith:prim-zeta:thm:finite-char}
+For \(\operatorname{Re}s>1\),
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:finite-char}
+ Z_{\mathrm{fin}}(s)=\prod_p(1-p^{-s})^{-1}=\zeta(s).
+\end{equation}
+For real \(s=\beta\), this is a finite heat trace precisely when
+\(\beta>1\). Its scalar meromorphic continuation is distinct from an
+extension of that heat trace to other temperatures.
+\end{theorem}
+\begin{proof}
+Unique factorization identifies an occupation tuple with one positive
+integer, with weight \(\prod_pp^{-j_ps}=N^{-s}\).
+Absolute convergence follows from \(\sum_NN^{-\sigma}<\infty\) for
+\(\sigma=\operatorname{Re}s>1\), so expansion of the geometric
+factors is justified and gives the Euler product.
+For real \(\beta\le1\), the series of positive diagonal entries
+diverges. The meromorphic continuation of the resulting scalar is the
+classical continuation of \(\zeta\); it has a simple pole at one.
+\end{proof}
+
+\subsection{The archimedean Mellin factor}
+\label{v4-arith:prim-zeta:arch-char}
+\label{v4-arith:prim-zeta:att-2-mellin}
+\begin{theorem}[full real Mellin normalization]
+\label{v4-arith:prim-zeta:thm:arch-char}
+For \(\operatorname{Re}s>0\),
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:full-arch-char}
+ M_g(s)=\int_{\mathbb R}e^{-\pi x^2}|x|^{s-1}\,dx
+        =\pi^{-s/2}\Gamma(s/2)=\Gamma_{\mathbb R}(s).
+\end{equation}
+\end{theorem}
+\begin{proof}
+Apply Proposition~\ref{v4-arith:prim-zeta:prop:arch-char} to the two half-lines.
+This fixes the factor of two and the Haar-measure convention.
+\end{proof}
+
+\subsection{The completed scalar}
+\label{v4-arith:prim-zeta:adelic-char}
+\label{v4-arith:prim-zeta:main-theorem}
+\label{v4-arith:prim-zeta:assembly}
+\begin{theorem}[primary Euler--Mellin identity]
+\label{v4-arith:prim-zeta:thm:main}
+\label{v4-arith:prim-zeta:thm:adelic-char}
+The specified completed scalar satisfies
+\begin{align}
+ Z_{\mathrm{prim}}(s)&=\Gamma_{\mathbb R}(s)\zeta(s)
+ \label{v4-arith:prim-zeta:eq:main}\\
+ &=\Lambda_\zeta(s)\qquad(\operatorname{Re}s>1).
+ \label{v4-arith:prim-zeta:eq:adelic-char}
+\end{align}
+\noeqref{v4-arith:prim-zeta:eq:main,v4-arith:prim-zeta:eq:adelic-char}
+It has the classical meromorphic continuation and functional equation
+\(\Lambda_\zeta(s)=\Lambda_\zeta(1-s)\).
+\end{theorem}
+\begin{proof}
+The defining product has its two factors computed in the preceding
+theorems, giving the equality on the common convergence region.
+Classical Tate--Riemann theory gives the meromorphic continuation and
+functional equation of that scalar. This use of the functional equation
+makes no identification of an arithmetic bar or cobar object.
+\end{proof}
+\begin{corollary}[poles of the completed scalar]
+\label{v4-arith:prim-zeta:cor:primary-is-xi}
+The completed scalar has simple poles at \(s=1\) and \(s=0\), with
+residues \(1\) and \(-1\), respectively, and no other poles.
+\end{corollary}
+\begin{proof}
+At one, \(\Gamma_{\mathbb R}(1)=1\) and
+\(\operatorname{Res}_{s=1}\zeta(s)=1\). The functional equation gives
+the opposite residue at zero. The remaining poles of the gamma factor
+are cancelled by the trivial zeros of \(\zeta\).
+\end{proof}
+
+\section{Duality and the Required Comparison}
+\label{v4-arith:prim-zeta:koszul-dual-char}
+\label{v4-arith:prim-zeta:att-3-koszul-dual}
+\subsection{A cobar model is additional data}
+\label{v4-arith:prim-zeta:cobar-primary}
+\begin{definition}[arithmetic bar--cobar comparison datum]
+\label{v4-arith:prim-zeta:def:cobar-primary}
+An arithmetic comparison datum must specify a dg coalgebra
+\(C_{\mathrm{prim}}\), a cobar model \(A_{\mathrm{prim}}\), coefficients,
+completions, and a twisting cochain or comparison map from the selected
+primary model. Restriction of an arithmetic differential to that selected
+space must be proved; it is not automatic from the vector-space
+inclusion. A continuous dual \(C_{\mathrm{prim}}^\vee\) and a cobar
+construction are not identified merely by writing the same symbol.
+\end{definition}
+
+For an ordinary graded dual the sign is different from a Tate shift.
+The basis dual to energy \(\log N\) has energy \(-\log N\), and its
+formal convergent trace is \(\sum_NN^s=\zeta(-s)\) for
+\(\operatorname{Re}s<-1\). A formula with \(\zeta(1-s)\) requires an
+additional twist and a comparison explaining it. This is not supplied
+by the energy-zero evaluation of
+Theorem~\ref{v4-arith:pos:thm:weight-comp}.
+
+\subsection{The multiplicative-shift scalar}
+\label{v4-arith:prim-zeta:BC-KMS}
+\begin{theorem}[finite scalar comparison]
+\label{v4-arith:prim-zeta:thm:BC-partition}
+On \(\ell^2(\mathbb N_{>0})\), use
+\(H_{\mathrm{BC}}\delta_N=\log N\,\delta_N\) and
+\(\mu_n\delta_N=\delta_{nN}\). Then
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:BC-partition}
+ Z_{\mathrm{BC}}(\beta):=\operatorname{Tr}(e^{-\beta H_{\mathrm{BC}}})
+ =\zeta(\beta)\qquad(\beta>1).
+\end{equation}
+This is the same finite scalar as the selected primary tower. It does
+not identify an arithmetic cobar algebra or its multiplication.
+\end{theorem}
+\begin{proof}
+Sum the positive diagonal entries \(N^{-\beta}\). The basis map from
+normalized prime occupations to \(\delta_{\prod p^{j_p}}\) is a unitary
+energy intertwiner for these two explicitly defined Hilbert models.
+The local occupation shifts correspond to multiplication by primes.
+They are different from the substitutions \(T_n,\psi_n\), which fail
+to preserve the selected space and fix the full-Fock vacuum.
+\end{proof}
+
+\subsection{Fourier--Mellin substitution}
+\label{v4-arith:prim-zeta:arch-fourier}
+\begin{proposition}[the substituted Gaussian scalar]
+\label{v4-arith:prim-zeta:prop:arch-cobar}
+With Fourier kernel \(e^{-2\pi ixy}\), \(\widehat g=g\). Hence
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:arch-cobar}
+ \int_{\mathbb R}\widehat g(y)|y|^{-s}\,dy
+ =\Gamma_{\mathbb R}(1-s)\qquad(\operatorname{Re}s<1).
+\end{equation}
+This is the Mellin integral at the substituted exponent, not a theorem
+identifying the character of an unspecified Koszul-dual object.
+\end{proposition}
+\begin{proof}
+The Gaussian Fourier transform follows, for example, by differentiating
+its integral: integration by parts gives
+\(\widehat g'(y)=-2\pi y\widehat g(y)\), and
+\(\widehat g(0)=\int e^{-\pi x^2}dx=1\). Solving yields
+\(\widehat g(y)=e^{-\pi y^2}\).
+Now apply \eqref{v4-arith:prim-zeta:eq:full-arch-char} with parameter
+\(1-s\). Its convergence condition is exactly the one stated.
+\end{proof}
+
+\subsection{The Tate-dual scalar and conditional character interpretation}
+\label{v4-arith:prim-zeta:koszul-dual-adelic}
+\begin{theorem}[Tate-dual scalar]
+\label{v4-arith:prim-zeta:thm:koszul-dual-adelic}
+Define \(Z_{\mathrm{prim}}^{\mathrm T}(s)=Z_{\mathrm{prim}}(1-s)\).
+On \(\operatorname{Re}s<0\), and then meromorphically,
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:koszul-dual-adelic}
+ Z_{\mathrm{prim}}^{\mathrm T}(s)
+ =\Gamma_{\mathbb R}(1-s)\zeta(1-s)=\Lambda_\zeta(1-s).
+\end{equation}
+If independently constructed arithmetic objects and their scalar
+pairings are identified with these two specified Mellin models, then
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:koszul-dual}
+ Z_C(s)=\Lambda_\zeta(s),\qquad Z_{A^!}(s)=\Lambda_\zeta(1-s).
+\end{equation}
+The latter interpretation is conditional on those identifications,
+including the twist that produces \(1-s\).
+\end{theorem}
+\begin{proof}
+Substitute \(1-s\) into the computed finite series and Gaussian integral.
+Their common convergence region is \(\operatorname{Re}s<0\).
+Meromorphic continuation gives the scalar formula elsewhere. Transport
+through the hypothesized pairing identifications gives the conditional
+interpretation; no such arithmetic maps are constructed by substitution.
+\end{proof}
+
+\subsection{The functional equation}
+\label{v4-arith:prim-zeta:att-4-match}
+\label{v4-arith:prim-zeta:fingerprint}
+\begin{proposition}[scalar functional equation]
+\label{v4-arith:prim-zeta:prop:char-functional-eq}
+As meromorphic scalar functions,
+\begin{equation}
+\label{v4-arith:prim-zeta:eq:char-functional-eq}
+ Z_{\mathrm{prim}}(s)=Z_{\mathrm{prim}}^{\mathrm T}(s)
+ \quad\Longleftrightarrow\quad
+ \Lambda_\zeta(s)=\Lambda_\zeta(1-s).
+\end{equation}
+Both sides hold by the classical functional equation.
+\end{proposition}
+\begin{proof}
+Replace the two explicitly defined scalars by the formulas already
+proved. No implication about arithmetic obstruction classes or operator
+spectra is needed for this equivalence.
+\end{proof}
+\begin{remark}[limits of the scalar calculation]
+\label{v4-arith:prim-zeta:rem:caveat-fingerprint}
+\label{v4-arith:prim-zeta:rem:domain}
+Equality of these meromorphic scalars proves neither RH nor an arithmetic
+bar--cobar pairing. The comparison in
+\eqref{v4-arith:prim-zeta:eq:koszul-dual} is still required even to
+interpret the two scalars as the proposed arithmetic characters.
+\end{remark}
+
+\section{Arithmetic Consequences and Remaining Constructions}
+\label{v4-arith:prim-zeta:consequence-p1}
+\label{v4-arith:prim-zeta:reduction-sub-items}
+\begin{remark}[the character comparison requirement]
+\label{v4-arith:prim-zeta:cor:p1-residual-reduced}
+\label{v4-arith:prim-zeta:rem:p1-form}
+The one-mode scalar and its Gaussian completion have been computed.
+The character requirement in
+Remark~\ref{v4-arith:pos:rem:open-sub-items}(4), when it concerns an arithmetic
+pairing rather than these defined scalar functions, still requires the
+maps and twist specified above. This calculation does not reduce that
+arithmetic list from five requirements to four. The P1 level comparison
+remains Question~\ref{v4-arith:pos:thm:P1-full-unconditional}.
+\end{remark}
+
+\subsection{Distinct arithmetic requirements}
+\label{v4-arith:prim-zeta:remaining-four}
+\label{v4-arith:prim-zeta:residual-table}
+\begin{table}[h]
+\centering\small
+\begin{tabular}{c|p{5.8cm}|p{4.2cm}}
+Input & Construction & Remaining comparison\\\hline
+(1)& Completed continuous duals & Topology and actual duality maps\\
+(2)& Derived completion & Base change on the stated resolutions\\
+(3)& Lifting & Existence and the required morphism properties\\
+(4)& Primary scalar pairing & Arithmetic character, twist and pairing maps\\
+(5)& Bost--Connes realization & Multiplication, differential and completion\\
+\end{tabular}
+\caption{Requirements on the intended arithmetic object. The Euler and
+Mellin calculations determine specified scalar models, not these maps.}
+\label{v4-arith:prim-zeta:tab:residual}
+\end{table}
+
+\subsection{The scalar constructions}
+\label{v4-arith:prim-zeta:table-summary}
+\begin{table}[h]
+\centering\small
+\begin{tabular}{l|l}
+Carrier or pairing & Computed scalar\\\hline
+One-mode occupation Hilbert space & \(\zeta(\beta),\ \beta>1\)\\
+Gaussian full real Mellin pairing & \(\Gamma_{\mathbb R}(s),\ \operatorname{Re}s>0\)\\
+Their defined product & \(\Lambda_\zeta(s)\)\\
+Tate-substituted scalar & \(\Lambda_\zeta(1-s)\)\\
+\end{tabular}
+\caption{The domains and meanings of the four scalar expressions.}
+\label{v4-arith:prim-zeta:tab:table}
+\end{table}
+
+\section{Sources for the Scalar and Duality Constructions}
+\label{v4-arith:prim-zeta:disjoint-sources}
+\begin{remark}[roles of the sources]
+\label{v4-arith:prim-zeta:rem:sources}
+\label{v4-arith:prim-zeta:rem:sources-disjoint}
+Tate's 1950 thesis supplies the adelic Mellin framework and functional
+equation; the Gaussian integral and Euler product used here have also
+been computed directly. Julia's \emph{Statistical theory of numbers}
+(1990) describes the primon occupation interpretation. Bost--Connes
+(Selecta Math.~1 (1995), 411--457) supplies the arithmetic dynamical
+context; the concrete shift and heat-trace comparison above does not
+use a KMS classification. Positselski's \emph{Two kinds of derived
+categories, Koszul duality, and comodule--contramodule correspondence}
+(Mem.~AMS996, 2011) concerns categorical duality under its stated
+hypotheses. It is not used to infer a Tate shift from ordinary energy
+dualization or to identify a Gaussian test line with a cobar algebra.
+\end{remark}
+
+\section{The Arithmetic Comparison Problem}
+\label{v4-arith:prim-zeta:summary}
+The selected finite occupation model, its Hilbert domain, the Gaussian
+Mellin normalization and the completed scalar are explicit. A realization
+on the arithmetic Hochschild trace class must additionally construct its
+operators, integral and completed carriers, bar--cobar maps and compatible
+pairings. It must account for the failure of the polynomial substitutions
+to preserve the selected one-mode space. These are the remaining
+mathematical constructions; the scalar identity alone does not settle them.

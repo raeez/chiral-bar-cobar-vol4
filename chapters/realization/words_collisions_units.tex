@@ -1,0 +1,773 @@
+\chapter{Words, collisions, and the two units}
+\label{v4-ch:words-collisions-units}
+
+Consider three ordered positions \((x,y,x)\), with \(x\ne y\).
+Neither cut \(1|23\) nor cut \(12|3\) separates the positions
+on its two sides. The obstruction is the equality of the first
+and last positions. A construction based on consecutive cuts
+must therefore retain a nonconsecutive collision. At four
+positions, the resulting support has two components, and their
+coefficients meet in a nonsplit extension. These examples determine
+the geometric data needed before a bar construction can be compared
+with fields.
+
+We first construct the tensor product associated with ordered cuts.
+Its unit is supported at the empty configuration. The local vacuum
+is a different object, present at every number of positions. We then
+compute the collision supports and their coefficient complexes, and
+compare a fixed word with the space of all local orders. Finally,
+we separate these position spaces from the discrete set of arithmetic
+places.
+
+\section{The tensor product of ordered cuts}
+\label{v4-sec:word-cut-tensor}
+
+Let \(k\) be a field of characteristic zero and \(X\) a nonempty
+smooth separated curve of finite type over \(k\). Write
+\(\mathcal D(Y)\) for the unbounded derived category of right
+algebraic differential modules on a smooth scheme \(Y\), with its
+stable enhancement; \(\mathcal D(k)=\mathcal D(\operatorname{Spec}k)\)
+is the derived category of \(k\)-vector spaces. All inverse images, direct images and tensor
+products below are derived. We use the coherent differential-module
+formalism of external products, extraordinary inverse images \(f^!\),
+direct images \(f_*\), and localization for an open immersion.
+Thus base-change isomorphisms include their compatibility with
+composition. This is the formalism used in chiral Koszul duality.\footnote{
+J.~Francis and D.~Gaitsgory, \emph{Chiral Koszul duality},
+Selecta Mathematica \textbf{18} (2012), 27--87,
+\S1.4; \href{https://arxiv.org/abs/1103.5803}{arXiv:1103.5803}.}
+Our cohomological convention is
+\(H^q(M[s])=H^{q+s}(M)\).
+
+Put \([n]=\{1,\ldots,n\}\). A monotone surjection
+\(\alpha:[n]\twoheadrightarrow[m]\) defines a diagonal map
+\[
+ d_\alpha:X^m\longrightarrow X^n,
+ \qquad (y_1,\ldots,y_m)\longmapsto
+                  (y_{\alpha(1)},\ldots,y_{\alpha(n)}).
+\]
+A \emph{word coefficient system} consists of \(F_0\in\mathcal D(k)\),
+objects \(F_n\in\mathcal D(X^n)\) for \(n>0\), and coherent
+equivalences \(d_\alpha^!F_n\simeq F_m\). Coherent means that
+these equivalences and all their composition homotopies are part of
+the datum. Its category is
+\[
+ \mathcal W_X=
+ \mathcal D(k)\times
+ \varprojlim_{\substack{[n]\ne\varnothing\\
+                        \text{monotone surjections}}}
+                       \mathcal D(X^n),
+\]
+where a surjection acts by \(d_\alpha^!\).
+The empty configuration is a separate factor.
+
+For nonnegative \(p,q\) with \(p+q=n\), let
+\(U_{p,q}\subset X^n\) be the open locus
+\(x_i\ne x_j\) whenever \(i\le p<j\), and write
+\(j_{p,q}:U_{p,q}\hookrightarrow X^n\). If \(p=0\) or \(q=0\),
+this is the identity open immersion. Define the \emph{cut product} by
+\begin{equation}\label{v4-eq:word-cut-product}
+ (F\star_{\mathrm{cut}}G)_n
+   =\bigoplus_{p+q=n}
+      j_{p,q,*}j_{p,q}^!(F_p\boxtimes G_q).
+\end{equation}
+Here \(X^0=\operatorname{Spec}k\), so for \(n>0\) the empty terms are the
+ordinary coefficient tensors \(F_0\otimes_k G_n\) and
+\(F_n\otimes_k G_0\).
+
+\begin{proposition}[Cut product]\label{v4-prop:word-cut-product}
+Formula~\eqref{v4-eq:word-cut-product} defines an associative
+monoidal structure on \(\mathcal W_X\). Its unit is
+\[
+ K_0=k,\qquad K_n=0\quad(n>0).
+\]
+For \(r\ge1\) systems \(F^{(1)},\ldots,F^{(r)}\), its iterated product in
+arity \(n\) is the sum over consecutive ordered decompositions of
+\([n]\) into \(r\) blocks, localized where positions in different
+blocks are distinct.
+\end{proposition}
+
+\begin{proof}
+Let \(j:U\hookrightarrow Y\) be an open immersion with closed
+complement \(i:Z\hookrightarrow Y\). Localization gives
+\(i_*i^!M\to M\to j_*j^!M\), and \(i^!j_*=0\).
+For \(N\in\mathcal D(U)\) and \(f:Y'\to Y\), transitivity of
+extraordinary inverse images
+therefore shows that \(f^!j_*N\) has zero extraordinary restriction
+to \(f^{-1}Z\). Its restriction to \(f^{-1}U\) is the pullback
+of \(N\). Localization and the full faithfulness of extension
+from an open set identify it with
+\(j'_*f_U^!N\), where \(j':f^{-1}U\hookrightarrow Y'\).
+These identifications are coherent under composition.
+
+Apply this to \(f=d_\alpha\) and \(U=U_{p,q}\). If the cut
+separates two labels in the same fibre of \(\alpha\), its inverse
+image is empty. Otherwise it is the inverse image of a unique cut
+of \([m]\), and the coefficient equivalences for \(F\) and \(G\)
+give the corresponding summand in arity \(m\). Thus the displayed
+sum is a word coefficient system.
+
+In an iterated product, successive localizations require exactly
+that positions in distinct final blocks be disjoint. Each
+parenthesization therefore gives the same sum, with the same
+coefficient and open immersion in every summand. The coherent
+base-change maps identify these sums; their further compositions
+agree on the same final open set. This proves every associativity
+coherence. If one input is \(K\), only its empty block survives,
+and the remaining summand is the other input. These identifications
+give the unit coherences.
+\end{proof}
+
+Call \(F\) \emph{positive} if \(F_0=0\). For positive inputs,
+all blocks in the proposition are nonempty. There are
+\(\binom{n-1}{r-1}\) such decompositions when \(1\le r\le n\),
+and none when \(r>n\): choose their \(r-1\) cuts among the
+\(n-1\) gaps. This finiteness concerns the number of geometric
+blocks. It places no bound on an auxiliary bar length in a
+coefficient algebra at the empty configuration.
+
+\section{The empty unit and the local vacuum}
+\label{v4-sec:word-two-units}
+
+There is also a pointwise tensor product of differential modules,
+using the diagonal \(\Delta_{X^n}:X^n\hookrightarrow X^n\times X^n\):
+\[
+ (F\otimes^!G)_n=\Delta_{X^n}^!(F_n\boxtimes G_n).
+\]
+Its unit is the dualizing system
+\begin{equation}\label{v4-eq:word-vacuum}
+ J_0=k,\qquad J_n=p_n^!k=\omega_{X^n}[n]\quad(n>0),
+\end{equation}
+where \(p_n:X^n\to\operatorname{Spec}k\).
+Transitivity gives \(d_\alpha^!J_n=J_m\). The shift in
+\eqref{v4-eq:word-vacuum} is part of the right differential-module
+convention; \(J_n\) is not the unshifted canonical bundle.
+
+A counital coassociative cut coalgebra is an object with a
+coproduct \(C\to C\star_{\mathrm{cut}}C\) and a counit
+\(C\to K\), satisfying their coherent identities. A coaugmentation
+is a coalgebra map \(K\to C\). We call it connected when
+\(C_0=k\) and the empty components of counit and coaugmentation
+are identities.
+
+\begin{proposition}[Vacuum coalgebra]\label{v4-prop:word-vacuum-coalgebra}
+The system \(J\) is a connected cut coalgebra. Its component at a
+cut is the localization map
+\begin{equation}\label{v4-eq:word-vacuum-coproduct}
+ J_n\longrightarrow j_{p,q,*}J_{U_{p,q}}
+       =j_{p,q,*}j_{p,q}^!(J_p\boxtimes J_q).
+\end{equation}
+The maps \(K\to J\to K\) are identity at the empty
+configuration and zero in positive arity.
+\end{proposition}
+
+\begin{proof}
+The adjunction for \(j_{p,q}\) gives the displayed map.
+Two successive coproducts localize on the locus where three
+consecutive blocks are pairwise disjoint. Both orders of
+localization give its adjunction map. The same argument works for
+every number of blocks, proving the coherent coalgebra identities.
+The cuts with an empty block are identities. They prove the
+counit and coaugmentation identities.
+\end{proof}
+
+A \emph{local vacuum marking} of a connected cut coalgebra is a
+specified coalgebra map \(u:J\to C\). The coaugmentation
+\(K\to C\) determines only its empty value. Even if a nonzero
+unary vacuum is specified, extending it to such a marking can fail.
+
+\begin{example}[A unary vacuum that does not extend]
+\label{v4-ex:word-vacuum-obstruction}
+Let \(\Delta_n:X\hookrightarrow X^n\) be the small diagonal and put
+\[
+ P_0=k,\qquad P_n=\Delta_{n,*}J_1\quad(n>0).
+\]
+Closed base change and Kashiwara equivalence give
+\(d_\alpha^!P_n=P_m\). Every positive cut has empty intersection
+with the small diagonal. Give \(P\) zero coproduct at these cuts
+and identity coproduct at each cut with an empty block. This is a
+connected cut coalgebra: an iterated coproduct with two or more
+nonempty output blocks is zero in every parenthesization.
+
+There is no coalgebra map \(u:J\to P\) with \(u_1=\mathrm{id}_{J_1}\).
+Indeed, restrict its binary coproduct identity to
+\(U=X^2\setminus\Delta_2\). The path through \(P_2\) is zero,
+whereas the path through \(J_1\boxtimes J_1\) is the identity of
+\(J_U\). This object is nonzero, since a smooth nonempty curve has
+two distinct geometric points. The contradiction concerns the
+specified unary identity. The map \(J\to K\to P\), whose
+positive components vanish, still exists.
+\end{example}
+
+\section{Collisions that block every cut}
+\label{v4-sec:word-collision-supports}
+
+Write \(\Delta_{ij}\subset X^n\) for the equality \(x_i=x_j\).
+For \(n\ge2\), define the reduced closed subscheme
+\begin{equation}\label{v4-eq:word-collision-support}
+ Z_n=
+ \left(\bigcap_{p=1}^{n-1}
+               \bigcup_{i\le p<j}\Delta_{ij}\right)_{\mathrm{red}}.
+\end{equation}
+Thus a tuple lies in \(Z_n\) exactly when every consecutive cut
+is crossed by an equality. Put \(Z_1=X\). The first cases are
+\begin{equation}\label{v4-eq:word-first-supports}
+ Z_2=\Delta_{12},\qquad Z_3=\Delta_{13},\qquad
+ Z_4=\Delta_{14}\cup(\Delta_{13}\cap\Delta_{24}).
+\end{equation}
+For the last equality, a tuple with \(x_1\ne x_4\) must still
+cross its first and last gaps. If it does not have both
+\(x_1=x_3\) and \(x_2=x_4\), these two requirements force
+\(x_1=x_2\) and \(x_3=x_4\). The middle cut then forces all
+four coordinates equal, contrary to \(x_1\ne x_4\).
+The converse inclusions follow by checking the three gaps.
+
+There is an equally explicit description in every arity. A matching
+on \([n]\) is a set of disjoint pairs \((a,b)\), with \(a<b\).
+Associate to it the closed subscheme
+\(\Delta_M=\bigcap_{(a,b)\in M}\Delta_{ab}\).
+The pair \((a,b)\) crosses the gaps \(a,a+1,\ldots,b-1\).
+Call \(M\) spanning if its pairs cross every gap, and irredundant
+if deleting any pair destroys this property.
+
+\begin{theorem}[Components of the cut support]
+\label{v4-thm:word-support-components}
+Assume \(X\) is geometrically integral and \(n\ge2\). The irreducible components
+of \(Z_n\) are the \(\Delta_M\) for irredundant spanning
+matchings \(M\). A matching with \(r\) pairs has codimension \(r\),
+and there are
+\[
+ \binom{n-2}{2r-2},\qquad 1\le r\le\lfloor n/2\rfloor,
+\]
+such components. For \(n\ge3\) their total number is \(2^{n-3}\).
+\end{theorem}
+
+\begin{proof}
+The equalities of a geometric tuple partition \([n]\) into blocks.
+In a block with at least two labels, replace all its equalities by
+the equality of its smallest and largest labels. This retains
+exactly the gaps crossed by that block. The resulting pairs are
+disjoint. If the tuple lies in \(Z_n\), they form a spanning
+matching; remove redundant pairs to obtain \(M\). Consequently
+\(Z_n\) is the union of the \(\Delta_M\) in the statement.
+
+Order the pairs by their left endpoints,
+\(a_1<\cdots<a_r\). An interval contained in another is
+redundant, so their right endpoints also increase. Spanning gives
+\(a_1=1\), \(b_r=n\), and \(a_{i+1}<b_i\): equality of
+these endpoints is excluded because this is a matching. A pair
+has a gap not crossed by its neighbours exactly when
+\(b_{i-1}<a_{i+1}\), for \(1<i<r\). Thus, for \(r>1\),
+the endpoints occur in precisely the order
+\[
+ 1=a_1<a_2<b_1<a_3<b_2<\cdots<a_r<b_{r-1}<b_r=n.
+\]
+Conversely this order makes the matching spanning and gives every
+pair a private gap. Choosing its \(2r-2\) interior endpoints
+therefore gives the binomial coefficient above. For \(r=1\),
+the unique pair is \((1,n)\).
+
+Each \(\Delta_M\) is isomorphic to \(X^{n-r}\), hence is
+irreducible of codimension \(r\). Containment between two such
+diagonals would make the partition into pairs for one refine that
+for the other. Since a pair has no nontrivial proper refinement
+except deletion, irredundancy excludes a strict containment.
+They are therefore exactly the components. Summing the even
+binomial coefficients of order \(n-2\) gives \(2^{n-3}\)
+when \(n\ge3\).
+\end{proof}
+
+\section{Coefficient complexes on the collision support}
+\label{v4-sec:word-support-coefficients}
+
+A support records where a coefficient can live. It does not record
+the coefficient or its maps along intersections. We make those maps
+explicit for \(X=\mathbb A^1_k\). Let
+\(R=k[z_1,\ldots,z_n]\). For this calculation we use complexes
+of \(R\)-modules. Their localizations have natural left
+differential-module actions. Tensoring with \(\omega_{X^n}[n]\)
+gives the corresponding supported right-module coefficients of
+\(J_n\); the scalar complexes below carry no such shift.
+For \(f\in R\), put
+\[
+ L_f=[\,R\longrightarrow R[f^{-1}]\,],
+\]
+in cohomological degrees \(0,1\), with the localization differential.
+The augmentation \(\epsilon_f:L_f\to R\) is identity in degree
+zero and zero in degree one. This flat complex represents
+\(R\Gamma_{V(f)}R\), the derived functor of sections supported
+on \(V(f)\). For a general coefficient complex \(Q\),
+\(L_f\otimes_R Q\) represents \(R\Gamma_{V(f)}Q\).
+
+Define
+\begin{equation}\label{v4-eq:word-cut-cech}
+ g_p=\prod_{i\le p<j}(z_i-z_j),\qquad
+ C_n=\bigotimes_{p=1}^{n-1}L_{g_p}.
+\end{equation}
+This is a bounded complex of flat modules, with \(2^{n-1}\)
+localization summands. Iterated local cohomology gives
+\(C_n\simeq R\Gamma_{Z_n}R\). Local cohomology depends on the
+reduced support. The ideal generated by the \(g_p\) need not be
+radical: at \(n=3\), with \(x=z_1-z_2\) and \(y=z_2-z_3\), it is
+\[
+ (x(x+y),y(x+y))=(x+y)(x,y),
+\]
+whose radical is \((x+y)\).
+
+The component description gives another model that displays the
+attachments. Choose a total order on the finite set \(\mathcal M_n\)
+of irredundant spanning matchings. For \(M\in\mathcal M_n\), let
+\[
+ K_M=\bigotimes_{(a,b)\in M}L_{z_a-z_b},
+\]
+with pairs ordered by their left endpoints. For a nonempty subset
+\(A=\{M_0<\cdots<M_p\}\), put
+\(K_A=K_{M_0}\otimes_R\cdots\otimes_RK_{M_p}\).
+Repeated equations remain repeated tensor factors in this formula.
+
+\begin{proposition}[Component model]
+\label{v4-prop:word-component-complex}
+The complex
+\begin{equation}\label{v4-eq:word-component-complex}
+ S_n=\bigoplus_{\varnothing\ne A\subseteq\mathcal M_n}
+                           K_A[|A|-1]
+\end{equation}
+represents \(R\Gamma_{Z_n}R\). On \(K_A[p]\), its internal
+differential is \((-1)^p d_{K_A}\); its other differential is
+\(\sum_{j=0}^p(-1)^j\partial_j\), where \(\partial_j\)
+applies the augmentation of \(K_{M_j}\) and deletes that factor.
+The latter differential is zero when \(p=0\). The augmentations
+give a natural span of quasi-isomorphisms
+\begin{equation}\label{v4-eq:word-support-roof}
+ C_n\longleftarrow C_n\otimes_R S_n\longrightarrow S_n.
+\end{equation}
+The same assertions hold after tensoring with any complex \(Q\).
+\end{proposition}
+
+\begin{proof}
+The tensor of the \(L_f\)'s computes local cohomology supported
+on the intersection of their zero sets. Thus \(K_A\) represents
+\(R\Gamma_{\cap_{M\in A}\Delta_M}R\). The augmentation of a
+factor induces the inclusion of sections supported on this
+intersection into sections supported on the intersection with that
+factor omitted. These are the maps \(\partial_j\).
+
+Two deletions commute before their alternating signs, so the
+horizontal differential squares to zero. It commutes with each
+unshifted internal differential; the factor \((-1)^p\) makes the
+two total differentials anticommute. For two closed sets, the
+resulting complex is the local-cohomology Mayer--Vietoris triangle
+\[
+ R\Gamma_{Z\cap Z'}R\longrightarrow
+ R\Gamma_ZR\oplus R\Gamma_{Z'}R
+                 \longrightarrow R\Gamma_{Z\cup Z'}R.
+\]
+Iterate this triangle over the finite component set. At each step
+the new intersections are exactly the summands containing the new
+component, with the displayed deletion maps. This proves
+\eqref{v4-eq:word-component-complex}.
+
+Local cohomology supported on \(Z_n\) is idempotent. Indeed, its
+localization triangle becomes the identity triangle on an object
+whose restriction to the complement of \(Z_n\) vanishes.
+Apply this to \(C_n\) and \(S_n\). The two counits are exactly
+the arrows of \eqref{v4-eq:word-support-roof}, so both are
+quasi-isomorphisms. Every term used is flat and the complexes are
+bounded. Tensoring the construction with an arbitrary complex
+therefore computes its derived tensor and preserves these
+quasi-isomorphisms.
+\end{proof}
+
+At the generic point of a component with \(r\) pairs, invert the
+equations that exclude the other components and choose independent
+normal coordinates \(u_1,\ldots,u_r\) for the pairs. Its local
+cohomology is concentrated in degree \(r\), represented by
+negative powers of all the \(u_i\). In particular it contains
+\(1/(u_1\cdots u_r)\); the iterated residue of
+\(du_1\cdots du_r/(u_1\cdots u_r)\), in that order, is one.
+This follows directly by tensoring the \(r\) two-term localization
+complexes, or by their Laurent monomial basis.
+
+The idempotence just used is a property of local cohomology.
+It must be distinguished from derived intersection. For example,
+over \(k[u]\), the free resolution
+\([\,k[u]\xrightarrow{u}k[u]\,]\) of \(k\), in degrees
+\(-1,0\), gives
+\begin{equation}\label{v4-eq:word-derived-self-intersection}
+ k\otimes_{k[u]}^{\mathbf L}k\simeq k\oplus k[1],
+ \qquad
+ L_u\otimes_{k[u]}L_u\simeq L_u.
+\end{equation}
+The first complex retains a normal Tor class. The second retains
+all principal parts along the same closed support.
+
+\section{The four-point attachment and normal derivatives}
+\label{v4-sec:word-four-point-attachment}
+
+At four positions choose
+\(a=z_1-z_4\), \(b=z_1-z_3\), \(c=z_2-z_4\), and the
+spectator coordinate \(z_4\). Suppress the spectator polynomial
+factor and put \(R=k[a,b,c]\). Formula~\eqref{v4-eq:word-first-supports}
+becomes
+\[
+ Z_4=V(a)\cup V(b,c)=V(ab,ac).
+\]
+Its coefficient complex is
+\begin{equation}\label{v4-eq:word-four-point-cech}
+ R\xrightarrow{f\mapsto(f,f)}
+ R[(ab)^{-1}]\oplus R[(ac)^{-1}]
+ \xrightarrow{(f,g)\mapsto g-f}R[(abc)^{-1}].
+\end{equation}
+Its terms have cohomological degrees \(0,1,2\).
+
+\begin{proposition}[Nonsplit attachment]
+\label{v4-prop:word-four-point-nonsplit}
+Let
+\[
+ M=R[b^{-1},c^{-1}]\big/
+                  \bigl(R[b^{-1}]+R[c^{-1}]\bigr).
+\]
+The only nonzero cohomology of
+\eqref{v4-eq:word-four-point-cech} is
+\[
+ H^1_{Z_4}(R)=R[a^{-1}]/R,\qquad
+ H^2_{Z_4}(R)=M[a^{-1}].
+\]
+The attachment of \(V(b,c)\) to the union is the nonsplit exact
+sequence of \(R\)-modules
+\begin{equation}\label{v4-eq:word-four-point-extension}
+ 0\longrightarrow M\longrightarrow M[a^{-1}]
+   \longrightarrow H^3_{(a,b,c)}(R)\longrightarrow0.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Inside \(R[(abc)^{-1}]\), the two middle localizations intersect
+in \(R[a^{-1}]\). This computes \(H^1\). Their quotient in
+the last term has basis \(a^i b^{-j}c^{-l}\), with
+\(i\in\mathbb Z\) and \(j,l>0\), which gives \(M[a^{-1}]\).
+There is no degree-zero kernel because localization of the
+polynomial ring is injective.
+
+The module \(M\) is free over \(k[a]\), with basis
+\(b^{-j}c^{-l}\) for \(j,l>0\). Its quotient after inverting
+\(a\) has basis with all three exponents negative. This is the
+top local cohomology at \((a,b,c)\), proving exactness. Every
+element of this quotient is killed by a power of \(a\), whereas
+multiplication by \(a\) is invertible on \(M[a^{-1}]\).
+Every \(R\)-linear map from the quotient back to the middle term
+is consequently zero. The quotient contains the nonzero class
+\(1/(abc)\), so the surjection has no section.
+\end{proof}
+
+The intersection \(V(a,b,c)\) cannot therefore be replaced by an
+independent direct summand while preserving the coefficient action.
+Even at one normal coordinate, a scalar residue loses this action.
+To see it in the right differential-module convention, set
+\[
+ P=k[u,u^{-1}]\,du\big/k[u]\,du,
+ \qquad e_r=[u^{-r-1}du]\quad(r\ge0).
+\]
+The right Weyl action is
+\begin{equation}\label{v4-eq:word-normal-derivatives}
+ e_0u=0,\qquad e_ru=e_{r-1}\ (r>0),\qquad
+ e_r\partial_u=(r+1)e_{r+1}.
+\end{equation}
+Indeed, right differentiation of a density \(f\,du\) is
+\(-f'\,du\). The formulas satisfy
+\(\partial_u u-u\partial_u=1\) and give
+\(e_0\partial_u^r=r!e_r\). All normal derivatives are present.
+The scalar residue sends \(e_0\) to one and \(e_r\) to zero
+for \(r>0\), but its kernel is not stable under \(u\):
+\(\operatorname{Res}(e_1u)=1\). It is therefore insufficient
+as a replacement for this coefficient module.
+
+\section{The outer residue}
+\label{v4-sec:word-outer-residue}
+
+The nonconsecutive support already changes a three-position
+calculation. Put \(x=z_1-z_2\), \(y=z_2-z_3\), and consider
+\[
+ f(x,y)=\frac{1}{x(x+y)}.
+\]
+Let \(L\) be the coefficient of \(x^{-1}y^{-1}\) in the
+expansion for \(|x|<|y|\), and \(R\) the same iterated
+coefficient for \(|y|<|x|\). These inequalities specify formal
+Laurent expansions; no analytic limiting operation is required.
+For the outer collision use \(u=x+y=z_1-z_3\). Let \(N\)
+be the coefficient of \(u^{-1}y^{-1}\) in the expansion
+for \(|u|<|y|\). The volume form is unchanged:
+\(dx\wedge dy=du\wedge dy\).
+
+\begin{proposition}\label{v4-prop:word-outer-residue}
+With these coordinates and orientations,
+\[
+ L=1,\qquad R=0,\qquad N=-1,\qquad L-R+N=0.
+\]
+\end{proposition}
+
+\begin{proof}
+The three expansions are respectively
+\[
+ \sum_{r\ge0}(-1)^r x^{r-1}y^{-r-1},\qquad
+ \sum_{r\ge0}(-1)^r y^r x^{-r-2},\qquad
+ -\sum_{r\ge0}u^{r-1}y^{-r-1}.
+\]
+Their indicated coefficients are \(1,0,-1\).
+\end{proof}
+
+This residue identity does not by itself construct an associativity
+homotopy. In a specified operation complex \(Q\), closed
+degree-zero operations \(L,R,N\) satisfying \(L-R+N=0\)
+admit \(h\in Q^{-1}\) with \(dh=L-R=-N\) exactly when
+\([N]=0\) in \(H^0(Q)\). For \(Q=k\) in degree zero,
+the three scalars just computed satisfy the identity and admit
+no such \(h\). A field comparison must specify the operation
+complex, its supported coefficients and the primitive there.
+
+\section{All local orders and the word comparison}
+\label{v4-sec:word-ordered-atlas}
+
+A fixed word has consecutive cuts. To retain every local ordering
+at a collision, let \(I\) be a nonempty finite set and take a
+copy \(X^I_\sigma\) of \(X^I\) for each total order \(\sigma\)
+on \(I\). For two orders define
+\[
+ V_{\sigma,\rho}=
+ X^I\setminus\bigcup_{\substack{i,j\in I\\
+              \sigma\text{ and }\rho\text{ order }i,j\text{ differently}}}
+                          \Delta_{ij}.
+\]
+Glue the two copies by the identity on this open subset, and denote
+the resulting scheme by \(\mathscr R_I\).
+The chart coordinates induce \(q_I:\mathscr R_I\to X^I\).
+For \(X=\mathbb A^1_{\mathbb C}\), this is the configuration
+space used for raviolo vertex algebras.\footnote{
+L.~Alfonsi, H.~Kim and C.~A.~S.~Young,
+\emph{Raviolo vertex algebras, cochains and conformal blocks},
+\S4.1; \href{https://arxiv.org/abs/2401.11917}{arXiv:2401.11917}.}
+
+\begin{proposition}[Ordered configuration atlas]
+\label{v4-prop:word-ordered-atlas}
+These identifications satisfy the gluing cocycle. The map
+\(q_I:\mathscr R_I\to X^I\) is a local isomorphism, and
+\(\mathscr R_I\) is smooth and quasi-compact with quasi-compact
+intersections of affine opens. Over a geometric tuple whose equality
+blocks are \(B\), its fibre has
+\[
+                    \prod_B |B|!
+\]
+points. In particular the fibre at a threefold collision has six
+points.
+\end{proposition}
+
+\begin{proof}
+On a triple overlap, if two orders disagree on a pair, at least
+one of their comparisons with the third order disagrees on that
+pair. Thus
+\(V_{\sigma,\rho}\cap V_{\rho,\tau}\subseteq V_{\sigma,\tau}\).
+All transition maps are identities, which proves the cocycle.
+The charts give smoothness and the local-isomorphism assertion.
+There are finitely many charts; their intersections are complements
+of finitely many diagonals in the noetherian scheme \(X^I\),
+so the asserted quasi-compactness follows.
+
+Over a fixed tuple, two charts are identified exactly when they
+give the same order within each equality block. Every choice of
+orders on these blocks extends to a total order on \(I\).
+The choices on different blocks are independent, proving the
+fibre formula.
+\end{proof}
+
+A surjection \(\alpha:I\twoheadrightarrow J\) with an order
+on each fibre defines \(\delta_\alpha:\mathscr R_J\to\mathscr R_I\).
+On a chart ordered by \(\tau\) on \(J\), expand each label
+to its ordered fibre and use the usual diagonal map of coordinates.
+The inverse image of an overlap is precisely the overlap for the
+two orders on \(J\), so these chart maps glue. Composing such
+surjections concatenates the ordered fibres and gives the same
+diagonal map. These collision maps need not be closed immersions.
+For the ordered fibres \((1,3)|(2)\), their image in the chart
+\(1<2<3\) is \(\Delta_{13}\setminus\Delta_{123}\), which
+is not closed in that chart.
+
+Define \(\mathcal C_X\) to be the category of coherent systems
+\(F_I\in\mathcal D(\mathscr R_I)\) with
+\(\delta_\alpha^!F_I\simeq F_J\), together with a separate
+empty coefficient. Differential modules on this possibly
+nonseparated scheme are defined by descent from its charts.
+For an ordered decomposition \(I=I_1\sqcup I_2\), let \(U_{I_1,I_2}\)
+be the locus of disjoint positions in different blocks. On that
+locus, orders between the blocks are identified by the gluing,
+so the atlas is the corresponding open part of
+\(\mathscr R_{I_1}\times\mathscr R_{I_2}\). Define \(F\star G\)
+by summing the localized external products over all such ordered
+decompositions, including empty blocks. The proof of the cut-product
+proposition applies: a decomposition splitting a collision fibre
+has empty pullback; every surviving decomposition descends to the
+quotient. All iterates localize on the same disjoint-block locus.
+This gives a symmetric monoidal product, whose symmetry exchanges
+the two blocks.
+
+Restriction to the standard chart \(1<\cdots<n\) defines
+\(\operatorname{res}:\mathcal C_X\to\mathcal W_X\).
+
+\begin{proposition}[Projection to consecutive cuts]
+\label{v4-prop:word-atlas-comparison}
+There are natural maps
+\begin{align*}
+ \iota_{F,G}:\operatorname{res}F\star_{\mathrm{cut}}
+                    \operatorname{res}G
+       &\longrightarrow\operatorname{res}(F\star G),\\
+ \pi_{F,G}:\operatorname{res}(F\star G)
+       &\longrightarrow\operatorname{res}F\star_{\mathrm{cut}}
+                    \operatorname{res}G,
+ \qquad \pi_{F,G}\iota_{F,G}=\mathrm{id}.
+\end{align*}
+The maps \(\iota\) make restriction lax monoidal, and the maps
+\(\pi\) make it colax monoidal. They transport algebra and
+coalgebra structures, respectively. Neither comparison is an
+equivalence in general.
+\end{proposition}
+
+\begin{proof}
+On a standard chart the atlas product is the finite direct sum
+over all ordered decompositions of \([n]\). Include the summands
+whose first block is a prefix, or project onto those summands.
+Under a monotone collision, a surviving prefix is exactly the
+inverse image of a quotient prefix. The maps therefore respect
+the word coefficient equivalences.
+
+Every iterated inclusion or projection selects the same final
+consecutive decomposition with the same localized coefficient.
+This proves their monoidal coherences, including those for empty
+blocks, and projection after inclusion is identity. For two
+positive systems equal to the dualizing system in positive arity,
+the separated two-point fibre of the atlas product is
+\(J_U\oplus J_U\), indexed by \(1|2\) and \(2|1\).
+The cut product has only the \(1|2\) summand. Thus \(\pi\)
+has a nonzero kernel there, and \(\iota\) has a nonzero
+cokernel.
+\end{proof}
+
+With \(n\) positive inputs at \(n\) distinct positions, the
+same calculation gives \(n!\) atlas summands and one cut
+summand. A bar--cobar theorem for the cut product therefore does
+not identify the corresponding construction on the full atlas.
+Any such comparison must retain its actual maps on the omitted
+orders and their collision coefficients.
+
+\section{Arithmetic places and position geometry}
+\label{v4-sec:word-arithmetic-positions}
+
+An arithmetic place is a label for a local coefficient object.
+It need not be a variable position on the curve carrying a field.
+This distinction already appears in the simplest functors of points.
+For every scheme \(S\), there is exactly one map
+\(S\to\operatorname{Spec}\mathbb Z\). Consequently the functor
+of nonempty finite subsets of
+\(\operatorname{Spec}\mathbb Z(S)\) is terminal. The closed
+points \(\operatorname{Spec}\mathbb F_p\to\operatorname{Spec}\mathbb Z\)
+use different test schemes; they are not several elements of this
+set for one fixed \(S\).
+
+Let \(\mathbb P\) be the set of rational primes and
+\(V=\mathbb P\sqcup\{\infty\}\) the abstract set of places.
+Its nonempty finite subsets and its nonempty finite multisets are
+the discrete sets
+\[
+ \operatorname{Fin}_{+}(V),\qquad
+ \operatorname{Mult}_{+}(V)=\coprod_{n\ge1}V^n/\mathfrak S_n.
+\]
+The coproduct in the second formula records multiplicity; it
+does not require transition maps between different symmetric powers.
+For a commutative ring \(A\), let \(\mathcal D(A)\) here denote
+the derived category of \(A\)-modules. Given complexes
+\(H_v\in\mathcal D(A)\), finite tensor products give
+\begin{equation}\label{v4-eq:word-discrete-factorization}
+ F(S)=\bigotimes_{v\in S,A}^{\mathbf L}H_v,\qquad
+ F(S\sqcup T)\simeq F(S)\otimes_A^{\mathbf L}F(T)
+                         \quad(S\cap T=\varnothing).
+\end{equation}
+We include the empty set by \(F(\varnothing)=A\).
+The associators and symmetries of derived tensor give all
+coherences, with the usual Koszul signs on complexes. This supplies
+factorization for disjoint labels. Maps at coincident positions,
+normal derivatives and residue operations require a specified
+position geometry and further coefficient maps.
+
+To assemble infinitely many places, units must also be specified.
+More generally, let \(\mathcal E\) be a cocomplete symmetric monoidal
+\(\infty\)-category with unit \(\mathbf1\), and let \(H_v\in\mathcal E\).
+Choose a cofinite subset \(V^{\mathrm{sph}}\subseteq V\) and maps
+\(u_v:\mathbf1\to H_v\) for \(v\in V^{\mathrm{sph}}\).
+Let \(\mathrm{Fin}^{\mathrm{sph}}(V)\) be the poset of finite
+subsets containing \(V\setminus V^{\mathrm{sph}}\), ordered by inclusion.
+For \(S\subseteq T\), tensor with the maps \(u_v\) at the new
+places to obtain
+\[
+ \iota_{S,T}:\bigotimes_{v\in S}H_v
+           \longrightarrow\bigotimes_{v\in T}H_v.
+\]
+The colimit
+\begin{equation}\label{v4-eq:word-restricted-tensor}
+ \bigotimes_{v\in V}'(H_v,u_v)
+   =\varinjlim_{S\in\mathrm{Fin}^{\mathrm{sph}}(V)}
+                                      \bigotimes_{v\in S}H_v
+\end{equation}
+is called the \emph{Tate restricted tensor product} for these
+specified reference maps. It is a colimit of a covariant diagram.
+
+Indeed, \(\iota_{T,U}\iota_{S,T}=\iota_{S,U}\) coherently:
+both maps insert the same \(u_v\)'s in the same labelled factors,
+and tensor coherence identifies their parenthesizations. The
+index poset is nonempty and filtered, since the exceptional set
+is finite and the union of two allowed finite sets is allowed.
+This constructs the diagram and its colimit. To obtain an algebra,
+coalgebra or monoidal category by this construction, its reference
+maps must preserve that structure and its colimit must be taken
+in a coefficient category that supports the required operations.
+
+\begin{proposition}[Three finite-place coefficient models]
+\label{v4-prop:word-finite-place-models}
+Let \(p\) be a rational prime. Define the completed tensor below
+to mean the ordinary \(p\)-adic completion. Then
+\begin{align}
+ \varprojlim_r
+  (\mathbb Z_p\otimes_{\mathbb Z}\mathbb Z_p)/p^r
+       &\simeq\mathbb Z_p,\label{v4-eq:word-padic-tensor}\\
+ \mathbb F_p\otimes_{\mathbb Z}^{\mathbf L}\mathbb F_p
+       &\simeq\mathbb F_p\oplus\mathbb F_p[1]
+          \quad\text{as a complex},\label{v4-eq:word-prime-tor}\\
+ \mathbb Z_p[[t_1,t_2]]/(t_1-t_2)
+       &\simeq\mathbb Z_p[[t]].\label{v4-eq:word-padic-position}
+\end{align}
+The kernel in the last line is the nonzero principal ideal
+\((t_1-t_2)\).
+\end{proposition}
+
+\begin{proof}
+Modulo \(p^r\), the first tensor product is
+\((\mathbb Z/p^r)\otimes_{\mathbb Z}\mathbb Z_p
+ =\mathbb Z/p^r\); multiplication induces this isomorphism
+compatibly for all \(r\). Taking the inverse limit proves
+\eqref{v4-eq:word-padic-tensor}. The free resolution
+\([\,\mathbb Z\xrightarrow{p}\mathbb Z\,]\) of \(\mathbb F_p\),
+in degrees \(-1,0\), becomes a complex with zero differential
+after tensoring with \(\mathbb F_p\). This proves
+\eqref{v4-eq:word-prime-tor}. Finally the formal change of
+variables \(u=t_1-t_2\), \(t=t_2\) identifies the last ring
+before quotienting with \(\mathbb Z_p[[u,t]]\). Evaluation at
+\(u=0\) has kernel \((u)\), proving the last assertion.
+\end{proof}
+
+The completed base tensor, the derived closed-point intersection
+and the formal position disc thus retain different data. The
+first identity does not eliminate the normal class in the second
+or the position variable in the third. A finite-place field
+construction can use a chosen formal disc; crystalline or
+prismatic structures are further possible choices when their
+Frobenius data are required. None is forced solely by the discrete
+place index or by the first tensor identity. The arithmetic
+comparison must specify which position space and which coefficient
+operations its maps preserve.

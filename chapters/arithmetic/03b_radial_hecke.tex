@@ -1,0 +1,266 @@
+\section{A radial Hecke comparison}
+\label{v4-arith:radial:section}
+
+The Satake trace recursion also admits a representation on radial functions
+on a regular tree.
+Its adjacency operator has the density used in
+Definition~\ref{v4-arith:def:averaging-naive}. Matching that density
+does not identify the operators. The radial tree representation gives an
+explicit comparison with the spherical Hecke action and its vector state.
+This is the classical spherical transform, with the distance and
+symmetric-power normalizations kept separate. The density is the
+Kesten--McKay measure. McKay, \emph{The expected eigenvalue distribution
+of a large regular graph}, Linear Algebra Appl. 40 (1981),
+203--216, Theorem~1.1, gives its graph-theoretic normalization.
+
+Fix a prime $p$ and a rooted $(p+1)$-regular tree $(\mathcal T_p,o)$.
+Use counting measure on its vertices and complex coefficients.
+Let $S_n$ be the vertices at distance $n$ from $o$, and write
+\[
+ s_0=1,\qquad s_n=(p+1)p^{n-1}\quad(n\ge1),\qquad
+ e_n=s_n^{-1/2}\mathbf{1}_{S_n}.
+\]
+The radial Hilbert space $\mathcal R_p$ consists of the square-summable
+functions constant on each $S_n$. The vectors $e_n$ form an orthonormal
+basis. All these vector spaces have cohomological degree zero.
+Distance gives a filtration, not a grading preserved by adjacency.
+
+Let $T$ be adjacency, $(Tf)(v)=\sum_{w\sim v}f(w)$.
+It is a bounded self-adjoint operator on the vertex Hilbert space,
+with norm at most $p+1$ by Cauchy--Schwarz.
+Counting edges between consecutive spheres gives
+\begin{align}
+ Te_0&=\sqrt{p+1}\,e_1,\\
+ Te_1&=\sqrt{p+1}\,e_0+\sqrt p\,e_2,\\
+ Te_n&=\sqrt p\,(e_{n-1}+e_{n+1})\quad(n\ge2).
+ \label{v4-arith:radial:recurrence}
+\end{align}
+In particular, two steps return to the root in $p+1$ ways.
+Thus the polynomial which produces the distance-two sphere is
+$T^2-(p+1)I$. The symmetric-power Hecke polynomial is instead
+$T^2-pI$. Their difference is the identity operator.
+
+Define monic integral polynomials by
+\[
+ R_0(x)=1,\quad R_1(x)=x,\quad R_2(x)=x^2-(p+1),\qquad
+ R_{n+1}(x)=xR_n(x)-pR_{n-1}(x)\quad(n\ge2).
+\]
+The preceding recurrence proves
+$R_n(T)e_0=\mathbf{1}_{S_n}$. These formulas already give an integral
+$\mathbb Z[x]$-module isomorphism
+\[
+ \mathbb Z[x]\longrightarrow
+ \bigoplus_{n\ge0}\mathbb Z\mathbf{1}_{S_n},\qquad
+ f\longmapsto f(T)e_0.
+\]
+Here $x$ acts on the right by $T$. Monicity makes the $R_n$ an integral
+basis, so this assertion needs no inversion of $p$.
+The normalized Hilbert comparison uses real square roots and complex scalars.
+
+\begin{theorem}[radial spherical transform]
+\label{v4-arith:radial:transform}
+Put $x(\theta)=2\sqrt p\cos\theta$ for $0\le\theta\le\pi$, and set
+\[
+ d\nu_p(\theta)=\frac{2p(p+1)\sin^2\theta}
+ {\pi(p^2+1-2p\cos2\theta)}\,d\theta,\qquad
+ q_n(\theta)=\frac{R_n(x(\theta))}{\sqrt{s_n}}.
+\]
+The assignment $\mathcal U_pe_n=q_n$ extends uniquely to a unitary
+\[
+ \mathcal U_p:\mathcal R_p\longrightarrow L^2([0,\pi],\nu_p).
+\]
+It sends $e_0$ to $1$ and satisfies the commutative square
+\[
+ \begin{array}{ccc}
+ \mathcal R_p &\xrightarrow{T}& \mathcal R_p\\
+ \mathcal U_p\downarrow &&\downarrow\mathcal U_p\\
+ L^2(\nu_p)&\xrightarrow{M_x}&L^2(\nu_p)
+ \end{array}
+\]
+where $M_x$ is multiplication by $x(\theta)$.
+Consequently $\|T|_{\mathcal R_p}\|=2\sqrt p$, and for every bounded
+Borel function $f$ on $[-2\sqrt p,2\sqrt p]$,
+\[
+ \langle e_0,f(T)e_0\rangle
+ =\int_0^\pi f(2\sqrt p\cos\theta)\,d\nu_p(\theta).
+ \label{v4-arith:radial:state}
+\]
+\end{theorem}
+
+\begin{proof}
+The tridiagonal recurrence makes $e_0$ cyclic for $T$ on $\mathcal R_p$.
+We compute its spectral measure to determine the Hilbert norm of the
+polynomial map. Remove the first row and column of that tridiagonal
+matrix. Its tail has every off-diagonal coefficient equal to $\sqrt p$.
+For $\operatorname{Im}z>0$, the first diagonal entry $g(z)$ of its
+resolvent $(z-J)^{-1}$ satisfies the Schur-complement identity
+\[
+ g(z)=\frac1{z-pg(z)}
+      =\frac{z-\sqrt{z^2-4p}}{2p}.
+\]
+The square root is analytic off $[-2\sqrt p,2\sqrt p]$ and is asymptotic
+to $z$ at infinity. The asymptotic $g(z)\sim z^{-1}$ selects this root.
+The root resolvent therefore equals
+\[
+ m(z)=\langle e_0,(z-T)^{-1}e_0\rangle
+      =\frac1{z-(p+1)g(z)}.
+\]
+For $|x|<2\sqrt p$, substitution and Stieltjes inversion give
+\[
+ -\frac1\pi\operatorname{Im}m(x+i0)
+ =\frac{(p+1)\sqrt{4p-x^2}}
+ {2\pi((p+1)^2-x^2)}.
+\]
+There are no poles off this interval. A zero of the denominator would
+force $g^2=1$ and $z=\pm(p+1)$, whereas the chosen branch has
+$g(\pm(p+1))=\pm p^{-1}$. At both endpoints the denominator is
+nonzero because $p>1$. Thus $m$ has continuous finite boundary values
+on the interval, including its endpoints, and analytic continuation
+across its complement. The inversion formula gives only the displayed
+absolutely continuous measure. Its total mass is one, since
+$m(z)\sim z^{-1}$. Changing variables $x=2\sqrt p\cos\theta$
+gives $\nu_p$.
+
+The spectral theorem now gives
+\[
+ \int R_n(x)R_m(x)\,d\nu_p
+ =\langle R_n(T)e_0,R_m(T)e_0\rangle
+ =s_n\delta_{nm}.
+\]
+Hence the $q_n$ are orthonormal. Polynomials are dense in continuous
+functions on the compact $x$ interval and thus in its $L^2$ space.
+The monic $R_n$ span all polynomials, so the $q_n$ are complete.
+This proves that $\mathcal U_p$ is unitary. The recurrence proves
+intertwining first on finite sums and then everywhere by boundedness.
+The support of the measure is the full closed interval. Multiplication
+by $x$ therefore has norm $2\sqrt p$. Bounded Borel functional calculus
+proves the state identity.
+\end{proof}
+
+\section{Hecke operations and the distinguished state}
+\label{v4-arith:radial:hecke}
+
+For the Bruhat--Tits tree of $\mathrm{PGL}_2(\mathbb Q_p)$, vertices are
+homothety classes of $\mathbb Z_p$-lattices in $\mathbb Q_p^2$.
+Two vertices are adjacent when representatives satisfy
+$pL\subset L'\subset L$ with $[L:L']=p$.
+The lines in $L/pL$ give exactly $p+1$ neighbors.
+With the maximal compact subgroup of Haar volume one, its adjacency
+operator is the characteristic-function Hecke operator for
+$\operatorname{diag}(p,1)$. Pullback to $\mathrm{GL}_2$ fixes the
+central operator $\operatorname{diag}(p,p)$ to be the identity.
+Thus the representation has trivial central character.
+
+Define $H_0(x)=1$, $H_1(x)=x$ and
+$H_{k+1}(x)=xH_k(x)-pH_{k-1}(x)$ for $k\ge1$.
+In the notation of Proposition~\ref{v4-arith:prop:hecke-generating-function},
+$H_k(T)$ represents $H_{p^k}$ with $D_p=1$. These are the
+complete-symmetric Satake elements in this central character. Their generating series and spectral values are
+\[
+ \sum_{k\ge0}H_k(x)t^k=(1-xt+pt^2)^{-1},\qquad
+ H_k(x(\theta))=p^{k/2}\sum_{j=0}^ke^{i(k-2j)\theta}.
+\]
+The second formula follows by multiplying the two geometric series
+with parameters $\sqrt p\,e^{i\theta}$ and $\sqrt p\,e^{-i\theta}$.
+It remains valid at $\theta=0,\pi$, where the parameters coincide.
+The transform therefore intertwines every $H_k(T)$ with the stated
+multiplication operator, with the same cyclic state.
+
+\begin{proposition}[distance and symmetric-power elements]
+\label{v4-arith:radial:distance}
+Let $(D_nf)(v)=\sum_{d(v,w)=n}f(w)$ on the vertex Hilbert space.
+Then $D_n=R_n(T)$ and
+\[
+ H_k(T)=\sum_{j=0}^{\lfloor k/2\rfloor}D_{k-2j},\qquad
+ \langle e_0,H_k(T)e_0\rangle=
+ \begin{cases}1&k\text{ even},\\0&k\text{ odd}.\end{cases}
+\]
+On $\mathcal R_p$, for $|t|<p^{-1/2}$, the series converges in operator norm and
+\[
+ \left\langle e_0,(I-tT+pt^2I)^{-1}e_0\right\rangle
+ =\frac1{1-t^2}.
+\]
+\end{proposition}
+\begin{proof}
+The distance operators are bounded because every row and column has
+$s_n$ entries. Counting the first step gives
+$TD_1=D_2+(p+1)I$ and
+$TD_n=D_{n+1}+pD_{n-1}$ for $n\ge2$. Thus $D_n=R_n(T)$.
+With $H_{-1}=H_{-2}=0$, the recurrences give
+$R_n=H_n-H_{n-2}$ for every $n\ge0$.
+Telescoping proves the sum formula. Since $D_ne_0=\mathbf{1}_{S_n}$,
+only $D_0$ contributes to the root state.
+The spectral formula bounds $\|H_k(T)|_{\mathcal R_p}\|$
+by $(k+1)p^{k/2}$. This proves norm convergence on $\mathcal R_p$
+in the stated disk and permits evaluation of its state term by term.
+Multiplication of the series by $I-tT+pt^2I$ proves the inverse formula
+on that space.
+\end{proof}
+
+For example, at $p=2$,
+\[
+ q_0=1,\qquad q_1=x/\sqrt3,\qquad
+ q_2=(x^2-3)/\sqrt6,\qquad H_2=x^2-2.
+\]
+The tree counts give
+$\int x^2d\nu_2=3$ and $\int x^4d\nu_2=15$.
+Indeed a four-step return either returns after two steps, giving nine
+walks, or first reaches distance two, giving six walks.
+Consequently $\int H_2d\nu_2=1$ but $\int R_2d\nu_2=0$,
+and $\int R_2^2d\nu_2=6$. These values distinguish the two Hecke
+normalizations already at the first nontrivial higher element.
+
+\section{Finite sets of primes and the arithmetic comparison}
+\label{v4-arith:radial:finite}
+
+For a finite prime set $F$, form the completed Hilbert tensor products
+$\mathcal R_F=\widehat\bigotimes_{p\in F}\mathcal R_p$ and the product
+probability measure $\nu_F=\prod_{p\in F}\nu_p$.
+The tensor product of the maps $\mathcal U_p$ is the unitary
+\[
+ \mathcal U_F:\mathcal R_F\longrightarrow
+ L^2([0,\pi]^F,\nu_F),\qquad
+ \bigotimes_pe_{n_p}\longmapsto\prod_pq_{n_p}(\theta_p).
+\]
+It intertwines each local Hecke operation, hence every element of
+$\bigotimes_{p\in F}\mathbb C[T_p]$, with multiplication by its
+Satake polynomial. The tensor root vector maps to $1$, so its vector
+state becomes integration against $\nu_F$. The algebraic integral
+lattices are the finite tensor products of the sphere-sum lattices above.
+Adjoining a prime uses $v\mapsto v\otimes e_0$ on the tree side and
+$f\mapsto f\otimes1$ on the spectral side. These isometric maps
+commute with $\mathcal U_F$ and preserve the distinguished states.
+They give an operation-compatible finite-stage system.
+
+To specify the occupation-phase comparison, let
+$P_p=\mathbb C[a_k,b_k\mid k\ge1]$ be the polynomial oscillator space.
+For finitely supported nonnegative integers $r_k,s_k$, give its monomial
+$\prod_k a_k^{r_k}b_k^{s_k}$ squared norm
+$\prod_k k^{r_k+s_k}r_k!s_k!$, with distinct monomials orthogonal.
+Complete this positive inner product to a Hilbert space $\mathcal F_p$.
+The charge of this monomial is $m=\sum_k(r_k-s_k)$.
+Multiplication by $e^{im\theta}$ on each charge space defines a unitary
+$V_\theta$ on $\mathcal F_p$. This is the one-prime occupation action in
+Definition~\ref{v4-arith:def:averaging-naive}. The strong integral
+$A_p=\int_0^\pi V_\theta\,d\nu_p(\theta)$ is bounded with norm at most one.
+It acts on a charge-$m$ monomial by
+$c_m=\int_0^\pi e^{im\theta}\,d\nu_p(\theta)$.
+For $m=1$, symmetry about $\pi/2$ gives
+\[
+ c_1=i\int_0^\pi\sin\theta\,d\nu_p(\theta)\in i\mathbb R_{>0}.
+\]
+Thus this averaging operator has a nonreal eigenvalue. It cannot be
+unitarily intertwined with the self-adjoint adjacency operator or
+with multiplication by its real spectral coordinate.
+This obstruction concerns those specified operators. It does not
+exclude a different arithmetic comparison.
+
+The radial transform supplies a complex Hilbert Hecke representation,
+an integral cyclic module, and a compatible finite-prime state system.
+A comparison with the proposed primitive arithmetic trace class
+$\mathcal V^{\mathrm{prim}}$ requires constructing
+its arithmetic trace carrier and a map preserving the specified Hecke
+operations and trace pairing. Tame residue and Gersten operations
+require additional maps on common coefficients.
+No full Weil functional or global spectral realization is identified
+by the positive root state.

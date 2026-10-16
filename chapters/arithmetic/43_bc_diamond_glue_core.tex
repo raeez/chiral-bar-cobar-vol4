@@ -1,0 +1,713 @@
+\chapter{Two-Prime Restriction and Bernstein Actions}
+\label{v4-arith:bcglue-core}
+
+A global Galois representation restricts to a representation at each
+finite place. Reconstructing the global object from two restrictions
+is a different problem. Even with fixed determinant and absolutely
+irreducible residual representation, two restrictions can agree for
+distinct global lifts. The resulting deformation ring map nevertheless
+constructs a pairwise pullback module and its local central actions.
+Comparing this module with a global prismatic sheaf requires an
+isomorphism of the actual objects, including their extension data.
+
+\section{The Deformation Problem}
+\label{v4-arith:bcglue-core:statement}
+\label{v4-arith:bcglue-core:table}
+
+Fix distinct finite primes $p,q$ and a coefficient prime
+$p_0\ne p,q$. Let $k$ be a finite field of characteristic $p_0$,
+and put $W=W(k)$. Choose a finite set $S$ of places of $\mathbb Q$
+containing $p,q,p_0,\infty$. Write $G_{\mathbb Q,S}$ for the Galois
+group of the maximal extension unramified outside $S$.
+Fix a continuous representation
+$\bar\rho:G_{\mathbb Q,S}\to GL_2(k)$ which is absolutely
+irreducible, and let $\bar D$ be its determinant polynomial law.
+Here a determinant of dimension two is a multiplicative homogeneous
+polynomial law of degree two on the group algebra, as in
+Definition~\ref{v4-arith:w5-h:def:chenevier-det-trace}.
+Its characteristic coefficients, rather than a trace alone, define
+the object in all residual characteristics.
+
+Choose decomposition-group maps
+$G_{\mathbb Q_p},G_{\mathbb Q_q}\to G_{\mathbb Q,S}$.
+Choose closed local and global deformation conditions preserved by
+restriction. These may include a fixed determinant character lifting
+$\det\bar\rho$. For a finite local $W$-algebra $A$ with residue
+field $k$, let $\mathcal D_{\mathrm{glob}}(A)$ and
+$\mathcal D_v(A)$ denote the corresponding sets of continuous
+lifts of the residual determinant, for $v=p,q$.
+The local residual restrictions need not be absolutely irreducible.
+
+Chenevier's representability theorem gives complete Noetherian local
+rings $R^{\mathrm{Ch}},R_p^{\mathrm{Ch}},R_q^{\mathrm{Ch}}$ for
+these functors. The precise hypotheses and primary locators are in
+Proposition~\ref{v4-arith:w5-h:prop:chenevier-moduli-via-det-trace}:
+Chenevier, arXiv:0809.0415, Proposition~3.3 and Example~3.4,
+p.~42, and Example~3.6 and Proposition~3.7, p.~43.
+Each closed condition must be represented by the quotient used here.
+These are formal deformation rings over one coefficient ring $W$.
+An identification with functions on a local or global spectral stack
+is additional geometric data.
+
+\subsection{A Pair of Indistinguishable Local Restrictions}
+
+\begin{proposition}[nonuniqueness with absolutely irreducible residual representation]
+\label{v4-arith:bcglue-core:prop:two-prime-nonuniqueness}
+There are distinct continuous rank-two determinant deformations over
+$\mathbb Z/8\mathbb Z$, with the same absolutely irreducible
+residual representation and fixed determinant character, whose
+restrictions at $3$ and $5$ coincide.
+\end{proposition}
+
+\begin{proof}
+Let $K$ be the splitting field of $X^3-X-1$ over $\mathbb Q$.
+The polynomial has no root modulo $2$, hence is irreducible over
+$\mathbb Q$. Its discriminant is $-23$, so its Galois group is
+$S_3$. An integral standard representation of this group is generated
+by
+\[
+ A=\begin{pmatrix}0&-1\\1&-1\end{pmatrix},\qquad
+ B=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+\]
+Direct multiplication gives $A^3=B^2=1$ and $BAB=A^{-1}$.
+Modulo $2$, the two eigenlines of $A$ over $\mathbb F_4$ are
+interchanged by $B$. Thus this residual representation is absolutely
+irreducible. Inflate the integral representation to
+$\rho:G_{\mathbb Q}\to GL_2(\mathbb Z_2)$.
+
+Let $\chi$ be the quadratic character of
+$L=\mathbb Q(\sqrt{241})$.
+For $v=3,5$, the polynomial $X^2-241$ has the simple root $1$
+modulo $v$. A root $u_r$ modulo $v^r$ lifts uniquely in its residue
+class modulo $v^r$: the correction $u_r+c v^r$ is determined by
+an equation with invertible coefficient $2u_r$ modulo $v$.
+Taking the limit gives a root in $\mathbb Z_v$.
+Hence $\chi|_{G_{\mathbb Q_v}}=1$ for both places.
+Set $\rho'=\chi\rho$. Then
+\[
+ \bar\rho'=\bar\rho,\qquad
+ \det\rho'=\chi^2\det\rho=\det\rho.
+\]
+The restrictions of $\rho$ and $\rho'$ at $3$ and $5$ agree.
+Both are unramified outside
+$S=\{2,3,5,23,241,\infty\}$.
+
+The unique quadratic subfield of $K$ is $\mathbb Q(\sqrt{-23})$,
+which differs from $L$. Consequently $K\cap L=\mathbb Q$, and
+the composite extension has Galois group $S_3\times C_2$.
+Choose $g$ whose image is $(1,-1)$. Then
+\[
+ \det(T-\rho(g))=T^2-2T+1,\qquad
+ \det(T-\rho'(g))=T^2+2T+1.
+\]
+The traces are $2$ and $6$ modulo $8$.
+Thus the determinant laws of the two reductions modulo $8$ are
+distinct lifts of the same residual law, with the asserted common
+local restrictions and fixed determinant character.
+\end{proof}
+
+The example lies in a single finite-ramification deformation problem.
+A more restrictive arithmetic condition could exclude one lift.
+Uniqueness on such a condition would require its own proof.
+
+\section{Restriction, Closed Image, and Fibres}
+\label{v4-arith:bcglue-core:prismatic}
+
+The local product functor is represented by
+\[
+ B_{p,q}=R_p^{\mathrm{Ch}}\widehat\otimes_W R_q^{\mathrm{Ch}}
+ =\varprojlim_r
+ (R_p^{\mathrm{Ch}}/\mathfrak m_p^r)
+       \otimes_W(R_q^{\mathrm{Ch}}/\mathfrak m_q^r).
+\]
+The completion is for the sum of the maximal ideals.
+Restriction is a natural transformation
+$\mathcal D_{\mathrm{glob}}\to\mathcal D_p\times\mathcal D_q$,
+so its map on representing rings has the opposite direction.
+
+\begin{proposition}[the formal restriction diagram]
+\label{v4-arith:bcglue-core:thm:prismatic-nygaard-transition}
+\ClaimStatusProvedHere
+Restriction induces a continuous local $W$-algebra homomorphism
+\begin{equation}
+\label{v4-arith:bcglue-core:eq:chenevier-restriction-map}
+ r_{p,q}^{\sharp}:B_{p,q}\longrightarrow R^{\mathrm{Ch}},
+ \qquad x\otimes y\longmapsto r_p^{\sharp}(x)r_q^{\sharp}(y).
+\end{equation}
+For the map in Equation~\eqref{v4-arith:bcglue-core:eq:chenevier-restriction-map},
+put $J_{p,q}=\ker r_{p,q}^{\sharp}$ and
+$C_{p,q}=B_{p,q}/J_{p,q}$. Then
+\[
+ B_{p,q}\twoheadrightarrow C_{p,q}\hookrightarrow R^{\mathrm{Ch}},
+ \qquad
+ \operatorname{Spf}R^{\mathrm{Ch}}\longrightarrow
+ \operatorname{Spf}C_{p,q}\lhook\joinrel\longrightarrow
+ \operatorname{Spf}B_{p,q}.
+\]
+For a continuous local map $b:B_{p,q}\to A$, the fibre over the
+prescribed local pair is represented over $A$ by
+$R^{\mathrm{Ch}}\widehat\otimes_{B_{p,q},b}A$.
+\end{proposition}
+
+\begin{proof}
+Restricting the universal determinant gives maps
+$r_v^{\sharp}:R_v^{\mathrm{Ch}}\to R^{\mathrm{Ch}}$.
+Their images commute, and their $W$-actions agree.
+The completed tensor-product property gives
+$r_{p,q}^{\sharp}$ with the displayed formula.
+The kernel is closed. The quotient is complete and injects into
+$R^{\mathrm{Ch}}$. Since the rings are profinite, its image is
+closed. The formal-spectrum diagram reverses these maps.
+For a finite local $A$-algebra $A'$, a map from the completed
+base change to $A'$ is precisely a map $R^{\mathrm{Ch}}\to A'$
+whose restriction to $B_{p,q}$ is the prescribed map through $A$.
+This proves the fibre assertion. It is the same construction as
+Theorem~\ref{v4-arith:w5-h:thm:ch1-closure}.
+\end{proof}
+
+\begin{definition}[the closed image of two-prime restriction]
+\label{v4-arith:bcglue-core:def:cross-prime-chenevier}
+The formal scheme $\operatorname{Spf}C_{p,q}$ is the closed image
+of restriction inside the local deformation product.
+A proposed two-prime Selmer algebra $R_{p,q}^{\mathrm{Ch}}$
+requires a specified $B_{p,q}$-algebra structure and comparison
+$R_{p,q}^{\mathrm{Ch}}\to C_{p,q}$ before the two can be identified.
+The quotient $C_{p,q}$ itself imposes the kernel relations only.
+\end{definition}
+
+\begin{example}[a flat closed-image map with a nonliftable point]
+\label{v4-arith:bcglue-core:ex:closed-image}
+Let $B=k[[x]]$ and $R=k[[t]]$, with $x\mapsto t^2$.
+Every series in $t$ is uniquely $f(t^2)+t g(t^2)$.
+Thus $R$ is free of rank two over $B$, and the map is injective.
+Its kernel quotient is $B$ itself.
+Nevertheless, the local point
+$B\to k[\epsilon]/(\epsilon^2)$, $x\mapsto\epsilon$, has no lift
+to $R$. A local image of $t$ is $a\epsilon$, whose square is zero.
+Flatness does not turn the closed image into the image functor
+on these Artinian points.
+\end{example}
+
+\begin{example}[an ordinary fibre with nontrivial derived structure]
+\label{v4-arith:bcglue-core:ex:derived-fibre}
+For $B=k[[x]]\to R=k$, $x\mapsto0$, the fibre over the residue
+point has ordinary coordinate ring $k$.
+The free resolution $[B\xrightarrow{x}B]$, in cohomological
+degrees $-1,0$, gives
+\[
+ k\otimes_B^{\mathbb L}k\simeq k\oplus k[1],\qquad
+ H^{-1}(k\otimes_B^{\mathbb L}k)=k.
+\]
+Thus the derived fibre retains information lost by the ordinary
+fibre. The same calculation proves that this map is not flat.
+\end{example}
+
+\begin{remark}[the information retained by restriction]
+\label{v4-arith:bcglue-core:rem:why-chenevier}
+The kernel quotient records equations satisfied by local pairs.
+The fibres record their global lifts.
+Proposition~\ref{v4-arith:bcglue-core:prop:two-prime-nonuniqueness}
+shows that those lifts need not be unique, so
+$r_{p,q}^{\sharp}$ need not be surjective.
+In a derived deformation theory the fibre uses derived completed
+tensor product. None of these constructions identifies a Nygaard
+filtration or supplies a comparison with prismatic sheaves.
+\end{remark}
+
+\section{The Pairwise Pullback and Its Central Actions}
+\label{v4-arith:bcglue-core:local}
+
+\begin{definition}[completed external product and pullback]
+\label{v4-arith:bcglue-core:def:diagonal-pullback}
+Let $M_p,M_q$ be finite modules over the local deformation rings.
+Their completed external product is the finite $B_{p,q}$-module
+\[
+ M_{p,q}=\varprojlim_r
+ (M_p/\mathfrak m_p^rM_p)\otimes_W
+ (M_q/\mathfrak m_q^rM_q).
+\]
+The module obtained by ordinary restriction pullback is
+\begin{equation}
+\label{v4-arith:bcglue-core:eq:diagonal-pullback}
+ M_{p,q}^{\mathrm{res}}
+ =R^{\mathrm{Ch}}\widehat\otimes_{B_{p,q}}M_{p,q}
+ =\varprojlim_r
+ \frac{R^{\mathrm{Ch}}\otimes_{B_{p,q}}M_{p,q}}
+ {\mathfrak m_{\mathrm{glob}}^r
+       (R^{\mathrm{Ch}}\otimes_{B_{p,q}}M_{p,q})}.
+\end{equation}
+The algebraic base change is finite over $R^{\mathrm{Ch}}$ and
+therefore already complete. Equation~\eqref{v4-arith:bcglue-core:eq:diagonal-pullback}
+also specifies its topology.
+\end{definition}
+
+\begin{proposition}[the action on the formal pullback]
+\label{v4-arith:bcglue-core:def:bernstein-product-action}
+\label{v4-arith:bcglue-core:prop:formal-pullback-action}
+Let $Z_p,Z_q$ be unital $W$-algebras acting
+$R_p^{\mathrm{Ch}}$-linearly and $R_q^{\mathrm{Ch}}$-linearly on
+$M_p,M_q$, respectively. Each acting endomorphism is continuous
+for the maximal-ideal topology. Then $M_{p,q}^{\mathrm{res}}$ has
+a canonical action of $Z_p\otimes_W Z_q$, given by
+\[
+ (z_p\otimes z_q)(a\otimes(m_p\otimes m_q))
+   =a\otimes(z_pm_p\otimes z_qm_q).
+\]
+This action commutes with the $R^{\mathrm{Ch}}$-action.
+\end{proposition}
+
+\begin{proof}
+Finite presentations of $M_p,M_q$ show that $M_{p,q}$ is finite
+over $B_{p,q}$. Base change gives a finite module over
+$R^{\mathrm{Ch}}$. Local linearity makes the displayed action
+compatible with the balancing relations and with every quotient
+in the inverse limits. It therefore defines an action on the
+completed tensors. The two local actions affect separate factors,
+so they commute. Multiplication on the first factor commutes with
+both. No topology on the abstract algebras $Z_p,Z_q$ is needed.
+\end{proof}
+
+The associated coherent sheaf on $\operatorname{Spf}R^{\mathrm{Ch}}$
+is the ordinary pullback of the completed external product.
+The derived construction replaces the external product and pullback
+by their derived completed versions. Its boundedness requires
+additional Tor conditions. The ordinary pullback is exact only on
+a domain where the required higher Tor groups vanish.
+
+\begin{proposition}[transport of ordinary central actions]
+\label{v4-arith:bcglue-core:thm:local-bernstein}
+For a $W$-linear category $\mathcal C$, let
+$Z(\mathcal C)=\operatorname{End}(\mathrm{id}_{\mathcal C})$
+be its ordinary centre. A $W$-linear equivalence
+$F:\mathcal C\to\mathcal D$ induces an isomorphism
+\begin{equation}
+\label{v4-arith:bcglue-core:eq:local-bernstein-equals-spectral}
+ Z(\mathcal C)\xrightarrow{\sim}Z(\mathcal D).
+\end{equation}
+For a fully faithful functor, this statement applies to its essential
+image. It does not identify the centre of a larger target category.
+\end{proposition}
+
+\begin{proof}
+Choose a quasi-inverse $G$ and the unit and counit isomorphisms.
+A natural endomorphism $z$ of $\mathrm{id}_{\mathcal C}$ defines
+an endomorphism of $\mathrm{id}_{\mathcal D}$ by conjugating
+$FzG$ with the counit. Naturality gives a central action, and
+composition and addition are preserved. This defines the map in
+Equation~\eqref{v4-arith:bcglue-core:eq:local-bernstein-equals-spectral}.
+The construction with $G$
+is its inverse. Restricting a fully faithful functor to its essential
+image makes it an equivalence.
+\end{proof}
+
+\begin{remark}[local coefficients and Bernstein blocks]
+\label{v4-arith:bcglue-core:rem:local-domain}
+For smooth representations of $GL_2(\mathbb Q_v)$ in
+characteristic zero with coefficient prime different from $v$,
+the Bernstein decomposition has the form
+\begin{equation}
+\label{v4-arith:bcglue-core:eq:bernstein-decomp}
+ \mathrm{Rep}(GL_2(\mathbb Q_v))
+   =\prod_{\mathfrak s}\mathrm{Rep}_{\mathfrak s}(GL_2(\mathbb Q_v)).
+\end{equation}
+For the blocks in Equation~\eqref{v4-arith:bcglue-core:eq:bernstein-decomp},
+the ordinary scalar comparison and its precise domain are proved in
+Proposition~\ref{v4-arith:w10-e:prop:excursion-bernstein}.
+Its image in the spectral categorical centre is the scalar subalgebra
+of Proposition~\ref{v4-arith:w10-e:prop:scalar-centre-obstruction}.
+Using a Bernstein centre as $Z_v$ in the formal pullback requires
+an action over the chosen coefficient ring and on the actual module
+$M_v$. A categorical comparison additionally needs a functor with
+specified essential image. A local $(\varphi,\Gamma)$-module at
+residue prime $v$ is not identified here with a deformation over
+$W(k)$ of coefficient characteristic $p_0\ne v$.
+\end{remark}
+
+\section{Equivariant Isomorphisms on Formal Charts}
+\label{v4-arith:bcglue-core:core-theorem}
+
+The module $M_{p,q}^{\mathrm{res}}$ is constructed from local data.
+Let $N$ be an independently specified global module.
+The pairwise comparison asks for an isomorphism from the former
+to the latter which intertwines their central actions.
+Equal determinant laws alone do not solve this problem.
+
+\begin{example}[extension data invisible to determinant laws]
+\label{v4-arith:bcglue-core:ex:extension-data}
+Let $R=k[[t]]$ and $M=N=R^2$. Give them actions of $R[z]$ by
+\[
+ z|_M=0,\qquad z|_N=J=\begin{pmatrix}0&t\\0&0\end{pmatrix}.
+\]
+For every polynomial $f$, one has
+$f(J)=f(0)1+f'(0)J$, so both actions have characteristic
+polynomial $(X-f(0))^2$ for $f(z)$.
+The determinant polynomial laws agree after every coefficient
+extension. The actions also coincide modulo $t$.
+An invertible intertwiner $U$ would satisfy $JU=0$, contradicting
+$J\ne0$. These are reducible algebra representations.
+They exhibit the loss of extension data for coherent objects;
+they do not contradict reconstruction of a representation from an
+absolutely irreducible residual determinant.
+\end{example}
+
+\begin{proposition}[the scheme of equivariant isomorphisms]
+\label{v4-arith:bcglue-core:thm:pairwise-reduces-to-chenevier}
+Let $(R,\mathfrak m,k)$ be a complete Noetherian local ring.
+Let $M,N$ be free $R$-modules of rank $n$ with actions of an
+$R$-algebra generated by $a_1,\ldots,a_s$.
+Choose bases and let $P_i,Q_i\in\operatorname{Mat}_n(R)$ denote
+the action matrices on $M,N$.
+The functor of equivariant isomorphisms is represented by
+\begin{equation}
+\label{v4-arith:bcglue-core:eq:pairwise-chenevier-equivalent}
+ \operatorname{Isom}(M,N)
+ =\operatorname{Spec}
+ \frac{R[u_{ab},d]}{
+ (d\det(U)-1,\ (Q_iU-UP_i)_{ab}:i,a,b)}.
+\end{equation}
+Here $U=(u_{ab})$, with $1\le a,b\le n$ and $1\le i\le s$.
+\end{proposition}
+
+\begin{proof}
+Over any commutative $R$-algebra $A$, a matrix $U$ is invertible
+exactly when its determinant is a unit. The variable $d$ specifies
+the unique inverse of that determinant. Intertwining the generators
+is equivalent to intertwining the whole algebra. Thus maps from
+the coordinate ring in
+Equation~\eqref{v4-arith:bcglue-core:eq:pairwise-chenevier-equivalent}
+to $A$ are exactly the equivariant
+isomorphisms $M\otimes_R A\to N\otimes_R A$, naturally in $A$.
+\end{proof}
+
+\begin{proposition}[successive lifting obstructions]
+\label{v4-arith:bcglue-core:cor:part-a-domain-reduction}
+In the preceding situation, put
+$I_r=\mathfrak m^r/\mathfrak m^{r+1}$ for $r\ge1$.
+Let $U_r$ be an invertible intertwiner modulo $\mathfrak m^r$.
+Choose a lift $\widetilde U$ modulo $\mathfrak m^{r+1}$ and set
+\[
+ E_i=Q_i\widetilde U-\widetilde U P_i
+       \in\operatorname{Mat}_n(I_r).
+\]
+Write bars for reduction modulo $\mathfrak m$, and define
+\[
+ L_r:\operatorname{Mat}_n(I_r)\longrightarrow
+       \operatorname{Mat}_n(I_r)^s,
+ \qquad V\longmapsto(\overline Q_iV-V\overline P_i)_i.
+\]
+The class $[(E_i)_i]\in\operatorname{coker}L_r$ is independent
+of the lift. It vanishes precisely when this $U_r$ extends to
+an invertible intertwiner modulo $\mathfrak m^{r+1}$.
+A compatible sequence of such lifts determines an equivariant
+isomorphism over $R$.
+\end{proposition}
+
+\begin{proof}
+Changing $\widetilde U$ by $V\in\operatorname{Mat}_n(I_r)$
+changes the defects by $L_r(V)$, since $\mathfrak m I_r=0$.
+Thus the class is independent of the lift and vanishes exactly
+when a correction solves every intertwining equation.
+The determinant of a corrected lift remains invertible modulo the
+maximal ideal, hence is a unit. Completeness gives the matrix limit
+of a compatible sequence. The intertwining equations pass to the
+limit, and its determinant is a unit because its residue is.
+Conversely an equivariant isomorphism over $R$ gives such a
+compatible sequence by reduction.
+\end{proof}
+
+The obstruction depends on the specified partial lift $U_r$.
+Vanishing for a compatible sequence, rather than separate choices
+at unrelated orders, constructs the limit.
+For general coherent complexes the comparison uses a derived
+ equivariant Hom complex. The finite free criterion does not assert
+that the intended arithmetic sheaves satisfy its hypotheses.
+
+\section{Global Actions and Geometric Comparison}
+\label{v4-arith:bcglue-core:global}
+
+\begin{proposition}[the action generated by local centres]
+\label{v4-arith:bcglue-core:thm:colimit-to-global-reduces-to-AG}
+Let $E$ be a commutative ring and $Z_v$ commutative unital
+$E$-algebras. For finite sets $S$ of places put
+$A_S=\bigotimes_{v\in S,E}Z_v$, with transition maps inserting
+units. Set
+\begin{equation}
+\label{v4-arith:bcglue-core:eq:global-bernstein-adelic}
+ A=\varinjlim_{S\text{ finite}} A_S.
+\end{equation}
+Pairwise commuting unital actions
+$\alpha_v:Z_v\to\operatorname{End}_E(M)$ on an $E$-module
+induce a unique action
+\[
+ \alpha:A\to\operatorname{End}_E(M),\qquad
+ \alpha(\otimes_{v\in S}z_v)=\prod_{v\in S}\alpha_v(z_v).
+\]
+Its image is $A/\ker\alpha$. Natural actions on an $E$-linear
+category instead give a map to its ordinary centre.
+\end{proposition}
+
+\begin{proof}
+The product of the commuting actions is multiplicative and
+$E$-multilinear on each finite product. The tensor-product property
+gives an action of $A_S$. Inserting a unit changes no endomorphism,
+so these maps are compatible. The colimit in
+Equation~\eqref{v4-arith:bcglue-core:eq:global-bernstein-adelic}
+therefore gives $\alpha$.
+The quotient assertion is the first isomorphism theorem.
+Products of natural endomorphisms are natural, which proves the
+categorical assertion.
+\end{proof}
+
+\begin{proposition}[faithfulness and generation for a global scalar centre]
+\label{v4-arith:bcglue-core:thm:global-bernstein-chenevier}
+Suppose the preceding actions define
+$\alpha:A\to Z(\mathcal C)$ on an $E$-linear category.
+Then
+\begin{equation}
+\label{v4-arith:bcglue-core:eq:global-bernstein-chenevier}
+ A/\ker\alpha\xrightarrow{\sim}\operatorname{im}\alpha
+       \subseteq Z(\mathcal C).
+\end{equation}
+This image is the entire ordinary centre exactly when every
+central endomorphism is generated by the finite local actions.
+The map from $A$ itself is an isomorphism exactly when it is
+also faithful. No identification with $R^{\mathrm{Ch}}$ is
+implicit in this statement.
+\end{proposition}
+
+\begin{proof}
+The quotient isomorphism in
+Equation~\eqref{v4-arith:bcglue-core:eq:global-bernstein-chenevier}
+follows from the preceding proposition.
+Surjectivity means precisely that every central endomorphism
+belongs to this image. Injectivity means $\ker\alpha=0$.
+Together these are exactly the isomorphism conditions.
+\end{proof}
+
+\begin{remark}[first-order fixed-determinant deformations]
+\label{v4-arith:bcglue-core:rem:chenevier-tangent}
+Let $V=k^2$ with action $\bar\rho$, and let
+$\operatorname{ad}\bar\rho=\operatorname{End}_k(V)$ with conjugation
+action. A lift over $k[\epsilon]/(\epsilon^2)$ has the form
+$(1+\epsilon c(g))\bar\rho(g)$.
+Multiplicativity is the continuous cocycle equation for $c$.
+The fixed-determinant condition is $\operatorname{tr}c(g)=0$.
+Strict change of basis changes $c$ by the coboundary of an element
+of $\operatorname{ad}\bar\rho$. Thus the tangent space before
+additional local conditions is
+\[
+ \frac{Z^1_{\mathrm{cts}}(G_{\mathbb Q,S},
+                  \operatorname{ad}^0\bar\rho)}
+ {d\,\operatorname{ad}\bar\rho}.
+\]
+The denominator consists of traceless cocycles.
+When $2$ is invertible, scalar subtraction identifies it with
+$d\,\operatorname{ad}^0\bar\rho$, giving the usual
+$H^1_{\mathrm{cts}}(G_{\mathbb Q,S},\operatorname{ad}^0\bar\rho)$.
+At characteristic two this simplification needs justification.
+Additional deformation conditions restrict this tangent problem.
+A tangent-space comparison does not identify the complete rings.
+\end{remark}
+
+\subsection{The Geometric Pairwise and Global Problems}
+
+Choose a coefficient base $E$ for a geometric realization.
+Suppose local spaces $X_p,X_q$, a global space $X$, and a morphism
+$r:X\to X_p\times_E X_q$ have been constructed in a specified
+formal, analytic, or derived category. Specify coefficient comparison
+maps relating this diagram to the deformation rings above.
+Let $\mathcal F_p,\mathcal F_q$ be the local coherent objects,
+and let $\mathcal F_{\mathrm{glob}}^{\mathrm{prism}}$ be an
+independently defined global object. The superscript records the
+intended prismatic realization; its existence is an additional
+construction. Work in a domain where the external product and
+$Lr^*$ preserve the chosen category of coherent complexes, for
+example on perfect complexes. Supply the local centre actions over
+$E$ and their compatibility with the coefficient maps.
+
+\begin{proposition}[external-product and pullback Tor-independence]
+\label{v4-arith:bcglue-core:prop:ordinary-derived-comparison}
+Suppose the local and global objects are coherent sheaves in
+cohomological degree zero, in a geometric domain with the stated
+derived external product and derived pullback.
+Put $\mathcal M=\mathcal F_p\boxtimes_E\mathcal F_q$ and
+$\mathcal M^{\mathbb L}=\mathcal F_p\boxtimes_E^{\mathbb L}\mathcal F_q$.
+The external-product Tor-independence condition is that the
+canonical augmentation $\mathcal M^{\mathbb L}\to\mathcal M$
+is a quasi-isomorphism. The pullback Tor-independence condition is
+that $Lr^*\mathcal M\to r^*\mathcal M$ is a quasi-isomorphism.
+These are separate vanishing conditions on the higher derived
+external product and the higher derived pullback.
+Under both conditions, an equivariant ordinary isomorphism
+$r^*\mathcal M\simeq\mathcal F_{\mathrm{glob}}^{\mathrm{prism}}$
+induces an equivariant derived isomorphism
+\[
+ Lr^*\mathcal M^{\mathbb L}
+       \simeq\mathcal F_{\mathrm{glob}}^{\mathrm{prism}}.
+\]
+For formal spaces the conditions refer to the derived completed
+operations in the chosen realization.
+\end{proposition}
+
+\begin{proof}
+The external-product condition gives
+$Lr^*\mathcal M^{\mathbb L}\simeq Lr^*\mathcal M$.
+The pullback condition identifies the latter with $r^*\mathcal M$.
+Composition with the given ordinary isomorphism proves the result.
+The augmentations are natural, so they intertwine the specified
+central actions. Thus the composite is equivariant.
+\end{proof}
+
+\begin{example}[ordinary descent without derived descent]
+\label{v4-arith:bcglue-core:ex:external-tor}
+Let $W=W(k)$ for a finite field $k$ of characteristic $p_0$.
+Take all three spaces to be $\operatorname{Spf}W$, let $r$ be
+the identity, and take
+$\mathcal F_p=\mathcal F_q=\mathcal F_{\mathrm{glob}}=k$.
+The ordinary external product and its pullback are $k$.
+However, the free resolution
+$[W\xrightarrow{p_0}W]$ of $k$, in degrees $-1,0$, gives
+\[
+ k\otimes_W^{\mathbb L}k\simeq k\oplus k[1].
+\]
+This is also the derived completed tensor product: the resulting
+finite $p_0$-torsion modules are derived $p_0$-complete.
+It is not quasi-isomorphic to $k$.
+Here $r$ is flat and both local sheaves are perfect, but
+external-product Tor-independence fails.
+Thus perfectness and flatness of $r$ do not convert ordinary
+pairwise descent into its derived enhancement.
+\end{example}
+
+\begin{conjecture}[pairwise and global Bernstein compatibility]
+\label{v4-arith:bcglue-core:cj:core}
+For the intended arithmetic geometric realization and every
+admissible pair of distinct finite primes, the following comparisons
+exist.
+For coherent sheaves in degree zero, the ordinary pairwise
+comparison is an equivariant isomorphism
+\begin{equation}
+\label{v4-arith:bcglue-core:eq:diagonal-is-external}
+ r^*(\mathcal F_p\boxtimes_E\mathcal F_q)
+       \simeq\mathcal F_{\mathrm{glob}}^{\mathrm{prism}}.
+\end{equation}
+The derived enhancement is the additional equivariant comparison
+\begin{equation}
+\label{v4-arith:bcglue-core:eq:derived-diagonal-is-external}
+ Lr^*(\mathcal F_p\boxtimes_E^{\mathbb L}\mathcal F_q)
+       \simeq\mathcal F_{\mathrm{glob}}^{\mathrm{prism}}.
+\end{equation}
+The ordinary and derived assertions are distinct.
+Both hold together if ordinary descent and the two Tor-independence
+conditions of
+Proposition~\ref{v4-arith:bcglue-core:prop:ordinary-derived-comparison}
+hold. Each asserted family of isomorphisms must be compatible with
+the geometric transition maps as the finite set of places varies.
+Second, the local actions on the global automorphic category induce
+an isomorphism onto its specified ordinary Bernstein centre
+\begin{equation}
+\label{v4-arith:bcglue-core:eq:colimit-to-global}
+ A\xrightarrow{\sim}\mathcal Z_{\mathrm{glob}},
+\end{equation}
+and a specified comparison identifies the action in
+Equation~\eqref{v4-arith:bcglue-core:eq:colimit-to-global}
+with its spectral
+counterpart. Thus the action must be faithful and generate the
+intended centre. A comparison of higher centres must
+be constructed in its category of derived algebras and is a
+separate assertion from this degree-zero identity.
+\end{conjecture}
+
+\begin{remark}[the two comparison problems]
+\label{v4-arith:bcglue-core:rem:both-halves}
+The pairwise assertion compares coherent objects and their actions.
+The global assertion identifies the image and range of the assembled
+central action. The formal restriction diagram constructs neither
+the first isomorphism nor the latter surjectivity.
+The hypotheses of
+Corollary~\ref{v4-arith:w5-h:cor:ch1-closes-pairwise} specify the
+Selmer-algebra, geometric, trace and ordinary descent data.
+The derived enhancement requires the additional derived descent
+datum or the two Tor-independence conditions. Neither version
+establishes the global centre map.
+\end{remark}
+
+\begin{proposition}[local equations and gluing of the pairwise comparison]
+\label{v4-arith:bcglue-core:thm:core-final-reduction}
+Suppose, on a formal scheme $X$, the two objects in the pairwise
+comparison are vector bundles of equal rank.
+Choose an open cover trivializing both bundles.
+Suppose the algebra of actions on each chart has specified finitely
+many generators. The equivariant isomorphism exists if and only if
+there are invertible matrices on the charts satisfying the
+intertwining equations and agreeing under the transition matrices
+on every overlap.
+On a complete local chart, a specified residue isomorphism lifts
+exactly when one can successively choose lifts with zero obstruction
+classes from
+Proposition~\ref{v4-arith:bcglue-core:cor:part-a-domain-reduction}.
+\end{proposition}
+
+\begin{proof}
+An isomorphism gives its invertible matrices in the chosen bases.
+Equivariance gives the intertwining equations, and independence of
+trivialization gives the overlap equalities.
+Conversely the overlap equalities glue the local morphisms as
+morphisms of sheaves. Their local inverses also agree on overlaps,
+so the global morphism is invertible. Equivariance can be checked
+on each chart, and hence holds globally.
+The assertion on a complete local chart is precisely the successive
+lifting proposition. It requires a compatible choice at every order.
+\end{proof}
+
+\begin{remark}[the missing arithmetic comparisons]
+\label{v4-arith:bcglue-core:rem:what-remains}
+\label{v4-arith:bcglue-core:rem:honesty}
+The remaining constructions are the geometric realization of the
+formal restriction map, the local modules with their Bernstein
+actions over a common coefficient base, and the independently defined
+global prismatic object. Their equivariant comparison must preserve
+the required filtrations and agree on overlaps and on larger finite
+sets of places. To apply the vector-bundle criterion one must also
+establish its local freeness hypotheses. Otherwise a derived
+comparison is required. Identifying a kernel quotient or matching
+traces does not construct these maps.
+\end{remark}
+
+\section{The Global Descent Problem}
+\label{v4-arith:bcglue-core:lacd-consequence}
+\label{v4-arith:bcglue-core:summary}
+
+\begin{proposition}[data supplied by two-prime restriction]
+\label{v4-arith:bcglue-core:cor:LACD-tightened}
+For the fixed deformation problem, two-prime restriction supplies
+the map $B_{p,q}\to R^{\mathrm{Ch}}$, its closed-image quotient,
+and its formal fibres. Given finite local modules and the specified
+local actions, it also supplies $M_{p,q}^{\mathrm{res}}$ with its
+product action. These constructions do not require arithmetic
+Arinkin--Gaitsgory or a prismatic comparison.
+\end{proposition}
+
+\begin{proof}
+The restriction diagram and fibre follow from
+Proposition~\ref{v4-arith:bcglue-core:thm:prismatic-nygaard-transition}.
+The module and action follow from
+Proposition~\ref{v4-arith:bcglue-core:prop:formal-pullback-action}.
+Their proofs use the stated universal properties and finite module
+presentations only.
+\end{proof}
+
+\begin{remark}[categorical and prismatic descent]
+\label{v4-arith:bcglue-core:rem:domain-delta}
+\label{v4-arith:bcglue-core:rem:realization-discipline}
+Adelic categorical descent additionally requires the actual local
+functors, their coefficient and family comparisons, the prismatic
+and untilt descent maps, and the global centre comparison.
+The ordinary scalar-centre theorem does not provide these functors.
+The determinant rings do not specify a common Nygaard filtration
+at distinct residue primes. A proposed arithmetic singular-support
+construction must define its spaces and higher centre maps before
+it can supply the global comparison. The algebraic and geometric
+obstructions to that step are developed in
+Chapter~\ref{v4-arith:w6-g:chapter}.
+\end{remark}

@@ -1,0 +1,1721 @@
+\chapter{Hecke, Adams, and Witt operations}
+\label{v4-arith:hecke:chapter}
+
+An operation on mode indices does not determine its arithmetic meaning.
+Divisor substitutions, index shifts and Hecke operators act on
+different structures, even when their first values agree.
+Their composition laws separate them. Integral lattices, distinguished
+states and completed domains give further distinctions.
+
+We begin with three explicit formulas. The divisor substitutions have
+a noncommutative algebra of boundary corrections. A second divisor
+formula gives a genuine linear Hecke action. The index shifts preserve
+the integral symmetric-function lattice and satisfy additional Frobenius congruences.
+Big Witt coordinates retain this integral information when ghost values
+lose it. Finally, the radial transform and weighted operator domains
+specify which comparisons survive Hilbert completion.
+
+\section{Three operations on mode indices}
+\label{v4-arith:hecke:sec:three}
+
+Let $R$ be a commutative unital ring and $S$ a finite set of species.
+Define the free module and its symmetric algebra by
+\[
+ M_R=\bigoplus_{s\in S,\ k\geq1}R x_{s,k},\qquad
+ P_R=\operatorname{Sym}_R(M_R).
+\]
+These objects have cohomological degree zero. Each generator has
+particle degree one and weight $k$.
+The unit $1\in P_R$ is the
+polynomial vacuum. All polynomials have finite support.
+
+The species index and the index of an operation are independent.
+
+For $n\geq1$, define two unital $R$-algebra endomorphisms by
+\begin{equation}
+ \label{v4-arith:hecke:eq:substitutions}
+ D_nx_{s,k}=\sum_{d\mid(n,k)}d\,x_{s,nk/d},\qquad
+ \psi_nx_{s,k}=x_{s,nk}.
+\end{equation}
+The first is the \emph{divisor substitution}. The second is the
+\emph{index shift}. The sums are finite and use integer coefficients.
+Thus both definitions commute with scalar extension.
+
+For an arbitrary species set, take the union over its finite subsets.
+For $S=\varnothing$, both maps are the identity on $R$.
+
+A third formula defines an $R$-linear endomorphism of $M_R$:
+\begin{equation}
+ \label{v4-arith:hecke:eq:linear}
+ \mathsf H_nx_{s,k}=\sum_{d\mid(n,k)}d\,x_{s,nk/d^2}.
+\end{equation}
+The index is integral because $d$ divides both $n$ and $k$.
+The squared denominator changes the composition law.
+We suppress the species when examining one summand.
+
+\begin{example}
+\label{v4-arith:hecke:ex:first-mode}
+For a prime $p$, all three maps send $x_1$ to $x_p$.
+Their next values are
+\[
+ D_px_p=x_{p^2}+px_p,\qquad
+ \psi_px_p=x_{p^2},\qquad
+ \mathsf H_px_p=x_{p^2}+px_1.
+\]
+Consequently
+\[
+ (D_p^2-D_{p^2})x_1=px_p,\qquad
+ (D_p^2-D_{p^2}-pI)x_1=p(x_p-x_1).
+\]
+Both differences are nonzero over $\mathbb Z$.
+The index shifts satisfy $\psi_m\psi_n=\psi_{mn}$ on every generator,
+hence on $P_R$. The linear Hecke relation will instead include
+the additional term $pI$.
+\end{example}
+
+Extending a linear generator map $A:M_R\to M_R$ to
+$\operatorname{Sym}(A):P_R\to P_R$ preserves composition.
+It does not preserve addition as a function of $A$.
+Already
+\[
+ \operatorname{Sym}(2A)(x^2)=4(Ax)^2,
+ \qquad 2\operatorname{Sym}(A)(x^2)=2(Ax)^2.
+\]
+Moreover, every such extension fixes the vacuum. Over $\mathbb Z$,
+the putative polynomial Hecke relation
+\[
+ \operatorname{Sym}(\mathsf H_p)^2
+ =\operatorname{Sym}(\mathsf H_{p^2})+pI
+\]
+already fails on $1$, where its two sides give $1$ and $1+p$.
+Linear operator relations and multiplicative substitutions must
+therefore retain their different carriers.
+
+\section{Composition and the boundary of a prime chain}
+\label{v4-arith:hecke:sec:composition}
+
+Fix a prime $p$ and $u\geq1$ with $(u,p)=1$.
+Write $e_r=x_{up^r}$ for $r\geq0$, and let $A_a$ be the
+restriction of $D_{p^a}$ to this free submodule.
+Then $A_0=I$ and
+\begin{equation}
+ \label{v4-arith:hecke:eq:prime-chain}
+ A_ae_r=\sum_{i=0}^{\min(a,r)}p^i e_{r+a-i}.
+\end{equation}
+The lower endpoint $r=0$ truncates the sum.
+Farther along the chain, the same operators act by polynomials
+in the forward shift. Their noncommutativity is confined to
+the truncated region.
+
+\begin{theorem}[Prime-chain composition]
+\label{v4-arith:hecke:thm:composition}
+For $a,b,r\geq0$, put $[v]_+=\max(v,0)$ and
+\[
+ N_{a,b}(r,t)=\mathbf1_{t\leq r+b}
+ \bigl[\min(b,r,t)-\max(0,t-a)+1\bigr]_+.
+\]
+Over every commutative coefficient ring,
+\begin{equation}
+ \label{v4-arith:hecke:eq:composition}
+ A_aA_be_r=\sum_{t=0}^{a+b}p^tN_{a,b}(r,t)e_{r+a+b-t}.
+\end{equation}
+For $1\leq a<b$, the boundary commutator is
+\begin{equation}
+ \label{v4-arith:hecke:eq:commutator}
+ [A_a,A_b]e_1=-p^{a+1}e_b.
+\end{equation}
+Thus, over a nonzero characteristic-zero ring, $A_a$ and $A_b$
+commute exactly when $a=b$ or $ab=0$.
+\end{theorem}
+\begin{proof}
+A term of $A_aA_be_r$ chooses integers
+\[
+ 0\leq i\leq\min(b,r),\qquad
+ 0\leq j\leq\min(a,r+b-i).
+\]
+Its coefficient is $p^{i+j}$ and its output index is $r+a+b-i-j$.
+Fixing $t=i+j$ leaves the conditions
+\[
+ t\leq r+b,\qquad \max(0,t-a)\leq i\leq\min(b,r,t).
+\]
+Their number is $N_{a,b}(r,t)$, proving the first formula.
+
+For the commutator, first use $A_be_1=e_{b+1}+pe_b$.
+Applying $A_a$ gives successive coefficients
+$1,2p,\ldots,2p^a,p^{a+1}$.
+In the reverse order, $A_ae_1=e_{a+1}+pe_a$.
+Since $b\geq a+1$, its final coefficient is $2p^{a+1}$.
+All other coefficients agree. Their difference proves
+\eqref{v4-arith:hecke:eq:commutator}.
+
+The nonzero integer $p^{a+1}$ remains nonzero in a characteristic-zero
+ring. The commuting cases are immediate, and exchanging $a,b$
+covers the other order.
+\end{proof}
+
+For example, the entire first commutator is
+\[
+ [A_1,A_2]e_r=
+ \begin{cases}-p^2e_2,&r=1,\\0,&r\ne1.\end{cases}
+\]
+For $r\geq2$, both operators have their untruncated polynomial form.
+The two remaining basis vectors give the displayed boundary term.
+
+\begin{corollary}[Independent prime coordinates]
+\label{v4-arith:hecke:cor:global}
+Set $a_p=v_p(m)$, $b_p=v_p(n)$ and $r_p=v_p(k)$.
+Then
+\[
+ D_mD_nx_k=
+ \sum_{(t_p)}\left(\prod_{p\mid mn}p^{t_p}
+ N_{a_p,b_p}(r_p,t_p)\right)
+ x_{mnk/\prod_{p\mid mn}p^{t_p}},
+ \qquad 0\leq t_p\leq a_p+b_p.
+\]
+Terms with zero coefficient are omitted.
+In particular, $D_mD_n=D_{mn}$ when $(m,n)=1$.
+For a nonempty species set over a nonzero characteristic-zero ring,
+\begin{align*}
+ D_mD_n=D_{mn}&\quad\Longleftrightarrow\quad(m,n)=1,\\
+ [D_m,D_n]=0&\quad\Longleftrightarrow\quad
+ \text{for every }p,\ a_pb_p=0\text{ or }a_p=b_p.
+\end{align*}
+Over $\mathbb F_\ell$, omit the condition at $p=\ell$ in both criteria.
+\end{corollary}
+\begin{proof}
+Multiplication or division by a power of $p$ leaves every other
+prime valuation unchanged. The divisor choices therefore factor
+over primes, giving the formula and the coprime statement.
+Equality on generators extends multiplicatively to $P_R$.
+
+If $a_p,b_p>0$, then
+\[
+ A_{a_p}A_{b_p}e_0
+ =\sum_{j=0}^{\min(a_p,b_p)}p^je_{a_p+b_p-j}.
+\]
+Its $j=1$ term is absent from $A_{a_p+b_p}e_0$.
+Selecting the highest terms at the other primes isolates its
+nonzero coefficient. This proves the first necessity.
+
+For the second, use $x_p$ at a prime with unequal positive exponents.
+At other primes, both orders agree on their initial vector.
+Their highest terms and \eqref{v4-arith:hecke:eq:commutator}
+again isolate a nonzero power of $p$.
+
+In characteristic $\ell$, the terms with positive powers of $\ell$
+vanish, so $D_{\ell^a}=\psi_{\ell^a}$ on $P_{\mathbb F_\ell}$.
+At every other prime, the same powers of $p$ remain nonzero.
+This proves precisely the stated exception.
+\end{proof}
+
+The index shifts interact with the divisor substitutions by
+\[
+ \psi_mD_nx_k=\sum_{d\mid(n,k)}d\,x_{mnk/d},\qquad
+ D_n\psi_mx_k=\sum_{d\mid(n,mk)}d\,x_{mnk/d}.
+\]
+In characteristic zero they commute exactly when $(m,n)=1$.
+Coprimality equates the divisor conditions. If a common prime exists,
+$k=1$ supplies an extra term with a nonzero integer coefficient.
+
+There is also a monoid action retaining the prime divisor maps.
+Define $\Theta_n=\prod_pD_p^{v_p(n)}$.
+Different prime maps commute, so $\Theta_m\Theta_n=\Theta_{mn}$.
+
+For $a\geq1$, its prime-chain values are
+\[
+ A_1^ae_r=\sum_{j=0}^a\binom ajp^je_{r+a-j}\quad(r\geq1),
+ \qquad
+ A_1^ae_0=\sum_{j=0}^{a-1}\binom{a-1}jp^je_{a-j}.
+\]
+The first formula is the binomial theorem on the invariant tail.
+The second follows after $e_0\mapsto e_1$.
+This action changes the higher operations. Its prime maps retain
+the Frobenius obstruction computed below.
+
+\section{The algebra of linear divisor operators}
+\label{v4-arith:hecke:sec:presentation}
+
+The prime-chain algebra admits a finite test for each proposed relation.
+Each test controls a finite boundary region and the entire infinite tail.
+
+Let $Ue_r=e_{r+1}$, $Be_0=0$ and $Be_r=e_{r-1}$ for $r\geq1$.
+Then $BU=I$ and $U^iB^i$ projects onto the tail $r\geq i$.
+Consequently
+\[
+ A_a=U^a\sum_{i=0}^ap^iB^i,
+ \qquad A_{a+1}=UA_a+p^{a+1}U^{a+1}B^{a+1}.
+\]
+These identities place the generated algebra inside the algebra of
+the shift and its partial inverse. They need not generate that
+entire ambient algebra.
+
+Put $q_a(z)=\sum_{i=0}^ap^iz^{a-i}$ for $a\geq1$.
+For a word $w=Z_{a_l}\cdots Z_{a_1}$, define
+\[
+ d(w)=\sum_ja_j,\qquad q_w=\prod_jq_{a_j},
+\]
+and
+\[
+ B_w(r,s)=
+ \sum_{\substack{0\leq i_j\leq a_j,\ \sum_j(a_j-i_j)=s\\
+ i_j\leq r+\sum_{h<j}(a_h-i_h)\ \text{for each }j}}
+ p^{\sum_ji_j}.
+\]
+The rightmost factor acts first. For the empty word, set $d(w)=0$,
+$q_w=1$ and $B_w(r,s)=\mathbf1_{s=0}$.
+
+\begin{theorem}[Tail and boundary presentation]
+\label{v4-arith:hecke:thm:presentation}
+Let $F=\sum_wc_ww$ be a finite element of
+$R\langle Z_1,Z_2,\ldots\rangle$, and set $d=\max_wd(w)$.
+For $F=0$, take $d=0$.
+Then $F(A_1,A_2,\ldots)=0$ if and only if
+\begin{align*}
+ &\sum_wc_wq_w(z)=0\quad\text{in }R[z],\\
+ &\sum_wc_wB_w(r,s)=0
+       \quad(0\leq r<d,\ 0\leq s\leq d).
+\end{align*}
+These conditions define the kernel ideal $I_{p,R}$, giving
+\[
+ R[A_1,A_2,\ldots]\simeq
+ R\langle Z_1,Z_2,\ldots\rangle/I_{p,R}.
+\]
+Every finite expression has a finite coefficient test.
+No finite generating set for the ideal is asserted.
+\end{theorem}
+\begin{proof}
+Expanding the successive divisor choices gives
+$w(A)e_r=\sum_sB_w(r,s)e_{r+s}$.
+For $r\geq d$, every intermediate index is at least $r$.
+All choices $0\leq i_j\leq a_j$ are then allowed.
+Their coefficients are exactly those of $q_w(z)$.
+The polynomial identity therefore tests all vectors with $r\geq d$.
+
+The remaining equations test every earlier basis vector.
+Together they are precisely the kernel of evaluation $Z_a\mapsto A_a$.
+The kernel is a two-sided ideal, and the quotient is its image.
+\end{proof}
+
+Equivalently, every evaluated expression is uniquely $q(U)+E$.
+Here $E$ is a finite matrix, supported in columns $r<d$ and rows
+$r\leq r+s\leq r+d$. Uniqueness follows by testing arbitrarily
+large $e_r$. The tail-symbol map onto $R[z]$ is surjective,
+since $q_1=z+p$. Its kernel consists of the finite matrices
+which occur in the generated algebra.
+The commutator $[A_1,A_2]$ gives a nonzero example over $\mathbb Z$.
+
+For finitely many primes, use a basis indexed by their valuation vectors.
+Word coefficients are products of the corresponding prime-chain coefficients.
+In each coordinate, separate the finitely many boundary values from
+the unrestricted tail. This gives finitely many mixed boundary tests
+and polynomial identities for every finite expression.
+Every expression in the full prime family involves only finitely many primes.
+
+\section{The linear Hecke law and its determinant}
+\label{v4-arith:hecke:sec:linear}
+
+The partial inverse enters differently in
+\eqref{v4-arith:hecke:eq:linear}. On $M_R$, define
+\[
+ U_px_k=x_{pk},\qquad
+ B_px_k=\begin{cases}x_{k/p},&p\mid k,\\0,&p\nmid k.\end{cases}
+\]
+Then $B_pU_p=I$, while $U_pB_p$ projects onto the
+$p$-divisible indices. At distinct primes all four pairs commute.
+The linear operators satisfy
+\[
+ \mathsf H_{p^r}=\sum_{j=0}^rp^jU_p^{r-j}B_p^j.
+\]
+
+Multiplying by $U_p+pB_p$ gives
+\[
+ \mathsf H_p\mathsf H_{p^r}
+ =\mathsf H_{p^{r+1}}+p\mathsf H_{p^{r-1}}
+ \qquad(r\geq1).
+\]
+Indeed, the final backward-shift term supplies $p^{r+1}B_p^{r+1}$.
+Every other backward-shift term cancels a forward shift using
+$B_pU_p=I$, leaving $p\mathsf H_{p^{r-1}}$.
+
+\begin{proposition}[Universal determinant identity]
+\label{v4-arith:hecke:prop:determinant}
+For independent indeterminates $T,d$, define
+\[
+ H_0=1,\qquad H_1=T,\qquad H_{r+1}=TH_r-dH_{r-1}\quad(r\geq1).
+\]
+Then in $\mathbb Z[T,d]$,
+\[
+ H_rH_s=\sum_{j=0}^{\min(r,s)}d^jH_{r+s-2j}.
+\]
+The identity also holds after substituting any commuting pair of
+endomorphisms of a module over a commutative ring.
+\end{proposition}
+\begin{proof}
+Substitute $T=u+v$ and $d=uv$.
+The recurrence gives $H_r=\sum_{i=0}^ru^iv^{r-i}$.
+For $r\leq s$, the coefficient of $u^iv^{r+s-i}$ in the product is
+\[
+ 1+\min(r,i,r+s-i)\qquad(0\leq i\leq r+s).
+\]
+The right side has one contribution for each
+$0\leq j\leq\min(r,i,r+s-i)$, so the coefficients agree.
+
+The substitution is injective: in lexicographic order with $u>v$,
+$(u+v)^a(uv)^b$ has leading monomial $u^{a+b}v^b$.
+These leading monomials are distinct for distinct pairs $(a,b)$.
+The identity therefore holds before specialization, including $r=s$.
+Evaluation at commuting endomorphisms preserves it.
+\end{proof}
+
+\begin{corollary}
+\label{v4-arith:hecke:cor:linear-law}
+Over every commutative coefficient ring,
+\[
+ \mathsf H_m\mathsf H_n
+   =\sum_{d\mid(m,n)}d\,\mathsf H_{mn/d^2}.
+\]
+\end{corollary}
+\begin{proof}
+At each prime, specialize the proposition to $(\mathsf H_p,pI)$.
+The divisor formula factors $\mathsf H_n$ over its prime powers.
+Multiplication of the local identities proves the global formula.
+\end{proof}
+
+This is a representation of the stated linear operator algebra.
+The algebra generated by all $U_p,B_p$ also retains these relations
+in its regular representation.
+Neither construction identifies its multiplication with the vertex
+products of a Heisenberg algebra.
+
+\section{Satake parameters and the radial state}
+\label{v4-arith:hecke:sec:satake}
+
+The determinant in the universal identity has a geometric normalization.
+Fix $K_p=\mathrm{GL}_2(\mathbb Z_p)$ and give it Haar volume one.
+The complex spherical Hecke algebra is
+\[
+ \mathcal H_p=C_c(K_p\backslash\mathrm{GL}_2(\mathbb Q_p)/K_p,\mathbb C),
+\]
+The product is convolution. The two characteristic functions used below are
+\[
+ T_p=\mathbf1_{K_p\operatorname{diag}(p,1)K_p},\qquad
+ \mathsf z_p=\mathbf1_{K_p\operatorname{diag}(p,p)K_p}.
+\]
+
+\begin{theorem}[Normalized spherical Satake isomorphism]
+\label{v4-arith:hecke:thm:satake}
+The normalized Satake isomorphism identifies
+\[
+ \mathcal H_p\simeq
+ \mathbb C[X^{\pm1},Y^{\pm1}]^{S_2},\qquad
+ T_p\longmapsto\sqrt p(X+Y),\qquad \mathsf z_p\longmapsto XY.
+\]
+At a character, put $\alpha=\sqrt pX$ and $\beta=\sqrt pY$.
+Then $\alpha\beta=p\mathsf z_p$, using the scalar central character on the right.
+Trivial central character gives $\mathsf z_p=1$.
+Temperedness is the additional condition $|X|=|Y|=1$.
+\end{theorem}
+
+This is the convention of Gross, \emph{On the Satake isomorphism},
+Proposition~3.6, equations~(3.13)--(3.14), and Section~8.
+In particular, trivial central character does not imply temperedness.
+The higher elements $H_{p^r}\in\mathcal H_p$ are specified by
+the complete symmetric Satake polynomials:
+\[
+ \sum_{r\geq0}H_{p^r}t^r=(1-T_pt+p\mathsf z_pt^2)^{-1}.
+\]
+This follows by multiplying $(1-\sqrt pXt)$ and $(1-\sqrt pYt)$
+in the Satake algebra and using injectivity.
+These higher elements need not be individual double-coset characteristic functions.
+
+For a fixed pair $\alpha\beta=p$, the diagonal matrix
+$S_p=\operatorname{diag}(\alpha,\beta)$ gives
+\[
+ \operatorname{Tr}(\operatorname{Sym}^rS_p)
+ =\sum_{j=0}^r\alpha^{r-j}\beta^j=H_r(\alpha+\beta,p).
+\]
+This follows from the monomial eigenbasis of the symmetric power.
+The matrix, its scalar traces and the operators $\mathsf H_n$
+are three separate representations of the parameter formulas.
+In a basis $a,b$, the line $\mathbb C(a+b)$ is $S_p$-invariant
+exactly when $\alpha=\beta$. Its image is
+$\alpha a+\beta b$, which proves the criterion.
+
+If the pair is tempered, write
+\[
+ \{\alpha,\beta\}
+ =\{\sqrt p\,e^{i\theta_p},\sqrt p\,e^{-i\theta_p}\}.
+\]
+The angle is defined modulo $2\pi$ and sign.
+
+For any family of such angles, the product
+\[
+ L_\theta(s)=\prod_p
+ \frac1{1-2\cos\theta_p\,p^{-s}+p^{-2s}}
+\]
+converges absolutely and locally uniformly for $\operatorname{Re}s>1$.
+Indeed, its logarithm is the absolutely convergent sum
+\[
+ \sum_p\sum_{m\geq1}\frac{2\cos(m\theta_p)}m p^{-ms}.
+\]
+On every closed smaller half-plane, its absolute values are bounded
+by a constant times $\sum_pp^{-\operatorname{Re}s}$.
+
+This constructs the local-parameter Euler product on that domain.
+An automorphic identification or continuation beyond it requires
+additional arithmetic data. Replacing unitary parameters by
+$\alpha,\beta$ shifts the Dirichlet variable by one half.
+
+\subsection{The integral cyclic module of a tree}
+
+Fix a rooted $(p+1)$-regular tree $(\mathcal T_p,o)$.
+Use counting measure on its vertices and let $S_r$ be the sphere
+of radius $r$ about $o$. Its size is
+\[
+ s_0=1,\qquad s_r=(p+1)p^{r-1}\quad(r\geq1).
+\]
+The radial Hilbert space $\mathcal R_p$ consists of square-summable
+functions constant on each sphere. Its orthonormal basis is
+$e_r=s_r^{-1/2}\mathbf1_{S_r}$.
+
+Adjacency is $(Tf)(v)=\sum_{w\sim v}f(w)$.
+Cauchy--Schwarz bounds its norm on the vertex Hilbert space by $p+1$,
+and symmetry makes it self-adjoint. Counting edges gives
+\begin{align*}
+ Te_0&=\sqrt{p+1}\,e_1,\\
+ Te_1&=\sqrt{p+1}\,e_0+\sqrt p\,e_2,\\
+ Te_r&=\sqrt p(e_{r-1}+e_{r+1})\quad(r\geq2).
+\end{align*}
+Distance defines a filtration, not a grading preserved by $T$.
+
+Define monic integer polynomials by
+\[
+ R_0=1,\quad R_1=x,\quad R_2=x^2-(p+1),\qquad
+ R_{r+1}=xR_r-pR_{r-1}\quad(r\geq2).
+\]
+The recurrence gives $R_r(T)e_0=\mathbf1_{S_r}$.
+Monicity then proves an integral cyclic-module isomorphism
+\begin{equation}
+ \label{v4-arith:hecke:eq:integral-tree}
+ \mathbb Z[x]\xrightarrow{\sim}
+ \bigoplus_{r\geq0}\mathbb Z\mathbf1_{S_r},\qquad
+ f\longmapsto f(T)e_0.
+\end{equation}
+No prime is inverted in this statement.
+The normalized Hilbert basis instead uses real square roots.
+
+\begin{theorem}[Radial transform with its state]
+\label{v4-arith:hecke:thm:radial}
+Put $x(\theta)=2\sqrt p\cos\theta$ for $0\leq\theta\leq\pi$, and define
+\[
+ d\nu_p(\theta)=
+ \frac{2p(p+1)\sin^2\theta}
+ {\pi(p^2+1-2p\cos2\theta)}\,d\theta.
+\]
+The measure has mass one. The assignment
+\[
+ \mathcal U_pe_r=\frac{R_r(x(\theta))}{\sqrt{s_r}}
+\]
+extends to a unitary $\mathcal R_p\xrightarrow{\sim}L^2([0,\pi],\nu_p)$.
+It sends $e_0$ to $1$ and intertwines $T$ with multiplication by $x$.
+In particular, $\|T|_{\mathcal R_p}\|=2\sqrt p$, and
+\begin{equation}
+ \label{v4-arith:hecke:eq:radial-state}
+ \langle e_0,f(T)e_0\rangle
+ =\int_0^\pi f(2\sqrt p\cos\theta)\,d\nu_p(\theta)
+\end{equation}
+for every bounded Borel function on the spectral interval.
+\end{theorem}
+\begin{proof}
+The tridiagonal recurrence makes $e_0$ cyclic.
+After deleting its row and column, the remaining Jacobi operator
+has every off-diagonal coefficient equal to $\sqrt p$.
+Its first diagonal resolvent entry satisfies
+\[
+ g(z)=\frac1{z-pg(z)}
+ =\frac{z-\sqrt{z^2-4p}}{2p}.
+\]
+The branch is analytic off $[-2\sqrt p,2\sqrt p]$ and asymptotic to $z$.
+It is selected by $g(z)\sim z^{-1}$.
+
+Taking the Schur complement at the original root gives
+\[
+ m(z)=\langle e_0,(z-T)^{-1}e_0\rangle
+ =\frac1{z-(p+1)g(z)}.
+\]
+For $|x|<2\sqrt p$, Stieltjes inversion yields
+\[
+ -\frac1\pi\operatorname{Im}m(x+i0)
+ =\frac{(p+1)\sqrt{4p-x^2}}{2\pi((p+1)^2-x^2)}.
+\]
+
+A pole outside the interval would require $g^2=1$ and $z=\pm(p+1)$.
+The chosen branch instead has $g(\pm(p+1))=\pm p^{-1}$.
+At either endpoint the denominator is nonzero because $p>1$.
+Thus $m$ has continuous finite boundary values on the interval
+and analytic continuation across its complement.
+
+The inversion formula gives only the displayed absolutely continuous measure.
+Its mass is one by $m(z)\sim z^{-1}$.
+Changing variables to $x=2\sqrt p\cos\theta$ gives $\nu_p$.
+
+The spectral theorem and \eqref{v4-arith:hecke:eq:integral-tree} imply
+\[
+ \int R_r(x)R_s(x)\,d\nu_p
+ =\langle\mathbf1_{S_r},\mathbf1_{S_s}\rangle=s_r\delta_{rs}.
+\]
+The normalized polynomials are therefore orthonormal.
+They span all polynomials by monicity.
+Polynomial approximation on the compact interval proves their
+density in $L^2$, hence the asserted unitary.
+
+The recurrence gives intertwining on finite sums, then everywhere
+by boundedness. The spectral support is the entire closed interval,
+so the operator norm is $2\sqrt p$.
+Bounded Borel functional calculus proves the state identity.
+\end{proof}
+
+For the Bruhat--Tits tree of $\mathrm{PGL}_2(\mathbb Q_p)$,
+vertices are homothety classes of lattices in $\mathbb Q_p^2$.
+Adjacency is represented by
+$pL\subset L'\subset L$ with $[L:L']=p$.
+Lines in $L/pL$ give $p+1$ neighbors.
+The maximal compact subgroup has volume one, so this adjacency
+is the Hecke operator of $\operatorname{diag}(p,1)$.
+Pullback to $\mathrm{GL}_2$ makes $\mathsf z_p$ act as the identity.
+The radial transform consequently preserves both the spherical
+Hecke action and its root state.
+
+\begin{proposition}[Distance operators]
+\label{v4-arith:hecke:prop:distance}
+Define $\mathcal D_r$ by
+\[
+ (\mathcal D_rf)(v)=\sum_{d(v,w)=r}f(w).
+\]
+Then $\mathcal D_r=R_r(T)$ and
+\[
+ H_k(T,p)=\sum_{j=0}^{\lfloor k/2\rfloor}\mathcal D_{k-2j}.
+\]
+Their root expectations satisfy
+\[
+ \langle e_0,H_k(T,p)e_0\rangle=
+ \begin{cases}1,&k\text{ even},\\0,&k\text{ odd}.
+ \end{cases}
+\]
+On $\mathcal R_p$, the generating series converges in operator norm
+for $|t|<p^{-1/2}$, and
+\[
+ \left\langle e_0,(I-tT+pt^2I)^{-1}e_0\right\rangle
+ =\frac1{1-t^2}.
+\]
+\end{proposition}
+\begin{proof}
+Every row and column of $\mathcal D_r$ has $s_r$ entries,
+so it is bounded. Counting the first step gives
+\[
+ T\mathcal D_1=\mathcal D_2+(p+1)I,\qquad
+ T\mathcal D_r=\mathcal D_{r+1}+p\mathcal D_{r-1}\quad(r\geq2).
+\]
+Hence $\mathcal D_r=R_r(T)$.
+With $H_{-1}=H_{-2}=0$, the recurrences give $R_r=H_r-H_{r-2}$.
+Telescoping proves the sum formula.
+Only $\mathcal D_0e_0$ has a nonzero inner product with $e_0$,
+giving the expectations.
+
+The spectral values are
+\[
+ H_k(2\sqrt p\cos\theta,p)
+ =p^{k/2}\sum_{j=0}^ke^{i(k-2j)\theta}.
+\]
+They include the coinciding-parameter cases $\theta=0,\pi$.
+Thus $\|H_k(T,p)\|\leq(k+1)p^{k/2}$ on $\mathcal R_p$.
+This proves norm convergence in the stated disk.
+Multiplying the series by $I-tT+pt^2I$ proves the inverse formula,
+and its state can be evaluated term by term.
+\end{proof}
+
+At $p=2$, the first normalized radial polynomials are
+\[
+ 1,\qquad x/\sqrt3,\qquad (x^2-3)/\sqrt6,
+\]
+whereas $H_2(x,2)=x^2-2$.
+There are three two-step returns to the root.
+Of the four-step returns, nine return after two steps and six
+first reach distance two. Therefore
+\[
+ \int x^2d\nu_2=3,\qquad \int x^4d\nu_2=15,\qquad
+ \int H_2d\nu_2=1,\quad \int R_2d\nu_2=0.
+\]
+The distinction persists before taking a spectral integral.
+
+There is also a distinction between two cyclic Hecke representations.
+Give the free complex mode space the Hermitian form
+$\langle x_k,x_l\rangle=k\delta_{kl}$ and complete it.
+Then $U_p^*=pB_p$, and $\mathsf H_p=U_p+pB_p$ is bounded and self-adjoint.
+At its unit vector $x_1$,
+\[
+ \langle x_1,\mathsf H_p^2x_1\rangle=p,
+ \qquad \langle e_0,T^2e_0\rangle=p+1.
+\]
+The first value follows from
+$\mathsf H_p^2x_1=x_{p^2}+px_1$.
+Thus the common Hecke recursion does not give an intertwiner
+preserving these two specified states.
+
+\subsection{Finite sets of primes}
+
+For a finite prime set $F$, tensor the radial maps to obtain
+\[
+ \mathcal U_F:\widehat\bigotimes_{p\in F}\mathcal R_p
+ \xrightarrow{\sim}
+ L^2\left([0,\pi]^F,\prod_{p\in F}\nu_p\right).
+\]
+It sends $\bigotimes_pe_{r_p}$ to the product of the normalized
+radial polynomials. It preserves each local Hecke operator and
+sends the tensor root state to integration against the product measure.
+The integral cyclic lattices are the finite tensor products of
+the sphere-sum lattices.
+
+Adjoining a prime uses $v\mapsto v\otimes e_0$ on the tree side
+and $f\mapsto f\otimes1$ on the spectral side.
+These isometries commute with $\mathcal U_F$ and preserve the states.
+Their algebraic union therefore has an isometric comparison,
+which extends to its Hilbert completion.
+Each finite-support Hecke operation acts on its own natural factors.
+No bound uniform over all primes is required or asserted.
+
+\section{The integral symmetric-function lattice}
+\label{v4-arith:hecke:sec:lambda}
+
+The index shifts already form a monoid action on $P_R$.
+Their integral Frobenius property depends on the lattice.
+For one species over $\mathbb Z$,
+\[
+ \psi_px_1-x_1^p=x_p-x_1^p\notin pP_{\mathbb Z}.
+\]
+The two monomials remain distinct after reduction modulo $p$.
+We now construct the larger lattice on which the same rational
+operations satisfy the required congruences.
+
+Inside $P_{\mathbb Q}$, define $h_0=1$ and
+\begin{equation}
+ \label{v4-arith:hecke:eq:complete-series}
+ H(t)=\sum_{r\geq0}h_rt^r
+ =\exp\left(\sum_{k\geq1}\frac{x_kt^k}{k}\right),\qquad
+ \Lambda=\mathbb Z[h_1,h_2,\ldots].
+\end{equation}
+The coefficients are defined formally, one degree at a time.
+Differentiation gives Newton's recursion
+\[
+ rh_r=\sum_{k=1}^rx_kh_{r-k}.
+\]
+It expresses $x_r$ as an integral polynomial in $h_1,\ldots,h_r$.
+Conversely, $h_r=x_r/r$ plus a polynomial in earlier $x_k$ over $\mathbb Q$.
+
+Thus the $h_r$ are algebraically independent and
+\[
+ P_{\mathbb Z}\subsetneq\Lambda,\qquad
+ P_{\mathbb Q}=\Lambda\otimes\mathbb Q.
+\]
+For instance, $h_2=(x_1^2+x_2)/2$ does not belong to $P_{\mathbb Z}$.
+We call $\Lambda$ the \emph{Hall lattice}.
+For several species, take its finite tensor products.
+
+To identify its standard operations, specialize
+$x_k=z_1^k+\cdots+z_N^k$.
+Then $H(t)=\prod_{i=1}^N(1-z_it)^{-1}$, so $h_r$ is the complete
+symmetric polynomial of degree $r$.
+These symmetric polynomials stabilize when zero variables are adjoined.
+Every fixed weight is detected once $N$ is sufficiently large.
+Substitution $z_i\mapsto z_i^n$ therefore preserves $\Lambda$
+and induces $\psi_nx_k=x_{nk}$.
+
+In characteristic $p$, the same substitution is the Frobenius map
+on integer symmetric polynomials modulo $p$. Hence
+\begin{equation}
+ \label{v4-arith:hecke:eq:frobenius}
+ \psi_p(f)\equiv f^p\pmod{p\Lambda}\qquad(f\in\Lambda).
+\end{equation}
+
+\subsection{Special lambda operations}
+
+The full integral structure includes operations beyond their rational
+power sums. We specify the convention explicitly.
+For two finite alphabets $X=(z_i)$ and $Y=(w_j)$, let $e_n(X)$
+denote the elementary symmetric polynomial.
+There are universal integer polynomials $P_n$ and $Q_{m,n}$ determined by
+\[
+ e_n(\{z_iw_j\}_{i,j})
+ =P_n(e_1(X),\ldots,e_n(X);e_1(Y),\ldots,e_n(Y)),
+\]
+and
+\[
+ e_m(\{z_{i_1}\cdots z_{i_n}:i_1<\cdots<i_n\})
+ =Q_{m,n}(e_1(X),\ldots,e_{mn}(X)).
+\]
+The fundamental theorem of symmetric polynomials gives their integral
+coefficients and stability as the alphabets grow.
+
+\begin{definition}
+\label{v4-arith:hecke:def:lambda}
+A \emph{special $\lambda$-ring} is a commutative unital ring $A$
+with operations $\lambda^n:A\to A$ for $n\geq0$.
+Writing $\lambda_t(a)=\sum_{n\geq0}\lambda^n(a)t^n$, their identities are
+\[
+ \lambda^0(a)=1,\qquad \lambda^1(a)=a,\qquad
+ \lambda_t(a+b)=\lambda_t(a)\lambda_t(b),\qquad
+ \lambda_t(1)=1+t,
+\]
+together with the product and composition identities given by
+$P_n$ and $Q_{m,n}$ above.
+Its \emph{Adams operations} are the integral coefficient operations in
+\[
+ -t\frac{(\lambda_{-t}(a))'}{\lambda_{-t}(a)}
+ =\sum_{n\geq1}\psi_n(a)t^n.
+\]
+Here the prime means formal differentiation in $t$.
+\end{definition}
+
+The alphabet identities show that each Adams operation is a unital
+ring endomorphism and $\psi_m\psi_n=\psi_{mn}$.
+They also give the Frobenius congruences.
+These are identities of universal integer polynomials, so they remain
+valid after evaluation in every special $\lambda$-ring.
+The ordinary symmetric functions give such a structure on $\Lambda$.
+Their Adams operations are precisely the index shifts above.
+
+\begin{theorem}[Torsion-free Adams criterion]
+\label{v4-arith:hecke:thm:wilkerson}
+Let the additive group of $A$ be torsion-free.
+A family of unital ring endomorphisms $\psi_n$ determines a unique
+special $\lambda$-structure if
+\[
+ \psi_1=I,\qquad \psi_m\psi_n=\psi_{mn},\qquad
+ \psi_p(a)\equiv a^p\pmod{pA}\quad\text{for every prime }p.
+\]
+\end{theorem}
+
+This is Wilkerson's criterion, as stated in Borger,
+\emph{The basic geometry of Witt vectors, I}, Section~1.17.
+Over a $\mathbb Q$-algebra its reconstruction takes the form
+\[
+ \lambda_t(a)=\exp\left(
+ \sum_{n\geq1}\frac{(-1)^{n-1}\psi_n(a)t^n}{n}\right).
+\]
+Over $\mathbb Z$, the shifts therefore give the special structure
+on $\Lambda$, but fail the necessary congruence on $P_{\mathbb Z}$.
+This failure concerns the specified shifts.
+For example, the different maps $x_k\mapsto x_k^n$ give
+commuting Frobenius lifts on $P_{\mathbb Z}$.
+They define the structure in which each variable is a line element,
+meaning $\lambda_t(x_k)=1+x_kt$.
+
+\begin{example}[The torsion hypothesis]
+\label{v4-arith:hecke:ex:torsion-lambda}
+On $\mathbb F_p$, let every $\psi_n$ be the identity.
+These ring maps commute and satisfy all the displayed Frobenius congruences.
+At $p$, this uses $a^p=a$. At other primes $q$, the ideal
+$q\mathbb F_p$ is the whole ring.
+
+They cannot come from a special $\lambda$-structure.
+Such a structure would give
+\[
+ 1=\lambda_t(0)=\lambda_t(p\cdot1)
+   =\lambda_t(1)^p=(1+t)^p=1+t^p,
+\]
+which is false in $\mathbb F_p[[t]]$.
+Thus commuting Frobenius lifts alone do not replace the full
+integral operations on a ring with additive torsion.
+\end{example}
+
+\begin{proposition}[Divisor substitutions on the Hall lattice]
+\label{v4-arith:hecke:prop:hall-lattice}
+Every $D_n$ preserves $\Lambda$, and
+\begin{equation}
+ \label{v4-arith:hecke:eq:divisor-series}
+ D_nH(t)=\prod_{d\mid n}\psi_nH(t^d).
+\end{equation}
+Nevertheless $D_p$ is not a Frobenius lift on this lattice:
+\[
+ D_ph_p=\psi_ph_p+\psi_ph_1
+ \equiv h_p^p+h_1^p\not\equiv h_p^p\pmod{p\Lambda}.
+\]
+\end{proposition}
+\begin{proof}
+In $P_{\mathbb Q}[[t]]$, set $k=dj$ in the logarithm to obtain
+\[
+ \sum_{k\geq1}\frac{D_nx_k}{k}t^k
+ =\sum_{d\mid n}\sum_{j\geq1}\frac{x_{nj}}j t^{dj}.
+\]
+Exponentiation gives \eqref{v4-arith:hecke:eq:divisor-series}.
+Every factor has integral Hall coefficients, proving preservation of $\Lambda$.
+For $n=p$, only the two stated contributions have degree $p$.
+Apply \eqref{v4-arith:hecke:eq:frobenius} to them.
+The term $h_1^p$ is nonzero in the polynomial ring $\Lambda/p\Lambda$.
+\end{proof}
+
+In particular, the equality $D_{p^a}=\psi_{p^a}$ on
+$P_{\mathbb F_p}$ does not imply equality after reducing $\Lambda$.
+The inclusion $P_{\mathbb Z}\subset\Lambda$ is not an identification
+of their integral coordinates or reductions.
+
+There is a useful comparison which does preserve the algebraic images.
+Define a triangular substitution on $P_R$ by
+\[
+ C_nx_{s,k}=\sum_{d\mid(n,k)}d\,x_{s,k/d}.
+\]
+Its leading term is $x_{s,k}$, and every other mode index is smaller.
+Induction therefore constructs an integral polynomial inverse on
+every generator, over every coefficient ring.
+
+The same logarithmic calculation gives
+\[
+ C_nH(t)=\prod_{d\mid n}H(t^d).
+\]
+Its coefficient of $t^r$ is $h_r$ plus an integral polynomial
+in $h_1,\ldots,h_{r-1}$.
+Thus $C_n$ is also an automorphism of the Hall lattice.
+
+Direct evaluation on the generators now proves
+\begin{equation}
+ \label{v4-arith:hecke:eq:triangular}
+ D_n=\psi_nC_n,\qquad
+ D_n(P_R)=\psi_n(P_R),\qquad
+ D_n(\Lambda)=\psi_n(\Lambda).
+\end{equation}
+Equal images do not identify the two actions or their composition laws.
+Nor does the triangular inverse have to survive a Hilbert completion.
+
+\section{Big Witt coordinates and the cofree construction}
+\label{v4-arith:hecke:sec:witt}
+
+The previous exponential formulas live first over $\mathbb Q$.
+Big Witt coordinates give integral formulas before any scalar extension.
+For a commutative ring $R$, put $W(R)=\prod_{r\geq1}R$ as a set.
+Associate to $a=(a_r)$ the series
+\begin{equation}
+ \label{v4-arith:hecke:eq:witt-series}
+ A_a(t)=\prod_{r\geq1}(1-a_rt^r)^{-1}\in1+tR[[t]].
+\end{equation}
+
+Each coefficient involves finitely many factors.
+Its coefficient of $t^r$ is $a_r$ plus a polynomial in earlier coordinates.
+Induction therefore gives a natural bijection
+$W(R)\simeq1+tR[[t]]$ over every ring.
+
+The \emph{ghost components} are
+\begin{equation}
+ \label{v4-arith:hecke:eq:ghosts}
+ w_n(a)=\sum_{r\mid n}r\,a_r^{n/r},\qquad
+ t\frac{A_a'(t)}{A_a(t)}=\sum_{n\geq1}w_n(a)t^n.
+\end{equation}
+The derivative identity follows by differentiating the factors.
+It involves no division by an integer in $R$.
+
+\begin{proposition}
+\label{v4-arith:hecke:prop:ghosts}
+If the additive group of $R$ is torsion-free, the ghost map is injective.
+Over $\mathbb F_p$, the nonzero vector with $a_p=1$ and all other
+coordinates zero has every ghost equal to zero.
+Its series is $(1-t^p)^{-1}\ne1$.
+\end{proposition}
+\begin{proof}
+If two vectors agree below $n$, equality of their $n$th ghosts gives
+$n(a_n-b_n)=0$.
+Torsion-freeness gives equality at $n$, and induction proves injectivity.
+For the stated vector over $\mathbb F_p$, the only possible ghost
+contribution is $p$ when $p\mid n$.
+It vanishes, although the coefficient of $t^p$ in the series is one.
+\end{proof}
+
+We construct the ring operations on the series themselves.
+Write $E_r(a)=(1-at^r)^{-1}$.
+Witt addition is ordinary multiplication of series:
+$A+_WB=AB$. Its zero is the series $1$, and its negative is $A^{-1}$.
+
+Witt multiplication, denoted $\odot$, is determined by
+\begin{equation}
+ \label{v4-arith:hecke:eq:witt-product}
+ E_r(a)\odot E_s(b)
+ =\left(1-a^{s/g}b^{r/g}t^l\right)^{-g},
+ \qquad g=(r,s),\quad l=\operatorname{lcm}(r,s),
+\end{equation}
+and distributivity over Witt addition.
+For two arbitrary coordinate products, multiply these factors
+over all pairs $(r,s)$.
+Since $l\geq r,s$, each coefficient uses finitely many pairs.
+The construction is therefore a universal integral polynomial operation.
+
+\begin{theorem}[The big Witt ring]
+\label{v4-arith:hecke:thm:witt-ring}
+These operations make $W(R)$ a natural commutative unital ring.
+Its multiplicative unit is $E_1(1)$.
+Every $w_n:W(R)\to R$ is a ring homomorphism.
+\end{theorem}
+\begin{proof}
+Logarithmic differentiation makes each ghost additive under series multiplication.
+For one factor,
+\[
+ w_n(E_r(a))=
+ \begin{cases}r a^{n/r},&r\mid n,\\0,&r\nmid n.\end{cases}
+\]
+The ghost of \eqref{v4-arith:hecke:eq:witt-product} is
+$gl\,a^{n/r}b^{n/s}$ when $l\mid n$, and zero otherwise.
+Since $gl=rs$, this is the product of the two ghosts.
+Distributivity then proves multiplicativity for arbitrary series.
+
+It remains to verify the ring identities without assuming injectivity
+on the given coefficient ring.
+Fix a coefficient degree and regard the finitely many input coordinates
+as independent variables over $\mathbb Z$.
+This polynomial ring is torsion-free, so its ghosts are injective.
+Commutativity, associativity, distributivity and the unit law hold on ghosts,
+hence on these universal coordinate polynomials.
+Specializing their integer coefficients proves the identities over every $R$.
+\end{proof}
+
+The Teichm\"uller element is $[a]=E_1(a)$.
+It satisfies $[a]\odot[b]=[ab]$, but need not preserve addition in $R$.
+For $m\geq1$, define Verschiebung by $V_mA(t)=A(t^m)$.
+It is additive for $+_W$.
+Define Frobenius by its values on the coordinate factors:
+\begin{equation}
+ \label{v4-arith:hecke:eq:witt-frobenius}
+ F_mE_r(a)=
+ \left(1-a^{m/g}t^{r/g}\right)^{-g},
+ \qquad g=(m,r),
+\end{equation}
+and extend by products of series.
+A coefficient through degree $N$ uses only $r\leq mN$,
+so this also defines an integral operation coefficientwise.
+
+\begin{proposition}[Frobenius and Verschiebung]
+\label{v4-arith:hecke:prop:fv}
+Each $F_m$ is a natural unital ring endomorphism of $W(R)$, and
+\[
+ w_n(F_ma)=w_{mn}(a),\qquad
+ w_n(V_ma)=
+ \begin{cases}m\,w_{n/m}(a),&m\mid n,\\0,&m\nmid n.\end{cases}
+\]
+Their identities over every coefficient ring include
+\begin{align*}
+ F_mF_n&=F_{mn},& V_mV_n&=V_{mn},& F_mV_m&=mI,\\
+ F_mV_n&=gV_{n/g}F_{m/g},&&g=(m,n).
+\end{align*}
+The integer multiple means repeated Witt addition.
+In particular, $F_m[a]=[a^m]$.
+\end{proposition}
+\begin{proof}
+For a single factor, \eqref{v4-arith:hecke:eq:witt-frobenius}
+has $n$th ghost $r a^{mn/r}$ precisely when $r\mid mn$.
+This proves the Frobenius formula.
+Substituting $t^m$ in the logarithmic derivative proves the Verschiebung formula.
+The ring-map property and all displayed identities follow on ghosts.
+Each operation was already constructed by universal integer polynomials.
+The torsion-free universal-ring argument from the theorem therefore
+proves the identities before specialization to arbitrary $R$.
+\end{proof}
+
+\subsection{Plethysm and the full comonad}
+
+The ring $\Lambda=\mathbb Z[h_1,h_2,\ldots]$ represents the series functor:
+\[
+ W(R)\simeq\operatorname{Hom}_{\mathrm{Ring}}(\Lambda,R),\qquad
+ f\longmapsto\sum_{n\geq0}f(h_n)t^n.
+\]
+The values $f(h_n)$ are series coefficients, not the Witt coordinates $a_n$.
+They are related by the triangular integral bijection
+\eqref{v4-arith:hecke:eq:witt-series}.
+The power sum $x_n\in\Lambda$ evaluates to $w_n$.
+
+We need the integral composition operation on $\Lambda$.
+For $h\in\Lambda$, write its specialization to a finite alphabet
+as an integer sum of monomials, $h(X)=\sum_Mc_MM$.
+Define
+\[
+ \sum_{n\geq0}(h_n\circ h)(X)t^n
+ =\prod_M(1-Mt)^{-c_M}.
+\]
+Negative multiplicities are allowed, using the inverse formal series.
+The coefficients are integral symmetric polynomials and stabilize
+when zero variables are added.
+
+Extend $g\mapsto g\circ h$ as a ring homomorphism from $\Lambda$.
+This operation is \emph{plethysm}.
+Its unit is $h_1=x_1$.
+
+Plethysm is associative. One way to check this precisely is to
+embed $\Lambda$ in $\mathbb Q[x_1,x_2,\ldots]$.
+The defining formula gives $x_n\circ h=\psi_n(h)$,
+where $\psi_nx_k=x_{nk}$ and rational coefficients are fixed.
+These substitutions commute and satisfy
+$\psi_n(g\circ h)=(\psi_ng)\circ h$.
+Evaluating a polynomial in the $x_n$ therefore proves
+$(f\circ g)\circ h=f\circ(g\circ h)$.
+Since the operation was constructed integrally, the equality lies in $\Lambda$.
+
+\begin{theorem}[Cofree special lambda rings]
+\label{v4-arith:hecke:thm:cofree}
+The functor $W$ is right adjoint to the forgetful functor
+from special $\lambda$-rings to commutative rings.
+Its counit and comultiplication are
+\begin{equation}
+ \label{v4-arith:hecke:eq:comonad}
+ \varepsilon_R(f)=f(h_1),\qquad
+ (\Delta_Rf)(g)(h)=f(h\circ g).
+\end{equation}
+Thus $\Delta_R:W(R)\to W(W(R))$.
+It satisfies both counit identities and
+$\Delta_{W(R)}\Delta_R=W(\Delta_R)\Delta_R$.
+Its outer ghosts are $w_n(\Delta_Rf)=F_nf$ as elements of $W(R)$.
+\end{theorem}
+\begin{proof}
+For $f\in W(R)$ and $g\in\Lambda$, define the operation
+$g(f)\in W(R)$ by $g(f)(h)=f(h\circ g)$.
+For fixed $g$, the right side is a ring homomorphism in $h$,
+by the definition of plethysm.
+The universal symmetric-polynomial identities for sums and products
+show that $g\mapsto g(f)$ is a ring homomorphism into $W(R)$.
+These identities are exactly the series addition and multiplication
+constructed above. Associativity of plethysm supplies composition
+of the operations. Taking the elementary symmetric operations
+therefore makes $W(R)$ a special $\lambda$-ring.
+
+Let $A$ be a special $\lambda$-ring and $\phi:A\to R$ a ring map.
+For $a\in A$, evaluation of symmetric operations gives the map
+\[
+ \widehat\phi(a)(g)=\phi(g(a))\qquad(g\in\Lambda).
+\]
+The sum and product identities make
+$\widehat\phi:A\to W(R)$ a ring map.
+The composition identities make it a $\lambda$-ring map.
+Its counit is $\phi$, since $h_1(a)=a$.
+
+Conversely, the counit determines a $\lambda$-ring map into $W(R)$.
+Applying it after the operation $g$ recovers evaluation at $g$.
+This proves the natural adjunction.
+
+Applying this construction to the identity on the underlying ring
+of $W(R)$ gives the stated $\Delta_R$.
+The equalities $h_1\circ g=g$ and $h\circ h_1=h$ prove
+the two counit identities separately.
+Evaluating the two coassociativity maps on three elements of $\Lambda$
+reduces them to the two associations of the same plethysm.
+Finally, $h\circ x_n=\psi_n(h)$.
+Evaluation of the outer power sum $x_n$ in \eqref{v4-arith:hecke:eq:comonad}
+therefore gives precisely the coefficient action $F_n$.
+\end{proof}
+
+Equivalently, a special $\lambda$-structure on a ring $A$ is a ring map
+$\eta:A\to W(A)$ satisfying
+\[
+ \varepsilon_A\eta=I,
+ \qquad \Delta_A\eta=W(\eta)\eta.
+\]
+Indeed, its coordinates define the complete symmetric operations.
+The fact that $\eta$ is a ring map gives their sum and product identities.
+The second displayed equality gives composition, and the first fixes
+the degree-one operation. Inverting the complete symmetric series
+at $-t$ recovers the elementary operations of
+Definition~\ref{v4-arith:hecke:def:lambda}.
+The converse follows by evaluation of those operations.
+
+The two universal constructions have different variances:
+\[
+ \operatorname{Hom}_{\lambda\text{-}\mathrm{Ring}}(\Lambda,A)
+ \simeq A,
+ \qquad
+ \operatorname{Hom}_{\lambda\text{-}\mathrm{Ring}}(A,W(R))
+ \simeq\operatorname{Hom}_{\mathrm{Ring}}(A,R).
+\]
+The first says that $\Lambda$ is free on one distinguished element.
+The second is the cofree property of $W$.
+On rings with additive torsion, the full map $\eta$ and its
+composition identity retain data which its ghost operations can lose.
+Borger's descent interpretation uses this integral structure and its
+forgetful functor. It does not create an arithmetic comparison from
+a rational index-shift formula.
+
+\section{Products, gradings, and algebraic completions}
+\label{v4-arith:hecke:sec:structures}
+
+The polynomial ring has a primitive Hopf structure over $R$:
+\[
+ \Delta x_{s,k}=x_{s,k}\otimes1+1\otimes x_{s,k},\qquad
+ \epsilon(x_{s,k})=0,\qquad \mathcal S(x_{s,k})=-x_{s,k}.
+\]
+Here $\mathcal S$ denotes the antipode.
+Each of $D_n$, $\psi_n$ and $C_n$ preserves this structure.
+Their generator images are primitive, and the identities of algebra
+maps can be checked on generators.
+They also preserve the unit, augmentation and particle degree.
+
+On the Hall lattice, the same coproduct is
+\[
+ \Delta h_r=\sum_{i+j=r}h_i\otimes h_j.
+\]
+Preservation follows from the rational power-sum identity and the
+torsion-free integral inclusion.
+This is the ordinary symmetric-function Hopf structure.
+An arithmetic extension correspondence would require its own comparison.
+
+\begin{proposition}[Weights and completions]
+\label{v4-arith:hecke:prop:weights}
+For a nonempty species set and any nonzero coefficient ring,
+$D_n$ and $\psi_n$ are injective on $P_R$.
+For $n>1$, neither is surjective.
+The index shift sends weight $w$ to weight $nw$.
+The divisor substitution sends weight $w$ into weights between $w$ and $nw$.
+Both act on the finite-weight quotients and continuously on
+\[
+ \widehat P_R^{\mathrm{wt}}=\prod_{w\geq0}P_{R,w}.
+\]
+They also extend to the coefficient-adic completion
+$\varprojlim_jP_{\mathbb Z}/\ell^jP_{\mathbb Z}$ for every prime $\ell$.
+\end{proposition}
+\begin{proof}
+Let $f$ have highest nonzero weight $w$.
+The highest-weight term of $D_nf$ is $\psi_n$ applied to the
+weight-$w$ component, and it has weight $nw$.
+Index substitution is injective on the monomial basis, so this
+component cannot vanish over a nonzero coefficient ring.
+This proves injectivity of both maps.
+For $n>1$, the same highest-weight argument excludes a preimage of $x_1$.
+
+Every term of $D_nx_k$ has weight between $k$ and $nk$.
+Multiplication proves the weight bounds on monomials.
+Thus the ideal of weights greater than $W$ is preserved.
+Its quotient has finite rank for a finite species set.
+An output through weight $W$ depends only on inputs through weight $W$,
+which proves continuity on the weight completion.
+
+Finally, the integral maps preserve every ideal $\ell^jP_{\mathbb Z}$.
+Their compatible quotient maps give the coefficient-adic extensions.
+\end{proof}
+
+A finite subalgebra generated by modes $k\leq N$ is not invariant
+when $n>1$: the highest term of $D_nx_N$ is $x_{nN}$.
+The finite-weight quotient is a different construction.
+The coefficient-adic completion is also different from the weight product.
+In monomial coordinates, its coefficients lie in $\mathbb Z_\ell$,
+with only finitely many nonzero coefficients modulo each $\ell^j$.
+The unrestricted weight product imposes no such decay.
+
+Other symmetric-function operations give different preservation laws.
+For one species over $\mathbb Q$, the internal coproduct is the
+algebra map $\delta x_k=x_k\otimes x_k$.
+It is preserved by $\psi_n$.
+For $D_n$ with $n>1$, the image of $x_n$ contains both
+$x_{n^2}$ and $nx_n$.
+The tensor square of that image has cross terms absent from
+$\delta(D_nx_n)$, so $D_n$ does not preserve $\delta$.
+
+For a partition $\lambda$ with multiplicities $m_k$, write
+$x_\lambda=\prod_kx_k^{m_k}$ and $z_\lambda=\prod_kk^{m_k}m_k!$.
+The internal product is the bilinear operation
+\[
+ x_\lambda*x_\mu=\delta_{\lambda\mu}z_\lambda x_\lambda.
+\]
+Neither family preserves it for $n>1$.
+Indeed, $x_1*x_1=x_1$, whereas $x_n*x_n=nx_n$.
+These nonvanishing obstructions use characteristic zero.
+They do not transfer unchanged to a torsion coefficient ring.
+
+\section{Oscillator intertwiners and vertex products}
+\label{v4-arith:hecke:sec:oscillators}
+
+For one species, define polynomial operators
+\[
+ a_{-k}f=x_kf,\qquad a_kf=k\partial_{x_k}f\quad(k\geq1),
+ \qquad a_0=0.
+\]
+They obey $[a_k,a_{-l}]=k\delta_{kl}$, with central element acting as one.
+Different species commute.
+The Hall pairing is
+$\langle x_\lambda,x_\mu\rangle=\delta_{\lambda\mu}z_\lambda$.
+Over $\mathbb C$, its Hermitian version is positive and makes
+$a_k$ the adjoint of $a_{-k}$ on polynomials.
+
+The substitutions intertwine creation by $x_k$ with creation
+by its image. Their annihilation intertwiners require a separate calculation.
+For the index shifts, differentiation gives
+\begin{equation}
+ \label{v4-arith:hecke:eq:adams-oscillators}
+ \psi_na_{-k}=a_{-nk}\psi_n,\qquad
+ a_{nk}\psi_n=n\psi_na_k,\qquad
+ a_j\psi_n=0\quad(n\nmid j).
+\end{equation}
+Sending both positive and negative modes to their index multiples
+would multiply the commutator by $n$.
+Over $\mathbb Q$, the assignments
+\[
+ a_{-k}\longmapsto a_{-nk},\qquad
+ a_k\longmapsto a_{nk}/n
+\]
+instead define a central-charge-one Heisenberg embedding.
+It is intertwined by $\psi_n$, but does not preserve the Hall adjoint.
+
+\begin{proposition}[An integral annihilation lift]
+\label{v4-arith:hecke:prop:annihilation}
+Fix $n\geq1$. Define integers $c_{k,i}$ in increasing order of $i$ by
+\[
+ c_{k,i}=0\quad(n\nmid i),\qquad
+ c_{k,nj}=k\delta_{kj}
+ -\sum_{\substack{d\mid(n,j)\\d>1}}d\,c_{k,nj/d}.
+\]
+The polynomial derivations
+\[
+ \mathcal A_k^{(n)}=\sum_{i\geq1}c_{k,i}\partial_{x_i}
+\]
+are well-defined and commute. They satisfy
+\[
+ \mathcal A_k^{(n)}(D_nx_j)=k\delta_{kj},\qquad
+ \mathcal A_k^{(n)}D_n=D_na_k.
+\]
+Together with multiplication by $D_nx_j$, they give
+a central-charge-one oscillator representation.
+\end{proposition}
+\begin{proof}
+Every term on the right of the recursion has smaller index.
+It therefore defines all coefficients integrally.
+Each polynomial uses finitely many variables, so only finitely
+many derivatives contribute to its image.
+Constant-coefficient derivations commute.
+
+Substituting \eqref{v4-arith:hecke:eq:substitutions} into the first identity
+gives exactly the recursion.
+The chain rule proves the second identity on all polynomials.
+Commuting a derivation past multiplication by $D_nx_j$ gives
+its constant derivative $k\delta_{kj}$, proving the oscillator relations.
+\end{proof}
+
+Over $\mathbb Q$, the lift can be written
+$\mathcal A_k^{(n)}=\sum_i(c_{k,i}/i)a_i$.
+Integrality concerns the polynomial derivation, not these coefficients
+in the fixed annihilation modes.
+The lift is generally not adjoint-preserving.
+Both unscaled substitutions send $x_1$ to $x_n$, whose squared norm is $n$.
+Creation by $x_n$ and its Hall adjoint therefore have commutator $n$,
+rather than one. This obstructs the specified adjoint-preserving
+assignment when $n>1$.
+
+\begin{proposition}[The vertex obstruction]
+\label{v4-arith:hecke:prop:vertex}
+Over $\mathbb Q$ or $\mathbb C$, neither $D_n$ nor $\psi_n$
+is an endomorphism of the usual Heisenberg vertex algebra for $n>1$.
+Both remain polynomial algebra and primitive Hopf endomorphisms.
+\end{proposition}
+\begin{proof}
+The standard translation operator satisfies $\partial x_k=kx_{k+1}$.
+Every vertex homomorphism preserves it, since
+$\partial v=v_{(-2)}1$.
+Here
+\[
+ \partial\psi_nx_1=nx_{n+1},\qquad
+ \psi_n\partial x_1=x_{2n},
+\]
+and
+\[
+ \partial D_nx_1=nx_{n+1},\qquad
+ D_n\partial x_1=x_{2n}+2\mathbf1_{2\mid n}x_n.
+\]
+The values differ for every $n>1$.
+This argument does not require preservation of a chosen conformal vector.
+
+The same failure is visible in the singular products.
+Writing $a(z)=Y(x_1,z)$, one has
+\[
+ Y(x_n,z)=\frac{\partial_z^{n-1}a(z)}{(n-1)!},\qquad
+ Y(x_n,z)Y(x_n,w)\sim
+ \frac{(-1)^{n-1}(2n-1)!}
+ {((n-1)!)^2(z-w)^{2n}}.
+\]
+Differentiate $a(z)a(w)\sim(z-w)^{-2}$ to obtain this coefficient.
+For $n>1$, the higher pole cannot be the image of the original
+central second-order pole under a vacuum-preserving vertex map.
+The polynomial and Hopf assertions were proved above.
+\end{proof}
+
+For a finite species set, the index shifts nevertheless give a
+vacuum-preserving action of $\mathbb N^\times$ on the underlying
+vector space. This means endomorphisms with $\psi_1=I$ and
+$\psi_m\psi_n=\psi_{mn}$.
+It does not assert an action by vertex endomorphisms.
+The divisor family fails even that monoid law in characteristic zero.
+
+\section{Hilbert closures and a weighted threshold}
+\label{v4-arith:hecke:sec:hilbert}
+
+Fix a nonempty finite species set and complete the complex polynomial
+space in the Hermitian Hall form.
+It is the symmetric Hilbert Fock space
+$\mathcal F=\bigoplus_{j\geq0}\mathcal F^{(j)}$,
+with squared monomial norms $\prod_{s,k}k^{m_{s,k}}m_{s,k}!$.
+Its one-particle space has $\|x_{s,k}\|^2=k$.
+The map $\psi_n/\sqrt n$ is an isometry there.
+
+Each divisor summand
+$x_k\mapsto d\mathbf1_{d\mid k}x_{nk/d}$ has norm $\sqrt{nd}$.
+Its nonzero basis images are orthogonal with that constant norm ratio.
+Consequently, for $d_n=D_n|_{M_{\mathbb C}}$,
+\[
+ \|d_n\|\leq\sum_{d\mid n}\sqrt{nd}.
+\]
+Both maps are bounded on one particle and on every fixed
+particle sector after taking symmetric tensor powers.
+
+\begin{proposition}[Closed full-Fock operators]
+\label{v4-arith:hecke:prop:fock-closure}
+For $A=d_n$ or $A=\psi_n|_{M_{\mathbb C}}$, the polynomial operator
+$\operatorname{Sym}(A)$ is closable.
+Its closure is $\Gamma(A)=\bigoplus_{j\geq0}\operatorname{Sym}^j(A)$,
+with domain
+\[
+ \operatorname{Dom}\Gamma(A)=
+ \left\{(v_j)\in\mathcal F:
+       \sum_{j\geq0}\|\operatorname{Sym}^j(A)v_j\|^2<\infty\right\}.
+\]
+For $n>1$, both closures are unbounded.
+For the index shift, the domain condition is exactly
+$\sum_jn^j\|v_j\|^2<\infty$.
+\end{proposition}
+\begin{proof}
+A direct sum of bounded sector maps on the displayed domain is closed.
+Finite particle truncation approximates a vector and its image.
+Within each retained sector, finite-mode polynomials approximate
+both, since the sector map is bounded.
+Thus polynomials are a core and the direct sum is precisely their closure.
+
+For the index shift, each sector map multiplies norms by $n^{j/2}$.
+Both substitutions send $x_1^j$ to $x_n^j$, giving
+\[
+ \frac{\|D_nx_1^j\|}{\|x_1^j\|}
+ =\frac{\|\psi_nx_1^j\|}{\|x_1^j\|}=n^{j/2}.
+\]
+This proves unboundedness for $n>1$ and the stated domain formula.
+\end{proof}
+
+The normalized substitution
+$\widetilde\psi_nx_{s,k}=n^{-1/2}x_{s,nk}$ gives a different positive result.
+It is an isometry on every particle sector and their Hilbert direct sum.
+It is also a complex polynomial Hopf map and a monoid action.
+Sending both $a_{-k}$ and $a_k$ to their index multiples divided
+by $\sqrt n$ preserves the Heisenberg relations and Hall adjoints.
+Equation~\eqref{v4-arith:hecke:eq:adams-oscillators}, with this normalization,
+shows that $\widetilde\psi_n$ intertwines the resulting embedding.
+The normalization changes the integral structure and still fails
+ordinary translation for $n>1$.
+
+\subsection{The kernel created by completion}
+
+The triangular automorphism $C_n$ in
+\eqref{v4-arith:hecke:eq:triangular} has a bounded one-particle extension.
+For $B_dx_k=\mathbf1_{d\mid k}x_{k/d}$, one has
+\[
+ c_n=C_n|_M=\sum_{d\mid n}dB_d,
+ \qquad \|c_n\|\leq\sum_{d\mid n}\sqrt d,
+ \qquad c_n=\prod_{p\mid n}c_{p^{v_p(n)}}.
+\]
+The norm estimate uses $\|B_d\|=d^{-1/2}$.
+The factorization follows from $B_dB_e=B_{de}$.
+
+\begin{theorem}[One-particle kernel and range]
+\label{v4-arith:hecke:thm:hilbert-kernel}
+The operator $c_n$ is a bounded surjection on the completed
+one-particle space. The divisor operator has closed range
+\[
+ \operatorname{Ran}d_n
+ =\overline{\operatorname{span}}\{x_{nk}:k\geq1\}
+ =\operatorname{Ran}(\psi_n|_M),\qquad
+ \ker d_n=\ker c_n.
+\]
+For $n>1$, this kernel is infinite-dimensional on the full
+one-species space.
+On a prime chain $e_r=x_{up^r}$ and for $a\geq1$,
+\[
+ c_{p^a}=\sum_{j=0}^ap^jB^j,
+ \qquad
+ \ker c_{p^a}=\operatorname{span}_{\mathbb C}
+ \left\{\sum_{r\geq0}(\zeta/p)^re_r:
+       \zeta^{a+1}=1,\ \zeta\ne1\right\}.
+\]
+The prime-chain kernel has dimension $a$.
+For $n=1$, the operators are the identity and the kernels vanish.
+\end{theorem}
+\begin{proof}
+On the chain, $\|e_r\|^2=up^r$ and $\|B\|=p^{-1/2}$.
+For each stated root, the geometric vector has squared norm
+$u\sum_{r\geq0}p^{-r}=u/(1-p^{-1})$.
+It is a $B$-eigenvector with eigenvalue $\zeta/p$,
+so $c_{p^a}$ kills it.
+Conversely, a kernel vector $\sum_rb_re_r$ satisfies
+\[
+ \sum_{j=0}^ap^jb_{r+j}=0\qquad(r\geq0).
+\]
+Its first $a$ coefficients determine all the others.
+The distinct roots $\zeta/p$ give independent solutions by the
+Vandermonde determinant, exhausting this solution space.
+
+Let $Ue_r=e_{r+1}$, so $BU=I$ and $\|U\|=\sqrt p$.
+For $\lambda=\zeta/p$, the operator
+\[
+ R_\lambda=U(I-\lambda U)^{-1}
+\]
+is a bounded right inverse of $B-\lambda$.
+Indeed, $(B-\lambda)U=I-\lambda U$ and
+$\|\lambda U\|=p^{-1/2}<1$.
+The inverse is a norm-convergent Neumann series.
+
+Factor
+\[
+ c_{p^a}=p^a\prod_{\substack{\zeta^{a+1}=1\\\zeta\ne1}}(B-\zeta/p).
+\]
+Multiplying the right inverses in reverse order, with factor $p^{-a}$,
+gives a bounded right inverse of $c_{p^a}$.
+Its norm bound is independent of $u$.
+It therefore extends over the orthogonal sum of all prime chains.
+The finite product over prime factors proves surjectivity of $c_n$.
+
+The factorization $d_n=\psi_nc_n$ and the scaled isometry
+$\psi_n|_M$ prove the range and kernel assertions.
+For $n>1$, choose one nontrivial prime-power factor.
+Its kernel vectors on infinitely many disjoint prime chains are independent.
+The other factors commute with it, so all these vectors lie in $\ker c_n$.
+\end{proof}
+
+The polynomial inverse has a different domain.
+For example,
+\[
+ C_p^{-1}e_r=\sum_{j=0}^r(-p)^je_{r-j},\qquad
+ \frac{\|C_p^{-1}e_r\|^2}{\|e_r\|^2}=\sum_{j=0}^rp^j.
+\]
+Cancellation in $(I+pB)\sum_{j=0}^r(-pB)^je_r=e_r$
+proves the first formula. Orthogonality proves the second.
+
+More generally, the polynomial inverse of $C_n$ is not closable
+on this Hilbert space when $n>1$.
+Choose $0\ne v\in\ker c_n$ and finite truncations $v_N\to v$.
+Then $y_N=c_nv_N\to0$, while $C_n^{-1}y_N=v_N\to v\ne0$.
+The graph closure contains $(0,v)$ and cannot be an operator graph.
+The same argument applies to the algebraic inverse of $d_n$
+on its polynomial image.
+
+These one-particle kernels also lie in $\ker\Gamma(d_n)$.
+By contrast, $\Gamma(\psi_n|_M)$ is injective, since each
+particle sector is a nonzero scalar multiple of an isometry.
+The polynomial maps remain injective throughout.
+No extension of polynomial multiplication to all Hilbert vectors is asserted.
+
+\subsection{The exact weighted boundary}
+
+Retain a prime chain $e_r=x_{up^r}$ and its finite linear span $D$.
+For $s\geq0$, define
+\begin{equation}
+ \label{v4-arith:hecke:eq:weighted}
+ \mathcal H_s=\left\{\sum_{r\geq0}b_re_r:
+   \sum_{r\geq0}(up^r)^{1+2s}|b_r|^2<\infty\right\}.
+\end{equation}
+If $Ee_r=up^re_r$, this is $\operatorname{Dom}(E^s)$ in $\mathcal H_0$,
+with norm $\|E^sv\|_0$.
+Since $E\geq1$, this norm is equivalent to its graph norm.
+Write $\mathcal H_{s,\geq a}$ for the closed tail spanned by $e_r$, $r\geq a$.
+Its codimension is $a$.
+
+\begin{theorem}[Weighted inverses]
+\label{v4-arith:hecke:thm:weighted}
+Fix $a\geq1$.
+The same polynomial maps $c_{p^a}$ and $d_{p^a}$ extend boundedly
+to every $\mathcal H_s$, with the following properties.
+\begin{enumerate}
+\item For $0\leq s<1/2$, $c_{p^a}$ is onto $\mathcal H_s$,
+and $d_{p^a}$ is onto $\mathcal H_{s,\geq a}$.
+Their common kernel has basis
+\[
+ g_\zeta=\sum_{r\geq0}(\zeta/p)^re_r,
+ \qquad \zeta^{a+1}=1,\quad\zeta\ne1.
+\]
+Their polynomial inverses are not closable.
+\item For $s=1/2$, both maps are injective.
+Their ranges are dense, proper and nonclosed in $\mathcal H_s$
+and $\mathcal H_{s,\geq a}$, respectively.
+Their inverses on these actual ranges are closed and unbounded.
+They are the graph closures of the polynomial inverses.
+\item For $s>1/2$, $c_{p^a}$ is boundedly invertible on $\mathcal H_s$,
+and $d_{p^a}$ is a bounded isomorphism onto $\mathcal H_{s,\geq a}$.
+These inverses extend the polynomial inverses.
+\end{enumerate}
+For $a=0$, both maps are the identity for every $s$.
+\end{theorem}
+\begin{proof}
+Set $b=p^{s+1/2}$, $q=p^{1/2-s}$ and $Q_a(z)=1+z+\cdots+z^a$.
+The vectors $f_r=e_r/(u^{s+1/2}b^r)$ form an orthonormal basis.
+Let $Vf_r=f_{r+1}$ and $L=V^*$.
+The raw shifts become $U=bV$ and $pB=qL$, so
+\begin{equation}
+ \label{v4-arith:hecke:eq:weighted-shifts}
+ c_{p^a}=Q_a(qL),\qquad d_{p^a}=b^aV^aQ_a(qL).
+\end{equation}
+This proves boundedness with bounds $\sum_{j=0}^aq^j$
+and $b^a\sum_{j=0}^aq^j$.
+
+The isometry $V^a$ identifies the space with its tail.
+It therefore suffices to analyze $Q_a(qL)$.
+
+For $q>1$, its kernel recurrence has distinct characteristic roots
+$\zeta/q$, with $\zeta^{a+1}=1$ and $\zeta\ne1$.
+All resulting geometric sequences are square-summable.
+In raw coordinates, they are the stated $g_\zeta$, with
+\[
+ \|g_\zeta\|_s^2=\frac{u^{1+2s}}{1-p^{2s-1}}.
+\]
+The recurrence and Vandermonde argument prove that they form a basis.
+
+Each $L-\zeta/q$ has bounded right inverse
+$V(I-(\zeta/q)V)^{-1}$, by its Neumann series.
+Factoring $Q_a(qL)$ and composing these right inverses in reverse
+order gives a bounded right inverse $G$ for $c_{p^a}$.
+Then
+\[
+ d_{p^a}(b^{-a}GL^a)=V^aL^a,
+\]
+the projection onto the tail.
+This proves both surjectivity assertions.
+Finite truncations of a nonzero kernel vector prove nonclosability
+of the polynomial inverses, as above.
+
+At $q=1$, kernel sequences are combinations of the periodic
+sequences $\zeta^r$.
+A nonzero periodic sequence is not square-summable, so the kernel vanishes.
+The constant coefficient of $Q_a$ is one.
+Its formal reciprocal acts on $D$, since $L$ is locally nilpotent there.
+Thus $c_{p^a}(D)=D$, and the range is dense.
+
+Fix one root $\zeta\ne1$ and, for $N>a$, set
+\[
+ v_N=N^{-1/2}\sum_{r=0}^{N-1}\zeta^rf_r.
+\]
+Its norm is one.
+The first $N-a$ coefficients of $Q_a(L)v_N$ vanish.
+At most $a$ coefficients remain, each bounded by $(a+1)/\sqrt N$.
+Therefore
+\[
+ \|Q_a(L)v_N\|\leq\frac{\sqrt a(a+1)}{\sqrt N}\longrightarrow0.
+\]
+
+An injective bounded operator with closed range is bounded below,
+by the bounded inverse theorem on its range.
+The sequence excludes this possibility.
+The dense range is consequently proper and nonclosed.
+Equation~\eqref{v4-arith:hecke:eq:weighted-shifts} gives the same
+conclusion inside the tail for $d_{p^a}$.
+
+The inverse of an injective bounded operator on its range has closed
+graph: interchange the coordinates of the original closed graph.
+Here these inverses are unbounded by the preceding sequence.
+
+For any $x\in\mathcal H_s$, choose $x_N\in D$ with $x_N\to x$.
+Boundedness gives $c_{p^a}x_N\to c_{p^a}x$.
+Hence $(c_{p^a}x_N,x_N)\to(c_{p^a}x,x)$ in the inverse graph.
+The same argument applies to $d_{p^a}$.
+This proves that the polynomial inverses have precisely these graph closures.
+
+Finally, for $q<1$, the identity $(1-z)Q_a(z)=1-z^{a+1}$ gives
+\[
+ c_{p^a}^{-1}=(I-qL)(I-(qL)^{a+1})^{-1},\qquad
+ \|c_{p^a}^{-1}\|\leq\frac{1+q}{1-q^{a+1}}.
+\]
+The inverse is a norm-convergent Neumann series.
+On the tail, the inverse of $d_{p^a}$ is
+$c_{p^a}^{-1}b^{-a}L^a$.
+Both agree with the polynomial inverses on finite vectors.
+\end{proof}
+
+All these bounded maps retain the common finite domain $D$ as a core.
+Their polynomial formulas do not change with $s$.
+The completed kernels and inverses change because the allowed
+coefficient decay changes.
+In particular, excluding $g_\zeta$ from $\mathcal H_s$ at $s\geq1/2$
+does not remove its kernel class in $\mathcal H_0$.
+
+\section{Operations and states in the arithmetic comparison}
+\label{v4-arith:hecke:sec:arithmetic}
+
+The positive radial state belongs to its specified Hecke representation.
+A phase average on oscillator states gives a different operator,
+even when it uses the same measure.
+To see this directly, take two species with polynomial space
+$\mathbb C[a_k,b_k:k\geq1]$ and the Hermitian Hall norm.
+The monomial $\prod_ka_k^{r_k}b_k^{s_k}$ has charge
+$m=\sum_k(r_k-s_k)$.
+
+Let $V_\theta$ multiply its charge space by $e^{im\theta}$.
+These are unitary operators on the Hilbert completion.
+The strong average
+\[
+ A_p=\int_0^\pi V_\theta\,d\nu_p(\theta)
+\]
+is a contraction. Its eigenvalue in charge $m$ is
+$c_m=\int_0^\pi e^{im\theta}\,d\nu_p$.
+
+Symmetry about $\pi/2$ gives
+\[
+ c_1=i\int_0^\pi\sin\theta\,d\nu_p\in i\mathbb R_{>0}.
+\]
+Thus this phase average cannot be unitarily intertwined with the
+self-adjoint adjacency operator while retaining the specified operators.
+The obstruction concerns this comparison, not every arithmetic realization.
+
+The energy convention also matters.
+For species labeled by primes, integer mode weight $k$ and
+arithmetic energy $k\log p$ define different diagonal operators.
+The integral monomial lattice survives both gradings,
+although the real energy operator need not preserve it.
+
+The full oscillator partition function is
+$\prod_{k\geq1}\zeta(k\beta)$ for $\beta>1$.
+Keeping only mode one instead gives $\zeta(\beta)$.
+That subspace is not preserved by the index shifts or divisor substitutions.
+The operator domains and direct occupation sums establishing these
+statements are given in Section~\ref{v4-arith:ado:hilbert}.
+
+For comparison, on $\ell^2(\mathbb N_{>0})$ let
+$\mu_n\delta_N=\delta_{nN}$ and
+$H_{\mathrm{BC}}\delta_N=\log N\,\delta_N$.
+These commuting isometries satisfy
+\[
+ [H_{\mathrm{BC}},\mu_n]=\log n\,\mu_n
+\]
+on finite-support vectors.
+They move $\delta_1$ to $\delta_n$.
+The index substitutions instead fix their polynomial vacuum,
+and their arithmetic energy satisfies $H\psi_n=n\psi_nH$.
+A vacuum- and energy-preserving identification cannot equate these
+two specified actions for $n>1$.
+
+\begin{question}[Marked arithmetic realization]
+\label{v4-arith:hecke:qn:arithmetic}
+Construct an arithmetic trace carrier independently of these local models,
+with its coefficient theory, integral form, selected trace class and functional.
+Construct its operations and an intertwiner with a specified local
+or restricted tensor-product representation.
+The map must preserve the distinguished vector, the functional,
+the determinant normalization and every chosen operation.
+For a Hilbert comparison, specify the domains, adjoints and completed tensor product.
+For a vertex comparison, retain translation and all singular products.
+\end{question}
+
+For example, the unramified comparison of
+Conjecture~\ref{v4-arith:thm:beilinson-honest-reading} requires the
+actual maps $\Phi,Q,Q_p$, normalized local vectors and compatible
+linear functionals. An arbitrary family of Satake pairs does not
+construct those arithmetic objects or maps.
+Neither the root-state identity nor the Witt ghost formulas identify
+a full Weil functional.
+
+There is also an immediate operation obstruction to some proposed maps.
+In characteristic zero, an injective intertwiner cannot identify
+the divisor family with commuting Adams operations or a commuting
+semigroup of isometries.
+Equation~\eqref{v4-arith:hecke:eq:commutator} would map a nonzero vector to zero.
+A quotient, a restricted domain or a different operation system remains
+a separate possibility with its own kernel and comparison calculation.

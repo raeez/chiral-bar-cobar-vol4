@@ -1,0 +1,676 @@
+\chapter{Archimedean Tate Kernel via Riemann--Siegel Theta and Stirling-Certified Bounds}
+\label{v4-arith:w7-a:chapter}
+
+The digamma weight controls an auxiliary quadratic form, whereas
+its signed contribution to the Weil functional includes a constant
+term. This distinction determines what a high-frequency estimate
+can prove. On \(\mathscr A=C_c^\infty(\mathbb R)\), use
+\(\widehat f(t)=\int_{\mathbb R}f(u)e^{itu}\,du\) and
+\(\widetilde f(u)=\overline{f(-u)}\). Put
+\[
+ g(t)=\operatorname{Re}\psi(1/4+it/2)+\log\pi,\qquad
+ G[f]=\frac1{2\pi}\int_{\mathbb R}|\widehat f(t)|^2g(t)\,dt.
+\]
+The exact identity of
+Lemma~\ref{v4-arith:w6-a:lem:decomposition} is
+\[
+ W_\infty(f*\widetilde f)=2\log\pi\|f\|_2^2-G[f].
+\]
+The Riemann--Siegel phase gives
+\(g=2\theta'_{\mathrm{RS}}+2\log\pi\). We construct a strict
+enlargement of the sufficient high-frequency class for \(G\ge0\),
+and express the full signed functional through this phase.
+Neither positivity of \(G\) nor its sign-changing core alone is
+positivity of the Weil functional.
+
+\section{Context}
+\label{v4-arith:w7-a:context}
+The exact weight has a unique positive zero \(t_*\), by
+Theorem~\ref{v4-arith:w6-a:thm:t-star}. With the core and tail
+integrals \(A[f],B[f]\) of
+Definition~\ref{v4-arith:w6-a:def:core-tail},
+\(G[f]=(B[f]-A[f])/(2\pi)\). The supremum estimate defining HFD
+can be weakened to the actual weighted inequality \(A[f]\le B[f]\).
+Smooth tests with strict margins will show that this is a strict
+inclusion on the stated compact-test carrier.
+
+\subsection{Domain}
+\label{v4-arith:w7-a:domain}
+All Fourier integrals below converge on \(\mathscr A\), since the
+Fourier transform is Schwartz and \(g\) grows logarithmically.
+Any further specified test class is used by intersection with
+\(\mathscr A\); non-emptiness or strict inclusion on that smaller
+class is a separate question. The full Weil target remains
+\(R[f]\ge W_\infty(f*\widetilde f)\) on its declared complete test
+domain, with both the polar and finite-prime terms in \(R[f]\).
+
+\subsection{Analytic Inputs}
+\label{v4-arith:w7-a:sources}
+
+The phase and asymptotic descriptions use the following classical analytic inputs.
+
+\begin{description}
+\item[Riemann 1859.] Riemann, B. \emph{Ueber die Anzahl der Primzahlen
+unter einer gegebenen Gr\"osse}. Monatsber.~Berl.~Akad.~(1859),
+originating manuscript for the theta function
+\(\theta_{\mathrm{RS}}(t)\) and the function \(Z(t)\).
+\item[Siegel 1932.] Siegel, C.L. \emph{\"Uber Riemanns Nachlass zur
+analytischen Zahlentheorie}. Quell.~Stud.~Gesch.~Math.~Astr.~Phys.~B2
+(1932), 45--80. Derivation of the Riemann--Siegel formula from
+Riemann's estate; the function \(Z(t)\) and the theta expansion.
+\item[Edwards 1974.] Edwards, H.M. \emph{Riemann's Zeta Function}.
+Academic Press 1974, \S7. Modern treatment of \(\theta_{\mathrm{RS}}\),
+\(Z(t)\), and the Stirling expansion of \(\log\Gamma(1/4+it/2)\) with
+explicit truncation-error bounds for the Riemann--Siegel asymptotic.
+\end{description}
+
+Riemann 1859, Siegel 1932, and Edwards 1974 develop the
+critical-line functions and their asymptotic expansions. The Hurwitz
+series, Gauss reflection, and Plancherel--P\'olya theorem in
+\S\ref{v4-arith:w6-a:sources} instead describe the complex-analytic
+properties of the digamma function. The comparison below connects
+these analytic descriptions with the positivity questions in
+Chapters~\ref{v4-arith:closure}, \ref{v4-arith:kp-compat},
+\ref{v4-arith:kms-gns-full}, \ref{v4-arith:w5-a:chapter},
+\ref{v4-arith:w5-j:VBstar-spectral-positivity}, and
+\ref{v4-arith:w6-a:ATP-direct-obstruction}.
+
+\section{The Exact Identity \(g=2\theta'_{\mathrm{RS}}+2\log\pi\)}
+\label{v4-arith:w7-a:identity}
+
+\begin{definition}[Riemann--Siegel theta]
+\label{v4-arith:w7-a:def:theta-RS}
+For \(t\in\mathbb{R}\), set
+\begin{equation}
+\label{v4-arith:w7-a:eq:theta-RS-def}
+\theta_{\mathrm{RS}}(t)\;:=\;\mathrm{Im}\log\Gamma\!\left(\tfrac{1}{4}+\tfrac{it}{2}\right)-\tfrac{t}{2}\log\pi,
+\end{equation}
+with the analytic logarithm of \(\Gamma\) on
+\(\operatorname{Re}(z)>0\) that is real on the positive real axis. The function \(\theta_{\mathrm{RS}}\) is
+real-analytic on \(\mathbb{R}\) with \(\theta_{\mathrm{RS}}(0)=0\) and
+\(\theta_{\mathrm{RS}}(-t)=-\theta_{\mathrm{RS}}(t)\) (odd).
+\end{definition}
+
+\begin{theorem}[exact identity]
+\label{v4-arith:w7-a:thm:exact-identity}
+For every \(t\in\mathbb{R}\),
+\begin{equation}
+\label{v4-arith:w7-a:eq:exact-identity}
+g(t)\;=\;2\,\theta'_{\mathrm{RS}}(t)+2\log\pi.
+\end{equation}
+Equivalently, \(\theta'_{\mathrm{RS}}(t)=g(t)/2-\log\pi\).
+\end{theorem}
+
+\begin{proof}
+Differentiate \eqref{v4-arith:w7-a:eq:theta-RS-def} by the chain rule:
+\begin{equation*}
+\theta'_{\mathrm{RS}}(t)
+=\frac{d}{dt}\mathrm{Im}\log\Gamma\!\left(\tfrac{1}{4}+\tfrac{it}{2}\right)-\tfrac{1}{2}\log\pi.
+\end{equation*}
+For the first term, \(\frac{d}{dt}\log\Gamma(1/4+it/2)=\psi(1/4+it/2)\cdot(i/2)\).
+Writing \(\psi(1/4+it/2)=u+iv\) with \(u=\mathrm{Re}\,\psi\),
+\(v=\mathrm{Im}\,\psi\), we have
+\(\psi\cdot(i/2)=(iu-v)/2\), whose imaginary part is \(u/2\). Thus
+\(\frac{d}{dt}\mathrm{Im}\log\Gamma(1/4+it/2)=\mathrm{Re}\,\psi(1/4+it/2)/2\),
+and
+\[
+\theta'_{\mathrm{RS}}(t)=\tfrac{1}{2}\mathrm{Re}\,\psi\!\left(\tfrac{1}{4}+\tfrac{it}{2}\right)-\tfrac{1}{2}\log\pi.
+\]
+Multiplying by \(2\) and adding \(2\log\pi\):
+\(2\theta'_{\mathrm{RS}}(t)+2\log\pi=\mathrm{Re}\,\psi(1/4+it/2)+\log\pi=g(t)\).
+\end{proof}
+
+\begin{remark}[sign and regularity of the exact identity]
+\label{v4-arith:w7-a:rem:identity-conventions}
+The identity follows by differentiating the Riemann--Siegel theta
+function of Definition~\ref{v4-arith:w7-a:def:theta-RS} and comparing
+with the digamma expression in Definition~\ref{v4-arith:w6-a:def:g}.
+Use the analytic logarithm of \(\Gamma\) on \(\operatorname{Re}(z)>0\)
+that is real on the positive real axis. Its restriction to
+\(1/4+it/2\) is fixed by continuity from \(t=0\), where
+\(\log\Gamma(1/4)\in\mathbb R\). Its imaginary part has the sign of the standard
+\(\arg\Gamma\) convention (Edwards 1974, \S6.5).
+Since \(\Gamma\) is analytic and non-vanishing on this vertical line,
+\(\mathrm{Im}\log\Gamma\) is real-analytic for every \(t\in\mathbb R\),
+so differentiation is valid there. The result is an equality of
+real-analytic functions. It asserts no additional functorial
+property of \(\theta_{\mathrm{RS}}\).
+
+The constant in \eqref{v4-arith:w7-a:eq:exact-identity} is
+\(2\log\pi\approx2.28946\). At \(t=0\),
+\[
+\begin{aligned}
+\theta'_{\mathrm{RS}}(0)
+ &=\tfrac12\psi(1/4)-\tfrac12\log\pi\\
+ &=\tfrac12(-\gamma_E-\pi/2-3\log2)-\tfrac12\log\pi
+ \approx-2.686.
+\end{aligned}
+\]
+Thus \(2\theta'_{\mathrm{RS}}(0)+2\log\pi
+\approx-5.372+2.289=-3.083\), which is
+\(g(0)\approx-3.083\) in
+Proposition~\ref{v4-arith:w6-a:prop:g-boundary}.
+\end{remark}
+
+\begin{corollary}[Signed phase formula]
+\label{v4-arith:w7-a:cor:Z-reformulation}
+For \(f\in\mathscr A\), the Riemann--Siegel phase satisfies
+\begin{equation}
+\label{v4-arith:w7-a:eq:W-as-Z}
+ W_\infty(f*\widetilde f)
+ =-\frac1\pi\int_{\mathbb R}|\widehat f(t)|^2\theta'_{\mathrm{RS}}(t)\,dt.
+\end{equation}
+The auxiliary form is
+\(G[f]=\pi^{-1}\int|\widehat f|^2(\theta'_{\mathrm{RS}}+\log\pi)\,dt\).
+The full Weil inequality requires the separate bound
+\(R[f]\ge W_\infty(f*\widetilde f)\).
+\end{corollary}
+\begin{proof}
+Substitute \(g=2\theta'_{\mathrm{RS}}+2\log\pi\) into \(G\).
+Plancherel gives \(\int|\widehat f|^2=2\pi\|f\|_2^2\).
+The constant contribution cancels in
+\(2\log\pi\|f\|_2^2-G[f]\), giving the displayed negative sign.
+\end{proof}
+
+\begin{remark}[why this reformulation matters]
+\label{v4-arith:w7-a:rem:why-Z-matters}
+The phase derivative \(\theta'_{\mathrm{RS}}\) admits the asymptotic
+\(\theta'_{\mathrm{RS}}(t)\sim\tfrac{1}{2}\log(t/2\pi)\) as \(t\to\infty\),
+which is the classical zero-density leading term: the mean number of
+zeros of \(\zeta\) up to height \(T\) is
+\(N(T)=(1/\pi)\int_{0}^{T}\theta'_{\mathrm{RS}}(t)\,dt+O(\log T)\) by
+the Riemann--von Mangoldt formula. The phase derivative gives the smooth leading term of the zero
+count, not the discrete zero measure. Its exact use here is the
+signed identity \eqref{v4-arith:w7-a:eq:W-as-Z}; the full Weil
+inequality also retains \(R[f]\).
+\end{remark}
+
+\section{Stirling-4 Certified Bounds}
+\label{v4-arith:w7-a:stirling-4}
+
+The kernel \(g(t)\) admits an explicit rigorous expansion with bounded
+truncation error, valid for every \(t\in\mathbb{R}\); this is the
+Stirling-4 formula, from which the threshold \(T_{\mathrm{St4}}\) follows
+by a direct comparison.
+
+\subsection{The Stirling-4 Formula}
+\label{v4-arith:w7-a:stirling-4:formula}
+
+\begin{lemma}[Stirling expansion with explicit error]
+\label{v4-arith:w7-a:lem:stirling-digamma}
+For \(z\in\mathbb{C}\) with \(\mathrm{Re}\,z>0\),
+\begin{equation}
+\label{v4-arith:w7-a:eq:stirling-digamma}
+\psi(z)\;=\;\log z-\frac{1}{2z}-\frac{1}{12z^{2}}+R_{4}(z),
+\qquad |R_{4}(z)|\;\leq\;\frac{1}{120\,|z|^{4}}.
+\end{equation}
+The error bound \(1/(120|z|^{4})\) is the standard Stirling-series
+remainder (Edwards 1974 \S6.5 Thm.~1; Whittaker--Watson 1927 \S13.6)
+applied after truncation at \(k=2\).
+\end{lemma}
+
+\begin{proof}
+Edwards 1974 \S6.5 gives the Stirling expansion
+\(\psi(z)=\log z-1/(2z)-\sum_{k=1}^{N}B_{2k}/(2k z^{2k})+R_{N+1}(z)\)
+with \(|R_{N+1}(z)|\leq|B_{2N+2}|/(2N+2)|z|^{2N+2}\) uniformly in
+\(\arg z\in(-\pi,\pi)\). Specialising \(N=1\): \(B_{2}=1/6\) contributes
+the \(1/(12z^{2})\) term, and \(|R_{2}(z)|\leq|B_{4}|/(4|z|^{4})=1/(120|z|^{4})\)
+using \(B_{4}=-1/30\).
+\end{proof}
+
+\begin{proposition}[Stirling-4 formula for \(g\)]
+\label{v4-arith:w7-a:prop:g-stirling-4}
+For every \(t\in\mathbb{R}\), write
+\(z=1/4+it/2\), \(|z|^{2}=(1+4t^{2})/16\). Then
+\begin{equation}
+\label{v4-arith:w7-a:eq:g-stirling-4}
+g(t)\;=\;g_{\mathrm{St4}}(t)+\widetilde{R}_{4}(t),\qquad
+|\widetilde{R}_{4}(t)|\;\leq\;\frac{32}{15\,(1+4t^{2})^{2}},
+\end{equation}
+where the Stirling-4 form is the explicit rational-plus-logarithmic
+function
+\begin{equation}
+\label{v4-arith:w7-a:eq:g-st4-form}
+g_{\mathrm{St4}}(t)\;=\;\tfrac{1}{2}\log(1+4t^{2})+\log\pi-2\log 2-\frac{2}{1+4t^{2}}-\frac{4}{3}\cdot\frac{1-4t^{2}}{(1+4t^{2})^{2}}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Take real parts of \eqref{v4-arith:w7-a:eq:stirling-digamma} at
+\(z=1/4+it/2\) and add \(\log\pi\):
+\[
+g(t)=\mathrm{Re}\log z-\tfrac{1}{2}\mathrm{Re}(1/z)-\tfrac{1}{12}\mathrm{Re}(1/z^{2})+\mathrm{Re}\,R_{4}(z)+\log\pi.
+\]
+Compute each real part. \(\mathrm{Re}\log z=\tfrac{1}{2}\log|z|^{2}=\tfrac{1}{2}\log((1+4t^{2})/16)=\tfrac{1}{2}\log(1+4t^{2})-2\log 2\).
+Next, \(1/z=\overline{z}/|z|^{2}=(1/4-it/2)\cdot 16/(1+4t^{2})\), giving
+\(\mathrm{Re}(1/z)=4/(1+4t^{2})\), hence \(\tfrac{1}{2}\mathrm{Re}(1/z)=2/(1+4t^{2})\).
+For \(1/z^{2}\): \(z^{2}=(1/4+it/2)^{2}=1/16-t^{2}/4+it/4\), and
+\(|z^{2}|^{2}=|z|^{4}=(1+4t^{2})^{2}/256\), giving
+\(\mathrm{Re}(1/z^{2})=(1/16-t^{2}/4)\cdot 256/(1+4t^{2})^{2}=16(1-4t^{2})/(1+4t^{2})^{2}\).
+Hence \(\tfrac{1}{12}\mathrm{Re}(1/z^{2})=\tfrac{4}{3}(1-4t^{2})/(1+4t^{2})^{2}\).
+Substituting:
+\[
+g(t)=\tfrac{1}{2}\log(1+4t^{2})-2\log 2-\tfrac{2}{1+4t^{2}}-\tfrac{4}{3}\tfrac{1-4t^{2}}{(1+4t^{2})^{2}}+\mathrm{Re}\,R_{4}(z)+\log\pi,
+\]
+which is \(g_{\mathrm{St4}}(t)+\mathrm{Re}\,R_{4}(z)\). For the error:
+\(|\mathrm{Re}\,R_{4}(z)|\leq|R_{4}(z)|\leq 1/(120|z|^{4})=1/(120\cdot(1+4t^{2})^{2}/256)=256/(120(1+4t^{2})^{2})=32/(15(1+4t^{2})^{2})\).
+\end{proof}
+
+\subsection{The Certified Positivity Threshold}
+\label{v4-arith:w7-a:stirling-4:threshold}
+
+\begin{definition}[Stirling-4 lower bound]
+\label{v4-arith:w7-a:def:g-lower}
+Define
+\begin{equation}
+\label{v4-arith:w7-a:eq:g-lower}
+g^{-}_{\mathrm{St4}}(t)\;:=\;g_{\mathrm{St4}}(t)-\frac{32}{15\,(1+4t^{2})^{2}}.
+\end{equation}
+By Proposition~\ref{v4-arith:w7-a:prop:g-stirling-4},
+\(g(t)\geq g^{-}_{\mathrm{St4}}(t)\) for every \(t\in\mathbb{R}\).
+\end{definition}
+
+\begin{proposition}[Stirling-4 positivity threshold]
+\label{v4-arith:w7-a:prop:T-St4}
+There is a unique positive
+\(T_{\mathrm{St4}}\in\mathbb{R}\) with \(g^{-}_{\mathrm{St4}}(T_{\mathrm{St4}})=0\),
+numerically \(T_{\mathrm{St4}}=0.872959\ldots\). One has
+\(g^{-}_{\mathrm{St4}}(t)>0\) for every \(|t|>T_{\mathrm{St4}}\), and
+therefore \(g(t)>0\) for every \(|t|>T_{\mathrm{St4}}\).
+\end{proposition}
+
+\begin{proof}
+Consider \(g^{-}_{\mathrm{St4}}(t)\) as a function of \(u=1+4t^{2}\in[1,\infty)\):
+\begin{equation*}
+g^{-}_{\mathrm{St4}}(u)=\tfrac{1}{2}\log u+\log\pi-2\log 2-\frac{2}{u}-\frac{4}{3}\cdot\frac{2-u}{u^{2}}-\frac{32}{15\,u^{2}},
+\end{equation*}
+using \(1-4t^{2}=2-u\). Expanding \(-(4/3)(2-u)/u^{2}=-8/(3u^{2})+4/(3u)\) and
+differentiating term by term:
+\begin{equation*}
+\frac{d g^{-}_{\mathrm{St4}}}{du}
+=\frac{1}{2u}+\frac{2}{u^{2}}+\frac{16}{3\,u^{3}}-\frac{4}{3u^{2}}+\frac{64}{15\,u^{3}}
+=\frac{1}{2u}+\frac{2}{3u^{2}}+\frac{144}{15\,u^{3}}.
+\end{equation*}
+Each term is positive for all \(u\geq 1\), so
+\(dg^{-}_{\mathrm{St4}}/du>0\) on \(u\in[1,\infty)\). Strict monotonicity
+of \(g^{-}_{\mathrm{St4}}\) in \(u\) combined with
+\(g^{-}_{\mathrm{St4}}(1)=g^{-}_{\mathrm{St4}}(t=0)\leq g(0)=-3.083<0\) and
+\(g^{-}_{\mathrm{St4}}(u)\to\infty\) as \(u\to\infty\) supplies a unique
+zero. Bisection on \([2.51,4.05]\) (corresponding to \(t\in[0.6,0.87]\))
+starting from \(g^{-}_{\mathrm{St4}}(0.87)=-0.001\) and
+\(g^{-}_{\mathrm{St4}}(0.88)=+0.002\) localises the zero to
+\(T_{\mathrm{St4}}\in(0.872,0.874)\). Extended bisection with
+50 iterations to mpmath precision 50 digits yields
+\(T_{\mathrm{St4}}=0.8729590014\ldots\).
+\end{proof}
+
+\begin{remark}[Sign and domain of the threshold estimate]
+\label{v4-arith:w7-a:rem:threshold-conventions}
+The Bernoulli convention is \(B_4=-1/30\), so the fourth term in
+the displayed expansion is \(+1/(120z^4)\). Its real part and the
+absolute remainder bound must be kept distinct. The estimate is
+used on \(z=1/4+it/2\), which lies in the right half-plane.
+The threshold is defined by the zero of the stated lower-bound
+function. Decimal values are numerical approximations; a certified
+sign interval requires evaluating that function together with its
+remainder bound.
+\end{remark}
+
+\begin{corollary}[high-\(|t|\) ratio bound]
+\label{v4-arith:w7-a:cor:ratio-bound}
+For every \(|t|\geq 2\),
+\begin{equation}
+\label{v4-arith:w7-a:eq:ratio-bound}
+g(t)\;\geq\;\tfrac{1}{2}\log(1+4t^{2})+\log\pi-2\log 2-\frac{4}{1+4t^{2}}
+\;\geq\;\log(|t|\pi/2)-\frac{4}{1+4t^{2}}.
+\end{equation}
+In particular \(g(t)/\log|t|\to 1\) as \(|t|\to\infty\), and
+\(g(t)/\log|t|\geq 1/2\) for every \(|t|\geq 2\).
+\end{corollary}
+
+\begin{proof}
+From Proposition~\ref{v4-arith:w7-a:prop:g-stirling-4}:
+\begin{align*}
+g(t)&\geq g_{\mathrm{St4}}(t)-\frac{32}{15(1+4t^{2})^{2}}\\
+&=\tfrac{1}{2}\log(1+4t^{2})+\log\pi-2\log 2-\frac{2}{1+4t^{2}}-\frac{4}{3}\cdot\frac{1-4t^{2}}{(1+4t^{2})^{2}}-\frac{32}{15(1+4t^{2})^{2}}.
+\end{align*}
+For \(|t|\geq 2\), \(1-4t^{2}\leq 0\), so \(-(4/3)(1-4t^{2})/(1+4t^{2})^{2}\geq 0\) and
+\(-2/(1+4t^{2})-32/(15(1+4t^{2})^{2})\geq -4/(1+4t^{2})\), since the residual
+\((80t^{2}-52)/(15(1+4t^{2})^{2})\leq 2/(1+4t^{2})\) is direct to verify for
+\(|t|\geq 2\) (both sides decay as \(|t|^{-2}\); at \(|t|=2\) the inequality
+reads \(268/4335\leq 2/17\), i.e., \(268\cdot 17\leq 2\cdot 4335\)).
+Combining the non-negative term with the bound on the remainder
+establishes the first inequality of \eqref{v4-arith:w7-a:eq:ratio-bound}.
+The second inequality \(\tfrac{1}{2}\log(1+4t^{2})+\log\pi-2\log 2\geq\log(|t|\pi/2)\)
+is \(\tfrac{1}{2}\log(1+4t^{2})\geq\log(2|t|)\), which holds since
+\(1+4t^{2}\geq 4t^{2}\). The asymptotic \(g(t)\sim\log(|t|\pi/2)\)
+gives the ratio claim.
+\end{proof}
+
+\section{Weighted High-Frequency Tests}
+\label{v4-arith:w7-a:SHF-class}
+
+The HFD condition bounds the core integral by its supremum times
+\(2t_*\kappa_*\). Keeping the actual weighted core integral gives
+a weaker sufficient condition for \(G\ge0\), with a strict inclusion
+that can be witnessed by compactly supported smooth tests.
+
+\subsection{The Refined Weight}
+\label{v4-arith:w7-a:SHF-class:weight}
+
+\begin{lemma}[refined core weight via Stirling]
+\label{v4-arith:w7-a:lem:refined-core}
+For \(|t|\leq t_{\ast}\),
+\begin{equation}
+\label{v4-arith:w7-a:eq:refined-core}
+-g(t)\;\leq\;\kappa_{\ast},
+\qquad \kappa_{\ast}\;:=\;|g(0)|\;=\;\gamma_{E}+\pi/2+3\log 2-\log\pi\approx 3.0827,
+\end{equation}
+with equality at \(t=0\). The mean weight is
+\(\kappa_{\ast}^{\mathrm{mean}}:=\|g\|_{L^{1}[-t_{\ast},t_{\ast}]}/(2t_{\ast})\approx 1.488\),
+strictly less than \(\kappa_{\ast}\).
+\end{lemma}
+
+\begin{proof}
+\(|g(t)|\) is even, strictly decreasing in \(|t|\) on \([0,t_{\ast}]\)
+(since \(g\) is strictly increasing in \(|t|\) and \(g\leq 0\) on
+\([0,t_{\ast}]\)), with maximum \(|g(0)|=\kappa_{\ast}\) at \(t=0\)
+(Lemma~\ref{v4-arith:w6-a:lem:g-monotone},
+Proposition~\ref{v4-arith:w6-a:prop:g-boundary}). The exact mean is
+\(\kappa_*^{\mathrm{mean}}=t_*^{-1}\int_0^{t_*}(-g(t))\,dt\).
+Strict monotonicity gives \(0<\kappa_*^{\mathrm{mean}}<\kappa_*\).
+Numerical quadrature gives the illustrative values
+\(2\int_0^{t_*}(-g(t))\,dt\approx2.53256063\) and
+\(\kappa_*^{\mathrm{mean}}\approx1.48858167\); the strict inequality
+follows analytically and does not rely on those decimals.
+\end{proof}
+
+\begin{remark}[The zero and its numerical approximation]
+\label{v4-arith:w7-a:rem:t-star-corrected}
+Proposition~\ref{v4-arith:w6-a:prop:t-star-numerical} proves
+\(t_*\in(0.84,0.86)\) using the positive-term difference series
+for \(g(t)-g(0)\) and its explicit tail estimate. Evaluation of the
+digamma function gives the illustrative approximation
+\(t_*\approx0.8506623044\). A tail bound of order \(10^{-5}\)
+does not certify all the displayed decimal places.
+The bounded-interval decomposition uses the exact unique zero;
+its proof does not depend on rounding this number.
+\end{remark}
+
+\begin{definition}[Weighted high-frequency classes]
+\label{v4-arith:w7-a:def:SHF-class}
+For \(f\in\mathscr A\), put
+\(C[f]=2t_*\kappa_*\sup_{|t|\le t_*}|\widehat f(t)|^2\).
+Define \(\mathscr A_{\mathrm{HFD}}=\{f:C[f]\le B[f]\}\) and
+\begin{equation}
+\label{v4-arith:w7-a:eq:SHF-condition}
+ \mathscr A_{\mathrm{SHF}}=\{f:A[f]\le B[f]\}.
+\end{equation}
+For any additional class \(\mathcal P\subset\mathscr A\), its
+HFD and SHF subclasses mean intersection with these two sets.
+\end{definition}
+
+\begin{lemma}[Strict inclusion on the compact-test carrier]
+\label{v4-arith:w7-a:lem:SHF-vs-HFD}
+One has \(\mathscr A_{\mathrm{HFD}}\subsetneq\mathscr A_{\mathrm{SHF}}\).
+There are real even tests satisfying \(A[f]<B[f]<C[f]\).
+\end{lemma}
+\begin{proof}
+The bound \(-g(t)\le\kappa_*\) on the core gives \(A[f]\le C[f]\),
+so HFD implies SHF. To construct strictness, choose a nonzero real
+even smooth frequency bump \(F_0\) supported inside \((-t_*,t_*)\).
+Let
+\[
+ A_0=\int|F_0|^2(-g),\qquad
+ C_0=2t_*\kappa_*\sup|F_0|^2.
+\]
+Then \(0<A_0<C_0\): \(-g<\kappa_*\) away from zero and the bump
+is supported in a proper subinterval. Choose a nonzero real even
+smooth bump \(F_1\) supported outside the core, and put
+\(B_1=\int|F_1|^2g>0\). Set
+\(\alpha^2=(A_0+C_0)/(2B_1)\) and \(F=F_0+\alpha F_1\).
+The supports are disjoint, so its inverse Fourier transform \(h\)
+is real, even and Schwartz, with
+\(A[h]=A_0<B[h]=(A_0+C_0)/2<C[h]=C_0\).
+
+Take a real even cutoff \(\eta\in C_c^\infty\) equal to one near
+zero, and let \(f_R(u)=\eta(u/R)h(u)\). Then \(f_R\in\mathscr A\)
+and \(f_R\to h\) in the Schwartz topology: every differentiated
+cutoff error is supported where \(|u|\) tends to infinity and is
+controlled by the rapid decay of \(h\) and its derivatives.
+Fourier transformation preserves this convergence. The functionals
+\(A,B,C\) are continuous for that topology; for \(B\), use the
+logarithmic growth of \(g\), and for \(C\), uniform convergence on
+the compact core. Both strict margins persist for large \(R\).
+\end{proof}
+
+\begin{theorem}[Auxiliary positivity and the signed Weil contribution]
+\label{v4-arith:w7-a:thm:SHF-ATP}
+For \(f\in\mathscr A_{\mathrm{SHF}}\),
+\[
+ G[f]\ge0,\qquad
+ W_\infty(f*\widetilde f)=2\log\pi\|f\|_2^2-G[f]
+ \le2\log\pi\|f\|_2^2.
+\]
+The full Weil inequality holds exactly when
+\[
+ R[f]+G[f]\ge2\log\pi\|f\|_2^2.
+\]
+In particular, SHF alone does not give \(W_\infty\ge0\), nor the
+full Weil inequality. The sufficient bound
+\(R[f]\ge2\log\pi\|f\|_2^2\) does give the latter on SHF.
+\end{theorem}
+\begin{proof}
+Use \(G=(B-A)/(2\pi)\) and the exact signed identity. Rearrangement
+gives the full inequality. For a concrete sign test, choose a
+nonzero real even \(\chi\in C_c^\infty\) and set
+\(f_M(u)=\chi(u)\cos(Mu)\). Its Fourier mass moves to neighborhoods
+of \(\pm M\); rapid decay makes its core supremum tend to zero,
+while \(B[f_M]\) grows at least as a positive constant times
+\(\log M\). Thus \(f_M\) is eventually HFD and \(G[f_M]\to\infty\),
+whereas \(\|f_M\|_2^2\le\|\chi\|_2^2\). Consequently
+\(W_\infty(f_M*\widetilde f_M)<0\) for large \(M\), as also follows
+from the smooth modulation calculation in
+Chapter~\ref{v4-arith:w6-a:ATP-direct-obstruction}.
+\end{proof}
+
+\begin{remark}[Mean weight and supremum bound]
+\label{v4-arith:w7-a:rem:factor-2-enlargement}
+The ratio \(\kappa_*/\kappa_*^{\mathrm{mean}}\) compares the mean
+core weight with its maximum. It is not a measure of a set of tests
+and does not count admissible profiles. For a given test the actual
+comparison is between \(A[f]\) and \(C[f]\); its Fourier density
+need not be constant on the core.
+\end{remark}
+
+\subsection{Strict Margins and Topology}
+\label{v4-arith:w7-a:SHF-class:density}
+\begin{proposition}[Non-emptiness and open strict inequalities]
+\label{v4-arith:w7-a:prop:SHF-nonempty}
+Endow \(\mathscr A\) with the topology induced from the Schwartz
+space. The sets \(\{A<B\}\) and \(\{A<B<C\}\) are open, invariant
+under nonzero scalar multiplication, and nonempty. No density
+claim in \(\mathscr A\) is made.
+\end{proposition}
+\begin{proof}
+Continuity of the three functionals makes the strict inequalities
+open. They are homogeneous of degree two. The preceding cutoff
+construction supplies a point of \(\{A<B<C\}\); the modulation
+construction supplies high-frequency points of \(\{A<B\}\).
+Conversely, broad smooth dilations have \(G<0\) as proved in
+Chapter~\ref{v4-arith:w6-a:ATP-direct-obstruction}, so \(\{A>B\}\)
+is also a nonempty open set. Thus \(\{A<B\}\) is not dense.
+\end{proof}
+
+\begin{remark}[Restriction to other test classes]
+\label{v4-arith:w7-a:rem:SHF-strictly-larger}
+The inclusion is strict on \(\mathscr A\). For a smaller prescribed
+Paley--Wiener or arithmetic test class, inclusion follows by
+intersection, but strictness requires a witness satisfying its
+additional defining conditions. The cutoff construction does not
+silently supply those conditions.
+\end{remark}
+
+\section{Phase Form of the Full Signed Inequality}
+\label{v4-arith:w7-a:Z-reformulation}
+The phase identity applies on all of \(\mathscr A\). Both SHF and
+its complement still require the polar and finite-prime functional.
+
+\subsection{The Phase-Derivative Formulation}
+\label{v4-arith:w7-a:Z-reformulation:phase}
+\begin{theorem}[Phase formula for the full Weil target]
+\label{v4-arith:w7-a:thm:Z-phase-reformulation}
+For \(f\in\mathscr A\), the full inequality
+\(W(f*\widetilde f)\ge0\) is equivalent to
+\begin{equation}
+\label{v4-arith:w7-a:eq:Z-phase-statement}
+ R[f]+\frac1\pi\int_{\mathbb R}|\widehat f(t)|^2
+          \theta'_{\mathrm{RS}}(t)\,dt\ge0.
+\end{equation}
+The archimedean sign condition \(W_\infty\ge0\), considered by
+itself, instead says that the displayed integral is nonpositive.
+\end{theorem}
+\begin{proof}
+By Corollary~\ref{v4-arith:w7-a:cor:Z-reformulation},
+\(W_\infty=-\pi^{-1}\int|\widehat f|^2\theta'_{\mathrm{RS}}\).
+Substitute this into \(W=R-W_\infty\). This keeps the same Fourier
+measure and test carrier as the original Weil formula.
+\end{proof}
+
+\begin{remark}[connection to the Z-function zeros]
+\label{v4-arith:w7-a:rem:Z-zeros}
+\(Z(t)=e^{i\theta_{\mathrm{RS}}(t)}\zeta(1/2+it)\) is a real-valued
+function of \(t\in\mathbb{R}\). Its real zeros are exactly the
+ordinates of the non-trivial zeros of \(\zeta\) on the critical line.
+The phase in \eqref{v4-arith:w7-a:eq:Z-phase-statement} is defined
+from the gamma factor; its integral extends over the full spectral
+line. The Riemann--von Mangoldt formula relates
+\(\theta_{\mathrm{RS}}(T)/\pi\) to the leading zero count, but the
+phase derivative alone is not the zero distribution. In particular,
+\(\theta'_{\mathrm{RS}}(t_*)=-\log\pi\) marks the zero of \(g\),
+not a zeta zero. The finite-prime and polar information remains in
+\(R[f]\), and the signed phase identity does not prove its required
+comparison with the integral.
+\end{remark}
+
+\subsection{The \(\theta''_{\mathrm{RS}}\) Structural Observation}
+\label{v4-arith:w7-a:Z-reformulation:theta-second-deriv}
+
+\begin{proposition}[second-derivative representation of \(g'\)]
+\label{v4-arith:w7-a:prop:g-prime-via-theta}
+For every \(t\in\mathbb{R}\),
+\begin{equation}
+\label{v4-arith:w7-a:eq:g-prime-theta-second}
+g'(t)\;=\;2\,\theta''_{\mathrm{RS}}(t).
+\end{equation}
+Since \(\theta_{\mathrm{RS}}\) is odd, \(\theta'_{\mathrm{RS}}\) is
+even, and \(\theta''_{\mathrm{RS}}\) is odd. Combined with
+Lemma~\ref{v4-arith:w6-a:lem:g-monotone} (\(g'(t)>0\) for \(t>0\)), this gives
+\(\theta''_{\mathrm{RS}}(t)>0\) for \(t>0\) and \(\theta''_{\mathrm{RS}}(t)<0\)
+for \(t<0\).
+\end{proposition}
+
+\begin{proof}
+Differentiate \eqref{v4-arith:w7-a:eq:exact-identity}.
+\end{proof}
+
+\begin{remark}[the \(\theta''_{\mathrm{RS}}\)-sign observation]
+\label{v4-arith:w7-a:rem:theta-second-sign}
+The identity \eqref{v4-arith:w7-a:eq:g-prime-theta-second} converts
+the strict monotonicity of \(g\) in \(|t|\)
+(Lemma~\ref{v4-arith:w6-a:lem:g-monotone}) into a sign statement about
+\(\theta''_{\mathrm{RS}}\). For \(f\) real and even,
+\(|\widehat{f}(t)|^{2}\) is an even function of \(t\), and integration
+by parts on \([-t_{\ast},t_{\ast}]\) with antiderivative
+\(G(t):=-2(\theta_{\mathrm{RS}}(t)+t\log\pi)\) of \(-g(t)\) gives
+\begin{equation}
+\label{v4-arith:w7-a:eq:integration-by-parts}
+A[f]\;=\;\int_{-t_{\ast}}^{t_{\ast}}|\widehat{f}|^{2}(-g)\,dt
+=\Bigl[-2(\theta_{\mathrm{RS}}+t\log\pi)|\widehat{f}|^{2}\Bigr]_{-t_{\ast}}^{t_{\ast}}
++2\int_{-t_{\ast}}^{t_{\ast}}(\theta_{\mathrm{RS}}(t)+t\log\pi)\cdot(|\widehat{f}|^{2})'\,dt.
+\end{equation}
+The boundary term is
+\(-4(\theta_{\mathrm{RS}}(t_*)+t_*\log\pi)|\widehat f(t_*)|^2\)
+for real even \(f\); it does not cancel. Since
+\(2(\theta_{\mathrm{RS}}(t_*)+t_*\log\pi)=\int_0^{t_*}g(t)\,dt<0\),
+this boundary contribution is nonnegative. The remaining integral
+must still be controlled together with this term. The identity
+alone proves neither the full Weil inequality nor an impossibility
+of sharper estimates.
+\end{remark}
+
+\section{The Remaining Weil Inequality}
+\label{v4-arith:w7-a:irreducible}
+\begin{theorem}[Exact separation of the estimates and the target]
+\label{v4-arith:w7-a:thm:irreducible}
+The weighted classes satisfy
+\(\mathscr A_{\mathrm{HFD}}\subsetneq\mathscr A_{\mathrm{SHF}}\),
+and \(G\ge0\) on SHF. The full target on either class remains
+\(R[f]+G[f]\ge2\log\pi\|f\|_2^2\), equivalently
+\eqref{v4-arith:w7-a:eq:Z-phase-statement}. Bounds for \(g\) can be
+inserted into this exact inequality; they do not eliminate \(R[f]\).
+Any RH equivalence requires the complete test domain of the
+classical Weil criterion, not just the SHF complement.
+\end{theorem}
+\begin{proof}
+Combine Lemma~\ref{v4-arith:w7-a:lem:SHF-vs-HFD},
+Theorem~\ref{v4-arith:w7-a:thm:SHF-ATP}, and the signed phase formula.
+\end{proof}
+
+\begin{remark}[Phase normalization and analytic domain]
+\label{v4-arith:w7-a:rem:irreducible-conventions}
+Use the continuous Riemann--Siegel phase with
+\(\theta_{\mathrm{RS}}(0)=0\) (Riemann 1859; Siegel 1932;
+Edwards 1974, \S6.5). The Hurwitz and Stirling expressions evaluate
+the same real-analytic digamma weight on the real \(t\)-axis;
+\(z=1/4+it/2\) remains in the right half-plane. The phase identity
+in Theorem~\ref{v4-arith:w7-a:thm:Z-phase-reformulation} is a
+substitution on this domain. Numerical approximations to the zero
+and mean weight do not replace the exact zero or the remainder
+bounds in an inequality.
+\end{remark}
+
+\section{Non-Elementary Residual Constructions}
+\label{v4-arith:w7-a:remains-open}
+
+\begin{remark}[Further analytic constructions]
+\label{v4-arith:w7-a:rem:open-constructions}
+Sharper remainder estimates, Riemann--Siegel expansions, geometric
+operator comparisons, and explicit smooth test families offer
+different ways to study the full inequality. A remainder estimate
+must control its stated domain; a special test family must be shown
+to determine the complete Weil test cone before positivity on that
+family can imply the full result. No finite list of such methods
+is an obstruction to other analytic constructions.
+\end{remark}
+
+\begin{remark}[Comparison with the core--tail decomposition]
+\label{v4-arith:w7-a:rem:compare-w6-a}
+The exact residual is
+\[
+ A[f]/(2\pi)+2\log\pi\|f\|_2^2\le B[f]/(2\pi)+R[f].
+\]
+SHF improves the sufficient estimate for \(G\ge0\) by using the
+actual core weight. It leaves both the constant term and \(R[f]\)
+in this inequality. The numerical approximation to \(t_*\) is
+illustrative; its rigorous interval and exact defining equation
+remain those of Remark~\ref{v4-arith:w7-a:rem:t-star-corrected}.
+\end{remark}
+
+\section{Stirling Boundary}
+\label{v4-arith:w7-a:summary}
+
+The exact identity \(g=2\theta'_{\mathrm{RS}}+2\log\pi\) connects
+the digamma estimates with the phase derivative. The strict smooth
+class inclusion and the finite core--tail integrals are constructive
+results on \(\mathscr A\). The remaining arithmetic inequality
+retains the polar and finite-prime terms.
+
+\begin{remark}[Analytic scope]
+\label{v4-arith:w7-a:rem:closing-beilinson}
+The auxiliary positivity theorem is not a solution of the full
+Weil problem. Its use in that problem requires estimates on the
+same compact-test carrier and control of \(R[f]\), as made explicit
+in \eqref{v4-arith:w7-a:eq:Z-phase-statement}. No optimality or
+exhaustion of analytic methods is asserted.
+\end{remark}

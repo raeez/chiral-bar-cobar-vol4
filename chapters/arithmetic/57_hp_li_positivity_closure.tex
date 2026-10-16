@@ -1,0 +1,878 @@
+\chapter{Weil Pairings and Automorphic Coefficient Multipliers}
+\label{v4-arith:w5-a:chapter}
+
+The Weil functional acts on compact smooth functions of the logarithmic
+variable. Its zero formula evaluates their entire Fourier transforms.
+Keeping these two spaces distinct fixes the prime weights and the
+archimedean sign. It also distinguishes two coefficient multipliers,
+one of which can produce only finite Fourier polynomials.
+
+\section{The compact test algebra and its Fourier image}
+\label{v4-arith:w5-a:weil-explicit}
+\label{v4-arith:w5-a:weil-explicit:PW}
+
+\begin{definition}[test spaces and involutions]
+\label{v4-arith:w5-a:def:PW}
+Put $\mathscr A=C_c^\infty(\mathbb R)$, with its usual
+inductive-limit topology, and put $\mathscr P=\mathcal F_+\mathscr A$,
+where
+\[
+ h(z)=\mathcal F_+f(z)=\int_{\mathbb R}f(t)e^{izt}dt,
+ \qquad
+ f(t)=\frac1{2\pi}\int_{\mathbb R}h(u)e^{-iut}du.
+\]
+Give $\mathscr P$ the transported topology. Its elements are entire
+functions, rapidly decreasing in each horizontal strip.
+For $f,g\in\mathscr A$, define
+\[
+ (f*g)(t)=\int f(v)g(t-v)dv,\qquad
+ f^*(t)=\overline{f(-t)},\qquad h^\sharp(z)=\overline{h(\bar z)}.
+\]
+Thus $\mathcal F_+(f*g)=(\mathcal F_+f)(\mathcal F_+g)$ and
+$\mathcal F_+(f^*)=(\mathcal F_+f)^\sharp$.
+\end{definition}
+
+The identities follow from Fubini and a change of variables. A second
+real Fourier transform of $h\in\mathscr P$ is a reflected compact
+smooth function. It is generally not an entire function available for
+evaluation at complex zeros.
+
+\begin{theorem}[the signed archimedean contribution]
+\label{v4-arith:w5-a:thm:weil-explicit}
+Set $\xi(s)=\tfrac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)$ and
+$\psi_\Gamma=\Gamma'/\Gamma$.
+For $f\in\mathscr A$, write $h=\mathcal F_+f$ and
+$z_\rho=-i(\rho-1/2)$, where $\rho$ ranges over the zeros of $\xi$
+with multiplicity.
+Define
+\begin{align}
+ P(f)&=h(i/2)+h(-i/2),\notag\\
+ W_\infty(f)&=\frac1{2\pi}\int_{\mathbb R}h(u)
+       \bigl(\log\pi-\Re\psi_\Gamma(1/4+iu/2)\bigr)du,
+ \label{v4-arith:w5-a:eq:weil-archimedean}\\
+ W_{\mathrm{fin}}(f)&=\sum_{m\ge2}\frac{\Lambda(m)}{\sqrt m}
+                   \bigl(f(\log m)+f(-\log m)\bigr).
+ \label{v4-arith:w5-a:eq:weil-finite}
+\end{align}
+Then the continuous distribution $W:\mathscr A\to\mathbb C$ is
+\begin{equation}
+ W(f)=\sum_\rho h(z_\rho)=P(f)-W_\infty(f)-W_{\mathrm{fin}}(f).
+ \label{v4-arith:w5-a:eq:weil-explicit}
+\end{equation}
+The zero sum converges absolutely and the prime sum is finite.
+For even $f$, the prime sum is $2\mu_{1/2}(f)$.
+\end{theorem}
+\begin{proof}
+Theorem~\ref{v4-arith:pm:weil} gives the formula with
+$\mathcal A_\infty(h)=(2\pi)^{-1}\int h(\Re\psi_\Gamma-\log\pi)$.
+The definition here is $W_\infty(f)=-\mathcal A_\infty(h)$.
+This accounts for both signs in \eqref{v4-arith:w5-a:eq:weil-explicit}.
+The compact-test estimates in that theorem prove the convergence and
+continuity assertions. No tempered extension of $\mu_{1/2}$ is used.
+\end{proof}
+
+\begin{proposition}[a compact test determining the sign]
+\label{v4-arith:wc:sign-test}
+Let $0<a<b<\log2$. Suppose $f\ne0$ is even, nonnegative, smooth,
+and supported in $(-b,-a)\cup(a,b)$. Then
+\[
+ W_{\mathrm{fin}}(f)=0,\qquad
+ W_\infty(f)=2\int_a^b\frac{e^{-t/2}}{1-e^{-2t}}f(t)dt>0.
+\]
+\end{proposition}
+\begin{proof}
+There are no prime-power logarithms in the support. Since $f(0)=0$,
+the constant terms of the digamma integral vanish after Fourier
+inversion. The substitution $v=2t$ in
+\[
+ \psi_\Gamma(z)+\gamma
+ =\int_0^\infty\frac{e^{-v}-e^{-zv}}{1-e^{-v}}dv
+ \quad(\Re z>0)
+\]
+gives the displayed positive integral. The identity is
+\href{https://dlmf.nist.gov/5.9.E16}{DLMF 5.9.16}.
+The denominator is positive and $f$ is positive on an interval.
+\end{proof}
+
+\section{The Hermitian form and the two polar moments}
+\label{v4-arith:w5-a:irreducible-obstruction}
+
+Define $q_W(f,g)=W(f*g^*)$, with the first variable linear.
+The zero multiset is invariant under $z\mapsto\bar z$, by the
+functional equation and conjugation of $\xi$. Absolute convergence
+therefore gives $W(f^*)=\overline{W(f)}$. Consequently $q_W$ is Hermitian.
+
+\begin{corollary}[Weil's positivity criterion]
+\label{v4-arith:w5-a:cor:weil-positivity-RH}
+The Riemann Hypothesis is equivalent to
+\begin{equation}
+ q_W(f,f)\ge0\qquad(f\in\mathscr A).
+ \label{v4-arith:w5-a:eq:weil-positivity}
+\end{equation}
+\end{corollary}
+\begin{proof}
+This is Weil's criterion on compact smooth additive tests, with the
+Fourier convention above. It is stated in
+\href{https://arxiv.org/html/2301.00421v3#S1}{Suzuki,
+\emph{On the Hilbert space derived from the Weil distribution},
+Section~1, equations~(1.1)--(1.2)}.
+In that convention the zeros of $\xi(1/2-iz)$ are evaluated with
+the opposite sign. Their reflected multiset is exactly $\{z_\rho\}$
+here. Under RH the assertion follows directly from
+$q_W(f,f)=\sum_\rho|\mathcal F_+f(\gamma_\rho)|^2$.
+The converse is the cited positivity criterion, not an assertion of
+positivity for this arithmetic form.
+\end{proof}
+
+\begin{proposition}[the polar Hermitian form]
+\label{v4-arith:w5-a:rem:H3-removable}
+Put $a(f)=\int f(t)e^{-t/2}dt$ and $b(f)=\int f(t)e^{t/2}dt$.
+Then
+\[
+ P(f*g^*)=a(f)\overline{b(g)}+b(f)\overline{a(g)}.
+\]
+The moment map $(a,b):\mathscr A\to\mathbb C^2$ is continuous and
+surjective. The polar form has rank two and both signs. It vanishes
+on the common kernel of the two moments.
+\end{proposition}
+\begin{proof}
+Evaluate $h_fh_g^\sharp$ at $i/2$ and $-i/2$.
+If a linear combination of $a$ and $b$ vanished on every test, the
+smooth function $c_1e^{-t/2}+c_2e^{t/2}$ would vanish identically.
+Its value and derivative at zero force $c_1=c_2=0$. The moment map
+therefore has two-dimensional range. On that range the form has
+matrix $\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$,
+with eigenvalues $1$ and $-1$.
+\end{proof}
+
+The use of the entire function $\xi$ does not remove these polar
+evaluations from its explicit formula. Removing a rank-two term
+changes the form. It does not preserve positivity automatically.
+
+\begin{conjecture}[archimedean Tate positivity]
+\label{v4-arith:w5-a:conj:archimedean-tate-positivity}
+For every $f\in\mathscr A$,
+\begin{equation}
+ W_\infty(f*f^*)\le P(f*f^*)-W_{\mathrm{fin}}(f*f^*).
+ \label{v4-arith:w5-a:eq:archimedean-tate-positivity}
+\end{equation}
+\end{conjecture}
+
+\begin{theorem}[the full positivity inequality]
+\label{v4-arith:w5-a:thm:ATP-equals-weil-positivity}
+\label{v4-arith:w5-a:thm:HPLi-restricted}
+For all $f\in\mathscr A$,
+\begin{equation}
+ P(f*f^*)-W_{\mathrm{fin}}(f*f^*)=q_W(f,f)+W_\infty(f*f^*).
+ \label{v4-arith:w5-a:eq:restricted-HPLi}
+\end{equation}
+Thus archimedean Tate positivity is equivalent to Weil positivity
+and to RH. The equality applies to any specified restricted class
+as well, but asserts no positivity on that class.
+\end{theorem}
+\begin{proof}
+Apply \eqref{v4-arith:w5-a:eq:weil-explicit} to $f*f^*\in\mathscr A$
+and rearrange. Then apply Weil's criterion.
+\end{proof}
+
+\section{Real compact tests with prescribed Mellin moments}
+\label{v4-arith:pres57:moment-class}
+
+Restrictions on moments specify a test space before any automorphic
+comparison is made. For $f\in\mathscr A$, write
+\[
+ M_f(s)=\int_{\mathbb R}f(t)e^{st}\,dt
+       =\int_0^\infty f(\log x)x^{s-1}\,dx.
+\]
+Define the real vector space
+\[
+ \mathscr A_{13}=\{f\in\mathscr A:f\text{ is real and even},\quad
+ M_f(0)=M_f'(0)=M_f(1)=M_f'(1)=0\}.
+\]
+Thus the reality and evenness condition (H1) and the double Mellin
+zeros at $0,1$ (H3) have a precise compact-time meaning.
+Its Fourier image is the real space $\mathcal F_+\mathscr A_{13}$;
+neither space is asserted to consist of automorphic multipliers.
+For even $f$, the independent displayed moments are integration
+against $1$, $\cosh t$, and $t\sinh t$; $M_f'(0)=0$ is automatic.
+
+\begin{proposition}[Mellin moments do not cancel the polar form]
+\label{v4-arith:pres57:moment-polar}
+Every $M_f$, $f\in\mathscr A$, is entire and rapidly decreasing
+on each closed vertical strip. In particular, the strip holomorphy
+condition (H2) imposes no additional restriction depending on a
+holomorphic weight $k$.
+The space $\mathscr A_{13}$ contains a nonzero $f$ with
+$P(f*f^*)>0$.
+\end{proposition}
+\begin{proof}
+Compact support permits differentiation under the integral at every
+complex $s$. If $s=\sigma+i\tau$ with $\sigma$ in a fixed compact
+interval, integration by parts in $e^{i\tau t}$ bounds $M_f(s)$ by
+$C_N(1+|\tau|)^{-N}$ for every $N$.
+Choose nonzero, nonnegative, real even $b\in\mathscr A$ and put
+$f=D^2(D^2-1)^2b$, where $D=d/dt$. Integration by parts gives
+\[
+ M_f(s)=s^2(s^2-1)^2M_b(s).
+\]
+This $f$ is real, even and compactly supported, and its Mellin
+transform has double zeros at $0,1,-1$. Yet
+\[
+ M_f(1/2)=M_f(-1/2)=\frac9{64}M_b(1/2)>0.
+\]
+In particular $f\ne0$. Since $h_f(\pm i/2)=M_f(\mp1/2)$ and
+$f=f^*$, the convolution identity yields
+$P(f*f^*)=2M_f(1/2)^2>0$.
+Thus moments at $0,1$ cannot be substituted for the actual polar
+moments at $\pm1/2$.
+\end{proof}
+
+Both coefficient maps below restrict to this class, with their
+respective time and Fourier arguments. The compact multiplier
+remains a finite Fourier polynomial. Its modularity criterion is
+still the vanishing criterion proved below; (H1)--(H3) do not remove it.
+
+\section{Coefficient multipliers on the two carriers}
+\label{v4-arith:w5-a:mellin-lift}
+
+Fix a holomorphic cusp form $F(z)=\sum_{n\ge1}a_F(n)q^n$ of weight
+$k>0$ for $\mathrm{SL}_2(\mathbb Z)$, where $k$ is even and $q=e^{2\pi iz}$.
+Its coefficients have polynomial growth. Indeed the invariant
+function $y^{k/2}|F(z)|$ is bounded on a fundamental domain and
+hence on the upper half-plane. The Fourier coefficient integral
+at $y=1/n$ gives $|a_F(n)|\le C n^{k/2}$.
+
+\begin{proposition}[the normalized Hecke coefficient bound]
+\label{v4-arith:pres57:deligne}
+Suppose in addition that $F$ is a Hecke eigenform, $a_F(1)=1$.
+For every prime $p$ and integer $n\ge1$,
+\[
+ |a_F(p)p^{-(k-1)/2}|\le2,\qquad
+ |a_F(n)|\le d(n)n^{(k-1)/2},
+\]
+where $d(n)$ is the number of positive divisors of $n$.
+These bounds control coefficients and imply no modularity for a
+coefficientwise multiplier.
+\end{proposition}
+\begin{proof}
+Deligne, \emph{La conjecture de Weil I}, Theorem~8.2, p.~302,
+applies to a normalized primitive holomorphic cuspidal eigenform
+of weight $k\ge2$ and character $\varepsilon$ at level $N$.
+Here $N=1$, every eigenform is new and $\varepsilon=1$, so every
+prime is unramified. The roots $\alpha_p,\beta_p$ of
+$X^2-a_F(p)X+p^{k-1}$ have absolute value $p^{(k-1)/2}$.
+Their sum gives the prime bound.
+
+For completeness the Hecke coefficient formula is
+\[
+ [q^m]T_nF=\sum_{d\mid(m,n)}d^{k-1}a_F(mn/d^2).
+\]
+It follows by summing $F((az+b)/d)$ over $b\bmod d$, for $ad=n$,
+in the formula $T_nF=n^{k-1}\sum_{ad=n}d^{-k}\sum_{b\bmod d}F((az+b)/d)$.
+The coefficient at $m=1$ is $a_F(n)$; the eigenform condition
+therefore gives $T_nF=a_F(n)F$. Comparing coefficients gives
+multiplicativity for coprime indices and
+$a_F(p^{r+1})=a_F(p)a_F(p^r)-p^{k-1}a_F(p^{r-1})$.
+With $a_F(1)=1$ this recurrence gives
+\[
+ a_F(p^r)=\sum_{j=0}^r\alpha_p^j\beta_p^{r-j},\qquad
+ |a_F(p^r)|\le(r+1)p^{r(k-1)/2}.
+\]
+Multiplication over prime powers proves the all-integer bound.
+\end{proof}
+
+\begin{definition}[the two coefficient maps]
+\label{v4-arith:w5-a:def:upsilon}
+For $f\in\mathscr A$ and $h=\mathcal F_+f\in\mathscr P$, set
+\begin{equation}
+ \begin{aligned}
+ U_F(f)(z)&=\sum_{n\ge1}f(\log n)a_F(n)n^{(k-1)/2}q^n,\\
+ \Upsilon_F(h)(z)&=\sum_{n\ge1}h(\log n)a_F(n)n^{(k-1)/2}q^n.
+ \end{aligned}
+ \label{v4-arith:w5-a:eq:upsilon}
+\end{equation}
+The first sum is finite. The second converges locally uniformly
+on the upper half-plane, by polynomial coefficient growth and
+the factor $e^{-2\pi n\Im z}$.
+Neither definition asserts modularity.
+\end{definition}
+
+\begin{theorem}[the compact multiplier obstruction]
+\label{v4-arith:w5-a:lem:upsilon-cuspidal}
+The function $U_F(f)$ is a cusp form of weight $k$ for
+$\mathrm{SL}_2(\mathbb Z)$ only if it vanishes identically.
+Thus the compact multiplier is modular exactly on
+$\{f:f(\log n)a_F(n)=0\text{ for all }n\}$.
+The entire multiplier $\Upsilon_F(h)$ is a distinct construction.
+Its modularity requires the transformation law of its resulting
+holomorphic series.
+\end{theorem}
+\begin{proof}
+Write $G(z)=\sum_{n=1}^N b_n e^{2\pi inz}$ for a nonzero finite
+Fourier polynomial. Then $G(iy)$ is analytic as a function of $y$
+near zero. If $G$ were modular of positive weight $k$,
+\[
+ G(i/y)=(iy)^kG(iy).
+\]
+The finite sum on the left is $O(e^{-2\pi/y})$ as $y\downarrow0$.
+Hence $G(iy)=O(y^{-k}e^{-2\pi/y})$. Every Taylor coefficient at
+zero must vanish, contradicting the nonzero analytic function.
+This proves the first assertion. The coefficient condition is
+exactly vanishing of the finite Fourier polynomial.
+\end{proof}
+
+\begin{remark}[Mellin domains]
+\label{v4-arith:w5-a:rem:H2-obstruction}
+\label{v4-arith:w5-a:rem:domain-PW-hol}
+For $f\in\mathscr A$, the multiplicative Mellin integral
+\[
+ \int_0^\infty f(\log x)x^{s-1}dx=\int_{\mathbb R}f(t)e^{st}dt
+\]
+is entire and rapidly decreasing on every closed vertical strip.
+This follows by integration by parts on the fixed compact support.
+Strip holomorphy imposes no additional condition on this carrier.
+For the entire multiplier $h(\log n)$, the analogous Mellin integral
+has a different domain and must be specified separately.
+\end{remark}
+
+\section{The exact Rankin--Selberg coefficient calculation}
+\label{v4-arith:w5-a:petersson}
+\label{v4-arith:w5-a:mellin-lift:RS}
+
+\begin{theorem}[unfolding for an actual cusp form]
+\label{v4-arith:w5-a:thm:RS-integral}
+Let $G(z)=\sum_{n\ge1}b_n e^{2\pi inz}$ be a holomorphic cusp form
+of weight $k>0$ for $\mathrm{SL}_2(\mathbb Z)$.
+Put $\Gamma=\mathrm{PSL}_2(\mathbb Z)$ and $d\mu=dx\,dy/y^2$.
+Fix its standard fundamental domain $\mathcal F\subset\mathbb H$.
+Use the Eisenstein series
+$E(z,s)=\sum_{\Gamma_\infty\backslash\mathrm{PSL}_2(\mathbb Z)}
+\Im(\gamma z)^s$, where $\Gamma_\infty$ is the translation subgroup.
+For real $s>1$,
+\begin{equation}
+ \int_{\mathcal F}|G(z)|^2y^kE(z,s)d\mu
+ =\frac{\Gamma(s+k-1)}{(4\pi)^{s+k-1}}
+       \sum_{n\ge1}\frac{|b_n|^2}{n^{s+k-1}}.
+ \label{v4-arith:w5-a:eq:KF-kernel}
+\end{equation}
+\end{theorem}
+\begin{proof}
+The Eisenstein series converges for $s>1$. Its cusp growth is
+polynomial, while $G$ decreases exponentially, so the integral is
+finite. Nonnegative summands permit unfolding by Tonelli:
+the integral becomes
+$\int_0^\infty\int_0^1|G(x+iy)|^2y^{s+k-2}dx\,dy$.
+Fourier orthogonality gives $\sum|b_n|^2e^{-4\pi ny}$.
+A second application of Tonelli and the gamma integral prove the formula.
+\end{proof}
+
+\begin{proposition}[positive norm and native pairing maps]
+\label{v4-arith:w5-a:thm:petersson-positive}
+The Petersson norm of an actual cusp form is positive definite.
+If a complex vector space $E$ has an injective linear map
+$I:E\to L^2(\mathcal F,y^k d\mu)$ on the fixed fundamental domain, then
+\begin{equation}
+ \langle v,w\rangle_I=\int_{\mathcal F}(Iv)(z)\overline{(Iw)(z)}y^k d\mu
+ \label{v4-arith:w5-a:eq:petersson}
+\end{equation}
+is a positive definite form. Identifying another specified form
+with this one requires the corresponding pairing identity for $I$.
+\end{proposition}
+\begin{proof}
+These assertions follow from the norm property of $L^2$ and
+injectivity. The unfolding formula computes the coefficients
+of $G$ itself. For $G=\Upsilon_F(h)$ it therefore uses
+$|h(\log n)a_F(n)n^{(k-1)/2}|^2$, whenever this series is modular.
+\end{proof}
+
+\begin{remark}[arithmetic-sector pairing data]
+\label{v4-arith:w5-a:rem:restricted-tensor}
+Let \(E\) be a proposed arithmetic cuspidal sector and let
+\(I:E\to L^2(\mathcal F,y^k d\mu)\) be an injective linear map.
+The preceding proposition constructs its positive pullback pairing.
+A Koszul--Petersson comparison additionally specifies a complex-bilinear
+pairing \(B:E\times E\to\mathbb C\), an antilinear involution
+\(\sigma:E\to E\), and the equality
+\[
+ B(v,\sigma w)=\langle Iv,Iw\rangle_{L^2}
+ \qquad(v,w\in E).
+\]
+This equality transports positivity because its diagonal is
+\(\|Iv\|_2^2\). For a restricted tensor product, it requires compatible
+local realization maps and local pairings on the chosen reference
+vectors. The coefficient multipliers alone do not specify these data.
+\end{remark}
+
+\subsection{Local Hilbert models and the arithmetic comparison}
+\label{v4-arith:pres57:local-models}
+
+A local pairing can be constructed without identifying it with an
+arithmetic trace sector. On $c_{00}(\mathbb N_{\ge1};\mathbb C)$ set
+\[
+ \langle c,d\rangle_p=\sum_{m\ge1}\frac{c_m\overline{d_m}}m,
+ \qquad \langle\delta_m,\delta_n\rangle_p=\frac{\delta_{mn}}m.
+\]
+The diagonal is positive for every nonzero finite sequence. Its
+completion is $\ell^2(\mathbb N,1/m)$, with orthonormal basis
+$\sqrt m\,\delta_m$. An identification of this model with a local
+Bost--Connes GNS space must separately specify its state, representation,
+and map on this basis.
+
+The polynomial Heisenberg Fock model is
+$\mathcal F_{\mathrm{alg}}=\mathbb C[x_1,x_2,\ldots]|0\rangle$,
+where every polynomial uses finitely many variables. For finite
+multi-indices $\nu$, give its monomials the pairing
+\[
+ \langle x^\nu,x^\mu\rangle
+ =\delta_{\nu\mu}\prod_{j\ge1}j^{\nu_j}\nu_j!,\qquad
+ a_{-j}=x_j,\quad a_j=j\partial_{x_j},\quad a_0=0.
+\]
+Direct differentiation proves $[a_j,a_{-l}]=j\delta_{jl}$ and
+$a_j^*=a_{-j}$ on this invariant polynomial domain.
+The positive completion has the normalized monomials as an
+orthonormal basis. The energy $N=\sum_{j\ge1}j x_j\partial_{x_j}$
+has eigenvalue $\sum_jj\nu_j$ on $x^\nu$; its self-adjoint
+realization has maximal square-summable energy domain.
+This is the concrete Fock model underlying the comparison with
+Frenkel--Ben-Zvi, \S3.5; an arithmetic identification remains additional data.
+
+\begin{remark}[the specified primary trace and tensor problem]
+\label{v4-arith:pres57:native-pairing}
+Let $E:=E_{\mathrm{cusp,temp}}$ denote a proposed complex vector-space
+realization of the tempered cuspidal part of the primary
+Hochschild trace class $\mathcal V^{\mathrm{prim}}$ of
+Chapter~\ref{v4-arith:kms-gns-full}. The cohomological degree or graded completion is part of the data;
+this trace class is not being identified with a vertex algebra.
+The desired comparison
+specifies a bilinear Koszul pairing $B_{\mathrm{Kos}}$ on $E$, an
+antilinear Bost--Connes involution $\sigma^{\mathrm{BC}}$, and an
+injective map $I:E\to L^2_{\mathrm{cusp}}([GL_2],dg)$ with
+\[
+ B_{\mathrm{Kos}}(v,\sigma^{\mathrm{BC}}w)
+ =\int_{[GL_2]}Iv(g)\overline{Iw(g)}\,dg.
+\]
+Here $[GL_2]=Z(\mathbb A)GL_2(\mathbb Q)\backslash GL_2(\mathbb A)$
+with a fixed unitary central character and a fixed quotient Tamagawa
+measure. Constructing $E,B_{\mathrm{Kos}},\sigma^{\mathrm{BC}},I$ and
+this identity is the native pairing problem associated with
+\Cref{v4-arith:kms-gns:thm:P3-tempered-cuspidal}; ordinary integral
+positivity proves its consequence only after those data exist.
+
+The related tensor problem asks for an isometry from the completion
+of $E$ to a specified subspace of
+$H_\infty\widehat\otimes\bigotimes'_p(H_p,e_p)$, where $e_p$ are
+specified unit reference vectors and the product inner product is
+defined first on tensors equal to $e_p$ at all but finitely many primes.
+The intended local models are the Fock completion at infinity and
+the weighted sequence spaces at finite primes. Their proposed
+Petersson and GNS identifications, and normalization on the $e_p$,
+are not consequences of the categorical restricted tensor product in
+\Cref{v4-arith:tate:thm:F2c-main}.
+
+For a factorable cuspidal automorphic representation $\pi=\bigotimes'_v\pi_v$,
+the local integral comparison must fix a global additive character
+of $\mathbb A/\mathbb Q$, self-dual additive measures, multiplicative
+measures, and Whittaker vectors $W_v$ with $W_p(1)=1$ at unramified
+places. One then has to prove the matching of the native tensor
+pairing with the product of the resulting local Rankin--Selberg
+integrals. The $q$-coefficient calculation alone supplies neither
+that adelic map nor its normalization.
+\end{remark}
+
+\begin{theorem}[a negative finite-prime square]
+\label{v4-arith:w5-a:thm:prime-side}
+There exists $f\in\mathscr A$ with $W_{\mathrm{fin}}(f*f^*)<0$.
+Thus no linear map into a positive Hilbert space can realize
+$W_{\mathrm{fin}}(f*g^*)$ as its inner product on all of $\mathscr A$.
+\end{theorem}
+\begin{proof}
+Put $L=\log2$. Choose a nonzero real smooth $b$, supported in
+$(-\varepsilon,\varepsilon)$, where
+$2\varepsilon<\min(L,\log3-L)$. Write $b_L(t)=b(t-L)$ and
+$f=b-b_L$. If $c=b*b^*$, then
+\[
+ f*f^*=2c-c(\,\cdot-L)-c(\,\cdot+L).
+\]
+The support meets the nonzero prime logarithms only at $L$ and
+$-L$. At each, its value is $-c(0)=-\|b\|_2^2$. Therefore
+\[
+ W_{\mathrm{fin}}(f*f^*)=-\sqrt2\log2\,\|b\|_2^2<0.
+\]
+A Hilbert norm cannot have that value.
+\end{proof}
+
+\begin{corollary}[restricted automorphic comparisons]
+\label{v4-arith:w5-a:cor:HPLi-restricted}
+A positive realization of the finite-prime form on a restricted
+subspace requires a proved restriction on that subspace.
+The existence of an automorphic coefficient multiplier or an
+interpolating function alone does not give a realization on
+the full compact test algebra.
+\end{corollary}
+\begin{proof}
+The preceding test excludes the full-space realization.
+The Rankin--Selberg calculation identifies a different coefficient
+kernel and supplies no equality with the displayed negative value.
+\end{proof}
+
+\section{Archimedean and interpolation obstructions}
+\label{v4-arith:w5-a:sec:obstruction}
+
+\begin{definition}[the archimedean density]
+\label{v4-arith:w5-a:def:tate-archimedean}
+The sign convention in \eqref{v4-arith:w5-a:eq:weil-explicit} uses
+\begin{equation}
+ \mathcal T_\infty(u)=
+ \frac{\log\pi-\Re\psi_\Gamma(1/4+iu/2)}{2\pi}.
+ \label{v4-arith:w5-a:eq:tate-archimedean-distribution}
+\end{equation}
+\end{definition}
+
+\begin{proposition}[the gamma density is not the Weil density]
+\label{v4-arith:w5-a:prop:archimedean-not-absorbed}
+The functions $|\Gamma(1/4+iu/2)|^2$ and $\mathcal T_\infty(u)$
+are not constant multiples. In fact $\mathcal T_\infty$ has both signs.
+For a local continuous argument of the nonvanishing gamma function,
+\[
+ \frac{d}{du}\arg\Gamma(1/4+iu/2)=\frac12\Re\psi_\Gamma(1/4+iu/2),
+ \qquad
+ \frac{d}{du}\log|\Gamma(1/4+iu/2)|^2=-\Im\psi_\Gamma(1/4+iu/2).
+\]
+\end{proposition}
+\begin{proof}
+Differentiate $\log\Gamma(1/4+iu/2)$ to obtain $(i/2)\psi_\Gamma$.
+Taking real and imaginary parts proves the identities.
+The digamma series gives $\psi_\Gamma(1/4)<-\gamma<0$.
+For $y\ge1$, its real part is
+\[
+ -\gamma+\sum_{n\ge0}
+ \left(\frac1{n+1}-\frac{n+1/4}{(n+1/4)^2+y^2}\right).
+\]
+The first $\lfloor y\rfloor$ terms have sum at least $\log y-C$:
+the harmonic part has this growth, and the subtracted part is bounded
+by $y^{-2}\sum_{n\le y}(n+1/4)\le C$.
+In the remaining terms the possible negative part is at most
+$C\sum_{n>y}n^{-2}$. Thus the real part tends to positive infinity.
+The density $\mathcal T_\infty$ is positive at zero and negative
+for sufficiently large $|u|$. The gamma absolute square is positive.
+\end{proof}
+
+\begin{remark}[the local gamma factor]
+\label{v4-arith:w5-a:rem:archimedean-obstruction}
+For \(\Lambda_\infty(s)=\pi^{-s/2}\Gamma(s/2)\),
+\[
+ \frac{\Lambda_\infty'(s)}{\Lambda_\infty(s)}
+ =\frac12\psi_\Gamma(s/2)-\frac12\log\pi.
+\]
+Thus, with \(k(u)=\log\pi-\Re\psi_\Gamma(1/4+iu/2)\),
+\(k(u)=-2\Re(\Lambda_\infty'/\Lambda_\infty)(1/2+iu)\).
+The gamma absolute square and this logarithmic derivative enter
+through different operations. A conformal-anomaly comparison requires
+an equality with this specified distribution and its normalization.
+\end{remark}
+
+\subsection{Li coefficients and compact tests}
+\label{v4-arith:w5-a:weil-explicit:Li}
+
+\begin{theorem}[Li 1997, J.~Number Theory 65]
+\label{v4-arith:w5-a:thm:li-criterion}
+\ClaimStatusProvedElsewhere. RH is equivalent to \(\lambda_{n}\geq 0\)
+for every integer \(n\geq 1\), where
+\begin{equation}
+\label{v4-arith:w5-a:eq:li}
+\lambda_{n}\;=\;\sum_{\rho}\biggl(1-\Bigl(1-\frac{1}{\rho}\Bigr)^{n}\biggr),
+\end{equation}
+where the sum means \(\lim_{T\to\infty}\sum_{|\Im\rho|\le T}\),
+with zeros counted with multiplicity.
+\end{theorem}
+
+\begin{proposition}[rational Li tests are not compact Fourier tests]
+\label{v4-arith:w5-a:prop:li-via-weil}
+For any integer $n\ge1$, there is no $f\in\mathscr A$ such that
+\[
+ (\mathcal F_+f)(-i(\rho-1/2))=1-(1-1/\rho)^n
+\]
+for every nontrivial zero $\rho$.
+\end{proposition}
+\begin{proof}
+The right side is $n/\rho+O_n(|\rho|^{-2})$ as $|\rho|\to\infty$.
+The left side decreases faster than every inverse power of
+$|\Im\rho|$, uniformly in the zero strip. There are infinitely many
+zeros and only finitely many in any bounded set. Since their real
+parts lie in $[0,1]$, these two estimates contradict one another.
+\end{proof}
+
+\begin{remark}[Maass forms and continuous spectrum]
+\label{v4-arith:w5-a:rem:non-tempered}
+A square-integrable Maass cusp form has a positive \(L^2\) norm,
+independently of any Ramanujan bound on its Hecke parameters.
+That positivity follows by integrating its absolute square and does
+not identify the norm with a zeta prime or Weil form.
+An Eisenstein comparison additionally requires its spectral measure,
+normalization, and a realization map, as specified next.
+\end{remark}
+
+\begin{proposition}[continuous-spectrum pairing data]
+\label{v4-arith:w5-a:prop:eisenstein-residual}
+Let $\int^\oplus E_u\,d\mu(u)$ be a specified Hilbert direct integral.
+An identity between its norm and an arithmetic Hermitian form requires
+a map into that direct integral and equality of the two pairings.
+A scalar gamma factor determines neither that map nor its measure.
+\end{proposition}
+\begin{proof}
+The direct-integral norm is $\int\|v(u)\|_{E_u}^2d\mu(u)$.
+Replacing a nonzero realization map $I$ by $2I$ multiplies its
+pullback pairing by four. A single scalar factor does not select
+the map or its measure. The sign-changing density above also
+cannot equal an unspecified positive norm by scalar rescaling.
+\end{proof}
+
+\section{Specific automorphic and arithmetic comparison questions}
+\label{v4-arith:pres57:comparison-questions}
+
+The coefficient calculation fixes one kernel. Additional native
+comparisons must state which different integral they propose to compute.
+The following questions retain the arithmetic sectors and parameters.
+
+\paragraph{Entire multipliers and automorphic endomorphisms.}
+\label{v4-arith:pres57:multiplier-question}
+For a normalized eigenform $F$ generating an automorphic representation
+$\pi_F$, characterize $h\in\mathcal F_+\mathscr A$ for which
+$\Upsilon_F(h)$ is modular. A stronger question asks whether a given
+such multiplier is induced by a continuous $GL_2(\mathbb A)$-equivariant
+endomorphism of a specified globalization of $\pi_F$, preserving its
+weight-$k$ vector. The coefficient prescription is
+$a_F(n)\mapsto h(\log n)n^{(k-1)/2}a_F(n)$.
+This endomorphism condition and the modular transformation law are
+different requirements; neither is inferred from the moment conditions.
+
+\paragraph{A proposed normalized kernel.}
+\label{v4-arith:pres57:kernel-question}
+For fixed $F$, one can form the meromorphic ratio
+\[
+ K_F^{\mathrm{prop}}(s)=
+ \frac{\zeta(2s)L(s,\pi_F\times\overline{\pi_F})}
+ {\zeta(s)\xi_{\mathbb R}(s)\xi_{\mathbb R}(1-s)}.
+\]
+Take the unitary Hecke normalization in the finite Rankin--Selberg
+$L$-function, and $\xi_{\mathbb R}(s)=\frac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)$.
+The question is whether a specified automorphic integral, including
+its archimedean and conductor factors, represents this ratio on a
+convergence domain and hence meromorphically. No such identity is
+asserted. In particular it is not the coefficient kernel in
+\eqref{v4-arith:w5-a:eq:KF-kernel}, and the two $\xi$ factors do not
+absorb the zeta prime distribution into a Petersson norm.
+
+\paragraph{The Fock integral and conformal anomaly.}
+\label{v4-arith:pres57:arch-question}
+For the weight-$k$ holomorphic discrete-series representation at
+infinity, specify a lowest-weight Whittaker vector, Haar measure,
+and a map from the polynomial Fock domain to that Whittaker model.
+The proposed scalar density is $|\Gamma(1/4+iu/2)|^2$; obtaining it
+from a local integral requires an explicit computation with these
+representation parameters. It cannot be inferred merely from the
+name of the Fock space or from Jacquet's local-factor theory.
+The gamma-square density and the signed Weil density
+$k(u)/(2\pi)$ are different, as proved above.
+
+The separate Polyakov question concerns the conformal variation of
+a specified regularized determinant in Chapter~\ref{v4-arith:polyakov}:
+choose the kinetic operator, boundary conditions, determinant
+normalization and test-dependent conformal variation, and compare
+its resulting distribution on $\mathscr A$ with
+\[
+ -2\Re\frac{\Lambda_\infty'}{\Lambda_\infty}(1/2+iu)=k(u),
+ \qquad \Lambda_\infty(s)=\pi^{-s/2}\Gamma(s/2).
+\]
+Bohr--Mollerup characterizes $\Gamma$; it supplies none of those
+geometric data or the proposed anomaly identity.
+
+\paragraph{Eisenstein comparison and discrete projection.}
+\label{v4-arith:pres57:discrete-projection}
+Suppose a specified automorphic Hilbert space has an orthogonal
+spectral decomposition
+$H_{\mathrm{aut}}=H_{\mathrm{disc}}\oplus
+ \int_{\mathbb R}^{\oplus}E_u\,d\nu(u)$.
+Then $P_{\mathrm{disc}}(v,w)=(v,0)$ is the bounded self-adjoint
+idempotent of norm one if $H_{\mathrm{disc}}\ne0$ (and zero otherwise).
+For a native map $I:E\to H_{\mathrm{aut}}$, its discrete realization
+is $P_{\mathrm{disc}}I$. Orthogonality proves
+$\|P_{\mathrm{disc}}Iv\|^2\le\|Iv\|^2$ and identifies its kernel
+as the vectors mapped into the continuous summand. Thus an actual
+spectral decomposition supplies the projection; a coefficient
+multiplier does not specify it.
+
+The continuous comparison in
+\Cref{v4-arith:kms-gns:cor:eisenstein-final} asks whether the proposed
+Koszul ratio $\xi_{\mathbb R}(2s)/\xi_{\mathbb R}(2s-1)$ matches the
+Maass--Selberg scattering pairing after a specified truncation and
+normalization. One must distinguish this entire $\xi$ from the
+meromorphic completion $\Lambda_\zeta$, specify the Eisenstein series,
+its constant term, the truncation parameter and the measure $\nu$,
+and prove the resulting equality or discrepancy. No unconditional
+exclusion of the continuum follows without that calculation.
+Likewise the discrete zero divisor in Li's criterion is not already
+identified with $H_{\mathrm{disc}}$; such a statement requires its own
+map and spectral-measure comparison.
+
+\paragraph{Maass parameters and varying weights.}
+\label{v4-arith:pres57:maass-weight}
+For an unramified unitary Maass representation let the Satake roots
+be $\alpha_p,\beta_p$ with $\alpha_p\beta_p=1$, and set
+$\theta_p=\log_p\max(|\alpha_p|,|\beta_p|)$. For a weight-zero Hecke--Maass cusp eigenform on $SL_2(\mathbb Z)$,
+the Kim--Sarnak estimate gives
+\[
+ |\lambda_F(p)|\le p^{7/64}+p^{-7/64},\qquad \theta_p\le7/64.
+\]
+In Sarnak, \emph{Spectra of Hyperbolic Surfaces}, January 2003,
+p.~17, (30), $T_n$ is normalized by $n^{-1/2}$; p.~18, (34),
+states the operator-norm bound on the cuspidal space. Applying it
+to a unit eigenvector gives the first inequality. With trivial
+central character, the real eigenvalue is $\alpha_p+\alpha_p^{-1}$.
+The roots are either on the unit circle or real reciprocal roots;
+in the latter case $|\lambda_F(p)|=p^{\theta_p}+p^{-\theta_p}$.
+Monotonicity for $\theta_p\ge0$ proves the second inequality.
+With the positive Laplacian $\Delta=-y^2(\partial_x^2+\partial_y^2)$,
+the same source, Theorem~2, p.~17, gives the eigenvalue bound
+$\lambda_\Delta\ge975/4096=1/4-(7/64)^2$; an exceptional
+parameter $\lambda_\Delta=1/4-\theta_\infty^2$, with $\theta_\infty\ge0$, therefore satisfies
+$\theta_\infty\le7/64$.
+These are parameter estimates, not a claim of optimality.
+A parameter bound controls these roots, not the existence of a
+positive ordinary $L^2$ norm.
+The proposed correction to $K_F^{\mathrm{prop}}$ at
+$s=1/2\pm\theta_p$ requires an actual local factor and an integral
+comparison; a parameter bound alone does not give a correction formula.
+
+For a weight sequence $k_j\to\infty$, fix normalized forms $F_j$ and
+consider the finite positive measures
+\[
+ d\nu_j(z)=\frac{|F_j(z)|^2y^{k_j}\,d\mu(z)}{\|F_j\|_{\mathrm{Pet}}^2}
+ \quad\text{on }SL_2(\mathbb Z)\backslash\mathbb H.
+\]
+Their masses are one. Comparing weight limits requires specified
+maps from a common test space, control of escape into the cusp,
+and convergence of the pairings. No vanishing of these normalized
+measures or identification of their limit with a Selberg trace
+formula follows from the increase of $k_j$. Such an identity would
+have to match its spectral and geometric terms on that common carrier.
+None of these limits is needed for the entire Mellin transform of
+a compact smooth test.
+
+\paragraph{The sufficient arithmetic path.}
+\label{v4-arith:pres57:sufficient-path}
+The HP--Li input in \Cref{v4-arith:rh:thm:sufficient-path} is the
+full Weil inequality on $\mathscr A$. An arithmetic proof through
+that path must construct its native pairing identity, including
+polar, finite-prime and gamma terms. A restricted automorphic
+isometry, Maass lift or weight-limit trace formula is a possible
+construction route only after its domain and comparison are proved;
+none is an additional logical necessity for the Weil criterion.
+The next theorem specifies the positive realization that such a
+route would have to supply.
+
+\section{The arithmetic pairing requirement}
+\label{v4-arith:w5-a:form}
+
+\begin{theorem}[the remaining positive comparison]
+\label{v4-arith:w5-a:thm:hpli-form}
+A Hilbert realization of the full Weil form consists of a positive
+Hilbert space $K$, a linear map $J:\mathscr A\to K$, and the identity
+\[
+ \langle Jf,Jg\rangle_K=W(f*g^*)\qquad(f,g\in\mathscr A).
+\]
+Such a realization exists if and only if $q_W$ is positive semidefinite.
+When it exists, its minimal realization is the completion of
+$\mathscr A/\{f:q_W(f,f)=0\}$. Its existence is RH-equivalent.
+Neither coefficient map in \eqref{v4-arith:w5-a:eq:upsilon}
+provides the pairing identity.
+\end{theorem}
+\begin{proof}
+A Hilbert realization implies nonnegativity. Conversely, positivity
+and polarization give Cauchy--Schwarz for $q_W$. Its nullspace is a
+linear subspace orthogonal to every vector. Quotienting and completing
+therefore gives the asserted Hilbert space and canonical map.
+Weil's criterion supplies the equivalence to RH. The coefficient
+maps construct holomorphic functions with specified coefficients.
+Their definitions contain no equality with the full Weil form, and
+the finite-prime counterexample excludes the proposed full-space
+positive realization of that separate term.
+\end{proof}
+
+The arithmetic problem asks for this pairing through a specified
+native carrier, its operators, and its realization maps. The compact
+formula, the exact coefficient calculation, and the two obstruction
+theorems retain those separate requirements.
+
+\input{chapters/arithmetic/signed_arithmetic_comparison}
+
+\section{Bibliography of Primary Sources}
+\label{v4-arith:w5-a:bibliography}
+
+\begin{description}
+\item[Weil 1952.] Weil, A. \emph{Sur les formules explicites de la
+th\'eorie des nombres premiers}. \emph{Meddelanden fr\r{a}n Lunds
+Univ.~Mat.~Sem.} (Festschrift f\"or Marcel Riesz), 1952; reprinted
+\emph{Oeuvres Scientifiques} Vol.~II, Springer 1979. Explicit formula,
+\(W\)-distribution, Weil positivity equivalence to RH.
+\item[Li 1997.] Li, X.-J. \emph{The positivity of a sequence of
+numbers and the Riemann hypothesis}. \emph{J.~Number Theory} 65
+(1997), 325--333. Li coefficients \(\lambda_{n}\),
+and equivalence to RH.
+\item[Rankin 1939.] Rankin, R.~A. \emph{Contributions to the theory
+of Ramanujan's function \(\tau(n)\) and similar arithmetical functions}.
+\emph{Proc.~Camb.~Phil.~Soc.}~35 (1939), 357--372. Rankin--Selberg
+identity for \(L\)-series of modular forms.
+\item[Selberg 1940.] Selberg, A. \emph{Bemerkungen \"uber eine
+Dirichletsche Reihe, die mit der Theorie der Modulformen nahe
+verbunden ist}. \emph{Arch.~Math.~Naturvid.}~43 (1940), 47--50.
+Rankin--Selberg identity and \(L\)-function analytic continuation.
+\item[Hecke 1936.] Hecke, E. \emph{\"Uber die Bestimmung Dirichletscher
+Reihen durch ihre Funktionalgleichung}. \emph{Math.~Ann.} 112
+(1936), 664--699. Mellin transform / modular form correspondence
+and functional equation.
+\item[Deligne 1974.] Deligne, P. \emph{La conjecture de Weil I}.
+\emph{Publ.~Math.~IHES} 43 (1974), 273--307. Ramanujan bound for
+holomorphic cuspidal Hecke eigenforms of weight \(k\geq 2\).
+\item[Jacquet 1972.] Jacquet, H. \emph{Automorphic forms on \(GL_{2}\)
+II}. Lecture Notes in Mathematics 278, Springer 1972. Local
+archimedean factors for \(GL_{2}\); ramified principal series.
+\item[Jacquet--Langlands SLN~114 1970.] Jacquet, H.;
+Langlands, R.~P. \emph{Automorphic forms on \(GL(2)\)}. Lecture Notes
+in Mathematics 114, Springer 1970. Adelic Whittaker model, Hecke
+theory.
+\item[Iwaniec--Kowalski 2004.] Iwaniec, H.; Kowalski, E.
+\emph{Analytic Number Theory}. AMS Colloquium Publications 53, 2004.
+Modern account of Weil's explicit formula, Rankin--Selberg,
+Paley--Wiener.
+\item[Bombieri--Lagarias 1999.] Bombieri, E.; Lagarias, J.~C.
+\emph{Complements to Li's criterion for the Riemann hypothesis}.
+\emph{J.~Number Theory} 77 (1999), 274--287. Alternative constructions
+of Li-coefficient approximants and equivalences to Weil positivity.
+\item[Connes 1999.] Connes, A. \emph{Trace formula in noncommutative
+geometry and the zeros of the Riemann zeta function}. \emph{Selecta
+Math.~(N.~S.)} 5 (1999), 29--106, arXiv:math/9811068. Adele class
+space, absorption trace, Weil positivity as trace-formula positivity.
+\item[Patterson 1988.] Patterson, S.~J. \emph{An Introduction to the
+Theory of the Riemann Zeta-Function}. Cambridge Studies in Advanced
+Mathematics 14, 1988. Complete treatment of the Hadamard product
+and explicit formula.
+\item[Sarnak 2003.] Sarnak, P. \emph{Spectra of Hyperbolic Surfaces}.
+Notes for Baltimore Lectures, January 2003. Theorem~2 and (30),
+p.~17; (34), p.~18: normalized Laplace and Hecke bounds.
+\url{https://web.math.princeton.edu/sarnak/baltimore.pdf}.
+
+\item[Kim--Sarnak 2003.] Kim, H.~H.; Sarnak, P.~C. Appendix to
+Kim, H.~H., \emph{Functoriality for the exterior square of \(GL_{4}\)
+and the symmetric fourth of \(GL_{2}\)}. \emph{J.~Amer.~Math.~Soc.} 16
+(2003), 139--183. Bound \(|a_{F}(p)|\leq 2p^{7/64}\) towards the
+Ramanujan conjecture for \(GL_{2}/\mathbb{Q}\).
+\item[Bump 1997.] Bump, D. \emph{Automorphic Forms and
+Representations}. Cambridge Studies in Advanced Mathematics 55, 1997.
+Comprehensive account of Rankin--Selberg, Whittaker models,
+Petersson theory.
+\item[Zagier 1981.] Zagier, D. \emph{The Rankin--Selberg method for
+automorphic functions which are not of rapid decay}.
+\emph{Bonner Math.~Schriften} 121 (1981). Rankin--Selberg unfolding
+technique.
+\end{description}

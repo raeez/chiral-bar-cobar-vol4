@@ -1,0 +1,2073 @@
+\chapter{The Weil algebra and its domain}
+\label{v4-arith:weil:chapter}
+
+The explicit formula equates arithmetic and spectral evaluations of a test
+function. The arithmetic evaluation contains every prime power, a gamma
+integral and two polar values. The spectral evaluation sums over the zeros
+of the completed zeta function. Applying the formula to convolution products
+produces a Hermitian form. Its positivity on the full test algebra is
+equivalent to the Riemann hypothesis.
+
+The domain is part of this assertion. Compact support makes each prime sum
+finite. Exponential decay permits Gaussian tests and controls the infinite
+prime sum. The ordinary Schwartz topology controls the gamma integral but
+does not control the critically weighted prime measure. We shall construct
+the relevant extensions and the maps between their domains.
+
+Two examples explain why these choices matter. The polar form has rank two
+and both signs. The finite-prime form also has a two-dimensional subspace
+with both signs. Their contributions enter the complete formula with
+specified signs. A positive realization must reproduce that complete form.
+
+Fourier inversion, elementary distribution theory and complex analysis are
+the prerequisites. We use Lebesgue measure on the additive real line.
+Hermitian forms are linear in their first argument. The convolution
+algebras below have no unit unless a unitization is explicitly taken.
+
+\section{Compact tests and Mellin reflection}
+\label{v4-arith:weil:compact}
+
+For \(R>0\), let \(\mathscr A_R\) be the space of complex smooth functions
+supported in \([-R,R]\), with seminorms
+\[
+ \|f\|_{R,j}=\sup_{x\in\mathbb R}|f^{(j)}(x)|,\qquad j\ge0.
+\]
+The compact test space is
+\[
+ \mathscr A_c=C_c^\infty(\mathbb R)
+       =\underset{R\to\infty}{\operatorname{colim}}\mathscr A_R
+\]
+with its usual strict locally convex inductive-limit topology. A convergent
+sequence lies in one \(\mathscr A_R\) and converges there in every derivative
+seminorm.
+
+\begin{definition}[The compact convolution algebra]
+\label{v4-arith:weil:def:compact}
+For \(f,g\in\mathscr A_c\), set
+\begin{equation}
+ (f*g)(x)=\int_{\mathbb R}f(y)g(x-y)\,dy,\qquad
+ f^*(x)=\overline{f(-x)}.
+ \label{v4-arith:weil:eq:convolution}
+\end{equation}
+The Fourier transform and its real-axis inverse are
+\begin{equation}
+ h_f(z)=\int_{\mathbb R}f(x)e^{izx}\,dx,\qquad
+ f(x)=\frac1{2\pi}\int_{\mathbb R}h_f(t)e^{-itx}\,dt.
+ \label{v4-arith:weil:eq:fourier}
+\end{equation}
+For an entire function \(h\), write
+\(h^\sharp(z)=\overline{h(\bar z)}\).
+\end{definition}
+
+\begin{proposition}[Products, support and involution]
+\label{v4-arith:weil:prop:algebra}
+Convolution and \(f\mapsto f^*\) make \(\mathscr A_c\) a commutative
+topological complex \(*\)-algebra. They satisfy
+\begin{equation}
+ \operatorname{supp}(f*g)\subset
+ \operatorname{supp}f+\operatorname{supp}g,\qquad
+ h_{f*g}=h_fh_g,\qquad h_{f^*}=h_f^\sharp.
+ \label{v4-arith:weil:eq:fourier-algebra}
+\end{equation}
+For \(f\in\mathscr A_R\), \(h_f\) is entire and obeys
+\[
+ |h_f(z)|\le C_{R,N}(f)e^{R|\operatorname{Im}z|}
+                       (1+|z|)^{-N}\qquad(N\ge0),
+\]
+where \(C_{R,N}\) is a continuous seminorm. In particular, \(h_f\) and all
+its derivatives decrease rapidly on every closed horizontal strip.
+\end{proposition}
+\begin{proof}
+The support assertion follows directly from the integral. Fubini proves
+associativity, commutativity and the product identity. Reflection and
+conjugation give the involution identity. Differentiation may be performed
+under convolution on a fixed compact support. The resulting estimates
+prove continuity on the compact test space.
+
+Compact support also permits differentiation of \(h_f\) at every complex
+argument. Repeated integration by parts gives
+\[
+ (iz)^Nh_f(z)=(-1)^N\int f^{(N)}(x)e^{izx}\,dx.
+\]
+There are no boundary terms. Combine this bound for \(|z|\ge1\) with the
+integral bound for \(|z|\le1\). Applying the same argument to \(x^jf(x)\)
+proves the assertion about derivatives.
+\end{proof}
+
+We give the Fourier image \(h(\mathscr A_c)\) the transported topology.
+An entire function in this image cannot vanish on a real interval unless
+it is zero. Exact restriction to a bounded frequency interval therefore
+does not preserve this Fourier image.
+
+The map \(\epsilon(f)=\int f\) is multiplicative. It does not provide a
+convolution unit. Indeed, a unit \(e\in\mathscr A_c\) would satisfy
+\(h_e(t)h_f(t)=h_f(t)\) for every \(f\). At each real \(t\), some compact
+test has nonzero transform, so \(h_e(t)=1\). This contradicts rapid decay.
+
+The Dirac distribution at zero is the unit in a larger distribution
+algebra. Smooth functions \(b_\delta(x)=\delta^{-1}b(x/\delta)\), with
+\(\int b=1\), instead form an approximate identity on \(\mathscr A_c\).
+
+The multiplicative coordinate \(u=e^x\) introduces a half-density.
+For \(f\in\mathscr A_c\), define
+\begin{equation}
+ \phi_f(u)=u^{-1/2}f(\log u),\qquad
+ \Phi_f(s)=\int_0^\infty\phi_f(u)u^s\,\frac{du}{u}
+          =h_f\bigl(-i(s-\tfrac12)\bigr).
+ \label{v4-arith:weil:eq:mellin}
+\end{equation}
+Thus \(\phi_f\) is compactly supported on \(\mathbb R_{>0}\).
+Multiplicative convolution uses the measure \(du/u\).
+
+\begin{proposition}[The two reciprocal maps]
+\label{v4-arith:weil:prop:reciprocal}
+The assignment \(f\mapsto\phi_f\) preserves convolution. Its induced
+antilinear involution and its linear reciprocal map are
+\begin{equation}
+ \phi^*(u)=u^{-1}\overline{\phi(u^{-1})},\qquad
+ \phi^\iota(u)=u^{-1}\phi(u^{-1}).
+ \label{v4-arith:weil:eq:reciprocal}
+\end{equation}
+Their Mellin transforms are
+\[
+ \Phi_{\phi^*}(s)=\overline{\Phi_\phi(1-\bar s)},\qquad
+ \Phi_{\phi^\iota}(s)=\Phi_\phi(1-s).
+\]
+In particular,
+\[
+ \Phi_{f*g^*}(s)=
+       \Phi_f(s)\overline{\Phi_g(1-\bar s)}.
+\]
+\end{proposition}
+\begin{proof}
+In multiplicative convolution substitute \(u=e^x\), \(v=e^y\).
+The two half-density factors multiply to \(e^{-x/2}\), leaving
+\((f*g)(x)\). Substitution \(u\mapsto u^{-1}\) in the Mellin integral
+gives both reciprocal identities. The last formula follows from
+Fourier multiplication.
+\end{proof}
+
+Mellin reflection is linear. A Hermitian pairing also needs complex
+conjugation. Equivalently, a form \(q\) linear in its first argument is a
+complex-linear functional on \(\mathscr A_c\otimes_{\mathbb C}
+\overline{\mathscr A_c}\), where the bar denotes the conjugate vector
+space. Replacing this factor by \(\mathscr A_c\) changes the scalar rule:
+a bilinear diagonal changes sign under \(f\mapsto if\), whereas a Hermitian
+diagonal does not.
+
+\section{Prime powers and exponential weights}
+\label{v4-arith:weil:primes}
+
+Let \(\Lambda(n)\) be the von Mangoldt function:
+\(\Lambda(p^k)=\log p\) for primes \(p\) and integers \(k\ge1\), and
+\(\Lambda(n)=0\) otherwise. The logarithmic prime measures are
+\begin{equation}
+ \mu_\sigma=\sum_{n\ge2}\Lambda(n)n^{-\sigma}\delta_{\log n},
+ \qquad \sigma\in\mathbb R.
+ \label{v4-arith:weil:eq:prime-measure}
+\end{equation}
+Every compact interval meets finitely many atoms. Each \(\mu_\sigma\)
+therefore acts continuously on \(\mathscr A_c\).
+
+\begin{lemma}[Elementary prime mass]
+\label{v4-arith:weil:lem:prime-mass}
+Put \(\Psi(X)=\sum_{n\le X}\Lambda(n)\). For integers \(m\ge1\),
+\[
+ 2m\log2-\log(2m+1)\le\Psi(2m).
+\]
+Moreover, \(\Psi(X)\le X\log X\) for \(X\ge2\). Consequently,
+\(\Psi(X)\ge cX\) for all sufficiently large \(X\), with some \(c>0\).
+\end{lemma}
+\begin{proof}
+The largest coefficient in \((1+1)^{2m}\) is \(\binom{2m}{m}\), so
+\(\binom{2m}{m}\ge4^m/(2m+1)\). Its \(p\)-adic valuation is
+\[
+ v_p\binom{2m}{m}
+ =\sum_{k\ge1}\left(
+       \left\lfloor\frac{2m}{p^k}\right\rfloor
+       -2\left\lfloor\frac m{p^k}\right\rfloor\right).
+\]
+Each summand is zero or one and vanishes for \(p^k>2m\).
+Taking logarithms gives
+\(\log\binom{2m}{m}\le\Psi(2m)\). The upper bound follows from
+\(\Lambda(n)\le\log n\). Monotonicity, with \(m=\lfloor X/2\rfloor\),
+gives the final lower bound.
+\end{proof}
+
+\begin{theorem}[The exact temperedness threshold]
+\label{v4-arith:weil:thm:prime-threshold}
+The positive measure \(\mu_\sigma\) is tempered exactly when
+\(\sigma\ge1\). It has finite total mass exactly when \(\sigma>1\).
+In particular, the critical measure \(\mu_{1/2}\) is not tempered.
+\end{theorem}
+\begin{proof}
+For \(\sigma\ge1\) and a Schwartz function \(v\),
+\[
+ |\mu_\sigma(v)|
+ \le\sup_x(1+|x|)^3|v(x)|
+       \sum_{n\ge2}\frac{\log n}{n(1+\log n)^3}.
+\]
+The series converges by the integral test. For \(\sigma>1\), the
+stronger bound \(\sum(\log n)n^{-\sigma}<\infty\) proves finite mass.
+At \(\sigma=1\), partial summation gives
+\[
+ \sum_{n\le X}\frac{\Lambda(n)}n
+ =\frac{\Psi(X)}X+\int_1^X\frac{\Psi(u)}{u^2}\,du.
+\]
+The lower bound of the lemma makes this quantity diverge.
+
+A positive tempered measure has polynomially bounded mass on
+\([-R,R]\). To see this, test against \(v(x/R)\), where \(v\ge0\) is a
+fixed compact smooth function equal to one on \([-1,1]\).
+Each of its finitely many required Schwartz seminorms grows polynomially
+in \(R\).
+
+If \(0\le\sigma<1\), then
+\[
+ \mu_\sigma([0,R])
+ \ge e^{-\sigma R}\Psi(e^R)
+ \ge c e^{(1-\sigma)R}
+\]
+for large \(R\). If \(\sigma<0\), the lower bound \(ce^R\) already
+suffices. These estimates contradict polynomial growth. They also
+exclude finite mass.
+\end{proof}
+
+The Euler product gives a transform on its actual convergence domain.
+For \(\operatorname{Re}s>1\),
+\begin{equation}
+ \zeta(s)=\sum_{n\ge1}n^{-s}
+         =\prod_p(1-p^{-s})^{-1},\qquad
+ -\frac{\zeta'(s)}{\zeta(s)}
+       =\sum_{n\ge2}\Lambda(n)n^{-s}.
+ \label{v4-arith:weil:eq:euler}
+\end{equation}
+Absolute convergence proves the product and permits logarithmic
+differentiation on compact subsets of this half-plane. Thus
+\(-\zeta'/\zeta\) is the Laplace transform of \(\mu_0\) there.
+With Fourier convention \(\int e^{-itx}\,d\mu(x)\), the transform of
+\(\mu_\sigma\), \(\sigma>1\), is
+\(-\zeta'(\sigma+it)/\zeta(\sigma+it)\).
+
+The seminorm estimate in the theorem and dominated convergence give
+\(\mu_{1+\varepsilon}\to\mu_1\) weakly in tempered distributions.
+Fourier continuity gives the corresponding boundary transform.
+Meromorphic continuation of \(-\zeta'/\zeta\) does not extend the original
+Laplace integral beyond its convergence domain.
+
+\section{Theta continuation and the zero divisor}
+\label{v4-arith:weil:theta}
+
+We normalize the completed zeta function before forming its logarithmic
+derivative. Let
+\[
+ \theta(t)=\sum_{n\in\mathbb Z}e^{-\pi n^2t},\qquad
+ r(t)=\frac{\theta(t)-1}{2}\qquad(t>0).
+\]
+The Gaussian transform gives the theta identity
+\begin{equation}
+ \theta(t)=t^{-1/2}\theta(t^{-1}).
+ \label{v4-arith:weil:eq:theta}
+\end{equation}
+One proof periodizes \(e^{-\pi t x^2}\). Its \(m\)-th Fourier coefficient
+is \(t^{-1/2}e^{-\pi m^2/t}\). Both periodic sums converge uniformly,
+and uniqueness of Fourier coefficients gives the identity at \(x=0\).
+
+The Gaussian transform itself follows by differentiating its integral
+with respect to frequency and using its value at zero.
+
+For \(\operatorname{Re}s>1\), termwise integration yields
+\[
+ \Lambda_\zeta(s):=\pi^{-s/2}\Gamma(s/2)\zeta(s)
+             =\int_0^\infty r(t)t^{s/2}\,\frac{dt}{t}.
+\]
+Split the integral at one and use \eqref{v4-arith:weil:eq:theta}
+in the lower part. The result is
+\begin{equation}
+ \Lambda_\zeta(s)=\frac1{s(s-1)}
+    +\int_1^\infty r(t)
+            \bigl(t^{s/2}+t^{(1-s)/2}\bigr)\,\frac{dt}{t}.
+ \label{v4-arith:weil:eq:completed}
+\end{equation}
+The integral is entire because \(r(t)\) decreases exponentially.
+It follows that \(\Lambda_\zeta\) is meromorphic, with residues
+\(-1\) at zero and \(1\) at one.
+
+\begin{definition}[The normalized entire function]
+\label{v4-arith:weil:def:xi}
+Set
+\begin{equation}
+ \xi(s)=\frac12s(s-1)\Lambda_\zeta(s)
+ =\frac12+\frac{s(s-1)}2
+    \int_1^\infty r(t)
+          \bigl(t^{s/2}+t^{(1-s)/2}\bigr)\,\frac{dt}{t}.
+ \label{v4-arith:weil:eq:xi}
+\end{equation}
+Its zeros are counted with their analytic multiplicities.
+For a zero \(\rho\), put \(z_\rho=-i(\rho-\tfrac12)\).
+\end{definition}
+
+The integral proves
+\[
+ \xi(0)=\xi(1)=\frac12,\qquad
+ \xi(1-s)=\xi(s),\qquad
+ \xi(\bar s)=\overline{\xi(s)}.
+\]
+The Euler product has no zero for \(\operatorname{Re}s>1\).
+The functional equation therefore places all zeros of \(\xi\) in
+\(0\le\operatorname{Re}s\le1\). The associated parameters satisfy
+\(|\operatorname{Im}z_\rho|\le1/2\).
+
+There is no real zero of \(\xi\). For \(0<s<1\), pair consecutive
+terms of the alternating series:
+\[
+ \eta(s)=\sum_{m\ge1}
+       \bigl((2m-1)^{-s}-(2m)^{-s}\bigr)>0.
+\]
+Dirichlet convergence and analytic continuation give
+\(\eta(s)=(1-2^{1-s})\zeta(s)\). Hence \(\zeta(s)\ne0\) on that
+interval. The endpoints and the remaining real line follow from
+the displayed values, the Euler product and reflection.
+Consequently no \(z_\rho\) lies on the imaginary axis.
+
+\begin{lemma}[Growth and summability]
+\label{v4-arith:weil:lem:zeros}
+For \(R\ge2\),
+\[
+ \log\max_{|s|\le R}|\xi(s)|\le CR\log(R+2).
+\]
+The number of zeros in \(|s|\le R\), with multiplicity, is
+\(O(R\log(R+2))\). In particular,
+\(\sum_\rho|\rho|^{-2}<\infty\), and the corresponding inverse-square
+sum over \(z_\rho\) converges. There are infinitely many zeros.
+\end{lemma}
+\begin{proof}
+On \(t\ge1\), one has \(r(t)\le C e^{-\pi t}\).
+For \(|s|\le R\), the two powers in \eqref{v4-arith:weil:eq:xi}
+are bounded by \(2t^{(R+1)/2}\).
+The elementary maximum of \(t^A e^{-\pi t/2}\) is
+\((2A/(\pi e))^A\). This bounds the integral by
+\(\exp(CR\log(R+2))\), including its quadratic prefactor.
+
+Jensen's formula at radius \(2R\), with \(\xi(0)=1/2\), bounds the
+number of zeros in radius \(R\): each contributes at least \(\log2\).
+Summing over dyadic annuli proves inverse-square summability.
+Translation by \(1/2\) gives the assertion for \(z_\rho\).
+
+If the zero set were finite, Hadamard factorization for an entire
+function of order at most one would give \(\xi(s)=e^{as+b}P(s)\)
+for a polynomial \(P\). Along positive real \(s\), Stirling's formula
+and \(\zeta(s)\to1\) instead give
+\(\log|\xi(s)|=\tfrac12s\log s+O(s)\).
+This contradicts that representation.
+\end{proof}
+
+\begin{proposition}[The genus-one normalization]
+\label{v4-arith:weil:prop:product}
+Let \(\gamma_E\) be Euler's constant and put
+\[
+ B=-1-\frac{\gamma_E}{2}+\frac12\log(4\pi).
+\]
+Then
+\begin{equation}
+ \xi(s)=\frac12e^{Bs}
+       \prod_\rho(1-s/\rho)e^{s/\rho},\qquad
+ \frac{\xi'(s)}{\xi(s)}
+       =B+\sum_\rho\left(\frac1{s-\rho}+\frac1\rho\right).
+ \label{v4-arith:weil:eq:product}
+\end{equation}
+The factors and paired summands converge locally uniformly away from
+their zeros or poles.
+\end{proposition}
+\begin{proof}
+The preceding growth estimate permits Hadamard factorization of genus
+one. Inverse-square summability gives local normal convergence.
+At zero the constant factor is \(1/2\), and the logarithmic derivative
+of every elementary factor vanishes. The linear exponential coefficient
+is therefore \(\xi'(0)/\xi(0)\).
+
+Use \(\Gamma(1+s/2)=(s/2)\Gamma(s/2)\) to write
+\[
+ \xi(s)=(s-1)\Gamma(1+s/2)\pi^{-s/2}\zeta(s).
+\]
+The values \(\zeta(0)=-1/2\), \(\zeta'(0)=-\tfrac12\log(2\pi)\)
+and \(\Gamma'(1)=-\gamma_E\) give the stated \(B\).
+For the two zeta values, expand the equivalent functional equation
+\[
+ \zeta(s)=2^s\pi^{s-1}\sin(\pi s/2)\Gamma(1-s)\zeta(1-s).
+\]
+The product \(\Gamma(1-s)\zeta(1-s)\) is \(-s^{-1}+O(s)\).
+The remaining factor is
+\(\tfrac s2(1+s\log(2\pi)+O(s^2))\).
+This proves both values.
+
+Local differentiation of the normally
+convergent canonical product proves the logarithmic derivative formula.
+\end{proof}
+
+The summands in \eqref{v4-arith:weil:eq:product} are paired.
+The formula makes no separate absolute-convergence assertion for
+\(\sum_\rho1/\rho\). This convention will also determine the normalization
+of spectral determinants.
+
+\subsection{The argument term in zero counting}
+
+Let \(N(T)\) count the zeros \(\rho\) with
+\(0<\operatorname{Im}\rho\le T\), including multiplicity.
+For \(T>0\) that is not a zero ordinate, define
+\[
+ \vartheta(T)=
+ \operatorname{Im}\log\Gamma(\tfrac14+\tfrac{iT}{2})
+                -\frac T2\log\pi,\qquad
+ S(T)=\frac1\pi\Delta_{\,2\to2+iT\to1/2+iT}\arg\zeta.
+\]
+The gamma logarithm is the analytic branch on the right half-plane
+that is real on the positive real axis. The zeta argument starts
+at zero at \(s=2\).
+
+\begin{proposition}[The zero-count normalization]
+\label{v4-arith:weil:prop:zero-count}
+Away from zero ordinates,
+\begin{equation}
+ N(T)=1+\frac{\vartheta(T)}\pi+S(T)
+ =\frac{T}{2\pi}\log\frac{T}{2\pi e}
+       +\frac78+S(T)+O(T^{-1}).
+ \label{v4-arith:weil:eq:zero-count}
+\end{equation}
+At a zero ordinate, the formula for the stated convention \(N(T)\)
+uses the right limit of \(S\). The classical bound
+\(S(T)=O(\log T)\) gives
+\[
+ N(T)=\frac{T}{2\pi}\log\frac{T}{2\pi e}+O(\log T).
+\]
+\end{proposition}
+\begin{proof}
+Use the rectangle with real parts \(-1,2\) and imaginary parts
+\(0,T\). There are no zeros on its boundary. The real bottom edge
+contributes no argument change, since \(\xi\) is real and nonzero there.
+Reflection \(s\mapsto1-\bar s\) and conjugation of \(\xi\) show that
+the remaining argument change is twice the change along
+\[
+ C_T:\quad 2\longrightarrow2+iT\longrightarrow\tfrac12+iT.
+\]
+The argument principle therefore gives
+\(N(T)=\pi^{-1}\Delta_{C_T}\arg\xi\).
+
+At the endpoint, the continuous arguments of \(s\) and \(s-1\)
+sum to \(\pi\). The factorization
+\(\xi(s)=\tfrac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)\)
+now gives the first equality. In particular, the horizontal
+segment contributes to \(S(T)\).
+
+Stirling's expansion at \(z=1/4+iT/2\) gives
+\[
+ \vartheta(T)=\frac T2\log\frac{T}{2\pi}
+       -\frac T2-\frac\pi8+\frac1{48T}+O(T^{-3}).
+\]
+For the constant, the term
+\((z-\tfrac12)\log z-z\) contributes
+\(-\tfrac14\arg z\to-\pi/8\).
+Thus \(7/8=1-1/8\).
+Taking right limits proves the convention at zero heights.
+
+The argument bound is the classical theorem. A precise primary
+estimate is Hasanalizade--Shen--Wong,
+\emph{Counting zeros of the Riemann zeta function},
+Theorem~1.3 and Corollary~1.4,
+\href{https://arxiv.org/abs/2107.06506}{arXiv:2107.06506}.
+Their Corollary~1.2 also supplies the displayed estimate for \(N(T)\).
+\end{proof}
+
+This count controls ordinary convergent sums. It does not regularize
+divergent positive-power moments.
+ For example, put
+\[
+ M_n(T)=\sum_{0<\operatorname{Im}\rho\le T}
+                 \bigl(\tfrac14+(\operatorname{Im}\rho)^2\bigr)^n.
+\]
+For every integer \(n\ge0\), partial summation gives
+\begin{equation}
+ M_n(T)=
+ \frac{T^{2n+1}}{2\pi(2n+1)}\log\frac{T}{2\pi}
+ -\frac{T^{2n+1}}{2\pi(2n+1)^2}
+ +O_n(T^{2n}\log T).
+ \label{v4-arith:weil:eq:positive-moments}
+\end{equation}
+
+Indeed, integrate \((1/4+t^2)^n\) against \(dN(t)\).
+The error \(O(\log(2+t))\) in the count contributes
+\(O_n(T^{2n}\log T)\). In the main integral, replacing
+\((1/4+t^2)^n\) by \(t^{2n}\) gives a smaller error.
+The integral of \(t^{2n}\log(t/(2\pi))/(2\pi)\) is the displayed main term.
+
+Every \(M_n(T)\) diverges. A finite arithmetic moment functional
+therefore requires an additional, compatible regularization.
+
+\section{The complete arithmetic functional}
+\label{v4-arith:weil:functional}
+
+Write \(\psi_\Gamma=\Gamma'/\Gamma\) and define the real even functions
+\begin{equation}
+ a(t)=\operatorname{Re}\psi_\Gamma(\tfrac14+\tfrac{it}{2})-\log\pi,
+ \qquad k(t)=-a(t).
+ \label{v4-arith:weil:eq:gamma-kernels}
+\end{equation}
+They are smooth on the real line and have at most logarithmic growth.
+
+For \(f\in\mathscr A_c\), set
+\begin{align}
+ P(f)&=h_f(i/2)+h_f(-i/2),\notag\\
+ W_\infty(f)&=\frac1{2\pi}\int_{\mathbb R}h_f(t)k(t)\,dt,\notag\\
+ W_{\mathrm{fin}}(f)&=
+       \sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}
+                    \bigl(f(\log n)+f(-\log n)\bigr),\notag\\
+ W(f)&=P(f)-W_\infty(f)-W_{\mathrm{fin}}(f).
+ \label{v4-arith:weil:eq:functional}
+\end{align}
+The prime sum is finite. The gamma integral is absolutely convergent.
+These formulas define continuous complex-linear functionals on the
+compact test space. The sign of \(W_\infty\) is fixed by its density \(k\).
+
+\begin{theorem}[The complete explicit formula]
+\label{v4-arith:weil:thm:explicit}
+For every \(f\in\mathscr A_c\),
+\begin{equation}
+ W(f)=\sum_\rho h_f(z_\rho).
+ \label{v4-arith:weil:eq:explicit}
+\end{equation}
+The sum over zeros is absolutely convergent, with multiplicity.
+For \(f,g\in\mathscr A_c\), the form
+\begin{equation}
+ q_W(f,g)=W(f*g^*)
+       =\sum_\rho h_f(z_\rho)\overline{h_g(\bar z_\rho)}
+ \label{v4-arith:weil:eq:pairing}
+\end{equation}
+is Hermitian and linear in its first argument.
+\end{theorem}
+\begin{proof}
+Put \(H(s)=\Phi_f(s)\), and choose \(1<c<3/2\).
+Let
+\[
+ G(s)=\frac{\Lambda_\zeta'(s)}{\Lambda_\zeta(s)}
+      =-\frac12\log\pi+\frac12\psi_\Gamma(s/2)
+                         +\frac{\zeta'(s)}{\zeta(s)}.
+\]
+Inside the strip \(1-c\le\operatorname{Re}s\le c\), its residues
+are the zero multiplicities and \(-1\) at each of \(0,1\).
+The functional equation gives \(G(1-s)=-G(s)\).
+
+We justify the contour limit. For all sufficiently large integers \(j\),
+choose \(T_j\in[j,j+1]\) at distance at least \(j^{-2}\) from every zero
+ordinate. The excluded intervals have total length
+\(O(\log j/j)<1\), by Lemma~\ref{v4-arith:weil:lem:zeros}.
+
+On the horizontal segments at heights \(\pm T_j\),
+\eqref{v4-arith:weil:eq:product} gives a polynomial bound for
+\(\xi'/\xi\). The zeros with \(|\rho|\le2T_j\) are bounded using the
+chosen distance. For the others,
+\[
+ \left|\frac1{s-\rho}+\frac1\rho\right|
+       \le C\frac{|s|}{|\rho|^2}.
+\]
+The rational correction
+\(G=\xi'/\xi-1/s-1/(s-1)\) has the same bound.
+Rapid vertical-strip decay of \(H\) makes both horizontal integrals
+tend to zero.
+
+Apply the residue theorem to \(G(s)H(s)\) on that rectangle.
+Reflection of the left vertical side gives
+\begin{equation}
+ \sum_\rho H(\rho)-H(0)-H(1)
+ =\frac1{2\pi i}\int_{\operatorname{Re}s=c}
+             G(s)\bigl(H(s)+H(1-s)\bigr)\,ds.
+ \label{v4-arith:weil:eq:contour}
+\end{equation}
+Absolute convergence of the zero sum follows from strip decay and
+the zero count.
+
+On the right line, the Dirichlet series in
+\eqref{v4-arith:weil:eq:euler} is absolutely convergent.
+Termwise integration is permitted. Fourier inversion gives
+\[
+ \frac1{2\pi i}\int_{\operatorname{Re}s=c}
+                 n^{-s}H(s)\,ds=n^{-1/2}f(\log n).
+\]
+The reflected test gives \(n^{-1/2}f(-\log n)\).
+The negative sign in \(\zeta'/\zeta\) therefore produces
+\(-W_{\mathrm{fin}}(f)\).
+
+Move the gamma part of the integral to \(\operatorname{Re}s=1/2\).
+Its logarithmic derivative has no pole between these lines.
+The two reflected integrals combine to
+\[
+ \frac1{2\pi}\int_{\mathbb R}h_f(t)
+       \bigl(\operatorname{Re}\psi_\Gamma(\tfrac14+\tfrac{it}{2})
+                     -\log\pi\bigr)\,dt=-W_\infty(f).
+\]
+Finally, \(H(0)=h_f(i/2)\) and \(H(1)=h_f(-i/2)\).
+This proves \eqref{v4-arith:weil:eq:explicit}.
+
+Fourier multiplication proves the paired formula.
+The zero multiset is invariant under
+\(\rho\mapsto1-\bar\rho\), which sends \(z_\rho\) to \(\bar z_\rho\).
+Reindexing the absolutely convergent sum proves Hermitian symmetry.
+\end{proof}
+
+In \eqref{v4-arith:weil:eq:pairing}, conjugation acts at
+\(\bar z_\rho\). Replacing the summand by \(|h_f(z_\rho)|^2\)
+would change the form when \(z_\rho\) is nonreal.
+Under the Riemann hypothesis every \(z_\rho\) is real, and that
+specialization is valid.
+
+\section{Exponential extensions and their topology}
+\label{v4-arith:weil:exponential}
+
+Gaussian tests require a domain larger than \(\mathscr A_c\).
+The growth threshold in Theorem~\ref{v4-arith:weil:thm:prime-threshold}
+indicates the needed exponential margin.
+
+\begin{definition}[Exponential test spaces]
+\label{v4-arith:weil:def:exponential}
+For \(a_0>1/2\), let
+\begin{equation}
+ \mathscr A_{a_0}=
+ \left\{f\in C^\infty(\mathbb R):
+ p_{a_0,j}(f):=\int_{\mathbb R}
+          e^{a_0|x|}|f^{(j)}(x)|\,dx<\infty
+          \text{ for every }j\ge0\right\}.
+ \label{v4-arith:weil:eq:exponential}
+\end{equation}
+Give this space the topology of its displayed seminorms.
+Put
+\[
+ \mathscr A_{\exp}=\bigcup_{a_0>1/2}\mathscr A_{a_0},\qquad
+ \mathscr A_\infty=\bigcap_{a_0>1/2}\mathscr A_{a_0}.
+\]
+The union has the final locally convex topology of the steps
+\(\mathscr A_{1/2+1/n}\). The intersection has all the exponential
+seminorms. Convolution and the involution are as in
+\eqref{v4-arith:weil:eq:convolution}.
+\end{definition}
+
+\begin{theorem}[Continuity on each exponential step]
+\label{v4-arith:weil:thm:extension}
+Each \(\mathscr A_{a_0}\) is a complete Fr\'echet convolution
+\(*\)-algebra, and \(\mathscr A_c\) is dense in it.
+The transform \(h_f\) is holomorphic for
+\(|\operatorname{Im}z|<a_0\). All its derivatives decrease rapidly
+on smaller closed strips.
+
+Every term of \eqref{v4-arith:weil:eq:functional} extends continuously
+to this step. There is a constant \(C_{a_0}\) such that
+\begin{equation}
+ |W(f)|\le C_{a_0}
+       \bigl(p_{a_0,0}(f)+p_{a_0,1}(f)+p_{a_0,2}(f)\bigr).
+ \label{v4-arith:weil:eq:continuity}
+\end{equation}
+The explicit formula and its Hermitian pairing remain valid, with
+absolutely convergent prime and zero sums.
+\end{theorem}
+\begin{proof}
+The inequality \(e^{a_0|x+y|}\le e^{a_0|x|}e^{a_0|y|}\) gives
+\[
+ p_{a_0,j}(f*g)\le p_{a_0,j}(f)p_{a_0,0}(g).
+\]
+The involution preserves each seminorm. A Cauchy sequence has weighted
+\(L^1\) limits for every derivative. Distributional differentiation
+identifies successive limits. Local one-dimensional Sobolev regularity
+then gives a smooth representative with those derivatives.
+This proves completeness.
+
+Choose \(\chi\in C_c^\infty(\mathbb R)\) equal to one near zero.
+Leibniz's rule shows
+\(\chi(x/R)f(x)\to f(x)\) in every seminorm.
+The errors are integrable derivative tails multiplied by bounded
+cutoff derivatives and nonpositive powers of \(R\).
+This proves density.
+
+On a strip \(|\operatorname{Im}z|\le b<a_0\), the spare weight
+\(e^{(a_0-b)|x|}\) controls every polynomial in \(x\).
+Differentiation in \(z\) and integration by parts in \(x\) give the
+asserted holomorphy and rapid decay. The two polar evaluations are
+bounded by \(p_{a_0,0}(f)\).
+On the real line,
+\[
+ |h_f(t)|\le
+ \min\{p_{a_0,0}(f),\,|t|^{-2}p_{a_0,2}(f)\}.
+\]
+Logarithmic growth of \(k\) therefore controls the gamma integral.
+
+The function \(e^{a_0|x|}f(x)\) has an integrable weak derivative.
+Integrating from infinity on either half-line gives
+\[
+ \sup_x e^{a_0|x|}|f(x)|
+       \le a_0p_{a_0,0}(f)+p_{a_0,1}(f).
+\]
+Consequently the absolute prime sum is at most
+\[
+ 2\bigl(a_0p_{a_0,0}(f)+p_{a_0,1}(f)\bigr)
+           \sum_{n\ge2}\frac{\log n}{n^{a_0+1/2}}.
+\]
+This series converges because \(a_0>1/2\), proving
+\eqref{v4-arith:weil:eq:continuity}.
+
+Strip decay and the zero count similarly control the zero sum.
+Pass to the limit through the compact cutoffs to obtain the explicit
+formula. Convolution continuity proves the paired assertion.
+\end{proof}
+
+The extensions agree on overlapping steps, so they define \(W\) on
+\(\mathscr A_{\exp}\). All assertions about passage of a quadratic
+inequality below use a specified step or the compact test topology.
+No completeness claim for the union is needed.
+
+The intersection \(\mathscr A_\infty\) is the space of smooth functions
+with rapid exponential decay. Its topology is equivalently given by
+\begin{equation}
+ \sup_x e^{m|x|}(1+|x|)^N|f^{(j)}(x)|,
+       \qquad m,N,j\in\mathbb N.
+ \label{v4-arith:weil:eq:rapid-exponential}
+\end{equation}
+Indeed, one extra exponential weight bounds a polynomial weight and
+an integral. Conversely, the weighted \(L^1\) bounds for two consecutive
+derivatives bound the weighted supremum as in the proof above.
+Compact cutoffs converge in all these seminorms.
+
+The gamma functional alone extends continuously to Schwartz space.
+The prime functional does not have such an extension: its positive
+measure contains \(\mu_{1/2}\) and its reflection.
+Thus Schwartz approximation alone does not justify passing each
+arithmetic term to a limit.
+
+\begin{proposition}[The regular convolution norm]
+\label{v4-arith:weil:prop:regular}
+Convolution by \(f\in\mathscr A_{\exp}\) acts boundedly on
+\(L^2(\mathbb R)\), with operator norm \(\|h_f\|_\infty\).
+The completion for this norm is \(C_0(\mathbb R)\) under Fourier
+transform.
+\end{proposition}
+\begin{proof}
+Plancherel turns convolution into multiplication by \(h_f\).
+Since \(f\in L^1\), its transform is continuous and vanishes at infinity.
+To prove density, start with \(H\in C_c^\infty(\mathbb R)\) in the
+frequency variable. Its inverse Fourier transform \(v\) is Schwartz.
+Compact cutoffs \(v_R\) converge to \(v\) in \(L^1\), so
+\(\|h_{v_R}-H\|_\infty\le\|v_R-v\|_1\to0\).
+Finally, \(C_c^\infty\) is uniformly dense in \(C_0\).
+\end{proof}
+
+\section{The polar and finite-prime forms}
+\label{v4-arith:weil:signed-pieces}
+
+For \(f\in\mathscr A_{\exp}\), write
+\[
+ \ell_-(f)=\int f(x)e^{-x/2}\,dx,\qquad
+ \ell_+(f)=\int f(x)e^{x/2}\,dx.
+\]
+Both are continuous on every exponential step.
+
+\begin{proposition}[The full polar matrix]
+\label{v4-arith:weil:prop:polar}
+One has
+\begin{equation}
+ P(f*g^*)=
+ \ell_-(f)\overline{\ell_+(g)}
+       +\ell_+(f)\overline{\ell_-(g)}.
+ \label{v4-arith:weil:eq:polar}
+\end{equation}
+On compact tests, the map
+\((\ell_-,\ell_+):\mathscr A_c\to\mathbb C^2\) is surjective.
+The polar form has rank two, with one positive and one negative
+direction. Its kernel is the common kernel of the two moments.
+On the complex even tests it is the positive form
+\(2\ell_+(f)\overline{\ell_+(g)}\).
+\end{proposition}
+\begin{proof}
+Evaluate \(h_fh_g^\sharp\) at \(i/2\) and \(-i/2\).
+A linear relation between the two moment functionals would make
+\(c_-e^{-x/2}+c_+e^{x/2}\) vanish identically.
+Its value and derivative at zero force \(c_-=c_+=0\).
+The map therefore has two-dimensional range.
+
+The matrix on that range is
+\(\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)\).
+Its eigenvalues are \(1,-1\). Evenness gives \(\ell_-=\ell_+\),
+which proves the last assertion.
+\end{proof}
+
+A right inverse \(S:\mathbb C^2\to\mathscr A_c\) gives the continuous
+projection \(1-S(\ell_-,\ell_+)\) onto the polar kernel.
+A single vector with norm square \(|\ell_+(f)|^2\) does not realize
+the full polar form.
+
+The prime term has a different finite-support realization.
+For \(R>0\), let \(j_R:L^2([-R,R])\to L^2(\mathbb R)\) extend by zero.
+Write \(T_a v(x)=v(x-a)\), and define
+\begin{equation}
+ B_R=\sum_{2\le n\le e^{2R}}\frac{\Lambda(n)}{\sqrt n}
+                  j_R^*(T_{\log n}+T_{-\log n})j_R.
+ \label{v4-arith:weil:eq:prime-operator}
+\end{equation}
+
+\begin{proposition}[The finite-prime operator]
+\label{v4-arith:weil:prop:prime-operator}
+The operator \(B_R\) is bounded and self-adjoint, with
+\(\|B_R\|\le2\sum_{n\le e^{2R}}\Lambda(n)n^{-1/2}\).
+For smooth \(f,g\) supported in \((-R,R)\),
+\[
+ W_{\mathrm{fin}}(f*g^*)=\langle B_Rf,g\rangle
+ =\langle |B_R|^{1/2}f,
+                  \operatorname{sgn}(B_R)|B_R|^{1/2}g\rangle.
+\]
+These pairings agree under enlargement of the support interval.
+\end{proposition}
+\begin{proof}
+Translations are unitary and \(T_a^*=T_{-a}\), proving the operator
+claims and the norm bound. A change of variables gives
+\[
+ (f*g^*)(a)=\int f(x)\overline{g(x-a)}\,dx
+                     =\langle T_{-a}j_Rf,j_Rg\rangle.
+\]
+This vanishes for \(|a|\ge2R\). Summing at both signs of each
+prime-power logarithm proves the first identity and compatibility.
+The spectral theorem for \(B_R\), with \(\operatorname{sgn}(0)=0\),
+proves the second identity.
+\end{proof}
+
+\begin{example}[Two translated bumps]
+\label{v4-arith:weil:ex:prime-signs}
+Put \(L=\log2\). Choose a nonzero real smooth \(b\) supported in
+\((-\varepsilon,\varepsilon)\), where
+\(2\varepsilon<\min\{\log2,\log(3/2)\}\).
+On the span of \(b,T_Lb\), the finite-prime form has matrix
+\begin{equation}
+ \frac{\log2}{\sqrt2}\|b\|_2^2
+                  \begin{pmatrix}0&1\\1&0\end{pmatrix}.
+ \label{v4-arith:weil:eq:prime-signs}
+\end{equation}
+Indeed, \(b*b^*\) is supported in \([-2\varepsilon,2\varepsilon]\)
+and has value \(\|b\|_2^2\) at zero. Only the two shifts
+\(\pm\log2\) meet the off-diagonal correlations.
+
+Hence
+\[
+ W_{\mathrm{fin}}\bigl((b\pm T_Lb)*(b\pm T_Lb)^*\bigr)
+                    =\pm\sqrt2\log2\,\|b\|_2^2.
+\]
+This excludes a positive Hilbert realization of the finite-prime
+form on all compact tests. In the full form that term is subtracted.
+Its negative value is therefore not a negative full Weil square.
+\end{example}
+
+Prime powers remain essential even in such small examples.
+Two sufficiently narrow bumps separated by \(\log4\) have an
+off-diagonal contribution \(\Lambda(4)/\sqrt4=(\log2)/2\).
+Retaining only primes would erase that contribution.
+
+\section{The gamma kernel and its auxiliary form}
+\label{v4-arith:weil:gamma}
+
+The signed gamma density \(k\) has both signs. Its absolute value
+cannot be absorbed into an unspecified positive measure without
+changing the arithmetic functional.
+To see its shape explicitly, set \(c_n=n+1/4\). The digamma series gives
+\begin{equation}
+ a(t)=a(0)+\sum_{n\ge0}
+       \frac{t^2/4}{c_n(c_n^2+t^2/4)},\qquad
+ a(0)=-\gamma_E-\frac\pi2-3\log2-\log\pi.
+ \label{v4-arith:weil:eq:digamma}
+\end{equation}
+Here and below \(a=-k\), as in
+\eqref{v4-arith:weil:eq:gamma-kernels}.
+See
+\href{https://dlmf.nist.gov/5.7.E6}{DLMF 5.7.6} and
+\href{https://dlmf.nist.gov/5.4.E19}{5.4.19}.
+
+\begin{proposition}[The gamma signs]
+\label{v4-arith:weil:prop:gamma-signs}
+The function \(a\) is even and strictly increasing on \((0,\infty)\).
+It has its minimum at zero and satisfies
+\[
+ a(t)=\log\frac{|t|}{2\pi}+O(t^{-2})
+                  \qquad(|t|\to\infty).
+\]
+Thus \(k(0)>0\), and \(k(t)\to-\infty\).
+The function \(|\Gamma(1/4+it/2)|^2\) is not a constant multiple of
+\(k(t)\).
+\end{proposition}
+\begin{proof}
+Subtract the digamma series at zero. This gives
+\eqref{v4-arith:weil:eq:digamma}, whose summands are nonnegative and
+strictly increasing in \(|t|\). Their derivatives converge uniformly
+on compact intervals:
+\[
+ a'(t)=\sum_{n\ge0}
+       \frac{c_nt/2}{(c_n^2+t^2/4)^2}>0\qquad(t>0).
+\]
+The value at zero follows from the reflection and duplication identities
+for \(\psi_\Gamma\). Stirling's expansion
+\(\psi_\Gamma(z)=\log z-1/(2z)+O(|z|^{-2})\), on the vertical line
+\(\operatorname{Re}z=1/4\), gives the asymptotic.
+Finally, the gamma absolute square is strictly positive everywhere,
+whereas \(k\) changes sign.
+\end{proof}
+
+The phase and the absolute square also have different derivatives:
+\begin{equation}
+ \frac{d}{dt}\arg\Gamma(\tfrac14+\tfrac{it}{2})
+       =\frac12\operatorname{Re}\psi_\Gamma(\tfrac14+\tfrac{it}{2}),
+ \qquad
+ \frac{d}{dt}\log|\Gamma(\tfrac14+\tfrac{it}{2})|^2
+       =-\operatorname{Im}\psi_\Gamma(\tfrac14+\tfrac{it}{2}).
+ \label{v4-arith:weil:eq:gamma-derivatives}
+\end{equation}
+These follow by taking the imaginary and real parts of
+\((i/2)\psi_\Gamma\). A local continuous phase is sufficient.
+For \(\Lambda_\infty(s)=\pi^{-s/2}\Gamma(s/2)\), the arithmetic
+density is
+\[
+ k(t)=-2\operatorname{Re}
+      \frac{\Lambda_\infty'}{\Lambda_\infty}(\tfrac12+it).
+\]
+This specifies the operation and normalization that a local
+archimedean comparison must preserve.
+
+\begin{proposition}[The kernel away from the origin]
+\label{v4-arith:weil:prop:off-origin}
+On compact tests supported away from zero, the distribution
+\(P-W_\infty\) is integration against
+\begin{equation}
+ K(x)=2\cosh(x/2)-\frac{e^{-|x|/2}}{1-e^{-2|x|}},
+                      \qquad x\ne0.
+ \label{v4-arith:weil:eq:off-origin}
+\end{equation}
+In particular, if \(0<b<c<\log2\) and \(f\ne0\) is even,
+nonnegative and supported in \((-c,-b)\cup(b,c)\), then
+\[
+ W_{\mathrm{fin}}(f)=0,\qquad
+ W_\infty(f)=2\int_b^c
+              \frac{e^{-x/2}}{1-e^{-2x}}f(x)\,dx>0.
+\]
+\end{proposition}
+\begin{proof}
+The polar functional is integration against \(2\cosh(x/2)\).
+Use the integral identity
+\[
+ \psi_\Gamma(z)+\gamma_E
+       =\int_0^\infty\frac{e^{-v}-e^{-zv}}{1-e^{-v}}\,dv,
+                       \qquad\operatorname{Re}z>0,
+\]
+as in \href{https://dlmf.nist.gov/5.9.E16}{DLMF 5.9.16}.
+For a test vanishing near zero, constant Fourier terms contribute
+zero. Fourier inversion of the cosine term, followed by \(v=2|x|\),
+gives the second term of \eqref{v4-arith:weil:eq:off-origin}
+with its negative sign. Truncating the \(v\)-integral first justifies
+the calculation.
+
+The support condition removes its singular endpoint,
+and exponential decay controls infinity.
+The final assertion follows because no prime-power logarithm lies
+in the stated support.
+\end{proof}
+
+\subsection{A second gamma density}
+
+Define
+\[
+ b(t)=\operatorname{Re}\psi_\Gamma(\tfrac14+\tfrac{it}{2})+\log\pi
+                   =2\log\pi-k(t),
+\]
+and the auxiliary form
+\begin{equation}
+ G_+(f,g)=\frac1{2\pi}\int_{\mathbb R}
+                  h_f(t)\overline{h_g(t)}b(t)\,dt.
+ \label{v4-arith:weil:eq:auxiliary}
+\end{equation}
+It is continuous on Schwartz space. Plancherel gives
+\begin{equation}
+ W_\infty(f*g^*)=
+          2\log\pi\,\langle f,g\rangle_{L^2}-G_+(f,g).
+ \label{v4-arith:weil:eq:auxiliary-comparison}
+\end{equation}
+The function \(b\) is strictly increasing in \(|t|\), with
+\[
+ b(0)=-\gamma_E-\frac\pi2-3\log2+\log\pi<0,\qquad
+ b(t)=\log(|t|\pi/2)+O(t^{-2}).
+\]
+It therefore has a unique positive zero, denoted \(t_b\).
+
+The interval \(0.84<t_b<0.86\) follows from a positive-tail estimate.
+Put
+\[
+ S_N(t)=b(0)+\sum_{n=0}^N
+          \frac{t^2/4}{c_n(c_n^2+t^2/4)}.
+\]
+Then
+\[
+ 0\le b(t)-S_N(t)\le\frac{t^2}{8(N+1/4)^2}.
+\]
+At \(N=20\), the rational bounds
+\[
+ \begin{gathered}
+ 0.577<\gamma_E<0.578,\qquad3.1415<\pi<3.1416,\\
+ 0.6931<\log2<0.6932,\qquad1.1447<\log\pi<1.1448
+ \end{gathered}
+\]
+give
+\[
+ -0.024<S_{20}(0.84)<-0.020,\qquad
+ 0.017<S_{20}(0.86)<0.020.
+\]
+Both tails are less than \(0.00023\). The signs and monotonicity
+prove the interval.
+
+For a compact test, define the two nonnegative energies
+\[
+ A_b(f)=\int_{|t|<t_b}|h_f(t)|^2(-b(t))\,dt,\qquad
+ B_b(f)=\int_{|t|>t_b}|h_f(t)|^2b(t)\,dt.
+\]
+Their difference gives \(G_+(f,f)=(B_b(f)-A_b(f))/(2\pi)\).
+The sufficient high-frequency condition is
+\begin{equation}
+ 2t_b|b(0)|\sup_{|t|\le t_b}|h_f(t)|^2\le B_b(f).
+ \label{v4-arith:weil:eq:high-frequency}
+\end{equation}
+It bounds \(A_b(f)\) by \(B_b(f)\), and hence implies \(G_+(f,f)\ge0\).
+
+\begin{proposition}[Compact high-frequency tests]
+\label{v4-arith:weil:prop:high-frequency}
+The class defined by \eqref{v4-arith:weil:eq:high-frequency} contains
+nonzero real even compact tests. It is a proper subset of
+\(\mathscr A_c\).
+\end{proposition}
+\begin{proof}
+Choose a real even compact smooth \(\chi\) with \(\int\chi\ne0\).
+For \(M>0\), let \(f_M(x)=\chi(x)\cos(Mx)\).
+Then
+\[
+ h_{f_M}(t)=\tfrac12\bigl(h_\chi(t+M)+h_\chi(t-M)\bigr).
+\]
+Schwartz decay makes the left side of
+\eqref{v4-arith:weil:eq:high-frequency} tend to zero faster than
+every inverse power of \(M\).
+
+Near \(t=M\), the translate \(h_\chi(t-M)\) has modulus bounded below
+on a fixed interval, while \(h_\chi(t+M)\to0\) uniformly there.
+Since \(b(t)\sim\log M\) on that interval, \(B_b(f_M)\ge c\log M\)
+for large \(M\). This proves the first assertion.
+
+For the second, set \(v_L(x)=L^{-1/2}\chi(x/L)\).
+A change of variables gives
+\[
+ G_+(v_L,v_L)=\frac1{2\pi}\int_{\mathbb R}
+              |h_\chi(t)|^2b(t/L)\,dt
+         \longrightarrow b(0)\|\chi\|_2^2<0.
+\]
+Logarithmic growth and Schwartz decay justify dominated convergence.
+Thus \(v_L\) fails \eqref{v4-arith:weil:eq:high-frequency}
+for all sufficiently large \(L\).
+\end{proof}
+
+The relation to full Weil positivity retains the arithmetic terms.
+Put \(R(f)=P(f*f^*)-W_{\mathrm{fin}}(f*f^*)\). Then
+\begin{equation}
+ q_W(f,f)=R(f)-2\log\pi\,\|f\|_2^2
+                       +\frac{B_b(f)-A_b(f)}{2\pi}.
+ \label{v4-arith:weil:eq:full-energy}
+\end{equation}
+Thus \(q_W(f,f)\ge0\) is equivalent to
+\[
+ \frac{A_b(f)}{2\pi}+2\log\pi\,\|f\|_2^2
+       \le\frac{B_b(f)}{2\pi}+R(f).
+\]
+Auxiliary positivity controls only the difference of the two energies.
+
+A nonnegative majorant \(v\ge-b\) on \([-t_b,t_b]\) gives the useful
+bound \(A_b(f)\le\int_{-t_b}^{t_b}|h_f|^2v\).
+For support in \([-R,R]\), Cauchy--Schwarz gives
+\[
+ \sup_t|h_f(t)|^2\le2R\|f\|_2^2,\qquad
+ A_b(f)\le4t_bR|b(0)|\|f\|_2^2.
+\]
+These are sufficient estimates for the corresponding terms.
+They place no bound on \(R(f)\).
+
+\section{Gaussian normalization and cross terms}
+\label{v4-arith:weil:gaussians}
+
+All derivatives of a Gaussian have rapid exponential decay.
+Theorem~\ref{v4-arith:weil:thm:extension} therefore applies to the
+entire Gaussian family and to its convolution products.
+For \(\lambda>0\), set
+\[
+ g_\lambda(x)=e^{-\lambda x^2/2}.
+\]
+Completing the square gives
+\begin{equation}
+ h_{g_\lambda}(t)=\sqrt{\frac{2\pi}{\lambda}}e^{-t^2/(2\lambda)},
+ \qquad
+ (g_\lambda*g_\mu)(x)=
+ \sqrt{\frac{2\pi}{\lambda+\mu}}\,
+         e^{-\lambda\mu x^2/[2(\lambda+\mu)]}.
+ \label{v4-arith:weil:eq:gaussian-convolution}
+\end{equation}
+These identities include all normalization factors.
+
+Define the normalized signed gamma integral
+\begin{equation}
+ H(\lambda)=\frac1{\sqrt{\pi\lambda}}
+                   \int_{\mathbb R}e^{-t^2/\lambda}k(t)\,dt.
+ \label{v4-arith:weil:eq:H}
+\end{equation}
+If \(\nu=2\lambda\mu/(\lambda+\mu)\), then
+\begin{equation}
+ W_\infty(g_\lambda*g_\mu)
+       =\sqrt{\frac{2\pi}{\lambda+\mu}}\,H(\nu).
+ \label{v4-arith:weil:eq:gaussian-gamma}
+\end{equation}
+This follows by inserting the Fourier product in the integral
+with coefficient \(1/(2\pi)\).
+
+\begin{theorem}[A convergent Gaussian series]
+\label{v4-arith:weil:thm:erfc}
+Let
+\(\operatorname{erfc}(x)=\frac2{\sqrt\pi}\int_x^\infty e^{-u^2}\,du\).
+For every \(\lambda>0\),
+\begin{equation}
+ H(\lambda)=k(0)-\sum_{n\ge0}
+ \left(\frac1{c_n}
+       -\frac{2\sqrt\pi}{\sqrt\lambda}
+        e^{4c_n^2/\lambda}\operatorname{erfc}(2c_n/\sqrt\lambda)\right).
+ \label{v4-arith:weil:eq:erfc}
+\end{equation}
+Each summand is nonnegative and at most \(\lambda/(8c_n^3)\).
+The series converges uniformly on compact \(\lambda\)-intervals.
+\end{theorem}
+\begin{proof}
+The identity \eqref{v4-arith:weil:eq:digamma} expresses
+\(k(0)-k(t)\) as a sum of nonnegative functions.
+Tonelli permits integration of this sum against the Gaussian.
+For \(d>0\),
+\[
+ \int_{\mathbb R}\frac{e^{-t^2/\lambda}}{t^2+d^2}\,dt
+ =\sqrt\pi\int_0^\infty
+            \frac{e^{-d^2u}}{\sqrt{u+1/\lambda}}\,du
+ =\frac\pi d e^{d^2/\lambda}\operatorname{erfc}(d/\sqrt\lambda).
+\]
+The first equality uses
+\((t^2+d^2)^{-1}=\int_0^\infty e^{-u(t^2+d^2)}\,du\).
+The substitution \(v=d\sqrt{u+1/\lambda}\) gives the second.
+Set \(d=2c_n\) to obtain \eqref{v4-arith:weil:eq:erfc}.
+
+Replacing \(c_n^2+t^2/4\) by \(c_n^2\) bounds its summand by
+\[
+ \frac1{\sqrt{\pi\lambda}}
+       \int e^{-t^2/\lambda}\frac{t^2}{4c_n^3}\,dt
+             =\frac{\lambda}{8c_n^3}.
+\]
+This proves uniform convergence.
+\end{proof}
+
+\begin{proposition}[The signed Gaussian threshold]
+\label{v4-arith:weil:prop:gaussian-threshold}
+The function \(H\) is continuous and strictly decreasing on
+\((0,\infty)\). Its limits at zero and infinity are \(k(0)>0\)
+and \(-\infty\), respectively. It has a unique zero \(\lambda_c>0\).
+Consequently,
+\[
+ W_\infty(g_\lambda*g_\lambda)\ge0
+                    \quad\Longleftrightarrow\quad\lambda\le\lambda_c.
+\]
+For \(a_j\ge0\) and \(0<\lambda_j\le\lambda_c\),
+\[
+ W_\infty\left(
+       \left(\sum_j a_jg_{\lambda_j}\right)*
+       \left(\sum_j a_jg_{\lambda_j}\right)^*\right)\ge0.
+\]
+\end{proposition}
+\begin{proof}
+After \(t=\sqrt\lambda\,u\), \(H(\lambda)\) is the average of
+\(k(\sqrt\lambda\,u)\) against \(\pi^{-1/2}e^{-u^2}\,du\).
+Strict radial decrease of \(k\) gives strict decrease of \(H\).
+Logarithmic growth supplies an integrable majorant on compact
+parameter intervals and near zero.
+Monotone convergence applied to
+\(k(0)-k(\sqrt\lambda\,u)\) gives divergence to infinity as
+\(\lambda\to\infty\). This proves the threshold assertion.
+
+If both \(\lambda,\mu\le\lambda_c\), their harmonic mean
+\(2\lambda\mu/(\lambda+\mu)\) is at most \(\lambda_c\).
+Every cross pairing in \eqref{v4-arith:weil:eq:gaussian-gamma}
+is therefore nonnegative. Expand the finite sum with
+coefficients \(a_i a_j\ge0\).
+
+\end{proof}
+
+The polar and prime values on a Gaussian square are
+\begin{equation}
+ \begin{aligned}
+ P(g_\lambda*g_\lambda)&=\frac{4\pi}{\lambda}e^{1/(4\lambda)},\\
+ W_{\mathrm{fin}}(g_\lambda*g_\lambda)
+   &=2\sqrt{\frac\pi\lambda}
+       \sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}
+                          e^{-\lambda(\log n)^2/4}.
+ \end{aligned}
+ \label{v4-arith:weil:eq:gaussian-arithmetic}
+\end{equation}
+The sum converges for every positive \(\lambda\).
+The full form subtracts both the prime and signed gamma terms
+from the polar term. Positivity of the gamma cone alone gives
+no sign for that complete expression.
+
+\subsection{The heat normalization}
+
+For \(t>0\), let
+\[
+ p_t(x)=\frac1{\sqrt{4\pi t}}e^{-x^2/(4t)},\qquad h_{p_t}(z)=e^{-tz^2}.
+\]
+The explicit formula becomes
+\begin{equation}
+ \begin{aligned}
+ \sum_\rho e^{-tz_\rho^2}
+ ={}&2e^{t/4}-\frac{\log\pi}{\sqrt{4\pi t}}
+    +\frac1{2\pi}\int_{\mathbb R}
+         e^{-tu^2}\operatorname{Re}\psi_\Gamma(\tfrac14+\tfrac{iu}{2})\,du\\
+ &-\frac1{\sqrt{\pi t}}
+       \sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}
+                           e^{-(\log n)^2/(4t)}.
+ \end{aligned}
+ \label{v4-arith:weil:eq:heat}
+\end{equation}
+Each expression is ordinarily convergent.
+
+On a compact interval of
+positive \(t\), every parameter derivative has an integrable or summable
+majorant. For the prime sum, a Gaussian in \(\log n\) dominates
+every inverse power of \(n\). For the zero sum,
+\(|e^{-tz_\rho^2}|\le e^{t/4}e^{-t(\operatorname{Im}\rho)^2}\).
+The zero count proves its summability.
+
+The difference between the two sides of \eqref{v4-arith:weil:eq:heat}
+is zero by the explicit formula. Its vanishing is distinct from
+nonnegativity of \(q_W\). The convolution law
+\(p_s*p_t=p_{s+t}\) evaluates cross terms, but does not determine
+their sign.
+
+\subsection{Changing the Fourier scale}
+
+For the convention
+\(\widehat f_{2\pi}(u)=\int f(x)e^{-2\pi iux}\,dx\), define
+\[
+ (\mathcal R f)(x)=\frac1{2\pi}f\left(-\frac{x}{2\pi}\right).
+\]
+A change of variables gives
+\begin{equation}
+ h_{\mathcal Rf}=\widehat f_{2\pi},\qquad
+ \mathcal R(f*g)=\mathcal Rf*\mathcal Rg,\qquad
+ \mathcal R(f^*)=(\mathcal Rf)^*.
+ \label{v4-arith:weil:eq:rescaling}
+\end{equation}
+If \(f\) has integrable derivatives weighted by \(e^{b_0|x|}\)
+with \(b_0>\pi\), then \(\mathcal Rf\in\mathscr A_{b_0/(2\pi)}\).
+Thus the complete arithmetic functional in this convention is
+\[
+ W_{2\pi}(f)=W(\mathcal Rf).
+\]
+Its prime term is
+\[
+ -\frac1{2\pi}\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}
+    \left(f\left(\frac{\log n}{2\pi}\right)
+             +f\left(-\frac{\log n}{2\pi}\right)\right),
+\]
+and its gamma integral is
+\((2\pi)^{-1}\int\widehat f_{2\pi}(u)a(u)\,du\).
+Both the sampling points and the measure factor change.
+
+For \(f_\ell(x)=e^{-\pi x^2/\ell}\), one has
+\(\widehat f_{\ell,2\pi}(u)=\sqrt\ell e^{-\pi\ell u^2}\).
+Multiplying \eqref{v4-arith:weil:eq:heat} at \(t=\pi\ell\)
+by \(\sqrt\ell\) gives
+\[
+ \begin{aligned}
+ \sqrt\ell\sum_\rho e^{-\pi\ell z_\rho^2}
+ ={}&2\sqrt\ell e^{\pi\ell/4}-\frac{\log\pi}{2\pi}
+ +\frac{\sqrt\ell}{2\pi}\int e^{-\pi\ell u^2}
+                  \operatorname{Re}\psi_\Gamma(\tfrac14+\tfrac{iu}{2})\,du\\
+ &-\frac1\pi\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}
+                         e^{-(\log n)^2/(4\pi\ell)}.
+ \end{aligned}
+\]
+This also fixes the constants in the two-scale Gaussian identity
+\(f_\ell*f_m=\sqrt{\ell m/(\ell+m)}\,f_{\ell+m}\).
+
+\subsection{The auxiliary Gaussian cone}
+
+The auxiliary density \(b\) has its own Gaussian average. Put
+\[
+ I(L)=\int_{\mathbb R}e^{-2\pi u^2/L}b(u)\,du,\qquad m_L=\sqrt{L/2}.
+\]
+Then
+\begin{equation}
+ \frac{I(L)}{m_L}=2\log\pi-H\left(\frac{L}{2\pi}\right).
+ \label{v4-arith:weil:eq:auxiliary-H}
+\end{equation}
+The normalized integral is strictly increasing and has a unique
+zero \(L_b>0\). Its equation is
+\(H(L_b/(2\pi))=2\log\pi\).
+This is a different level from \(H(\lambda_c)=0\).
+
+The individual integrals
+\[
+ J_n(L)=\int e^{-2\pi u^2/L}\frac{c_n}{c_n^2+u^2/4}\,du
+       =2\pi e^{8\pi c_n^2/L}
+                 \operatorname{erfc}\bigl(2c_n\sqrt{2\pi/L}\bigr)
+\]
+give the absolutely convergent paired series
+\[
+ I(L)=m_L(-\gamma_E+\log\pi)
+               +\sum_{n\ge0}\left(\frac{m_L}{n+1}-J_n(L)\right).
+\]
+Subtracting the value of the digamma series at zero improves its tail:
+\begin{equation}
+ \frac{I(L)}{m_L}=b(0)+
+      \sum_{n\ge0}\left(\frac1{c_n}-\frac{J_n(L)}{m_L}\right),
+ \qquad
+ 0\le\frac1{c_n}-\frac{J_n(L)}{m_L}
+                     \le\frac{L}{16\pi c_n^3}.
+ \label{v4-arith:weil:eq:auxiliary-series}
+\end{equation}
+The tail starting at \(n=N\ge1\) is at most
+\(L/[32\pi(N-3/4)^2]\).
+These formulas follow from Theorem~\ref{v4-arith:weil:thm:erfc}
+with \(\lambda=L/(2\pi)\). The difference
+\(1/(n+1)-1/c_n\) is absolutely summable, which justifies regrouping.
+
+The same real Gaussian integral also gives, for \(\alpha,d>0\),
+\[
+ \int_{\mathbb R}\frac{e^{-\alpha u^2}}{d-iu}\,du
+       =\pi e^{\alpha d^2}\operatorname{erfc}(d\sqrt\alpha).
+\]
+Indeed, \((d-iu)^{-1}=(d+iu)/(d^2+u^2)\), and the imaginary part
+integrates to zero.
+
+The small- and large-parameter limits are
+\begin{equation}
+ \frac{I(L)}{m_L}
+       =b(0)+\frac{L}{8\pi}b''(0)+O(L^2)
+                         \quad(L\downarrow0),\qquad
+ \frac{I(L)}{m_L}=\frac12\log L+O(1)
+                         \quad(L\to\infty).
+ \label{v4-arith:weil:eq:auxiliary-limits}
+\end{equation}
+For the first, scale \(u=\sqrt{L/(2\pi)}v\) and use the second
+moment \(1/2\) of \(\pi^{-1/2}e^{-v^2}\,dv\).
+Taylor expansion near zero and the Gaussian tail justify the remainder.
+For the second, use \(b(u)=\log|u|+O(1)\) outside a bounded interval.
+After scaling, \(\log|v|\) is Gaussian-integrable.
+The shrinking central interval contributes
+\(O(L^{-1/2}\log L)\) after subtraction of \(\tfrac12\log L\).
+
+To state the auxiliary cone in the \(2\pi\) convention, define
+\[
+ G_{2\pi}(f,g)=\frac1{2\pi}\int
+       \widehat f_{2\pi}(u)\overline{\widehat g_{2\pi}(u)}b(u)\,du,
+ \qquad F_L(x)=e^{-\pi Lx^2}.
+\]
+For \(L,M>0\), direct multiplication of their Fourier transforms gives
+\begin{equation}
+ G_{2\pi}(F_L,F_M)
+       =\frac{I(2LM/(L+M))}{2\pi\sqrt{LM}}.
+ \label{v4-arith:weil:eq:auxiliary-cross}
+\end{equation}
+
+\begin{proposition}[The exact auxiliary cone]
+\label{v4-arith:weil:prop:auxiliary-cone}
+The diagonal \(G_{2\pi}(F_L,F_L)\) is nonnegative exactly for
+\(L\ge L_b\), and vanishes exactly at \(L=L_b\).
+For a finite sum \(f=\sum_j a_jF_{L_j}\) with \(a_j\ge0\) and
+\(L_j\ge L_b\), one has \(G_{2\pi}(f,f)\ge0\).
+A nonzero such sum has zero value precisely when every active
+parameter equals \(L_b\). Nonnegativity also holds on the
+Schwartz closure of this cone.
+\end{proposition}
+\begin{proof}
+The diagonal formula is \(I(L)/(2\pi L)\).
+Its sign follows from \eqref{v4-arith:weil:eq:auxiliary-H}.
+For \(L,M\ge L_b\), their harmonic mean is at least \(L_b\), so
+every cross term in \eqref{v4-arith:weil:eq:auxiliary-cross}
+is nonnegative. Expand the finite sum.
+
+An active parameter strictly above \(L_b\) has a strictly positive
+diagonal term. If all active parameters equal \(L_b\), every term
+vanishes. Schwartz continuity proves the closure assertion.
+\end{proof}
+
+For example, take \(L_b/2<L<L_b\) and
+\(M>L_bL/(2L-L_b)\). Then \(M>L_b\) and
+\(2LM/(L+M)>L_b\), but \(I(L)<0\).
+The value of \(G_{2\pi}(F_L+\varepsilon F_M,
+F_L+\varepsilon F_M)\) remains negative for sufficiently small
+\(\varepsilon>0\). This lies outside the stated cone.
+
+Neither Gaussian cone is a complex vector space. Its nonzero elements
+are positive on all of \(\mathbb R\), and hence are not compactly
+supported. The span of centered Gaussians lies in the closed even
+Schwartz subspace, so it is not dense in the full Schwartz space.
+These facts do not prevent their use in \(\mathscr A_\infty\).
+They specify which density and positivity claims are available.
+
+For clarity, the two Fourier normalizations obey
+\[
+ \begin{aligned}
+ \frac1{2\pi}\int\widehat f_{2\pi}(u)
+       \overline{\widehat g_{2\pi}(u)}k(u)\,du
+   &=\frac{\log\pi}{\pi}\langle f,g\rangle_{L^2}
+                                      -G_{2\pi}(f,g),\\
+ W_\infty(f*g^*)&=\int\widehat f_{2\pi}(u)
+               \overline{\widehat g_{2\pi}(u)}k(2\pi u)\,du.
+ \end{aligned}
+\]
+The second identity follows from \(h_f(2\pi u)=\widehat f_{2\pi}(-u)\).
+A change of convention rescales the kernel argument as well as the
+measure.
+
+\section{The complete positivity criterion}
+\label{v4-arith:weil:positivity}
+
+The signs of the individual arithmetic terms do not decide the sign of
+their sum. The spectral formula does decide it once every zero lies on
+the critical line. The converse requires a test detecting a nonreal
+ordinate while controlling every other zero.
+
+Let \(\Sigma\) be the set of distinct ordinates
+\(z_\rho=-i(\rho-1/2)\), and let \(m_z\) be their multiplicities.
+The functional equation and conjugation make \(\Sigma\) invariant under
+\(z\mapsto-z\) and \(z\mapsto\bar z\), preserving multiplicity.
+It lies in \(|\operatorname{Im}z|\le1/2\) and is locally finite.
+Equation~\eqref{v4-arith:weil:eq:pairing} becomes
+\begin{equation}
+ q_W(f,g)=\sum_{z\in\Sigma}m_z
+                 h_f(z)\overline{h_g(\bar z)}.
+ \label{v4-arith:weil:eq:distinct-pairing}
+\end{equation}
+This absolutely convergent formula holds on every exponential test step.
+
+An individual nonreal pair has an indefinite two-dimensional form.
+Polynomial interpolation and a Gaussian control the other coordinates.
+
+\begin{theorem}[A negative test from an off-line zero]
+\label{v4-arith:weil:thm:negative-test}
+Suppose \(z_0=\gamma_0+i\eta_0\in\Sigma\), with \(\eta_0\ne0\).
+Then a polynomial times a modulated Gaussian belongs to
+\(\mathscr A_\infty\) and has negative Weil diagonal.
+There is also a compact smooth test with negative Weil diagonal.
+\end{theorem}
+\begin{proof}
+Choose \(R>1\), and let \(Z_R\) consist of the distinct points of
+\(\Sigma\) with \(|\operatorname{Re}z-\gamma_0|\le R\).
+It is finite and conjugation invariant. The polynomial
+\[
+ P_R(z)=\prod_{w\in Z_R\setminus\{z_0\}}
+                  \frac{z-w}{z_0-w}
+       -\prod_{w\in Z_R\setminus\{\bar z_0\}}
+                  \frac{z-w}{\bar z_0-w}
+\]
+takes the values \(1,-1\) at \(z_0,\bar z_0\), respectively, and
+vanishes on the other points of \(Z_R\). For \(\tau\ge1\), put
+\begin{equation}
+ \begin{aligned}
+ H_\tau(z)&=P_R(z)
+            e^{-\tau((z-\gamma_0)^2+\eta_0^2)},\\
+ f_\tau(x)&=e^{-\tau\eta_0^2}P_R(i\partial_x)
+         \frac{e^{-x^2/(4\tau)-i\gamma_0x}}{\sqrt{4\pi\tau}}.
+ \end{aligned}
+ \label{v4-arith:weil:eq:negative-test}
+\end{equation}
+Fourier differentiation gives \(h_{f_\tau}=H_\tau\).
+
+Every derivative of \(f_\tau\) has Gaussian decay.
+Its two selected transform values remain \(1,-1\), so their
+contribution to the diagonal is \(-2m_{z_0}\).
+
+For \(z=\gamma+i\eta\notin Z_R\), define
+\[
+ d(z)=(\gamma-\gamma_0)^2-\eta^2+\eta_0^2,
+ \qquad c=R^2-\tfrac14+\eta_0^2>0.
+\]
+The strip bound gives \(d(z)\ge c\). The absolute value of the
+remaining contribution is at most
+\begin{equation}
+ e^{-2(\tau-1)c}
+   \sum_{z\notin Z_R}m_z|P_R(z)P_R(\bar z)|e^{-2d(z)}.
+ \label{v4-arith:weil:eq:negative-tail}
+\end{equation}
+The sum is finite.
+
+Indeed, the polynomial has polynomial growth
+on the fixed strip, the zero count is \(O(T\log(2+T))\), and the
+Gaussian controls the resulting sum over unit intervals.
+Choose \(\tau\) large enough that \eqref{v4-arith:weil:eq:negative-tail}
+is less than \(m_{z_0}\). Then \(q_W(f_\tau,f_\tau)<-m_{z_0}\).
+
+Fix this test and multiply it by compact smooth cutoffs tending to one.
+The products converge in each \(\mathscr A_{a_0}\).
+The continuity in Theorem~\ref{v4-arith:weil:thm:extension} preserves
+strict negativity for all sufficiently large cutoffs.
+\end{proof}
+
+\begin{theorem}[Weil positivity on its full domain]
+\label{v4-arith:weil:thm:criterion}
+The following assertions are equivalent:
+\begin{enumerate}
+ \item Every zero of \(\xi\) has real part \(1/2\).
+ \item \(q_W(f,f)\ge0\) for every \(f\in\mathscr A_c\).
+ \item \(q_W(f,f)\ge0\) for every \(f\in\mathscr A_{\exp}\).
+ \item For some fixed \(a_0>1/2\), a subset dense in
+       \(\mathscr A_{a_0}\) has nonnegative Weil diagonal.
+\end{enumerate}
+The second assertion is the complete arithmetic inequality
+\begin{equation}
+ W_\infty(f*f^*)\le P(f*f^*)-W_{\mathrm{fin}}(f*f^*)
+                \qquad(f\in\mathscr A_c).
+ \label{v4-arith:weil:eq:complete-inequality}
+\end{equation}
+\end{theorem}
+\begin{proof}
+If all ordinates are real, \eqref{v4-arith:weil:eq:distinct-pairing}
+is a sum of absolute squares on every exponential step.
+This implies the third assertion and hence the second and fourth.
+Continuity extends the fourth assertion to its whole step, which
+contains all compact smooth tests. Theorem~\ref{v4-arith:weil:thm:negative-test}
+shows that the second assertion excludes every nonreal ordinate.
+Finally, the arithmetic definition of \(W\) gives the displayed inequality.
+\end{proof}
+
+\begin{proposition}[Hilbert realization of a positive restriction]
+\label{v4-arith:weil:prop:hilbert}
+Let \(D\subset\mathscr A_{\exp}\) be a complex vector subspace on
+which \(q_W\) is positive semidefinite. Its nullspace
+\(N_D=\{f\in D:q_W(f,f)=0\}\) is a linear subspace.
+The completion of \(D/N_D\) is a Hilbert space \(H_D\), and the
+canonical linear map \(I_D:D\to H_D\) satisfies
+\[
+ \langle I_Df,I_Dg\rangle=q_W(f,g).
+\]
+Conversely, any such map to a positive Hilbert space implies positivity
+on \(D\). In particular, existence of this realization on the full
+compact test algebra is equivalent to the Riemann hypothesis.
+\end{proposition}
+\begin{proof}
+Positivity of \(q_W(f+tg,f+tg)\) for complex \(t\) gives
+Cauchy--Schwarz. A null vector therefore pairs to zero with every
+vector. This proves that the quotient form is well-defined and positive
+definite. Its metric completion has the asserted property.
+The converse follows by taking the diagonal, and the last assertion
+uses Theorem~\ref{v4-arith:weil:thm:criterion}.
+\end{proof}
+
+This quotient construction starts from the Weil form. It supplies no
+independent arithmetic reason for its positivity. An arithmetic Hilbert
+space, constructed by a different method, must still be connected to it
+by the displayed pairing identity on the stated domain.
+
+The compact domain also distinguishes this criterion from rational
+tests used in Li's criterion. For an integer \(n\ge1\),
+\[
+ 1-(1-1/s)^n=\frac ns+O(s^{-2})\qquad(|s|\to\infty).
+\]
+After \(s=1/2+iz\), this is neither entire nor rapidly decreasing
+on horizontal strips. It is not \(h_f\) for a compact smooth test.
+A formula involving these rational tests needs its own limiting
+prescription. It is not obtained by substituting them into the compact
+explicit formula without a convergence argument.
+
+\section{Moment equations and the topology of approximation}
+\label{v4-arith:weil:moments}
+
+A proposed arithmetic comparison may first be defined on tests satisfying
+moment equations. Their closed kernel can often be approximated exactly,
+but this does not make it dense in the full domain. We give the projection
+and determine its closure in two different topologies.
+
+For a compact test put
+\[
+ M_f(s)=\int_{\mathbb R}f(x)e^{sx}\,dx=h_f(-is).
+\]
+On the real even compact tests, define
+\[
+ \ell(f)=\left(\int f(x)\,dx,\
+          \int f(x)\cosh x\,dx,\
+          \int f(x)x\sinh x\,dx\right),\qquad K=\ker\ell.
+\]
+Thus \(K\) imposes \(M_f(0)=M_f(1)=M_f'(1)=0\).
+Evenness already gives \(M_f'(0)=0\).
+These are the double-zero equations at \(0,1\) for an even transform.
+
+All three functionals are continuous on \(\mathscr A_\infty\).
+They are also continuous on each \(\mathscr A_{a_0}\) with \(a_0>1\).
+
+\begin{proposition}[A continuous moment projection]
+\label{v4-arith:weil:prop:moment-projection}
+There are real even compact tests \(\eta_0,\eta_1,\eta_2\) with
+\(\ell_i(\eta_j)=\delta_{ij}\). Hence
+\begin{equation}
+ \Pi f=f-\sum_{j=0}^2\ell_j(f)\eta_j
+ \label{v4-arith:weil:eq:moment-projection}
+\end{equation}
+is a continuous projection onto the moment kernel. That kernel is closed
+of codimension three, both on compact tests and on each of the exponential
+spaces just specified. For any \(A>0\), the \(\eta_j\) may all be chosen
+with support in \([-A,A]\).
+\end{proposition}
+\begin{proof}
+Write \(w(x)=(1,\cosh x,x\sinh x)\).
+The matrix with columns \(w(0),w(1),w(2)\) has determinant
+\[
+ 2\sinh(1)(\cosh(1)-1)^2>0.
+\]
+Even mollified point masses at \(0,\pm1,\pm2\), with total mass
+one at each pair, give a moment matrix converging to this matrix.
+For small mollifier support, its inverse supplies the \(\eta_j\).
+Continuity of the three moments then proves the projection and
+codimension assertions.
+
+To prescribe the support, choose a smooth even \(\chi\ge0\), supported
+in \([-A,A]\) and positive on \((-A,A)\). The Gram matrix
+\[
+ G_{ij}=\int\chi(x)w_i(x)w_j(x)\,dx
+\]
+is positive definite. A nonzero linear combination of the three analytic
+functions cannot vanish on an interval. Analytic continuation and their
+distinct constant, exponential and linear-exponential growth show their
+independence. Set
+\(\eta_j=\chi\sum_i(G^{-1})_{ij}w_i\).
+These tests have the required moments and support.
+\end{proof}
+
+If \(f_j\to f\in K\) in the compact-test topology, then
+\(\Pi f_j\to f\). In an exponential space, even compact cutoffs followed
+by \(\Pi\) prove that compact members of the kernel are dense in that
+kernel. A nonnegative bump has nonzero mean, so the kernel is not dense
+in the ambient compact-test space. A moment correction converges to zero
+only when the limiting function already has the required moments.
+
+\begin{proposition}[The finite moment quotient]
+\label{v4-arith:weil:prop:moment-quotient}
+On the complex even compact convolution algebra the map
+\begin{equation}
+ f\longmapsto\bigl(M_f(0),M_f(1)+M_f'(1)\varepsilon\bigr),
+ \qquad \varepsilon^2=0,
+ \label{v4-arith:weil:eq:moment-quotient}
+\end{equation}
+is a continuous surjective algebra homomorphism onto
+\(\mathbb C\times\mathbb C[\varepsilon]/(\varepsilon^2)\).
+Its kernel is the complexification of \(K\), and its involution is
+coefficient conjugation with \(\varepsilon^*=\varepsilon\).
+A complex-linear functional on this quotient is positive on squares
+exactly when it has the form
+\[
+ \lambda(a,b+c\varepsilon)=\alpha a+\beta b,
+ \qquad \alpha,\beta\ge0.
+\]
+\end{proposition}
+\begin{proof}
+Fubini gives \(M_{f*g}=M_fM_g\). Evaluation at zero and the product
+rule at one give the algebra law. The moment right inverse proves
+surjectivity. Evenness makes the involution conjugation at these real
+evaluation points.
+
+Write \(\lambda(a,b+c\varepsilon)=\alpha a+\beta b+\gamma c\).
+Positivity on the unital quotient makes \(\lambda\) Hermitian, by
+expanding squares of \(1+t x\) and \(1+itx\) for real \(t\).
+Thus its coefficients are real. Its value at the square of
+\((a,b+c\varepsilon)\) is
+\[
+ \alpha|a|^2+\beta|b|^2+2\gamma\operatorname{Re}(b\bar c).
+\]
+Taking \(b=1\) and varying \(c\) forces \(\gamma=0\).
+The two remaining coefficients must be nonnegative, which also suffices.
+\end{proof}
+
+This quotient describes the imposed moments. It does not assert that
+\(W\) factors through the quotient. The polar evaluations occur at
+\(\pm1/2\), not at \(0,1\). For a nonzero nonnegative even compact
+test \(v\), the function
+\[
+ f=D^2(D^2-1)^2v,\qquad D=d/dx,
+\]
+lies in \(K\), whereas
+\[
+ M_f(1/2)=\frac9{64}M_v(1/2)>0,
+ \qquad P(f*f^*)=2M_f(1/2)^2>0.
+\]
+Integration by parts gives
+\(M_f(s)=s^2(s^2-1)^2M_v(s)\), proving every assertion.
+
+\begin{theorem}[The weaker Schwartz closure]
+\label{v4-arith:weil:thm:moment-closure}
+The closure of \(K\) in the real even Schwartz space is
+\[
+ \left\{f\in\mathcal S(\mathbb R):f\text{ is real and even},\
+                                    \int f=0\right\}.
+\]
+In the relative Schwartz topology on compact tests, intersect this set
+with \(\mathscr A_c\). The two exponential moment equations need not
+survive a limit in this weaker topology.
+\end{theorem}
+\begin{proof}
+The mean is Schwartz-continuous, so it vanishes on every such limit.
+Choose a nonnegative even compact test \(\beta\) with \(\int\beta=1\),
+and put
+\[
+ A=\int\beta(x)\cosh x\,dx>0,\qquad
+ B=\int\beta(x)x\sinh x\,dx.
+\]
+For \(R>0\), set
+\[
+ \beta_R(x)=\tfrac12[\beta(x-R)+\beta(x+R)],\qquad
+ v_R=\beta_R-\beta.
+\]
+Translation gives
+\[
+ \ell(v_R)=\bigl(0,A(\cosh R-1),
+              B(\cosh R-1)+AR\sinh R\bigr).
+\]
+
+The determinant of the last two coordinates of \(v_R,v_{2R}\) is
+\[
+ 2A^2R\sinh R(\cosh R-1)^2>0.
+\]
+Thus a fixed pair of these moments can be prescribed by
+\(c_Rv_R+d_Rv_{2R}\), where
+\(c_R=O(e^{-R})\) and \(d_R=O(e^{-2R})\).
+Every Schwartz seminorm of \(v_R\) grows at most polynomially in \(R\).
+The correction therefore tends to zero in the Schwartz topology.
+
+For a compact real even mean-zero \(f\), prescribe the negatives of its
+last two moments. Adding the correction gives elements of \(K\)
+converging to \(f\). General real even mean-zero Schwartz functions are
+approximated by even compact cutoffs with their means subtracted times
+\(\beta\). For the \(n\)th approximation, choose \(R\) so large that
+the correcting term has its first \(n\) Schwartz seminorms below \(1/n\).
+This diagonal choice proves the asserted closure.
+\end{proof}
+
+The complete Weil form is continuous in the compact and exponential
+topologies used above. The critical prime measure is not tempered by
+Theorem~\ref{v4-arith:weil:thm:prime-threshold}. Consequently, the weaker
+Schwartz closure does not itself pass the complete Weil inequality to
+its limits.
+
+\begin{proposition}[The missing cross inequalities]
+\label{v4-arith:weil:prop:cross}
+Let a complex vector space decompose as \(D=K_0\oplus E\), and let
+\(q\) be a Hermitian form, linear in its first argument. It is positive
+semidefinite on \(D\) exactly when
+\[
+ q(u,u)\ge0,\qquad q(e,e)\ge0,\qquad
+ |q(u,e)|^2\le q(u,u)q(e,e)
+ \quad(u\in K_0,\ e\in E).
+\]
+\end{proposition}
+\begin{proof}
+Necessity is Cauchy--Schwarz. Conversely, the three conditions give
+\[
+ q(u+e,u+e)\ge
+       \bigl(\sqrt{q(u,u)}-\sqrt{q(e,e)}\bigr)^2\ge0.
+\]
+Every vector has this form.
+\end{proof}
+
+The complex moment kernel has a three-dimensional complement among even
+tests. Its positivity leaves both that complement and all cross terms
+to determine. Odd tests remain an additional part of the full domain.
+The exact polar kernel has a two-dimensional complement on the full
+space. Finite codimension alone supplies none of these inequalities.
+
+Similarly, if maps \(I_\alpha:D_\alpha\to H_\alpha\) to positive
+Hilbert spaces satisfy
+\(q_W(f,g)=\langle I_\alpha f,I_\alpha g\rangle\) on their respective
+complex domains, their union has nonnegative diagonal. Its closure in a
+fixed exponential step has the same property. Their linear span requires
+the cross terms between different domains. The Hermitian matrix
+\(\left(\begin{smallmatrix}1&2\\2&1\end{smallmatrix}\right)\) is positive
+on each coordinate axis and negative on \((1,-1)\). Thus separate
+positive diagonal identities do not suffice for the span.
+
+\section{The maximal positive convolution ideal}
+\label{v4-arith:weil:positive-ideal}
+
+Convolution stability gives a stronger classification than positivity
+on a subspace. A positive ideal must vanish at every nonreal ordinate.
+To prove this assertion, we first construct tests with exactly prescribed
+values on a finite part of the zero set.
+
+\begin{lemma}[A paired product and its Fourier inverse]
+\label{v4-arith:weil:lem:paired-product}
+The product
+\begin{equation}
+ \mathcal P(z)=
+  \prod_{\substack{\omega\in\Sigma\\\operatorname{Re}\omega>0}}
+             (1-z^2/\omega^2)^{m_\omega}
+ \label{v4-arith:weil:eq:paired-product}
+\end{equation}
+converges locally uniformly to an entire function with precisely the
+zeros \(\Sigma\) and their multiplicities. It is real on the real axis
+and satisfies
+\[
+ |\mathcal P(z)|\le
+       \exp\bigl(C(1+|z|)\log(2+|z|)\bigr).
+\]
+For a finite \(E\subset\Sigma\), division by
+\(\prod_{\omega\in E}(z-\omega)^{m_\omega}\) gives an entire function
+\(R_E\), nonzero at each point of \(E\), with the same type of bound.
+For \(t>0\) and any polynomial \(p\),
+\(e^{-tz^2}R_E(z)p(z)\) is the Fourier transform of a member of
+\(\mathscr A_\infty\).
+\end{lemma}
+\begin{proof}
+There are no ordinates on the imaginary axis. Pairing \(\omega\) and
+\(-\omega\) therefore accounts for all zeros. Inverse-square summability
+proves normal convergence of the quadratic factors. Conjugation permutes
+these factors and proves reality on the real axis.
+
+Let \(n(u)\) count the factors by modulus with multiplicity, and choose
+\(u_0>0\) below the modulus of every zero. For \(R\ge2\),
+\[
+ \begin{aligned}
+ \log\max_{|z|\le R}|\mathcal P(z)|
+ &\le\int_{u_0}^\infty\log(1+R^2/u^2)\,dn(u)\\
+ &=2R^2\int_{u_0}^\infty
+                    \frac{n(u)}{u(u^2+R^2)}\,du.
+ \end{aligned}
+\]
+Split at \(R\) and use \(n(u)=O(u\log(2+u))\).
+Both integrals are \(O(R\log R)\).
+
+Removing the full order of each selected zero leaves a nonzero value
+there. Outside a fixed disk the dividing polynomial has a polynomial
+lower bound. Inside that disk the entire quotient is bounded.
+
+Put \(H(z)=e^{-tz^2}R_E(z)p(z)\). On each horizontal strip, the negative
+quadratic in \(\operatorname{Re}z\) dominates the other factors.
+Cauchy's estimates on a slightly larger strip give rapid decay of
+all derivatives. Define
+\[
+ f(x)=\frac1{2\pi}\int_{\mathbb R}H(r)e^{-irx}\,dr.
+\]
+For \(x>0\) shift to \(\operatorname{Im}z=-b\), and for \(x<0\)
+to \(\operatorname{Im}z=b\). The vertical integrals tend to zero.
+
+The same shift applied to \(z^jH(z)\) gives
+\(|f^{(j)}(x)|\le C_{b,j}e^{-b|x|}\).
+Since \(b\) is arbitrary, \(f\in\mathscr A_\infty\).
+Fourier inversion and holomorphic continuation give \(h_f=H\).
+\end{proof}
+
+\begin{theorem}[Exact finite-value isolation]
+\label{v4-arith:weil:thm:isolation}
+For a finite \(E\subset\Sigma\) and prescribed complex numbers
+\(v_\omega\), there is \(f\in\mathscr A_\infty\) such that
+\(h_f(\omega)=v_\omega\) on \(E\) and \(h_f=0\) on
+\(\Sigma\setminus E\).
+\end{theorem}
+\begin{proof}
+For any \(t>0\), take the inverse Fourier transform of
+\begin{equation}
+ e^{-tz^2}R_E(z)
+ \sum_{\omega\in E}\frac{v_\omega e^{t\omega^2}}{R_E(\omega)}
+        \prod_{\substack{\eta\in E\\\eta\ne\omega}}
+                          \frac{z-\eta}{\omega-\eta}.
+ \label{v4-arith:weil:eq:isolation}
+\end{equation}
+All denominators are nonzero. The polynomial interpolates the required
+values after division by the nonvanishing prefactor, and \(R_E\) retains
+every other zero. Lemma~\ref{v4-arith:weil:lem:paired-product} supplies
+the required inverse transform.
+\end{proof}
+
+Full multiplicities are removed in \(R_E\), although the prescription
+specifies only values. Removing one linear factor at a multiple zero
+would leave the prefactor zero there. Exact isolation here uses rapid
+exponential decay. Compact cutoffs preserve a strict inequality, but
+need not preserve these exact spectral values.
+
+Write \(\Sigma_0=\Sigma\cap\mathbb R\) and
+\(\Sigma_{\mathrm{nr}}=\Sigma\setminus\mathbb R\).
+A positive convolution \(*\)-ideal means a complex algebraic ideal
+\(J\subset\mathscr A_{\exp}\), stable under \(*\), with
+\(q_W(f,f)\ge0\) for every \(f\in J\).
+Define
+\[
+ \mathcal I_{\mathrm{nr}}=
+ \{f\in\mathscr A_{\exp}:h_f(z)=0
+                         \text{ for every }z\in\Sigma_{\mathrm{nr}}\}.
+\]
+
+\begin{theorem}[The largest positive ideal]
+\label{v4-arith:weil:thm:maximal-ideal}
+The ideal \(\mathcal I_{\mathrm{nr}}\) is the largest positive convolution
+\(*\)-ideal of \(\mathscr A_{\exp}\). It is closed in the final test
+topology and in every exponential step. On this ideal,
+\begin{equation}
+ W(f)=\sum_{\gamma\in\Sigma_0}m_\gamma h_f(\gamma),\qquad
+ q_W(f,g)=\sum_{\gamma\in\Sigma_0}m_\gamma
+                         h_f(\gamma)\overline{h_g(\gamma)}.
+ \label{v4-arith:weil:eq:positive-ideal}
+\end{equation}
+If a \(*\)-ideal contains \(f\) with \(h_f(z_0)\ne0\) at a nonreal
+ordinate, it contains \(r\) with \(q_W(r,r)=-2m_{z_0}\).
+\end{theorem}
+\begin{proof}
+Each evaluation at a point of \(\Sigma\) is continuous on every step,
+hence on the final topology. Fourier multiplication and conjugation
+show that the intersection of the indicated kernels is a closed
+\(*\)-ideal. The explicit formula gives
+\eqref{v4-arith:weil:eq:positive-ideal} and its positivity.
+
+For maximality put \(u=h_f(z_0)\ne0\). Exact isolation supplies
+\(e_{z_0},e_{\bar z_0}\) whose transforms on \(\Sigma\) are the respective
+coordinate vectors. In the given ideal form
+\[
+ r=u^{-1}f*e_{z_0}-\bar u^{-1}f^**e_{\bar z_0}.
+\]
+Its only nonzero transform values are \(1\) at \(z_0\) and \(-1\)
+at \(\bar z_0\), since \(h_{f^*}(\bar z_0)=\bar u\).
+Their equal multiplicities give the asserted negative value.
+Every positive ideal must therefore lie in \(\mathcal I_{\mathrm{nr}}\).
+\end{proof}
+
+This theorem classifies positive ideals. A positive subspace need not
+contain the two convolution products used in its proof, so it need not
+lie in \(\mathcal I_{\mathrm{nr}}\). The theorem neither asserts nor
+excludes the existence of a nonreal zero.
+
+The regular completions lose the distinction between this ideal and the
+whole test algebra. To see this, form the off-real subproduct
+\[
+ B_{\mathrm{nr}}(z)=
+ \prod_{\substack{\omega\in\Sigma\\
+          \operatorname{Re}\omega>0,\ \operatorname{Im}\omega>0}}
+       \bigl[(1-z^2/\omega^2)(1-z^2/\bar\omega^2)\bigr]^{m_\omega}.
+\]
+The empty product equals one. The preceding product estimate applies.
+
+Its zeros are precisely the nonreal ordinates with their multiplicities,
+and for real \(r\),
+\[
+ B_{\mathrm{nr}}(r)=
+ \prod_{\substack{\operatorname{Re}\omega>0\\
+                   \operatorname{Im}\omega>0}}
+              |1-r^2/\omega^2|^{2m_\omega}>0.
+\]
+For fixed \(t>0\), let \(b_t\in\mathscr A_\infty\) have transform
+\(\beta_t(z)=e^{-tz^2}B_{\mathrm{nr}}(z)\), and put
+\(\mathcal D_t=b_t*\mathscr A_{\exp}\).
+This is a principal ideal in an algebra without a unit.
+
+\begin{theorem}[Density in the regular completions]
+\label{v4-arith:weil:thm:regular-density}
+The ideal \(\mathcal D_t\) is a positive convolution \(*\)-ideal
+contained in \(\mathcal I_{\mathrm{nr}}\). Its Fourier image is dense
+in \(\mathcal S(\mathbb R)\). Consequently,
+\[
+ \overline{\mathcal D_t}^{L^1}=L^1(\mathbb R),\qquad
+ \overline{\mathcal D_t}^{L^2}=L^2(\mathbb R),\qquad
+ \overline{h(\mathcal D_t)}^{\|\cdot\|_\infty}=C_0(\mathbb R).
+\]
+The same three closures hold for \(\mathcal I_{\mathrm{nr}}\).
+If a nonreal ordinate exists, \(\mathcal I_{\mathrm{nr}}\) is nevertheless
+proper and closed in the test topology.
+\end{theorem}
+\begin{proof}
+The function \(\beta_t\) is real on the real axis, so \(b_t^*=b_t\).
+Commutativity makes \(\mathcal D_t\) a \(*\)-ideal. Its Fourier factor
+vanishes on every nonreal ordinate, proving inclusion and positivity.
+
+Take \(H\in C_c^\infty(\mathbb R)\) in the Fourier variable, and put
+\(u=H/\beta_t\). Strict positivity of \(\beta_t\) on the real axis
+makes \(u\) smooth and compactly supported. Define
+\[
+ \varphi_\epsilon(r)=(4\pi\epsilon)^{-1/2}e^{-r^2/(4\epsilon)},
+ \qquad u_\epsilon=u*\varphi_\epsilon,
+ \qquad H_\epsilon=\beta_tu_\epsilon.
+\]
+Convolution here is in the Fourier variable. Its inverse transform is
+\(\check u_\epsilon(x)=e^{-\epsilon x^2}\check u(x)\), which belongs
+to \(\mathscr A_\infty\). Thus \(H_\epsilon\in h(\mathcal D_t)\).
+
+Gaussian convolution converges to the identity in the Schwartz topology.
+This follows from translation continuity near zero and the polynomially
+weighted Gaussian tail outside a fixed neighborhood. Multiplication by
+the fixed Schwartz function \(\beta_t\) is continuous, so
+\(H_\epsilon\to H\) in that topology.
+Smooth cutoffs make compact smooth functions dense in Schwartz space.
+Fourier inversion and its continuous dense inclusions into \(L^1\),
+\(L^2\) and \(C_0\) give the three closures.
+
+If \(z_0\) is nonreal, the continuous evaluation \(h_f(z_0)\) vanishes
+on \(\mathcal I_{\mathrm{nr}}\) but not on a Gaussian. This proves
+properness in the test topology.
+\end{proof}
+
+Neither ideal has an internal unit. Such a unit would act identically
+on a uniformly dense Fourier subalgebra of \(C_0(\mathbb R)\).
+Its transform would then equal one on all of \(\mathbb R\).
+Nor is test-topology density of \(\mathcal D_t\) in
+\(\mathcal I_{\mathrm{nr}}\) asserted. The generator vanishes to full
+analytic multiplicity, while the latter ideal requires only value
+vanishing.
+
+These ideals depend on the zero set. Their unconditional construction
+does not supply an arithmetic positive domain independently of that set.
+More decisively, density in any one exponential test step would imply
+full positivity by Theorem~\ref{v4-arith:weil:thm:criterion}.
+The regular density theorem therefore proves a different assertion.
+
+\section{The independent arithmetic comparison}
+\label{v4-arith:weil:comparison}
+
+The analytic target is now fixed: the convolution algebra, its topology,
+its involution, and the complete signed functional. An arithmetic source
+may approach this target through a trace, a cohomological pairing, an
+automorphic norm or a boundary construction. Each approach must specify
+its map on the same tests.
+
+\begin{question}[A full arithmetic realization]
+\label{v4-arith:weil:qn:comparison}
+Construct an arithmetic complex vector space \(V\), a Hermitian pairing
+\(B\), and a complex-linear map \(I:\mathscr A_c\to V\), such that
+\begin{equation}
+ B(If,Ig)=P(f*g^*)-W_\infty(f*g^*)-W_{\mathrm{fin}}(f*g^*)
+                   \qquad(f,g\in\mathscr A_c).
+ \label{v4-arith:weil:eq:arithmetic-comparison}
+\end{equation}
+Determine whether \(B\) is positive semidefinite on \(I(\mathscr A_c)\)
+by the arithmetic construction. For an exponential extension, construct
+the continuous map and prove the same identity on a specified step.
+\end{question}
+
+An operator or weight realization needs an actual convolution
+representation on a common domain that preserves the involution.
+Its trace or weight must be finite on the tested products. A comparison
+with a bilinear categorical pairing also needs the conjugate coefficient
+factor that turns it into a Hermitian form. Local determinants, a scalar
+functional equation and matching characters do not specify these maps.
+
+A geometric realization asks for a continuous \(*\)-algebra map into a
+proper positive trace ideal constructed from independent arithmetic
+operations. The comparison must preserve the involution, normal
+derivatives, collision maps and both vacuum data of its source.
+Arithmetic-weight and arity-radius continuity are additional requirements.
+The resulting counting weight or self-adjoint shift must be identified
+with a native arithmetic operation. Positivity of the scalar Weil form
+alone does not construct this stronger realization.
+
+Partial domains retain their exact positive content. A norm identity on
+a moment kernel proves positivity on that kernel. A Gaussian cone gives
+its tested inequalities. A positive ideal has the classification above.
+To reach the full criterion, one must also prove the missing cross
+inequalities and density in a topology controlling every term of
+\eqref{v4-arith:weil:eq:arithmetic-comparison}.
+Both polar evaluations, all prime powers and the signed gamma integral
+remain part of that equality.

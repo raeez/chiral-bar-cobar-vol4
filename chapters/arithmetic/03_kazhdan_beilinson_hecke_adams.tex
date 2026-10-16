@@ -1,0 +1,357 @@
+\chapter{Divisor Substitutions and Satake Parameters}
+\label{v4-arith:kazhdan-beilinson}
+
+The divisor substitutions on polynomial Fock space, Adams ring maps,
+and a spherical Hecke representation are different operator data.
+We specify the Satake normalization, compute the divisor discrepancy,
+and distinguish a Satake matrix from its scalar symmetric-power traces.
+
+\section{The Satake Pair and Why It Matters}
+\label{v4-arith:kb:satake-pair}
+
+\begin{theorem}[normalized spherical Satake convention]
+\label{v4-arith:thm:satake-GL2}
+Let \(K=GL_2(\mathbb Z_p)\), normalize Haar measure by
+\(\operatorname{vol}(K)=1\), and use complex coefficients.
+The normalized spherical Satake isomorphism identifies
+\(\mathcal H_p=C_c(K\backslash GL_2(\mathbb Q_p)/K,\mathbb C)\)
+with \(\mathbb C[X^{\pm1},Y^{\pm1}]^{S_2}\).
+The characteristic functions of \(K\operatorname{diag}(p,1)K\)
+and \(K\operatorname{diag}(p,p)K\), denoted \(T_p\) and \(D_p\),
+have images \(p^{1/2}(X+Y)\) and \(XY\).
+For a character of this algebra set
+\(\alpha_p=p^{1/2}X\), \(\beta_p=p^{1/2}Y\) at that character.
+Then \(\alpha_p\beta_p=pD_p\), where the right side means its
+scalar value. Trivial central character gives \(D_p=1\).
+The condition \(|X|=|Y|=1\) is the additional tempered condition,
+not a consequence of trivial central character alone. These conventions
+are Gross, \emph{On the Satake isomorphism}, Proposition3.6,
+equations(3.13)--(3.14) and \S8.
+\end{theorem}
+
+\begin{proposition}[symmetric-power generating function]
+\label{v4-arith:prop:hecke-generating-function}
+Define the elements \(H_{p^k}\in\mathcal H_p\) by their Satake images
+\(h_k(p^{1/2}X,p^{1/2}Y)\), the complete symmetric polynomials.
+Then \(H_{p^0}=1\), \(H_p=T_p\), and
+\[
+ \sum_{k\ge0}H_{p^k}t^k=(1-T_pt+pD_pt^2)^{-1}.
+\]
+\end{proposition}
+\begin{proof}
+In the Satake algebra the generating series is
+\((1-p^{1/2}Xt)^{-1}(1-p^{1/2}Yt)^{-1}\).
+Multiply the denominators and use injectivity of the Satake map.
+This fixes the determinant normalization and the choice of the
+higher Hecke elements rather than identifying them with a single
+undeclared double-coset convention.
+\end{proof}
+
+At a character with \(D_p=1\) this series is
+\(\bigl((1-\alpha_pt)(1-\beta_pt)\bigr)^{-1}\).
+The two parameters may coincide. In the tempered case their unitary
+versions \(p^{-1/2}\alpha_p,p^{-1/2}\beta_p\) give the local
+trigonometric Euler factor; changing between the two normalizations
+shifts the Dirichlet variable by one half.
+This complex Satake convention is separate from the integral polynomial
+carrier used for the divisor substitutions below.
+
+\section{Adams operations and Hecke representations}
+\label{v4-arith:kb:adams-not-hecke}
+
+\begin{proposition}
+\label{v4-arith:prop:adams-commutative-monoid}
+The Adams operations of a special $\lambda$-ring
+(Definition~\ref{v4-arith:hecke:def:lambda}) satisfy
+$\psi_m\psi_n=\psi_{mn}$.
+They give an action of $(\mathbb N_{\geq1},\times)$,
+the free commutative monoid on the primes.
+Conversely, commuting Frobenius lifts determine the special structure
+under the torsion-free hypothesis of
+Theorem~\ref{v4-arith:hecke:thm:wilkerson}.
+Example~\ref{v4-arith:hecke:ex:torsion-lambda} shows why that
+hypothesis cannot be omitted.
+This action need not extend to the group completion: the polynomial
+index shifts are not surjective for \(n>1\).
+
+The full local spherical \(GL_1\) Hecke algebra over \(\mathbb C\)
+is \(\mathbb C[\mathbb Z]=\mathbb C[z,z^{-1}]\).
+Valuation identifies the double cosets of
+\(\mathbb Q_p^\times/\mathbb Z_p^\times\) with \(\mathbb Z\), and,
+with the unit subgroup of volume one, convolution adds valuations.
+An Adams action supplies only the multiplicative monoid action;
+a comparison with a specified positive Hecke subalgebra is separate
+data.
+\end{proposition}
+
+\begin{observation}[distinct operator data]
+\label{v4-arith:obs:gl1-vs-gl2}
+An Adams action is an action of the multiplicative monoid by ring
+endomorphisms. It does not by itself specify a \(GL_2\) Hecke
+representation, its Satake parameters, or its determinant operation.
+A \(\Lambda\)-ring can contain symmetric functions in two parameters;
+the missing datum is their comparison with the specified arithmetic
+operators, not an impossibility of encoding an unordered pair.
+\end{observation}
+
+\section{Explicit Computation: The Recursion Fails}
+\label{v4-arith:kb:recursion-fails}
+
+Let \(\mathcal{H}^{(p)}_{\mathrm{rk1}}\) denote the rank-\(1\) Heisenberg
+algebra at prime \(p\), with mode operators \(a^{(p)}_{n}\) (\(n\in\mathbb{Z}\))
+satisfying \([a^{(p)}_{m},a^{(p)}_{n}]=m\,\delta_{m+n,0}\), acting
+on the Fock space \(\mathcal{F}^{(p)}\) generated from the vacuum
+\(|0\rangle\) (annihilated by \(a^{(p)}_{n}\) for \(n\geq 0\)).
+For each \(k\ge1\), the state \(a^{(p)}_{-k}|0\rangle\) spans the
+one-particle subspace of weight \(k\). The full weight-\(k\) subspace
+also contains the multi-particle partition states.
+
+The claimed formula for the action of a putative \(GL_{2}\) Hecke
+operator \(T_{n}\) on this Fock space is
+\begin{equation}
+T_{n}(a^{(p)}_{-k}|0\rangle)\;=\;\sum_{d\mid n}d\cdot a^{(p)}_{-nk/d}|0\rangle\cdot\mathbf{1}_{d\mid k},
+\end{equation}
+extended by \(T_{n}(|0\rangle)=|0\rangle\).
+
+\begin{computation}
+\label{v4-arith:comp:T_p-on-a_-1}
+\(T_{p}(a^{(p)}_{-1}|0\rangle)\). Divisors of \(n=p\) are
+\(d\in\{1,p\}\). Only \(d=1\) satisfies \(d\mid k=1\). So
+\begin{equation}
+T_{p}(a^{(p)}_{-1}|0\rangle)\;=\;a^{(p)}_{-p}|0\rangle.
+\end{equation}
+\end{computation}
+
+\begin{computation}
+\label{v4-arith:comp:T_p-squared}
+\(T_{p}^{2}(a^{(p)}_{-1}|0\rangle)\). Apply \(T_{p}\) to
+\(a^{(p)}_{-p}|0\rangle\): divisors \(d\in\{1,p\}\), both satisfy
+\(d\mid p\), so
+\begin{equation}
+T_{p}(a^{(p)}_{-p}|0\rangle)\;=\;a^{(p)}_{-p^{2}}|0\rangle
++p\cdot a^{(p)}_{-p}|0\rangle.
+\end{equation}
+Therefore
+\begin{equation}
+T_{p}^{2}(a^{(p)}_{-1}|0\rangle)\;=\;a^{(p)}_{-p^{2}}|0\rangle
++p\cdot a^{(p)}_{-p}|0\rangle.
+\end{equation}
+\end{computation}
+
+\begin{computation}
+\label{v4-arith:comp:T_p-squared-direct}
+\(T_{p^{2}}(a^{(p)}_{-1}|0\rangle)\). Divisors \(d\in\{1,p,p^{2}\}\),
+only \(d=1\) satisfies \(d\mid 1\). So
+\begin{equation}
+T_{p^{2}}(a^{(p)}_{-1}|0\rangle)\;=\;a^{(p)}_{-p^{2}}|0\rangle.
+\end{equation}
+\end{computation}
+
+\begin{observation}[recursion discrepancy]
+\label{v4-arith:obs:recursion-discrepancy}
+Testing \(T_{p^{2}}=T_{p}^{2}-p\cdot\mathrm{id}\) on \(a^{(p)}_{-1}|0\rangle\):
+\begin{align}
+T_{p}^{2}-p\cdot\mathrm{id}\bigr|_{a^{(p)}_{-1}|0\rangle}
+&\;=\;a^{(p)}_{-p^{2}}|0\rangle+p\cdot a^{(p)}_{-p}|0\rangle-p\cdot a^{(p)}_{-1}|0\rangle, \\
+T_{p^{2}}\bigr|_{a^{(p)}_{-1}|0\rangle}
+&\;=\;a^{(p)}_{-p^{2}}|0\rangle.
+\end{align}
+The discrepancy is \(p(a^{(p)}_{-p}-a^{(p)}_{-1})|0\rangle\neq 0\).
+\end{observation}
+
+\begin{corollary}[falsification]
+\label{v4-arith:cor:recursion-falsified}
+The formula
+\(T_{n}(a^{(p)}_{-k})=\sum_{d\mid n}d\cdot a^{(p)}_{-nk/d}\mathbf{1}_{d\mid k}\)
+fails both universal Adams multiplicativity and the displayed
+\(GL_2\) Hecke recursion. It satisfies coprime multiplicativity and
+the prime-valuation composition law of
+Corollary~\ref{v4-arith:ado:global-composition}. The preceding computations
+prove the two failures already on the first generator.
+\end{corollary}
+
+\section{Diagonalisation onto the Satake Pair}
+\label{v4-arith:kb:correction-satake-diagonalisation}
+
+A two-dimensional Satake model gives a different construction.
+Choose nonzero complex numbers \(\alpha_p,\beta_p\) with
+\(\alpha_p\beta_p=p\). This is parameter data, not a consequence of the
+rank of an oscillator algebra. In the tempered parametrization one can
+write \(\alpha_p=p^{1/2}e^{i\theta_p}\),
+\(\beta_p=p^{1/2}e^{-i\theta_p}\) with real \(\theta_p\).
+
+\begin{definition}[Satake operator]
+\label{v4-arith:def:satake-diagonalised}
+Let \(F_p^1=\mathbb C a^{(p)}_{-1}|0\rangle\oplus
+\mathbb C b^{(p)}_{-1}|0\rangle\). Define
+\(S_p=\operatorname{diag}(\alpha_p,\beta_p)\) in this basis.
+The equation \(\alpha_p\beta_p=p\) is imposed on the parameters.
+It is not encoded by multiplying a Heisenberg conformal vector by
+\(\log p\); logarithmic energy is the separate convention of
+Convention~\ref{v4-arith:conv:two-grading}.
+\end{definition}
+
+\begin{theorem}[trace of the Satake operator]
+\label{v4-arith:thm:corrected-hecke}
+The operator \(S_p\) has determinant \(p\) and trace
+\(\alpha_p+\beta_p\), equal to \(2p^{1/2}\cos\theta_p\) in the tempered
+parametrization. The line spanned by
+\((a^{(p)}_{-1}+b^{(p)}_{-1})|0\rangle\) is invariant precisely when
+\(\alpha_p=\beta_p\).
+\end{theorem}
+\begin{proof}
+The determinant and trace are those of the displayed diagonal matrix.
+Its value on the sum of the two basis vectors is proportional to that
+sum exactly when its two diagonal entries agree.
+\end{proof}
+
+\begin{corollary}[symmetric-power trace recursion]
+\label{v4-arith:cor:hecke-recursion-Sym}
+For \(k\ge0\), set \(h_k=\operatorname{Tr}(\operatorname{Sym}^kS_p)\).
+Then \(h_0=1\), \(h_1=\alpha_p+\beta_p\), and
+\[
+ h_k=\sum_{j=0}^k\alpha_p^{k-j}\beta_p^j,\qquad
+ h_{k+1}=(\alpha_p+\beta_p)h_k-p h_{k-1}\quad(k\ge1).
+\]
+Thus the scalar operators \(H_{p^k}=h_k\,\mathrm{id}\) on a fixed
+one-dimensional space satisfy the displayed local Hecke recursion.
+This is a scalar-parameter representation, distinct from \(S_p\) on
+\(F_p^1\) and from the divisor substitutions \(T_{p^k}\).
+\end{corollary}
+\begin{proof}
+The monomial basis of \(\operatorname{Sym}^kF_p^1\) has eigenvalues
+\(\alpha_p^{k-j}\beta_p^j\). Summing gives \(h_k\). Multiplying this
+sum by \(\alpha_p+\beta_p\) and subtracting
+\(\alpha_p\beta_p h_{k-1}\) leaves exactly the sum for \(h_{k+1}\).
+\end{proof}
+
+\section{The Angle \(\theta_{p}\) as Unramified Langlands Parameter}
+\label{v4-arith:kb:theta-p-background}
+
+The angle \(\theta_{p}\) first appeared in Definition~\ref{v4-arith:def:satake-diagonalised}
+as the argument of the Satake parameters \(\alpha_{p}=p^{1/2}e^{i\theta_{p}}\),
+\(\beta_{p}=p^{1/2}e^{-i\theta_{p}}\). The question is whether \(\theta_{p}\) is
+a free internal parameter of the Heisenberg algebra or is fixed by external
+(Langlands) data. For a specified unramified automorphic representation it is determined
+by its Satake pair, when that pair has the tempered normalization above.
+An arbitrary choice of angles does not construct such a representation.
+
+\begin{proposition}[tempered determinant normalization]
+\label{v4-arith:prop:theta-p-is-satake}
+If \(\alpha_p\beta_p=p\) and
+\(|\alpha_p|=|\beta_p|=p^{1/2}\), then the unordered pair is
+\(\{p^{1/2}e^{i\theta_p},p^{1/2}e^{-i\theta_p}\}\), where
+\(\theta_p\) is defined modulo \(2\pi\) and sign.
+\end{proposition}
+\begin{proof}
+The number \(\alpha_p/p^{1/2}\) has modulus one, so it is
+\(e^{i\theta_p}\). The determinant condition forces the second
+normalized number to be \(e^{-i\theta_p}\). Interchanging the two
+entries changes the sign of \(\theta_p\).
+\end{proof}
+
+\begin{convention}
+\(\{\theta_{p}\}_{p}\) is chosen once and for all as a map
+\(\theta\colon\mathbb P\to\mathbb R/(2\pi\mathbb Z,\,\theta\sim-\theta)\)
+(the angle modulo \(\theta\leftrightarrow-\theta\), since
+\(2\cos\theta=2\cos(-\theta)\)). This is the data of an
+unramified local Langlands parameter at each finite place. The
+Hartnoll--Yang L-function
+\begin{equation}
+L(s)\;=\;\prod_{p}\frac{1}{1-2\cos\theta_{p}\,p^{-s}+p^{-2s}}
+\end{equation}
+is a formal Euler product. It is the standard \(L\)-function of an
+automorphic representation only if that representation and the comparison
+with its normalized local parameters are supplied; arbitrary angles do
+not establish automorphy or analytic continuation.
+\end{convention}
+
+\input{chapters/arithmetic/03b_radial_hecke}
+
+\section{The Chiral Framework over \(\overline{\mathrm{Spec}\,\mathbb{Z}}\)}
+\label{v4-arith:kb:beilinson-framework}
+
+The matrices \(S_p\) and their scalar trace recursions define the local
+linear constructions above. Global arithmetic realization requires local
+representations, distinguished vectors, a restricted tensor-product
+construction and an intertwiner with the proposed trace carrier.
+Beilinson--Drinfeld factorization on a smooth characteristic-zero curve
+does not by itself supply those data over
+\(\overline{\mathrm{Spec}\,\mathbb Z}\).
+
+\begin{conjecture}[unramified arithmetic trace realization]
+\label{v4-arith:thm:beilinson-honest-reading}
+There is an arithmetic dg category $\mathscr C_{\mathrm{arith}}$ over
+$\mathbb C$, defined independently of its proposed Hecke realization.
+Let $C_\bullet=CC_\bullet(\mathscr C_{\mathrm{arith}})$ be its Hochschild
+chain complex, with homological differential of degree $-1$.
+The construction specifies a degree $d$, a subspace
+$M_{\mathrm{arith}}\subset H_d(C_\bullet)$ containing the primitive
+trace class $v_{\mathrm{prim}}=\mathcal V^{\mathrm{prim}}$, and a
+normalized linear trace functional
+$\tau_{\mathrm{arith}}:M_{\mathrm{arith}}\to\mathbb C$ with
+$\tau_{\mathrm{arith}}(v_{\mathrm{prim}})=1$.
+It constructs commuting local spherical Hecke actions on this subspace,
+with the central element $D_p$ acting as the identity.
+
+For each prime $p$, it also specifies a smooth representation
+$\Pi_p$ of $GL_2(\mathbb Q_p)$ with trivial central character,
+a Whittaker realization, and the spherical Hecke module
+$M_p=\Pi_p^{GL_2(\mathbb Z_p)}$. Its distinguished vector $u_p$
+and linear functional $\ell_p:M_p\to\mathbb C$ satisfy
+$\ell_p(u_p)=1$. The arithmetic or automorphic construction must
+determine these representations, vectors, and functionals.
+Set
+\[
+ M_{\mathrm{aut}}=\bigotimes_p'(M_p,u_p),\qquad
+ u=\bigotimes_pu_p,\qquad
+ \ell=\bigotimes_p\ell_p.
+\]
+These are algebraic restricted tensor products over $\mathbb C$.
+The normalization makes $\ell$ compatible with adjoining $u_p$.
+Each local Hecke algebra acts on its own tensor factor, so the
+algebraic restricted tensor product of the local Hecke algebras acts
+on $M_{\mathrm{aut}}$.
+
+There is a complex-linear isomorphism
+\[
+ \Phi:M_{\mathrm{arith}}\longrightarrow M_{\mathrm{aut}},\qquad
+ \Phi(v_{\mathrm{prim}})=u,\qquad
+ \Phi(hm)=h\Phi(m),\qquad
+ \tau_{\mathrm{arith}}(m)=\ell(\Phi(m)).
+\]
+The identities hold for every $m\in M_{\mathrm{arith}}$ and every
+finite-support spherical Hecke element $h$.
+In particular, the distinguished Hecke functionals agree:
+$\tau_{\mathrm{arith}}(h v_{\mathrm{prim}})=\ell(hu)$.
+The oscillator cover additionally admits a complex-linear map
+$Q:\bigotimes_p'\mathcal H^{(p)}\to M_{\mathrm{arith}}$ sending its
+vacuum to $v_{\mathrm{prim}}$, with complex-linear local maps
+$Q_p:\mathcal H^{(p)}\to M_p$ such that
+$Q_p(|0\rangle_p)=u_p$ and $\Phi Q=\bigotimes_pQ_p$.
+\end{conjecture}
+
+The class $v_{\mathrm{prim}}$ is an element of the arithmetic trace
+carrier, whereas $M_{\mathrm{aut}}$ is a representation space.
+The conjecture asks for their comparison through $\Phi$, together
+with the oscillator maps $Q,Q_p$. It does not identify the class
+with that space. All these arithmetic constructions remain open.
+The linear functionals above are not assumed positive. A positive
+state, Hilbert completion, spectral decomposition, ramified extension,
+and archimedean or full Weil comparison each require their own
+construction and compatibility theorem.
+
+
+\section{The Corrected Local Model and Its Consequences}
+\label{v4-arith:kb:summary}
+
+The global realization in
+Conjecture~\ref{v4-arith:thm:beilinson-honest-reading} remains conjectural.
+The unconditional local statements are the divisor composition law,
+the distinct Adams monoid action, the symmetric-power trace
+recursion for a specified Satake matrix, and the radial spherical
+transform of Theorem~\ref{v4-arith:radial:transform}. The latter
+intertwines the local Hecke operations and preserves the root state. An arithmetic Hecke action
+requires a comparison preserving its carrier and determinant operation.
+Neither the oscillator rank nor an equality of scalar traces constructs
+that comparison.

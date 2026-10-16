@@ -1,0 +1,699 @@
+\chapter{Bernstein-Centre Descent and Local Pairing Normalization}
+\label{v4-arith:bc-glue-k5}
+\label{v4-arith:bcglue-k5}
+
+The local-to-global problem requires coherent objects, compatible
+actions and effective descent. A separate local calculation compares
+weighted occupation vectors, diagonal Hilbert--Schmidt operators and
+radial functions. The spherical Whittaker norm is computed with its
+measure factor, and its unit normalization gives an explicit line
+isometry. These constructions isolate the actual maps still needed
+for arithmetic Koszul--Petersson compatibility.
+
+\section{Bernstein Gluing and Local Pairing Conditions}
+\label{v4-arith:bcglue-k5:context}
+The BC-diamond-glue condition concerns local coherent Springer
+objects on the intended spectral carriers, their equivariant descent
+to a Selmer target, and identification of the descended central
+action with the global automorphic Bernstein centre. Coherent
+Springer theory on a Langlands-parameter stack does not itself
+construct the comparison to an Emerton--Gee stack.
+
+For pairing compatibility, fix both carriers and the type of each
+form. Hermitian forms are linear in the first variable and
+conjugate-linear in the second; inserting an antilinear map into the
+second slot of a bilinear form produces this type. On the prime
+cyclic Gibbs carrier, \(J\mu_{p^k}\Omega=p^{k/2}\mu_{p^k}^*\Omega\).
+Its arithmetic transport requires the action-compatible placement
+maps of Hypothesis~\ref{v4-arith:kms-gns:hyp:arithmetic-pairing}.
+
+\section{Local Constructions and Comparison Data}
+\label{v4-arith:bcglue-k5:table}
+\begin{description}
+\item[Local Springer transport.]
+The exact functor, support and action comparisons of
+Theorem~\ref{v4-arith:bcglue-k5:thm:local-BZCHN-plus-EG}
+transport a constructed object to the intended local spectral carrier.
+The coefficient comparisons, including the \(\ell=p\) case, must
+be constructed on their common carrier.
+\item[Effective equivariant descent.]
+Theorem~\ref{v4-arith:bcglue-k5:thm:prismatic-gluing} applies to
+actual local objects, overlap maps and higher coherences in a
+specified effective descent model. Local flatness does not supply
+cross-prime transition maps or coherence of an arbitrary colimit.
+\item[Global centre comparison.]
+Theorem~\ref{v4-arith:bcglue-k5:thm:core-compatibility} assembles
+supplied compatible actions over all finite sets of places. It also
+requires the separate identification with the actual global centre.
+An arithmetic AG equivalence alone does not identify its two actions.
+\item[Spherical norm.]
+Lemma~\ref{v4-arith:bcglue-k5:lem:spherical-norm} gives
+\(C_p=m_p(1+p^{-1})L_p(1,\operatorname{Ad}\pi_p)\) for the
+specified unramified tempered representation. The unit-circle
+parameters make every local denominator at one nonzero. The norm
+is not the compact subgroup volume.
+\item[Local Hilbert maps.]
+Theorem~\ref{v4-arith:bcglue-k5:thm:K5-absorption-canonical}
+constructs the occupation/diagonal/radial isometries and the
+normalized spherical line. Extending them to arithmetic pairing
+carriers with their Hecke actions is
+Conjecture~\ref{v4-arith:bcglue-k5:conj:local-comparison-datum}.
+\item[Adelic normalization.]
+Theorem~\ref{v4-arith:bcglue-k5:thm:K5-adelic-consistent} retains
+the continued value \(c_\pi\ne0\), actual placements and completed
+pairing maps. Common scalar rescaling preserves the supplied
+identity; it does not assert ordinary Euler-product convergence at one.
+\end{description}
+
+\section{BC-Diamond-Glue: Decomposition}
+\label{v4-arith:bcglue-k5:decomposition}
+
+\begin{definition}[the three sub-operations of (BC-diamond-glue)]
+\label{v4-arith:bcglue-k5:def:three-sub-operations}
+(BC-diamond-glue) decomposes into three sub-operations:
+\begin{description}
+\item[(BCglue.local)] \emph{Local Ben-Zvi--Chen--Helm--Nadler construction.} At each
+finite prime \(p\), construct a coherent Springer sheaf
+\(\mathcal{F}_{p}\in\mathrm{Coh}(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}})\)
+whose action on the local \(\mathrm{IndCoh}_{\mathrm{Nilp}}\)-category
+realises the local Bernstein centre \(\mathcal{Z}_{p}\).
+\item[(BCglue.glue)] \emph{Cross-prime coefficient descent.}
+Construct a common coefficient carrier and actual transition
+correspondences for the local sheaves, with the support, filtration,
+and higher-coherence data of
+Hypothesis~\ref{v4-arith:bcglue-k5:lem:prismatic-flatness}.
+Supply the effective coherent-descent model on the Selmer target
+required by Theorem~\ref{v4-arith:bcglue-k5:thm:prismatic-gluing}.
+The global sheaf is obtained from that descent equivalence; a
+formal product across distinct primes or a filtered colimit of
+coherent sheaves does not supply it.
+\item[(BCglue.core)] \emph{Global Bernstein-centre compatibility.}
+The action of \(\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}\) on
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}})\)
+agrees, under the conjectural arithmetic AG equivalence of
+Theorem~\ref{v4-arith:thm:arithmetic-AG}, with the global Bernstein-centre
+action on \(\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}])\).
+\end{description}
+\end{definition}
+
+\begin{theorem}[decomposition of (BC-diamond-glue)]
+\label{v4-arith:bcglue-k5:thm:decomposition}
+(BC-diamond-glue) is equivalent to the
+conjunction
+\[
+(\mathrm{BCglue.local})\;\wedge\;(\mathrm{BCglue.glue})\;\wedge\;(\mathrm{BCglue.core}).
+\]
+The core condition concerns the action on the object obtained from
+the first two constructions; no logical independence is asserted.
+\end{theorem}
+
+\begin{proof}
+\emph{Forward.} Suppose (BC-diamond-glue), i.e.\
+Conjecture~\ref{v4-arith:acd:cj:bc-diamond-glue-concrete}, holds. Then the
+local coherent Springer sheaves \(\{\mathcal{F}_{v}\}_{v}\) exist
+(supplying (BCglue.local)), glue to
+\(\mathcal{F}_{\mathrm{glob}}^{\mathrm{prism}}\) along the diagonal
+(supplying (BCglue.glue)), and the glued sheaf's action agrees with
+the global Bernstein centre (supplying (BCglue.core)).
+
+\emph{Reverse.} Suppose (BCglue.local), (BCglue.glue),
+(BCglue.core) all hold. Then (BCglue.local) gives the local sheaves;
+(BCglue.glue) assembles them into a global coherent sheaf;
+(BCglue.core) gives the Bernstein-centre compatibility. Together,
+these are exactly the content of
+Conjecture~\ref{v4-arith:acd:cj:bc-diamond-glue-concrete}.
+
+The equivalence separates the required data without constructing them.
+\end{proof}
+
+\section{BC-Diamond-Glue: Local Construction (Ben-Zvi--Chen--Helm--Nadler)}
+\label{v4-arith:bcglue-k5:local}
+
+\begin{theorem}[Transport of a local coherent Springer object]
+\label{v4-arith:bcglue-k5:thm:local-BZCHN-plus-EG}
+Fix a common coefficient category and a coherent Springer object
+\(S_p\) on a specified parameter carrier \(\mathcal Y_p\).
+Supply an exact functor
+\[
+ T_p:\mathrm{Coh}(\mathcal Y_p)\longrightarrow
+       \mathrm{Coh}(\mathcal X_p^{\mathrm{EG}})
+\]
+preserving the required singular support, together with compatible
+natural equivalences identifying its transported central action with
+the action on the stated local representation category. Then
+\(\mathcal F_p=T_p(S_p)\) is a coherent object with that central action.
+\end{theorem}
+\begin{proof}
+Preservation of coherence and support gives the object on the stated
+carrier. Apply \(T_p\) to the action morphisms. Functoriality preserves
+their unit and composition identities, and the supplied natural
+equivalences identify the resulting action with the required one.
+\end{proof}
+\begin{remark}[Local coefficient and spectral comparisons]
+\label{v4-arith:bcglue-k5:rem:domain-local}
+Ben-Zvi--Chen--Helm--Nadler construct the coherent Springer input on
+its Langlands-parameter carrier. Construct the functor \(T_p\) and
+the compatible representation-theoretic action comparison above.
+If several coefficient realizations are used, construct a common
+comparison carrier, the functors to it, and compatible isomorphisms
+between the resulting objects. In particular, the \(\ell=p\) and
+cross-coefficient comparisons must be supplied; agreement of
+parameters or traces alone does not produce these isomorphisms.
+\end{remark}
+
+\section{BC-Diamond-Glue: Bernstein Centre Gluing}
+\label{v4-arith:bcglue-k5:gluing}
+
+\subsection{Prismatic Transition Maps}
+
+\begin{definition}[Nygaard-convention-aware transition map]
+\label{v4-arith:bcglue-k5:def:nygaard-transition}
+For distinct primes \(p,q\) and pairs
+\((R_{p},\varphi_{p},\Gamma_{p})\), \((R_{q},\varphi_{q},\Gamma_{q})\)
+of Emerton--Gee data (here \(R_{p}\) is the period ring,
+\(\varphi_{p}\) the Frobenius, \(\Gamma_{p}=\mathrm{Gal}(\mathbb{Q}_{p}(\mu_{p^{\infty}})/\mathbb{Q}_{p})\)
+the cyclotomic Galois group, as in Emerton--Gee arXiv:1908.07185 \S2),
+the \emph{Nygaard-convention-aware transition
+map} is a proposed comparison morphism
+\[
+\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}\times\mathcal{X}^{\mathrm{EG},q}_{GL_{2}}\;\to\;\mathcal{X}^{\mathrm{EG},\{p,q\}}_{GL_{2}}
+\]
+where the target denotes a sought common moduli carrier for the
+rank-\(2\) local data at \(p\) and \(q\). Its construction and
+coefficient comparison are part of
+Hypothesis~\ref{v4-arith:bcglue-k5:lem:prismatic-flatness}; a product
+of formal bases at distinct primes does not define it.
+The Nygaard filtration convention of Bhatt--Lurie
+arXiv:2201.06120 \S8 is used to specify the expected comparison data.
+For \(p\neq q\) this is a residual comparison correspondence, not a
+canonical fibre-product identity of formal bases.
+\end{definition}
+
+\begin{hypothesis}[Cross-prime transition and descent data]
+\label{v4-arith:bcglue-k5:lem:prismatic-flatness}
+For the proposed comparison of
+Definition~\ref{v4-arith:bcglue-k5:def:nygaard-transition}, supply a
+common coefficient category and actual transition correspondences.
+Assume their pullback functors preserve coherent objects and the
+specified nilpotent singular support, commute with the required
+colimits, and carry compatible Nygaard filtrations. Assume the
+comparison isomorphisms on double overlaps satisfy the triple
+cocycle and all higher coherences. These are cross-prime data,
+not consequences of separate theories over \(\mathbb Z_p\) and
+\(\mathbb Z_q\).
+\end{hypothesis}
+
+\begin{remark}[Flat base change and the missing arithmetic maps]
+For a flat homomorphism of Noetherian rings \(A\to B\), tensoring
+with \(B\) is exact and preserves finite presentation: a finite
+presentation \(A^r\to A^s\to M\to0\) becomes
+\(B^r\to B^s\to B\otimes_A M\to0\). Thus it sends coherent
+modules to coherent modules. This elementary calculation explains
+one required property once a common base and a flat map are given.
+It constructs neither a cross-prime map nor a singular-support
+comparison. A filtered colimit of coherent objects also need not
+be coherent: the increasing finite-dimensional subspaces of
+\(\bigoplus_{n\ge1}k\) are a counterexample over a field.
+\end{remark}
+
+\subsection{Effective Descent of the Local Sheaves}
+
+\begin{theorem}[Conditional coefficient descent]
+\label{v4-arith:bcglue-k5:thm:prismatic-gluing}
+Assume Hypothesis~\ref{v4-arith:bcglue-k5:lem:prismatic-flatness}.
+Let \(X=\mathcal X^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal L}\).
+Supply an effective descent diagram \(U_\bullet\to X\) and an
+explicit equivalence
+\[
+ \mathrm{Coh}(X)\xrightarrow{\sim}
+ \operatorname{Tot}\bigl(\mathrm{Coh}(U_\bullet)\bigr)
+\]
+on the prescribed singular-support and coefficient subcategories.
+If the local coherent Springer sheaves and comparison isomorphisms
+form an object of the displayed totalization, they determine a
+coherent sheaf \(\mathcal F_{\mathrm{glob}}^{\mathrm{prism}}\) on \(X\),
+unique up to the equivalence of descent objects.
+Any archimedean factor requires its own compatible complex/Hodge
+comparison data.
+\end{theorem}
+\begin{proof}
+The sheaves, overlap isomorphisms, and higher coherences define the
+stated descent object. Apply the inverse of the supplied descent
+equivalence. The resulting sheaf pulls back to each prescribed local
+object, and full faithfulness gives uniqueness and compatibility of
+its morphisms. Coherence follows from the target of that equivalence,
+not from an arbitrary filtered colimit in an ind-category.
+\end{proof}
+
+\begin{question}[Arithmetic cross-prime descent]
+Construct the common coefficient carrier, transition correspondences,
+and effective descent equivalence in the preceding theorem for the
+specified Selmer problem, preserving its full Weil/\((\varphi,\Gamma)\)
+data and Nygaard filtrations. Local prismatic constructions alone
+do not supply the first cross-prime morphisms. This is the remaining
+content of (BCglue.glue).
+\end{question}
+
+\subsection{Reduction to core compatibility}
+
+\begin{theorem}[Compatible finite-stage central actions]
+\label{v4-arith:bcglue-k5:thm:core-compatibility}
+Let \(F:\mathcal C\simeq\mathcal D\) be an equivalence of stable
+categories. Let \((A_S)\) be a compatible diagram of commutative
+algebras indexed by all finite sets of places, with
+\(A=\varinjlim_S A_S\). Suppose compatible actions
+\[
+ a_S:A_S\to Z^0(\mathcal C),\qquad b_S:A_S\to Z^0(\mathcal D)
+\]
+are given, where \(Z^0(\mathcal C)=\operatorname{End}(\operatorname{Id}_{h\mathcal C})\)
+is the ordinary centre of the homotopy category, consisting of ordinary
+natural transformations; similarly for \(\mathcal D\). If
+\(F(a_S(z)_M)=b_S(z)_{F(M)}\) for every \(S,z,M\), then \(F\)
+intertwines the induced \(A\)-actions.
+\end{theorem}
+\begin{proof}
+The compatible algebra maps factor uniquely through \(A\). Every
+element of \(A\) comes from a finite stage, where the intertwining
+identity holds. Thus it holds for the induced actions.
+\end{proof}
+\begin{remark}[Coherent actions and the arithmetic centre]
+\label{v4-arith:bcglue-k5:rem:core-vs-unconditional}
+For higher actions, the corresponding input is a compatible system
+of maps in the chosen category of derived algebras, with a coherent
+homotopy between the two systems. The colimit identity
+\[
+ \operatorname{Map}(\operatorname*{colim}_S A_S,Z)
+ \simeq\operatorname*{lim}_S\operatorname{Map}(A_S,Z)
+\]
+assembles that supplied homotopy. Equalities in degree zero do not
+supply it. The index consists of all finite sets; the poset of pairs
+alone is not filtered.
+
+For BCglue.core, one must further identify \(A\) with the actual
+global automorphic Bernstein centre, and \(b_S\) with the actions
+of the equivariantly descended coherent object. An equivalence of
+underlying categories does not do this. For example, on
+\(\mathcal C=\mathcal D=D(k)\), the identity equivalence fails to
+intertwine the two \(k[t]\)-actions \(t\mapsto0\) and
+\(t\mapsto1\): at the object \(k\) the required equation would be
+\(0=\mathrm{id}_k\).
+
+The resulting implication uses the complete data:
+\[
+ \begin{gathered}
+ \text{local comparison and effective equivariant descent,}\\
+ \text{arithmetic AG and compatible global centre comparisons}
+ \end{gathered}
+ \quad\Longrightarrow\quad\text{BC-diamond-glue}.
+\]
+The original cross-prime and global-centre constructions remain
+required, with their coherent equivariant descent data.
+\end{remark}
+
+\section{Consequence: \(\mathrm{L}_{\mathrm{ACD}}\) Final Residual Isolation}
+\label{v4-arith:bcglue-k5:LACD-final}
+
+\begin{corollary}[Descent data for the categorical comparison]
+\label{v4-arith:bcglue-k5:cor:LACD-tight-list}
+Under the prior F1.a and F2.c comparison data, the BC-diamond-glue
+input to \(\mathrm L_{\mathrm{ACD}}\) requires all three constructions:
+local coherent transport, effective equivariant descent, and the
+compatible identification with the global automorphic centre.
+If these data are supplied, they give BC-diamond-glue.
+\end{corollary}
+\begin{proof}
+The local theorem constructs the transported objects from its
+specified functors. The effective descent theorem assembles their
+coherent overlap data. The centre comparison identifies the resulting
+action, with finite-stage compatibility assembled by
+Theorem~\ref{v4-arith:bcglue-k5:thm:core-compatibility}.
+These are the three parts of
+Definition~\ref{v4-arith:bcglue-k5:def:three-sub-operations}.
+\end{proof}
+\begin{remark}[What remains after local transport]
+\label{v4-arith:bcglue-k5:rem:domain-delta}
+A transported local object does not specify cross-prime overlap
+maps, and an effectively descended object does not identify its
+action with the global Bernstein centre. The original categorical
+construction requires both comparisons with their higher coherences.
+\end{remark}
+
+\section{K5: Spherical Whittaker Normalization}
+\label{v4-arith:bcglue-k5:K5}
+
+\subsection{The Local Adjoint \(L\)-Factor}
+
+\begin{definition}[local adjoint \(L\)-factor \(L_{p}(s,\mathrm{Ad})\)]
+\label{v4-arith:bcglue-k5:def:adjoint-L}
+For an unramified principal-series representation
+\(\pi_{p}=\mathrm{Ind}_{B}^{GL_{2}}(\chi_{1}\otimes\chi_{2})\) at
+\(GL_{2}(\mathbb{Q}_{p})\) with Satake parameters
+\((\alpha_{p},\beta_{p})=(\chi_{1}(p),\chi_{2}(p))\) on the unit
+circle, the local adjoint \(L\)-factor is
+\begin{equation}
+\label{v4-arith:bcglue-k5:eq:adjoint-L}
+L_{p}(s,\mathrm{Ad}(\pi_{p}))
+\;:=\;\bigl(1-\alpha_{p}\beta_{p}^{-1}\,p^{-s}\bigr)^{-1}
+\cdot(1-p^{-s})^{-1}
+\cdot\bigl(1-\alpha_{p}^{-1}\beta_{p}\,p^{-s}\bigr)^{-1}.
+\end{equation}
+Reference: Jacquet 1979 Corvallis ``Principal \(L\)-functions'' \S2,
+or Bump 1997 \emph{Automorphic Forms and Representations} \S3.2.
+\end{definition}
+
+\begin{lemma}[Finite adjoint factor for an unramified tempered representation]
+\label{v4-arith:bcglue-k5:lem:Lp-1-well-defined}
+Fix an unramified tempered representation \(\pi_p\) of
+\(GL_2(\mathbb Q_p)\), with unitary-normalized Satake parameters
+\(\alpha_p,\beta_p\) satisfying \(|\alpha_p|=|\beta_p|=1\).
+Then the factor \(L_p(1,\mathrm{Ad}\,\pi_p)\) of
+Definition~\ref{v4-arith:bcglue-k5:def:adjoint-L} is finite and nonzero.
+This is a statement about the specified representation; its placement
+in an arithmetic Hochschild realization is separate comparison data.
+\end{lemma}
+\begin{proof}
+The three denominator terms are
+\[
+ 1-\alpha_p\beta_p^{-1}p^{-1},\qquad
+ 1-p^{-1},\qquad
+ 1-\alpha_p^{-1}\beta_p p^{-1}.
+\]
+Each is nonzero because the subtracted term has absolute value
+\(p^{-1}<1\). Their inverse product is therefore finite and nonzero.
+No inequality between \(\alpha_p\) and \(\beta_p\) is needed.
+\end{proof}
+
+\subsection{The Absorption Convention}
+
+\begin{definition}[Koszul-dual normalisation convention]
+\label{v4-arith:bcglue-k5:def:koszul-dual-norm}
+The \emph{Koszul-dual normalisation convention} is the rescaling
+of the local Koszul pairing at a finite prime \(p\), assuming
+\(L_p(1,\mathrm{Ad})\) is finite and nonzero, by the local
+adjoint \(L\)-factor:
+\begin{equation}
+\label{v4-arith:bcglue-k5:eq:koszul-dual-norm}
+\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul,Ad}}_{p}
+\;:=\;
+L_{p}(1,\mathrm{Ad})^{-1}\cdot\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul}}_{p}.
+\end{equation}
+The global normalized pairing is defined using the specified
+continued nonzero value \(c_\pi=L(1,\mathrm{Ad}\,\pi)\), as
+\(c_\pi^{-1}\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul}}\),
+with the actual adelic extension and comparison maps of
+Hypothesis~\ref{v4-arith:kms-gns:hyp:arithmetic-pairing}.
+It is not defined by an unproved ordinary product at \(s=1\).
+\end{definition}
+
+\begin{lemma}[Spherical Whittaker norm with specified measure]
+\label{v4-arith:bcglue-k5:lem:spherical-norm}
+Let \(\pi_p\) be normalized unramified tempered principal series,
+with \(|\alpha|=|\beta|=1\), and take an additive character of
+conductor \(\mathbb Z_p\). Let \(W(1)=1\) be its spherical
+Whittaker function. Set \(m_p=\operatorname{vol}_{d^\times a}
+(\mathbb Z_p^\times)>0\). Its standard spherical formula is
+\[
+ W(\operatorname{diag}(p^j,1))=p^{-j/2}h_j(\alpha,\beta)
+ \quad(j\ge0),\qquad
+ h_j=\sum_{r=0}^j\alpha^{j-r}\beta^r,
+\]
+and it vanishes at negative valuations. For \(\operatorname{Re}s>0\),
+\begin{equation}
+\label{v4-arith:bcglue-k5:eq:GJ-funeq}
+ Z_p(s):=\int_{\mathbb Q_p^\times}|W(a)|^2|a|^{s-1}\,d^\times a
+ =m_p\frac{L_p(s,\pi_p\times\widetilde\pi_p)}{\zeta_p(2s)}.
+\end{equation}
+In particular
+\[
+ C_p:=Z_p(1)=m_p(1+p^{-1})L_p(1,\operatorname{Ad}\pi_p)>0.
+\]
+For \(d^\times a=da/|a|\) with additive unit volume,
+\(m_p=1-p^{-1}\), so \(C_p=(1-p^{-2})L_p(1,\operatorname{Ad}\pi_p)\).
+\end{lemma}
+\begin{proof}
+Shell integration gives
+\(Z_p(s)=m_p\sum_{j\ge0}|h_j|^2p^{-js}\), which converges
+absolutely since \(|h_j|\le j+1\). With \(r=\alpha/\beta\),
+summing geometric series gives
+\[
+ \sum_{j\ge0}|h_j|^2x^j
+ =\frac{1+x}{(1-x)(1-rx)(1-r^{-1}x)}.
+\]
+For \(r\ne1\), this follows by writing
+\(|h_j|^2=(2-r^{j+1}-r^{-j-1})/|1-r|^2\) and summing each term.
+The case \(r=1\) follows by continuity, or from
+\(\sum(j+1)^2x^j=(1+x)/(1-x)^3\).
+The rank-four Rankin--Selberg factor has denominator
+\((1-x)^2(1-rx)(1-r^{-1}x)\). Multiplication by \(1-x^2\)
+proves the displayed integral. Since
+\(L_p(s,\pi_p\times\widetilde\pi_p)=\zeta_p(s)L_p(s,\operatorname{Ad}\pi_p)\),
+evaluation at one gives \(C_p\). This is a positive norm; finiteness
+also follows directly from the convergent shell series. The measure
+normalization is the Kirillov normalization used by
+Blomer--Jana--Nelson, \emph{Local Integral Transforms and Global
+Spectral Decomposition}, \S2, (2.7), and \S3.1.
+\end{proof}
+
+\begin{theorem}[Occupation, diagonal Hilbert--Schmidt and radial function models]
+\label{v4-arith:bcglue-k5:thm:K5-absorption-canonical}
+Let \(H_{\mathrm{occ}}=\ell^2(\mathbb N_0,p^{-j})\), with coordinate
+vectors \(\delta_j\), and let \(E_j=p^j\mathbb Z_p^\times\).
+There are explicit isometries
+\[
+ T\delta_j=p^{-j/2}m_p^{-1/2}\mathbf1_{E_j},\qquad
+ D\delta_j=p^{-j/2}E_{jj}
+\]
+onto, respectively, the closed radial subspace supported on
+nonnegative valuations in \(L^2(\mathbb Q_p^\times,d^\times a)\)
+and the diagonal subspace of \(\operatorname{HS}(\ell^2\mathbb N_0)\).
+They intertwine coordinate conjugation with function conjugation and
+\(JX=X^*\). Thus, for all \(v,w\in H_{\mathrm{occ}}\),
+\begin{equation}
+\label{v4-arith:bcglue-k5:eq:K5-match}
+ H_{\mathrm{occ}}(v,w)=H_{\mathrm{Whit}}(Tv,Tw)
+ =\operatorname{Tr}(Dv(Dw)^*).
+\end{equation}
+The spherical function is
+\(W=T(\sqrt{m_p}\sum_{j\ge0}h_j\delta_j)\).
+The map \(a\Omega\mapsto aW/\sqrt{C_p}\) is an isometry from the
+unit prime Gibbs-vacuum line to the spherical Whittaker line.
+\end{theorem}
+\begin{proof}
+The shells are disjoint, each of measure \(m_p\), so the Gram
+matrix of \(T\delta_j\) is \(\delta_{jk}p^{-j}\).
+The matrix units are Hilbert--Schmidt orthonormal, giving the same
+Gram matrix for \(D\delta_j\). Their finite spans are dense in the
+stated ranges, proving the extensions and surjectivity onto those
+ranges. Both displayed bases are fixed by their conjugations.
+The spherical expansion follows shell by shell and converges since
+\(\sum p^{-j}|h_j|^2<\infty\). Its norm is \(C_p\), proving the
+normalized-line isometry. Notice that \(W\ne T\delta_0\) in
+general; its coefficients depend on the representation.
+\end{proof}
+
+\begin{conjecture}[Arithmetic local pairing comparison]
+\label{v4-arith:bcglue-k5:conj:local-comparison-datum}
+Construct the arithmetic placement and action-intertwining maps from
+the actual bar--cobar carrier to the specified local representation
+and Whittaker models, with domains, Haar measure and spherical
+normalization fixed. Require them to transport the arithmetic
+bilinear pairing and its conjugation to the corresponding Hermitian
+form, compatibly with Hecke actions and the adelic extension in
+Hypothesis~\ref{v4-arith:kms-gns:hyp:arithmetic-pairing}.
+The preceding radial and diagonal isometries are explicit bounded
+models; they do not construct this full arithmetic comparison.
+\end{conjecture}
+
+\begin{remark}[Pairing type and normalization]
+\label{v4-arith:bcglue-k5:rem:K5-domain}
+The Whittaker integral and the occupation Hilbert form are linear
+in the first variable and conjugate-linear in the second. An
+antilinear map cannot be inserted in their second slot without
+changing that type. If \(B_{\mathrm{Whit}}(x,y)=H_{\mathrm{Whit}}(x,Jy)\)
+is the corresponding bilinear form, then
+\(H_{\mathrm{Whit}}(x,y)=B_{\mathrm{Whit}}(x,Jy)\).
+This is the type required in an arithmetic Koszul comparison.
+
+Adjoint rescaling alone changes the spherical norm to
+\(m_p(1+p^{-1})\), not to one. Unit normalization uses the full
+positive factor \(C_p\). This scalar is distinct from
+\(\operatorname{vol}(GL_2(\mathbb Z_p))=(1-p^{-1})(1-p^{-2})\)
+for the standard additive-matrix Haar convention. Ramified and
+non-tempered representations require their own integral and domain
+calculation. The finite nonzero continued global value in
+Theorem~\ref{v4-arith:bcglue-k5:thm:K5-adelic-consistent} is a
+separate analytic input, not a proof of local denominator finiteness.
+\end{remark}
+
+\subsection{Adelic Consistency}
+
+\begin{theorem}[Conditional adelic normalization on the cuspidal sph-fin locus]
+\label{v4-arith:bcglue-k5:thm:K5-adelic-consistent}
+Fix a cuspidal representation \(\pi\) and the local comparison datum
+of Conjecture~\ref{v4-arith:bcglue-k5:conj:local-comparison-datum}.
+Assume the placement and adelic pairing maps of
+Hypothesis~\ref{v4-arith:kms-gns:hyp:arithmetic-pairing} on the
+specified sph-fin core. Suppose the adjoint Euler product, initially
+defined in a half-plane of absolute convergence, has a specified
+holomorphic continuation to \(s=1\) with
+\(c_\pi=L(1,\mathrm{Ad}\,\pi)\ne0\).
+Then
+\[
+ \langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul,Ad}}
+ :=c_\pi^{-1}\langle\,\cdot\,,\,\cdot\,\rangle^{\mathrm{Koszul}}
+\]
+is a well-defined rescaled pairing on that core. If the Petersson
+pairing is rescaled by the same scalar, the assumed pairing
+comparison is preserved. The value \(c_\pi\) is a continued value;
+no absolute convergence of \(\prod_pL_p(1,\mathrm{Ad}\,\pi)\)
+is asserted.
+\end{theorem}
+\begin{proof}
+Multiplication by the nonzero scalar \(c_\pi^{-1}\) defines the
+rescaled form. Multiplying the assumed identity
+\(\langle v,w\rangle^{\mathrm{Pet}}=
+\langle v,\sigma^{\mathrm{BC}}w\rangle^{\mathrm{Koszul}}\)
+by that scalar gives the identity of reduced pairings on the same
+domain. It neither enlarges the domain nor constructs its placement.
+
+The distinction between an Euler product and its continued value is
+already visible for tempered unramified local parameters. In that
+case the three adjoint parameters have absolute value one. For
+\(\sigma=\operatorname{Re}(s)>1\), the logarithmic series is bounded by
+\[
+ \sum_p\sum_{j\geq1}\frac{3p^{-j\sigma}}{j}
+ \leq\frac{3}{1-2^{-\sigma}}\sum_p p^{-\sigma}<\infty.
+\]
+Finitely many ramified factors do not affect this estimate away from
+their poles. The bound establishes absolute convergence in this
+half-plane; it gives no convergence assertion at \(s=1\).
+For other local regimes one starts in a half-plane where the Euler
+product is known to converge. Analytic continuation and nonvanishing
+at one are separate analytic inputs, of the kind considered in
+Hoffstein--Lockhart 1994 and the Langlands--Shahidi theory; their
+applicability to the chosen representation is part of the hypothesis.
+\end{proof}
+
+\begin{remark}[Local and global normalization hypotheses]
+\label{v4-arith:bcglue-k5:rem:K5-delta}
+Theorem~\ref{v4-arith:bcglue-k5:thm:K5-absorption-canonical}
+constructs specified local model isometries. Their arithmetic
+realization is the separate local comparison datum.
+The global assertion in
+Theorem~\ref{v4-arith:bcglue-k5:thm:K5-adelic-consistent}
+additionally requires the finite nonzero continued value \(c_\pi\)
+and the arithmetic placement and adelic pairing maps of
+Hypothesis~\ref{v4-arith:kms-gns:hyp:arithmetic-pairing}.
+Neither the local datum nor the analytic continuation constructs those maps.
+\end{remark}
+
+\section{Consequence: K-P Compat, Conditional Domain}
+\label{v4-arith:bcglue-k5:K-P-unconditional}
+
+\begin{corollary}[K-P compat on the cuspidal sph-fin locus under the local comparison datum]
+\label{v4-arith:bcglue-k5:cor:K-P-unconditional}
+\emph{(conditional on
+Conjecture~\ref{v4-arith:bcglue-k5:conj:local-comparison-datum},
+Hypothesis~\ref{v4-arith:kms-gns:hyp:arithmetic-pairing}, the specified
+finite nonzero continued value \(c_\pi=L(1,\mathrm{Ad}\,\pi)\), and
+domain-restricted to the cuspidal sph-fin locus)}. The Koszul--Petersson compatibility
+(Theorem~\ref{v4-arith:kp:thm:main-full}) holds on the cuspidal sph-fin
+locus of \(\mathcal{V}^{\mathrm{prim}}\), with the Koszul pairing
+interpreted under the Koszul-dual normalisation convention of
+Definition~\ref{v4-arith:bcglue-k5:def:koszul-dual-norm} and the
+Petersson form rescaled by the same \(c_\pi^{-1}\). The resulting
+equality is between these two rescaled forms. Full-sector
+extension further separates into the prime KMS\(_1\)/GNS cyclic-subspace
+comparison of Theorem~\ref{v4-arith:kms-gns:thm:KMS1-GNS-BC-identification}
+with the additional arithmetic maps of
+Hypothesis~\ref{v4-arith:kms-gns:hyp:arithmetic-pairing},
+and the ramified Rankin--Selberg and Eisenstein conditions of
+Remark~\ref{v4-arith:kp:rem:domain-restriction}.
+\end{corollary}
+
+\begin{proof}
+The local comparison datum supplies the finite-place pairing match
+with its stated normalization. Hypothesis~\ref{v4-arith:kms-gns:hyp:arithmetic-pairing}
+additionally supplies the arithmetic placement, preserved pairings,
+archimedean comparison, and adelic extension on the specified domain.
+Theorem~\ref{v4-arith:kp:thm:main-full} therefore applies to these
+maps. Multiplying both forms by the same nonzero \(c_\pi^{-1}\)
+preserves their equality. The local normalization alone supplies
+neither the global placement nor this extension. The additional ramified and continuous
+comparisons remain those of Remark~\ref{v4-arith:kp:rem:domain-restriction}.
+\end{proof}
+
+\begin{remark}[impact on P3]
+\label{v4-arith:bcglue-k5:rem:P3-impact}
+Corollary~\ref{v4-arith:kp:cor:P3-unconditional} stated P3 conditional on
+K-P compat, which was itself conditional on K5
+(Theorem~\ref{v4-arith:sw:thm:KP-split}).
+The global pairing implication retains all hypotheses of
+Corollary~\ref{v4-arith:bcglue-k5:cor:K-P-unconditional}.
+P3 concerns the original positive Petersson form; rescaling by an
+arbitrary nonzero complex \(c_\pi^{-1}\) preserves the pairing identity
+but need not preserve positivity. Under the arithmetic comparison
+hypotheses, the logical chain
+\[
+\text{K5 (cuspidal sph-fin)}
+\;\Rightarrow\;
+\text{K-P compat (cuspidal sph-fin)}
+\;\Rightarrow\;
+\text{P3 (cuspidal sph-fin)}
+\]
+is complete on the cuspidal sph-fin locus with the Koszul-dual
+normalisation convention explicit.
+\end{remark}
+
+\begin{remark}[impact on sufficient RH path]
+\label{v4-arith:bcglue-k5:rem:RH-path-impact}
+Corollary~\ref{v4-arith:kp:cor:rh-minimal-updated} retains the
+four-input conditional conjunction: arithmetic Positselski,
+Koszul--Petersson compatibility on its specified domain,
+\(\mathrm{H\!P}^{\mathrm{Ar}}\), and \(\mathrm{VB}^{*}\).
+The pairing implication here requires the local comparison datum,
+the finite nonzero continued value \(c_\pi\), and the arithmetic
+placement and adelic maps of
+Corollary~\ref{v4-arith:bcglue-k5:cor:K-P-unconditional}.
+These assumptions do not prove the other three inputs or extend
+the pairing identity beyond its stated domain.
+\end{remark}
+
+\section{Remaining Arithmetic Constructions}
+\label{v4-arith:bcglue-k5:residual}
+The local objects and their comparison functors must be constructed
+on the chosen coefficient and spectral carriers. Their cross-prime
+assembly requires actual equivariant descent data, while the
+global centre identification remains separate from the underlying
+arithmetic AG equivalence.
+
+\begin{remark}[The complete descent and pairing data]
+\label{v4-arith:bcglue-k5:rem:residual-summary}
+After local transport and effective coherent descent are supplied,
+BCglue.core asks for the actual global-centre identification and its
+coherent action comparison. Pairwise statements alone do not supply
+this datum. The conditional composition theorem explains how a
+compatible system over all finite sets assembles once constructed.
+
+The K5 calculation gives concrete local Hilbert-space maps and the
+spherical norm. Its arithmetic extension requires maps preserving
+Hecke actions, the bilinear pairing and conjugation. Adelic transport
+also requires its completed domains and normalization. These are
+not consequences of a finite nonzero adjoint factor.
+\end{remark}
+
+\section{Constructed Models and the Global Target}
+\label{v4-arith:bcglue-k5:summary}
+The local coherent transport theorem, finite-stage central-action
+composition, spherical integral and explicit Hilbert isometries are
+proved on their stated carriers. Effective coherent descent is
+applied only when its full diagram and equivalence are supplied.
+
+Koszul--Petersson compatibility and P3 on the cuspidal sph-fin domain
+retain the actual arithmetic placement, pairing and adelic extension
+hypotheses of Corollary~\ref{v4-arith:bcglue-k5:cor:K-P-unconditional}.
+The prime cyclic KMS construction does not identify a whole global
+GNS space with the automorphic carrier. Ramified, full archimedean
+and continuous comparisons remain part of the original target.
+Arithmetic Positselski, the Hilbert--P\'olya realization and Li positivity
+also remain separate inputs to the sufficient RH implication.

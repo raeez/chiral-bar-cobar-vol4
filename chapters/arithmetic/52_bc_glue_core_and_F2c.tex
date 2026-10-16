@@ -1,0 +1,1032 @@
+\chapter{Pseudocharacters, Singular Support, and Restricted \(E_{2}\) Tensor Products}
+\label{v4-arith:w5-h:bcglue-core-and-F2c}
+\chaptermark{Pseudocharacters and Singular Support}
+
+\emph{Two-prime restriction constructs a formal deformation diagram.
+Its use in \((\mathrm{BCglue.core})\) requires the pairwise geometric
+comparison \((\mathrm{Ch1})\), together with a separate global
+centre comparison. Chapter~\ref{v4-arith:bcglue-core} constructs the
+formal pullback and the equations for its equivariant comparison. The first is not a theorem of Chenevier alone:
+Chenevier supplies the determinant ring, while the local--global
+flatness, trace compatibility and equivariant coherent descent are
+separate Selmer-theoretic and categorical inputs. The proposed determinantal singular-support construction requires
+an actual geometric descent diagram and its higher-centre maps.
+An internal centre-gluing identity does not itself identify that
+centre with the global automorphic centre.}
+
+\emph{The \(F2.c\) assertion is the
+restricted \(E_{2}\)-tensor formalism under actual operadic pointed
+unit hypotheses. The local Iwahori \(E_{2}\)-input is not part of that
+formal theorem.}
+
+\section{(Ch1) Chenevier Pseudocharacter Compatibility}
+\label{v4-arith:w5-h:ch1}
+
+\subsection{Chenevier Determinant-Trace Pseudocharacter Recalled}
+
+\begin{definition}[Chenevier determinant and associated trace]
+\label{v4-arith:w5-h:def:chenevier-det-trace}
+Let $R$ be a commutative ring, $\Gamma$ a group and $d\geq1$.
+An $R$-valued determinant of dimension $d$ is a multiplicative,
+homogeneous polynomial law of degree $d$ from $R[\Gamma]$ to $R$.
+Thus it specifies maps $D_A:A[\Gamma]\to A$ for every commutative
+$R$-algebra $A$, natural in $A$, with
+$D_A(1)=1$, $D_A(xy)=D_A(x)D_A(y)$ and
+$D_A(ax)=a^dD_A(x)$. Write
+\[
+ D_{R[t]}(t-x)=\sum_{j=0}^d(-1)^j\Lambda_j(x)t^{d-j}.
+\]
+The associated trace is $T=\Lambda_1$, an $R$-linear map; the
+notation $(T,D)$ retains this dependence. The characteristic
+polynomial gives the Cayley--Hamilton relations in the quotient
+by their coefficients after polynomial base change. These relations
+need not hold in $R[\Gamma]$ itself.
+For a profinite $\Gamma$ and a topological coefficient ring,
+continuity means that all characteristic-polynomial coefficient
+functions on $\Gamma$ are continuous.
+\end{definition}
+
+\begin{proposition}[determinantal deformation rings]
+\label{v4-arith:w5-h:prop:chenevier-moduli-via-det-trace}
+\ClaimStatusProvedElsewhere
+Let $k$ be a finite field of characteristic $p_0$, put $W=W(k)$,
+and fix a continuous residual determinant $\bar D$ of dimension $d$
+of a profinite group $\Gamma$. On finite local $W$-algebras $A$
+with residue field $k$, let $\mathcal D_\Gamma(A)$ be the set of
+continuous determinants lifting $\bar D$. This covariant functor
+is prorepresented by a profinite local $W$-algebra $R_\Gamma^{\mathrm{Ch}}$:
+\[
+ \mathcal D_\Gamma(A)=
+ \operatorname{Hom}_{W,\mathrm{cont}}(R_\Gamma^{\mathrm{Ch}},A).
+\]
+Under Mazur's finiteness condition---every open subgroup has only
+finitely many continuous homomorphisms to $\mathbb Z/p_0\mathbb Z$---
+the ring is complete Noetherian. A closed deformation condition
+represented by a quotient is imposed by that quotient.
+The representing formal space is $\operatorname{Spf}R_\Gamma^{\mathrm{Ch}}$.
+For $\Gamma=G_{\mathbb Q,S}$ with finite $S$, and for local Galois
+groups in characteristic zero, the finiteness condition holds.
+If the residual representation is absolutely irreducible and defined
+over $k$, determinant deformations agree with its representation
+deformations up to strict equivalence.
+\end{proposition}
+
+\begin{proof}[Source]
+Chenevier, arXiv:0809.0415, \S1.1 and \S1.10 define polynomial
+laws and their characteristic coefficients. Proposition~3.3,
+p.~42, proves prorepresentability; Example~3.6 and
+Proposition~3.7, p.~43, give the finiteness assertions.
+Example~3.4 and Theorem~2.22 give the absolutely irreducible
+comparison. Bella\"iche--Chenevier, \emph{Families of Galois
+representations and Selmer groups}, Chapter~1, provides the related
+deformation-theoretic setting. A chosen local condition must be
+shown to define the quotient used in any particular application.
+\end{proof}
+
+\subsection{The Local--Global Comparison Datum}
+
+\begin{conjecture}[pseudocharacter trace comparison]
+\label{v4-arith:w5-h:conj:pseudocharacter-trace-comparison}
+\ClaimStatusConjectured The prismatic/pro-\(\acute{e}\)tale comparison on
+the Emerton--Gee stack identifies the trace associated to the universal determinant
+on the local Chenevier deformation ring with the
+\(GL_{2}\)-invariant trace of the universal
+\((\varphi,\Gamma)\)-module, compatibly with the Nygaard filtration.
+\end{conjecture}
+
+Fix distinct primes $p,q$ and a coefficient prime $p_0\ne p,q$.
+Choose a finite set $S$ containing $p,q,p_0,\infty$, a finite field
+$k$ of characteristic $p_0$, and a residual determinant of dimension
+$2$ of $G_{\mathbb Q,S}$, with absolutely irreducible residual
+representation. Put $W=W(k)$. Choose decomposition-group maps
+$G_{\mathbb Q_p},G_{\mathbb Q_q}\to G_{\mathbb Q,S}$ and closed local
+and global deformation conditions preserved by restriction.
+Let $R_p^{\mathrm{Ch}},R_q^{\mathrm{Ch}},R^{\mathrm{Ch}}$ be their
+complete Noetherian representing rings. Local residual restrictions
+need not be absolutely irreducible: we use their determinant functors.
+
+For finite local $W$-algebras $A$, restriction is the natural map
+\[
+ \mathcal D_{\mathrm{glob}}(A)\longrightarrow
+ \mathcal D_p(A)\times\mathcal D_q(A).
+\]
+The product functor is represented by the completed tensor product
+\[
+ B_{p,q}=R_p^{\mathrm{Ch}}\widehat\otimes_W R_q^{\mathrm{Ch}}.
+\]
+Here completion is for the sum of the maximal ideals; equivalently
+$B_{p,q}$ is the inverse limit of
+$(R_p^{\mathrm{Ch}}/\mathfrak m_p^n)\otimes_W
+ (R_q^{\mathrm{Ch}}/\mathfrak m_q^n)$.
+It has residue field $k$ and is complete Noetherian. For example,
+presenting the local rings as quotients of $W[[x_1,\ldots,x_a]]$
+and $W[[y_1,\ldots,y_b]]$ presents $B_{p,q}$ as the quotient of
+$W[[x_1,\ldots,x_a,y_1,\ldots,y_b]]$ by the two defining ideals.
+
+\begin{theorem}[restriction and the pairwise deformation diagram]
+\label{v4-arith:w5-h:thm:ch1-closure}
+\ClaimStatusProvedHere
+Restriction of determinants induces the continuous local ring map
+\begin{equation}
+\label{v4-arith:w5-h:eq:chenevier-restriction}
+ r_{p,q}^{\sharp}:B_{p,q}\longrightarrow R^{\mathrm{Ch}},
+ \qquad x\otimes y\longmapsto r_p^{\sharp}(x)r_q^{\sharp}(y).
+\end{equation}
+Put $J_{p,q}=\ker r_{p,q}^{\sharp}$ and
+$C_{p,q}=B_{p,q}/J_{p,q}$. There are factorizations
+\[
+ B_{p,q}\twoheadrightarrow C_{p,q}\hookrightarrow R^{\mathrm{Ch}},
+ \qquad
+ \operatorname{Spf}R^{\mathrm{Ch}}
+ \longrightarrow\operatorname{Spf}C_{p,q}
+ \lhook\joinrel\longrightarrow\operatorname{Spf}B_{p,q}.
+\]
+For a prescribed pair of local deformations $b:B_{p,q}\to A$,
+the fibre of the global restriction functor is represented over $A$
+by
+\[
+ R^{\mathrm{Ch}}\widehat\otimes_{B_{p,q},b} A.
+\]
+Neither surjectivity of $r_{p,q}^{\sharp}$ nor flatness nor the
+existence of a global lift of every $C_{p,q}$-valued pair follows
+from this construction.
+\end{theorem}
+
+\begin{proof}
+The universal global determinant restricts to a local determinant
+at each place. The representing property therefore gives maps
+$r_p^{\sharp}:R_p^{\mathrm{Ch}}\to R^{\mathrm{Ch}}$ and
+$r_q^{\sharp}:R_q^{\mathrm{Ch}}\to R^{\mathrm{Ch}}$.
+Their images commute and their $W$-actions agree. The completed
+tensor-product property gives the displayed map: a pair of
+continuous local maps into any finite local $A$ factors through
+finite quotients of both factors, and hence through $B_{p,q}$;
+uniqueness follows from its dense algebraic tensor product.
+Passing to inverse limits gives the same property for complete
+local target rings.
+
+The kernel is closed. The quotient is complete, and it maps
+injectively into $R^{\mathrm{Ch}}$. These rings are profinite
+because $k$ is finite, so the image of $C_{p,q}$ is closed as
+well. This proves the two factorizations. Finally, for any finite
+local $A$-algebra $A'$, maps from the completed tensor product to
+$A'$ are precisely maps $R^{\mathrm{Ch}}\to A'$ whose restriction
+to $B_{p,q}$ agrees with $b$ followed by $A\to A'$. These are
+exactly the global lifts of the prescribed pair after base change.
+\end{proof}
+
+The quotient $C_{p,q}$ records relations satisfied by restricted
+global determinants. It need not represent the image functor on
+Artinian points. For example, for a field $k$, the map
+$k[[x]]\to k[[t]]$, $x\mapsto t^2$, is injective, so its kernel
+quotient is all of $k[[x]]$. The local map
+$k[[x]]\to k[\epsilon]/(\epsilon^2)$ sending $x$ to $\epsilon$
+does not lift: a local image of $t$ is $a\epsilon$, whose square
+is zero. Thus satisfying the kernel relations is weaker than
+being a restricted global point. In a derived deformation problem
+the fibre is instead a derived completed tensor product; no
+vanishing of its higher Tor groups is implicit.
+
+\begin{corollary}[(Ch1) as a pairwise Selmer trace and descent datum]
+\label{v4-arith:w5-h:cor:ch1-closes-pairwise}
+\ClaimStatusProvedHereConditional
+To use the deformation diagram in pairwise Bernstein gluing,
+assume the following additional data.
+\begin{enumerate}
+\item The proposed two-prime Selmer algebra
+$R_{p,q}^{\mathrm{Ch}}$ of
+Definition~\ref{v4-arith:bcglue-core:def:cross-prime-chenevier} is supplied
+as a $B_{p,q}$-algebra with a specified isomorphism
+$R_{p,q}^{\mathrm{Ch}}\simeq C_{p,q}$. Its map to $R^{\mathrm{Ch}}$
+is the injective map above, so the resulting ring diagram commutes.
+Any assertion about actual global lifts requires the separate fibre
+condition in Theorem~\ref{v4-arith:w5-h:thm:ch1-closure}.
+\item The full categorical and coefficient-compatible local data
+(BCglue.local), the global comparison (BCglue.glue), and the
+required prismatic enhancements and $\Pi$-flatness of the
+corresponding geometric maps are supplied. These are not ordinary
+flatness consequences of representability.
+\item The trace comparison of
+Conjecture~\ref{v4-arith:w5-h:conj:pseudocharacter-trace-comparison}
+intertwines the $B_{p,q}$-actions with the actual geometric
+restriction $r:\operatorname{Spf}R^{\mathrm{Ch}}\to
+\operatorname{Spf}B_{p,q}$ and its specified spectral realization.
+\item Ordinary equivariant coherent descent (Ch1.desc) supplies
+an isomorphism of coherent sheaves in degree zero
+\[
+ r^*(\mathcal F_p\boxtimes\mathcal F_q)
+       \simeq\mathcal F_{\mathrm{glob}}^{\mathrm{prism}},
+\]
+with the local centre actions transported through the coefficient
+and trace comparisons. The objects and this pullback are taken
+in the chosen prismatic or spectral realization, not inferred from
+its ring of functions.
+\end{enumerate}
+Then the pairwise Chenevier comparison and the ordinary equivariant
+sheaf comparison in
+Equation~\eqref{v4-arith:bcglue-core:eq:diagonal-is-external}
+hold on this diagram.
+The derived enhancement in
+Equation~\eqref{v4-arith:bcglue-core:eq:derived-diagonal-is-external}
+requires a separate equivariant derived descent datum
+$(\mathrm{Ch1.desc}^{\mathbb L})$.
+Alternatively, ordinary descent implies that enhancement under both
+the external-product and pullback Tor-independence conditions of
+Proposition~\ref{v4-arith:bcglue-core:prop:ordinary-derived-comparison}.
+\end{corollary}
+
+\begin{proof}
+The theorem constructs the ring map with the variance dictated by
+restriction of deformations. The first hypothesis identifies its
+quotient with the proposed Selmer algebra. The second and third
+supply the geometric realization and its compatible central actions.
+The fourth supplies the ordinary equivariant sheaf isomorphism
+in Equation~\eqref{v4-arith:bcglue-core:eq:diagonal-is-external}.
+The separate derived datum supplies the derived comparison directly.
+Under the two Tor-independence conditions, the comparison also follows
+by composing the natural augmentation isomorphisms in
+Proposition~\ref{v4-arith:bcglue-core:prop:ordinary-derived-comparison}.
+Example~\ref{v4-arith:bcglue-core:ex:external-tor} shows why ordinary
+descent, even with perfect local objects and flat $r$, is insufficient.
+On finite free formal charts,
+Proposition~\ref{v4-arith:bcglue-core:thm:pairwise-reduces-to-chenevier}
+gives the actual isomorphism equations, and
+Proposition~\ref{v4-arith:bcglue-core:cor:part-a-domain-reduction}
+gives the successive lifting obstructions. Scalar functions alone
+do not solve those equations or their overlap conditions.
+\end{proof}
+
+\section{Singular Support, Gluing, and the Arithmetic Comparison}
+\label{v4-arith:w5-h:agdet}
+
+The arithmetic problem is to construct the spectral category with its
+fixed-determinant condition, then compare its central action with the
+automorphic one. A deformation ring supplies neither singular support
+nor the functors of a categorical gluing diagram. Three elementary
+constructions distinguish the extra data: localization retains an
+extension, formal patching retains a punctured neighborhood, and higher
+centres require maps compatible with their operations.
+
+\subsection{The arithmetic support and descent data}
+
+\begin{definition}[data for the fixed-determinant singular-support problem]
+\label{v4-arith:w5-h:def:det-cleavage}
+Fix $G=GL_2$, a residual representation $\bar\rho$, local deformation
+conditions $\mathcal L$, and a character $\delta$ lifting
+$\det\bar\rho$. Write
+$X=\mathcal X^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal L}$ for a
+proposed derived arithmetic spectral stack with determinant $\delta$.
+Its construction must specify a coefficient base, topology and derived
+charts; the notation does not assert existence.
+For a quasi-smooth derived affine chart $Y=\operatorname{Spec}R$ locally
+of finite type over a characteristic-zero field, let $L_Y$ be its
+cotangent complex and $T_Y=L_Y^\vee$. Quasi-smoothness means that $L_Y$
+is perfect of Tor-amplitude $[-1,0]$. The scheme of singularities is
+\begin{equation}
+\label{v4-arith:w5-h:eq:det-cleavage}
+ \operatorname{Sing}(Y)=\operatorname{Spec}_{Y^{\mathrm{cl}}}
+ \operatorname{Sym}_{\mathcal O_{Y^{\mathrm{cl}}}} H^1(T_Y).
+\end{equation}
+A support condition is a closed conical subset
+$\mathcal N_Y\subset\operatorname{Sing}(Y)$, compatible on the charts.
+The linear generators $H^1(T_Y)$ of the symmetric algebra have
+scaling weight one and act in Hochschild cohomological degree two.
+Equations defining $\mathcal N_Y$ may have higher degree.
+The category $\operatorname{IndCoh}_{\mathcal N_Y}(Y)$ consists of
+objects with singular support contained in $\mathcal N_Y$.
+\end{definition}
+
+These definitions and actions are those of Arinkin--Gaitsgory,
+arXiv:1201.6343v4, Sections~2.3.3--2.3.4, pp.~20--21, and
+Section~4.1.2 and Definitions~4.1.4--4.1.5, pp.~33--34.
+In their geometric Langlands setting the nilpotent condition is imposed
+on a horizontal cotangent parameter, Section~11.1.1, p.~103.
+It is not the condition that the underlying local system have unipotent
+monodromy. An arithmetic analogue must construct its singularity scheme
+and a map defining the proposed nilpotent cone. A fixed determinant
+changes the deformation problem; it does not establish these derived
+constructions. In particular, the characteristic-zero theory cannot be
+applied to an integral Witt-vector deformation space without a specified
+comparison satisfying its geometric hypotheses.
+
+A conical support condition is specified in $\operatorname{Sing}(X)$
+and need not come from a closed subset of $X$. If closed
+and open base pieces are needed, a separate closed subspace $Z\subset X$
+and its complementary open $U$ must be supplied. Their intersection is
+empty. The category supported on $Z$ can nevertheless carry nontrivial
+extensions with the localized category, as the following models show.
+Arinkin--Gaitsgory, Corollaries~8.2.8 and~8.2.10, p.~78, identify zero
+singular support with the quasi-coherent image and give a localization
+sequence with the supported category inside $\operatorname{IndCoh}(X)$.
+They do not identify that supported category with an arbitrary category
+on a closed stratum.
+
+\begin{conjecture}[the arithmetic categorical gluing comparison]
+\label{v4-arith:w5-h:prop:det-cleavage-identifies-indcoh}
+For the intended fixed-determinant arithmetic problem, construct $X$
+and $\mathcal N$ as above, geometric local and transition categories
+$\mathcal D_0,\mathcal D_1,\mathcal D_{01}$, and functors
+$\mathcal D_i\to\mathcal D_{01}$ in a specified category of linear
+stable categories, together with an equivalence
+\begin{equation}
+\label{v4-arith:w5-h:eq:indcoh-decomposition}
+ \mathcal D:=\operatorname{IndCoh}_{\mathcal N}(X)
+ \simeq\mathcal D_0\times_{\mathcal D_{01}}\mathcal D_1.
+\end{equation}
+The categories and transition functors must be constructed with their
+coefficient, support and determinant conditions. If formal patching is
+used, the transition object must be a punctured formal neighborhood
+with its restriction functors. If localization is used, its extension
+data must be retained. A description as a plain product over an empty
+closed/open intersection is not the asserted comparison.
+\end{conjecture}
+
+The finite-module theorem below constructs formal patching for the
+affine line. It is not an arithmetic realization of
+Equation~\eqref{v4-arith:w5-h:eq:indcoh-decomposition}.
+
+\subsection{Closed and open restriction on the affine line}
+
+Let $k$ be a field and put $A=k[t]$, $C=k[t,t^{-1}]$.
+Let $X=\operatorname{Spec}A$, $Z=V(t)$, and $U=D(t)$.
+Write $\operatorname{mod}_{\mathrm{fg}}(R)$ for the category of
+finitely generated left modules over a ring $R$.
+The intersection $Z\times_X U$ is empty, since its coordinate ring
+is $(A/(t))[t^{-1}]=0$.
+Consequently a fibre product of categories over the category of this
+intersection is a product.
+
+\begin{proposition}
+\label{v4-arith:w5-h:closed-open-failure}
+The restriction functor
+\[
+ \operatorname{mod}_{\mathrm{fg}}(A)\longrightarrow
+ \operatorname{mod}_{\mathrm{fg}}(k)\times
+ \operatorname{mod}_{\mathrm{fg}}(C),\qquad
+ M\longmapsto(M/tM,M[t^{-1}]),
+\]
+is not full. The corresponding derived restriction functor on
+perfect complexes is not full either.
+\end{proposition}
+\begin{proof}
+The object $A$ maps to $(k,C)$. Its endomorphism homomorphism is
+\[
+ A\longrightarrow k\times C,\qquad f\longmapsto(f(0),f).
+\]
+The endomorphism $(1,0)$ does not belong to its image.
+The same calculation applies to degree-zero derived endomorphisms.
+\end{proof}
+
+\subsubsection{The extension retained by localization}
+
+Let $D(A)$ be the stable $k$-linear $\infty$-category obtained by
+inverting quasi-isomorphisms of unbounded cochain complexes of
+$A$-modules. Cohomological shifts satisfy $H^n(M[1])=H^{n+1}(M)$.
+Let $D_t(A)$ be its full subcategory of complexes whose cohomology
+modules are elementwise killed by powers of $t$.
+Extension of scalars $L=C\otimes_A^{\mathbf L}-$ is left adjoint
+to restriction of scalars $j_*:D(C)\to D(A)$.
+Because $C$ is a localization, it is flat and
+$C\otimes_A C=C$. Thus $Lj_*=\operatorname{id}$ and $j_*$ is fully
+faithful. Define
+\[
+ \Gamma_t M=\operatorname{fib}(M\longrightarrow j_*LM).
+\]
+Localization is exact, so $L\Gamma_tM=0$.
+Exactness of localization on modules identifies $\ker L$ with
+$D_t(A)$. If $K\in D_t(A)$, adjunction gives
+$\operatorname{Map}_{D(A)}(K,j_*N)=0$ for every $N\in D(C)$.
+Applying mapping spaces to the defining fibre sequence therefore
+shows that $\Gamma_t$ is right adjoint to $D_t(A)\hookrightarrow D(A)$.
+
+Define a stable $\infty$-category $\mathcal G$ whose objects are
+\[
+ (K,N,\delta),\qquad K\in D_t(A),\quad N\in D(C),\quad
+ \delta:j_*N\longrightarrow K[1].
+\]
+Precisely, $\mathcal G$ is the pullback of
+$\operatorname{Fun}(\Delta^1,D(A))\to D(A)\times D(A)$ along
+$(N,K)\mapsto(j_*N,K[1])$.
+Morphisms include the homotopies in the resulting commutative
+squares, rather than merely an equality in a homotopy category.
+
+\begin{proposition}
+\label{v4-arith:w5-h:localization-gluing}
+There is an equivalence of stable $\infty$-categories
+\[
+ D(A)\simeq\mathcal G.
+\]
+It sends $M$ to $(\Gamma_tM,LM,\delta_M)$, where $\delta_M$ is the
+connecting morphism of the localization triangle.
+Its inverse sends $(K,N,\delta)$ to $\operatorname{fib}(\delta)$.
+\end{proposition}
+\begin{proof}
+A triple defines the fibre sequence
+\[
+ K\longrightarrow \operatorname{fib}(\delta)
+ \longrightarrow j_*N\xrightarrow{\delta}K[1].
+\]
+Applying $L$ identifies $L\operatorname{fib}(\delta)$ with $N$.
+Under this identification, the middle map is the unit of $L\dashv j_*$:
+by adjunction it corresponds to the identity of $N$.
+Its fibre is therefore $\Gamma_t\operatorname{fib}(\delta)=K$.
+These identifications recover the connecting morphism $\delta$.
+Conversely, the fibre of the connecting map in a localization
+triangle is its middle term. Fibre constructions are functorial
+in a stable $\infty$-category, so these identifications give mutually
+inverse functors, including their mapping spaces.
+\end{proof}
+
+For $M=A$, the complex $\Gamma_t A$ is represented by
+$[A\to C]$ in degrees $0,1$.
+Hence $\Gamma_t A\simeq(C/A)[-1]$, and the connecting map is
+\[
+ C\longrightarrow C/A.
+\]
+Its fibre is $A$ in degree zero. This nonzero quotient map is the
+extension datum that reconstructs $A$.
+The two objects $C$ and $\Gamma_t A$ are not perfect over $A$:
+their nonzero cohomology modules are not finitely generated.
+Thus this localization construction takes place in $D(A)$.
+It does not present perfect complexes as a product of perfect
+complexes on the two strata.
+Nor can the supported category be replaced by $D(k)$ under closed
+pushforward. Indeed, the resolution
+$0\to A\xrightarrow{t}A\to k\to0$ gives
+$\operatorname{Ext}^1_A(k,k)=k$, whereas
+$\operatorname{Ext}^1_k(k,k)=0$.
+
+\subsection{Coherent gluing across a formal neighborhood}
+
+To retain coherent modules, replace the closed point by its formal
+neighborhood. Put
+\[
+ B=k[[t]],\qquad D=k((t)),\qquad C=k[t,t^{-1}].
+\]
+The maps $A\to B$, $A\to C$, $B\to D$, and $C\to D$ are the
+inclusions. The overlap $\operatorname{Spec}D$ is the punctured
+formal disk. It is not the empty intersection $Z\cap U$.
+The ring $B$ is the coordinate ring of the $t$-adic formal disk.
+Here its coherent category means finitely generated $B$-modules,
+with their $t$-adic topology. Tensor products displayed below are
+ordinary algebraic tensor products unless explicitly derived.
+
+Let $\mathcal P$ be the category of triples
+\[
+ (P,Q,\eta),\qquad P\in\operatorname{mod}_{\mathrm{fg}}(B),\quad
+ Q\in\operatorname{mod}_{\mathrm{fg}}(C),\quad
+ \eta:D\otimes_B P\xrightarrow{\sim}D\otimes_C Q.
+\]
+Morphisms are compatible pairs of module homomorphisms.
+
+\begin{theorem}
+\label{v4-arith:w5-h:formal-patching}
+The functor
+\[
+ \operatorname{mod}_{\mathrm{fg}}(A)\longrightarrow\mathcal P,
+ \qquad M\longmapsto(B\otimes_A M,C\otimes_A M,\mathrm{can})
+\]
+is an equivalence. Its inverse sends a triple to
+\[
+ \{(p,q)\in P\oplus Q:\eta(1\otimes p)=1\otimes q\}.
+\]
+\end{theorem}
+\begin{proof}
+Every Laurent series is the sum of a power series and a Laurent
+polynomial. Their intersection is $k[t]$. Consequently
+\[
+ 0\longrightarrow A\longrightarrow B\oplus C
+ \xrightarrow{(b,c)\mapsto b-c}D\longrightarrow0
+\]
+is exact. The modules $B,C,D$ are flat over $A$.
+For $C,D$ this follows from localization and torsion-freeness over
+the principal ideal domain $A$. The same argument applies to $B$:
+a torsion-free module over a principal ideal domain is the filtered
+union of its finite free submodules and is therefore flat.
+Since $D$ is flat, tensoring the displayed sequence with any
+$A$-module $M$ remains exact. In particular $M$ is the indicated
+fibre product of its two scalar extensions.
+A compatible pair of homomorphisms on these extensions sends this
+fibre product into the corresponding fibre product for the target.
+The resulting $A$-linear homomorphism recovers the pair, since the
+elements $1\otimes m$ generate both scalar extensions.
+This proves full faithfulness.
+
+For essential surjectivity, use the structure theorem for finitely
+generated modules over the principal ideal domains $B$ and $C$.
+A torsion summand $B/(t^m)$ descends from $A/(t^m)$, whose scalar
+extension to $C$ vanishes. A torsion summand of $Q$ has the form
+$C/(f)$, where $f\in k[t]$ and $f(0)\ne0$.
+It descends from $A/(f)$, whose extension to $B$ vanishes because
+$f$ is a unit in $B$. Both kinds of torsion disappear over $D$.
+After splitting off these summands, $P$ and $Q$ are free of the
+same rank $r$.
+
+Choose $Q=C^r$ and view $P$ as a $B$-lattice
+$\Lambda\subset D^r$ through $\eta$.
+There is an integer $n\ge0$ such that
+\[
+ t^nB^r\subset\Lambda\subset t^{-n}B^r.
+\]
+Set $M=\Lambda\cap C^r$. Intersecting the bounds with $C^r$ gives
+\[
+ t^nA^r\subset M\subset t^{-n}A^r.
+\]
+Thus $M$ is a finite free $A$-module of rank $r$, and
+$C\otimes_A M=C^r$.
+For $\lambda\in\Lambda$, truncate its Laurent expansion below
+degree $n$. The truncation $q$ is a Laurent polynomial, and
+$\lambda-q\in t^nB^r\subset\Lambda$. Hence $q\in M$ and
+$\Lambda=M+t^nB^r$. The map $B\otimes_A M\to\Lambda$ is therefore
+surjective. It is injective: an $A$-basis of $M$ becomes a basis
+of $C^r$, so its determinant remains nonzero over the field $D$.
+This proves $B\otimes_A M=\Lambda$ with the specified overlap map.
+Adding the torsion summands proves essential surjectivity.
+Full faithfulness identifies the stated fibre-product construction
+with a quasi-inverse on all triples.
+\end{proof}
+
+For a $k$-linear category $\mathcal C$, write
+$Z(\mathcal C)=\operatorname{End}(\operatorname{id}_{\mathcal C})$
+for its ordinary centre, with multiplication given by composition.
+
+\begin{corollary}
+\label{v4-arith:w5-h:ordinary-patching-centre}
+Under the preceding equivalence,
+\[
+ Z(\operatorname{mod}_{\mathrm{fg}}(A))
+ \simeq B\times_D C
+ \simeq Z(\operatorname{mod}_{\mathrm{fg}}(B))
+       \times_{Z(\operatorname{mod}_{\mathrm{fg}}(D))}
+       Z(\operatorname{mod}_{\mathrm{fg}}(C)).
+\]
+The comparison maps on centres are the indicated inclusions of rings.
+\end{corollary}
+\begin{proof}
+For every commutative ring $R$, a natural endomorphism $z$ of
+$\operatorname{mod}_{\mathrm{fg}}(R)$ is multiplication by
+$a=z_R(1)\in R$. Indeed, for each $m\in M$, apply naturality to
+$R\to M$, $1\mapsto m$. This yields $z_M(m)=am$.
+Thus the centre is $R$, compatibly with scalar extension.
+The exact ring sequence above gives $A=B\times_D C$.
+\end{proof}
+
+\subsection{A higher-centre obstruction and a positive finite model}
+
+For an associative $k$-algebra $R$, put
+\[
+ \operatorname{HC}(R)=\mathbf R\operatorname{Hom}_{R\otimes_k R^{\mathrm{op}}}(R,R).
+\]
+This is the Hochschild cochain $E_2$-algebra, equivalently the
+Hochschild centre of the derived module category.
+Its cohomology is written $HH^*(R)$.
+The Gerstenhaber bracket has cohomological degree $-1$.
+For a derivation $v$ and a scalar cochain $f\in R$, its convention
+is $[v,f]=v(f)$.
+
+\begin{proposition}
+\label{v4-arith:w5-h:hc-restriction-obstruction}
+\label{v4-arith:w5-h:thm:gkrw-e2-centre}
+For $A=k[t]$, there is no unital $E_2$-algebra morphism
+$\operatorname{HC}(A)\to\operatorname{HC}(k)$ whose map on $HH^0$
+is evaluation at $t=0$.
+\end{proposition}
+\begin{proof}
+Write $A^e=k[x,y]$. The bimodule resolution
+\[
+ 0\longrightarrow A^e\xrightarrow{x-y}A^e\longrightarrow A
+ \longrightarrow0
+\]
+is exact, since $x-y$ is a non-zero-divisor.
+Applying $\operatorname{Hom}_{A^e}(-,A)$ gives the complex
+$[A\xrightarrow{0}A]$ in degrees $0,1$.
+Thus $HH^0(A)=A$, $HH^1(A)=A\partial_t$, and the other positive
+cohomology groups vanish. The Hochschild insertion formula gives
+$[\partial_t,t]=1$.
+For $k$, the diagonal is already free over $k\otimes_k k=k$,
+so $HH^*(k)=k$ in degree zero.
+An $E_2$ morphism preserves the Gerstenhaber bracket.
+It would send $\partial_t$ to zero and $t$ to zero, but would send
+$1$ to $1$. Applying it to the bracket identity gives $0=1$.
+\end{proof}
+
+This obstruction holds over every field, including characteristic
+$2$. It rules out the indicated higher-centre restriction even
+though restriction of ordinary scalars is defined.
+The coherent formal-gluing theorem therefore does not, on its own,
+assert a fibre-product formula for Hochschild $E_2$-algebras.
+In particular, algebraic Hochschild cochains of $k[[t]]$ cannot be
+silently replaced by continuous cochains or completed diagonal
+cochains. Such replacements require their own definitions and maps.
+
+A nonzero linking morphism can also impose an exact higher-centre
+compatibility in a finite category.
+Let
+\[
+ T=\begin{pmatrix}k&k\\0&k\end{pmatrix},\qquad
+ e_1=E_{11},\quad e_2=E_{22},\quad a=E_{12}.
+\]
+A left $T$-module is a pair $(V_1,V_2)$ with a map $u:V_2\to V_1$.
+The two vector-space categories are linked by $u$.
+A scalar pair $(\lambda_1,\lambda_2)$ acts centrally on every such
+module precisely when $\lambda_1u=u\lambda_2$ for every $u$.
+Taking $u=\operatorname{id}_k$ gives $\lambda_1=\lambda_2$.
+Commutation with $e_1,e_2$ eliminates off-diagonal elements of the
+ring centre, so $Z(T)=k\cdot1$.
+
+\begin{proposition}
+\label{v4-arith:w5-h:triangular-centre}
+The unit map $k\to\operatorname{HC}(T)$ is an equivalence of
+$E_2$-algebras. The underlying Hochschild cochain complex is
+quasi-isomorphic to
+\[
+ [k\oplus k\xrightarrow{(\lambda_1,\lambda_2)\mapsto
+ \lambda_1-\lambda_2}k]
+\]
+in degrees $0,1$.
+\end{proposition}
+\begin{proof}
+There is a projective $T$-bimodule resolution
+\[
+ 0\longrightarrow Te_1\otimes_k e_2T
+ \xrightarrow{d}
+ (Te_1\otimes_k e_1T)\oplus(Te_2\otimes_k e_2T)
+ \xrightarrow{\mu}T\longrightarrow0,
+\]
+where $\mu$ is multiplication and
+$d(e_1\otimes e_2)=e_1\otimes a-a\otimes e_2$.
+The first term has dimension one and the middle term dimension four.
+Multiplication is onto the three-dimensional algebra $T$.
+The displayed nonzero element belongs to its kernel, so the sequence
+is exact. Each tensor factor defines an idempotent summand of a
+free $T^e$-module, hence is projective.
+
+For any bimodule $M$,
+$\operatorname{Hom}_{T^e}(Te_i\otimes e_jT,M)=e_iMe_j$.
+Applying this with $M=T$ gives precisely the two-term complex above.
+Its cohomology is the diagonal $k$ in degree zero and zero elsewhere.
+The scalar unit map induces this diagonal inclusion on cohomology.
+It is a map of $E_2$-algebras and a quasi-isomorphism of underlying
+complexes, hence an equivalence of $E_2$-algebras.
+\end{proof}
+
+The map $k^2\to k$ in this computation is a difference of the two
+actions on the linking bimodule $e_1Te_2$.
+It is a map of complexes, not a unital algebra homomorphism.
+The computation proves the claimed equivalence for this algebra.
+It does not state that a higher-centre functor preserves arbitrary
+categorical pullbacks.
+
+\subsection{The remaining arithmetic higher-centre comparison}
+
+For a presentable linear stable category $\mathcal C$, use the Hochschild
+centre
+$\operatorname{HC}(\mathcal C)=
+\operatorname{End}_{\operatorname{Fun}^L(\mathcal C,\mathcal C)}
+(\operatorname{id}_{\mathcal C})$ with its $E_2$ structure.
+This is the invariant of Arinkin--Gaitsgory, Appendix~E.3.1,
+pp.~138--139. Its functoriality on a particular diagram and preservation
+of a homotopy limit are additional hypotheses.
+
+\begin{proposition}[centre gluing on a specified categorical diagram]
+\label{v4-arith:w5-h:thm:agdet-reduction}
+\ClaimStatusProvedHereConditional
+Suppose the geometric spaces, support conditions and functors in
+Equation~\eqref{v4-arith:w5-h:eq:indcoh-decomposition} have been constructed,
+and that this formula is a categorical equivalence.
+Suppose the Hochschild-centre construction has specified $E_2$ maps
+on this diagram and preserves this particular homotopy fibre product.
+Then
+\begin{equation}
+\label{v4-arith:w5-h:eq:agdet-e2-compat}
+ \operatorname{HC}(\mathcal D)\simeq
+ \operatorname{HC}(\mathcal D_0)
+ \times_{\operatorname{HC}(\mathcal D_{01})}
+ \operatorname{HC}(\mathcal D_1).
+\end{equation}
+This identity concerns the specified spectral diagram.
+An identification with the global automorphic centre additionally
+requires a comparison morphism and a proof that it is an equivalence.
+The formal scalar-action map of
+Proposition~\ref{v4-arith:bcglue-core:thm:colimit-to-global-reduces-to-AG}
+does not supply that morphism. No arithmetic codimension bound
+is inferred from the identity.
+\end{proposition}
+
+\begin{proof}
+Apply the specified higher-centre construction to the assumed
+categorical equivalence. Its assumed preservation of this homotopy
+fibre product gives the displayed identity.
+Every term belongs to the spectral diagram, so this argument
+constructs no map from the automorphic category or its centre.
+The rank-two calculation in
+Proposition~\ref{v4-arith:w6-g:prop:codim-2} also shows why a codimension-two
+arithmetic transition cannot be inferred from the regular nilpotent
+orbit in $\mathfrak{sl}_2$.
+\end{proof}
+
+\begin{corollary}[internal gluing and the global comparison]
+\label{v4-arith:w5-h:cor:agdet-residual}
+Under the hypotheses of
+Proposition~\ref{v4-arith:w5-h:thm:agdet-reduction}, the three spectral
+centre terms and their specified maps determine the displayed
+homotopy fibre product. To identify it with an automorphic centre,
+one must additionally construct compatible maps from that centre
+to the three terms and prove that the resulting map to the
+homotopy fibre product is an equivalence.
+\end{corollary}
+
+\begin{proof}
+Coherently compatible maps into the three terms define a map into
+their homotopy limit by its universal property.
+The spectral centre identity identifies its target with the global
+spectral centre. It does not construct the source maps or prove
+that the resulting map is an equivalence.
+\end{proof}
+
+\begin{remark}[the scope of the centre identity]
+\label{v4-arith:w5-h:rem:agdet-full-ag-removal}
+An internal gluing identity describes a centre once the geometric
+diagram and centre functor have been supplied. It is not an
+arithmetic Arinkin--Gaitsgory comparison. The required arithmetic
+space, singular-support condition, categorical functors and
+higher-centre morphisms remain additional constructions.
+In particular no codimension-two arithmetic transition follows
+from the rank-two nilpotent orbit calculation in
+Proposition~\ref{v4-arith:w6-g:prop:codim-2}.
+\end{remark}
+
+\section{F2.c Restricted-Tensor \(E_2\) Transport Lemma}
+\label{v4-arith:w5-h:f2c}
+
+\subsection{Setup}
+
+Use the full data of Setup~\ref{v4-arith:tate:setup:data} with
+\(\mathcal O=E_2\): the local categories and actual morphisms
+\(\eta_v:\mathrm{Sp}\to\mathcal C_v\) of \(E_2\)-algebras
+on a cofinite set of places. Write \(u_v=\eta_v(\mathbb S)\).
+Compactness may be imposed as an additional local hypothesis.
+It is not used in the filtered-colimit argument.
+
+\subsection{Transport}
+
+\begin{theorem}[F2.c \(E_2\) transport]
+\label{v4-arith:w5-h:thm:f2c-e2-transport}
+Under these hypotheses the restricted tensor product
+\(\bigotimes'_v(\mathcal C_v,u_v)\) is an \(E_2\)-algebra in
+\(\mathrm{Pr}^{\mathrm L}_{\mathrm{st}}\), and its admissible
+finite-stage maps \(\iota_S\) are \(E_2\)-monoidal. A singleton
+map \(\iota_v\) is available when
+\(V\setminus\{v\}\subseteq V^{\mathrm{sph}}\), or after
+specifying the additional maps required by (M2) of
+Theorem~\ref{v4-arith:tate:thm:F2c-main}. Uniqueness is relative
+to the complete underlying colimit cocone. Central idempotence
+of \(u_v\) alone is not a substitute for the pointing maps.
+\end{theorem}
+
+\begin{proof}
+For \(S\subseteq S'\), tensor the identity on the old factors
+with the actual maps \(\eta_v\) for \(v\in S'\setminus S\).
+This is a morphism of \(E_2\)-algebras, including nullary
+compatibility. Tensor associativity supplies its coherent
+composition with the other insertions. The finite-stage system
+is consequently a diagram in
+\(\mathrm{Alg}_{E_2}(\mathrm{Pr}^{\mathrm L}_{\mathrm{st}})\).
+
+The ambient tensor product preserves filtered colimits
+separately. Proposition~\ref{v4-arith:tate:prop:filtered-colim-operadic}
+therefore constructs the operadic colimit on the underlying
+colimit. Its cocone maps are \(E_2\)-monoidal, and its cocone
+uniqueness is Proposition~\ref{v4-arith:tate:prop:uniqueness}.
+The assertion about singleton maps follows by first reaching an
+admissible stage using exactly the additional pointing maps
+specified in (M2). No full faithfulness or geometric collision
+comparison is deduced.
+\end{proof}
+
+\begin{remark}[the \(E_2\) specialization]
+\label{v4-arith:w5-h:rem:f2c-value-add}
+This is the \(E_2\) specialization of the formal filtered-colimit
+argument. It does not weaken its inputs to central idempotent
+objects. A strong unital \(E_2\)-map from \(\mathrm{Sp}\) must
+send \(\mathbb S\) to the actual target unit. The construction
+does not supply a missing local enhancement, pointing map or
+arithmetic comparison.
+\end{remark}
+
+\section{Combined BC-Diamond-Glue Statement}
+\label{v4-arith:w5-h:combined}
+
+\begin{proposition}[formal constructions and arithmetic comparison data]
+\label{v4-arith:w5-h:thm:combined-bcglue}
+The determinant construction supplies the restriction diagram in
+Theorem~\ref{v4-arith:w5-h:thm:ch1-closure}.
+Given the local modules and actions over their common coefficient
+ring, it also supplies the pairwise pullback in
+Proposition~\ref{v4-arith:bcglue-core:prop:formal-pullback-action}.
+The restricted $E_2$-tensor construction of
+Theorem~\ref{v4-arith:w5-h:thm:f2c-e2-transport} retains its
+actual \(E_2\)-algebra pointing maps and its stated singleton-map
+conditions.
+Their use for BC-diamond-glue requires categorical local functors,
+coefficient and family comparisons, and prismatic and untilt descent maps.
+It also requires all the pairwise comparison data of
+Corollary~\ref{v4-arith:w5-h:cor:ch1-closes-pairwise}.
+The global centre assertion additionally needs the arithmetic
+comparison morphism, with faithfulness and generation for its
+ordinary action and a derived equivalence for its higher enhancement.
+\end{proposition}
+
+\begin{proof}
+The formal assertions are the stated restriction, pullback and
+restricted tensor constructions. The pairwise comparison follows
+only with the full hypotheses of
+Corollary~\ref{v4-arith:w5-h:cor:ch1-closes-pairwise}.
+On finite free formal charts,
+Proposition~\ref{v4-arith:bcglue-core:thm:core-final-reduction}
+expresses it through intertwining equations and overlap conditions.
+The additional centre assertion is separate:
+Proposition~\ref{v4-arith:w5-h:thm:agdet-reduction} gives an internal
+spectral centre identity only on its assumed categorical diagram.
+It does not construct an automorphic-to-spectral comparison.
+\end{proof}
+
+\begin{corollary}[\(\mathrm{L}_{\mathrm{ACD}}\) residual list after Chenevier and determinant reduction]
+\label{v4-arith:w5-h:cor:LACD-wave5}
+\ClaimStatusConjectured (conditional on the standing residuals listed).
+After these reductions, \(\mathrm{L}_{\mathrm{ACD}}\) has the residual
+list:
+\begin{enumerate}
+\item (BCglue.local): \textbf{Conditional} (unchanged from
+the KMS--GNS sector);
+\item (BCglue.glue): \textbf{Conjectural} (unchanged from the KMS--GNS sector);
+\item (Ch1): \textbf{conditional theorem} via
+Corollary~\ref{v4-arith:w5-h:cor:ch1-closes-pairwise}, conditional on its
+Selmer-ring, geometric, trace and equivariant-descent data;
+\item (AG.det): the actual categorical descent diagram and its
+higher-centre maps, together with the global automorphic centre
+comparison. The conditional internal identity in
+Proposition~\ref{v4-arith:w5-h:thm:agdet-reduction} does not identify that
+automorphic centre;
+\item F2.c: \textbf{theorem under the full local operadic and
+pointing-map hypotheses} via either
+Chapter~\ref{v4-arith:tate-tensor}
+Theorem~\ref{v4-arith:tate:thm:F2c-main} or the \(E_{2}\) specialisation
+Theorem~\ref{v4-arith:w5-h:thm:f2c-e2-transport}.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+The formal ring and module constructions are
+Proposition~\ref{v4-arith:bcglue-core:cor:LACD-tightened}.
+Their pairwise arithmetic use requires
+Corollary~\ref{v4-arith:w5-h:cor:ch1-closes-pairwise} (the full Selmer-ring, trace and equivariant-descent datum),
+the separate global centre comparison alongside
+Proposition~\ref{v4-arith:w5-h:thm:agdet-reduction}, and
+Theorem~\ref{v4-arith:w5-h:thm:f2c-e2-transport} (restricted \(F2.c\)
+transport under its stated hypotheses).
+These constructions preserve the listed comparison requirements.
+\end{proof}
+
+\section{Residual Obstruction After Chenevier and Determinant Reduction}
+\label{v4-arith:w5-h:residual-obstruction}
+
+\begin{remark}[the genuine core remaining]
+\label{v4-arith:w5-h:rem:genuine-core-residual}
+The residual obstruction to \(\mathrm{L}_{\mathrm{ACD}}\) after these
+reductions is the triple:
+\begin{itemize}
+\item (BCglue.local): a primary-source transition theorem identifying
+the BZCHN + Emerton--Gee + Fargues--Scholze local inputs as a
+canonical local coherent Springer sheaf on the Emerton--Gee stack
+across the \(\ell\neq p\) / \(\ell=p\) divide. It is a genuine
+theorem condition.
+\item (BCglue.glue): Bhatt--Scholze prismatic-flat cross-prime
+transition lifted to the coherent-sheaf level, preserving
+\(\mathrm{IndCoh}_{\mathrm{Nilp}}\)-continuity. It is a genuine
+theorem condition.
+\item (AG.det.transition): an actual categorical descent diagram
+with its singular-support conditions and compatible higher-centre
+maps. The global automorphic comparison remains additional to the
+internal gluing identity.
+\end{itemize}
+The Chenevier term retains the Selmer-ring identification, trace
+comparison and equivariant coherent descent of
+Corollary~\ref{v4-arith:w5-h:cor:ch1-closes-pairwise}. The
+determinantal term requires both the geometric centre diagram
+and the global comparison morphism.
+The local and prismatic gluing terms remain independent inputs.
+\end{remark}
+
+\begin{remark}[unmoved inputs]
+\label{v4-arith:w5-h:rem:what-wave5-cannot-touch}
+The arguments above do not prove \((\mathrm{BCglue.local})\) or
+\((\mathrm{BCglue.glue})\). The former requires a transition theorem
+across the \(\ell=p\) boundary for coherent Springer sheaves. The
+latter requires prismatic-flat cross-prime descent lifted from the
+universal deformation ring to coherent sheaves. The
+\((\mathrm{AG.det.transition})\) term requires the
+actual support-preserving categorical functors on a specified gluing
+diagram, higher-centre maps compatible with that diagram, and a
+separate comparison with the automorphic centre.
+\end{remark}
+
+\begin{remark}[comparison inputs and remaining hypotheses]
+\label{v4-arith:w5-h:rem:wave5-hziv-data}
+The three comparison reductions use the following inputs:
+\begin{itemize}
+\item Theorem~\ref{v4-arith:w5-h:thm:ch1-closure} constructs the local-to-global
+ring map from the universal property of the Chenevier deformation
+rings. Bella\"iche--Chenevier supplies the deformation-theoretic
+context; Bhatt--Scholze and Bhatt--Lurie concern the additional
+prismatic structures. The full Selmer-ring, geometric, trace and
+equivariant-descent requirements are retained in
+Corollary~\ref{v4-arith:w5-h:cor:ch1-closes-pairwise}.
+\item Proposition~\ref{v4-arith:w5-h:thm:agdet-reduction} gives an internal
+centre identity on an assumed geometric and categorical diagram.
+The singular-support geometry and the higher-centre comparison
+maps must be constructed for the arithmetic space. The internal
+identity does not construct a map from the automorphic centre.
+\item Theorem~\ref{v4-arith:w5-h:thm:f2c-e2-transport} uses actual
+operadic pointings and the filtered-colimit theorem HA~3.2.3.1.
+It is the specialization of
+Chapter~\ref{v4-arith:tate-tensor}'s restricted tensor construction
+to \(E_2\). The two arguments use the same categorical diagram.
+\end{itemize}
+\end{remark}
+
+\section{References on Determinants, Descent and Higher Centres}
+\label{v4-arith:w5-h:bibliography}
+
+The primary literature invoked in this chapter:
+
+\begin{description}
+\item[Chenevier, G.] (2014). \emph{The $p$-adic analytic space of
+pseudocharacters of a profinite group and pseudorepresentations over
+arbitrary rings}. arXiv:0809.0415. Sections~1.1 and 1.10;
+Proposition~3.3 and Example~3.4, p.~42;
+Example~3.6 and Proposition~3.7, p.~43. These supply determinant
+laws and their complete local deformation rings.
+\item[Bellaiche, J.\ and Chenevier, G.] (2009). \emph{Families of
+Galois representations and Selmer groups}. Ast\'erisque 324.
+Chapter~1 used for the universal determinantal deformation ring
+identification.
+\item[Bhatt, B.\ and Scholze, P.] (2022). \emph{Prisms and prismatic
+cohomology}. Ann. Math. 196, arXiv:1905.08229. Background for
+the prismatic realization in
+Corollary~\ref{v4-arith:w5-h:cor:ch1-closes-pairwise}; the stated
+cross-prime flatness is a separately required arithmetic comparison.
+\item[Bhatt, B.\ and Lurie, J.] (2022). \emph{Absolute prismatic
+cohomology}. arXiv:2201.06120. \S8 Nygaard-filtration convention
+used in the additional prismatic realization of
+Corollary~\ref{v4-arith:w5-h:cor:ch1-closes-pairwise}.
+\item[Arinkin, D.\ and Gaitsgory, D.] (2015). \emph{Singular support
+of coherent sheaves and the geometric Langlands conjecture}. Selecta
+Math. 21 (2015), 1--199. arXiv:1201.6343v4.
+Sections~2.3.3--2.3.4, pp.~20--21, and~4.1.2--4.1.5, pp.~33--34,
+define the singularity scheme, its cohomological action and support
+condition. Corollaries~8.2.8 and~8.2.10, p.~78, concern zero support
+and localization; Section~11.1.1, p.~103, defines the geometric global
+nilpotent cone. Appendix~E.3.1, pp.~138--139, defines the Hochschild
+$E_2$ centre. These are the geometric notions in
+Definition~\ref{v4-arith:w5-h:def:det-cleavage}; their arithmetic
+realization and the descent equivalence in
+Conjecture~\ref{v4-arith:w5-h:prop:det-cleavage-identifies-indcoh}
+remain additional constructions.
+\item[Galatius, S., Kupers, A., and Randal-Williams, O.] (2025).
+\emph{Cellular $E_k$-algebras}. Ast\'erisque 460.
+arXiv:1805.07184v4, Definition~17.3 and Proposition~17.4, p.~186,
+construct an $E_1$ splitting semisimplicial pointed set and compare
+its realization with suspended indecomposables under their stated
+hypotheses. They concern cellular algebra methods; the higher-centre
+comparison in Proposition~\ref{v4-arith:w5-h:thm:agdet-reduction}
+requires its separately specified $E_2$ maps and preservation property.
+\item[Ben-Zvi, D., Francis, J., and Nadler, D.] (2010). \emph{Integral
+transforms and Drinfeld centers in derived algebraic geometry}.
+JAMS 23, arXiv:0805.0157. The geometric centre formalism provides background for the
+separately required arithmetic comparison in
+Corollary~\ref{v4-arith:w5-h:cor:agdet-residual}.
+\item[Lurie, J.] (2017). \emph{Higher algebra}.
+Definition~2.1.3.7 specifies strong monoidal functors.
+Proposition~3.2.3.1 constructs the operadic filtered colimit.
+Proposition~4.8.1.15, Remark~4.8.1.24 and
+Proposition~4.8.2.18 supply the stable categorical tensor and
+its colimit compatibility used in
+Theorem~\ref{v4-arith:w5-h:thm:f2c-e2-transport}.
+\item[Francis, J.\ and Gaitsgory, D.] (2012). \emph{Chiral
+Koszul duality}. Selecta Math. 18, arXiv:1103.5803. Cited for the
+factorization-algebra background; no positive-dimensional
+factorization-homology theorem is used in
+Theorem~\ref{v4-arith:w5-h:thm:f2c-e2-transport}.
+\item[Emerton, M.\ and Gee, T.] (2019). \emph{Moduli stacks of
+\((\varphi,\Gamma)\)-modules and the existence of crystalline lifts}.
+arXiv:1908.07185. Used as the
+primary source for the local Emerton--Gee stack
+\(\mathcal{X}^{\mathrm{EG},p}_{GL_{2}}\) in
+Conjecture~\ref{v4-arith:w5-h:conj:pseudocharacter-trace-comparison}
+and the geometric realization required in
+Corollary~\ref{v4-arith:w5-h:cor:ch1-closes-pairwise}. The pseudocharacter
+trace, Selmer-ring and equivariant-descent comparisons remain
+additional hypotheses.
+\end{description}
+

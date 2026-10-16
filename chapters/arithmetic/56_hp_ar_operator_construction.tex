@@ -1,0 +1,1096 @@
+\chapter{Bost--Connes Modular Spectrum and the Hilbert--P\'olya Comparison}
+\label{v4-arith:w5-b:hp-operator}
+
+The critical Bost--Connes state gives a self-adjoint modular generator
+whose eigenvalues are $\tfrac12\log q$, $q\in\mathbb Q_{>0}$.
+A specified reducing occupation sector instead has the simple spectrum
+$\{\log m:m\geq1\}$. We construct both carriers and an oscillator
+embedding in the same GNS space. The embedding preserves logarithmic
+prime energies and positive squared-semigroup shifts. Its oscillators
+are Hilbert-space operators, not operators affiliated with the
+Bost--Connes observable algebra. Ordinary conformal energy is a separate
+grading. These distinctions leave a precise arithmetic question:
+construct a self-adjoint operator whose normalized determinant is
+$\xi_{\mathbb R}$, together with the Petersson, chiral and trace
+comparisons that connect it to the arithmetic Fock space.
+
+\section{Bost--Connes $C^*$-Dynamical Setup}
+\label{v4-arith:w5-b:bc-setup}
+
+We use the global algebra and positive-temperature KMS convention of
+\Cref{v4-arith:w5-direct:def:BC}. The coefficient algebra factors over
+primes, but the isometries act across those factors.
+
+\begin{definition}[global and local Bost--Connes algebras]
+\label{v4-arith:w5-b:def:bc-algebra}
+Put $D=C^*(\mathbb Q/\mathbb Z)$, with unitaries $e(r)$ satisfying
+$e(r+s)=e(r)e(s)$ and $e(r)^*=e(-r)$. For $n\geq1$ set
+\[
+ \alpha_n(e(r))=\frac1n\sum_{nt=r}e(t),\qquad
+ C^*_{\mathbb Q}=D\rtimes_\alpha\mathbb N^\times.
+\]
+The generators $\mu_n$ are isometries, with
+\[
+ \mu_m\mu_n=\mu_{mn},\quad \mu_n^*\mu_n=1,\quad
+ \mu_n d\mu_n^*=\alpha_n(d),\quad \mu_n^*e(r)\mu_n=e(nr).
+\]
+In particular $P_n:=\mu_n\mu_n^*=n^{-1}\sum_{nt=0}e(t)$ is a
+projection. The time evolution is
+\begin{equation}
+\label{v4-arith:w5-b:eq:bc-time}
+ \sigma_t(\mu_n)=n^{it}\mu_n,\qquad
+ \sigma_t(e(r))=e(r),\qquad \sigma_t(\mu_n^*)=n^{-it}\mu_n^*.
+\end{equation}
+For a prime $p$, let $D_p=C^*(\mathbb Q_p/\mathbb Z_p)$ and
+$C^*_{\mathbb Q,p}=C^*(D_p,\mu_p)\subset C^*_{\mathbb Q}$.
+The primary decomposition of $\mathbb Q/\mathbb Z$ gives the
+coefficient tensor product $D=\bigotimes_pD_p$, with local units.
+\end{definition}
+
+\begin{remark}[the coefficient tensor and the cross-prime action]
+\label{v4-arith:w5-b:rem:wave4-ref}
+The global crossed product is described in Laca--Raeburn,
+arXiv:math/9911134, \S2, p.~3. If $r$ is $\ell$-primary and
+$\ell\ne p$, multiplication by $p$ is invertible on that primary
+group, and the relations give
+\[
+ \mu_p e(r)=e(p^{-1}r)\mu_p,\qquad
+ \alpha_p(e(r))=P_p e(p^{-1}r).
+\]
+For example $\mu_2^*e(1/3)\mu_2=e(2/3)$, whereas commuting local
+factors would give $e(1/3)$. In the critical state below,
+$\|(e(1/3)-e(2/3))\Omega_1\|^2=2$, so these elements differ.
+Thus the algebras $C^*_{\mathbb Q,p}$ do not assemble by a
+generatorwise tensor product. The algebra generated only by the
+isometries has the distinct Toeplitz tensor-product description of
+Connes, \emph{Noncommutative Geometry}, V, \S11, Proposition~7,
+pp.~530--531. Neither that description nor the coefficient tensor
+asserts a product representation of the character-enlarged local
+algebras.
+\end{remark}
+
+\begin{lemma}[the critical KMS state]
+\label{v4-arith:w5-b:lem:kms-1}
+There is a unique KMS$_1$ state $\varphi_1$ on $C^*_{\mathbb Q}$.
+It satisfies
+\[
+ \begin{aligned}
+ \varphi_1(e(r))&=\delta_{r,0},\\
+ \varphi_1(\mu_a e(r)\mu_b^*)&=\delta_{a,b}a^{-1}\delta_{r,0},\\
+ \varphi_1(\mu_n^*\mu_m e(r))&=\delta_{n,m}\delta_{r,0}.
+ \end{aligned}
+\]
+In its GNS representation the state extends to a faithful normal state
+on $M=\pi_1(C^*_{\mathbb Q})''$, a hyperfinite factor of type III$_1$;
+the cyclic vector $\Omega_1$ is separating for $M$.
+\end{lemma}
+\begin{proof}
+Existence, uniqueness and the factor statement are Connes, V, \S11,
+Theorem~5(a), p.~528; its character formula at $\beta=1$ is
+$\delta_{r,0}$. Time invariance kills monomials of nonzero time
+weight. At equal indices the KMS identity
+$\varphi_1(xy)=\varphi_1(y\sigma_i(x))$ gives the factor $a^{-1}$
+in the second formula, whereas $\mu_n^*\mu_n=1$ gives the third.
+The faithful normal GNS extension and separating vector are the
+modular realization used in
+\Cref{v4-arith:w5-direct:thm:HPAr-elementary}.
+\end{proof}
+
+\begin{remark}[the critical partition value]
+\label{v4-arith:w5-b:rem:partition-at-one}
+The occupation partition function is $\zeta(\beta)$ for $\Re\beta>1$.
+Its Laurent expansion is
+$\zeta(\beta)=(\beta-1)^{-1}+\gamma+O(\beta-1)$, where $\gamma$
+is the Euler--Mascheroni constant. Thus its Laurent finite part at
+one is $\gamma$; the trace itself diverges there. Identifying this
+finite part with a determinant normalization would require a
+separate comparison. The full critical GNS heat operator is not
+trace class, as its spectrum below shows.
+\end{remark}
+
+\section{GNS Representation and the Modular Operator}
+\label{v4-arith:w5-b:gns-modular}
+
+The rational time weights give an explicit basis that also records
+the character action. It determines the modular sign and all
+operator domains directly.
+
+\begin{definition}[GNS triple]
+\label{v4-arith:w5-b:def:gns}
+Let $(\mathcal H_1,\pi_1,\Omega_1)$ be the GNS triple of $\varphi_1$.
+Thus $\mathcal H_1$ is the completion of
+$C^*_{\mathbb Q}/\{x:\varphi_1(x^*x)=0\}$ with inner product
+$\langle x\Omega_1,y\Omega_1\rangle=\varphi_1(y^*x)$,
+linear in the first variable; $\pi_1$ acts by left multiplication.
+We suppress $\pi_1$ on algebra elements when acting on this space.
+\end{definition}
+
+\begin{lemma}[rational-character basis and Hilbert tensor product]
+\label{v4-arith:w5-b:lem:gns-restricted-tensor}
+For $q=a/b\in\mathbb Q_{>0}$ in lowest terms and $r\in\mathbb Q/\mathbb Z$,
+put $v_{q,r}=\sqrt b\,\mu_a e(r)\mu_b^*\Omega_1$. These vectors are
+an orthonormal basis. Consequently
+\[
+ \begin{aligned}
+ \mathcal H_1&\cong\ell^2(\mathbb Q_{>0})\widehat\otimes
+ \ell^2(\mathbb Q/\mathbb Z)\\
+ &\cong\bigotimes'_p\bigl[\ell^2(p^{\mathbb Z})\widehat\otimes
+ \ell^2(\mathbb Q_p/\mathbb Z_p)\bigr].
+ \end{aligned}
+\]
+with reference vectors $\delta_1\otimes\delta_0$ and
+$\Omega_1=v_{1,0}$. For $d=\gcd(n,b)$ the generator actions are
+\[
+ e(s)v_{q,r}=v_{q,r+as},\qquad
+ \mu_n v_{q,r}=d^{-1/2}\sum_{dt=r}v_{nq,t}.
+\]
+This is a tensor decomposition of Hilbert spaces, not of the local
+BC representations.
+\end{lemma}
+\begin{proof}
+Different $q$ have different time characters and are orthogonal by
+state invariance. For fixed reduced $a/b$,
+\[
+ \langle v_{q,r},v_{q,s}\rangle
+ =b\varphi_1(\mu_b e(-s)\mu_a^*\mu_a e(r)\mu_b^*)
+ =\varphi_1(e(r-s))=\delta_{r,s}.
+\]
+Every monomial of ratio $a/b$ has indices $ac,bc$, and
+$\mu_{ac}e(r)\mu_{bc}^*=\mu_a\alpha_c(e(r))\mu_b^*$ is a finite
+linear combination of these basis vectors. Such monomials span a
+dense algebra, proving completeness. Unique prime factorization of
+positive rationals and the primary decomposition of $\mathbb Q/\mathbb Z$
+give the Hilbert tensor product. Finally
+$e(s)\mu_a=\mu_a e(as)$ proves the first action. Reducing $na/b$
+cancels $d$; expansion of $\alpha_d(e(r))$ and the normalization
+$\sqrt{b/d}$ of the resulting basis give the coefficient $d^{-1/2}$.
+\end{proof}
+
+\begin{lemma}[Tomita conjugation and the modular operator]
+\label{v4-arith:w5-b:lem:modular}
+On the finite basis span the Tomita operator and its polar decomposition
+$S_1=J_1\Delta_1^{1/2}$ satisfy
+\begin{equation}
+\label{v4-arith:w5-b:eq:Delta-basis}
+ S_1v_{q,r}=q^{-1/2}v_{q^{-1},-r},\qquad
+ J_1v_{q,r}=v_{q^{-1},-r},\qquad
+ \Delta_1v_{q,r}=q^{-1}v_{q,r}.
+\end{equation}
+Here $J_1$ is conjugate-linear, and
+\[
+ \Delta_1^{it}\pi_1(x)\Delta_1^{-it}=\pi_1(\sigma_{-t}(x)),
+ \qquad \Delta_1^{it}\Omega_1=\Omega_1.
+\]
+For $u=\sum c_{q,r}v_{q,r}$ the maximal domain of $\Delta_1$ is
+$\sum q^{-2}|c_{q,r}|^2<\infty$; the domain of $S_1$ is
+$\sum q^{-1}|c_{q,r}|^2<\infty$.
+\end{lemma}
+\begin{proof}
+Taking adjoints of $\sqrt b\mu_a e(r)\mu_b^*$ gives
+$\sqrt b\mu_b e(-r)\mu_a^*=q^{-1/2}\sqrt a\mu_b e(-r)\mu_a^*$.
+The resulting conjugate-linear weighted permutation has the stated
+polar decomposition and domains; truncation in the basis gives its
+closed extension. Equivalently, the modular sign is Connes, V, \S11,
+Proposition~4, p.~527. Applying the displayed diagonal unitaries to
+the two generator actions verifies that sign directly.
+\end{proof}
+
+\begin{definition}[BC log-modular generator]
+\label{v4-arith:w5-b:def:N-BC}
+Define $N_{\mathrm{BC}}=-\tfrac12\log\Delta_1$ by self-adjoint
+functional calculus. Its action is
+\begin{equation}
+\label{v4-arith:w5-b:eq:N-BC}
+ \begin{aligned}
+ N_{\mathrm{BC}}v_{q,r}&=\tfrac12\log q\,v_{q,r},\\
+ \operatorname{Dom}N_{\mathrm{BC}}
+ &=\left\{\sum c_{q,r}v_{q,r}:\sum(\log q)^2|c_{q,r}|^2<\infty\right\}.
+ \end{aligned}
+\end{equation}
+\end{definition}
+
+\begin{theorem}[self-adjointness and the full modular spectrum]
+\label{v4-arith:w5-b:thm:N-BC-self-adjoint}
+The finite basis span $\mathcal D_{\mathrm{BC}}$ is an essential
+self-adjointness core for $N_{\mathrm{BC}}$. Its point spectrum is
+$\tfrac12\log\mathbb Q_{>0}$, each eigenvalue has countably infinite
+multiplicity, and its closed spectrum is $\mathbb R$. All its spectral
+measures are pure point. The point spectrum of $\Delta_1$ is
+$\mathbb Q_{>0}$, and its closed spectrum is $[0,\infty)$;
+zero is not an eigenvalue.
+\end{theorem}
+\begin{proof}
+For a real diagonal sequence, the adjoint of the finite-span operator
+has exactly the square-summability domain in
+\eqref{v4-arith:w5-b:eq:N-BC}; truncations converge in its graph norm.
+This proves self-adjointness of the closure. Each $q$ has the
+countably infinite character basis. A diagonal operator's spectrum
+is the closure of its diagonal values: outside that closure its
+coordinatewise inverse is bounded, whereas coordinate vectors give
+approximate eigenvectors at every limit point. Positive rationals
+are dense in $(0,\infty)$, proving both closed-spectrum statements.
+The spectral projections act coordinatewise, so all spectral
+measures are atomic. All eigenvalues of $\Delta_1$ are positive.
+\end{proof}
+
+\begin{remark}[modular and occupation energies]
+\label{v4-arith:w5-b:rem:N-BC-not}
+The full generator has negative as well as positive energies, and
+$e^{-tN_{\mathrm{BC}}}$ is unbounded for every $t>0$.
+The weight $k\log p$ occurs on the vectors $v_{p^{2k},0}$.
+Restricting to their positive-integer square sector gives the
+occupation model below. It is this specified restriction, rather
+than the full modular spectrum, that realizes the logarithmic
+prime weights in \Cref{v4-arith:hpar-det:def:candidate-weights}.
+Neither operator has the zeta-zero divisor by this construction.
+\end{remark}
+\section{Arithmetic Heisenberg Fock and Its Embedding into the GNS Space}
+\label{v4-arith:w5-b:primary-heisenberg}
+
+The occupation sector fixes the zero-mode normalization. An explicit
+orthonormal family in the modular fixed-point algebra then supplies
+oscillator multiplicities inside the same GNS representation.
+
+\begin{definition}[complex arithmetic Fock carrier]
+\label{v4-arith:w5-b:def:fock}
+Choose positive integers $d_p$ and $d_\infty$ as component counts.
+Let $J$ consist of the modes $(p,k,a)$, $k\geq1$, $1\leq a\leq d_p$,
+and $(\infty,k,a)$, $k\geq1$, $1\leq a\leq d_\infty$.
+Write $\mathcal C=\mathbb N_0^{(J)}$ for finite occupation configurations
+and $\mathcal F_{\mathrm{osc}}=\ell^2(\mathcal C)$ for the complex
+bosonic Hilbert space with orthonormal number states $|\mathbf n\rangle$.
+Equivalently it is the restricted tensor product of the per-prime
+Fock spaces and the archimedean complex Fock space, with vacuum
+reference vectors. Put
+\[
+ L_w=\ell^2(\mathbb N^\times,m^{-1}dm),\qquad
+ \epsilon_m=\sqrt m\,\delta_m,\qquad
+ \mathcal F^{\mathrm{Ar}}_{\mathrm{Heis}}
+   =\mathcal F_{\mathrm{osc}}\widehat\otimes L_w.
+\]
+The primary core $\mathcal F^{\mathrm{Ar}}_{\mathrm{Heis},\mathrm{prim}}$
+is the finite span of $|\mathbf n\rangle\otimes\epsilon_m$.
+This specifies a complex Hilbert realization of the oscillator
+algebra. Comparing it with the native per-prime chiral objects of
+\Cref{v4-arith:drinfeld-kapranov} and the archimedean theory of
+\Cref{v4-arith:polyakov} requires complex realization and chiral
+structure maps in addition to this Hilbert space.
+\end{definition}
+
+\begin{lemma}[weighted occupation embedding]
+\label{v4-arith:w5-b:lem:zero-mode-embeds-gns}
+Let $K_2=\overline{\operatorname{span}}\{\mu_{m^2}\Omega_1:m\geq1\}$.
+The map
+\[
+ \iota_0:L_w\longrightarrow K_2,\qquad
+ \iota_0\delta_m=m^{-1/2}\mu_{m^2}\Omega_1
+\]
+is unitary onto $K_2$. This space reduces $N_{\mathrm{BC}}$, and
+$N_{\mathrm{occ}}:=N_{\mathrm{BC}}|_{K_2}$ is unitarily equivalent to
+\[
+ H_w\delta_m=(\log m)\delta_m,\qquad
+ \operatorname{Dom}H_w
+ =\left\{c:\sum_m\frac{(\log m)^2|c_m|^2}{m}<\infty\right\}.
+\]
+The isometries $R_n\delta_m=\sqrt n\,\delta_{nm}$ satisfy
+\[
+ R_n^*\delta_m=
+ \begin{cases}n^{-1/2}\delta_{m/n},&n\mid m,\\0,&n\nmid m,\end{cases}
+ \qquad \iota_0R_n=\pi_1(\mu_{n^2})\iota_0.
+\]
+Their Hilbert adjoints correspond to compressed BC adjoints.
+\end{lemma}
+\begin{proof}
+The vectors $\mu_{m^2}\Omega_1=v_{m^2,0}$ are orthonormal eigenvectors
+of energy $\log m$, whereas $\|\delta_m\|^2=1/m$ in $L_w$.
+This proves the isometry, its range, and the maximal-domain identity
+by the coordinate formula. Their span is invariant under every
+spectral projection, so $K_2$ reduces the generator. The shift and
+adjoint formulas follow on the normalized basis $\epsilon_m$.
+\end{proof}
+
+\begin{definition}[symmetry-invariant BC--GNS Heisenberg lift]
+\label{v4-arith:w5-b:def:bc-gns-heisenberg-lift}
+Let $G=\widehat{\mathbb Z}^{\times}$ act by
+$\beta_u(e(r))=e(ur)$ and $\beta_u(\mu_n)=\mu_n$.
+The relations and the state formula show that this is a
+state-preserving action. Hence
+$U_u(x\Omega_1)=\beta_u(x)\Omega_1$ defines GNS unitaries.
+They are strongly continuous: character orbits factor through finite
+quotients on the dense monomial algebra, and unitarity extends
+continuity to every vector. Define the Hilbert projection
+\[
+ P_G=\int_GU_u\,du
+\]
+using normalized Haar measure. Haar invariance gives
+$P_G^*=P_G=P_G^2$ and $\operatorname{Ran}P_G=\mathcal H_1^G$.
+A symmetry-invariant BC--GNS Heisenberg lift consists of a closed
+$E\subset\mathcal H_1^G$, containing $K_2$, and a unitary
+$\iota:\mathcal F^{\mathrm{Ar}}_{\mathrm{Heis}}\to E$ with
+$\iota(|\mathbf0\rangle\otimes\delta_m)=\iota_0\delta_m$,
+transporting the oscillator annihilation and creation operators
+with their maximal domains and primary core. This definition uses
+the specified Galois symmetry projection $P_G$, not the occupation
+projection $P_K$ onto $K_2$.
+\end{definition}
+
+\begin{lemma}[an explicit same-GNS Fock embedding]
+\label{v4-arith:w5-b:lem:fock-embeds-gns}
+Such a lift exists after a choice of an auxiliary prime $\ell$ and
+an enumeration of $J$. Put $P_k=\mu_{\ell^k}\mu_{\ell^k}^*$ and
+\[
+ h_k=\frac{P_{k+1}-\ell^{-1}P_k}
+ {\sqrt{\ell^{-k-1}(1-\ell^{-1})}},\qquad k\geq0.
+\]
+Enumerate $J=\{j_1,j_2,\ldots\}$ and let $r_i$ be the increasing
+ordinary primes. Set
+\[
+ c(\mathbf n)=\prod_i r_i^{n_{j_i}},\qquad
+ f_{\mathbf0}=1,\qquad f_{\mathbf n}=h_{c(\mathbf n)-2}
+ \quad(\mathbf n\ne\mathbf0).
+\]
+The logarithmic finite-place energy is encoded by
+\[
+ t(\mathbf n)=\prod_{p,k,a}p^{k n_{p,k,a}}.
+\]
+Archimedean modes contribute no factor to $t$. The vectors
+\[
+ v_{\mathbf n,m}=\mu_{(m t(\mathbf n))^2}f_{\mathbf n}\Omega_1
+\]
+are orthonormal, and the unitary onto their closed span $E$ is
+$\iota(|\mathbf n\rangle\otimes\epsilon_m)=v_{\mathbf n,m}$.
+Moreover $E$ reduces $N_{\mathrm{BC}}$, and
+\begin{equation}
+\label{v4-arith:consumer56:logarithmic-energy}
+ \iota^*N_{\mathrm{BC}}|_E\iota
+ =I\otimes H_w+\sum_{p,k,a}k\log p\,K_{p,k,a}\otimes I,
+\end{equation}
+where $K_j|\mathbf n\rangle=n_j|\mathbf n\rangle$.
+In normalized coordinates its maximal domain is
+\[
+ \left\{z:\sum_{\mathbf n,m}
+ (\log m+\log t(\mathbf n))^2|z_{\mathbf n,m}|^2<\infty\right\}.
+\]
+\end{lemma}
+\begin{proof}
+The projections satisfy $P_jP_k=P_{\max(j,k)}$ and
+$\varphi_1(P_k)=\ell^{-k}$. Direct expansion gives
+$\varphi_1(h_k)=0$ and $\varphi_1(h_k^*h_k)=1$.
+If $j<k$, both projections defining $h_k$ lie under $P_{j+1}$;
+therefore $h_jh_k$ is a scalar multiple of $h_k$ and has expectation
+zero. Thus $1,h_0,h_1,\ldots$ is orthonormal. Unique factorization
+makes $\mathbf n\mapsto c(\mathbf n)$ injective, with value one
+only at the vacuum, so the $f_{\mathbf n}$ are orthonormal too.
+They are fixed by time evolution and by $G$.
+
+The vector $v_{\mathbf n,m}$ has energy $\log(m t(\mathbf n))$.
+Different energies are orthogonal. At equal values
+$m t(\mathbf n)=m't(\mathbf n')$, cancellation of the common isometry
+reduces the inner product to
+$\varphi_1(f_{\mathbf n'}^*f_{\mathbf n})=\delta_{\mathbf n,\mathbf n'}$;
+then $m=m'$. This proves the isometry and its vacuum normalization.
+Every vector is $G$-fixed. The closed span of these vectors is invariant
+under all spectral projections, proving reduction and the stated
+diagonal maximal domain. The choices of $\ell$ and the enumeration
+are part of the construction; no canonical chiral identification is
+asserted.
+\end{proof}
+
+\begin{proposition}[closed oscillators and their normalization]
+\label{v4-arith:consumer56:CCR}
+On $E$ define
+\[
+ b_jv_{\mathbf n,m}=\sqrt{n_j}\,v_{\mathbf n-\mathbf e_j,m},\qquad
+ b_j^*v_{\mathbf n,m}=\sqrt{n_j+1}\,v_{\mathbf n+\mathbf e_j,m},
+\]
+with the first vector zero when $n_j=0$. Their maximal domains are,
+respectively, $\sum n_j|z_{\mathbf n,m}|^2<\infty$ and
+$\sum(n_j+1)|z_{\mathbf n,m}|^2<\infty$. They are closed mutual
+adjoints and have the common invariant core
+$\mathcal D_E=\operatorname{span}\{v_{\mathbf n,m}\}$.
+On this core $[b_j,b_{j'}^*]=\delta_{jj'}I_E$ and like operators
+commute. Every $\mu_{m^2}\Omega_1$ is annihilated by every $b_j$.
+For $j=(p,k,a)$, including $p=\infty$, set
+\[
+ A_k^{(p,a)}=\sqrt{k}\,b_{p,k,a},\qquad
+ A_{-k}^{(p,a)}=\sqrt{k}\,b_{p,k,a}^*.
+\]
+Then $[A_k^{(p,a)},A_{-l}^{(q,b)}]=k\delta_{kl}\delta_{pq}\delta_{ab}I_E$.
+The normalized creation monomial is
+\[
+ \mathrm{Asc}(\mathbf n)=
+ \prod_{p,k,a}\frac{(A_{-k}^{(p,a)})^{n_{p,k,a}}}
+ {\sqrt{k^{n_{p,k,a}}n_{p,k,a}!}},\qquad
+ \iota(|\mathbf n\rangle\otimes\delta_m)
+ =m^{-1/2}\mathrm{Asc}(\mathbf n)\mu_{m^2}\Omega_1.
+\]
+\end{proposition}
+\begin{proof}
+Taking inner products of coordinate vectors gives the adjoint
+formulas. Square summability with the indicated weights gives the
+closed maximal operators; finite coordinate truncations converge in
+their graph norms. Their commutators follow by applying both orders
+to each number vector. Iteration of creation gives
+$\sqrt{n_j!}$, and $A_{-k}=\sqrt{k}b_j^*$ supplies the further
+$k^{n_j/2}$ factor. This proves the displayed normalization.
+\end{proof}
+
+\begin{proposition}[symmetry, semigroup shifts and observable obstructions]
+\label{v4-arith:consumer56:observable-obstruction}
+The projections $P_K$, $P_E$ and $P_G$ are proper Hilbert-space
+projections, and none belongs to $M$.
+The oscillators extended by zero on $E^\perp$ commute with $P_G$,
+including their domains; their commutator on
+$\mathcal D_E\oplus E^\perp$ is $P_E$.
+The positive squared-semigroup action satisfies
+\[
+ \pi_1(\mu_{a^2})v_{\mathbf n,m}=v_{\mathbf n,am},\qquad
+ \pi_1(\mu_{a^2})|_E=\iota(I\otimes R_a)\iota^*.
+\]
+Its Hilbert adjoint is the compressed adjoint. Compression to $E$
+does not give a representation of all BC observables. No nonzero
+closed densely defined operator affiliated with $M$, with
+$\Omega_1$ in its domain, can annihilate $\Omega_1$.
+\end{proposition}
+\begin{proof}
+Since $E\subset\mathcal H_1^G$, the zero extensions preserve the
+$P_G$ decomposition. The vector $(e(1/3)-e(2/3))\Omega_1$ has
+squared norm two and Galois average zero, so $P_G\ne I$.
+Also $e(1/2)\Omega_1$ is fixed by $G$ and orthogonal to $K_2$:
+its expectation is zero, and all other occupation vectors have
+nonzero energy. Thus $P_G\ne P_K$. A nonvacuum oscillator vector
+is orthogonal to $K_2$, so $P_E\ne P_K$.
+In particular $P_Kb_j^*\Omega_1=0$ but
+$b_j^*P_K\Omega_1=b_j^*\Omega_1\ne0$; the occupation projection
+cannot replace the symmetry projection in the lift.
+
+Multiplication of the positive isometries proves the shift formula.
+For $a>1$, however,
+$\|\mu_{a^2}^*\Omega_1\|^2=a^{-2}$ and its modular energy is
+$-\log a$. It is orthogonal to $E$, whose energies are nonnegative,
+whereas the compressed adjoint kills $\Omega_1$.
+For a prime $r\ne\ell$, every $P_k$ is an average of characters
+of $\ell$-power order, hence $\varphi_1(P_ke(1/r))=0$.
+Only energy-zero vectors of $E$ can pair with $e(1/r)\Omega_1$;
+those pairings reduce to the same character averages, including
+$\varphi_1(e(1/r))=0$. Thus $P_Ee(1/r)\Omega_1=0$.
+A compressed unitary kills a unit vector, which rules out
+multiplicativity of compression.
+
+Finally, if $B$ is affiliated with $M$, its kernel projection
+$Q$ belongs to $M$. If $B\Omega_1=0$, then
+$(I-Q)\Omega_1=0$; separation gives $Q=I$, hence $B=0$.
+The same argument says that a projection in $M$ fixing $\Omega_1$
+is $I$. Each of the proper projections above fixes $\Omega_1$,
+so none belongs to $M$.
+\end{proof}
+
+\begin{remark}[Hilbert realization and additional arithmetic structure]
+\label{v4-arith:w5-b:rem:embedding-domain}
+The weighted occupation embedding and the chosen complex oscillator
+lift are explicit. They identify neither an Eisenstein or ramified
+summand nor a native chiral algebra inside the GNS space. Such
+identifications require representation maps, coefficient
+realizations and compatible pairings. Likewise, the external
+oscillator operators are not affiliated BC observables. The
+positive squared shifts commute with them on the primary core,
+but the full BC action and its adjoints do not preserve that
+oscillator representation. These are substantive restrictions on
+any arithmetic determinant-trace comparison using $E$.
+\end{remark}
+\section{The Primary-Heisenberg Twist and the Determinant-Trace Operator}
+\label{v4-arith:w5-b:twist}
+
+The occupation and oscillator constructions supply a Hilbert space
+and several gradings. The zero-divisor problem asks for a different
+operator, with a prescribed determinant. An isometry of Hilbert
+spaces does not identify these generators.
+
+\subsection{Statement of the Twist}
+\label{v4-arith:w5-b:twist:statement}
+
+\begin{definition}[twist data and the separate conformal grading]
+\label{v4-arith:w5-b:def:twist}
+On $\mathcal F_{\mathrm{osc}}$ let
+\[
+ L_0|\mathbf n\rangle=\Bigl(\sum_{p,k,a}k n_{p,k,a}\Bigr)|\mathbf n\rangle,
+ \qquad G_F=L_0\otimes I+I\otimes H_w,
+\]
+where the sum includes the archimedean modes. These are nonnegative
+self-adjoint diagonal operators on their maximal square-summability
+domains, with the grading convention of
+\Cref{v4-arith:hpvbconv:def:L0-domain}. With $[A_k,A_{-k}]=kI$, the contribution to $L_0$ is
+$A_{-k}A_k=k b_k^*b_k$, with no additional factor of $k$.
+
+A primary-Heisenberg twist consists of the following comparison data.
+\begin{enumerate}
+\item A complex Hilbert realization $\mathcal H_\xi$ of the proposed
+arithmetic primary sector, and a specified isometry into the
+cuspidal Petersson Hilbert space of
+\Cref{v4-arith:thm:P3-resolution}, with fixed central character and
+Tamagawa normalization. Compatibility with its native Koszul pairing
+is an additional pairing identity, as in
+\Cref{v4-arith:cl:cj:koszul-Petersson-compat}; the positivity of the
+Petersson integral alone does not construct this realization.
+\item A unitary $U:\mathcal F^{\mathrm{Ar}}_{\mathrm{Heis}}\to\mathcal H_\xi$
+whose restriction to the primary core represents the proposed
+arithmetic comparison. Put $\mathcal D_\xi=U\mathcal F^{\mathrm{Ar}}_{\mathrm{Heis},\mathrm{prim}}$.
+\item A self-adjoint operator $A$ with full domain
+$\operatorname{Dom}A\subset\mathcal H_\xi$, for which
+$\mathcal D_\xi\subset\operatorname{Dom}A$ is an invariant core.
+Its domain is not identified with that core.
+\item The transported grading $G_\xi=UG_FU^*$, with
+$\operatorname{Dom}G_\xi=U\operatorname{Dom}G_F$. Thus
+\begin{equation}
+\label{v4-arith:w5-b:eq:twist-intertwine}
+ G_\xi U=UG_F\quad\hbox{on }\operatorname{Dom}G_F.
+\end{equation}
+Any chain-level, chiral or arithmetic-observable interpretation of
+$U$ requires the corresponding maps and identities as further data.
+The grading identity does not assert $A=G_\xi$ or intertwine $A$
+with $N_{\mathrm{BC}}$.
+\end{enumerate}
+Define
+\begin{equation}
+\label{v4-arith:w5-b:eq:H-HP-def}
+ H_{\mathrm{HP}}:=A,
+\end{equation}
+with its full self-adjoint domain, and
+\begin{equation}
+\label{v4-arith:w5-b:eq:Theta-xi-def}
+ \Theta_\xi:=\tfrac12I+iA,\qquad
+ \operatorname{Dom}\Theta_\xi=\operatorname{Dom}A.
+\end{equation}
+The same-GNS representative is
+$A_E=\iota U^*AU\iota^*$ on $E$, with domain
+$\iota U^*\operatorname{Dom}A$. This is a domain-preserving unitary
+transport of $A$, not an identification with the modular restriction.
+\end{definition}
+
+\begin{remark}[two spectral obstructions]
+\label{v4-arith:w5-b:rem:what-iv-says}
+The logarithmic energy in \eqref{v4-arith:consumer56:logarithmic-energy}
+uses $k\log p$, whereas the conformal grading uses positive integers
+$k$. An intertwiner carrying a nonzero integer-energy one-particle
+state into the same modular representation would require
+$k=\tfrac12\log q$ for $q\in\mathbb Q_{>0}$. This is impossible.
+Here is an elementary proof for the integer case needed here.
+For fixed positive integer $k$ and $n\geq1$, set
+\[
+ F_n(x)=\frac{x^n(2k-x)^n}{n!},\qquad
+ I_n=\int_0^{2k}e^xF_n(x)\,dx.
+\]
+All endpoint derivatives of $F_n$ are integers: derivatives of order
+less than $n$ vanish, and expansion at either endpoint makes every
+remaining derivative an integer multiple of $j!/n!$, $j\geq n$.
+Repeated integration by parts therefore gives
+$I_n\in\mathbb Z+e^{2k}\mathbb Z$. But
+\[
+ 0<I_n\leq 2k e^{2k}\frac{k^{2n}}{n!}\longrightarrow0.
+\]
+If $e^{2k}$ were rational, clearing its fixed denominator would
+produce positive integers tending to zero. Thus ordinary finite
+or archimedean oscillator energy cannot be the modular generator.
+Archimedean modes in the construction above have zero modular
+weight and a separate positive conformal grading; their multiplicities
+also preclude a simple occupation partition identity on all of $E$.
+
+A second obstruction prevents retaining the occupation vacuum as a
+zero eigenvector of $A$: then $\Theta_\xi$ would have eigenvalue
+$1/2$ and its determinant would vanish there. On the other hand,
+$\eta(1/2)=\sum_{n\geq1}((2n-1)^{-1/2}-(2n)^{-1/2})>0$,
+and $\zeta(1/2)=\eta(1/2)/(1-\sqrt2)\ne0$. All remaining factors
+in $\xi_{\mathbb R}(1/2)$ are nonzero. Hence the zero-divisor
+operator cannot literally inherit that vacuum energy.
+\end{remark}
+
+\subsection{Determinant-Trace Requirement: Hadamard Inversion}
+\label{v4-arith:w5-b:twist:hadamard-inversion}
+
+Write $\rho=\beta_\rho+i\gamma_\rho$ for the nontrivial zeros,
+with multiplicity. The completed function is
+$\xi_{\mathbb R}(s)=\tfrac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)$.
+Its genus-one factorization is
+\begin{equation}
+\label{v4-arith:w5-b:eq:hadamard}
+ \xi_{\mathbb R}(s)=\frac12e^{Bs}\prod_\rho(1-s/\rho)e^{s/\rho},
+ \qquad B=-1-\frac\gamma2+\frac12\log(4\pi).
+\end{equation}
+Here $\gamma$ is the Euler--Mascheroni constant. The prime side
+appears in the logarithmic derivative, for $\Re s>1$:
+\begin{equation}
+\label{v4-arith:w5-b:eq:log-deriv-xi}
+ \begin{aligned}
+ -\frac{\xi_{\mathbb R}'(s)}{\xi_{\mathbb R}(s)}
+ &=-\frac1s-\frac1{s-1}+\frac12\log\pi\\
+ &\quad-\frac12\frac{\Gamma'(s/2)}{\Gamma(s/2)}
+ +\sum_{n\geq2}\frac{\Lambda(n)}{n^s}.
+ \end{aligned}
+\end{equation}
+The product and the explicit formula relate the zero and prime
+distributions; they do not give a unitary conjugacy between the
+occupation generator and a zero-spectrum operator. The arithmetic
+problem is to construct the latter from the specified primary
+sector and prove its determinant and trace comparisons.
+
+\subsection{The Hilbert--P\'olya Hypothesis and Its Consequences}
+\label{v4-arith:w5-b:twist:consequences}
+
+\begin{hypothesis}[arithmetic determinant-trace realization]
+\label{v4-arith:w5-b:hyp:twist-existence}
+There exist twist data as in \Cref{v4-arith:w5-b:def:twist}, together
+with a complete orthonormal eigenbasis $(u_\rho)$ indexed by every
+zero occurrence, such that
+\begin{equation}
+\label{v4-arith:w5-b:eq:spec-A}
+ \begin{gathered}
+ Au_\rho=\gamma_\rho u_\rho,\qquad
+ (\tfrac12I+iA)u_\rho=\rho u_\rho,\\
+ \operatorname{Dom}A=
+ \left\{\sum c_\rho u_\rho:\sum\gamma_\rho^2|c_\rho|^2<\infty\right\}.
+ \end{gathered}
+\end{equation}
+Thus the original zero multiplicities and zero placement are part
+of the requirement, not merely the multiset of ordinates.
+Use the normalized determinant prescription
+\eqref{v4-arith:sc:normalized-det-formula} under the unitary
+$u_\rho\mapsto\delta_\rho$.
+The zero symmetry is represented by an involutive unitary $R_\xi$
+which exchanges the occurrences $\rho$ and $1-\rho$, preserves
+$\operatorname{Dom}A$, and satisfies $R_\xi A R_\xi=-A$.
+Identifying $U^*R_\xi U$ with a native arithmetic $S$-modular
+operation is an additional specified comparison, including its
+carrier and domain.
+\end{hypothesis}
+
+\begin{remark}[the arithmetic comparison problem]
+\label{v4-arith:w5-b:rem:equals-HPAr}
+The eigenvalue condition implies RH and gives the abstract normalized
+Hilbert--P\'olya realization of
+\Cref{v4-arith:w5-direct:thm:HP-form}. Conversely, under RH the
+diagonal zero-occurrence construction gives that abstract operator.
+It does not construct the Petersson realization, native chiral maps,
+or arithmetic symmetry comparison in the hypothesis. Those are the
+additional requirements of the arithmetic formulation
+\Cref{v4-arith:rh:hyp:HPAr}. Transport by $\iota U^*$ places a
+specified realization in the same GNS Hilbert space while retaining
+its domain, but supplies no equality with $N_{\mathrm{BC}}$ or
+$N_{\mathrm{occ}}$.
+\end{remark}
+
+\section{Prime distributions and the explicit formula}
+\input{chapters/arithmetic/87c_prime_distributions}
+
+\section{Determinant Identity: Hadamard Factorisation}
+\label{v4-arith:w5-b:determinant}
+
+\subsection{The normalized genus-one determinant}
+\label{v4-arith:sc:determinant}
+
+Let $Z$ contain each zero $\rho$ of $\xi$ with its multiplicity.
+On $K_Z=\ell^2(Z)$, define
+\[
+ (\Theta_Zu)_\rho=\rho u_\rho,\qquad
+ \operatorname{Dom}\Theta_Z=\{u:\sum_\rho|\rho u_\rho|^2<\infty\}.
+\]
+This is a closed normal operator. Its inverse is bounded, compact,
+and Hilbert--Schmidt: $\xi(0)=1/2$, the zeros are discrete, and
+$\sum_\rho|\rho|^{-2}<\infty$.
+
+\begin{theorem}[complete determinant normalization]
+\label{v4-arith:sc:normalized-det}
+\label{v4-arith:w5-b:prop:det-formal}
+Define the second regularized Fredholm determinant of the diagonal
+Hilbert--Schmidt operator $-s\Theta_Z^{-1}$ by
+\[
+ D_2(s)=\det{}_2(1-s\Theta_Z^{-1})
+       :=\prod_{\rho\in Z}(1-s/\rho)e^{s/\rho}.
+\]
+With $B=-1-\gamma/2+\tfrac12\log(4\pi)$, set
+\begin{equation}
+ \Delta_Z(s):=\tfrac12e^{Bs}D_2(s).
+ \label{v4-arith:sc:normalized-det-formula}
+\end{equation}
+This entire function equals $\xi(s)$.
+It is the unique entire function of order at most one with this
+zero divisor, $\Delta_Z(0)=1/2$, and $\Delta_Z'(0)/\Delta_Z(0)=B$.
+Off the zero divisor it satisfies
+\[
+ (\log\Delta_Z)''(s)
+       =-\operatorname{Tr}(\Theta_Z-s)^{-2}.
+\]
+The trace is an ordinary absolutely convergent trace.
+Unitary conjugacy of $\Theta_Z$, including its domain, preserves
+this determinant prescription.
+\end{theorem}
+\begin{proof}
+For $|w|\le1/2$, $\log(1-w)+w=O(|w|^2)$.
+The inverse-square sum proves normal convergence of the product
+on every compact set, independently of the enumeration of zeros.
+Its value and derivative at zero are $1$ and $0$.
+Proposition~\ref{v4-arith:pm:constant} gives the product for $\xi$
+with exactly the factor $e^{Bs}/2$. This proves the identity.
+Hadamard factorization writes every other entire function of order
+at most one with this divisor as $e^{a+bs}D_2(s)$.
+The two initial conditions give $e^a=1/2$ and $b=B$.
+Twice differentiating the normally convergent logarithmic product
+gives $-\sum_\rho(\rho-s)^{-2}$.
+The inverse-square estimate proves absolute trace convergence.
+Unitary conjugacy preserves the diagonal eigenvalues and their
+multiplicities, hence every factor in the prescribed product.
+\end{proof}
+
+\begin{proposition}[the divisor leaves an exponential ambiguity]
+\label{v4-arith:sc:det-ambiguity}
+For every $c\in\mathbb C$, the function $e^{cs}\xi(s)$ has the same
+divisor, the same value at zero, and order at most one.
+Its logarithmic derivative at zero is $B+c$.
+Thus a divisor condition and a value normalization do not imply
+the determinant identity. Both normalizations in
+\eqref{v4-arith:sc:normalized-det-formula} are necessary.
+\end{proposition}
+\begin{proof}
+The exponential has no zero, has value one at zero, and contributes
+$c$ to the logarithmic derivative. Multiplication preserves the
+stated order bound.
+\end{proof}
+
+The prescription above uses no complex powers of $s-\Theta_Z$.
+A determinant defined by such powers requires a spectral cut and
+meromorphic continuation of its trace. Agreement with $\Delta_Z$
+requires the same second logarithmic derivative and the two stated
+initial conditions. These conditions determine equality locally
+near zero by integration, and globally by analytic continuation.
+
+\begin{remark}[operator comparison and determinant normalization]
+\label{v4-arith:w5-b:rem:det-does-not-buy}
+For a normal operator with a complete orthonormal eigenbasis indexed
+by the same zeros, use the prescription
+\begin{equation}
+ \det_{\infty}(s-\Theta)
+ :=\tfrac12e^{Bs}\det_2(1-s\Theta^{-1})=\xi(s).
+ \label{v4-arith:w5-b:eq:det-identity}
+\end{equation}
+The unitary eigenbasis map proves equality with $\Delta_Z$.
+This fixes the determinant notation in the determinant-trace
+hypothesis. The construction of such an operator from an arithmetic
+primary sector requires an additional domain-preserving comparison.
+The diagonal operator $\Theta_Z$ itself uses the zero divisor as input.
+\end{remark}
+
+\begin{remark}[dilation and occupation models]
+\label{v4-arith:w5-b:rem:berry-keating-contrast}
+Berry--Keating's $xp$ model concerns zero-density asymptotics
+(\emph{SIAM Review} 41 (1999), 236--266). A basic dilation
+realization illustrates the separate operator question. The map
+$f(x)\mapsto f(e^u)$ is unitary from
+$L^2(\mathbb R_{>0},dx/x)$ to $L^2(\mathbb R,du)$ and sends
+$-ix\partial_x$ to $-i\partial_u$, with domain transported from
+$H^1(\mathbb R)$. Fourier transformation gives spectrum $\mathbb R$.
+This self-adjoint dilation generator does not have a discrete
+zeta-zero divisor. Likewise the self-adjoint occupation operator
+$N_{\mathrm{occ}}$ with eigenvalues $\log m$ supplies no such divisor.
+A density comparison or a logarithmic weight must be supplemented
+by the actual determinant-trace realization; see
+\Cref{v4-arith:hpvbconv:rem:berry-keating} for the corresponding
+spectral question.
+\end{remark}
+
+\section{Trace Distribution: the Full Explicit Formula}
+\label{v4-arith:w5-b:trace}
+
+\begin{proposition}[ordinary trace on compact Fourier tests]
+\label{v4-arith:w5-b:prop:weil-trace}
+Assume \Cref{v4-arith:w5-b:hyp:twist-existence}. For
+$f\in\mathcal A:=C_c^\infty(\mathbb R)$ set
+$h(z)=\mathcal F_+f(z):=\int_{\mathbb R}f(t)e^{izt}\,dt$.
+Then $h(A)$ is trace class and
+\begin{equation}
+\label{v4-arith:w5-b:eq:trace-identity}
+\begin{aligned}
+ \operatorname{Tr}h(H_{\mathrm{HP}})
+ &=\sum_\rho h(\gamma_\rho)\\
+ &=h(i/2)+h(-i/2)
+   +\frac1{2\pi}\int_{\mathbb R}h(u)
+       \bigl(\Re\psi_\Gamma(1/4+iu/2)-\log\pi\bigr)\,du\\
+ &\hspace{1em}-\sum_{m\geq2}\frac{\Lambda(m)}{\sqrt m}
+       \bigl(f(\log m)+f(-\log m)\bigr),
+\end{aligned}
+\end{equation}
+where $\psi_\Gamma=\Gamma'/\Gamma$. The prime sum is finite.
+Equivalently the right side is $P(f)-W_\infty(f)-W_{\mathrm{fin}}(f)$,
+with signed archimedean density
+$\log\pi-\Re\psi_\Gamma(1/4+iu/2)$ and polar functional
+$P(f)=h(i/2)+h(-i/2)$.
+\end{proposition}
+\begin{proof}
+Repeated integration by parts gives
+$|h(u)|\leq C_N(1+|u|)^{-N}$ for real $u$ and every $N$.
+The zero-count estimate of \Cref{v4-arith:pm:zero-count} is
+$O(T\log(2+T))$. Summing over dyadic intervals, with $N>2$,
+therefore gives $\sum_\rho|h(\gamma_\rho)|<\infty$.
+The specified orthonormal eigenbasis makes $h(A)$ a diagonal
+trace-class operator with exactly this ordinary trace.
+The determinant spectral condition gives
+$\rho=1/2+i\gamma_\rho$. The compact-test explicit formula
+\Cref{v4-arith:pm:weil} now gives all terms displayed, with its
+Fourier convention and both prime-test values. The gamma integral
+converges by logarithmic growth of the density. Unitary transport
+of this trace-class operator to $E$ preserves the ordinary trace;
+no unspecified regularization is inferred from an isometric
+embedding of unrelated operators.
+\end{proof}
+
+\begin{corollary}[the full Weil-positive cone and a Petersson comparison]
+\label{v4-arith:w5-b:cor:weil-positive}
+Under the same hypothesis, put $f^*(t)=\overline{f(-t)}$.
+For every $f\in\mathcal A$ the full Weil value satisfies
+\[
+ W(f*f^*)=\operatorname{Tr}\bigl(h_f(A)h_f(A)^*\bigr)
+           =\sum_\rho|h_f(\gamma_\rho)|^2\geq0,
+ \qquad h_f=\mathcal F_+f.
+\]
+Thus Weil positivity and Li positivity hold.
+To obtain this conclusion instead from a proposed Petersson
+realization, one must construct a complex-linear map $J$ on all
+of $\mathcal A$ with
+$\langle Jf,Jg\rangle_{\mathrm{Pet}}=W(f*g^*)$, or construct it on
+a dense subspace in a topology for which the full form is
+continuous. Positivity only on an unspecified restricted cone
+supplies neither condition.
+\end{corollary}
+\begin{proof}
+Fourier transformation sends convolution and involution to
+$h_fh_f^\#$, where $h_f^\#(z)=\overline{h_f(\bar z)}$.
+On the real spectrum this is $|h_f|^2$. The preceding absolute
+trace argument applies to $f*f^*$. This proves positivity on the
+full compact test algebra, hence the Weil criterion and the Li
+criterion of \Cref{v4-arith:w5-direct:thm:weil-positivity} and
+\Cref{v4-arith:w5-direct:thm:li-positivity} give the conclusions.
+For a Petersson map the stated pairing identity gives positivity
+directly; if its domain is dense, continuity passes the inequality
+to limits. The full compact-test form is continuous in the
+inductive-limit topology by \Cref{v4-arith:pm:weil}.
+\end{proof}
+
+\section{Unconditional Constructions and the Arithmetic Comparison}
+\label{v4-arith:w5-b:form}
+
+\subsection{Bost--Connes and Oscillator Carriers}
+\label{v4-arith:w5-b:form:layer-1}
+
+The global BC algebra, critical state and rational-character GNS
+basis give the maximal self-adjoint generator with point spectrum
+$\tfrac12\log\mathbb Q_{>0}$ and closed spectrum $\mathbb R$.
+The finite basis span is a core, not its full self-adjoint domain.
+Its restriction $N_{\mathrm{occ}}$ to $K_2$ has simple eigenvalues
+$\log m$. The weighted zero-mode embedding, explicit oscillator
+lift, closed CCR operators and logarithmic energy identity are
+unconditional constructions after the stated auxiliary choices.
+They do not identify the oscillator algebra with affiliated BC
+observables or identify conformal energy with modular energy.
+
+\subsection{Consequences of a Zero-Divisor Realization}
+\label{v4-arith:w5-b:form:layer-2}
+
+Given the eigenbasis and domain in
+\Cref{v4-arith:w5-b:hyp:twist-existence}, the prescribed normalized
+genus-one determinant is $\xi_{\mathbb R}$ by
+\Cref{v4-arith:w5-b:prop:det-formal}. On compact Fourier tests the
+ordinary trace is the full polar, signed-gamma and prime formula
+\eqref{v4-arith:w5-b:eq:trace-identity}. It is positive on all
+convolution squares, and Li positivity follows. These statements
+use the zero-divisor realization; they are not occupation-trace
+identities. The domain-preserving unitary $\iota U^*$ transports
+them to $E$ for $A_E$, while leaving its distinction from
+$N_{\mathrm{BC}}|_E$ intact.
+
+\subsection{Hilbert--P\'olya and the Other Trace Models}
+\label{v4-arith:w5-b:form:layer-3}
+
+The remaining arithmetic problem is to construct the native
+primary-sector realization, its Petersson pairing and chiral maps,
+and an operator $A$ satisfying the normalized zero-divisor
+condition. The zero-input diagonal operator proves no such
+arithmetic origin. Connes' adele-class-space absorption trace and
+Deninger's motivic determinant are further comparison targets.
+As in \Cref{v4-arith:hpvbconv:thm:HPAr-equivalence}, a comparison
+requires explicit Connes/Fock and Deninger/Fock intertwiners.
+
+\begin{theorem}[conditional determinant and trace comparison]
+\label{v4-arith:w5-b:thm:precise-obstruction}
+Assume the arithmetic twist hypothesis. Its normalized determinant
+and full compact-test trace are those of
+\Cref{v4-arith:w5-b:prop:det-formal} and
+\Cref{v4-arith:w5-b:prop:weil-trace}.
+For a Connes comparison, additionally specify a Hilbert realization
+$H_C$ of the relevant adele-class-space representation, a
+self-adjoint scaling generator $A_C$, and a unitary
+$V_C:\mathcal H_\xi\to H_C$ with
+\[
+ V_C\operatorname{Dom}A=\operatorname{Dom}A_C,\qquad
+ A_CV_C=V_CA.
+\]
+The absorption-trace prescription must also agree on these tests
+with $\operatorname{Tr}h(A_C)$, with its stated sign and normalization.
+For a Deninger comparison, additionally specify a Hilbert
+realization $H_D$ of the proposed motivic cohomology, a closed normal
+generator $\Phi=\tfrac12I+iA_D$ with $A_D$ self-adjoint, and a unitary
+$V_D:\mathcal H_\xi\to H_D$ intertwining $\Theta_\xi$ and $\Phi$
+on their full domains. Its determinant prescription must have the
+same genus-one normalization, or be proved to agree with it.
+Under these hypotheses the normalized determinant and trace
+statements transfer to both models and back. Without the maps and
+prescriptions they are comparison questions, not equivalences of
+the constructed operators.
+\end{theorem}
+\begin{proof}
+The first assertion follows from the stated eigenbasis map and the
+ordinary trace-class argument. A domain-preserving unitary
+intertwiner preserves the spectral calculus, eigenvalue
+multiplicities and trace-class traces. It also preserves the
+normalized determinant prescription, as proved in
+\Cref{v4-arith:sc:normalized-det}. The further trace/determinant
+agreements in the hypotheses identify these transported quantities
+with the respective geometric prescriptions. Applying the inverse
+unitaries proves the reverse transfers. In the motivic notation,
+self-adjointness concerns $A_D$, while the completed zero generator
+is $\Phi=1/2+iA_D$; these are different operators. This makes
+explicit the intertwiner hypotheses retained in
+\Cref{v4-arith:hpvbconv:thm:HPAr-equivalence}.
+\end{proof}
+
+\begin{remark}[logarithmic weights and their normalization]
+\label{v4-arith:w5-b:rem:W-honest}
+On the specified carrier $K_2$, the positive squared shifts satisfy
+$N_{\mathrm{occ}}\mu_{n^2}=\mu_{n^2}(N_{\mathrm{occ}}+\log n)$
+on their maximal domains, and the vacuum has energy zero.
+These two requirements force the eigenvalue $\log m$ at
+$\mu_{m^2}\Omega_1$. They also give
+$\operatorname{Tr}_{K_2}e^{-\beta N_{\mathrm{occ}}}=\zeta(\beta)$
+for $\Re\beta>1$.
+KMS alone does not select $K_2$: for integers $s\geq1$, the sectors
+$K_s=\overline{\operatorname{span}}\{\mu_{m^s}\Omega_1\}$ have
+energies $(s/2)\log m$. Thus the weight question of
+\Cref{v4-arith:hpar-det:cor:wave3-structure} has this explicit
+occupation realization after the carrier, covariance and vacuum
+normalization are fixed. It does not solve the arithmetic
+zero-divisor comparison.
+\end{remark}
+
+\begin{remark}[the conditional arithmetic conclusion]
+\label{v4-arith:w5-b:rem:honest-conditional}
+There are explicit self-adjoint modular and occupation generators,
+and an explicit symmetry-invariant Hilbert Fock embedding in the
+critical GNS space. The conformal grading can be transported
+unitarily as a separate operator. A native arithmetic
+Hilbert--P\'olya realization still requires its own operator,
+domain, pairing and normalized zero-divisor data. Once these are
+constructed, the determinant and full trace identities follow.
+Comparisons with Connes' absorption trace, Deninger's determinant,
+or a native chiral operation retain the additional maps and
+normalizations stated above.
+\end{remark}
+
+\subsection{Operator Carriers and Comparison Data}
+\label{v4-arith:w5-b:form:summary}
+
+\begin{center}
+\small
+\begin{tabular}{p{.30\textwidth}|p{.60\textwidth}}
+Object & Carrier and conclusion \\
+\hline
+BC algebra and KMS$_1$ state & Global crossed product; faithful normal GNS state. \\
+$N_{\mathrm{BC}}$ & Full GNS space; maximal self-adjoint domain, closed spectrum $\mathbb R$. \\
+$N_{\mathrm{occ}}$ & $K_2$; simple spectrum $\{\log m\}$ and partition $\zeta(\beta)$ for $\Re\beta>1$. \\
+Oscillator lift & Chosen unitary $\mathcal F^{\mathrm{Ar}}_{\mathrm{Heis}}\to E\subset\mathcal H_1^G$; closed CCR operators and logarithmic prime energy. \\
+Conformal grading & $G_F=L_0+H_w$, transported to $G_\xi$; distinct from the modular generator. \\
+Arithmetic $A$ and $\Theta_\xi$ & Full-domain self-adjoint $A$ and normal $\Theta_\xi=1/2+iA$; prescribed zero-divisor realization remains hypothetical. \\
+Normalized determinant & Equals $\xi_{\mathbb R}$ conditional on that realization. \\
+Compact-test trace & Ordinary trace-class formula $P-W_\infty-W_{\mathrm{fin}}$ on the same condition. \\
+Petersson and geometric transfers & Require the full test pairing or dense continuous comparison, and the specified Connes/Deninger intertwiners.
+\end{tabular}
+\end{center}
+
+\section{Bibliography}
+\label{v4-arith:w5-b:biblio}
+
+\paragraph{Operator-algebra and KMS theory.}
+\begin{description}
+\item[Bost--Connes.] J.-B.~Bost and A.~Connes, \emph{Hecke algebras,
+type~III factors and phase transitions with spontaneous symmetry
+breaking in number theory}, Selecta Math.~1 (1995), 411--457.
+\item[Connes, modular theory.] A.~Connes, \emph{Noncommutative Geometry},
+Academic Press (1994), V, \S11, Proposition~4, p.~527;
+Theorem~5, p.~528; Proposition~7, pp.~530--531.
+\item[Laca--Raeburn.] M.~Laca and I.~Raeburn,
+\emph{The ideal structure of the Hecke $C^*$-algebra of Bost and Connes},
+arXiv:math/9911134, \S2, p.~3.
+\item[Connes.] A.~Connes, \emph{Trace formula in noncommutative
+geometry and the zeros of the Riemann zeta function}, Selecta
+Math.~5 (1999), 29--106; arXiv:math/9811068.
+\item[Connes--Marcolli.] A.~Connes and M.~Marcolli, \emph{Noncommutative
+geometry, quantum fields, and motives}, AMS Colloquium Publications
+55 (2008). Ch.~3--4 for KMS states and rigidity; Ch.~5 for the
+adele class space.
+\item[Takesaki.] M.~Takesaki, \emph{Tomita's theory of modular
+Hilbert algebras and its applications}, Lecture Notes in Mathematics
+128 (Springer 1970); \emph{Theory of Operator Algebras~I}, (Springer
+1979), Ch.~IV \S5 (GNS), Ch.~VI \S1 (Tomita--Takesaki); \emph{Theory
+of Operator Algebras~II} (Springer 2003), Ch.~VIII \S1 (modular
+automorphism).
+\item[Meyer.] R.~Meyer, \emph{On a representation of the idele class
+group related to primes and zeros of \(L\)-functions}, Duke Math.~J.
+127 (2005), 519--595; arXiv:math/0311468.
+\end{description}
+
+	\paragraph{Hilbert--P\'olya candidates and determinant-trace realisations.}
+\begin{description}
+\item[Berry--Keating.] M.~V.~Berry and J.~P.~Keating, \emph{The
+Riemann zeros and eigenvalue asymptotics}, SIAM Review 41 (1999),
+236--266.
+\item[Reed--Simon.] M.~Reed and B.~Simon, \emph{Methods of Modern
+Mathematical Physics}, Vol.~I (Academic Press 1980),
+Thm.~VIII.11 (diagonal operators); Vol.~II (Academic Press 1975),
+Thm.~X.23 (Friedrichs extension).
+\item[Deninger.] C.~Deninger, \emph{Motivic \(L\)-functions and
+regularised determinants}, Proc.~Symp.~Pure Math.~55.1 (1994),
+707--743; \emph{A note on arithmetic topology and dynamical systems},
+Math.~Nachr.~205 (2001), 107--135.
+\item[Ray--Singer.] D.~B.~Ray and I.~M.~Singer, \emph{\(R\)-torsion
+and the Laplacian on Riemannian manifolds}, Advances in
+Mathematics 7 (1971), 145--210 (source of \(\zeta\)-regularised
+determinants).
+\item[Voros.] A.~Voros, \emph{Spectral functions, special functions
+and the Selberg zeta function}, Comm.~Math.~Phys.~110 (1987),
+439--465.
+\end{description}
+
+\paragraph{Hadamard factorisation and explicit formula.}
+\begin{description}
+\item[Riemann.] B.~Riemann, \emph{\"Uber die Anzahl der Primzahlen
+unter einer gegebenen Gr\"osse}, Monatsberichte der Berliner
+Akademie, 1859.
+\item[Hadamard.] J.~Hadamard, \emph{\'Etude sur les propri\'et\'es
+des fonctions enti\`eres et en particulier d'une fonction consid\'er\'ee
+par Riemann}, J.~Math.~Pures Appl.~9 (1893), 171--215.
+\item[von Mangoldt.] H.~von Mangoldt, \emph{Zu Riemann's Abhandlung
+``\"Uber die Anzahl der Primzahlen unter einer gegebenen Gr\"osse''},
+J.~Reine Angew.~Math.~114 (1895), 255--305.
+\item[Weil.] A.~Weil, \emph{Sur les ``formules explicites'' de la
+th\'eorie des nombres premiers}, Comm.~S\'em.~Math.~Univ.~Lund (1952),
+252--265.
+\item[Edwards.] H.~M.~Edwards, \emph{Riemann's Zeta Function},
+Academic Press 1974.
+\end{description}
+
+\paragraph{Chiral algebra and arithmetic Fock background.}
+\begin{description}
+\item[Beilinson--Drinfeld.] A.~Beilinson and V.~Drinfeld,
+\emph{Chiral Algebras}, AMS Colloquium Publications 51 (2004).
+\item[Bost--Connes~(cited above).]
+\item[Vol~IV chapters.] \Cref{v4-arith:kms-gns-full},
+\Cref{v4-arith:HPAr-vbconverse}, \Cref{v4-arith:hpar-det},
+\Cref{v4-arith:R-analytic-comparison}, \Cref{v4-arith:rh-reformulation}.
+\end{description}
+

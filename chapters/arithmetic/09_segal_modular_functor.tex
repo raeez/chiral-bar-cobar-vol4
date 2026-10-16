@@ -1,0 +1,271 @@
+\chapter{The Arithmetic Modular Functor}
+\label{v4-arith:modular-functor}
+
+Segal's modular functor assigns conformal blocks to marked Riemann
+surfaces and uses sewing along circles. The arithmetic curve has no
+such sewing category. Tate theory supplies the object occupying the
+same formal position.
+
+\section{Axioms and Their Translation}
+\label{v4-arith:segal:axioms-translation}
+
+Each Segal axiom for a Riemann surface \(\Sigma_{g,n}\) -- finiteness
+of conformal blocks, sewing along circles, modular invariance, and the
+partition-function trace -- has an arithmetic analogue on the Arakelov
+curve \((\overline{\mathrm{Spec}\,\mathcal{O}_{K}},S)\). The entries
+below are a dictionary of roles. They are not literal identifications
+of the two categories.
+
+\begin{convention}[arithmetic Segal dictionary]
+\label{v4-arith:conv:arithmetic-segal-dictionary}
+\begin{center}
+\begin{tabular}{ll}
+Geometric Segal & Arithmetic Segal \\
+\hline
+Riemann surface \(\Sigma_{g,n}\) & Arakelov curve \((\overline{\mathrm{Spec}\,\mathcal{O}_{K}},S)\) \\
+Orientation & Trivialization of \(\det R\Gamma\) (Deligne) \\
+Genus contribution & Arakelov discriminant volume \(\tfrac{1}{2}\log|d_{K}|\) \\
+Marked point & Place (finite or archimedean) \\
+Sewing circle & Punctured formal disk \(\mathrm{Spec}\,K_{\mathfrak{p}}\) \\
+Intermediate rep & Weil--Deligne parameter \((\rho,N)\) \\
+Sewing law & Euler-product factorization of \(L(s,\chi)\) \\
+Monodromy \(U(1)\) & Frobenius \(\alpha_{p}=\chi_{p}(p)\) \\
+\(\mathrm{MCG}(\Sigma)\) & arithmetic symmetry group acting on labels and Hecke lines \\
+Modular \(S\)-matrix & \(\Gamma\)-factor \(+\) functional equation \\
+Verlinde scalar & Class-number residue at \(s=1\) \\
+Conformal block at \(\{V_{i}\}\) & Tate integral \(\prod_{v}\int|\cdot|^{s}\Phi_{v}\) \\
+\(Z(\Sigma)=\mathrm{tr}\,q^{L_{0}-c/24}\) & finite Euler product
+\(\prod_{\mathfrak p}(1-N\mathfrak p^{-s})^{-1}\), completed by the
+archimedean Tate factors
+\end{tabular}
+\end{center}
+\end{convention}
+
+\section{Arakelov Discriminant as Lattice Volume}
+\label{v4-arith:segal:genus}
+
+\begin{observation}[the discriminant term is not a genus]
+\label{v4-arith:obs:genus-lattice-volume}
+The geometric genus satisfies \(g=\tfrac{1}{2}\dim_{\mathbb{R}}H^{1}(\Sigma;\mathbb{R})\); equivalently, the Jacobian \(J(\Sigma)=H^{0}(\Sigma,\Omega^{1})^{*}/H_{1}(\Sigma,\mathbb{Z})\) is a \(g\)-dimensional torus whose Weil height is \(\tfrac{1}{2}\log\det(\mathrm{Im}\,\tau)\) for the period matrix \(\tau\).
+The arithmetic analogue is \(\tfrac{1}{2}\log|d_{K}|=\tfrac{1}{2}\log(\mathrm{covol}(\mathcal{O}_{K}\subset K\otimes_{\mathbb{Q}}\mathbb{R}))\).
+Both are half-logarithms of lattice covolumes; the functional is the same, the lattices differ. The number \(\tfrac{1}{2}\log|d_{K}|\) is not an integer genus and is not a Betti number.
+\end{observation}
+
+\begin{definition}[arithmetic Euler characteristic]
+\label{v4-arith:def:arithmetic-euler-characteristic}
+\begin{equation}
+\chi^{\mathrm{arith}}(\overline{X})\;:=\;-\widehat{\deg}\,\omega_{\overline{X}}+\sum_{v\mid\infty}\log\|\cdot\|_{v}.
+\end{equation}
+On \(\mathrm{Spec}\,\mathcal{O}_{K}\) with signature \((r_{1},r_{2})\),
+\(\chi^{\mathrm{arith}}=\log|d_{K}|-r_{1}\log(\pi/4)-r_{2}\log(\pi/2)\)
+by Minkowski--Odlyzko. Additive on disjoint unions of Arakelov
+surfaces.
+\end{definition}
+
+\section{Weil--Deligne Sewing}
+\label{v4-arith:segal:weil-deligne-sewing}
+
+\begin{theorem}[sewing law]
+\label{v4-arith:thm:weil-deligne-sewing}
+\ClaimStatusConjectured.
+
+Here \(\mathcal{F}^{\mathrm{arith}}\) denotes the arithmetic modular functor
+defined in Definition~\ref{v4-arith:def:arithmetic-modular-functor}
+(an adelically factorized assignment of meromorphic lines to Arakelov
+surfaces with marked places); and \(\mathcal{V}^{\mathrm{prim}}\)
+denotes the Hochschild trace class of the identity on the global
+arithmetic Iwahori--Hecke category of \(GL_{2}\) (a class in
+\(K\)-theory, not a vertex algebra). The \(\ell\)-adic coefficient
+system at a non-archimedean prime \(\mathfrak{p}\) is the \'etale
+cohomology local system attached to \(\mathcal{V}^{\mathrm{prim}}\)
+via the comparison isomorphism \(H^{*}_{\mathrm{\acute{e}t}}(-,\mathbb{Q}_{\ell})\)
+for any prime \(\ell\neq p\); this is the coefficient ring of the
+Weil--Deligne representation, not an enrichment of \(\mathcal{V}^{\mathrm{prim}}\)
+with vertex-algebra structure.
+\begin{equation}
+\mathcal{F}^{\mathrm{arith}}(\overline{X}_{1}\cup_{p}\overline{X}_{2})
+\;=\;\bigoplus_{(\rho,N)}
+\mathcal{F}^{\mathrm{arith}}(\overline{X}_{1};\rho,N)\otimes_{\mathrm{End}(\rho)}
+\mathcal{F}^{\mathrm{arith}}(\overline{X}_{2};\rho,N)^{*}
+\end{equation}
+where \((\rho,N)\) runs over isomorphism classes of Weil--Deligne
+representations of \(W_{\mathbb{Q}_{p}}\) whose coefficients are
+\(\ell\)-adic (\(\ell\neq p\)),
+\(\rho\) continuous, \(N\) the monodromy operator.
+\end{theorem}
+
+\begin{remark}[labels are Langlands parameters]
+Segal's intermediate representation labels are local Galois
+representations. At archimedean places, sewing is along Hodge
+structures (Weil-group representations of \(W_{\mathbb{R}}\) or
+\(W_{\mathbb{C}}\)). The correspondence between WZW representation
+labels and automorphic representations under local Langlands is:
+\begin{equation*}
+\bigl\{\text{irr.~admissible }G(\mathbb{Q}_{p})\text{-reps}\bigr\}\;\leftrightarrow\;\bigl\{\text{Weil--Deligne }L\text{-parameters}\bigr\}.
+\end{equation*}
+The arithmetic functor uses local Langlands parameters in the Segal sewing position.
+\end{remark}
+
+\section{Arithmetic Symmetries}
+\label{v4-arith:segal:MCG}
+
+\begin{observation}
+\label{v4-arith:obs:MCG-decomposition}
+The arithmetic symmetry group has two complementary actions.
+The Galois group \(\mathrm{Gal}(\overline{K}/K)\) controls label permutations:
+it acts on Weil--Deligne parameters at marked places, the arithmetic
+counterpart of the deck transformations on the geometric surface.
+The adelic quotient \(\mathrm{GL}_{n}(\mathbb{A}_{K})/\mathrm{GL}_{n}(K)\)
+acts through Hecke correspondences on automorphic lines. This pair is
+the arithmetic replacement for the geometric mapping-class action; it
+is not a mapping class group of a surface.
+\end{observation}
+
+\begin{theorem}[arithmetic symmetry action]
+\label{v4-arith:thm:arithmetic-MCG}
+\ClaimStatusConjectured.
+There is an arithmetic symmetry action in which
+\(\mathrm{Gal}(\overline{K}/K)\) acts on local Langlands labels and
+\(\mathrm{GL}_{n}(\mathbb{A}_{K})\) acts by Hecke correspondences. At
+an unramified prime \(p\), Frobenius generates the quotient
+\(\mathrm{Gal}(\bar{k}_{p}/k_{p})\cong\widehat{\mathbb{Z}}\). This is
+only the unramified quotient of local monodromy; the inertia and wild
+inertia are not Dehn twists and are not discarded in ramified sewing.
+\end{theorem}
+
+\section{Verlinde Scalar and the Class Number Formula}
+\label{v4-arith:segal:verlinde}
+
+\begin{theorem}[arithmetic Verlinde]
+\label{v4-arith:thm:arithmetic-verlinde}
+\ClaimStatusProvedElsewhere (Tate's thesis, class number formula).
+The arithmetic Verlinde scalar attached to the empty-marking sector is
+the residue of the Dedekind zeta at \(s=1\):
+\begin{equation}
+\boxed{\;\mathsf{Ver}^{\mathrm{arith}}(K)
+\;:=\;\mathrm{Res}_{s=1}\zeta_{K}(s)\;=\;\frac{2^{r_{1}}(2\pi)^{r_{2}}h_{K}R_{K}}{w_{K}\sqrt{|d_{K}|}}.\;}
+\end{equation}
+This scalar is generally not an integer dimension of conformal blocks;
+it is the class-number residue in the Verlinde position of the
+arithmetic analogy.
+\end{theorem}
+
+\section{Explicit Computation: Conformal Blocks via Tate Integrals}
+\label{v4-arith:segal:explicit-computation}
+
+\begin{computation}[conformal block at \((\mathbb{Z},\{p,\infty\},\mathrm{triv})\)]
+\label{v4-arith:comp:conformal-block-p-infty}
+\(\mathcal{F}^{\mathrm{arith}}(\mathrm{Spec}\,\mathbb{Z},\{p,\infty\},V_{\mathrm{vac}}\otimes\lambda_{\infty})\)
+is spanned by the Tate integral
+\begin{equation}
+\Phi_{p}(s)\;=\;\Lambda_{\zeta}(s)\cdot(1-p^{-s}),
+\end{equation}
+where \(\Lambda_{\zeta}(s)=\pi^{-s/2}\Gamma(s/2)\zeta(s)\) is the completed
+Riemann zeta (Tate's thesis, \S3.4). Removing the \(p\)-th Euler factor
+from \(\zeta(s)\) gives \(\zeta(s)(1-p^{-s})\); multiplication by
+\(\pi^{-s/2}\Gamma(s/2)\) completes to
+\(\Lambda_{\zeta}(s)(1-p^{-s})\).
+Dimension: \(1\).
+\end{computation}
+
+\begin{observation}
+\label{v4-arith:obs:vacuum-removes-Euler-factor}
+The vacuum conformal block at prime \(p\) is the completed zeta function
+with the \(p\)-th Euler factor removed. The sewing axiom at \(p\) reinserts it.
+\end{observation}
+
+\begin{computation}[sewing at \(\{2,3\}\)]
+\label{v4-arith:comp:sewing-23}
+The vacuum conformal block at marked places \(\{2,3,\infty\}\) is
+\(\Lambda_{\zeta}(s)(1-2^{-s})(1-3^{-s})\) (the completed zeta with the Euler
+factors at \(2,3\) removed; \Cref{v4-arith:obs:vacuum-removes-Euler-factor}).
+Sewing at the two finite places with unramified Satake parameters
+\(\alpha_{p}=\chi_{p}(p)\in\{\pm 1\}\) reinserts the twisted Euler
+factors:
+\begin{equation*}
+\Phi(s)\;=\;\Lambda_{\zeta}(s)\,
+\frac{(1-2^{-s})(1-3^{-s})}{(1-\alpha_{2}\cdot 2^{-s})(1-\alpha_{3}\cdot 3^{-s})},
+\end{equation*}
+where \(\Lambda_{\zeta}(s)=\pi^{-s/2}\Gamma(s/2)\zeta(s)\). For trivial Satake
+\((\alpha_{2},\alpha_{3})=(1,1)\) one recovers \(\Phi(s)=\Lambda_{\zeta}(s)\); for
+a character with local data specified only at \(2\) and \(3\), this is
+only a two-prime partial twist. The full completed \(L\)-function
+\(\Lambda(s,\chi)\) is obtained only after replacing the Euler factor
+at every finite prime by \((1-\chi(p)p^{-s})^{-1}\), together with the
+correct archimedean factor and conductor.
+\end{computation}
+
+\section{Functional Equation as Sewing Axiom}
+\label{v4-arith:segal:functional-equation}
+
+\begin{theorem}[Tate's global functional equation]
+\label{v4-arith:thm:tate-functional-equation}
+\ClaimStatusProvedElsewhere.
+
+Let \(\Lambda(s,\chi)\) denote the completed Dirichlet \(L\)-function
+with its conductor and parity-dependent archimedean factor. Then
+\begin{equation}
+\Lambda(s,\chi)\;=\;\varepsilon(\chi)\cdot\Lambda(1-s,\chi^{-1}),
+\end{equation}
+where \(\varepsilon(\chi)\) is the root number, proved by adelic
+Poisson summation (Tate's thesis, \S4.4). The arithmetic analogue of
+Segal sewing is the functional equation.
+\end{theorem}
+
+\begin{remark}[finiteness reading]
+The content of sewing is not dimension~\(1\) per se; it is the
+\(s\leftrightarrow 1-s\) involution on the one-dimensional line
+whose invariants are the values of the completed \(L\)-function.
+\end{remark}
+
+\section{Five-Axiom Arithmetic Modular Functor}
+\label{v4-arith:segal:five-axioms}
+
+\begin{definition}
+\label{v4-arith:def:arithmetic-modular-functor}
+An \emph{arithmetic modular functor} is a functor
+\begin{equation*}
+\mathcal{F}\colon\mathcal{C}^{\mathrm{Arak}}\to\mathrm{Hom}(\mathbb{C}_{s},\mathrm{Line})
+\end{equation*}
+(from Arakelov surfaces to lines depending meromorphically on a
+parameter \(s\)) satisfying:
+
+\paragraph{(A1) Finiteness.} \(\mathcal{F}(\overline{X},S,\{\chi_{\mathfrak{p}}\})\)
+is a \(1\)-dimensional meromorphic line, with pole divisor prescribed by
+the completed \(L\)-function represented by the line.
+
+\paragraph{(A2) Factorization.} For independent places,
+\(\mathcal{F}(\overline{X},S,\{\chi_{\mathfrak{p}}\})=\bigotimes_{\mathfrak{p}\in S}\mathcal{F}_{\mathfrak{p}}(\chi_{\mathfrak{p}})\).
+
+\paragraph{(A3) Weil--Deligne sewing.} For \(S=S_{1}\sqcup S_{2}\)
+along a parameter \((\rho,N)\) at an extra prime \(\mathfrak{q}\),
+\begin{equation*}
+\mathcal{F}(\overline{X},S\cup\{\mathfrak{q}\})\;=\;\sum_{(\rho,N)}
+\mathcal{F}(\overline{X}_{1},S_{1}\cup(\rho,N))\cdot
+\mathcal{F}(\overline{X}_{2},S_{2}\cup(\rho,N))^{-1},
+\end{equation*}
+summed over unramified \((\rho,N)\).
+
+\paragraph{(A4) Modular invariance.}
+the Galois action on local labels and the Hecke action of
+\(GL_{n}(\mathbb{A}_{K})\) act on the functor.
+
+\paragraph{(A5) Functional equation.}
+\begin{equation*}
+\mathcal{F}(\overline{X},S,\chi)(s)\;=\;\varepsilon(\chi)\cdot\mathcal{F}(\overline{X},S,\chi^{-1})(1-s).
+\end{equation*}
+This is the arithmetic modular invariance: \(\mathrm{SL}_{2}(\mathbb{Z})\)
+becomes the \(\mathbb{Z}/2\) flip \(s\leftrightarrow 1-s\).
+\end{definition}
+
+\begin{theorem}[Tate line in the arithmetic Segal position]
+\label{v4-arith:thm:segal-tate-equivalence}
+\ClaimStatusProvedElsewhere (Tate's thesis). Tate's adelic construction
+gives a meromorphic \(L\)-line satisfying (A1)--(A5) in the zeta and
+Dirichlet sectors. No uniqueness is asserted before the source category
+and the local test-line normalizations are fixed.
+\end{theorem}
+
+The geometric and arithmetic Segal functors are different functors.
+The conjecture says that Tate's \(L\)-functor satisfies the arithmetic
+axioms occupying the Segal positions.

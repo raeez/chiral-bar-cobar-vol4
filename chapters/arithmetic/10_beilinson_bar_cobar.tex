@@ -1,0 +1,420 @@
+\chapter{Arithmetic bar constructions and residue comparisons}
+\label{v4-arith:arakelov-bar}
+
+Continuous Galois cochains give an integral arithmetic input to the
+coefficient bar. Their relative products and coefficient limits are
+constructed in Chapter~\ref{v4-arith:coefficients:chapter}.
+A comparison with chiral collision operations requires residue complexes
+on the geometric carrier. It also requires compatible operations and
+maps identifying them with the coefficient model.
+The elementary residue and bar constructions below specify what is
+available before making that comparison.
+
+\section{Incidence of finite places}
+\label{v4-arith:bar:configuration-space}
+
+\begin{observation}
+\label{v4-arith:obs:config-discrete}
+The ordered \(n\)-tuples of distinct finite places of
+\(\operatorname{Spec}\mathbb Z\) form a countable set. Giving this
+set the discrete topology produces a combinatorial configuration
+model. It is not an identification with the scheme configuration
+functor, and its distinct-place tuples contain no collision locus.
+A topology describing collisions must be supplied separately.
+\end{observation}
+
+\begin{definition}[incidence poset of arithmetic places]
+\label{v4-arith:def:arith-config}
+Let \(\mathcal I_K\) be the poset of finite subsets of the finite
+places of \(K\), ordered by inclusion. Its order complex has a simplex
+for every finite strict chain of such subsets. The simplicial
+cochains of this order complex are a combinatorial coefficient
+complex. They do not by definition carry the differential forms or
+residues of a geometric configuration space.
+\end{definition}
+
+A motivic fundamental group is another construction with a specified
+base and category of motives. Relating its operations, or those of a
+Grothendieck--Teichm\"uller Lie algebra, to this incidence complex
+requires an actual map. Neither a common set of prime labels nor a
+formal resemblance between relations provides that map.
+
+\section{Steinberg symbols and reciprocity}
+\label{v4-arith:bar:arnold-steinberg}
+
+\begin{observation}[constant differences]
+\label{v4-arith:obs:no-dlog-p-q}
+For two distinct rational primes \(p,q\), the difference \(p-q\)
+is a constant in \(\mathbb Q^\times\). Its relative differential
+in \(\Omega^1_{\mathbb Q/\mathbb Q}\) is zero. Thus it does not
+supply the nonzero logarithmic form associated with moving insertion
+coordinates on a complex curve.
+\end{observation}
+
+\begin{theorem}[Steinberg relation and the rational tame symbols]
+\label{v4-arith:thm:steinberg-replaces-arnold}
+In Milnor \(K\)-theory, \(\{a,1-a\}=0\) for \(a\ne0,1\).
+In particular \(\{p,1-p\}=0\) in \(K^M_2(\mathbb Q)\).
+Tate's theorem identifies
+\[
+ K^M_2(\mathbb Q)\cong
+ \{\pm1\}\oplus\bigoplus_p\mathbb F_p^\times
+\]
+by the real sign symbol together with the finite tame symbols.
+The finite symbols alone have an order-two kernel.
+\end{theorem}
+\begin{proof}
+The first assertion is a defining relation of \(K^M_2\).
+The isomorphism is the external theorem stated in
+Theorem~\ref{v4-arith:coefficients:thm:tate}. The class
+\(\{-1,-1\}\) has trivial finite tame symbols and real sign
+\(-1\), and that theorem identifies it as the kernel generator.
+\end{proof}
+
+This theorem does not identify the Steinberg relation with an Arnold
+relation on configuration-space forms. Such an identification would
+need a map on the complexes carrying those relations and a comparison
+of their induced operations.
+
+\begin{theorem}[dimension-one residues and their range]
+\label{v4-arith:thm:parshin-reciprocity}
+For each finite place \(v\) of \(K\), the normalized tame symbol
+is a homomorphism
+\[
+ \partial_v:K^M_2(K)\longrightarrow k_v^\times,
+ \qquad \partial_v\{\pi_v,u\}=\bar u.
+\]
+There is no codimension-two term on
+\(\operatorname{Spec}\mathcal O_K\). On \(\mathbb P^1_F\), the
+normed tame symbols have common recipient \(F^\times\) and obey
+\eqref{v4-arith:coefficients:eq:curve-reciprocity}.
+\end{theorem}
+\begin{proof}
+Proposition~\ref{v4-arith:coefficients:prop:tame} constructs the
+local homomorphisms and checks their Steinberg relations.
+The ring \(\mathcal O_K\) has dimension one, proving the second
+assertion. The last assertion is the tame-symbol reciprocity theorem
+for the projective line with its norm maps, cited in
+\S\ref{v4-arith:coefficients:sec:symbols}.
+\end{proof}
+
+For a general degree \(n\), the dimension-one residue diagram has
+terms \(K^M_n(K)\) and
+\(\bigoplus_vK^M_{n-1}(k_v)\). No additional codimension-two
+points are produced by writing a further arrow. A surface construction
+instead starts from a regular arithmetic surface \(X\), a curve
+\(C\subset X\), and a point \(x\in C\). Its successive symbols
+require these flags and appropriate recipients and norm maps.
+A sum or product of symbols in different fields is undefined until
+those maps are specified. Exactness and a motivic comparison are
+additional statements with their own coefficient hypotheses.
+
+\section{The coefficient tensor coalgebra}
+\label{v4-arith:bar:tensor-coalgebra}
+
+Fix a procyclic group \(\Gamma\cong\mathbb Z_\ell\), with chosen
+generator, and put \(\Lambda=\mathbb Z_\ell[[\Gamma]]\).
+Proposition~\ref{v4-arith:coefficients:prop:iwasawa} identifies it
+with \(\mathbb Z_\ell[[T]]\). If the full cyclotomic group has a
+finite factor, that factor must either be retained in the group ring
+or removed by a stated choice. It is not part of the displayed
+procyclic identification.
+
+\begin{definition}[coefficient bar over \(\Lambda\)]
+\label{v4-arith:def:lambda-tensor-coalgebra}
+Let \(A\) be an augmented associative dg \(\Lambda\)-algebra, with
+augmentation ideal \(I\). In cohomological grading put \(sI=I[1]\).
+Its coefficient bar is
+\[
+ B_\Lambda A=\bigoplus_{n\geq0}(sI)^{\otimes_\Lambda n},
+\]
+with deconcatenation coproduct and differential \(b=b_1+b_2\), where
+\[
+ b_1(sa)=-s(da),\qquad
+ b_2(sa\otimes sb)=(-1)^{|a|}s(ab).
+\]
+Extend these maps as coderivations with the Koszul tensor convention.
+The empty word is the coaugmentation. Completion, when needed, is
+specified as in \eqref{v4-arith:coefficients:eq:completed-bar}.
+\end{definition}
+
+The identities \(d^2=0\), Leibniz's rule, and associativity imply
+\(b^2=0\), by
+Proposition~\ref{v4-prop:bar-coefficient-identities}. This is an
+associative coefficient construction. The primitive arithmetic
+\(\mathcal V^{\mathrm{prim}}\) is a Hochschild trace class and is
+not thereby an augmented algebra \(A\). Its identification with
+such an input requires a separately constructed object, product,
+and augmentation.
+
+A proposed additional residue differential must act on a common
+complex with the bar differential. If a residue complex is tensored
+with \(B_\Lambda A\), the tensor is a complex. A coalgebra structure
+on it also requires a compatible diagonal on that residue complex.
+Names such as an Iwasawa differential or a tame-symbol weight do not
+specify degree-one endomorphisms of this tensor.
+
+\begin{question}[a mixed arithmetic differential]
+\label{v4-arith:bar:conj:dAr-square-zero}
+Construct a common trigraded coalgebra and coderivations
+\(d_{\mathrm{Iw}},d_{\mathrm{res}},d_{\mathrm{loc}}\) of the three
+coordinate degrees, realizing respectively the intended Iwasawa,
+residue, and local bar operations. Do they satisfy
+\[
+ d_i^2=0,\qquad d_id_j+d_jd_i=0\quad(i\ne j)?
+\]
+With these tridegrees, the equations are equivalent to
+\((d_{\mathrm{Iw}}+d_{\mathrm{res}}+d_{\mathrm{loc}})^2=0\), since
+its six homogeneous components have distinct tridegrees.
+The first requirement is construction of the displayed maps on the
+same carrier. Nilpotence is the subsequent equation.
+\end{question}
+
+\begin{question}[archimedean comparison]
+\label{v4-arith:thm:archimedean-reduction}
+Choose an archimedean realization of the arithmetic coefficient
+object and a chiral algebra on a specified complex curve. Construct
+and test a map from the realized arithmetic bar to that chiral bar,
+including its operations, scalar extension, and unit.
+\end{question}
+
+The elementary equality
+\(\Omega^j_{\mathbb R/\mathbb R}=0\) for \(j>0\) supplies no such
+comparison: the point \(\operatorname{Spec}\mathbb R\) is not the
+complex curve on which chiral collisions take place. Real Galois
+cochains also differ from a trivial complex at \(\ell=2\), by
+Proposition~\ref{v4-arith:coefficients:prop:real-two}.
+
+\section{Graded Koszulness and arithmetic purity}
+\label{v4-arith:bar:koszulness}
+
+Let \(A=\bigoplus_{j\geq0}A_j\) be a connected graded algebra over
+a field \(k\), so \(A_0=k\), with augmentation onto degree zero.
+The internal weight \(j\) is distinct from resolution degree \(i\).
+By definition, \(A\) is Koszul when
+\(\operatorname{Tor}^A_i(k,k)_j=0\) for \(i\ne j\).
+The coefficient bar resolves this Tor group under the hypotheses of
+Proposition~\ref{v4-prop:bar-derived-tensor}.
+
+\begin{theorem}[a conditional weight criterion]
+\label{v4-arith:thm:arithmetic-koszulness}
+Suppose \(k\) has characteristic zero and each \(A_j\) is finite-dimensional.
+Assume the total groups
+\(\operatorname{Tor}^A_i(k,k)\) are finite-dimensional, and a
+bar-compatible operator \(F\) preserves internal weights.
+Fix an embedding of its eigenvalue field into \(\mathbb C\) and
+a real number \(q>1\). Assume that every eigenvalue on a nonzero
+internal-weight-\(j\) bar term has absolute value \(q^{j/2}\).
+Then \(A\) is Koszul if and only if every nonzero
+\(\operatorname{Tor}^A_i(k,k)\) is pure of weight \(i\), meaning
+that its eigenvalues have absolute value \(q^{i/2}\).
+\end{theorem}
+\begin{proof}
+The differential preserves internal weight and commutes with \(F\).
+Every eigenvalue on its weight-\(j\) cohomology therefore still has
+absolute value \(q^{j/2}\), since eigenvalues on a subquotient come
+from the original operator. If the Tor groups are diagonal, their
+purity follows. Conversely, \(q^{j/2}\ne q^{i/2}\) when \(i\ne j\).
+Purity in weight \(i\) thus forces every off-diagonal summand to
+vanish, which is the Koszul condition.
+\end{proof}
+
+An arithmetic application requires the graded algebra, its realization,
+and the operator. It must also identify internal grading with the
+stated arithmetic weights. Frobenius weights,
+Hodge filtrations, and Sen weights are attached to different objects.
+An equivalence between their purity conditions is not supplied by
+this graded argument. The proposed criterion for a \(p\)-adic
+Simpson realization of \(\mathcal V^{\mathrm{prim}}\) therefore
+remains a comparison problem, including existence of that realization.
+
+\begin{remark}[comparison of realizations]
+A de Rham--\'etale comparison theorem has a specified geometric
+input and coefficient range. It does not identify arbitrary mixed
+Hodge modules over \(\mathbb C\) with Frobenius modules over finite
+fields. Any purity argument here must carry those realization
+hypotheses before invoking a comparison.
+\end{remark}
+
+\section{The primary Mellin character}
+\label{v4-arith:bar:heisenberg-zeta}
+
+The positive integers under multiplication form the free commutative
+monoid on the primes. Let \(V\) have a basis \(e_m\) indexed by
+\(m\geq1\), with energy \(He_m=(\log m)e_m\).
+Its Mellin character is the absolutely convergent sum
+\(\chi_V(s)=\sum_{m\geq1}m^{-s}\) for \(\operatorname{Re}s>1\).
+This grading records multiplicative labels, not homological degree.
+
+\begin{theorem}[the multiplicative-label character]
+\label{v4-arith:thm:heisenberg-bar-zeta}
+For the displayed graded space,
+\[
+ \chi_V(s)=\prod_p(1-p^{-s})^{-1}=\zeta(s),
+ \qquad \operatorname{Re}s>1.
+\]
+If a specified primary zero-mode quotient of an arithmetic bar is
+isomorphic to \(V\) with these energies, it has the same Mellin
+character. The existence of that quotient and isomorphism is an
+additional hypothesis.
+\end{theorem}
+\begin{proof}
+For finitely many primes, expansion of the geometric series and
+unique factorization give the sum over integers supported on those
+primes. Absolute convergence of \(\sum_m m^{-s}\) for
+\(\operatorname{Re}s>1\) permits the increasing-prime limit.
+This proves the Euler product. A grading-preserving isomorphism
+preserves the summands and their energies, proving the last assertion.
+\end{proof}
+
+\begin{question}[the Bost--Connes comparison]
+\label{v4-arith:cor:koszul-dual-BC}
+Construct an augmented arithmetic Heisenberg coefficient algebra and
+its Koszul dual. Is there a comparison with the Bost--Connes system
+that preserves the intended multiplication, module category, and time
+evolution? A Mellin character equal to \(\zeta(s)\) is one scalar
+condition on such a comparison. It does not determine these objects
+or imply their equivalence.
+\end{question}
+
+\section{Complementarity and the functional equation}
+\label{v4-arith:bar:G-row-complementarity}
+
+Put \(\xi(s)=\tfrac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)\),
+using the meromorphic continuation of the zeta function. The classical
+functional equation is \(\xi(s)=\xi(1-s)\).
+To derive it from an arithmetic duality one needs an evaluation map
+that turns the duality into reflection of the Mellin parameter.
+
+\begin{question}[arithmetic complementarity]
+\label{v4-arith:thm:G-row-complementarity}
+Construct arithmetic Heisenberg and dual coefficient objects with
+defined central parameters \(\kappa^{\mathrm{Ar}}_{\mathsf G}\)
+and \((\kappa^!)^{\mathrm{Ar}}_{\mathsf G}\), together with an
+evaluation to completed Mellin data. Can that evaluation identify
+\[
+ \kappa^{\mathrm{Ar}}_{\mathsf G}
+       +(\kappa^!)^{\mathrm{Ar}}_{\mathsf G}=0
+ \quad\text{with}\quad \xi(s)=\xi(1-s)?
+\]
+It must include the archimedean gamma factor and the polar terms,
+and it must identify the two functions rather than merely their
+uncompleted Dirichlet coefficients.
+\end{question}
+
+The numerical equation on central parameters has no Mellin variable.
+Without the requested map it proves neither meromorphic continuation
+nor a functional equation. An arithmetic comparison preserving the
+full evaluation would explain these analytic operations. An equality
+of characters in the half-plane of convergence leaves it open.
+
+\section{Coalgebra duality with Iwasawa coefficients}
+\label{v4-arith:bar:positselski-arith}
+
+The coderived category of comodules and the contraderived category
+of contramodules use different acyclicity conventions and different
+infinite operations. A contramodule over a coalgebra \(C\) has a
+contraaction from \(\operatorname{Hom}(C,P)\) to \(P\), obeying
+contraassociativity and a counit identity. It is not a comodule with
+the arrow reversed. A co--contra comparison requires a specified
+coefficient category and the corresponding derived constructions.
+
+\begin{question}[an arithmetic co--contra comparison]
+\label{v4-arith:thm:arithmetic-positselski-preview}
+For a specified dg coalgebra \(C\) over \(\Lambda\), construct the
+comodules, contramodules, and derived categories appropriate to its
+topology. Under what projectivity, conilpotence, and completeness
+hypotheses does the comparison give an equivalence
+\[
+ D^{\mathrm{co}}(C\text{-comod})
+ \simeq D^{\mathrm{ctr}}(C\text{-contramod})?
+\]
+Determine separately when the coalgebra unit
+\(C\to B_\Lambda\Omega_\Lambda C\) and algebra counit
+\(\Omega_\Lambda B_\Lambda A\to A\) are equivalences in the chosen
+categories.
+\end{question}
+
+The bar takes an augmented algebra as input and the cobar takes a
+coaugmented coalgebra. Thus the expression
+\(\Omega_\Lambda B_\Lambda C\), with only a coalgebra \(C\) supplied,
+is not the coalgebra unit. The coefficient adjunction and its algebra
+resolution are constructed in Chapter~\ref{v4-ch:bar-cobar-topology}.
+Their extension to the intended arithmetic categories remains
+separate. Theorem~\ref{v4-arith:thm:arithmetic-positselski} gives
+a lifting criterion once the required adjunction is constructed.
+
+\begin{remark}[the module \(\mu\)-invariant]
+For a finitely generated torsion \(\Lambda\)-module \(M\), the
+Iwasawa invariant is
+\(\mu(M)=\operatorname{length}_{\Lambda_{(\ell)}}M_{(\ell)}\).
+An arbitrary coalgebra has no such invariant without choosing a
+module to which the definition applies.
+Proposition~\ref{v4-arith:coefficients:prop:mu} gives a conilpotent
+coalgebra with quotient \(\mu=1\), and a nonconilpotent one with
+quotient \(\mu=0\). Thus this module invariant cannot replace the
+coalgebra hypotheses in the displayed question.
+\end{remark}
+
+\section{A concrete arithmetic coefficient bar}
+\label{v4-arith:bar:concrete-construction}
+
+\begin{definition}[relative Galois coefficient bar]
+\label{v4-arith:def:arith-bar-concrete}
+For the strict Galois cochain cospan with specified multiplicative
+local conditions over \(R_r\), let \(P_r\) be the complex
+\eqref{v4-arith:coefficients:eq:selmer-complex}, with either endpoint
+product. Its arithmetic coefficient bar is
+\[
+ \mathcal B_r=B_{R_r}(R_r\oplus P_r).
+\]
+The augmentation is the external scalar projection. Its coefficient
+completion is \(\varprojlim_r\mathcal B_r\), with tensor target
+\eqref{v4-arith:coefficients:eq:completed-bar}, when the local
+conditions and maps form a compatible coefficient tower.
+\end{definition}
+
+\begin{theorem}[properties of the coefficient construction]
+\label{v4-arith:thm:bar-verifications}
+The finite-stage bars have square-zero differential and coassociative
+counital coproduct. They are conilpotent, and the two endpoint choices
+are isomorphic by the integral all-arity comparison of
+Chapter~\ref{v4-arith:gluing:chapter}. For a compatible tower that
+comparison extends to the specified coefficient completion.
+An interpretation as a derived tensor retains the resolution
+hypotheses of Proposition~\ref{v4-prop:bar-derived-tensor}.
+\end{theorem}
+\begin{proof}
+The dg identities for the endpoint products are
+Proposition~\ref{v4-arith:gluing:prop:products}. The coefficient-bar
+identities then apply. Finite words admit only finitely many reduced
+cuts. The all-arity maps and their coefficient continuity are the
+constructions of Chapter~\ref{v4-arith:gluing:chapter}.
+\end{proof}
+
+\section{The arithmetic comparison to be constructed}
+\label{v4-arith:bar:summary}
+
+The continuous-cochain bar and the local tame symbols are defined on
+their displayed carriers. The first has a multiplication, augmentation,
+and ordered bar coproduct. The second changes coefficient fields
+along valuations. A chiral arithmetic comparison must relate these
+operations, not just their prime labels.
+
+The common residue carrier and mixed maps are asked for in
+Question~\ref{v4-arith:bar:conj:dAr-square-zero}. Archimedean realization
+requires Question~\ref{v4-arith:thm:archimedean-reduction}. The arithmetic
+weight realization is the hypothesis needed for
+Theorem~\ref{v4-arith:thm:arithmetic-koszulness}.
+
+The Mellin model has its stated character. Its identification with a
+primary bar quotient, its Bost--Connes duality, and its completed
+functional equation comparison remain separate.
+
+Likewise, the proposed numerical complementarity values
+\(0,8,13,250/3,25/3\) require actual arithmetic objects and computed
+central parameters before they classify any examples. In particular,
+a proposed K3--Mukai Borcherds realization of the value eight is its
+own construction. Neither those numerical candidates nor the
+Iwasawa module invariant settle the coefficient, geometric, and
+co--contra comparisons above.

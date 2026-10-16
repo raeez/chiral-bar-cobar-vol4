@@ -1,0 +1,316 @@
+\chapter*{What a trace forgets}
+\markboth{What a trace forgets}{What a trace forgets}
+\phantomsection
+\addcontentsline{toc}{chapter}{What a trace forgets}
+\label{v4-ch:trace-prologue}
+
+A trace assigns a number to an operation. To recover the operation from
+that number, one must know what the trace has forgotten. Four elementary
+calculations will guide the arithmetic constructions in this volume.
+They retain, respectively, a primitive of a relation, a higher product,
+an intermediate module state, and a geometric condition on an arithmetic
+operator. Each calculation identifies data that a comparison must retain.
+
+\section*{Gaussian reduction and multiplication}
+\label{v4-prologue:gaussian}
+
+Fix a real number \(\hbar>0\). The normalized Gaussian functional on
+polynomials is
+\[
+ \mathbb E_\hbar[p]
+ =\frac{1}{\sqrt{2\pi\hbar}}
+   \int_{\mathbb R}p(x)e^{-x^2/(2\hbar)}\,dx.
+\]
+Integration by parts has no boundary term and gives
+\begin{equation}\label{v4-prologue:eq:gaussian-relation}
+ \mathbb E_\hbar[xp-\hbar p']=0.
+\end{equation}
+This relation defines a two-term cochain complex
+\[
+ C^{-1}=\mathbb R[x]\varepsilon,
+ \qquad C^0=\mathbb R[x],
+ \qquad d(p\varepsilon)=xp-\hbar p'.
+\]
+There are no other degrees. Its differential is injective: if \(p\)
+has degree \(n\) and nonzero leading coefficient, then \(xp-\hbar p'\)
+has degree \(n+1\) with the same leading coefficient. The relations
+\[
+ [x]=0,\qquad
+ [x^{n+1}]=\hbar n[x^{n-1}],\qquad n\ge1,
+\]
+show that \(H^0(C)\) is spanned by \([1]\). Equation
+\eqref{v4-prologue:eq:gaussian-relation} and
+\(\mathbb E_\hbar[1]=1\) show that \([1]\ne0\), so
+\[
+ H^{-1}(C)=0,\qquad H^0(C)\cong\mathbb R.
+\]
+Under this identification,
+\begin{equation}\label{v4-prologue:eq:moments}
+ \mathbb E_\hbar[x^{2r+1}]=0,
+ \qquad
+ \mathbb E_\hbar[x^{2r}]
+ =\hbar^r\frac{(2r)!}{2^r r!}.
+\end{equation}
+The recurrence proves the formula without evaluating another integral.
+
+Polynomial multiplication does not descend to this quotient. Indeed,
+\[
+ d\varepsilon=x,\qquad
+ d(x\varepsilon)=x^2-\hbar,
+\]
+so \([x]=0\) but \([x^2]=\hbar[1]\ne0\). Equivalently,
+\(\mathbb E_\hbar[x]^2=0\) and
+\(\mathbb E_\hbar[x^2]=\hbar\). The differential is not a derivation
+for the graded product on \(\mathbb R[x]\otimes\Lambda(\varepsilon)\),
+where \(|\varepsilon|=-1\) and \(\varepsilon^2=0\): the
+Leibniz rule applied to \(x\varepsilon\) would omit the term
+\(-\hbar\). Thus a valid reduction of complexes need not be a
+reduction of algebras. The specified primitives \(p\varepsilon\)
+record which relations have been imposed and how products encounter
+them.
+
+Even when integration produces an effective quadratic action, that
+action does not determine the normalization. Let \(x\in\mathbb R^n\),
+\(y\in\mathbb R^m\), and let
+\[
+ Q=\begin{pmatrix}A&B\\B^t&C\end{pmatrix}
+\]
+be real symmetric and positive definite. Here \(C\) is invertible.
+Completing the square gives
+\begin{equation}\label{v4-prologue:eq:elimination}
+ \begin{split}
+ &\int_{\mathbb R^m}
+   \exp\!\left[-\frac{x^tAx+2x^tBy+y^tCy}{2\hbar}\right]dy\\
+ &\qquad=(2\pi\hbar)^{m/2}(\det C)^{-1/2}
+   \exp\!\left[-\frac{x^t(A-BC^{-1}B^t)x}{2\hbar}\right].
+ \end{split}
+\end{equation}
+To verify both factors, substitute \(y+C^{-1}B^tx\) for \(y\)
+and diagonalize the positive matrix \(C\). Each resulting
+one-dimensional integral contributes \(\sqrt{2\pi\hbar/c_i}\),
+where \(c_i\) is an eigenvalue of \(C\).
+Already with \(B=0\), varying \(C\) leaves the effective action
+\(x^tAx/2\) unchanged and changes its amplitude. A comparison of
+prepared states must therefore preserve both the quadratic response
+and the determinant factor.
+
+\section*{A cubic relation in a strict differential graded algebra}
+\label{v4-prologue:cubic}
+
+Let \(k\) be a field of characteristic zero and
+\(A=k[x]/(x^3)\), with augmentation \(x\mapsto0\).
+A free resolution of the augmentation module \(k\), in nonpositive
+cohomological degrees, is
+\[
+ \cdots\xrightarrow{x}A\xrightarrow{x^2}A
+ \xrightarrow{x}A\longrightarrow k\longrightarrow0.
+\]
+Write \(P^{-n}=Ae_n\) for \(n\ge0\), and
+\[
+ d_Pe_n=\begin{cases}
+ xe_{n-1},&n\text{ odd},\\
+ x^2e_{n-1},&n>0\text{ even}.
+ \end{cases}
+\]
+Exactness follows from
+\(\ker(x:A\to A)=(x^2)\) and
+\(\ker(x^2:A\to A)=(x)\).
+
+The graded endomorphisms of \(P\) form an associative differential
+graded algebra \(E\), with composition as product and differential
+\[
+ D(T)=d_PT-(-1)^{|T|}Td_P.
+\]
+Define maps \(U,H\) of degree one and \(V\) of degree two by
+\[
+ \begin{array}{c|cc}
+ &n\text{ odd}&n>0\text{ even}\\ \hline
+ Ue_n&e_{n-1}&-xe_{n-1}\\
+ He_n&0&-e_{n-1}
+ \end{array}
+ \qquad
+ Ve_n=e_{n-2}\quad(n\ge2).
+\]
+Each map is zero when the indicated output degree is absent.
+The two parities give the identities
+\begin{equation}\label{v4-prologue:eq:cubic-primitives}
+ DU=DV=0,\qquad U^2=-xV=DH,\qquad UH+HU=-V.
+\end{equation}
+For example, on \(e_2\), both \(U^2\) and \(DH\) give
+\(-xe_0\), while \((UH+HU)e_2=-e_0\). The same computations
+repeat every two degrees.
+
+Applying \(\operatorname{Hom}_A(-,k)\) to \(P\) gives one copy of
+\(k\) in each nonnegative degree and zero differential. Hence
+\(\operatorname{Ext}^n_A(k,k)\cong k\) for every \(n\ge0\).
+The augmentation \(P\to k\) identifies \(H^*(E)\) with these
+groups. Here one uses the elementary property that a bounded-above
+complex of projective modules maps every acyclic complex to an
+acyclic Hom complex: a cocycle is made null-homotopic successively
+from the highest nonzero degree down, lifting at each step through
+the surjection onto cycles. This applies to the cone of \(P\to k\).
+
+Write \(u=[U]\) and \(v=[V]\). The maps \(V^r\) and \(UV^r\)
+map to nonzero elements of
+\(\operatorname{Hom}_A(P^{-2r},k)\) and
+\(\operatorname{Hom}_A(P^{-(2r+1)},k)\), respectively.
+Also \(UV=VU\), since their coefficients have the same parity.
+Together with \(U^2=DH\), this proves
+\[
+ H^*(E)=\Lambda_k(u)\otimes_k k[v],\qquad |u|=1,\quad |v|=2.
+\]
+
+There is more information in \(E\) than in this binary product.
+For a degree-one cocycle \(U\) with \(U^2=DH\), the cohomology
+class of \(UH+HU\) is its triple Massey product, with this sign
+convention. It is closed because
+\[
+ D(UH+HU)=-U(DH)+(DH)U=0.
+\]
+Changing either primitive changes its class by an element of
+\(uH^1(E)+H^1(E)u\). This indeterminacy is zero here, because
+\(H^1(E)=ku\) and \(u^2=0\). Thus
+\begin{equation}\label{v4-prologue:eq:massey}
+ \langle u,u,u\rangle=\{-v\}\ne\{0\}.
+\end{equation}
+In the graded algebra \(H^*(E)\) with zero differential, the same
+triple product is \(\{0\}\), by choosing both primitives zero.
+Maps of differential graded algebras preserve the displayed
+construction and its indeterminacy. A quasi-isomorphism therefore
+preserves this single-valued product under its cohomology
+identification. Consequently \(E\) cannot be joined to
+\(H^*(E)\) with zero differential by a chain of quasi-isomorphisms.
+Its multiplication was strictly associative from the start.
+Strict associativity has retained the cubic information in a
+differential and its primitives; it has not removed it.
+
+\section*{An intermediate state in an ordered product}
+\label{v4-prologue:matrix}
+
+Let \(e_1,e_2\) be the standard basis of \(k^2\), and let
+\(E_{ij}\) send \(e_j\) to \(e_i\) and the other basis vector
+to zero. Put \(a=E_{12}\), \(b=E_{21}\). Then
+\begin{equation}\label{v4-prologue:eq:ordered-matrix}
+ aba=a,\qquad aab=0.
+\end{equation}
+The first word carries \(e_2\) to \(e_1\), then to \(e_2\),
+then to \(e_1\), reading actions from right to left. The reordered
+word kills every vector. The order of the intermediate states is
+part of the operation.
+
+The normalized trace \(\tau(M)=\operatorname{Tr}(M)/2\) gives
+\(\tau(ab)=\tau(ba)=1/2\), and both words in
+\eqref{v4-prologue:eq:ordered-matrix} have trace zero. A later
+input distinguishes them:
+\[
+ \tau(abab)=\tfrac12,\qquad \tau(aabb)=0.
+\]
+Even replacing a two-factor product by the scalar operator with the
+same trace changes subsequent composition. The linear projection
+\(p(M)=\tau(M)I\) satisfies
+\[
+ p(ab)a=\tfrac12a\ne aba.
+\]
+Thus tracing a collision before composing it with the remaining
+inputs can discard a coefficient that those inputs still use.
+
+\section*{Positive counting data without the required absolute values}
+\label{v4-prologue:synthetic}
+
+Consider the integral matrix
+\[
+ M=\begin{pmatrix}2&1\\1&3\end{pmatrix},
+ \qquad N_n=5^n+1-\operatorname{Tr}(M^n),\qquad n\ge1.
+\]
+For a positive integer \(d\), let \(\mu(d)\) be the M\"obius
+function: it is zero if a prime square divides \(d\), and is
+\((-1)^r\) if \(d\) is the product of \(r\) distinct primes.
+Define
+\begin{equation}\label{v4-prologue:eq:point-counts}
+ a_d=\frac1d\sum_{e\mid d}\mu(d/e)N_e.
+\end{equation}
+Every \(a_d\) is a positive integer. For integrality, regard
+\(M\) as the adjacency matrix of a finite directed multigraph.
+The number \(\operatorname{Tr}(M^n)\) counts closed walks of
+length \(n\) with a marked starting point. Grouping them by their
+least period gives
+\[
+ \operatorname{Tr}(M^n)=\sum_{d\mid n}d\,b_d(M),
+\]
+where \(b_d(M)\) is the number of primitive cyclic walks of
+length \(d\). The same statement holds for the one-vertex
+matrices \((5)\) and \((1)\). M\"obius inversion therefore
+expresses \(a_d\) as the difference of three integers.
+
+To prove positivity, write
+\(\lambda=(5+\sqrt5)/2\) and \(\lambda'=(5-\sqrt5)/2\).
+Both are positive, their sum is \(5\), and
+\(\operatorname{Tr}(M^n)=\lambda^n+(\lambda')^n\).
+Consequently \(0<N_n\le5^n+1\) and
+\(N_n\ge5^n-2\lambda^n\).
+Every proper divisor of \(d\) is at most \(d/2\), so
+\[
+ \sum_{\substack{e\mid d\\e<d}}N_e
+ \le2\sum_{e=1}^{\lfloor d/2\rfloor}5^e
+ <5\cdot5^{d/2}.
+\]
+Since \(\lambda/5<3/4\), equation
+\eqref{v4-prologue:eq:point-counts} gives, for \(d\ge4\),
+\[
+ da_d>
+ 5^d\left(1-2(3/4)^d-5^{1-d/2}\right)>0.
+\]
+The bracket increases with \(d\), and its value at \(d=4\)
+is \(107/640\). Direct calculation gives
+\[
+ a_1=1,\quad a_2=5,\quad a_3=25,
+ \quad a_4=110,\quad a_5=500.
+\]
+
+Take \(a_d\) formal closed points of degree \(d\). Their zeta
+series, defined by a formal Euler product, is
+\begin{equation}\label{v4-prologue:eq:synthetic-zeta}
+ \begin{split}
+ Z(t)&=\prod_{d\ge1}(1-t^d)^{-a_d}
+      =\exp\!\left(\sum_{n\ge1}\frac{N_n}{n}t^n\right)\\
+     &=\frac{1-5t+5t^2}{(1-t)(1-5t)}.
+ \end{split}
+\end{equation}
+Each coefficient uses only finitely many factors. The middle
+identity follows from \(N_n=\sum_{d\mid n}d a_d\). The last
+follows by diagonalizing \(M\), or by the formal identity
+\(-\log\det(I-tM)=\sum_{n\ge1}\operatorname{Tr}(M^n)t^n/n\).
+
+These counting data admit positive forms of the usual Hall type.
+At a point of degree \(d\), take finite-dimensional nilpotent
+\(\mathbb F_{5^d}[u]\)-modules. An object \(L\) is a finite
+direct sum of such local modules over the formal points. Each
+automorphism group is finite. On the complex vector space with
+basis their isomorphism classes, the form
+\[
+ \left\langle\sum_L z_L[L],\sum_L w_L[L]\right\rangle
+ =\sum_L\frac{\overline{z_L}w_L}{|\operatorname{Aut}(L)|}
+\]
+is positive definite on finite sums. Extensions and subobjects are
+finite counting problems at each point; no algebraic curve has
+been used to supply them.
+
+There is also a reciprocal polynomial and an alternating form:
+\[
+ P(t)=1-5t+5t^2=5t^2P(1/(5t)),\qquad
+ M^tJM=5J,\qquad
+ J=\begin{pmatrix}0&1\\-1&0\end{pmatrix}.
+\]
+Nevertheless the reciprocal roots \(\lambda,\lambda'\) of
+\(P\) do not have absolute value \(\sqrt5\).
+Positive extension-counting forms and these two identities thus
+do not imply the weight-one absolute-value condition. They have
+not supplied a geometric Frobenius realization with that property.
+
+The arithmetic comparisons that follow must retain the data exposed
+by these calculations. A relation has a specified primitive; a
+product can have a nonzero higher operation; a collision can leave
+an intermediate state; and a positive auxiliary form need not be
+the arithmetic functional to be realized. The comparison maps,
+their coefficient domains, and the operations they preserve are
+therefore part of the mathematical object studied in this volume.

@@ -1,0 +1,1864 @@
+\chapter{\(\mathrm{L}_{\mathrm{ACD}}\) on the Eisenstein / Continuous Spectrum}
+\label{v4-arith:w6-d:chapter}
+
+The Eisenstein comparison begins with a local operator whose domain,
+normalization and degeneration can be computed. For unramified
+nonarchimedean principal series, the normalized intertwiner acts on
+every smooth vector, and on the unitary axis it extends to a unitary
+Hilbert operator. Algebraic coefficient categories then supply coherent
+Weyl descent and a common symmetric parameter across finite places.
+Tensor sectors retain mixed terms; a nonorthogonal decomposition must
+also retain its connecting spectra. These constructions do not supply
+the analytic automorphic enhancement or its comparison functor.
+The cuspidal comparison of
+Theorem~\ref{v4-arith:w5-e:thm:LACD-cuspidal} remains conditional,
+and the full Eisenstein destination is
+Conjecture~\ref{v4-arith:w5-e:conj:LACD-Eisenstein}.
+
+\section{Local Operators and Global Comparison Data}
+\label{v4-arith:w6-d:domain}
+
+\subsection{Inherited Objects}
+
+Prior statements deployed here:
+\begin{itemize}
+\item cuspidal sph-finite adelic categorical descent
+(Theorem~\ref{v4-arith:w5-e:thm:LACD-cuspidal}), the cuspidal LACD comparison core
+theorem;
+\item \(\mathrm{L}_{\mathrm{ACD}}.0\)--.3 reductions
+(Chapter~\ref{v4-arith:lacd-sub}): archimedean admissibility,
+colimit commutation, cross-prime Hecke, sph-finite preservation;
+\item F2.c tightened restricted tensor product
+(Theorem~\ref{v4-arith:tate:thm:F2c-main}) supplying the pointed
+\(E_{2}\)-monoidal base;
+\item Langlands--Shahidi correction factor definition
+(Definition~\ref{v4-arith:w5-c:def:LS-factor}) on principal-series
+inductions;
+\item discrete-core Koszul--Petersson identity
+(Theorem~\ref{v4-arith:w5-c:thm:discrete-core-identity}), conditional
+on the arithmetic placement, local pairing maps and adelic
+extension of Hypothesis~\ref{v4-arith:kms-gns:hyp:arithmetic-pairing}.
+This discrete identity makes no assertion about the continuous pairing.
+\end{itemize}
+
+\subsection{Relation to the Langlands--Shahidi normalisation}
+\label{v4-arith:w6-d:domain:w6c}
+
+The Koszul--Petersson comparison of
+Proposition~\ref{v4-arith:w5-c:prop:LS-absorption} requires a
+specified transform and measure identification. The local operator
+below is separate data: its normalization fixes the spherical vector.
+The comparison of a global scalar factor, spectral measure and
+transported pairing remains an additional construction, described in
+Proposition~\ref{v4-arith:w6-d:prop:W6C-crossref}. No categorical
+lift follows merely from the equality of scalar normalizations.
+
+\subsection{Primary Sources}
+\label{v4-arith:w6-d:domain:sources}
+
+\begin{description}
+\item[Langlands 1976] ``On the functional equations satisfied by
+Eisenstein series'', SLN 544, Part I \S 5--7. Foundational
+Eisenstein-series theory, intertwining operators, analytic
+continuation.
+\item[Mo{\oe}glin--Waldspurger 1995] \emph{Spectral Decomposition and
+Eisenstein Series}, Cambridge Tracts 113, Ch.~II and IV. Full
+\(L^{2}\) spectral decomposition, residual and continuous spectrum
+description; the normalising factor \(M(s)=\xi(2s-1)/\xi(2s)\)
+appears at \S II.1.7.
+\item[Shahidi 1990] ``A proof of Langlands' conjecture on Plancherel
+densities and complementary series'', Ann.\ Math.\ 132. Local
+Plancherel densities and their compatibility with normalised
+intertwining operators.
+\item[Shahidi 2010] \emph{Eisenstein Series and Automorphic
+\(L\)-Functions}, AMS Colloquium 58, Ch.~2--4. The
+Langlands--Shahidi method: normalised intertwining operators
+\(N(s,\pi_{v},\tilde w_{0})\), Plancherel--Shahidi measure, and
+adelic assembly (Thm~3.5.1).
+\item[Arthur 2013] \emph{The Endoscopic Classification of
+Representations}, AMS Colloquium 61, Ch.~1--4. Discrete-spectrum
+classification and trace-formula framework. Its relation to the
+specific $GL_2$ quotient and Eisenstein transform requires the precise
+global hypotheses; Arthur--Clozel (1989) and Jacquet--Shalika (1981)
+concern the corresponding general-linear representation theory.
+\item[Jacquet--Langlands 1970] SLN 114 \S 5, \S 11. Strong
+multiplicity one for cuspidal spectrum; archimedean Plancherel
+for \(GL_{2}(\mathbb{R})\).
+\item[Harish-Chandra 1976]
+\emph{Harmonic analysis on real reductive groups III}, Ann.\ Math.~104,
+117--201. The Plancherel theorem for real reductive groups.
+Part~II concerns wave packets in Schwartz space.
+\item[Wallach 1988/1992]
+\emph{Real Reductive Groups I--II}. Volume~II (1992), Chapter~13,
+especially Section~13.4, treats Plancherel. Chapter~11 treats completions.
+\end{description}
+
+Bernstein--Zelevinsky (1977), \emph{Induced representations of
+reductive $p$-adic groups I}, Ann.\ Sci.\ ENS~10, supplies the
+normalized induction convention and Theorem~4.2 irreducibility
+criterion used below. Lurie's presentable tensor and monadic results
+supply the categorical inputs with the precise locators given in the
+proofs. The extension-gluing statements below are proved directly.
+
+\subsection{Representation and categorical inputs}
+Flath's restricted tensor theorem concerns actual cuspidal
+representations. Langlands and M\oe glin--Waldspurger concern global
+Eisenstein families and spectral decomposition. Shahidi concerns
+local factors and Plancherel normalization; Harish-Chandra and Wallach
+supply real-group harmonic analysis. Passing from those representation
+objects to an enhanced automorphic category requires a construction
+of the category, its functors, derived morphisms and generators.
+The algebraic parameter and gluing constructions below identify some
+of these inputs on their explicitly stated local carriers.
+\section{Module (E0): Langlands--Shahidi Intertwining Normalisation}
+\label{v4-arith:w6-d:E0}
+
+\subsection{Local Intertwining Data for \(GL_{2}\)}
+
+\begin{setup}[local induction convention]
+\label{v4-arith:w6-d:setup:place-intertwining}
+For a finite place $v$, let $q_v$ be the residue cardinality and $\varpi$ a uniformizer. Write $q=q_v$. For unramified characters $\chi_1,\chi_2$, put
+\begin{equation}
+\label{v4-arith:w6-d:eq:induced}
+ I_v(s,\chi)=\operatorname{Ind}_{B(\mathbb Q_v)}^{GL_2(\mathbb Q_v)}
+ (\chi_1|\cdot|^{s/2}\otimes\chi_2|\cdot|^{-s/2}),
+\end{equation}
+with normalized smooth induction. To apply the compact-picture
+construction below, use the effective inducing characters
+$\alpha_1=\chi_1|\cdot|^{s/2}$ and
+$\alpha_2=\chi_2|\cdot|^{-s/2}$ in place of its character arguments.
+Their ratio is
+$z=\alpha_1(\varpi)/\alpha_2(\varpi)
+ =\chi_1(\varpi)\chi_2(\varpi)^{-1}q^{-s}$.
+Ramified characters and the archimedean place remain separate operator
+constructions with their own Haar, epsilon-factor and analytic-domain data.
+\end{setup}
+
+\section{Normalized intertwining for unramified principal series}
+
+An Eisenstein comparison must distinguish the normalization of an
+intertwining operator from its passage to a category of representations.
+For unramified principal series over a nonarchimedean field, the operator
+can be computed on every locally constant vector.
+The computation also determines its poles and its degenerations.
+
+Let $F$ be a finite extension of $\mathbb Q_p$.
+Write $\mathcal O$ for its ring of integers, $\varpi$ for a uniformizer,
+and $q=|\mathcal O/\varpi\mathcal O|$.
+Normalize $|\varpi|=q^{-1}$ and the additive Haar measure by
+$\operatorname{vol}(\mathcal O)=1$.
+Fix an additive character $\psi:F\to\mathbb C^\times$ that is trivial on
+$\mathcal O$ and nontrivial on $\varpi^{-1}\mathcal O$.
+The operator below does not depend on $\psi$.
+This choice fixes the additive convention for subsequent local-factor comparisons.
+All representations and function spaces have coefficients in $\mathbb C$.
+
+Put $G=\operatorname{GL}_2(F)$, $K=\operatorname{GL}_2(\mathcal O)$,
+and let $B$ be the upper triangular subgroup.
+For unramified smooth characters $\chi_1,\chi_2:F^\times\to\mathbb C^\times$,
+let $I(\chi_1,\chi_2)$ consist of locally constant functions $f:G\to\mathbb C$
+satisfying
+\[
+ f\left(\begin{pmatrix}a&b\\0&d\end{pmatrix}g\right)
+ =|a/d|^{1/2}\chi_1(a)\chi_2(d)f(g).
+\]
+The action is right translation, $(\pi(g)f)(h)=f(hg)$.
+Thus $I(\chi_1,\chi_2)$ is normalized smooth induction.
+Set
+\[
+ z=\frac{\chi_1(\varpi)}{\chi_2(\varpi)},\qquad
+ w=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+ n(x)=\begin{pmatrix}1&x\\0&1\end{pmatrix}.
+\]
+For $|z|<1$, define
+\begin{equation}
+\label{v4-arith:eis:raw-intertwiner}
+ (M_zf)(g)=\int_F f(wn(x)g)\,dx.
+\end{equation}
+The target is $I(\chi_2,\chi_1)$.
+The subscript $z$ specifies the ratio parameter.
+The source and target characters remain part of the operator's data.
+
+\subsection{The compact picture and ball averages}
+
+Restriction to $K$ identifies every $I(\chi_1,\chi_2)$ with
+\[
+ V=C^\infty(X;\mathbb C),\qquad X=(B\cap K)\backslash K=\mathbb P^1(F).
+\]
+Here $C^\infty$ means locally constant.
+The identification of $X$ sends a matrix to its bottom row, up to scalar.
+It follows from $G=BK$ and the triviality of unramified characters on
+$\mathcal O^\times$.
+A primitive row has at least one unit coordinate.
+For primitive representatives $u,v\in\mathcal O^2$, define
+\[
+ \rho([u],[v])=|\det(u,v)|.
+\]
+This function is independent of the primitive representatives and is
+invariant under the right action of $K$.
+Let $\nu$ be the $K$-invariant probability measure on $X$.
+
+For $n\ge1$, reduction modulo $\varpi^n$ gives a finite set
+\[
+ X_n=\mathbb P^1(\mathcal O/\varpi^n\mathcal O),\qquad
+ |X_n|=(q+1)q^{n-1}.
+\]
+Let $V_n\subset V$ be the functions that factor through $X_n$.
+Put $V_0=\mathbb C\mathbf1$ and
+$H=L^2(X,\nu)$, with inner product linear in the first variable.
+The orthogonal projection $E_n:H\to V_n$ averages over each reduction fiber.
+The projection $E_0$ is global averaging.
+The fibers are the balls $\rho(x,y)\le q^{-n}$, each of measure
+\[
+ b_n=\frac{1}{(q+1)q^{n-1}}.
+\]
+Every locally constant function factors through some $X_n$.
+Consequently $V=\bigcup_{n\ge0}V_n$ is dense in $H$.
+Define mutually orthogonal finite-dimensional spaces
+\[
+ H_0=V_0,\qquad H_n=V_n\cap V_{n-1}^{\perp}\quad(n\ge1).
+\]
+Then
+\[
+ V=\bigoplus_{n\ge0}^{\mathrm{alg}}H_n,
+ \qquad H=\widehat{\bigoplus}_{n\ge0}H_n.
+\]
+In particular, $\dim H_1=q$ and
+$\dim H_n=(q+1)(q-1)q^{n-2}$ for $n\ge2$.
+
+\begin{lemma}[Integral kernel and meromorphic continuation]
+\label{v4-arith:eis:kernel}
+For $|z|<1$, the integral in
+\eqref{v4-arith:eis:raw-intertwiner} converges absolutely.
+It defines a smooth $G$-intertwiner.
+In the compact picture it is
+\begin{equation}
+\label{v4-arith:eis:projection-expansion}
+ M_z=(1+q^{-1})E_0+(z-q^{-1})\sum_{n\ge1}z^{n-1}E_n.
+\end{equation}
+The series converges in operator norm on $H$.
+On the orthogonal summands it acts by
+\[
+ M_z|_{H_0}=c(z),\qquad
+ c(z)=\frac{1-q^{-1}z}{1-z},\qquad
+ M_z|_{H_n}=\frac{(z-q^{-1})z^{n-1}}{1-z}\quad(n\ge1).
+\]
+These formulas give a meromorphic continuation on every $V_N$.
+On every nonzero $V_N$, its only pole in $z\in\mathbb C^\times$
+is the simple pole at $z=1$.
+Here meromorphic continuation means continuation on each finite level,
+not a family of bounded operators on $H$ for all parameters.
+\end{lemma}
+
+\begin{proof}
+Let $x_0=[(0,1)]$.
+For $|x|\le1$, the matrix $wn(x)$ belongs to $K$.
+For $|x|>1$, the factorization
+\[
+ wn(x)=
+ \begin{pmatrix}-x^{-1}&1\\0&x\end{pmatrix}
+ \begin{pmatrix}1&0\\x^{-1}&1\end{pmatrix}
+\]
+shows that the inducing factor on $|x|=q^n$ is $q^{-n}z^n$.
+The shell has additive measure $(1-q^{-1})q^n$.
+Since compact-picture functions are bounded, the tail is dominated by
+$a\sum_{n\ge1}|z|^n$ for a finite constant $a$.
+The same argument applies to each right translate of $f$.
+
+The integral commutes with right translations.
+Changing $x$ to $x+y$ proves invariance under left multiplication by $n(y)$.
+For $a,d\in F^\times$, use
+\[
+ wn(x)\begin{pmatrix}a&0\\0&d\end{pmatrix}
+ =\begin{pmatrix}d&0\\0&a\end{pmatrix}wn(xd/a).
+\]
+The substitution $u=xd/a$ contributes $|a/d|$.
+The resulting factor is $|a/d|^{1/2}\chi_2(a)\chi_1(d)$,
+which is the target induction law.
+Right local constancy is preserved by the integral.
+Thus $M_z$ is the stated smooth intertwiner.
+
+The chart $[(1,x)]$, $x\in\mathcal O$, has measure
+$q(q+1)^{-1}dx$.
+The chart $[(y,1)]$, $y\in\varpi\mathcal O$, has the same density.
+For example, reduction modulo $\varpi^N$ divides either chart into
+sets of additive measure $q^{-N}$ and $\nu$-measure
+$((q+1)q^{N-1})^{-1}$.
+This proves the density assertion on locally constant functions.
+
+In the second chart, the substitution $y=x^{-1}$ has Jacobian
+$dx=|y|^{-2}dy$.
+On $|y|=q^{-n}$, the resulting density in the raw integral is
+$q^nz^n\,dy$.
+Thus its kernel, relative to $\nu$, has value $1+q^{-1}$ when
+$\rho(x_0,y)=1$, and value $(1+q^{-1})q^nz^n$ when
+$\rho(x_0,y)=q^{-n}$.
+The diagonal has measure zero.
+Right $K$-equivariance gives the same radial kernel about every point.
+
+For $\rho(x,y)=q^{-m}$, telescope the kernel as
+\[
+ (1+q^{-1})\left[
+ 1+\sum_{n=1}^{m}\bigl(q^nz^n-q^{n-1}z^{n-1}\bigr)\right].
+\]
+Integration of the $n$th ball indicator is $b_nE_n$.
+Since $(1+q^{-1})b_n=q^{-n}$, its coefficient is
+$(z-q^{-1})z^{n-1}$.
+Absolute convergence justifies the sum and proves
+\eqref{v4-arith:eis:projection-expansion}.
+The projection norms are one, so the series also converges in operator norm.
+
+On $H_0$, every $E_n$ acts as the identity.
+On $H_m$, $m\ge1$, the projection $E_n$ is zero for $n<m$ and
+is the identity for $n\ge m$.
+Summing the geometric series gives the displayed eigenvalues.
+Each $V_N$ is a finite sum of these spaces.
+The rational formulas therefore give its meromorphic continuation.
+At $z=1$, every numerator has nonzero value $1-q^{-1}$.
+The pole is simple on every nonzero summand.
+\end{proof}
+
+\subsection{Normalization, composition, and domains}
+
+The spherical vector is $\mathbf1\in H_0$.
+The scalar in the preceding lemma equals the unramified local ratio
+\[
+ c(z)=\frac{L(0,\chi_1\chi_2^{-1})}
+ {L(1,\chi_1\chi_2^{-1})},\qquad
+ L(u,\chi_1\chi_2^{-1})=(1-zq^{-u})^{-1}.
+\]
+Normalizing the spherical vector therefore requires division by $c(z)$.
+Define the meromorphic family
+\begin{equation}
+\label{v4-arith:eis:normalized-intertwiner}
+ R_z=c(z)^{-1}M_z.
+\end{equation}
+
+\begin{theorem}[The normalized unramified intertwiner]
+\label{v4-arith:eis:normalized-theorem}
+\label{v4-arith:w6-d:prop:local-FE}
+The compact-picture eigenvalues of $R_z$ are
+\begin{equation}
+\label{v4-arith:eis:normalized-eigenvalues}
+ r_0(z)=1,\qquad
+ r_n(z)=z^{n-1}\frac{z-q^{-1}}{1-q^{-1}z}\quad(n\ge1).
+\end{equation}
+The operator is holomorphic on each $V_N$ away from $z=q$.
+It has a simple pole on every $H_n$ with $n\ge1$ at $z=q$.
+The value at $z=1$ is $\operatorname{id}_V$.
+The value at $z=q^{-1}$ is $E_0$.
+For $z\notin\{q,q^{-1}\}$, the smooth maps satisfy
+\[
+ R_{z^{-1}}R_z=\operatorname{id}_V,
+ \qquad R_zR_{z^{-1}}=\operatorname{id}_V.
+\]
+Here the second operator uses the swapped inducing characters.
+
+If $\chi_1$ and $\chi_2$ are unitary, $R_z$ extends uniquely to a
+unitary intertwiner between their induced Hilbert representations on $H$.
+Its Hilbert domain is all of $H$.
+In particular, the equal-character point $z=1$ is regular.
+\end{theorem}
+
+\begin{proof}
+Division of the preceding eigenvalues by $c(z)$ gives
+\eqref{v4-arith:eis:normalized-eigenvalues}.
+This calculation cancels the apparent singularity at $z=1$.
+At $z=q$, the denominator has a simple zero and the numerator is nonzero
+on every $H_n$, $n\ge1$.
+Substitution gives the stated values at $1$ and $q^{-1}$.
+
+For $n\ge1$, direct cancellation gives
+\[
+ r_n(z)r_n(z^{-1})
+ =\frac{(z-q^{-1})(1-q^{-1}z)}
+ {(1-q^{-1}z)(z-q^{-1})}=1.
+\]
+The identity also holds on $H_0$.
+Every smooth vector has finitely many components, so both compositions
+are defined on all of $V$ at the stated parameters.
+Intertwining holds first on the convergence domain of the raw integral.
+On each smooth vector and each fixed group element, the compact-picture
+formulas are rational in the two nonzero unramified character values.
+For a fixed $g\in G$, right translation sends $V_N$ into some $V_M$
+independently of the unramified character values.
+Indeed, an open subgroup of $K\cap gK_Ng^{-1}$ fixes the translated
+vectors, where $K_N=1+\varpi^NM_2(\mathcal O)$ for $N\ge1$.
+On the resulting finite partition of $K$, the Iwasawa factors have
+fixed diagonal valuations. Their character values are Laurent monomials.
+The integral intertwining identity therefore continues meromorphically.
+This also proves intertwining at every regular specialization.
+
+If the inducing characters are unitary, $|z|=1$.
+Then $|z-q^{-1}|=|1-q^{-1}z|$, so $|r_n(z)|=1$ for every $n$.
+The orthogonal decomposition of $H$ gives a unique unitary extension.
+Its inverse has parameter $z^{-1}$.
+
+For completeness, the induced action preserves the stated Hilbert norm.
+In the open Bruhat chart put $F_f(x)=f(wn(x))$.
+For unitary inducing characters, the chart measures above give
+\[
+ \|f|_K\|_H^2=\frac{q}{q+1}\int_F|F_f(x)|^2\,dx.
+\]
+Right translation by $n(y)$ gives $F_f(x+y)$.
+Right translation by $\operatorname{diag}(a,d)$ gives
+\[
+ |d/a|^{1/2}\chi_1(d)\chi_2(a)F_f(xd/a).
+\]
+Right translation by $w$, away from $x=0$, gives
+\[
+ |x|^{-1}\chi_1(-x^{-1})\chi_2(x)F_f(x^{-1}).
+\]
+Translations, dilations, and inversion preserve the displayed norm
+with these factors and their respective Jacobians.
+These elements generate $G$.
+Each smooth vector has an open stabilizer. Density and unitarity
+therefore imply strong continuity of the extended action.
+The smooth equivariance of $R_z$ extends by density to these
+induced unitary representations.
+\end{proof}
+
+For nonunitary parameters, the same compact-picture formulas also specify
+an operator on a fixed Hilbert space.
+This assertion does not equip the induced representation with an invariant
+positive inner product.
+
+\begin{proposition}[Closed compact-picture realization]
+\label{v4-arith:eis:maximal-domain}
+For $z\ne q$, write $h=\sum_{n\ge0}h_n$ with $h_n\in H_n$.
+The closure of $R_z|_V$ on $H$ is the normal operator with domain
+\[
+ \operatorname{Dom}(\overline R_z)=
+ \left\{h\in H:\sum_{n\ge0}|r_n(z)|^2\|h_n\|^2<\infty\right\},
+ \qquad \overline R_zh=\sum_{n\ge0}r_n(z)h_n.
+\]
+The space $V$ is a core.
+This operator is bounded exactly when $|z|\le1$.
+The composition assertions of the preceding theorem hold on $V$.
+On the unit circle they hold on all of $H$.
+\end{proposition}
+
+\begin{proof}
+The orthogonal sum of scalar operators with the displayed maximal domain
+is closed and normal.
+Its adjoint has coefficients $\overline{r_n(z)}$ and the same domain.
+Truncating the expansion after $n=N$ converges in its graph norm.
+Thus this maximal operator is the closure of its restriction to $V$.
+Boundedness is equivalent to $\sup_n|r_n(z)|<\infty$.
+Formula~\eqref{v4-arith:eis:normalized-eigenvalues} proves boundedness for
+$|z|\le1$.
+For $|z|>1$ and $z\ne q$, the nonzero factor
+$(z-q^{-1})/(1-q^{-1}z)$ is fixed and $|z|^{n-1}$ is unbounded.
+\end{proof}
+
+\subsection{Reducibility and the unitary axis}
+
+The poles of a normalization and the reducibility of the induced
+representation are different loci.
+They can both be determined in the present unramified family.
+
+\begin{proposition}[Reducibility locus]
+\label{v4-arith:eis:reducibility}
+The smooth representation $I(\chi_1,\chi_2)$ is reducible exactly when
+\[
+ \chi_1\chi_2^{-1}=|\cdot|\quad\text{or}\quad
+ \chi_1\chi_2^{-1}=|\cdot|^{-1}.
+\]
+Equivalently, $z\in\{q^{-1},q\}$.
+For $z=q^{-1}$, the regular intertwiner $R_z$ has image $H_0$
+in $I(\chi_2,\chi_1)$ and kernel in $I(\chi_1,\chi_2)$ equal to $\bigoplus_{n\ge1}^{\mathrm{alg}}H_n$.
+For $z=q$, the swapped regular intertwiner $R_{z^{-1}}$ has image
+$H_0$ in $I(\chi_1,\chi_2)$.
+The stated kernel at $z=q^{-1}$ and image at $z=q$ are nonzero
+proper invariant subspaces of $I(\chi_1,\chi_2)$.
+\end{proposition}
+
+\begin{proof}
+The kernel and image assertions follow from
+\eqref{v4-arith:eis:normalized-eigenvalues} and the regular intertwining
+identity.
+They prove reducibility at the two displayed ratios.
+Away from these ratios, apply Bernstein--Zelevinsky's irreducibility
+criterion to the two characters of $\operatorname{GL}_1(F)$:
+\emph{Induced representations of reductive $p$-adic groups I},
+Theorem~4.2, p.~454, with the induction conventions of
+\S1.8(a), p.~444, and \S\S2.2--2.3, p.~446.
+For the upper triangular parabolic, their modulus on the unipotent
+radical is $|a/d|$, so their square-root factor is the one used here.
+Every character of $\operatorname{GL}_1(F)$ is irreducible and cuspidal.
+The criterion excludes exactly the relations
+$\chi_j=|\cdot|\chi_i$ for distinct $i,j$.
+Thus it proves irreducibility on the stated complement.
+Only this direction of their criterion is used.
+\end{proof}
+
+For the symmetric family
+$\chi_1=|\cdot|^{s/2}$, $\chi_2=|\cdot|^{-s/2}$, one has $z=q^{-s}$.
+The raw integral converges for $\Re(s)>0$.
+Its poles occur at
+\[
+ s\in\frac{2\pi i}{\log q}\mathbb Z.
+\]
+On every smooth finite level, the normalized operator is regular on
+$\Re(s)\ge0$.
+Its poles occur at
+\[
+ s\in-1+\frac{2\pi i}{\log q}\mathbb Z,
+\]
+and reducibility occurs at
+\[
+ s\in\left(1+\frac{2\pi i}{\log q}\mathbb Z\right)
+ \cup\left(-1+\frac{2\pi i}{\log q}\mathbb Z\right).
+\]
+Neither reducibility locus meets the unitary axis $\Re(s)=0$.
+These statements concern local unramified induction.
+Poles of a global Eisenstein series require a separate global construction.
+
+\begin{example}[The first nonconstant vectors]
+Let $q=2$ and $z=-1$.
+The three reduction fibers of $X\to\mathbb P^1(\mathbb F_2)$ have equal measure.
+On $V_1$, the raw integral and normalized operator are
+\[
+ M_{-1}=\frac14
+ \begin{pmatrix}-1&2&2\\2&-1&2\\2&2&-1\end{pmatrix},
+ \qquad
+ R_{-1}=\frac13
+ \begin{pmatrix}-1&2&2\\2&-1&2\\2&2&-1\end{pmatrix}.
+\]
+The spherical scalar is $c(-1)=3/4$.
+The normalized matrix fixes constants and negates their orthogonal complement.
+Its square is the identity.
+At $z=1/2$, the normalized matrix is the rank-one averaging projection.
+At $z=1$, its continued value is the identity matrix.
+\end{example}
+
+\subsection{The automorphic comparison}
+
+A categorical Eisenstein comparison requires categories and functors in
+addition to these operators.
+One must specify the coefficient field, the local parameter spaces,
+and the global automorphic quotient with its central character and level.
+The global category must carry its Hecke actions and its Eisenstein subcategory.
+A comparison functor must identify the relevant derived mapping objects
+and determine its essential image.
+The shared global induction parameter must also be imposed on local families.
+
+The construction above supplies the full smooth intertwiner and its Hilbert
+extension only for unramified nonarchimedean induction.
+Ramified characters and the archimedean place require their own operators,
+normalizations, and analytic domains.
+A global restricted product requires compatible distinguished vectors
+and an explicit global family.
+The categorical comparison further requires functors implementing these
+maps and their Weyl coherences.
+No equivalence of automorphic categories follows from the compact-picture
+Hilbert isomorphism alone.
+
+
+
+
+\subsection{The place-indexed operator notation}
+\begin{definition}[the raw place-indexed operator]
+\label{v4-arith:w6-d:def:M-unnormalised}
+For the base characters $\chi=(\chi_1,\chi_2)$ of
+Setup~\ref{v4-arith:w6-d:setup:place-intertwining}, put
+$\alpha_1=\chi_1|\cdot|^{s/2}$,
+$\alpha_2=\chi_2|\cdot|^{-s/2}$ and
+$z=\alpha_1(\varpi)/\alpha_2(\varpi)$.
+With $\chi^w=(\chi_2,\chi_1)$, the notation is
+\begin{equation}
+\label{v4-arith:w6-d:eq:M-unnormalised}
+ M_v(s,\chi)=M_z:
+ I_v(s,\chi)=I(\alpha_1,\alpha_2)
+ \longrightarrow I(\alpha_2,\alpha_1)=I_v(-s,\chi^w).
+\end{equation}
+The integral is defined for $|z|<1$ and continued on each smooth
+finite level by Lemma~\ref{v4-arith:eis:kernel}.
+\end{definition}
+\begin{definition}[the normalized place-indexed operator]
+\label{v4-arith:w6-d:def:N-normalised}
+On the same source and target, define
+\begin{equation}
+\label{v4-arith:w6-d:eq:N-normalised}
+ N_v(s,\chi)=R_z=c(z)^{-1}M_z,
+ \qquad c(z)=\frac{1-q^{-1}z}{1-z}.
+\end{equation}
+Cancellation and continuation at $z=1$ are part of
+Theorem~\ref{v4-arith:eis:normalized-theorem}; the expression is not
+a pointwise product of undefined values there. Its poles, domains
+and unitary specializations are those proved in that theorem.
+\end{definition}
+
+\section{Algebraic parameters for unramified induction}
+
+The normalized unramified intertwiner varies with the inducing characters.
+A category of coefficient complexes records this variation and its Weyl symmetry.
+Its relation to smooth induction is a functor defined by tensoring
+with universal smooth induction.
+The resulting category concerns local algebraic parameters.
+An automorphic comparison requires further constructions.
+
+Retain the nonarchimedean field $F$, residue cardinality $q$, group
+$G=\operatorname{GL}_2(F)$, and compact subgroup $K$ of the unramified calculation.
+In particular, $|\varpi|=q^{-1}$ and $\operatorname{vol}(\mathcal O)=1$.
+Let $a,b$ denote the values at $\varpi$ of the two unramified characters.
+Their ratio is $z=a/b$.
+To make both normalized intertwining directions regular and invertible, put
+\[
+ A=\mathbb C[a^{\pm1},b^{\pm1},(a-qb)^{-1},(b-qa)^{-1}],
+ \qquad T=\operatorname{Spec}A.
+\]
+Thus $T$ omits precisely the two divisors $z=q,q^{-1}$.
+The Weyl group $W=\{1,w\}$ acts through the ring involution
+$\sigma(a)=b$, $\sigma(b)=a$.
+The involution exchanges the two inverted divisors.
+At a complex point $(a_0,b_0)$, define
+$\chi_{a_0}(x)=a_0^{v_F(x)}$, where $v_F(\varpi)=1$.
+The corresponding representation is the normalized induction
+$I(\chi_{a_0},\chi_{b_0})$.
+
+The ratio alone determines the normalized operator in the compact picture.
+It does not determine the representation.
+Replacing $(a_0,b_0)$ by $(ta_0,tb_0)$ twists the representation by
+$\chi_t\circ\det$.
+For example, the central element $\varpi\operatorname{id}$ acts by
+$a_0b_0$ before the twist and by $t^2a_0b_0$ afterwards.
+Both characters must therefore remain in the parameter space.
+
+\subsection{Coefficient complexes and their unit}
+
+For a ring $D$, write $\mathcal D(D)$ for the stable $\infty$-category
+of unbounded cochain complexes of left $D$-modules, with quasi-isomorphisms inverted.
+The differential has degree $1$.
+We use $P[1]^n=P^{n+1}$ with differential $-d_P$.
+For commutative $D$, tensor products are derived over $D$.
+Their symmetry has sign $(-1)^{ij}$ on degrees $i,j$.
+Let $\operatorname{Perf}(D)$ be a small skeleton of the full subcategory
+generated by $D[0]$ under finite sums, shifts, cones, and retracts.
+
+\begin{proposition}[The coefficient category]
+\label{v4-arith:eis:parameter-perf}
+The category $\operatorname{Perf}(A)$ is stable, idempotent complete,
+and symmetric monoidal under $\otimes_A^{\mathbf L}$.
+There is a canonical equivalence
+\[
+ \operatorname{Ind}(\operatorname{Perf}(A))\simeq\mathcal D(A).
+\]
+The compact objects of $\mathcal D(A)$ are exactly $\operatorname{Perf}(A)$.
+The monoidal unit is $A[0]$.
+The functor
+\[
+ e:\mathcal D(\mathbb C)\longrightarrow\mathcal D(A),
+ \qquad U\longmapsto A\otimes_{\mathbb C}U
+\]
+is a colimit-preserving symmetric monoidal pointing and preserves compact objects.
+\end{proposition}
+
+\begin{proof}
+The category of derived modules is stable and presentable.
+For a commutative ring its symmetric monoidal identification with
+modules over the associated discrete ring spectrum is established in
+Lurie, \emph{Higher Algebra} (2017), Theorem~7.1.2.13, pp.~1212--1213.
+Its shifts of $A$ detect zero objects, since
+$\operatorname{Hom}_{\mathcal D(A)}(A[-n],P)=H^n(P)$.
+These shifts are compact because cohomology commutes with filtered colimits of modules.
+The compact-generation theorem for module categories identifies their
+finite stable retract closure with all compact objects and gives the Ind equivalence
+(Lurie, \emph{Higher Algebra} (2017), Definition~7.2.4.1 and Proposition~7.2.4.2, pp.~1260--1261).
+For ordinary rings these are bounded complexes of finitely generated projective modules
+(The Stacks Project, Tag 07LQ, Lemma~15.80.1 and Proposition~15.80.3).
+Tensoring two such complexes gives another such complex.
+The associativity, unit, and symmetry are those of derived tensor product.
+Extension of scalars preserves colimits and takes a finite complex of
+finite-dimensional vector spaces to a finite free complex.
+Its tensor and unit identities prove the assertion about $e$.
+\end{proof}
+
+A point of $T$ gives the specialization functor
+$\mathbb C\otimes_{A,(a_0,b_0)}^{\mathbf L}(-)$.
+The point module $A/(a-a_0,b-b_0)$ is also perfect.
+Its length-two Koszul resolution follows because $a-a_0,b-b_0$ form a regular sequence.
+Indeed, the quotient by the first element is a localization of
+$\mathbb C[b^{\pm1}]$, and the second element is nonzero there.
+The inverted elements remain nonzero at the chosen point.
+This point module differs from the monoidal unit $A$.
+For two distinct points, its tensor product with the other point module is zero,
+as follows by localizing at their disjoint supports.
+The unit cannot have this property.
+
+\subsection{The universal smooth representation}
+
+Let $X=(B\cap K)\backslash K$ and $V=C^\infty(X;\mathbb C)$,
+where $B$ is the upper triangular subgroup and functions are locally constant.
+The compact-picture calculation gives
+$V=\bigoplus_{n\ge0}H_n$ and $V_N=\bigoplus_{n=0}^NH_n$,
+with $H_0=\mathbb C\mathbf1$ and finite-dimensional $H_n$.
+Put $E=A\otimes_{\mathbb C}V$ and $E_N=A\otimes V_N$.
+All these modules are in cochain degree zero.
+
+\begin{proposition}[Induction over the parameter ring]
+\label{v4-arith:eis:parameter-induction}
+There is an $A$-linear smooth action $\pi_A$ of $G$ on $E$.
+Its specialization at $(a_0,b_0)$ is $I(\chi_{a_0},\chi_{b_0})$.
+The normalized intertwiner defines an $A$-linear isomorphism
+\[
+ R:E\longrightarrow E^{\mathrm{sw}},\qquad
+ R|_{A\otimes H_0}=1,\qquad
+ R|_{A\otimes H_n}=z^{n-1}\frac{z-q^{-1}}{1-q^{-1}z}\quad(n\ge1),
+\]
+where $E^{\mathrm{sw}}$ has the inducing parameters $b,a$.
+Its inverse has the displayed coefficients with $z$ replaced by $z^{-1}$.
+The coefficient module $E$ is free and is not compact in $\mathcal D(A)$.
+Every $E_N$ is compact and $K$-stable.
+\end{proposition}
+
+\begin{proof}
+Use the universal unramified characters
+$\chi_a(x)=a^{v_F(x)}$ and $\chi_b(x)=b^{v_F(x)}$ in the induction law.
+The factor $|x/y|^{1/2}$ is a fixed positive real scalar.
+For $g\in G$, extend a function from $K$ to $BK=G$ by this law,
+then translate it on the right by $g$.
+Independence of the Iwasawa factorization follows because the
+characters and modulus are trivial on $B\cap K$.
+For each fixed $g,N$, compactness and local constancy give a finite partition
+on which all diagonal valuations are constant.
+The resulting coefficients are Laurent monomials in $a,b$.
+Thus $\pi_A(g)E_N\subset E_M$ for some finite $M$.
+Right translation satisfies the group law before restriction to $K$,
+and consequently defines an action on $E$.
+Each vector has an open stabilizer in $K$.
+Specializing the induction law proves the fiber assertion.
+
+The stated coefficients belong to $A$ and are units in $A$.
+The normalized intertwiner calculation proves the intertwining identity
+and $r_n(z^{-1})r_n(z)=1$.
+These identities apply over $A$: for fixed $g,N$ they are finite matrix
+identities in rational functions of $a,b$.
+They hold at every regular complex specialization, hence hold in $A$.
+This proves the asserted isomorphism and inverse.
+
+Each $E_N$ is finite free.
+The decomposition of $V$ makes $E$ free of infinite rank.
+If $E$ were compact, its identity would factor through some term of
+$E=\operatorname{colim}_NE_N$.
+That would express an infinite-rank free module as a retract of a finite-rank module,
+which is impossible after tensoring with the fraction field of $A$.
+The compact-picture $K$-action preserves each $V_N$.
+The full $G$-action need not preserve these finite levels.
+\end{proof}
+
+Let $\mathcal D_{\mathrm{sm}}(G,A)$ denote the derived $\infty$-category
+of smooth $A$-linear $G$-representations.
+Here smooth means that every vector has an open stabilizer, and $G$ acts trivially on $A$.
+Tensoring with the flat module $E$ gives an actual functor
+\[
+ \mathcal F:\mathcal D(A)\longrightarrow\mathcal D_{\mathrm{sm}}(G,A),
+ \qquad P\longmapsto E\otimes_A P.
+\]
+It is well-defined on quasi-isomorphisms since $E$ is free over $A$.
+Its specialization is
+$I(\chi_{a_0},\chi_{b_0})\otimes_{\mathbb C}
+(\mathbb C\otimes_A^{\mathbf L}P)$.
+The spherical map $A\to E$, $c\mapsto c\mathbf1$, is $K$-equivariant.
+It is generally not $G$-equivariant when $A$ has trivial $G$-action.
+For example, the central element $\varpi\operatorname{id}$ acts on $E$ by $ab$.
+Thus neither the spherical vector nor the representation $E$
+replaces the coefficient category's monoidal unit.
+
+\subsection{Weyl descent}
+
+The involution $\sigma$ acts on coefficient complexes by restriction of scalars.
+On the underlying complex the new scalar action is $c\cdot m=\sigma(c)m$.
+Applying this operation twice is the identity.
+It preserves derived tensor products and the unit, with their usual canonical identifications.
+This is a specified coherent action of $W$ on $\mathcal D(A)$.
+Its descent category is the homotopy limit $\mathcal D(A)^{hW}$.
+
+\begin{proposition}[An explicit descent category]
+\label{v4-arith:eis:parameter-descent}
+Let $D=A\rtimes W=A\oplus Au$, with multiplication given by
+$u^2=1$ and $uc=\sigma(c)u$ for $c\in A$.
+There is an equivalence
+\[
+ \mathcal D(A)^{hW}\simeq\mathcal D(D).
+\]
+This category is stable and presentable.
+An object is compact if and only if its underlying $A$-complex is perfect.
+Its symmetric monoidal product is derived tensor over $A$, with diagonal Weyl action.
+Its compact monoidal unit is $A$ with $u(c)=\sigma(c)$.
+\end{proposition}
+
+\begin{proof}
+A strict $D$-module is an $A$-module with a semilinear involution $\theta$:
+$\theta(cm)=\sigma(c)\theta(m)$ and $\theta^2=1$.
+The same description applies to complexes with a chain involution.
+To identify the derived category with coherent descent, consider the
+evaluation functor from the homotopy limit to $\mathcal D(A)$.
+It is conservative and has the free-equivariant left adjoint
+$P\mapsto P\oplus\sigma^*P$ with its permutation action.
+Colimits are computed on underlying complexes since $\sigma^*$ preserves them.
+In particular, evaluation preserves geometric realizations of split simplicial objects.
+The monadicity theorem therefore applies
+(Lurie, \emph{Higher Algebra} (2017), Theorem~4.7.3.5, p.~685).
+Its monad is $P\mapsto P\oplus\sigma^*P$, with multiplication from $W$.
+This is also the monad of restriction from $D$-modules to $A$-modules,
+whose left adjoint is $D\otimes_A^{\mathbf L}(-)$.
+Restriction is conservative and preserves geometric realizations.
+The two monadic descriptions prove the equivalence, including all higher coherences.
+
+As a left or right $A$-module, $D$ is free of rank two.
+Thus every perfect $D$-complex becomes perfect over $A$.
+Conversely, a $D$-complex $M$ is a retract of $D\otimes_A M$.
+The action map is a retraction of the $D$-linear chain map
+\[
+ m\longmapsto\tfrac12(1\otimes m+u\otimes\theta(m)).
+\]
+The relations $uc=\sigma(c)u$ and $\theta^2=1$ verify linearity directly.
+If the underlying $A$-complex is perfect, extension of scalars makes
+$D\otimes_A^{\mathbf L}M$ perfect over $D$.
+The retract is therefore perfect.
+The compact-object characterization in the coefficient proposition applies to $D$ as well.
+The diagonal involution on $M\otimes_A^{\mathbf L}N$ is
+$\theta_M\otimes\theta_N$.
+Semilinearity makes it well-defined, and the usual tensor constraints are equivariant.
+The module $A$ with involution $\sigma$ is the unit and is perfect over $A$.
+This proves its compactness after descent.
+\end{proof}
+
+The involution is not free on $T$.
+Every point $(a_0,a_0)$ is fixed and belongs to $T$.
+The modules $A$ with involutions $\sigma$ and $-\sigma$ specialize there
+to the trivial and sign representations of $W$.
+These are not isomorphic: an intertwining scalar would satisfy $c=-c$.
+Consequently descent retains stabilizer representations.
+It cannot be replaced by the category of modules on the coarse orbit space
+through ordinary pullback, which has trivial stabilizer action on every fiber.
+
+The representation $E$ has its own compatible descent datum.
+Let $S:E\to E$ apply $\sigma$ to coefficients and fix $V$.
+Define $\Theta=SR$, using the common compact-picture module.
+Then
+\[
+ \Theta(c f)=\sigma(c)\Theta(f),\qquad
+ \Theta^2=1,\qquad \Theta\pi_A(g)=\pi_A(g)\Theta.
+\]
+Indeed, $S\pi_A(g)=\pi_A^{\mathrm{sw}}(g)S$ and
+$R\pi_A(g)=\pi_A^{\mathrm{sw}}(g)R$.
+Conjugating $R$ by $S$ replaces $z$ by $z^{-1}$, so its inverse is obtained.
+These identities prove all three assertions.
+Moreover, $\Theta(c\mathbf1)=\sigma(c)\mathbf1$.
+For an equivariant coefficient complex $(P,\theta)$, the formula
+$(E\otimes_A P,\Theta\otimes\theta)$ therefore defines equivariant smooth induction.
+This is a construction of a functor, without an assertion of full faithfulness or essential surjectivity.
+
+\subsection{A common complex parameter}
+
+For the symmetric inducing characters $|\cdot|^{s/2},|\cdot|^{-s/2}$,
+the two parameters are $a=q^{-s/2}$ and $b=q^{s/2}$.
+Here $q^s=\exp(s\log q)$, with the real logarithm of $q$.
+The ratio $z=q^{-s}$ has period $2\pi i/\log q$.
+The ordered pair $(a,b)$ has period $4\pi i/\log q$.
+A shift by the smaller period changes both character values by $-1$.
+This explains why the ratio does not encode the whole family.
+
+Let $\Omega=\{s\in\mathbb C:|\operatorname{Re}s|<1\}$ and
+$B_\Omega=\mathcal O(\Omega)$, treated as an ordinary commutative ring.
+There is a ring map
+\[
+ \phi_q:A\longrightarrow B_\Omega,\qquad
+ a\longmapsto e^{-s\log q/2},\qquad b\longmapsto e^{s\log q/2}.
+\]
+The inverted factors have no zeros in $\Omega$ because
+$|q^{-s}|=q^{-\operatorname{Re}s}$ lies strictly between $q^{-1}$ and $q$.
+Their reciprocals are holomorphic, which proves that the map is defined.
+The involution $\tau(h)(s)=h(-s)$ satisfies $\phi_q\sigma=\tau\phi_q$.
+Derived extension of scalars gives a compact-preserving functor
+\[
+ B_\Omega\otimes_A^{\mathbf L}(-):\mathcal D(A)\longrightarrow\mathcal D(B_\Omega)
+\]
+and an equivariant version on descent categories.
+The latter sends $(P,\theta)$ to the complex with involution
+$h\otimes p\mapsto\tau(h)\otimes\theta(p)$.
+All finite-level matrices of $E$ and $R$ pull back to holomorphic matrices.
+Evaluating at $s$ gives exactly the smooth representation and normalized
+operator at $z=q^{-s}$.
+On $s\in i\mathbb R$, the previously constructed Hilbert extension is unitary.
+No topology on $B_\Omega$ or Hilbert completion is part of this scalar-extension functor.
+
+For a finite set of finite places $S$, allow independent local character
+parameters and put $A_S=\bigotimes_{v\in S,\mathbb C}A_v$.
+The common symmetric family gives a single map
+\[
+ \phi_S:A_S\longrightarrow B_\Omega,\qquad
+ \bigotimes_v f_v\longmapsto\prod_v\phi_{q_v}(f_v).
+\]
+It imposes the same variable $s$ at every place.
+For $S\subset S'$, scalar extension along $A_S\to A_{S'}$ supplies
+compatible coefficient functors, and $\phi_{S'}$ restricts to $\phi_S$.
+Thus these maps also define a map from the filtered union of the rings $A_S$.
+They give actual base-change functors for independent local parameters.
+The compatible Weyl action is the simultaneous swap at all places.
+An individual local swap generally does not preserve the common family.
+
+For example, with $q_2=2$ and $q_3=3$, the independent unitary ratios
+$(z_2,z_3)=(1,-1)$ do not come from any common $s$.
+The first equation forces $s=2\pi i n/\log2$ for an integer $n$.
+The second would give $2n\log3=(2m+1)\log2$ for an integer $m$,
+after changing signs of the indices if necessary.
+Exponentiation contradicts unique factorization of rational numbers.
+Thus tensoring independent unitary axes does not impose the global parameter.
+
+After common base change, put $E_{v,\Omega}=B_\Omega\otimes_{A_v}E_v$.
+Write $R_{v,\Omega}$ for the scalar extension of $R_v$.
+The local semilinear involution $\Theta_v=S_vR_v$ induces
+\[
+ \Theta_{v,\Omega}(h\otimes f)=\tau(h)\otimes\Theta_v(f).
+\]
+This formula is balanced because $\phi_{q_v}\sigma_v=\tau\phi_{q_v}$.
+It squares to the identity, commutes with $G_v$, and fixes $\mathbf1_v$.
+For finite $S$, put $E_{S,\Omega}=\bigotimes_{v\in S,B_\Omega}E_{v,\Omega}$.
+The $B_\Omega$-linear operator $\bigotimes_{v\in S}R_{v,\Omega}$
+has target the family with every inducing pair swapped.
+The semilinear involution on $E_{S,\Omega}$ is instead defined by
+\[
+ \Theta_S\Bigl(\bigotimes_{v\in S}f_v\Bigr)
+     =\bigotimes_{v\in S}\Theta_{v,\Omega}(f_v).
+\]
+For $S=\varnothing$, set $E_{S,\Omega}=B_\Omega$ and $\Theta_S=\tau$.
+For nonempty $S$, moving a scalar between two tensor factors changes
+both resulting expressions by its image under $\tau$.
+Thus the displayed map is balanced and $\tau$-semilinear.
+Applying it twice gives the identity on pure tensors, hence on the whole module.
+It commutes with the action of $\prod_{v\in S}G_v$.
+Insertion of $\mathbf1_v$ defines compatible maps as $S$ grows.
+These maps intertwine $\Theta_S$ and $\Theta_{S'}$ because each
+$\Theta_{v,\Omega}$ fixes the inserted vector.
+This also holds for the insertion from the empty set, by semilinearity.
+The algebraic filtered colimit is the restricted tensor product of these
+smooth families over finite places, relative to $\mathbf1_v$.
+It therefore inherits a semilinear involution from the maps $\Theta_S$.
+It carries the restricted product group relative to $K_v$:
+outside finitely many places an element belongs to $K_v$ and fixes $\mathbf1_v$.
+Every tensor and every group action is computed at some finite stage.
+No infinite product of operator norms is needed for this algebraic construction.
+
+\subsection{The automorphic comparison problem}
+
+The common family above fixes the two global inducing characters to be trivial
+before the powers of the absolute value are inserted.
+For general inducing characters, their local components must arise from
+specified Hecke characters, and the Weyl action must also swap that character pair.
+Independent local characters do not by themselves supply these global data.
+
+An analytic coefficient category still requires a choice of sheaf theory,
+topology, growth conditions, and derived completion on a complex parameter domain.
+The ring category $\mathcal D(B_\Omega)$ specifies none of those choices.
+An automorphic target further requires the adelic quotient, central character,
+level, archimedean factor, and an Eisenstein functor with analytic domains.
+To compare that target with the parameter category, one must construct
+the functor on complexes and compare its derived mapping objects and essential image.
+Compactness of coefficient complexes does not prove admissibility or
+finite generation over local Hecke algebras after induction.
+The local smooth family, its coherent Weyl descent, and common-parameter
+base change provide the input maps for this comparison.
+They do not identify a category of automorphic representations.
+
+
+
+\begin{remark}[global normalizations and the pairing comparison]
+\label{v4-arith:w6-d:rem:W6C-relation}
+The local operator $N_v(s,\chi)=R_z$ divides the raw operator by its
+spherical scalar $c(z)$. A global product requires Hecke characters,
+compatible spherical insertions, the archimedean and ramified factors,
+and an analytic continuation on a specified global family.
+In a classical Eisenstein parameter $u$ with unnormalized spherical
+factor $\xi(2u-1)/\xi(2u)$, the symmetric induction variable is
+$s=2u-1$. The global epsilon product and its phase must be computed for
+that character and additive convention; it is not universally $1$.
+An operator, a scalar phase and a Plancherel density are different data.
+The conditional Koszul--Petersson transport in
+Proposition~\ref{v4-arith:w5-c:prop:LS-absorption} requires its own
+measure identity. If an even measure on the full axis has density
+$\tfrac12 w(t)dt$, pushforward under $t\mapsto|t|$ has density
+$w(t)dt$ off zero. This folding identity does not determine $w$.
+\end{remark}
+
+\begin{definition}[local degeneration and the regular unitary locus]
+\label{v4-arith:w6-d:def:exceptional}
+For the symmetric unramified family at a finite place, define
+\begin{equation}
+\label{v4-arith:w6-d:eq:exceptional}
+ \Sigma_v^{\mathrm{exc}}=
+ \left(1+\frac{2\pi i}{\log q_v}\mathbb Z\right)
+ \cup\left(-1+\frac{2\pi i}{\log q_v}\mathbb Z\right).
+\end{equation}
+These are reducibility parameters. The normalized operator has poles
+only on the second set and is a projection at the first set. The
+non-exceptional unitary locus is all of $i\mathbb R$. The point $0$
+is regular and $1$ is not on the unitary axis.
+\end{definition}
+\begin{remark}[local degeneration and global residues]
+\label{v4-arith:w6-d:rem:exceptional-form}
+A residue of a global Eisenstein series is not a pole of every normalized
+local operator. Its parameter, global quotient and central character
+must be specified. The local kernel/image sequences at $z=q^{\pm1}$
+are given by Proposition~\ref{v4-arith:eis:reducibility}; comparison of
+their extension classes with arithmetic deformation data remains a
+separate coefficient-compatible construction.
+\end{remark}
+
+\section{Module (E1): Paley--Wiener Synthesis on the Unitary Axis}
+\label{v4-arith:w6-d:E1}
+
+\subsection{The Global Spectral Transform}
+
+\begin{conjecture}[global continuous spectral comparison]
+\label{v4-arith:w6-d:thm:PW-synthesis}
+Fix a unitary central character $\omega$ and the Hilbert quotient
+$L^2(GL_2(\mathbb Q)\backslash GL_2(\mathbb A),\omega)$ modulo
+the centre. Choose the level, archimedean types and Haar measures.
+The intended Eisenstein transform must identify its continuous part
+with a direct integral
+\begin{equation}
+\label{v4-arith:w6-d:eq:PW-iso}
+ L^2_{\mathrm{cont}}([GL_2],\omega)
+ \simeq\bigoplus_{[\chi]}\int_{i\mathbb R_{\ge0}}^\oplus
+ V_{\chi,s}\,d\mu_\chi(s),
+\end{equation}
+where $[\chi]$ ranges over the appropriate Weyl classes of global
+unitary Hecke-character pairs with central character $\omega$.
+The measurable fibres $V_{\chi,s}$, the spectral measure $\mu_\chi$
+and the synthesis domain must be specified. Finite-dimensional
+spherical or Iwahori levels are not the full induced representations.
+A Paley--Wiener test space, its support and growth conditions, and
+its dense embedding in this Hilbert space are additional data.
+The shared parameter and global characters must be imposed before
+comparing local families, and the Weyl identification must use the
+actual normalized global operator.
+\end{conjecture}
+The global spectral references are Langlands (1976), Part~I,
+Sections~5--7, and M\oe glin--Waldspurger (1995), Chapters~II and~IV.
+Shahidi's local normalization, Harish-Chandra's real-group Plancherel
+theorem and Wallach's treatment require their local hypotheses.
+They do not make an arbitrary Hilbert completion into a Paley--Wiener
+space or prove a universal $\xi$-density for all character pairs.
+
+\begin{remark}[a scalar functional-equation identity]
+\label{v4-arith:w6-d:rem:plancherel-density}
+For the completed Riemann function satisfying
+$\xi(s)=\xi(1-s)$ and $\xi(\bar s)=\overline{\xi(s)}$, one has
+$|\xi(2it)|=|\xi(1+2it)|$: apply the functional equation and then
+complex conjugation. Thus the two expressions
+$|\xi(2it)|^{-2}$ and $|\xi(1+2it)|^{-2}$ agree wherever defined.
+This algebraic identity does not identify either expression with the
+measure $d\mu_\chi$ above. The change from a classical parameter $u$
+to symmetric induction is $s=2u-1$, and its Jacobian and normalizing
+factors must be retained in any pairing comparison. A unit-modulus
+scattering phase is not an absolute-value spectral density.
+\end{remark}
+
+\subsection{Categorical Lift of the Paley--Wiener Space}
+
+\begin{definition}[data for an analytic continuous-spectrum category]
+\label{v4-arith:w6-d:def:C-cont-local}
+The intended analytic category requires a complex parameter domain
+containing the relevant unitary parameters, a sheaf theory, a topology,
+growth conditions and a derived completion, together with its local
+representation family. Write, provisionally,
+\begin{equation}
+\label{v4-arith:w6-d:eq:C-cont-local}
+ \mathcal C_v^{\mathrm{cont}}=D(\mathcal A_v^{\mathrm{an}}),
+\end{equation}
+where $\mathcal A_v^{\mathrm{an}}$ must be constructed with the claimed
+admissibility and local Hecke-finiteness properties. The half-axis
+$i\mathbb R_{\ge0}$ is not itself a complex manifold. Coherent
+finite-type objects are not closed under arbitrary colimits, so their
+Ind-completion, if used, must be specified. A spherical representation
+vector is also distinct from the coefficient unit and from a point
+module. In particular, $1/2$ is not on the unitary axis.
+\end{definition}
+\begin{proposition}[conditional presentability and pointing]
+\label{v4-arith:w6-d:prop:C-cont-stable-pres}
+If an actual Grothendieck abelian coefficient category
+$\mathcal A_v^{\mathrm{an}}$ is supplied, its unbounded derived
+category is stable and presentable. Compact generation and a compact
+monoidal unit require separate proofs for that choice. For the bounded
+algebraic alternative already constructed, these assertions hold for
+$\mathcal D(A)$ and its unit $A$ as in
+Proposition~\ref{v4-arith:eis:parameter-perf}; this does not identify
+$\mathcal D(A)$ with the intended analytic category.
+\end{proposition}
+\begin{proof}
+The derived category of a Grothendieck abelian category is stable and
+presentable (Lurie, Higher Algebra, Section~1.3.5). The algebraic
+assertions follow from the explicit module and perfect-complex proof
+of Proposition~\ref{v4-arith:eis:parameter-perf}. No compactness
+assertion about the unspecified analytic sheaf theory is used.
+\end{proof}
+
+\begin{conjecture}[analytic Weyl descent]
+\label{v4-arith:w6-d:prop:Weyl-coherent}
+Construct a coherent Weyl action on the intended analytic restricted
+tensor category, with a specified functor
+\begin{equation}
+\label{v4-arith:w6-d:eq:Weyl-coherent}
+ N:\bigotimes_v'\mathcal C_v^{\mathrm{cont}}
+ \longrightarrow\bigotimes_v'\mathcal C_v^{\mathrm{cont}},
+\end{equation}
+and its involution coherence, compatible with the global inducing
+characters, common parameter and distinguished insertions.
+The already constructed coefficient action is
+$\mathcal D(A)^{hW}\simeq\mathcal D(A\rtimes W)$; its equivariant
+smooth induction and simultaneous common-parameter involution are
+explicit. An individual local swap need not preserve that common
+parameter. A representation intertwiner is not itself an
+$E_\infty$ morphism of categories, and the analytic action above is
+additional to the algebraic coefficient action.
+\end{conjecture}
+
+\begin{theorem}[conditional enhanced Paley--Wiener comparison]
+\label{v4-arith:w6-d:thm:PW-lift}
+Construct the analytic automorphic category and a global-character,
+common-parameter version of the analytic tensor category. Denote these
+intended enhanced carriers by
+\begin{equation}
+\label{v4-arith:w6-d:eq:PW-lift}
+ \mathcal A_{\mathrm{Eis}}^{\mathrm{sph\text{-}fin}}
+ \longrightarrow
+ \left(\bigotimes_v'\mathcal C_v^{\mathrm{cont}}\right)^{hW}.
+\end{equation}
+If the arrow is an exact colimit-preserving functor between compactly
+generated stable presentable categories, takes chosen compact generators
+to compact objects, induces equivalences on their full mapping spectra,
+and has generating image, it is an equivalence. Its arithmetic
+realization must also intertwine the global spectral synthesis,
+Hecke actions and analytic domains.
+\end{theorem}
+\begin{proof}
+Apply Theorem~\ref{v4-arith:w5-e:local:generator-criterion} to the
+specified functor. Constructing the Hilbert synthesis, analytic
+sheaf enhancement, restricted tensor insertions and coherent Weyl
+action are the four separate prerequisites. A unitary map of Hilbert
+spaces does not supply the enhanced functor or force degeneration of
+a descent spectral sequence. The explicit coefficient Weyl proof
+above uses a monadic description and averaging over a group of order
+two over $\mathbb C$, not a Hilbert-unitarity argument.
+\end{proof}
+
+\section{Module (E2): Langlands Spectral Decomposition Lifted Categorically}
+\label{v4-arith:w6-d:E2}
+
+\subsection{The Three Summands}
+
+\begin{theorem}[Langlands spectral decomposition of \(L^{2}(\lbrack GL_{2}\rbrack)\)]
+\label{v4-arith:w6-d:thm:Langlands-decomp}
+\ClaimStatusProvedElsewhere For the fixed unitary central-character quotient and Haar measure of
+Conjecture~\ref{v4-arith:w6-d:thm:PW-synthesis}, the automorphic \(L^{2}\)-space
+decomposes as a unitary direct sum
+\begin{equation}
+\label{v4-arith:w6-d:eq:Langlands-decomp}
+L^{2}([GL_{2}])\;=\;L^{2}_{\mathrm{cusp}}\;\oplus\;L^{2}_{\mathrm{res}}\;\oplus\;L^{2}_{\mathrm{cont}},
+\end{equation}
+with:
+\begin{itemize}
+\item \(L^{2}_{\mathrm{cusp}}\) the cuspidal subspace
+(Bernstein 1988; Mo{\oe}glin--Waldspurger III.2.1);
+\item \(L^{2}_{\mathrm{res}}\) the residual spectral subspace, indexed by the actual residual automorphic representations for the chosen quotient; the constant function gives a residual line when the central character and quotient allow it
+(Mo{\oe}glin--Waldspurger II.2);
+\item \(L^{2}_{\mathrm{cont}}\) the continuous spectrum, parametrised
+by Weyl-orbits of unitary Hecke characters via Eisenstein series
+(Langlands 1976 \S 7; Mo{\oe}glin--Waldspurger IV.3).
+\end{itemize}
+The decomposition is canonical and respects the adelic Hecke action
+and the archimedean \((\mathfrak{g},K_{\infty})\)-structure.
+\end{theorem}
+
+\begin{proof}[Source]
+Langlands 1976 \S 7 (original proof, functional equations);
+Mo{\oe}glin--Waldspurger 1995 Ch.~II and IV (modern full account).
+\end{proof}
+
+\subsection{Categorical Lift of Each Summand}
+
+\begin{definition}[the coefficient model of one residual line]
+\label{v4-arith:w6-d:def:C-res-local}
+For a chosen one-dimensional residual character over $\mathbb C$,
+the coefficient category is $\mathcal D(\mathbb C)$, with compact
+unit $\mathbb C[0]$ and tensor product over $\mathbb C$.
+Its unit endomorphism ring is $\mathbb C$. It is not the category
+of spectra, whose sphere has degree-zero endomorphism ring $\mathbb Z$.
+This coefficient model does not identify the full residual spectrum
+with a single line.
+\end{definition}
+\begin{theorem}[conditional realization of the residual comparison]
+\label{v4-arith:w6-d:thm:res-lift}
+The restricted tensor product of copies of $\mathcal D(\mathbb C)$
+in complex-linear presentable stable categories, with the unit
+insertions, is $\mathcal D(\mathbb C)$. Its identification with an
+actual residual automorphic category additionally requires a chosen
+residual representation, its compatible local factors and a comparison
+functor with generating image and equivalences on full mapping spectra.
+For several residual representations their extension and assembly data
+must also be supplied.
+\end{theorem}
+\begin{proof}
+Every finite tensor product of the complex-linear tensor unit is
+that unit, and the insertion maps are the unit identifications. Their
+filtered colimit is the unit. For the actual residual category apply
+the compact-generator criterion to the specified comparison; the
+coefficient calculation does not provide its hypotheses.
+\end{proof}
+
+\begin{theorem}[conditional continuous-spectrum comparison]
+\label{v4-arith:w6-d:thm:cont-lift}
+On a specified analytic parameter domain, including the full unitary
+axis for symmetric unramified induction, the continuous-spectrum
+comparison is an equivalence under the complete enhanced functor,
+mapping-spectrum, compactness and generation hypotheses of
+Theorem~\ref{v4-arith:w6-d:thm:PW-lift}.
+\end{theorem}
+\begin{proof}
+Apply that theorem on the chosen domain with its restricted analytic
+functor and support conditions. The local operator has no unitary-axis
+poles in the stated unramified family. Algebraic scalar extension to
+$B_\Omega$ proves the coefficient construction, but does not replace
+the analytic enhancement or supply its automorphic essential image.
+\end{proof}
+
+\begin{proposition}[the sph-finite comparison requirement]
+\label{v4-arith:w6-d:prop:sph-fin-cont}
+The scalar-extension functor
+$B_\Omega\otimes_A^{\mathbf L}(-)$ preserves perfect coefficient
+complexes, and its equivariant version preserves compact objects.
+Preservation of the intended automorphic sph-finiteness requires,
+in addition, the actual induction/analytic functors to preserve the
+specified admissibility and finite-type local Hecke conditions.
+These conditions must also be stable under the proposed restricted
+tensor transition maps and Weyl descent.
+\end{proposition}
+\begin{proof}
+A bounded complex of finitely generated projective modules remains
+such after derived scalar extension. For Weyl descent the underlying
+perfect-complex criterion proved above applies over $A$ and over
+$B_\Omega$, where $2$ is invertible. These facts concern coefficient
+compactness. The universal smooth family $E$ is infinite free and
+noncompact, so this argument asserts no automatic Hecke-finiteness
+after induction or arbitrary filtered colimits.
+\end{proof}
+
+\section{Tensor sectors and extension data}
+
+An orthogonal decomposition into local sectors gives a direct-sum
+decomposition of their tensor product. Even with two sectors
+at each of two places, tensor distributivity gives four terms:
+\[
+ (\mathcal A_0\oplus\mathcal A_1)\otimes
+ (\mathcal B_0\oplus\mathcal B_1)
+ \simeq
+ (\mathcal A_0\otimes\mathcal B_0)\oplus
+ (\mathcal A_0\otimes\mathcal B_1)\oplus
+ (\mathcal A_1\otimes\mathcal B_0)\oplus
+ (\mathcal A_1\otimes\mathcal B_1).
+\]
+The middle two terms record different sector choices at the two places.
+A relation between those choices requires additional structure.
+
+\subsection{Orthogonal decompositions}
+
+Let $\mathcal V$ be a symmetric monoidal $\infty$-category with small
+colimits. Assume its tensor product preserves colimits separately in each
+variable. Write $\mathbf1$ for its tensor unit and $\coprod$ for its
+categorical coproduct. The following argument applies to the
+$\infty$-category of presentable stable $\infty$-categories and
+colimit-preserving functors. Its tensor product is characterized by
+functors preserving colimits separately in each variable
+(Lurie, \emph{Higher Algebra} (2017), Remarks~4.8.1.18 and~4.8.1.24, Proposition~4.8.2.18).
+For finite families of stable categories, this coproduct is their
+orthogonal direct sum, denoted $\oplus$.
+
+Indeed, in a finite product $\prod_i\mathcal C_i$, every object is the
+finite direct sum of its components. A colimit-preserving functor out of
+this product is therefore determined by its restrictions to the factors.
+Conversely, functors $F_i:\mathcal C_i\to\mathcal D$ extend by
+$(x_i)_i\mapsto\bigoplus_iF_i(x_i)$. This proves the coproduct universal
+property. Distinct factors have zero mapping spectra.
+
+\begin{proposition}[Finite sector decomposition]
+\label{v4-arith:eis:finite-sectors}
+Let $S$ be a finite set. For each $v\in S$, fix a finite set $I_v$ and a
+specified equivalence
+$\mathcal C_v\simeq\coprod_{r\in I_v}\mathcal C_{v,r}$ in $\mathcal V$.
+There is an equivalence, induced by the given sector inclusions,
+\[
+ \bigotimes_{v\in S}\mathcal C_v
+ \simeq
+ \coprod_{\alpha\in\prod_{v\in S}I_v}
+       \bigotimes_{v\in S}\mathcal C_{v,\alpha(v)}.
+\]
+For $S=\varnothing$, both sides are $\mathbf1$.
+\end{proposition}
+
+\begin{proof}
+For one factor the assertion is the specified decomposition. Tensoring
+that decomposition with another factor preserves its coproduct. Applying
+the same fact to the new factor gives the Cartesian product of the two
+index sets. Induction proves the formula. The maps are induced by the
+sector inclusions, so the equivalence respects maps that preserve the
+specified decompositions.
+\end{proof}
+
+Write $D(k)$ for the stable $\infty$-category of unbounded cochain
+complexes of $k$-vector spaces, with quasi-isomorphisms inverted.
+For example, in complex-linear presentable stable categories, put
+$\mathcal A_i=\mathcal B_j=D(\mathbb C)$ and tensor over $D(\mathbb C)$.
+This category is the tensor unit, so the result is $D(\mathbb C)^{\oplus4}$.
+Keeping only the two equal-index factors gives $D(\mathbb C)^{\oplus2}$.
+These categories are not equivalent. Their compact objects have
+Grothendieck groups $\mathbb Z^4$ and $\mathbb Z^2$, respectively.
+Here the Grothendieck group imposes the relation $[y]=[x]+[z]$ for each
+exact triangle $x\to y\to z$. In $\operatorname{Perf}(\mathbb C)$,
+splitting a bounded complex into its cohomology identifies this group
+with $\mathbb Z$, by Euler characteristic. Finite products give the
+stated ranks. An equivalence preserves compact objects and exact
+triangles, hence would preserve these groups.
+
+The restricted tensor construction also depends on the sector of each
+insertion. Let $V$ be a small set. For each $v\in V$, fix a finite nonempty set
+$I_v$, an element $0_v\in I_v$, and a specified decomposition of
+$\mathcal C_v$ as above. Fix a morphism
+$e_v:\mathbf1\to\mathcal C_{v,0_v}$ in $\mathcal V$.
+For finite $S\subset V$, set
+\[
+ \mathcal C_S=\bigotimes_{v\in S}\mathcal C_v.
+\]
+For $S\subset T$, tensor with the morphisms $e_v$, followed by sector
+inclusion, for $v\in T\setminus S$. The monoidal coherence maps give a
+diagram on the poset of finite subsets of $V$. Define its restricted
+product by
+\[
+ \mathcal C^{\mathrm{res}}=\mathop{\operatorname{colim}}_{S\subset V,
+                   \,S\text{ finite}}\mathcal C_S.
+\]
+This is an algebraic colimit in $\mathcal V$. No analytic or topological
+completion is implicit.
+
+Let $I^{\mathrm{fin}}$ consist of functions $\alpha$ with
+$\alpha(v)\in I_v$ whose support
+$\operatorname{supp}(\alpha)=\{v:\alpha(v)\ne0_v\}$ is finite.
+For such $\alpha$, define
+\[
+ \mathcal C^{\mathrm{res}}_\alpha
+ =\mathop{\operatorname{colim}}_{\substack{S\subset V\text{ finite}\\
+                       S\supset\operatorname{supp}(\alpha)}}
+       \bigotimes_{v\in S}\mathcal C_{v,\alpha(v)},
+\]
+with the same distinguished insertions.
+
+\begin{proposition}[Restricted sector decomposition]
+\label{v4-arith:eis:restricted-sectors}
+Under these hypotheses, the sector inclusions induce an equivalence
+\[
+ \mathcal C^{\mathrm{res}}
+ \simeq\coprod_{\alpha\in I^{\mathrm{fin}}}
+                   \mathcal C^{\mathrm{res}}_\alpha.
+\]
+\end{proposition}
+
+\begin{proof}
+For each $\alpha$, extend its displayed diagram to all finite $S$ by
+assigning the initial object when $S$ does not contain its support.
+Call the resulting diagram $E_\alpha$. At a fixed finite $S$, only
+functions supported in $S$ contribute noninitial terms. The finite sector
+decomposition therefore gives
+$\mathcal C_S\simeq\coprod_\alpha E_\alpha(S)$.
+The insertion lies in sector $0_v$, so the transition maps preserve this
+identification of diagrams. Colimits commute with coproducts. Thus
+\[
+ \operatorname{colim}_S\mathcal C_S
+ \simeq\coprod_\alpha\operatorname{colim}_S E_\alpha(S).
+\]
+The finite sets containing a fixed support form a cofinal subposet:
+$S\mapsto S\cup\operatorname{supp}(\alpha)$ supplies a finite upper
+bound compatible with inclusions. Each inner colimit is consequently
+$\mathcal C^{\mathrm{res}}_\alpha$.
+\end{proof}
+
+A general insertion need not lie in one sector. If it has several
+components, its transition maps need not preserve the finite-support
+indexing above. The finite sector formula still holds. The restricted
+colimit must then retain the actual transition maps between those
+finite decompositions.
+
+\subsection{A nonsplit extension}
+
+Orthogonal direct sums exclude extensions between distinct factors.
+The quiver $1\to2$ gives a concrete extension that must be retained when
+orthogonality is absent. Let $k$ be a field, with no restriction on its
+characteristic. A representation is a linear map $u:A\to B$ of
+$k$-vector spaces. A morphism is a pair $(f,g)$ satisfying $gu=u'f$.
+Kernels and cokernels are computed at the two vertices.
+
+Consider
+\[
+ S_1=(k\to0),\qquad S_2=(0\to k),\qquad P=(k\xrightarrow{1}k).
+\]
+There is an exact sequence of representations
+\[
+ 0\longrightarrow S_2\longrightarrow P\longrightarrow S_1
+   \longrightarrow0.
+\]
+It does not split: a morphism $S_1\to P$ has source component
+$f:k\to k$ satisfying $f=0$. It cannot be a section.
+Moreover, $\operatorname{Hom}(P,(A\to B))\cong A$ and
+$\operatorname{Hom}(S_2,(A\to B))\cong B$.
+Both functors are exact, so $P$ and $S_2$ are projective.
+The sequence is therefore a projective resolution of $S_1$.
+Applying $\operatorname{Hom}(-,S_2)$ gives
+\[
+ \operatorname{Hom}(P,S_2)=0,\qquad
+ \operatorname{Hom}(S_2,S_2)=k,\qquad
+ \operatorname{Ext}^1(S_1,S_2)=k.
+\]
+The displayed sequence represents the image of $1\in k$ under the
+connecting isomorphism. Projectivity of $S_2$ also gives
+$\operatorname{Ext}^n(S_2,S_1)=0$ for every $n\ge0$.
+Thus one direction is orthogonal, while the opposite direction carries
+an extension.
+
+Equivalently, these are left modules over
+\[
+ T=\left\{\begin{pmatrix}a&0\\m&b\end{pmatrix}:a,b,m\in k\right\},
+ \qquad
+ \begin{pmatrix}a&0\\m&b\end{pmatrix}
+ \begin{pmatrix}a'&0\\m'&b'\end{pmatrix}
+ =\begin{pmatrix}aa'&0\\ma'+bm'&bb'\end{pmatrix}.
+\]
+The two diagonal idempotents recover $A$ and $B$. The lower-left matrix
+unit acts by $u:A\to B$. Associativity gives exactly the representation
+relations. Replacing this algebra by $k\times k$ removes its lower-left
+entry and the extension above.
+
+\subsection{Stable gluing}
+
+To retain extensions in a stable category, the connecting morphism must
+be part of each object. Let $\mathcal A$ and $\mathcal B$ be stable
+$\infty$-categories and let $F:\mathcal A\to\mathcal B$ be exact.
+All mapping objects below are spectra, written
+$\operatorname{map}_{\mathcal A}(-,-)$ and similarly for other categories.
+The shift $[1]$ denotes suspension. For cochain complexes it has
+$K[1]^n=K^{n+1}$ and differential $-d_K$.
+
+Define $\mathcal G(F)$ to be the pullback
+\[
+ \mathcal G(F)
+ = (\mathcal A\times\mathcal B)
+   \mathop{\times}_{\mathcal B\times\mathcal B}
+   \operatorname{Fun}(\Delta^1,\mathcal B),
+\]
+where the first map is $(a,b)\mapsto(Fa,b)$ and the second records the
+source and target of an arrow. Thus an object is $(a,b,u)$ with
+$u:Fa\to b$. A morphism consists of $f:a\to a'$, $g:b\to b'$, and a
+specified homotopy from $u'Ff$ to $gu$. The pullback retains all higher
+coherences.
+
+\begin{proposition}[Mapping spectra and extensions]
+\label{v4-arith:eis:extension-category}
+The category $\mathcal G(F)$ is stable, with finite limits and colimits
+computed in the two components. For $x=(a,b,u)$ and $x'=(a',b',u')$,
+\begin{equation}\label{v4-arith:eis:sector-gluing-maps}
+ \operatorname{map}_{\mathcal G(F)}(x,x')
+ \simeq\operatorname{fib}\left(
+ \operatorname{map}_{\mathcal A}(a,a')\oplus
+ \operatorname{map}_{\mathcal B}(b,b')
+ \xrightarrow{\ d\ }
+ \operatorname{map}_{\mathcal B}(Fa,b')\right),
+ \qquad d(f,g)=u'Ff-gu.
+\end{equation}
+The exact fully faithful functors
+\[
+ i(b)=(0,b,0),\qquad j(a)=(a,0,0)
+\]
+satisfy
+\[
+ \operatorname{map}(i(b),j(a))=0,\qquad
+ \operatorname{map}(j(a),i(b))
+ \simeq\Omega\operatorname{map}_{\mathcal B}(Fa,b)
+ \simeq\operatorname{map}_{\mathcal B}(Fa[1],b).
+\]
+Every object has a natural exact triangle
+\[
+ i(b)\longrightarrow(a,b,u)\longrightarrow j(a)
+       \xrightarrow{\delta_u}i(b)[1].
+\]
+Under the induced equivalence
+$\operatorname{map}(j(a),i(b)[1])\simeq
+\operatorname{map}_{\mathcal B}(Fa,b)$, the connecting morphism
+$\delta_u$ corresponds to $u$. The choice of sign in this last
+equivalence is fixed by this exact triangle.
+\end{proposition}
+
+\begin{proof}
+Exactness of $F$ allows componentwise finite limits and colimits to
+supply the required arrows. The zero components give a zero object.
+Pushout squares are pullback squares componentwise, proving stability.
+A map between two arrows is a homotopy-commutative square. Its mapping
+space is the homotopy equalizer of the two compositions $u'Ff$ and $gu$.
+The same statement after every suspension gives the homotopy equalizer
+of mapping spectra. In spectra this is the fiber of their difference,
+which proves~\eqref{v4-arith:eis:sector-gluing-maps}.
+
+For two objects in the image of $i$, the formula reduces to
+$\operatorname{map}_{\mathcal B}$. For two in the image of $j$, it
+reduces to $\operatorname{map}_{\mathcal A}$.
+The two cross formulas follow by substituting the zero components.
+In particular, the fiber of $0\to E$ is $\Omega E$, not $E$.
+The cofiber of $i(b)\to(a,b,u)$ is $(a,0,0)$ componentwise.
+Its connecting morphism includes the homotopy encoded by $u$.
+The suspension equivalence identifies that homotopy with $u$ and fixes
+the stated sign convention.
+\end{proof}
+
+The triangle splits precisely when $\delta_u$ is nullhomotopic,
+equivalently when $u$ is nullhomotopic. Indeed, a nullhomotopy identifies
+its fiber with $i(b)\oplus j(a)$. Conversely, a splitting makes the
+connecting morphism zero in the homotopy category. When $F=0$,
+$\mathcal G(F)\simeq\mathcal A\times\mathcal B$.
+Taking $\mathcal A=\mathcal B=D(k)$ and $F=\mathrm{id}$ gives the
+arrow category of complexes. Here $h\mathcal G(F)$ denotes the homotopy category.
+For $a=b=k$ in degree zero, the second
+cross formula gives
+\[
+ \operatorname{Hom}_{h\mathcal G(F)}(j(k),i(k)[1])\cong k.
+\]
+The object $(k,k,1)$ gives its nonzero connecting class. This recovers
+the extension mechanism in the quiver calculation, including its degree.
+
+\subsection{Reconstruction from a semiorthogonal filtration}
+
+The same description applies to a category whose extension structure is
+already specified. Let $\mathcal C$ be stable and let
+$i:\mathcal B\to\mathcal C$ and $j:\mathcal A\to\mathcal C$ be exact
+fully faithful functors. Assume
+\[
+ \operatorname{map}_{\mathcal C}(i(b),j(a))=0
+ \quad\text{for all }a\in\mathcal A,\ b\in\mathcal B.
+\]
+Assume every $x\in\mathcal C$ admits an exact triangle
+\[
+ i(b)\longrightarrow x\longrightarrow j(a)\longrightarrow i(b)[1].
+\]
+These hypotheses state the orientation of the semiorthogonal filtration.
+They are stronger than generation by the two subcategories alone.
+
+Let $\mathcal E$ be the full pullback of the arrow category of
+$\mathcal C$ whose arrows have source $j(a)$ and target $i(b)[1]$.
+Its objects are triples $(a,b,\delta)$ with
+$\delta:j(a)\to i(b)[1]$. Then
+\[
+ \operatorname{map}_{\mathcal E}((a,b,\delta),(a',b',\delta'))
+ \simeq\operatorname{fib}\left(
+ \operatorname{map}_{\mathcal A}(a,a')\oplus
+ \operatorname{map}_{\mathcal B}(b,b')
+ \longrightarrow\operatorname{map}_{\mathcal C}(j(a),i(b')[1])
+ \right),
+\]
+where the map sends $(f,g)$ to $\delta'j(f)-i(g)[1]\delta$.
+
+\begin{proposition}[Semiorthogonal reconstruction]
+\label{v4-arith:eis:semiorthogonal-reconstruction}
+Under these hypotheses, the functor
+\[
+ \mathcal E\longrightarrow\mathcal C,\qquad
+ (a,b,\delta)\longmapsto\operatorname{fib}(\delta)
+\]
+is an equivalence. Suppose, in addition, that $i$ has an exact left
+adjoint $L:\mathcal C\to\mathcal B$. Put $F=(Lj)[-1]$.
+Then $\mathcal C\simeq\mathcal G(F)$, with the given embeddings $i,j$.
+\end{proposition}
+
+\begin{proof}
+A connecting arrow has a fiber triangle
+$i(b)\to\operatorname{fib}(\delta)\to j(a)$.
+The filtration hypothesis gives essential surjectivity.
+To prove full faithfulness, consider two such triangles with middle
+objects $x,x'$. Applying $\operatorname{map}_{\mathcal C}(-,j(a'))$
+to the first triangle gives an equivalence
+\[
+ \operatorname{map}_{\mathcal C}(j(a),j(a'))
+       \xrightarrow{\sim}
+ \operatorname{map}_{\mathcal C}(x,j(a')),
+\]
+because the mapping spectrum from $i(b)$ to $j(a')$ is zero.
+Consequently a map $h:x\to x'$ determines, with contractible choices,
+a map $j(f):j(a)\to j(a')$ and a homotopy between
+$j(f)(x\to j(a))$ and $x\xrightarrow{h}x'\to j(a')$.
+Taking fibers gives a map $i(g):i(b)\to i(b')$.
+Taking cofibers supplies the compatible square of connecting arrows.
+Conversely, a square of connecting arrows gives $h$ by taking fibers.
+The fiber and cofiber universal properties make these constructions
+inverse on mapping spaces, including all their higher homotopies.
+Thus the functor is fully faithful.
+
+For the additional assertion, adjunction and exactness give
+\[
+ \operatorname{map}_{\mathcal C}(j(a),i(b)[1])
+ \simeq\operatorname{map}_{\mathcal B}(Lj(a),b[1])
+ \simeq\operatorname{map}_{\mathcal B}(F(a),b).
+\]
+This natural equivalence identifies objects, squares, and their higher
+coherences in $\mathcal E$ with those in $\mathcal G(F)$.
+\end{proof}
+
+In particular, a recollement can supply such a filtration without
+supplying an orthogonal direct sum. Use the convention
+$i_*:\mathcal B\to\mathcal C$ for the closed embedding and
+$j_!:\mathcal A\to\mathcal C$ for the open extension functor.
+The recollement adjunctions include $i^*\dashv i_*\dashv i^!$ and
+$j_!\dashv j^*\dashv j_*$. Its defining vanishing $j^*i_*=0$ gives
+$\operatorname{map}(j_!a,i_*b)=0$, and its exact triangle is
+\[
+ j_!j^*x\longrightarrow x\longrightarrow i_*i^*x
+               \longrightarrow j_!j^*x[1].
+\]
+The first assertion of the proposition applies with the roles of the
+closed and open categories interchanged. It retains the connecting
+arrow $i_*i^*x\to j_!j^*x[1]$. It does not require a left adjoint to
+$j_!$ or assert one exists.
+
+The semiorthogonal description becomes an orthogonal direct sum if the
+other cross mapping spectrum also vanishes. Then every connecting
+spectrum is zero, and $\mathcal E\simeq\mathcal A\times\mathcal B$.
+Without this vanishing, tensor assembly must retain the gluing functors
+or connecting spectra and their composition data. The two sector names
+alone do not determine the category.
+
+For automorphic categories, applying these propositions requires actual
+local decompositions or semiorthogonal filtrations and specified
+insertion functors. An identification with a global automorphic category
+also requires a comparison functor preserving the Hecke actions,
+parameter constraints, and extension data. Neither tensor distributivity
+nor semiorthogonal reconstruction constructs that comparison functor.
+
+\section{Module (E3): Assembly Compatible with Cuspidal LACD}
+\label{v4-arith:w6-d:E3}
+
+\subsection{Full Statement}
+
+\begin{theorem}[conditional Eisenstein categorical assembly]
+\label{v4-arith:w6-d:thm:LACD-Eisenstein-nonexc}
+Suppose the actual local categories, their pointed restricted tensor
+construction and global automorphic enhancement are supplied. Impose
+the global Hecke-character and common-parameter conditions and the
+analytic domains of the intended comparison. Suppose both sides have
+specified orthogonal decompositions, or specified finite semiorthogonal
+filtrations retaining the connecting spectra. Require component
+equivalences and coherent natural equivalences of the connecting
+mapping-spectrum bifunctors, compatible with composition and each
+successive filtration stage. For the restricted sector formula,
+require the pointings to lie in their specified single sectors;
+otherwise retain the entire finite-stage decompositions and their
+actual transition maps, together with a compatible equivalence of
+these filtered diagrams. Then these data
+induce an equivalence
+\begin{equation}
+\label{v4-arith:w6-d:eq:LACD-Eisenstein-nonexc}
+ \left(\bigotimes_v'\mathcal C_v\right)^{\mathrm{glob,nonexc}}
+ \xrightarrow{\sim}
+ \mathrm D^{\mathrm{sph\text{-}fin}}([GL_2])^{\mathrm{nonexc}}.
+\end{equation}
+Here the global superscript imposes the specified automorphic support;
+independent local families do not impose it automatically. The
+non-exceptional condition uses the actual local degeneration divisors
+and global synthesis domain. For the symmetric unramified family the
+local degeneration strata lie off the unitary axis.
+To obtain the structured comparison, require compatibility with:
+\begin{enumerate}
+\item finite-place Whittaker functors;
+\item Bernstein-centre and cross-prime Hecke actions;
+\item the archimedean $(\mathfrak g,K_\infty)$ action;
+\item normalized intertwiners, with their domains and Weyl coherences;
+\item global Paley--Wiener synthesis and its measure normalization.
+\end{enumerate}
+The cuspidal, residual and continuous category comparisons remain
+separate hypotheses; their Hilbert spectral names do not construct
+the local categorical decomposition.
+\end{theorem}
+\begin{proof}
+First retain the conditional cuspidal globalization of
+Theorem~\ref{v4-arith:w5-e:thm:LACD-cuspidal}. Second supply the
+residual comparison of Theorem~\ref{v4-arith:w6-d:thm:res-lift}
+on the chosen residual family. Third supply the enhanced continuous
+comparison of Theorem~\ref{v4-arith:w6-d:thm:cont-lift}.
+Fourth, in the orthogonal case apply the finite sector formula at
+each stage. For sector-pure pointings the restricted sector formula
+then applies. For impure pointings, take the filtered colimit of the
+specified equivalences of full finite-stage diagrams, retaining their
+actual transition maps. In the semiorthogonal case use
+Proposition~\ref{v4-arith:eis:semiorthogonal-reconstruction}; the
+component equivalences and compatibility of connecting spectra induce
+an equivalence of the arrow pullback categories, hence of the original
+categories. Iterate this argument for the stipulated finite filtration.
+Finally the five specified natural compatibility maps give the stated
+structured comparison. The local operator or Hilbert orthogonality
+alone supplies none of these component or gluing hypotheses.
+\end{proof}
+
+\subsection{Corollaries and degeneration data}
+\begin{corollary}[conditional adelic descent on the specified domain]
+\label{v4-arith:w6-d:cor:full-LACD-nonexc}
+Under all the categorical, analytic, global-support and gluing hypotheses
+of Theorem~\ref{v4-arith:w6-d:thm:LACD-Eisenstein-nonexc}, its
+comparison realizes the intended $\mathrm L_{\mathrm{ACD}}$ on that
+domain. Extending it to other parameters requires their actual
+intertwiners and extension data.
+\end{corollary}
+\begin{proof}
+The theorem identifies the two specified global carriers and their
+five structures. Restricting those maps to the stated domain gives
+this assertion; no omitted local or global sector is inferred.
+\end{proof}
+
+\begin{conjecture}[arithmetic comparison at degeneration strata]
+\label{v4-arith:w6-d:conj:exceptional-unitary-crossing}
+Construct a coefficient-compatible enhanced comparison between the
+kernel/image extension data at the actual reducibility strata of local
+induction and the corresponding arithmetic deformation strata.
+For symmetric unramified finite-place induction these are
+$z=q^{\pm1}$, equivalently the periodic translates of $s=\pm1$.
+There is no reducibility at $s=0$ and neither family meets the unitary
+axis. Global Eisenstein residue objects require their own global
+parameter and support calculation. The intended extension to full
+adelic categorical descent must match full derived morphisms and
+composition, including but not limited to the degree-one class.
+A coefficient bridge from the complex analytic family to the
+$p$-adic determinant-identified spectral stack is part of this problem.
+\end{conjecture}
+\begin{remark}[the domain of the degeneration comparison]
+\label{v4-arith:w6-d:rem:exceptional-domain}
+The smooth local kernel and image are explicit in
+Proposition~\ref{v4-arith:eis:reducibility}. The quiver and stable
+gluing calculations above show how a connecting class changes a
+category even when its two pieces are fixed. They do not identify that
+class with an Emerton--Gee cotangent class. The wild comparison in
+Conjecture~\ref{v4-arith:f1a3-BH:conj:Paskunas-wild-ext} is an
+analogous arithmetic question with its own coefficient data; neither
+comparison follows from equality of extension dimensions.
+\end{remark}
+
+\subsection{Compatibility with the Langlands--Shahidi normalisation}
+
+\begin{proposition}[conditional Koszul--Petersson transport]
+\label{v4-arith:w6-d:prop:W6C-crossref}
+Suppose a global synthesis transform $T$ on a specified common test
+space and a spectral measure $\mu$ have been constructed, and the
+Koszul pairing and Petersson pairing both pull back under $T$ to
+$\int f\overline g\,d\mu$ with the same scalar normalization.
+Then $T$ identifies these pairings on that space. Extending this
+identification to completions additionally requires density and
+continuity for the stated norms.
+The normalized local operator $R_z$ is one input to constructing
+such data; its unitarity is not a formula for $\mu$.
+\end{proposition}
+\begin{proof}
+Both pullbacks have the same integral value for each pair of tests.
+If the common test space is dense and the pairings continuous, the
+equality extends by taking convergent test sequences. This uses the
+stated measure and normalization hypotheses, not an identification
+of an operator with an absolute-value scalar.
+\end{proof}
+
+\section{Comparison and Hypotheses}
+\label{v4-arith:w6-d:source-comparison}
+The representation-theoretic inputs have different mathematical roles.
+Flath (1979) factorizes actual cuspidal representations. Bernstein
+(1988) and M\oe glin--Waldspurger (1995), Section~III, concern the
+cuspidal spectrum. Langlands (1976), Shahidi (1990, 2010), Arthur
+(2013), Harish-Chandra (1976), Wallach (1992) and
+M\oe glin--Waldspurger, Sections~II and~IV, concern global or local
+harmonic analysis with their respective quotient, level and character
+hypotheses. Lurie's presentable tensor products provide a categorical
+ambient after its objects and insertion functors have been constructed.
+
+The unramified calculation fixes $|\varpi|=q^{-1}$, additive measure
+$\operatorname{vol}(\mathcal O)=1$, normalized induction and the
+spherical vector. Ramified and archimedean epsilon conventions and a
+global product remain additional data. The relation $s=2u-1$ and
+any measure Jacobian must be included when comparing to a classical
+Eisenstein parameter. The global epsilon product need not be $1$.
+
+The algebraic Weyl construction is a specified coherent involution on
+coefficient complexes and smooth families, with one simultaneous swap
+after common-parameter base change. It does not provide the analytic
+sheaf theory, Hecke-finiteness or a global automorphic essential image.
+A Hilbert direct sum does not make its enhanced categories orthogonal.
+The required mapping spectra and connecting arrows are the objects of
+the gluing propositions above. The arithmetic comparison at degeneration
+strata is additional even after all these global objects exist.
+
+\subsection{Composite with the cuspidal comparison}
+\begin{theorem}[conditional composite adelic comparison]
+\label{v4-arith:w6-d:thm:composite-LACD}
+Given the cuspidal globalization, residual comparison and analytic
+continuous-spectrum comparison, together with the complete component
+and extension compatibility hypotheses of
+Theorem~\ref{v4-arith:w6-d:thm:LACD-Eisenstein-nonexc}, their
+assembly gives the adelic categorical comparison on the specified
+global support and parameter domain. Extension to the full arithmetic
+F1 comparison also requires its local categorical and geometric
+Bernstein-centre maps.
+\end{theorem}
+\begin{proof}
+Apply the assembly theorem to these particular components and gluing
+maps. Its proof retains all mixed tensor terms or the actual
+semiorthogonal extension data. Composing with the additional specified
+local and geometric comparisons gives their conditional consequence.
+\end{proof}
+
+\section{The Eisenstein Comparison Problem}
+\label{v4-arith:w6-d:residual-table}
+\begin{conjecture}[the arithmetic comparison beyond the local constructions]
+\label{v4-arith:w6-d:prop:F1-table-after-w6d}
+The full F1 construction must retain the following problems:
+\begin{enumerate}
+\item ordinary and non-ordinary local DEG essential images at $p\ge5$;
+\item restrictions outside the global Taylor--Wiles hypotheses;
+\item actual small-prime block functors, support and full derived
+comparison, including the wild extension-class map;
+\item global Eisenstein synthesis, analytic enhancement and its
+categorical comparison, including the degeneration data of
+Conjecture~\ref{v4-arith:w6-d:conj:exceptional-unitary-crossing};
+\item the actual global restricted-tensor support, overlap and extension
+diagram and its local-global comparison;
+\item the geometric Bernstein-centre gluing constructions in
+Chapter~\ref{v4-arith:bcglue-core}.
+\end{enumerate}
+The local results here do not reduce the full Eisenstein question to
+two extension classes. Proving exhaustion by any list of conditions
+requires the common carrier and its gluing diagram.
+\end{conjecture}
+
+\section{Eisenstein Boundary}
+\label{v4-arith:w6-d:summary}
+The normalized unramified operator is constructed on all smooth
+vectors, with maximal Hilbert domain stated and a unitary extension
+on the unit circle. Its equal-character value is regular; reducibility
+occurs at $z=q^{\pm1}$. The coefficient category, coherent Weyl
+descent and common symmetric finite-place family are algebraic
+constructions. Their analytic and automorphic realizations remain
+separate. The finite and restricted tensor formulas include mixed
+sectors. Stable reconstruction retains the connecting spectrum when
+orthogonality is absent. These results provide actual objects and
+maps for the conditional global comparison; they do not establish
+that comparison or a full global-centre identification.
+
+\subsection{References for the local constructions}
+Bernstein--Zelevinsky, \emph{Induced representations of reductive
+$p$-adic groups I}, Ann.\ Sci.\ \'Ecole Norm.\ Sup.\ (4) 10 (1977),
+441--472, Theorem~4.2, p.~454, with Sections~1.8(a), p.~444,
+and~2.2--2.3, p.~446, supplies the irreducibility implication used above.
+Lurie, \emph{Higher Algebra}, September~18, 2017, Sections~4.8.1--4.8.2,
+Theorem~4.7.3.5, p.~685, Theorem~7.1.2.13, pp.~1212--1213,
+and Definition~7.2.4.1 and Proposition~7.2.4.2, pp.~1260--1261,
+supplies the module, tensor and monadic inputs. The Stacks Project,
+Section~15.80, Tag~07LQ, Lemma~15.80.1 and Proposition~15.80.3,
+identifies perfect complexes over ordinary rings.

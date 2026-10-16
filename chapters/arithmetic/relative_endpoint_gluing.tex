@@ -1,0 +1,651 @@
+\chapter{Relative products and all-arity gluing}
+\label{v4-arith:gluing:chapter}
+
+A relative cocycle consists of a cocycle and a primitive of its
+restriction. Multiplication therefore has a choice: use the primitive
+of the first input, or that of the second. The resulting products agree
+on cohomology, but the chain comparison contains ordered products of
+arbitrarily many primitives. These higher terms also change module
+actions. They must be retained when relative classes are composed.
+
+We construct the comparison over an arbitrary commutative ring. Its
+formulas use finite sums on each tensor word and require no division.
+This gives an integral comparison of relative cochains, their modules,
+and their bimodules. Passing to an inverse limit of finite coefficient
+rings preserves the comparison. Passing instead to an unrestricted
+product over tensor lengths can destroy its continuity.
+
+\section{The two endpoint products}
+\label{v4-arith:gluing:sec:products}
+
+Let \(R\) be a commutative ring. All complexes are cohomological, their
+differentials have degree one, and tensor products use the Koszul rule.
+Fix a strict cospan of associative differential graded \(R\)-algebras
+\[
+ A\xrightarrow{f}B\xleftarrow{g}C.
+\]
+The algebras may be nonunital. Define the relative complex
+\begin{equation}\label{v4-arith:gluing:eq:complex}
+ P^n=A^n\oplus C^n\oplus B^{n-1},\qquad
+ D(a,c,y)=(d_Aa,d_Cc,f(a)-g(c)-d_By).
+\end{equation}
+A cocycle \((a,c,y)\) thus includes a specified primitive \(y\) of
+\(f(a)-g(c)\). The identity \(D^2=0\) follows from the chain-map
+identities for \(f\) and \(g\). In the derived category of complexes,
+\(P\) is the fibre of \(f-g:A\oplus C\to B\). This statement specifies
+its underlying complex; its multiplicative structure is the additional
+construction below.
+
+For homogeneous \(x=(a,c,y)\in P^p\) and \(x'=(a',c',y')\), put
+\begin{equation}\label{v4-arith:gluing:eq:products}
+ \begin{split}
+ \mu_L(x,x')&=(aa',cc',(-1)^pf(a)y'+yg(c')),\\
+ \mu_R(x,x')&=(aa',cc',yf(a')+(-1)^pg(c)y').
+ \end{split}
+\end{equation}
+The symbols \(L\) and \(R\) name these displayed choices throughout the
+chapter. In the relative case \(C=0\), their third components reduce to
+\((-1)^pf(a)y'\) and \(yf(a')\).
+
+\begin{proposition}\label{v4-arith:gluing:prop:products}
+Both \((P,D,\mu_L)\) and \((P,D,\mu_R)\) are differential graded
+associative algebras. If \(A,B,C\) and both maps are unital, their common
+unit is \(e=(1_A,1_C,0)\). The bilinear map of degree minus one
+\[
+ K(x,x')=(0,0,(-1)^{p+1}yy')
+\]
+satisfies
+\begin{equation}\label{v4-arith:gluing:eq:homotopy}
+ DK+K(D\otimes1+1\otimes D)=\mu_L-\mu_R.
+\end{equation}
+Consequently the two products induce the same multiplication on
+\(H^*(P)\).
+\end{proposition}
+
+\begin{proof}
+Write \(|x'|=q\). The third component of either bracketing of the left
+product on \(x,x',x''\) is
+\[
+ (-1)^{p+q}f(a)f(a')y''
+ +(-1)^pf(a)y'g(c'')+yg(c')g(c'').
+\]
+For the right product the common third component is
+\[
+ yf(a')f(a'')+(-1)^pg(c)y'f(a'')
+                 +(-1)^{p+q}g(c)g(c')y''.
+\]
+The other components are associative because \(A\) and \(C\) are.
+In the left Leibniz identity the two mixed terms \(f(a)g(c')\)
+cancel; the remaining terms give the differential of the third
+component in \eqref{v4-arith:gluing:eq:products}. In the right identity
+the cancelling terms are \(g(c)f(a')\). This proves compatibility with
+\(D\). Substitution proves both unit identities.
+
+The third components of the three terms on the left of
+\eqref{v4-arith:gluing:eq:homotopy} are
+\[
+ \begin{split}
+ &(-1)^p(d_By)y'-y(d_By'),\\
+ &(-1)^p\bigl(f(a)-g(c)-d_By\bigr)y',\\
+ &-y\bigl(f(a')-g(c')-d_By'\bigr).
+ \end{split}
+\]
+Their sum is the difference of the two products. On cocycles this
+difference is the boundary \(DK(x,x')\).
+\end{proof}
+
+The left product also has a finite interval model. Let \(I_R\) have
+basis \(e_0,e_1\) in degree zero and \(h\) in degree one, with
+\[
+ de_0=-h,\quad de_1=h,\quad dh=0,
+ \qquad e_ie_j=\delta_{ij}e_i,
+ \qquad e_0h=h=he_1,
+\]
+and \(e_1h=he_0=h^2=0\). Its unit is \(e_0+e_1\). The evaluations
+\(\operatorname{ev}_i:I_R\to R\) send \(e_i\) to one and the other
+basis elements to zero. The graded algebra is the path algebra of one
+arrow from \(0\) to \(1\), placed in degree one. Its differential is
+the graded commutator with \(h\), so Leibniz and \(d^2=0\) follow
+from \(h^2=0\). The constant inclusion \(R\to I_R\)
+is a quasi-isomorphism: after quotienting by \(R(e_0+e_1)\), the
+differential identifies two free rank-one modules.
+
+\begin{proposition}\label{v4-arith:gluing:prop:interval}
+The map
+\[
+ (a,c,y)\longmapsto
+ \bigl(a,c,f(a)e_0+g(c)e_1+(-1)^p yh\bigr),\qquad |(a,c,y)|=p,
+\]
+is a strict isomorphism from \((P,D,\mu_L)\) onto the dg algebra
+\[
+ \left\{(a,c,\beta)\in A\times C\times(B\otimes_R I_R):
+       \operatorname{ev}_0\beta=f(a),\quad
+       \operatorname{ev}_1\beta=g(c)\right\}.
+\]
+Here evaluations act on the interval factor, and \(be_i\) and \(bh\)
+denote tensors in \(B\otimes_R I_R\).
+\end{proposition}
+
+\begin{proof}
+Every triple in the target has the indicated unique form. Its edge
+coefficient after differentiation is
+\((-1)^{p+1}(f(a)-g(c)-d_By)\).
+In a product of degrees \(p,q\), the edge coefficient is
+\[
+ (-1)^qf(a)y'+(-1)^{p+q}yg(c').
+\]
+This is \((-1)^{p+q}\) times the third component of \(\mu_L\).
+\end{proof}
+
+\section{The integral bar comparison}
+\label{v4-arith:gluing:sec:bar}
+
+Let \(s:P\to P[1]\) have degree minus one, and write \(W=sP\).
+Thus \(|sx|=|x|-1\); the third coordinate of
+\(s(a,c,y)\) identifies with \(y\in B\) in this degree. The tensor
+coalgebra is
+\[
+ T_R^c(W)=\bigoplus_{n\geq0}W^{\otimes_R n}.
+\]
+Its coproduct \(\Delta\) cuts a word at every position, including the
+two ends. Its coaugmentation \(\eta:R\to T_R^c(W)\) includes the empty
+word, and its counit \(\epsilon\) projects onto that word. On the
+kernel of \(\epsilon\), removing the two end cuts gives the reduced
+coproduct. The property that a sufficiently long iteration kills each
+element of this kernel is called
+\emph{conilpotence}; the tensor coalgebra has this property.
+
+Define \(\mathcal B_L\) and \(\mathcal B_R\) to be this coalgebra with
+degree-one coderivations determined by
+\begin{equation}\label{v4-arith:gluing:eq:bar-signs}
+ b_1(sx)=-sDx,\qquad
+ b_{2,L/R}(sx,sx')=(-1)^{|x|}s\mu_{L/R}(x,x').
+\end{equation}
+Insertion of either component after \(w_1,\ldots,w_j\) has sign
+\((-1)^{|w_1|+\cdots+|w_j|}\). All other components vanish, and the
+differential of the empty word is zero. The dg algebra identities imply
+\(b_L^2=b_R^2=0\).
+
+These are the bars of the underlying nonunital algebras. Equivalently,
+they are the reduced bars of their unitizations \(U_{L/R}=R\oplus P\),
+with multiplication
+\[
+ (r,p)(r',p')=(rr',rp'+r'p+\mu_{L/R}(p,p'))
+\]
+and augmentation given by projection onto \(R\). No augmentation of \(P\) is chosen.
+No flatness or boundedness assumption is needed for these coalgebras.
+
+\begin{theorem}[Integral endpoint comparison]
+\label{v4-arith:gluing:thm:comparison}
+There are inverse dg coalgebra isomorphisms
+\[
+ F:\mathcal B_L\longrightarrow\mathcal B_R,
+ \qquad G:\mathcal B_R\longrightarrow\mathcal B_L.
+\]
+Their components with output in \(W\) are
+\begin{equation}\label{v4-arith:gluing:eq:taylor}
+ \begin{split}
+ F_1&=G_1=1_W,\\
+ F_n(w_1,\ldots,w_n)&=s(0,0,y_1\cdots y_n),\qquad n\geq2,\\
+ G_n&=(-1)^{n-1}F_n,\qquad n\geq2,
+ \end{split}
+\end{equation}
+where \(w_i=s(a_i,c_i,y_i)\). Both maps preserve the coaugmentation,
+counit and increasing filtration by tensor length. They commute with
+strict maps of cospans and ordinary scalar extension. If the cospan is
+unital, every higher component vanishes when an input is \(se\).
+In particular, the two endpoint algebras are strictly unital
+\(A_\infty\)-isomorphic in that case.
+\end{theorem}
+
+\begin{proof}
+On an input of length \(N\), define \(F\) by summing over all partitions
+into consecutive nonempty blocks. Apply \(F_i\) to a block of length
+\(i\), and tensor the block values in their original order. Set
+\(F(1)=1\). Cutting an output between blocks is equivalent to cutting
+the input there and partitioning its two pieces. This proves the
+coalgebra identity. Every sum is finite, and no output is longer than
+the input.
+
+For the chain identity, set \(|w_i|=q_i\) and
+\(Q_j=q_1+\cdots+q_j\), with \(Q_0=0\). Write \(b_1^{\otimes}\)
+for the tensor differential on an input word. Since
+\[
+ \bigl(b_1s(a,c,y)\bigr)_B=d_By-f(a)+g(c),
+\]
+the differential of the ordered product cancels its internal
+\(d_By_i\) terms against \(F_nb_1^{\otimes}\). For \(n\geq2\), the
+third component of \(b_1F_n-F_nb_1^{\otimes}\) is
+\begin{equation}\label{v4-arith:gluing:eq:unary-defect}
+ \sum_{j=1}^n(-1)^{Q_{j-1}}
+ y_1\cdots y_{j-1}\bigl(f(a_j)-g(c_j)\bigr)y_{j+1}\cdots y_n.
+\end{equation}
+At arity two,
+\[
+ \begin{split}
+ (b_{2,L})_B&=f(a_1)y_2-(-1)^{q_1}y_1g(c_2),\\
+ (b_{2,R})_B&=-(-1)^{q_1}y_1f(a_2)+g(c_1)y_2.
+ \end{split}
+\]
+Their difference is exactly \eqref{v4-arith:gluing:eq:unary-defect}.
+At arity \(n\geq3\), an interior split in
+\(b_{2,R}(F_i,F_{n-i})\) has two purely local outputs and is zero.
+The two end splits give
+\[
+ g(c_1)y_2\cdots y_n
+       -(-1)^{Q_{n-1}}y_1\cdots y_{n-1}f(a_n).
+\]
+Adding these to \eqref{v4-arith:gluing:eq:unary-defect} leaves
+\[
+ \begin{split}
+ &\sum_{j=1}^{n-1}(-1)^{Q_{j-1}}
+       y_1\cdots y_{j-1}f(a_j)y_{j+1}\cdots y_n\\
+ &\quad-\sum_{j=2}^{n}(-1)^{Q_{j-1}}
+       y_1\cdots y_{j-1}g(c_j)y_{j+1}\cdots y_n.
+ \end{split}
+\]
+This is the third component of the source binary contribution
+\(F_{n-1}b_{2,L}\), including its insertion signs. The other components
+vanish in these arities. Thus \(b_RF=Fb_L\) after projection to \(W\).
+The two sides are coderivations relative to \(F\), so this projection
+determines their equality. Explicitly, induction on input length makes
+their remaining difference primitive; a primitive of the tensor
+coalgebra with zero projection to \(W\) is zero.
+
+Construct \(G\) by the same partition formula. On length \(n\geq2\),
+the component in \(W\) of \(FG\) is the local product
+\(s(0,0,y_1\cdots y_n)\) times
+\[
+ \sum_{k=1}^n\binom{n-1}{k-1}(-1)^{n-k}=0.
+\]
+For \(GF\) the sign is \((-1)^{k-1}\), and the sum again vanishes.
+The linear components are identities. The uniqueness of coalgebra maps
+with prescribed components now gives \(FG=GF=1\); hence \(G\) is also a
+chain map.
+
+A strict map of cospans takes an ordered product of the \(y_i\) to the
+ordered product of their images. Ordinary scalar extension preserves
+the same formulas and finite sums. Finally the local coordinate of
+\(e\) is zero. This proves the unit assertion.
+\end{proof}
+
+The comparison contains more than the binary homotopy
+\eqref{v4-arith:gluing:eq:homotopy}. For example, its arity-three
+component is \(F_3(w_1,w_2,w_3)=s(0,0,y_1y_2y_3)\).
+Let \(\tau_{L/R}:\mathcal B_{L/R}\to P\) be the degree-one map
+that desuspends the length-one part and kills every other length.
+Then \(\tau_RF\) evaluates every higher product in
+\eqref{v4-arith:gluing:eq:taylor}. Those terms carry the change of
+endpoint into representations.
+
+\section{Transporting all module operations}
+\label{v4-arith:gluing:sec:modules}
+
+For a graded \(R\)-module \(M\), the tensor product
+\(M\otimes_R T_R^c(W)\) is a right comodule by deconcatenation on the
+word factor. Denote its coaction by \(\rho\). A right \(A_\infty\)
+module over \((P,\mu_R)\) is a degree-one map \(Q_M\) satisfying
+\[
+ \rho Q_M=(Q_M\otimes1+1\otimes b_R)\rho,
+ \qquad Q_M^2=0.
+\]
+It is determined by its components
+\(\beta_n:M\otimes_R W^{\otimes_R n}\to M\) of degree one, including
+the differential \(\beta_0\). On a word, \(Q_M\) sums the operations
+\(\beta_j\) on the module entry and the first \(j\) factors, together
+with \((-1)^{|m|}m\otimes b_R\) on the word. All these sums are finite.
+The graded maps in the module category are the graded comodule maps
+\(T:M\otimes\mathcal B_R\to N\otimes\mathcal B_R\), with
+differential \(Q_NT-(-1)^{|T|}TQ_M\).
+
+In these unsuspended-module conventions a strict dg right action is
+encoded by
+\begin{equation}\label{v4-arith:gluing:eq:module-sign}
+ \beta_0(m)=d_Mm,\qquad
+ \beta_1(m;sx)=(-1)^{|m|+1}mx,\qquad \beta_n=0\quad(n>1).
+\end{equation}
+The minus sign is fixed by \eqref{v4-arith:gluing:eq:bar-signs}:
+on \(m\otimes sx\otimes sx'\), the two action terms in \(Q_M^2\)
+have opposite coefficients \((-1)^{|x|}\) and
+\((-1)^{|x|+1}\). On one bar factor the identity is the dg module
+Leibniz rule.
+
+Strict unitality means \(\beta_1(m;se)=(-1)^{|m|+1}m\) and
+vanishing of \(\beta_n\), for \(n>1\), when a word input is \(se\).
+A normalized map has the analogous vanishing in every positive
+word arity.
+
+\begin{theorem}\label{v4-arith:gluing:thm:modules}
+Pullback along \(F\) gives an isomorphism of the dg categories of
+right \(A_\infty\) modules over \((P,\mu_R)\) and \((P,\mu_L)\),
+with inverse pullback along \(G\). It leaves the underlying complex
+unchanged. Its positive-arity operations are
+\begin{equation}\label{v4-arith:gluing:eq:module-pullback}
+ \beta_n^F(m;w_1,\ldots,w_n)=
+ \sum_{\substack{i_1+\cdots+i_k=n\\i_j>0}}
+ \beta_k\bigl(m;F_{i_1}(w_1,\ldots),\ldots,
+                         F_{i_k}(\ldots,w_n)\bigr).
+\end{equation}
+For unital cospans it preserves strict units and normalized module maps.
+\end{theorem}
+
+\begin{proof}
+Let \(C_F^M=1_M\otimes F\) and \(C_G^M=1_M\otimes G\). Define
+\[
+ Q_M^F=C_G^M Q_M C_F^M.
+\]
+The identity \(b_RF=Fb_L\) transports the comodule identity to one
+over \(b_L\), and \((Q_M^F)^2=C_G^M Q_M^2 C_F^M=0\).
+Projection to the length-zero module factor satisfies
+\(\operatorname{pr}_M C_G^M=\operatorname{pr}_M\). Its composite with
+\(Q_M^F\) is therefore exactly
+\eqref{v4-arith:gluing:eq:module-pullback}. No extra signs occur because
+every \(F_i\) has degree zero.
+
+A homogeneous comodule map \(T:M\otimes\mathcal B_R\to
+N\otimes\mathcal B_R\) is sent to \(C_G^NTC_F^M\). Conjugation
+preserves composition and the differential on maps
+\(Q_NT-(-1)^{|T|}TQ_M\). Conjugation by the inverse maps reverses
+both constructions. This proves the assertion for the entire dg
+category.
+
+A unit input in a surviving partition must be a singleton,
+since every higher \(F_i\) vanishes on it. The unit identities for
+the outer operation then give exactly these properties after pullback.
+The same argument applies to \(G\).
+\end{proof}
+
+A strict action can acquire operations in every arity:
+\(\beta_n^F(m;w_1,\ldots,w_n)=\beta_1(m;F_n(w_1,\ldots,w_n))\).
+The identity linear term of \(F\) therefore does not permit the module
+comparison to be replaced by the identity on its underlying complex.
+
+\section{Relative bimodules}
+\label{v4-arith:gluing:sec:bimodules}
+
+An interface has actions on both sides. To compare them, fix two cospans
+\[
+ A_0\xrightarrow{f_A}A_1\xleftarrow{g_A}A_2,
+ \qquad E_0\xrightarrow{f_E}E_1\xleftarrow{g_E}E_2.
+\]
+Let \(M_i\) be a dg \(A_i\)--\(E_i\) bimodule, and choose chain maps
+\(\phi:M_0\to M_1\), \(\psi:M_2\to M_1\) with
+\[
+ \phi(ame)=f_A(a)\phi(m)f_E(e),\qquad
+ \psi(ame)=g_A(a)\psi(m)g_E(e)
+\]
+on the respective domains. Write \(P_A,P_E\) for their relative
+algebra complexes, and put
+\[
+ P_M^n=M_0^n\oplus M_2^n\oplus M_1^{n-1},\qquad
+ D_M(m_0,m_2,v)=(dm_0,dm_2,\phi(m_0)-\psi(m_2)-dv).
+\]
+For \(x=(a_0,a_2,y)\in P_A^p\), \(m=(m_0,m_2,v)\in P_M^q\),
+and \(u=(u_0,u_2,z)\in P_E\), the endpoint actions are
+\begin{align*}
+ x\cdot_Lm&=(a_0m_0,a_2m_2,(-1)^pf_A(a_0)v+y\psi(m_2)),\\
+ x\cdot_Rm&=(a_0m_0,a_2m_2,y\phi(m_0)+(-1)^pg_A(a_2)v),\\
+ m\cdot_Lu&=(m_0u_0,m_2u_2,(-1)^q\phi(m_0)z+vg_E(u_2)),\\
+ m\cdot_Ru&=(m_0u_0,m_2u_2,vf_E(u_0)+(-1)^q\psi(m_2)z).
+\end{align*}
+For each choice of endpoint these make \(P_M\) a dg bimodule for the
+matching products on \(P_A\) and \(P_E\). The proof below includes
+the compatibility of the two actions.
+
+The corresponding bar bicomodule is
+\[
+ \mathcal B^M_{L/R}
+ =T_R^c(sP_A)\otimes_R sP_M\otimes_R T_R^c(sP_E).
+\]
+Its left and right coactions cut before or after the middle entry.
+Its differential inserts the unary differentials, the algebra
+products, and the two actions, with the suspended conventions of
+\eqref{v4-arith:gluing:eq:bar-signs} on every entry, including \(sP_M\).
+In particular this middle entry is suspended, unlike the module entry
+in \eqref{v4-arith:gluing:eq:module-sign}.
+
+\begin{theorem}\label{v4-arith:gluing:thm:bimodules}
+There is a dg bicomodule isomorphism
+\(\Phi:\mathcal B^M_L\to\mathcal B^M_R\) over the coalgebra maps
+\(F_A,F_E\) of Theorem~\ref{v4-arith:gluing:thm:comparison}. Its
+component with no algebra inputs is the identity on \(sP_M\). For
+\(r+t\geq1\), its component with \(r\) left and \(t\) right inputs is
+\begin{equation}\label{v4-arith:gluing:eq:bimodule-taylor}
+ \Phi_{r,t}(sx_1,\ldots,sx_r;sm;su_1,\ldots,su_t)
+ =s(0,0,y_1\cdots y_r\,v\,z_1\cdots z_t).
+\end{equation}
+Its inverse has higher components
+\(\Psi_{r,t}=(-1)^{r+t}\Phi_{r,t}\) and identity linear term.
+The maps commute with strict diagram maps and ordinary scalar
+extension. They preserve strict units in the algebra inputs when
+the cospans and bimodules are unital.
+\end{theorem}
+
+\begin{proof}
+Form the triangular dg algebras
+\[
+ T_i=\begin{pmatrix}A_i&M_i\\0&E_i\end{pmatrix},\qquad
+ \begin{pmatrix}a&m\\0&u\end{pmatrix}
+ \begin{pmatrix}a'&m'\\0&u'\end{pmatrix}
+ =\begin{pmatrix}aa'&am'+mu'\\0&uu'\end{pmatrix}.
+\]
+Their entrywise differential has the dg algebra Leibniz property
+because the two module actions do. The maps \(\phi,\psi\), together
+with the algebra maps, give a strict cospan \(T_0\to T_1\leftarrow T_2\).
+Its relative complex has diagonal components \(P_A,P_E\) and
+off-diagonal component \(P_M\). The two endpoint products give
+exactly the four displayed actions. Their dg bimodule identities
+are thus the corresponding entries of the dg algebra identities.
+
+In the tensor bar of this triangular relative algebra, take words
+with upper-left entries, then one upper-right entry, then lower-right
+entries. They form \(\mathcal B^M_{L/R}\), and its differential
+preserves this submodule. Applying the partition formula for the
+triangular algebra preserves it too. The unique block containing
+the upper-right entry has local component
+\(y_1\cdots y_r v z_1\cdots z_t\), without any interchange of
+factors. This proves \eqref{v4-arith:gluing:eq:bimodule-taylor}.
+The inverse sign is \((-1)^{(r+t+1)-1}\).
+
+The chain and inverse identities restrict from those of the
+triangular bars. Deconcatenation gives
+\[
+ \Delta_L\Phi=(F_A\otimes\Phi)\Delta_L,
+ \qquad\Delta_R\Phi=(\Phi\otimes F_E)\Delta_R.
+\]
+Finally, strict diagram maps preserve every ordered local product,
+scalar extension preserves the finite formulas, and a gluing unit
+has local component zero. These give the remaining assertions.
+\end{proof}
+
+An algebra local condition for arithmetic cochains must provide a dg
+algebra and a multiplicative map into the local cochains. A linear local
+condition may instead enter the bimodule construction once its two
+actions and the compatible maps are supplied. Its cone as a complex
+does not determine either action.
+
+\section{The homological meaning of the bar}
+\label{v4-arith:gluing:sec:derived}
+
+The relative complex and its tensor bar have different meanings.
+The complex \(P\) computes the relative cohomology of the cospan. The
+bar computes a derived tensor of the augmentation module of
+\(U=R\oplus P\) under the \(K\)-flatness hypothesis of
+Proposition~\ref{v4-prop:bar-derived-tensor}.
+
+\begin{proposition}\label{v4-arith:gluing:prop:derived}
+If \(P\) is \(K\)-flat over \(R\), then for either endpoint product
+its bar represents \(R\otimes_U^{\mathbf L}R\), where \(R\) is a
+left or right \(U\)-module through the augmentation.
+\end{proposition}
+
+\begin{proof}
+For either endpoint product, the augmentation ideal of
+\(U=R\oplus P\) is \(P\), and the differential and bar signs are
+those of \eqref{v4-eq:bar-coefficient-signs}. Apply
+Proposition~\ref{v4-prop:bar-derived-tensor} to this augmented algebra.
+\end{proof}
+
+Degreewise flatness does not replace \(K\)-flatness for an unbounded
+complex. Without that hypothesis the explicit bar and the endpoint
+isomorphism still exist; the proposition does not identify that bar
+with a derived tensor.
+
+The unital gluing case gives a useful distinction even without
+flatness. If \(P\) has a closed unit \(e\), its underlying nonunital
+bar contracts onto the empty word. On a nonempty word \(c\), set
+\(h(c)=se\otimes c\), and set \(h(1)=0\). Since
+\(b_1(se)=0\) and \(b_2(se,sx)=sx\), direct substitution gives
+\[
+ bh+hb=1-\eta\epsilon.
+\]
+Thus \(H^*(\mathcal B)=R\), although \(H^*(P)\) can be much larger.
+Algebraically the same distinction appears in
+\(U\cong R\times P\), via \((r,p)\mapsto(r,re+p)\).
+To form a reduced bar of an augmented unital algebra \(P\) itself,
+one instead uses its specified augmentation ideal. No such choice is
+implicit in the endpoint construction.
+
+\section{Homotopy-commuting coefficient maps}
+\label{v4-arith:gluing:sec:maps}
+
+Strict maps of cospans preserve the preceding constructions. A
+comparison commuting only up to cochain homotopy has an additional
+product defect, visible already in the relative case \(C=0\).
+Write \(P(f)=A\oplus B[-1]\) for this specialization of
+\eqref{v4-arith:gluing:eq:complex}. Alongside \(f:A\to B\),
+choose a dg algebra map \(f':A'\to B'\).
+Let \(\alpha:A\to A'\) and \(\gamma:B\to B'\) be dg algebra maps,
+and let \(H:A\to B'\) have degree minus one with
+\[
+ f'\alpha-\gamma f=dH+Hd.
+\]
+Define
+\(T:P(f)\to P(f')\) by
+\(T(a,y)=(\alpha(a),\gamma(y)+H(a))\).
+
+\begin{proposition}\label{v4-arith:gluing:prop:map-defect}
+The map \(T\) is a cochain map. For the left endpoint products its
+multiplicativity defect has zero first component and local component
+\[
+ \begin{split}
+ &(-1)^p(f'\alpha-\gamma f)(a)\gamma(y')\\
+ &\qquad+(-1)^pf'\alpha(a)H(a')-H(aa'),\qquad |(a,y)|=p.
+ \end{split}
+\]
+It induces a strict tensorwise map of the relative bars if and only
+if this expression vanishes on every pair of inputs.
+\end{proposition}
+
+\begin{proof}
+The local component of \(D'T-TD\) is
+\((f'\alpha-\gamma f)(a)-dH(a)-H(da)=0\).
+Expanding \(\mu_L'(Tx,Tx')-T\mu_L(x,x')\) gives the displayed
+formula. Projection of the strict bar-map identity onto one output
+factor on two inputs is precisely multiplicativity; on one input it
+is the chain-map identity. These two identities suffice in every
+length because the bar differentials have only unary and binary
+components.
+\end{proof}
+
+If the defect is nonzero, higher components must be constructed in
+the permitted operation spaces. Closedness of an obstruction in a
+larger Hom complex does not provide a primitive with prescribed
+support, pole bounds, units or continuity. The endpoint comparison
+above supplies such components for its explicit algebraic problem;
+it does not supply them for an arbitrary homotopy-commuting square.
+
+\section{Finite precision and continuous gluing}
+\label{v4-arith:gluing:sec:completion}
+
+Fix a prime \(\ell\), put \(R_j=\mathbb Z/\ell^j\), and take compatible
+strict cospans over the rings \(R_j\). Write \(W_j=sP_j\) and
+\(\mathcal B_{L/R,j}=T_{R_j}^c(W_j)\). Define their restricted
+inverse limits by
+\[
+ \widehat{\mathcal B}_{L/R}
+       =\varprojlim_j\bigoplus_{n\geq0}W_j^{\otimes_{R_j}n}.
+\]
+Each finite-precision module is discrete; the limits have the
+inverse-limit topology. An element has only finitely many nonzero
+word lengths at any fixed precision, although the number of such
+lengths may grow with \(j\). The completed tensor recipient is defined
+here to be
+\begin{equation}\label{v4-arith:gluing:eq:completed-tensor}
+ \widehat{\mathcal B}\,\widehat\otimes\,\widehat{\mathcal B}
+       :=\varprojlim_j
+           (\mathcal B_j\otimes_{R_j}\mathcal B_j).
+\end{equation}
+This definition makes no identification with a different completed
+tensor product.
+
+For a compatible tower of modules or relative bimodules, use
+\[
+ \widehat C(M)=\varprojlim_j(M_j\otimes_{R_j}\mathcal B_j),
+ \qquad \widehat{\mathcal B}^M=\varprojlim_j\mathcal B_j^M,
+\]
+with the same topology. Their coaction recipients are, respectively,
+\(\varprojlim_j(C(M_j)\otimes_{R_j}\mathcal B_j)\) and the two
+limits of \(\mathcal B_{A,j}\otimes_{R_j}\mathcal B_j^M\) and
+\(\mathcal B_j^M\otimes_{R_j}\mathcal B_{E,j}\). The subscripts
+\(A,E\) distinguish the left and right coefficient bars.
+
+\begin{theorem}\label{v4-arith:gluing:thm:completion}
+The maps \(F_j,G_j\) induce inverse continuous maps
+\(\widehat F:\widehat{\mathcal B}_L\to\widehat{\mathcal B}_R\) and
+\(\widehat G\). They preserve the differential and coproduct, with
+recipient \eqref{v4-arith:gluing:eq:completed-tensor}. Compatible
+module and bimodule bars admit the corresponding continuous
+comparisons, with coaction recipients the inverse limits of their
+finite-precision tensor recipients.
+\end{theorem}
+
+\begin{proof}
+At precision \(j\), each element is a finite sum of words, and each
+word has finitely many consecutive partitions. The maps are therefore
+defined there and satisfy all chain, inverse and coaction identities.
+Strict compatibility with coefficient reduction gives the maps on
+inverse limits. Every identity holds after each projection, hence in
+the limit. Each output at precision \(j\) depends only on the input
+at the same precision, proving continuity. The same argument applies
+to \(1_M\otimes F_j\), to module conjugation and to the triangular
+bicomodule maps.
+\end{proof}
+
+No interchange of cohomology with inverse limit occurs in this proof.
+Such an interchange would need its own hypotheses on derived inverse
+limits. Ordinary conilpotence can also fail in the completed object.
+For example, let \(P=\mathbb Z_\ell a\), with \(|a|=1\), zero
+differential and zero product. The element
+\[
+ z=\sum_{n\geq1}\ell^n(sa)^{\otimes n}
+\]
+exists in the restricted bar. Every iterated reduced coproduct has
+a nonzero component, obtained by cutting a sufficiently long word.
+Each finite coefficient bar is conilpotent, while \(z\) is not.
+
+\begin{proposition}\label{v4-arith:gluing:prop:noncontinuity}
+The map \(F\) need not extend continuously to the unrestricted
+product \(\prod_{n\geq0}W^{\otimes_R n}\) with discrete word
+coordinates.
+\end{proposition}
+
+\begin{proof}
+Take the relative identity map \(f:\mathbb Z\to\mathbb Z\), with
+\(C=0\), and let \(v=s(0,1)\). It has degree zero and satisfies
+\(F_n(v^{\otimes n})=v\) for every \(n\geq1\).
+The partial sums \(z_N=\sum_{n=1}^Nv^{\otimes n}\) converge in the
+product of word spaces: each coordinate eventually stabilizes.
+The length-one coordinate of \(F(z_N)\) is \(Nv\), which does not
+converge in the discrete module \(\mathbb Z v\). Continuity of an
+extension would contradict this sequence.
+\end{proof}
+
+In the restricted \(\ell\)-adic bar the weighted series
+\(\sum_{n\geq1}\ell^nv^{\otimes n}\) is defined. Its length-one image
+is \(\ell(1-\ell)^{-1}v\). The denominator is an \(\ell\)-adic unit;
+it arises by summing the convergent coefficients, not in the definition
+of any Taylor component. The comparison is integral at every finite
+precision. An analytic realization must separately bound the higher
+components in its chosen seminorms and compare its completed tensors
+with the recipient in which the coproduct is defined.

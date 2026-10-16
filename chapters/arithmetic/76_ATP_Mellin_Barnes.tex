@@ -1,0 +1,485 @@
+\chapter{Archimedean Tate Kernel via Mellin--Barnes and Binet Contour Representations}
+\label{v4-arith:w7-f:chapter}
+
+The digamma weight admits both a convergent Laplace representation
+and a Mellin--Barnes representation with an explicit shifted-contour
+remainder. Their quadratic integrals describe the auxiliary form
+\(G\). Its relation to the signed Weil contribution is
+\[
+ W_\infty(f*\widetilde f)=2\log\pi\|f\|_2^2-G[f].
+\]
+We construct the Laplace identity on smooth compact tests, determine
+the pointwise autocorrelation obstruction, and exhibit nonzero tests
+of both signs for \(W_\infty\). None of these signs discards the
+finite-prime and polar functional in the full Weil inequality.
+
+\section{Integral Carriers and Conventions}
+\label{v4-arith:w7-f:context}
+\subsection{The Digamma Representations}
+\label{v4-arith:w7-f:context:representations}
+\begin{proposition}[Mellin--Barnes representation of the digamma function]
+\label{v4-arith:w7-f:prop:mellin-barnes}
+For \(\operatorname{Re}z>0\), use the principal logarithm and fix
+\(0<c<1\). Then
+\begin{equation}
+\label{v4-arith:w7-f:eq:mellin-barnes}
+ \psi(z)=-\gamma_E-\frac1z+
+ \frac1{2\pi i}\int_{c-i\infty}^{c+i\infty}
+       \frac{\pi\zeta(1+w)}{\sin\pi w}\,z^w\,dw .
+\end{equation}
+The integral converges absolutely, locally uniformly in the stated
+half-plane.
+\end{proposition}
+\begin{proof}
+The beta integral and Mellin inversion give
+\[
+ \frac{x}{1+x}=\frac1{2\pi i}\int_{c-i\infty}^{c+i\infty}
+       \frac{\pi}{\sin\pi w}x^w\,dw\qquad(x>0).
+\]
+Indeed, the Mellin transform of \(x/(1+x)\) at \(-w\) is
+\(\int_0^\infty x^{-w}/(1+x)\,dx=\pi/\sin\pi w\).
+Analytic continuation gives the formula for \(|\arg x|<\pi\).
+Apply it to \(x=z/n\), multiply by \(1/n\), and sum. On
+\(\operatorname{Re}w=c\), the sum of absolute coefficients is
+\(\zeta(1+c)|z|^c\), while the vertical integrand decays
+exponentially as \(e^{-(\pi-|\arg z|)|\operatorname{Im}w|}\).
+Thus sum and integral commute. The convergent digamma series
+\(\psi(1+z)+\gamma_E=\sum_{n\ge1}z/[n(n+z)]\), followed by
+\(\psi(1+z)=\psi(z)+1/z\), proves the formula.
+\end{proof}
+
+\begin{proposition}[Binet second integral representation]
+\label{v4-arith:w7-f:prop:binet}
+For \(\mathrm{Re}\,s>0\),
+\begin{equation}
+\label{v4-arith:w7-f:eq:binet}
+\psi(s)\;=\;\log s-\frac{1}{2s}-2\!\int_{0}^{\infty}\!\frac{u}{(s^{2}+u^{2})(e^{2\pi u}-1)}\,du.
+\end{equation}
+The integral converges absolutely for \(\mathrm{Re}\,s>0\) and defines
+a holomorphic function in that half-plane.
+\end{proposition}
+
+\begin{proof}
+Binet 1839 \emph{M\'emoire sur les int\'egrales d\'efinies eul\'eriennes}
+\emph{J.~Ecole Polytech.} 16; Whittaker--Watson \S12.32; Abramowitz
+--Stegun 6.3.21. Derivation: differentiate Binet's formula
+\(\log\Gamma(s)=(s-1/2)\log s-s+(1/2)\log 2\pi+2\int_{0}^{\infty}\arctan(u/s)/(e^{2\pi u}-1)\,du\)
+with respect to \(s\).
+\end{proof}
+
+\subsection{The Compact Test Carrier}
+\label{v4-arith:w7-f:context:domain}
+Work on \(\mathscr A=C_c^\infty(\mathbb R)\), with
+\(\widehat f(t)=\int f(u)e^{itu}\,du\),
+\(\widetilde f(u)=\overline{f(-u)}\), and
+\(C_f=f*\widetilde f\). Put \(q_f=\|f\|_2^2=C_f(0)\).
+Then \(C_f(-u)=\overline{C_f(u)}\). All quadratic formulas use
+\(\operatorname{Re}C_f\), so they apply to complex tests as well as
+real even tests. A further arithmetic test space is used only through
+its specified intersection with this carrier.
+
+\subsection{Classical Integral Identities}
+\label{v4-arith:w7-f:context:sources}
+The Binet and Euler integral formulas for \(\psi\) are recorded in
+NIST DLMF, \S5.9; the convergent digamma series is in \S5.7.
+The Mellin--Barnes formula above follows directly from that series
+and the beta integral. The Fourier normalization here is the one in
+Lemma~\ref{v4-arith:w6-a:lem:decomposition}.
+
+\section{The Binet Decomposition of the Archimedean Kernel}
+\label{v4-arith:w7-f:binet-decomposition}
+
+\subsection{Insertion of the Binet Representation}
+\label{v4-arith:w7-f:binet-decomposition:insertion}
+
+Inserting \eqref{v4-arith:w7-f:eq:binet} into
+\eqref{v4-arith:w6-a:eq:g-definition} and taking real parts at
+\(s=1/4+it/2\) yields a three-term decomposition of \(g\).
+
+\begin{lemma}[Binet form of \(g\)]
+\label{v4-arith:w7-f:lem:g-binet}
+For every \(t\in\mathbb{R}\),
+\begin{equation}
+\label{v4-arith:w7-f:eq:g-binet}
+g(t)\;=\;g_{\mathrm{log}}(t)+g_{\mathrm{shift}}(t)-2\,g_{\mathrm{Binet}}(t),
+\end{equation}
+where
+\begin{align}
+\label{v4-arith:w7-f:eq:g-log}
+g_{\mathrm{log}}(t)&\;:=\;\tfrac{1}{2}\log\!\left(\tfrac{1}{16}+\tfrac{t^{2}}{4}\right)+\log\pi,\\
+\label{v4-arith:w7-f:eq:g-shift}
+g_{\mathrm{shift}}(t)&\;:=\;-\frac{1/4}{2(1/16+t^{2}/4)}\;=\;-\frac{1/2}{1/4+t^{2}},\\
+\label{v4-arith:w7-f:eq:g-Binet}
+g_{\mathrm{Binet}}(t)&\;:=\;\int_{0}^{\infty}\!\mathrm{Re}\!\left[\frac{u}{(1/4+it/2)^{2}+u^{2}}\right]\cdot\frac{1}{e^{2\pi u}-1}\,du.
+\end{align}
+The integral in \eqref{v4-arith:w7-f:eq:g-Binet} converges absolutely
+and uniformly on compact sets.
+\end{lemma}
+
+\begin{proof}
+Set \(s=1/4+it/2\). Binet \eqref{v4-arith:w7-f:eq:binet}:
+\(\psi(s)=\log s-1/(2s)-2\int_{0}^{\infty}u/[(s^{2}+u^{2})(e^{2\pi u}-1)]\,du\).
+Take real parts. For the first term,
+\(\mathrm{Re}\,\log(1/4+it/2)=(1/2)\log|1/4+it/2|^{2}=(1/2)\log(1/16+t^{2}/4)\).
+For the second,
+\(\mathrm{Re}[1/(2s)]=\mathrm{Re}[(1/4-it/2)/(2|s|^{2})]=(1/4)/[2(1/16+t^{2}/4)]=(1/2)/(1/4+t^{2})\);
+so \(-\mathrm{Re}[1/(2s)]=-1/2\cdot 1/(1/4+t^{2})=g_{\mathrm{shift}}(t)\).
+For the third, \(u/(s^{2}+u^{2})\) with
+\(s^{2}=(1/4+it/2)^{2}=1/16-t^{2}/4+it/4\):
+\(s^{2}+u^{2}=(1/16-t^{2}/4+u^{2})+it/4\). The real part of
+\(u/(s^{2}+u^{2})\) is
+\(u(1/16-t^{2}/4+u^{2})/|s^{2}+u^{2}|^{2}\). Adding \(\log\pi\) gives
+\eqref{v4-arith:w7-f:eq:g-binet}.
+
+For \(s=1/4+it/2\), neither factor \(s+iu\) nor \(s-iu\)
+vanishes for real \(u\). On compact \(t\)-sets the denominator is
+uniformly nonzero for bounded \(u\); near zero the factor
+\(u/(e^{2\pi u}-1)\) is bounded. At infinity the integrand is
+\(O(u^{-1}e^{-2\pi u})\), uniformly on compact \(t\)-sets.
+These estimates prove absolute and locally uniform convergence.
+\end{proof}
+
+\begin{remark}[structural content of the decomposition]
+\label{v4-arith:w7-f:rem:binet-content}
+The decomposition \eqref{v4-arith:w7-f:eq:g-binet} isolates three
+contributions: \(g_{\mathrm{log}}(t)\geq 0\) for
+\(|t|\geq 2\sqrt{\pi^{-2}-1/16}\)
+(the logarithmic threshold; eventually dominant; numerically
+\(\approx 0.394\), real since \(\pi^{-2}=1/\pi^{2}>1/16\));
+\(g_{\mathrm{shift}}(t)<0\) for all \(t\) (the Cauchy shift, bounded);
+and \(g_{\mathrm{Binet}}(t)\), whose sign depends on the sign of
+\(u^{2}-t^{2}/4+1/16\) inside the \(u\)-integral, is not pointwise
+sign-definite. For \(u>\sqrt{t^{2}/4-1/16}\) (when \(|t|>1/2\); for all
+\(u>0\) when \(|t|\leq 1/2\)) the integrand of \(g_{\mathrm{Binet}}\) is
+non-negative.
+\end{remark}
+
+\subsection{Sign of \(g_{\mathrm{Binet}}(t)\): Two-Region Structure}
+\label{v4-arith:w7-f:binet-decomposition:sign}
+
+\begin{lemma}[two-region structure of \(g_{\mathrm{Binet}}\)]
+\label{v4-arith:w7-f:lem:g-binet-signs}
+For \(|t|\leq 1/2\), \(g_{\mathrm{Binet}}(t)\geq 0\)
+unconditionally (the \(u\)-integrand is pointwise non-negative). For
+\(|t|>1/2\),
+\begin{equation}
+\label{v4-arith:w7-f:eq:g-Binet-split}
+g_{\mathrm{Binet}}(t)\;=\;g^{+}_{\mathrm{Binet}}(t)-g^{-}_{\mathrm{Binet}}(t),
+\end{equation}
+where
+\begin{align*}
+g^{+}_{\mathrm{Binet}}(t)&\;=\;\int_{u_{0}(t)}^{\infty}\!\!u\cdot\frac{u^{2}-t^{2}/4+1/16}{|s^{2}+u^{2}|^{2}}\cdot\frac{1}{e^{2\pi u}-1}\,du\;\geq\;0,\\
+g^{-}_{\mathrm{Binet}}(t)&\;=\;\int_{0}^{u_{0}(t)}\!\!u\cdot\frac{t^{2}/4-1/16-u^{2}}{|s^{2}+u^{2}|^{2}}\cdot\frac{1}{e^{2\pi u}-1}\,du\;\geq\;0,
+\end{align*}
+with \(u_{0}(t):=\sqrt{t^{2}/4-1/16}\) for \(|t|>1/2\) and
+\(s=1/4+it/2\).
+\end{lemma}
+
+\begin{proof}
+From the proof of Lemma~\ref{v4-arith:w7-f:lem:g-binet}, the integrand of
+\(g_{\mathrm{Binet}}(t)\) is
+\(u(u^{2}-t^{2}/4+1/16)/|s^{2}+u^{2}|^{2}\cdot 1/(e^{2\pi u}-1)\). The
+factor \(u^{2}-t^{2}/4+1/16\) vanishes at \(u=u_{0}(t)\) for \(|t|>1/2\)
+and is non-negative for \(u\geq u_{0}(t)\), strictly negative for
+\(0<u<u_{0}(t)\). Splitting the integral at \(u=u_{0}(t)\) gives
+\eqref{v4-arith:w7-f:eq:g-Binet-split}. For \(|t|\leq 1/2\),
+\(u^{2}-t^{2}/4+1/16\geq 1/16-t^{2}/4\geq 0\) for all \(u\geq 0\), so
+the integrand is non-negative and \(g_{\mathrm{Binet}}(t)\geq 0\)
+unconditionally.
+\end{proof}
+
+\begin{remark}[The Binet decomposition and the zero of \(g\)]
+\label{v4-arith:w7-f:rem:binet-t-star}
+The logarithmic term alone vanishes at
+\(2\sqrt{\pi^{-2}-1/16}\); the additional negative rational term
+means this is not the zero of their sum. The two-region integral
+must also be retained. The unique positive zero of the complete
+weight is certified by the positive-series calculation of
+Proposition~\ref{v4-arith:w6-a:prop:t-star-numerical}.
+The Binet splitting is an exact representation of the same weight,
+not an independent assertion that either signed piece dominates.
+\end{remark}
+
+\section{The Hankel Integral Construction}
+\label{v4-arith:w7-f:hankel}
+
+\subsection{Hankel Representation of \(\psi\) at Argument \(1/4+it/2\)}
+\label{v4-arith:w7-f:hankel:representation}
+
+The Hankel (also Dirichlet--Abel) integral representation of \(\psi\)
+is
+\begin{equation}
+\label{v4-arith:w7-f:eq:hankel-abstract}
+\psi(s)+\gamma_{E}\;=\;\int_{0}^{1}\frac{1-u^{s-1}}{1-u}\,du,\qquad\mathrm{Re}\,s>0.
+\end{equation}
+Insertion into \(g(t)\) is complicated by the fact that
+\(s=1/4+it/2\) lies on the line \(\mathrm{Re}\,s=1/4\), so \(u^{s-1}\)
+oscillates as \(u\to 0\). We extract the real part first.
+
+\begin{lemma}[Hankel form of \(g\)]
+\label{v4-arith:w7-f:lem:hankel-g}
+For \(t\in\mathbb{R}\),
+\begin{equation}
+\label{v4-arith:w7-f:eq:hankel-g}
+g(t)+\gamma_{E}-\log\pi\;=\;\int_{0}^{1}\!\frac{1-u^{-3/4}\cos(t\log u/2)}{1-u}\,du.
+\end{equation}
+The integral in \eqref{v4-arith:w7-f:eq:hankel-g} converges at \(u=1\)
+because the numerator \(1-u^{-3/4}\cos(t\log u/2)\) vanishes to first
+order as \(u\to 1^{-}\). Near \(u=0^{+}\), the factor \(u^{-3/4}\) is
+absolutely integrable, including at \(t=0\). Equivalently one
+substitutes \(v=-\log u\) (\(u=e^{-v}\), \(du=e^{-v}dv\), \(v\in(0,\infty)\)),
+obtaining
+\(\int_{0}^{\infty}[e^{-v}-e^{-v/4}\cos(tv/2)]/(1-e^{-v})\,dv\),
+which is absolutely convergent at \(v=\infty\) (the \(e^{-v/4}\) factor)
+and at \(v=0^{+}\) (the numerator vanishes to first order).
+\end{lemma}
+
+\begin{proof}
+Apply \eqref{v4-arith:w7-f:eq:hankel-abstract} at \(s=1/4+it/2\):
+\(u^{s-1}=u^{-3/4+it/2}=u^{-3/4}(\cos(t\log u/2)+i\sin(t\log u/2))\).
+The real part of \(u^{s-1}\) for real \(u\in(0,1)\) and
+\(s=1/4+it/2\) is \(u^{-3/4}\cos(t\log u/2)\). Since
+\(\psi(1/4+it/2)+\gamma_{E}=\int_{0}^{1}[1-u^{s-1}]/(1-u)\,du\)
+and the integral represents a holomorphic function, taking the real
+part gives
+\(\mathrm{Re}\,\psi(1/4+it/2)+\gamma_{E}=\int_{0}^{1}[1-u^{-3/4}\cos(t\log u/2)]/(1-u)\,du\).
+Since \(g(t)=\mathrm{Re}\,\psi(1/4+it/2)+\log\pi\), the left-hand side of
+\eqref{v4-arith:w7-f:eq:hankel-g} is \(g(t)+\gamma_{E}-\log\pi\). The
+substitution \(v=-\log u\) converts the integral to the absolutely
+convergent Laplace-type form of the lemma statement.
+\end{proof}
+
+\subsection{The Convergent Laplace Quadratic Form}
+\label{v4-arith:w7-f:hankel:laplace}
+\begin{proposition}[Laplace forms of \(G\) and \(W_\infty\)]
+\label{v4-arith:w7-f:prop:laplace-W-infty}
+For \(f\in\mathscr A\), the integral
+\[
+ I[f]=\int_0^\infty
+ \frac{e^{-v}q_f-e^{-v/4}\operatorname{Re}C_f(v/2)}{1-e^{-v}}\,dv
+\]
+is absolutely convergent and satisfies
+\begin{equation}
+\label{v4-arith:w7-f:eq:laplace-W-infty}
+ G[f]=(\log\pi-\gamma_E)q_f+I[f],\qquad
+ W_\infty(C_f)=(\log\pi+\gamma_E)q_f-I[f].
+\end{equation}
+\end{proposition}
+\begin{proof}
+In the Euler integral put \(u=e^{-v}\), obtaining
+\[
+ g(t)=\log\pi-\gamma_E+
+ \int_0^\infty\frac{e^{-v}-e^{-v/4}\cos(tv/2)}{1-e^{-v}}\,dv.
+\]
+Near zero, decompose its numerator as
+\(e^{-v}-e^{-v/4}+e^{-v/4}(1-\cos(tv/2))\).
+Its absolute quotient is bounded by \(C(1+t^2v)\) for \(0<v<1\).
+For \(v\ge1\), it is bounded by \(C e^{-v/4}\), independently of
+\(t\). Since \(\widehat f\) is Schwartz, these bounds justify
+absolute Fubini after multiplication by \(|\widehat f(t)|^2\).
+Fourier inversion and Plancherel give
+\[
+ \frac1{2\pi}\int|\widehat f(t)|^2\cos(tv/2)\,dt
+ =\operatorname{Re}C_f(v/2),\qquad
+ \frac1{2\pi}\int|\widehat f(t)|^2\,dt=q_f.
+\]
+This proves the first identity. The signed gamma identity
+\(W_\infty=2\log\pi q_f-G\) proves the second.
+\end{proof}
+
+\begin{remark}[The integrated signed condition]
+\label{v4-arith:w7-f:rem:laplace-content}
+The signs of the two quadratic forms require different inequalities:
+\begin{equation}
+\label{v4-arith:w7-f:eq:laplace-positivity-sufficient}
+ G[f]\ge0\ \Longleftrightarrow\ I[f]\ge-(\log\pi-\gamma_E)q_f,
+ \qquad
+ W_\infty(C_f)\ge0\ \Longleftrightarrow\ I[f]\le(\log\pi+\gamma_E)q_f.
+\end{equation}
+Neither inequality alone is the full Weil condition
+\(R[f]-W_\infty(C_f)\ge0\).
+\end{remark}
+
+\subsection{Pointwise Autocorrelation Domination}
+\label{v4-arith:w7-f:hankel:subclass}
+\begin{definition}[Pointwise Hankel condition]
+\label{v4-arith:w7-f:def:hankel-dominance}
+Let \(\mathscr A_{\mathrm{HD}}\) consist of tests satisfying
+\begin{equation}
+\label{v4-arith:w7-f:eq:HD-condition}
+ e^{-3v/4}q_f\ge\operatorname{Re}C_f(v/2)\qquad(v>0).
+\end{equation}
+On any specified restricted test space, HD denotes its intersection
+with this class.
+\end{definition}
+\begin{theorem}[The smooth pointwise obstruction]
+\label{v4-arith:w7-f:thm:HD-ATP}
+On the compact smooth carrier,
+\begin{equation}
+\label{v4-arith:w7-f:eq:HD-conclusion}
+ \mathscr A_{\mathrm{HD}}=\{0\}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+The real part of the autocorrelation is even and smooth. Integration
+by parts gives
+\(\operatorname{Re}C_f''(0)=-\|f'\|_2^2\), hence
+\[
+ \operatorname{Re}C_f(v/2)=q_f-\frac{v^2}{8}\|f'\|_2^2+O_f(v^4).
+\]
+In contrast \(e^{-3v/4}q_f=q_f-(3/4)q_fv+O_f(v^2)\).
+For \(f\ne0\), their difference is negative for all sufficiently
+small positive \(v\). Thus the pointwise condition fails.
+\end{proof}
+
+\begin{proposition}[Nonzero compact tests of both signed types]
+\label{v4-arith:w7-f:prop:HD-vs-HFD}
+There are real even nonzero tests in \(\mathscr A\) with
+\(W_\infty(C_f)>0\), and real even HFD tests with
+\(W_\infty(C_f)<0\). Neither family satisfies HD.
+\end{proposition}
+\begin{proof}
+Choose real even nonzero \(\chi\in C_c^\infty\). For
+\(f_L(u)=L^{-1/2}\chi(u/L)\), Fourier scaling gives
+\(\widehat f_L(t)=\sqrt L\widehat\chi(Lt)\). Consequently
+\[
+ W_\infty(C_{f_L})\longrightarrow
+ (\log\pi-\psi(1/4))\|\chi\|_2^2>0.
+\]
+Dominated convergence follows from the logarithmic growth of the
+multiplier and Schwartz decay. The constant is positive since
+\(\psi(1/4)=-\gamma_E-\pi/2-3\log2\).
+For the opposite sign, take \(f_M(u)=\chi(u)\cos(Mu)\), with
+\(\int\chi\ne0\). The two Fourier translates have rapidly vanishing
+core supremum and retain positive mass near \(\pm M\). Since
+\(g(t)\sim\log|t|\), these tests eventually satisfy HFD and
+\(G[f_M]\to\infty\), while their norms stay bounded. Therefore
+\(W_\infty(C_{f_M})=2\log\pi q_{f_M}-G[f_M]<0\).
+The preceding theorem excludes HD in both nonzero families.
+\end{proof}
+\begin{remark}[The original test space]
+\label{v4-arith:w7-f:rem:improvement-over-w6}
+Both constructions use actual smooth compact tests. Membership in a
+further automorphic or moment-constrained subspace requires its own
+verification. The pointwise HD condition gives no nonzero extension
+of the HFD domain on any such subspace.
+\end{remark}
+
+\section{Mellin--Barnes Evaluation and Finite Residue Sums}
+\label{v4-arith:w7-f:mellin-barnes}
+\subsection{The Complex Integral Before Taking Real Parts}
+\label{v4-arith:w7-f:mellin-barnes:insertion}
+\begin{lemma}[Mellin--Barnes form of \(g\)]
+\label{v4-arith:w7-f:lem:g-mellin-barnes}
+For \(z=1/4+it/2\) and \(0<c<1\),
+\begin{equation}
+\label{v4-arith:w7-f:eq:g-mellin-barnes}
+ g(t)=\log\pi-\gamma_E-\operatorname{Re}\frac1z+
+ \operatorname{Re}\left\{\frac1{2\pi i}\int_{c-i\infty}^{c+i\infty}
+       \frac{\pi\zeta(1+w)z^w}{\sin\pi w}\,dw\right\}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Take the real part of Proposition~\ref{v4-arith:w7-f:prop:mellin-barnes}.
+The real part is applied to the complete contour integral, not to
+one factor of a complex integrand.
+\end{proof}
+
+\subsection{Residues with Their Remainder}
+\label{v4-arith:w7-f:mellin-barnes:residues}
+\begin{proposition}[Finite shifted-contour identity]
+\label{v4-arith:w7-f:prop:residue-series}
+Let \(J_c(z)\) denote the contour integral in
+\eqref{v4-arith:w7-f:eq:mellin-barnes}. For any noninteger \(b<0\),
+\begin{equation}
+\label{v4-arith:w7-f:eq:residue-series}
+ J_c(z)=J_b(z)+\log z+\gamma_E+
+ \sum_{1\le n<-b}(-1)^n\zeta(1-n)z^{-n}.
+\end{equation}
+In particular the individual residues at zero and at \(-n\), \(n\ge1\), are
+\begin{equation}
+\label{v4-arith:w7-f:eq:R-n}
+ R_0(z)=\log z+\gamma_E,\qquad
+ R_n(z)=(-1)^n\zeta(1-n)z^{-n}.
+\end{equation}
+A zero value of \(\zeta(1-n)\) means the putative pole is removable.
+\end{proposition}
+\begin{proof}
+At zero, use \(\zeta(1+w)=w^{-1}+\gamma_E+O(w)\),
+\(\pi/\sin\pi w=w^{-1}+O(w)\), and \(z^w=1+w\log z+O(w^2)\).
+At \(-n\), the sine factor has residue \((-1)^n\) and the other
+factors are holomorphic. Shift the vertical contour across this
+finite set of poles. On a fixed vertical strip the zeta function
+has polynomial growth, while the sine denominator and \(z^w\)
+give exponential decay; the horizontal integrals tend to zero.
+This proves the finite identity with the remaining integral \(J_b\).
+\end{proof}
+\begin{theorem}[Residue identities retain the signed functional]
+\label{v4-arith:w7-f:thm:alternation-obstruction}
+The finite contour formula evaluates \(g\), with remainder \(J_b\).
+It does not express \(G\) or \(W_\infty\) as a sum of nonnegative
+quadratic forms on all of \(\mathscr A\).
+\end{theorem}
+\begin{proof}
+Broad dilations have \(G[f_L]\to g(0)\|\chi\|_2^2<0\), whereas
+high-frequency modulations have negative \(W_\infty\), as proved
+above. A sum of nonnegative quadratic forms cannot equal either
+functional on its entire carrier. This does not exclude useful
+estimates on specified subspaces or rearrangements retaining signed
+terms and their remainders.
+\end{proof}
+\begin{remark}[Analytic roles of the representations]
+\label{v4-arith:w7-f:rem:mellin-barnes-obstruction}
+Binet separates logarithmic, rational and integral terms; the
+Laplace formula retains the short-distance autocorrelation; the
+Barnes identity supplies finite residue sums with a contour
+remainder. None changes the sign convention of the Weil functional.
+\end{remark}
+
+\section{The Full Weil Comparison}
+\label{v4-arith:w7-f:irreducible}
+\begin{proposition}[Exact residual inequality]
+\label{v4-arith:w7-f:thm:residual}
+For every test in the declared domain of the finite-prime and polar
+functional \(R\),
+\begin{equation}
+\label{v4-arith:w7-f:eq:combined-closure}
+ W[f]=R[f]-(\log\pi+\gamma_E)q_f+I[f].
+\end{equation}
+Thus its nonnegativity is exactly
+\begin{equation}
+\label{v4-arith:w7-f:eq:wave7f-residual}
+ R[f]+I[f]\ge(\log\pi+\gamma_E)q_f.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Substitute \eqref{v4-arith:w7-f:eq:laplace-W-infty} into
+\(W=R-W_\infty\).
+\end{proof}
+\begin{remark}[Frequency and autocorrelation conditions]
+\label{v4-arith:w7-f:rem:residual-spectral}
+HFD proves \(G\ge0\), while HD has only the zero test on this
+smooth carrier. The signed families above prove neither the full
+Weil inequality nor a comparison with an arithmetic pairing.
+\end{remark}
+\begin{question}[The arithmetic comparison]
+\label{v4-arith:w7-f:rem:HB-relation}
+Construct the maps from the arithmetic test carrier to the spectral
+or automorphic realization that preserve the full quadratic form
+\(R-W_\infty\), including domains, normalization and all finite-prime
+terms. A matching gamma multiplier alone does not construct this map.
+\end{question}
+\section{Integral Identities and Remaining Comparison}
+\label{v4-arith:w7-f:summary}
+The Binet splitting, convergent Laplace identity and finite Barnes
+residue formula hold on their stated carriers. Smooth compact tests
+realize both signs of the signed archimedean term, and the pointwise
+HD condition is trivial. The full target is
+\eqref{v4-arith:w7-f:eq:wave7f-residual} on the complete Weil test
+class, together with its required arithmetic realization.
+\begin{remark}[Preserving the full target]
+\label{v4-arith:w7-f:rem:beilinson-closing}
+The explicit local integral calculations do not establish the
+finite-prime/polar domination or its arithmetic comparison. These
+remain the substantive construction problem.
+\end{remark}

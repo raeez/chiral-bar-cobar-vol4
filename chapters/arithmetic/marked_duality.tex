@@ -1,0 +1,3585 @@
+\chapter{Marked duality and coefficient polarity}
+\label{v4-arith:md:chapter}
+
+Arithmetic duality must transport an operation before it can explain a
+functional equation. Its first datum is a pairing between specified
+objects. The pairing determines the direction of a transpose and the
+tensor product in which evaluation is defined. A topology then decides
+which transposes remain continuous. These choices already distinguish
+several dualities on the polynomial oscillator representation.
+
+We begin with finite coefficients, where evaluation is explicit. We
+then pass to compact modules, marked derived modules and coalgebras.
+The completed oscillator shows why a continuous coaction can exist
+without a continuous evaluation on the proposed tensor. Full collision
+coefficients admit a different duality, whose field realization can be
+constructed on a marked charged-current domain. The arithmetic question
+is to compare such operations with theta and Mellin reflection while
+retaining the vacuum and both polar terms.
+
+\section{The pairing fixes the dual}
+\label{v4-arith:md:sec:finite}
+
+Let $R$ be a commutative ring. For a finite projective $R$-module $P$,
+put $P^\vee=\operatorname{Hom}_R(P,R)$. Evaluation is
+$P^\vee\otimes_RP\to R$, $f\otimes p\mapsto f(p)$.
+
+A map $a:P\to Q$ has transpose
+$a^\vee:Q^\vee\to P^\vee$, $f\mapsto f\circ a$. Thus
+\begin{equation}\label{v4-arith:md:eq:transpose}
+ \langle a(p),f\rangle=\langle p,a^\vee(f)\rangle,
+ \qquad (ba)^\vee=a^\vee b^\vee.
+\end{equation}
+These formulas determine variance. They do not assert that a given
+bilinear form identifies $P$ with its dual.
+
+\begin{proposition}[Finite projective polarity]
+\label{v4-arith:md:prop:finite}
+Evaluation gives natural isomorphisms
+\[
+ P\xrightarrow{\sim}P^{\vee\vee},\qquad
+ Q^\vee\otimes_RP^\vee\xrightarrow{\sim}(P\otimes_RQ)^\vee.
+\]
+The second isomorphism uses evaluation in the order of the displayed
+factors. For a ring map $R\to R'$, the natural map
+\[
+ P^\vee\otimes_RR'\longrightarrow
+ \operatorname{Hom}_{R'}(P\otimes_RR',R')
+\]
+is an isomorphism. These statements extend to perfect complexes, with
+derived tensors and the cohomological Koszul signs.
+\end{proposition}
+
+\begin{proof}
+For $P=R^n$ the evaluation matrix in a basis and its dual is the
+identity. The tensor assertion and coefficient comparison are the
+corresponding identities for finite matrices. A finite projective
+module is a direct summand of a finite free module, so the identities
+restrict to it.
+
+Apply the same argument to bounded complexes of finite
+projectives. For a degree-$j$ functional the dual differential is
+$d(f)=(-1)^{j+1}f\,d_P$. This makes evaluation a chain map.
+Finite cones and direct summands preserve all three comparisons.
+\end{proof}
+
+If $C$ is a finite projective coalgebra, its coproduct transposes to
+an associative multiplication on $C^\vee$. The coalgebra counit
+transposes to the algebra unit. Conversely, an algebra multiplication
+transposes to a coproduct on its finite projective dual. Each identity
+is obtained by applying the same duality to its defining diagram.
+This is coefficient transposition. The cobar algebra of $C$ instead
+uses tensor words in its shifted coaugmentation quotient and a
+differential determined by the reduced coproduct.
+
+\subsection{An integral divided-power example}
+
+Consider $R[x]$ with $x$ primitive:
+$\Delta x=x\otimes1+1\otimes x$. Give $x$ weight one, and
+write $f_n$ for the coefficient functional on $x^n$.
+The \emph{restricted graded dual} is
+$\bigoplus_{n\geq0}Rf_n$, the direct sum of the dual weight spaces.
+
+Transposing the coproduct gives
+\begin{equation}\label{v4-arith:md:eq:divided}
+ f_af_b=\binom{a+b}{a}f_{a+b},\qquad
+ f_1^n=n!f_n,\qquad f_0=1.
+\end{equation}
+Indeed the coefficient of $x^a\otimes x^b$ in
+$\Delta(x^{a+b})$ is the binomial coefficient. The identity
+\[
+ \binom{a+b}{a}\binom{a+b+c}{a+b}
+ =\frac{(a+b+c)!}{a!b!c!}
+ =\binom{b+c}{b}\binom{a+b+c}{a}
+\]
+proves associativity over the integers, and hence over every $R$.
+It involves no division in $R$.
+
+Over a field of characteristic zero the substitution
+$f_n\mapsto y^n/n!$ identifies this algebra with a polynomial
+algebra. Over $\mathbb F_p$, however, $f_1^p=0$ while $f_p\ne0$.
+The integral dual therefore retains divided powers. For several
+primitive variables the formula is the product of the corresponding
+binomial coefficients. The energy grading of the oscillator makes
+each weight finite, so the same calculation applies weight by weight.
+
+The full linear dual of $\bigoplus_nRx^n$ is instead
+$\prod_nRf_n$. Its multiplication still has finite sums in each
+output weight. Whether its evaluation extends to a tensor completion
+is a separate question, considered in
+Section~\ref{v4-arith:md:sec:completed-modules}.
+
+\section{Compact coefficients and their discrete duals}
+\label{v4-arith:md:sec:compact}
+
+For a locally compact Hausdorff abelian group $G$, its Pontryagin dual
+is $G^*=\operatorname{Hom}_{\mathrm{cts}}(G,\mathbb R/\mathbb Z)$,
+with the compact-open topology. The classical duality theorem says
+that evaluation $G\to G^{**}$ is a topological isomorphism. It
+exchanges compact and discrete groups. See Roeder,
+\emph{Category theory applied to Pontryagin duality}, Theorems 2, 4
+and 5. The specialization needed for Iwasawa coefficients has an
+elementary proof through finite groups.
+
+Fix a prime $p$ and put $D_p=\mathbb Q_p/\mathbb Z_p$, with the
+discrete topology. A \emph{profinite $\mathbb Z_p$-module} is an
+inverse limit of finite $p$-primary modules with its inverse-limit
+topology. For such an $M$, and for a discrete $p$-primary torsion
+module $N$, define
+\[
+ M^\vee=\operatorname{Hom}_{\mathrm{cts}}(M,D_p),\qquad
+ N^\vee=\operatorname{Hom}_{\mathbb Z_p}(N,D_p).
+\]
+The first dual is discrete. Give the second the inverse-limit
+topology obtained by restricting characters to finite submodules
+of $N$. Every finitely generated submodule of $N$ is finite.
+
+\begin{theorem}[Compact and discrete coefficient duality]
+\label{v4-arith:md:thm:pontryagin}
+These duals are exact contravariant inverse equivalences between
+profinite $\mathbb Z_p$-modules and discrete $p$-primary torsion
+modules. Their double-dual comparisons are evaluation maps.
+\end{theorem}
+
+\begin{proof}
+For $\mathbb Z/p^n$, a character is determined by the image of $1$,
+an element of $D_p[p^n]$. The pairing of these two cyclic groups is
+perfect. Finite direct sums prove the assertion for every finite
+$p$-group.
+
+A continuous character on $M$ has an open kernel, so it factors
+through a finite quotient. Consequently
+\[
+ M^\vee=\varinjlim_U(M/U)^\vee,
+ \qquad N^\vee=\varprojlim_{N_0\subset N}N_0^\vee,
+\]
+where $U$ runs through open submodules and $N_0$ through finite
+submodules. Taking a second dual and using the finite evaluation
+identities recovers $M$ with its topology and $N$ with its discrete
+topology. The comparisons are natural.
+
+To prove exactness, let $L\subset M$ be a closed submodule and let
+$\chi:L\to D_p$ be continuous. Choose an open submodule $U$ of
+$M$ such that $L\cap U\subset\ker\chi$. The character of
+$L/(L\cap U)\subset M/U$ extends to $M/U$, since $D_p$ is
+divisible and hence injective as a $\mathbb Z$-module. Pulling back
+gives a continuous extension to $M$. The kernel of restriction is
+exactly the dual of $M/L$. Double duality gives exactness on the
+discrete side as well.
+\end{proof}
+
+The same $D_p$ describes circle characters of a profinite $p$-group.
+Choose an arc around zero in $\mathbb R/\mathbb Z$ containing no
+nonzero subgroup. The inverse image of this arc contains an open
+subgroup $U$.
+
+Its image must be zero. Every character therefore
+factors through a finite $p$-group and has $p$-primary torsion image.
+Here $D_p$ is identified with the $p$-power torsion subgroup of the
+circle. It is given its discrete topology in the preceding duality.
+
+\subsection{The dual tensor and the Iwasawa algebra}
+
+For profinite modules define
+\[
+ M\widehat\otimes_{\mathbb Z_p}N
+ =\varprojlim_{U,V}(M/U)\otimes_{\mathbb Z_p}(N/V).
+\]
+For discrete $p$-primary modules use the transported product
+\begin{equation}\label{v4-arith:md:eq:dual-tensor}
+ A\odot B=(A^\vee\widehat\otimes_{\mathbb Z_p}B^\vee)^\vee.
+\end{equation}
+Its unit is $D_p$, since $D_p^\vee=\mathbb Z_p$.
+Associativity and symmetry are transported through the natural
+double-dual maps. Thus a compact unital algebra $\Lambda$ has a
+dual coalgebra $C=\Lambda^\vee$ for $\odot$, with
+$\Delta:C\to C\odot C$ and counit $C\to D_p$.
+
+Dualizing an action $M\widehat\otimes\Lambda\to M$ gives a
+coaction $M^\vee\to M^\vee\odot C$. Its associativity diagram
+becomes the coassociativity diagram. Dualizing again recovers the
+action. Hence continuous compact right $\Lambda$-modules and
+discrete right $C$-comodules for $\odot$ are exactly
+anti-equivalent. Exactness extends this comparison to bounded
+derived categories, with the dual differential used above.
+
+The transported tensor is essential. Ordinary tensor gives
+$D_p\otimes_{\mathbb Z_p}D_p=0$: if $p^na=0$, write $b=p^nc$
+and compute $a\otimes b=p^na\otimes c=0$.
+Moreover $\operatorname{Hom}_{\mathbb Z_p}(D_p,\mathbb Z_p)=0$.
+Thus $D_p$ cannot be a nonzero ordinary counital
+$\mathbb Z_p$-coalgebra. Its counit for $\odot$ takes values in
+the correct unit $D_p$.
+
+Let $G$ be a profinite group and put
+\[
+ \Lambda(G)=\mathbb Z_p[[G]]
+ =\varprojlim_{U,n}(\mathbb Z/p^n)[G/U],
+\]
+where $U$ is open and normal. The finite coefficient pairing
+identifies the dual of $(\mathbb Z/p^n)[G/U]$ with the functions
+$G/U\to D_p[p^n]$. Therefore
+\begin{equation}\label{v4-arith:md:eq:iwasawa-dual}
+ \Lambda(G)^\vee=C_{\mathrm{lc}}(G,D_p).
+\end{equation}
+Every locally constant function on the compact group has finite
+image and factors through some finite quotient. Its values are
+killed by a common power of $p$. This proves surjectivity of the
+displayed identification as well as injectivity.
+
+For left translation on $\Lambda(G)$, choose the contragredient
+left action on its dual. It is
+$(g\cdot f)(h)=f(g^{-1}h)$. This follows by evaluating a character
+on the group-ring basis element $[h]$. The full local abelian Galois
+group can be used for $G$, but it is not the chosen procyclic group
+whose Iwasawa algebra is $\mathbb Z_p[[T]]$.
+
+There is also a natural identity
+\begin{equation}\label{v4-arith:md:eq:reduction-torsion}
+ (M/pM)^\vee=M^\vee[p].
+\end{equation}
+Indeed a character vanishes on $pM$ exactly when multiplication by
+$p$ kills it. This is an identity of ordinary modules. Derived
+reduction retains additional Tor groups.
+
+\subsection{Matlis duality and the coefficient object}
+
+For a complete Noetherian local ring $(R,\mathfrak m,k)$, let $E_R$
+be an injective hull of $k$. Thus $E_R$ is injective and contains
+$k$ as an essential submodule: every nonzero submodule meets $k$.
+Define the \emph{Matlis dual} by
+$D_R(M)=\operatorname{Hom}_R(M,E_R)$.
+Its coefficient object is $E_R$, rather than $R$.
+
+\begin{theorem}[Matlis duality]
+\label{v4-arith:md:thm:matlis}
+The functor $D_R$ is an exact anti-equivalence between finite
+$R$-modules and Artinian $R$-modules. Evaluation identifies either
+kind of module with its double dual.
+\end{theorem}
+
+\begin{proof}
+The injectivity of $E_R$ makes $D_R$ exact. The structural facts
+are that $E_R$ is Artinian, that $\operatorname{End}_R(E_R)=R$,
+and that every Artinian $M$ has a finite copresentation
+$0\to M\to E_R^a\to E_R^b$. They are proved in the Stacks Project,
+Tags 08Z6--08Z8. A finite module has a presentation
+$R^b\to R^a\to M\to0$.
+
+Dualizing twice and using
+$D_R(R)=E_R$, $D_R(E_R)=R$ proves biduality by kernels and
+cokernels. The same argument applied to the copresentation proves
+biduality on the Artinian side. Naturality of evaluation proves
+that the two functors are inverse. See also Tag 08Z9.
+\end{proof}
+
+Completeness enters the identity for $\operatorname{End}_R(E_R)$.
+Without it that endomorphism ring is $\widehat R$. Indeed
+$E_R=\bigcup_nE_R[\mathfrak m^n]$, and endomorphisms restrict to
+the finite-length duality on each quotient. Their inverse limit is
+$\varprojlim_nR/\mathfrak m^n$.
+For $R=\mathbb Z_p$, the injective hull is $D_p$, so Matlis duality
+agrees with the preceding pairing on finite $\mathbb Z_p$-modules.
+Its stated domain is smaller: $\bigoplus_{n\geq0}\mathbb F_p$
+is discrete $p$-primary torsion but is not Artinian.
+
+Replacing $E_R$ by $R$ can lose the entire module. For example,
+$\operatorname{Hom}_{\mathbb Z_p}(\mathbb F_p,\mathbb Z_p)=0$,
+whereas $D_{\mathbb Z_p}(\mathbb F_p)\cong\mathbb F_p$.
+A claim of biduality must therefore specify its dualizing object
+and its module class.
+
+\section{Marked modules and balanced interfaces}
+\label{v4-arith:md:sec:marked}
+
+The dual of a module can retain a chosen boundary object rather
+than a scalar coefficient ring. The domain of biduality is then
+determined by the objects generated from that boundary.
+
+Let $A$ be a dg algebra and $P$ a right $A$-module. Choose a
+derived model for
+\[
+ E_P=\operatorname{RHom}_A(P,P),
+\]
+with multiplication given by composition. Then $P$ is an
+$(E_P,A)$-bimodule. Write $\operatorname{thick}_A(P)$ for the
+smallest full stable subcategory of $D(A)$ containing $P$ and
+closed under direct summands. Its objects are obtained by finitely
+many shifts, cones and summands. A left $E_P$-module is
+\emph{perfect} when it lies in $\operatorname{thick}_{E_P}(E_P)$.
+
+\begin{proposition}[Duality generated by a marked module]
+\label{v4-arith:md:prop:thick}
+The functors
+\[
+ F_P=\operatorname{RHom}_A(-,P),\qquad
+ G_P=\operatorname{RHom}_{E_P}(-,P)
+\]
+give inverse anti-equivalences
+$\operatorname{thick}_A(P)^{\mathrm{op}}\simeq
+\operatorname{Perf}(E_P)$. The first Hom has a left $E_P$-action
+by postcomposition. The second has a right $A$-action through $P$.
+\end{proposition}
+
+\begin{proof}
+Both functors are exact and preserve finite direct summands.
+They send $P$ to the regular module $E_P$ and $E_P$ to $P$.
+The evaluation maps from an object to its double Hom are
+equivalences on these generators. The class where either
+evaluation is an equivalence is closed under shifts, cones and
+summands. Hence both evaluations are equivalences on the stated
+categories. The evaluation identities give the inverse functors
+on mapping complexes and their compositions.
+\end{proof}
+
+Now let $S$ be a Noetherian ring of finite global dimension and
+let $A$ be an ordinary augmented $S$-algebra, finite over $S$.
+Assume that its augmentation ideal $I$ is nilpotent. A complex
+of right $A$-modules is \emph{coefficient-perfect} when its
+restriction to $S$ is perfect. Put
+$E=\operatorname{RHom}_A(S,S)$.
+
+\begin{theorem}[The coefficient-perfect domain]
+\label{v4-arith:md:thm:marked}
+Coefficient-perfect $A$-modules form $\operatorname{thick}_A(S)$.
+The functor $F_A(M)=\operatorname{RHom}_A(M,S)$ therefore gives
+an anti-equivalence from this category to perfect left
+$E$-modules. It sends $S$ to $E$ and $A$ to the augmentation
+module $S$ of $E$.
+\end{theorem}
+
+\begin{proof}
+The object $S$ is coefficient-perfect, and this property is
+preserved by finite cones and summands. This proves one inclusion.
+Conversely, a coefficient-perfect complex has bounded, finite
+$S$-module cohomology. A finite Postnikov filtration reduces the
+claim to each cohomology module $M$. Filter $M$ by the powers of
+$I$.
+
+Since $I$ is nilpotent, there are finitely many quotients,
+each a finite $S$-module with $A$-action through the augmentation.
+Every such quotient has a finite projective $S$-resolution, so
+belongs to $\operatorname{thick}_A(S)$. Finite extensions prove
+the other inclusion. Apply Proposition~\ref{v4-arith:md:prop:thick}
+with $P=S$. The boundary values follow from the two displayed
+derived Hom complexes.
+\end{proof}
+
+Let $\mathcal C=\operatorname{thick}_A(S)$. Its pro-category
+retains an inverse system as an object, including its transition
+maps. The extension of the preceding duality is
+\begin{equation}\label{v4-arith:md:eq:pro-ind}
+ \operatorname{Pro}(\mathcal C)^{\mathrm{op}}
+ \simeq\operatorname{Ind}(\operatorname{Perf}(E))
+ \simeq D(E),\qquad
+ \{M_i\}\longmapsto\varinjlim_i\operatorname{RHom}_A(M_i,S).
+\end{equation}
+The direct limit is taken over the opposite of the cofiltered
+index category.
+
+To see the first equivalence, apply the small
+anti-equivalence to the formula for maps of pro-objects,
+$\varprojlim_j\varinjlim_i\operatorname{Map}(M_i,N_j)$.
+The resulting formula is precisely that for the corresponding
+ind-objects, with the arguments reversed. The second equivalence
+uses the regular module $E$ as a compact generator of $D(E)$.
+Taking the inverse limit of $\{M_i\}$ inside $D(A)$ before
+dualizing is a different operation.
+
+\subsection{Two tests for the domain}
+
+For $A=k[\epsilon]/(\epsilon^2)$, with $k$ a field, the
+augmentation has the free resolution
+\[
+ \cdots\xrightarrow{\epsilon}A
+ \xrightarrow{\epsilon}A\xrightarrow{\epsilon}A\longrightarrow k.
+\]
+The kernel and image of each multiplication map are both
+$k\epsilon$, which proves exactness. Applying
+$\operatorname{Hom}_A(-,k)$ gives zero differentials and one
+copy of $k$ in every nonnegative degree.
+
+The periodic extension
+class generates their Yoneda products: splicing its first
+$n$ steps gives the nonzero class in degree $n$. Consequently
+\begin{equation}\label{v4-arith:md:eq:dual-numbers}
+ E\simeq k\langle t\rangle,
+ \qquad |t|=1,\qquad t^2\ne0.
+\end{equation}
+To obtain the dg model, lift the degree-one class to the
+endomorphism complex of the resolution. Its components are
+alternating scalar identities, so it anticommutes with the
+differential.
+
+Its powers represent the nonzero extension
+classes just computed. The resulting map from the free
+associative dg algebra $k\langle t\rangle$ is a quasi-isomorphism.
+This algebra is not required to be graded commutative.
+The nonzero Ext groups in arbitrarily high degrees show that $k$
+is coefficient-perfect and is not perfect over $A$.
+
+The same small duality sends $\operatorname{Perf}(A)$ to
+$\operatorname{thick}_E(k)$. Its ind-extension generates
+$\operatorname{Loc}_E(k)$, the full stable subcategory closed
+under colimits and generated by $k$.
+Inverting $t$ annihilates $k$, and hence this whole localizing
+subcategory, but does not annihilate $E$. Thus the
+algebra-perfect and coefficient-perfect extensions differ.
+In this example $k$ is perfect over $E$, as the two-cell
+resolution given by multiplication by $t$ shows.
+
+Nilpotence of the augmentation ideal also matters. Take $A=k[x]$
+and $E=\Lambda_k(\eta)$, with $|\eta|=1$ and zero differential.
+The augmentation $E\to k$ has a semifree resolution with
+generators $e_n$, $n\geq0$, of degree zero and
+\[
+ de_0=0,\qquad de_n=e_{n-1}\eta\quad(n\geq1).
+\]
+Every element is a finite sum of generators with coefficients
+in $E$.
+
+All positive-degree cycles are boundaries, and its
+degree-zero cohomology is generated by $e_0$.
+Applying $\operatorname{Hom}_E(-,k)$ gives $\prod_{n\geq0}k$
+in degree zero. The endomorphism $e_n\mapsto e_{n-1}$, with
+$e_{-1}=0$, identifies composition with multiplication of
+formal power series. Hence
+\begin{equation}\label{v4-arith:md:eq:polynomial-double}
+ \operatorname{RHom}_A(A,k)=k,
+ \qquad\operatorname{RHom}_E(k,k)=k[[x]].
+\end{equation}
+
+Each formal series acts by a finite sum on every $e_n$.
+The second dual has completed $k[x]$. It has not returned the
+polynomial algebra. Retaining the tower $\{A/(x^n)\}_n$
+records the missing topology.
+
+\subsection{The identity interface}
+
+Choose right modules $P_A,P_B,P_C$ over dg algebras $A,B,C$,
+and let $E_A=\operatorname{RHom}_A(P_A,P_A)$, with analogous
+notation for $B,C$. An $(A,B)$-bimodule $K$ acts on right
+modules by $M\mapsto M\otimes_A^{\mathbb L}K$.
+Assume
+\[
+ P_A\otimes_A^{\mathbb L}K\in\operatorname{thick}_B(P_B),
+ \qquad P_B\otimes_B^{\mathbb L}H\in\operatorname{thick}_C(P_C)
+\]
+for a second bimodule ${}_BH_C$. Define the transformed interfaces
+\[
+ {}_{E_B}L_K{}_{E_A}
+ =\operatorname{RHom}_B(P_A\otimes_A^{\mathbb L}K,P_B),
+ \qquad
+ {}_{E_C}L_H{}_{E_B}
+ =\operatorname{RHom}_C(P_B\otimes_B^{\mathbb L}H,P_C).
+\]
+Their left actions are postcomposition and their right actions
+are precomposition. These choices fix the order of the product.
+
+\begin{proposition}[Composition of marked interfaces]
+\label{v4-arith:md:prop:interfaces}
+Composition induces a natural equivalence
+\begin{equation}\label{v4-arith:md:eq:interfaces}
+ L_H\otimes_{E_B}^{\mathbb L}L_K
+ \xrightarrow{\sim}L_{K\otimes_B^{\mathbb L}H},
+ \qquad g\otimes f\longmapsto g\circ(f\otimes1_H).
+\end{equation}
+It respects iterated composition. The identity $A$-bimodule
+is sent to the regular $E_A$-bimodule.
+\end{proposition}
+
+\begin{proof}
+The formula is balanced because acting on $g$ by precomposition
+has the same effect as acting on $f$ by postcomposition.
+Put $Q=P_A\otimes_A^{\mathbb L}K$. Both sides are exact
+contravariant functors of $Q\in\operatorname{thick}_B(P_B)$.
+At $Q=P_B$, the map is the unit isomorphism for tensor over
+$E_B$.
+
+It is therefore an equivalence on the thick closure.
+For three interfaces, both parenthesizations compose the same
+three maps. The derived associativity constraints give the same
+comparison. For $K=A$, the definition gives
+$L_A=\operatorname{RHom}_A(P_A,P_A)=E_A$ with its two regular
+actions.
+\end{proof}
+
+The augmentation boundary and the identity interface have different
+roles. The first becomes a regular dual module in
+Theorem~\ref{v4-arith:md:thm:marked}. The second becomes the unit
+bimodule for balanced composition. Replacing that bimodule by its
+augmentation would change the composition law. A field realization
+must preserve the chosen boundary action as well as these units.
+
+\section{Comodules, contramodules and the direction of a map}
+\label{v4-arith:md:sec:co-contra}
+
+A coalgebra has a second correspondence that is covariant in its
+module argument. Let $C$ be a counital coalgebra over a field $k$.
+A left comodule has a coaction $M\to C\otimes_kM$.
+
+A \emph{left contramodule} has instead a map
+\[
+ \pi:\operatorname{Hom}_k(C,P)\longrightarrow P.
+\]
+It satisfies the unit identity induced by the counit of $C$ and
+the associativity identity obtained from
+$\operatorname{Hom}_k(C,\operatorname{Hom}_k(C,P))$.
+The two maps in that identity are composition with $\pi$ and
+precomposition with the coproduct, using tensor--Hom adjunction.
+For an infinite coalgebra this retains operations on all linear
+maps from $C$, not only finite linear combinations.
+
+For a right comodule $N$ and a left contramodule $P$, their
+\emph{contratensor product} $N\odot_C P$ is the cokernel of
+\[
+ N\otimes_k\operatorname{Hom}_k(C,P)
+ \rightrightarrows N\otimes_kP.
+\]
+One map is $n\otimes f\mapsto n\otimes\pi(f)$.
+The other is $n\otimes f\mapsto\sum n_{(0)}\otimes f(n_{(1)})$,
+where $\delta n=\sum n_{(0)}\otimes n_{(1)}$.
+The sums here are finite on each comodule element. The subscript
+$C$ distinguishes this quotient from the transported tensor
+$\odot$ of \eqref{v4-arith:md:eq:dual-tensor}.
+
+The regular coalgebra is a bicomodule. It defines functors
+\begin{equation}\label{v4-arith:md:eq:co-contra}
+ \Phi_C(P)=C\odot_C P,
+ \qquad \Psi_C(M)=\operatorname{Hom}_C(C,M),
+ \qquad \Phi_C\dashv\Psi_C.
+\end{equation}
+The Hom consists of colinear maps.
+
+The left coaction on
+$\Phi_C(P)$ comes from the first factor of the coproduct.
+The right coaction on $C$ induces the contramodule operation
+on $\Psi_C(M)$. In ungraded notation it sends
+$F:C\to\operatorname{Hom}_C(C,M)$ to
+$c\mapsto\sum F(c_{(2)})(c_{(1)})$.
+Tensor--Hom adjunction identifies the two balancing conditions
+and proves the adjunction in \eqref{v4-arith:md:eq:co-contra}.
+
+For a dg coalgebra, use the same constructions in complexes with
+Koszul signs. In the homotopy category of dg comodules, take the
+thick subcategory generated by total complexes of exact triples
+and closed under direct sums. The quotient is the
+\emph{coderived category}.
+
+The objects in this subcategory are called coacyclic.
+The \emph{contraderived category} uses exact triples of
+contramodules and closure under products. Its corresponding
+objects are contraacyclic. These are the acyclic classes relevant
+to the unbounded correspondence.
+
+\begin{theorem}[The field-coefficient correspondence]
+\label{v4-arith:md:thm:co-contra}
+For a dg coalgebra over a field, the derived functors of
+\eqref{v4-arith:md:eq:co-contra} give inverse covariant equivalences
+\[
+ \mathbb L\Phi_C:D^{\mathrm{ctr}}(C\text{-contra})
+ \rightleftarrows D^{\mathrm{co}}(C\text{-comod}):\mathbb R\Psi_C.
+\]
+\end{theorem}
+
+\begin{proof}
+The coderived category is modeled by dg comodules that are
+injective after forgetting the differential. The contraderived
+category is modeled by contramodules that are projective after
+forgetting the differential. These resolution statements are
+Positselski, \emph{Two kinds of derived categories}, Theorem 4.4.
+They concern the graded comodule and contramodule categories.
+
+For a graded vector space $V$, the functors send the free
+contramodule $\operatorname{Hom}_k(C,V)$ to the cofree comodule
+$C\otimes_kV$, and conversely. The comparisons follow from
+evaluation, coproduct and counit. Graded projectives are
+summands of free contramodules, and graded injectives are
+summands of cofree comodules. Thus the comparisons extend to
+these two classes, commute with their differentials and give
+inverse functors on the two homotopy models. This is the
+correspondence theorem of that source, Section 5.2.
+\end{proof}
+
+For $C=k$, the functor $\Psi_C$ is the identity on complexes.
+It is not vector-space dualization. Even for a finite coalgebra,
+colinear Hom cannot be replaced by all linear maps.
+
+Let
+$C=k1\oplus kc$, with $c$ primitive. A colinear endomorphism
+has the form
+\[
+ f(1)=a1,\qquad f(c)=b1+ac.
+\]
+Indeed the coaction identity first forces the displayed value
+on $1$ and then the coefficient of $c$. Thus
+$\dim_k\operatorname{Hom}_C(C,C)=2$, whereas
+$\dim_k\operatorname{Hom}_k(C,C)=4$.
+
+The injective condition also retains the coaction. The inclusion
+$k1\subset C$ has no comodule retraction. If $r(1)=1$, the
+colinearity equation on $c$ would read
+$1\otimes r(c)=1\otimes r(c)+c\otimes1$. Thus the trivial
+comodule $k$ is not injective, although its underlying vector
+space is injective. Underlying coefficient injectivity alone
+cannot justify the resolutions in the theorem.
+
+\subsection{Bar and cobar supply additional algebra comparisons}
+
+Let $A$ be an augmented dg algebra over $k$, and let $BA$ be
+its normalized bar coalgebra. In this subsection use left
+$A$-modules. Write $\tau:BA\to A$ for the
+canonical degree-one twisting cochain.
+
+Its identity is
+\[
+ d_A\tau+\tau d_{BA}+\mu_A(\tau\otimes\tau)\Delta=0,
+\]
+where the tensor of maps includes its Koszul sign.
+For a module $M$, the twisted tensor $BA\otimes_\tau M$
+has the ordinary tensor differential plus the term applying
+the coproduct, $\tau$ and the module action. The identity above
+makes its differential square to zero. Twisted Hom is defined
+by the adjoint formula.
+
+The resulting equivalences are
+\begin{equation}\label{v4-arith:md:eq:bar-categories}
+ D(A\text{-mod})\simeq D^{\mathrm{co}}(BA\text{-comod}),
+ \qquad D(A\text{-mod})\simeq D^{\mathrm{ctr}}(BA\text{-contra}).
+\end{equation}
+They are Positselski's Theorem 6.3. One composite is the reduced
+bar resolution of $M$. Its augmentation is a quasi-isomorphism.
+
+For the other composite, filtration by the number of bar
+entries reduces the unit comparison to the cofree coalgebra
+resolution. The corresponding Hom argument uses products and
+the contraderived acyclic class. Section 6.4 gives the analogous
+statement for a conilpotent dg coalgebra $C$ and $A=\Omega C$.
+The normalized algebra bars and their signs were constructed in
+Chapter~\ref{v4-ch:bar-cobar-topology}.
+
+The two equivalences in \eqref{v4-arith:md:eq:bar-categories}
+intertwine the comodule--contramodule correspondence. On a
+twisted cofree object this is the explicit identity
+\[
+ \Psi_C(C\otimes_\tau M)
+ \cong\operatorname{Hom}_\tau(C,M).
+\]
+Thus coefficient transposition, bar--cobar comparison and
+comodule--contramodule correspondence have specified connecting
+maps. They remain different functors. Replacing the field by
+$\mathbb Z_p[[T]]$ requires an exact structure and resolution
+hypotheses over that ring.
+
+\subsection{Changing the coalgebra}
+
+Let $f:C\to D$ be a coalgebra map. Corestriction sends a left
+$C$-comodule to a left $D$-comodule by
+\begin{equation}\label{v4-arith:md:eq:corestriction}
+ M\xrightarrow{\delta_M}C\otimes M
+ \xrightarrow{f\otimes1}D\otimes M.
+\end{equation}
+It has the same underlying vector space. A $C$-contramodule
+likewise becomes a $D$-contramodule by
+\[
+ \operatorname{Hom}_k(D,P)\xrightarrow{\operatorname{Hom}(f,P)}
+ \operatorname{Hom}_k(C,P)\xrightarrow{\pi}P.
+\]
+Both functors go from $C$ to $D$. Applying the word
+``opposite'' to $f$ does not produce a linear map $D\to C$.
+
+The reverse comodule functor uses cotensor. Give $C$ its
+$(C,D)$-bicomodule structure through $f$. For a left
+$D$-comodule $N$, set
+\[
+ f^!N=C\mathbin{\square}_DN
+ =\ker\bigl(C\otimes N\rightrightarrows C\otimes D\otimes N\bigr).
+\]
+The maps use the right $D$-coaction on $C$ and the left
+$D$-coaction on $N$.
+
+It is right adjoint to corestriction.
+For example, the adjoint of $u:M\to N$ is
+$m\mapsto\sum m_{(-1)}\otimes u(m_{(0)})$.
+The inverse adjunction map applies the counit of $C$.
+These formulas prove the adjunction identities.
+
+On contramodules the reverse functor is
+$f_!Q=\operatorname{Cohom}_D(C,Q)$. For a left $D$-comodule
+$L$, define $\operatorname{Cohom}_D(L,Q)$ as the cokernel of
+two maps
+\[
+ \operatorname{Hom}_k(D\otimes L,Q)
+ \rightrightarrows\operatorname{Hom}_k(L,Q).
+\]
+One precomposes with the coaction of $L$. The other uses
+\[
+ \operatorname{Hom}_k(D\otimes L,Q)
+ \cong\operatorname{Hom}_k(L,\operatorname{Hom}_k(D,Q))
+\]
+and then the contraaction of $Q$.
+For $L=C$, the right $C$-coaction induces the left
+$C$-contramodule structure on the quotient.
+This is left adjoint to the contramodule corestriction.
+
+\begin{proposition}[Naturality with derived adjoints]
+\label{v4-arith:md:prop:naturality}
+For dg coalgebras over a field there is a natural comparison
+\begin{equation}\label{v4-arith:md:eq:naturality}
+ \mathbb R\Psi_C\,\mathbb Rf^!
+ \simeq\mathbb Lf_!\,\mathbb R\Psi_D
+ :D^{\mathrm{co}}(D\text{-comod})
+ \longrightarrow D^{\mathrm{ctr}}(C\text{-contra}).
+\end{equation}
+Here the derived functors use the graded injective and projective
+models of Theorem~\ref{v4-arith:md:thm:co-contra}.
+\end{proposition}
+
+\begin{proof}
+For a graded-injective $D$-comodule $N$, the comparison is
+induced by
+\[
+ \operatorname{Hom}_C(C,C\mathbin{\square}_DN)
+ \cong\operatorname{Hom}_D(C,N)
+ \cong\operatorname{Cohom}_D(C,\operatorname{Hom}_D(D,N)).
+\]
+The first isomorphism is the cotensor adjunction. For a cofree
+$N=D\otimes V$, the second is the evaluation identification
+with $\operatorname{Hom}_k(C,V)$.
+
+It extends to injective
+summands. The cotensor functor preserves graded injectives,
+and its cohomomorphism counterpart preserves graded
+projectives. Thus the isomorphisms commute with differentials
+and pass to the two homotopy models. This is the naturality
+comparison of Positselski, Section 5.4.
+\end{proof}
+
+There is a related comparison when algebra maps and coalgebra
+maps preserve a specified acyclic twisting cochain. If
+$\tau:C\to A$, $\sigma:D\to B$, $g:A\to B$ and $f:C\to D$
+satisfy $\sigma f=g\tau$, then extension over $g$ corresponds,
+under the twisted tensor equivalences, to corestriction over
+$f$. Restriction over $g$ corresponds to derived cotensor.
+The chain identities follow by substituting $\sigma f=g\tau$
+in the twisted differentials. See Positselski, Section 6.9.
+The equation is an additional compatibility of actual maps.
+
+\begin{example}[A linear splitting does not reverse a coaction]
+\label{v4-arith:md:ex:retraction}
+Let $D$ have basis $1,c,d$ and coproduct
+\[
+ \Delta c=1\otimes c+c\otimes1,
+ \qquad\Delta d=1\otimes d+c\otimes c+d\otimes1.
+\]
+The counit kills $c,d$. Coassociativity follows by expanding
+these formulas, or by dualizing multiplication in $k[x]/(x^3)$.
+The subspace $C=k1\oplus kc$ is a subcoalgebra.
+
+The linear retraction $r:D\to C$ fixing $1,c$ and killing $d$
+preserves the counit, but
+\[
+ \Delta_Cr(d)=0,\qquad(r\otimes r)\Delta_Dd=c\otimes c\ne0.
+\]
+It is not a coalgebra map. Applying $1\otimes r$ to the right
+regular coaction of $D$ gives a map $\delta:D\to D\otimes C$
+whose coassociativity defect on $d$ is
+\[
+ (\delta\otimes1)\delta(d)-(1\otimes\Delta_C)\delta(d)
+ =1\otimes c\otimes c.
+\]
+Thus even a counital splitting of underlying modules does not
+give the reverse corestriction functor.
+\end{example}
+
+For a finite projective coalgebra map, the algebra transpose
+$f^\vee:D^\vee\to C^\vee$ does exist. Ordinary restriction
+of modules along it goes from $C^\vee$-modules to
+$D^\vee$-modules. Extension in the other direction changes
+the underlying module. The evaluation identity
+\eqref{v4-arith:md:eq:transpose} remains valid without implying
+any of the incorrect reverse functors.
+
+\section{Completion and detection of a comparison}
+\label{v4-arith:md:sec:completion}
+
+Integral duality requires control of the entire coefficient tower.
+Let $R$ be a commutative Noetherian ring and $I\subset R$ an
+ideal. The derived $I$-adic completion of $M\in D(R)$ is
+\begin{equation}\label{v4-arith:md:eq:derived-completion}
+ \mathbb L\Lambda_I M
+ =\operatorname{Rlim}_n(M\otimes_R^{\mathbb L}R/I^n).
+\end{equation}
+A complex is \emph{derived $I$-complete} when its natural map
+to \eqref{v4-arith:md:eq:derived-completion} is an equivalence.
+For Noetherian $R$ this is the reflection into the complexes
+satisfying $\operatorname{RHom}_R(R[1/f],M)=0$ for every
+$f\in I$. The equivalence of these definitions is the
+Noetherian derived-completion theorem, Stacks Project, Tag 0922.
+
+Write $K_n=M\otimes_R^{\mathbb L}R/I^n$.
+The inverse-limit term is visible in the exact sequence
+\begin{equation}\label{v4-arith:md:eq:milnor}
+ 0\longrightarrow\varprojlim_n{}^1H^{j-1}(K_n)
+ \longrightarrow H^j(\mathbb L\Lambda_I M)
+ \longrightarrow\varprojlim_nH^j(K_n)\longrightarrow0.
+\end{equation}
+Indeed the derived limit is the fiber of
+$1-s:\prod_nK_n\to\prod_nK_n$, where $s$ applies the
+transition to the next coordinate. Products of modules are
+exact. The long exact cohomology sequence therefore identifies
+the two outer terms with the cokernel and kernel of $1-s$.
+
+The first derived limit vanishes for a surjective cohomology
+tower, since $(1-s)x=y$ can then be solved recursively.
+It also vanishes under the Mittag--Leffler condition: for each
+fixed index the images of all sufficiently late transition
+maps agree. This is weaker than surjectivity of each transition.
+
+The reduction tower of
+$M=[\mathbb Z_p\xrightarrow{p}\mathbb Z_p]$, in degrees zero
+and one, gives an example:
+\[
+ H^0(M\otimes_{\mathbb Z_p}^{\mathbb L}\mathbb Z/p^n)
+ =p^{n-1}\mathbb Z_p/p^n\cong\mathbb F_p.
+\]
+Every transition on this group is zero. Its eventual image is
+zero, so it is Mittag--Leffler but is not a surjective tower.
+Each term of the complex is flat over $\mathbb Z_p$.
+
+Ordinary quotients can lose all the cohomology in the answer.
+For $D_p=\mathbb Q_p/\mathbb Z_p$, one has $D_p/p^nD_p=0$,
+but the two-term resolution of $\mathbb Z/p^n$ gives
+\begin{equation}\label{v4-arith:md:eq:divisible-completion}
+ D_p\otimes_{\mathbb Z_p}^{\mathbb L}\mathbb Z/p^n
+ \simeq D_p[p^n][1],\qquad
+ \mathbb L\Lambda_{(p)}D_p\simeq\mathbb Z_p[1].
+\end{equation}
+The transition on the kernels is multiplication by $p$.
+Writing a kernel element as $a/p^n$ identifies it with the
+reduction $\mathbb Z/p^{n+1}\to\mathbb Z/p^n$.
+This tower is surjective, with inverse limit $\mathbb Z_p$.
+Our shift convention places the displayed cohomology in
+degree $-1$.
+
+For finite cohomology modules there is a useful simplification.
+If every $H^j(M)$ is finite over $R$, then
+\[
+ H^j(\mathbb L\Lambda_I M)
+ \cong\varprojlim_nH^j(M)/I^nH^j(M).
+\]
+This is Stacks Project, Tag 0A06.
+
+The Noetherian
+Artin--Rees theorem makes completion exact on finite modules.
+Finite free resolutions and truncations give the assertion
+for complexes. In particular finite cohomology over
+$\mathbb Z_p[[T]]$ is already $p$-adically complete.
+This does not justify replacing the derived tensor in
+\eqref{v4-arith:md:eq:derived-completion} by every chosen
+termwise quotient.
+
+\subsection{The unit and counit must be the maps tested}
+
+\begin{proposition}[Conservativity of reduction]
+\label{v4-arith:md:prop:conservative}
+Let $u:M\to N$ be a map of derived $I$-complete complexes.
+If $u\otimes_R^{\mathbb L}R/I$ is an equivalence, then $u$
+is an equivalence.
+\end{proposition}
+
+\begin{proof}
+The cone $K$ is derived complete, since derived completion is
+exact. The hypothesis says $K\otimes_R^{\mathbb L}R/I=0$.
+It follows that $K\otimes_R^{\mathbb L}V=0$ for every
+$R/I$-module $V$, by associativity of derived tensor.
+The finite filtration of $R/I^n$ by powers of $I$ has such
+successive quotients. Induction therefore gives
+$K\otimes_R^{\mathbb L}R/I^n=0$ for every $n$.
+Taking the derived limit and using completeness gives $K=0$.
+\end{proof}
+
+Suppose now that an integral adjunction $F\dashv G$ is defined
+between stable coefficient categories. Suppose both categories
+have exact reduction functors, conservative on the complete
+objects under consideration. Assume $F,G$ preserve these
+objects and that their reductions form an adjunction
+$\bar F\dashv\bar G$. The comparison must identify the
+reductions of the actual unit and counit with the unit and
+counit of $\bar F\dashv\bar G$.
+
+Under these hypotheses, if the reduced adjunction is an
+equivalence, then the original adjunction is an equivalence
+on that complete domain. Its unit and counit have zero
+reduced cones, so conservativity makes both maps equivalences.
+For coderived or contraderived recipients, this argument
+requires an internal detection statement for those cones.
+An underlying ordinary derived complex suffices only when the
+forgetful comparison detects them.
+
+A compatible tower gives another positive construction.
+Let $\mathcal C_n\simeq\mathcal D_n$ be equivalences of
+categories, equipped with coherent comparisons to their
+transition functors. They form an equivalence of diagrams,
+so induce
+\[
+ \varprojlim_n\mathcal C_n\simeq\varprojlim_n\mathcal D_n.
+\]
+The limits retain their descent data and mapping spaces.
+Equivalences chosen independently at each level do not yet
+give the required equivalence of diagrams.
+
+\subsection{Limits of reduction}
+
+Conservativity detects equivalences of supplied maps. It is
+not faithfulness: multiplication by $p$ on $\mathbb Z_p$ is
+nonzero and reduces to zero. Nor does reduction make a lift
+unique. For $R=\mathbb Z_p[[T]]$, the modules
+\[
+ M_0=R/(T),\qquad M_1=R/(T-p)
+\]
+have the same reduction modulo $p$. They are not isomorphic
+as $R$-modules, since their annihilator ideals differ.
+Even a fixed lift has distinct automorphisms $1$ and $1+p$
+with the same reduction.
+
+There is a second distinction between scalar and power-series
+coefficients. The module $R/(T)$ is free over $\mathbb Z_p$,
+but the free $R$-resolution
+$[R\xrightarrow{T}R]$ gives
+\[
+ \operatorname{Tor}_1^R(R/(T),R/(T))=R/(T).
+\]
+It is not flat over $R$. Its Iwasawa invariant $\mu$ is zero,
+because $T$ becomes invertible at the height-one prime $(p)$.
+Thus $\mu=0$ supplies neither flatness nor the required
+base-change comparison.
+
+The coefficient ring $\Lambda=\mathbb Z_p[[T]]$ is regular
+local of dimension two. The parameters $p,T$ form a regular
+sequence, and their Koszul complex resolves the residue field
+in length two. A minimal free resolution of a finite module has
+zero differentials after reduction to the residue field. Its
+terms then compute Tor. Computing Tor instead with the Koszul
+resolution shows that every term above degree two is zero,
+by Nakayama's lemma.
+
+Finite $\Lambda$-modules therefore have
+projective dimension at most two. In particular this holds
+for $\Lambda/J$ for every ideal $J$, since $\Lambda$ is
+Noetherian. Dimension shifting and Baer's injectivity criterion
+then bound the injective dimension of every $\Lambda$-module
+by two.
+These bounds can support resolution arguments, but the exact comodule
+and contramodule structures must still be specified.
+In particular the module condition $\mu=0$ and coalgebra
+conilpotence are independent, as the two explicit coalgebras
+in Proposition~\ref{v4-arith:coefficients:prop:mu} show.
+
+For an abelian number field, form the Iwasawa module from
+the $p$-primary class groups of its cyclotomic tower.
+Ferrero--Washington proves that its $\mu$ invariant vanishes.
+Transferring this invariant to another
+arithmetic object requires a comparison of the specified
+coefficient modules, for example a pseudo-isomorphism.
+Neither the oscillator basis nor the coproduct alone provides
+that comparison.
+
+\section{Completed coordinate coactions and Fock fields}
+\label{v4-arith:md:sec:completed-modules}
+
+The transpose of a coaction can have infinitely many output
+coordinates even when each input state is a polynomial. This
+does not prevent a continuous coordinate coaction. It does
+force a choice of recipient.
+
+Let $k$ be a discrete field of characteristic zero and let
+$H$ be a Hopf algebra with bijective antipode $\mathsf s$.
+Suppose a right comodule is an increasing union of finite
+subcomodules, $M=\bigcup_NM_N$. Define
+\begin{equation}\label{v4-arith:md:eq:coordinate-limits}
+ D_M=\varprojlim_NM_N^*,\qquad
+ \mathscr T_r(M)=\varprojlim_N(M_N^*\otimes_kH^{\otimes r}).
+\end{equation}
+
+The finite-stage spaces are discrete. An element of
+$\mathscr T_r(M)$ is equivalently a linear map
+$M\to H^{\otimes r}$, with the topology of restriction to
+finite stages. In particular the target of a completed
+coaction is $\mathscr T_1(M)$. It need not be
+$D_M\otimes_kH$.
+
+Use the following tensor convention on right comodules:
+\begin{equation}\label{v4-arith:md:eq:reversed-tails}
+ \delta(m\otimes n)
+ =m_{(0)}\otimes n_{(0)}\otimes n_{(1)}m_{(1)}.
+\end{equation}
+The order of the two Hopf-algebra coefficients is part of the
+convention. Associativity of $H$ makes this a monoidal tensor.
+
+\begin{proposition}[The continuous coordinate coaction]
+\label{v4-arith:md:prop:completed-coaction}
+There is a natural continuous map
+\begin{equation}\label{v4-arith:md:eq:completed-coaction}
+ \widehat\delta_M:D_M\longrightarrow\mathscr T_1(M),
+ \qquad (\widehat\delta_Mf)(m)
+ =\sum f(m_{(0)})\mathsf s^{-1}(m_{(1)}).
+\end{equation}
+It is counital and coassociative in the corresponding
+coordinate recipients. It gives a natural tensor comparison
+\[
+ D_{M\otimes N}\cong
+ D_N\widehat\otimes D_M
+ :=\varprojlim_{a,b}(N_b^*\otimes M_a^*),
+\]
+where both sides retain their inverse systems of comodules.
+\end{proposition}
+
+\begin{proof}
+In a basis $e_j$ of $M_N$, write
+$\delta e_j=\sum_i e_i\otimes u_{ij}$. The coaction identity
+is $\Delta u_{ij}=\sum_lu_{il}\otimes u_{lj}$.
+The proposed dual coaction sends
+$e^i$ to $\sum_je^j\otimes\mathsf s^{-1}(u_{ij})$.
+Since the antipode reverses coproduct,
+\[
+ \Delta\mathsf s^{-1}(u_{ij})
+ =\sum_l\mathsf s^{-1}(u_{lj})\otimes\mathsf s^{-1}(u_{il}).
+\]
+
+This is precisely coassociativity of the dual formula.
+The counit identity follows from the identity coefficient
+matrix. Restriction to a smaller subcomodule commutes with
+the formula, so it defines the inverse-limit map. Each
+finite projection uses only $f|_{M_N}$, which proves continuity.
+
+At a finite pair of stages, $g\otimes f$ corresponds to the
+functional $m\otimes n\mapsto f(m)g(n)$. Its Hopf coefficient
+is compatible because
+\[
+ \mathsf s^{-1}(n_{(1)}m_{(1)})
+ =\mathsf s^{-1}(m_{(1)})\mathsf s^{-1}(n_{(1)}).
+\]
+This is the coefficient of $g\otimes f$ under
+\eqref{v4-arith:md:eq:reversed-tails}. Passing through the
+restriction maps gives the tensor comparison. A map of the
+exhaustive filtered unions takes each finite-dimensional
+stage into a finite stage, so its transpose is continuous
+and all comparisons are natural.
+\end{proof}
+
+The reversal is visible in the four-dimensional Hopf algebra
+generated by $g,x$, with
+\[
+ g^2=1,\quad x^2=0,\quad gx=-xg,
+ \qquad\Delta g=g\otimes g,\quad
+ \Delta x=1\otimes x+x\otimes g.
+\]
+Its inverse antipode has $\mathsf s^{-1}(x)=-gx$.
+Consequently $\mathsf s^{-1}(xg)=-x$, while
+$\mathsf s^{-1}(x)\mathsf s^{-1}(g)=x$.
+Keeping the original tensor order changes this coefficient
+by $2x$.
+
+\subsection{The full binomial coaction}
+
+Take $F_K=k[x_1,x_2,\ldots]$, with $K\ne0$, and give $x_n$
+energy $n$. Let $H=k[b_2,b_3,\ldots]$ with every $b_j$
+primitive, and set
+\[
+ \delta_K(x_n)=x_n\otimes1-nK\,1\otimes b_{n+1}.
+\]
+Extending as an algebra map gives a right coaction. The
+subspace of energy at most $N$ is finite-dimensional and
+stable under it.
+
+Let $f_\alpha$ extract the coefficient of
+$x^\alpha=\prod_jx_j^{\alpha_j}$, where $\alpha$ has finite
+support. Applying \eqref{v4-arith:md:eq:completed-coaction}
+to the binomial expansion gives
+\begin{equation}\label{v4-arith:md:eq:fock-coaction}
+ \widehat\delta_K(f_\alpha)
+ =\sum_{\beta\geq\alpha}\binom\beta\alpha f_\beta\otimes
+       \prod_{j\geq1}(jKb_{j+1})^{\beta_j-\alpha_j},
+ \qquad \binom\beta\alpha=\prod_j\binom{\beta_j}{\alpha_j}.
+\end{equation}
+Each finite-energy projection has finitely many terms.
+For the vacuum functional,
+$(\widehat\delta_Kf_0)(x_1^n)=(Kb_2)^n$.
+The arbitrarily high powers show why the algebraic
+restricted-dual tensor is too small for this formula.
+
+The construction also works over a formal coefficient tower.
+Suppose that $H_d$ and $M_{N,d}$ are compatible Hopf algebras
+and finite free subcomodules over $k[\hbar]/(\hbar^d)$,
+with bijective antipodes. The same finite matrix proof gives
+a coaction with target
+\[
+ \varprojlim_{N,d}
+ \bigl(M_{N,d}^{\vee}\otimes_{k[\hbar]/(\hbar^d)}H_d\bigr).
+\]
+For example, a translation derivation satisfying
+$Tb_n=nb_{n+1}$ gives primitive tails
+\[
+ \beta_{K,n}=\frac{b_n-e^{K\hbar T}b_n}{\hbar}
+ =-\sum_{r\geq1}\frac{K^r\hbar^{r-1}}{r!}T^rb_n.
+\]
+
+This quotient is defined by the series and does not invert
+$\hbar$. On the polynomial Hopf algebra with primitive
+$b_n$, these tails define
+$\delta_K(x_n)=x_n\otimes1+1\otimes\beta_{K,n}$.
+At each precision only finitely many terms of each tail
+remain. The limit recovers a continuous coordinate coaction
+on $\prod_\alpha k[[\hbar]]f_\alpha$.
+
+\subsection{Evaluation imposes another topology}
+
+Let $M=\bigoplus_{n\geq0}M[n]$, with each $M[n]$ finite,
+and let $D^{\mathrm{res}}=\bigoplus_nM[n]^*$.
+Consider the matrix completion
+\begin{equation}\label{v4-arith:md:eq:matrix}
+ \mathscr E(M)=\prod_{p,q\geq0}M[p]\otimes M[q]^*,
+\end{equation}
+with discrete finite blocks. The finite sums of the identity
+tensors on $M[0],\ldots,M[N]$ converge to an element of
+$\mathscr E(M)$ with identity diagonal blocks and zero
+off-diagonal blocks. This is the formal diagonal coevaluation.
+
+\begin{proposition}[Failure of continuous contraction]
+\label{v4-arith:md:prop:evaluation}
+If infinitely many $M[n]$ are nonzero, ordinary evaluation
+on $M\otimes D^{\mathrm{res}}$ has no continuous extension
+to \eqref{v4-arith:md:eq:matrix}.
+\end{proposition}
+
+\begin{proof}
+Choose distinct $n_j\to\infty$, vectors $e_j\in M[n_j]$
+and functionals $f_j$ with $f_j(e_j)=1$.
+The tensors $e_j\otimes f_j$ converge to zero in the
+product topology, since every fixed finite collection of
+blocks is eventually zero. Their evaluations are all $1$,
+which does not converge to zero in $k$. This contradicts
+continuity.
+\end{proof}
+
+The argument persists over $k[[\hbar]]$ with the product of
+the $\hbar$-adic block topologies: the constant scalar $1$
+still does not approach zero. Exchanging the two tensor
+orders is a homeomorphism of the underlying matrix products,
+so it does not repair continuity. No assertion about that
+flip as a comodule map is needed.
+
+Weighting the coevaluation by $q^n$ gives a different map.
+Its zigzag on $M[n]$ is $q^n\operatorname{id}$ rather than
+$\operatorname{id}$. Such a weighted sewing operator can
+be useful, but it is not the coevaluation of ordinary
+duality. The coordinate coaction above and the diagonal
+coevaluation therefore do not make this matrix completion
+into a rigid tensor category.
+
+\subsection{The inverse coordinate and the central level}
+
+On $F_K$ use the Heisenberg modes
+$J_{-n}=x_n$, $J_n=nK\partial_{x_n}$ for $n>0$, and
+$J_0=0$. Then $[J_m,J_n]=mK\delta_{m+n,0}$.
+For an operator $A$, its transpose is
+$(A^tf)(v)=f(Av)$.
+At the same coordinate the evaluation-compatible Lie
+action is $-J_m^t$. It has level $-K$. It is not lower
+truncated on the restricted dual: the positive modes
+send $f_0$ to $-nKf_{e_n}$ for every $n>0$.
+
+In the inverse coordinate $w=z^{-1}$, the weight-one
+contragredient instead has
+\begin{equation}\label{v4-arith:md:eq:inverse-coordinate}
+ J^\infty(w)=-w^{-2}J(w^{-1})^t,
+ \qquad J^\infty_m=-J_{-m}^t.
+\end{equation}
+This is the primary-current specialization of Huang,
+\emph{Introduction to vertex operator algebras, III},
+equation (1.26). Its properties here can be checked directly.
+
+\begin{proposition}[Restricted contragredient Fock module]
+\label{v4-arith:md:prop:contragredient}
+The current \eqref{v4-arith:md:eq:inverse-coordinate} is
+lower truncated on $F_K^{\mathrm{res}}=\bigoplus_nF_K[n]^*$.
+It has level $K$ and is isomorphic to $F_K$ by
+\begin{equation}\label{v4-arith:md:eq:fock-identification}
+ x^\alpha\longmapsto
+ \left(\prod_j(-jK)^{\alpha_j}\alpha_j!\right)f_\alpha.
+\end{equation}
+On the full product $\prod_nF_K[n]^*$ the same current
+need not be lower truncated.
+\end{proposition}
+
+\begin{proof}
+For $n>0$ its modes are
+\[
+ J^\infty_nf_\alpha=-f_{\alpha-e_n},\qquad
+ J^\infty_{-n}f_\alpha=-(\alpha_n+1)nKf_{\alpha+e_n}.
+\]
+The first expression is zero when $\alpha_n=0$.
+Positive modes lower dual energy, so sufficiently large
+ones kill every vector in the direct sum. These formulas
+also prove \eqref{v4-arith:md:eq:fock-identification}, whose
+coefficients are nonzero because $k$ has characteristic
+zero and $K\ne0$.
+Transposition reverses commutators, giving
+\[
+ [J^\infty_m,J^\infty_n]
+ =-[J_{-m},J_{-n}]^t=mK\delta_{m+n,0}.
+\]
+Normal ordering and differentiation then identify all the
+Heisenberg module fields.
+
+For the full product, take the functional $f$ with
+$f(x_n)=1$ for every $n>0$ and zero on the other monomials.
+Its vacuum component is
+$(J^\infty(w)f)(1)=-\sum_{n\geq1}w^{-n-1}$.
+It has no lower Laurent bound, proving the last assertion.
+\end{proof}
+
+The inverse coordinate restores truncation on the restricted
+dual and restores the original level. For a tensor that adds
+levels and has scalar unit of level zero, it is therefore
+not an inverse-level dual when $K\ne0$.
+The field-module isomorphism does not assert compatibility
+with the completed coordinate coaction. Finding a category
+in which the desired evaluation, coaction and field maps
+coexist remains a further construction. The two explicit
+failures above concern their stated recipients.
+
+\section{Full collision coefficients}
+\label{v4-arith:md:sec:full}
+
+A singular field needs a coefficient category that retains
+all its translates. Suppose $Y(a,z)b$ has a nonzero pole
+over a field of characteristic zero. A relation $p(T)a=0$
+would give $p(\partial_z)Y(a,z)b=0$. If the lowest Laurent
+term is $vz^{-q}$ and $p$ has leading term $ct^d$, the
+coefficient of $z^{-q-d}$ is
+\[
+ c(-q)(-q-1)\cdots(-q-d+1)v\ne0.
+\]
+No lower derivative contributes there. Thus the translates
+$T^na$ are linearly independent.
+
+On $X=\mathbb A^1_k$, the right differential-module action is
+\begin{equation}\label{v4-arith:md:eq:right-current}
+ (f\,dz\otimes a)\partial_z
+ =-f'\,dz\otimes a-f\,dz\otimes Ta.
+\end{equation}
+The translation orbit therefore gives a free rank-one
+$\mathcal D_X$-submodule of $\omega_X\otimes V$.
+It is perfect over $\mathcal D_X$, although it is not
+holonomic: its characteristic variety is the full cotangent
+bundle. Holonomicity, perfectness and dualizability for a
+collision tensor are different conditions.
+
+At finite formal precision a nonzero pole can have a torsion
+coefficient. Over $k[\hbar]/(\hbar^2)$ the state $\hbar J$
+can have a nonzero pole and is still killed by $\hbar$.
+For a scalar-extended family, freeness of the translation
+orbit over the parameter ring follows if the pole remains
+nonzero modulo $\hbar$. A least-order coefficient of any
+proposed relation then contradicts the argument over $k$.
+
+\subsection{The retained perfect diagram}
+
+Let $U$ be a smooth affine chart of dimension $d$, and set
+$\mathcal D=\Gamma(U,\mathcal D_U)$. A perfect right
+$\mathcal D$-complex is a summand of a finite complex of
+finite free right modules. A coordinate volume form converts
+left modules to right modules by
+$f^t=f$, $\partial_i^t=-\partial_i$ and $(ab)^t=b^ta^t$.
+Define
+\begin{equation}\label{v4-arith:md:eq:perfect-differential-dual}
+ P^\dagger=
+ \bigl(\operatorname{RHom}_{\mathcal D}(P,\mathcal D)\bigr)^t[d].
+\end{equation}
+
+The canonical line gives the same conversion without a
+chosen volume form. Finite projective evaluation proves
+$(P^\dagger)^\dagger\simeq P$. The two shifts cancel because
+duality reverses shifts. The same finite calculation commutes
+with restriction to an open chart and with external products.
+Dimensions add in the latter comparison.
+
+Every derived $\mathcal D$-module has a filtered presentation
+$M\simeq\varinjlim_\alpha P_\alpha$ by perfect objects.
+The presentation is in the derived category, and need not
+be a union of submodules. Define its full coefficient dual
+and the inverse construction by
+\begin{equation}\label{v4-arith:md:eq:full-dual}
+ M^\sharp=\{P_\alpha^\dagger\}_\alpha,
+ \qquad\mathbb S\{Q_\beta\}=\varinjlim_\beta Q_\beta^\dagger.
+\end{equation}
+The braces retain the pro-object. The fact used here is that
+the derived module category is the ind-completion of its
+perfect objects, since the regular module is a compact
+generator.
+
+\begin{proposition}[Full coefficient polarity]
+\label{v4-arith:md:prop:full}
+The functors in \eqref{v4-arith:md:eq:full-dual} give a
+presentation-independent anti-equivalence
+\[
+ D(\mathcal D\text{-right})^{\mathrm{op}}
+ \simeq\operatorname{Pro}(\operatorname{Perf}_{\mathrm r}(\mathcal D)).
+\]
+\end{proposition}
+
+\begin{proof}
+For $M=\varinjlim_\alpha P_\alpha$ and
+$N=\varinjlim_\beta Q_\beta$, the mapping formula is
+\begin{align*}
+ \operatorname{Map}_{\mathrm{Pro}}(N^\sharp,M^\sharp)
+ &\simeq\varprojlim_\alpha\varinjlim_\beta
+       \operatorname{Map}(Q_\beta^\dagger,P_\alpha^\dagger)\\
+ &\simeq\varprojlim_\alpha\varinjlim_\beta
+       \operatorname{Map}(P_\alpha,Q_\beta)
+ \simeq\operatorname{Map}(M,N).
+\end{align*}
+The last equivalence uses compactness of $P_\alpha$.
+The formula respects composition. Applying it to any
+pro-perfect diagram identifies that diagram with the dual
+of its image under $\mathbb S$. It proves both inverse
+comparisons and independence of the presentation.
+\end{proof}
+
+The pro-object contains more information than its ordinary
+inverse limit. For the Weyl algebra
+$D=k\langle u,\partial\rangle/([\partial,u]-1)$, the
+right-module localization has presentation
+\[
+ D[u^{-1}]=\varinjlim
+ (D\xrightarrow{L_u}D\xrightarrow{L_u}\cdots),
+ \qquad a\text{ at stage }n\longmapsto u^{-n}a.
+\]
+Its coefficient dual is the tower of $D[1]$ with transitions
+$L_u$. No transition to a fixed stage is zero, so this
+pro-object is nonzero. Its underived inverse limit is zero:
+each coordinate of a compatible sequence lies in
+$\bigcap_nu^nD=0$, as follows from polynomial coefficients
+in Weyl normal form. No vanishing of a derived inverse
+limit is asserted.
+
+The vacuum has another finite resolution,
+$[D\xrightarrow{L_\partial}D]\to\omega_X$.
+It gives $\omega_X^\dagger\simeq\omega_X$, whereas
+$D^\dagger=D[1]$. Thus the full dual retains both the
+vacuum and the free translation orbit with their respective
+shifts.
+
+\subsection{Transporting the collision tensor}
+
+Use the ordered collision schemes $\mathscr R_I$ and their
+exceptional collision pullbacks. A coefficient system
+assigns a right differential complex to each scheme,
+together with coherent comparisons along these pullbacks.
+Let $\mathcal C$ denote this category. Define
+$\mathcal C^\sharp$ by applying
+Proposition~\ref{v4-arith:md:prop:full} on affine charts and
+gluing. Opposite categories preserve limits, so the affine
+comparisons give $\mathcal C^{\mathrm{op}}\simeq
+\mathcal C^\sharp$ on the descent categories.
+
+For any geometric functor $F$, its transported functor is
+$F^\sharp=\sharp F\mathbb S$. In particular collision
+pullback becomes $\delta^\dagger=\sharp\delta^!\mathbb S$,
+and open direct image becomes
+$j_{!,\mathrm{pro}}=\sharp j_*\mathbb S$.
+The latter is a functor to pro-perfect coefficients. It is
+not an assertion that ordinary $j_!$ exists on every large
+differential-module coefficient in this form.
+
+For an ordered decomposition $I=G\sqcup H$, let $U_{G|H}$
+be the open where the two groups of points are disjoint,
+and let $j_{G|H}$ be its inclusion. Internal collisions
+within a group remain allowed. The atlas convolution
+$\star$ sums the corresponding open direct images over
+all ordered decompositions. Its transported tensor is
+\begin{equation}\label{v4-arith:md:eq:full-tensor}
+ (E\star_\sharp F)_I
+ =\bigoplus_{I=G\sqcup H}j_{G|H,!,\mathrm{pro}}
+ \left.(E_G\boxtimes^\sharp F_H)\right|_{U_{G|H}}.
+\end{equation}
+
+Here the external product uses the two-index perfect
+diagrams. The sum is finite. Equivalently,
+$E\star_\sharp F=(\mathbb SE\star\mathbb SF)^\sharp$.
+Associativity and every collision comparison are transported
+through the same coefficient duality.
+
+The tensor unit $K$ has coefficient $k$ at empty support
+and zero at nonempty support. Thus $K^\sharp=K$.
+The word-cut tensor, whose decompositions are consecutive
+prefixes and suffixes, is a separate construction.
+In the atlas tensor, $13\mid2$ and $2\mid13$ are present.
+Transposition retains these components and all normal
+derivatives rather than replacing a full collision by an
+ordered word.
+
+For finite lists there is consequently an equivalence of
+operation spaces
+\begin{equation}\label{v4-arith:md:eq:operation-spaces}
+ \operatorname{Map}_{\mathcal C}
+       \left(\mathop{\star}_iX_i,\mathop{\star}_jY_j\right)
+ \simeq
+ \operatorname{Map}_{\mathcal C^\sharp}
+       \left(\mathop{\star_\sharp}_jY_j^\sharp,
+                         \mathop{\star_\sharp}_iX_i^\sharp\right).
+\end{equation}
+It follows directly from the mapping equivalence and
+\eqref{v4-arith:md:eq:full-tensor}. It reverses composition
+and retains identities, homotopies and their coherences.
+
+\subsection{Associative algebras in the two polarities}
+
+An augmented coefficient algebra is called connected here
+when its empty coefficient is $k$. Its augmentation ideal
+then has zero empty coefficient. On a configuration $I$,
+a tensor word in that ideal has at most $|I|$ nonempty
+factors. This support bound is the finiteness condition for
+normalized bar and cobar, independently of the dimension
+of any individual coefficient.
+
+\begin{theorem}[Associative coefficient duality]
+\label{v4-arith:md:thm:coefficient-koszul}
+On the connected augmented domains for the full atlas
+tensor, normalized bar and full coefficient duality give
+an anti-equivalence
+\[
+ \operatorname{Alg}_{E_1}^{\mathrm{aug,conn}}
+       (\mathcal C,\star)^{\mathrm{op}}
+ \simeq
+ \operatorname{Alg}_{E_1}^{\mathrm{aug,conn}}
+       (\mathcal C^\sharp,\star_\sharp).
+\]
+Its functor is $\mathcal K(A)=(B_\star A)^\sharp$, and its
+inverse is $E\mapsto\mathbb S B_{\star_\sharp}E$.
+\end{theorem}
+
+\begin{proof}
+The bar coproduct transposes to the multiplication of
+$\mathcal K(A)$ through \eqref{v4-arith:md:eq:full-tensor}.
+The bar counit becomes its unit, and its coaugmentation
+becomes its augmentation.
+For a connected coalgebra $C$, dualizing the normalized
+bar of $C^\sharp$ gives
+$\mathbb S B_{\star_\sharp}(C^\sharp)\simeq\Omega_\star C$.
+Suspensions reverse, multiplication transposes to the
+coproduct, and outer deconcatenation becomes concatenation.
+
+The bar--cobar comparison is finite on every $I$.
+Filter a composite by its original positive-support entries.
+For more than one entry, each gap is either an outer cut or
+an inner product gap. On the associated graded these two
+choices form a two-term identity complex.
+
+Contract the
+first gap, with the tensor sign. The single-entry comparison
+is the identity, and the finite filtration proves the unit
+and counit equivalences. This is the finite-support
+bar--cobar argument of Chapter~\ref{v4-ch:bar-cobar-topology}
+applied to all ordered decompositions.
+Its triangles, together with coefficient biduality, give
+the two inverse functors.
+\end{proof}
+
+For a formal family the same proof applies at every
+$R_m=k[\hbar]/(\hbar^m)$ using relative differential
+operators $\mathcal D_U\otimes_kR_m$.
+Finite perfect duality does not require $R_m$ to be regular.
+Keep the coefficient-reduction functors and their transported
+pro-diagrams. No exchange of a pro-limit, an adic limit and
+a Laurent expansion is used.
+
+This theorem constructs a second associative coefficient
+algebra with an inverse comparison. The Lie--commutative
+chiral correspondence concerns other algebra objects and
+does not supply this associative comparison. A realization
+of its output by fields must additionally identify the
+field products, exchange, tensor and local vacuum. The
+next construction supplies such a realization with explicit
+markings.
+
+\section{A field realization with a bar contact marking}
+\label{v4-arith:md:sec:charged}
+
+The field data must be strong enough to recover the input
+algebra from its dual. For charged currents the relevant
+data are a quadratic current core, its translation and
+jet derivations, and the contact operations retained in
+the bar. We work over $k=\mathbb C$ at the fixed precision
+$R_2=k[\hbar]/(\hbar^2)$. The parameter has degree, charge
+and weight zero. Position on the affine line is denoted
+by $z$ and field separation by $u$.
+
+\subsection{Charged jets and their fields}
+
+Let $E$ be a bounded finite-dimensional complex in
+nonpositive cohomological degrees. Give $e_n=e\otimes t^n$
+charge one and weight $n+1$. On
+$\operatorname{Sym}_k(E\otimes k[t])$ define even
+derivations
+\begin{equation}\label{v4-arith:md:eq:jets}
+ Te_n=(n+1)e_{n+1},\qquad
+ \delta_i e_n=e_{n-i+1}\quad(i\geq1),\qquad e_j=0\ (j<0).
+\end{equation}
+They kill the unit, commute with the differential and satisfy
+$[\delta_i,\delta_j]=0$ and
+$[\delta_i,T]=(i-1)\delta_{i-1}$, with $\delta_0=0$.
+The derivation $\delta_1$ measures charge.
+
+A \emph{charged jet algebra} is a quotient of this dg
+algebra by an ideal homogeneous in charge and weight and
+stable under the displayed derivations. Require its
+charge-zero part to be $k$. Each weight piece is then
+a bounded finite-dimensional complex. The quotient
+presentation is not an extra marking.
+
+The charge-one generators are recovered intrinsically.
+On $A_1$ put $D=\delta_2$. Then $[D,T]=1$ and $D$ is
+locally nilpotent. The formulas
+\begin{equation}\label{v4-arith:md:eq:seed}
+ \pi=\sum_{j\geq0}\frac{(-1)^j}{j!}T^jD^j,
+ \qquad
+ a=\sum_{n\geq0}\frac{T^n}{n!}\pi(D^na)
+\end{equation}
+give $A_1=E_A\otimes k[t]$, where $E_A=\ker(D|_{A_1})$.
+
+Both sums are finite on every input. Commuting $D$ through
+$T^j$ cancels adjacent terms and proves $D\pi=0$.
+The binomial identity proves the second formula. Successive
+powers of $D$ prove its uniqueness. Thus $E_A$ and the
+kernel of $\operatorname{Sym}(E_A\otimes k[t])\to A$ are
+recovered from $A$ and its jet actions.
+
+After scalar extension to $R_2$, define
+\begin{equation}\label{v4-arith:md:eq:charged-fields}
+ \begin{aligned}
+ C_1(u)&=\sum_{p,q\geq0}(-1)^{p+1}\binom{p+q}{p}
+ u^{-p-q-1}\delta_{p+1}\otimes\delta_{q+1},\\
+ E(u)&=1-\hbar C_1(u),\qquad
+ Y_A(a,u)b=\mu_A(e^{uT}\otimes1)E(u)(a\otimes b),\\
+ \mathcal S_A(u)&=1+2\hbar C_1(u).
+ \end{aligned}
+\end{equation}
+On fixed algebraic inputs the contraction is finite.
+Taylor translation contributes nonnegative powers, so the
+field output still has a finite lower Laurent bound.
+The symbol $\mathcal S_A$ denotes unpermuted exchange.
+
+An input morphism is an $R_2$-linear unital dg algebra
+map preserving charge and commuting with $T$ and every
+$\delta_i$. In particular it preserves multiplication,
+$f\mu_A=\mu_{A'}(f\otimes f)$.
+These equations imply that it preserves the fields and
+exchange in \eqref{v4-arith:md:eq:charged-fields}.
+The weak equivalences are state quasi-isomorphisms.
+
+The first interacting one-seed quotient is
+\begin{equation}\label{v4-arith:md:eq:cubic}
+ A_0=k[e_0,e_1,\ldots]/I^3=k\oplus V\oplus Q,
+ \qquad I=(e_0,e_1,\ldots),\quad Q=\operatorname{Sym}^2V.
+\end{equation}
+Its differential is zero. The field of $e_0$ satisfies
+\[
+ Y_{A_0}(e_0,u)e_0=(1+\hbar/u)\sum_{n\geq0}e_ne_0u^n.
+\]
+Its $\hbar u^{-1}$ coefficient is $e_0^2\ne0$.
+The quotient by $I^2$ would kill this interaction.
+
+\subsection{The marked current core}
+
+Put $\mathfrak g=\mathfrak{sl}_2(k)$, with
+$[h,e]=2e$, $[h,f]=-2f$ and $[e,f]=h$.
+An independent current core consists of a discrete
+nonpositive complex $L$ with bounded finite-dimensional
+nonnegative weight pieces and completed generators
+$W=(L[1])^\vee$. Here the dual of a discrete space is its
+full degreewise dual with product topology. The dual of
+a completed space is its continuous degreewise dual.
+Thus $W^\vee[-1]=L$.
+
+The finite-weight generator space is
+$W_{\mathrm{pol}}=\bigoplus_q(L_q[1])^*$.
+Its polynomial core is $\operatorname{Sym}(W_{\mathrm{pol}})$,
+and its completion is the product of the weight pieces
+in each cohomological degree. Require a continuous
+square-zero derivation whose values on generators have
+linear and quadratic parts. If $|v_i|=a_i$,
+$d_Lv_i=\sum_kD_i^kv_k$ and $[v_i,v_j]=\sum_kf_{ij}^kv_k$,
+our sign convention is
+\begin{equation}\label{v4-arith:md:eq:current-differential}
+ dc^k=\sum_i(-1)^{a_i}D_i^kc^i
+ -\frac12\sum_{i,j}(-1)^{a_i(1-a_j)}f_{ij}^kc^ic^j.
+\end{equation}
+The linear, quadratic and cubic components of $d^2=0$
+give the differential, derivation and Jacobi identities
+on $L$.
+
+Mark a scalar-current map dual to a dg Lie map
+$j:\mathfrak g\to L$, and require translation to kill
+$j(\mathfrak g)$. For $x\cdot v=[j(x),v]$, require
+\begin{equation}\label{v4-arith:md:eq:isotypic}
+ \mathfrak g\otimes
+ \operatorname{Hom}_{\mathfrak g}(\mathfrak g,L)
+ \xrightarrow{\sim}L.
+\end{equation}
+Charge, translation and all jet actions are retained.
+The recovered multiplicity space must satisfy the
+charged jet conditions above. This is a condition on
+the supplied core and its operations.
+
+For a charged jet algebra $A$, the forward core is
+constructed from
+\[
+ L_A=\mathfrak g\otimes A,
+ \quad[x\otimes a,y\otimes b]=[x,y]\otimes ab,
+ \quad d_{L_A}=1\otimes d_A,
+ \quad j_A(x)=x\otimes1.
+\]
+Its translation and jets are $1\otimes T$ and
+$1\otimes\delta_i$. The corresponding derivations on
+the dual generators are their negative transposes,
+denoted $T_B,D_i$.
+
+Let $\mathcal C^{(n)}$ be charge $n$ of the polynomial
+core, and set
+\begin{equation}\label{v4-arith:md:eq:current-localization}
+ \begin{aligned}
+ \Lambda_n&=k[x_1,\ldots,x_n]^{S_n},
+ &d_n&=\prod_{i<j}(x_i-x_j)^2,\\
+ B^{\mathrm{mer}}&=\bigoplus_{n\geq0}
+ \mathcal C^{(n)}\otimes_{\Lambda_n}\Lambda_n[d_n^{-1}].
+ \end{aligned}
+\end{equation}
+Here $d_0=d_1=1$. The variables $x_i$ are constituent
+dual-jet variables, not positions on the affine line.
+Their power sums act by $p_m\mapsto-D_{m+1}$, including
+$p_0=n$. This symmetric-ring action is determined by
+the marked jets.
+
+Multilinear polarization explains the action and the
+localization. At charge $n$, distribute the $n$ labeled
+constituents among current generators. Their jet indices
+give monomials in $x_1,\ldots,x_n$.
+
+Take symmetric
+invariants with cohomological Koszul signs.
+Multiplication uses the normalized projector
+$(n!)^{-1}\sum_{\sigma\in S_n}\sigma$. The pairing
+of $x^j$ with $et^j$ is one, and repeated even
+constituents contribute their factorials. There is no
+additional binomial factor.
+
+For a free jet algebra this identifies the charge piece
+with $(K_n\otimes k[x_1,\ldots,x_n])^{S_n}$, where $K_n$
+records the finite current and constituent data.
+For a jet quotient its dual core is a submodule of this
+free polarized module. Multiplication by $d_n$ is
+therefore injective. The current differential changes
+only how the same constituents are grouped. It leaves
+their variables fixed. It is $\Lambda_n$-linear and
+extends to \eqref{v4-arith:md:eq:current-localization}.
+
+For two groups of charges $p,q$, the joint recipient
+also inverts every cross difference $x_a-y_b$.
+For field parameters it inverts their translated
+differences as well. At the fixed precision only
+finitely many denominator factors occur in any element.
+Put $w(u)=1-\hbar/u$ and define
+\begin{equation}\label{v4-arith:md:eq:current-fields}
+ \begin{gathered}
+ \Omega_{p,q}(v)=\prod_{a,b}w(v+x_a-y_b),
+ \qquad \mu_w=\mu_0\Omega_{p,q}(0),\\
+ Y_B(b,v)c=\mu_w(e^{vT_B}b\otimes c).
+ \end{gathered}
+\end{equation}
+The map $\mu_0$ is ordinary current multiplication
+extended to this joint localization. The native vacuum
+is the empty symmetric monomial.
+
+A current morphism is an $R_2$-linear unital dg algebra
+map of the polynomial cores, linear on the marked
+generator spaces. It preserves the scalar-current map
+and charge, commutes with $T_B$ and every $D_i$, and
+extends continuously to the completed cores.
+Its extension to the localizations is then unique.
+These conditions preserve the product, fields, exchange
+and vacuum in \eqref{v4-arith:md:eq:current-fields}.
+The polynomial core is retained as a marking. It need
+not be a subalgebra for the deformed product $\mu_w$.
+
+The objects on both sides are scalar extensions from
+$k$ to $R_2$. Their morphisms need not be extended from
+$k$. After extension, generator duals are $R_2$-linear
+with the same topologies. The Frobenius pairing
+$(a,b)\mapsto[\hbar](ab)$ identifies these dual calculations
+with exact $k$-linear duality.
+
+\begin{proposition}[The two field structures]
+\label{v4-arith:md:prop:fields}
+The input and current fields just defined satisfy the
+differential, vacuum, translation, associativity and
+exchange identities on their stated recipients.
+Their exchanges are unitary and satisfy Yang--Baxter
+and the field hexagon.
+\end{proposition}
+
+\begin{proof}
+The commuting jet derivations give
+$[T\otimes1,C_1(u)]=-\partial_uC_1(u)$ and
+$[T\otimes1+1\otimes T,C_1(u)]=0$.
+Each derivation kills the vacuum. The product rule
+splits a contraction against a product into its two
+contractions. Thus either association of three fields
+uses the same three pair factors, after translation
+of their separations. The reversed ratio of the two
+input factors is $\mathcal S_A$.
+
+On the current side, normalized symmetrization absorbs
+each intermediate projector. Both associations have
+the factor
+$\Omega_{p,q}(0)\Omega_{p,r}(0)\Omega_{q,r}(0)$.
+The differential leaves constituent variables fixed,
+and total translation kills differences. Hence both
+are derivations of the deformed product.
+
+Empty groups
+give the two vacuum identities. The exchange is
+$\Omega_{q,p}(-v)^{21}/\Omega_{p,q}(v)$.
+Reversing twice gives its inverse. Commuting pair
+factors give Yang--Baxter, and partitioning their pair
+sets gives the hexagon. Stability under the jet
+derivations carries the input identities through
+the quotient ideals.
+\end{proof}
+
+\subsection{Formal equivalences and the contact coalgebra}
+
+The completed core has a specified notion of weak
+equivalence. Let $S$ be a finite-dimensional nonpositive
+augmented commutative dg $k$-algebra with nilpotent
+augmentation ideal $\mathfrak m_S$. Put
+\[
+ \Omega_n=k[t_0,\ldots,t_n,dt_0,\ldots,dt_n]
+ /(\textstyle\sum t_i-1,\sum dt_i),
+ \qquad d(t_i)=dt_i,
+\]
+where $|t_i|=0$ and $|dt_i|=1$.
+For the completed untwisted core $\widehat{\mathcal C}_B$
+with positive symmetric-degree ideal $I_B$, consider
+the simplicial set $X_B(S)$.
+Its $n$-simplices are continuous unital
+$R_2$-linear dg algebra maps satisfying
+\begin{equation}\label{v4-arith:md:eq:formal-tests}
+ \begin{gathered}
+ \phi:\widehat{\mathcal C}_B\longrightarrow R_2\otimes S\otimes\Omega_n,\\
+ \phi(I_B)\subset R_2\otimes\mathfrak m_S\otimes\Omega_n.
+ \end{gathered}
+\end{equation}
+
+In particular $\phi(ab)=\phi(a)\phi(b)$.
+The target is discrete. These test maps need not
+preserve the generator splitting or the jet markings.
+A current morphism $B\to B'$ is a
+\emph{formal core equivalence} if precomposition gives
+a weak equivalence $X_{B'}(S)\to X_B(S)$ for every $S$.
+This defines the weak equivalences on the current side.
+
+The generator images identify
+\eqref{v4-arith:md:eq:formal-tests} with the Maurer--Cartan
+simplicial set of
+$(\mathfrak g\otimes A_{R_2})\otimes\mathfrak m_S$:
+the chain-map equation is $d\alpha+\tfrac12[\alpha,\alpha]=0$.
+Nilpotence makes all products finite. Continuity gives
+finite weight support at each simplex.
+The nilpotent Maurer--Cartan invariance theorem sends a
+state quasi-isomorphism to an equivalence of these tests.
+See Getzler, \emph{Lie theory for nilpotent
+$L_\infty$-algebras}, Theorem 4.8.
+
+Conversely, the test $S=k[\varepsilon]/(\varepsilon^2)$
+has, at the zero point,
+\[
+ \pi_nX_B(S)=H^{1-n}(\mathfrak g\otimes A_{R_2})\varepsilon
+ \quad(n\geq1),\qquad\pi_0X_B(S)=*.
+\]
+The bracket is zero in this test, and the polynomial
+de Rham complex computes the shifted linear complex.
+Every state degree occurs because the states are
+nonpositive. Thus a formal core equivalence detects
+the recovered state quasi-isomorphism. This uses the
+marked core and does not replace it by ordinary
+cohomology of the unmarked meromorphic algebra.
+
+Now form the full contact coalgebra $C_A$ of the input
+fields. Its singleton is $(\omega_X\otimes A_{R_2})[1]$
+with right action \eqref{v4-arith:md:eq:right-current}.
+For every ordered partition retain its open and closed
+direct images and all normal derivatives. A merger
+uses the principal part of the field, together with
+exchange to bring nonconsecutive blocks together.
+
+In particular it retains
+\begin{equation}\label{v4-arith:md:eq:contact-mark}
+ r_A(u^m;a,b)=\operatorname{pp}(u^mY_A(a,u)b)
+ \qquad(m\in\mathbb Z).
+\end{equation}
+Here $\operatorname{pp}$ takes the strictly negative
+Laurent part. Fields have expansion
+$Y_A(a,u)b=\sum_n(a_{(n)}b)u^{-n-1}$, so
+\begin{equation}\label{v4-arith:md:eq:mode-recovery}
+ a_{(n)}b=[u^{-1}]r_A(u^n;a,b).
+\end{equation}
+Negative multipliers recover the regular modes as well.
+The coefficient differential and all its coherences
+come from the full contact construction, not from
+the extraction of a single residue.
+
+Define $U_*(A)=\Omega_\star C_A$. If $tc$ is the
+degree-one desuspension of a reduced coalgebra element,
+its cobar differential is
+\begin{equation}\label{v4-arith:md:eq:contact-cobar}
+ d(tc)=-t(d_Cc)+
+ \sum_{\overline\Delta c=c'\otimes c''}
+       (-1)^{|c'|+1}(tc')(tc'').
+\end{equation}
+Every ordered-subset coproduct is included. The empty
+word is the unit of $U_*(A)$.
+
+\begin{proposition}[The bar contact marking]
+\label{v4-arith:md:prop:bar-marking}
+The identity at empty support and the reduced map
+\begin{equation}\label{v4-arith:md:eq:bar-marking}
+ \eta_A(c)=\sum_{r\geq1}(s\tau)^{\star r}
+                   \overline\Delta^{(r-1)}c,
+ \qquad \tau(c)=tc,\quad |s|=-1,
+\end{equation}
+give a natural equivalence $C_A\to B_\star U_*(A)$
+preserving the entire contact diagram.
+\end{proposition}
+
+\begin{proof}
+Use bar signs $b_1(sa)=-s(da)$ and
+$b_2(sa,sb)=(-1)^{|a|}s(ab)$.
+In \eqref{v4-arith:md:eq:contact-cobar}, a split has
+sign $(-1)^{|c'|+1}$. It cancels the bar multiplication
+joining the corresponding adjacent factors. Internal
+differentials have the suspension sign in $b_1$.
+Coassociativity identifies the iterated cuts, proving
+the chain and coalgebra identities.
+
+Use the finite gap filtration of
+Theorem~\ref{v4-arith:md:thm:coefficient-koszul}.
+A single original entry gives the identity.
+A longer word has a contractible first gap.
+On $I$ the filtration ends at $|I|$, proving equivalence.
+Every map is a composite of the full coefficient
+maps, so it retains collisions, spectators and normal
+derivatives. Naturality gives compatibility with
+input morphisms.
+\end{proof}
+
+Write $\mathcal N_*^{\mathrm{bc}}$ for the input category
+with this bar contact marking, and
+$\mathcal N_\sharp^{\mathrm{cj}}$ for the marked current
+category just defined. The bar marking realizes the
+field operations inside $B_\star U_*A$. It is not an
+identification with bare multiplication on a singleton
+of the cobar algebra.
+
+For $J=C_k$, the state unit and augmentation give
+$v_A:J\to C_A$ and $a_A:C_A\to J$, with $a_Av_A=1$.
+The bar pointing is $\eta_Av_A:J\to B_\star U_*A$.
+It is distinct from the empty-support tensor unit $K$.
+
+\subsection{Native multiplication and every collision}
+
+The current product has a tensor comparison determined
+by its own pair multipliers. In the ambient current
+category, the tensor of the cores of $A$ and $A'$ is
+the core of $A\times A'$. Its localization includes
+the cross differences between the two groups.
+
+Let $F_{B,C}=\Omega_{B,C}(0)$ and let $\tau$ be the
+Koszul permutation. The deformed crossing and product
+on this joint tensor are
+\[
+ \sigma_w=\tau(F_{C,B}^{21})^{-1}F_{B,C},\qquad
+ \mu_{B\otimes_wC}=(\mu_B\otimes\mu_C)
+                         (1\otimes\sigma_w\otimes1).
+\]
+Removing the native cross multiplier has tensor
+comparison $U_2=F_{B,C}^{-1}$.
+For three groups, both tensor comparisons contain
+the same three commuting cross factors.
+
+This proves
+their associativity. An empty group gives the unit.
+The charge-zero-$k$ slice is not closed under this
+tensor, since $(A\times A')_0=k\times k$.
+All tensor assertions here use the ambient category.
+
+Let $C_A^0$ denote the contact coalgebra for the
+regular fields $\mu_A(e^{uT}\otimes1)$, and write
+$C_A^w=C_A$ for the deformed one. On an ordered
+configuration multiply all pair operators $E(u)$
+from \eqref{v4-arith:md:eq:charged-fields}.
+Call this operator $E_A$.
+
+Translation covariance
+makes it horizontal, so it extends to closed direct
+images and all normal derivatives. The product rule
+at a merger gives, before taking principal parts,
+\[
+ \mu_{ab}e^{uT_a}
+ E_{ac}(z_b+u-z_c)E_{bc}(z_b-z_c)
+ =E_{(ab)c}(z_b-z_c)\mu_{ab}e^{uT_a}.
+\]
+The internal factor $E_{ab}(u)$ is precisely the
+input contraction. This proves compatibility with
+adjacent mergers and their Laurent multipliers.
+
+For a nonconsecutive merger, exchange supplies the
+passage through the intervening block. For $13$,
+put $u=z_1-z_3$, $t=z_2-z_3$ and
+$X_{12}(u-t)=E_{12}(u-t)E_{21}(t-u)^{-1}$.
+The corresponding equality is
+\begin{align*}
+ r^0_{13}E_{12}(u-t)E_{13}(u)E_{23}(t)
+ ={}&E_{2,(13)}(t)\operatorname{pp}_{u=0}
+       \mu_{13}e^{uT_1}E_{13}(u)X_{12}(u-t).
+\end{align*}
+It remains valid after every Laurent multiplier.
+Commuting the pair factors proves the higher
+collision comparisons. Thus $E_A:C_A^w\to C_A^0$
+is an isomorphism of full coefficient complexes.
+
+For a cut $G\sqcup H$, let $W_{G,H}$ be the product
+of the inverse input contractions between the two
+groups. Cancellation of the internal pair factors
+gives
+\begin{equation}\label{v4-arith:md:eq:cross-cut}
+ (E_G\boxtimes E_H)\Delta^w_{G,H}E_A^{-1}
+ =W_{G,H}\Delta^0_{G,H}.
+\end{equation}
+Every ordered-subset cut occurs. For three groups,
+both composites contain $W_{G,H}W_{G,J}W_{H,J}$.
+These are identities of the full diagrams, including
+spectators and normal derivatives.
+
+Recover the state algebra $A_B$ from a current core
+and put $G(B)=(C_{A_B}^0)^\sharp$.
+This constructs the ordinary contact system before
+coefficient duality is applied.
+Colored partitions identify the contact system of
+$A\times A'$ with the two-color coefficient tensor.
+
+Dualizing this comparison and the native map $U_2$
+gives $J^0$. Define its deformed tensor comparison by
+$J^w=J^0(W_{G,H})^\sharp$ on each cut component.
+The pair factor is forced by expanding the native
+multiplier $w(v+x_a-y_b)$ in the constituent jets.
+Its first-order expansion is the negative transpose
+of $C_1(v)$, so it is the same $W_{G,H}$ as in
+\eqref{v4-arith:md:eq:cross-cut}.
+
+Consequently actual native multiplication has the
+comparison
+\begin{equation}\label{v4-arith:md:eq:native-product-square}
+ G(\mu_w)J^w
+ = (\Delta^0_{G,H})^\sharp(W_{G,H})^\sharp.
+\end{equation}
+Indeed removing the cross multiplier turns native
+multiplication into ordinary core multiplication.
+The latter transposes the diagonal $A\to A\times A$,
+whose colored-partition map is the cut coproduct.
+Restoring the native multiplier gives the right
+side of \eqref{v4-arith:md:eq:native-product-square}.
+Equation~\eqref{v4-arith:md:eq:cross-cut} now shows that
+$E_A^\sharp$ identifies this realized algebra with
+$(C_A^w)^\sharp$. Denote the resulting operation-preserving
+realization by $U_\sharp$.
+
+\begin{theorem}[Bar-marked charged-current duality]
+\label{v4-arith:md:thm:native}
+At precision $R_2$ there is an anti-equivalence
+\[
+ D:(\mathcal N_*^{\mathrm{bc}})^{\mathrm{op}}
+ \xrightarrow{\sim}\mathcal N_\sharp^{\mathrm{cj}},
+ \qquad D(A)=B_A^{\mathrm{mer}}.
+\]
+Its inverse recovers the $R_2$-algebra
+\[
+ R(B)=\operatorname{Hom}_{\mathfrak g_{R_2}}
+       (\mathfrak g_{R_2},W_B^\vee[-1]).
+\]
+There is a natural coefficient equivalence
+\begin{equation}\label{v4-arith:md:eq:native-square}
+ \mathcal K(U_*A)
+ =(B_\star\Omega_\star C_A)^\sharp
+ \xrightarrow{\eta_A^\sharp}C_A^\sharp
+ \xrightarrow{\sim}U_\sharp D(A).
+\end{equation}
+It preserves the full operations and both native
+vacuum identities. It takes the bar pointing to
+its outgoing transpose to $J^\sharp$.
+The comparison remains an anti-equivalence after
+the declared weak equivalences are inverted,
+including their mapping spaces.
+\end{theorem}
+
+\begin{proof}
+The adjoint representation of $\mathfrak{sl}_2$ has
+\[
+ \operatorname{End}_{\mathfrak g}(\mathfrak g)=k,
+ \qquad\operatorname{Hom}_{\mathfrak g}
+       (\mathfrak g\otimes\mathfrak g,\mathfrak g)=k[\,,\,].
+\]
+Its exterior square is the adjoint representation.
+Its symmetric square is the sum of the five-dimensional
+irreducible and the invariant line.
+
+Thus
+\eqref{v4-arith:md:eq:isotypic} forces the recovered
+bracket to be $[x,y]\otimes m(a,b)$.
+Graded antisymmetry makes $m$ graded commutative.
+Jacobi on $e\otimes a,e\otimes b,f\otimes c$ gives
+$a(bc)=(-1)^{|a||b|}b(ac)$, and hence
+\[
+ (ab)c=(-1)^{(|a|+|b|)|c|}c(ab)
+       =(-1)^{|b||c|}a(cb)=a(bc).
+\]
+The scalar current supplies the unit.
+
+Equivariance makes the differential, translation and
+each marked jet derivation equal to $1\otimes d_A$,
+$1\otimes T$ and $1\otimes\delta_i$.
+The Lie derivation identities become the product
+derivation identities. A transposed core morphism
+is $1\otimes f$. Its bracket equation is exactly
+multiplicativity of $f$. Its other equations give
+the stated input morphism conditions.
+This recovers objects and maps.
+
+The inverse comparisons are $a\mapsto(x\mapsto
+x\otimes a)$ and inverse dual evaluation of
+$\mathfrak g\otimes R(B)\to L_B$.
+They extend uniquely through the completed core
+and its localization. They commute with the
+symmetric-ring actions and pair multipliers, so
+preserve the actual native fields and products.
+Their triangles hold on generators and therefore
+on the complete presentations.
+
+The formal-test calculation identifies the two
+classes of weak equivalences. The exact $R_2$-dual
+is justified by its Frobenius pairing. Thus the
+inverse functors descend to the localized categories.
+The universal property of localization retains the
+inverse comparisons and all mapping spaces.
+
+Finally \eqref{v4-arith:md:eq:native-product-square}
+and the bar marking give
+\eqref{v4-arith:md:eq:native-square}. The three-group
+factor identity proves coherence with the tensor
+comparisons. The ambient field unit, obtained from
+the zero state algebra, is $R_2$ and realizes to
+$K$. Its unit map supplies the native vacuum.
+
+The scalar-current object $B_k$ instead realizes
+to $J^\sharp$. The map to that object is
+$v_A^\sharp$, and
+$v_A^\sharp\eta_A^\sharp=(\eta_Av_A)^\sharp$.
+The augmentation supplies its section. This proves
+the pointing and both vacuum assertions.
+\end{proof}
+
+The theorem uses the bar contact marking, all jet
+actions and the split quadratic current core.
+An arbitrary enhancement with the same unmarked
+coefficient algebra is a larger recognition problem.
+Even inside the stated categories, coefficient
+framings and coefficient arrows contain information
+that an unframed state isomorphism forgets.
+
+\section{The cubic enhancement space and its arrows}
+\label{v4-arith:md:sec:enhancements}
+
+An enhancement of a coefficient algebra $P$ is a
+native object $A$ together with an equivalence
+$U(A)\simeq P$. Work in the categories localized
+at their declared weak equivalences. The space of
+enhancements is the homotopy fiber, over $P$, of
+the map between the maximal subgroupoids of
+the native and coefficient categories.
+
+Take $A_0$ from \eqref{v4-arith:md:eq:cubic}, and put
+$C_0=C_{A_0}$, $P_0=\Omega_\star C_0$ and
+$E_0=C_0^\sharp$. We write coefficient maps in
+coalgebra coordinates on $C_0$. Bar--cobar identifies
+them with maps of $P_0$. Transposition identifies
+them, with composition reversed, with maps of $E_0$.
+A scalar-pointed map commutes with both maps induced
+by $k\to A_0\to k$.
+
+\subsection{All coefficient endomorphisms}
+
+Let $\mathfrak m=V\oplus Q$. For $v\in A_0[z]$ and
+$p\in k[z]$, define
+\[
+ J_n(v)=\frac{(\partial_z+T)^n}{n!}v,
+ \qquad
+ S_p(e_n)=J_n(pe_0)
+ =\sum_{j=0}^n\frac{p^{(j)}(z)}{j!}e_{n-j}.
+\]
+Extend $S_p$ multiplicatively, fixing $k[z]$.
+Horizontality of a singleton map $F(z)$ means
+$[\partial_z+T,F]=0$. Its field equation is
+\begin{equation}\label{v4-arith:md:eq:geometric-field-map}
+ F(y)Y(a,u)b=Y(F(y+u)a,u)F(y)b.
+\end{equation}
+The shifted position of the first input is essential.
+
+For this full contact system, a coefficient map is
+determined by its singleton. The residue-lattice
+description proves this. On $n$ positions the
+contact complex is a module in degree $-n$.
+It embeds in the open direct image from the fully
+distinct locus.
+
+The module is the intersection of the pair
+residue kernels. Cuts determine a map on that locus.
+The embedding then determines its extension.
+Maps between equally shifted modules have no
+negative Ext groups, so their mapping spaces are
+discrete. Limits over the collision diagram retain
+this discreteness.
+
+For completeness, concentration of the contact
+complex follows by induction on the number of
+positions. Off the small diagonal it splits into
+two smaller groups. The remaining cokernel is a
+principal-part residue on the small diagonal.
+Insert the vacuum in one colliding input to lift
+each principal part.
+
+Its other residues vanish by
+the residue-kernel condition. This proves
+surjectivity and concentration. The finite complex
+of flat coefficients remains exact under coefficient
+extension. This also justifies its use over $R_2$.
+
+Naturality of every Laurent-multiplied binary
+boundary gives \eqref{v4-arith:md:eq:geometric-field-map}.
+Both cut orders retain unmultiplied exchange.
+Conversely a horizontal singleton satisfying these
+field and exchange equations is placed at each
+block. The field equation intertwines adjacent
+residues, exchange intertwines nonconsecutive
+passages, and horizontality retains normal
+derivatives. It therefore extends to the full
+coefficient map.
+
+\begin{theorem}[Coefficient endomorphisms of the cubic system]
+\label{v4-arith:md:thm:coefficient-endomorphisms}
+Every scalar-pointed coefficient endomorphism is
+uniquely $F_{p,v}$, with $p\in k[z]$ and
+$v\in\mathfrak m[z]$, where
+\begin{equation}\label{v4-arith:md:eq:coefficient-endomorphisms}
+ F_{p,v}(1)=1,
+ \qquad F_{p,v}(e_n)=J_n(pe_0)+\hbar J_n(v),
+\end{equation}
+extended multiplicatively. Composition is
+\begin{equation}\label{v4-arith:md:eq:coefficient-composition}
+ (p,v)\circ(q,w)=(pq,qv+S_p(w)).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Reduce $F$ modulo $\hbar$. The constant field
+coefficient makes $F_0$ an augmented algebra map.
+Let $f=F_0(e_0)$. If its largest jet index is
+$N>0$, then
+$\delta_{N+1}f=e_0\partial f/\partial e_N\ne0$.
+In charge at most two, multiplication by $e_0$
+does not kill this nonzero derivative.
+
+The exchange equation on $e_0\otimes e_0$ is
+\[
+ C_1(u)(f(y+u)\otimes f(y))
+ =-u^{-1}f(y+u)\otimes f(y).
+\]
+The left side has nonzero coefficient
+\[
+ [u^{-2N-1}]=(-1)^{N+1}\binom{2N}{N}
+       \delta_{N+1}f(y)\otimes\delta_{N+1}f(y).
+\]
+The two tensor factors are free over $k[y]$.
+The right side has at most a simple pole, a
+contradiction. Hence $N=0$.
+
+Write $f=pe_0+be_0^2$. The simple-pole equation
+is $\delta_1f\otimes\delta_1f=f\otimes f$.
+Its bidegree $(2,2)$ coefficient gives
+$4b^2=b^2$, hence $b=0$. Horizontality then
+forces $F_0=S_p$. The displayed formula for
+$S_p$ shows that it commutes with every jet
+derivation and satisfies the field equation.
+
+Write $F=S_p+\hbar G$. A first-order correction
+and a quantum contraction together have order
+$\hbar^2$, so the remaining equation is classical.
+It says $G(1)=0$ and
+$G(ab)=G(a)S_p(b)+S_p(a)G(b)$.
+
+Horizontality determines $G(e_n)=J_n(v)$ from
+$v=G(e_0)\in\mathfrak m[z]$. Such a derivation
+preserves $I^3$, since each generator image has
+positive charge. The singleton criterion proves
+existence and uniqueness of the full map.
+Evaluating a composite on $e_0$ gives
+\eqref{v4-arith:md:eq:coefficient-composition}.
+\end{proof}
+
+For example $S_z(e_n)=ze_n+e_{n-1}$, where
+$e_{-1}=0$. The term $e_0$ in $S_z(e_1)$ is
+forced by horizontality. This map commutes with
+all jets but is not a constant native state map.
+
+If only the empty unit and counit are fixed,
+there is also a map $Z$ vanishing on every
+nonempty coefficient. Every other map is locally
+unital and has \eqref{v4-arith:md:eq:coefficient-endomorphisms},
+with $v\in A_0[z]$ permitted when $p=0$.
+Indeed the field equation makes $F(1)$ an
+idempotent, hence zero or one. A zero value
+forces the map to vanish on nonempty support.
+
+For value one and $p\ne0$, a scalar part
+$v_{\mathrm{sc}}$ would give
+$3\hbar p^2v_{\mathrm{sc}}e_0^2$ in the cubic
+relation, so it must vanish.
+For $p=0$, products of two positive generator
+images already vanish, and impose no such condition.
+Composition still has the displayed formula,
+and $Z$ is absorbing. In particular
+$F_{0,v}F_{0,w}=F_{0,w_{\mathrm{sc}}}$.
+The scalar-pointed local projection $F_{0,0}$
+preserves the local vacuum and differs from $Z$.
+
+\subsection{The entire enhancement fiber}
+
+An invertible coefficient map has $p=a\in k^\times$.
+In the coordinates $F_{a,av}$ its group is
+\begin{equation}\label{v4-arith:md:eq:framing-group}
+ \Gamma=\mathfrak m[z]\rtimes k^\times,
+ \qquad(v,a)(w,b)=(v+\vartheta_aw,ab),
+ \quad\vartheta_a(w_V+w_Q)=w_V+aw_Q.
+\end{equation}
+The native endomorphisms are exactly
+$s_\lambda(e_n)=\lambda e_n$, $\lambda\in R_2$.
+Charge and $\ker(\delta_2|_V)=ke_0$ determine
+the seed image, and translation and multiplication
+determine the map. The native automorphism image
+is therefore
+$H=\{(be_0,a):b\in k,\ a\in k^\times\}$.
+
+\begin{theorem}[Cubic enhancement fibers]
+\label{v4-arith:md:thm:fibres}
+Within the two stated native categories, every
+enhancement of $P_0$, respectively $E_0$, is
+equivalent to $A_0$, respectively $D(A_0)$,
+with a coefficient framing. Its enhancement
+space is
+\begin{equation}\label{v4-arith:md:eq:fibres}
+ \operatorname{Enh}_*(P_0)
+ \simeq\operatorname{Enh}_\sharp(E_0)
+ \simeq(\Gamma/H)_{\mathrm{disc}}
+ \simeq(\mathfrak m[z]/ke_0)_{\mathrm{disc}}.
+\end{equation}
+The quotient $\Gamma/H$ is a right-coset set.
+\end{theorem}
+
+\begin{proof}
+Bar--cobar turns an enhancement into $C_A\simeq C_0$.
+Singleton cohomology and faithful scalar extension
+by $k[z]$ and $R_2$ force $H^i(A)=0$ for $i\ne0$.
+The map $A\to H^0(A)$ is a charged jet
+quasi-isomorphism: its boundary ideal is stable
+under all markings. We may therefore work with
+a degree-zero algebra.
+
+The residue-lattice criterion gives an invertible
+horizontal polynomial singleton. Modulo $\hbar$,
+its constant field coefficient is an algebra
+isomorphism over $k[z]$. Evaluation at $z=0$
+gives $A\cong A_0$ as ordinary algebras.
+
+If $d=\dim E_A$, its map on augmentation
+indecomposables identifies $\mathcal D_X^d$
+with $\mathcal D_X$. These are the free
+Weyl modules generated by the seeds.
+For the Bernstein filtration,
+$\dim_kF_m\mathcal D_X=(m+1)(m+2)/2$.
+An isomorphism and its inverse have bounded
+filtration displacement, so comparison of the
+leading quadratic growth gives $d=1$.
+
+The ordinary algebra isomorphism transports
+$\mathfrak m^3=0$ and the isomorphism
+$\operatorname{Sym}^2(\mathfrak m/\mathfrak m^2)
+\to\mathfrak m^2$. Generation in charge one
+therefore leaves no quadratic relation and
+kills every cubic product. The one-dimensional
+seed gives precisely the ideal $I^3$.
+Thus $A$ is a charged jet copy of $A_0$.
+
+Maps between degree-zero objects in this localized
+nonpositive dg category are their ordinary discrete
+sets. Indeed $H^0$ is left adjoint to the inclusion
+of degree-zero objects. It preserves weak
+equivalences and has identity counit there.
+Coefficient maps are discrete by the lattice
+criterion.
+
+The enhancement fiber is consequently
+the right action groupoid $\Gamma//H$.
+This action is free, so the groupoid is equivalent
+to the discrete coset set. Right multiplication
+by $(be_0,c)$ sends $(v,a)$ to $(v+be_0,ac)$,
+giving the last identification in
+\eqref{v4-arith:md:eq:fibres}.
+The native duality proves the same assertion
+on the opposite side.
+\end{proof}
+
+The set in \eqref{v4-arith:md:eq:fibres} is not
+a quotient group. For $a\ne1$,
+\[
+ (e_0^2,1)(0,a)(e_0^2,1)^{-1}
+ =((1-a)e_0^2,a)\notin H.
+\]
+The transitive action groupoid of $\Gamma$ on
+its coset set is $BH$. It differs from the
+enhancement fiber, whose action by $H$ on
+$\Gamma$ is free.
+
+\subsection{Relative arrows and a higher-precision defect}
+
+For a realization $U:\mathcal N\to\mathcal A$ and a
+coefficient chain $a_0\to\cdots\to a_n$, take the
+homotopy fiber of
+\[
+ \operatorname{Fun}([n],\mathcal N)^\simeq
+ \longrightarrow\operatorname{Fun}([n],\mathcal A)^\simeq
+\]
+over that chain. The superscript means the maximal
+subgroupoid. This \emph{relative chain space} retains
+the enhancements at all vertices and their compatible
+native arrows. The case $n=0$ is the enhancement
+space above.
+
+\begin{proposition}[Lifting coefficient arrows]
+\label{v4-arith:md:prop:arrows}
+For fixed frames $g_s,g_t\in\Gamma$, a coefficient
+map $F$ has a native lift exactly when
+\begin{equation}\label{v4-arith:md:eq:lift}
+ F=g_t s_\lambda g_s^{-1}
+ \qquad\text{for some }\lambda\in R_2.
+\end{equation}
+The lifting space is empty or a point.
+Allowing both frames to vary, $F_{p,v}$ lifts
+somewhere precisely when $p\in k^\times$, or
+$p=0$ and $v\in ke_0$. The map $Z$ never lifts.
+\end{proposition}
+
+\begin{proof}
+Theorem~\ref{v4-arith:md:thm:fibres} supplies all
+objects, and the maps $s_\lambda$ are all their
+native endomorphisms. Distinct $\lambda$ have
+distinct singleton values, which proves the
+fixed-frame assertion. If $\lambda$ has nonzero
+reduction it is a unit, and changing one frame
+produces every coefficient automorphism.
+
+For $\lambda=\hbar b$, let $a_s,a_t$ be the
+classical scalings of the two frames. The
+composition law gives
+\[
+ g_t s_{\hbar b}g_s^{-1}
+ =s_{\hbar b a_t/a_s}.
+\]
+Every first-order correction in a frame acquires
+a second factor of $\hbar$ and vanishes.
+Only the constant $e_0$ direction can therefore
+lift in this case. Nonconstant $p$ and the map
+$Z$ meet neither possibility.
+\end{proof}
+
+For a chain $(F_i)$, all lifts are consequently
+described by $F_i=g_i s_{\lambda_i}g_{i-1}^{-1}$,
+modulo changes at each vertex
+\[
+ g_i\mapsto g_i h_i^{-1},\qquad
+ s_{\lambda_i}\mapsto h_i s_{\lambda_i}h_{i-1}^{-1},
+ \qquad h_i\in H.
+\]
+The action on the frames is free. This gives a
+discrete relative chain space.
+
+Faces compose
+the adjacent scalars and degeneracies insert $1$.
+The anti-equivalences and
+\eqref{v4-arith:md:eq:native-square} identify it
+with the relative chain space over
+$\mathcal K(a_n)\to\cdots\to\mathcal K(a_0)$.
+Indeed a frame $g$ becomes $(g^{-1})^\sharp$, and
+\[
+ (g_s^{-1})^\sharp s_\lambda^\sharp g_t^\sharp
+ =(g_t s_\lambda g_s^{-1})^\sharp.
+\]
+This identity retains empty lifting spaces as well
+as the nonempty ones.
+
+For instance $S_z$ has no lift under any reframing.
+Neither does $F_{0,e_1}$, whose singleton satisfies
+\[
+ F_{0,e_1}(e_n)=\hbar(n+1)e_{n+1},
+ \qquad[\delta_2,F_{0,e_1}](e_0)=\hbar e_0.
+\]
+The latter preserves the coefficient field diagram
+but not the marked native jet action. Its relative
+space is empty on both sides of the duality.
+
+The fixed first-order precision is also substantive.
+Define a horizontal derivation on $A_0$ by
+\[
+ D(e_n)=\sum_{i+j=n}e_ie_j.
+\]
+The formula satisfies $[D,T]=0$, as follows by
+differentiating the two factors and collecting
+their coefficients. The map $1+\hbar D$ is
+a coefficient automorphism over $R_2$.
+
+\begin{proposition}[A frame obstructed at the next precision]
+\label{v4-arith:md:prop:precision}
+Keep the exchange kernel $w(u)=1-\hbar/u$.
+The frame $1+\hbar D$ has no extension over
+$R_3=k[\hbar]/(\hbar^3)$ preserving exchange,
+even with an arbitrary position-dependent
+second-order correction.
+\end{proposition}
+
+\begin{proof}
+Write a proposed extension as
+$1+\hbar D+\hbar^2K$. Exchange has expansion
+$1+2\hbar C_1+\hbar^2\mathcal S_2$.
+Its order-two intertwining defect is forced to be
+$2[C_1,D\otimes1+1\otimes D]$.
+Both the new correction $K$ and $\mathcal S_2$
+commute with the identity at this order.
+
+On $e_0\otimes e_0$ the defect is
+\begin{equation}\label{v4-arith:md:eq:precision-defect}
+ -\frac2u(e_0^2\otimes e_0+e_0\otimes e_0^2)\ne0.
+\end{equation}
+The terms have separate bidegrees $(2,1)$ and
+$(1,2)$. Multiplying the two tensor factors
+would kill both by $I^3=0$, but exchange acts
+before that multiplication. No second-order
+correction can remove the displayed defect.
+\end{proof}
+
+This is an obstruction to extending the specified
+frame with the fixed exchange kernel. The native
+duality and the exhaustive fiber calculation
+remain assertions at $R_2$. A compatible tower
+requires its own objects, surviving frames and
+comparison maps at every precision. More general
+native enhancements also require a separate
+recognition theorem or an obstruction on their
+declared domain.
+
+\section{Fields can forget a jet marking}
+\label{v4-arith:md:sec:filtered-moments}
+
+The constituent identities in the charged-current
+presentation contain more information than the
+commutation relations of its jet derivations.
+We now vary those identities while retaining the
+entire rational field. This gives a larger
+marked category in which the standard recognition
+statement fails, together with a duality on an
+explicit family inside that category.
+
+Continue over $R_2=\mathbb C[\hbar]/(\hbar^2)$.
+Use the cubic algebra
+$A=R_2\oplus V_{R_2}\oplus\operatorname{Sym}^2V_{R_2}$
+of \eqref{v4-arith:md:eq:cubic}, with
+$V=\bigoplus_{n\geq0}\mathbb Ce_n$.
+The differential is zero, $e_n$ has charge one
+and weight $n+1$, and $\hbar$ has weight zero.
+
+Keep $T$ and the standard $\delta_i$ of
+\eqref{v4-arith:md:eq:jets}, and set $N=\delta_1$.
+On charge one,
+\[
+ \delta_{m+1}=\delta_2^m.
+\]
+This identity concerns compositions on $V$.
+It does not identify $\delta_{m+1}$ with a
+power of a derivation on the whole algebra.
+
+\begin{definition}[Filtered jet marking]
+\label{v4-arith:md:def:filtered-marking}
+A \emph{filtered jet marking} on a nonpositive
+commutative dg state algebra consists of degree-zero
+chain derivations $T,J_i$ satisfying
+\[
+ J_1=N,\qquad [J_i,J_j]=0,\qquad
+ [J_i,T]=(i-1)J_{i-1},\qquad J_0=0.
+\]
+They annihilate the unit and preserve charge.
+Each $J_i$ is bounded for the weight filtration.
+
+Only finitely many act nontrivially on each
+state. The rational fields and exchange are
+\eqref{v4-arith:md:eq:charged-fields} with
+$\delta_i$ replaced by $J_i$.
+Morphisms are constant $R_2$-linear dg algebra
+maps preserving charge, translation, every
+$J_i$, the fields and exchange.
+Weak equivalences are the state
+quasi-isomorphisms among these maps.
+\end{definition}
+
+In particular $[d,J_i]=0$ is required.
+Exact operator weight $1-i$ and the constituent
+identities on charge one are additional conditions.
+The following family satisfies neither additional
+condition when its parameter is nonzero.
+
+\begin{proposition}[Equal fields with distinct markings]
+\label{v4-arith:md:prop:moment-family}
+For $\kappa\in\mathbb C$, put
+\[
+ J_1^\kappa=N,\qquad J_2^\kappa=\delta_2,\qquad
+ J_i^\kappa=\delta_i+
+       \hbar\kappa\binom{i-1}{2}\delta_{i-2}
+       \quad(i\geq3).
+\]
+These are filtered jet markings on $A$.
+Write $A^\kappa$ for the resulting marked algebra.
+Their rational fields, exchange and full
+collision coefficients are identical.
+Distinct parameters remain inequivalent after
+inverting marked state quasi-isomorphisms.
+For $\kappa\ne0$ they are not equivalent there
+to a standard charged-jet quotient.
+\end{proposition}
+
+\begin{proof}
+The operators are linear combinations of commuting
+derivations. Translation covariance follows from
+\[
+ \binom{i-1}{2}(i-3)=(i-1)\binom{i-2}{2}
+\]
+for $i\geq4$. The added term at $i=3$ is
+$\hbar\kappa N$, which commutes with $T$.
+On $e_n$ both terms vanish for $i>n+3$.
+The derivation rule proves finite support on
+every state. Their two weight shifts are
+$1-i$ and $3-i$.
+
+The contraction in
+\eqref{v4-arith:md:eq:charged-fields} has an
+external factor $\hbar$. Each change of a
+marked operator has another factor $\hbar$.
+Thus $\hbar C_1^{J^\kappa}=\hbar C_1^\delta$
+over the common base $R_2$. The fields agree
+before principal parts are taken.
+Every iterate, normal derivative, spectator
+and collision comparison therefore agrees.
+
+On the charge-one complex define
+\[
+ \Xi_2=J_3-J_2^2.
+\]
+It acts on cohomology because the markings
+are chain maps. In this family
+\begin{equation}\label{v4-arith:md:eq:moment-defect}
+ \Xi_2^\kappa=\hbar\kappa\,1_{V_{R_2}}.
+\end{equation}
+
+An invertible intertwiner between parameters
+$\kappa,\lambda$ would imply
+$\hbar(\kappa-\lambda)1_{V_{R_2}}=0$.
+Freeness forces $\kappa=\lambda$.
+The same reasoning applies to every zigzag,
+since its cohomology maps are invertible
+intertwiners. A standard charged-jet quotient
+has $\Xi_2=0$, which gives the last assertion.
+\end{proof}
+
+The smallest calculation is $J_2e_0=0$ and
+$J_3^1e_0=\hbar e_0$. The interaction is also
+nonzero:
+\[
+ [\hbar u^{-1}]Y(e_0,u)e_0=e_0^2.
+\]
+The quotient by the square of the augmentation
+ideal would retain a marking defect but kill
+this product. Nor can the infinite jet orbit
+be replaced by a nonzero finite-dimensional
+charge-one space in characteristic zero:
+$[J_2,T]=1$ would contradict the trace of a
+commutator.
+
+\subsection{The chain condition detects the distinction}
+
+If the marking need not commute with the
+differential, a contractible extension can
+erase the preceding distinction.
+Let $\widetilde A$ be the graded commutative
+algebra on species $e_n,v_n,u_n$, truncated
+at total charge three. Give $e_n,v_n$ degree
+zero and $u_n$ degree $-1$, with
+$du_n=v_n$ and $de_n=dv_n=0$.
+All species have weight $n+1$.
+Use standard shifts and translation on each.
+
+On their linear span set
+$Me_n=0$, $Mv_n=e_n+v_n$, $Mu_n=u_n$.
+Set $\widetilde J_1=N$ and
+$\widetilde J_2=\delta_2$. For $i\geq3$
+define on generators
+\[
+ \widetilde J_i x_n=x_{n-i+1}
+   +\hbar\binom{i-1}{2}Mx_{n-i+3},
+\]
+then extend as derivations.
+The shifts commute with $M$, so these
+derivations commute and obey the same
+translation identity. Their fields are still
+the standard dg fields: a correction to a
+marking acquires a second $\hbar$ in the
+contraction.
+
+There are marked dg algebra maps
+\[
+ A^0\xrightarrow{i_0}\widetilde A
+ \xleftarrow{i_1}A^1,\qquad
+ i_0(e_n)=e_n,\quad i_1(e_n)=e_n+v_n.
+\]
+To verify their quasi-isomorphism property,
+let $p$ kill $u_n,v_n$ and fix $e_n$.
+Let $K$ be the degree-$-1$ derivation
+$K(v_n)=u_n$, $K(e_n)=K(u_n)=0$.
+Then $dK+Kd$ counts the factors from the
+two contractible species.
+
+On a monomial containing $r>0$ such factors
+put $H=K/r$, and put $H=0$ on pure
+$e$-monomials. Here $r$ is one or two.
+Consequently
+\[
+ dH+Hd=1-i_0p.
+\]
+This proves that $i_0,p$ are quasi-isomorphisms.
+Since $pi_1=1$, so is $i_1$.
+
+The marking nevertheless fails the chain
+condition:
+\begin{equation}\label{v4-arith:md:eq:chain-defect}
+ [d,\widetilde J_3]u_0
+ =\hbar v_0-\hbar(e_0+v_0)=-\hbar e_0.
+\end{equation}
+The cohomologous representatives $e_0$
+and $e_0+v_0$ have images differing by a
+nonzero cohomology class. Thus $\widetilde J_3$
+does not induce a cohomology operator.
+This span is excluded precisely by the
+chain condition in
+Definition~\ref{v4-arith:md:def:filtered-marking}.
+
+\subsection{All markings with fixed first jets}
+
+\begin{theorem}[Polynomial classification on the cubic carrier]
+\label{v4-arith:md:thm:moment-classification}
+Fix $A,T,N$ and $J_2=\delta_2$.
+Every filtered jet marking reducing to
+$\delta_i$ modulo $\hbar$ has the unique form
+\begin{equation}\label{v4-arith:md:eq:polynomial-moments}
+ \begin{gathered}
+ J_{m+1}^c=\delta_{m+1}
+  +\hbar\sum_{r=2}^m\binom mr c_r\delta_{m-r+1},\\
+ c(t)=\sum_{r\geq2}c_r\frac{t^r}{r!}
+          \in t^2\mathbb C[t].
+ \end{gathered}
+\end{equation}
+All these markings have the same fields.
+Distinct polynomials give distinct marked
+equivalence classes, including under
+chain-compatible nonpositive dg zigzags.
+Exact operator weight $-m$ for $J_{m+1}$
+forces $c=0$.
+\end{theorem}
+
+\begin{proof}
+Write $D=\delta_2$. Commutation with $D$
+puts $J_{m+1}e_0$ in
+$\ker(D|_V)=R_2e_0$, say $a_me_0$.
+The first two markings give $a_0=1,a_1=0$.
+Reduction gives $a_m=\hbar c_m$ for $m\geq2$.
+Finite support on $e_0$ makes $(c_m)$
+finitely supported.
+
+Translation covariance is the recursion
+\[
+ (n+1)J_{m+1}e_{n+1}
+   =TJ_{m+1}e_n+mJ_me_n.
+\]
+Starting at $e_0$, induction gives
+\[
+ J_{m+1}e_n
+  =\sum_{q=0}^{\min(m,n)}
+       \binom mq a_{m-q}e_{n-q}.
+\]
+The induction uses
+$(n-q+1)\binom mq+m\binom{m-1}{q-1}
+=(n+1)\binom mq$.
+Substitute the $a_m$ to obtain
+\eqref{v4-arith:md:eq:polynomial-moments}.
+The derivation property determines the
+operator on all products.
+
+Conversely the displayed operators commute.
+The identity
+$\binom mr(m-r)=m\binom{m-1}r$
+proves translation covariance.
+If $c_r=0$ for $r>R$, then
+$J_{m+1}e_n=0$ for $m>n+R$.
+The same external-$\hbar$ calculation as
+before proves equality of fields.
+
+A marked equivalence induces an invertible
+cohomology map commuting with $D,T$.
+It acts on the $D$-kernel by a unit
+$a\in R_2^\times$. Intertwining
+$J_{m+1}e_0$ gives
+$\hbar(c_m-c'_m)a=0$, hence $c_m=c'_m$.
+Finally an operator of weight $-m$
+sends $e_0$ to weight $1-m$.
+There is no such charge-one state for
+$m\geq2$, forcing every $c_m$ to vanish.
+\end{proof}
+
+This classifies markings on the fixed
+cubic carrier, with the specified first
+jets and reduction. It does not classify
+all algebras realizing its coefficient
+diagram. Write $A^c$ for the algebra
+with polynomial marking $c$.
+
+\subsection{Compensated moments and the current partner}
+
+The current partner retains the marked
+operators without treating them as
+constituent power sums. Use the polynomial
+Chevalley core of
+$\mathfrak{sl}_2\otimes A$ from
+Section~\ref{v4-arith:md:sec:charged}.
+Its negative transposes are
+\[
+ T_B=-(1\otimes T)^\vee,\qquad
+ D_i^c=-(1\otimes J_i^c)^\vee.
+\]
+
+On total charge $n$, let
+$p_m=\sum_{a=1}^n x_a^m$, with $p_0=n$.
+Constituent polarization gives
+\begin{equation}\label{v4-arith:md:eq:compensated-moments}
+ \begin{split}
+ P_m^c=-D_{m+1}^c
+   &=p_m+\hbar\sum_{r=2}^m\binom mr c_rp_{m-r},\\
+ \widehat P_m
+   &=P_m^c-\hbar\sum_{r=2}^m\binom mr c_rP_{m-r}^c
+     =p_m.
+ \end{split}
+\end{equation}
+The second equality uses $\hbar^2=0$.
+It supplies the ordinary action of
+$\Lambda_n=\mathbb C[x_1,\ldots,x_n]^{S_n}$.
+
+Define $B^c$ by localizing the charge-$n$ core at
+$d_n=\prod_{a<b}(x_a-x_b)^2$ using this
+compensated action, with $d_0=d_1=1$.
+Use the same cross differences and their
+declared translates for multiple inputs.
+Define the product and fields by the pair
+multiplier
+\[
+ \Omega_{p,q}(v)
+  =\prod_{a=1}^p\prod_{b=1}^q
+       \left(1-\frac{\hbar}{v+x_a-y_b}\right),
+ \qquad \mu_w=\mu_0\Omega_{p,q}(0).
+\]
+
+They are independent of $c$.
+Each $D_i^c$ is a finite linear combination
+of standard current derivations, so it
+extends through these localizations and
+remains a derivation of $\mu_w$.
+The three-input multiplier is again
+$\Omega_{p,q}\Omega_{p,r}\Omega_{q,r}$.
+Thus the differential, associativity,
+exchange and vacuum identities hold on
+the same recipients.
+
+A \emph{compensated current presentation}
+retains the split core, scalar current,
+charge, translation, $D_i^c$, compensated
+spectral action and rational recipients.
+Its maps preserve these structures and
+are linear on core generators.
+It has the formal-core weak equivalences
+defined in Section~\ref{v4-arith:md:sec:charged}.
+Standardization replaces $D_{m+1}^c$ by
+$\widehat D_{m+1}=-\widehat P_m$.
+It leaves the underlying map, core,
+differential, fields and recipients fixed.
+Every specified morphism preserves
+$\widehat P_m$, so standardization is a
+functor to the standard current category.
+
+Apply $U_\sharp$ to this standardized
+presentation, using the algebra structure
+induced by its native product and tensor
+comparison. This defines $U_\sharp$ on
+the displayed compensated category.
+Standardization is not claimed to be
+an equivalence of marked fields or to
+make this category closed under tensor
+products.
+
+Let $C_0$ be their common full coefficient
+coalgebra and $P_0=\Omega_\star C_0$.
+The bar marking and the native product
+comparison give a natural equivalence
+\begin{equation}\label{v4-arith:md:eq:compensated-comparison}
+ (B_\star P_0)^\sharp
+  \xrightarrow{\eta^\sharp}C_0^\sharp
+  \xrightarrow{\theta_c}U_\sharp(B^c).
+\end{equation}
+Here $\theta_c$ is the inverse of the
+standard current comparison after
+standardization. It preserves all
+collisions, cuts, normal derivatives,
+spectators and local pointings.
+The bar pointing remains the composite
+$J\to C_0\to B_\star P_0$, separate from
+the empty-support unit.
+
+Raw moments would give the wrong
+localization. In the one-parameter
+family and charge one,
+\[
+ P_2^\kappa-(P_1^\kappa)^2
+       =\hbar\kappa\,1,\qquad
+ D_3^\kappa+(D_2^\kappa)^2
+       =-\hbar\kappa\,1.
+\]
+Since $p_2=p_1^2$ in $\Lambda_1=\mathbb C[x]$,
+the raw assignment $p_m\mapsto P_m^\kappa$
+does not define an action when $\kappa\ne0$.
+Compensation repairs this equation while
+retaining the marked operator invariant.
+
+\begin{proposition}[All arrows in the displayed family]
+\label{v4-arith:md:prop:moment-arrows}
+The native maps $A^c\to A^d$ are exactly
+\[
+ \begin{gathered}
+ s_\alpha(1)=1,\quad s_\alpha(e_n)=\alpha e_n,\quad
+ s_\alpha(e_ie_j)=\alpha^2e_ie_j,\\
+ \hbar\alpha(c_r-d_r)=0\quad(r\geq2),
+ \end{gathered}
+\]
+with $\alpha\in R_2$.
+Current pullback gives an anti-equivalence
+between the displayed state and compensated
+current categories. It commutes with
+\eqref{v4-arith:md:eq:compensated-comparison}.
+\end{proposition}
+
+\begin{proof}
+Charge and $D$ preservation put the image
+of $e_0$ in $R_2e_0$.
+Translation determines every $e_n$,
+and multiplication determines the
+quadratic states.
+Intertwining $J_{r+1}$ on $e_0$ gives
+the condition on $\alpha$.
+Formula~\eqref{v4-arith:md:eq:polynomial-moments}
+makes it sufficient on all generators,
+and product defects acquire further
+powers of $\alpha$.
+
+For the reverse construction, scalar-current
+equivariance makes a transposed linear
+core map $1\otimes f$.
+The quadratic Chevalley equation says
+$f(ab)=f(a)f(b)$. The scalar-current
+condition gives the unit.
+Translation and the marked derivations
+recover the remaining input equations.
+This recognition calculation does not
+use the higher constituent identities.
+
+Pullback by $s_\alpha$ scales charge $n$
+by $\alpha^n$. It commutes with the
+compensated spectral action and extends
+through the same localizations.
+If $c\ne d$, the condition forces
+$\alpha\in\hbar\mathbb C$.
+
+Charge-one images then have a factor
+$\hbar$, and all images of charge at
+least two vanish. The residual marked
+differences therefore vanish on the
+image, without inverting a zero divisor.
+The native unit and counit are inverse
+evaluation on the adjoint-isotypic core,
+as in Theorem~\ref{v4-arith:md:thm:native}.
+Their triangles and the standardized
+comparison prove the assertions.
+\end{proof}
+
+For equal parameters every $\alpha$ occurs.
+For unequal parameters exactly
+$\alpha\in\hbar\mathbb C$ occurs.
+Two arrows between unequal parameters
+compose to $s_0$, the scalar projection
+followed by its section. This map
+preserves the native unit.
+Isomorphisms require equal parameters
+and $\alpha\in R_2^\times$.
+
+The coefficient frame group $\Gamma$
+and subgroup $H$ of
+\eqref{v4-arith:md:eq:framing-group}
+are unchanged. Thus the framed subspace
+supported on these displayed classes is
+\[
+ \coprod_{c(t)\in t^2\mathbb C[t]}
+             (\Gamma/H)_{\mathrm{disc}}.
+\]
+For frames $g_s,g_t$, a coefficient arrow
+$F$ has a native lift between parameters
+$c,d$ exactly when
+\[
+ F=g_ts_\alpha g_s^{-1},\qquad
+ \hbar\alpha(c_r-d_r)=0\quad(r\geq2).
+\]
+
+Its relative space is then a point and
+is otherwise empty.
+The proof of
+Proposition~\ref{v4-arith:md:prop:arrows}
+applies in each component: chain
+compatibility makes cohomology preserve
+all markings, and the frame action is
+free. Duality sends $g$ to
+$(g^{-1})^\sharp$ and reverses arrows.
+Faces compose the scalars and
+degeneracies insert their identities.
+
+These cosets are sets over the fixed
+ring $R_2$, not a quotient group or an
+exhaustion of arbitrary unmarked native
+fields. Recovering a current core and
+its constituent moments from intrinsic
+field axioms remains a different
+recognition problem.
+
+\section{Curvature is a separate comparison}
+\label{v4-arith:md:sec:curvature}
+
+Coefficient transposition and a contragredient
+module have specified outputs. Neither
+identifies two curved field algebras.
+That comparison must include changes of
+state. A translation class of curvature
+can remain invariant under all such changes.
+
+Let $K$ be a Noetherian domain containing
+a characteristic-zero field.
+A curved vertex superalgebra here has a
+degree-one derivation $d$ and a degree-two
+state $w$ with
+\[
+ d^2=w_{(0)},\qquad dw\in TB.
+\]
+Complete its PBW state space coefficientwise
+in an independent degree-zero parameter:
+$\widehat B=B_K[[\varepsilon]]$.
+
+Each coefficient is a finite sum of states.
+Field identities hold at every finite
+$\varepsilon$-precision.
+This completion contains $e^{\varepsilon T}a$.
+It does not contain an arbitrary derivative
+series in the coefficient of
+$\varepsilon^0$.
+
+For $\xi\in\widehat B^1$, the changed
+differential and curvature are
+\begin{equation}\label{v4-arith:md:eq:curved-change}
+ d^\xi=d+\xi_{(0)},\qquad
+ w^\xi=w+d\xi+\tfrac12\xi_{(0)}\xi.
+\end{equation}
+A comparison is a continuous unital
+graded field isomorphism preserving
+$T$ and all modes.
+It intertwines the changed differentials
+and carries one changed curvature to
+the other modulo actual translation.
+There is no weight-preservation
+requirement.
+
+These changes are well defined at the
+chosen completion. Operations are finite
+Cauchy sums at each precision, and
+\[
+ T\widehat B=(TB_K)[[\varepsilon]],\qquad
+ \widehat B/T\widehat B
+       =(B_K/TB_K)[[\varepsilon]].
+\]
+Indeed one may choose a translation
+primitive separately in each coefficient.
+The zero-mode identities give
+$(d^\xi)^2=(w^\xi)_{(0)}$.
+In the Lie superalgebra
+$\widehat B/T\widehat B$, odd Jacobi
+then gives $d^\xi w^\xi=0$.
+Thus its lift is an actual translation.
+
+\subsection{A detector on a commutative quotient}
+
+Consider
+\[
+ C_K=\Lambda_K(\theta,T\theta,T^2\theta,\ldots),
+ \qquad |\theta|=1,\qquad
+ \delta\theta=\theta T\theta.
+\]
+Its fields are $Y(a,u)b=(e^{uT}a)b$.
+All nonnegative modes vanish.
+The odd Leibniz rule gives
+$\delta^2\theta=0$, so $\delta^2=0$.
+Represent a degree-two monomial
+$(T^i\theta)(T^j\theta)$, $i<j$, by
+the antisymmetric polynomial
+$X^iY^j-X^jY^i$.
+Translation becomes multiplication by
+$X+Y$.
+
+Evaluation at $Y=-X$ has kernel exactly
+$(X+Y)$ times the antisymmetric
+polynomials. Division by the monic
+polynomial $X+Y$ preserves antisymmetry
+of the quotient.
+Consequently
+\begin{equation}\label{v4-arith:md:eq:curvature-detector}
+ \ell_3([p])=-\tfrac12[X^3]p(X,-X)
+\end{equation}
+is well defined on $C_K^2/TC_K^2$.
+Its values include
+\[
+ \ell_3([\theta T^3\theta])=1,\qquad
+ \ell_3([T\theta T^2\theta])=-1,\qquad
+ \ell_3([\theta T\theta])=0.
+\]
+The first two are compatible with
+$T(\theta T^2\theta)
+=T\theta T^2\theta+\theta T^3\theta$.
+Extend the detector coefficientwise
+to the $\varepsilon$-completion.
+
+\begin{lemma}[Automorphisms of the quotient]
+\label{v4-arith:md:lem:quotient-automorphisms}
+Every continuous graded
+$K[[\varepsilon]]$-linear differential
+field automorphism of
+$C_K[[\varepsilon]]$ is
+$\theta\mapsto e^{sT}\theta$ for
+$s\in\varepsilon K[[\varepsilon]]$.
+It induces the identity modulo
+actual translation.
+\end{lemma}
+
+\begin{proof}
+The image of $\theta$ is
+$P(T)\theta$, where
+$P\in K[T][[\varepsilon]]$ is a unit.
+Commutation with $\delta$ gives
+\[
+ P(X)P(Y)(Y-X)=P(X+Y)(Y-X).
+\]
+Cancel $Y-X$ in the domain.
+Invertibility gives $P(0)=1$.
+Differentiation at $Y=0$ yields
+$P'(X)=sP(X)$, so $P(X)=e^{sX}$.
+
+Its coefficient at $\varepsilon^0$
+must be polynomial in $X$.
+Characteristic zero and the domain
+condition force $s$ to have zero
+constant coefficient.
+Conversely such an exponential and
+its inverse are defined in the
+specified completion.
+For any completed state $a$,
+\[
+ (e^{sT}-1)a
+   =T\left(\sum_{n\geq1}
+           \frac{s^n}{n!}T^{n-1}a\right).
+\]
+The displayed primitive converges
+$\varepsilon$-adically.
+\end{proof}
+
+\begin{theorem}[An invariant of changed curvature]
+\label{v4-arith:md:thm:curvature}
+Suppose a family of curved field
+algebras has closed graded field ideals
+$I$ preserved by every graded field
+isomorphism between its members.
+Assume $dI\subset I$ and identify
+their completed quotients with
+$(C_K[[\varepsilon]],\delta)$.
+If
+\[
+ \pi(w)=\frac c{24}\theta T^3\theta,
+\]
+then $24\ell_3([\pi(w^\xi)])=c$
+for every change of state.
+Every comparison above preserves $c$.
+\end{theorem}
+
+\begin{proof}
+Write $\pi(\xi)=a(T,\varepsilon)\theta$.
+Zero modes vanish in the quotient,
+so the changed differential remains
+$\delta$ there.
+The curvature class is
+\[
+ [\pi(w^\xi)]
+  =\frac c{24}[\theta T^3\theta]
+      +a(0,\varepsilon)[\theta T\theta].
+\]
+
+Every positive power of $T$ in
+$\delta\pi(\xi)$ is an actual
+translation. The detector kills
+the second summand.
+A comparison descends to a
+differential automorphism of the
+quotient. The lemma makes its
+action on translation classes the
+identity, proving invariance.
+\end{proof}
+
+This obstruction is conditional on
+the intrinsic quotient and the
+specified completion.
+A reflection $c\mapsto c'$ can be
+implemented by such a comparison
+only when $c=c'$.
+Enlarging the algebra or changing
+the recipient may change the
+problem. An uncurving of a larger
+algebra therefore requires an
+additional comparison with the
+original one.
+
+\section{The arithmetic evaluation}
+\label{v4-arith:md:sec:mellin}
+
+An arithmetic application needs
+a map from its categorical pairing
+to an analytic pairing.
+We first specify the analytic
+reflection and its normalization.
+The remaining question can then
+be stated as a comparison of
+actual maps.
+
+\subsection{Half densities and Mellin reflection}
+
+On $\mathbb R_{>0}$ use Haar measure
+$dt/t$. Define
+\[
+ \mathcal H=L^2(\mathbb R_{>0},
+                         t^{1/2}\,dt/t),\qquad
+ (\mathcal Jf)(t)=t^{-1/2}f(t^{-1}).
+\]
+The map
+\[
+ W:\mathcal H\longrightarrow L^2(\mathbb R,dx),
+ \qquad (Wf)(x)=e^{x/4}f(e^x)
+\]
+is unitary by the substitution $t=e^x$.
+
+The factor $e^{x/4}$ is the square
+root of the density relating the
+two measures.
+Direct calculation gives
+$W\mathcal JW^{-1}h(x)=h(-x)$.
+Thus
+\begin{equation}\label{v4-arith:md:eq:mellin-adjoint}
+ \mathcal J^2=1,\qquad
+ \mathcal J^\dagger=\mathcal J.
+\end{equation}
+The adjoint here belongs to the
+displayed Hilbert pairing.
+
+For $f\in C_c^\infty(\mathbb R_{>0})$
+define
+\[
+ (\mathcal Mf)(s)=
+       \int_0^\infty f(t)t^{s/2}\frac{dt}{t}.
+\]
+This is entire. Substitution
+$t=u^{-1}$ proves
+\begin{equation}\label{v4-arith:md:eq:mellin-square}
+ \mathcal M(\mathcal Jf)(s)
+       =(\mathcal Mf)(1-s).
+\end{equation}
+
+Complex conjugation satisfies
+$\mathcal M(\overline f)(s)
+=\overline{\mathcal Mf(\overline s)}$.
+More explicitly,
+\[
+ \mathcal Mf(1/2+i\tau)
+     =\int_{\mathbb R}(Wf)(x)e^{i\tau x/2}\,dx.
+\]
+These formulas fix both the
+reflection and its adjoint.
+Using unweighted inversion on the
+same Mellin convention would give
+$s\mapsto-s$ instead.
+
+\subsection{The Gaussian and both boundary poles}
+
+Fix the Fourier convention
+$\widehat f(y)=\int_{\mathbb R}
+f(x)e^{-2\pi ixy}\,dx$.
+For $f_t(x)=e^{-\pi tx^2}$,
+\[
+ \widehat f_t(y)=t^{-1/2}e^{-\pi y^2/t}.
+\]
+For completeness, integration by
+parts at $t=1$ gives
+$\widehat f_1'(y)=-2\pi y\widehat f_1(y)$.
+The Gaussian integral is one,
+as follows by squaring it and
+using polar coordinates.
+The differential equation gives
+the formula at $t=1$, and scaling
+proves it for every $t>0$.
+
+Periodize $f_t$ over $\mathbb Z$.
+The series and all derivatives
+converge uniformly on compact
+sets. Its Fourier coefficient at
+$m$ is $\widehat f_t(m)$.
+Both Fourier series converge
+absolutely, so evaluation at zero
+gives the theta identity
+\[
+ \theta(t)=\sum_{n\in\mathbb Z}e^{-\pi n^2t}
+       =t^{-1/2}\theta(t^{-1}).
+\]
+This is a lattice theta series.
+The oscillator character
+$\prod_{n\geq1}(1-q^n)^{-1}$
+is a different series: its
+coefficient at $q$ is one,
+whereas that of
+$\sum_{n\in\mathbb Z}q^{n^2}$
+is two.
+
+\begin{proposition}[Completed Mellin evaluation]
+\label{v4-arith:md:prop:theta-mellin}
+For $\operatorname{Re}s>1$,
+\[
+ \Lambda_\zeta(s)
+ :=\pi^{-s/2}\Gamma(s/2)\zeta(s)
+ =\frac12\int_0^\infty
+       (\theta(t)-1)t^{s/2}\frac{dt}{t}.
+\]
+Its meromorphic continuation is
+\begin{equation}\label{v4-arith:md:eq:polar-mellin}
+ \begin{split}
+ \Lambda_\zeta(s)
+  ={}&-\frac1s-\frac1{1-s}\\
+   &+\frac12\int_1^\infty(\theta(t)-1)
+       \bigl(t^{s/2}+t^{(1-s)/2}\bigr)\frac{dt}{t}.
+ \end{split}
+\end{equation}
+It has residues $-1$ and $1$ at
+zero and one, respectively, and
+$\Lambda_\zeta(s)=\Lambda_\zeta(1-s)$.
+\end{proposition}
+
+\begin{proof}
+Termwise integration is absolutely
+convergent for $\operatorname{Re}s>1$.
+Substitution $u=\pi n^2t$ in each
+positive-integer term gives
+$\pi^{-s/2}\Gamma(s/2)n^{-s}$.
+The two signs of $n$ cancel the
+factor $1/2$.
+
+Split the integral at one.
+On $(0,1)$ use
+\[
+ \theta(t)-1
+  =t^{-1/2}(\theta(t^{-1})-1)
+       +t^{-1/2}-1.
+\]
+Inverting $t$ in the first summand
+gives the integral with exponent
+$(1-s)/2$ over $(1,\infty)$.
+The last two terms integrate to
+$1/(s-1)-1/s$.
+The remaining integral is entire:
+the theta tail decays exponentially,
+uniformly against every power
+and every power of $\log t$
+on compact $s$-sets.
+The formula proves the residues
+and reflection.
+\end{proof}
+
+The theta tail is outside
+$\mathcal H$: near zero it has
+leading term $t^{-1/2}$.
+Its Mellin evaluation therefore
+uses the displayed subtraction
+and continuation.
+It cannot be obtained by applying
+an everywhere-defined Hilbert
+pairing to that state.
+
+On boundary monomials,
+$\mathcal J1=t^{-1/2}$ and
+$\mathcal J(t^{-1/2})=1$.
+Their integrals over $(0,1)$
+produce the two polar terms.
+An arithmetic comparison must
+retain these boundary contributions
+as well as its native vacuum.
+No identification of that vacuum
+with either boundary monomial
+has been assumed.
+
+The entire normalization
+$\xi(s)=s(s-1)\Lambda_\zeta(s)/2$
+removes the poles and is still
+reflection invariant.
+Multiplication by this polynomial
+is not a construction of the
+missing arithmetic evaluation.
+Likewise Euler inversion to
+$1/\zeta(s)$ changes the scalar
+function without constructing
+the involution in
+\eqref{v4-arith:md:eq:mellin-square}.
+
+\subsection{Detecting a central defect}
+
+Let $V$ be a complex vector space,
+$J:V\to V$ an involution, and
+$E:V\to\mathscr M(\mathbb C)$ a
+linear map to meromorphic functions.
+Fix $v,w\in V$ and scalars
+$\kappa,\kappa^!$.
+The following criterion keeps the
+categorical construction separate
+from its consequence.
+
+\begin{proposition}[Detection of a specified central defect]
+\label{v4-arith:md:prop:central-defect}
+Suppose
+\[
+ v-Jv=(\kappa+\kappa^!)w,\qquad
+ E(v)(s)=\Lambda_\zeta(s),\qquad
+ E(Jv)(s)=\Lambda_\zeta(1-s),
+\]
+and $E(w)$ is not identically zero.
+Then $\kappa+\kappa^!=0$ if and
+only if
+$\Lambda_\zeta(s)=\Lambda_\zeta(1-s)$.
+The same equivalence holds for
+the entire normalization $\xi$.
+\end{proposition}
+
+\begin{proof}
+Apply $E$ to the defect equation:
+\[
+ \Lambda_\zeta(s)-\Lambda_\zeta(1-s)
+       =(\kappa+\kappa^!)E(w)(s).
+\]
+A scalar multiple of a nonzero
+meromorphic function vanishes
+exactly when the scalar does.
+The polynomial $s(s-1)/2$ is
+nonzero and reflection invariant,
+which proves the assertion for
+$\xi$.
+\end{proof}
+
+For the forward implication,
+equivariance
+$E(Jx)(s)=E(x)(1-s)$ and the
+defect equation suffice.
+For the converse, detection of
+the stated defect is necessary.
+For example, on $\mathbb C^2$
+let $J(x,y)=(y,x)$ and
+$E(x,y)=x+y$.
+The evaluations of $v=(1,0)$
+and $Jv$ agree, but
+$v-Jv=(1,-1)\ne0$ lies in
+$\ker E$.
+Full injectivity of $E$ is
+unnecessary. Nonvanishing on
+the specified defect line
+is the relevant hypothesis.
+
+The scalar reflection has been
+proved independently above.
+Consequently this proposition
+tests a proposed arithmetic
+construction: if its defect and
+evaluation identities hold,
+its level sum must vanish.
+An equivalence of categories
+without those identities gives
+no value for that sum.
+
+\subsection{Local assembly and the remaining comparison}
+
+Suppose presentable stable
+$R$-linear categories
+$\mathcal C_v,\mathcal D_v$
+have chosen objects $c_v,d_v$
+at each place.
+For a finite set $F$ take
+their tensor products over $R$.
+Use insertion of the chosen
+objects as transition functors.
+Compatible local equivalences
+$\Psi_v:\mathcal C_v\simeq\mathcal D_v$
+with coherent identifications
+$\Psi_v(c_v)\simeq d_v$ give
+an equivalence
+\[
+ \varinjlim_F\bigotimes_{v\in F,R}\mathcal C_v
+ \simeq
+ \varinjlim_F\bigotimes_{v\in F,R}\mathcal D_v.
+\]
+Indeed they give an equivalence
+at every finite tensor stage
+and commute with its transition
+maps. Colimits preserve this
+equivalence of diagrams.
+
+For arithmetic categories one
+must construct the common
+coefficient action, local
+functors and compatible
+pointings. A unital map
+$\mathbb F_p\to\mathbb C$
+cannot supply a coefficient
+comparison, since it would
+send $p\cdot1=0$ to
+$p\cdot1\ne0$.
+A common integral base with
+two derived fibers is a
+different, possible construction.
+Identifying the categorical
+colimit with an analytic
+restricted tensor product
+also requires its own map.
+
+\begin{question}[Completed arithmetic duality and evaluation]
+\label{v4-arith:md:qn:arithmetic}
+Construct the archimedean
+coefficient complex and the
+pairing of a functorial completed
+arithmetic Koszul duality.
+Construct an operation-preserving
+comparison to theta and Mellin
+reflection with its specified
+half-density normalization and
+adjoint.
+The comparison must transport
+both polar terms and the native
+vacuum, as well as the products,
+collision operations and
+completions on its declared
+domain.
+\end{question}
+
+The first missing map is from
+this arithmetic coefficient
+complex and its duality pairing
+to the analytic recipient with
+the evaluation above.
+To obtain a level criterion,
+it must also supply the defect
+identity and detect its defect
+line.
+The coefficient anti-equivalence,
+the marked native examples and
+the scalar theta theorem each
+provide positive structures.
+Their comparison remains the
+mathematical construction asked
+for in the question.
+
+\section*{References for the duality theorems}
+
+Pontryagin duality is treated by David W.~Roeder,
+\emph{Category theory applied to Pontryagin duality},
+Pacific Journal of Mathematics \textbf{52} (1974), 519--527.
+Matlis duality and derived completion use the Stacks Project
+tags specified in their proofs.
+
+The field-coefficient correspondence and its naturality use
+Leonid Positselski,
+\emph{Two kinds of derived categories, Koszul duality,
+and comodule--contramodule correspondence}, arXiv:0905.2621.
+Sections 4.4, 5.2 and 5.4 give the resolution models,
+the correspondence and its derived-adjoint comparison.
+Sections 6.3, 6.4 and 6.9 give the twisting-cochain comparisons.
+
+The contragredient formula is Yi-Zhi Huang,
+\emph{Introduction to vertex operator algebras, III},
+arXiv:q-alg/9504019, equation (1.26).
+The formal invariance theorem is Ezra Getzler,
+\emph{Lie theory for nilpotent \(L_\infty\)-algebras},
+Annals of Mathematics \textbf{170} (2009), 271--301, Theorem 4.8.
+
+Bruce Ferrero and Lawrence C.~Washington,
+\emph{The Iwasawa invariant \(\mu_p\) vanishes for abelian number fields},
+Annals of Mathematics \textbf{109} (1979), 377--395.

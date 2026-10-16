@@ -1,0 +1,2689 @@
+\chapter{Hall fields on curves}
+\label{v4-arith:curve:chapter}
+
+A torsion sheaf on a curve splits into its parts at closed points.
+Hall multiplication and the Green form split with it. This elementary
+decomposition produces operators whose exchange coefficients count
+points over every finite extension of the ground field. The coefficient
+depends on the normalization of both operators. Keeping the Hall
+creators and their Green adjoints gives a mass series. Changing their
+normalization gives the curve zeta function.
+
+We follow these operators into three recipients. Polynomial Hall
+states carry local Heisenberg fields, and finite power covers retain
+their residue maps. Collective counting modes instead lead to fields
+with finitely many multiplicative collision divisors after reciprocal
+normalization. The unchanged Green exchange has a meromorphic
+difference equation and a positive coherent state. Derived intersections
+of the collision divisors explain why their scalar equations and
+supported differential modules require different comparisons.
+
+Prime-indexed Macdonald spaces separate the choice of local parameters
+from a geometric Hall realization. A final nilpotent-coefficient
+example constructs the scalar kernel and its finite-jet comparison,
+then locates the missing critical Hall map.
+
+\section{Closed points and Green adjunction}
+\label{v4-arith:curve:sec:green}
+
+Let $C$ be a smooth projective geometrically connected curve over
+$\mathbb F_q$. For a closed point $x$, write
+$d_x=[k(x):\mathbb F_q]$ and $Q_x=q^{d_x}$.
+A choice of parameter and coefficient field identifies the completed
+local ring with $\mathbb F_{Q_x}[[t]]$. Its finite-length modules
+are the finite nilpotent $\mathbb F_{Q_x}[t]$-modules.
+The resulting Hall algebra is independent of this presentation.
+The presentation names its Jordan partitions.
+
+Use complex coefficients. For a prime power $Q$, let $H_Q$ have basis
+$u_M$ indexed by nilpotent modules and put
+$a_M=|\operatorname{Aut}M|$. The product and positive Hermitian form are
+\[
+ u_Mu_N=\sum_L F^L_{M,N}u_L,
+ \qquad \langle u_M,u_N\rangle_G=\frac{\delta_{MN}}{a_M},
+\]
+where $F^L_{M,N}$ counts submodules of type $N$ with quotient $M$.
+The form is conjugate-linear in its first argument.
+The torsion Euler form is zero. Thus the Green coproduct is adjoint
+to this product without an Euler twist.
+
+The local primitive theorem, with its normalization fixed in
+Theorem~\ref{v4-arith:hall:thm:primitives}, gives
+\begin{equation}\label{v4-arith:curve:eq:primitives}
+ \begin{gathered}
+ H_Q=\mathbb C[p_1,p_2,\ldots],\qquad
+ \Delta p_r=p_r\otimes1+1\otimes p_r,\\
+ p_r=\sum_{|\lambda|=r}
+       \prod_{j=1}^{\ell(\lambda)-1}(1-Q^j)u_\lambda,
+ \qquad
+ \langle p_r,p_s\rangle_G=\delta_{rs}\frac r{Q^r-1}.
+ \end{gathered}
+\end{equation}
+In particular the coefficient of the indecomposable module of
+length $r$ in $p_r$ is one.
+
+The elementary generating series gives another way to see the
+normalization. Put
+\[
+ e_r=Q^{r(r-1)/2}u_{1^r},\qquad
+ E(t)=\sum_{r\geq0}e_rt^r,
+ \qquad e_0=1.
+\]
+Subspace counting gives
+$\Delta u_{1^r}=\sum_{i+j=r}Q^{-ij}u_{1^i}\otimes u_{1^j}$,
+so $E$ is group-like.
+
+Products of semisimple classes are triangular in the Jordan basis.
+The successive kernel dimensions specify a filtration lowered by $t$.
+Equality with these dimensions forces the kernel filtration itself. Its coefficient is
+one. Other terms have larger kernel dimensions. This proves the
+polynomial presentation in each finite Hall degree.
+
+The logarithm
+then gives the primitive generators through
+\[
+ \log E(t)=\sum_{r\geq1}\frac{(-1)^{r-1}}r p_rt^r.
+\]
+
+Since
+$|\operatorname{GL}_r(\mathbb F_Q)|
+=Q^{r(r-1)/2}\prod_{j=1}^r(Q^j-1)$, their norms can also be read from
+\[
+ \langle E(u),E(v)\rangle_G
+ =\sum_{r\geq0}\frac{Q^{r(r-1)/2}(\bar uv)^r}
+                         {\prod_{j=1}^r(Q^j-1)}
+ =\prod_{j\geq1}(1-Q^{-j}\bar uv)^{-1}.
+\]
+The last equality follows from $(1-t)P(Qt)=P(t)$ and $P(0)=1$.
+
+Primitivity and Hopf adjunction give factorial norms for powers
+of a primitive. Taking logarithms gives
+\eqref{v4-arith:curve:eq:primitives}.
+
+\begin{proposition}\label{v4-arith:curve:prop:adjoints}
+On the polynomial domain, multiplication $M_r$ by $p_r$ has Green
+adjoint
+\[
+ D_r=\frac r{Q^r-1}\partial_{p_r},\qquad
+ [D_r,M_s]=\delta_{rs}\frac r{Q^r-1}I.
+\]
+The inverse pairing, completed by nonnegative Hall weight, is
+\begin{equation}\label{v4-arith:curve:eq:inverse-pairing}
+ \sum_\lambda u_\lambda\otimes a_\lambda u_\lambda
+ =\exp\left(\sum_{r\geq1}\frac{Q^r-1}{r}p_r\otimes p_r\right).
+\end{equation}
+\end{proposition}
+\begin{proof}
+The adjoint of multiplication by a primitive is a derivation.
+Its value on $p_s$ is the scalar
+$\delta_{rs}r/(Q^r-1)$, which determines the derivation on $H_Q$.
+Iterating adjunction makes the monomials orthogonal, with
+\[
+ \left\|\prod_r p_r^{m_r}\right\|_G^2
+ =\prod_r m_r!\left(\frac r{Q^r-1}\right)^{m_r}.
+\]
+Sum each monomial tensored with its dual to obtain the exponential.
+The Hall basis gives the left side of
+\eqref{v4-arith:curve:eq:inverse-pairing}. Each weight space is finite
+dimensional, so both expressions define the same completed tensor.
+\end{proof}
+
+The torsion Hall space of $C$ is the algebraic tensor product
+\[
+ \mathcal F_C=\bigotimes_{x\in|C|}' H_{q^{d_x}},
+ \qquad \deg p_{x,r}=rd_x.
+\]
+The prime means that a tensor is the vacuum $1$ at all but finitely
+many points. Hom and extension groups between different supports
+vanish, so products and Green forms factor.
+
+There are finitely many
+closed points of bounded degree. Hence each weight space is finite
+dimensional.
+
+Define, for $n>0$,
+\begin{equation}\label{v4-arith:curve:eq:global-modes}
+ \begin{split}
+ N_n&=\sum_{d_x\mid n}d_x=\#C(\mathbb F_{q^n}),\\
+ A_{-n}&=\sum_{d_x\mid n}d_xM_{x,n/d_x},\qquad
+ B_n=\sum_{d_x\mid n}d_xD_{x,n/d_x}.
+ \end{split}
+\end{equation}
+All sums are finite. A point of degree $d$ has exactly $d$ geometric
+points over $\mathbb F_{q^n}$ when $d\mid n$, and none otherwise.
+Operators at different points commute. Therefore
+\begin{equation}\label{v4-arith:curve:eq:green-commutator}
+ [B_n,A_{-m}]=\delta_{nm}\frac{nN_n}{q^n-1}I,
+ \qquad B_n=A_{-n}^{*G}.
+\end{equation}
+Two positive modes commute, as do two negative modes.
+
+\section{Three normalizations of the exchange}
+\label{v4-arith:curve:sec:exchange}
+
+For the unchanged creators and Green adjoints set
+\[
+ \Gamma_-(w)=\exp\left(\sum_{n>0}\frac{A_{-n}w^n}{n}\right),
+ \qquad
+ \Gamma_+^G(z)=\exp\left(\sum_{n>0}\frac{B_nz^{-n}}n\right).
+\]
+These are coefficientwise series in the independent formal variables
+$w,z^{-1}$. Each coefficient is an operator on $\mathcal F_C$.
+Creation may equivalently be evaluated in the completion by weight.
+Annihilation is locally finite on every polynomial state.
+
+\begin{theorem}\label{v4-arith:curve:thm:exchange}
+Put
+\[
+ K_G(t)=\exp\left(\sum_{n>0}\frac{N_nt^n}{n(q^n-1)}\right),
+ \qquad Z_C(t)=\exp\left(\sum_{n>0}\frac{N_nt^n}{n}\right).
+\]
+Then
+\begin{align}
+ \Gamma_+^G(z)\Gamma_-(w)
+   &=K_G(w/z)\Gamma_-(w)\Gamma_+^G(z),
+       \label{v4-arith:curve:eq:green-exchange}\\
+ K_G(qt)&=Z_C(t)K_G(t),
+       \label{v4-arith:curve:eq:difference}\\
+ Z_C(t)&=\prod_x(1-t^{d_x})^{-1},\qquad
+ K_G(t)=\prod_{j\geq1}Z_C(q^{-j}t).
+       \label{v4-arith:curve:eq:products}
+\end{align}
+The last product uses convergent logarithmic coefficients at the
+fixed numerical value $q>1$.
+\end{theorem}
+\begin{proof}
+The commutator of the two exponents is the central series
+$\sum_{n>0}N_n(w/z)^n/[n(q^n-1)]$.
+Formal conjugation of the exponentials proves
+\eqref{v4-arith:curve:eq:green-exchange}.
+Subtracting the logarithms at $qt$ and $t$ proves the difference
+equation. Writing $n=rd_x$ in $\log Z_C$ gives
+$\sum_x\sum_{r>0}t^{rd_x}/r$, the logarithm of the Euler product.
+Finally $1/(q^n-1)=\sum_{j\geq1}q^{-jn}$ proves the product for
+$K_G$ in each logarithmic coefficient.
+\end{proof}
+
+There are two ways to obtain $Z_C$ itself as an exchange factor.
+First keep the creators and replace $B_n$ by
+$J_n=(q^n-1)B_n$. The corresponding annihilation vertex is
+\begin{equation}\label{v4-arith:curve:eq:zeta-annihilator}
+ \Gamma_+^\zeta(z)
+ =\Gamma_+^G(z/q)\Gamma_+^G(z)^{-1}
+ =\exp\left(\sum_{n>0}\frac{J_nz^{-n}}n\right).
+\end{equation}
+It has exchange factor $Z_C(w/z)$ with $\Gamma_-(w)$.
+Its modes are no longer the Green adjoints of the fixed creators.
+
+Second use the positive real square root and put
+\[
+ \widehat A_{-n}=\sqrt{q^n-1}\,A_{-n},\qquad
+ \widehat B_n=\sqrt{q^n-1}\,B_n.
+\]
+They remain Green adjoints and satisfy
+$[\widehat B_n,\widehat A_{-m}]=\delta_{nm}nN_nI$.
+Their half-vertices again exchange by $Z_C(w/z)$, with both
+operators changed. Locally this is the adjoint pair
+\[
+ a_{-r}=\sqrt{Q^r-1}\,M_r,\qquad
+ a_r=\frac r{\sqrt{Q^r-1}}\partial_{p_r}.
+\]
+
+All three constructions have a common polynomial domain.
+No everywhere-defined operator on the Green Hilbert completion has
+been asserted. The dilation $z\mapsto z/q$ in
+\eqref{v4-arith:curve:eq:zeta-annihilator} is a spectral change of
+variable. Absolute Frobenius is the different map $z\mapsto z^q$.
+
+An independent oscillator polynomial space
+$\mathbb C[u_{x,r}:x\in|C|,r>0]$ is identified with $\mathcal F_C$
+by $u_{x,r}\mapsto p_{x,r}$. This preserves weight, multiplication
+and vacuum. It sends multiplication by $u_{x,r}$ to $M_{x,r}$
+and $r\partial_{u_{x,r}}$ to $(q^{rd_x}-1)D_{x,r}$.
+Thus it intertwines the one-sided normalized modes and all formal
+coefficients of their half-vertices. Specified residue operations
+require their own comparison below.
+
+\begin{example}\label{v4-arith:curve:ex:curves}
+For $C=\mathbb P^1$, $N_n=q^n+1$ and
+$Z_C(t)=((1-t)(1-qt))^{-1}$.
+
+For the smooth projective cubic
+\[
+ E/\mathbb F_2:\quad y^2+y=x^3+x+1,
+\]
+the first four point counts are $1,5,13,25$.
+The equation $y^2+y=b$ has two solutions exactly when
+$\operatorname{Tr}_{\mathbb F_{2^n}/\mathbb F_2}(b)=0$.
+For $n=1,2,3,4$ there are respectively $0,2,6,12$ such values of
+$x$, and the projective curve has one point at infinity. Consequently
+\[
+ Z_E(t)=1+t+3t^2+7t^3+15t^4+O(t^5).
+\]
+
+These counts determine the exchange through degree four. The full
+formula
+$Z_E(t)=(1-2t+2t^2)/((1-t)(1-2t))$
+also uses the classical rationality and degree-two numerator theorem
+for an elliptic curve.
+\end{example}
+
+\subsection{An elementary modification}
+
+The full Hall algebra of coherent sheaves contains line bundles as
+well as torsion sheaves. Fix a rational point $x$ and a line bundle
+$L$. Extensions of $\mathcal O_x$ by $L$ have middle sheaf
+$L\oplus\mathcal O_x$ or $L(x)$: the extension space is one
+dimensional and all nonzero classes give $L(x)$.
+
+In the split sheaf the relevant copies of $L$ are the graphs of the
+$q$ maps $L\to\mathcal O_x$. In $L(x)$ there is the unique
+subobject $L(x)(-x)=L$. Conversely
+$\operatorname{Ext}^1(L,\mathcal O_x)=0$, and the split middle
+sheaf has its unique torsion subobject. Hence
+\[
+ u_{\mathcal O_x}u_L=q\,u_{L\oplus\mathcal O_x}+u_{L(x)},
+ \qquad u_Lu_{\mathcal O_x}=u_{L\oplus\mathcal O_x}.
+\]
+
+With $v=\sqrt q$, twist multiplication by
+$u_A*u_B=v^{\chi(A,B)}u_Au_B$.
+Here $\chi(\mathcal O_x,L)=-1$ and $\chi(L,\mathcal O_x)=1$, so
+\[
+ [u_{\mathcal O_x},u_L]_* =v^{-1}u_{L(x)}.
+\]
+
+On $\mathbb P^1$, summing over its $q+1$ rational points gives
+\[
+ \left[\sum_xu_{\mathcal O_x},u_{\mathcal O(n)}\right]_*
+ =(v+v^{-1})u_{\mathcal O(n+1)}.
+\]
+
+This operation retains the elementary modification. A presentation
+of a quantum loop algebra requires its other generators and relations.
+An arithmetic trace comparison additionally requires its category,
+state and functional.
+
+\section{Local fields on every polynomial Hall state}
+\label{v4-arith:curve:sec:local-fields}
+
+Return to one point, with residue cardinality $Q$.
+Set $h_{-r}=M_r$, $h_r=(Q^r-1)D_r=r\partial_{p_r}$ for $r>0$,
+and $h_0=0$. Thus
+\[
+ [h_r,h_s]=r\delta_{r+s,0}I,
+ \qquad h_r^{*G}=(Q^r-1)h_{-r}\quad(r>0).
+\]
+
+Define a derivation $T$ by $T(p_r)=rp_{r+1}$ and define
+\[
+ H(z)=\sum_{r\in\mathbb Z}h_rz^{-r-1}.
+\]
+
+For a polynomial monomial set
+\begin{equation}\label{v4-arith:curve:eq:all-states}
+ Y(p_{r_1}\cdots p_{r_l},z)
+ =:\prod_{j=1}^l\frac{\partial_z^{r_j-1}H(z)}{(r_j-1)!}:,
+ \qquad Y(1,z)=I.
+\end{equation}
+Normal ordering places creation modes to the left. This defines
+the field on every state. Positive modes act locally finitely on
+a polynomial input, and the creation series has a lower bound on
+its powers of $z$.
+
+\begin{proposition}\label{v4-arith:curve:prop:wick}
+The fields \eqref{v4-arith:curve:eq:all-states}, with vacuum $1$
+and translation $T$, give the free Heisenberg vertex algebra on
+$H_Q$. Every finite ordered product has a common normally ordered
+Wick expression, with rational contractions and finite poles along
+pairwise diagonals. Every nesting expands that expression and
+retains its nonconsecutive contractions.
+\end{proposition}
+\begin{proof}
+Commuting an annihilator past a creator gives the scalar
+$r\delta_{rs}$. Summing gives $(z-w)^{-2}$ in the expansion
+$|w|<|z|$. For fixed polynomial states, commute each annihilator
+through later creators. The terms are indexed by partial matchings
+of the elementary factors. Matched factors contribute the
+appropriate derivatives of $(z-w)^{-2}$ and unmatched factors
+remain normally ordered. There are finitely many matchings and
+derivative orders, so one rational denominator clears every term.
+
+Regrouping partitions the same matchings according to the blocks
+joined by their edges. Both nested expansions are therefore
+expansions of the same rational expression. Empty matchings give
+the vacuum identities.
+
+Directly,
+$[T,h_m]=-mh_{m-1}$, which proves translation covariance.
+The two expansions of each contraction differ by a derivative of
+the formal delta distribution. A finite power of $z-w$ kills the
+commutator. These identities prove locality and associativity for
+all the fields in \eqref{v4-arith:curve:eq:all-states}.
+\end{proof}
+
+Hall multiplication is represented by creation modes:
+multiplication by $p_r$ is $h_{-r}$. It need not agree with the
+vertex $(-1)$-product on composite states. For example,
+\[
+ (p_1^2)_{(-1)}p_1=p_1^3+2p_3,
+ \qquad (p_1^2)p_1=p_1^3.
+\]
+The additional term is the constant coefficient of
+$2z^{-2}\sum_{r>0}p_rz^{r-1}$ in $:H(z)^2:p_1$.
+
+\subsection{Finite power covers}
+
+At a closed point of degree $d$, pull back the current density
+along $s=z^d$ on $\mathbb G_m$:
+\[
+ J_x(z)=dz^{d-1}H_x(z^d),\qquad
+ J^x_n=\begin{cases}d\,h^x_{n/d},&d\mid n,\\0,&d\nmid n.
+ \end{cases}
+\]
+The map is finite \'etale over $\mathbb C$ on the torus.
+Its extension across zero is ramified, so the domain matters.
+The common contraction is
+\begin{equation}\label{v4-arith:curve:eq:cyclotomic}
+ \frac{d^2z^{d-1}w^{d-1}}{(z^d-w^d)^2}
+ =\sum_{\zeta^d=1}\frac{\zeta}{(z-\zeta w)^2}.
+\end{equation}
+Differentiate in $w$ the identity
+$\sum_{\zeta^d=1}(z-\zeta w)^{-1}
+=dz^{d-1}/(z^d-w^d)$ to obtain this formula.
+Different point colors commute.
+
+The coefficient of $z^{rd-1}$ in $J_x(z)1$ is $dp_{x,r}$.
+Products of such creation coefficients recover all finite-support
+Hall states. Normal products and derivatives have the pulled-back
+Wick expansions. Derivative orders $a,b$ give pole order at most
+$a+b+2$ at each divisor $z=\zeta w$. This is a bound for each
+specified input. The states have no common finite derivative bound.
+
+\subsection{Fields, quasi-modules and residue maps}
+
+For a complex vector space $W$ write
+$\mathcal E(W)=\operatorname{Hom}(W,W((z)))$.
+A subset is \emph{quasi-local} if, for each pair of its fields,
+a nonzero polynomial in their two coordinates annihilates the
+commutator. It is \emph{quasi-compatible} if each finite ordered
+product becomes a map to
+$W[[z_1,\ldots,z_m]][z_1^{-1},\ldots,z_m^{-1}]$
+after multiplication by a finite product of nonzero two-variable
+polynomials. Formula~\eqref{v4-arith:curve:eq:cyclotomic} proves
+quasi-locality of the point-labeled fields on $\mathcal F_C$.
+Their finite Wick expressions prove quasi-compatibility.
+
+Li's reconstruction theorem gives a vertex algebra \emph{of fields}
+from a quasi-local subset of $\mathcal E(W)$, including its closure
+under any chosen subgroup of dilations. Evaluation gives a faithful
+quasi-module on $W$.\footnote{H.~Li, \emph{A new construction of
+vertex algebras and quasi modules for vertex algebras}.
+\href{https://arxiv.org/abs/math/0404110}{arXiv:math/0404110},
+Theorems 4.9 and 5.4. The closure includes the identity field.
+Faithfulness here follows from its inclusion in $\mathcal E(W)$.}
+
+Concretely, if $p(z_1,z)$ clears the product, then
+\begin{equation}\label{v4-arith:curve:eq:field-product}
+ Y_{\mathcal E}(a(z),u)b(z)
+ =\iota_{z,u}\bigl(p(z+u,z)^{-1}\bigr)
+   \left.p(z_1,z)a(z_1)b(z)\right|_{z_1=z+u}.
+\end{equation}
+
+The symbol $\iota_{z,u}$ means expansion in
+$\mathbb C((z))((u))$. Clearing first makes the substitution
+defined. The theorem makes its coefficients independent of the
+clearing polynomial and proves closure and the vertex identities.
+Substitution at $z_1=\alpha z+u$ gives the dilation operations.
+The original Hall space is the quasi-module, and has not been
+identified with this vertex algebra of fields.
+
+For finitely many point colors, the pole group is generated by
+finitely many roots of unity. The whole point-labeled construction
+is their filtered union: each operation uses finitely many
+denominators and colors.
+
+There are also actual supported residue maps on the power-cover
+sector. Start with the Heisenberg fields of
+Proposition~\ref{v4-arith:curve:prop:wick}. At the collision of two
+positions, with $u=s_i-s_j$, the map on states and a multiplier $f$
+is
+\begin{equation}\label{v4-arith:curve:eq:residue}
+ r_{ij}(f;\ldots,a,\ldots,b,\ldots)
+ =\operatorname{pp}_u\bigl(fY(a,u)b\bigr).
+\end{equation}
+
+Here $\operatorname{pp}_u$ retains the negative powers of $u$.
+The other states stay at their positions. Regular functions act
+on principal parts by their finite normal Taylor expansions. For
+example, for $t\ne0$ and $r,\ell\geq1$,
+\[
+ (u-t)^{-\ell}[u^{-r}]
+ =(-1)^\ell\sum_{m=0}^{r-1}
+   \binom{\ell+m-1}{m}t^{-\ell-m}[u^{m-r}].
+\]
+This retains the spectator poles and every finite normal derivative.
+
+Translation covariance makes the maps horizontal for the state
+connection $\partial_s+T$. Residues of disjoint pairs commute.
+For three positions, the three iterated principal parts come from
+the same rational Wick expression. The principal-parts relation
+between its three collision channels is their residue identity.
+Thus one has the full residue diagram, including its attachments,
+before taking a cover. These statements concern the polynomial
+Heisenberg states with their finite pole bounds.
+
+Pull back this diagram along
+\[
+ (\mathbb G_m)^n\longrightarrow(\mathbb G_m)^n,\qquad
+ (z_1,\ldots,z_n)\longmapsto(z_1^d,\ldots,z_n^d).
+\]
+Finite étale base change preserves its right differential modules,
+residue maps and their relations. The diagonal $s_i=s_j$ pulls
+back to the divisors $z_i=\zeta z_j$, with their actual
+intersections and pulled-back attachments. Pullback of the
+current density is exactly \eqref{v4-arith:curve:eq:cyclotomic}.
+The cut tensor here excludes $z_i^d=z_j^d$ across a cut.
+It would change if only $z_i=z_j$ were excluded.
+
+For finitely many colors, use the independent local factors and
+their labeled elementary insertions. Their finite Wick matchings
+give the corresponding coefficient diagrams. Composite fields at
+a retained root use \eqref{v4-arith:curve:eq:field-product}.
+This supplies an operation comparison for this specified cover
+sector. It leaves a field presentation of an arbitrary geometric
+cut object as a separate question.
+
+\section{Collective counting fields}
+\label{v4-arith:curve:sec:counting}
+
+Sum the point-labeled currents coefficientwise:
+\[
+ J(z)=\sum_xJ_x(z)=\sum_{n\in\mathbb Z}J_nz^{-n-1},
+ \qquad J_{-n}=A_{-n},\quad J_n=(q^n-1)B_n\quad(n>0).
+\]
+Set $J_0=0$. A fixed mode involves only points whose degrees divide
+its nonzero index, so it acts on the polynomial Hall space.
+On a fixed input only finitely many positive modes act nontrivially.
+The commutators are
+\begin{equation}\label{v4-arith:curve:eq:counting-commutator}
+ [J_n,J_{-m}]=\delta_{nm}nN_nI\qquad(n,m>0).
+\end{equation}
+
+\begin{proposition}\label{v4-arith:curve:prop:translation}
+A linear operator $\mathsf T$ on this mode representation can
+satisfy $[\mathsf T,J_n]=-nJ_{n-1}$ for all integers $n$ only if
+$N_{n+1}=N_n$ for every $n\geq1$.
+\end{proposition}
+\begin{proof}
+Apply $[\mathsf T,-]$ to $[J_{n+1},J_{-n}]=0$ and use Jacobi.
+The resulting equality is
+\[
+ 0=-(n+1)[J_n,J_{-n}]+n[J_{n+1},J_{-n-1}]
+   =n(n+1)(N_{n+1}-N_n)I.
+\]
+The coefficient field has characteristic zero.
+\end{proof}
+
+For $\mathbb P^1$, the difference $N_{n+1}-N_n=q^n(q-1)$
+is nonzero. Thus the unchanged collective current has no ordinary
+vertex translation. The degree derivation
+$L_0(p_{x,r})=rd_xp_{x,r}$ does satisfy
+$[L_0,J(z)]=(z\partial_z+1)J(z)$.
+It implements dilation.
+
+\subsection{Reciprocal normalization}
+
+Write a rational counting function with constant term one as
+\[
+ Z(t)=\prod_{\lambda\in\Lambda}(1-\lambda t)^{-\epsilon_\lambda},
+ \qquad \epsilon_\lambda\in\mathbb Z,
+\]
+with finitely many nonzero parameters. Its current contraction is
+\begin{equation}\label{v4-arith:curve:eq:counting-kernel}
+ C(z,w)=\frac1{zw}(t\partial_t)^2\log Z(t)
+       =\sum_{\lambda\in\Lambda}
+           \frac{\epsilon_\lambda\lambda}{(z-\lambda w)^2},
+ \qquad t=w/z.
+\end{equation}
+This follows by twice differentiating each
+$-\log(1-\lambda t)$.
+
+For the curve, the classical rationality theorem gives
+\[
+ Z_C(t)=\frac{\prod_{i=1}^{2g}(1-\alpha_it)}{(1-t)(1-qt)}.
+\]
+
+The numerator parameters $\alpha_i$ occur in the current
+contraction as well as $1,q$. They must therefore occur among
+its allowed collision gains. Poles of the current contraction
+are not determined just by poles of $Z_C$.
+
+The full Laurent field needs both orders of a contraction.
+The expression \eqref{v4-arith:curve:eq:counting-kernel} need not
+be symmetric under $z,w$ interchange, so quasi-locality of each
+$J_x$ alone does not establish quasi-locality of the infinite sum.
+Rationality and reciprocal eigenvalue pairing give a different
+collective field.
+
+Choose $\sqrt q>0$ and define
+\[
+ \widetilde J_{-n}=A_{-n},\qquad
+ \widetilde J_n=q^{-n/2}(q^n-1)B_n,\qquad
+ c_n=q^{-n/2}N_n.
+\]
+These formulas use $n>0$. Set $\widetilde J_0=0$.
+
+The signed multiset
+\[
+ \widetilde\Lambda
+   =\{q^{-1/2},q^{1/2};\ \alpha_1/q^{1/2},\ldots,\alpha_{2g}/q^{1/2}\}
+\]
+has signs $+,+,-,\ldots,-$. The pairing
+$\alpha\leftrightarrow q/\alpha$ makes this multiset invariant
+under inversion. This uses reciprocal duality. No assertion about
+the absolute values of the $\alpha_i$ is needed.
+
+\begin{theorem}\label{v4-arith:curve:thm:reciprocal}
+The field $\widetilde J(z)=\sum_n\widetilde J_nz^{-n-1}$
+has the symmetric rational contraction
+\[
+ \widetilde C(z,w)=
+ \sum_{\lambda\in\widetilde\Lambda}
+       \frac{\epsilon_\lambda\lambda}{(z-\lambda w)^2}.
+\]
+Its commutator is annihilated by
+$\prod_{\lambda\in\widetilde\Lambda}(z-\lambda w)^2$.
+Its dilates generate a quasi-local system, and hence a vertex
+algebra of fields with faithful quasi-module $\mathcal F_C$.
+\end{theorem}
+\begin{proof}
+Inversion invariance and
+\[
+ \frac{\lambda}{(w-\lambda z)^2}
+ =\frac{\lambda^{-1}}{(z-\lambda^{-1}w)^2}
+\]
+give symmetry. The coefficient of
+$z^{-n-1}w^{n-1}$ in the forward expansion is $nc_n$.
+Inversion invariance gives the same constants in the reverse
+expansion.
+
+Their difference is
+\[
+ \sum_{\lambda}\epsilon_\lambda\partial_w
+       \bigl(z^{-1}\delta(\lambda w/z)\bigr),
+ \qquad \delta(t)=\sum_{m\in\mathbb Z}t^m.
+\]
+Each summand is killed by $(z-\lambda w)^2$.
+Every finite set of dilates has a finite set of these factors.
+The quasi-local reconstruction theorem therefore applies.
+\end{proof}
+
+Translation in this vertex algebra acts on its fields through
+\eqref{v4-arith:curve:eq:field-product}. The Hall space is a
+quasi-module, and its new positive modes also differ from $J_n$.
+Thus the theorem imposes no impossible translation on the
+unchanged representation in
+Proposition~\ref{v4-arith:curve:prop:translation}.
+The collective modes retain the counting sequence. Individual
+closed-point labels remain in the separate fields $J_x$.
+
+The point-labeled and aggregate rational fields together are
+quasi-compatible. For a fixed point of degree $d$, their mixed
+contraction uses only $n\in d\mathbb Z$. Its coefficients are
+finite combinations of $n$ times geometric progressions.
+It therefore sums to a rational function. Aggregate contractions
+use \eqref{v4-arith:curve:eq:counting-kernel} and its rescalings.
+
+Wick expansion clears a finite common denominator in every finite
+ordered product. Li's nonlocal reconstruction then gives a
+nonlocal vertex algebra of fields and a faithful Hall
+quasi-module.\footnote{H.~Li, \emph{Nonlocal vertex algebras
+generated by formal vertex operators}.
+\href{https://arxiv.org/abs/math/0502244v2}{arXiv:math/0502244v2},
+Theorem 2.20. Quasi-compatibility is Definition 2.10.}
+
+Pairwise quasi-locality of this combined set has not been assumed.
+The native Green current has an infinite-product kernel.
+It uses the analytic recipient below.
+
+\subsection{A finite-dimensional trace comparison}
+
+For a finite-dimensional graded vector space $H=\bigoplus_iH^i$
+and a grading-preserving endomorphism $F$, graded symmetry gives
+\[
+ \sum_{n\geq0}\operatorname{str}(F;\operatorname{Sym}^nH)t^n
+ =\prod_i\det(1-tF|H^i)^{(-1)^{i+1}}.
+\]
+Indeed, after extending scalars and triangularizing, an even
+eigenvector contributes $(1-\alpha t)^{-1}$. An odd eigenvector
+generates an exterior algebra and contributes $1-\alpha t$.
+Multiply the factors and descend the coefficients. Jordan
+off-diagonal entries do not change the traces.
+
+The two even eigenvalues $1,q$, in degrees zero and two, reproduce
+the series of $\mathbb P^1$. A more discriminating example is
+$y^2=x^3-x$ over $\mathbb F_5$, which has seven affine points
+and one point at infinity. The matrices
+\[
+ F=\begin{pmatrix}0&-5\\1&-2\end{pmatrix},
+ \qquad H=\begin{pmatrix}1&-1\\-1&5\end{pmatrix}
+\]
+satisfy $F^tHF=5H$. The leading principal minors of $H$ are
+$1,4$, so $H$ is positive definite. This particular operator
+has eigenvalues of modulus $\sqrt5$ and determinant polynomial
+$1+2t+5t^2$.
+
+Identifying it with a geometric Frobenius
+representation still requires the cohomological realization.
+The point count and positive matrix alone do not construct it.
+
+\section{Gain equations and their derived intersections}
+\label{v4-arith:curve:sec:gains}
+
+Let $k$ have characteristic zero and let $G\subset k^\times$ be
+a subgroup containing the chosen collision gains. Work on
+$X=(\mathbb G_m)^n$, with coordinate ring
+$S=k[z_1^{\pm1},\ldots,z_n^{\pm1}]$.
+For a finite oriented graph $\Gamma$, including repeated edges,
+an edge $e=(i,j,\lambda_e)$ names the equation
+$f_e=z_i-\lambda_ez_j$. A component is \emph{balanced} if the
+oriented product of gains around every cycle is one. Reversing
+an edge replaces its gain by its inverse.
+
+The scalar derived intersection is the Koszul complex
+\begin{equation}\label{v4-arith:curve:eq:gain-complex}
+ K_\Gamma=(S\otimes\Lambda(\xi_e:e\in E(\Gamma)),d),
+ \qquad |\xi_e|=-1,\qquad d\xi_e=f_e.
+\end{equation}
+For pole coefficients one instead inverts a finite collection
+of nonzero $f_e$. The union of these localization rings records
+functions with finitely many allowed poles. It does not assert
+that an infinite arrangement is a finite-type scheme.
+
+\begin{theorem}\label{v4-arith:curve:thm:gains}
+Suppose $\Gamma$ has $n$ vertices, $e$ edges and $c$ components.
+If all components are balanced, a spanning forest gives
+\[
+ K_\Gamma\simeq
+ k[y_1^{\pm1},\ldots,y_c^{\pm1}]
+     \otimes\Lambda(\eta_1,\ldots,\eta_{e-n+c}),
+ \qquad |\eta_j|=-1,\quad d\eta_j=0.
+\]
+If a component is unbalanced, $K_\Gamma$ is contractible.
+\end{theorem}
+\begin{proof}
+Removing leaves of a spanning forest eliminates one coordinate
+at each step by a nonzero scalar multiple of its neighbor.
+Its $n-c$ equations form a regular sequence, with quotient the
+torus on the root coordinates. In a balanced component, every
+remaining equation is a constant linear combination of forest
+equations. Subtract this combination from its exterior generator.
+The resulting invertible triangular change splits off one closed
+generator for each extra edge.
+
+An unbalanced cycle instead leaves $(1-\lambda)y$ with
+$\lambda\ne1$ and $y$ invertible. Thus its equations generate
+the unit ideal. If $\sum_eg_ef_e=1$, then exterior multiplication
+by $\beta=\sum_eg_e\xi_e$ satisfies $d(\beta\wedge-)+\beta\wedge d=1$.
+This contracts the complete complex.
+\end{proof}
+
+For the balanced triangle,
+\begin{equation}\label{v4-arith:curve:eq:gain-triangle}
+ \begin{gathered}
+ f_1=z_1-\lambda z_2,\quad f_2=z_2-\mu z_3,\quad
+ f_3=z_1-\lambda\mu z_3=f_1+\lambda f_2,\\
+ \eta=\xi_3-\xi_1-\lambda\xi_2,\qquad d\eta=0.
+ \end{gathered}
+\end{equation}
+Quotient by the forest equations and send $\xi_1,\xi_2$ to zero.
+The image of $\eta$ is a nonzero exterior generator, so it cannot
+have been a boundary. If the third gain is instead $\nu\ne\lambda\mu$,
+the explicit primitive of the unit is
+\[
+ \beta=\frac{\xi_3-\xi_1-\lambda\xi_2}{(\lambda\mu-\nu)z_3},
+ \qquad d\beta=1.
+\]
+
+The forest basis computes the cohomology. Equation operations
+belong to the unreduced complex. A ring map $S\to S'$ and a
+matrix $U=(u_{te})$ satisfying
+$f_e\mapsto\sum_tu_{te}f'_t$ give the cochain map
+$\xi_e\mapsto\sum_tu_{te}\xi'_t$. Composition is matrix
+multiplication with coefficient substitution.
+
+For a clustering $\alpha:I\twoheadrightarrow J$ and scales
+$\gamma_i\in G$, the substitution $z_i=\gamma_i y_{\alpha(i)}$ gives
+\[
+ f_{ij,\lambda}\longmapsto
+ \gamma_i\bigl(y_{\alpha(i)}
+       -\lambda\gamma_j\gamma_i^{-1}y_{\alpha(j)}\bigr).
+\]
+
+The exterior generator has the same factor $\gamma_i$.
+An internal zero equation retains its exterior generator.
+An internal unit equation contracts. An equation that becomes
+zero cannot remain inverted, so a collision requires its
+restriction complex.
+
+\subsection{The divided exponential chart}
+
+In this spectral coefficient family, regard $q$ as a formal variable.
+For gains $q^a$, with integers $a$, introduce a formal parameter
+$\hbar$ and use $q=e^\hbar$, $z_i=e^{\hbar x_i}$.
+In $k[x_1,\ldots,x_n][[\hbar]]$ the divided equation is
+\[
+ \frac{e^{\hbar x_i}-e^{\hbar(x_j+a)}}{\hbar}
+ =(x_i-x_j-a)U_{ij,a}(\hbar),\qquad U_{ij,a}(0)=1.
+\]
+The quotient denotes a power series, with no inversion of $\hbar$.
+
+Rescaling the exterior generator by the unit $U_{ij,a}^{-1}$
+gives the affine equation. A forest quotient is
+$k[y_1,\ldots,y_c][[\hbar]]$, which is flat over $k[[\hbar]]$.
+Balanced cycles retain the excess exterior factors. An unbalanced
+cycle telescopes to a nonzero integer, so its complex contracts.
+After inverting $\hbar$, this is the pulled-back multiplicative
+arrangement up to units.
+
+The special fiber is the shifted arrangement $x_i-x_j=a$.
+Undivided equations would all reduce to zero. This constructs a
+family of spectral coefficient arrangements. Extending Green
+operators across $\hbar=0$ further requires a lattice and a
+normalization, since $q^n-1$ becomes $\hbar$ times a unit.
+No family of arithmetic curves is supplied by the coordinate
+substitution.
+
+\subsection{Scalar operations on the pole ring}
+
+Fix colors $\alpha$ and rational kernels
+$K_{\alpha\beta}(z,w)$ with finitely many allowed gain poles.
+For functions on two ordered lists of colors define
+\[
+ (f\diamond g)(z_1,\ldots,z_{m+n})
+ =f(z_1,\ldots,z_m)g(z_{m+1},\ldots,z_{m+n})
+   \prod_{i\leq m<j}K_{\alpha_i\alpha_j}(z_i,z_j).
+\]
+This is an associative product, with the empty list as unit:
+either bracketing of three blocks includes each cross-block
+factor exactly once. Summing over order-preserving shuffles
+gives an associative product on symmetric colored functions.
+
+For graded colors, include the Koszul permutation sign.
+Both bracketings have the same three-block shuffles and signs.
+
+Inverse exchanges may require gains from zeros as well as poles
+of the original kernels. The scalar construction then uses the
+enlarged group. A Hall comparison must also supply the maps of
+coefficients, orientations and any numerator conditions required
+by its recipient. The scalar product proves none of these from
+an equality of kernels.
+
+\section{Supported coefficients with excess}
+\label{v4-arith:curve:sec:supported}
+
+For one regular equation $f$, the scalar Koszul complex and the
+localization complex have different purposes. The latter is
+$L_f=[S\to S[f^{-1}]]$ in degrees $0,1$.
+Its map is horizontal for the usual left differential action.
+Localization gives
+\[
+ L_f\otimes_S^{\mathbb L}L_f\simeq L_f:
+\]
+tensor the triangle $L_f\to S\to S[f^{-1}]$ with $L_f$ and use
+the acyclicity of $L_f\otimes_SS[f^{-1}]$.
+In contrast, $S/(f)\otimes_S^{\mathbb L}S/(f)$ has a nonzero
+degree-minus-one Tor class.
+
+For $f=z_i-\lambda z_j$, $i\ne j$, the Koszul complex
+$[S\xrightarrow{f}S]$ in degrees $-1,0$ cannot admit a
+differential-module enhancement with the same object of $D(S)$.
+Such an enhancement would give its cohomology $S/(f)$ the stated
+$S$-action and a left differential action. But $f$ acts by zero,
+whereas $[\partial_{z_i},f]=1$ would force their commutator to
+be the identity on this nonzero quotient.
+
+We construct a supported recipient that also retains the excess.
+For a balanced graph let $V=k^{E(\Gamma)}$, with basis $\xi_e$,
+and view the equations as linear forms on $A_0=k^n$. Put
+\begin{equation}\label{v4-arith:curve:eq:linear-data}
+ F:V\longrightarrow A_0^*,\quad F(\xi_e)=f_e,\qquad
+ W=\operatorname{im}F,\quad E=\ker F,\quad T_\Gamma=W^\perp .
+\end{equation}
+
+Here $E$ denotes the space of equation relations. If $r=\dim W$
+and $c=\dim T_\Gamma$, then $r=n-c$ and
+$Z=T_\Gamma\cap X\cong(\mathbb G_m)^c$.
+
+Let $L=\det T_\Gamma^*$ be its constant tangent density line.
+The density-valued scalar source is
+$\mathcal K_\Gamma=L\otimes K_\Gamma$, with
+\[
+ H^{-p}(\mathcal K_\Gamma)=\omega_Z\otimes_k\Lambda^pE,
+ \qquad \omega_Z=\mathcal O_Z\otimes_k L.
+\]
+
+These cohomology identifications are independent of a forest:
+wedge closed vectors of $E$ with a degree-zero class. A forest
+splitting proves that this map is an isomorphism.
+
+All complexes are cohomological. $C[m]^j=C^{j+m}$ with
+differential $(-1)^m d_C$.
+
+\subsection{Normal derivatives and the ordinary module}
+
+For $i:Z\hookrightarrow X$ define the right differential module
+\[
+ \mathcal N=i_+\omega_Z
+ =i_*\bigl(\omega_Z\otimes_{\mathcal D_Z}\mathcal D_{Z\to X}\bigr),
+ \qquad
+ \mathcal D_{Z\to X}
+ =\mathcal O_Z\otimes_{i^{-1}\mathcal O_X}i^{-1}\mathcal D_X.
+\]
+It lies in cohomological degree zero.
+
+Choose complementary linear
+coordinates $(u_1,\ldots,u_r,y_1,\ldots,y_c)$ with $Z=(u=0)$,
+and set $\tau=dy_1\wedge\cdots\wedge dy_c$.
+On the actual open chart its sections have the normal form
+\begin{equation}\label{v4-arith:curve:eq:normal-jets}
+ \mathcal N=\bigoplus_{\alpha\in\mathbb N^r}
+       \mathcal O_Z\,\delta_{\tau,\alpha},\qquad
+ \delta_{\tau,\alpha}
+ =\left[\frac{du_1\wedge\cdots\wedge du_r\wedge\tau}
+                    {\prod_j u_j^{\alpha_j+1}}\right].
+\end{equation}
+
+The brackets denote local cohomology in degree $r$, placed in
+degree zero in $\mathcal N$. The residue of
+$du_1\wedge\cdots\wedge du_r/(u_1\cdots u_r)$ is one.
+Equivalently,
+$\delta_{\tau,\alpha}=\delta_{\tau,0}\partial_u^\alpha/\alpha!$.
+Thus
+\begin{equation}\label{v4-arith:curve:eq:jet-actions}
+ \begin{aligned}
+ \delta_{\tau,\alpha}u_j&=\delta_{\tau,\alpha-e_j},&
+ \delta_{\tau,\alpha}\partial_{u_j}
+       &=(\alpha_j+1)\delta_{\tau,\alpha+e_j},\\
+ (b\delta_{\tau,\alpha})\partial_{y_j}
+       &=-\partial_{y_j}(b)\delta_{\tau,\alpha}.
+ \end{aligned}
+\end{equation}
+The first expression is zero if $\alpha_j=0$.
+
+These formulas follow from
+$(a\Omega)\partial=-\partial(a)\Omega$ for a constant top form
+$\Omega$. They satisfy the right Weyl relation
+$(m\partial_{u_i})u_j-(mu_j)\partial_{u_i}=\delta_{ij}m$.
+Every section has finite normal order. All finite orders occur.
+No infinite normal-derivative tail is introduced.
+
+A constant change $u'=Au$ preserves the normalized order-zero
+residue and transforms derivatives by
+$\partial_{u'_i}=\sum_j(A^{-1})_{ji}\partial_{u_j}$.
+Both numerator density and denominator must transform.
+A tangent change $y'=By$ multiplies the density by $\det B$.
+These rules follow by testing the fractions against normal
+polynomials: $\delta_{\tau,\alpha}$ extracts the coefficient
+of $u^\alpha$ with its tangent density.
+
+If $I=(f_e)$, the actual support complex is
+\[
+ C_I(\omega_X)=
+ \bigotimes_{e\in E(\Gamma)}[S\longrightarrow S[f_e^{-1}]]
+       \otimes_S\omega_X.
+\]
+It has only $H^r=\mathcal N$. For forest equations this is the
+tensor product of the one-variable principal-parts calculation.
+
+A redundant $f\in I$ adds no cohomology.
+Localization of the supported finite jets at $f$ is zero.
+Thus tensoring with $[S\to S[f^{-1}]]$ changes the complex
+by an acyclic cone.
+For a zero equation, the localization is zero and the extra
+factor is just $S$ in degree zero. Therefore
+$C_I(\omega_X)[r]\simeq\mathcal N$, including repeated equations.
+
+There is a scalar cochain map
+\[
+ \varepsilon:\mathcal K_\Gamma\longrightarrow\operatorname{Res}_S\mathcal N,
+ \qquad \tau a\longmapsto a|_Z\delta_{\tau,0},
+\]
+which is zero on positive exterior length.
+Normal annihilation makes it $S$-linear and a cochain map.
+It includes $\omega_Z$ as the normal socle, the part killed by $I$.
+
+Every degree-zero morphism from $\mathcal K_\Gamma$ to this
+ordinary target kills negative cohomology. More generally, $\mathcal N[m]$ has cohomology only in degree $-m$.
+It cannot receive both a nonzero vacuum class in degree zero
+and a nonzero excess class in degree $-1$.
+Replacing complexes by resolutions, changing density by a unit,
+or retaining more normal derivatives leaves this degree argument
+unchanged.
+
+\subsection{A derived supported complex}
+
+Let $D=\Gamma(X,\mathcal D_X)$. Define
+\begin{equation}\label{v4-arith:curve:eq:spencer}
+ \mathcal P_\Gamma=L\otimes_k\Lambda(V\oplus T_\Gamma)\otimes_kD,
+ \qquad |V|=|T_\Gamma|=-1.
+\end{equation}
+For $v\in V$ and $t\in T_\Gamma$ put
+$\mathsf a(v)=F(v)$ and $\mathsf a(t)=\partial_t$.
+On an ordered wedge the differential is
+\[
+ d(\tau\otimes a_1\wedge\cdots\wedge a_m\otimes Q)
+ =\sum_{j=1}^m(-1)^{j-1}\tau\otimes
+    a_1\wedge\cdots\widehat a_j\cdots\wedge a_m
+          \otimes\mathsf a(a_j)Q.
+\]
+Multiplication by $\mathsf a(a_j)$ is on the left of $Q$.
+The differential is right $D$-linear.
+
+The operators commute because
+$[\partial_t,F(v)]=F(v)(t)=0$, so $d^2=0$.
+The tangent exterior factors impose the Spencer relations.
+
+There is an actual $S$-linear cochain map
+\begin{equation}\label{v4-arith:curve:eq:spencer-map}
+ j_\Gamma:\mathcal K_\Gamma\longrightarrow\operatorname{Res}_S\mathcal P_\Gamma,
+ \qquad
+ \tau a\,v_1\wedge\cdots\wedge v_p
+ \longmapsto\tau\otimes(v_1\wedge\cdots\wedge v_p)\otimes a .
+\end{equation}
+Functions commute with the $F(v_i)$, which proves its cochain
+equation. The scalar source is not being given a differential
+action by this map.
+
+\begin{theorem}\label{v4-arith:curve:thm:spencer}
+There are canonical right $D$-module isomorphisms
+\[
+ H^{-p}(\mathcal P_\Gamma)\cong\Lambda^pE\otimes_k\mathcal N.
+\]
+On cohomology, $j_\Gamma$ includes
+$\omega_Z\otimes\Lambda^pE$ at normal order zero. This inclusion
+is injective and its right $D$-span is the whole group.
+It retains the vacuum, every excess class and, by differentiation,
+every finite normal descendant.
+\end{theorem}
+\begin{proof}
+Choose $V_0$ complementary to $E$ and a basis of $T_\Gamma$.
+The closed factor $\Lambda E$ splits off.
+The remaining right Koszul complex uses the commuting operators
+$u_1,\ldots,u_r,\partial_{y_1},\ldots,\partial_{y_c}$.
+
+Filter $D$ by differential order, assigning weight zero to
+normal exterior generators and one to tangent exterior generators.
+Its symbol complex is the commutative Koszul complex of
+\[
+ u_1,\ldots,u_r,p_{y_1},\ldots,p_{y_c}
+ \quad\hbox{in }S[p_1,\ldots,p_n].
+\]
+This is a regular sequence. To solve a negative-degree cycle,
+lift a boundary for its leading symbol and subtract it.
+The filtration degree decreases and is bounded below in every
+cochain degree, so the process terminates.
+
+The degree-zero quotient is
+\[
+ L\otimes_kD\big/\left(\sum_i u_iD+\sum_j\partial_{y_j}D\right).
+\]
+Normal ordering identifies it with the transfer module
+$i_+\omega_Z$: the tangent density relations remove tangent
+derivatives and the normal derivatives give
+\eqref{v4-arith:curve:eq:normal-jets}.
+Wedging with closed elements of $E$ gives a canonical map
+$\Lambda^pE\otimes H^0(\mathcal P_\Gamma)\to H^{-p}(\mathcal P_\Gamma)$.
+The splitting proves that it is an isomorphism, removing the
+choice of complement from the conclusion.
+Formula~\eqref{v4-arith:curve:eq:spencer-map} sends the source to
+the normal socle. The jet basis proves injectivity, and right
+normal differentiation generates the entire target cohomology.
+\end{proof}
+
+Projection in exterior degree zero defines a right $D$-linear
+map $\pi:\mathcal P_\Gamma\to\mathcal N$ by
+$\pi(\tau\otimes Q)=\delta_{\tau,0}Q$.
+Its cochain equation is exactly the normal and tangent
+annihilation of $\delta_{\tau,0}$.
+Thus $\pi j_\Gamma=\varepsilon$.
+If $E\ne0$, $\pi$ is not a quasi-isomorphism: it kills the
+negative excess.
+
+Universal differential induction is a further useful recipient,
+\[
+ \mathcal U_\Gamma=\mathcal K_\Gamma\otimes_SD
+                 =L\otimes\Lambda V\otimes D.
+\]
+Normal ordering makes $D$ free as a left $S$-module. Induction
+therefore preserves the scalar cohomology and is functorial for
+every $S$-linear equation map, including matrices with variable
+coefficients and unchanged density. Inclusion of tangent exterior
+degree zero gives $\mathcal U_\Gamma\to\mathcal P_\Gamma$.
+The latter complex imposes the tangent relations while retaining
+the excess.
+
+In one normal coordinate, let $A=k[u]$ and
+$E_u=A[u^{-1}]/A$. Left-to-right conversion gives
+$(u^{-n}\otimes du)\partial_u=n u^{-n-1}\otimes du$.
+Thus $\delta_m=u^{-m-1}\otimes du$ agrees with
+\eqref{v4-arith:curve:eq:jet-actions}, and
+$[D\xrightarrow{u\cdot}D]$ in degrees $-1,0$ is its free
+right $D$-resolution. This compares the supported normal
+coefficient resolutions without changing their derivative actions.
+
+\subsection{Supported dual functionals}
+
+The lost excess still has a supported dual functional. On the
+linear normal chart, with $B=\mathcal O_Z$, one has
+\begin{equation}\label{v4-arith:curve:eq:supported-dual}
+ H^p\operatorname{RHom}_S(\mathcal K_\Gamma,\mathcal N)
+       \cong B\otimes_k\Lambda^pE^*,\qquad 0\leq p\leq\dim E.
+\end{equation}
+All other degrees vanish.
+
+To compute it, the bounded free source
+allows ordinary Hom. Its degree-$p$ differential is
+$-(-1)^p\phi d$. Rescaling the dual basis in degree $p$ by
+$(-1)^{p(p+1)/2}$ gives the normal cochain Koszul differential.
+
+For one normal variable this is
+$[\mathcal N\xrightarrow{u}\mathcal N]$ in degrees $0,1$.
+Multiplication by $u$ is surjective, with kernel $B\delta_0$.
+The right inverse $R\delta_m=\delta_{m+1}$ satisfies
+$uR=1$ and $Ru=1-\iota p$, where $p$ extracts $\delta_0$.
+
+These homotopies are $B$-linear. The socle inclusion is
+$S$-linear and a quasi-isomorphism. Tensoring the normal
+contractions, with their cochain signs, leaves the socle and
+$\Lambda E^*$. The density line cancels, proving
+\eqref{v4-arith:curve:eq:supported-dual}.
+
+For the triangle the functional
+\[
+ \ell(dy\,\xi_3)=\delta_{dy,0},\qquad
+ \ell(dy\,\xi_1)=\ell(dy\,\xi_2)=0
+\]
+is closed and evaluates nontrivially on $dy\,\eta$.
+A Hom boundary evaluates to zero on that closed class.
+It therefore defines a nonzero map
+$\mathcal K_\Gamma\to\mathcal N[1]$, which kills the
+degree-zero vacuum. Derivative order and cohomological degree
+remain different gradings.
+
+Keeping differential-module maps adds the tangent de Rham
+complex. On $Z=(\mathbb G_m)^c$ the bounded free complex
+\eqref{v4-arith:curve:eq:spencer} gives
+\[
+ \operatorname{RHom}_D(\mathcal P_\Gamma,\mathcal N)
+ \simeq(\Omega^\bullet(Z),d_{\mathrm{dR}})\otimes_k\Lambda(E^*),
+ \qquad |E^*|=1.
+\]
+
+The same normal contractions commute with tangent
+differentiation. The tangent Spencer dual has differential
+$-d_{\mathrm{dR}}$ after the preceding degree normalization.
+Multiplying tangent degree $a$ by $(-1)^a$ gives $d_{\mathrm{dR}}$.
+The resulting degree-$m$ cohomology is
+$\bigoplus_{a+p=m}H^a_{\mathrm{dR}}(Z)\otimes\Lambda^pE^*$.
+
+Indeed $d(y^j)=j y^j d\log y$ contracts every nonzero Laurent
+weight. Weight zero leaves $1,d\log y$, and tensoring gives
+$H^\bullet_{\mathrm{dR}}(Z)=\Lambda^\bullet\langle d\log y_1,\ldots,d\log y_c\rangle$.
+
+\subsection{Equation operations and tangent connections}
+
+Suppose $F:V\to A_0^*$ and $F':V'\to A_0^*$ have the same image,
+and let $U:V\to V'$ be constant with $F=F'U$. The assignments
+\[
+ v\longmapsto Uv,\qquad t\longmapsto t,\qquad
+ Q\longmapsto Q,\qquad \tau\longmapsto\tau
+\]
+define a right $D$-linear map $\mathcal P_F\to\mathcal P_{F'}$.
+The normal differentials agree by $F=F'U$, and constant
+coefficients commute with tangent differentiation. Thus the map
+is a cochain map and the square with the two maps $j$ commutes
+strictly. It acts on cohomology as
+$\Lambda^p(U|_E)\otimes I_{\mathcal N}$, so it intertwines the
+excess action and composes by matrix multiplication.
+It may kill an excess class when $U|_E$ does.
+
+An invertible linear coordinate map gives the same comparison
+on open domains that it actually identifies. It pulls back the
+density, sends tangent vectors by the inverse coordinate map,
+and transforms every normal derivative by the chain rule.
+These operations compose strictly. Diagonal scalings and
+coordinate permutations preserve the torus. An arbitrary
+invertible linear map need not preserve it.
+
+For example, in the triangle take $\lambda=2,\mu=4$ and
+$u=z_1-2z_2$, $v=z_2-4z_3$, $y=z_3$. Under
+\[
+ z_1=4w_1,\qquad z_2=\tfrac12 w_2,\qquad z_3=w_3,
+\]
+put $u'=w_1-\tfrac14w_2$, $v'=w_2-8w_3$, $y'=w_3$.
+The equations give $u=4u'$, $v=\tfrac12v'$ and
+$\eta\mapsto4\eta'$, where
+$\eta'=\xi'_3-\xi'_1-\tfrac14\xi'_2$.
+
+The density-normalized jets transform by
+\[
+ \delta_{dy,(m,n)}\longmapsto4^{-m}2^n\delta_{dy',(m,n)}.
+\]
+Indeed the normal Jacobian is $2$ and the denominator factor
+is $4^{m+1}(1/2)^{n+1}$. The vacuum is unchanged. Omitting
+the Jacobian would already multiply it by $1/2$.
+
+The tangent connection restricts variable equation operations.
+On the same triangle let an equation automorphism fix
+$\xi_1,\xi_2$ and send
+\[
+ \xi_3\longmapsto(1-y)\xi_1+\lambda(1-y)\xi_2+y\xi_3.
+\]
+It fixes the equations and sends $\eta$ to $y\eta$.
+
+In supported cohomology, however,
+$m=\eta\delta_{dy,0}$ satisfies $m\partial_y=0$ whereas
+$(ym)\partial_y=-m\ne0$. No right $D$-linear cochain map on
+the fixed $\mathcal P_\Gamma$ can induce this action.
+Homotopies do not change the induced cohomology map.
+
+Raw induction $\mathcal U_\Gamma$ remains functorial for this
+scalar equation map. Removing its free tangent derivatives
+while retaining the map requires additional connection data.
+
+Equation symmetries can give a second obstruction, even when
+determinants are unchanged. Repeat the third triangle edge and
+put
+$\eta_i=\xi_{i+2}-\xi_1-\lambda\xi_2$, $i=1,2$.
+Fix the forest generators and act by
+$\eta_1\mapsto t\eta_1$, $\eta_2\mapsto t^{-1}\eta_2$.
+This automorphism fixes the equations, ambient coordinates,
+normal quotient and tangent density, and has determinant one.
+
+If a target assigns it the identity at $t=2$, a natural
+homogeneous comparison kills both excess classes.
+Their images would have to equal twice and half themselves.
+Equation, tangent and normal determinant twists leave this
+argument unchanged. The invariant top wedge is not killed
+by this argument.
+
+For the ordinary module on the split torus,
+$\operatorname{End}_D(\mathcal N)=k$.
+An endomorphism sends its normal socle generator to
+$b\delta_{\tau,0}$. The normal relations force the socle,
+and the tangent relations force every derivative of $b$ to vanish.
+Right normal differentiation then determines the whole map.
+
+Consequently a coherent action of the full $\operatorname{SL}(E)$
+for $\dim E=2$ on any single shift $\mathcal N[m]$ is a character
+to $k^\times$, and is trivial. To see this last assertion directly,
+conjugation by $\operatorname{diag}(2,1/2)$ makes every upper
+or lower elementary unipotent a commutator. These unipotents
+generate $\operatorname{SL}_2(k)$.
+
+Thus this naturality obstruction applies to the ordinary target
+with its full equation action. A derived target carrying
+$\Lambda E$ has the nontrivial excess action instead.
+
+With three copies of the third edge, a cyclic permutation is even.
+A natural comparison with identity target action kills the
+nonzero difference $\xi_3-\xi_4=(1-\sigma)\eta_1$.
+
+\subsection{A nontransverse clustering}
+
+Again take the gains $2,4,8$ and restrict to
+\[
+ \iota_Y:Y=(\mathbb G_m)^2\longrightarrow X,\qquad
+ (x,y)\longmapsto(2x,x,y).
+\]
+This is $u=0$, and $g=x-4y$ is the surviving normal coordinate.
+The three equations become $(0,g,2g)$.
+Writing $\zeta=\xi_1$ and
+$\eta=\xi_3-\xi_1-2\xi_2$, one gets
+\[
+ \iota_Y^*K_\Gamma=K(g)\otimes\Lambda(\zeta,\eta).
+\]
+The excess $\eta$ is inherited. $\zeta$ is created by this
+nontransverse restriction.
+
+Let $\mathcal N_X$ have normal coordinates $(u,v)$ and let
+$\mathcal N_Y$ have normal coordinate $g=v$, both with density
+$dy$ along the common stratum. For the derived pullback of
+underlying modules,
+\begin{equation}\label{v4-arith:curve:eq:cluster-pullback}
+ \mathcal O_Y\otimes_{\mathcal O_X}^{\mathbb L}
+          \operatorname{Res}\mathcal N_X
+ \simeq\mathcal N_Y[1].
+\end{equation}
+This convention is an $\mathcal O$-module pullback, rather than
+a dimension-normalized differential inverse image.
+Resolve $\mathcal O_Y$ by
+$[\mathcal O_X\xrightarrow{u}\mathcal O_X]$.
+After tensoring, multiplication by $u$ is surjective on
+$\mathcal N_X$ and has kernel
+$\bigoplus_{n\geq0}k[y^{\pm1}]\delta_{dy,(0,n)}$.
+The residual $v,\partial_v,y,\partial_y$ actions are exactly
+those of $\mathcal N_Y$, proving
+\eqref{v4-arith:curve:eq:cluster-pullback} and retaining every
+finite $v$-descendant.
+
+Under the derived pullback of $\varepsilon$, the new class
+$dy\,\zeta$ maps to minus the supported vacuum in degree $-1$.
+Indeed, if $d\theta=u$ is the resolution generator, then
+$dy(\xi_1-\theta)$ is a closed lift and maps to
+$-\theta\delta_{dy,0}$. The inherited $dy\,\eta$ already maps
+to zero before restriction, so still maps to zero.
+Thus inherited excess and a new Tor class have different
+images. No evaluation of a distribution on its singular
+support has been used.
+
+Changing the third gain to $16$ gives
+$d(\xi_3-\xi_1-2\xi_2)=-8z_3$.
+The primitive $-(\xi_3-\xi_1-2\xi_2)/(8z_3)$ of the unit
+remains a primitive after this clustering, with $z_3=y$.
+Both scalar complexes contract and both supports are empty.
+
+\subsection{Contact differentials and the geometric comparison}
+
+A meromorphic coefficient map also needs its contact
+differential. Let $C,\mathcal L,J$ be cochain complexes,
+let $W:C\to\mathcal L$ be a cochain map, and suppose a supported
+extension has graded form $\mathcal L\oplus J$ and differential
+\[
+ d(a,s)=(d_{\mathcal L}a,d_Js+Ra),\qquad
+ d_JR+Rd_{\mathcal L}=0.
+\]
+Its pullback along $W$ has the actual differential
+\[
+ E_W=C\oplus J,\qquad d(c,s)=(d_Cc,d_Js+RWc).
+\]
+The map $(c,s)\mapsto(Wc,s)$ is a cochain map because
+$d_JRW+RWd_C=0$. A map to the localized component alone
+omits this term.
+
+With two independent normals, the localization
+complex has both faces and their corner:
+\[
+ S\longrightarrow S[f^{-1}]\oplus S[g^{-1}]
+       \longrightarrow S[(fg)^{-1}],
+ \qquad d_0(a)=(a,a),\quad d_1(b,c)=c-b.
+\]
+The sign makes $d_1d_0=0$ and determines the corresponding
+connecting signs in the supported extension.
+
+The maps $\varepsilon$, $j_\Gamma$ and the supported dual
+functional now have different, explicit meanings.
+An independently specified geometric coefficient recipient
+must still receive a map from $\mathcal P_\Gamma$ preserving
+the required excess representation, tangent connection and
+vacuum density. For noninvertible root substitutions, it
+must give the transfer or supported correspondence and its
+action on the changing excess. Compatibility is required with
+successive substitutions, regular/localized/supported triangles
+and field attachments.
+
+The variable equation map and
+\eqref{v4-arith:curve:eq:cluster-pullback} are concrete tests.
+The ordinary target cannot satisfy the excess requirement.
+The constructed derived coefficient target meets it for the
+constant equation and invertible coordinate operations above.
+
+\section{The analytic Green difference equation}
+\label{v4-arith:curve:sec:analytic}
+
+Let $q>1$ and let $Z(t)$ be rational with $Z(0)=1$. The product
+\[
+ K(t)=\prod_{j\geq1}Z(q^{-j}t)
+\]
+defines a meromorphic function on $\mathbb C$, regular at zero
+with $K(0)=1$. On a compact set, its tail factors are
+$1+O(q^{-j})$ uniformly. Sufficiently far along the tail
+they have neither zeros nor poles. The product and its
+derivatives therefore converge normally there. The finite
+initial product is rational.
+
+Reindexing gives $K(qt)=Z(t)K(t)$.
+The normalized holomorphic solution near zero is unique:
+the quotient of two such solutions has $H(qt)=H(t)$,
+and each positive-degree Taylor coefficient is killed by
+$q^n-1$. For torsion Hall data this is the analytic function
+with formal expansion $K_G$.
+
+Let $D_Z\subset\mathbb C^\times$ be the finite set of zeros
+and poles of $Z$, and put
+$U=\mathbb C^\times\setminus q^{\mathbb Z}D_Z$.
+Define
+\[
+ Z_n(t)=
+ \begin{cases}
+  \prod_{j=0}^{n-1}Z(q^jt),&n>0,\\
+  1,&n=0,\\
+  \prod_{j=n}^{-1}Z(q^jt)^{-1},&n<0.
+ \end{cases}
+\]
+Then $Z_{m+n}(t)=Z_m(q^nt)Z_n(t)$.
+These factors also define the rank-one rational difference
+module with relation $\sigma e=Z(t)e$, where
+$\sigma f(t)=f(qt)\sigma$. Evaluation $e\mapsto K$ is a
+solution in meromorphic functions.
+
+\begin{proposition}\label{v4-arith:curve:prop:difference-line}
+The action $(t,v)\mapsto(q^nt,Z_n(t)v)$ descends the trivial
+line on $U$ to a holomorphic line on $U/q^{\mathbb Z}$.
+The connection $d-d\log K$ descends with it, and $K$ is a
+nowhere-zero horizontal section. For
+$Z(t)=((1-t)(1-qt))^{-1}$ this analytic trivialization cannot
+be obtained from a rational function.
+\end{proposition}
+\begin{proof}
+The action of $q^{\mathbb Z}$ on $\mathbb C^\times$ is free
+and properly discontinuous: logarithmic radius changes by
+$\log q$. Its zero/pole orbits are locally finite.
+Every $Z_n$ is a holomorphic unit on $U$, so the cocycle gives
+transition isomorphisms. In logarithmic coordinates the quotient
+is $\mathbb C/(2\pi i\mathbb Z+\log q\,\mathbb Z)$ with finitely
+many points removed.
+
+The difference equation gives
+$q^*(d\log K)=d\log K+d\log Z$, the connection transformation.
+The product has no zeros or poles on $U$, and the same
+equation makes $K$ the stated section.
+
+If a rational $R$ satisfied $R(qt)/R(t)=Z(t)$, write
+$r_b=\operatorname{ord}_b R$. The divisor of its ratio has
+order $r_{qb}-r_b$ at $b$. Its sum on each nonzero $q$-orbit
+is zero because the divisor of $R$ has finite support.
+For the displayed $Z$, the orbit $q^{\mathbb Z}$ instead has
+two simple poles, at $1,q^{-1}$, and no zeros. Its sum is
+$-2$, a contradiction.
+\end{proof}
+
+Thus this line with connection is analytically trivial on the
+punctured elliptic quotient. The rational difference equation
+has not produced nontrivial monodromy there.
+Nor is the quotient by $q^{\mathbb Z}$ a quotient by every
+Frobenius ratio: a larger gain group need not act properly
+discontinuously.
+
+Between polynomial Hall states, any finite product of the
+native Green half-vertices has a matrix element equal to a
+finite Laurent polynomial times factors $K(w/z)$.
+Normal ordering gives one factor for each annihilation--creation
+pair. The remaining matrix element is finite because its two
+test states have finite weight. The product construction
+continues these expressions meromorphically away from their
+locally finite pole divisors. Both bracketings give the same
+expression, proving associativity on these matrix elements.
+This domain statement asserts no boundedness of an unsmeared
+half-vertex on the entire Green Hilbert space.
+
+\section{Hall mass and positive states}
+\label{v4-arith:curve:sec:states}
+
+Put $h_m=\sum_{|\lambda|=m}u_\lambda$, $h_0=1$, and
+$\mathcal H_Q(t)=\sum_{m\geq0}h_mt^m$.
+The group-like Hall series satisfies
+\begin{equation}\label{v4-arith:curve:eq:hall-series}
+ \mathcal H_Q(t)=\exp\left(\sum_{r\geq1}\frac{p_rt^r}{r}\right).
+\end{equation}
+Indeed the coefficient of $u_M\otimes u_N$ in
+$\Delta\sum_Lu_L$ is
+\[
+ \sum_L\frac{a_Ma_N}{a_L}F^L_{M,N}
+ =\frac{|\operatorname{Ext}^1(M,N)|}{|\operatorname{Hom}(M,N)|}
+ =1.
+\]
+
+The first equality is orbit--stabilizer for extension classes,
+and the last uses the zero torsion Euler form.
+Hence $\mathcal H_Q$ is group-like and its logarithm is
+primitive. In degree $r$ it is a multiple of $p_r$.
+
+Its indecomposable coefficient is
+$\sum_{j=1}^r(-1)^{j-1}\binom{r-1}{j-1}/j=1/r$:
+each composition of $r$ gives the unique corresponding flag
+in the indecomposable module. The normalization of $p_r$
+proves \eqref{v4-arith:curve:eq:hall-series}.
+
+In the nonnegative weight completion set
+\[
+ v_s=\prod_x\mathcal H_{q^{d_x}}(s^{d_x})
+     =\sum_{[M]}s^{\deg M}u_M,
+ \qquad \deg M=\sum_xd_x\,\operatorname{length}M_x.
+\]
+The sum ranges over finite-support torsion objects.
+Their Green squared norm is $a_M^{-1}$.
+
+\begin{theorem}\label{v4-arith:curve:thm:mass}
+Suppose $N_n\leq C_0q^n$. For $0\leq r<1$,
+\[
+ K_G(r)=\sum_{[M]}\frac{r^{\deg M}}{a_M}
+       =\exp\left(\sum_{n\geq1}\frac{N_nr^n}{n(q^n-1)}\right)
+       <\infty .
+\]
+Thus $v_s$ belongs to the Green Hilbert completion for
+$|s|^2=r<1$, with squared norm $K_G(r)$.
+For $0<r<1$ the weights
+$\mu_r(M)=r^{\deg M}/(a_MK_G(r))$ form a probability measure.
+For $0<r<q^{-1}$,
+\begin{equation}\label{v4-arith:curve:eq:likelihood}
+ \frac{\mu_{qr}(M)}{\mu_r(M)}
+   =\frac{q^{\deg M}}{Z_C(r)},\qquad
+ \mathbb E_{\mu_r}[q^{\deg M}]=Z_C(r).
+\end{equation}
+\end{theorem}
+\begin{proof}
+The factorial primitive norms give
+\[
+ \|\mathcal H_Q(s)\|_G^2
+ =\exp\left(\sum_{r\geq1}\frac{|s|^{2r}}{r(Q^r-1)}\right).
+\]
+Multiply over the closed points and write $n=rd_x$.
+The resulting logarithm is the one in the theorem.
+The growth assumption bounds its summands by a constant
+times $r^n/n$, so it converges for $r<1$.
+Orthogonality in the Hall basis gives the mass sum.
+At real nonnegative $r$, partial products and partial sums
+increase to their common finite limit.
+
+For $r<q^{-1}$, both series converge. Subtracting their
+logarithms gives
+\[
+ \frac{K_G(qr)}{K_G(r)}=Z_C(r).
+\]
+Substitution into the two densities proves their likelihood ratio.
+Summing proves the expectation.
+\end{proof}
+
+A finite map $C\to\mathbb P^1$ gives the required growth
+bound by bounding every geometric fiber by its degree.
+This argument uses no spectral purity. At $r=0$ the measure
+is concentrated on the zero object.
+
+\subsection{Local independence and finite support}
+
+Write
+$K_x(r)=\sum_\lambda r^{d_x|\lambda|}/a_\lambda(q^{d_x})$.
+The local measures
+$r^{d_x|\lambda|}/(a_\lambda K_x(r))$ are independent and
+their product gives $\mu_r$. It introduces no infinite-support
+objects almost surely, since
+\[
+ \sum_x\Pr(M_x\ne0)
+ =\sum_x(1-K_x(r)^{-1})
+ \leq\sum_x\log K_x(r)=\log K_G(r)<\infty .
+\]
+The first Borel--Cantelli lemma leaves only finitely many
+nonzero local factors almost surely. Independence is present
+in the construction, though this last implication does not
+require it.
+
+The unit vector $\Psi_s=K_G(|s|^2)^{-1/2}v_s$ defines
+\[
+ \omega_s(P)=\langle\Psi_s,P\Psi_s\rangle_G
+\]
+on finite polynomials in finitely many creators and Green
+annihilators. Every selected mode has a finite coherent
+parameter, so every such moment exists. The mean is
+\[
+ D_{x,m}v_s=\frac{s^{md_x}}{q^{md_x}-1}v_s.
+\]
+Normal ordering gives all correlations from this mean and
+the unchanged Green commutators.
+In particular $\omega_s(P^{*G}P)\geq0$.
+Infinite smearings require their own test functions and
+convergence domain.
+
+\subsection{The degree Hamiltonian and the ordinary trace}
+
+Let $L_0u_M=(\deg M)u_M$ with its closed self-adjoint domain,
+specified by square summability after multiplication by
+$\deg M$. Its nonnegative integer eigenvalues have the finite
+Hall weight multiplicities. Equation~\eqref{v4-arith:curve:eq:likelihood}
+becomes the quadratic-form expectation
+\[
+ \|q^{L_0/2}\Psi_s\|_G^2=Z_C(|s|^2),\qquad q|s|^2<1.
+\]
+This requires the form domain of $q^{L_0}$. Membership in
+the smaller operator domain has not been assumed.
+The degree spectrum has been specified independently of zeta zeros.
+
+The ordinary Gibbs trace instead counts orthonormal states once:
+\begin{equation}\label{v4-arith:curve:eq:gibbs}
+ \operatorname{Tr}_{\mathcal F_C}(e^{-\beta L_0})
+ =\prod_{x,r\geq1}(1-e^{-\beta rd_x})^{-1}
+ =\prod_{r\geq1}Z_C(e^{-\beta r}),\qquad\beta>\log q .
+\end{equation}
+Its logarithm is
+$\sum_{n\geq1}N_n/[n(e^{\beta n}-1)]$, which converges under
+the growth assumption. The Gibbs density is positive and
+trace class. In contrast, $K_G(r)=\prod_{j\geq1}Z_C(q^{-j}r)$
+is the automorphism-weighted mass and the norm of a coherent
+vector. The Green norm of the unnormalized basis does not
+insert automorphism weights into the ordinary trace.
+Neither positive functional has been identified with the
+complete signed Weil functional.
+
+\subsection{A stochastic extension product}
+
+For fixed torsion objects $M,N$, choose an extension class
+uniformly in $\operatorname{Ext}^1(M,N)$. Its middle term has law
+\[
+ P(L\mid M,N)
+ =\frac{|\operatorname{Ext}^1(M,N)_L|}
+        {|\operatorname{Ext}^1(M,N)|}
+ =\frac{a_Ma_N}{a_L}F^L_{M,N}.
+\]
+
+The weights sum to one because the torsion Euler form is zero.
+In the rescaled basis $v_M=a_Mu_M$, Hall multiplication reads
+$v_Mv_N=\sum_LP(L\mid M,N)v_L$. Consequently
+\[
+ \sum_LP(L\mid M,N)P(K\mid L,P)
+ =\sum_LP(L\mid N,P)P(K\mid M,L).
+\]
+Both sides are $a_Ma_Na_P/a_K$ times the same three-step
+flag count. Higher regroupings are the same higher flag
+counts, so this gives all finite stochastic associativity
+identities. An enhanced primitive object still requires
+its cochain or sheaf-level comparison.
+
+\input{chapters/arithmetic/07_etingof_daha}
+
+\section{A geometric Hall kernel on finite differential jets}
+\label{v4-arith:curve:sec:jets}
+
+The curve construction uses a finite field cardinality $q$.
+The following example uses a separate nilpotent parameter
+$\epsilon$. It compares the equivariant cohomological Hall
+algebra of the three-loop quiver with \emph{zero potential}
+to an explicitly constructed field algebra on differential jets.
+The critical algebra for $\operatorname{Tr}(Z[X,Y])$ has
+different coefficients and requires a further oriented map.
+
+Let $k=\mathbb Q(a,b)$, $h=a+b$, and
+$R_N=k[\epsilon]/(\epsilon^N)$, $N\geq1$.
+Give the three arrows weights $\epsilon a,\epsilon b,-\epsilon h$.
+This is a base change of the two-dimensional equivariant
+parameter ring. It inverts neither $\epsilon$ nor $h\epsilon$.
+Put
+\begin{equation}\label{v4-arith:curve:eq:euler-kernels}
+ \begin{aligned}
+ \ell&=\epsilon h,& P(s)&=s^2-\ell^2,\\
+ K_0(s)&=\frac{(s+\epsilon a)(s+\epsilon b)(s-\ell)}s,
+ &E_0(s)&=K_0(s)^{-1},\\
+ E_{\mathrm{pl}}(s)&=\frac{s(s+\ell)}{(s+\epsilon a)(s+\epsilon b)},
+ &r(s)&=\frac{E_{\mathrm{pl}}(s)}{E_{\mathrm{pl}}(-s)}.
+ \end{aligned}
+\end{equation}
+
+Then $E_0=E_{\mathrm{pl}}/P$ and $E_0(s)/E_0(-s)=r(s)$.
+Expand in $\epsilon$ first, with the indicated spectral
+variable inverted.
+
+The charge-$d$ coefficient algebra is
+$A_d=R_N[x_1,\ldots,x_d]^{\mathfrak S_d}$.
+The representation space before base change is
+$\operatorname{End}(\mathbb C^d)^3$. Its equivariant cohomology
+has this polynomial description.
+
+The invariant-subspace correspondence gives
+\begin{equation}\label{v4-arith:curve:eq:geometric-product}
+ (F*G)(X)=
+ \sum_{\substack{I\sqcup J=[d+e]\\|I|=d}}
+ F(X_I)G(X_J)\prod_{i\in I,j\in J}K_0(x_j-x_i).
+\end{equation}
+There is no factorial divisor in this proper flag pushforward.
+
+At a coordinate flag, the three moving arrow Euler factors
+are $y-x+\epsilon a,y-x+\epsilon b,y-x-\ell$.
+The flag tangent factor is $y-x$. Their ratio is $K_0$.
+This is the shuffle calculation of
+Theorem~\ref{v4-arith:hall:thm:coha-shuffle} with these weights.
+
+\begin{proposition}\label{v4-arith:curve:prop:geometric-hall}
+The product \eqref{v4-arith:curve:eq:geometric-product} is
+polynomial and associative. Its inverse-Euler spectral
+coefficient map is
+\begin{equation}\label{v4-arith:curve:eq:hall-split}
+ \Delta^0_{d,e}(s)F
+ =\prod_{i,j}E_0(s+y_j-x_i)\,F(x-s,y)
+ \in(A_d\otimes_{R_N}A_e)((s^{-1})).
+\end{equation}
+It is rationally coassociative. In charge split $(1,1)$,
+\[
+ 1*1=2\bigl((y-x)^2+\epsilon^2(ab-h^2)\bigr),\qquad
+ \Delta^0_{1,1}(s)1=E_0(s+y-x).
+\]
+\end{proposition}
+\begin{proof}
+Proper pushforward is defined before equivariant localization,
+so the shuffle sum is polynomial. Directly, residues on each
+possible root diagonal cancel between the two flags exchanged
+there. Either bracketing of three factors sums over the same
+ordered three-block partitions with one $K_0$ per ordered
+cross-block pair. This proves associativity with the displayed
+normalization.
+
+The inverse Euler factors and translation of the first block
+give \eqref{v4-arith:curve:eq:hall-split}.
+For a triple split, both composites have one factor for each
+pair, at parameters $s,t,s+t$, and evaluate the input at
+$(x-s-t,y-t,z)$. They agree before Laurent expansion.
+Finally $K_0(v)+K_0(-v)$ gives the displayed product in
+charge two.
+\end{proof}
+
+With roots and $\epsilon$ of degree two, a root polynomial
+of degree $m$ in charge $d$ has shifted Hall degree
+$2m-2d^2$. The product is homogeneous and all charges have
+even parity. This grading is distinct from the cochain
+grading, which places the differential Hopf states below
+in degree zero.
+
+There are two reasons to change the polynomial carrier before
+constructing these fields. Before nilpotent base change, take
+the three arrow weights to be $1,1,-2$. Then
+\[
+ r(s)=\frac{(s+2)(s-1)^2}{(s-2)(s+1)^2},
+ \qquad\operatorname{Res}_{s=2}r(s)\,ds=\frac49 .
+\]
+
+Its expansion has an infinite nonzero tail.
+A coefficientwise injective marking preserves that tail.
+Thus the unchanged exchange cannot become a finite Laurent
+polynomial on the same pair of states. Completing only the charge grading leaves this
+charge-two obstruction unchanged, and a modification supported
+only at $s=0$ cannot cancel the pole at $s=2$.
+
+Also, if $T^Ma=0$ and
+$Y(Ta,z)b=\partial_zY(a,z)b$, then
+$\partial_z^MY(a,z)b=0$.
+Over a $\mathbb Q$-algebra the falling factorial of a
+negative integer is a unit.
+A lower-truncated Laurent series with this property is
+therefore a polynomial of degree less than $M$.
+The root derivative $-\sum_i\partial_{x_i}$ is locally
+nilpotent on $A_d$. Finite jets reverse this behavior:
+the transpose derivative raises jet order.
+
+\subsection{A difference primitive and its Hopf form}
+
+We first realize the normalized factor $E_{\mathrm{pl}}$.
+There is a unique formal series
+$F(z)\in(\epsilon/z)k[[\epsilon/z]]$ satisfying
+\begin{equation}\label{v4-arith:curve:eq:difference-primitive}
+ F(z-\ell)-F(z)=\log E_{\mathrm{pl}}(-z).
+\end{equation}
+
+To prove it, write $t=\epsilon/z$, $F=\sum_{n\geq1}f_nt^n$,
+and
+$g_j=(a^j+b^j-h^j)/j$.
+The right side is $\sum_{j\geq2}g_jt^j$. Comparison of
+coefficients gives the recurrence
+\[
+ f_{j-1}=
+ \frac{g_j-\sum_{n=1}^{j-2}
+                f_n\binom{j-1}{j-n}h^{j-n}}
+      {(j-1)h}\qquad(j\geq2).
+\]
+
+Its denominator is a unit in $k$, and no division by
+$\epsilon$ occurs. This construction uses $h^{-1}$ and
+has not been specialized to $h=0$.
+The identity
+$E_{\mathrm{pl}}(z-\ell)=E_{\mathrm{pl}}(-z)$ shows that
+$-F(-z)$ solves the same equation. Uniqueness makes $F$ odd.
+
+With $\varpi(z)=\exp F(z)$, this gives
+\begin{equation}\label{v4-arith:curve:eq:varpi}
+ \varpi(z)\varpi(-z)=1,\qquad
+ \frac{\varpi(z-\ell)}{\varpi(z)}=E_{\mathrm{pl}}(-z),\qquad
+ \frac{\varpi(z)^2}{\varpi(z-\ell)\varpi(z+\ell)}=r(z).
+\end{equation}
+
+For example,
+$F(z)=-(ab/h)\epsilon z^{-1}
+ +(a^2b^2/(6h))\epsilon^3z^{-3}+O(\epsilon^5)$.
+Reduce all these series modulo $\epsilon^N$.
+
+Take the commutative, cocommutative Hopf algebra
+\[
+ H_N=R_N[g,g^{-1},b_0,b_1,\ldots],
+\]
+where $g$ is group-like, the $b_i$ are primitive,
+$\varepsilon(g)=1$, $\varepsilon(b_i)=0$,
+$Sg=g^{-1}$ and $Sb_i=-b_i$.
+The derivation $T_Hg=gb_0$, $T_Hb_i=b_{i+1}$ is also a
+coderivation and satisfies $\varepsilon T_H=0$.
+Every algebraic coproduct is finite.
+
+For integers $m,n$ and finite lists of formal variables $u_i,v_j$,
+define a bilinear form by differentiation at zero in those
+variables:
+\begin{align*}
+ \rho^H_z\left(g^me^{\sum_i u_ib_i},g^ne^{\sum_jv_jb_j}\right)
+ &=\exp B^H_z,\\
+ B^H_z&=mnF+n\sum_i u_iF^{(i+1)}
+       +m\sum_j(-1)^{j+1}v_jF^{(j+1)}\\
+ &\quad+\sum_{i,j}(-1)^{j+1}u_iv_jF^{(i+j+2)} .
+\end{align*}
+Here $F^{(i)}=\partial_z^iF$.
+Differentiation, rather than an unnormalized coefficient,
+specifies the factorial convention on monomials.
+Every coefficient of $B^H_z$ is divisible by $\epsilon$,
+so the form has values in $R_N[z,z^{-1}]$, including on
+negative powers of $g$.
+
+The identities needed below can be stated explicitly.
+For a Hopf algebra with translation $T$, write
+$a(z)=e^{zT}a$, and sum over coproduct subscripts. They are
+\begin{equation}\label{v4-arith:curve:eq:six-identities}
+ \begin{aligned}
+ \rho_z(1,a)&=\varepsilon(a)=\rho_z(a,1),\\
+ \rho_z(ab,c)&=\rho_z(a,c_1)\rho_z(b,c_2),\\
+ \rho_z(a,bc)&=\rho_z(a_1,c)\rho_z(a_2,b),\\
+ \rho_z(a_1,b_1)a_2(z)b_2&=b_1a_1(z)\rho_z(a_2,b_2),\\
+ \rho_z(Ta,b)&=\partial_z\rho_z(a,b)=-\rho_z(a,Tb),\\
+ \rho_z(a_1,b_1)\rho_{-z}(b_2,a_2)&=\varepsilon(a)\varepsilon(b).
+ \end{aligned}
+\end{equation}
+
+The form $\rho^H$ satisfies all six.
+The formal exponential inputs are group-like, and $B^H_z$
+is additive in each input list. This proves the two
+multiplicativities after differentiation.
+A zero list gives the unit rule.
+
+Commutativity and cocommutativity give the fourth identity.
+The first-input translation rule on $(g,g)$ is
+\[
+ \rho^H_z(T_Hg,g)=\varpi F'=\varpi'.
+\]
+The second-input derivative has the opposite sign. On the $b_i$, it follows
+by differentiating the displayed entries. Derivation and
+coderivation extend it to products and inverses.
+
+Finally $F^{(i)}(-z)=(-1)^{i+1}F^{(i)}(z)$ makes the two
+exponents cancel when inputs are exchanged and $z$ is
+replaced by $-z$. This proves the last, convolution identity.
+
+\subsection{Restoring the even Euler factor}
+
+The factor $P^{-1}$ in $E_0$ changes the contraction while
+canceling from the exchange. To retain it, use a second
+commutative, cocommutative Hopf algebra
+\[
+ B_N=R_N[U,U^{-1},V,V^{-1},c_{\alpha,i}:
+                        \alpha=1,2,\ i\geq0].
+\]
+Let $g_1=U,g_2=V$ be group-like and the $c_{\alpha,i}$ primitive.
+Set $T_Bg_\alpha=g_\alpha c_{\alpha,0}$,
+$T_Bc_{\alpha,i}=c_{\alpha,i+1}$, with the corresponding
+group-like and primitive antipodes and counits.
+Write
+$J=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$
+and $L(z)=P'(z)/P(z)$.
+
+The form is specified by
+\[
+ \begin{aligned}
+ \rho^B_z(g_\alpha,g_\beta)&=P(z)^{J_{\alpha\beta}},\\
+ \rho^B_z(c_{\alpha,i},g_\beta)&=J_{\alpha\beta}L^{(i)}(z),\\
+ \rho^B_z(g_\alpha,c_{\beta,j})
+    &=(-1)^{j+1}J_{\alpha\beta}L^{(j)}(z),\\
+ \rho^B_z(c_{\alpha,i},c_{\beta,j})
+    &=(-1)^{j+1}J_{\alpha\beta}L^{(i+j+1)}(z).
+ \end{aligned}
+\]
+Precisely, its value on
+$g^me^{\sum p_{\alpha,i}c_{\alpha,i}}$ and
+$g^ne^{\sum q_{\beta,j}c_{\beta,j}}$ is
+$P^{m^tJn}\exp B^B_z$.
+Here $m,n\in\mathbb Z^2$, $g^m=U^{m_1}V^{m_2}$,
+and the auxiliary variable lists are finite. Set
+\[
+ \begin{split}
+ B^B_z=\sum_{\alpha,\beta}J_{\alpha\beta}\biggl(
+ &n_\beta\sum_i p_{\alpha,i}L^{(i)}
+ +m_\alpha\sum_j(-1)^{j+1}q_{\beta,j}L^{(j)}\\
+ &+\sum_{i,j}(-1)^{j+1}p_{\alpha,i}q_{\beta,j}L^{(i+j+1)}
+ \biggr).
+ \end{split}
+\]
+
+Again differentiate in the auxiliary variables at zero.
+For each coefficient only finitely many exponential terms
+contribute. Integral powers of $P$ and derivatives of $L$
+are finite Laurent polynomials modulo $\epsilon^N$.
+
+This form also satisfies
+\eqref{v4-arith:curve:eq:six-identities}.
+Additivity of $B^B$ and bilinearity of $m^tJn$ prove
+multiplicativity. Units and commutation follow as before.
+Translation starts from $(P^J)'=JP^JL$.
+
+For the last identity, $P$ is even, $J$ is alternating,
+and $L^{(i)}(-z)=(-1)^{i+1}L^{(i)}(z)$.
+The powers of $P$ and all exponential terms cancel under
+reversal. This proof does not require $L$ to be divisible
+by $\epsilon$.
+
+The shear
+\[
+ \sigma U=UV,\quad \sigma V=V,\quad
+ \sigma c_{1,i}=c_{1,i}+c_{2,i},\quad
+ \sigma c_{2,i}=c_{2,i}
+\]
+is a Hopf automorphism commuting with $T_B$ and preserving
+the form. Its matrix
+$A=\left(\begin{smallmatrix}1&0\\1&1\end{smallmatrix}\right)$
+satisfies $A^tJA=J$.
+Its inverse sends $U$ to $UV^{-1}$ and $c_{1,i}$ to
+$c_{1,i}-c_{2,i}$, fixing $V$ and the $c_{2,i}$.
+
+On
+$\widetilde H_N=H_N\otimes_{R_N}B_N$
+take the product form, total translation $T$, and
+\[
+ \vartheta=e^{\ell T_H}\otimes\sigma .
+\]
+
+The exponential is finite because $\ell^N=0$.
+It is a Hopf automorphism preserving the form:
+simultaneous translation differentiates a scalar value by
+$\partial_z-\partial_z=0$.
+Such an automorphism is the \emph{level} used in this
+algebraic construction. It is additional data on the
+specified Hopf carrier.
+
+Put $G=gU$, $G(v)=e^{vT}G$ and $J_m=T^mG$.
+The subalgebra
+$W_N^+=R_N[J_0,J_1,\ldots]$ is freely polynomial.
+After $U=V=1,c_{\alpha,i}=0$, the $J_m$ become $T_H^mg$.
+Their ratios by $g$ are triangular polynomials in
+$b_0,\ldots,b_{m-1}$ with coefficient one on $b_{m-1}$.
+Localization at $g$ proves algebraic independence.
+
+Give each $J_m$ charge one and denote charge $d$ by
+$W_{N,d}^+$.
+The ambient charge assigns $g$ degree one and
+$U,V,b_i,c_{\alpha,i}$ degree zero.
+It restricts to this grading and is preserved by $\vartheta$.
+
+\subsection{The field and its charge bounds}
+
+For any level $\theta$ preserving the form, define
+\[
+ \delta_\theta(a)=a_2\otimes a_3S^{-1}(\theta a_1)
+                =a_{(0)}\otimes a_{(1)}.
+\]
+The field and exchange on the algebraic Hopf carrier are
+\begin{equation}\label{v4-arith:curve:eq:hopf-field}
+ \begin{aligned}
+ Y_\theta(a,z)b&=a_1(z)b_{(0)}
+                    \rho_{-z}(b_{(1)},a_2),\\
+ \mathcal S_\theta(z)(a\otimes b)
+   &=a_{(0)}\otimes b_{(0)}\rho_z(a_{(1)},b_{(1)}).
+ \end{aligned}
+\end{equation}
+All sums are finite.
+
+The unit rule gives
+$Y_\theta(1,z)=I$ and $Y_\theta(a,z)1=e^{zT}a$.
+The translation rule and total coderivation rule for
+$\delta_\theta$ give covariance.
+For this commutative Hopf algebra, we check the remaining
+field identities on group-like generating series.
+Auxiliary differentiation then gives them on all states.
+
+\begin{theorem}\label{v4-arith:curve:thm:jet-fields}
+The fields at level $\vartheta$ preserve $W_N^+$, add
+creation charges, and satisfy
+\begin{align}
+ Y_\vartheta(G,z)G&=E_0(-z)G(z)G,\qquad
+ \mathcal S_\vartheta(z)(G\otimes G)=r(z)G\otimes G,
+       \label{v4-arith:curve:eq:jet-generator}\\
+ Y_\vartheta\left(\prod_iG(u_i),z\right)\prod_jG(v_j)
+ &=\prod_iG(z+u_i)\prod_jG(v_j)
+       \prod_{i,j}E_0(-z-u_i+v_j).
+       \label{v4-arith:curve:eq:jet-blocks}
+\end{align}
+The exchange of the two blocks multiplies by
+$\prod_{i,j}r(z+u_i-v_j)$.
+Every finite product has a common rational expansion with
+the field associativity and exchange identities.
+For charges $d,e$ and total input jet order $M$, a pole
+bound is $2de+N-1+M$.
+\end{theorem}
+\begin{proof}
+The coaction of $G$ is $G\otimes C$, where
+\[
+ C=G\vartheta(G)^{-1}
+   =\frac{g}{e^{\ell T_H}g}\,V^{-1}.
+\]
+Equations~\eqref{v4-arith:curve:eq:varpi} and the auxiliary
+form give
+$\rho_{-z}(C,G)=E_{\mathrm{pl}}(-z)P(z)^{-1}=E_0(-z)$
+and $\rho_z(C,C)=r(z)$.
+The auxiliary contribution to the latter is
+$\rho^B_z(V^{-1},V^{-1})=1$.
+This proves the generator formulas.
+Multiplicativity and translation give the block formulas.
+Auxiliary derivatives express every coefficient in the
+polynomial algebra on the $J_m$.
+
+For three or more blocks, either nesting includes the same
+contractions between each pair of elementary generating
+states, with the same translated regular product.
+This proves weak associativity as equality of expansions
+of a common rational germ.
+
+Interchanging adjacent blocks
+uses $r(s)E_0(-s)=E_0(s)$.
+Reversal uses $r(s)r(-s)=1$.
+Three exchanges multiply the same scalar factors, giving
+the Yang--Baxter identity, and splitting a block factors
+the same product, giving compatibility with a field
+insertion.
+
+Differentiating proves these identities on
+every polynomial jet input. Clearing the finitely many
+pairwise denominators gives the corresponding exchange
+locality, with a bound depending on the two inputs.
+
+Each contraction has baseline inverse degree two.
+For $de$ pairs the baseline is $2de$. Its further inverse
+degree equals its $\epsilon$ degree and is at most $N-1$.
+Input differentiation adds at most $M$. This proves the
+stated lower Laurent bound and all required truncations.
+\end{proof}
+
+Modulo $\epsilon^4$,
+\begin{equation}\label{v4-arith:curve:eq:cubic-jet}
+ E_0(-z)=z^{-2}+(h^2-ab)\epsilon^2z^{-4}
+                   -abh\epsilon^3z^{-5},\qquad
+ r(z)=1+2abh\epsilon^3z^{-3}.
+\end{equation}
+The even factor changes the zeroth-order contraction from
+$1$ to $z^{-2}$, while leaving the cubic exchange unchanged.
+
+\subsection{Transposing the Hall coefficient map}
+
+Let $A_d[m]$ denote homogeneous root degree $m$, and put
+$A_d^\circ=\bigoplus_m\operatorname{Hom}_{R_N}(A_d[m],R_N)$.
+This is the continuous dual of $\prod_mA_d[m]$ with its
+degree topology. Pair it with $W_{N,d}^+$ by
+\begin{equation}\label{v4-arith:curve:eq:jet-pairing}
+ \langle J_{m_1}\cdots J_{m_d},F\rangle
+ =\left.\partial_{x_1}^{m_1}\cdots\partial_{x_d}^{m_d}
+                           F\right|_{x=0}.
+\end{equation}
+Monomial symmetric functions and unordered derivative
+lists pair diagonally with nonzero factorials. Hence this
+pairing is perfect in every degree and gives
+$\iota_d:A_d^\circ\cong W_{N,d}^+$.
+
+\begin{theorem}\label{v4-arith:curve:thm:transpose}
+For finite-jet inputs of charges $d,e$,
+\[
+ Y_\vartheta(\iota_d\alpha,z)\iota_e\beta
+ =\iota_{d+e}\bigl((\Delta^0_{d,e}(-z))^\circ
+                                      (\alpha\otimes\beta)\bigr).
+\]
+The right side is defined coefficientwise on polynomial
+tests and lies in $W_{N,d+e}^+((z))$.
+Translation is $T=-D^\circ$ for
+$D=-\sum_i\partial_{x_i}$.
+The exchange is the transpose of the inverse Hall
+multiplier at parameter $-z$.
+\end{theorem}
+\begin{proof}
+Pair \eqref{v4-arith:curve:eq:jet-blocks} with $F$.
+The result is
+\[
+ \prod_{i,j}E_0(-z-u_i+v_j)
+     F(z+u_1,\ldots,z+u_d,v_1,\ldots,v_e).
+\]
+It is exactly \eqref{v4-arith:curve:eq:hall-split} at $s=-z$,
+evaluated at $(x,y)=(u,v)$. Every finite auxiliary
+derivative proves the asserted equality.
+
+For each Laurent coefficient only a finite derivative
+order of the polynomial test is needed, so its coefficient
+belongs to the restricted dual. The preceding pole bound
+gives a common lower bound on the fixed input.
+Transposing $-\partial_x$ sends the $m$th derivative
+functional to minus the $(m+1)$st one.
+Finally $P$ is even, and
+$r(-s)^{-1}=r(s)$ gives the stated exchange variance.
+\end{proof}
+
+With the opposite Hall grading,
+$\deg(J_{m_1}\cdots J_{m_d})=2d^2-2\sum_i m_i$.
+Translation has degree $-2$, and $\deg z=2$ makes the
+transpose homogeneous. Ordinary multiplication in the
+ambient Hopf algebra has a different charge-dependent
+grading. Its cochain degree remains zero.
+
+Charge completion gives $\prod_dW_{N,d}^+$ with outputs in
+$\prod_dW_{N,d}^+((z))$. Each fixed total charge has finitely
+many splittings, but there is no uniform pole bound over
+all charges. The coefficient map
+\eqref{v4-arith:curve:eq:hall-split} has not been extended
+to every formal root series: translation by $s$ does not
+preserve the root-adic topology.
+
+The level map on the ambient Hopf carrier is different:
+$(\theta_2\otimes1)\Delta$ sends
+$G$ to $\theta_2(G)\otimes G$. Both output factors have
+creation charge one. A Hall split has output charges
+adding to its input charge. Moreover
+$\vartheta(G)=(e^{\ell T_H}g)UV$ need not lie in $W_N^+$.
+
+Thus the transpose theorem identifies Hall charge
+cooperation with a field product on finite jets. It
+does not identify it with a level-adding coproduct.
+The corresponding field tensor, if that further comparison
+is sought, must retain its spectral twist and this change
+of charge.
+
+\section{Moving centers and Cartan operations}
+\label{v4-arith:curve:sec:moving-center}
+
+Assume $N\geq4$ and extend the coefficients to
+\[
+ R=\mathbb C(a,b)[a_{\mathrm{fr}},\beta,\beta^{-1},
+                    y_1,y_2,\kappa,\epsilon]/(\epsilon^N),
+ \qquad \lambda=a_{\mathrm{fr}}+\epsilon b .
+\]
+The affine parameter $\kappa$ and labels $y_1,y_2$ are
+retained independent coefficients. They are not the root
+coordinates of the Hall correspondence.
+
+On polynomial Hall coefficients define the connection
+\begin{equation}\label{v4-arith:curve:eq:moving-connection}
+ \nabla_d=\beta\left(\partial_{a_{\mathrm{fr}}}
+                         +\sum_{i=1}^d\partial_{x_i}\right).
+\end{equation}
+On a tensor product over $R$ this is the tensor connection
+over the single coefficient derivation
+$\beta\partial_{a_{\mathrm{fr}}}$.
+Every kernel depends only on root differences, so the
+simultaneous root derivative kills it. Translation of the
+first block by $s$ also commutes with this derivative.
+Thus both the Hall product and
+\eqref{v4-arith:curve:eq:hall-split} are horizontal.
+
+The coordinates $\xi_i=x_i-\lambda$ are horizontal.
+Completion along this moving section therefore has a
+continuous dual with horizontal basis
+\[
+ v_{\mathbf m,\lambda}(F)
+ =\left.\partial_{x_1}^{m_1}\cdots\partial_{x_d}^{m_d}
+                         F\right|_{x_i=\lambda}.
+\]
+Indeed the chain rule gives
+\[
+ \beta\partial_{a_{\mathrm{fr}}}\langle v_{\mathbf m,\lambda},F\rangle
+       =\langle v_{\mathbf m,\lambda},\nabla_dF\rangle .
+\]
+
+Sending this basis to $\prod_iJ_{m_i}$ gives the moving-center
+version of the transpose theorem. Its proof evaluates $F$
+at $(\lambda+z+u,\lambda+v)$, with the same scalar kernels.
+The first insertion has the horizontal character
+$F\mapsto F(\lambda)$. On $F=x$ both sides of the
+horizontality identity are $\beta$.
+
+Evaluation at a nonnilpotent $\lambda$ is not a finite
+linear combination of derivatives at zero. These are jets
+at a moving section, with no implicit $e^{\lambda T}$ on
+the fixed algebraic state space. The state derivative $T$
+raises jet order. The coefficient connection fixes the
+displayed basis.
+
+\subsection{The Cartan extension of the Hall coproduct}
+
+Let $\mathsf H=R[\mathsf p_0,\mathsf p_1,\ldots]$ have
+primitive generators acting on $A_d$ by multiplication
+by $\sum_i x_i^n$. These act as derivations of the Hall
+product, because the power sums add on concatenated root
+lists. Form the smash product
+$\mathsf B=(\bigoplus_dA_d)\#\mathsf H$ with relations
+$[\mathsf p_n,F]=(\sum_i x_i^n)F$.
+For a spectral variable $p$ define
+\begin{equation}\label{v4-arith:curve:eq:cartan-current}
+ \Phi(p)=\exp\left(\sum_{n\geq0}
+       \frac{(-1)^n}{n!}\mathsf p_n\partial_p^n\log r(p)\right).
+\end{equation}
+
+Every coefficient in $p^{-1}$ uses finitely many
+$\mathsf p_n$. On a finite root list $L$, substitution
+$\mathsf p_n=\sum_{l\in L}l^n$ gives
+$\Phi_L(p)=\prod_{l\in L}r(p-l)$.
+This is a root-addition current. A framed highest-weight
+current is further data.
+
+\begin{proposition}\label{v4-arith:curve:prop:cartan-coproduct}
+In the localized spectral tensor target, the formulas
+\[
+ \begin{aligned}
+ \Delta^{\mathrm{ext}}_{d,e}(s)F
+   &=\Delta^0_{d,e}(s)F\prod_{j=1}^e\Phi_L(y_j+s),\\
+ \Delta^{\mathrm{ext}}(s)\mathsf p_n
+   &=\sum_{i=0}^n\binom ni(-s)^{n-i}\mathsf p_i\otimes1
+                                      +1\otimes\mathsf p_n
+ \end{aligned}
+\]
+give a unital algebra coproduct on $\mathsf B$.
+The coefficients of each $\Phi_L$ lie in the left output
+factor, to the right of its Hall coefficient in the
+displayed product. The coproduct is rationally coassociative
+and horizontal when
+$\nabla\mathsf p_n=\beta n\mathsf p_{n-1}$ and
+$\nabla\mathsf p_0=0$.
+\end{proposition}
+\begin{proof}
+For multiplicativity, split the first input into root
+blocks $A,C$ and the second into $B,D$, with $A,B$ in
+the left output. Cancellation of cross Euler factors leaves
+\[
+ \prod_{b\in B,c\in C}
+      \frac{E_0(s+c-b)}{E_0(-s+b-c)}
+ =\prod_{b\in B,c\in C}r(s+c-b).
+\]
+
+When the separate extended coproducts are multiplied,
+the smash relation moves the first Cartan factor past
+$B$ and replaces its list $L$ by $L\sqcup B$.
+The factor changes by precisely this product. All other
+factors coincide. The even factor $P$ cancels from the
+ratio.
+
+The binomial formula preserves the Cartan relations
+with shifted roots.
+
+Evaluation on all finite root lists is jointly faithful.
+At length at least the largest positive power-sum index,
+those power sums are algebraically independent.
+Varying the length tests the polynomial in $\mathsf p_0$.
+This remains valid coefficientwise modulo $\epsilon^N$.
+The root calculation therefore proves the algebra identity.
+For a triple split, both sides have Cartan factor
+$\Phi_L(Y+s)\Phi_L(Z+s+t)\Phi_M(Z+t)$ and the same
+Euler factors, proving coassociativity.
+
+Finally differentiating \eqref{v4-arith:curve:eq:cartan-current}
+by $\nabla\mathsf p_n=\beta n\mathsf p_{n-1}$ gives
+$-\beta\partial_p\Phi$. It cancels the derivative
+$\beta\partial_{y_j}\Phi_L(y_j+s)$.
+The raw Euler part is horizontal, and the binomial formula
+commutes with the same connection. This proves horizontality
+on all generators.
+\end{proof}
+
+The Cartan operation also has a direct state realization.
+For $C=G\vartheta(G)^{-1}$ set
+\[
+ \mathcal U(p)x=x_{(0)}\rho_p(C,x_{(1)}).
+\]
+It is an invertible algebra operator with
+\[
+ \mathcal U(p)G(v)=r(p-v)G(v),\qquad \mathcal U(p)1=1.
+\]
+Multiplicativity follows from the group-like $C$ and
+the multiplicative coaction. $C^{-1}$ gives its inverse.
+It preserves $W_N^+$ coefficientwise.
+
+Pairing its products
+and derivatives with polynomial tests shows that multiplication
+by $\prod_i r(p-x_i)$ has finite-jet transpose
+$\mathcal U(p-\lambda)$ at the moving center. In particular
+$(\beta\partial_{a_{\mathrm{fr}}}+\beta\partial_p)
+ \mathcal U(p-\lambda)=0$.
+
+In the Laurent domain with $p$ large compared with $z$,
+the creation field satisfies
+\begin{equation}\label{v4-arith:curve:eq:cartan-covariance}
+ \mathcal U(p)Y_\vartheta(G,z)\mathcal U(p)^{-1}
+       =r(p-z)Y_\vartheta(G,z).
+\end{equation}
+Apply both sides to a product of $G(v_j)$.
+The field adds the regular factor $G(z)$ and its
+contractions. The Cartan operator multiplies this new
+factor by $r(p-z)$ and cancels its factors on the input.
+Differentiation proves the relation on all finite jets.
+At $p-z=\beta u$, the cubic coefficient is
+$2abh\beta^{-3}u^{-3}$.
+
+\section{Framing markings and the supported current}
+\label{v4-arith:curve:sec:framing}
+
+The next calculation retains a moment complex with both
+odd relation directions. Before localizing in $a,b$, use
+\[
+ R^0=\mathbb C[a,b,a_{\mathrm{fr}},\beta,\beta^{-1},
+                   y_1,y_2,\kappa,\epsilon]/(\epsilon^N),
+ \qquad N\geq4,\quad \lambda=a_{\mathrm{fr}}+\epsilon b,
+ \quad c=ab(a+b).
+\]
+Its generic base change is the ring $R$ above.
+
+The two odd directions occur already in a rank-two
+framed moment chart. Take
+\[
+ X=\begin{pmatrix}x_1&B_0\\0&x_2\end{pmatrix},\quad
+ Y=\begin{pmatrix}\upsilon_1&D_0\\0&\upsilon_2\end{pmatrix},
+ \quad i=\binom{i_1}{i_2},\quad j=(1,0).
+\]
+
+The four entries of $[X,Y]+ij$ are
+$i_1,(x_1-x_2)D_0-(\upsilon_1-\upsilon_2)B_0,i_2,0$.
+Eliminating the two regular Koszul pairs for $i_1,i_2$
+leaves odd generators $\eta,\chi$ with
+\[
+ d\eta=(x_1-x_2)D_0-(\upsilon_1-\upsilon_2)B_0,\qquad d\chi=0.
+\]
+
+The elimination is explicit: for $d\zeta=i$, the
+contraction sends $i^m$ to $\zeta i^{m-1}$ for $m\geq1$.
+Tensor the two contractions with their Koszul signs.
+
+On the open $B_0\ne0$, the change of basis
+$\operatorname{diag}(1,\gamma)$ preserves $j$ and the flag.
+It scales $B_0,D_0$ by $\gamma^{-1}$, so uniquely fixes $B_0=1$.
+Derived restriction to
+$\upsilon_1=\upsilon_2=0$ then leaves $d\eta=uD_0$,
+$u=x_1-x_2$, and still $d\chi=0$.
+The zero-equation generator survives the restriction.
+
+This specifies a moment coefficient chart. Orientations
+for a Hall pushforward have not been supplied by the
+matrix calculation.
+
+In position coordinates $z,w,t$, put $u=z-w$, $v=t-w$,
+and define
+\begin{equation}\label{v4-arith:curve:eq:moment-module}
+ \mathcal T=\bigoplus_{p,r\geq1}R^0[w]u^{-p}v^{-r},
+ \qquad
+ \mathcal M=\mathcal T[D_0]\otimes\Lambda(\eta,\chi),
+ \quad d\eta=uD_0,\quad d\chi=0 .
+\end{equation}
+
+Here $\eta,\chi$ have degree $-1$, $D_0$ degree zero.
+Principal-part multiplication discards nonnegative powers:
+$u\,u^{-1}=v\,v^{-1}=0$ in their respective factors.
+There is only a direct sum of normal orders.
+
+For $\mathcal T_1=\ker(u:\mathcal T\to\mathcal T)$,
+\begin{equation}\label{v4-arith:curve:eq:moment-cohomology}
+ \begin{aligned}
+ H^0(\mathcal M)&=\mathcal T,\\
+ H^{-1}(\mathcal M)&=\eta\mathcal T_1[D_0]\oplus\chi\mathcal T,\\
+ H^{-2}(\mathcal M)&=\eta\chi\mathcal T_1[D_0].
+ \end{aligned}
+\end{equation}
+
+Indeed $u$ is surjective on $\mathcal T$, so the image
+of $uD_0$ is $D_0\mathcal T[D_0]$ and its kernel is
+$\mathcal T_1[D_0]$. Tensor with the closed $\chi$ factor.
+The degree-zero and $\chi$ summands use $D_0=0$.
+
+The required cubic contact class is
+\begin{equation}\label{v4-arith:curve:eq:framing-contact}
+ \gamma_N=2c\epsilon^3\beta^{-3}u^{-3}v^{-1}
+                    \in H^0(\mathcal M).
+\end{equation}
+It is nonzero: $c$ is a non-zero-divisor in the polynomial
+coefficient ring and $\epsilon^3\ne0$ at $N\geq4$.
+
+\subsection{The three normal coefficients of a marking}
+
+A scalar marking is an action of $R^0[\ell_{\mathrm{fr}}]$
+on $\mathcal M$ in which $\ell_{\mathrm{fr}}$ multiplies by
+$s(u,w)=\sum_{j\geq0}a_j(w)u^j$, with
+$a_j\in R^0[w]$. Every principal part has finite $u$-pole
+order, so this action is defined without completing
+$\mathcal T$. It commutes with $d$.
+It specifies a coefficient action, not the Hopf level
+constructed in the preceding section.
+
+\begin{proposition}\label{v4-arith:curve:prop:three-coefficients}
+The relation $(s-\lambda)\gamma_N=0$ holds exactly when
+\[
+ a_0-\lambda,\quad a_1,\quad a_2
+                    \ \in\epsilon^{N-3}R^0[w].
+\]
+At all compatible precisions, the coefficientwise criterion is
+\[
+ s=\lambda+u^3h(u,w).
+\]
+\end{proposition}
+\begin{proof}
+Multiplication by $u^j$ kills $u^{-3}$ for $j\geq3$, and
+\[
+ (s-\lambda)\gamma_N
+ =2c\epsilon^3\beta^{-3}
+       \bigl((a_0-\lambda)u^{-3}+a_1u^{-2}+a_2u^{-1}\bigr)v^{-1}.
+\]
+The three principal parts are independent. The annihilator
+of $c\epsilon^3$ is $(\epsilon^{N-3})$, proving the criterion.
+At all compatible precisions, each fixed $\epsilon^m$
+coefficient of these three series vanishes by taking
+$N>m+3$. The converse is immediate.
+\end{proof}
+
+In particular an unramified normal marking, for which
+$a_1$ is a unit, cannot preserve the contact. Even
+$s=\lambda+\beta u$, with the correct diagonal character,
+leaves the defect $2c\epsilon^3\beta^{-2}u^{-2}v^{-1}$.
+Modulo $\epsilon^4$ at $a=b=\beta=1$ its coefficient is $4$.
+The ramified marking $s=\lambda+\beta u^3$ does preserve
+the contact and gives the nonzero cochain map
+$1\mapsto\gamma_N$ from $R^0[0]$ with character $\lambda$.
+It has different translation behavior.
+
+Let $\nabla=\partial_w$ at fixed $u,v$, fixing the
+coefficient ring and the moment generators.
+It commutes with $d$ and differentiates simultaneous
+translation of $z,w,t$.
+Call a marking translation-covariant with slope $\beta$
+when $[\nabla,m_s]=\beta I$.
+
+\begin{theorem}\label{v4-arith:curve:thm:marking-obstruction}
+Such a marking has $s=\beta w+b(u)$ with
+$b(u)\in R^0[[u]]$.
+For every $\lambda'\in R^0$, multiplication by
+$s-\lambda'$ is injective on every $H^i(\mathcal M)$.
+Consequently a cochain map from a complex whose
+cohomology has character $\lambda$ induces zero on
+cohomology if it intertwines the marking, even up to
+homotopy.
+\end{theorem}
+\begin{proof}
+The commutator condition is $\partial_ws=\beta$.
+Coefficientwise integration in characteristic zero gives
+the displayed form.
+
+On $\mathcal T$, take the largest
+$u$-pole of a nonzero element. Its leading coefficient
+is multiplied by $\beta w+b(0)-\lambda'$, a
+non-zero-divisor because its leading coefficient in $w$
+is the unit $\beta$. It remains nonzero.
+
+On $\mathcal T_1[D_0]$, $u$ acts by zero and the same
+polynomial proves injectivity. Formula
+\eqref{v4-arith:curve:eq:moment-cohomology} treats the
+closed odd factors as well.
+
+For an intertwining map $\Phi$, compatibility on
+cohomology gives
+$(s-\lambda)H(\Phi)(x)=H(\Phi)((\ell_{\mathrm{fr}}-\lambda)x)=0$.
+Injectivity forces $H(\Phi)(x)=0$.
+A compatibility homotopy gives this same equality.
+\end{proof}
+
+Conjugating the marking by a cochain isomorphism or
+adding $dH+Hd$ leaves the injectivity conclusion unchanged
+on cohomology. The ramified marking above has
+$[\nabla,m_s]=0$, so it is outside this theorem's
+covariance hypothesis.
+
+\subsection{The moving framing fiber}
+
+Set
+\[
+ f=\beta(w+u)-\epsilon y_1-\lambda,\qquad
+ \mathcal Q=\mathcal M/f\mathcal M.
+\]
+Multiplication by $f$ is injective on the terms and
+cohomology of $\mathcal M$: its highest $w$ coefficient
+is multiplied by the unit $\beta$.
+Thus the ordinary quotient represents the derived
+framing fiber and
+$H^*(\mathcal Q)=H^*(\mathcal M)/fH^*(\mathcal M)$.
+It eliminates $w$ by
+$w=(\lambda+\epsilon y_1)/\beta-u$.
+In degree zero the remaining basis is
+$u^{-p}v^{-r}$ over $R^0$, and $\bar\gamma_N\ne0$.
+
+The operator $\nabla=\partial_w$ does not descend:
+$\nabla f=\beta$ would force $\mathcal Q=0$ if the
+ideal were stable. Nor can an $R^0$-linear operator on
+$\mathcal Q$ have commutator $\beta I$ with its marking,
+which is the scalar $\lambda$.
+
+The connection
+\begin{equation}\label{v4-arith:curve:eq:framing-connection}
+ \nabla_{\mathrm{fr}}=\partial_w+\beta\partial_{a_{\mathrm{fr}}}
+\end{equation}
+does descend. It annihilates $f$, commutes with the moment
+differential, and satisfies
+$[\nabla_{\mathrm{fr}},m_\lambda]=\beta I$.
+Its coefficient rule is
+$\nabla_{\mathrm{fr}}(rx)=\beta(\partial_{a_{\mathrm{fr}}}r)x+
+r\nabla_{\mathrm{fr}}x$. This changes both the recipient and
+the kind of connection. It does not contradict the
+obstruction on the unchanged complex.
+
+\subsection{The Cauchy comparison and both odd directions}
+
+Work first over $A=R^0[z,w]=R^0[u,w]$.
+For the current coordinate $t$ define
+\[
+ \begin{aligned}
+ P_z&=A[t,(t-z)^{-1}]/A[t],&
+ P_w&=A[t,(t-w)^{-1}]/A[t],\\
+ P_{zw}&=A[t,((t-z)(t-w))^{-1}]/A[t],&
+ \mathcal K_{zw}&=[P_z\oplus P_w\xrightarrow{(a,b)\mapsto a-b}P_{zw}].
+ \end{aligned}
+\]
+The two terms have degrees $-1,0$ and use proper rational
+representatives at $t=\infty$.
+There is a relative differential-module quasi-isomorphism
+$\Theta:\mathcal K_{zw}\to\mathcal T[0]$, zero in degree $-1$.
+In degree zero, expand at $v=0$, take its $v$-principal
+part, and then take its $u$-principal part.
+Explicitly,
+\begin{equation}\label{v4-arith:curve:eq:cauchy}
+ \Theta\left(\frac1{v^a(v-u)^b}\right)
+ =(-1)^b\sum_{j=0}^{a-1}
+       \binom{b+j-1}{j}u^{-b-j}v^{j-a}.
+\end{equation}
+
+Here is a direct proof on the stated quotient. Monic
+division by $(t-z)(t-w)$ makes $P_{zw}$ free over $A$.
+$P_z,P_w$ have their usual inverse-power bases.
+After inverting $u$, partial fractions separate the two
+poles.
+
+The integral summands have zero intersection.
+Coefficientwise in $\epsilon$, a function belonging to
+both has poles only at $z$ and only at $w$.
+It therefore has no pole and, being proper, is zero.
+
+Expansion gives
+\eqref{v4-arith:curve:eq:cauchy} and kills both single-pole
+summands. At fixed $a+b$, its matrix is triangular with
+diagonal entries $(-1)^b$, so it surjects onto every
+negative $u,v$ monomial.
+
+If its value vanishes, the
+$w$-principal part has no $u$-pole and lies in $P_w$.
+Subtracting it leaves a member of $P_z$. This proves
+the kernel assertion.
+
+Principal parts commute with
+derivatives, since differentiating a regular power
+creates no pole. The physical derivatives are
+$\partial_z=\partial_u$ and
+$\partial_w^{\mathrm{phys}}=\partial_w-\partial_u-\partial_v$,
+which proves relative differential linearity.
+
+The derived diagonal restriction of $\mathcal K_{zw}$
+has $P_w$ in degree $-1$ and zero in degree zero:
+its differential becomes $(a,b)\mapsto a-b$ on two
+copies of $P_w$. In contrast, the ordinary restriction
+$\mathcal T/u\mathcal T$ is zero because $u$ is
+surjective on $\mathcal T$.
+
+Let $K_f=A[D_0]\otimes\Lambda(\eta,\chi)$ with
+$d\eta=uD_0$, $d\chi=0$.
+It is bounded with free $A$-terms, so
+$1\otimes\Theta:K_f\otimes_A\mathcal K_{zw}\to\mathcal M$
+is a quasi-isomorphism, fixing both odd generators.
+The tensor differential
+$d(\xi\otimes a)=d\xi\otimes a+(-1)^{|\xi|}\xi\otimes da$
+and $A$-linearity prove its cochain equation.
+It retains all the cohomology in
+\eqref{v4-arith:curve:eq:moment-cohomology}.
+It does not provide separate commuting position
+connections on $K_f$: with $D_0$ fixed,
+$[\partial_u,d]\eta=D_0$.
+
+Now pass to the generic coefficient ring $R$ and the
+current $G$ already constructed. Define
+\[
+ G_r=\frac{(\beta T)^{r-1}G}{(r-1)!},\qquad
+ \mathcal J_G=\bigoplus_{r\geq1}RG_r,\qquad
+ \mathcal Q_G=
+ \left(\bigoplus_{p\geq1}Ru^{-p}\right)
+       \otimes_R\mathcal J_G[D_0]\otimes\Lambda(\eta,\chi).
+\]
+Let $vG_1=0$, $vG_r=G_{r-1}$ for $r>1$, and let $w$
+act by $(\lambda+\epsilon y_1)/\beta-u$.
+Keep $d\eta=uD_0$, $d\chi=0$.
+The coefficient connection is
+$\beta\partial_{a_{\mathrm{fr}}}$, fixing this displayed basis.
+
+\begin{theorem}\label{v4-arith:curve:thm:supported-current}
+There is an isomorphism of coefficient complexes with
+connection
+\[
+ \begin{aligned}
+ \Psi:\mathcal Q\otimes_{R^0}R&\longrightarrow\mathcal Q_G,\\
+ u^{-p}v^{-r}D_0^m\eta^e\chi^{e'}
+       &\longmapsto u^{-p}G_rD_0^m\eta^e\chi^{e'}.
+ \end{aligned}
+\]
+It retains both odd moment directions and satisfies
+$\Psi(-\partial_v)=\beta T\Psi$.
+The composition with $1\otimes\Theta$, followed by
+derived base change to $f=0$, is a quasi-isomorphism
+for the single common-translation connection
+\eqref{v4-arith:curve:eq:framing-connection}.
+It sends the cubic contact to
+\[
+ \Psi(\bar\gamma_N)=2abh\epsilon^3\beta^{-3}u^{-3}G_1.
+\]
+\end{theorem}
+\begin{proof}
+Elimination of $w$ gives a unique finite expression in
+the displayed basis. The $G_r$ are independent, so $\Psi$ is an
+isomorphism of modules. It preserves $u,D_0,\eta,\chi$
+and the specified $v,w$ actions, hence the differential.
+After eliminating $w$, $\nabla_{\mathrm{fr}}$ differentiates
+only the coefficients of this basis, which proves
+horizontality. The derivative identity follows from
+$-\partial_v v^{-r}=rv^{-r-1}$ and
+$\beta TG_r=rG_{r+1}$.
+
+Simultaneous translation is
+$\partial_z+\partial_w^{\mathrm{phys}}+\partial_t
+=\partial_w$ at fixed $u,v$. It fixes $uD_0$.
+The Cauchy map commutes with it and with the coefficient
+derivative. $f$ is horizontal. Derived base change
+preserves its quasi-isomorphism. Injectivity of $f$ on
+terms and cohomology identifies its derived target with
+the ordinary quotient $\mathcal Q$.
+
+For the contact, expand the actual rational section
+$(r(\beta(z-t))-1)(t-w)^{-1}$.
+Its cubic coefficient is
+$2abh\epsilon^3\beta^{-3}/((z-t)^3(t-w))$.
+Formula~\eqref{v4-arith:curve:eq:cauchy}, with
+$z-t=u-v$, gives the positive class
+$2abh\epsilon^3\beta^{-3}u^{-3}v^{-1}$.
+Applying $\Psi$ gives the stated value.
+For $v^{-r}$, the same expansion retains the first
+$r$ Taylor coefficients, precisely the corresponding
+Leibniz derivatives of
+\eqref{v4-arith:curve:eq:cartan-covariance}.
+\end{proof}
+
+Under the formal marking $x_i=\beta z_i-\epsilon y_i$,
+the exact Cartan argument is
+$\beta(z_1-z_2)-\epsilon(y_1-y_2)$.
+Its correction first occurs at order $\epsilon^4$,
+so the cubic normalization above is unchanged.
+The common connection becomes
+$\sum_i\partial_{z_i}+\beta\partial_{a_{\mathrm{fr}}}$,
+and on the supported chart it is
+\eqref{v4-arith:curve:eq:framing-connection}.
+The separate derivative $\beta T$ differentiates the
+relative output current.
+These formulas do not identify plane eigenvalues in
+the moment chart with tautological Chern roots of
+a Hall correspondence.
+
+The surviving classes include
+$\eta u^{-1}G_1$ and $\eta\chi u^{-1}G_1$ in degrees
+$-1,-2$. Hence the comparison cannot factor through
+a degree-zero polynomial projection.
+It also supplies only the common connection, with the
+separate-position obstruction still given by
+$[\partial_u,d]\eta=D_0$.
+
+\section{The remaining geometric comparison}
+\label{v4-arith:curve:sec:comparison}
+
+The scalar charge-zero coaugmentation is $1$.
+A local vacuum is a separate state marking. On the
+test module $R\nu\otimes_R W_N^+$, take fields
+$1\otimes Y_\vartheta$ and distinguished state
+$\nu\otimes1$. Its first creation state is
+$\nu\otimes G_1$, on which the first tautological
+coefficient acts by $F(\lambda)$.
+Then the identity field preserves $\nu\otimes1$.
+
+This specifies the field test module and its framing
+character. It does not identify it with a geometric
+framed module.
+
+\begin{problem}\label{v4-arith:curve:prob:critical}
+Construct an oriented critical Hall/Hecke coefficient
+family whose two-point map lands in
+$K_f\otimes_A\mathcal K_{zw}$ and whose derived
+framing fiber maps through
+Theorem~\ref{v4-arith:curve:thm:supported-current}.
+Require the Cartan and creation operations to give
+\eqref{v4-arith:curve:eq:cartan-covariance}, with cubic
+contact \eqref{v4-arith:curve:eq:framing-contact}.
+Preserve the framing character $F(\lambda)$, both odd
+moment directions, the common coefficient connection,
+the scalar coaugmentation and the local vacuum marking.
+Construct the comparison over $R$, and its descent to
+$R^0$ before localization in $a,b$.
+
+On the same coefficient family, construct the
+nonconsecutive $13|2$ comparison and the required
+small-diagonal homotopies. A comparison with a
+level-adding coproduct must additionally specify its
+different charge map and its twisted field tensor target.
+\end{problem}
+
+The zero-potential Euler calculation and the finite-jet
+transpose are positive constructions on their named
+carriers. The supported moving fiber also has a
+constructed comparison, including its two odd directions
+and one common connection. The oriented map from actual
+critical Hall coefficients is still missing.
+A physical identification must distinguish the nilpotent
+coefficient parameter $\epsilon$ from a Moyal parameter
+or a loop parameter.
+It must also distinguish the exchange contact from a
+gauge anomaly. Equal scalar
+Euler factors alone give none of these further maps.

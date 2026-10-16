@@ -1,0 +1,182 @@
+\section{Curve zeta functions in Hall operator exchange}
+\label{intake:curve:section}
+
+The polynomial oscillator calculations admit a geometric source over a
+finite field. The required local category is the category of nilpotent
+modules, with its Hall multiplication and Green pairing.
+A torsion sheaf on a smooth projective curve is the direct sum of its
+parts supported at closed points. This decomposition turns local Hall
+operators into global operators. Their exchange coefficient counts the
+points over every finite extension of the ground field.
+
+Let $X$ be a smooth projective geometrically connected curve over
+$\mathbb F_q$. For a closed point $x$, put $d_x=[\mathbb F_q(x):\mathbb F_q]$
+and $Q_x=q^{d_x}$. The completion of the local ring is
+$\mathbb F_{Q_x}[[t]]$, after a choice of parameter and coefficient field.
+Its finite-length modules are nilpotent modules over $\mathbb F_{Q_x}[t]$.
+
+\subsection{Local Hall operators and their normalization}
+
+For a prime power $Q$, let $H_Q$ be the complex Hall algebra of these
+nilpotent modules. Its basis element $u_M$ denotes the isomorphism class
+of $M$. The coefficient of $u_C$ in $u_Au_B$ counts submodules
+$B'\subset C$ with $B'\simeq B$ and $C/B'\simeq A$.
+Give it the positive Hermitian form, conjugate-linear in the first slot,
+\[
+ \langle u_M,u_N\rangle=\frac{\delta_{MN}}{|\operatorname{Aut}M|}.
+\]
+The Green coproduct is adjoint to multiplication for this form.
+In this category it is cocommutative and multiplicative.
+These are the classical Hall bialgebra identities, on this untwisted
+category with zero Euler form. The polynomial presentation below is
+Steinitz--Hall's theorem; see Schiffmann, \emph{Lectures on Hall algebras},
+Theorem~2.6 and equation~(2.9).
+
+Write $u_{1^r}$ for the zero endomorphism of $\mathbb F_Q^r$ and set
+\[
+ e_r=Q^{r(r-1)/2}u_{1^r},\qquad
+ E(z)=\sum_{r\ge0}e_rz^r,\qquad e_0=1.
+\]
+Subspace counting gives
+$\Delta u_{1^r}=\sum_{i+j=r}Q^{-ij}u_{1^i}\otimes u_{1^j}$.
+Thus $\Delta E(z)=E(z)\otimes E(z)$. The elements $e_r$, $r>0$,
+freely generate $H_Q$. One can see the triangular presentation directly:
+for a Jordan partition $\lambda$, use the successive dimensions of
+$\ker t^i/\ker t^{i-1}$. The product of the corresponding semisimple
+classes counts filtrations lowered by $t$. Its coefficient on $u_\lambda$
+is one, since equality forces the kernel filtration. Every other term
+has larger kernel dimensions. The resulting triangular matrix is
+invertible in each finite dimension.
+
+Define $p_r$ by the formal identity
+\[
+ \log E(z)=\sum_{r\ge1}\frac{(-1)^{r-1}}r p_rz^r.
+\]
+They are primitive polynomial generators. Their norms can be computed
+without a choice of an orthonormal basis. Since
+$|\operatorname{GL}_r(\mathbb F_Q)|=Q^{r(r-1)/2}\prod_{j=1}^r(Q^j-1)$,
+\[
+ \langle E(u),E(v)\rangle
+ =\sum_{r\ge0}\frac{Q^{r(r-1)/2}(\bar uv)^r}{\prod_{j=1}^r(Q^j-1)}
+ =\prod_{j\ge1}(1-Q^{-j}\bar uv)^{-1}.
+\]
+The last equality follows by comparing coefficients in
+$ (1-t)P(Qt)=P(t)$, with constant coefficient one.
+Adjunction and primitivity make distinct primitive degrees orthogonal
+and give factorial pairings for their powers. Taking logarithms therefore gives
+\[
+ \langle p_r,p_s\rangle=\delta_{rs}\frac{r}{Q^r-1}.
+\]
+Consequently the following operators are adjoint on the polynomial domain:
+\[
+ a_{-r}=\sqrt{Q^r-1}\,M_{p_r},\qquad
+ a_r=\frac{r}{\sqrt{Q^r-1}}\frac{\partial}{\partial p_r},\qquad
+ [a_r,a_{-s}]=r\delta_{rs}I.
+\]
+Here $M_{p_r}$ means multiplication by $p_r$, and the square root is positive.
+No assertion that these unbounded operators act everywhere on the Hilbert
+completion is needed.
+
+\subsection{The global exchange}
+
+The torsion Hall algebra of $X$ is the algebraic tensor product
+$H_X^{\mathrm{tor}}=\bigotimes_{x\in|X|}^{\mathrm{alg}}H_{Q_x}$,
+with vacuum $1$ in all but finitely many factors. Distinct supports have
+no extensions or homomorphisms between them. Their Hall products and
+pairings therefore factor. Give a length-$r$ local module degree $rd_x$.
+There are finitely many closed points of bounded degree, so each
+homogeneous piece of this algebra is finite-dimensional.
+Let $a_{x,\pm r}$ be the preceding operators on the $x$ factor, and define
+\[
+ A_{-n}=\sum_{d\mid n}d\sum_{d_x=d}a_{x,-n/d},\qquad
+ A_n=A_{-n}^{\dagger}\qquad(n>0).
+\]
+These are finite sums on the common polynomial domain. A closed point
+of degree $d$ contributes $d$ geometric points over $\mathbb F_{q^n}$
+exactly when $d\mid n$. Thus, writing $N_n=\#X(\mathbb F_{q^n})$,
+\[
+ [A_n,A_{-m}]
+ =\delta_{nm}\sum_{d\mid n}d^2\frac nd\#\{x:d_x=d\}I
+ =\delta_{nm}nN_nI.
+\]
+All commutators between two positive or two negative modes vanish.
+
+Put $s=w^{-1}$, with $z,s$ independent formal variables, and set
+\[
+ \Gamma_-(z)=\exp\left(\sum_{n>0}\frac{A_{-n}}n z^n\right),\qquad
+ \Gamma_+(w)=\exp\left(\sum_{n>0}\frac{A_n}n w^{-n}\right).
+\]
+Each coefficient is a finite sum of polynomial-domain operators.
+Products are identities in
+$\operatorname{End}_{\mathbb C}(H_X^{\mathrm{tor}})[[z,s]]$.
+For the formal zeta function
+\[
+ Z_X(t)=\exp\left(\sum_{n>0}\frac{N_n}n t^n\right)
+       =\prod_{x\in|X|}(1-t^{d_x})^{-1},
+\]
+the logarithm of the Euler product proves the second equality coefficientwise.
+The central commutator of the two exponents equals $\log Z_X(zs)$.
+Expanding the exponentials, or differentiating their formal conjugation
+identity, therefore proves
+\[
+ \Gamma_+(w)\Gamma_-(z)
+ =Z_X(z/w)\Gamma_-(z)\Gamma_+(w).
+\]
+This is an operator identity before taking a trace. Repeated reordering
+uses the product of the central factors for all exchanged pairs.
+The statement specifies a formal expansion at $z/w=0$; an analytic
+operator identity would require additional domain and convergence estimates.
+
+For $X=\mathbb P^1$, counting gives $N_n=q^n+1$, hence
+$Z_X(t)=((1-t)(1-qt))^{-1}$.
+For the smooth projective cubic
+$E/\mathbb F_2: y^2+y=x^3+x+1$, the first four point counts are
+$1,5,13,25$. The trace criterion for $y^2+y=b$ gives two solutions
+when $\operatorname{Tr}_{\mathbb F_{2^n}/\mathbb F_2}(b)=0$, and none otherwise.
+For $n=1,2,3,4$, it gives respectively $0,2,6,12$ admissible $x$ values,
+with one additional point at infinity. Thus
+\[
+ Z_E(t)=1+t+3t^2+7t^3+15t^4+O(t^5).
+\]
+These coefficients determine the corresponding operator exchange to degree four.
+The full rational formula
+$Z_E(t)=(1-2t+2t^2)/((1-t)(1-2t))$
+uses the classical elliptic-curve zeta theorem in addition to these finite counts.
+
+\subsection{Torsion acting on a line bundle}
+
+The full Hall algebra of coherent sheaves also contains the classes of
+line bundles. Fix a rational point $x$ and a line bundle $L$.
+There are two middle sheaves in an extension of $\mathcal O_x$ by $L$:
+the split sheaf $L\oplus\mathcal O_x$, and $L(x)$.
+Indeed $\operatorname{Ext}^1(\mathcal O_x,L)$ is one-dimensional,
+and all nonzero classes have the latter middle sheaf.
+In the split middle sheaf, the relevant copies of $L$ are the graphs of
+the $q$ maps $L\to\mathcal O_x$. In $L(x)$ the relevant subobject is
+uniquely $L(x)(-x)=L$. Conversely, an extension of $L$ by $\mathcal O_x$
+splits because $\operatorname{Ext}^1(L,\mathcal O_x)=0$.
+Its unique torsion subobject is $\mathcal O_x$. Therefore
+\[
+ u_{\mathcal O_x}u_L=q\,u_{L\oplus\mathcal O_x}+u_{L(x)},\qquad
+ u_Lu_{\mathcal O_x}=u_{L\oplus\mathcal O_x}.
+\]
+Let $v=\sqrt q$ and define the twisted product
+$u_A*u_B=v^{\chi(A,B)}u_Au_B$, where
+$\chi(A,B)=\dim\operatorname{Hom}(A,B)-\dim\operatorname{Ext}^1(A,B)$.
+Here $\chi(\mathcal O_x,L)=-1$ and $\chi(L,\mathcal O_x)=1$.
+The ordinary commutator for this twisted product consequently satisfies
+\[
+ [u_{\mathcal O_x},u_L]_* =v^{-1}u_{L(x)}.
+\]
+On $\mathbb P^1$, all rational-point modifications of $\mathcal O(n)$
+are isomorphic to $\mathcal O(n+1)$. Summing over the $q+1$ rational points gives
+\[
+ \left[\sum_{x\in\mathbb P^1(\mathbb F_q)}u_{\mathcal O_x},
+ u_{\mathcal O(n)}\right]_*
+ =(v+v^{-1})u_{\mathcal O(n+1)}.
+\]
+This mixed Hall operation retains the elementary modification of the line
+bundle. Identifying a full quantum loop algebra additionally requires
+its remaining generators and relations. Neither this mixed operation nor
+the torsion exchange constructs a comparison with a global arithmetic
+trace category or with the full Weil functional.

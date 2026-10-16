@@ -1,0 +1,957 @@
+\chapter{F1.a.3 (A+B): Block-Additive Hochschild and Paskunas
+Ext\({}^{1}\)-Vanishing}
+\label{v4-arith:w5-f:F1a3-AB}
+
+A block decomposition separates two arithmetic comparison problems:
+identifying each block with its spectral category, and transporting
+extension classes through that identification. Hochschild additivity
+uses the specified orthogonal idempotents. The per-block functors
+require their own coefficient, central-action and trace compatibility.
+
+For finite modules over a Noetherian domain, localization at the
+fraction field kills positive extension groups. An arithmetic generic
+fibre has this property only after the corresponding category equivalence
+and localization comparison are supplied. At wild primes, a quotient
+of a regular local ring may have a nonreduced generic fibre with
+nonzero self-extensions. The reducedness hypothesis and explicit
+counterexample below isolate this obstruction. Ordinary-block deformation
+and the very-special multiplicity comparison retain their separate
+arithmetic hypotheses.
+
+\section{Block Decomposition Recall (Bernstein and BH)}
+\label{v4-arith:w5-f:F1a3-AB:block-recall}
+
+\subsection{Characteristic-Zero Bernstein Decomposition}
+
+\begin{theorem}[Bernstein 1984; Bernstein--Deligne 1984]
+\label{v4-arith:w5-f:F1a3-AB:thm:bernstein}
+\ClaimStatusProvedElsewhere Let \(G\) be a connected reductive
+\(p\)-adic group and fix an algebraically closed coefficient
+field \(k\) of characteristic zero. The category
+\(\mathrm{Mod}^{\mathrm{sm}}_{G}\) of smooth \(G\)-representations with
+coefficients in \(k\) decomposes as a direct product over a
+canonical set of blocks:
+\begin{equation}
+\label{v4-arith:w5-f:F1a3-AB:eq:bernstein-decomposition}
+\mathrm{Mod}^{\mathrm{sm}}_{G}\;=\;\prod_{\mathfrak{s}\in\mathfrak{B}(G)}
+\mathrm{Block}_{\mathfrak{s}},
+\end{equation}
+where \(\mathfrak{B}(G)\) is the set of inertial equivalence classes
+of supercuspidal supports. The decomposition is realised by a
+central idempotent decomposition of the Bernstein centre
+\(Z(\mathrm{Mod}^{\mathrm{sm}}_{G})=\prod_{\mathfrak{s}}Z_{\mathfrak{s}}\)
+into a product of integral domains.
+\end{theorem}
+
+\begin{proof}[Source]
+Bernstein 1984, ``Le centre de Bernstein'', in Deligne's notes;
+Bernstein--Deligne 1984 (collected in \emph{Travaux de Bernstein}).
+For the block decomposition and torsor of unramified twists modulo
+self-twists, see also Helm, arXiv:1201.1874, Theorems~3.4--3.5,
+pp.~7--8.
+\end{proof}
+
+\begin{proposition}[central-character fibres of Bernstein blocks]
+\label{v4-arith:w5-f:F1a3-AB:prop:block-chi-compat}
+\ClaimStatusProvedHere
+Let \(k\) be algebraically closed of characteristic
+zero, and let \(\chi:Z(G)\to k^\times\) be a smooth
+central character. For a Bernstein block
+\(\mathcal B_{\mathfrak s}\), put
+\[
+ \mathcal B_{\mathfrak s}^{\chi}
+ =\{M\in\mathcal B_{\mathfrak s}:
+        z|_M=\chi(z)\,\mathrm{id}_M
+        \text{ for every }z\in Z(G)\}.
+\]
+Then
+\[
+ \operatorname{Rep}^{\mathrm{sm},\chi}_k(G)
+   \simeq \prod_{\mathfrak s}
+                     \mathcal B_{\mathfrak s}^{\chi},
+\]
+with zero factors omitted.
+
+Let \(\delta_z\in Z_{\mathfrak s}\) denote the
+central operation supplied by \(z\in Z(G)\), and
+let
+\[
+ I_{\mathfrak s,\chi}
+   =(\delta_z-\chi(z):z\in Z(G))
+       \subseteq Z_{\mathfrak s}.
+\]
+The ring \(Z_{\mathfrak s}/I_{\mathfrak s,\chi}\)
+acts on \(\mathcal B_{\mathfrak s}^{\chi}\).
+This is a fibre condition inside the block.
+\end{proposition}
+
+\begin{proof}
+Each Bernstein projector commutes with the action
+of \(Z(G)\). Thus every component of an object
+with central character \(\chi\) again has that
+central character. Conversely, a family of block objects reconstructs a smooth
+representation by its direct sum, and the sum satisfies the same
+scalar equations. This proves the
+categorical decomposition.
+
+The generators of \(I_{\mathfrak s,\chi}\)
+act as zero on the indicated subcategory, so
+the central action factors through the quotient.
+No claim that taking the categorical centre
+commutes with this quotient is needed.
+\end{proof}
+
+For $G=GL_2(F)$, fix a uniformizer $\varpi$ and normalized
+parabolic induction. In the unramified principal-series block write
+$a=\eta_1(\varpi)$, $b=\eta_2(\varpi)$ for its two unramified
+inducing characters, so $t=a+b$ and $d=ab$. The modulus character
+in normalized induction is trivial on scalar matrices. Consequently
+the central operation of $u\in\mathcal O_F^\times$ is $1$, and that
+of $\varpi$ is $d$, in the ring $k[t,d,d^{-1}]$. These equalities
+hold as central operations: their values on all supercuspidal supports
+are respectively $1$ and $ab$, and the block ring is reduced.
+If $\chi$ is unramified, put $c=\chi(\varpi)\in k^\times$.
+Then $I_{\mathfrak s,\chi}=(d-c)$ and the fibre has the quotient
+scalar action $k[t,d,d^{-1}]/(d-c)$. It is nonzero, for instance on
+any irreducible constituent of the normalized induction of the
+unramified characters with values $1,c$ at $\varpi$.
+If $\chi$ is ramified, choose $u\in\mathcal O_F^\times$ with
+$\chi(u)\ne1$. The relation $1-\chi(u)$ is an invertible scalar,
+so the quotient and the fixed-character fibre category are zero.
+Thus fixing central character neither selects a whole Bernstein
+block nor gives a nonzero fibre in every block.
+
+\subsection{BH Block Specialisation at \(G=GL_{2}\)}
+
+\begin{proposition}[types and fixed central character]
+\label{v4-arith:w5-f:F1a3-AB:prop:BH-specialisation}
+\ClaimStatusProvedHereConditional
+Suppose a type \(\tau\) realizes a
+characteristic-zero Bernstein block
+\(\mathcal B_{\mathfrak s}\) of \(GL_2(F)\)
+through a Morita equivalence with its Hecke
+algebra \(H_\tau\). Then
+\(\mathcal B_{\mathfrak s}^{\chi}\) corresponds
+to the category of modules over
+\[
+ H_\tau/
+   (\delta_z-\chi(z):z\in F^\times).
+\]
+\end{proposition}
+
+\begin{proof}
+The Morita equivalence identifies central
+natural operations. The equations defining
+central character \(\chi\) therefore become
+the displayed relations on \(H_\tau\)-modules.
+\end{proof}
+
+The chosen-type hypothesis is the type-to-block comparison relevant to
+Bushnell--Henniart, \emph{The Local Langlands Conjecture for $GL(2)$},
+Chapters~11--16. It does not assert uniqueness of a type. The small-prime
+questions in \Cref{v4-arith:f1a3-BH:prop:BH-types-p2} and
+\Cref{v4-arith:f1a3-BH:prop:BH-types-p3} require their own coefficient
+regime and the specified type realization.
+
+\begin{remark}[coefficient field regimes]
+\label{v4-arith:w5-f:F1a3-AB:rem:coeff-regime}
+Characteristic-zero Bernstein theory, integral or mod-$\ell$ theory
+with $\ell\ne p$, and mod-$p$ or $p$-adic block theory are distinct
+coefficient regimes. The characteristic-zero result above does not
+assert its integral-domain description for arbitrary modular
+coefficients. The Pa{\v s}k{\=u}nas block structure in
+\Cref{v4-arith:deg-f1a:thm:colmez-paskunas-blocks} concerns its
+specified mod-$p$ category. It is not automatically a refinement
+of a characteristic-zero Bernstein decomposition.
+The small-prime residuals of Chapter~\ref{v4-arith:f1a3-BH}
+retain their residual-characteristic assumptions. Comparing these
+regimes requires coefficient-change functors and a proof of their
+compatibility with the selected blocks and central actions.
+\end{remark}
+
+\section{F1.a.3.A: Block-Additive BH Packaging}
+\label{v4-arith:w5-f:F1a3-AB:A-packaging}
+
+\subsection{Block-Additivity of Hochschild}
+
+\begin{lemma}[Cyclic chains of orthogonal dg blocks]
+\label{v4-arith:w5-f:F1a3-AB:lem:HH-block-additive}
+Let \(k\) be a commutative ring and
+\(\{\mathcal A_i\}_{i\in I}\) a set-indexed family of small
+\(k\)-linear dg categories with \(K\)-flat morphism complexes over
+\(k\), for example chosen cofibrant dg models. Form the orthogonal
+dg union \(\mathcal A\): its objects are the disjoint union of the
+objects of the \(\mathcal A_i\), its morphism complexes within a
+block are unchanged, and all morphism complexes between distinct
+blocks are zero. Put \(\mathcal C=\operatorname{Perf}(\mathcal A)\)
+and \(\mathcal C_i=\operatorname{Perf}(\mathcal A_i)\).
+Use the derived Hochschild trace, computed by the cyclic bar complex
+of these dg Morita models. Then
+\begin{equation}
+\label{v4-arith:w5-f:F1a3-AB:eq:HH-block-additive}
+ \mathrm{HH}_{\bullet}(\mathcal C)
+ \simeq\bigoplus_{i\in I}\mathrm{HH}_{\bullet}(\mathcal C_i)
+\end{equation}
+as \(S^1\)-equivariant complexes over \(k\).
+The objects of \(\mathcal C\) have finite block support. The same
+formula applies to a compactly generated \(k\)-linear presentable
+category only when its compact category is specified by this
+finite-support dg model and its trace is that of the compact model.
+\end{lemma}
+\begin{proof}
+In simplicial degree \(n\), the cyclic bar construction is the direct sum
+\[
+ \bigoplus_{X_0,\ldots,X_n}
+ \mathcal A(X_n,X_0)\otimes_k\mathcal A(X_{n-1},X_n)
+ \otimes_k\cdots\otimes_k\mathcal A(X_0,X_1),
+\]
+with the degree-zero case given by endomorphism complexes. If the
+objects in a cyclic word lie in more than one block, some consecutive
+pair, including the closing pair, lies in distinct blocks. Its morphism
+complex is zero, so that summand vanishes. Every surviving cyclic
+word lies in exactly one \(\mathcal A_i\). The internal differential,
+composition faces, unit degeneracies and cyclic rotation all preserve
+that block. Thus the cyclic object itself is the direct sum of the
+block cyclic objects. The \(K\)-flat hypothesis makes these tensor
+products compute the derived cyclic bar construction. Realization
+commutes with direct sums, and the cyclic structure induces the
+stated \(S^1\)-equivariant equivalence; equivalently the Hochschild
+differential and Connes operator preserve this decomposition.
+
+The representable \(\mathcal A\)-modules each have support in one
+block. A perfect module is obtained from finitely many representables
+by finite sums, shifts, cones and retracts, so it has finite support
+and is perfect in each supported block. Conversely a finite-support
+family of perfect block modules is perfect over \(\mathcal A\).
+This identifies \(\operatorname{Perf}(\mathcal A)\) with the
+finite-support sum of the \(\operatorname{Perf}(\mathcal A_i)\).
+Passing to perfect modules leaves the chosen dg Morita trace unchanged,
+so the cyclic computation gives the displayed formula for \(\mathcal C\).
+The presentable version uses precisely this specified compact model;
+it makes no assertion that a symmetric monoidal invariant preserves
+arbitrary products.
+\end{proof}
+
+\begin{remark}[Multiplication and arithmetic realization]
+\label{v4-arith:w5-f:F1a3-AB:rem:HH-block-additive-what}
+The lemma supplies an \(S^1\)-equivariant complex, not an
+\(E_1\)-algebra structure. A multiplicative comparison additionally
+requires specified \(E_2\)-monoidal enhancements inducing
+\(E_1\) trace products, and comparison maps preserving those operations
+and units. For infinitely many nonzero unital
+blocks, the direct sum with coordinatewise multiplication has no
+unit: an element has finite support and cannot act as the identity
+on an omitted nonzero block. Arithmetic use of the lemma requires
+actual \(k\)-linear dg models, the stated compact or finite-support
+identification, and compatible block-index and coefficient maps.
+A characteristic-zero Bernstein decomposition alone does not supply
+these data for a residual-characteristic spectral category.
+\end{remark}
+
+\subsection{Block-Wise Comparison}
+
+The index and coefficient category must be specified before applying
+a block comparison. In characteristic zero put
+\[
+ \mathfrak B(G)_\chi
+   =\{\mathfrak s\in\mathfrak B(G):
+                     \mathcal B_{\mathfrak s}^{\chi}\ne0\},
+\]
+where $\mathcal B_{\mathfrak s}^{\chi}$ is the fibre category defined
+above. It is not the set of entire blocks on which a single central
+character holds. For an integral, mod-$p$ or $p$-adic application,
+choose instead a coefficient ring $\Lambda$, a smooth character
+$\chi:Z(G)\to\Lambda^\times$, and the intended representation
+category $\mathcal R_{p,\chi}^{\Lambda}$. Assume a specified
+orthogonal decomposition into nonzero block categories
+$\mathcal B_i^{\Lambda,\chi}$, indexed by $I_{p,\chi}^{\Lambda}$.
+Write $\mathrm{Block}_i=\mathcal B_i^{\Lambda,\chi}$ in this chosen regime.
+No identification of this index with $\mathfrak B(G)_\chi$ is implicit.
+
+In the following conditional comparisons,
+$\mathrm D^{\mathrm{sph\text{-}fin}}([G])_{\chi,i}$ denotes the
+chosen stable realization of $\mathcal B_i^{\Lambda,\chi}$ with its
+stated spherical-finiteness condition. This notation requires the
+realization and its block projectors as data. The spectral category
+must be defined over the same coefficient ring, or connected to it
+by a specified coefficient-change functor. A comparison across
+coefficient regimes requires that functor, a map of block indices
+and compatibility with $z=\chi(z)$, fixed determinant, and the
+central actions. Characteristic-zero Bernstein decomposition does
+not provide these data for the wild-EG category.
+
+\begin{theorem}[block-wise BH type-block comparison]
+\label{v4-arith:w5-f:F1a3-AB:thm:block-wise-comparison}
+\ClaimStatusProvedHereConditional Under
+Conjecture~\ref{v4-arith:f1a3-BH:conj:BH-packaging} applied block-by-block and
+Conjecture~\ref{v4-arith:f1a3-BH:conj:wild-compact-generation}, the following
+equivalence of $S^1$-equivariant Hochschild complexes holds for each
+$i\in I_{p,\chi}^{\Lambda}$, provided the single-block and arithmetic
+Hochschild comparisons below are supplied in this same coefficient
+category, with the stated central-character and fixed-determinant
+compatibilities and the dg Morita trace models of
+Lemma~\ref{v4-arith:w5-f:F1a3-AB:lem:HH-block-additive}:
+\begin{equation}
+\label{v4-arith:w5-f:F1a3-AB:eq:block-wise-comparison}
+\mathrm{HH}_{\bullet}\bigl(\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}(\mathbb{Q}_{p})])_{\chi,i}\bigr)
+\;\simeq\;
+\mathrm{HH}_{\bullet}\bigl(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG,wild},p,\chi,i}_{GL_{2}})\bigr),
+\end{equation}
+where \(\mathcal{X}^{\mathrm{EG,wild},p,\chi,i}_{GL_{2}}\)
+is the component of the wild-enhanced Emerton--Gee stack
+assigned to the chosen coefficient block $i$ by the specified
+type-to-component map of
+Proposition~\ref{v4-arith:f1a3-BH:prop:type-to-component-p2} (at \(p=2\)) or
+Proposition~\ref{v4-arith:f1a3-BH:prop:type-to-component-p3} (at \(p=3\)).
+\end{theorem}
+
+\begin{proof}
+Use, as coefficient-compatible comparison hypotheses, the single-block equivalence
+Theorem~\ref{v4-arith:f1a3-BH:thm:single-block-exhaustion} and the
+Ben-Zvi--Nadler arithmetic extension
+Theorem~\ref{v4-arith:bzn:thm:HH-IndCoh-arith}. The automorphic block decomposition is the stipulated decomposition
+of $\mathcal R_{p,\chi}^{\Lambda}$; in characteristic zero its fibre
+version follows from Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:block-chi-compat}.
+The corresponding spectral decomposition and its index map are
+additional comparison data, with the fixed-determinant condition.
+The component description in
+Proposition~\ref{v4-arith:deg-f1a:prop:spectral-blocks} must be realized in these
+same coefficients. Both sides restrict
+to the block \(i\) inside the specified dg model. Functoriality of
+its cyclic bar construction gives the trace comparison. An
+\(E_1\)-algebra comparison requires separately supplied compatible
+monoidal structures and preservation of their operations.
+\end{proof}
+
+\begin{corollary}[F1.a.3.A assembly]
+\label{v4-arith:w5-f:F1a3-AB:cor:F1a3-A-assembly}
+\ClaimStatusProvedHereConditional Under the block-by-block inputs
+of Theorem~\ref{v4-arith:w5-f:F1a3-AB:thm:block-wise-comparison}, and the
+specified finite-support compact models of
+Lemma~\ref{v4-arith:w5-f:F1a3-AB:lem:HH-block-additive} on both sides,
+the global Hochschild trace identity
+\begin{equation}
+\mathrm{HH}_{\bullet}\bigl(\mathrm{D}^{\mathrm{sph\text{-}fin}}([GL_{2}(\mathbb{Q}_{p})])_{\chi}\bigr)
+\;\simeq\;
+\mathrm{HH}_{\bullet}\bigl(\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG,wild},p,\chi}_{GL_{2}})\bigr)
+\end{equation}
+holds as an \(S^1\)-equivariant equivalence of complexes, by
+Lemma~\ref{v4-arith:w5-f:F1a3-AB:lem:HH-block-additive}.
+A multiplicative or unital enhancement is an additional comparison
+requirement, especially for an infinite block index.
+\end{corollary}
+
+\begin{proof}
+Direct sum of
+Theorem~\ref{v4-arith:w5-f:F1a3-AB:thm:block-wise-comparison} over
+\(i\in I_{p,\chi}^{\Lambda}\) combined with
+Lemma~\ref{v4-arith:w5-f:F1a3-AB:lem:HH-block-additive} on both sides.
+\end{proof}
+
+\subsection{Conditional Residual on Each Block}
+
+\begin{proposition}[obstruction taxonomy for F1.a.3.A]
+\label{v4-arith:w5-f:F1a3-AB:prop:A-residual-taxonomy}
+\ClaimStatusProvedHere The F1.a.3.A residual factors into two
+independent parts:
+\begin{enumerate}
+\item \textbf{Block-additivity on the dg trace carrier.} The
+Hochschild-homology block-additivity statement
+Lemma~\ref{v4-arith:w5-f:F1a3-AB:lem:HH-block-additive}. The cyclic-chain decomposition is proved under its stated dg hypotheses.
+\item \textbf{Per-block identification (conditional).} For each chosen coefficient block $i\in I_{p,\chi}^{\Lambda}$, the statement that the projective
+indecomposable generator \(P_{i}\) of \(\mathrm{Block}_{i}\)
+maps under \(\Phi^{\mathrm{wild}}_{p,\chi}\) to the derived structure
+sheaf of the closed point
+\(x_{i}\in\mathcal{X}^{\mathrm{EG,wild},p,\chi,i}_{GL_{2}}\)
+(Conjecture~\ref{v4-arith:f1a3-BH:conj:BH-packaging} restricted to block
+\(i\)). This object assignment must be accompanied by the coefficient-compatible
+functor, its comparison of endomorphism algebras and the stated
+central-character and fixed-determinant conditions. An object
+assignment alone does not give a categorical or Hochschild equivalence.
+\end{enumerate}
+On the specified dg trace carriers, the blockwise equivalences
+assemble as complexes. If F1.a.3.A includes a multiplicative or
+unital structure, its comparison requires those additional monoidal
+data; the additive calculation does not construct them.
+\end{proposition}
+
+\begin{proof}
+Part~1 is Lemma~\ref{v4-arith:w5-f:F1a3-AB:lem:HH-block-additive}. Part~2
+is the per-block restriction of
+Conjecture~\ref{v4-arith:f1a3-BH:conj:BH-packaging}; per-block projective
+indecomposables map to per-block closed-point structure sheaves.
+Assembly uses the stipulated finite-support dg models in the chosen
+coefficient category and the matching spectral model, together
+with the single-block Hochschild comparisons. The characteristic-zero
+Bernstein theorem cannot substitute for this residual-characteristic
+decomposition. With these data, the specified object assignments and
+comparison maps assemble block by block.
+\end{proof}
+
+\begin{remark}[per-block is strictly narrower than global]
+\label{v4-arith:w5-f:F1a3-AB:rem:per-block-narrower}
+The per-block statement in
+Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:A-residual-taxonomy}(2) is
+strictly narrower than the global
+Conjecture~\ref{v4-arith:f1a3-BH:conj:BH-packaging}: the global statement
+includes global compatibility. The additive trace compatibility is
+captured by Lemma~\ref{v4-arith:w5-f:F1a3-AB:lem:HH-block-additive}
+only on its specified dg models; any monoidal enhancement remains
+separate. Closure of
+per-block identification would reduce to: (i) explicit
+BH-type-to-closed-point match (known for principal-series types by
+Bushnell--Henniart 2006 \S 18); (ii) explicit $P_i$
+structure as a \(GL_{2}(\mathbb{Z}_{p})\)-induced module on the
+BH-type cover; (iii) compatibility under the twisted DEG functor,
+with a specified coefficient-compatible functor and block-index map,
+an endomorphism-algebra comparison, and compatibility with central
+character, fixed determinant and central actions. These are additional
+hypotheses to Conjecture~\ref{v4-arith:deg-f1a:conj:EG-wild-enhancement};
+its four clauses do not construct them. Each of (i), (ii), (iii)
+is a block-local requirement in the chosen coefficient category.
+\end{remark}
+
+\section{F1.a.3.B: Paskunas Block-Wise \(\mathrm{Ext}^{1}\)-Vanishing}
+\label{v4-arith:w5-f:F1a3-AB:B-Paskunas}
+
+\subsection{Paskunas Block Centraliser Structure}
+
+\begin{theorem}[Paskunas 2013 block centraliser structure]
+\label{v4-arith:w5-f:F1a3-AB:thm:Paskunas-centraliser}
+\ClaimStatusProvedElsewhere Let \(p\geq 5\) and fix a residual
+representation
+\(\rho\colon G_{\mathbb{Q}_{p}}\to GL_{2}(\overline{\mathbb{F}}_{p})\)
+and central character \(\chi\). The Bernstein block
+\(\mathrm{Block}_{\rho}\) of
+\(\mathrm{Mod}^{\mathrm{sm},\chi}_{GL_{2}(\mathbb{Q}_{p})}\) is
+Morita equivalent to the category of modules over the
+\emph{block centraliser algebra}
+\(A_{\rho}=\mathrm{End}_{\mathrm{Block}_{\rho}}(P_{\rho})\), where
+\(P_{\rho}\) is the projective cover of the unique simple quotient
+\(\pi_{\rho}\) determined by local Langlands correspondence. The
+algebra \(A_{\rho}\) is a complete Noetherian local ring
+satisfying:
+\begin{enumerate}
+\item \emph{Generic case (irreducible \(\rho\) or generic reducible
+\(\rho\)):} \(A_{\rho}\) is a regular local ring of dimension \(2\) or
+\(3\) depending on the residual type, with explicit generators given
+by pseudo-character deformations.
+\item \emph{Non-generic case (special reducible \(\rho\),
+``ordinary block''):} \(A_{\rho}\) is still complete Noetherian
+local but no longer regular; it is a quotient of a regular local
+ring by an explicit ideal captured by the Paskunas ``ordinary
+block'' theorem.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Source]
+Paskunas 2013, ``The image of Colmez's Montreal functor'',
+Publ.~IHES~118:1--191, Theorems~1.4, 1.5, and 1.6.
+\end{proof}
+
+\begin{remark}[location of the two cases in Paskunas 2013]
+\label{v4-arith:w5-f:F1a3-AB:rem:Paskunas-centraliser-location}
+The regular-local dimension for the generic case is computed in
+Paskunas 2013 \S 6, with explicit pseudo-character-deformation
+generators. The non-generic (ordinary block) case is in \S 10.
+Updated extent of the ordinary block is in Paskunas 2015
+(Duke Math.\ J.\ 164 (2015), 297--359; arXiv:1306.2691), ``On
+the Breuil--M\'ezard conjecture''.
+\end{remark}
+
+\subsection{\(\mathrm{Ext}^{1}\)-Vanishing in Generic Blocks}
+
+\begin{proposition}[extension vanishing over the fraction field]
+\label{v4-arith:w5-f:F1a3-AB:prop:Ext1-generic-p5}
+Let \(R\) be a commutative Noetherian domain, let
+\(K=\operatorname{Frac}(R)\), and let \(M,N\) be finite \(R\)-modules.
+Then
+\[
+ \operatorname{Ext}^1_R(M,N)\otimes_R K
+ \simeq\operatorname{Ext}^1_K(M\otimes_R K,N\otimes_R K)=0.
+\]
+In particular, the statement applies to a regular local domain.
+It asserts vanishing at the generic point, not at every regular point.
+\end{proposition}
+\begin{proof}
+Noetherianity gives a free resolution of \(M\) with finitely generated
+terms: take a finite set of generators for each successive kernel.
+Localization is exact, and homomorphisms from each finite free term
+commute with localization. Localizing the resulting Hom complex
+therefore computes the displayed extension group over \(K\).
+Every short exact sequence of vector spaces over \(K\) splits.
+\end{proof}
+
+\begin{corollary}[arithmetic transport on a specified generic fibre]
+\label{v4-arith:w5-f:F1a3-AB:cor:Ext1-zero-generic-locus}
+Suppose a specified arithmetic block category is exactly equivalent
+to finite modules over a commutative Noetherian domain \(R\), and
+its specified generic-fibre category corresponds under this equivalence
+to finite \(K=\operatorname{Frac}(R)\)-modules.
+Then generic-fibre extensions vanish. If a spectral locus is also
+identified with this localization by compatible functors, the same
+vanishing holds in its corresponding category.
+\end{corollary}
+\begin{proof}
+An exact equivalence identifies extension classes. Apply
+Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:Ext1-generic-p5}
+and the stated localization comparison. Neither regularity alone
+nor flatness alone constructs the arithmetic or spectral equivalence.
+\end{proof}
+
+\subsection{Non-Generic Block: Controlled Deformation}
+
+\begin{proposition}[Local self-extensions and conditional arithmetic transport]
+\label{v4-arith:w5-f:F1a3-AB:prop:Ext1-ordinary-controlled}
+For a commutative Noetherian local ring \((A,\mathfrak m,k)\),
+there is a natural isomorphism
+\[
+ \operatorname{Ext}^1_A(k,k)\cong
+ \operatorname{Hom}_k(\mathfrak m/\mathfrak m^2,k).
+\]
+For distinct simples \(S,S'\) in an arithmetic ordinary block, suppose
+an explicit \(k\)-linear class comparison identifies
+\(\operatorname{Ext}^1_{\mathrm{Block}_\rho}(S,S')\) with a specified
+subspace \(D_\rho\) of this dual cotangent space for \(A=A_\rho\).
+Then its dimension is \(\dim_k D_\rho\). If in addition
+\(\dim_k\mathfrak m_\rho/\mathfrak m_\rho^2\leq3\) is established,
+this gives the bound \(\dim_k D_\rho\leq3\).
+Breuil--Mezard multiplicities alone supply neither this class
+comparison nor the bound on the embedding dimension.
+\end{proposition}
+\begin{proof}
+Apply \(\operatorname{Hom}_A(-,k)\) to
+\(0\to\mathfrak m\to A\to k\to0\).
+The restriction \(\operatorname{Hom}_A(A,k)\to
+\operatorname{Hom}_A(\mathfrak m,k)\) is zero, since
+\(\mathfrak m k=0\), and \(\operatorname{Ext}^1_A(A,k)=0\).
+Thus the connecting map identifies \(\operatorname{Hom}_A(\mathfrak m,k)\)
+with \(\operatorname{Ext}^1_A(k,k)\). Every such homomorphism kills
+\(\mathfrak m^2\), giving the displayed dual cotangent space.
+Concretely, a functional gives the extension obtained by pushing out
+\(0\to\mathfrak m\to A\to k\to0\) along \(\mathfrak m\to k\).
+The arithmetic conclusion follows from the separately assumed class
+comparison. There is no subtraction by a number of defining relations:
+for \(A=k[\epsilon]/(\epsilon^2)\), the embedding dimension is one
+and \(\operatorname{Ext}^1_A(k,k)=k\). This space is annihilated by
+\(\mathfrak m\), and is not a nonzero free \(A/\mathfrak m^2\)-module.
+Every simple module over a commutative local ring is its residue field;
+comparison with distinct arithmetic simples therefore requires the
+specified additional map.
+\end{proof}
+
+\begin{remark}[conditional content is narrow]
+\label{v4-arith:w5-f:F1a3-AB:rem:ordinary-narrow}
+The ``ordinary block'' covered by Paskunas 2013
+Theorem~1.6 is the \emph{only} non-generic block at \(p\geq 5\). All
+other blocks are generic, and
+Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:Ext1-generic-p5} applies
+after the exact generic-fibre comparisons of
+Corollary~\ref{v4-arith:w5-f:F1a3-AB:cor:Ext1-zero-generic-locus}. The
+ordinary block itself splits further into a ``very special'' sub-case
+(where Breuil--Mezard multiplicities are conjectural but
+individually explicit) and a ``non-very-special'' sub-case. The
+arithmetic application of
+Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:Ext1-ordinary-controlled}
+still requires the explicit class comparison, independently of whether
+the multiplicity values are known. The ``very special'' sub-case is one additional named residual, strictly
+smaller than the whole ordinary block.
+\end{remark}
+
+\subsection{The \(p\in\{2,3\}\) Extension}
+
+\begin{conjecture}[block centraliser at wild primes]
+\label{v4-arith:w5-f:F1a3-AB:prop:centraliser-wild}
+Let \(p\in\{2,3\}\) and let
+\(\tau\in\mathbf{T}^{\mathrm{BH}}_{p,\chi}\) be a BH type in the
+principal block (the Ext\({}^{1}\)-carrying block of
+Remark~\ref{v4-arith:f1a3-BH:rem:ext1-type-p2} at \(p=2\), or one of the
+three types in Proposition~\ref{v4-arith:f1a3-BH:prop:A2-quiver-p3} at
+\(p=3\)). The block centraliser algebra
+\(A_{\tau}=\mathrm{End}_{\mathrm{Block}^{\mathrm{BH}}_{\tau}}(P_{\tau})\)
+is a complete Noetherian local ring of dimension \(2\) (at \(p=2\)) or
+dimension \(\leq 3\) (at \(p=3\)), and is a quotient of a regular
+local ring by an ideal to be specified in the arithmetic block.
+Question~\ref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3} asks for
+its relation to a finite quiver model; it does not determine this
+ideal or the regularity of the complete centraliser.
+\end{conjecture}
+
+\begin{remark}[gap in the wild-prime block centraliser argument]
+\label{v4-arith:w5-f:F1a3-AB:rem:centraliser-wild-conditional}
+Conjecture~\ref{v4-arith:w5-f:F1a3-AB:prop:centraliser-wild} is the
+\(p\in\{2,3\}\) analogue of
+Theorem~\ref{v4-arith:w5-f:F1a3-AB:thm:Paskunas-centraliser}. Paskunas'
+original paper explicitly restricts to \(p\geq 5\) on account of the
+Colmez Montreal-functor hypothesis; the restriction is technical
+but has no published lift in the cited range. The expected dimensions are separate arithmetic hypotheses.
+The proposed local degree-one dimensions in
+Questions~\ref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2}
+and~\ref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3} determine neither
+Krull dimension nor regularity of the block centraliser.
+\end{remark}
+
+\begin{corollary}[conditional generic-fibre extension vanishing]
+\label{v4-arith:w5-f:F1a3-AB:cor:Ext1-wild-conditional}
+Let \(R=A_\tau\) be a reduced commutative Noetherian ring, and let
+\(Q(R)\) be its total quotient ring. Assume the specified arithmetic
+generic-fibre category is equivalent, as an exact category, to
+\(Q(R)\)-modules. Then all its short exact sequences split, and
+its \(\operatorname{Ext}^1\) groups vanish.
+\end{corollary}
+\begin{proof}
+A reduced Noetherian ring has finitely many minimal primes
+\(\mathfrak p_i\), and
+\(Q(R)\simeq\prod_i\operatorname{Frac}(R/\mathfrak p_i)\).
+Indeed, localization at all non-zero-divisors leaves a reduced
+Noetherian zero-dimensional ring, hence a finite product of fields.
+Modules over each field are vector spaces, so every short exact
+sequence splits. The finite product decomposition and the assumed
+exact equivalence preserve these splittings.
+\end{proof}
+
+\begin{example}[a nonreduced generic fibre]
+A quotient of a regular ring need not satisfy this conclusion.
+Take \(R=k[[t,u,\epsilon]]/(\epsilon^2)\).
+It is complete Noetherian local of dimension two. With
+\(K=\operatorname{Frac}(k[[t,u]])\), localization at its minimal
+prime \((\epsilon)\) gives \(R_{(\epsilon)}=K[\epsilon]/(\epsilon^2)\).
+The periodic free resolution with differential multiplication by
+\(\epsilon\) gives \(\operatorname{Ext}^1_{R_{(\epsilon)}}(K,K)=K\).
+Thus the quotient presentation in
+Conjecture~\ref{v4-arith:w5-f:F1a3-AB:prop:centraliser-wild}
+does not imply generic semisimplicity. Reducedness and the arithmetic
+localization or Morita comparison are separate requirements.
+Even for a regular ring, closed-point extensions need not vanish:
+\(\operatorname{Ext}^1_{k[[t]]}(k,k)=k\).
+\end{example}
+
+\section{Combined F1.a.3 (A+B) Residual Statement}
+\label{v4-arith:w5-f:F1a3-AB:combined-AB}
+
+\subsection{Unconditional F1.a.3.A+B Content}
+
+\begin{theorem}[unconditional content of F1.a.3.A+F1.a.3.B]
+\label{v4-arith:w5-f:F1a3-AB:thm:unconditional-AB}
+The following algebraic statements hold on their stated carriers.
+Arithmetic transport retains the comparison hypotheses indicated below:
+\begin{enumerate}
+\item \textbf{Block-additivity of Hochschild homology}
+(Lemma~\ref{v4-arith:w5-f:F1a3-AB:lem:HH-block-additive}): for any
+orthogonal union of the small \(k\)-linear dg blocks in that lemma,
+the derived trace splits as an \(S^1\)-equivariant complex. A
+presentable application requires the stated finite-support model of
+its compact objects, and an algebra comparison needs extra monoidal data.
+\item \textbf{Residual factorisation for F1.a.3.A}
+(Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:A-residual-taxonomy}): the
+F1.a.3.A residual factors as (block-additivity on the specified dg models) plus
+(conditional per-block identification), with the per-block part
+strictly narrower than the original.
+\item \textbf{Generic localization of finite-module extensions.}
+Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:Ext1-generic-p5}
+proves vanishing over the fraction field of a Noetherian domain.
+Its arithmetic use requires the exact equivalences and localization
+comparison of Corollary~\ref{v4-arith:w5-f:F1a3-AB:cor:Ext1-zero-generic-locus}.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The first two items have the hypotheses of their cited statements.
+The third is the localization argument using a free resolution with finitely generated terms above,
+followed, only under its additional hypotheses, by arithmetic transport.
+\end{proof}
+
+\subsection{Conditional F1.a.3.A+B Residual}
+
+\begin{proposition}[remainder of the F1.a.3.A+B residual]
+\label{v4-arith:w5-f:F1a3-AB:prop:remainder-AB}
+\ClaimStatusProvedHere The proposed F1.a.3.A+B comparison requires the following
+conditional inputs, together with its generic-fibre equivalences:
+\begin{enumerate}
+\item[\textbf{(R.A)}] Per-block BH type-block comparison at each
+$i\in I_{p,\chi}^{\Lambda}$ in the chosen fixed-character coefficient category: the projective
+indecomposable \(P_{i}\) maps under the twisted DEG
+functor to the derived structure sheaf of the closed point
+\(x_{i}\in\mathcal{X}^{\mathrm{EG,wild},p,\chi,i}_{GL_{2}}\).
+The functor and block-index comparison must respect coefficients,
+central character, fixed determinant and central actions, as in
+Theorem~\ref{v4-arith:w5-f:F1a3-AB:thm:block-wise-comparison}. Their existence
+is not supplied by characteristic-zero Bernstein theory.
+\item[\textbf{(R.B.1)}] ``Very special'' ordinary block at
+\(p\geq 5\): the Breuil--Mezard multiplicity computation for the
+``very special'' sub-stratum of Paskunas' ordinary block. One
+substratum, one missing multiplicity.
+\item[\textbf{(R.B.2)}] Wild-prime block centraliser
+(Conjecture~\ref{v4-arith:w5-f:F1a3-AB:prop:centraliser-wild}): the specified wild block centraliser, reducedness and the
+exact generic-fibre comparison in
+Corollary~\ref{v4-arith:w5-f:F1a3-AB:cor:Ext1-wild-conditional}.
+\end{enumerate}
+The algebraic generic-localization result does not remove its
+arithmetic comparison hypotheses. These inputs are requirements
+for the stated factorization, not an exhaustion of all arithmetic obstructions.
+\end{proposition}
+
+\begin{proof}
+Direct from the factorisations in
+Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:A-residual-taxonomy} and
+Remark~\ref{v4-arith:w5-f:F1a3-AB:rem:ordinary-narrow}. Each named comparison supplies a different factor. The generic-fibre
+transport additionally requires its exact localization equivalence.
+\end{proof}
+
+\begin{remark}[obstruction factorization]
+\label{v4-arith:w5-f:F1a3-AB:rem:reduction-summary}
+F1.a.3.A is the product of block-additivity and the per-block
+comparison core (R.A). F1.a.3.B is the product of generic-locus
+finite-module extension vanishing with its arithmetic localization
+comparison, the very-special ordinary block condition (R.B.1), and
+the wild-prime centraliser, reducedness and comparison inputs (R.B.2). The support of (R.A), (R.B.1), and (R.B.2) is strictly smaller
+than the support of the two un-factored conditions.
+\end{remark}
+
+\subsection{Obstruction Decomposition}
+
+\begin{proposition}[F1.a.3 obstruction decomposition]
+\label{v4-arith:w5-f:F1a3-AB:prop:F1a3-table-updated}
+\ClaimStatusProvedHere The F1.a.3 obstruction decomposition consists
+of:
+\begin{enumerate}
+\item \textbf{(R.A)} Per-block BH type-block comparison
+(Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:remainder-AB}(R.A)), substantial
+non-formal theorem at each block; block-local.
+\item \textbf{(R.B.1)} Very-special ordinary-block Breuil--Mezard
+multiplicity (Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:remainder-AB}(R.B.1)),
+substantial non-formal theorem.
+\item \textbf{(R.B.2)} Wild-prime reduced centraliser and generic-fibre comparison at
+\(p\in\{2,3\}\) (Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:remainder-AB}(R.B.2)),
+substantial non-formal theorem.
+\item \textbf{(R.C)} Wild-EG compact generation
+(Conjecture~\ref{v4-arith:f1a3-BH:conj:wild-compact-generation}, unchanged
+from Chapter~\ref{v4-arith:f1a3-BH}), substantial non-formal theorem.
+\end{enumerate}
+The four supports are pairwise named: (R.A) is block-local, (R.B.1) is
+very-special ordinary, (R.B.2) is wild-centraliser, and (R.C) is
+wild-EG compact generation.
+\end{proposition}
+
+\begin{proof}
+Direct tally from
+Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:remainder-AB}: (R.A), (R.B.1),
+(R.B.2), plus the original (R.C)
+Conjecture~\ref{v4-arith:f1a3-BH:conj:wild-compact-generation}. The last term is
+independent of the block-additivity and Ext\({}^{1}\)-vanishing
+arguments.
+\end{proof}
+
+\section{Coefficient Categories and Comparison Conventions}
+\label{v4-arith:w5-f:F1a3-AB:source-comparison}
+
+The block comparisons involve characteristic-zero smooth representations,
+residual-characteristic block algebras and spectral categories.
+Their coefficient fields, module conventions, central characters and
+comparison functors must be specified separately. The following
+conventions retain these distinctions.
+
+\subsection{Block-Additivity: References and Conventions}
+\label{v4-arith:w5-f:F1a3-AB:comparison-block-additivity}
+
+\paragraph{Block and categorical references.}
+Bernstein (1984) and Bernstein--Deligne (1984) describe the Bernstein
+centre and characteristic-zero block decomposition of
+$\mathrm{Mod}^{\mathrm{sm}}_G$; Bushnell--Henniart (2006) concerns
+$GL_2$ types. Pa{\v s}k{\=u}nas (2013, 2015) treats the specified
+mod-$p$ block-centraliser setting. Ben-Zvi--Nadler,
+arXiv:0904.1247, concerns categorical character theory, and
+Dotto--Emerton--Gee, arXiv:2603.26887, supplies its stated
+fixed-central-character functor. Comparing these categories requires
+the coefficient-compatible block and functor data above; the list of
+references does not identify their carriers.
+
+\paragraph{Sign and convention.} Bernstein--Deligne use the left-regular
+representation of the Bernstein centre; Paskunas uses the right-regular;
+both yield equivalent block-projection functors under the
+opposite-algebra convention. Bushnell--Henniart uses
+Langlands-normalised central characters; the \(\chi\) convention here
+matches. The Hochschild homology orientation follows the ``co-Hochschild''
+convention from Lurie HA~5.5.3, consistent with Ben-Zvi--Nadler and
+Costello--Gwilliam.
+
+\paragraph{Ambient category.} The block decomposition of
+\(\mathrm{Mod}^{\mathrm{sm},\chi}_{GL_{2}(\mathbb{Q}_{p})}\) lives in the
+abelian category of smooth \(GL_{2}(\mathbb{Q}_{p})\)-representations;
+the spectral side is \(\mathrm{IndCoh}_{\mathrm{Nilp}}\) on a formal
+algebraic stack. Both admit compatible derived enhancements in
+presentable stable \(\infty\)-categories.
+
+\paragraph{Trace carrier.} Lemma~\ref{v4-arith:w5-f:F1a3-AB:lem:HH-block-additive}
+uses orthogonal \(k\)-linear dg models with derived cyclic chains and
+finite-support perfect modules. Realizing these models and their
+coefficient comparisons on an arithmetic category remains a hypothesis.
+
+\paragraph{Functoriality.} Block-decomposition is functorial under
+the specified block projectors. The cyclic-chain construction is
+functorial on the chosen dg models, giving an additive trace
+comparison when the coefficient and block maps have been supplied.
+
+\subsection{Per-Block Residual Isolation: References and Conventions}
+\label{v4-arith:w5-f:F1a3-AB:comparison-per-block}
+
+\paragraph{Projective covers and the Montreal functor.}
+Pa{\v s}k{\=u}nas (2013) supplies the blockwise projective-cover
+setting, and Colmez (2010), Ast\'erisque~330, concerns the Montreal
+functor between its automorphic and Galois categories. The
+Bernstein--Deligne and Ben-Zvi--Nadler constructions enter through
+the separate block and categorical comparisons. Their use together
+requires the specified coefficient and endomorphism-algebra maps.
+
+\paragraph{Convention alignment.} Paskunas' projective cover
+\(P_{\rho}\) uses the Montreal functor normalisation; this matches the
+\(P_{\tau}\) of Conjecture~\ref{v4-arith:f1a3-BH:conj:BH-packaging} under the
+BH-to-residual correspondence
+\(\tau\mapsto\rho_{\tau}\) of
+Proposition~\ref{v4-arith:f1a3-BH:prop:type-to-component-p2}.
+
+\paragraph{Hypothesis.} The per-block hypothesis is named explicitly as
+Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:A-residual-taxonomy}(2); no further
+hypothesis is required for the structural factorisation. The residual
+(R.A) is the named open content.
+
+\subsection{Generic-Block \(\mathrm{Ext}^{1}\)-Vanishing: References and Conventions}
+\label{v4-arith:w5-f:F1a3-AB:comparison-ext1-generic}
+
+For a Noetherian domain \(R\), a free resolution with finitely generated terms of a finite
+module computes its extension groups. Localizing that resolution at
+\(K=\operatorname{Frac}(R)\) commutes with the Hom complex and its
+cohomology. The resulting vector-space extensions split. This is the
+argument of Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:Ext1-generic-p5}.
+
+The arithmetic application requires an exact block equivalence and
+a compatible generic-fibre localization. A spectral application also
+requires the specified functor identifying the spectral locus with
+that localization. These are the hypotheses of
+Corollary~\ref{v4-arith:w5-f:F1a3-AB:cor:Ext1-zero-generic-locus}.
+Regularity at a closed point does not imply extension vanishing there.
+
+\subsection{Wild-Prime Block Centraliser: References and Conventions}
+\label{v4-arith:w5-f:F1a3-AB:comparison-wild-prime}
+
+\paragraph{Wild types and block algebras.} The wild-prime argument uses
+Bushnell--Henniart 2006 \S~12--15 (wild types at \(p=2,3\)) and
+Auslander--Reiten--Smal\o{} 1995 (linear-quiver block algebra theory).
+Paskunas 2013 does not cover \(p\in\{2,3\}\) directly; this is the
+source of the gap named as (R.B.2).
+
+\paragraph{Convention and hypothesis.}
+The explicit finite model in Example~\ref{v4-arith:wild:three-vertex}
+uses right modules and arrows \(L_0\to L_1\to L_2\).
+Its adjacent Yoneda product is nonzero in degree two. An arithmetic
+block comparison must specify its relations and preserve these
+products; the finite model gives no regularity theorem for a
+complete local centraliser. The quotient presentation and dimension assumptions
+in Conjecture~\ref{v4-arith:w5-f:F1a3-AB:prop:centraliser-wild}
+do not imply generic semisimplicity. The vanishing assertion uses
+the reducedness and category equivalence of
+Corollary~\ref{v4-arith:w5-f:F1a3-AB:cor:Ext1-wild-conditional}.
+
+\paragraph{Ordinary-block controlled deformation.} The ordinary-block
+argument uses Paskunas 2013 \S~10 and Paskunas 2015 (Breuil--Mezard
+multiplicity formula). The very-special Breuil--Mezard multiplicity
+is the named residual (R.B.1). Its computation does not construct
+the class comparison required by
+Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:Ext1-ordinary-controlled}.
+
+\section{Paskunas Block Boundary}
+\label{v4-arith:w5-f:F1a3-AB:summary}
+
+\begin{enumerate}
+\item F1.a.3.A (BH type-block comparison) factors into two parts: block-additivity
+of Hochschild homology
+(Lemma~\ref{v4-arith:w5-f:F1a3-AB:lem:HH-block-additive}, on the
+specified dg models)
+plus per-block identification
+(Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:A-residual-taxonomy}(2), narrower
+residual (R.A)).
+\item F1.a.3.B (Paskunas wild-block Ext\({}^{1}\)) factors into three
+regimes: generic blocks at \(p\geq 5\) where
+finite-module extensions vanish over the fraction field, with
+arithmetic transport conditional on the specified equivalence
+(Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:Ext1-generic-p5}); the ordinary
+block at \(p\geq 5\) where \(\mathrm{Ext}^{1}\) is controlled by
+Paskunas 2015 and reduces to the very-special sub-stratum
+residual (R.B.1); and the wild-prime extension at
+\(p\in\{2,3\}\) conditional on reducedness and exact generic-fibre
+comparison, in addition to the centraliser datum (R.B.2).
+\item The combined F1.a.3.A+B decomposition has four items:
+(R.A), (R.B.1), (R.B.2), and the unchanged (R.C) of
+Chapter~\ref{v4-arith:f1a3-BH}. Together they form the substantive
+comparison problem of
+Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:F1a3-table-updated}, with the
+hypotheses of Chapter~\ref{v4-arith:f1a3-BH}. The
+partition is strictly finer: two original conjectures A and B become
+three named sub-items, each strictly narrower.
+\item The unconditional content is: (i) block-additivity
+of Hochschild homology on the specified finite-support
+\(k\)-linear dg block models
+(Lemma~\ref{v4-arith:w5-f:F1a3-AB:lem:HH-block-additive}); (ii) residual
+factorisation for F1.a.3.A
+(Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:A-residual-taxonomy}); (iii)
+finite-module extension vanishing over a fraction field, with
+conditional arithmetic transport
+(Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:Ext1-generic-p5} and
+Corollary~\ref{v4-arith:w5-f:F1a3-AB:cor:Ext1-zero-generic-locus});
+(iv) the obstruction decomposition
+(Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:F1a3-table-updated}).
+\item The full F1.a.3.A and F1.a.3.B statements factor through the
+three named residuals (R.A), (R.B.1), and (R.B.2), retaining the
+coefficient and comparison conventions of
+Section~\ref{v4-arith:w5-f:F1a3-AB:source-comparison}.
+\end{enumerate}
+
+The finite-module localization calculation isolates an algebraic
+vanishing statement. The block and spectral functors needed for its
+arithmetic application remain separate comparison data.
+
+\section{References on Local Blocks and Categorical Centres}
+\label{v4-arith:w5-f:F1a3-AB:bibliography}
+
+References for the block, type and local-algebra constructions:
+
+\begin{itemize}
+\item I.~Bernstein, ``Le centre de Bernstein'', in Deligne's notes
+(1984).
+\item J.~Bernstein and P.~Deligne, ``Le centre de Bernstein'', in
+\emph{Repr\'esentations des groupes r\'eductifs sur un corps local}
+(1984).
+\item C.~J.~Bushnell and G.~Henniart, \emph{The Local Langlands
+Conjecture for \(GL(2)\)}, Grundlehren der mathematischen Wissenschaften
+335, Springer (2006).
+\item P.~Colmez, ``Repr\'esentations de \(GL_{2}(\mathbb{Q}_{p})\) et
+\((\varphi,\Gamma)\)-modules'', Ast\'erisque 330 (2010), 281--509.
+\item V.~Paskunas, ``The image of Colmez's Montreal functor'',
+Publ.~IHES 118 (2013), 1--191.
+\item V.~Paskunas, ``On the Breuil--M\'ezard conjecture'', Duke
+Math.\ J.\ 164 (2015), no.\ 2, 297--359 (arXiv:1306.2691).
+\item M.~Auslander, I.~Reiten, and S.~Smal\o{},
+\emph{Representation Theory of Artin Algebras}, Cambridge Studies
+in Advanced Mathematics 36, CUP (1995).
+\item H.~Matsumura, \emph{Commutative Ring Theory}, Cambridge
+Studies in Advanced Mathematics 8, CUP (1989).
+\item D.~Ben-Zvi, J.~Francis, and D.~Nadler, ``Integral transforms
+and Drinfeld centers in derived algebraic geometry'',
+arXiv:0805.0157 (2008).
+\item D.~Ben-Zvi and D.~Nadler, ``The character theory of a complex
+group'', arXiv:0904.1247 (2009).
+\item J.~Lurie, \emph{Higher Algebra}, manuscript (2017 version).
+\end{itemize}
+
+The block-additivity discussion in
+Lemma~\ref{v4-arith:w5-f:F1a3-AB:lem:HH-block-additive} is the
+explicit cyclic-chain calculation on the stated dg block models. The generic-locus argument in
+Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:Ext1-generic-p5} uses a localization argument using a free resolution with finitely generated terms.
+Its arithmetic application requires the stated exact equivalences. The ordinary-block discussion in
+Proposition~\ref{v4-arith:w5-f:F1a3-AB:prop:Ext1-ordinary-controlled}
+uses Pa{\v s}k{\=u}nas (2013, 2015) and its Breuil--Mezard
+multiplicity condition. The Bushnell--Henniart and Bernstein--Deligne
+references concern the type and block constructions; the
+Ben-Zvi--Nadler reference concerns the categorical comparison.
+Their applications retain the coefficient regimes and comparison
+maps specified in the respective statements.

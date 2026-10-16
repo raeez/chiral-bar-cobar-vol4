@@ -1,0 +1,2597 @@
+\chapter{Exceptional Intertwining Families and Arithmetic Extension Comparisons}
+\chaptermark{Exceptional Intertwining and Extensions}
+\label{v4-arith:w10-d:chapter}
+
+When an intertwining operator loses invertibility, its kernel and
+quotient describe the representations that meet at that parameter.
+An arithmetic comparison asks for more: which extensions of
+representations correspond to deformations of Galois representations,
+and how do these correspondences fit into a global automorphic
+category? A residue is a morphism of representations, whereas an
+extension is a short exact sequence. Passing from one to the other
+requires a construction.
+
+For an ordered unramified character pair, a regular intertwiner gives
+an explicit two-term complex over the character torus. Its derived
+specializations retain kernels created by nonflat coefficient change.
+At an exceptional complex point a tree resolution splits this complex
+even with its central character imposed strictly. A different
+construction gives a nonsplit local principal-series extension.
+Exterior products of these extensions have the number of places as
+their degree. Their constant-vector restricted tensor product instead
+gives a genuine degree-one finite-adelic extension with a mixed
+quotient. These results supply distinct local and adelic objects for
+the arithmetic question; identifying them with automorphic residues
+or Galois deformation classes requires the maps specified below.
+
+\section{Parameters and the comparison problem}
+\label{v4-arith:w10-d:domain}
+Chapter~\ref{v4-arith:w6-d:chapter} fixes the finite-place families.
+The raw finite-place integral $M_v(s,\chi)$ and its normalized
+operator $N_v(s,\chi)$ are defined in
+Definitions~\ref{v4-arith:w6-d:def:M-unnormalised}
+and~\ref{v4-arith:w6-d:def:N-normalised}. The calculation below
+retains their ordered inducing characters, Haar measure and smooth
+source and target. Proposition~\ref{v4-arith:w6-d:prop:local-FE}
+states their meromorphic composition law. The exceptional local ratios are $q$ and $q^{-1}$,
+as in Definition~\ref{v4-arith:w6-d:def:exceptional}; they are not
+singular points on the unitary axis. The global comparison at these
+strata is the problem of
+Conjecture~\ref{v4-arith:w6-d:conj:exceptional-unitary-crossing}.
+
+The other required comparisons concern different carriers.
+Chapter~\ref{v4-arith:w6-c:LS-correction} concerns the normalization
+of vector pairings. The
+Langlands--Shahidi-corrected Koszul pairing in
+Definition~\ref{v4-arith:w6-c:def:LS-Koszul} is a pairing of specified
+vectors. Corollary~\ref{v4-arith:w6-c:cor:unconditional} identifies its
+normalization with the Petersson normalization only under its stated
+positive-measure identification. A pairing on extension classes
+requires an additional chain-level construction. The wild-prime
+comparison of Theorem~\ref{v4-arith:w6-f:thm:class-match} and the
+residual-gerbe comparison in
+Hypothesis~\ref{v4-arith:w6-f:prop:gerbe-cotangent-match} concern
+residual-characteristic categories, as in
+Chapter~\ref{v4-arith:w6-f:chapter}. The Bushnell--Henniart block in
+Chapter~\ref{v4-arith:f1a3-BH} has its specified local categorical
+carrier and does not construct a complex automorphic realization. Neither is a coefficient
+identification with a complex smooth representation category.
+The Hilbert spectral decomposition in
+Theorem~\ref{v4-arith:w6-d:thm:Langlands-decomp} and the conditional
+categorical residual comparison in
+Theorem~\ref{v4-arith:w6-d:thm:res-lift} likewise have different
+levels of structure. We first construct the finite-place complexes
+and extensions before formulating these further maps.
+
+\section{The regular unramified family}
+
+The normalized unramified intertwiner loses invertibility at two character ratios.
+Its cone records the resulting kernels and quotients, including those created by specialization.
+To define this cone across both ratios, fix the scalar used to clear the denominator.
+
+Let $F$ be a finite extension of $\mathbb Q_p$ with ring of integers $\mathcal O$,
+uniformizer $\varpi$, and residue cardinality $q$.
+Set $|\varpi|=q^{-1}$ and normalize additive Haar measure by
+$\operatorname{vol}(\mathcal O)=1$.
+Put $G=\operatorname{GL}_2(F)$, $K=\operatorname{GL}_2(\mathcal O)$,
+and let $B$ be the upper triangular subgroup.
+The coefficient ring and ratio are
+\[
+ R=\mathbb C[a^{\pm1},b^{\pm1}],\qquad z=a/b.
+\]
+Every coefficient ring in this local-family construction is an ordinary commutative $\mathbb C$-algebra.
+It has no analytic topology.
+The universal unramified characters are
+$\chi_a(x)=a^{v_F(x)}$ and $\chi_b(x)=b^{v_F(x)}$, with $v_F(\varpi)=1$.
+
+Let $E=I_R(\chi_a,\chi_b)$ be the smooth normalized induction.
+Its elements are locally constant functions $f:G\to R$ satisfying
+\[
+ f\left(\begin{pmatrix}u&v\\0&t\end{pmatrix}g\right)
+   =|u/t|^{1/2}a^{v_F(u)}b^{v_F(t)}f(g).
+\]
+The square root is positive real, and $G$ acts by right translation.
+Restriction to $K$ identifies its coefficient module with $R\otimes_\mathbb C V$, where
+\[
+ X=(B\cap K)\backslash K=\mathbb P^1(F),\qquad
+ V=C^\infty(X;\mathbb C).
+\]
+Here $C^\infty$ means locally constant.
+Indeed, $G=BK$, and the inducing factor is trivial on $B\cap K$.
+For a fixed $g\in G$, compactness partitions $K$ into finitely many pieces
+with constant diagonal valuations in an Iwasawa decomposition of $kg$.
+Right translation therefore has Laurent polynomial coefficients on every finite space of functions.
+This constructs the action over $R$ and proves its compatibility with arbitrary coefficient extension.
+Every vector is fixed by an open subgroup of $K$.
+Define $E^\mathrm{sw}=I_R(\chi_b,\chi_a)$ in the same way.
+These are different $G$-actions on the same coefficient module.
+
+Let $\nu$ be the $K$-invariant probability measure on $X$.
+For $N\ge1$, let $V_N$ be the functions pulled back from
+$X_N=\mathbb P^1(\mathcal O/\varpi^N\mathcal O)$, and put $V_0=\mathbb C\mathbf1$.
+Averaging on reduction fibers defines projections $P_N:V\to V_N$.
+Let $P_0$ be global averaging, and define
+\[
+ H_0=V_0,\qquad H_n=\ker(P_{n-1}|_{V_n})\quad(n\ge1).
+\]
+Thus $V=\bigoplus_{n\ge0}H_n$ and $V_N=\bigoplus_{n=0}^N H_n$.
+Write $H_+=\bigoplus_{n\ge1}H_n$.
+The dimensions are $\dim H_0=1$, $\dim H_1=q$, and
+$\dim H_n=(q+1)(q-1)q^{n-2}$ for $n\ge2$.
+These are $K$-stable spaces.
+They need not be $G$-stable.
+
+The unramified integral calculation fixes the normalization.
+With
+$w=\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$ and
+$n(x)=\left(\begin{smallmatrix}1&x\\0&1\end{smallmatrix}\right)$, it gives
+\[
+ M_zf(g)=\int_F f(wn(x)g)\,dx,\qquad
+ c(z)=\frac{1-q^{-1}z}{1-z},\qquad R_z=c(z)^{-1}M_z.
+\]
+The integral is initially defined at complex specializations with $|z|<1$.
+Its rational continuation, on each $V_N$, satisfies
+\begin{equation}\label{v4-arith:w10-d:local:eq:normalized}
+ R_z|_{H_0}=1,\qquad
+ R_z|_{H_n}=z^{n-1}\frac{z-q^{-1}}{1-q^{-1}z}\quad(n\ge1).
+\end{equation}
+For clarity, the compact-picture calculation underlying this formula is
+\[
+ M_z=(1+q^{-1})P_0+(z-q^{-1})\sum_{n\ge1}z^{n-1}P_n.
+\]
+A reduction fiber at depth $n$ has measure
+$((q+1)q^{n-1})^{-1}$.
+For primitive rows $u,v\in\mathcal O^2$, set $\rho([u],[v])=|\det(u,v)|$.
+The radial integral kernel has successive values
+$(1+q^{-1})q^nz^n$ at distance $q^{-n}$.
+Subtracting successive values gives the displayed projection coefficients.
+On $H_m$, $m\ge1$, only the terms $n\ge m$ remain.
+Their geometric sum is $(z-q^{-1})z^{m-1}/(1-z)$.
+On constants the sum is $c(z)$, which proves \eqref{v4-arith:w10-d:local:eq:normalized}.
+The integral commutes with right translation and exchanges the inducing characters
+by the substitution $x\mapsto xd/u$ for a diagonal matrix $\operatorname{diag}(u,d)$.
+Its intertwining identity consequently continues as a rational identity on finite spaces of vectors.
+
+Set
+\[
+ \alpha=1-q^{-1}z,\qquad \beta=z-q^{-1},\qquad
+ h=(1-q^{-1}z)(1-q^{-1}z^{-1})=z^{-1}\alpha\beta.
+\]
+The chosen regular map is
+\begin{equation}\label{v4-arith:w10-d:local:eq:D}
+ D=\alpha R_z=(1-z)M_z:E\longrightarrow E^\mathrm{sw},\qquad
+ D|_{R\otimes H_0}=\alpha,\quad
+ D|_{R\otimes H_n}=z^{n-1}\beta.
+\end{equation}
+The equalities with meromorphic operators mean equality of rational families.
+The right-hand coefficients define $D$ over all of $R$, including $z=1$.
+Multiplication by an additional nonunit would change the cone.
+Thus the scalar in \eqref{v4-arith:w10-d:local:eq:D} is part of the construction.
+
+\begin{example}\label{v4-arith:w10-d:local:ex:first}
+Let $q=2$ and $N=1$.
+The three residue directions have equal measure.
+In their characteristic-function basis, put $J=(1)_{i,j=1}^3$.
+The projection onto constants is $P=J/3$, so
+\[
+ D_1=\alpha P+\beta(1-P)
+ =\frac12\begin{pmatrix}
+ z&1-z&1-z\\1-z&z&1-z\\1-z&1-z&z
+ \end{pmatrix},\qquad
+ \det D_1=(1-z/2)(z-1/2)^2.
+\]
+At $z=1/2$ its value is $J/4$, with kernel the two-dimensional sum-zero space.
+At $z=2$ its value is $\frac32(1-P)$, with kernel the constants.
+At $z=1$ its value is $\frac12\operatorname{id}$.
+The matrix with swapped inducing characters is $D_1(z^{-1})$, and
+\[
+ D_1(z^{-1})D_1(z)=(1-z/2)(1-z^{-1}/2)\operatorname{id}.
+\]
+Indeed, both matrices preserve constants and their sum-zero complement.
+Multiplying the two eigenvalues on either space gives the displayed scalar.
+The two distinct kernels determine the two support summands of the general cone.
+\end{example}
+
+\begin{proposition}\label{v4-arith:w10-d:local:prop:regular}
+The map $D$ is an $R$-linear smooth $G$-intertwiner on all of $E$.
+Let $D^\mathrm{sw}:E^\mathrm{sw}\to E$ be the same regular construction with $(a,b)$ replaced by $(b,a)$.
+Then
+\begin{equation}\label{v4-arith:w10-d:local:eq:composition}
+ D^\mathrm{sw} D=h\operatorname{id}_E,\qquad DD^\mathrm{sw}=h\operatorname{id}_{E^\mathrm{sw}}.
+\end{equation}
+On $H_0$ the coefficient of $D^\mathrm{sw}$ is $\beta/z$.
+On $H_n$, $n\ge1$, it is $z^{-n}\alpha$.
+After extension to $R[h^{-1}]$, the normalized operator is
+$R_z=\alpha^{-1}D$ and its inverse is $(1-q^{-1}z^{-1})^{-1}D^\mathrm{sw}$.
+\end{proposition}
+\begin{proof}
+Every vector has only finitely many $H_n$ components, so \eqref{v4-arith:w10-d:local:eq:D} defines a map on all smooth vectors.
+For fixed $g,N$, both sides of the intertwining identity lie in some $R\otimes V_M$.
+Their coefficients are Laurent polynomials.
+The rational intertwining identity established above proves their equality in the fraction field of $R$, hence in $R$.
+Replacing $z$ by $z^{-1}$ gives the stated opposite coefficients.
+Their products are $h$ on every summand, which proves \eqref{v4-arith:w10-d:local:eq:composition}.
+Inverting $h$ inverts both $\alpha$ and $\beta$, and the normalized composition follows.
+\end{proof}
+
+The ordered pair cannot be replaced by its ratio in the representation data.
+The central element $\varpi\operatorname{id}$ acts by $ab$.
+Replacing $(a,b)$ by $(ta,tb)$ leaves $z$ fixed and tensors the representation
+with $\chi_t\circ\det$.
+The swap in Proposition~\ref{v4-arith:w10-d:local:prop:regular} always exchanges the two characters.
+
+\section{The cone and its coefficient extensions}
+
+Use cochain complexes, with differentials of degree $1$ and
+$P[1]^j=P^{j+1}$ with differential $-d_P$.
+The cone of the map between degree-zero representations is
+\[
+ C=\operatorname{Cone}(D)=
+ [\,E\xrightarrow{D}E^\mathrm{sw}\,],
+ \qquad C^{-1}=E,\quad C^0=E^\mathrm{sw}.
+\]
+Let $\mathcal D_{\mathrm{sm}}(G,R)$ denote the derived category of smooth
+$R$-linear representations of $G$.
+Its objects are complexes, with quasi-isomorphisms inverted.
+The action on coefficients is trivial.
+The displayed complex is an object of this category.
+Its terms are free as $R$-modules.
+
+\begin{theorem}\label{v4-arith:w10-d:local:thm:cone}
+The map $D$ is injective over $R$.
+Writing $Q_{\mathrm{loc}}=\operatorname{coker} D$, the augmentation $C\to Q_{\mathrm{loc}}[0]$ is a $G$-equivariant quasi-isomorphism.
+As an $(R,K)$-module,
+\begin{equation}\label{v4-arith:w10-d:local:eq:Q}
+ Q_{\mathrm{loc}}\cong (R/(\alpha))\otimes H_0
+       \ \oplus\ (R/(\beta))\otimes H_+.
+\end{equation}
+Its support is the disjoint union of the two divisors $z=q$ and $z=q^{-1}$.
+It is annihilated by $h$.
+The two support summands in \eqref{v4-arith:w10-d:local:eq:Q} are $G$-stable.
+
+For every commutative $R$-algebra $S$, the complex
+\[
+ C_S=[\,S\otimes_R E\xrightarrow{1\otimes D}S\otimes_R E^\mathrm{sw}\,]
+\]
+computes the derived coefficient extension $S\otimes_R^{\mathbf L}C$.
+As $S$-modules with $K$-action, its cohomology is
+\begin{align*}
+ H^{-1}(C_S)&=(\operatorname{ann}_S\alpha)\otimes_\mathbb C H_0
+              \oplus(\operatorname{ann}_S\beta)\otimes_\mathbb C H_+,\\
+ H^0(C_S)&=(S/\alpha S)\otimes_\mathbb C H_0
+              \oplus(S/\beta S)\otimes_\mathbb C H_+.
+\end{align*}
+There is no cohomology in other degrees.
+Here $\alpha,\beta,z$ denote their images in $S$.
+\end{theorem}
+\begin{proof}
+The ring $R$ is a domain.
+Every eigenvalue in \eqref{v4-arith:w10-d:local:eq:D} is nonzero, so multiplication is injective on each free summand.
+The direct sum remains injective.
+Since $z$ is a unit, the image on $R\otimes H_n$ is
+$\beta(R\otimes H_n)$ for $n\ge1$.
+This proves \eqref{v4-arith:w10-d:local:eq:Q} and the quasi-isomorphism.
+
+The identity
+\begin{equation}\label{v4-arith:w10-d:local:eq:bezout}
+ \alpha+q^{-1}\beta=1-q^{-2}
+\end{equation}
+shows that the two defining ideals are comaximal.
+Both quotient summands are nonzero, so their supports are exactly the stated divisors.
+Scalar multiplication by $h=z^{-1}\alpha\beta$ kills them.
+The Chinese remainder idempotents of $R/(\alpha\beta)$ commute with $G$.
+Their images therefore give the $G$-stable support summands.
+This argument makes no claim that individual $H_n$ are $G$-stable.
+
+A bounded complex of free coefficient modules computes derived extension of scalars.
+Tensoring \eqref{v4-arith:w10-d:local:eq:D} with $S$ gives the displayed complex.
+The factors $z^{n-1}$ remain units.
+Computing kernels and cokernels of scalar multiplication on each direct summand gives the formulas.
+\end{proof}
+
+For a coefficient map $S\to T$, the maps $s\otimes f\mapsto\overline s\otimes f$
+define a $G$-equivariant chain map $C_S\to C_T$.
+They compose strictly, and
+$T\otimes_S^{\mathbf L}C_S\simeq C_T$.
+These are the specialization maps of this family.
+In particular, evaluation at a point $x=(a_0,b_0)\in(\mathbb C^\times)^2$
+gives
+\[
+ C_x=[\,I(\chi_{a_0},\chi_{b_0})
+           \xrightarrow{D_x}I(\chi_{b_0},\chi_{a_0})\,].
+\]
+This statement includes nonflat coefficient maps.
+The global equality $\ker D=0$ does not imply $\ker D_x=0$.
+The new kernel is $\operatorname{Tor}^R_1(\mathbb C_x,Q_{\mathrm{loc}})$.
+Distinct closed points have no specified specialization map between their fibers.
+The maps above arise from actual coefficient homomorphisms.
+
+\section{The representations on the exceptional divisors}
+
+The support decomposition permits a full $G$-equivariant description.
+Let $J=C^\infty(B\backslash G;\mathbb C)$ be unnormalized induction of the trivial character,
+with right translation.
+Its constant functions form the trivial representation.
+Define the Steinberg representation here by the quotient
+\[
+ \operatorname{St}=J/\mathbb C\mathbf1.
+\]
+Only this definition is needed below.
+Its compact-picture coefficient space is $V/H_0$.
+For any invertible coefficient $t$, write $\chi_t(x)=t^{v_F(x)}$.
+Define free $R$-modules with smooth $G$-action by
+\[
+ L_\alpha=R\otimes(\chi_{q^{1/2}b}\circ\det),\qquad
+ L_\beta=(R\otimes_\mathbb C\operatorname{St})\otimes(\chi_{q^{1/2}a}\circ\det).
+\]
+The first notation means a rank-one free module on which $g$ acts by
+$(q^{1/2}b)^{v_F(\det g)}$.
+The second combines the indicated scalar with the usual action on $\operatorname{St}$.
+
+\begin{theorem}\label{v4-arith:w10-d:local:thm:representation}
+There is an isomorphism of smooth $R$-linear $G$-representations
+\begin{equation}\label{v4-arith:w10-d:local:eq:GQ}
+ Q_{\mathrm{loc}}\cong L_\alpha/\alpha L_\alpha
+       \oplus L_\beta/\beta L_\beta.
+\end{equation}
+Consequently, in $\mathcal D_{\mathrm{sm}}(G,R)$,
+\begin{equation}\label{v4-arith:w10-d:local:eq:koszul}
+ C\simeq
+ [\,L_\alpha\xrightarrow{\alpha}L_\alpha\,]
+ \oplus
+ [\,L_\beta\xrightarrow{\beta}L_\beta\,],
+\end{equation}
+with both source terms in degree $-1$.
+The equivalence is specified by the augmentations of both sides to \eqref{v4-arith:w10-d:local:eq:GQ}.
+It remains an equivalence after every derived coefficient extension.
+\end{theorem}
+\begin{proof}
+On $\beta=0$, the ordered parameters satisfy $b=qa$.
+The target induction has ordered pair $(b,a)=(qa,a)$.
+Put $\lambda=q^{1/2}a$.
+Its normalized induction factor is
+\[
+ |u/t|^{1/2}(qa)^{v_F(u)}a^{v_F(t)}
+   =\lambda^{v_F(ut)}.
+\]
+Thus $E^\mathrm{sw}|_{\beta=0}$ is $J$ tensored with $\chi_\lambda\circ\det$.
+The image of $D$ there is precisely the constants, since
+$\alpha|_{\beta=0}=1-q^{-2}$ is nonzero.
+Taking the quotient gives $L_\beta/\beta L_\beta$.
+This computation holds over the divisor ring $R/(\beta)$.
+
+On $\alpha=0$, the ordered pair is $(a,b)=(qb,b)$.
+The source $E|_{\alpha=0}$ is $J$ tensored with
+$\chi_{q^{1/2}b}\circ\det$, by the same induction-law calculation.
+The target has ratio $q^{-1}$.
+The regular normalized intertwiner from this target to the source is $P_0$,
+by \eqref{v4-arith:w10-d:local:eq:normalized}.
+Its image is the constant line in the source, and its kernel is $H_+$.
+The map $D$ from the source to the target has image $H_+$,
+since all its positive-level coefficients are units on this divisor.
+Therefore $P_0$ identifies the cokernel with $L_\alpha/\alpha L_\alpha$.
+Together with the $G$-stable support decomposition, this proves \eqref{v4-arith:w10-d:local:eq:GQ}.
+
+Multiplication by $\alpha$ on $L_\alpha$ and by $\beta$ on $L_\beta$ is injective.
+The two displayed complexes are free coefficient resolutions of the corresponding summands of $Q_{\mathrm{loc}}$.
+Their augmentations and $C\to Q_{\mathrm{loc}}$ give the claimed equivalence.
+All terms of the two resolutions and of $C$ are coefficient-flat.
+Hence these resolutions also compute every derived coefficient extension.
+\end{proof}
+
+
+\begin{proposition}\label{v4-arith:w10-d:local:prop:fibers}
+At a complex point $x=(a_0,b_0)$, put $z_0=a_0/b_0$.
+If $z_0\notin\{q,q^{-1}\}$, then $C_x$ is acyclic.
+At the two exceptional ratios, define
+\[
+ W_x=\begin{cases}
+ \chi_{q^{1/2}b_0}\circ\det,&z_0=q,\\
+ \operatorname{St}\otimes(\chi_{q^{1/2}a_0}\circ\det),&z_0=q^{-1}.
+ \end{cases}
+\]
+Then $H^{-1}(C_x)\cong W_x\cong H^0(C_x)$ as smooth $G$-representations.
+In the full category $\mathcal D_{\mathrm{sm}}(G,\mathbb C)$,
+\[
+ C_x\simeq W_x[1]\oplus W_x.
+\]
+In the compact picture, the kernel and cokernel spaces are $H_0$ at $z_0=q$
+and $H_+$ at $z_0=q^{-1}$.
+The cokernel means the quotient of the target by the complementary image.
+\end{proposition}
+\begin{proof}
+Outside the two divisors every coefficient of $D_x$ is nonzero, so the map is invertible on $V$.
+At $z_0=q$, the $H_0$ coefficient is zero and all positive-level coefficients are nonzero.
+At $z_0=q^{-1}$ the reverse holds.
+This computes kernels and cokernels as $K$-spaces.
+Applying coefficient extension to \eqref{v4-arith:w10-d:local:eq:koszul} identifies the full derived $G$-objects.
+On the vanishing divisor the relevant Koszul differential becomes zero.
+The other differential becomes an invertible scalar, so its complex is contractible.
+The surviving representation is exactly $W_x$.
+\end{proof}
+
+\begin{remark}[The central character]\label{v4-arith:w10-d:local:rem:center}
+The action on $E$, $E^\mathrm{sw}$, $C$, and $Q_{\mathrm{loc}}$ satisfies
+\[
+ \pi(t\operatorname{id})=(ab)^{v_F(t)}\operatorname{id}\qquad(t\in F^\times).
+\]
+One may require this identity strictly on every object and complex.
+It defines a smaller abelian category of smooth representations and its derived category.
+The cone $C$, its augmentation to $Q_{\mathrm{loc}}$, and its coefficient specializations belong to that category,
+with the coefficient character specialized when necessary.
+
+The lifts $L_\alpha$ and $L_\beta$ have central characters
+$(qb^2)^{v_F(t)}$ and $(qa^2)^{v_F(t)}$, respectively.
+These equal $(ab)^{v_F(t)}$ only after imposing their respective divisor equations.
+Thus \eqref{v4-arith:w10-d:local:eq:koszul} is an equivalence in the full category stated in Theorem~\ref{v4-arith:w10-d:local:thm:representation}.
+The universal lifts therefore do not prove a splitting inside the
+strict universal-central-character category. At a fixed exceptional
+complex point, however, the same actual complex $C_x$ does split in
+the strictly specialized category. The next construction supplies a
+projective resolution and the two quasi-isomorphisms that establish
+this assertion. Universal marked-family compatibility remains a
+separate question.
+\end{remark}
+
+\section{Strict central character at a complex point}
+
+At an exceptional unramified character ratio, the regular intertwining complex has two nonzero cohomology groups.
+A splitting must preserve the central character on every representation and every morphism.
+The lattice tree supplies a projective resolution inside that category and removes the degree-two obstruction.
+
+Use the same local field and operator as above. More explicitly, let $F$ be a finite extension of $\mathbb Q_p$.
+Write $\mathcal O$ for its ring of integers, $\varpi$ for a uniformizer,
+and $q$ for its residue cardinality.
+Normalize $v_F(\varpi)=1$ and $|\varpi|=q^{-1}$.
+Set $G=\operatorname{GL}_2(F)$, with center $Z=F^\times\operatorname{id}$.
+In this fixed-point splitting construction, representations are complex vector spaces with smooth group action:
+each vector has an open stabilizer.
+All tensor products are algebraic over $\mathbb C$.
+
+Fix $a_0,b_0\in\mathbb C^\times$ with $z_0=a_0/b_0\in\{q,q^{-1}\}$.
+Define $\chi_t(u)=t^{v_F(u)}$ for $t\in\mathbb C^\times$.
+Let $E_x=I(\chi_{a_0},\chi_{b_0})$ be normalized induction from the upper triangular subgroup $B$.
+Thus its locally constant functions satisfy
+\[
+ f\left(\begin{pmatrix}u&v\\0&t\end{pmatrix}g\right)
+   =|u/t|^{1/2}\chi_{a_0}(u)\chi_{b_0}(t)f(g),
+ \qquad (\pi(g)f)(h)=f(hg),
+\]
+with the positive square root.
+Write $E_x^{\mathrm{sw}}=I(\chi_{b_0},\chi_{a_0})$.
+Both representations have central character
+\[
+ \zeta(t\operatorname{id})=(a_0b_0)^{v_F(t)}.
+\]
+Let $\mathcal A_\zeta$ be the abelian category of smooth complex $G$-representations
+on which every $t\operatorname{id}$ acts exactly by this scalar.
+Its morphisms are $G$-equivariant linear maps.
+Kernels and cokernels in smooth representations preserve the stated identity.
+Write $\mathcal D^b(\mathcal A_\zeta)$ for its bounded derived category.
+Use cochain complexes with differential of degree $1$ and
+$P[1]^j=P^{j+1}$ with differential $-d_P$.
+
+The regular intertwiner is the specialization of
+$D_z=(1-q^{-1}z)R_z=(1-z)M_z$, with additive measure
+$\operatorname{vol}(\mathcal O)=1$ in the raw intertwining integral $M_z$.
+The source and target are the ordered inducing pairs and their swaps.
+The established compact-picture formula is
+\[
+ D_z|_{H_0}=1-q^{-1}z,\qquad
+ D_z|_{H_n}=z^{n-1}(z-q^{-1})\quad(n\ge1).
+\]
+Here $H_0$ is the constant line on $\mathbb P^1(F)$.
+For $n\ge1$, $H_n$ consists of functions on
+$\mathbb P^1(\mathcal O/\varpi^n\mathcal O)$ with zero average on every fiber of reduction to level $n-1$.
+At level zero, reduction means global averaging.
+These spaces form the algebraic direct sum of all locally constant functions.
+The regular map $D_x:E_x\to E_x^{\mathrm{sw}}$ is a smooth $G$-intertwiner.
+The complex under consideration is
+\begin{equation}\label{v4-arith:w10-d:fixed-center:eq:cone}
+ C_x=[\,E_x\xrightarrow{D_x}E_x^{\mathrm{sw}}\,],
+ \qquad C_x^{-1}=E_x,\quad C_x^0=E_x^{\mathrm{sw}}.
+\end{equation}
+Its kernel and cokernel are both isomorphic to
+\begin{equation}\label{v4-arith:w10-d:fixed-center:eq:W}
+ W_x=\begin{cases}
+ \chi_{q^{1/2}b_0}\circ\det,&z_0=q,\\
+ \operatorname{St}\otimes(\chi_{q^{1/2}a_0}\circ\det),&z_0=q^{-1},
+ \end{cases}
+\end{equation}
+where $\operatorname{St}=C^\infty(B\backslash G;\mathbb C)/\mathbb C\mathbf1$ uses unnormalized induction of the trivial character.
+The operator and these kernel and quotient identifications are the input to the splitting problem.
+The following construction applies to every two-term complex in $\mathcal A_\zeta$.
+
+\subsection{Removing the fixed central character}
+
+Set
+\[
+ \lambda=\begin{cases}q^{1/2}b_0,&z_0=q,\\q^{1/2}a_0,&z_0=q^{-1}.
+ \end{cases}
+ \qquad \eta=\chi_\lambda\circ\det.
+\]
+In either case $\lambda^2=a_0b_0$.
+The character $\eta$ is smooth, and its restriction to $Z$ equals $\zeta$.
+Let $H=G/Z=\operatorname{PGL}_2(F)$, with the quotient topology.
+
+\begin{lemma}\label{v4-arith:w10-d:fixed-center:lem:twist}
+Twisting by $\eta^{-1}$ and descending through $G\to H$ gives an exact equivalence
+\[
+ \mathcal A_\zeta\longrightarrow\operatorname{Rep}_{\mathrm{sm},\mathbb C}(H).
+\]
+Its inverse inflates an $H$-representation and twists by $\eta$.
+Under this equivalence, $W_x$ becomes the trivial representation when $z_0=q$
+and the Steinberg quotient when $z_0=q^{-1}$.
+\end{lemma}
+\begin{proof}
+For $V\in\mathcal A_\zeta$, every central element acts trivially on $V\otimes\eta^{-1}$.
+Its action therefore factors uniquely through $H$.
+If a vector has open stabilizer $U$ in $G$, the image of $UZ$ is open in $H$ and fixes that vector.
+Thus the descended action is smooth.
+Conversely, inflation of a smooth $H$-action is smooth, and the twist gives central character $\zeta$.
+The two constructions are inverse on objects and morphisms.
+Their underlying vector-space functors are exact.
+Formula~\eqref{v4-arith:w10-d:fixed-center:eq:W} gives the final assertion.
+\end{proof}
+
+It remains to construct projective resolutions for smooth representations of $H$.
+The quotient by the full center is essential: the stabilizers of lattice classes in $H$ are compact.
+
+\subsection{The lattice tree}
+
+An $\mathcal O$-lattice in $F^2$ is the $\mathcal O$-span of an $F$-basis.
+Vertices are homothety classes $[L]$ of such lattices.
+Two classes are adjacent if they have representatives satisfying
+\[
+ \varpi L\subset M\subset L,\qquad
+ \dim_{\mathcal O/\varpi\mathcal O}(M/\varpi L)=1.
+\]
+This is a symmetric relation on classes.
+Indeed, the reverse inclusion can be represented by
+$\varpi M\subset\varpi L\subset M$.
+The group $H$ acts on this graph by its action on lattice classes.
+
+\begin{lemma}\label{v4-arith:w10-d:fixed-center:lem:tree}
+This graph is a tree.
+Each vertex has $q+1$ neighbors.
+\end{lemma}
+\begin{proof}
+The neighbors of $[L]$ are exactly the lines in $L/\varpi L$, so there are $q+1$.
+Fix the root $[L_0]$, where $L_0=\mathcal O e_1\oplus\mathcal O e_2$.
+Each class has a unique representative $L\subset L_0$ with $L\not\subset\varpi L_0$.
+Multiplication by a unit does not change a lattice, which proves uniqueness.
+Choose a primitive vector $u\in L$ and complete it to a basis $u,v$ of $L_0$.
+The image of $L$ in $L_0/\mathcal O u$ is an ideal $\varpi^n\mathcal O$.
+Subtracting an $\mathcal O u$ component from a lift of its generator gives
+\[
+ L=\mathcal O u\oplus\mathcal O\varpi^n v,\qquad n\ge0.
+\]
+The integer $n$ is the valuation of the determinant of this normalized lattice relative to $L_0$.
+It is independent of the chosen basis and will be its height.
+Height zero gives the root.
+
+For $n>0$, the line generated by $\varpi^n v$ in $L/\varpi L$
+gives the neighboring lattice
+$\mathcal O\varpi u\oplus\mathcal O\varpi^n v$.
+After normalization, its height is $n-1$.
+Every other line is generated by $u+c\varpi^n v$ for one residue $c\in\mathcal O/\varpi\mathcal O$.
+Its neighboring lattice is
+\[
+ \mathcal O(u+c\varpi^n v)\oplus\mathcal O\varpi^{n+1}v,
+\]
+which is normalized and has height $n+1$.
+Every neighbor of the root has height one.
+Thus every positive-height vertex has exactly one neighbor of lower height.
+Repeated lower-height steps connect it to the root.
+A cycle would have a maximal-height vertex with two neighbors of lower height, which is impossible.
+\end{proof}
+
+An element of $H$ can exchange the endpoints of an edge.
+Insert a midpoint in each edge to obtain the barycentric subdivision $T$.
+Orient each new edge from its lattice vertex to its midpoint.
+The $H$-action preserves these two vertex types and therefore preserves the chosen orientations.
+
+Let $v_0=[L_0]$ and $v_1=[\mathcal O e_1\oplus\mathcal O\varpi e_2]$.
+Let $m_0$ be the midpoint between them.
+The stabilizer $K$ of $v_0$ is the image of $\operatorname{GL}_2(\mathcal O)$ in $H$.
+It is compact and open.
+The stabilizer $I$ of the incidence $(v_0,m_0)$ fixes both $v_0$ and $v_1$.
+In $K$, it is the inverse image of the stabilizer of a line modulo $\varpi$, hence compact and open.
+The class of
+\[
+ s=\begin{pmatrix}0&1\\\varpi&0\end{pmatrix}
+\]
+exchanges $v_0$ and $v_1$ and satisfies $s^2=1$ in $H$.
+The midpoint stabilizer is $J=I\sqcup sI$ and is compact and open.
+The action is transitive on lattice vertices, on midpoints, and on the oriented edges of $T$.
+The first assertion follows by sending one lattice basis to another.
+Transitivity on incident pairs follows because $K$ acts transitively on lines modulo $\varpi$.
+
+\begin{example}[The first ball when $q=2$]\label{v4-arith:w10-d:fixed-center:ex:star}
+The first ball about $v_0$ is a star with three leaves $v_1,v_2,v_3$.
+Write $m_i$ for the midpoint of $v_0v_i$.
+The subdivision has seven vertices and six oriented edges
+$e_i=(v_0,m_i)$ and $f_i=(v_i,m_i)$, for $1\le i\le3$.
+Its boundary map and augmentation are
+\[
+ \partial e_i=[m_i]-[v_0],\qquad
+ \partial f_i=[m_i]-[v_i],\qquad
+ \epsilon[v]=1.
+\]
+Define a linear map $h$ from vertices to edge chains by
+\[
+ h[v_0]=0,\qquad h[m_i]=e_i,\qquad h[v_i]=e_i-f_i.
+\]
+Then
+\[
+ \partial h=\operatorname{id}-[v_0]\epsilon,\qquad h\partial=\operatorname{id}.
+\]
+Both identities follow by applying the displayed formulas to each basis vector.
+Thus $\partial$ has rank six and its image is $\ker\epsilon$.
+This finite ball is not $H$-stable.
+The same finite-path calculation proves exactness for arbitrary finite chains in the entire tree.
+\end{example}
+
+\subsection{Projective cellular chains}
+
+For a compact open subgroup $U\subset H$, let $\operatorname{Rep}_{\mathrm{sm},\mathbb C}(U)$ denote its smooth complex representations.
+An object is projective if every morphism from it to a quotient lifts through the quotient map.
+The following property depends on the coefficient field $\mathbb C$.
+
+\begin{lemma}\label{v4-arith:w10-d:fixed-center:lem:compact}
+Every smooth complex representation of $U$ is projective in
+$\operatorname{Rep}_{\mathrm{sm},\mathbb C}(U)$.
+\end{lemma}
+\begin{proof}
+The orbit of any vector under $U$ is finite because its stabilizer is open and $U$ is compact.
+The orbit spans a finite-dimensional $U$-submodule.
+A basis of this submodule has a common open stabilizer.
+Its normal core is an open normal subgroup, so the action factors through a finite quotient of $U$.
+For an invariant subspace, average a linear projection over the finite quotient to obtain an equivariant projection.
+Its kernel is an invariant complement.
+Induction on dimension therefore decomposes this submodule into irreducibles.
+Hence every smooth $U$-module is a sum of finite-dimensional irreducible submodules.
+Choose a maximal direct sum of such submodules.
+If it does not contain the whole module, a finite-dimensional submodule contributes a simple summand outside it.
+That simple summand has zero intersection with the maximal direct sum, a contradiction.
+Thus the whole module is a direct sum of finite-dimensional irreducibles.
+
+Each such irreducible $\tau$ is projective.
+To verify the lifting property explicitly, let $Y\twoheadrightarrow Z$ be an epimorphism and let $f:\tau\to Z$ be $U$-equivariant.
+Choose lifts in $Y$ of the images of a basis of $\tau$ and extend them to a linear map $\ell:\tau\to Y$.
+The $U$-orbits of these finitely many lifts span a finite-dimensional submodule $Y_0$.
+Choose an open normal subgroup $N\subset U$ acting trivially on both $Y_0$ and $\tau$.
+Then
+\[
+ \widetilde f(v)=\frac1{|U/N|}\sum_{u\in U/N}u\,\ell(u^{-1}v)
+\]
+is well-defined, $U$-equivariant, and lifts $f$.
+Only finite-dimensional smooth data are averaged.
+Finally, morphisms out of a direct sum can be lifted on its summands and then assembled.
+A direct sum of projectives is therefore projective.
+\end{proof}
+
+For $M\in\operatorname{Rep}_{\mathrm{sm},\mathbb C}(U)$, define compact induction
+$\operatorname{c\!\operatorname{-}Ind}_U^H M$ by finite sums of symbols $[g,m]$, linear in $m$, with relations
+\[
+ [gu,m]=[g,um]\qquad(g\in H,\ u\in U).
+\]
+The group acts by $h[g,m]=[hg,m]$.
+This is the algebraic finite-support model on $H/U$, valid because $U$ is open.
+It is smooth: the stabilizer of $[g,m]$ contains $gU_mg^{-1}$, where $U_m$ is an open stabilizer of $m$ in $U$.
+A finite sum has the intersection of finitely many such open stabilizers.
+
+The map determined by $[g,m]\mapsto g f(m)$ gives the adjunction
+\[
+ \operatorname{Hom}_H(\operatorname{c\!\operatorname{-}Ind}_U^H M,V)\cong\operatorname{Hom}_U(M,V|_U).
+\]
+Its inverse restricts a morphism to the symbols $[1,m]$.
+Restriction is exact, so compact induction takes projectives to projectives.
+Lemma~\ref{v4-arith:w10-d:fixed-center:lem:compact} applies to every compact open cell stabilizer of $T$.
+
+For a discrete set $Y$, write $C_c(Y;\mathbb C)$ for its finitely supported functions,
+with basis vectors denoted $[y]$.
+Let $T_0$ and $T_1$ be the vertices and the chosen oriented edges of $T$.
+For a smooth $H$-representation $V$, define
+\[
+ P_1(V)=C_c(T_1;\mathbb C)\otimes V,\qquad
+ P_0(V)=C_c(T_0;\mathbb C)\otimes V,
+\]
+with diagonal action $g([c]\otimes v)=[gc]\otimes gv$.
+For an oriented edge $e=(u,m)$, define
+\[
+ \partial([e]\otimes v)=([m]-[u])\otimes v,
+ \qquad \epsilon([u]\otimes v)=v.
+\]
+Both maps commute with $H$, and $\epsilon\partial=0$.
+
+\begin{theorem}\label{v4-arith:w10-d:fixed-center:thm:resolution}
+For every smooth complex $H$-representation $V$, the sequence
+\begin{equation}\label{v4-arith:w10-d:fixed-center:eq:resolution}
+ 0\longrightarrow P_1(V)\xrightarrow{\partial}P_0(V)
+ \xrightarrow{\epsilon}V\longrightarrow0
+\end{equation}
+is exact and its first two terms are projective smooth $H$-representations.
+Consequently,
+\[
+ \operatorname{Ext}^j_{\operatorname{Rep}_{\mathrm{sm},\mathbb C}(H)}(V,U)=0
+ \qquad(j\ge2)
+\]
+for all smooth $V,U$.
+\end{theorem}
+\begin{proof}
+Fix a root vertex $o$ of $T$.
+For each vertex $v$, let $p_v$ be the finite edge chain along the unique path from $o$ to $v$,
+with coefficient $-1$ whenever the path opposes the chosen edge orientation.
+Then $\partial p_v=[v]-[o]$.
+The map $[v]\otimes w\mapsto p_v\otimes w$ gives
+$\partial h=\operatorname{id}-([o]\otimes-)\epsilon$.
+Thus every chain of augmentation zero is a boundary.
+The augmentation is surjective because $w=\epsilon([o]\otimes w)$.
+A nonzero finite-support edge cycle would have a leaf in the finite subtree spanned by its support.
+At that leaf, its boundary equals the nonzero coefficient of its unique incident supported edge, up to sign.
+This is impossible, so $\partial$ is injective.
+These arguments also apply to vector coefficients and use only finite sums.
+The root-path contraction proves exactness and is not claimed equivariant.
+
+For a chosen cell $c$ with stabilizer $U$, the map
+\[
+ \operatorname{c\!\operatorname{-}Ind}_U^H(V|_U)\longrightarrow C_c(Hc;\mathbb C)\otimes V,
+ \qquad [g,v]\longmapsto[gc]\otimes gv
+\]
+is an equivariant isomorphism.
+The relation $[gu,v]=[g,uv]$ verifies that it is well-defined.
+Its inverse sends $[gc]\otimes w$ to $[g,g^{-1}w]$ and is independent of the representative $g$.
+The three cell orbits therefore give
+\[
+ P_1(V)\cong\operatorname{c\!\operatorname{-}Ind}_I^H(V|_I),\qquad
+ P_0(V)\cong\operatorname{c\!\operatorname{-}Ind}_K^H(V|_K)\oplus\operatorname{c\!\operatorname{-}Ind}_J^H(V|_J).
+\]
+They are smooth projectives by Lemma~\ref{v4-arith:w10-d:fixed-center:lem:compact} and the compact-induction adjunction.
+Applying $\operatorname{Hom}(-,U)$ to this projective resolution computes $\operatorname{Ext}$ and leaves no terms in degrees $j\ge2$.
+\end{proof}
+
+The constant-coefficient resolution above needs no finite generation or admissibility hypothesis.
+Its projective terms can have infinite multiplicity.
+Cellular resolutions with coefficient systems of compact-subgroup invariants are developed in
+Schneider--Stuhler, \emph{Representation theory and sheaves on the Bruhat--Tits building}, Section~II.2, pp.~121--122, and Theorem~II.3.1, p.~123.
+Here the rank-one tree and constant coefficients give the stated resolution directly.
+
+\subsection{The obstruction and the splitting maps}
+
+Lemma~\ref{v4-arith:w10-d:fixed-center:lem:twist} transports the resolution and projectivity into $\mathcal A_\zeta$.
+For $V\in\mathcal A_\zeta$, apply \eqref{v4-arith:w10-d:fixed-center:eq:resolution} to its descended twist $V\otimes\eta^{-1}$,
+then inflate and tensor every term and map with $\eta$.
+This gives a projective resolution
+\[
+ 0\longrightarrow P_1^\zeta(V)\xrightarrow{d}P_0^\zeta(V)
+ \xrightarrow{\epsilon}V\longrightarrow0
+\]
+inside $\mathcal A_\zeta$.
+In particular, $\operatorname{Ext}^j_{\mathcal A_\zeta}(V,U)=0$ for all $j\ge2$.
+Every central element acts by $\zeta$ on both projective terms.
+
+\begin{theorem}\label{v4-arith:w10-d:fixed-center:thm:split}
+Let $A\xrightarrow{D}B$ be a morphism in $\mathcal A_\zeta$.
+Place $A$ in degree $-1$ and $B$ in degree $0$, and set
+$U=\ker D$, $V=\operatorname{coker} D$.
+There is an isomorphism
+\[
+ [\,A\xrightarrow{D}B\,]\simeq U[1]\oplus V
+ \qquad\text{in }\mathcal D^b(\mathcal A_\zeta).
+\]
+It can be represented by two explicit quasi-isomorphisms through the cellular projective resolution of $V$.
+\end{theorem}
+\begin{proof}
+Write $P_1\xrightarrow{d}P_0\xrightarrow{\epsilon}V$ for the resolution just constructed.
+Let $p:B\twoheadrightarrow V$ and $i:U\hookrightarrow A$ be the quotient and kernel maps.
+Since $P_0$ is projective, choose a morphism $f_0:P_0\to B$ with $pf_0=\epsilon$.
+The identity $pf_0d=\epsilon d=0$ shows that $f_0d$ takes values in $\operatorname{im}D$.
+Projectivity of $P_1$ lifts that map through the epimorphism $A\twoheadrightarrow\operatorname{im}D$.
+Thus there is $f_1:P_1\to A$ satisfying
+\begin{equation}\label{v4-arith:w10-d:fixed-center:eq:lifts}
+ Df_1=f_0d.
+\end{equation}
+All objects, quotient maps, and lifts lie in $\mathcal A_\zeta$.
+
+Let $P=[P_1\xrightarrow{d}P_0]$, in degrees $-1,0$.
+Equation~\eqref{v4-arith:w10-d:fixed-center:eq:lifts} defines a chain map
+\[
+ \Phi:U[1]\oplus P\longrightarrow[\,A\xrightarrow{D}B\,],
+ \qquad
+ \Phi^{-1}(u,v)=i(u)+f_1(v),\quad \Phi^0=f_0.
+\]
+The superscripts denote cochain degrees.
+Since $d$ is injective, $H^{-1}(U[1]\oplus P)=U$ and $H^0(U[1]\oplus P)=V$.
+The map $\Phi$ induces the identity on these groups, using $pf_0=\epsilon$.
+It is therefore a quasi-isomorphism.
+The augmentation of $P$ gives another quasi-isomorphism
+\[
+ \Psi:U[1]\oplus P\longrightarrow U[1]\oplus V,
+ \qquad \Psi^{-1}(u,v)=u,\quad \Psi^0=\epsilon.
+\]
+The roof
+\[
+ [\,A\xrightarrow{D}B\,]\xleftarrow{\ \Phi\ }U[1]\oplus P
+ \xrightarrow{\ \Psi\ }U[1]\oplus V
+\]
+proves the asserted derived isomorphism.
+The compact averaging construction in Lemma~\ref{v4-arith:w10-d:fixed-center:lem:compact}, followed by compact induction,
+constructs the required lifts after choices of irreducible summands and linear lifts.
+No averaging over the noncompact group is used.
+\end{proof}
+
+The associated obstruction is the class of the exact two-extension
+\[
+ 0\longrightarrow U\xrightarrow{i}A\xrightarrow{D}B\xrightarrow{p}V\longrightarrow0
+\]
+in $\operatorname{Ext}^2_{\mathcal A_\zeta}(V,U)$.
+Equivalently, it is the connecting morphism $V\to U[2]$ in the cohomological truncation triangle.
+Theorem~\ref{v4-arith:w10-d:fixed-center:thm:resolution} makes this group zero, and the roof above realizes the splitting by actual maps.
+The construction proves existence and depends on the choices of lifts.
+No canonical splitting or compatibility between different parameters is asserted.
+
+\begin{proposition}[The exceptional fibers]\label{v4-arith:w10-d:fixed-center:prop:application}
+For the exceptional pair fixed in \eqref{v4-arith:w10-d:fixed-center:eq:cone}, there is an isomorphism
+\[
+ C_x\simeq W_x[1]\oplus W_x
+ \qquad\text{in }\mathcal D^b(\mathcal A_\zeta).
+\]
+Its degree-two obstruction vanishes in the strictly fixed-central-character category.
+\end{proposition}
+\begin{proof}
+The kernel and cokernel identifications \eqref{v4-arith:w10-d:fixed-center:eq:W} are morphisms inside $\mathcal A_\zeta$.
+Apply Theorem~\ref{v4-arith:w10-d:fixed-center:thm:split} to the actual map $D_x$.
+The resulting roof uses the projective resolution twisted by the stated $\eta$,
+so every term has central character $\zeta$.
+\end{proof}
+
+This is a pointwise statement over $\mathbb C$.
+The compact projectivity proof uses division by finite group orders and does not establish a theorem over arbitrary coefficient rings.
+The character $\eta$ is fixed at the chosen complex point.
+A splitting with the universal central character over the ordered-character Laurent ring,
+a canonical Weyl-compatible choice of pointwise splittings,
+and a comparison with global Eisenstein categories require separate constructions.
+
+
+\section{Normal equations and specialization maps}
+The opposite operator provides a direct comparison of these two cohomology groups.
+Put $T=R/(h)$.
+Equation~\eqref{v4-arith:w10-d:local:eq:composition} gives a well-defined map
+\[
+ \overline {D^\mathrm{sw}}:\operatorname{coker}(D_T)\longrightarrow\ker(D_T),
+ \qquad [y]\longmapsto D^\mathrm{sw}_Ty.
+\]
+It is an isomorphism of smooth $T$-linear $G$-representations.
+To prove this, decompose $T$ by the two comaximal ideals.
+On $\alpha=0$, its surviving coefficient is $\beta/z=1-q^{-2}$ on $H_0$.
+On $\beta=0$, its surviving coefficients are $z^{-n}\alpha$ on $H_n$, $n\ge1$.
+All are units in the corresponding divisor ring.
+The same isomorphism holds after further coefficient extension from $T$.
+
+There is also a comparison determined by a chosen equation of one divisor.
+For $t=\alpha$ or $t=\beta$, let $\overline R=R/(t)$.
+For $x\in\ker D_{\overline R}$, choose a lift $\widetilde x\in E$.
+The vector $D\widetilde x$ is divisible by $t$ in the free module $E^\mathrm{sw}$.
+Define
+\begin{equation}\label{v4-arith:w10-d:local:eq:bockstein}
+ \delta_t:\ker D_{\overline R}\longrightarrow\operatorname{coker} D_{\overline R},
+ \qquad x\longmapsto[\,D\widetilde x/t\,].
+\end{equation}
+Changing the lift by $tu$ changes the quotient by $Du$, so the map is well-defined.
+Equivariance follows by applying $D\pi(g)=\pi^\mathrm{sw}(g)D$ to the chosen lift.
+This is the connecting map for the coefficient sequence
+$0\to R/(t)\xrightarrow{t}R/(t^2)\to R/(t)\to0$ applied to $C$.
+It also identifies the kernel calculated from the free resolution of $Q_{\mathrm{loc}}$
+with its $t$-torsion using the resolution $[R\xrightarrow{t}R]$ of $R/(t)$.
+
+The map $\delta_\alpha$ has coefficient $1$ on $H_0$.
+The map $\delta_\beta$ has coefficient $z^{n-1}$ on $H_n$, $n\ge1$, evaluated on $\beta=0$.
+Thus both are isomorphisms.
+They are compatible with subsequent extension along the respective divisor.
+They satisfy
+\[
+ \delta_t\overline {D^\mathrm{sw}}=(h/t)|_{t=0}\,\operatorname{id},
+ \qquad
+ (h/\alpha)|_{\alpha=0}=1-q^{-2},\quad
+ (h/\beta)|_{\beta=0}=q(1-q^{-2}).
+\]
+Replacing the local equation $t$ by $ut$, with $u$ a unit, multiplies $\delta_t$ by $u^{-1}$ on the divisor.
+The normal equation is therefore part of this specialization comparison.
+
+\section{Finite levels and matrix factorizations}
+
+The finite spaces $V_N$ retain the integral's compact-level refinement.
+Set $E_N=R\otimes V_N$ and $E_N^\mathrm{sw}=R\otimes V_N$, with their respective induced compact actions.
+Restriction gives $D_N:E_N\to E_N^\mathrm{sw}$ and $D_N^\mathrm{sw}:E_N^\mathrm{sw}\to E_N$.
+Inclusions $V_N\hookrightarrow V_{N+1}$ and averaging maps $P_N:V_{N+1}\to V_N$
+commute with both operators because they preserve each $H_n$.
+They therefore induce maps of the cones and of their coefficient extensions.
+The inclusions give
+\[
+ C=\operatorname*{colim}_N C_N,\qquad C_N=[E_N\xrightarrow{D_N}E_N^\mathrm{sw}].
+\]
+Filtered colimits of modules are exact, so kernels, cokernels, and the displayed coefficient extensions commute with this colimit.
+
+For $N\ge1$, let $K_N=1+\varpi^NM_2(\mathcal O)$, and set $K_0=K$.
+Then $E^{K_N}=E_N$ and $(E^\mathrm{sw})^{K_N}=E_N^\mathrm{sw}$.
+Compact averaging is defined over every $\mathbb C$-algebra and is exact on smooth representations.
+Indeed, any finite set of vectors is fixed by an open subgroup, and averaging reduces to a finite sum with invertible denominator.
+It follows that $C_N=C^{K_N}$ and $\operatorname{coker} D_N=Q_{\mathrm{loc}}^{K_N}$.
+Full $G$-translation can move $E_N$ into a larger $E_M$.
+The finite complexes carry $K$-actions, whereas their colimit carries the full $G$-action.
+
+A finite-free matrix factorization of $h\in R$ consists of finite-free modules $M_0,M_1$
+and maps $d_0:M_0\to M_1$, $d_1:M_1\to M_0$ satisfying
+$d_1d_0=h\operatorname{id}$ and $d_0d_1=h\operatorname{id}$.
+Thus $(D_N,D_N^\mathrm{sw})$ is a finite-free $K$-equivariant matrix factorization of $h$.
+Its rank is $\dim V_N$ in each parity.
+The full pair $(D,D^\mathrm{sw})$ has infinite-rank free terms.
+
+\begin{proposition}\label{v4-arith:w10-d:local:prop:mf}
+Each finite-level matrix factorization $(D_N,D_N^\mathrm{sw})$ is contractible through $K$-equivariant maps.
+Its cokernel is a projective $R/(h)$-module.
+The ordinary two-term cone $C_N$ is nevertheless nonzero in the derived category for every $N\ge0$.
+\end{proposition}
+\begin{proof}
+Put $c=1-q^{-2}$.
+Write $d_0=D_N$, $d_1=D_N^\mathrm{sw}$.
+A contraction consists of maps $s_0:M_0\to M_1$ and $s_1:M_1\to M_0$
+with $ds+sd=\operatorname{id}$ on the two-parity module.
+On $H_0$ take
+\[
+ s_1=c^{-1},\qquad s_0=q^{-1}z/c.
+\]
+Then $s_1d_0+d_1s_0=(\alpha+q^{-1}\beta)/c=1$.
+On $H_n$, $n\ge1$, take
+\[
+ s_1=q^{-1}z^{-(n-1)}/c,\qquad s_0=z^n/c.
+\]
+Here $s_1d_0+d_1s_0=(q^{-1}\beta+\alpha)/c=1$ as well.
+All coefficients commute, so the identity also holds on the other parity.
+These are Laurent coefficients and preserve the $K$-stable decomposition.
+
+The ring $R/(h)$ is $R/(\alpha)\times R/(\beta)$ by \eqref{v4-arith:w10-d:local:eq:bezout}.
+The cokernel is free of rank one on the first component and rank $\dim V_N-1$ on the second.
+It is therefore projective over their product.
+As an $R$-module it is nonzero, since the first component is nonzero.
+This cokernel is $H^0(C_N)$, which proves the last assertion.
+\end{proof}
+
+The contraction above is asserted only for the coefficient modules with $K$-action.
+Its diagonal formulas do not establish a contraction commuting with the full $G$-action.
+A matrix factorization uses both opposite maps and satisfies $d^2=h$.
+The ordinary cone uses only $D$ and has the nonzero cohomology \eqref{v4-arith:w10-d:local:eq:Q}.
+These are distinct homological constructions.
+
+The regular intertwiner therefore defines a smooth equivariant degeneration complex on the entire ordered-character torus.
+Its cohomology consists of a character family on one divisor and a Steinberg quotient family on the other.
+Its derived fibers and their specialization comparisons are given above.
+A category comparison for global Eisenstein representations still requires a global target and a functor
+whose derived mapping objects and essential image are determined.
+The local degeneration complex supplies no such equivalence by itself.
+
+
+\section{Local Yoneda classes and finite exterior products}
+\label{v4-arith:w10-d:X1}
+
+A local nonsplit principal series defines a degree-one extension between
+its Steinberg quotient and its constant subrepresentation. At two distinct
+finite places, the exterior product of these extensions has degree two.
+An infinite restricted tensor introduces a second condition: its
+distinguished local vectors must be fixed by the prescribed compact
+subgroups at almost every place. These two requirements distinguish a
+finite exterior product of Steinberg representations from an adelic
+extension of principal series.
+
+\subsection{The local sequence and its invariant vectors}
+
+Fix the coefficient field $\mathbb C$. For a finite prime $p$, put
+$G_p=GL_2(\mathbb Q_p)$, $K_p=GL_2(\mathbb Z_p)$, and let $B_p$ be the upper triangular
+Borel subgroup. Give these groups their usual $p$-adic topologies.
+Write $X_p=B_p\backslash G_p\simeq\mathbb P^1(\mathbb Q_p)$, with its compact
+quotient topology and right $G_p$-action. The identification sends a matrix
+to the line spanned by its bottom row. Let
+\[
+ E_p=C^{\mathrm{lc}}(X_p,\mathbb C),\qquad
+ (\rho_p(g)f)(x)=f(xg).
+\]
+Here $C^{\mathrm{lc}}$ means locally constant functions, without an
+analytic completion. This is unnormalized smooth induction of the trivial
+character of $B_p$. With normalized induction and $|p|_p=p^{-1}$, its
+ordered inducing characters are $|\cdot|_p^{-1/2}$ and
+$|\cdot|_p^{1/2}$. Thus, if symmetric induction is written with characters
+$(|\cdot|_p^{s/2},|\cdot|_p^{-s/2})$, this sequence occurs at $s=-1$.
+
+The constants give the exact sequence
+\begin{equation}\label{v4-arith:w10-d:adelic:eq:local}
+ 0\longrightarrow\mathbb C\xrightarrow{i_p}E_p
+   \longrightarrow\operatorname{St}_p\longrightarrow0,
+ \qquad \operatorname{St}_p=E_p/\mathbb C\mathbf1_p.
+\end{equation}
+This is the usual Steinberg quotient in rank one
+(Casselman, \emph{Introduction to the Theory of Admissible Representations of $p$-Adic Reductive Groups}, Section~8.1, p.~70). Every term has trivial central character.
+We use $\operatorname{Rep}^{\mathrm{sm}}_{\mathbb C}(G_p)$ for the abelian category of all smooth complex
+representations. Its full subcategory on which the center acts trivially
+is identified with $\operatorname{Rep}^{\mathrm{sm}}_{\mathbb C}(PGL_2(\mathbb Q_p))$. Extension groups below specify
+which of these categories is used.
+
+\begin{lemma}\label{v4-arith:w10-d:adelic:lem:local}
+The sequence~\eqref{v4-arith:w10-d:adelic:eq:local} is nonsplit. Moreover,
+\[
+ \operatorname{Hom}_{G_p}(E_p,\mathbb C)=0,\qquad
+ \operatorname{Hom}_{G_p}(\operatorname{St}_p,\mathbb C)=0,\qquad
+ \operatorname{St}_p^{K_p}=0.
+\]
+The same statements hold after passage to $PGL_2(\mathbb Q_p)$.
+\end{lemma}
+\begin{proof}
+Consider a $G_p$-invariant linear functional $\ell:E_p\to\mathbb C$.
+Projective $p$-adic balls are translates of one another under $G_p$:
+affine transformations relate the balls in $\mathbb Q_p$, and inversion also
+relates them to the balls containing infinity. A ball is a disjoint union
+of $p$ smaller balls. Consequently the common value $c$ of $\ell$ on
+ball indicators satisfies $c=pc$, so $c=0$. Locally constant functions
+on $X_p$ are finite linear combinations of these indicators, since $X_p$
+is compact and the balls form a clopen basis. Hence $\ell=0$.
+A splitting of~\eqref{v4-arith:w10-d:adelic:eq:local} would provide such a functional with
+$\ell(\mathbf1_p)=1$. A morphism $\operatorname{St}_p\to\mathbb C$ would pull back to a
+morphism $E_p\to\mathbb C$, proving the first two assertions.
+
+Every line in $\mathbb Q_p^2$ has a primitive integral representative that extends
+to an integral basis. Thus $K_p$ acts transitively on $X_p$ and
+$E_p^{K_p}=\mathbb C\mathbf1_p$. Invariants under a compact open subgroup
+are exact for smooth complex representations. Indeed, normalized Haar
+averaging of a smooth vector is a finite sum, and averaging a lift of an
+invariant vector gives an invariant lift. Applying invariants to
+\eqref{v4-arith:w10-d:adelic:eq:local} gives $\operatorname{St}_p^{K_p}=0$. This averaging argument is also
+Casselman, Proposition~2.1.7, p.~20.
+All actions factor through $PGL_2(\mathbb Q_p)$, and the same proof applies there.
+\end{proof}
+
+Write $\alpha_p$ for the Yoneda class of~\eqref{v4-arith:w10-d:adelic:eq:local}. It is a
+specified nonzero element of $\operatorname{Ext}^1(\operatorname{St}_p,\mathbb C)$. No residue operator is
+needed to define it, and no dimension assertion about that group is
+required below.
+
+\subsection{Two finite places and the exterior degree}
+
+Let $p\ne q$ be finite primes. External tensor products over $\mathbb C$ are
+written $\boxtimes$ and carry the separate actions of the two groups.
+Tensoring the two local sequences gives the exact sequence
+\begin{equation}\label{v4-arith:w10-d:adelic:eq:two}
+\begin{split}
+ 0\longrightarrow\mathbb C\boxtimes\mathbb C
+ &\xrightarrow{d_2}
+ (E_p\boxtimes\mathbb C)\oplus(\mathbb C\boxtimes E_q)
+ \xrightarrow{d_1}E_p\boxtimes E_q\\
+ &\longrightarrow\operatorname{St}_p\boxtimes\operatorname{St}_q\longrightarrow0,
+\end{split}
+\end{equation}
+where
+\[
+ d_2=(i_p\boxtimes1,-1\boxtimes i_q),\qquad
+ d_1(x,y)=(1\boxtimes i_q)x+(i_p\boxtimes1)y.
+\]
+Unlike the cochain indexing of the local cone, the following totals use homological degrees and differentials of degree $-1$. These signs are the tensor differential for homological complexes,
+$\partial(x\otimes y)=\partial x\otimes y+(-1)^{\deg x}x\otimes\partial y$.
+In particular $d_1d_2=0$. The two complexes
+$[\mathbb C\to E_p]$ and $[\mathbb C\to E_q]$, in homological degrees $1,0$,
+have homology only in degree zero, with values $\operatorname{St}_p$ and $\operatorname{St}_q$.
+Tensoring over a field preserves this assertion. It proves the exactness
+of~\eqref{v4-arith:w10-d:adelic:eq:two}.
+
+The sequence~\eqref{v4-arith:w10-d:adelic:eq:two} is a Yoneda two-extension, not a short exact
+sequence with these endpoints. Its class is the exterior Yoneda product
+of $\alpha_p$ and $\alpha_q$, with the displayed tensor sign convention.
+The following argument proves that this class is nonzero without
+replacing either local representation by a finite-dimensional model.
+
+\begin{proposition}\label{v4-arith:w10-d:adelic:prop:finite}
+Let $S$ be a nonempty finite set of finite primes, $n=|S|$, and
+$\operatorname{St}_S=\boxtimes_{p\in S}\operatorname{St}_p$. Put $G_S=\prod_{p\in S}G_p$.
+In $\operatorname{Rep}^{\mathrm{sm}}_{\mathbb C}(G_S)$ one has
+\[
+ \operatorname{Ext}^r_{G_S}(\operatorname{St}_S,\mathbb C)=0\quad(0\le r<n).
+\]
+The exterior product of the classes $\alpha_p$ is nonzero in
+$\operatorname{Ext}^n_{G_S}(\operatorname{St}_S,\mathbb C)$. It is represented by the total tensor
+of the $n$ sequences~\eqref{v4-arith:w10-d:adelic:eq:local}.
+Both assertions also hold in the category where each local center acts
+trivially, namely $\operatorname{Rep}^{\mathrm{sm}}_{\mathbb C}(\prod_{p\in S}PGL_2(\mathbb Q_p))$.
+\end{proposition}
+\begin{proof}
+For either of the groups $G_p$ and $PGL_2(\mathbb Q_p)$, compact induction
+$\operatorname{c-Ind}_K^G\mathbb C$ from a compact open subgroup is projective. To see this,
+a $G$-map from this compact induction to $V$ is determined by the image
+of the indicator of $K$, and that image can be any element of $V^K$.
+Thus its Hom functor is $V\mapsto V^K$, which is exact by averaging.
+Every smooth vector is fixed by a compact open subgroup. Taking one
+such compact induction for each vector therefore gives enough projectives,
+and resolutions can be chosen with terms that are sums of these
+compact inductions.
+
+Choose such a resolution $P_{p,\bullet}\to\operatorname{St}_p$, with homological
+indices at least zero. Products of compact open subgroups are compact
+open, and
+\[
+ \left(\operatorname{c-Ind}_K^G\mathbb C\right)\boxtimes
+ \left(\operatorname{c-Ind}_L^H\mathbb C\right)
+ \simeq\operatorname{c-Ind}_{K\times L}^{G\times H}\mathbb C.
+\]
+Both sides are finite-support functions on the product of the relevant
+discrete coset spaces. Hence the total external tensor of the chosen
+resolutions is a projective resolution of $\operatorname{St}_S$.
+
+Let $C_{p,\bullet}=(P_{p,\bullet})_{G_p}$ be its coinvariant complex
+(or use $PGL_2(\mathbb Q_p)$ in the fixed-central-character category).
+For any representation $V$, a map $V\to\mathbb C$ factors uniquely through
+$V_G$. It follows that
+\begin{equation}\label{v4-arith:w10-d:adelic:eq:coinvariant}
+ \operatorname{Ext}^r_G(\operatorname{St}_p,\mathbb C)
+ \simeq\operatorname{Hom}_{\mathbb C}(H_r(C_{p,\bullet}),\mathbb C).
+\end{equation}
+Here the algebraic dual is exact over the field $\mathbb C$; no topological
+or continuous dual is used. Coinvariants of an external tensor for a
+product group are the tensor of the coinvariants. Consequently the same
+argument identifies the product-group Ext with the dual homology of
+$\bigotimes_{p\in S}C_{p,\bullet}$.
+
+Lemma~\ref{v4-arith:w10-d:adelic:lem:local} and~\eqref{v4-arith:w10-d:adelic:eq:coinvariant} imply
+$H_0(C_{p,\bullet})=0$. The K\"unneth formula for bounded-below complexes
+of vector spaces gives
+\[
+ H_r\left(\bigotimes_{p\in S}C_{p,\bullet}\right)
+ \simeq\bigoplus_{\substack{(r_p)\in\mathbb Z_{\ge0}^{S}\\\sum_pr_p=r}}
+       \bigotimes_{p\in S}H_{r_p}(C_{p,\bullet}).
+\]
+For completeness, one can split each vector-space complex as its homology
+with zero differential plus a contractible complex. Tensoring these
+splittings proves the formula. For $r<n$, every summand has some $r_p=0$
+and is zero. This proves the vanishing assertion.
+
+Each nonzero class $\alpha_p$ is a nonzero functional on
+$H_1(C_{p,\bullet})$. Choose a homology element on which it is nonzero.
+The product functional is nonzero on the tensor of these elements,
+which lies in degree $n$. It represents the exterior Yoneda class:
+a projective resolution maps to $[\mathbb C\to E_p]$ by first lifting its
+augmentation to $E_p$, then factoring its degree-one boundary through
+$\mathbb C$. The resulting degree-one cocycle represents $\alpha_p$.
+Tensoring these chain maps gives exactly the total extension and the
+product cocycle, with the tensor signs already specified.
+Thus the exterior class is nonzero.
+
+This proof uses genuinely compact open subgroups even for $GL_2$.
+It does not treat compact-mod-center subgroups as compact, and it makes
+no assertion about vanishing above degree $n$ in the unrestricted
+$GL_2$ category.
+\end{proof}
+
+\section{The restricted tensor condition}
+
+Let
+\[
+ G_f=GL_2(\mathbb A_f)=\prod_p'(G_p,K_p).
+\]
+Its restricted-product topology has neighborhoods of the identity that
+contain $\prod_{p\notin S}K_p$ for some finite $S$. A usual algebraic
+restricted tensor representation uses nonzero distinguished vectors
+$e_p\in V_p^{K_p}$ for all but finitely many $p$. Its vectors are finite
+linear combinations of tensors whose factors equal $e_p$ almost
+everywhere. For $g=(g_p)\in G_f$, both $g_p\in K_p$ and the distinguished
+factor condition hold almost everywhere, making the coordinate action
+well-defined.
+
+\begin{proposition}\label{v4-arith:w10-d:adelic:prop:noall}
+The local representations $\operatorname{St}_p$ do not admit a nonzero restricted
+tensor representation with the standard hyperspecial pointings at almost
+every finite prime. More generally, a smooth $G_f$-representation $V$
+with factorizations $V\simeq\operatorname{St}_p\otimes W_p$ as $G_p$-representations
+for every finite $p$, with $G_p$ acting only on the first factor, is zero.
+\end{proposition}
+\begin{proof}
+The required pointing space is zero at every prime by
+Lemma~\ref{v4-arith:w10-d:adelic:lem:local}. For the second assertion, a vector in a smooth
+$G_f$-representation is fixed by an open subgroup. That subgroup contains
+$K_p$ for every $p$ outside a finite set. But the stipulated factorization
+implies
+\[
+ V^{K_p}=\operatorname{St}_p^{K_p}\otimes W_p=0.
+\]
+This equality follows from averaging on the first tensor factor, or from
+writing any tensor as a finite sum with linearly independent second
+factors. Thus the vector is zero.
+\end{proof}
+
+Choosing Iwahori-fixed vectors at infinitely many places does not supply
+these hyperspecial pointings. The restricted product relative to those
+Iwahori subgroups is a different subgroup and topology. No passage to
+an unspecified completed tensor product is part of this construction.
+
+For a finite set $S$, a genuine smooth adelic representation is
+\[
+ \operatorname{St}_S^{(f)}=\left(\boxtimes_{p\in S}\operatorname{St}_p\right)
+               \boxtimes\left(\bigotimes_{p\notin S}'\mathbb C\right),
+\]
+where each omitted place uses the trivial representation and vector $1$.
+It is inflation from $G_S$ under the continuous projection $G_f\to G_S$.
+The extension of Proposition~\ref{v4-arith:w10-d:adelic:prop:finite} inflates with it and remains
+nonzero: restriction along the inclusion $G_S\hookrightarrow G_f$ is
+exact and recovers the original Yoneda class. This representation has
+Steinberg factors precisely at the specified finite set. It is not an
+all-place Steinberg representation.
+
+\section{An adelic principal-series extension}
+
+The local principal series $E_p$ do have compatible distinguished vectors,
+namely the constant functions $\mathbf1_p$. These vectors are fixed by
+all of $G_p$. For finite $S$, write $E_S=\boxtimes_{p\in S}E_p$, inflated
+to $G_f$ with trivial factors outside $S$. If $S\subset T$, define
+\[
+ E_S\longrightarrow E_T,\qquad
+ x\longmapsto x\otimes\bigotimes_{p\in T\setminus S}\mathbf1_p.
+\]
+The superscript $\mathrm{res}$ below means restricted tensor product; it does not name an automorphic residual spectrum. These maps are injective and $G_f$-equivariant. The canonical associativity
+and symmetry identifications make their composites agree for
+$S\subset T\subset U$. Put $E^{\mathrm{res}}=\operatorname{colim}_S E_S$.
+This is a smooth representation: a vector lies in some $E_S$, is smooth
+at the finitely many primes of $S$, and is fixed by the full groups
+outside $S$. Its central character is trivial.
+
+\begin{proposition}\label{v4-arith:w10-d:adelic:prop:global}
+Let $X=\prod_p\mathbb P^1(\mathbb Q_p)$ with its compact product topology.
+There is a $G_f$-equivariant isomorphism
+\[
+ E^{\mathrm{res}}\simeq C^{\mathrm{lc}}(X,\mathbb C)
+\]
+for the coordinatewise right action. The exact sequence
+\begin{equation}\label{v4-arith:w10-d:adelic:eq:global}
+ 0\longrightarrow\mathbb C\longrightarrow E^{\mathrm{res}}
+       \longrightarrow Q_{\mathrm{ad}}\longrightarrow0,
+ \qquad Q_{\mathrm{ad}}=E^{\mathrm{res}}/\mathbb C,
+\end{equation}
+is nonsplit in $\operatorname{Rep}^{\mathrm{sm}}_{\mathbb C}(G_f)$ and in its trivial-central-character category.
+Both $E^{\mathrm{res}}$ and $Q_{\mathrm{ad}}$ are admissible: their invariants under
+every compact open subgroup are finite-dimensional.
+\end{proposition}
+\begin{proof}
+For finite $S$, products of functions identify $E_S$ with
+$C^{\mathrm{lc}}(\prod_{p\in S}X_p,\mathbb C)$. Surjectivity follows by covering
+clopen subsets of the compact finite product by finitely many clopen
+rectangles and refining this cover to a finite partition. Injectivity
+follows because evaluations separate every finite-dimensional space of
+functions: after choosing bases in the finitely many function spaces
+involved, suitable finite sets of evaluation points give injective
+matrices, whose tensor is still injective.
+
+Every locally constant function on $X$ has a finite cover by basic open
+cylinders on which it is constant. Such a finite cover exists by
+compactness. The union of the finite coordinate sets defining the
+cylinders is finite. Two points equal in these coordinates belong to
+the same cylinders and therefore have equal function values. The function
+thus depends on only finitely many coordinates. This proves surjectivity
+from the colimit, and injectivity follows from the finite-stage statement.
+The insertion maps become pullback along coordinate projections.
+Each $g\in G_f$ acts by the coordinate homeomorphisms $x_p\mapsto x_pg_p$,
+so the isomorphism is equivariant. Smoothness also follows from the
+finite-coordinate description established above.
+
+A compact open subgroup of $G_f$ contains a subgroup
+$U_S\times\prod_{p\notin S}K_p$ for a finite $S$, where $U_S$ is a
+product of compact open subgroups at the places of $S$. Invariance under
+the tail $K_p$ forces a finite-coordinate function to be independent of
+those tail coordinates, because $K_p$ is transitive on $X_p$.
+Its invariants therefore lie in $E_S^{U_S}$. Each local compact open
+subgroup has open orbits on the compact space $X_p$, hence finitely many
+orbits. It follows that $E_S^{U_S}$ is finite-dimensional.
+This proves admissibility of $E^{\mathrm{res}}$. Compact-open invariants
+are exact by the same finite averaging argument, so its quotient $Q_{\mathrm{ad}}$
+is also admissible.
+
+A splitting of~\eqref{v4-arith:w10-d:adelic:eq:global} would give a $G_f$-invariant retraction
+$E^{\mathrm{res}}\to\mathbb C$. Its restriction to the embedded $E_{\{p\}}$
+would be a $G_p$-invariant retraction of the constants, contradicting
+Lemma~\ref{v4-arith:w10-d:adelic:lem:local}. The same argument applies when the full center
+acts trivially.
+\end{proof}
+
+The quotient $Q_{\mathrm{ad}}$ retains mixed finite-place terms. To describe them, set
+$F_{-1}E^{\mathrm{res}}=0$ and, for $m\ge0$, let $F_mE^{\mathrm{res}}$
+be the sum of the images of $E_T$ over finite sets $T$ with $|T|\le m$.
+This is an increasing, exhaustive filtration by $G_f$-subrepresentations,
+with $F_0E^{\mathrm{res}}=\mathbb C$.
+
+\begin{proposition}\label{v4-arith:w10-d:adelic:prop:filtration}
+For every $m\ge0$ there is a canonical isomorphism
+\[
+ \operatorname{gr}_m^F E^{\mathrm{res}}
+ \simeq\bigoplus_{\substack{T\text{ finite}\\|T|=m}}\operatorname{St}_T^{(f)},
+\]
+where the empty-set factor is $\mathbb C$. The induced exhaustive filtration
+$Q_{\mathrm{ad},m}=F_mE^{\mathrm{res}}/\mathbb C$ of $Q_{\mathrm{ad}}$ starts with $Q_{\mathrm{ad},0}=0$ and has these
+same associated graded pieces for $m\ge1$.
+\end{proposition}
+\begin{proof}
+At a finite stage $S$, use the two-step filtration
+$\mathbb C\mathbf1_p\subset E_p$ in every tensor factor. A class in
+$\boxtimes_{p\in T}\operatorname{St}_p$, for $T\subset S$ of size $m$, maps to the
+$m$th associated graded by lifting its factors to $E_p$ and inserting
+constants elsewhere. Changing a lift adds a tensor from the preceding
+filtration term, so this map is canonical and equivariant.
+It is an isomorphism: choose arbitrary vector-space complements to the
+constants in each $E_p$ and expand the finite tensor product. The
+summands with precisely $m$ complement factors give the asserted graded
+piece. The complements prove bijectivity but do not define the map.
+The canonical maps are compatible with the constant insertions as $S$
+grows. Taking the filtered colimit gives the displayed direct sum, since
+each vector involves only finitely many places. Quotienting by the
+constant subrepresentation gives the statement for $Q_{\mathrm{ad}}$.
+\end{proof}
+
+\Needspace{6\baselineskip}
+In particular there is a nonsplit degree-one extension
+\[
+ 0\longrightarrow\mathbb C\longrightarrow F_1E^{\mathrm{res}}
+   \longrightarrow\bigoplus_p\operatorname{St}_{\{p\}}^{(f)}\longrightarrow0.
+\]
+Pulling it back to any single summand gives~\eqref{v4-arith:w10-d:adelic:eq:local}, inflated
+to $G_f$. This degree-one construction has a direct sum as its quotient.
+The full quotient $Q_{\mathrm{ad}}$ additionally contains every finite mixed tensor
+through its filtration. Neither quotient is the all-place tensor
+$\bigotimes_p'\operatorname{St}_p$.
+
+Indeed, the local quotient maps $E_p\to\operatorname{St}_p$ send the distinguished
+constant vectors to zero. If those zero vectors are used as insertion
+maps for the finite tensors of Steinberg quotients, every stage maps to
+zero after a new prime is inserted, and the resulting colimit is zero.
+Thus the quotient maps cannot turn~\eqref{v4-arith:w10-d:adelic:eq:global} into a nonzero
+all-place Steinberg extension.
+
+\section{Archimedean and automorphic scope}
+
+All preceding Ext groups belong to explicitly stated categories of
+smooth finite-adelic or finite-product representations. Tensoring with
+the trivial representation of $GL_2(\mathbb R)$ gives a specified
+archimedean factor and an action of $GL_2(\mathbb A)$, without adding another
+extension class. A nontrivial archimedean extension requires its own
+smooth topological representation category or Harish--Chandra module
+category, its central character, and its tensor conventions. An
+additional degree-one exterior factor contributes an additional degree
+when its exterior product is defined; it does not erase the finite-place
+degrees above.
+
+A representation of $GL_2(\mathbb A)$ is not thereby a realization on
+$GL_2(\mathbb Q)\backslash GL_2(\mathbb A)$. Such a realization requires a specified
+automorphic function space or enhanced category, central quotient and
+support conditions, and a comparison functor. The symbols
+$\operatorname{Ext}^1_{[GL_2]}$ alone do not specify that category. The constructions
+here give genuine local and adelic group representations and their
+Yoneda extensions. They neither identify a residue with an extension
+class nor supply an arithmetic or automorphic comparison.
+
+
+\section{Global Eisenstein residues}
+\label{v4-arith:w10-d:X0}
+
+The local extensions above use smooth group representations. To compare
+them with Eisenstein residues, fix an automorphic quotient and a
+normalization. For $G=GL_2$ over $\mathbb Q$, write $Z$ for its center
+and use
+\[
+ [G]_Z=Z(\mathbb A)G(\mathbb Q)\backslash G(\mathbb A)
+\]
+with trivial central character. Functions in the Hilbert space
+$L^2([G]_Z)$ are square-integrable for a fixed quotient Haar measure.
+Changing that measure changes the norm, but does not turn a morphism
+of representations into an extension. With a unitary central character
+$\xi$, one instead uses functions transforming by $\xi$ under $Z(\mathbb A)$
+and integrates their absolute squares modulo the center.
+
+The trivial inducing character and full spherical level give a concrete
+residue calculation. Write $\tau=x+iy$ in the upper half-plane,
+$y>0$, and define, for $\operatorname{Re}s>1$,
+\[
+ E(s,\tau)=\frac12\sum_{\substack{(c,d)\in\mathbb Z^2\\(c,d)=1}}
+       \frac{y^s}{|c\tau+d|^{2s}},\qquad
+ \Lambda(t)=\pi^{-t/2}\Gamma(t/2)\zeta(t).
+\]
+This is the level-one spherical series on
+$SL_2(\mathbb Z)\backslash\mathfrak H$, with the measure $dx\,dy/y^2$.
+Its spherical adelic realization uses the normalized spherical finite-place vectors
+for trivial inducing character, and the trivial central character. The following statement concerns
+this inducing datum and level.
+
+\begin{proposition}[The constant residue]
+\label{v4-arith:w10-d:prop:residual-s1}
+The meromorphic continuation of $E(s,\tau)$ has a simple pole at $s=1$,
+with constant residue. Define its positive-chamber residual subspace
+as the span of its square-integrable residues at poles with
+$\operatorname{Re}s>1/2$. Then
+\begin{equation}\label{v4-arith:w10-d:eq:residual-s1}
+ L^2_{\mathrm{res},E}=\mathbb C\mathbf1,
+\end{equation}
+and
+\begin{equation}\label{v4-arith:w10-d:eq:residue-E}
+ \operatorname*{Res}_{s=1}E(s,\tau)=c_1\mathbf1,
+ \qquad c_1=\frac1{2\Lambda(2)}=\frac3\pi.
+\end{equation}
+\end{proposition}
+\begin{proof}
+The lattice $y^{-1/2}(\mathbb Z\tau+\mathbb Z)\subset\mathbb R^2$
+has covolume one. Its theta function is
+\[
+ \theta_\tau(t)=\sum_{(c,d)\in\mathbb Z^2}
+  \exp\bigl(-\pi t|c\tau+d|^2/y\bigr),\qquad t>0.
+\]
+The dual of a covolume-one lattice in two dimensions is its rotation
+through a right angle. Poisson summation for the Gaussian therefore gives
+$\theta_\tau(t)=t^{-1}\theta_\tau(t^{-1})$.
+Mellin integration, initially for $\operatorname{Re}s>1$, gives
+\[
+ \Lambda(2s)E(s,\tau)
+ =\frac12\int_0^\infty(\theta_\tau(t)-1)t^{s-1}\,dt.
+\]
+Indeed, the Gaussian integral for a nonzero lattice vector is
+$\pi^{-s}\Gamma(s)(|c\tau+d|^2/y)^{-s}$.
+Writing each integer pair as a positive multiple of a primitive pair
+accounts for $\zeta(2s)$ and the factor $1/2$.
+Split the integral at $1$ and use the theta identity on $(0,1)$.
+The resulting continuation is
+\[
+ \Lambda(2s)E(s,\tau)
+ =\frac12\left(\frac1{s-1}-\frac1s\right)
+ +\frac12\int_1^\infty(\theta_\tau(t)-1)
+             (t^{s-1}+t^{-s})\,dt.
+\]
+The integral is entire in $s$, since the nonzero lattice vectors have
+positive minimum length and the summands decay exponentially.
+Thus its residue at $s=1$ is zero, whereas the rational term has
+residue $1/2$. Since $\Lambda(2)=\pi/6$, division proves
+\eqref{v4-arith:w10-d:eq:residue-E}. In $\operatorname{Re}s>1/2$, the denominator $\Lambda(2s)$
+has no zeros or poles: its zeta factor has the absolutely convergent
+Euler product, and its gamma factor is holomorphic and nonzero.
+The numerator continuation has only the pole at $s=1$ in that half-plane.
+The positive-chamber residues consequently span exactly the constant line. That line lies in
+$L^2$, since the modular quotient has finite hyperbolic volume.
+This proves \eqref{v4-arith:w10-d:eq:residual-s1} for the stated sector.
+\end{proof}
+
+Fixing trivial central character alone does not select this sector.
+For example, tensoring an inducing pair by a Hecke character $\mu$
+changes its common determinant twist while preserving its ratio.
+A residual character $\mu\circ\det$ has central character $\mu^2$.
+The residual classification must retain these inducing data and twists.
+The theorem of Mo{\oe}glin--Waldspurger, \emph{Le spectre r\'esiduel de
+$GL(n)$}, pp.~605--607, describes the residual spectrum with fixed unitary
+central character by repeated cuspidal data and their Langlands quotients.
+It does not identify the whole trivial-central-character spectrum with
+\eqref{v4-arith:w10-d:eq:residual-s1}.
+
+\subsection{Local coordinates and residue normalization}
+\label{v4-arith:w10-d:lem:FE-duality}
+For the symmetric normalized local family, write its characters as
+$(|\cdot|^{\sigma/2},|\cdot|^{-\sigma/2})$. In the ordered coordinates
+used above,
+\[
+ a=q^{-\sigma/2},\qquad b=q^{\sigma/2},\qquad z=q^{-\sigma}.
+\]
+The exceptional values have representatives $\sigma=\pm1$, with
+translates by $2\pi i\mathbb Z/\log q$ at the level of the ratio.
+The ordered pair, including any common twist, must still be retained.
+The Weyl operation swaps $(a,b)$ and sends $\sigma$ to $-\sigma$.
+The unitary point $\sigma=0$ has ratio $1$ and is regular.
+One can use a separate chart
+$a(u)=q^{u-1/2}$, $b(u)=q^{1/2-u}$, so $\sigma=1-2u$.
+Its two representatives are $u=0,1$, and the swap is $u\mapsto1-u$.
+A relation between this chart and a global inducing section must specify
+the inducing characters at every place.
+
+For a meromorphic morphism $A(u):V(u)\to W(u)$ in a fixed local
+trivialization, its residue is a degree-zero linear map between the
+specialized carriers. Under $v=1-u$, residues of the pulled-back family
+satisfy
+\begin{equation}\label{v4-arith:w10-d:eq:FE-residues}
+ \operatorname*{Res}_{v=1-u_0}A(1-v)
+       =-\operatorname*{Res}_{u=u_0}A(u).
+\end{equation}
+This follows by substituting $u-u_0=-(v-(1-u_0))$ in its Laurent
+expansion. Applying this formula to two different operators requires
+an identity between the families and identifications of their sources
+and targets. For the regular local operators the proved identity is
+$D^{\mathrm{sw}}D=h\operatorname{id}$ in
+\eqref{v4-arith:w10-d:local:eq:composition}.
+For the normal-equation comparison, replacing $t$ by $ut$ multiplies
+$\delta_t$ by $u^{-1}$ on the divisor. A line and a normalized generator
+therefore contain different information.
+
+\subsection{The local extension and its reverse}
+\label{v4-arith:w10-d:def:aut-ext1-s1}
+At a finite prime the principal series already constructed has
+\[
+ 0\longrightarrow\mathbb C\longrightarrow E_p
+      \longrightarrow\operatorname{St}_p\longrightarrow0,
+ \qquad E_p=\operatorname{Ind}^{G_p}_{B_p}(1)_{\mathrm{unnormalized}}.
+\]
+In normalized coordinates it occurs at $\sigma=-1$, or $z=p$.
+The nonsplitting proof gives the class
+\begin{equation}\label{v4-arith:w10-d:eq:aut-ext1-s1}
+ \alpha_p=[\,0\to\mathbb C\to E_p\to\operatorname{St}_p\to0\,]
+       \ne0\quad\text{in }\operatorname{Ext}^1_{\operatorname{Rep}^{\mathrm{sm}}_\mathbb C(G_p)}
+                      (\operatorname{St}_p,\mathbb C).
+\end{equation}
+\label{v4-arith:w10-d:prop:alpha-exists}
+It remains nonzero with the central character imposed strictly.
+The extension itself is
+\begin{equation}\label{v4-arith:w10-d:eq:aut-seq-s1}
+ \mathcal E_p=(\mathbb C\xrightarrow{i_p}E_p\twoheadrightarrow\operatorname{St}_p).
+\end{equation}
+The invariant-functional argument also proves
+$\operatorname{Hom}_{G_p}(\operatorname{St}_p,\mathbb C)=0$.
+Thus a nonzero residue map from the induced representation cannot be
+replaced by a nonzero map $\operatorname{St}_p\to\mathbb C$.
+A residue-to-Yoneda comparison must construct a sequence or a connecting
+morphism and identify it with \eqref{v4-arith:w10-d:eq:aut-ext1-s1}.
+The nonzero class does not determine the dimension of its Ext group.
+
+\begin{remark}[The opposite orientation]
+\label{v4-arith:w10-d:prop:reducibility-s0}
+\label{v4-arith:w10-d:cor:alpha-s0}
+The reverse comparison asks for a specified nonsplit sequence
+\begin{equation}\label{v4-arith:w10-d:eq:reducibility-s0}
+ 0\longrightarrow\operatorname{St}_p\longrightarrow E'_p
+      \longrightarrow\mathbb C\longrightarrow0,
+\end{equation}
+its class in
+$\operatorname{Ext}^1(\mathbb C,\operatorname{St}_p)$, and its relation
+to the opposite operator. For each orientation, the dimension question asks whether the Ext
+group is one-dimensional in the specified category. Its chosen
+generator and residue normalization require separate constructions.
+Neither the isomorphism induced by $\overline{D^{\mathrm{sw}}}$ nor the
+vanishing of the degree-two splitting obstruction computes these
+Ext dimensions. At the real place one must first specify a
+Harish--Chandra module category or a smooth topological category,
+central character, induction, and exact structure before posing the
+corresponding extension problem.
+\end{remark}
+
+\subsection{The automorphic extension problem}
+\label{v4-arith:w10-d:prop:adelic-ext1-line}
+Let $\mathcal A_{\mathrm{aut}}$ denote a proposed enhanced automorphic
+category with a specified coefficient ring, quotient $[G]_Z$, support,
+central character and exact structure. A global comparison must
+construct this category and the objects below. Write $\mathbf1_{\mathrm{aut}}$
+for the realization of the constant representation and $S_{\mathrm{aut}}$
+for a proposed exceptional object, with its actual local components
+specified. The degree-one target is
+\begin{equation}\label{v4-arith:w10-d:eq:aut-ext1-global}
+ \alpha^{\mathrm{aut}}_1\in
+ \operatorname{Ext}^1_{\mathcal A_{\mathrm{aut}}}
+                 (S_{\mathrm{aut}},\mathbf1_{\mathrm{aut}}).
+\end{equation}
+The question of a normalized exceptional line asks whether
+\begin{equation}\label{v4-arith:w10-d:eq:adelic-ext1-line}
+ \operatorname{Ext}^1_{\mathcal A_{\mathrm{aut}}}
+                 (S_{\mathrm{aut}},\mathbf1_{\mathrm{aut}})
+        =\mathbb C\alpha^{\mathrm{aut}}_1
+\end{equation}
+after a specified complex realization, and asks the corresponding
+question for the reverse orientation. Both the object and the
+normalization are part of this problem.
+
+The standard smooth all-place Steinberg tensor cannot supply
+$S_{\mathrm{aut}}$: its finite part is ruled out by
+Proposition~\ref{v4-arith:w10-d:adelic:prop:noall}.
+A finite exterior product instead has degree equal to its number of
+places, by Proposition~\ref{v4-arith:w10-d:adelic:prop:finite}.
+The degree-one extension of $Q_{\mathrm{ad}}$ by $\mathbb C$ is a
+separate representation-theoretic construction. Its quotient contains
+mixed finite-place constituents, and its automorphic realization
+remains to be constructed. Neither a change of name nor a scalar
+restricted-product identity provides such a realization.
+
+\section{Residual parameters and deformation objects}
+\label{v4-arith:w10-d:X2}
+
+The complex parameters of residual representations and the mod-$p$
+parameters of a deformation stack have different coefficient fields.
+Their comparison requires more than the same two-dimensional notation.
+Even over $\mathbb C$, the two $SL_2$ factors in a local Arthur parameter
+have different roles.
+
+\begin{definition}[The non-tempered parameter]
+\label{v4-arith:w10-d:def:arthur-param-s1}
+At a finite place, use the domain
+$W_F\times SL_2(\mathbb C)_{\mathrm D}\times SL_2(\mathbb C)_{\mathrm A}$.
+Both parameters take values in $GL_2(\mathbb C)$.
+Here $W_F$ is the Weil group, the factor marked $\mathrm D$ is the
+Deligne factor, and the factor marked $\mathrm A$ is the additional
+Arthur factor. The trivial-character rank-two non-tempered parameter is
+\begin{equation}\label{v4-arith:w10-d:eq:arthur-param-s1}
+ \psi_1(w,g_{\mathrm D},g_{\mathrm A})=g_{\mathrm A}.
+\end{equation}
+The associated Langlands parameter is obtained by substituting
+$\operatorname{diag}(|w|^{1/2},|w|^{-1/2})$ in the Arthur factor.
+This convention records its non-tempered exponents.
+\end{definition}
+
+\begin{definition}[The monodromy parameter]
+\label{v4-arith:w10-d:def:arthur-param-s0}
+On the same domain, the standard rank-two Deligne parameter, regarded
+as an Arthur parameter trivial on its additional factor, is
+\begin{equation}\label{v4-arith:w10-d:eq:arthur-param-s0}
+ \psi_0(w,g_{\mathrm D},g_{\mathrm A})=g_{\mathrm D}.
+\end{equation}
+The distinction from \eqref{v4-arith:w10-d:eq:arthur-param-s1} lies in
+which factor acts. Restricting both displays to an unnamed $SL_2$
+would erase that distinction. A determinant twist changes the Weil
+part and does not exchange the two factors.
+\end{definition}
+
+\begin{remark}[Local and global classification]
+\label{v4-arith:w10-d:rem:arthur-gln}
+Arthur's parameter formalism separates the Deligne and Arthur factors.
+His endoscopic classification concerns orthogonal and symplectic groups,
+with $GL_n$ classification as input. The residual classification for
+$GL_n$ is the theorem of Mo{\oe}glin--Waldspurger.
+For global data one can specify a formal cuspidal datum
+$\mu\boxtimes\nu_2$, where $\nu_2$ is the standard two-dimensional
+representation. This notation does not construct a global Langlands
+group or a map to a residual-characteristic stack. Packet assertions
+must specify twists, central character and local-global realization.
+In particular, \eqref{v4-arith:w10-d:eq:arthur-param-s0} does not
+construct an automorphic representation Steinberg at every finite place.
+\end{remark}
+
+The direct sum of the trivial and mod-\(p\) cyclotomic characters
+admits several independent cyclotomic extension directions. Their dimensions, and the automorphisms
+of their deformations, depend on the prime. These data determine what a
+comparison with a distinguished extension class must preserve.
+The constructions below give the continuous local deformation groupoids,
+explicit Kummer classes, and a formal family integrating those classes.
+
+\subsection{First-order deformations and their automorphisms}
+
+Fix a separable closure \(K^{\mathrm{sep}}\) of \(K=\mathbb Q_p\), and
+put \(\Gamma=\operatorname{Gal}(K^{\mathrm{sep}}/K)\), with its profinite topology.
+Let \(k/\mathbb F_p\) be a finite field with the discrete topology.
+Choose a primitive \(p\)th root \(\zeta_p\), with \(\zeta_2=-1\), and define
+\[
+ g(\zeta_p)=\zeta_p^{\omega(g)},\qquad
+ \omega:\Gamma\longrightarrow\mathbb F_p^\times\longrightarrow k^\times.
+\]
+Write \(k(r)\) for the one-dimensional \(k\)-representation with character
+\(\omega^r\). In particular, \(\omega=1\) when \(p=2\).
+Fix the ordered basis \(e_1,e_2\) of \(V=k^2\), and set
+\[
+ \rho_0(g)=\begin{pmatrix}1&0\\0&\omega(g)\end{pmatrix},\qquad
+ \mathfrak a=\operatorname{End}_k(V),\qquad
+ \mathfrak a_0=\ker(\operatorname{tr}:\mathfrak a\to k).
+\]
+Write \(E_{ij}\) for the matrix sending \(e_j\) to \(e_i\) and the other basis vector to zero.
+The action on \(\mathfrak a\) is \(gX=\rho_0(g)X\rho_0(g)^{-1}\).
+All cochains and representations are continuous.
+
+For a finite discrete \(\Gamma\)-module \(N\), use the inhomogeneous cochains
+\(C^n(\Gamma,N)=\operatorname{Map}_{\mathrm{cts}}(\Gamma^n,N)\), with \(C^0(\Gamma,N)=N\).
+Their differential is
+\begin{align*}
+ (df)(g_1,\ldots,g_{n+1})
+ &=g_1f(g_2,\ldots,g_{n+1})\\
+ &\quad+\sum_{i=1}^n(-1)^i
+ f(g_1,\ldots,g_ig_{i+1},\ldots,g_{n+1})\\
+ &\quad+(-1)^{n+1}f(g_1,\ldots,g_n).
+\end{align*}
+Thus \(dX(g)=gX-X\) and
+\(dc(g,h)=gc(h)-c(gh)+c(g)\).
+Write \(Z^1(\Gamma,N)=\ker(d:C^1\to C^2)\),
+\(B^1(\Gamma,N)=dN\), and \(H^i(\Gamma,N)=H^i(C^\bullet(\Gamma,N))\).
+
+Set \(A=k[\epsilon]/(\epsilon^2)\), with the discrete topology.
+A framed deformation is a continuous representation
+\(\rho:\Gamma\to\operatorname{GL}_2(A)\) reducing to \(\rho_0\) in the specified basis.
+Morphisms preserve this entire \(A\)-basis.
+A residual-marked unframed deformation is a free rank-two \(A\)-module
+with a continuous \(\Gamma\)-action and a specified identification of its
+reduction with \(V\). Its morphisms induce the identity on \(V\).
+
+\begin{proposition}[Continuous first-order groupoids]
+\label{v4-arith:local-cyclotomic:groupoids}
+Framed deformations form the discrete groupoid on \(Z^1(\Gamma,\mathfrak a)\).
+Residual-marked unframed deformations form the action groupoid
+\[
+ [Z^1(\Gamma,\mathfrak a)/\mathfrak a],\qquad
+ X:c\longmapsto c-dX.
+\]
+Its isomorphism classes form \(H^1(\Gamma,\mathfrak a)\).
+The automorphism group of each object is the additive group
+\(H^0(\Gamma,\mathfrak a)\).
+\end{proposition}
+
+\begin{proof}
+Every framed lift has a unique expression
+\[
+ \rho_c(g)=(1+\epsilon c(g))\rho_0(g).
+\]
+Multiplication gives
+\[
+ \rho_c(g)\rho_c(h)
+ =\bigl(1+\epsilon(c(g)+gc(h))\bigr)\rho_0(gh).
+\]
+The homomorphism condition is therefore \(dc=0\).
+A basis lifting \(e_1,e_2\) identifies any residual-marked deformation
+with such a matrix representation. Two such choices differ by
+\(1+\epsilon X\), and
+\[
+ (1+\epsilon X)\rho_c(g)(1-\epsilon X)=\rho_{c-dX}(g).
+\]
+The quotient and automorphism statements follow from this equality.
+An automorphism fixes \(c\) exactly when \(dX=0\).
+\end{proof}
+
+If the residual marking is forgotten, the residual centralizer also acts.
+Write
+\[
+ C=\{B\in\operatorname{GL}_2(k):B\rho_0(g)=\rho_0(g)B\text{ for all }g\}.
+\]
+Every permissible change of basis is \((1+\epsilon X)B\), and its action is
+\[
+ c\longmapsto BcB^{-1}-dX.
+\]
+Thus the acting group is \(\mathfrak a\rtimes C\).
+For odd \(p\), the character \(\omega\) is nontrivial and \(C\) is the group of invertible diagonal matrices.
+For \(p=2\), it is \(\operatorname{GL}_2(k)\).
+The stabilizer of \(c\) consists of the pairs satisfying
+\(BcB^{-1}-dX=c\). At \(c=0\), this is
+\(H^0(\Gamma,\mathfrak a)\rtimes C\).
+In particular, a formal scheme viewed as a groupoid-valued functor
+cannot represent these unframed groupoids: its points have only identity
+automorphisms, whereas these groupoids have nonzero infinitesimal automorphisms.
+This assertion concerns the groupoids, rather than representability of
+their sets of isomorphism classes.
+
+\subsection{Determinant character and determinant identification}
+
+Fixing a determinant character restricts the objects of a deformation
+problem. Choosing an identification of determinant representations also
+restricts its morphisms. To separate these conditions, fix
+\[
+ \delta_\eta(g)=\omega(g)(1+\epsilon\eta(g)),\qquad
+ \eta\in Z^1(\Gamma,k).
+\]
+Here the action on \(k\) is trivial, so \(\eta\) is a continuous additive
+homomorphism. For a character \(\delta:\Gamma\to A^\times\), write \(A(\delta)\) for the free rank-one module with that action.
+The constant determinant lift has \(\eta=0\).
+The identity
+\[
+ \det\rho_c(g)=\omega(g)(1+\epsilon\operatorname{tr}c(g))
+\]
+holds in every characteristic.
+
+\begin{proposition}[The two fixed-determinant groupoids]
+\label{v4-arith:local-cyclotomic:determinant}
+For the constant lift \(\delta_0=\omega\), the residual-marked deformation
+groupoid with fixed determinant character is
+\[
+ \mathcal D_{\mathrm{char}}(A)
+ =[Z^1(\Gamma,\mathfrak a_0)/\mathfrak a].
+\]
+Fix the residual orientation \(e_1\wedge e_2\).
+If objects include an identification
+\(\lambda:\det(V_A)\xrightarrow{\sim}A(\omega)\) lifting that orientation,
+and arrows preserve \(\lambda\), the groupoid is
+\[
+ \mathcal D_{\mathrm{det}}(A)
+ =[Z^1(\Gamma,\mathfrak a_0)/\mathfrak a_0].
+\]
+Both groupoids have isomorphism classes \(H^1(\Gamma,\mathfrak a_0)\).
+Their automorphism groups are respectively \(H^0(\Gamma,\mathfrak a)\)
+and \(H^0(\Gamma,\mathfrak a_0)\).
+\end{proposition}
+
+\begin{proof}
+The fixed-character equation is \(\operatorname{tr}c=0\).
+Every strict conjugation preserves the determinant, and
+\(\operatorname{tr}(dX)=0\). This proves the first groupoid formula.
+For the second, choose a lifted basis with
+\(\lambda(e_1\wedge e_2)=1\).
+Such a basis exists because
+\[
+ \det:\,1+\epsilon\mathfrak a\longrightarrow1+\epsilon k
+\]
+is surjective: \(\operatorname{diag}(1+\epsilon t,1)\) has determinant
+\(1+\epsilon t\). Changes between these bases satisfy
+\(\operatorname{tr}X=0\), which proves the second formula.
+
+The trace admits the \(\Gamma\)-equivariant splitting
+\[
+ k\longrightarrow\mathfrak a,\qquad t\longmapsto tE_{11}.
+\]
+Indeed, \(E_{11}\) is invariant and has trace one. Hence
+\(\mathfrak a=\mathfrak a_0\oplus kE_{11}\) and
+\(d\mathfrak a=d\mathfrak a_0\), including when \(p=2\).
+The two orbit sets are therefore \(H^1(\Gamma,\mathfrak a_0)\).
+The equations \(dX=0\), with the respective trace restrictions,
+give the stated automorphism groups.
+\end{proof}
+
+For a general \(\eta\), the cocycle \(c_\eta(g)=\eta(g)E_{11}\) has trace
+\(\eta\). The object spaces are therefore the affine translates
+\(c_\eta+Z^1(\Gamma,\mathfrak a_0)\), with the same gauge formulas.
+A determinant-compatible framing requires
+\(\lambda(e_1\wedge e_2)=1\), and gives the discrete groupoid on
+\(Z^1(\Gamma,\mathfrak a_0)\) when \(\eta=0\).
+If a full framing and an independent determinant identification are both
+retained, the discrete object set is instead
+\(Z^1(\Gamma,\mathfrak a_0)\times k\): the second coordinate records
+\(\lambda(e_1\wedge e_2)=1+\epsilon t\).
+For a chosen determinant identification, forgetting the residual marking
+allows residual changes in \(C\cap\operatorname{SL}_2(k)\).
+
+The coefficient decomposition is
+\begin{align*}
+ \mathfrak a&=kE_{11}\oplus kE_{22}\oplus k(-1)E_{12}\oplus k(1)E_{21},\\
+ \mathfrak a_0&=k(E_{11}-E_{22})\oplus k(-1)E_{12}\oplus k(1)E_{21}.
+\end{align*}
+At \(p=2\), the diagonal trace-zero generator is \(I\), and every
+summand has trivial action. At \(p=3\), the two off-diagonal characters
+coincide, but their matrix subspaces remain distinct.
+
+The first-order tangent groupoid is presented by the two-term complex
+\[
+ [\mathfrak a\xrightarrow{-d}Z^1(\Gamma,\mathfrak a)]
+ \quad\text{in degrees }[-1,0].
+\]
+Its degree \(-1\) cohomology records automorphisms and its degree \(0\)
+cohomology records deformation classes. This is the truncation through
+degree zero of \(C^\bullet(\Gamma,\mathfrak a)[1]\), with the cohomological
+shift convention \((C[1])^i=C^{i+1}\) and shifted differential \(-d\).
+Thus \(H^2(\Gamma,\mathfrak a)\) occurs in degree one of the full shifted complex.
+For a determinant identification, replace \(\mathfrak a\) by \(\mathfrak a_0\).
+For the fixed-character problem alone, the two-term complex is
+\([\mathfrak a\xrightarrow{-d}Z^1(\Gamma,\mathfrak a_0)]\).
+Identifying any full cochain complex with the tangent complex of a
+specified derived stack requires an equivalence of the underlying
+moduli problems.
+
+\subsection{Kummer classes at every prime}
+
+The lower-left summand has an explicit arithmetic description.
+For \(a\in K^\times\), choose \(\beta_a\in K^{\mathrm{sep}}\) with
+\(\beta_a^p=a\), and define
+\[
+ \frac{g(\beta_a)}{\beta_a}=\zeta_p^{\kappa_a(g)},
+ \qquad \kappa_a(g)\in\mathbb F_p\subset k.
+\]
+The action on roots of unity gives
+\[
+ \kappa_a(gh)=\kappa_a(g)+\omega(g)\kappa_a(h).
+\]
+This cocycle is continuous, since \(\beta_a\) and \(\zeta_p\) lie in a
+finite Galois extension. Replacing \(\beta_a\) by \(\zeta_p^r\beta_a\)
+changes it by the coboundary \(dr(g)=\omega(g)r-r\).
+
+\begin{proposition}[Explicit cyclotomic cohomology]
+\label{v4-arith:local-cyclotomic:kummer}
+The Kummer map gives an isomorphism
+\[
+ (\mathbb Q_p^\times/\mathbb Q_p^{\times p})\otimes_{\mathbb F_p}k
+ \xrightarrow{\sim} H^1(\Gamma,k(1)),\qquad [a]\otimes1\longmapsto[\kappa_a].
+\]
+For odd \(p\), a basis is \([\kappa_p],[\kappa_{1+p}]\).
+For \(p=2\), a basis is \([\kappa_2],[\kappa_{-1}],[\kappa_5]\).
+The dimensions are respectively two and three.
+\end{proposition}
+
+\begin{proof}
+Multiplication of roots makes the Kummer map additive modulo \(p\)th
+powers. If \(\kappa_a=dr\), replacing \(\beta_a\) by
+\(\zeta_p^{-r}\beta_a\) makes it invariant. Hence \(a\) is a \(p\)th
+power in \(K\). Conversely, Hilbert 90 implies that every continuous
+\(\mu_p\)-valued cocycle is \(g(\beta)/\beta\) for some
+\(\beta\in(K^{\mathrm{sep}})^\times\). Then \(\beta^p\in K^\times\).
+This proves the isomorphism over \(\mathbb F_p\).
+
+The required Hilbert 90 statement reduces to a finite Galois extension
+\(L/K\) through which the cocycle factors. If \(z_\sigma\) is a
+multiplicative cocycle for \(\operatorname{Gal}(L/K)\), choose \(a\in L\)
+so that
+\[
+ b=\sum_\sigma z_\sigma\sigma(a)\ne0.
+\]
+Such an \(a\) exists by linear independence of distinct field automorphisms.
+The cocycle identity gives \(\tau(b)=z_\tau^{-1}b\).
+Consequently \(z_\tau=\tau(b^{-1})/b^{-1}\), as required.
+This is the proof of Milne, \emph{Class Field Theory}, Proposition~II.1.22, p.~67.
+A basis of the finite extension \(k/\mathbb F_p\) decomposes each continuous
+cochain into finitely many coordinate cochains. Tensoring with \(k\)
+therefore commutes with cohomology.
+
+For odd \(p\), the multiplicative decomposition is
+\[
+ \mathbb Q_p^\times=p^{\mathbb Z}\times\mu_{p-1}\times(1+p\mathbb Z_p).
+\]
+The valuation supplies the first factor. Hensel lifting of the distinct
+nonzero residues supplies the roots of unity in the second factor.
+The \(p\)th-power map on \(\mu_{p-1}\) is bijective.
+The logarithm and exponential give inverse homomorphisms
+\[
+ \log:1+p\mathbb Z_p\xrightarrow{\sim}p\mathbb Z_p.
+\]
+For \(x,y\in p\mathbb Z_p\), the estimates
+\[
+ v_p(x^n/n)\ge n-v_p(n),\qquad
+ v_p(y^n/n!)\ge n-v_p(n!)
+\]
+prove convergence of the logarithm and exponential, using
+\(v_p(n!)\le n/(p-1)\). Their formal inverse
+and product identities pass to these convergent series.
+Logarithm carries \(p\)th powers to \(p^2\mathbb Z_p\), and
+\(\log(1+p)\equiv p\pmod{p^2}\).
+Thus valuation and the principal-unit quotient give the basis
+\([p],[1+p]\).
+
+At \(p=2\), each odd unit has a unique sign making it congruent to
+one modulo four. Hence
+\[
+ \mathbb Q_2^\times=2^{\mathbb Z}\times\{1,-1\}\times(1+4\mathbb Z_2).
+\]
+The preceding convergence estimates, with input valuation at least two,
+give \(\log(1+4\mathbb Z_2)=4\mathbb Z_2\).
+Squaring becomes multiplication by two, and
+\(\log(5)\equiv4\pmod8\). The valuation, sign, and principal-unit
+factors give the independent classes \([2],[-1],[5]\).
+\end{proof}
+
+In particular, \(p=3\) gives the basis \([\kappa_3],[\kappa_4]\).
+The choice of \(\zeta_p\) identifies \(\mu_p\) with \(\mathbb F_p(1)\).
+Changing it rescales all numerical cocycles by one nonzero scalar.
+The intrinsic classes take values in \(\mu_p\otimes_{\mathbb F_p}k\).
+
+The unit classes form an arithmetic subspace, and valuation gives an
+exact sequence
+\[
+ 0\longrightarrow
+ (\mathbb Z_p^\times/(\mathbb Z_p^\times)^p)\otimes_{\mathbb F_p}k
+ \longrightarrow H^1(\Gamma,k(1))
+ \xrightarrow{v_p}k\longrightarrow0.
+\]
+The unit subspace has dimension one for odd \(p\) and two for \(p=2\).
+The specified uniformizer \(p\) supplies the splitting
+\(1\mapsto[\kappa_p]\). The quotient itself does not specify a splitting.
+
+There is also an unramified condition. If \(I\subset \Gamma\) is inertia,
+define its subspace as
+\[
+ H^1_{\mathrm{ur}}(\Gamma,k(1))
+ =\operatorname{im}\bigl(H^1(\Gamma/I,k(1)^I)\to H^1(\Gamma,k(1))\bigr).
+\]
+For odd \(p\), this is zero: \(\mathbb Q_p(\zeta_p)/\mathbb Q_p\) is
+totally ramified of degree \(p-1\), since \(((1+T)^p-1)/T\) is Eisenstein at \(p\). Thus \(k(1)^I=0\).
+At \(p=2\), the unramified subspace is the line \(k[\kappa_5]\).
+Indeed, \((1+\sqrt5)/2\) satisfies \(x^2-x-1=0\), whose reduction
+is separable and irreducible over \(\mathbb F_2\).
+It therefore generates the unramified quadratic extension.
+Since \(\Gamma/I\cong\widehat{\mathbb Z}\), its continuous additive
+characters into \(k\) form a one-dimensional \(k\)-space.
+
+\subsection{An explicit formal family}
+
+Each cyclotomic cocycle defines both an extension of residual
+representations and a tangent direction at their split sum.
+For \(b\in Z^1(\Gamma,k(1))\), set
+\[
+ r_b(g)=\begin{pmatrix}1&0\\b(g)&\omega(g)\end{pmatrix}.
+\]
+The line \(ke_2\) is invariant, and the quotient is trivial. Thus
+\(r_b\) gives an exact sequence
+\[
+ 0\longrightarrow k(1)\longrightarrow E_b\longrightarrow k\longrightarrow0.
+\]
+Conversely, a vector-space splitting of any such extension gives this
+matrix form. Changing the splitting changes \(b\) by a coboundary.
+Consequently
+\[
+ \operatorname{Ext}^1_{\operatorname{Rep}^{\mathrm{cts}}_k(\Gamma)}(k,k(1))
+ \cong H^1(\Gamma,k(1)),
+\]
+where the category consists of finite-dimensional discrete continuous
+\(k\)-representations. The order of the two endpoint characters is
+part of this identification.
+
+The coefficient inclusion \(u\mapsto uE_{21}\) and projection onto
+the lower-left entry commute with the cochain differential. They induce
+an injection with a specified left inverse
+\[
+ j:H^1(\Gamma,k(1))\lhook\joinrel\longrightarrow H^1(\Gamma,\mathfrak a_0).
+\]
+The class \(j([b])\) is represented by
+\(\rho_{\epsilon b}(g)=\left(\begin{smallmatrix}1&0\\\epsilon b(g)&\omega(g)\end{smallmatrix}\right)\).
+
+\begin{theorem}[Formal cyclotomic family]
+\label{v4-arith:local-cyclotomic:formal-family}
+Set \(d=2\) and \((a_1,a_2)=(p,1+p)\) for odd \(p\).
+For \(p=2\), set \(d=3\) and \((a_1,a_2,a_3)=(2,-1,5)\).
+Choose the Kummer cocycles above and set
+\[
+ R_{\mathrm{gal}}=k[[t_1,\ldots,t_d]],\qquad
+ u(g)=\sum_{i=1}^d t_i\kappa_{a_i}(g).
+\]
+With the maximal-ideal topology on \(R_{\mathrm{gal}}\), the matrices
+\[
+ \rho_{R_{\mathrm{gal}}}(g)=\begin{pmatrix}1&0\\u(g)&\omega(g)\end{pmatrix}
+\]
+define a continuous representation reducing to \(\rho_0\), with
+determinant \(\omega\) and the standard determinant identification.
+Its tangent map is injective, with image \(j(H^1(\Gamma,k(1)))\).
+\end{theorem}
+
+\begin{proof}
+The cocycle equation for \(u\) is exactly the lower-left entry of
+\(\rho_{R_{\mathrm{gal}}}(gh)=\rho_{R_{\mathrm{gal}}}(g)\rho_{R_{\mathrm{gal}}}(h)\).
+The finitely many cocycles factor through a common finite Galois quotient,
+so the representation is continuous for the maximal-ideal topology.
+Its determinant and reduction follow from the diagonal entries.
+
+For each Artinian local \(k\)-algebra \(B\) with residue field \(k\),
+use the same residual-marked deformation definition on free rank-two
+\(B\)-modules, with the discrete topology on \(B\). A continuous local
+homomorphism \(R_{\mathrm{gal}}\to B\) specializes these matrices
+to a deformation. This is compatible with homomorphisms between such
+algebras and therefore defines a map from the functor of points of
+\(\operatorname{Spf}R_{\mathrm{gal}}\) to the determinant-identified deformation groupoid.
+A tangent homomorphism sends \(t_i\) to \(\epsilon x_i\).
+Its class is \(j(\sum_i x_i[\kappa_{a_i}])\).
+The Kummer basis and the left inverse of \(j\) prove injectivity.
+\end{proof}
+
+Changing \(\beta_{a_i}\) to \(\zeta_p^{r_i}\beta_{a_i}\) adds
+\(dr_i\) to the corresponding cocycle. Set \(s=\sum_i t_i r_i\).
+Conjugation by \(1-sE_{21}\) carries the old formal family to the new
+one, since its lower-left entry changes by \(ds\).
+This calculation holds over \(R_{\mathrm{gal}}\), without a first-order truncation.
+The formal family therefore changes by an explicit isomorphism under
+these root choices.
+
+This family fixes both diagonal characters and a line and quotient.
+It is not asserted to represent the full deformation problem.
+At \(p=2\), the underlying residual representation is trivial, and its
+unmarked form has no preferred decomposition into two lines.
+The inclusion through \(E_{21}\) uses the stated frame or flag.
+For odd \(p\), the two distinct character subspaces are intrinsic,
+although their scalar coordinates still depend on the chosen bases.
+
+\subsection{Dimensions and comparison maps}
+
+The Kummer calculation determines one direct summand without local
+duality. The full dimension table also uses finite-module local duality
+and the local Euler characteristic theorem
+(Milne, \emph{Arithmetic Duality Theorems}, Corollary~I.2.3, p.~28, and Theorem~I.2.8, p.~31).
+For a finite-dimensional continuous \(k[\Gamma]\)-module \(N\), they imply
+\[
+ h^2(N)=h^0(N^\vee(1)),\qquad
+ h^0(N)-h^1(N)+h^2(N)=-\dim_kN,
+\]
+where \(h^i(N)=\dim_kH^i(\Gamma,N)\) and
+\(N^\vee=\operatorname{Hom}_k(N,k)\).
+The field trace pairing identifies the underlying finite-module dual
+with the additive module of \(N^\vee(1)\).
+The Euler formula follows by substituting
+\(|N|=p^{[k:\mathbb F_p]\dim_kN}\) into
+\(\chi(\Gamma,N)=(\mathbb Z_p:|N|\mathbb Z_p)^{-1}\).
+Both theorems apply at \(p=2\), since the base field has characteristic zero.
+For \(N=k(r)\), they give
+\[
+ h^1(k(r))=1+\mathbf1_{\omega^r=1}+\mathbf1_{\omega^{1-r}=1}.
+\]
+The matrix decomposition and
+\(\dim B^1(\Gamma,N)=\dim N-h^0(N)\) now give
+\[
+\begin{array}{c|ccc}
+ &p\ge5&p=3&p=2\\\hline
+ h^1(k)&2&2&3\\
+ h^1(k(1))&2&2&3\\
+ h^1(k(-1))&1&2&3\\
+ h^0(\mathfrak a)&2&2&4\\
+ h^0(\mathfrak a_0)&1&1&3\\
+ h^1(\mathfrak a)&7&8&12\\
+ h^1(\mathfrak a_0)&5&6&9\\
+ \dim Z^1(\Gamma,\mathfrak a)&9&10&12\\
+ \dim Z^1(\Gamma,\mathfrak a_0)&7&8&9\\
+ h^2(\mathfrak a)&1&2&4\\
+ h^2(\mathfrak a_0)&1&2&3
+\end{array}
+\]
+These dimensions concern the unrestricted local continuous problem.
+A crystalline, finite-flat, ordinary, or global Selmer condition requires
+its own definition before imposing a further subspace.
+
+The explicit formal family supplies a local Galois target for a
+comparison. A specified nonzero Kummer class selects a one-parameter
+subfamily. The unit condition selects a line for odd \(p\) and a plane
+at \(p=2\). Identifying any of these with a line arising from an
+analytic residue requires a map that carries that residue to the stated
+cohomology class and is nonzero.
+
+A coherent extension requires further categorical data.
+For example, an exact \(k\)-linear functor from
+\(\operatorname{Rep}^{\mathrm{cts}}_k(\Gamma)\) to a specified abelian category,
+with identified images of \(k\) and \(k(1)\), sends \(E_b\) to an
+extension with those endpoints. An exact functor between specified
+stable categories instead sends its associated triangle to a triangle.
+Either construction gives a map on extension classes. An isomorphism
+requires a calculation of that map, including its kernel and image.
+A tangent vector alone does not define two coherent objects or a functor
+between their categories. On \(\operatorname{Spec}k[t]\), for instance,
+the tangent space at zero is \(k\), whereas
+\(\operatorname{Ext}^1(k[t],k[t])=0\). For the residue module \(k_0\),
+the resolution
+\[
+ 0\longrightarrow k[t]\xrightarrow{t}k[t]\longrightarrow k_0\longrightarrow0
+\]
+instead gives \(\operatorname{Ext}^1(k_0,k_0)=k\).
+Thus the endpoints of a coherent extension are indispensable.
+
+A comparison from a complex representation category also requires
+arithmetic coefficient data. There is no unital field map
+\(k\to\mathbb C\), since it would carry \(p\cdot1_k=0\) to
+\(p\cdot1_{\mathbb C}\ne0\). There is no unital map in the reverse
+direction either, since \(p\) is invertible in \(\mathbb C\).
+Reduction must instead specify an integral coefficient ring, an integral
+object or stable lattice, a residue-field map to \(k\), and the induced
+map on the relevant extension classes. A global Galois comparison
+additionally requires a ramification set, local conditions, and the
+restriction maps into the local cohomology computed here.
+
+Finally, scalar twisting gives
+\[
+ (1\oplus\omega)\otimes\omega^{-1}=\omega^{-1}\oplus1.
+\]
+This is \(1\oplus1\) only at \(p=2\). At \(p=3\), exchanging summands
+identifies it with the original representation.
+For any scalar character \(\chi\), conjugation gives
+\(\operatorname{Ad}(\rho_0\otimes\chi)=\operatorname{Ad}(\rho_0)\),
+while the determinant changes by \(\chi^2\).
+Hence a scalar twist need not preserve a fixed-determinant fibre, and
+no extra determinant twist enters the adjoint cochain formulas.
+
+
+\subsection{The formal stack and its framed presentation}
+\label{v4-arith:w10-d:prop:EG-closed-point-s1}
+The local deformation groupoids above retain the residual representation
+and its automorphisms. At the split cyclotomic point, the
+residual-marked determinant-identified groupoid has
+\begin{equation}\label{v4-arith:w10-d:eq:EG-tangent-s1}
+ \pi_0\mathcal D_{\mathrm{det}}(k[\epsilon]/(\epsilon^2))
+       =H^1_{\mathrm{cts}}(\Gamma,\operatorname{ad}^0(1\oplus\omega)).
+\end{equation}
+Here $\pi_0$ means the set of isomorphism classes, with its vector-space
+structure from the cocycle description. Fixing only the determinant
+character gives the same isomorphism classes at this split point,
+but retains the larger automorphism group $H^0(\Gamma,\mathfrak a)$.
+This distinction follows from the equivariant trace splitting through
+$E_{11}$, including in characteristic two.
+
+For the Emerton--Gee moduli problem, a framed lifting ring supplies a
+versal presentation of the formal deformation groupoid.
+Emerton--Gee, Proposition~3.6.3, p.~76, identifies the self-fiber product
+using the change-of-basis group completed along the residual
+centralizer, or along the identity for the pointed formal problem.
+It does not replace the unframed groupoid by a formal scheme with
+no automorphisms. A derived enhancement, wild-inertia conditions and
+an identification with its full tangent complex require the corresponding
+moduli comparison. The computed local complex retains this requirement.
+
+\subsection{Tangent complexes and spectral extension classes}
+\label{v4-arith:w10-d:prop:spectral-ext1-s1}
+A tangent direction describes deformation of one point. An extension
+between two sheaves requires two objects and a category of morphisms.
+To express the proposed comparison, suppose a derived stack
+$\mathcal X$ over $k$ has been specified, with a cotangent complex
+$\mathbb L_{\mathcal X}$ admitting the dual used below. At a point $x$,
+set $T_x=R\operatorname{Hom}_k(x^*\mathbb L_{\mathcal X},k)$.
+Its degree-zero cohomology is the first-order tangent space,
+while degree minus one records infinitesimal automorphisms.
+Write $\mathbb T^1_x=H^0(T_x)$ for this convention.
+
+Suppose in addition that a spectral category
+$\mathcal A_{\mathrm{sp}}$ has been constructed, with objects
+$\mathcal O_{\mathrm{St}}$ and $\mathcal O_{\mathbf1}$ and specified
+support. These names alone do not define sheaves.
+For example, an ind-coherent category with nilpotent singular support
+requires a derived stack for which its singularity space and the
+specified nilpotent subset are defined. The desired comparison is
+\begin{equation}\label{v4-arith:w10-d:eq:spectral-ext1-s1}
+ L_{\mathrm{cyc}}\longrightarrow
+ \operatorname{Ext}^1_{\mathcal A_{\mathrm{sp}}}
+          (\mathcal O_{\mathrm{St}},\mathcal O_{\mathbf1}),
+ \qquad L_{\mathrm{cyc}}\subseteq\mathbb T^1_{x_{\mathrm{cyc}}}.
+\end{equation}
+Here the subspace $L_{\mathrm{cyc}}$, its dimension and the displayed
+map are constructions still required. A cotangent calculation does
+not identify this Ext group between two different sheaves.
+\begin{remark}[The reverse spectral comparison]
+\label{v4-arith:w10-d:cor:spectral-ext1-s0}
+For a point $x_{\mathrm{triv}}$ representing $1\oplus1$, the opposite
+orientation asks for a specified subspace
+$L_{\mathrm{triv}}\subseteq\mathbb T^1_{x_{\mathrm{triv}}}$ and a map
+\[
+ L_{\mathrm{triv}}\longrightarrow
+ \operatorname{Ext}^1_{\mathcal A_{\mathrm{sp}}}
+       (\mathcal O_{\mathbf1},\mathcal O_{\mathrm{St}}).
+\]
+The two endpoints and their support must be constructed in this category.
+The explicit scalar-twist calculation above does not identify this
+problem with the cyclotomic problem at odd primes. At $p=2$, equality
+of the residual representations still does not choose the two sheaves
+or the map. An Arthur parameter over $\mathbb C$ supplies neither
+spectral comparison by itself.
+\end{remark}
+
+\section{The arithmetic class comparison}
+\label{v4-arith:w10-d:X3}
+
+An automorphic category over $\mathbb C$ and a tangent space over $k$
+cannot be compared by an unnamed extension of scalars. A unital ring
+homomorphism $k\to\mathbb C$ would send $p\cdot1=0$ to
+$p\cdot1\ne0$, which is impossible. One possible comparison would use
+a common integral coefficient ring, lifts of both objects, and derived
+specialization maps to their respective fibers. It must specify
+whether cohomology commutes with these specializations, including
+any torsion. The complex family over $R$ above does not supply this
+integral construction.
+
+\begin{definition}[The first comparison target]
+\label{v4-arith:w10-d:def:match-target-s1}
+After a common coefficient realization over a ring $A$ has been
+constructed, denote the realized automorphic category by
+$\mathcal A_{\mathrm{aut},A}$ and the lifted exceptional tangent
+module by $L_{\mathrm{cyc},A}$. The first class comparison seeks
+\begin{equation}\label{v4-arith:w10-d:eq:match-target-s1}
+ \mathsf c^{\mathrm{exc}}_1:
+ \operatorname{Ext}^1_{\mathcal A_{\mathrm{aut},A}}
+ (S_{\mathrm{aut},A},\mathbf1_{\mathrm{aut},A})
+       \xrightarrow{\ \sim\ }L_{\mathrm{cyc},A},
+ \qquad \alpha^{\mathrm{aut}}_1\longmapsto e_{\mathrm{cyc}}.
+\end{equation}
+The symbols on both sides denote required realizations of the specified
+objects and classes, not objects supplied by this definition.
+\end{definition}
+
+\begin{definition}[The reverse comparison target]
+\label{v4-arith:w10-d:def:match-target-s0}
+With the reverse extension and the second deformation problem realized
+over the same coefficient ring, the second target is
+\begin{equation}\label{v4-arith:w10-d:eq:match-target-s0}
+ \mathsf c^{\mathrm{exc}}_0:
+ \operatorname{Ext}^1_{\mathcal A_{\mathrm{aut},A}}
+ (\mathbf1_{\mathrm{aut},A},S_{\mathrm{aut},A})
+       \xrightarrow{\ \sim\ }L_{\mathrm{triv},A},
+ \qquad \alpha^{\mathrm{aut}}_0\longmapsto e_{\mathrm{triv}}.
+\end{equation}
+The local chart $u\mapsto1-u$ does not construct the coefficient
+or deformation comparison needed for this arrow.
+\end{definition}
+
+\subsection{The scalar residue and a derived pairing}
+\label{v4-arith:w10-d:prop:koszul-residue}
+The scalar ratio can be recovered from the constant term of the
+specified Eisenstein series. For $\operatorname{Re}s>1$, separate the
+terms with $c=0$ and sum the others over $c\ge1$ and reduced residues
+$d$ modulo $c$. Integration in $x$ over $[0,1]$ unfolds the translates
+$d+mc$, $m\in\mathbb Z$, to the real line. If $\varphi(c)$ is the number
+of reduced residue classes modulo $c$, this gives
+\[
+ \int_0^1 E(s,x+iy)\,dx
+ =y^s+y^s\sum_{c\ge1}\frac{\varphi(c)}{c^{2s}}
+           \int_{\mathbb R}(u^2+y^2)^{-s}\,du.
+\]
+The last integral is
+$y^{1-2s}\sqrt\pi\,\Gamma(s-1/2)/\Gamma(s)$, by $u=y\tan\theta$.
+The Euler factors give
+$\sum_{c\ge1}\varphi(c)c^{-2s}=\zeta(2s-1)/\zeta(2s)$.
+Thus the constant term is $y^s+n(s)y^{1-s}$, where
+\[
+ n(s)=\frac{\Lambda(2s-1)}{\Lambda(2s)}.
+\]
+The completed zeta function satisfies $\Lambda(t)=\Lambda(1-t)$.
+This follows from the same Gaussian Mellin argument in one dimension.
+It has residues $1$ at $t=1$ and $-1$ at $t=0$.
+Since $\Lambda(2)=\pi/6$, the Laurent expansion gives
+\[
+ c^{\mathrm{LS}}_1=\operatorname*{Res}_{s=1}n(s)
+       =\frac1{2\Lambda(2)},\qquad
+ c^{\mathrm{LS}}_0=\operatorname*{Res}_{s=0}n(s)^{-1}
+       =-\frac1{2\Lambda(2)}.
+\]
+Indeed, $n(s)n(1-s)=1$, so the second identity is the first after
+$s\mapsto1-s$. The archimedean quotient
+$\Gamma_{\mathbb R}(2s-1)/\Gamma_{\mathbb R}(2s)$,
+where $\Gamma_{\mathbb R}(t)=\pi^{-t/2}\Gamma(t/2)$,
+is regular at $s=1$ and equals $\pi$. The global pole does not give
+a pole of this archimedean factor there.
+
+To compare this scalar with extension classes, let $U_{s_0}$ and
+$V_{s_0}$ be chosen complexes computing the two realized derived Hom
+objects. A derived pairing inducing a bilinear form on their degree-one
+cohomology consists of a morphism
+$U_{s_0}\otimes_A^{\mathbf L}V_{s_0}\to A[-2]$.
+The shift puts $A$ in cohomological degree two.
+A Bost--Connes operation $\sigma^{\mathrm{BC}}$ must be defined on
+these complexes, with its action and compatibility proved.
+Write $e_1=e_{\mathrm{cyc}}$ and $e_0=e_{\mathrm{triv}}$ for the
+required chosen tangent classes at the two comparison targets.
+The desired normalization is an equality of specified pairings
+\begin{equation}\label{v4-arith:w10-d:eq:koszul-residue-pair}
+ P^{\mathrm{LS}}_{s_0}
+ (\alpha^{\mathrm{aut}}_{s_0},\sigma^{\mathrm{BC}}e_{s_0})
+ =c^{\mathrm{LS}}_{s_0}
+ P_{s_0}(\alpha^{\mathrm{aut}}_{s_0},e_{s_0}),
+ \qquad s_0\in\{0,1\},
+\end{equation}
+after a coefficient realization in which the displayed scalars exist.
+This is a chain-level comparison problem. The nonzero scalar does not
+prove existence or nondegeneracy of either pairing.
+Bar--cobar duality transports derived morphisms only after its algebra,
+coalgebra, twisting cochain and module realizations have been given.
+It does not construct the displayed trace or pairing from a scalar
+identity of principal-series vectors.
+
+\begin{remark}[The exceptional global comparison]
+\label{v4-arith:w10-d:thm:class-match}
+The exceptional Eisenstein comparison asks for both
+\eqref{v4-arith:w10-d:eq:match-target-s1} and
+\eqref{v4-arith:w10-d:eq:match-target-s0}, natural in the allowed
+inducing characters and compatible with specialization.
+Its required constructions are a common coefficient realization,
+automorphic exceptional objects, residue-to-Yoneda maps, spectral
+objects with support, and the derived pairing and tangent maps.
+The wild-inertia enhancement of
+Conjecture~\ref{v4-arith:deg-f1a:conj:EG-wild-enhancement} is an
+additional residual-characteristic input. It does not supply the
+other constructions. If the two component maps through Galois
+cohomology are constructed as natural isomorphisms, their composition
+is a natural isomorphism: the composite of their commutative naturality
+squares is the required square. This implication supplies no component
+map. The global comparison remains unresolved.
+\end{remark}
+
+\section{Derived maps and global assembly}
+
+Even a comparison of degree-zero and degree-one morphisms on generators
+would leave a categorical obstruction. The following finite calculation
+isolates that obstruction without making any arithmetic assumptions.
+
+\begin{example}[Agreement in degrees zero and one]
+Let $k$ be a field and let $A=k\oplus ke$ be the unital graded algebra
+with $|e|=1$, $e^2=0$ and zero differential. Let
+$B=k\oplus ke\oplus kf$, where $|f|=2$, all products of positive-degree
+elements vanish, and the differential is zero. The quotient $p:B\to A$
+fixes $1,e$ and kills $f$. Use perfect right differential graded modules,
+namely the smallest idempotent-complete triangulated subcategories
+generated by the free modules. Extension of scalars defines
+\[
+ F=-\otimes_B^{\mathbf L}A:\operatorname{Perf}(B)
+                 \longrightarrow\operatorname{Perf}(A),\qquad F(B)=A.
+\]
+A right-linear endomorphism of a free rank-one module is determined
+by its value at $1$ and acts by left multiplication.
+The free modules compute their own derived Hom complexes.
+Thus the map on their endomorphism complexes is precisely $p:B\to A$.
+It induces isomorphisms in degrees zero and one, with values $k$ and
+$ke$, but its degree-two map is $kf\to0$.
+It is not a quasi-isomorphism, and $F$ is not fully faithful.
+The image $A$ still generates the target perfect category.
+Hence these low-degree agreements and a generating image do not
+suffice for full faithfulness.
+\end{example}
+
+\subsection{The Eisenstein category}
+\label{v4-arith:w10-d:cor:LACD-exc}
+The exceptional extension problem therefore remains part of the full
+local-global comparison
+\begin{equation}\label{v4-arith:w10-d:eq:LACD-full}
+ F:\bigotimes_v'\mathcal C_v\longrightarrow
+                 \mathcal D^{\mathrm{sph\text{-}fin}}([G]_Z).
+\end{equation}
+Here the local stable categories $\mathcal C_v$, their spherical
+objects, transition functors and restricted tensor product must be
+specified. The target must be an actual enhancement of the chosen
+automorphic category with its support convention.
+The non-exceptional comparison in
+Theorem~\ref{v4-arith:w6-d:thm:LACD-Eisenstein-nonexc} and the
+Paley--Wiener comparison in Theorem~\ref{v4-arith:w6-d:thm:PW-lift}
+retain their stated functor and support hypotheses.
+Extending them to closed exceptional strata requires compatible
+localization or recollement functors and maps on the attaching objects.
+
+For an exact functor on small idempotent-complete stable categories
+generated by a set $\mathcal G$, a sufficient full-faithfulness
+condition is equivalence of all mapping spectra between generators.
+To see the extension of this condition, fix one generator.
+The objects for which its mapping comparison is an equivalence form
+a subcategory closed under shifts, cones and retracts, by exactness.
+It therefore contains every object. Apply the same argument in the
+other variable. Full faithfulness follows, and a generating essential
+image gives equivalence. For presentable categories, compact generation,
+preservation of colimits and compactness of the relevant images provide
+the analogous extension from compact generators. These are substantive
+hypotheses, not consequences of degree-one agreement.
+
+\subsection{Cuspidal, residual and continuous objects}
+\label{v4-arith:w10-d:thm:composite-LACD}
+The Hilbert decomposition of
+Theorem~\ref{v4-arith:w6-d:thm:Langlands-decomp} separates cuspidal,
+residual and continuous spectra. Its orthogonality is an assertion
+about Hilbert inner products. To assemble a stable automorphic category
+one needs categorical embeddings of the corresponding sectors,
+adjunctions and gluing maps, including the continuous exceptional
+and non-exceptional loci. A Hilbert orthogonal sum does not determine
+mapping complexes between their enhancements.
+The cuspidal comparison of
+Theorem~\ref{v4-arith:w5-e:thm:LACD-cuspidal}, the residual comparison
+of Theorem~\ref{v4-arith:w6-d:thm:res-lift}, and the non-exceptional
+comparison must therefore be combined through specified derived
+functors. Bernstein-center actions, local-global realization and the
+closed-stratum attaching maps must commute with these functors.
+The local splitting and adelic extension above supply input objects;
+they do not prove this assembly.
+
+\section{Compatibility with residual-characteristic comparisons}
+\label{v4-arith:w10-d:obstruction-analysis}
+\label{v4-arith:w10-d:prop:class-match-compat}
+At $p=2,3$, the local class comparisons in
+Definitions~\ref{v4-arith:w6-f:def:class-match-p2}
+and~\ref{v4-arith:w6-f:def:class-match-p3} concern a residual-characteristic
+block. Their connecting maps and deformation comparison in
+Propositions~\ref{v4-arith:w6-f:prop:Paskunas-equals-Galois}
+and~\ref{v4-arith:w6-f:prop:gerbe-cotangent-match} must be used with
+their hypotheses. A global exceptional comparison would need
+localization maps on automorphic extensions, coefficient specialization,
+and the corresponding restriction of its Galois deformation problem.
+Compatibility means a commutative square between those actual maps.
+Equality of their target $H^1$ groups is insufficient: two linear maps
+to the same nonzero space can differ by any scalar, or have different
+images. A naturality statement for a functor applies only after the
+same sequence and morphisms have been realized in its domain.
+
+The common-twist freedom also remains. The local ratios and the scalar
+normalizing factor depend on the ratio of inducing characters.
+Multiplying both characters by $\mu$ preserves that ratio and changes
+the induced representation by $\mu\circ\det$.
+Thus the trivial ratio does not force trivial inducing character.
+Central characters, normal coordinates, Haar measures and any
+Bost--Connes operation must be compared under this twist.
+The universal full-category Koszul roof and the pointwise strict-center
+roof prove different statements. A canonical family of strict-center
+splittings compatible with Weyl symmetry remains an additional
+construction. Their existence at one complex point does not provide
+an integral or residual-characteristic comparison.
+
+\section{Arithmetic descent conditions}
+\label{v4-arith:w10-d:residual-table}
+\label{v4-arith:w10-d:prop:F1-table-after-w10d}
+The arithmetic descent conditions named in
+Proposition~\ref{v4-arith:w6-d:prop:F1-table-after-w6d} and
+Theorem~\ref{v4-arith:w6-f:thm:table-updated} concern the following
+mathematically distinct questions.
+\begin{enumerate}
+\item The non-ordinary part of F1.a.1 asks for essential surjectivity
+of the derived Emerton--Gee comparison at $p\ge5$ on its specified
+non-ordinary locus.
+\item The Taylor--Wiles part of F1.a.1 asks for extension beyond the
+Taylor--Wiles hypotheses, with the deformation conditions retained.
+\item F1.a.2 asks for the residual-characteristic local class match
+at $p=2,3$, under the wild-inertia and comparison hypotheses of
+Theorem~\ref{v4-arith:w6-f:thm:class-match}.
+\item The exceptional Eisenstein part of $\mathrm L_{\mathrm{ACD}}$
+asks for the global class maps of
+Remark~\ref{v4-arith:w10-d:thm:class-match} and their full derived
+extension across the exceptional strata. The local exceptional
+ratios and the global scalar points use their respective coordinates.
+\item Bernstein-center diamond gluing asks for compatible center
+maps and categorical descent, including the local-global realization
+and transition functors used in the global assembly.
+\end{enumerate}
+The fourth question is not exhausted by the third.
+The explicit finite-place constructions establish the local cone,
+its coefficient specializations, pointwise fixed-center splitting,
+finite exterior products and the mixed adelic extension.
+Their global arithmetic realization still requires the maps above.
+
+\section{Sources and further comparisons}
+\label{v4-arith:w10-d:summary}
+\label{v4-arith:w10-d:sources}
+\label{v4-arith:w10-d:sources-bib}
+The constructions separate three operations: specialization of a
+regular intertwining complex, formation of Yoneda products, and
+realization in automorphic or spectral categories. Their respective
+carriers determine which further comparisons can be formulated.
+The following sources provide the surrounding representation theory,
+spectral analysis and deformation theory.
+\begin{description}[style=nextline,leftmargin=0pt,labelwidth=0pt]
+\item[Casselman.]
+\emph{Introduction to the Theory of Admissible Representations of
+$p$-Adic Reductive Groups}, 1 May 1995, Proposition~2.1.7, p.~20,
+and Section~8.1, p.~70, give compact averaging and the Steinberg quotient.
+\item[Schneider--Stuhler.]
+\emph{Representation theory and sheaves on the Bruhat--Tits building},
+Publ. Math. IH\'ES \textbf{85} (1997), 97--191, Section~II.2 and
+Theorem~II.3.1, develop cellular resolutions with coefficient systems.
+\item[Langlands.]
+\emph{Eisenstein Series}, Section~10, pp.~12--14 of the author's reprint,
+computes the rank-one spherical residue. Its variable $z=2s-1$
+accounts for the factor $1/2$ in the residue used here.
+\emph{On the Functional Equations Satisfied by Eisenstein Series},
+Lecture Notes in Mathematics~544 (1976), treats the general spectral problem.
+\item[Mo{\oe}glin--Waldspurger.]
+\emph{Le spectre r\'esiduel de $GL(n)$}, Ann. Sci. ENS
+\textbf{22} (1989), 605--674, introduction and Section~I.1, gives the
+residual classification and normalized intertwiners.
+\emph{Spectral Decomposition and Eisenstein Series: A Paraphrase of
+the Scriptures}, Cambridge Tracts~113 (1995), develops the spectral theory.
+\item[Shahidi.]
+\emph{Eisenstein Series and Automorphic $L$-Functions}, AMS Colloquium
+Publications~58 (2010), treats intertwining operators, local coefficients
+and $L$-function normalization.
+\item[Arthur.]
+\emph{The Endoscopic Classification of Representations: Orthogonal and
+Symplectic Groups}, AMS Colloquium Publications~61 (2013), concerns
+classical-group classification. The author's exposition
+\emph{The Endoscopic Classification of Representations}, pp.~1--4,
+distinguishes the Deligne and Arthur factors.
+\item[Emerton--Gee.]
+\emph{Moduli stacks of \textup{\'{e}}tale $(\varphi,\Gamma)$-modules
+and the existence of crystalline lifts}, arXiv:1908.07185,
+Proposition~3.6.3, pp.~74--76, gives the versal framed presentation.
+\item[Breuil--M\'ezard.]
+\emph{Multiplicit\'es modulaires et repr\'esentations de
+$GL_2(\mathbb Z_p)$ et de $\operatorname{Gal}(\overline{\mathbb Q}_p/\mathbb Q_p)$
+en $\ell=p$}, Duke Math. J. \textbf{115} (2002), concerns local
+deformation multiplicities.
+\item[Bella\"iche--Chenevier.]
+\emph{Families of Galois representations and Selmer groups},
+Ast\'erisque~324 (2009), treats reducibility, extension classes and
+trianguline deformations. Its Chapter~2 concerns refined crystalline
+representations.
+\item[Schlessinger and Mazur.]
+Schlessinger, \emph{Functors of Artin rings}, Trans. AMS
+\textbf{130} (1968), 208--222, Theorem~2.11, states the hull and
+prorepresentability conditions. Mazur, \emph{Deforming Galois
+representations}, MSRI Publications~16 (1989), 385--437, develops
+deformations of Galois representations.
+\item[Bernstein--Zelevinsky.]
+\emph{Induced representations of reductive $\mathfrak p$-adic groups I},
+Ann. Sci. ENS \textbf{10} (1977), concerns smooth parabolic induction.
+\item[Wallach and Jacquet--Langlands.]
+Wallach, \emph{Real Reductive Groups I} (1988), and Jacquet--Langlands,
+\emph{Automorphic Forms on $GL(2)$}, Lecture Notes in Mathematics~114
+(1970), supply real representation theory and automorphic context.
+The real extension problem requires a category and normalization of its own.
+\item[Harish-Chandra.]
+\emph{Harmonic analysis on real reductive groups II: Wave packets in
+the Schwartz space}, Invent. Math. \textbf{36} (1976), 1--55, and
+\emph{III: The Maass--Selberg relations and the Plancherel formula},
+Ann. Math. \textbf{104} (1976), 117--201, concern real spectral analysis.
+\item[Kisin.]
+\emph{Potentially semi-stable deformation rings}, J. AMS
+\textbf{21} (2008), 513--546, concerns potentially semistable deformation
+conditions with specified Hodge data.
+\item[Tate.]
+\emph{Fourier analysis in number fields and Hecke's zeta functions},
+Princeton thesis (1950), reprinted in Cassels--Fr\"ohlich (1967),
+Chapter~XV, treats adelic Fourier analysis and zeta integrals.
+\item[Milne.]
+\emph{Class Field Theory} (2020), Proposition~II.1.22, p.~67,
+gives the Hilbert 90 argument. \emph{Arithmetic Duality Theorems},
+second edition (2006), Corollary~I.2.3 and Theorem~I.2.8, pp.~28--31,
+give the finite-module local duality and Euler characteristic formulas.
+\item[Positselski.]
+\emph{Two kinds of derived categories, Koszul duality, and
+comodule--contramodule correspondence}, arXiv:0905.2621,
+Sections~6.3 and~6.5, constructs derived equivalences from specified
+bar coalgebras and twisting cochains.
+\end{description}
+The next arithmetic comparison must realize the specified exceptional
+objects over common coefficients and construct their residue-to-Yoneda
+and deformation maps. Only then can their normalizations, wild-prime
+restrictions and full derived morphisms be compared.

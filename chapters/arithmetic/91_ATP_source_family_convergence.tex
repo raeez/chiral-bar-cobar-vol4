@@ -1,0 +1,705 @@
+\chapter{Test Maps, Heegner Heights, and the Weil Positivity Problem}
+\label{v4-arith:w8-atp:chapter}
+
+The full Weil inequality is defined on compact complex tests.
+To compare it with a spectral statistic or an arithmetic height,
+one needs a map from the source variables to those tests and
+an identity of pairings. The Fourier-window construction below
+gives such a test map. The Heegner construction gives a second
+map and an exact height-plus-residual identity. Their images
+need not be dense, and positivity of the residual remains an
+additional condition. An explicit divisor example shows why
+ordinate statistics alone do not determine the signed pairing.
+
+\section{The Compact Test Algebra and the Weil Pairing}
+\label{v4-arith:w8-atp:target}
+
+Let $\mathscr A=C_c^\infty(\mathbb R;\mathbb C)$ have its usual
+locally convex inductive-limit topology. On tests supported in a fixed
+compact set, convergence means uniform convergence of every derivative.
+Write
+\[
+ h_f(z)=\mathcal F_+f(z)=\int_{\mathbb R}f(u)e^{izu}\,du,
+ \qquad f^*(u)=\overline{f(-u)},\qquad
+ (f*g)(u)=\int_{\mathbb R}f(v)g(u-v)\,dv.
+\]
+Give $\mathscr P=\mathcal F_+\mathscr A$ the transported topology,
+as in Definition~\ref{v4-arith:w5-a:def:PW}. Its elements are entire
+and rapidly decreasing in every closed horizontal strip. The continuous
+signed Weil functional is
+\begin{equation}
+\label{v4-arith:w8-atp:eq:weil-W}
+ W(f)=P(f)-W_\infty(f)-W_{\mathrm{fin}}(f).
+\end{equation}
+The polar and real-place terms are those of
+Theorem~\ref{v4-arith:w5-a:thm:weil-explicit}; the finite-place term is
+\[
+ W_{\mathrm{fin}}(f)=\sum_{p,k\geq1}\frac{\log p}{p^{k/2}}
+                 \bigl(f(k\log p)+f(-k\log p)\bigr).
+\]
+This sum is finite for compact tests. Put
+$q_W(f,g)=W(f*g^*)$, linear in $f$ and conjugate-linear in $g$.
+The relation $W(f^*)=\overline{W(f)}$ makes this form Hermitian.
+A-TP means $q_W(f,f)\geq0$ for every $f\in\mathscr A$;
+Corollary~\ref{v4-arith:w5-a:cor:weil-positivity-RH} identifies it with RH.
+
+For a complex vector space $S$ and a specified linear map
+$J:S\to\mathscr A$, define the pulled-back Hermitian form
+\[
+ q_J(u,v)=W\bigl(Ju*(Jv)^*\bigr).
+\]
+The source variable $u$ and the compact test $Ju$ belong to
+different spaces. The constructions below give explicit such maps.
+
+The five source families below concern different input objects.
+Each comparison requires a test map and an identity for the full
+normalized pairing, or a proved equivalence with that pairing.
+
+\begin{itemize}
+\item \textbf{Arthur-Selberg truncation}: Arthur 1978--2013 trace-formula
+series; Jacquet-Langlands 1970; Selberg 1956;
+Ng\^{o} 2010 \emph{Publ.~IHES} 111;
+Flicker-Kazhdan; M\oe{}glin-Waldspurger.
+\item \textbf{Geometric Langlands and Fargues--Scholze}:
+Beilinson--Drinfeld 2004; Arinkin-Gaitsgory arXiv:1201.6343;
+Fargues--Scholze arXiv:2102.13459; Lafforgue arXiv:1209.5352; Drinfeld
+1983, 1987; Deligne \emph{Weil II}; Frenkel-Gaitsgory.
+\item \textbf{Iwasawa-Kato}: Mazur-Wiles 1984; Kato 2004
+\emph{Ast\'{e}risque} 295; Perrin-Riou 1995; Fukaya-Kato 2006; Colmez;
+Bloch-Kato 1990; Kolyvagin 1988; Coates-Wiles 1977; Ferrero-Washington 1979.
+\item \textbf{Arithmetic quantum chaos}: Bohigas-Giannoni-Schmit
+1984; Berry-Keating 1999; Montgomery 1973; Odlyzko 1987; Rudnick-Sarnak
+1996; Katz-Sarnak 1999; Keating-Snaith 2000; Lindenstrauss 2006;
+Soundararajan 2010; Sarnak 1995; Hejhal 1994.
+\item \textbf{Arakelov--Faltings-Hriljac}: Arakelov 1974;
+Faltings 1984; Hriljac 1985; Gillet-Soul\'{e} 1990; Bost 1999;
+Bost-K\"{u}nnemann 2010; Bombieri 1971; Gross-Zagier 1986; Beilinson 1985;
+Vojta 1987; Bismut-Gillet-Soul\'{e} 1988.
+\end{itemize}
+
+The ordinary scattering construction already distinguishes a unitary
+phase from positivity: Proposition~\ref{v4-arith:w7-j:prop:rank-one-sign}
+gives complete unitary scattering with a negative Fourier-square trace.
+Theorem~\ref{v4-arith:w7-j:thm:ATP-iff-S-unitary} shows that a positive
+ordinary trace difference with an integrable spectral shift must vanish.
+
+\section{Comparison of Pairings and Extension of Tests}
+\label{v4-arith:w8-atp:convergence}
+
+\begin{theorem}[Comparison and extension of the Weil form]
+\label{v4-arith:w8-atp:thm:convergence}
+Let $J:S\to\mathscr A$ be linear, and let $b$ be a Hermitian
+form on $S$ satisfying
+\[
+ b(u,v)=W\bigl(Ju*(Jv)^*\bigr)\qquad(u,v\in S).
+\]
+Then $b\geq0$ is equivalent to Weil positivity on $J(S)$.
+Suppose, in addition, that every $f\in\mathscr A$ admits
+$f_n\in J(S)$ with all supports contained in one compact set
+and $f_n\to f$ in every smooth seminorm. Then $b\geq0$
+implies A-TP on all of $\mathscr A$.
+\end{theorem}
+\begin{proof}
+The first assertion follows by putting $u=v$ in the identity.
+Under the approximation hypothesis,
+$f_n*f_n^*\to f*f^*$ smoothly, with support in one compact
+set. Continuity of the Weil distribution gives
+$W(f*f^*)=\lim_n W(f_n*f_n^*)\geq0$.
+\end{proof}
+
+Translation gives another way to represent every convolution square,
+without approximating every test.
+
+\begin{lemma}[Transfer by translation]
+\label{v4-arith:w8-atp:lem:translation-transfer}
+For $a\in\mathbb R$, put $\tau_a f(t)=f(t-a)$.
+Let
+\[
+ S_+=C_c^\infty((0,\infty);\mathbb C)
+\]
+Give $S_+$ its usual test-function topology, and let
+$J_+:S_+\to\mathscr A$ be extension by zero.
+For all $f,g\in\mathscr A$ and $a\in\mathbb R$,
+\[
+ (\tau_a f)*(\tau_a g)^*=f*g^*,
+ \qquad q_W(\tau_a f,\tau_a g)=q_W(f,g).
+\]
+The image $J_+(S_+)$ is not dense in $\mathscr A$.
+Nevertheless, positivity of the pulled-back form $q_{J_+}$
+is equivalent to A-TP.
+\end{lemma}
+\begin{proof}
+Every element of $S_+$ has support compactly contained in
+$(0,\infty)$, so its extension by zero is smooth.
+The involution and convolution satisfy
+\[
+ (\tau_a g)^*=\tau_{-a}(g^*),\qquad
+ (\tau_a f)*(\tau_{-a}g^*)=f*g^*.
+\]
+The second identity follows by substituting $w=v-a$ in
+the convolution integral. Applying $W$ proves the pairing identity.
+
+Evaluation at $-1$ is a continuous nonzero functional on
+$\mathscr A$ which vanishes on $J_+(S_+)$, so this image is
+not dense. For any $f\in\mathscr A$, compactness of its support
+allows a sufficiently large $a$ such that
+$\operatorname{supp}(\tau_a f)\subset(0,\infty)$.
+Thus positivity on $J_+(S_+)$ gives
+\[
+ q_W(f,f)=q_W(\tau_a f,\tau_a f)\geq0.
+\]
+The converse follows by restriction.
+\end{proof}
+
+This argument uses equality of convolution squares, not density
+of the source image. Translation does not shorten a support interval,
+so it does not place every compact test in the fixed Fourier window.
+Neither this lemma nor the approximation theorem proves positivity
+on its source image.
+
+\begin{center}
+\small
+\begin{tabular}{p{3.4cm}p{8cm}}
+\toprule
+Source family & Comparison required for the Weil form \\
+\midrule
+Arthur--Selberg & A map from truncation tests to $\mathscr A$ and an
+identity retaining the polar, finite-prime and archimedean terms. \\
+Geometric Langlands & An arithmetic spectral realization, a map to
+$\mathscr A$, and a pairing comparison with $q_W$. \\
+Iwasawa--Kato & A map from finite-prime arithmetic data to compact
+complex tests and a comparison with the full Weil form. \\
+Arithmetic quantum chaos & A comparison of multivariable correlation
+statistics with the one-variable Weil pairing; ordinates alone forget
+real parts of zeros. \\
+Arakelov--Faltings--Hriljac & A test map, a normalized degree-zero height
+pairing, and a residual form whose sum is the pulled-back Weil form. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{definition}[The full positivity condition]
+\label{v4-arith:w8-atp:defn:consolidated-residual}
+Write $\mathsf R_{\mathrm{A\text{-}TP}}$ for
+$W(f*f^*)\geq0$ for every $f\in\mathscr A$, with the polar,
+finite-prime and archimedean terms all present. The digamma contribution
+is one summand of this condition.
+\end{definition}
+
+\begin{remark}[Comparison with the full functional]
+\label{v4-arith:w8-atp:rem:fivefold}
+A comparison must retain the full normalized functional, or prove an
+explicit equivalence with it. The continuity argument above extends
+positivity under its common-compact approximation hypothesis.
+Lemma~\ref{v4-arith:w8-atp:lem:translation-transfer} gives a different
+extension mechanism, even from a nondense image.
+The theorem supplies no test map or pairing identity for an unnamed source.
+\end{remark}
+
+\section{Fourier Windows and Height Comparisons}
+\label{v4-arith:w8-atp:new-closures}
+
+\subsection{Compact Fourier windows and co-Poisson constraints}
+\label{v4-arith:w8-atp:new-closures:RS}
+
+For an integer degree $m\geq1$, the corresponding window is
+$(-1/m,1/m)$. We first use the degree-one window $(-1,1)$.
+Put $\mathscr A_1^{\mathrm{ev}}
+=\{f\in C_c^\infty((-1,1);\mathbb C):f(-t)=f(t)\}$.
+Specify a family $\mathcal B\subset\mathscr D'(\mathbb R)$
+of distributions representing the desired co-Poisson constraints.
+Using the translations $\tau_a$ defined above, set
+\[
+ \mathscr A_{1,\mathcal B}
+ =\{f\in\mathscr A_1^{\mathrm{ev}}:
+       B(\tau_a f)=0\text{ for every }B\in\mathcal B,
+                                      \ a\in\mathbb R\}.
+\]
+No nonzero element is required by this definition. The associated
+entire source class and its test map are
+\begin{equation}
+\label{v4-arith:w8-atp:eq:PW-CP-RS}
+ \mathrm{PW}^{\mathrm{CP}}(\mathcal B)
+ =\mathcal F_+\mathscr A_{1,\mathcal B},\qquad
+ (J_{\mathrm{CP}}h)(u)
+ =\frac1{2\pi}\int_{\mathbb R}h(t)e^{-itu}\,dt.
+\end{equation}
+Give $C_c^\infty((-1,1))$ its usual test-function inductive-limit
+topology, and $\mathscr A_{1,\mathcal B}$ its subspace topology.
+Give the entire source class the topology transported from this subspace. Fourier inversion makes
+$J_{\mathrm{CP}}$ a continuous linear bijection onto that
+compact-test space. A particular co-Poisson construction must
+specify the distributions $\mathcal B$; the following result
+holds for every such specified family.
+
+\begin{theorem}[The window pairing and the correlation test]
+\label{v4-arith:w8-atp:thm:Quant-A-TP-RS}
+For $h,k\in\mathrm{PW}^{\mathrm{CP}}(\mathcal B)$,
+\[
+ q_{J_{\mathrm{CP}}}(h,k)
+ =\sum_\rho h(z_\rho)\overline{k(\bar z_\rho)},
+ \qquad z_\rho=-i(\rho-\tfrac12).
+\]
+The sum converges absolutely. Under RH this form is positive
+semidefinite. It is also positive semidefinite when its source
+space is zero, without any zero-location hypothesis.
+
+For $f\in\mathscr A_1^{\mathrm{ev}}$, the function
+\[
+ (\mathcal R f)(x_1,x_2)
+ =h_f\bigl(2\pi(x_1-x_2)\bigr)
+\]
+is a symmetric, translation-invariant pair-correlation test,
+rapidly decreasing on $x_1+x_2=0$. With Fourier kernel
+$e^{-2\pi i(x_1\xi_1+x_2\xi_2)}$, its Fourier distribution is
+\[
+ f(\xi_1)\delta(\xi_1+\xi_2),
+\]
+supported in $|\xi_1|+|\xi_2|<2$.
+\end{theorem}
+\begin{proof}
+Apply the explicit formula to
+$J_{\mathrm{CP}}h*(J_{\mathrm{CP}}k)^*$.
+Its Fourier transform is $h(z)\overline{k(\bar z)}$.
+Rapid decay in the critical strip and the zero-count estimate
+give absolute convergence. Under RH each $z_\rho$ is real,
+so the diagonal value is $\sum_\rho|h(z_\rho)|^2$.
+On the zero space the only value is zero.
+
+Evenness of $f$ gives symmetry of $\mathcal Rf$; its formula
+gives translation invariance. Fourier decay proves the required
+decrease on the difference line. Finally
+\[
+ \mathcal Rf(x_1,x_2)
+ =\int_{\mathbb R}f(u)e^{2\pi i(x_1u-x_2u)}\,du,
+\]
+which proves the Fourier-distribution and support assertions.
+\end{proof}
+
+Rudnick--Sarnak, \emph{Zeros of principal $L$-functions and random
+matrix theory}, \S1, TF1--TF3 and Theorems~1.1--1.2, pp.~3--5,
+use Fourier support $\sum_j|\xi_j|<2/m$ for a cuspidal $GL_m$ input,
+with $m\leq3$ or their coefficient hypothesis (1.7). For the pair test
+above, support in $(-1/m,1/m)$ gives precisely that bound.
+The window $(-1,1)$ is the degree-one case. Their smoothed theorem
+permits complex zero parameters; their real-spacing formulation
+adds RH. These correlation sums are different functionals from
+$q_{J_{\mathrm{CP}}}$; the test construction above identifies no
+equality between them.
+
+\begin{remark}[Restricted tests and the full cone]
+\label{v4-arith:w8-atp:rem:Quant-RS-narrow}
+The image of $J_{\mathrm{CP}}$ lies in tests supported in
+$[-1,1]$ and is not dense in $\mathscr A$: evaluation at any
+point outside that interval vanishes on the image but not on
+all compact tests. A nonzero annihilator and an extension beyond
+this window are separate requirements. Different parameters
+do not prove two test images disjoint. The literal entire-Mellin
+class in Theorem~\ref{v4-arith:w7-j:thm:ATP-TM-closure} is zero.
+\end{remark}
+
+\begin{example}[The annihilator depends on its defining distributions]
+If $\mathcal B=\{\delta_0\}$, then
+$\delta_0(\tau_a f)=f(-a)$ for every $a$, so
+$\mathscr A_{1,\mathcal B}=0$.
+If instead $\mathcal B$ consists of the distribution $f\mapsto\int f$,
+choose a nonzero even bump $b\in C_c^\infty((-1,1))$ and set $f=b''$.
+Then $f$ is even, $\int\tau_a f=0$ for every $a$, and $f\ne0$:
+otherwise $b$ would be affine and compactly supported, hence zero.
+These are explicit annihilator examples, not a construction of an
+arithmetic co-Poisson family.
+\end{example}
+
+\subsection{Heegner Heights and Compact-Test Gram Matrices}
+\label{v4-arith:w8-atp:new-closures:heeg}
+
+Let $F=\sum_{n\geq1}a_n(F)e^{2\pi inz}$ be a normalized weight-$2$
+newform on $\Gamma_0(N)$ with trivial character. Let $D<0$ be an odd
+fundamental discriminant prime to $N$, set $K=\mathbb Q(\sqrt D)$,
+and assume $\chi_D(p)=+1$ for every $p\mid N$. These primes split in $K$.
+Let $H$ be the Hilbert class field, $\mathcal G=\operatorname{Gal}(H/K)$,
+$h_K=|\mathcal G|$, and $u_K=|\mathcal O_K^\times|/2$.
+Choose a classical Heegner point $x\in X_0(N)(H)$ and put
+$c=[(x)-(\infty)]\in J_0(N)(H)$.
+
+Set $V=J_0(N)(H)\otimes_{\mathbb Z}\mathbb C$, and let $\Theta$
+be a symmetric theta-divisor class on $J_0(N)$.
+The global $H$-height for $2\Theta$ gives the Hermitian pairing
+$\langle\ ,\ \rangle_H$ on $V$, linear in the first variable.
+Explicitly, if $B_H$ is its real symmetric pairing, then
+$\langle a+ib,c+id\rangle_H
+=B_H(a,c)+B_H(b,d)+iB_H(b,c)-iB_H(a,d)$.
+It is positive definite on this finite-dimensional vector space;
+torsion has disappeared in the tensor product.
+
+For $(n,N)=1$, the good Hecke operators $T_n$ commute and are
+self-adjoint for this pairing. Their correspondences are defined over
+$\mathbb Q$ and are self-dual, so height functoriality gives
+$\langle T_nv,w\rangle_H=\langle v,T_nw\rangle_H$; they also commute
+with $\mathcal G$. Simultaneous diagonalization defines the orthogonal
+projection $e_F$ onto the particular complex eigenspace
+\[
+ V_F=\{v\in V:T_nv=a_n(F)v\text{ for all }(n,N)=1\}.
+\]
+This is the eigenspace for $F$, not the sum of its Galois conjugates;
+it may be zero. For a character $\chi:\mathcal G\to\mathbb C^\times$, put
+\[
+ c_{\chi,F}=e_F\sum_{\sigma\in\mathcal G}\chi(\sigma)^{-1}\sigma c.
+\]
+These are the unaveraged character components. The factor $h_K^{-1}$
+is not inserted.
+
+For an ideal class $\mathfrak a$ of $K$, let $r_{\mathfrak a}(n)$ count
+integral ideals of norm $n$ in that class. Identify characters of the
+class group with characters of $\mathcal G$ by the Artin map. The
+Rankin series in the following formula is
+\[
+ \begin{split}
+ L_{\mathfrak a}(F,s)
+ &=\left(\sum_{\substack{n\geq1\\(n,DN)=1}}\chi_D(n)n^{1-2s}\right)
+       \sum_{n\geq1}a_n(F)r_{\mathfrak a}(n)n^{-s},\\
+ L(F,\chi,s)&=\sum_{\mathfrak a}\chi(\mathfrak a)L_{\mathfrak a}(F,s),
+ \end{split}
+\]
+initially in a right half-plane and then by analytic continuation.
+Gross--Zagier, \emph{Heegner points and derivatives of $L$-series},
+I\S\S2--6, especially (4.3), (5.1), (5.3)--(5.4) and Theorem~(6.3),
+pp.~227--230, give the self-dual correspondences and the normalization
+\begin{equation}
+\label{v4-arith:w8-atp:eq:GZ-height}
+ \|c_{\chi,F}\|_H^2=C_{F,K}L'(F,\chi,1),\qquad
+ C_{F,K}=\frac{h_Ku_K^2\sqrt{|D|}}{8\pi^2(F,F)},\qquad
+ (F,F)=\int_{\Gamma_0(N)\backslash\mathfrak H}|F(z)|^2dx\,dy.
+\end{equation}
+This is a Rankin derivative centered at $s=1$, not a formula for
+$L'(F,1)$ alone. Changing the ground-field height, averaging the
+character component or changing the polarization changes the constant.
+
+\begin{lemma}[Character Gram matrix]
+\label{v4-arith:w8-atp:lem:character-gram}
+For $r\geq1$ and characters $\chi_1,\ldots,\chi_r$ of $\mathcal G$, let
+$G_{ij}=\langle c_{\chi_i,F},c_{\chi_j,F}\rangle_H$ and define
+$D_{F,K}u=\sum_j u_jc_{\chi_j,F}$ on $\mathbb C^r$.
+Distinct characters give orthogonal vectors. Repeated characters give
+\[
+ G_{ij}=
+ \begin{cases}C_{F,K}L'(F,\chi_i,1),&\chi_i=\chi_j,\\
+ 0,&\chi_i\ne\chi_j,
+ \end{cases}
+\]
+and consequently
+\[
+ \|D_{F,K}u\|_H^2
+ =C_{F,K}\sum_{\chi}
+       \left|\sum_{j:\chi_j=\chi}u_j\right|^2L'(F,\chi,1).
+\]
+The sum runs over the distinct characters selected.
+\end{lemma}
+\begin{proof}
+The global height is invariant under $\mathcal G$, since its places
+are permuted by this group. The projection $e_F$ commutes with that
+action, and reindexing the character sum gives
+$\tau c_{\chi,F}=\chi(\tau)c_{\chi,F}$.
+Thus invariance and the first-linear convention imply
+\[
+ G_{ij}=\chi_i(\tau)\overline{\chi_j(\tau)}G_{ij}
+ \qquad(\tau\in\mathcal G).
+\]
+For distinct characters one can choose $\tau$ with the scalar different
+from $1$, so $G_{ij}=0$. For equal characters the two vectors coincide;
+Equation~\eqref{v4-arith:w8-atp:eq:GZ-height} gives their squared norm.
+Expand the squared norm of $D_{F,K}u$ and group equal characters.
+\end{proof}
+
+Choose a nonzero $\phi\in C_c^\infty((-1/4,1/4);\mathbb C)$ and put
+$\phi_j(t)=\phi(t-j)$ for $1\leq j\leq r$.
+Their supports are disjoint. With $S=\mathbb C^r$, define
+\[
+ J_\Phi u=\sum_{j=1}^r u_j\phi_j\in\mathscr A,
+ \qquad D_{F,K}u=\sum_{j=1}^r u_jc_{\chi_j,F}\in V.
+\]
+The map $J_\Phi$ is continuous and injective: restriction to the support
+of each nonzero $\phi_j$ recovers $u_j$. Define
+$\mathrm{PW}^{\mathrm{Heeg}}_F(K,\Phi)=\mathcal F_+J_\Phi(S)$
+with the topology transported from $S$. Its compact-test map is Fourier
+inversion followed by inclusion in $\mathscr A$.
+The dictionary $\Phi$ is additional data, not determined by $(F,K)$.
+
+Define Hermitian matrices
+\[
+ M_{ij}=W(\phi_i*\phi_j^*),\qquad R_{ij}=M_{ij}-G_{ij}.
+\]
+Each entry of $M$ is given by the polar term, gamma integral and finite
+prime sum of the full explicit formula. For a matrix $A$, write
+$A[u,v]=\sum_{i,j}u_i\overline{v_j}A_{ij}$, and $A\succeq0$ if
+$A[u,u]\geq0$ for all $u$.
+
+\begin{theorem}[Height comparison on a specified test image]
+\label{v4-arith:w8-atp:thm:Arakelov-Heegner}
+The matrix $G$ is positive semidefinite, and
+\begin{equation}
+\label{v4-arith:w8-atp:eq:Heegner-formula}
+ W(J_\Phi u*(J_\Phi v)^*)
+ =\langle D_{F,K}u,D_{F,K}v\rangle_H+R[u,v].
+\end{equation}
+Weil positivity on $J_\Phi(S)$ is equivalent to $R+G\succeq0$,
+or $R\succeq-G$. The stronger condition $R\succeq0$ is sufficient.
+If $D_{F,K}u=0$, positivity in that direction is exactly $R[u,u]\geq0$.
+\end{theorem}
+\begin{proof}
+The height pairing gives $G[u,u]=\|D_{F,K}u\|_H^2\geq0$.
+Linearity of $J_\Phi$, sesquilinearity of $q_W$ and the definition
+$M=G+R$ prove the identity. Its diagonal gives the positivity assertions.
+\end{proof}
+
+\begin{example}[Repeated characters and test normalization]
+For $r=2$ and $\chi_1=\chi_2$, the vector $u=(1,-1)$ satisfies
+$D_{F,K}u=0$, whereas $J_\Phi u=\phi_1-\phi_2\ne0$.
+The height contributes zero in this direction, leaving precisely
+$R[u,u]=W((\phi_1-\phi_2)*(\phi_1-\phi_2)^*)$ to control.
+For $r=1$, suppose $\|c_{\chi,F}\|_H^2=g>0$. Replacing $\phi_1$
+by $\varepsilon\phi_1$ changes $M_{11}$ to
+$\varepsilon^2M_{11}$ for real $\varepsilon>0$, while $G_{11}=g$
+is unchanged. Thus $R_{11}=\varepsilon^2M_{11}-g<0$ for sufficiently
+small $\varepsilon$. The stronger sufficient condition $R\succeq0$
+is sensitive to the chosen dictionary and is not a consequence of
+height positivity.
+\end{example}
+
+An arithmetic-intersection interpretation requires further data:
+a regular proper arithmetic model of $X_0(N)$ over $\mathcal O_H$,
+degree-zero representatives, vertical corrections orthogonal to the
+fibre components, and archimedean Green metrics. Let $\widehat V_{\mathbb R}$
+be the chosen real space of corrected degree-zero arithmetic divisor classes,
+and put $\widehat V_{\mathbb C}=\widehat V_{\mathbb R}\otimes_{\mathbb R}\mathbb C$.
+Let $I_{\mathbb R}$ be its real symmetric admissible intersection pairing
+and $I_{\mathbb C}$ its complex-bilinear extension. The pairing needed
+here is the Hermitian extension
+\[
+ I_H(A,B)=I_{\mathbb C}(A,\overline B),
+\]
+where conjugation acts on the complex coefficients of arithmetic
+classes. Specify a complex-linear lift $\widehat D:S\to\widehat V_{\mathbb C}$
+whose degree-zero divisor class is $D_{F,K}$, and a normalization
+$\kappa>0$ for which one proves
+\[
+ -\kappa I_H(\widehat D(u),\widehat D(v))
+       =\langle D_{F,K}u,D_{F,K}v\rangle_H.
+\]
+The model, metrics, lifts and numerical
+normalization are comparison data; the displayed equality is required,
+not inferred from the notation. It is this Hermitian form, rather than
+the complex-bilinear intersection form, that can match $q_W$.
+
+Faltings--Hriljac arithmetic Hodge theory and a proposed Petersson--
+Arakelov comparison of Jorgenson--Kramer (2003) must be applied with
+these specific conventions. A geometrically defined Bott--Chern and
+vertical correction form $R^{\mathrm{geom}}$ gives the proposed Weil
+comparison only after proving $R^{\mathrm{geom}}[u,v]=R[u,v]$ on $S$.
+That identity and $R^{\mathrm{geom}}\succeq0$ imply positivity on
+$J_\Phi(S)$ by the theorem. The definition $R=M-G$ proves neither
+this geometric identification nor its sign.
+
+\begin{remark}[Comparison with other test images]
+\label{v4-arith:w8-atp:rem:heeg-distinct}
+The Heegner construction uses degree-zero classes and a specified test
+dictionary. The domain-restricted Koszul--Petersson comparison of
+Theorem~\ref{v4-arith:kp:thm:main-full} in
+Chapter~\ref{v4-arith:kp-compat} has different input data.
+A proposed Rankin--Selberg central-value comparison through $\Upsilon_F$
+at $L(1/2,F\otimes\bar F)$ must exhibit the relevant cusp form,
+establish its required modularity and normalization, define its
+compact-test map, and prove the pairing identity on its stated domain.
+The images of the test maps must then be compared before drawing a
+conclusion about their intersection.
+Different inputs prove neither disjointness nor density.
+The finite-dimensional image $J_\Phi(S)$ is not dense in $\mathscr A$:
+a finite-dimensional subspace of a Hausdorff locally convex space is
+closed, and $\mathscr A$ is infinite-dimensional, as disjointly
+supported bumps show.
+\end{remark}
+
+\section{Arithmetic Comparisons and Ordinate Statistics}
+\label{v4-arith:w8-atp:negative}
+
+\subsection{The Iwasawa--Kato Comparison Question}
+\label{v4-arith:w8-atp:negative:iwasawa}
+
+\begin{remark}[Finite-prime data and the full Weil pairing]
+\label{v4-arith:w8-atp:thm:iwasawa-auxiliary-structure}
+The Iwasawa comparison question concerns the following proposed inputs:
+Mazur--Wiles value formulas; Kato Euler systems and Bloch--Kato--Beilinson
+height pairings; a proposed archimedean counterpart of Ferrero--Washington;
+Perrin--Riou and Bloch--Kato exponentials; a proposed $p\to\infty$
+Connes--Marcolli comparison; Kato reciprocity maps $\exp^*/\log$;
+Kolyvagin and Coates--Wiles height constructions; Colmez--Fontaine
+$p$-adic representations; Fukaya--Kato noncommutative methods and
+Skinner--Urban; and a proposed Dirichlet $p$-adic transport.
+The named reference family comprises Mazur--Wiles (1984), Kato (2004,
+\emph{Ast\'{e}risque} 295), Perrin--Riou (1995), Fukaya--Kato (2006),
+Colmez, Bloch--Kato (1990), Kolyvagin (1988), Coates--Wiles (1977),
+Ferrero--Washington (1979), Connes--Marcolli and Skinner--Urban.
+
+For each such route, the missing comparison is a specified map to
+$\mathscr A$ and an identity with $q_W$, or an explicit equivalence,
+including the polar and archimedean terms. The existence, coefficients
+and domain of that map must be part of the assertion. No completeness
+of this list, exclusion of all Iwasawa methods, or positive pairing
+comparison is assumed here. Functional-equation symmetry alone does
+not provide a sign for $q_W$; the abstract divisor example below already
+separates these properties. The conditional arithmetic complementarity
+statement in Theorem~\ref{v4-arith:thm:P1-resolution} retains its
+arithmetic evaluation, central-defect, and detection hypotheses.
+It supplies no test map in this chapter.
+\end{remark}
+
+\begin{remark}[An archimedean Iwasawa comparison]
+\label{v4-arith:w8-atp:rem:deninger-archimedean}
+Deninger's cohomological analogies (ICM 1998; \emph{Motives and
+algebraic cycles}, 2002) motivate asking for an archimedean analogue
+of an Iwasawa main-conjecture construction. To obtain a formulation
+of A-TP by this route, one must construct its carrier, operators and
+pairing and prove equivalence with the full normalized Weil condition.
+No such construction or RH-equivalence follows merely from the analogy.
+\end{remark}
+
+\subsection{Ordinate statistics and the divisor pairing}
+\label{v4-arith:w8-atp:negative:BGS}
+
+\begin{theorem}[Ordinate data do not determine the divisor form]
+\label{v4-arith:w8-atp:thm:BGS-consequent}
+There are conjugation- and reflection-invariant divisors in
+$0<\Re s<1$ with identical ordinate multisets whose forms
+\[
+ Q_{\mathcal D}(f)=
+ \sum_{\rho\in\mathcal D}
+ h_f(z_\rho)\overline{h_f(\bar z_\rho)},
+ \qquad f\in\mathscr A,
+\]
+have different positivity properties. Their ordinate statistics
+are identical, including every statistic formed from finite
+tuples of ordinates.
+\end{theorem}
+\begin{proof}
+Let $\Gamma\subset\mathbb R$ be a locally finite symmetric
+multiset with polynomial counting growth, and let $0<a<1/2$.
+Compare the multisets
+\[
+ \mathcal D_0=\{1/2+i\gamma:\gamma\in\Gamma\}
+                 \sqcup\{1/2,1/2\},\qquad
+ \mathcal D_a=\{1/2+i\gamma:\gamma\in\Gamma\}
+                 \sqcup\{1/2-a,1/2+a\}.
+\]
+Both have ordinate multiset $\Gamma\sqcup\{0,0\}$ and
+the stated symmetries. The first form is a sum of absolute
+squares. Choose an even nonnegative nonzero
+$\phi\in C_c^\infty(\mathbb R)$ and put
+\[
+ f_L(u)=\phi(u-L)-\phi(u+L),\qquad
+ c=h_\phi(ia)=h_\phi(-ia)>0.
+\]
+For real $t$, $|h_{f_L}(t)|\leq2|h_\phi(t)|$.
+The number $C=\sum_{\gamma\in\Gamma}|h_\phi(\gamma)|^2$
+is finite by rapid decay and polynomial counting growth.
+At the two nonreal spectral parameters,
+\[
+ h_{f_L}(ia)=-2c\sinh(aL),\qquad
+ h_{f_L}(-ia)=2c\sinh(aL).
+\]
+Consequently
+\[
+ Q_{\mathcal D_a}(f_L)
+ \leq4C-8c^2\sinh^2(aL)<0
+\]
+for sufficiently large $L$. All sums converge absolutely.
+Changing the real parts has left every ordinate statistic
+unchanged.
+\end{proof}
+
+\begin{remark}[Scope of the statistical comparison]
+\label{v4-arith:w8-atp:rem:statistical-upside-unchanged}
+The countermodel is a statement about abstract divisors and
+the information retained by ordinate statistics. It is not
+a zeta divisor and satisfies no stipulated prime explicit
+formula; it proves no logical independence assertion about
+RH for the fixed Riemann zeta function.
+The dynamical implication in
+Theorem~\ref{v4-arith:tfe:thm:stat-upside} additionally assumes a
+zero-divisor realization, semiclassical dynamics, and the
+appropriate BGS universality statement. RH alone supplies
+none of those dynamical hypotheses.
+\end{remark}
+\section{Extension to the Full Weil Cone}
+\label{v4-arith:w8-atp:residual}
+
+The next proposition extends positivity by common-compact approximation.
+Positivity on separate images does not itself control cross terms on
+their linear span. Translation supplies a separate extension when every
+convolution square has a representative in the given image.
+
+\begin{proposition}[Extension by approximation of compact tests]
+\label{v4-arith:w8-atp:prop:consolidated}
+Suppose a family of specified test maps $J_\alpha:S_\alpha\to
+\mathscr A$ has positive pulled-back Weil forms. Then $q_W$
+is positive on the union of their images. If every compact test
+is a smooth limit of tests from that union with all supports
+in a common compact set, A-TP follows. For the Heegner map,
+the exact positivity condition is $R+G\succeq0$.
+\end{proposition}
+\begin{proof}
+The comparison identities give positivity on each image.
+The continuity argument in
+Theorem~\ref{v4-arith:w8-atp:thm:convergence} gives the extension.
+The Heegner condition is the Gram-matrix identity.
+\end{proof}
+
+\section{Relation to Scattering and Arithmetic Realizations}
+\label{v4-arith:w8-atp:relations}
+
+Chapter~\ref{v4-arith:w7-j:ATP-adelic-scattering} constructs specified
+self-adjoint scattering pairs and proves obstructions to positivity
+of their ordinary trace differences. Its literal entire-Mellin class
+is zero. Neither a scattering phase nor an inequality for a single
+summand supplies the full identity with $P-W_\infty-W_{\mathrm{fin}}$.
+
+A-TP remains equivalent to RH on the full compact-test algebra.
+Under their respective sign hypotheses, the specified comparisons
+establish positivity on their stated images. Passing to all compact
+tests requires a further argument, such as approximation or the
+translation identity. The abstract
+divisor countermodel concerns the information lost by taking
+ordinates; it does not remove the arithmetic hypotheses of
+a zeta realization. A dynamical route to GUE statistics retains
+the separate assumptions of
+Theorem~\ref{v4-arith:tfe:thm:stat-upside}.
+
+The arithmetic-gravity comparisons in
+Chapters~\ref{v4-arith:3d-acs-E1bar}--\ref{v4-arith:tfe-gutzwiller}
+retain their separate state-space, chiral-homology, spectral-flow and
+semiclassical hypotheses. A proposed prismatic interpretation at the
+archimedean place also requires its own carrier and comparison;
+it is not constructed by the Fourier or height maps here.
+
+\section{The Remaining Comparison Requirements}
+\label{v4-arith:w8-atp:summary}
+
+\begin{enumerate}
+\item The comparison theorem transfers positivity through a
+specified map and pairing identity. Common-compact approximation
+gives one extension to all tests. Translation gives another, without
+requiring a dense image.
+\item The Fourier-window map identifies an actual restricted
+test space. The Heegner map identifies a finite test image and
+the residual matrix $R=M-G$. Their parameterizations do not
+establish disjointness or density of their images.
+\item Ordinate statistics are unchanged in the two explicit
+divisor models, although one divisor form has a negative square.
+This statement does not assert an arithmetic counterexample
+to RH or a theorem that RH implies GUE statistics.
+\item The full residual is
+$W(f*f^*)\geq0$ for every $f\in\mathscr A$.
+\end{enumerate}
+
+A comparison with A-TP must preserve the full normalized functional,
+or prove an explicit equivalence with it, together with an argument
+transferring positivity to all compact tests.

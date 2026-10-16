@@ -1,0 +1,682 @@
+\chapter{Continuous Scaling and the Arithmetic Zero Operator}
+\label{v4-arith:w9-r2:archimedean-wilson-surface}
+
+Continuous Mellin scaling has no eigenvectors. Occupation energy has
+a complete eigenbasis. This spectral distinction prevents their
+unitary intertwining. A separate diagonal operator on the zero
+occurrences gives an exact arithmetic exponential and its purity
+criterion, with no identification of these different carriers.
+
+\section{Continuous Mellin scaling}
+At the real place, the archimedean completion is
+\(\mathbb Q_\infty=\mathbb R\), with its ordinary absolute value.
+For \(\lambda>0\), geometric scaling is
+\begin{equation}
+ \rho_\lambda(x)=\lambda x,\qquad
+ \rho_\lambda^*(dx/x)=dx/x.
+ \label{v4-arith:w9-r2:eq:scaling}
+\end{equation}
+The inverse pullback \((\rho_\lambda^{-1})^*f(x)=f(\lambda^{-1}x)\)
+is unitary on the multiplicative Haar space and has no half-density factor. On the additive space \(L^2(\mathbb R_{>0},dx)\),
+the corresponding unitary action is
+\(v(x)\mapsto\lambda^{-1/2}v(\lambda^{-1}x)\).
+The map \(v(x)\mapsto x^{1/2}v(x)\) is a unitary from the additive
+space to the multiplicative space and intertwines these actions.
+Indeed \(\int|x^{1/2}v(x)|^2dx/x=\int|v(x)|^2dx\).
+The Tate half-shift below is separate from this change of measure.
+
+\begin{definition}[scaling and its domain]
+\label{v4-arith:w9-r2:def:scaling}
+Set $H_c=L^2(\mathbb R_{>0},dx/x)$ and
+$(U_a f)(x)=f(e^{-a}x)$ for $a\in\mathbb R$.
+In the coordinate $t=\log x$, define
+\[
+ D_c=-i\partial_t,\qquad
+ \operatorname{Dom}D_c=\{f:f(e^t)\in H^1(\mathbb R,dt)\}.
+\]
+Then $U_a=e^{-iaD_c}$.
+The derivative convention is $D_c=i\,\partial_a U_a|_{a=0}$.
+\end{definition}
+
+\begin{theorem}[Mellin unitarity]
+\label{v4-arith:w9-r2:lem:mellin}
+The transform
+\[
+ (\mathcal M_-f)(u)=\frac1{\sqrt{2\pi}}
+                  \int_0^\infty f(x)x^{-iu}\frac{dx}{x}
+\]
+extends to a unitary $H_c\to L^2(\mathbb R,du)$ and sends $D_c$
+to multiplication by $u$ on its maximal domain.
+It has no eigenvectors. The normal operator
+$\Theta_c=1/2+iD_c$ has continuous spectrum $1/2+i\mathbb R$.
+\end{theorem}
+\begin{proof}
+The logarithmic coordinate is unitary from $H_c$ to $L^2(dt)$.
+Plancherel and integration by parts give the transform and generator.
+The weak $H^1$ domain maps exactly to $\{v:uv\in L^2(du)\}$.
+An eigenvector of multiplication by $u$ would be supported on a
+singleton, which has Lebesgue measure zero. The same argument applies
+to $1/2+iu$.
+\end{proof}
+
+\begin{definition}[continuous scaling exponential]
+\label{v4-arith:w9-r2:def:F-infty}
+On the continuous scaling carrier, put
+\[
+ F_\infty:=e^{-\Theta_c}=e^{-1/2}U_1.
+\]
+This bounded normal operator satisfies
+$|F_\infty|=e^{-1/2}1$ unconditionally.
+\end{definition}
+
+\begin{proposition}[scaling reflection]
+\label{v4-arith:pres90:reflection}
+On $H_c$, the map $(Rf)(x)=f(x^{-1})$ is a unitary involution.
+It preserves $\operatorname{Dom}D_c$ and satisfies
+\[
+ RD_cR=-D_c,\qquad R\Theta_cR=1-\Theta_c,\qquad
+ RF_\infty R=e^{-1}F_\infty^{-1}.
+\]
+\end{proposition}
+\begin{proof}
+The substitution $x\mapsto x^{-1}$ preserves the multiplicative
+Haar integral. In logarithmic coordinates $R$ is reflection,
+which preserves $H^1$ and negates its weak derivative.
+The generator identity follows on the entire domain. Spectral
+calculus then gives
+$Re^{-\Theta_c}R=e^{-(1-\Theta_c)}=e^{-1}e^{\Theta_c}$.
+The inverse is bounded because $F_\infty=e^{-1/2}U_1$.
+Thus the exponential involution is $z\mapsto e^{-1}/z$, rather than
+bare inversion.
+\end{proof}
+
+\section{The occupation and primary-sector comparisons}
+\begin{theorem}[obstruction to a unitary energy comparison]
+\label{v4-arith:w9-r2:lem:L0-Mellin}
+Let $H_d$ have a complete orthonormal eigenbasis for an operator
+$L_d$. There is no unitary $V:H_d\to H_c$ with
+$VL_dV^{-1}=\Theta_c$, including equality of domains.
+In particular, the ordinary Fock energy and the integer occupation
+operator cannot satisfy this identity.
+\end{theorem}
+\begin{proof}
+If $L_d e=\lambda e$ with $\|e\|=1$, the claimed identity gives
+$\Theta_c Ve=\lambda Ve$. This contradicts the absence of
+continuous-scaling eigenvectors. The vacuum alone is sufficient.
+\end{proof}
+
+The constructed compact-test map to the zero carrier is
+$E:\mathscr A\to K_Z$ of Theorem~\ref{v4-arith:sc:zero-representation}.
+Its exact comparison is signed. A Petersson norm of an actual cusp
+form is the different form computed by the Rankin--Selberg integral.
+Neither of these statements supplies a map from an arithmetic
+primary sector to $H_c$.
+
+\begin{theorem}[the correctly typed conjugacy formula]
+\label{v4-arith:w9-r2:thm:conjugacy}
+Suppose $H_a$ is a Hilbert space, $L_a$ a closed normal operator,
+and $V:H_a\to H_c$ a unitary with
+$V\operatorname{Dom}L_a=\operatorname{Dom}\Theta_c$ and
+$VL_a=\Theta_c V$ on that domain.
+Then
+\[
+ e^{-L_a}=V^{-1}F_\infty V.
+\]
+The exponential on the left is bounded, and its absolute value is
+$e^{-1/2}1$. The preceding obstruction excludes this hypothesis when
+$L_a$ is the ordinary Fock or occupation energy.
+\end{theorem}
+\begin{proof}
+Unitary conjugacy preserves the spectral projections of normal
+operators. Applying the bounded function $e^{-s}$ on the common
+vertical-line spectrum proves the formula and absolute-value claim.
+\end{proof}
+
+\section{The zero exponential and its actual spectrum}
+\begin{definition}[arithmetic zero exponential]
+For the diagonal operator $\Theta_Z$ of
+Theorem~\ref{v4-arith:sc:normalized-det}, put
+\[
+ F_Z=e^{-\Theta_Z}=\operatorname{diag}(e^{-\rho})
+ \quad\hbox{on }K_Z=\ell^2(Z).
+\]
+Because $0\le\Re\rho\le1$, this operator is bounded and invertible,
+with $\|F_Z\|\le1$ and $\|F_Z^{-1}\|\le e$.
+\end{definition}
+
+\begin{proposition}[spectral measure and failure of local finiteness]
+\label{v4-arith:w9-r2:thm:spectral-identification}
+For a Borel set $B\subset\mathbb C$, the spectral projection of
+$F_Z$ is
+\[
+ (P_Z(B)u)_\rho=\mathbf1_B(e^{-\rho})u_\rho.
+\]
+Its spectrum is the closure of $\{e^{-\rho}:\rho\in Z\}$.
+The counting pushforward $\sum_\rho\delta_{e^{-\rho}}$ is not
+locally finite on $\mathbb C$. Thus it is not an entire-function
+zero divisor.
+For any fixed $s$, the product
+$\prod_\rho(1-e^{-s}e^{-\rho})$ fails the necessary factor-to-one
+condition for an ordinary convergent nonzero product.
+\end{proposition}
+\begin{proof}
+Coordinate functional calculus gives the spectral projection.
+The spectrum of a bounded diagonal operator is the closure of its
+entries: outside that closure, the inverse diagonal resolvent is
+bounded; at a limit point, basis vectors give approximate eigenvectors.
+All infinitely many occurrences lie in the compact annulus
+$e^{-1}\le|z|\le1$. A locally finite counting measure would have
+finite mass on that annulus, a contradiction.
+Finally $|e^{-s}e^{-\rho}|\ge e^{-\Re s-1}>0$, so the factors do
+not tend to one. The normalized additive determinant
+$\Delta_Z(s)=\xi(s)$ remains well-defined by its genus-one factors.
+\end{proof}
+
+\begin{proposition}[individual multiplicative factors]
+\label{v4-arith:w9-r2:cor:character-factorisation}
+For a fixed zero \(\rho\),
+\[
+ 1-e^{-s}e^{-\rho}=0
+ \quad\Longleftrightarrow\quad
+ s=-\rho+2\pi i j\quad(j\in\mathbb Z).
+\]
+The additive genus-one factor \((1-s/\rho)e^{s/\rho}\) instead
+vanishes only at \(s=\rho\).
+\end{proposition}
+\begin{proof}
+The first equation is \(e^{-s-\rho}=1\), so
+\(-s-\rho\in2\pi i\mathbb Z\). The exponential factor in the additive
+expression never vanishes. These are individual-factor identities;
+the preceding proposition excludes the proposed ordinary infinite product.
+\end{proof}
+
+\begin{theorem}[arithmetic purity and Weil positivity]
+\label{v4-arith:w9-r2:thm:purity-ATP-RH}
+The following are equivalent:
+\[
+ |F_Z|=e^{-1/2}1,
+ \qquad \Re\rho=1/2\ \hbox{for every zero }\rho,
+ \qquad W(f*f^*)\ge0\ \hbox{for every }f\in\mathscr A.
+\]
+This is a theorem about $F_Z$ on $K_Z$.
+The equality $|F_\infty|=e^{-1/2}1$ on $H_c$ is unconditional and
+carries no zero-location information without a further comparison.
+\end{theorem}
+\begin{proof}
+On the coordinate vector at $\rho$, $|F_Z|$ has eigenvalue
+$e^{-\Re\rho}$. This proves the first equivalence.
+The second is Weil's positivity criterion on the exact compact
+convolution test algebra.
+\end{proof}
+
+\subsection{Functional-equation symmetry and common weight}
+\label{v4-arith:pres90:occurrence-symmetry}
+
+Choose a multiplicity-preserving involution $\tau$ of $Z$ with
+$\rho_{\tau j}=1-\rho_j$. Such a choice exists by the functional
+equation of $\xi$; occurrences fixed in value may be fixed individually.
+The unitary permutation $(T_Zu)_j=u_{\tau j}$ obeys
+\[
+ T_Z\Theta_ZT_Z=1-\Theta_Z,\qquad
+ T_ZF_ZT_Z=e^{-1}F_Z^{-1}.
+\]
+The first equality includes domains: $|1-\rho|\le1+|\rho|$ and
+its reverse counterpart show that the two maximal diagonal domains
+coincide. The second equality is the coordinate identity
+$e^{-(1-\rho)}=e^{-1}/e^{-\rho}$.
+The real-entire symmetry supplies separately an occurrence permutation
+$c$ with $\rho_{cj}=\overline{\rho_j}$; its unitary permutation
+conjugates $\Theta_Z$ to $\Theta_Z^*$ and $F_Z$ to $F_Z^*$.
+Neither symmetry asserts that a zero lies on the critical line.
+These are symmetries of spectral occurrences and projections, not
+of an entire divisor after exponentiation.
+
+\begin{definition}[common exponential weight]
+\label{v4-arith:pres90:common-weight}
+For a specified nonempty family of nonzero complex numbers
+$(\mu_j)_{j\in J}$, counted with its given occurrences, a common
+exponential weight is $w\in\mathbb R$ such that
+$|\mu_j|=e^{-w}$ for every $j$. It is unique if it exists.
+For a normal operator without a chosen eigenbasis, the corresponding
+condition is that its spectral measure be supported on
+$\{|z|=e^{-w}\}$, equivalently $|F|=e^{-w}1$ on a nonzero Hilbert space.
+The reference base here is $e$ and the sign is negative.
+With a base $b>1$, the convention $|\mu|=b^{-w_b}$ instead gives
+$w=w_b\log b$.
+\end{definition}
+
+\begin{theorem}[the symmetric zero spectral-radius criterion]
+\label{v4-arith:pres90:radius}
+On the nonempty zero-occurrence carrier $K_Z$, the following are equivalent:
+\[
+ r(e^{1/2}F_Z)=1,\qquad
+ |F_Z|=e^{-1/2}1,\qquad \mathrm{RH}.
+\]
+Moreover, any common exponential weight for the family $(e^{-\rho})$
+is necessarily $1/2$. The functional-equation symmetry is essential
+to the spectral-radius assertion.
+\end{theorem}
+\begin{proof}
+The zero count ensures that $Z$ is nonempty, and the strip bound
+makes $F_Z$ a bounded normal diagonal operator. Its spectrum is the
+closure of its entries. Therefore
+\[
+ r(e^{1/2}F_Z)=\sup_{\rho\in Z}e^{1/2-\Re\rho}
+             =e^{1/2-\inf_{\rho\in Z}\Re\rho}.
+\]
+If the radius is one, the infimum equals $1/2$, so every real part
+is at least $1/2$. Applying $\rho\mapsto1-\rho$ makes every real
+part at most $1/2$. All are therefore $1/2$, without assuming that
+an infimum is attained. Conversely that equality makes every
+entry have modulus $e^{-1/2}$ and the normalized radius one.
+The diagonal absolute value proves the middle equivalence.
+If a common weight $w$ exists, $|e^{-\rho}|=e^{-\Re\rho}$ gives
+$\Re\rho=w$; symmetry also gives $1-w=w$.
+A normal diagonal operator with eigenvalues $e^{-1/2},e^{-1}$ has
+normalized radius one but not constant modulus. It lacks the
+functional-equation symmetry and hence is not a counterexample to
+this theorem.
+\end{proof}
+
+\section{A surface observable and the required operator comparison}
+For a closed oriented smooth three-manifold \(M\), a real connection
+one-form \(A\) on the trivial \(U(1)\)-bundle, and a real parameter \(k\),
+the abelian Chern--Simons action is
+\begin{equation}
+ S_{\mathrm{CS},k}[A]=\frac{k}{4\pi}\int_M A\wedge dA.
+ \label{v4-arith:w9-r2:eq:CS-action}
+\end{equation}
+For a globally defined real gauge parameter \(\chi\), replacing \(A\)
+by \(A+d\chi\) changes the integrand by \(d(\chi\,dA)\), whose integral
+vanishes. Nontrivial bundles and large gauge transformations require
+a global definition and its level conditions.
+A disk curvature observable uses the restriction of such connection
+data; its quantization requires the additional operator data below.
+
+\begin{definition}[an oriented disk and an abelian curvature observable]
+\label{v4-arith:w9-r2:def:Sigma-infty}
+Let $\Sigma_\infty=D^2=\{z\in\mathbb C:|z|\le1\}$, oriented by
+$dx\wedge dy$, and give it the two-form
+\[
+ \omega_\infty=\frac{i}{2\pi}
+              \frac{dz\wedge d\bar z}{(1+|z|^2)^2}.
+\]
+Let $a$ be a smooth real connection one-form on the trivial $U(1)$
+bundle over the disk, and let $q\in\mathbb Z$.
+The curvature observable is
+$\mathcal O_q(a)=\exp(iq\int_{D^2}da)$.
+\end{definition}
+
+\begin{proposition}[disk normalization and Stokes comparison]
+The disk has $\int_{D^2}\omega_\infty=1/2$, and
+$\mathcal O_q(a)=\exp(iq\int_{\partial D^2}a)$.
+For a fixed connection, this scalar observable acting on $H_c$
+cannot equal the nonscalar operator $F_\infty$.
+\end{proposition}
+\begin{proof}
+In polar coordinates the area integral is
+$2\int_0^1 r(1+r^2)^{-2}dr=1/2$.
+Stokes's theorem gives the boundary expression with its induced
+counterclockwise orientation. Gauge transformations on the disk
+preserve the curvature. The integral charge makes the boundary
+holonomy independent of the angular representative.
+Choose a nonzero logarithmic test supported in an interval of length
+less than one. Its translate by one has disjoint support, so $U_1$
+and hence $F_\infty=e^{-1/2}U_1$ is not scalar.
+\end{proof}
+
+The form \(\omega_\infty\) uses the complex orientation on the disk
+and the additive measure \(dx\,dy\).
+Its extension with the same formula to \(\mathbb P^1(\mathbb C)\)
+has area \(2\int_0^\infty r(1+r^2)^{-2}dr=1\).
+On the disk, \(2\omega_\infty\) is the unit-area normalization.
+These choices specify geometric data; neither choice constructs a
+quantum surface operator or an arithmetic spectral comparison.
+
+\subsection{Real charges, closed surfaces and area characters}
+\label{v4-arith:pres90:real-charge}
+
+For a smooth real one-form $a$ on a trivial bundle over an oriented
+compact surface $\Sigma$, the scalar
+\[
+ W_q(\Sigma,a)=\exp\left(iq\int_\Sigma da\right)
+\]
+is defined for every real $q$. It is unchanged by transformations
+preserving curvature, in particular $a\mapsto a+d\chi$.
+For integral $q$ and the disk it agrees with $\mathcal O_q$ above.
+Stokes gives $W_q=\exp(iq\int_{\partial\Sigma}a)$ for a globally
+specified $a$ even at real charge. If only the boundary holonomy
+angle modulo $2\pi$ is given, this expression descends to a
+$U(1)$ character exactly when $q\in\mathbb Z$. This distinguishes
+the real curvature scalar from an integral-charge boundary character.
+For closed $\Sigma$ and global $a$, Stokes gives $W_q=1$ for all
+real $q$; curvature invariance imposes no condition $qk\in\mathbb Z$.
+
+\begin{proposition}[closed-surface isotopy]
+\label{v4-arith:pres90:closed-isotopy}
+Let $F$ be the real curvature two-form of a smooth $U(1)$ connection
+on a three-manifold $M$. For a smooth isotopy $j_t:\Sigma\to M$ of
+a closed oriented surface,
+$\int_\Sigma j_1^*F=\int_\Sigma j_0^*F$.
+Consequently the curvature scalar at any real charge is isotopy
+invariant in this closed-surface setting, without a framing condition.
+\end{proposition}
+\begin{proof}
+Curvature is closed. For $J:[0,1]\times\Sigma\to M$, $J(t,x)=j_t(x)$,
+Stokes gives
+$\int_\Sigma j_1^*F-\int_\Sigma j_0^*F
+=\int_{[0,1]\times\Sigma}dJ^*F=0$.
+For a surface with boundary, the swept boundary gives an extra term.
+For example, $a=z x\,dy$ on $\mathbb R^3$ has curvature integral
+$c\pi$ on the unit disk in $z=c$. Translating that disk preserves
+its ordinary framing but changes $e^{iqc\pi}$ in general.
+\end{proof}
+
+\begin{proposition}[integral area and the scalar circle character]
+\label{v4-arith:pres90:area-character}
+For a real area $\alpha$, the function $\theta\mapsto e^{i\alpha\theta}$
+descends from $\mathbb R$ to a character of $\mathbb R/(2\pi\mathbb Z)$
+if and only if $\alpha\in\mathbb Z$. Thus the disk form of area $1/2$
+does not define this character, whereas $2\omega_\infty$ does.
+\end{proposition}
+\begin{proof}
+Periodicity is equivalent to $e^{2\pi i\alpha}=1$, or
+$\alpha\in\mathbb Z$; the character law then follows from addition.
+The areas were computed above. A circle character alone specifies
+neither a gauge $2$-group nor a $2$-representation.
+\end{proof}
+
+\begin{definition}[a specified quantum surface operator]
+\label{v4-arith:w9-r2:def:F-infty-WS}
+A quantum surface comparison consists of a Hilbert space $H_\Sigma$,
+a bounded operator $F_\infty^{\mathrm{WS}}$ on it, and a unitary
+$V_\Sigma:H_\Sigma\to H_c$ satisfying
+$V_\Sigma F_\infty^{\mathrm{WS}}=F_\infty V_\Sigma$.
+These are additional data. The scalar curvature observable alone
+does not construct them.
+\end{definition}
+
+\begin{proposition}[transport of a specified surface operator]
+\label{v4-arith:w9-r2:thm:WS-equals-scaling}
+For the specified quantum surface comparison,
+$F_\infty^{\mathrm{WS}}=V_\Sigma^{-1}F_\infty V_\Sigma$ and
+$|F_\infty^{\mathrm{WS}}|=e^{-1/2}1$.
+A further arithmetic comparison with $F_Z$ is required before its
+purity can be identified with Weil positivity.
+\end{proposition}
+\begin{proof}
+Multiply the defining intertwining identity by $V_\Sigma^{-1}$.
+Unitary conjugacy preserves the absolute value.
+The arithmetic criterion concerns the separate coordinate operator
+$F_Z$ and follows from the preceding purity theorem.
+\end{proof}
+
+\section{Arithmetic geometry, quantization and primary operators}
+\label{v4-arith:pres90:native-questions}
+
+The continuous carrier and the zero-occurrence carrier answer
+specified analytic questions. Realizing an arithmetic boundary
+operator requires additional constructions on the intended objects.
+
+\paragraph{Koszul self-duality and reflection.}
+\label{v4-arith:pres90:koszul-reflection}
+The proposed compatibility with the Koszul self-duality of
+\Cref{v4-arith:thm:P1-resolution} remains a question on the native
+resolution. It requires a specified contravariant duality on that
+complex, including its coefficient field, degree shifts and signs,
+and a self-duality morphism compatible with its differential.
+Neither existence of this native morphism nor its compatibility
+with a Hilbert realization follows from the analytic reflection.
+After realization and identification with the appropriate dual
+Hilbert space, the question is whether it induces a complex-linear
+unitary involution $J$ on a native Hilbert space $H_{\mathrm{nat}}$
+with closed normal generator $\Theta_{\mathrm{nat}}$, satisfying
+\[
+ J\operatorname{Dom}\Theta_{\mathrm{nat}}
+ =\operatorname{Dom}\Theta_{\mathrm{nat}},\qquad
+ J\Theta_{\mathrm{nat}}J=1-\Theta_{\mathrm{nat}}.
+\]
+The passage from contravariant duality to this linear operator must
+specify every conjugation: the Riesz identification is antilinear,
+so it cannot silently supply a complex-linear $J$.
+For the continuous realization the required comparison is a unitary
+$V:H_{\mathrm{nat}}\to H_c$ with
+$V\operatorname{Dom}\Theta_{\mathrm{nat}}=\operatorname{Dom}\Theta_c$,
+$V\Theta_{\mathrm{nat}}=\Theta_cV$ and $VJ=RV$.
+For a zero-occurrence realization the corresponding requirements
+replace $(H_c,\Theta_c,R)$ by $(K_Z,\Theta_Z,T_Z)$.
+These are distinct comparison problems. Either specified comparison
+would transfer the normalized identity
+$Je^{-\Theta_{\mathrm{nat}}}J=e^{-1}(e^{-\Theta_{\mathrm{nat}}})^{-1}$;
+it would not give the unnormalized inversion law.
+Constructing the native duality and one of these compatible
+realizations is open here; no assertion about the native resolution
+is deduced solely from the two analytic models.
+
+\paragraph{Arithmetic boundary geometry and quantum surface quantization.}
+\label{v4-arith:pres90:quantization}
+The surface problem in \Cref{v4-arith:3d-acs:conj:qu-acs} asks for an
+arithmetic space or site modeling $\overline{\mathrm{Spec}\,\mathbb Z}$,
+a boundary object at infinity, and a comparison map from an oriented
+disk carrying a chosen Green metric. For a projective arithmetic
+surface the intended metric lies on its complex fibre; a chosen
+metric on $\mathbb P^1(\mathbb C)$ and the explicit disk form are
+smooth geometric data, not an embedding of $D^2$ in the arithmetic site.
+The finite-prime knot dictionary of Morishita and an infinity-surface
+model require this topology and its gluing maps; a disk with boundary
+must not be called a closed surface.
+
+A quantum arithmetic Chern--Simons construction must specify its
+level $k^{\mathrm{Ar}}$, fields and gauge transformations on that site,
+its action and global gauge normalization, boundary conditions,
+and a measure or alternative state-space quantization. It must
+construct the boundary Hilbert space $H_\Sigma$, its pairing,
+and the observable from a well-defined degree-two curvature
+coupling. Multiplication of two differential two-forms on a disk
+does not supply that coupling: their wedge has degree four.
+If a higher surface holonomy is intended, a gauge $2$-group,
+$2$-connection and $2$-representation with gluing coherence are
+additional data. Extension along a $U(1)$ inclusion into a
+nonabelian theory requires actual functors and compatible boundary
+terms, not an assertion of automatic functoriality.
+
+The intended boundary target is a realization of
+$\mathcal V^{\mathrm{prim}}_{\mathrm{Heis},\infty}$, a sector of the
+primary Hochschild trace class. Constructing its map into a Hilbert
+space and its relation to a Heisenberg representation is part of
+the problem. The boundary WZW/radial-quantization question asks
+whether a constructed boundary generator represents translation
+in $t=\log|x|_\infty$, including its normalization and operator domain.
+The Chern--Simons and boundary frameworks of Witten,
+Elitzur--Moore--Schwimmer--Seiberg, Cattaneo--Mnev--Reshetikhin,
+and the higher-gauge frameworks of Baez--Schreiber and Schreiber--Sati
+provide separate settings for these questions; their names do not
+identify the arithmetic fields or quantization.
+
+To compare the resulting surface operator with continuous scaling,
+one must construct a unitary $V_\Sigma:H_\Sigma\to H_c$ and, for
+an exponential realization, a closed normal $\Theta_\Sigma$ with
+\[
+ V_\Sigma\operatorname{Dom}\Theta_\Sigma=\operatorname{Dom}\Theta_c,
+ \qquad V_\Sigma\Theta_\Sigma=\Theta_cV_\Sigma.
+\]
+Then spectral calculus gives the earlier conjugacy. A unitary phase
+observable and $e^{-1/2}U_1$ have different absolute values; the Tate
+normalization must therefore be part of the proposed quantization.
+Existence of a bulk measure alone does not imply this comparison.
+
+\paragraph{The primary Virasoro and pairing problem.}
+\label{v4-arith:pres90:primary-virasoro}
+The primary-Virasoro question of
+\Cref{v4-arith:rh:conj:primary-Virasoro} is to realize a specified
+primary trace sector in a Hilbert space $H_{\mathrm{prim}}$ with
+an invariant dense domain $\mathcal D_{\mathrm{prim}}$ and operators
+$L_n^{\mathrm{Ar}}$ satisfying on that domain
+\[
+ [L_m^{\mathrm{Ar}},L_n^{\mathrm{Ar}}]
+ =(m-n)L_{m+n}^{\mathrm{Ar}}
+   +\frac{c}{12}(m^3-m)\delta_{m+n,0}1.
+\]
+It requires an actual central action, compatible primary operations,
+and a positive pairing, together with any asserted adjoint relations
+and operator closures. A single abstract normal operator does not
+construct this representation.
+
+The proposed Weil--Petersson comparison further asks for a unitary
+$\Upsilon_\infty:H_{\mathrm{prim}}\to H_c$ whose isometry is proved
+from the native Petersson/Koszul pairing and whose domain comparison
+realizes a specified closed normal conformal-weight operator as
+$\Theta_c$. If that operator is denoted $L_0^{\mathrm{Ar}}$, its
+normality and the equality of its domain with the transported domain
+are required. The ordinary polynomial Fock energy cannot do this,
+by the eigenvector obstruction above. If one also demands
+$L_n^*=L_{-n}$ in a unitary Virasoro representation, its self-adjoint
+$L_0$ cannot equal the non-self-adjoint $\Theta_c$ under a unitary;
+a distinct shifted normal operator and its relation to $L_0$ would
+have to be specified.
+
+The local operator $D_c$, its shift $\Theta_c$, the finite-place
+$N_{\mathrm{BC}}$, an arithmetic self-adjoint $H_{\mathrm{HP}}$ and
+$\Theta_\xi=1/2+iH_{\mathrm{HP}}$ are separate operators on specified
+carriers. Compatibility with the global primary construction and
+the Polyakov comparison in
+\Cref{v4-arith:rh:rem:Virasoro-reconciliation} requires maps that
+intertwine those actions where claimed. A local Mellin symbol does
+not identify the global operators or resolve a conformal anomaly.
+
+\paragraph{Arithmetic middle cohomology and determinant descent.}
+\label{v4-arith:pres90:cohomology}
+The intended $H^1_{\mathrm{ch}}$ comparison requires an arithmetic
+complex, differential, topology and completion, plus a closed normal
+operator on its middle cohomology induced by an action on the complex.
+To realize the zero divisor, one possible sufficient datum is a
+unitary $V_1:H^1_{\mathrm{ch}}\to K_Z$ preserving the maximal domains
+and satisfying $V_1\Theta_1=\Theta_ZV_1$. The normalized additive
+determinant prescription of \Cref{v4-arith:sc:normalized-det} then
+transfers to $\Theta_1$, and its exponential has the occurrence
+spectral projections of $F_Z$. This is a conditional consequence;
+defining $K_Z$ from the zeros does not construct that arithmetic
+complex or $V_1$.
+
+An alternative H-P\(^{\mathrm{Ar}}\) construction of
+\Cref{v4-arith:rh:hyp:HPAr} must supply its native self-adjoint
+$H_{\mathrm{HP}}$, its domain and the normalized determinant of
+$1/2+iH_{\mathrm{HP}}$. A character identity alone gives no such map.
+Multiplying $\Lambda_\zeta(s)$ by $s(s-1)/2$ cancels scalar poles;
+a cohomological removal of Tate degrees $0,2$ instead requires
+an exact sequence or quotient complex and an action-compatible
+map. No undefined regularized eigenvalues substitute for those data.
+Likewise a regularized trace must have an explicit prescription;
+$F_Z$ is boundedly invertible on an infinite-dimensional space,
+hence is not compact or nuclear and has no ordinary trace-class determinant.
+
+Under a proved domain-preserving $V_1$, common exponential weight
+$1/2$, normalized spectral radius one, RH and compact-test A-TP
+are equivalent by the preceding arithmetic theorem. The Deninger
+middle-degree purity question in
+\Cref{v4-arith:w8-a:deninger-wishlist} asks for this native realization
+and its purity; the continuous scaling equality alone is unconditional.
+The surface, primary-Virasoro, Mellin-domain and arithmetic
+cohomology comparisons are distinct required data. No logical
+independence theorem between them is asserted.
+
+\paragraph{Finite-place weights and global assembly.}
+\label{v4-arith:pres90:finite-place}
+For each prime, a finite-place purity statement must specify its
+operator $\psi_p$ and a nonzero closed weight space $H_{p,r}$.
+The precise negative-exponential convention corresponding to the
+proposed modulus $p^{-r/2}$ is
+\[
+ |\psi_p|_{H_{p,r}}=p^{-r/2}1,
+ \qquad w_e=\frac r2\log p.
+\]
+Equivalently, a bounded operator with this modulus has the form
+$p^{-r/2}U_{p,r}$ with $U_{p,r}$ an isometry; it is unitary if
+$\psi_p$ is also surjective. This follows by setting
+$U_{p,r}=p^{r/2}\psi_p$ and computing $U_{p,r}^*U_{p,r}=1$.
+Identifying the actual Adams action with these operators is a
+separate Bost--Connes comparison problem. Algebraic Adams operations
+alone do not specify a Hilbert weight space or a modulus.
+
+A restricted Hilbert tensor product requires specified unit vectors
+$e_p$ and compatible pairings. If bounded local operators fix $e_p$
+and are contractions, their tensor action is defined on finite
+reference tensors and extends by continuity with norm at most one.
+Without such conditions, convergence of partial products and their
+domains must be proved; local scalar purity does not ensure it.
+Thus the proposed $F_\infty\otimes\bigotimes'_p\psi_p$ needs an
+actual global operator construction before its native purity can
+be reduced to an archimedean statement.
+
+\section{Bibliography}
+\label{v4-arith:w9-r2:bibliography}
+
+Primary references.
+
+\begin{description}
+\item[Arakelov 1974.] Arakelov, S.~Yu. \emph{Intersection theory of
+divisors on an arithmetic surface}. Izv.~Akad.~Nauk SSSR
+Ser.~Mat.~\textbf{38} (1974), 1179--1192.
+\item[Baez--Schreiber 2005.] Baez, J.~C.; Schreiber, U.
+\emph{Higher gauge theory}. arXiv:hep-th/0412325 (2005).
+\item[Berry--Keating 1999.] Berry, M.~V.; Keating, J.~P.
+\emph{The Riemann zeros and eigenvalue asymptotics}.
+SIAM Rev.~\textbf{41} (1999), 236--266.
+\item[Bombieri 2000.] Bombieri, E. \emph{Problems of the millennium:
+the Riemann hypothesis}. Clay Mathematics Institute Millennium Prize
+Problem statement (2000); revised 2004.
+\item[Borger 2009.] Borger, J. \emph{Lambda-rings and the field with
+one element}. arXiv:0906.3146 (2009).
+\item[Cattaneo--Mnev--Reshetikhin 2014.] Cattaneo, A.~S.; Mnev, P.;
+Reshetikhin, N. \emph{Classical BV theories on manifolds with
+boundary}. Commun.~Math.~Phys.~\textbf{332} (2014), 535--603.
+\item[Connes 1999.] Connes, A. \emph{Trace formula in noncommutative
+geometry and the zeros of the Riemann zeta function}. Selecta
+Math.~(N.S.)~\textbf{5} (1999), 29--106.
+\item[Connes--Marcolli 2008.] Connes, A.; Marcolli, M.
+\emph{Noncommutative geometry, quantum fields and motives}. AMS
+Colloquium Publications \textbf{55} (2008).
+\item[Deninger 1998.] Deninger, C. \emph{Some analogies between
+number theory and dynamical systems on foliated spaces}.
+Proc.~ICM~Berlin \textbf{1} (1998), 163--186.
+\item[Elitzur--Moore--Schwimmer--Seiberg 1989.] Elitzur, S.; Moore,
+G.; Schwimmer, A.; Seiberg, N. \emph{Remarks on the canonical
+quantization of the Chern-Simons-Witten theory}.
+Nucl.~Phys.~B~\textbf{326} (1989), 108--134.
+\item[Faltings 1984.] Faltings, G. \emph{Calculus on arithmetic
+surfaces}. Ann.~Math.~(2)~\textbf{119} (1984), 387--424.
+\item[Hadamard 1893.] Hadamard, J. \emph{Etude sur les propri\'et\'es
+des fonctions enti\`eres et en particulier d'une fonction consid\'er\'ee
+par Riemann}. J.~Math.~Pures Appl.~(4)~\textbf{9} (1893), 171--215.
+\item[Kac--Raina 1987.] Kac, V.~G.; Raina, A.~K. \emph{Bombay
+Lectures on Highest Weight Representations of Infinite Dimensional
+Lie Algebras}. World Scientific, 1987.
+\item[Kim 2015.] Kim, M. \emph{Arithmetic Chern-Simons theory I}.
+arXiv:1510.05818 (2015).
+\item[Morishita 2012.] Morishita, M. \emph{Knots and Primes: An
+Introduction to Arithmetic Topology}. Universitext, Springer, 2012;
+arXiv:0904.3399.
+\item[Odlyzko 1987.] Odlyzko, A.~M. \emph{On the distribution of
+spacings between zeros of the zeta function}.
+Math.~Comp.~\textbf{48} (1987), 273--308.
+\item[Quillen 1985.] Quillen, D. \emph{Determinants of
+Cauchy-Riemann operators over a Riemann surface}.
+Funct.~Anal.~Appl.~\textbf{19} (1985), 31--34.
+\item[Schreiber--Sati 2011.] Schreiber, U.; Sati, H.
+\emph{Survey of mathematical foundations of QFT and perturbative
+string theory}. arXiv:1109.0955 (2011); higher-form construction
+referenced via arXiv:1011.4735.
+\item[Segal 1981.] Segal, G. \emph{Unitary representations of some
+infinite dimensional groups}.
+Commun.~Math.~Phys.~\textbf{80} (1981), 301--342.
+\item[Tate 1950.] Tate, J.~T. \emph{Fourier analysis in number
+fields, and Hecke's zeta-functions}. Princeton Ph.D.~thesis, 1950;
+reprinted in Cassels--Fr\"ohlich, \emph{Algebraic Number Theory},
+Academic Press, 1967.
+\item[Weil 1952.] Weil, A. \emph{Sur les ``formules explicites'' de
+la th\'eorie des nombres premiers}.
+Comm. S\'em. Math. Univ. Lund, Tome suppl\'em. (1952), 252--265.
+\item[Witten 1989.] Witten, E. \emph{Quantum field theory and the
+Jones polynomial}. Commun.~Math.~Phys.~\textbf{121} (1989),
+351--399.
+\end{description}

@@ -1,0 +1,1546 @@
+\chapter{Local Bernstein Centres and Categorical Gluing}
+\label{v4-arith:w10-e:chapter}
+
+The local problem is to compare three different centres: functions on
+Weil-parameter spaces, the ordinary Bernstein centre of smooth
+representations, and the categorical centre of a spectral category.
+For $GL_2$ in characteristic zero with coefficient prime $\ell\neq p$,
+the first two are isomorphic. We compute this isomorphism on every
+inertial component. On the full spectral category the same functions
+act faithfully but do not exhaust its centre: central weights give
+additional natural endomorphisms. Thus a local scalar comparison
+does not construct the categorical comparisons required for global
+gluing.
+
+\section{Domain and Comparison Hypotheses}
+\label{v4-arith:w10-e:domain}
+
+\subsection{Local actions and global comparison data}
+
+The comparison problem in Proposition~\ref{v4-arith:w6-g:cor:bcglue-final}
+requires local categorical data, the equivariant pairwise sheaf
+comparison, cross-prime assembly and the global centre comparison.
+The formal restriction diagram alone supplies none of the latter
+comparison isomorphisms. Their contents are as follows.
+\begin{description}
+\item[(BCglue.local.pointwise)] At a finite place $v$ of residue
+characteristic $p$, over $\overline{\mathbb Q}_\ell$ with $\ell\neq p$,
+parameter functions act on each irreducible smooth $GL_2$ representation
+by evaluation on its semisimplified Weil parameter. The ring
+isomorphism proving this assertion is
+Proposition~\ref{v4-arith:w10-e:prop:excursion-bernstein}.
+\item[(BCglue.local)] For each block one must also specify a stable
+representation category, a spectral target, a fully faithful exact
+functor, its essential image, and compatibility of central actions.
+The target and its central weight are part of the data; there is no
+unspecified ``isotypic component'' on the spectral side.
+The required coefficient and family comparisons, and at $\ell=p$
+the fixed-central-character and fixed-determinant block data, are
+additional hypotheses. They are stated in
+Section~\ref{v4-arith:w10-e:rem:categorical-comparison} and
+Proposition~\ref{v4-arith:w10-e:prop:ell-equals-v-wild}.
+\item[(BCglue.glue.factorization)] The local central actions must
+assemble over finite sets of places, with specified transition maps,
+into the desired global action. An identification of this assembly
+with a pseudocharacter algebra requires a global comparison map;
+a filtered tensor product alone does not provide it. The cross-prime
+transition, coherent-support and higher-coherence compatibilities
+retain the descent and global hypotheses of
+Theorem~\ref{v4-arith:bcglue-k5:thm:prismatic-gluing} and
+Hypothesis~\ref{v4-arith:bcglue-k5:lem:prismatic-flatness}.
+\end{description}
+
+\subsection{References for Local and Global Comparisons}
+
+The local ring calculation and the global comparison questions use the following references:
+\begin{description}
+\item[Fargues--Scholze 2021, arXiv:2102.13459v4]
+Definition~IX.0.2 and Corollary~IX.0.3 (pp.~318--319) distinguish
+spectral functions, the geometric centre, and the ordinary centre.
+Theorem~IX.5.2 (p.~329) constructs the central action;
+Theorem~IX.7.4 (p.~338) identifies the semisimplified parameter for
+$GL_n$. These statements do not identify the full spectral
+categorical centre with the ordinary Bernstein centre.
+\item[Dat--Helm--Kurinczuk--Moss, arXiv:2009.06708v3]
+Theorem~4.1, Proposition~4.17 and Proposition~6.4 give the parameter
+schemes and the characteristic-zero invariant-ring reduction.
+Their \S1.6 compares these schemes with the Fargues--Scholze construction.
+\item[Bernstein--Deligne and Helm]
+The block-centre formula is recalled in Helm, arXiv:1201.1874,
+Theorems~3.4--3.5, pp.~7--8; its coordinate comparison with
+Weil-parameter invariants is also given in Helm,
+arXiv:1605.00487v3, Theorem~9.4, pp.~30--31.
+\item[Dotto--Emerton--Gee 2026, arXiv:2603.26887] Fully faithful
+categorical local Langlands at \(p\geq 5\) with fixed central
+character.  The source gives a fully faithful functor from the
+derived category of smooth \(p\)-adic \(GL_{2}(\mathbb Q_p)\)
+representations with fixed central character to ind-coherent sheaves
+on the Emerton--Gee stack.  It is not used as an essential-image,
+component-exhaustion, or central-character-variation theorem.
+\item[Bella\"iche--Chenevier 2009, Ast\'erisque 324]
+\emph{Families of Galois representations and Selmer groups}.
+The deformation-theoretic setting is in Chapter~1. The global scalar
+construction below instead proves generation by Frobenius coefficients;
+an automorphic action and its relation ideal are separate comparisons.
+\item[Francis--Gaitsgory 2011, arXiv:1103.5803]
+\emph{Chiral Koszul duality}. This is background for a proposed
+factorization-category realization. The algebraic tensor-colimit action
+below is constructed directly and is not an identification of a global
+categorical centre by factorization homology.
+\item[Bhatt--Scholze 2022, arXiv:1905.08229]
+\emph{Prisms and prismatic cohomology}. Prismatic realization and the
+stipulated cross-prime $\Pi$-flatness require actual objects and maps;
+the Frobenius scalar reconstruction proves no such flatness.
+\item[Bhatt--Lurie 2022, arXiv:2201.06120]
+\emph{Absolute prismatic cohomology}. Nygaard filtrations provide
+background for a separately constructed filtered comparison. Untilts
+and their descent functors remain additional geometric data.
+\item[Pa{\v s}k{\=u}nas 2013 and
+Pa{\v s}k{\=u}nas--Tung 2020] Block structure at
+\(p\in\{5,2\}\) and the \(p=3\) refinement via
+Colmez--Dospinescu--Pa{\v s}k{\=u}nas 2014. Used as
+the wild-prime Bernstein-block side.
+\end{description}
+
+The references concern local geometrization (Fargues--Scholze),
+categorical local Langlands at tame primes (Dotto--Emerton--Gee),
+deformation theory (Bellaiche--Chenevier) and factorization categories
+(Francis--Gaitsgory),
+prismatic sites (Bhatt--Scholze and Bhatt--Lurie), and wild-prime
+Galois blocks (Pa{\v s}k{\=u}nas, Pa{\v s}k{\=u}nas--Tung, and
+Colmez--Dospinescu--Pa{\v s}k{\=u}nas). Their use in the local and
+global comparisons retains the hypotheses stated below.
+
+\subsection{Local Obstructions}
+
+There are four distinct comparison problems.
+\begin{itemize}
+\item \textbf{(E.1)} Compute the ordinary local centre for
+$\ell\neq p$. No tame-inertia restriction is imposed on the parameters.
+The $p\geq5$ fixed-central-character functor of Dotto--Emerton--Gee
+belongs to a separate coefficient regime.
+\item \textbf{(E.2)} Retain the same ordinary calculation for
+$p=2,3$, and formulate the extra fixed-determinant, wild-EG,
+block-ring, functorial and normalized tangent-class requirements
+when the coefficient characteristic is $p$.
+\item \textbf{(E.3)} Construct the cross-prime assembly with
+coefficient, family, pseudocharacter, prismatic and untilt
+compatibilities. These are not consequences of local scalar equality.
+\item \textbf{(E.4)} Identify precisely which of these data are
+needed to use the ordinary local calculation in BC-diamond-glue.
+\end{itemize}
+
+\section{Ordinary Local Centres in Characteristic Zero}
+\label{v4-arith:w10-e:tame-odd}
+
+\subsection{Ordinary centres and scalar parameter functions}
+
+Fix a finite extension \(F/\mathbb Q_p\), with residue field of
+cardinality \(q\), a prime \(\ell\neq p\), and
+\(k=\overline{\mathbb Q}_{\ell}\). Choose a square root of \(q\)
+in \(k\). Use normalized parabolic induction and the normalization
+of local class field theory that sends a uniformizer to geometric
+Frobenius. The local Langlands correspondence is normalized
+compatibly with these choices.
+
+Let
+\[
+ Y_F=Z^1(W_F,GL_{2,k}),\qquad
+ X_F=[Y_F/GL_{2,k}],\qquad
+ A_F=\Gamma(X_F,\mathcal O_{X_F}).
+\]
+Here \(Y_F\) is the Fargues--Scholze scheme of continuous
+parameters, with its algebraic family structure; continuity is
+the relatively discrete \(\ell\)-adic continuity of that
+construction. It is not the tangent space at a parameter.
+Write
+\[
+ \mathcal R_F=\operatorname{Rep}^{\mathrm{sm}}_k(GL_2(F)),
+ \qquad Z_F=\operatorname{End}(\mathrm{id}_{\mathcal R_F})
+\]
+for the abelian category of smooth representations and its
+ordinary Bernstein centre.
+
+The parameter scheme is a disjoint union of finite-type
+inertial pieces. Their characteristic-zero presentations are
+reduced. In each piece, the semisimple finite-inertia part of
+a parameter is fixed, while unipotent monodromy may vary.
+These are the presentations of
+Dat--Helm--Kurinczuk--Moss, Theorem~4.1 and \S6, identified with
+the Fargues--Scholze construction after coefficient extension
+as in their \S1.6. In characteristic zero the ordinary invariant-ring calculation can
+also be made directly on a finite-inertia locus: at each fixed wild
+level, restriction induces an isomorphism from the full parameter
+invariant ring to that of parameters trivial on a sufficiently small
+open subgroup of inertia (DHKM, Proposition~4.17(ii), pp.~35--36).
+The finite-inertia orbit decomposition is DHKM, Proposition~6.4,
+p.~66. These are statements about coordinate rings of the actual
+parameter scheme, not merely bijections of closed points.
+Consequently $A_F$ is a product of invariant coordinate rings,
+not a direct sum.
+
+\begin{theorem}[the Fargues--Scholze map to the ordinary centre]
+\label{v4-arith:w10-e:thm:fs-spectral}
+\ClaimStatusProvedElsewhere
+There is a canonical homomorphism
+\begin{equation}
+ \Psi_F:A_F\longrightarrow Z_F.
+ \label{v4-arith:w10-e:eq:fs-excursion}
+\end{equation}
+For an irreducible smooth representation \(\pi\), its action is
+\[
+ \Psi_F(f)|_\pi=f(\varphi_\pi^{\mathrm{ss}})\,\mathrm{id}_\pi,
+ \qquad f\in A_F,
+\]
+where \(\varphi_\pi^{\mathrm{ss}}\) is the semisimplified
+Weil parameter of \(\pi\).
+
+The map is obtained by restricting the geometric central
+action on \(D_{\mathrm{lis}}(\mathrm{Bun}_{GL_2},k)\) along
+the fully faithful functor
+\[
+ j_!:D(\mathcal R_F)\longrightarrow
+ D_{\mathrm{lis}}(\mathrm{Bun}_{GL_2},k).
+\]
+It does not assert an equivalence with an ind-coherent category.
+\end{theorem}
+
+\begin{proof}[Source]
+Fargues--Scholze, Definition~IX.0.2, Corollary~IX.0.3,
+Theorem~IX.5.2 and Definition~IX.7.1 construct the map.
+Theorem~IX.7.4 identifies its parameter on irreducible
+\(GL_2(F)\)-representations with the usual semisimplified
+parameter. The connectedness of the centre of \(GL_2\)
+satisfies the component-group hypothesis in the centre
+construction.
+\end{proof}
+
+\begin{proposition}[the ordinary local centre]
+\label{v4-arith:w10-e:prop:excursion-bernstein}
+\ClaimStatusProvedHere
+The homomorphism \(\Psi_F\) is an isomorphism of ordinary
+commutative \(k\)-algebras.
+\end{proposition}
+
+\begin{proof}
+First describe the Bernstein side. An inertial class is
+represented by a supercuspidal pair \((M,\sigma)\).
+Its unramified twists form a torsor \(T_\sigma\) under
+the unramified-character torus modulo the finite subgroup
+of self-twists of \(\sigma\). The finite group \(W_\sigma\)
+stabilizing the inertial class acts on this torsor.
+Bernstein's description (Helm, arXiv:1201.1874,
+Theorems~3.4--3.5, pp.~7--8) gives
+\[
+ Z_F=\prod_{\mathfrak s}\mathcal O(T_\sigma)^{W_\sigma}.
+\]
+A choice of \(\sigma\) gives coordinates on the torsor;
+the formula itself is independent of this choice.
+
+For \(GL_2\), a principal-series class has
+\(M=F^\times\times F^\times\). If the two character
+restrictions to \(\mathcal O_F^\times\) differ, its ring is
+\(k[a^{\pm1},b^{\pm1}]\). If they agree, choose the same
+character as representative in both factors. Its ring is
+\[
+ k[a^{\pm1},b^{\pm1}]^{S_2}
+   =k[t,d,d^{-1}],\qquad t=a+b,\quad d=ab.
+\]
+A supercuspidal class has \(M=GL_2(F)\). If its group of
+unramified self-twists has order \(f\), its ring is
+\[
+ k[a^{\pm1}]^{\mu_f}=k[u,u^{-1}],\qquad u=a^f.
+\]
+
+We compute the corresponding parameter invariants.
+Fix an inertial piece and a representative \(\tau\) of
+its semisimple inertia representation. The
+characteristic-zero parameter presentation uses a
+Frobenius intertwiner \(A\) and a nilpotent monodromy
+operator \(N\), with
+\[
+ A N A^{-1}=q^{-1}N.
+\]
+The operator \(N\) commutes with \(\tau\).
+The Frobenius convention is that of FS, VIII.1,
+$\sigma^{-1}t\sigma=t^q$ on tame inertia; DHKM's arithmetic
+Frobenius is its inverse. Invariant restriction to $N=0$
+agrees with the characteristic-zero ring isomorphism of
+DHKM Proposition~4.17, so it does not discard functions
+undetectably by replacing the parameter scheme by a point set.
+Changing the chosen inertia trivialization acts through
+the centralizer of \(\tau\). Finite-inertia
+semisimplification and the logarithm of unipotent inertia
+give this presentation; in dimension two the logarithm
+and exponential on the unipotent part are finite
+polynomials.
+
+There are four possibilities.
+
+If \(\tau\) is irreducible of dimension two, its
+centralizer consists of scalars. Choose one Frobenius
+intertwiner \(A_0\). Every other intertwiner is \(aA_0\),
+and \(N=0\). The invariant ring is \(k[a^{\pm1}]\).
+
+If \(\tau=\chi_1\oplus\chi_2\), with distinct characters
+each fixed by Frobenius, its centralizer is
+\(\mathbb G_m^2\). After choosing extensions of the
+characters to \(W_F\), the Frobenius parameters are
+\(a,b\in\mathbb G_m\). Commutation with inertia makes
+\(N\) diagonal, and nilpotence makes \(N=0\). The
+invariant ring is \(k[a^{\pm1},b^{\pm1}]\).
+
+If Frobenius interchanges the distinct characters
+\(\chi_1,\chi_2\), its matrix has the form
+\[
+ A=\begin{pmatrix}0&a\\ b&0\end{pmatrix},
+ \qquad a,b\neq0.
+\]
+Again \(N=0\). Conjugation by
+\(\operatorname{diag}(s,t)\) sends
+\((a,b)\) to \((st^{-1}a,ts^{-1}b)\).
+A Laurent monomial is invariant precisely when its two
+exponents agree. Hence the invariant ring is
+\(k[ab,(ab)^{-1}]\).
+
+Finally, suppose \(\tau=\chi\oplus\chi\). After removing
+a fixed extension of \(\chi\), the presentation is
+\[
+ \{(A,N)\in GL_2\times\mathfrak{gl}_2:
+       N\text{ nilpotent},\ AN=q^{-1}NA\}/GL_2.
+\]
+Every orbit closure meets the locus \(N=0\).
+Indeed, if \(N\neq0\), choose \(N=E_{12}\). The relation
+forces
+\[
+ A=\begin{pmatrix}a&b\\0&qa\end{pmatrix}.
+\]
+Since \(q\neq1\) in \(k\), conjugation by an upper
+unipotent matrix removes \(b\) while preserving \(N\).
+Conjugation by \(\operatorname{diag}(z,1)\) then fixes
+the diagonal \(A\) and sends \(N\) to \(zN\).
+Letting \(z\) tend to zero gives the required limit.
+On the locus \(N=0\), the closure of each matrix orbit
+contains its semisimplification.
+
+An invariant function vanishing on \(N=0\) therefore
+vanishes at every closed point of the presentation.
+Reducedness implies that it is zero. Restriction to
+\(N=0\) is thus injective on invariant functions.
+Conjugation-invariant regular functions on \(GL_2\)
+are
+\[
+ k[\operatorname{tr}(A),\det(A),\det(A)^{-1}].
+\]
+For completeness, restriction to diagonal matrices is
+injective because matrices with distinct eigenvalues
+are dense; its image lies in the symmetric Laurent
+polynomials, and trace, determinant and inverse
+determinant generate that ring. These same functions
+are defined on the full \((A,N)\)-presentation, so the
+restriction map is also surjective.
+
+In the last case one can also see surjectivity without any
+pointwise inference: the symmetric Laurent ring is generated
+by the three displayed functions, each already regular on the
+full presentation.
+
+These four calculations give exactly the Bernstein
+rings above. In the supercuspidal cases, restriction
+of the irreducible Weil representation to inertia is
+either irreducible or the sum of two distinct
+Frobenius-conjugate characters. The orders of the
+self-twist groups are respectively \(1\) and \(2\):
+an unramified twist with Frobenius value \(c\)
+preserves the representation precisely when \(c^f=1\),
+where \(f\) is the number of inertia constituents.
+Thus the invariant \(ab\) in the interchanged case is,
+relative to the chosen base representation, the
+coordinate \(a^2\) on the unramified-twist quotient.
+
+Local Langlands matches these inertial pieces with
+the supercuspidal-support classes and respects
+unramified twisting and normalized parabolic
+induction. The displayed generators consequently
+define an algebraic isomorphism
+\[
+ \theta_F:A_F\xrightarrow{\sim} Z_F
+\]
+with the required scalar evaluations on irreducibles.
+Taking products, rather than finite sums, retains
+arbitrary choices of functions on all inertial pieces.
+
+It remains to identify this algebraic map with
+\(\Psi_F\). Each Bernstein block ring is a reduced
+finite-type \(k\)-algebra, and every point of its
+cuspidal-support variety occurs as the support of an
+irreducible constituent of a parabolically induced
+representation. Therefore an element of \(Z_F\)
+vanishing on every irreducible is zero.
+The preceding theorem shows that \(\theta_F(f)\) and
+\(\Psi_F(f)\) have the same evaluations. They are equal.
+\end{proof}
+
+\begin{example}[the unramified component does not determine inertia]
+\label{v4-arith:w10-e:ex:frobenius-insufficient}
+On the unramified principal-series component the
+ordinary centre is \(k[t,d,d^{-1}]\). These three
+functions do not generate the centre across all
+inertial components.
+
+For example, take \(F=\mathbb Q_p\), \(p\geq5\), and a
+nontrivial smooth character \(\chi:F^\times\to k^\times\)
+with \(\chi(p)=1\). The normalized principal series
+induced from \(1\boxtimes1\) and from
+\(\chi\boxtimes\chi\) are irreducible. Their
+semisimplified parameters have the same Frobenius
+matrix, but their inertial supports differ.
+The idempotent of the first Bernstein component
+separates them. Thus Frobenius trace and determinant
+alone do not recover the full centre.
+\end{example}
+
+\subsection{Central weights in the spectral category}
+
+Write \(X_F=\coprod_{\mathfrak s}X_{F,\mathfrak s}\)
+for its inertial decomposition. On each finite-type
+piece let
+\[
+ \mathcal C_{\mathfrak s}
+   =\operatorname{Ind}
+       \bigl(\operatorname{Coh}_{\mathrm{Nilp}}
+                    (X_{F,\mathfrak s})\bigr),
+ \qquad
+ \mathcal C_F=\prod_{\mathfrak s}\mathcal C_{\mathfrak s}.
+\]
+Here \(\operatorname{Coh}_{\mathrm{Nilp}}\) means
+bounded coherent complexes with nilpotent singular
+support, and \(\operatorname{Ind}\) denotes their
+ind-completion. This specifies a presentable category;
+it does not require every object of the
+ind-completion to remain bounded.
+
+Only three properties of the support condition enter
+the following argument: it contains the zero section,
+is preserved by direct summands, and is preserved by
+tensoring with vector bundles. These properties hold
+for nilpotent singular support. In particular perfect
+complexes belong to the chosen category.
+
+For a presentable \(k\)-linear stable category
+\(\mathcal C\), put
+\[
+ \mathfrak Z(\mathcal C)
+   =\operatorname{End}_{\operatorname{Fun}^L_k
+                  (\mathcal C,\mathcal C)}
+                    (\mathrm{id}_{\mathcal C}),
+ \qquad Z^0(\mathcal C)=\pi_0\mathfrak Z(\mathcal C).
+\]
+The first object retains the enhanced centre; the
+second is its degree-zero ring.
+
+\begin{proposition}[central-weight decomposition]
+\label{v4-arith:w10-e:prop:central-weights}
+\ClaimStatusProvedHere
+There are orthogonal decompositions
+\[
+ \mathcal C_F\simeq
+    \prod_{\mathfrak s}\prod_{m\in\mathbb Z}
+          \mathcal C_{\mathfrak s,m},
+ \qquad
+ \mathfrak Z(\mathcal C_F)\simeq
+    \prod_{\mathfrak s}\prod_{m\in\mathbb Z}
+          \mathfrak Z(\mathcal C_{\mathfrak s,m}).
+\]
+The index \(m\) is the character
+\(z\mapsto z^m\) of the scalar subgroup
+\(\mathbb G_m\subset GL_2\). Tensoring with the
+determinant line gives equivalences
+\[
+ \mathcal C_{\mathfrak s,m}
+     \xrightarrow{\sim}\mathcal C_{\mathfrak s,m+2}.
+\]
+\end{proposition}
+
+\begin{proof}
+Scalar matrices act trivially on the parameter scheme,
+because its action is conjugation. On an equivariant
+affine chart, the coordinate algebra therefore has
+central weight zero. Every equivariant coherent
+module decomposes into its \(\mathbb G_m\)-weight
+modules. A finite set of homogeneous generators
+shows that only finitely many weights occur.
+The differential preserves weight, as do all
+equivariant morphisms.
+
+Since \(\mathbb G_m\) is diagonalizable, taking a
+weight summand is exact. Distinct weights are
+orthogonal also in the derived category. These
+decompositions descend from equivariant charts and
+preserve the singular-support condition.
+Ind-completion permits arbitrary sums of weight
+components. A family of such components recovers
+an object by their coproduct, and projection
+recovers the original family. This gives the
+categorical product decomposition.
+
+A natural transformation of the identity preserves
+every component: apply naturality to its inclusion
+and projection. Conversely, any family of natural
+transformations on the components defines one on
+their coproduct. The same argument applies to
+mapping complexes and composition, giving the
+displayed decomposition of enhanced centres.
+
+The determinant representation has central weight
+two and defines an invertible line bundle on the
+quotient. Tensoring by this line preserves singular
+support, and tensoring by its inverse reverses the
+operation.
+\end{proof}
+
+\begin{proposition}[scalar functions form a proper central subalgebra]
+\label{v4-arith:w10-e:prop:scalar-centre-obstruction}
+\ClaimStatusProvedHere
+Scalar multiplication defines an injective map
+\[
+ \alpha_F:A_F\longrightarrow Z^0(\mathcal C_F).
+\]
+Its image is canonically isomorphic to \(Z_F\), through
+\(\alpha_F\Psi_F^{-1}\), but it is a proper subalgebra
+of \(Z^0(\mathcal C_F)\).
+\end{proposition}
+
+\begin{proof}
+On any inertial piece, evaluating scalar
+multiplication on its structure object detects the
+function. Thus \(\alpha_F\) is injective.
+The ordinary-centre proposition identifies its
+domain with \(Z_F\).
+
+For example, already on $B\mathbb G_m$ the function ring is $k$,
+whereas the weightwise scalar operations form $\prod_{m\in\mathbb Z}k$.
+
+Let \(e_0\) be the natural projection onto central
+weight zero, on every inertial piece. It is a
+central idempotent. It acts as the identity on the
+structure object and as zero on its determinant-line
+twist, which has weight two. Both objects are
+perfect and satisfy the support condition.
+
+If \(e_0=\alpha_F(f)\), evaluation on the structure
+object gives \(f=1\). Multiplication by \(1\) is also
+the identity on the determinant-line twist, a
+contradiction. Hence \(e_0\) is not a scalar
+parameter function.
+\end{proof}
+
+\subsection{The categorical comparison to be constructed}
+\label{v4-arith:w10-e:rem:categorical-comparison}
+
+The scalar action supplies a precise ordinary-centre
+action on \(\mathcal C_F\). It does not assign a
+spectral object to a smooth representation.
+For a Bernstein component \(\mathfrak s\), a
+categorical local comparison requires a specified
+central weight \(m\), a full stable subcategory
+\[
+ \mathcal E_{\mathfrak s}\subseteq
+       \mathcal C_{\mathfrak s,m},
+\]
+and a \(k\)-linear exact fully faithful functor
+\[
+ \Phi_{\mathfrak s}:
+       D(\mathcal R_{F,\mathfrak s})
+       \longrightarrow \mathcal C_{\mathfrak s,m}
+\]
+with essential image \(\mathcal E_{\mathfrak s}\).
+The functor must satisfy
+\[
+ \Phi_{\mathfrak s}(z_M)=
+   \alpha_F(\Psi_F^{-1}z)_{\Phi_{\mathfrak s}(M)}
+ \qquad
+ (z\in Z_{F,\mathfrak s}).
+\]
+An assertion of essential surjectivity requires
+\(\mathcal E_{\mathfrak s}=\mathcal C_{\mathfrak s,m}\)
+as a further conclusion.
+
+Such an equivalence with its essential image
+identifies the enhanced centre of
+\(D(\mathcal R_{F,\mathfrak s})\) with that of
+\(\mathcal E_{\mathfrak s}\). The ordinary ring
+\(Z_{F,\mathfrak s}\) is only its specified
+degree-zero scalar part. No equality with the
+enhanced centre of the full spectral category is
+implied.
+
+For the trivial-bundle representation category, weight
+zero is the natural component to test. Choosing that
+component removes the weight-projection obstruction
+above; it does not prove either the functor or an
+equivalence. A comparison involving the full spectral
+category must instead account for all its central
+weights and their corresponding geometric
+representation categories.
+
+\begin{example}[why the ring calculation is needed]
+\label{v4-arith:w10-e:ex:pointwise-limits}
+The central element $\epsilon$ of $k[\epsilon]/(\epsilon^2)$
+is nonzero but acts trivially on every simple module. Thus
+simple-object evaluations need not detect a nonreduced centre.
+Nor does bijective point matching prove surjectivity:
+$k[t^2,t^3]\subset k[t]$ induces a bijection on closed points
+over an algebraically closed characteristic-zero field, but
+$t$ is not in the smaller ring. Indeed the exponents of every
+nonconstant monomial in that ring are at least two. A cusp point
+$(a,b)$ with $b^2=a^3$ has parameter $t=b/a$ if $a\ne0$ and
+$t=0$ otherwise. The ordinary-centre proof first constructs the
+invariant-ring isomorphism; evaluations only identify that map
+with the Fargues--Scholze action afterwards.
+\end{example}
+
+\subsection{Dotto--Emerton--Gee at \(p\geq 5\)}
+
+\begin{theorem}[Dotto--Emerton--Gee categorical local Langlands at \(p\geq 5\)]
+\label{v4-arith:w10-e:thm:deg-fully-faithful}
+\ClaimStatusProvedElsewhere Dotto--Emerton--Gee arXiv:2603.26887
+proves that for \(p\geq 5\) and fixed central character \(\chi\) there
+is a fully faithful functor
+\begin{equation}
+\label{v4-arith:w10-e:eq:deg-functor}
+\mathrm{F}^{\mathrm{DEG}}_{p,\chi}\colon
+\mathrm{Rep}^{\mathrm{sm,adm,ss},\chi}(GL_{2}(\mathbb{Q}_{p}))
+\hookrightarrow
+\mathrm{IndCoh}_{\mathrm{Nilp}}(\mathcal{X}^{\mathrm{EG},p,\chi}_{GL_{2}})
+\end{equation}
+of stable categories.  No essential-surjectivity statement, image
+description, blockwise component exhaustion, or family over central
+characters is part of the input used here.
+\end{theorem}
+
+\begin{corollary}[ordinary local comparison at \(p\geq5\)]
+\label{v4-arith:w10-e:cor:bcglue-local-tame-odd}
+\ClaimStatusProvedHere
+Let \(p\geq5\), let \(\ell\neq p\), and use
+\(k=\overline{\mathbb Q}_{\ell}\) with the preceding
+normalizations. Then
+\[
+ A_{\mathbb Q_p}\xrightarrow{\sim}Z_{\mathbb Q_p},
+ \qquad
+ \Psi_{\mathbb Q_p}(f)|_\pi
+   =f(\varphi_\pi^{\mathrm{ss}})\,\mathrm{id}_\pi.
+\]
+The scalar image in the spectral categorical centre
+is therefore isomorphic to the ordinary Bernstein
+centre.
+
+The categorical clause of (BCglue.local) additionally
+requires the functor, essential-image specification
+and central-action compatibility described above.
+The fixed-central-character Dotto--Emerton--Gee
+functor is a separate comparison in its own
+coefficient category.
+\end{corollary}
+
+\begin{proof}
+Apply \Cref{v4-arith:w10-e:prop:excursion-bernstein}
+and \Cref{v4-arith:w10-e:prop:scalar-centre-obstruction}
+with \(F=\mathbb Q_p\).
+\end{proof}
+
+\section{Small residue primes and coefficient changes}
+\label{v4-arith:w10-e:wild}
+
+Small residue characteristic does not exclude the
+ordinary characteristic-zero comparison when the
+coefficient prime is different from the residue
+prime.
+
+\begin{theorem}[ordinary local comparison at \(p=2,3\)]
+\label{v4-arith:w10-e:thm:bcglue-local-wild}
+\ClaimStatusProvedHere
+Let \(p\in\{2,3\}\) and \(\ell\neq p\).
+Over \(k=\overline{\mathbb Q}_{\ell}\), the map
+\[
+ A_{\mathbb Q_p}\xrightarrow{\sim}Z_{\mathbb Q_p}
+\]
+and its scalar evaluation formula on irreducible
+smooth representations hold with the preceding
+normalizations. This includes ramified inertial
+components.
+\end{theorem}
+
+\begin{proof}
+The ordinary-centre proof uses characteristic zero
+and \(\ell\neq p\), but no lower bound on \(p\).
+\end{proof}
+
+\begin{remark}[coefficient transport]
+\label{v4-arith:w10-e:rem:ell-independence}
+An identification between centres with different
+coefficient fields requires coefficient-transport
+data. For inertial representatives defined over a
+common characteristic-zero field, compatible
+embeddings and compatible choices of \(\sqrt q\)
+transport the displayed Laurent invariant-ring
+presentations and their evaluations.
+
+This algebraic transport is not a canonical
+identification of arbitrary \(\ell\)-adic families,
+nor does it identify integral models, reductions
+modulo \(\ell\), or the case \(\ell=p\).
+Those comparisons require maps between the
+corresponding coefficient categories and parameter
+spaces.
+\end{remark}
+
+\begin{proposition}[a blockwise criterion at \(\ell=p\)]
+\label{v4-arith:w10-e:prop:ell-equals-v-wild}
+\ClaimStatusProvedHereConditional
+Let \(p\in\{2,3\}\), fix the coefficient ring, a
+central character \(\chi\), and its corresponding
+fixed-determinant condition. Assume the wild-EG
+enhancement of
+\Cref{v4-arith:deg-f1a:conj:EG-wild-enhancement},
+with all four conditions: its classical truncation is the specified
+Emerton--Gee stack; its cotangent complex is concentrated in
+$[-1,0]$, with degree $-1$ supported on the non-semisimple locus
+and the stated closed-point dimensions $1$ at $p=2$ and $2$ at
+$p=3$; its wild components have the specified local-Langlands
+compatible correspondence with Bushnell--Henniart wild types; and
+its nilpotent ind-coherent category is generated under colimits and
+shifts by the specified derived structure sheaves of type-indexed
+closed points. These are hypotheses on a derived formal stack,
+not consequences of an equality of tangent dimensions.
+
+For every block \(\mathfrak B\) occurring in the
+chosen smooth representation category, suppose
+the following additional data are supplied:
+\begin{enumerate}
+\item a specified stable realization
+\(\mathcal D_{\mathfrak B}\) of the block and a
+fully faithful exact functor
+\[
+ F_{\mathfrak B}:\mathcal D_{\mathfrak B}
+ \longrightarrow
+ \operatorname{IndCoh}_{\mathrm{Nilp}}
+       (\mathcal X^{\mathrm{EG,wild},p,\chi}_{\mathfrak B});
+\]
+\item a commutative spectral deformation ring
+\(R_{\mathfrak B}\), with its action on the target,
+and an isomorphism
+\[
+ \beta_{\mathfrak B}:
+ Z^0(\mathcal D_{\mathfrak B})
+       \xrightarrow{\sim}R_{\mathfrak B};
+\]
+\item compatibility of these actions:
+\[
+ F_{\mathfrak B}(a_M)
+   =\beta_{\mathfrak B}(a)_{F_{\mathfrak B}(M)}
+ \quad
+ (a\in Z^0(\mathcal D_{\mathfrak B}));
+\]
+\item on the non-semisimple wild blocks, compatibility
+of the induced first-order maps with the specified
+pseudocharacter tangent comparison and
+\Cref{v4-arith:w10-b:thm:class-match}, including the
+normalization of its class generators.
+\end{enumerate}
+For the tame-inertia blocks the data must include
+the chosen \(p=2\) or \(p=3\) block-centre
+identifications; they are not supplied by the
+wild cotangent comparison.
+
+Then the ordinary block-centre actions agree on
+the essential images of the functors
+\(F_{\mathfrak B}\). If the block decompositions
+on both sides are orthogonal and the functors
+respect them, the agreement assembles over the
+chosen blocks.
+\end{proposition}
+
+\begin{proof}
+The compatibility equation identifies the two
+natural endomorphisms on every object in the
+essential image. Full faithfulness identifies
+their endomorphism spaces with those of the
+source block. Orthogonality permits taking the
+product of these equalities over blocks.
+The tangent compatibility ensures that the
+resulting comparison retains the specified
+first-order classes; it is not used to infer
+the ring isomorphism \(\beta_{\mathfrak B}\).
+\end{proof}
+
+The construction of \(\beta_{\mathfrak B}\) and
+of the compatible functor is the remaining
+blockwise centre problem. A possible approach
+is to choose a generator of the block and a
+spectral object, compare their endomorphism
+algebras, and verify the two central actions
+there before extending to the generated
+categories. Such a generator and comparison
+are additional data.
+
+An isomorphism of tangent spaces alone cannot
+supply the required ring map. For example,
+\(k[[t]]/(t^2)\) and \(k[[t]]/(t^3)\) have
+one-dimensional cotangent spaces but different
+lengths, so they are not isomorphic.
+Similarly, the wild-EG enhancement specifies
+derived support and generation conditions;
+it does not itself identify a block centre
+with its spectral deformation ring.
+
+The Pa{\v s}k{\=u}nas--Tung block data at
+\(p=2\), the Colmez--Dospinescu--Pa{\v s}k{\=u}nas
+block data at \(p=3\), the fixed-determinant
+pseudocharacter comparison, the normalized
+class match, and the per-block functors remain
+separate inputs to this construction.
+An identification with an \(\ell\neq p\)
+spectral category requires a further
+coefficient-comparison functor. The
+Fargues--Scholze results used above do not
+construct that functor.
+
+\section{Global Scalar Reconstruction and the Assembly Comparison}
+\label{v4-arith:w10-e:glue}
+
+\subsection{The algebra generated by local actions}
+
+\begin{proposition}[finite-place tensor assembly of scalar actions]
+\label{v4-arith:w10-e:thm:fg-discrete-glue}
+Fix a commutative coefficient ring $E$ and commutative unital
+$E$-algebras $Z_v$ indexed by a set $V$ of places. The transition maps
+insert units, and define
+\begin{equation}
+\label{v4-arith:w10-e:eq:fg-global}
+ A_{\mathrm{loc}}=\varinjlim_{\substack{F\subset V\\F\text{ finite}}}
+       \bigotimes_{v\in F,E} Z_v.
+\end{equation}
+For an $E$-linear category $\mathcal C$, compatible central actions
+$Z_v\to Z(\mathcal C)=\operatorname{End}(\operatorname{id}_{\mathcal C})$
+induce a unique homomorphism $\alpha:A_{\mathrm{loc}}\to Z(\mathcal C)$.
+Its image is $A_{\mathrm{loc}}/\ker\alpha$. This image is the full
+ordinary centre precisely when the specified actions generate every
+central endomorphism; $\alpha$ is an isomorphism precisely when this
+holds and $\ker\alpha=0$.
+\end{proposition}
+\begin{proof}
+The centre is commutative: naturality of one endomorphism of the
+identity against the component of another makes their components
+commute. Thus multiplication of the local actions defines a homomorphism
+from each finite tensor product. These maps agree under insertion of
+units. The colimit gives $\alpha$, uniquely. The first isomorphism
+theorem gives the image quotient. The last two assertions are respectively
+surjectivity and bijectivity of this homomorphism.
+\end{proof}
+
+This construction is on one specified coefficient ring. To use the
+local Bernstein centres at finite places and the Harish--Chandra centre
+$Z(U(\mathfrak{gl}_2))$ at the real place, one must supply coefficient
+maps and their actions on an actual global category. Equation~
+\eqref{v4-arith:w10-e:eq:fg-global} is an algebraic tensor colimit.
+A topology, spherical reference objects, a restricted completion or a
+factorization-homology realization each requires its own definition and
+comparison. No categorical or higher centre is identified by the
+algebraic colimit alone.
+
+\subsection{Frobenius coefficients and the global deformation ring}
+
+Unramified characteristic polynomials provide scalar functions on a
+Galois deformation space. The full collection determines the complete
+local ring with its deformation topology. A finite generating subset
+exists, but its choice depends on the deformation problem.
+
+Let $K$ be a number field, let $k$ be a finite field of characteristic
+$p_0$, and put $W=W(k)$. Fix a finite set $S$ containing the infinite
+places and all places above $p_0$. Write $G=G_{K,S}$ for the Galois
+group of the maximal extension of $K$ unramified outside $S$.
+Fix a continuous absolutely irreducible representation
+$\bar\rho:G\to\mathrm{GL}_2(k)$ and a continuous character
+$\delta:G\to W^\times$ lifting $\det\bar\rho$.
+
+For a finite local $W$-algebra $A$ with residue field $k$, a deformation
+is a continuous lift $\rho:G\to\mathrm{GL}_2(A)$ with determinant
+$\delta_A$. Two lifts are strictly equivalent if they are conjugate
+by an element of $1+M_2(\mathfrak m_A)$.
+Let $R=R^{\delta}_{\bar\rho,S}$ be the complete Noetherian local
+$W$-algebra representing these deformation classes. Equivalently,
+$R$ represents continuous rank-two determinant laws lifting
+$\det\bar\rho$ with determinant character $\delta$.
+The representability and comparison hypotheses are those of
+Proposition~\ref{v4-arith:w5-h:prop:chenevier-moduli-via-det-trace}.
+In particular, Mazur's finiteness condition gives Noetherianity.
+Let $\rho^u$ be a universal lift, let $T=\operatorname{tr}\rho^u$,
+and let $\mathfrak m$ be the maximal ideal of $R$.
+All topologies on $R$ below are $\mathfrak m$-adic.
+
+For a finite place $v\notin S$, use arithmetic Frobenius
+$\mathrm{Frob}_v$, acting on residue fields by the $\#k(v)$-power map.
+Its conjugacy class in $G$ is well defined. Put
+\[
+ t_v=T(\mathrm{Frob}_v),\qquad
+ d_v=\delta(\mathrm{Frob}_v),\qquad
+ P_v(X)=X^2-t_vX+d_v.
+\]
+These conventions involve no choice of a square root of $\#k(v)$.
+
+The distinction between a representation and its determinant law is
+already visible over $\mathbb F_2[\epsilon]/(\epsilon^2)$. For the cyclic group
+$C_2=\langle s\rangle$, the representations
+\[
+ \rho_0(s)=I_2,\qquad \rho_1(s)=(1+\epsilon)I_2
+\]
+have the same trace and determinant on every element. Their determinant
+laws agree, since
+\[
+ \det\rho_1(a+bs)=(a+b(1+\epsilon))^2=(a+b)^2
+ =\det\rho_0(a+bs)
+\]
+after every commutative coefficient extension. They are not conjugate,
+since both images of $s$ are scalar and they differ. Thus equality of
+determinant laws need not determine a representation when the residual
+representation is reducible.
+
+A framing retains a chosen basis, so framed deformations are lifts
+without quotienting by strict conjugacy. Over
+$A=\mathbb F_2[\epsilon]/(\epsilon^2)$, consider the constant lift
+$\sigma_0:\mathrm{GL}_2(\mathbb F_2)\to\mathrm{GL}_2(A)$ of the
+natural representation. Its reduction is absolutely irreducible:
+the matrices
+\[
+ U=\begin{pmatrix}1&1\\0&1\end{pmatrix},\qquad
+ V=\begin{pmatrix}1&0\\1&1\end{pmatrix}
+\]
+have different unique invariant lines over $\overline{\mathbb F}_2$.
+Put $P=I_2+\epsilon E_{12}$ and $\sigma_1=P\sigma_0P^{-1}$.
+Since $\epsilon^2=0$ and the characteristic is $2$,
+\[
+ PUP^{-1}=U,\qquad
+ PVP^{-1}=V+\epsilon(E_{12}V-VE_{12})=V+\epsilon I_2.
+\]
+Both lifts have determinant $1$. Conjugation preserves all traces and
+determinant laws, but the displayed images of $V$ differ.
+These are the same unframed deformation and distinct framed deformations.
+
+\begin{lemma}[trace determination with absolutely irreducible reduction]
+\label{v4-arith:w10-e:trace-conjugacy}
+Let $A$ be a commutative local ring with residue field $k$.
+Suppose $\rho_1,\rho_2:G\to\mathrm{GL}_2(A)$ reduce to the same
+absolutely irreducible representation over $k$.
+If $\operatorname{tr}\rho_1(g)=\operatorname{tr}\rho_2(g)$ for every
+$g\in G$, then $\rho_1$ and $\rho_2$ are strictly equivalent.
+The assertion includes residue characteristic $2$.
+\end{lemma}
+
+\begin{proof}
+The $k$-linear span of the residual group matrices is $M_2(k)$.
+Here is a proof in dimension two. Extend scalars to an algebraic
+closure $\bar k$ and let $E$ be the algebra spanned by the group image.
+Absolute irreducibility says that $E$ acts irreducibly. It contains a
+nonscalar matrix, and subtracting an eigenvalue produces a nonzero
+rank-one matrix $u\varphi$. Irreducibility gives $Eu=\bar k^2$ and
+$\varphi E=(\bar k^2)^*$ over the algebraic closure. Indeed, the annihilator
+of $\varphi E$ is invariant and cannot be the whole space.
+Thus the matrices $a(u\varphi)b$ span all endomorphisms.
+Descent of dimension gives the asserted span over $k$.
+
+Choose $g_1,\ldots,g_4\in G$ whose residual matrices form a basis.
+For $a=1,2$, the matrices $A_{a,i}=\rho_a(g_i)$ form an $A$-basis of
+$M_2(A)$, since their coordinate determinant is a unit.
+The trace pairing is perfect over every commutative ring:
+\[
+ \operatorname{tr}(E_{ij}E_{rs})=\delta_{jr}\delta_{is}.
+\]
+Hence the common Gram matrix
+$Q_{ij}=\operatorname{tr}\rho_a(g_i g_j)$ is invertible.
+The coordinates $c_i(g)$ of $\rho_a(g)$ in this basis satisfy
+\[
+ \sum_i c_i(g)Q_{ij}=\operatorname{tr}\rho_a(gg_j).
+\]
+They are therefore independent of $a$.
+The $A$-linear map $\Phi(A_{1,i})=A_{2,i}$ sends
+$\rho_1(g)$ to $\rho_2(g)$ for every $g$.
+Since products of basis matrices are group matrices, $\Phi$ is a
+unital algebra isomorphism. Its reduction is the identity.
+
+Put $F_{ij}=\Phi(E_{ij})$, $v=F_{11}e_1$, and $w=F_{21}v$.
+The matrix $P=(v,w)$ is congruent to $I_2$ modulo $\mathfrak m_A$,
+so it is invertible. The matrix-unit relations give
+$F_{ij}P=PE_{ij}$. Consequently $\Phi(X)=PXP^{-1}$, which proves
+strict equivalence. No division by $2$ occurs.
+\end{proof}
+
+For example, over $\mathbb F_2$ the matrices
+\[
+ I=\begin{pmatrix}1&0\\0&1\end{pmatrix},\quad
+ U=\begin{pmatrix}1&1\\0&1\end{pmatrix},\quad
+ V=\begin{pmatrix}1&0\\1&1\end{pmatrix},\quad UV
+\]
+form a basis. Their trace Gram matrix is
+\[
+ \begin{pmatrix}
+ 0&0&0&1\\0&0&1&0\\0&1&0&0\\1&0&0&1
+ \end{pmatrix},
+\]
+whose determinant is $1$, although $\operatorname{tr}(I)=0$.
+
+\begin{lemma}[unramified coefficients determine continuous determinants]
+\label{v4-arith:w10-e:frobenius-law}
+Two continuous rank-two determinant laws over a complete separated
+local coefficient ring have the same characteristic polynomials at
+every $v\notin S$ if and only if the laws agree.
+For deformations of $\bar\rho$ with fixed determinant $\delta$,
+equality of Frobenius traces suffices. Their representation classes
+then agree.
+\end{lemma}
+
+\begin{proof}
+Chebotarev's theorem implies that the union of the conjugacy classes
+of $\mathrm{Frob}_v$, for $v\notin S$, is dense in $G$.
+Indeed, every conjugacy class in every finite quotient of $G$ occurs
+at infinitely many such places. The inverse image of any nonempty
+open subset of a finite quotient therefore meets this union.
+Trace and determinant are continuous conjugacy-invariant functions.
+Equality on Frobenius classes consequently implies equality on $G$.
+
+The passage from group coefficients to polynomial laws is integral.
+For a rank-two determinant law $D$ with trace $T_D$ and determinant
+character $d$, its value after any commutative coefficient extension
+$A\to C$ is
+\[
+ D_C\left(\sum_{i=1}^r a_i g_i\right)
+ =\sum_i a_i^2d(g_i)
+  +\sum_{i<j}a_i a_jd(g_j)T_D(g_i g_j^{-1}).
+\]
+To derive the mixed coefficient, multiply $Ug_i+Vg_j$ on the right
+by $g_j^{-1}$ and use multiplicativity. The characteristic polynomial
+of $g_i g_j^{-1}$ gives
+\[
+ D(Ug_i+Vg_j)
+ =d(g_i)U^2+d(g_j)T_D(g_i g_j^{-1})UV+d(g_j)V^2.
+\]
+A homogeneous quadratic polynomial has only diagonal and mixed
+coefficients, so this determines the displayed formula for every
+finite sum. Thus equality of $(T_D,d)$ implies equality of the laws.
+The previous lemma proves the assertion about representation classes.
+\end{proof}
+
+\begin{theorem}[global scalar reconstruction from Frobenius coefficients]
+\label{v4-arith:w10-e:thm:bc-bernstein-galois}
+Define the polynomial parameter algebra
+\[
+ H^S=W[\mathsf T_v,\mathsf D_v,\mathsf D_v^{-1}:v\notin S]
+\]
+and its fixed-determinant quotient
+\[
+ H^{S,\delta}=H^S/(\mathsf D_v-d_v:v\notin S)
+ \simeq W[\mathsf T_v:v\notin S].
+\]
+The map
+\[
+ \eta:H^{S,\delta}\longrightarrow R,\qquad
+ \mathsf T_v\longmapsto t_v
+\]
+has $\mathfrak m$-adically dense image.
+
+Choose $a_v\in W$ lifting $\operatorname{tr}\bar\rho(\mathrm{Frob}_v)$,
+put $\mathfrak n=(p_0,\mathsf T_v-a_v:v\notin S)$, and define
+\[
+ \widehat H^{S,\delta}
+ =\varprojlim_n H^{S,\delta}/\mathfrak n^n.
+\]
+The induced continuous homomorphism
+$\widehat\eta:\widehat H^{S,\delta}\to R$ is surjective.
+It gives the topological quotient
+\begin{equation}
+\label{v4-arith:w10-e:eq:bc-global}
+ R\simeq\widehat H^{S,\delta}/\ker\widehat\eta.
+\end{equation}
+Moreover, finitely many places $v_1,\ldots,v_d\notin S$ give a
+continuous surjection
+\[
+ W[[X_1,\ldots,X_d]]\longrightarrow R,\qquad
+ X_i\longmapsto t_{v_i}-a_{v_i}.
+\]
+The same density conclusion holds after any quotient imposing a
+closed deformation condition.
+\end{theorem}
+
+\begin{proof}
+Let $B$ be the closure of $W[t_v:v\notin S]$ in $R$.
+It is a closed subring. Chebotarev and continuity show that
+$T(g)\in B$ for every $g\in G$.
+The ring $B$ is profinite, with finite quotients
+$B_n=B/(B\cap\mathfrak m^n)$. It is local with residue field $k$.
+Indeed, if $b\in B$ has nonzero residue, choose a unit $u\in W$
+with the same residue. Writing $b=u(1-x)$ with
+$x\in B\cap\mathfrak m$, the convergent series
+$u^{-1}\sum_{j\geq0}x^j$ belongs to $B$ and inverts $b$.
+
+The quadratic formula in the previous proof defines the universal
+determinant law over $B$, because all its coefficients belong to $B$.
+Its multiplicativity follows as a polynomial identity: the identities
+hold after the injection $B[\mathbf X]\hookrightarrow R[\mathbf X]$,
+and hence already hold over $B$. This also proves the identities after
+arbitrary coefficient extensions, without a flatness assumption.
+Its coefficient functions are continuous for the subspace topology
+on $B$, and its determinant character is $\delta$.
+
+The representing property gives compatible maps $f_n:R\to B_n$.
+Their inverse limit is a continuous map $f:R\to B$.
+If $i:B\hookrightarrow R$ is the inclusion, then $i\circ f$
+induces the universal determinant over each $R/\mathfrak m^n$.
+Uniqueness in the representing property gives
+$i\circ f=\operatorname{id}_R$. Therefore $B=R$.
+This argument uses finite local quotients of $B$ and does not assume
+that $B$ is Noetherian before proving the equality.
+
+Density implies that the classes of $t_v-a_v$ span
+$\mathfrak m/(\mathfrak m^2+p_0R)$ over $k$.
+In detail, approximate any element of $\mathfrak m$ modulo
+$\mathfrak m^2+p_0R$ by a polynomial in the $t_v$. Substituting
+$t_v=a_v+(t_v-a_v)$ leaves only its linear part in this quotient.
+Noetherianity makes this vector space finite dimensional, so choose
+finitely many places whose classes form a basis.
+Nakayama's lemma gives
+$\mathfrak m=(p_0,t_{v_1}-a_{v_1},\ldots,t_{v_d}-a_{v_d})$.
+Completeness then gives the displayed power-series surjection:
+approximate an element successively modulo $\mathfrak m^n$, lifting
+its degree-$n$ correction to $(p_0,X_1,\ldots,X_d)^n$.
+The resulting corrections converge in the power-series ring.
+
+The polynomial map $\eta$ sends $\mathfrak n^n$ into
+$\mathfrak m^n$, so it extends to $\widehat\eta$.
+The preceding finite power-series map factors through
+$\widehat H^{S,\delta}$, proving surjectivity.
+If $F_n$ is the kernel of the projection
+$\widehat H^{S,\delta}\to H^{S,\delta}/\mathfrak n^n$, then
+$\widehat\eta(F_n)=\mathfrak m^n$.
+The inclusion from left to right follows by construction. The reverse
+inclusion follows from the finite power-series surjection on the
+$n$th powers of the maximal ideals. Thus the quotient topology is
+exactly the $\mathfrak m$-adic topology.
+Density passes to every quotient of $R$.
+\end{proof}
+
+\begin{remark}[topology and global relations]
+\label{v4-arith:w10-e:global-relations}
+If $A_0=\eta(H^{S,\delta})$, its completion for the induced filtration
+$A_0\cap\mathfrak m^n$ is canonically $R$:
+\[
+ \varprojlim_n A_0/(A_0\cap\mathfrak m^n)\simeq R.
+\]
+The kernel of $\widehat\eta$ records the global deformation relations.
+The theorem does not identify it with the closure of the kernel of
+$\eta$. Such an identification requires a separate comparison of
+completion and quotient. The finite set of generating places depends
+on the deformation problem. An arbitrarily prescribed pair of places
+need not generate its ring.
+\end{remark}
+
+\begin{proposition}[obstruction to a product of deformation components]
+\label{v4-arith:w10-e:local-product-obstruction}
+The fixed-residual ring $R$ has no decomposition as a product of two
+nonzero unital rings. More generally it cannot be a unital restricted
+product containing the characteristic idempotents of two nonzero
+factors.
+\end{proposition}
+
+\begin{proof}
+If $e^2=e$ in a local ring, one of $e$ and $1-e$ is a unit.
+The equation $e(1-e)=0$ then gives $e=1$ or $e=0$.
+A product of two nonzero rings contains the nontrivial idempotent
+$(1,0)$. The same obstruction applies whenever a restricted product
+contains these characteristic idempotents.
+\end{proof}
+
+The algebra $H^{S,\delta}$ consists of formal characteristic-polynomial
+parameters. An automorphic action requires a separate module or
+category and a homomorphism from these parameters to its endomorphisms.
+An identification of its completed action image with $R$ additionally
+requires equality of the two kernels. The scalar reconstruction gives
+no such equality. It also supplies no local type decomposition,
+flatness assertion, prismatic filtration, untilt descent, or
+identification with a higher centre.
+
+
+\begin{remark}[coefficient variants]
+\label{v4-arith:w10-e:coefficient-variants}
+The same proof applies over a complete discrete valuation ring
+$\mathcal O$ finite over $W$, with a finite residue field and a chosen
+residual representation and determinant character over that base.
+Replace $p_0$ by a uniformizer of $\mathcal O$, and assume the
+corresponding complete Noetherian representing ring exists.
+For a deformation problem over $k$ itself, omit the uniformizer
+from the residual ideal. These are statements about the indicated
+coefficient problems. A comparison between their representing rings
+requires its own base-change map and proof.
+
+The density argument uses only the representing determinant functor.
+Absolute irreducibility is used to identify that functor with
+representation deformations and to obtain strict conjugacy from traces.
+\end{remark}
+
+The determinant inputs are Chenevier, arXiv:0809.0415v2,
+Example~1.8 and Lemma~1.9, pp.~10--11; Definition--Proposition~2.18,
+pp.~32--33; Theorem~2.22, p.~34; and Proposition~3.3,
+Example~3.4, Remark~3.5, Example~3.6 and Proposition~3.7,
+pp.~42--43. The number-field density theorem is stated in
+Stevenhagen--Lenstra, \emph{Chebotarev and his density theorem},
+Appendix, p.~35. The finite set of generating places in the theorem
+is not a prescribed pair: the two-prime nonuniqueness example of
+Proposition~\ref{v4-arith:bcglue-core:prop:two-prime-nonuniqueness}
+retains its different quantifiers.
+
+\subsection{The remaining global automorphic comparison}
+
+\begin{proposition}[a specified action quotient and its comparison]
+\label{v4-arith:w10-e:thm:bcglue-glue}
+Use the coefficient ring and deformation problem of
+Theorem~\ref{v4-arith:w10-e:thm:bc-bernstein-galois}.
+Suppose an automorphic module or category has been constructed, together
+with a complete separated commutative $W$-algebra $A_{\mathrm{act}}$
+of its scalar actions and a continuous surjection
+\[
+ \theta:\widehat H^{S,\delta}\longrightarrow A_{\mathrm{act}}.
+\]
+Give $A_{\mathrm{act}}$ the quotient topology for this map. If
+$\ker\theta=\ker\widehat\eta$, there is a unique topological
+$W$-algebra isomorphism $A_{\mathrm{act}}\simeq R$ intertwining the
+maps from $\widehat H^{S,\delta}$.
+To identify this algebra with the full ordinary centre of the global
+category, additionally require that its central action be faithful and
+exhaust that centre. An identification of higher centres additionally
+requires a specified equivalence of their derived algebras, not only
+this degree-zero isomorphism.
+\end{proposition}
+\begin{proof}
+Both algebras are topological quotients of the same algebra by the
+same ideal. The identity of the source descends to the claimed
+isomorphism, with inverse induced in the same way. It is a homeomorphism
+because both topologies are quotient topologies. Surjectivity of the
+source map proves uniqueness. A faithful central action identifies an
+algebra with its image; equality with the full centre requires that
+image to be the whole centre. The argument has made no assertion about
+higher cohomology or operations.
+\end{proof}
+
+The Frobenius theorem constructs $\widehat\eta$ and its scalar quotient;
+it does not construct $\theta$ or compare these kernels. The unframed
+Galois deformation problem is fixed at one residual representation.
+An automorphic spherical locus, local Bernstein types and their
+coefficient changes must be specified independently. Almost-everywhere
+sphericity does not provide the missing ring maps.
+
+To compare this action with Equation~\eqref{v4-arith:w10-e:eq:fg-global},
+one needs compatible homomorphisms from the local algebras on a common
+coefficient base and equality of their actions on each local factor.
+The colimit property then gives equality on the assembled algebra.
+Merely factoring through a common ring does not establish equality of
+actions. The pairwise geometric use retains every Selmer-ring, trace,
+coefficient and equivariant-descent condition of
+Corollary~\ref{v4-arith:w5-h:cor:ch1-closes-pairwise}, together with
+the separate derived comparison or its two Tor-independence hypotheses.
+
+For a categorical application, the functors, central weights and
+essential images of Section~\ref{v4-arith:w10-e:rem:categorical-comparison}
+remain required, with coefficient and family maps. At residual
+characteristic, all block-ring, fixed-character, fixed-determinant,
+wild-EG and normalized class-comparison data of
+Proposition~\ref{v4-arith:w10-e:prop:ell-equals-v-wild} must be retained.
+The ordinary local scalar theorem supplies none of those functors.
+
+A prismatic refinement must construct the relevant prisms, filtered
+objects and cross-prime morphisms and then prove the stipulated
+$\Pi$-flatness and filtration compatibility on that carrier. A Nygaard
+filtration on a different object does not supply these data.
+For an untilt comparison, construct the spaces and restriction functors
+for each untilt, their comparison equivalences and cocycle coherences,
+and prove that the scalar actions and specified support conditions are
+transported by them. Dependence of a determinant on Galois conjugacy
+classes does not establish such geometric descent. The arithmetic
+singular-support and higher-centre comparisons in
+Section~\ref{v4-arith:w5-h:agdet} remain further constructions.
+
+\section{(E.4) (BCglue.local) + (BCglue.glue)}
+\label{v4-arith:w10-e:combined}
+
+\begin{theorem}[local scalar comparison and categorical assembly]
+\label{v4-arith:w10-e:thm:combined-closure}
+\ClaimStatusProvedHereConditional
+At every finite prime \(p\), the ordinary
+characteristic-zero comparison for
+\(\overline{\mathbb Q}_{\ell}\), \(\ell\neq p\),
+is the isomorphism of
+Proposition~\ref{v4-arith:w10-e:prop:excursion-bernstein}.
+Its image in the spectral categorical centre
+is the scalar subalgebra of
+Proposition~\ref{v4-arith:w10-e:prop:scalar-centre-obstruction}.
+
+Suppose in addition that the centre-compatible
+categorical local functors, their required
+essential images, the coefficient and family
+comparisons, and the residual-characteristic
+block data of
+Proposition~\ref{v4-arith:w10-e:prop:ell-equals-v-wild}
+have been constructed. If the cross-prime
+assembly satisfies the stated \(\Pi\)-flat,
+pseudocharacter trace and global
+Bernstein-centre comparison hypotheses, these
+local comparisons supply the local inputs to
+that assembly.
+\end{theorem}
+
+\begin{proof}
+The ordinary assertion is the proved ring
+isomorphism. The categorical assertions follow
+from the stipulated intertwining of central
+actions. Their use in the global assembly
+requires precisely the stated coefficient,
+family and cross-prime compatibilities.
+No passage from equality on irreducible
+objects to these additional data is used.
+\end{proof}
+
+\begin{corollary}[the Bernstein-centre local-gluing obstruction decomposition]
+\label{v4-arith:w10-e:cor:domain-delta}
+\ClaimStatusProvedHere The ordinary local comparison leaves the
+following additional data for categorical and global gluing:
+\begin{itemize}
+\item local centre-compatible functors with specified essential images
+and central weights, and the required coefficient and family maps;
+\item at $\ell=p$, the wild-EG enhancement, fixed-determinant block
+rings and functors, and the normalized class match of
+Theorem~\ref{v4-arith:w10-b:thm:class-match};
+\item the global pseudocharacter and Bernstein-centre comparisons,
+$\Pi$-flat, untilt descent, and arithmetic AG at the centre.
+\end{itemize}
+\end{corollary}
+\begin{proof}
+Proposition~\ref{v4-arith:w10-e:prop:excursion-bernstein} computes the ordinary
+ring. The proper scalar image in
+Proposition~\ref{v4-arith:w10-e:prop:scalar-centre-obstruction} prevents its
+identification with the full spectral categorical centre.
+Proposition~\ref{v4-arith:w10-e:prop:ell-equals-v-wild} requires block-ring
+and functor data beyond first-order classes. Finally the assembly
+in Proposition~\ref{v4-arith:w10-e:thm:bcglue-glue} retains its explicitly
+stated global hypotheses.
+\end{proof}
+
+\section{Consequences for BC-Diamond-Glue}
+\label{v4-arith:w10-e:consequences}
+
+\begin{corollary}[inputs to BC-diamond-glue]
+\label{v4-arith:w10-e:cor:bcglue-final-updated}
+\ClaimStatusProvedHereConditional
+The ordinary local scalar-centre input is
+available in characteristic zero for
+\(\ell\neq p\) at every finite \(p\).
+To obtain BC-diamond-glue from these inputs
+one must additionally supply the
+centre-compatible categorical comparisons,
+the residual-characteristic block comparisons
+and wild-EG enhancement where required,
+the coefficient and family comparisons,
+the Selmer-algebra, geometric, trace and
+equivariant pairwise sheaf comparisons,
+the global Bernstein-centre comparison,
+\(\Pi\)-flat, untilt descent,
+and the arithmetic higher-centre comparison.
+\end{corollary}
+
+\begin{proof}
+The ordinary comparison supplies scalar
+functions and their actions. The remaining
+hypotheses supply the categorical, arithmetic
+and gluing maps needed to use those actions
+in BC-diamond-glue.
+\end{proof}
+
+\begin{remark}[remaining comparison constructions]
+\label{v4-arith:w10-e:rem:residuals-not-closed}
+The cross-prime universal pseudocharacter algebra still requires the
+specified transition, coherent-support and higher-coherence
+data of Hypothesis~\ref{v4-arith:bcglue-k5:lem:prismatic-flatness},
+together with effective descent. These data do not establish a
+site-theoretic flatness theorem and are not constructed by a tensor
+product of local centres.
+The wild-EG enhancement in
+Conjecture~\ref{v4-arith:deg-f1a:conj:EG-wild-enhancement} still requires its
+truncation, cotangent, type-label and generation conditions; an
+$\mathrm{Ext}^1$ comparison is not their construction.
+Arithmetic AG at the centre and the global comparison maps remain
+separate hypotheses.
+\end{remark}
+
+\section{Reference Roles and Conditional Loci}
+\label{v4-arith:w10-e:data}
+\begin{remark}[local and global comparison conditions]
+\label{v4-arith:w10-e:rem:data}
+The ordinary characteristic-zero result holds for every residue
+characteristic, including $2$ and $3$, with $\ell\neq p$ and all
+inertial components. Its inputs are the Bernstein block formula,
+the algebraic parameter scheme, the four invariant-ring calculations,
+and the Fargues--Scholze compatibility with semisimplified local
+Langlands. The auxiliary Dotto--Emerton--Gee functor retains its
+$p\geq5$ and fixed-central-character hypotheses. For $\ell=p$ at
+$p=2,3$, the complete blockwise hypotheses are those of
+Proposition~\ref{v4-arith:w10-e:prop:ell-equals-v-wild}.
+The references to Francis--Gaitsgory, Bella\"iche--Chenevier,
+Bhatt--Scholze and Bhatt--Lurie concern the additional global and
+prismatic comparisons. The local ring calculation does not supply
+these comparisons or the (Ch1) and (AG.det.transition) hypotheses.
+\end{remark}
+
+\section{Seven Local and Global Comparison Questions}
+\label{v4-arith:w10-e:seven-obstruction}
+\begin{description}
+\item[1. Surjectivity of the ordinary central action.]
+Equality on simple objects alone does not prove a ring isomorphism.
+Proposition~\ref{v4-arith:w10-e:prop:excursion-bernstein} first constructs the
+isomorphism on every inertial piece; reducedness then identifies it
+with the Fargues--Scholze action. The scalar image is still proper in
+the full spectral categorical centre.
+\item[2. The small residue characteristics.]
+The ordinary calculation for $\ell\neq p$ includes $p=2,3$.
+It does not extend the $p\geq5$ categorical functor to these primes.
+Their residual-characteristic block categories require the distinct
+data of Proposition~\ref{v4-arith:w10-e:prop:ell-equals-v-wild}.
+\item[3. Coefficient comparison.]
+Compatible embeddings of a common characteristic-zero field and
+choices of $\sqrt q$ transport the Laurent invariant-ring formulas
+in Remark~\ref{v4-arith:w10-e:rem:ell-independence}. Integral, family,
+residual and $\ell=p$ comparisons require additional functors and
+parameter-space maps; the ordinary isomorphism is not a canonical
+identification of these regimes.
+\item[4. Discrete assembly.]
+The filtered tensor-product expression
+\eqref{v4-arith:w10-e:eq:fg-global} must be distinguished from its
+identification with a global pseudocharacter algebra. The latter
+requires specified compatible maps on finite sets of places and
+a proof of the resulting algebra comparison.
+\item[5. Families and global pseudocharacters.]
+Equation~\eqref{v4-arith:w10-e:eq:bc-global} is a completed scalar
+quotient for a fixed residual deformation problem, not a product of
+Bernstein components. An automorphic family requires its own parameter
+action, topology and relation ideal. The kernel equality in
+Proposition~\ref{v4-arith:w10-e:thm:bcglue-glue} is the additional
+comparison; equality at rigid points does not prove it.
+\item[6. Prismatic compatibility.]
+Cross-prime flatness, compatible product filtrations and untilt
+descent are additional constructions for a prismatic or untilt
+refinement, as specified in the discussion following
+Proposition~\ref{v4-arith:w10-e:thm:bcglue-glue}. They are not
+hypotheses of that scalar quotient proposition, and a discrete
+filtered colimit does not prove them.
+\item[7. Wild inertia at $\ell=p$.]
+At $p=2,3$ the Pa{\v s}k{\=u}nas--Tung and
+Colmez--Dospinescu--Pa{\v s}k{\=u}nas block inputs, fixed determinant,
+wild-EG enhancement, normalized tangent-class comparison and
+centre-compatible block functors must all be retained. The tangent
+comparison does not identify complete local rings or construct
+an essential-image equivalence.
+\end{description}
+
+\section{Primary Sources}
+\label{v4-arith:w10-e:bibliography}
+
+Primary sources for the Bernstein-centre local-gluing comparison:
+
+\begin{description}
+\item[Fargues, L.\ and Scholze, P.] (2021).
+\emph{Geometrization of the local Langlands correspondence}.
+arXiv:2102.13459v4. Theorem~VIII.1.3, pp.~279--280;
+Definition~IX.0.2 and Corollary~IX.0.3, pp.~318--319;
+Theorems~IX.5.2 and IX.7.4, pp.~329 and 338.
+\item[Dat, J.-F., Helm, D., Kurinczuk, R., and Moss, G.]
+\emph{Moduli of Langlands parameters}, arXiv:2009.06708v3.
+\S1.6, p.~9; Theorem~4.1, pp.~29--30;
+Corollary~4.16 and Proposition~4.17, pp.~35--36;
+Proposition~6.4, p.~66.
+\item[Helm, D.] \emph{The Bernstein center of the category of smooth
+$W(k)[GL_n(F)]$-modules}, arXiv:1201.1874,
+Theorems~3.4--3.5, pp.~7--8; and
+\emph{Curtis homomorphisms and the integral Bernstein center for
+$GL_n$}, arXiv:1605.00487v3, Theorem~9.4, pp.~30--31.
+\item[Dotto, A., Emerton, M., and Gee, T.] (2026). \emph{A categorical
+\(p\)-adic Langlands correspondence for \(GL_{2}(\mathbb{Q}_{p})\)}.
+arXiv:2603.26887. Used only for the fully faithful
+fixed-central-character functor at \(p\geq 5\).
+\item[Bella\"iche, J.\ and Chenevier, G.] (2009). \emph{Families of
+Galois representations and Selmer groups}. Ast\'erisque 324.
+Chapter~1 provides the deformation-theoretic context. No product
+decomposition of the fixed-residual complete local ring is used here.
+\item[Chenevier, G.] \emph{The $p$-adic analytic space of
+pseudocharacters of a profinite group and pseudorepresentations over
+arbitrary rings}. arXiv:0809.0415v2. Example~1.8 and Lemma~1.9,
+pp.~10--11; Definition--Proposition~2.18, pp.~32--33; Theorem~2.22,
+p.~34; Proposition~3.3, Example~3.4 and Remark~3.5, p.~42;
+Example~3.6 and Proposition~3.7, p.~43.
+\item[Stevenhagen, P.\ and Lenstra, H.\ W., Jr.] (1996).
+\emph{Chebotarev and his density theorem}. Mathematical Intelligencer
+18(2), 26--37; Appendix, p.~35, for the number-field density theorem.
+\item[Francis, J.\ and Gaitsgory, D.] (2012). \emph{Chiral Koszul
+duality}. Selecta Math.\ 18, arXiv:1103.5803. Background for the
+factorization-category comparison. The tensor-colimit action in
+Proposition~\ref{v4-arith:w10-e:thm:fg-discrete-glue} is proved
+directly; its arithmetic realization is separate.
+\item[Bernstein, J.\ and Deligne, P.] (1984). ``Le centre de
+Bernstein''. In \emph{Travaux en cours} 24, Hermann. \S 4
+(Bernstein decomposition; block-centre formula
+\(\mathcal{Z}_{\mathfrak{s}}=\mathcal{O}(V_{\mathfrak{s}})^{W_{\mathfrak{s}}}\)).
+Used as the comparison source for the Bernstein-centre match.
+\item[Bhatt, B.\ and Scholze, P.] (2022). \emph{Prisms and prismatic
+cohomology}. Ann.\ Math.\ 196, arXiv:1905.08229. Background for the
+prismatic realization; the particular cross-prime flatness comparison
+must be constructed on its stated arithmetic carrier.
+\item[Bhatt, B.\ and Lurie, J.] (2022). \emph{Absolute prismatic
+cohomology}. arXiv:2201.06120. Nygaard-filtration background for a
+specified filtered refinement; compatibility across untilts requires
+its own functors and coherent descent data.
+\item[Pa{\v s}k{\=u}nas, V.] (2013). \emph{The image of Colmez's
+Montreal functor}. Publ.\ IHES 118. Thm.~1.2
+(block decomposition). Combined with PT 2020
+(Thms.~1.3, 1.5, 1.7) and CDP 2014 \S 5. Used
+for the wild-prime block structure at \(v\in\{2,3\}\).
+\item[Hu, Y.\ and Tan, F.] (2018). \emph{Revisiting the
+Breuil--Mezard conjecture for \(GL_{2}\)}.
+Thm.~1.1 (very-special Breuil--Mezard multiplicities). Used in
+the Pa{\v s}k{\=u}nas block-tangent comparison and inherited here.
+\item[Kisin, M.] (2008). \emph{Potentially semi-stable deformation
+rings}. Ann.\ Math.\ 170 (2008). Pseudo-character tangent space.
+Inherited via the Pa{\v s}k{\=u}nas block-tangent comparison.
+\end{description}
+
+\section{Residual Closure Boundary}
+\label{v4-arith:w10-e:summary}
+
+\begin{enumerate}
+\item For $GL_2(F)$ over $\overline{\mathbb Q}_\ell$, $\ell\neq p$,
+functions on the full parameter stack are the ordinary Bernstein
+centre, by Proposition~\ref{v4-arith:w10-e:prop:excursion-bernstein}. All inertia
+types and the primes $2,3$ are included.
+\item These functions form a faithful proper scalar subalgebra of
+the centre of the full spectral category. Central-weight projectors
+provide explicit additional endomorphisms. A categorical comparison
+requires a specified target weight, functor and essential image.
+\item At $\ell=p$, the fixed-central-character and fixed-determinant
+block data, wild-EG enhancement, normalized class match and
+centre-compatible functors remain the hypotheses of
+Proposition~\ref{v4-arith:w10-e:prop:ell-equals-v-wild}.
+\item For the fixed absolutely irreducible unframed deformation problem,
+unramified Frobenius coefficients topologically generate $R$, including
+residue characteristic two. The completed parameter algebra surjects
+onto $R$ with the specified quotient topology. This determines scalar
+Galois deformations; it does not identify an automorphic action kernel.
+\item Cross-prime gluing retains coefficient and family comparisons,
+the global pseudocharacter and Bernstein-centre maps, prismatic
+flatness, untilt descent and arithmetic AG. The local scalar theorem
+does not discharge these requirements. Their role in BC-diamond-glue
+is stated in Corollary~\ref{v4-arith:w10-e:cor:bcglue-final-updated}.
+\end{enumerate}

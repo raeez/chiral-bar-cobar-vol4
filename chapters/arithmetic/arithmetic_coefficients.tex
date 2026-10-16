@@ -1,0 +1,902 @@
+\chapter{Arithmetic coefficients and local conditions}
+\label{v4-arith:coefficients:chapter}
+
+A global cohomology class can satisfy a local condition because its
+restriction differs from an allowed local class by a coboundary. The
+primitive of that coboundary belongs to the relative cocycle. Retaining
+it gives an explicit complex, and compatible local multiplications give
+the two products of Chapter~\ref{v4-arith:gluing:chapter}. Forgetting it
+before taking products loses part of the arithmetic input.
+
+Coefficients must also be retained before taking limits. Every finite
+\(\ell\)-power torsion group vanishes after tensoring with
+\(\mathbb Q_\ell\), whereas their inverse limit can have positive
+\(\mathbb Z_\ell\)-rank. We therefore construct the finite coefficient
+complexes first, specify their transition maps, and only then complete.
+Deformation functors impose a further requirement: all local and global
+objects must be defined on the same coefficient category. Their tangent
+complexes give local conditions on cochains. Their geometric
+representability is a separate question.
+
+\section{The arithmetic curve and its coefficients}
+\label{v4-arith:coefficients:sec:places}
+
+Fix a number field \(K\), its ring of integers \(\mathcal O_K\), and a
+rational prime \(\ell\). A finite place \(v\) is a nonzero prime ideal
+of \(\mathcal O_K\). Its completion \(K_v\) has valuation ring
+\(\mathcal O_v\), maximal ideal \(\mathfrak m_v\), and finite residue
+field \(k_v\) of characteristic \(p_v\). The arithmetic residue prime
+\(p_v\) and the coefficient prime \(\ell\) serve different purposes.
+They may coincide, but no such equality is imposed here.
+
+The scheme \(\operatorname{Spec}\mathcal O_K\) has dimension one.
+Its closed points are the finite places. Its generic point has field
+\(K\). Archimedean completions are additional data, not additional
+closed points of this scheme.
+
+The adele ring \(\mathbb A_K\) is the
+restricted product of the completions, with respect to \(\mathcal O_v\)
+at finite places. An adele is a tuple of local elements. Identifying
+such a tuple with a coordinate for chiral insertions would require a
+geometric construction and its transition maps.
+
+Let \(S\) be a finite set of places containing the archimedean places
+and the places over \(\ell\). Write \(S_f\) for its finite part.
+Let \(G_{K,S}\) be the Galois group of the maximal extension of \(K\)
+unramified outside \(S\), and let \(G_{K_v}\) be the absolute Galois
+group of \(K_v\).
+
+Choose embeddings of algebraic closures defining
+continuous homomorphisms
+\[
+ j_v:G_{K_v}\longrightarrow G_{K,S}\qquad(v\in S_f).
+\]
+These homomorphisms need not be injective. Strict restriction maps use
+the chosen \(j_v\). Conjugate choices require cochain homotopies when
+the resulting complexes are compared.
+
+Put \(R_r=\mathbb Z/\ell^r\mathbb Z\), for \(r\geq1\).
+Complexes are cohomological, with differential of degree one and
+\(M[1]^n=M^{n+1}\). Tensor products are over the displayed coefficient
+ring and use the Koszul sign rule. An ordinary tensor product denotes
+the algebraic tensor product. A derived or completed tensor product
+will be specified explicitly.
+
+\section{Continuous cochains with their multiplication}
+\label{v4-arith:coefficients:sec:cochains}
+
+Let \(G\) be profinite, \(R\) a commutative ring with trivial
+\(G\)-action, and \(M\) a discrete continuous \(R[G]\)-module.
+The normalized continuous cochains \(C^n(G,M)\) are the continuous
+functions \(G^n\to M\) vanishing when any argument is the identity.
+Set \(C^0(G,M)=M\) and \(C^n(G,M)=0\) for \(n<0\).
+
+Their differential is
+\begin{align}
+ (dc)(g_1,\ldots,g_{n+1})={}&g_1c(g_2,\ldots,g_{n+1})\nonumber\\
+ &+\sum_{i=1}^n(-1)^i
+ c(g_1,\ldots,g_ig_{i+1},\ldots,g_{n+1})\nonumber\\
+ &+(-1)^{n+1}c(g_1,\ldots,g_n).
+ \label{v4-arith:coefficients:eq:differential}
+\end{align}
+In degree zero this says \((dm)(g)=gm-m\).
+Continuous group cohomology is the cohomology of this complex.\footnote{
+J. S. Milne, \emph{Class Field Theory}, version 4.03 (2020),
+Chapter II, \S4, pp.~86--89, gives the continuous-cochain and
+finite-quotient conventions.}
+
+Suppose now that \(M\) is an associative unital \(R\)-algebra and
+that \(G\) acts by \(R\)-algebra automorphisms. For cochains \(c,c'\)
+of degrees \(n,m\), define the ordered cup product by
+\begin{equation}\label{v4-arith:coefficients:eq:cup}
+ (c\smile c')(g_1,\ldots,g_{n+m})
+ =c(g_1,\ldots,g_n)
+   (g_1\cdots g_n)c'(g_{n+1},\ldots,g_{n+m}).
+\end{equation}
+No commutativity of \(M\) is needed. When the action is trivial, both
+action factors in \eqref{v4-arith:coefficients:eq:differential}
+and \eqref{v4-arith:coefficients:eq:cup} disappear.
+
+\begin{proposition}\label{v4-arith:coefficients:prop:cochains}
+The differential squares to zero. Under the algebra hypothesis,
+\(C^\bullet(G,M)\) is a unital associative differential graded
+\(R\)-algebra. Restriction along continuous group homomorphisms,
+with the induced coefficient action, preserves its differential,
+product, and unit.
+\end{proposition}
+\begin{proof}
+Write \(d=\sum_i(-1)^i d_i\) for the faces in
+\eqref{v4-arith:coefficients:eq:differential}. For \(i<j\), the
+identity \(d_jd_i=d_id_{j-1}\) pairs two terms of \(d^2\) with
+opposite signs. The identity for the first two faces uses
+\(g(hm)=(gh)m\). The adjacent inner faces use associativity in
+\(G\). Every term is paired, so \(d^2=0\). If an argument is the
+identity, the two neighboring faces cancel and all remaining terms
+vanish by normalization.
+
+In the differential of a cup product, split the faces at the boundary
+of its two argument blocks. The faces in the first block give
+\((dc)\smile c'\), and those in the second give
+\((-1)^n c\smile dc'\). The extra faces at the boundary cancel.
+The action on the second factor in
+\eqref{v4-arith:coefficients:eq:cup} makes this cancellation valid
+also for a nontrivial coefficient action. This proves Leibniz's rule.
+
+For three cochains the two bracketings evaluate the same three blocks.
+The second value is acted on by the first block, and the third by
+the first two blocks. The action is by algebra
+automorphisms, so these expressions agree. The element \(1_M\) in
+degree zero is a closed two-sided unit. Substitution of a group
+homomorphism in each argument respects every displayed formula.
+\end{proof}
+
+\begin{proposition}\label{v4-arith:coefficients:prop:reduction}
+For trivial coefficients \(R_r\), reduction gives degreewise
+surjections and isomorphisms
+\[
+ C^n(G,R_{r+1})\otimes_{R_{r+1}}R_r
+ \cong C^n(G,R_r).
+\]
+These maps preserve the differential, cup product, and restrictions.
+Each module \(C^n(G,R_r)\) is flat over \(R_r\).
+\end{proposition}
+\begin{proof}
+A continuous function from a compact space to a discrete space has
+finite image and is constant on a finite clopen partition. Lift each
+value from \(R_r\) to \(R_{r+1}\), choosing the zero lift for the zero
+value. This preserves normalization.
+
+A function reducing to zero has
+values in \(\ell^rR_{r+1}\). Choosing preimages of its finitely many
+values shows that the kernel is
+\(\ell^rC^n(G,R_{r+1})\). This proves the tensor assertion.
+All operations use only coefficient addition and multiplication.
+
+Fix a finite clopen partition of \(G^n\). Normalized functions
+constant on its cells form a finite free \(R_r\)-module. A basis
+consists of the characteristic functions of cells disjoint from all
+tuples with an identity argument. Refinement gives a
+filtered system whose union is all normalized continuous cochains.
+Filtered colimits of flat modules are flat.
+\end{proof}
+
+The finite models are compatible with the profinite topology. For
+trivial coefficients, every continuous cochain factors through
+\((G/U)^n\) for some open normal subgroup \(U\subset G\).
+Indeed, its finite clopen fibers admit a finite cover by products of
+cosets of open subgroups. A common open normal subgroup refining those
+subgroups makes the function constant on the required product cosets.
+Normalization then holds on \(G/U\), because a coset of the identity
+has the same value as an actual identity argument.
+
+Consequently
+\[
+ C^\bullet(G,R_r)=\varinjlim_U C^\bullet(G/U,R_r),
+\]
+with inflation as transition maps. The differential and cup product
+are compatible with this expression.
+
+This flatness assertion concerns modules in individual degrees.
+It does not prove that an unbounded complex is \(K\)-flat, meaning
+that tensoring it with any acyclic complex remains acyclic.
+The resolution hypotheses of
+Proposition~\ref{v4-prop:bar-derived-tensor} are still needed when
+the coefficient bar is used to compute a derived tensor product.
+
+\section{Local conditions and retained primitives}
+\label{v4-arith:coefficients:sec:local}
+
+Fix a discrete continuous \(G_{K,S}\)-module \(M\) over \(R\).
+A cochain local condition at \(v\) consists of a complex \(L_v\)
+and a chain map
+\[
+ g_v:L_v\longrightarrow C^\bullet(G_{K_v},M).
+\]
+
+Set \(A=C^\bullet(G_{K,S},M)\),
+\(B=\prod_{v\in S_f}C^\bullet(G_{K_v},M)\), and
+\(L=\prod_{v\in S_f}L_v\). Let \(f=(j_v^*)_v\) and
+\(g=(g_v)_v\). The products are finite, so they are also direct sums
+of complexes. Define the Selmer complex for these cochain data by
+\begin{equation}\label{v4-arith:coefficients:eq:selmer-complex}
+ \begin{split}
+ C^n_{\mathcal L}&=A^n\oplus L^n\oplus B^{n-1},\\
+ D(a,c,y)&=(da,dc,f(a)-g(c)-dy).
+ \end{split}
+\end{equation}
+The symbol \(\mathcal L\) records the chosen complexes and maps.
+A subspace of local cohomology alone does not specify these data.
+
+\begin{proposition}\label{v4-arith:coefficients:prop:selmer-complex}
+The complex \(C^\bullet_{\mathcal L}\) is the homotopy fiber of
+\(f-g:A\oplus L\to B\). In particular it has the exact sequence
+\[
+ \cdots\longrightarrow H^{n-1}(B)
+ \longrightarrow H^n(C^\bullet_{\mathcal L})
+ \longrightarrow H^n(A)\oplus H^n(L)
+ \xrightarrow{f_*-g_*}H^n(B)\longrightarrow\cdots.
+\]
+A cocycle is a pair of global and allowed local cocycles together
+with a specified primitive of their difference after restriction.
+\end{proposition}
+\begin{proof}
+The third component of \(D^2\) is
+\(f(da)-g(dc)-d(f(a)-g(c)-dy)=0\).
+Projection onto \(A\oplus L\) has kernel \(B[-1]\), with
+differential \(-d_B\). The resulting short exact sequence is the
+mapping-fiber sequence for \(f-g\), and its connecting map is
+\(f_*-g_*\). The cocycle equations are exactly those stated.
+\end{proof}
+
+Three choices exhibit the range of this definition. The zero
+condition \(L_v=0\) asks for a primitive of the local restriction.
+The full condition \(L_v=C^\bullet(G_{K_v},M)\), with \(g_v\) the
+identity, imposes no restriction. If every condition is full, the map
+\(a\mapsto(a,f(a),0)\) is a quasi-isomorphism
+\(A\to C^\bullet_{\mathcal L}\): its complementary fiber is the
+contractible fiber of \(1_B\).
+
+For a finite place, write \(I_v\) for inertia in \(G_{K_v}\).
+The unramified cochain condition is
+\begin{equation}\label{v4-arith:coefficients:eq:unramified}
+ L_v=C^\bullet(G_{K_v}/I_v,M^{I_v})
+ \xrightarrow{\mathrm{inflation}} C^\bullet(G_{K_v},M).
+\end{equation}
+The quotient acts on the inertia invariants, and inflation followed
+by their inclusion defines the map. If \(M\) is a coefficient algebra
+with Galois action by automorphisms, then \(M^{I_v}\) is a unital
+subalgebra and inflation preserves the cup product.
+
+General local conditions are complexes. When \(A,L,B\) are strict
+dg algebras and \(f,g\) are algebra maps, there are additional products.
+For \(x=(a,c,y)\) of degree \(n\), they are
+\begin{align}
+ \mu_L(x,x')&=(aa',cc',(-1)^nf(a)y'+yg(c')),
+ \label{v4-arith:coefficients:eq:left-product}\\
+ \mu_R(x,x')&=(aa',cc',yf(a')+(-1)^ng(c)y').
+ \label{v4-arith:coefficients:eq:right-product}
+\end{align}
+Proposition~\ref{v4-arith:gluing:prop:products} proves their dg
+identities. Chapter~\ref{v4-arith:gluing:chapter} constructs the
+comparison in every tensor length, including the module and bimodule
+maps. These conclusions apply to a local condition only after its
+algebra structure and the multiplicativity of \(g_v\) have been given.
+
+If the cospan is unital, \(u=(1_A,1_L,0)\) is the native unit of
+both products. For the zero local condition, the displayed triple
+provides no such common unit.
+
+In either case the external unitization
+\[
+ R\oplus C^\bullet_{\mathcal L},\qquad
+ (r,x)(r',x')=(rr',rx'+r'x+xx'),
+\]
+has augmentation \((r,x)\mapsto r\) and new unit \((1,0)\).
+When \(u\) exists, \((0,u)\) is an idempotent in its augmentation
+ideal. It is not the new unit. The coefficient bar uses this external
+augmentation. Local vacua, scalar augmentations, and empty geometric
+cuts retain their distinct definitions.
+
+A comparison of cochain models may respect restriction only up to
+homotopy. For the zero local condition, suppose algebra maps
+\(\alpha:A\to A'\), \(\beta:B\to B'\) and a degree-minus-one map
+\(H:A\to B'\) satisfy
+\(f'\alpha-\beta f=dH+Hd\). Then
+\[
+ (a,y)\longmapsto(\alpha(a),\beta(y)+H(a))
+\]
+is a chain map of relative complexes. Its multiplicative defect is
+computed in Proposition~\ref{v4-arith:relative-bar:prop:homotopy}.
+A nonzero defect requires higher comparison maps before one obtains
+a bar-coalgebra map. A chain homotopy alone is not that construction.
+
+\section{Completion before rationalization}
+\label{v4-arith:coefficients:sec:completion}
+
+Give \(\mathbb Z_\ell=\varprojlim_rR_r\) its inverse-limit topology.
+A map \(G^n\to\mathbb Z_\ell\) is continuous exactly when each of
+its reductions is continuous. Hence normalized cochains satisfy
+\[
+ C^\bullet_{\mathrm{cts}}(G,\mathbb Z_\ell)
+ =\varprojlim_r C^\bullet(G,R_r).
+\]
+The differential, cup product, and restrictions pass to this limit.
+For a general family of local conditions \(L_{v,r}\), transition
+maps and coefficient base-change properties must be supplied as part
+of that family.
+
+\begin{proposition}\label{v4-arith:coefficients:prop:milnor}
+Let \(E_r\) be a countable tower of complexes with degreewise
+surjective transition maps. There is an exact sequence
+\[
+ 0\longrightarrow\varprojlim{}^1_r H^{n-1}(E_r)
+ \longrightarrow H^n(\varprojlim_r E_r)
+ \longrightarrow\varprojlim_r H^n(E_r)\longrightarrow0.
+\]
+Here \(\varprojlim{}^1\) is the cokernel of \(1-\mathrm{shift}\)
+on the product of the indicated cohomology groups.
+\end{proposition}
+\begin{proof}
+The map \(1-\mathrm{shift}:\prod_rE_r\to\prod_rE_r\) is
+surjective in every degree. To solve \(x_r-t_r(x_{r+1})=y_r\),
+choose \(x_1\) and lift \(x_r-y_r\) recursively along the
+surjection \(t_r:E_{r+1}\to E_r\). Its kernel is the inverse limit.
+Thus
+\[
+ 0\longrightarrow\varprojlim_rE_r\longrightarrow\prod_rE_r
+ \xrightarrow{1-\mathrm{shift}}\prod_rE_r\longrightarrow0
+\]
+is an exact sequence of complexes. Products of modules are exact,
+so their cohomology is the product of the cohomology groups.
+The resulting long exact sequence gives the assertion.
+\end{proof}
+
+The hypothesis holds for the coefficient cochains and their relative
+complexes with zero or full local conditions. It must be checked for
+other conditions. Even under this hypothesis, the possible
+\(\varprojlim{}^1\) term prevents replacing the cohomology of the
+limit by the limit of the cohomology groups without further argument.
+
+For a compatible tower of relative dg algebras \(P_r\) over \(R_r\),
+let \(\mathcal B_r\) be the coefficient bar of \(R_r\oplus P_r\).
+It is the direct sum of its finite tensor words, with the signs of
+\eqref{v4-eq:bar-coefficient-signs}. Its coefficient completion and
+coproduct target are
+\begin{equation}\label{v4-arith:coefficients:eq:completed-bar}
+ \widehat{\mathcal B}=\varprojlim_r\mathcal B_r,
+ \qquad
+ \widehat{\mathcal B}\,\widehat\otimes\,
+ \widehat{\mathcal B}
+ :=\varprojlim_r(\mathcal B_r\otimes_{R_r}\mathcal B_r).
+\end{equation}
+Every element has finite word support at each coefficient precision.
+This is smaller than an unrestricted product over word lengths.
+The differential, coproduct, and endpoint comparisons pass to
+\eqref{v4-arith:coefficients:eq:completed-bar} by their compatible
+finite-stage formulas, as proved in
+Chapters~\ref{v4-ch:bar-cobar-topology}
+and~\ref{v4-arith:gluing:chapter}.
+
+Each finite-stage bar is conilpotent: sufficiently many reduced cuts
+kill any finite sum of words. The limit need not be conilpotent.
+Take a free rank-one module with basis \(a\), where \(|a|=1\).
+The degree-zero
+element \(\sum_{n\geq1}\ell^n(sa)^{\otimes n}\) has finite support
+modulo every \(\ell^r\). Every iterated reduced coproduct has a
+nonzero term. Its existence depends on coefficient completion, not on a
+bound on geometric configurations.
+
+\begin{example}\label{v4-arith:coefficients:ex:rationalization}
+Each \(R_r\otimes_{\mathbb Z_\ell}\mathbb Q_\ell\) is zero, since
+\(\ell^r\) annihilates its first factor and is invertible on the
+second. But
+\[
+ (\varprojlim_rR_r)\otimes_{\mathbb Z_\ell}\mathbb Q_\ell
+ =\mathbb Q_\ell.
+\]
+The constant degree-zero cochains already exhibit this difference.
+There is no unital ring map \(R_r\to\mathbb Q_\ell\): the relation
+\(\ell^r1=0\) would persist in the target. Thus a characteristic-zero
+realization cannot be constructed by rationalizing these finite
+coefficient algebras separately.
+\end{example}
+
+\section{Restriction, transfer, and tensor support}
+\label{v4-arith:coefficients:sec:transfer}
+
+Restriction and coefficient reduction are multiplicative in the models
+above. Additive transfer has a different behavior. If \(H\subset G\)
+has finite index \(n\), corestriction on degree-zero cohomology with
+trivial \(\mathbb Z_\ell\)-coefficients is multiplication by \(n\).
+For finite groups this is the coset sum. For profinite groups the
+same formula uses the finite coset space.
+
+\begin{proposition}\label{v4-arith:coefficients:prop:transfer}
+If \(n>1\), corestriction with trivial \(\mathbb Z_\ell\)-coefficients
+is not multiplicative. There is no \(A_\infty\) morphism of these
+cochain algebras whose induced cohomology map is corestriction.
+\end{proposition}
+\begin{proof}
+On the class of the degree-zero unit, multiplicativity would give
+\(n=\operatorname{cor}(1\cdot1)
+=\operatorname{cor}(1)\operatorname{cor}(1)=n^2\).
+The ring \(\mathbb Z_\ell\) has characteristic zero, so this fails
+for \(n>1\). The arity-two identity for an \(A_\infty\) morphism
+makes its first component multiplicative on cohomology, yielding
+the same contradiction. For index \(\ell\), reduction modulo
+\(\ell^2\) already detects the failure: \(\ell\ne\ell^2=0\).
+\end{proof}
+
+Multiplicative norm operations, when constructed, have different
+axioms and cannot be substituted for this additive transfer without
+specifying their coefficient and algebra structures.
+
+Changing the coefficient prime creates another separation. An abelian
+group is \(\ell\)-primary torsion if every element is killed by some
+power of \(\ell\). For different primes, the derived tensor of two
+such groups vanishes.
+
+\begin{proposition}\label{v4-arith:coefficients:prop:primary}
+If \(M_\ell\) and \(M_p\) are respectively \(\ell\)-primary and
+\(p\)-primary torsion groups, with \(\ell\ne p\), then
+\(M_\ell\otimes^{\mathbf L}_{\mathbb Z}M_p=0\).
+For equal primes the corresponding assertion is false.
+\end{proposition}
+\begin{proof}
+The resolution
+\(0\to\mathbb Z\xrightarrow{\ell^a}\mathbb Z
+\to\mathbb Z/\ell^a\to0\), tensored with \(M_p\), is acyclic:
+multiplication by \(\ell^a\) is invertible on every \(p\)-primary
+group. Every finitely generated subgroup of \(M_\ell\) is a finite
+sum of cyclic \(\ell\)-power groups. Filtered unions and their exact
+tensor and Tor functors extend the calculation to \(M_\ell\).
+There is no higher Tor over \(\mathbb Z\). For equal primes,
+\[
+ \mathbb F_\ell\otimes^{\mathbf L}_{\mathbb Z}\mathbb F_\ell
+ \simeq\mathbb F_\ell\oplus\mathbb F_\ell[1],
+\]
+since the differential in the same two-term resolution becomes zero.
+The shift puts its Tor group in cohomological degree \(-1\).
+\end{proof}
+
+This calculation concerns tensor products over \(\mathbb Z\).
+It neither supplies comparison maps between local geometric categories
+nor makes two factors with the same coefficient field disjoint.
+
+\section{Deformation functors on one coefficient category}
+\label{v4-arith:coefficients:sec:deformations}
+
+Local conditions on representations supply cochain conditions by
+linearization. To form their global pullback, first fix a finite field
+\(k\) of characteristic \(\ell\), its Witt ring \(W(k)\), and a
+continuous residual representation
+\[
+ \bar\rho:G_{K,S}\longrightarrow\mathrm{GL}_d(k).
+\]
+Use a single category \(\mathrm{Art}_{W(k)}\) of augmented simplicial
+Artinian local \(W(k)\)-algebras with residue field \(k\).
+Deformation functors take values in spaces and invert weak
+equivalences of these coefficient algebras. A local theory over the
+Witt ring of a different residue characteristic is not automatically
+a functor on this category.
+
+For a profinite group \(G\) with the specified residual representation,
+write \(\mathrm{Def}_G(A)\) for its derived continuous deformation
+space. Concretely, it is the homotopy fiber at \(\bar\rho\) of
+\[
+ \operatorname{Map}_{\mathrm{cts}}(BG,B\mathrm{GL}_d(A))
+ \longrightarrow
+ \operatorname{Map}_{\mathrm{cts}}(BG,B\mathrm{GL}_d(k)),
+\]
+using the continuous derived mapping-space model.
+
+Here \(BG\) is the classifying space of \(G\), and the fiber retains
+an identification of the reduction with \(\bar\rho\). For ordinary
+Artinian \(A\), objects are lifts of \(\bar\rho\). Arrows are
+conjugations by matrices reducing to the identity. These arrows retain
+infinitesimal automorphisms.
+
+Keeping a basis and forbidding those
+conjugations gives the framed deformation problem instead.\footnote{
+S. Galatius and A. Venkatesh, \emph{Derived Galois deformation rings},
+arXiv:1608.07236, \S\S4--5 and 7, construct the derived continuous
+deformation functors and their tangent complexes. Their \S9 imposes
+local conditions by homotopy pullbacks.}
+
+Let \(\mathrm{ad}\bar\rho=M_d(k)\), with action
+\(g\cdot X=\bar\rho(g)X\bar\rho(g)^{-1}\).
+The tangent complex of a deformation functor records its linear
+response to square-zero coefficient extensions. With the cohomological
+convention here, its degrees \(-1,0,1\) describe infinitesimal
+automorphisms, deformations, and obstructions.
+
+\begin{proposition}\label{v4-arith:coefficients:prop:tangent}
+The tangent complex of \(\mathrm{Def}_G\) at \(\bar\rho\) is
+\[
+ T\mathrm{Def}_G\simeq C^\bullet(G,\mathrm{ad}\bar\rho)[1].
+\]
+In particular the unframed first-order deformation space is
+\(H^1(G,\mathrm{ad}\bar\rho)\), its infinitesimal automorphisms are
+\(H^0(G,\mathrm{ad}\bar\rho)\), and the framed first-order space is
+\(Z^1(G,\mathrm{ad}\bar\rho)\).
+\end{proposition}
+\begin{proof}
+Over \(k[\epsilon]/\epsilon^2\), write a lift as
+\(\rho_\epsilon(g)=(1+\epsilon c(g))\bar\rho(g)\).
+The representation equation becomes
+\[
+ c(gh)=c(g)+g\cdot c(h),
+\]
+the cocycle equation in
+\eqref{v4-arith:coefficients:eq:differential}.
+Conjugation by \(1+\epsilon X\) changes \(c\) by
+\(X-g\cdot X=-dX\). Quotienting gives \(H^1\), while the
+stabilizer is \(\ker d=H^0\). Before quotienting, the lifts form
+\(Z^1\).
+
+The same calculation applies to a simplicial square-zero module \(N\).
+The kernel of
+\(\mathrm{GL}_d(k\oplus N)\to\mathrm{GL}_d(k)\) is the additive
+simplicial module \(M_d(N)\), since products of two elements of
+\(N\) vanish. Conjugation induces the adjoint action.
+
+The continuous cosimplicial mapping model has normalized cochains
+\(C^\bullet(G,\mathrm{ad}\bar\rho\otimes_k N)\).
+Passing to the classifying space shifts this linear complex by one.
+This identifies the linear response on square-zero modules, hence
+the stated tangent complex. Automorphisms remain in degree \(-1\).
+\end{proof}
+
+Fix a determinant lift \(\delta:G_{K,S}\to W(k)^\times\).
+There are two distinct meanings of fixed determinant. One may require
+the determinant character to have the value \(\delta\), while allowing
+all strict \(\mathrm{GL}_d\)-conjugations. Alternatively, one may retain
+an identification of the determinant representation with \(\delta\)
+and require arrows to preserve that identification. The second problem
+is the homotopy fiber of the determinant map of deformation functors.
+Denote it by \(\mathrm{Def}_{G,\delta}^{\mathrm{or}}\).
+
+\begin{proposition}\label{v4-arith:coefficients:prop:determinant}
+For the determinant-identified problem,
+\[
+ T\mathrm{Def}_{G,\delta}^{\mathrm{or}}
+ \simeq C^\bullet(G,\mathrm{ad}^0\bar\rho)[1],
+ \qquad
+ \mathrm{ad}^0\bar\rho=\ker(\operatorname{tr}:M_d(k)\to k).
+\]
+This holds also when \(\ell\) divides \(d\).
+\end{proposition}
+\begin{proof}
+For a square-zero matrix, expansion of the determinant gives
+\(\det(1+\epsilon X)=1+\epsilon\operatorname{tr}X\).
+The tangent map of determinant is therefore the trace map
+\[
+ C^\bullet(G,\mathrm{ad}\bar\rho)[1]
+ \longrightarrow C^\bullet(G,k)[1].
+\]
+
+Trace is equivariant and surjective. It is surjective on normalized
+cochains in every degree: lift a scalar value \(a\) to
+\(\operatorname{diag}(a,0,\ldots,0)\). This choice preserves
+continuity and normalization, though it need not be equivariant as
+a splitting. The kernel complex is
+\(C^\bullet(G,\mathrm{ad}^0\bar\rho)\), so the homotopy fiber is
+quasi-isomorphic to that kernel. No division by \(d\) occurs.
+\end{proof}
+
+For the determinant-value problem modulo all strict conjugations,
+the first-order quotient is instead
+\[
+ Z^1(G,\mathrm{ad}^0\bar\rho)\big/d\bigl(M_d(k)\bigr),
+\]
+and its infinitesimal automorphisms are \(H^0(G,\mathrm{ad}\bar\rho)\).
+For a trivial two-dimensional representation, these automorphisms
+have dimension four. Preserving a determinant identification leaves
+the trace-zero automorphisms, of dimension three, also in
+characteristic two. The notation for the deformation problem must
+therefore specify which arrows are permitted.
+
+\section{The Selmer pullback and its tangent}
+\label{v4-arith:coefficients:sec:selmer-functor}
+
+Use the determinant-identified convention throughout this section.
+Write \(\mathcal D=\mathrm{Def}_{G_{K,S},\delta}^{\mathrm{or}}\)
+and \(\mathcal D_v=\mathrm{Def}_{G_{K_v},\delta|_v}^{\mathrm{or}}\).
+Choose pointed local deformation functors \(\mathcal D_v^{\mathcal L}\)
+and actual morphisms \(\mathcal D_v^{\mathcal L}\to\mathcal D_v\),
+all on \(\mathrm{Art}_{W(k)}\). Define
+\begin{equation}\label{v4-arith:coefficients:eq:selmer-functor}
+ \mathcal D_{\mathcal L}
+ =\mathcal D\times^h_{\prod_{v\in S_f}\mathcal D_v}
+                    \prod_{v\in S_f}\mathcal D_v^{\mathcal L}.
+\end{equation}
+The symbol \(\times^h\) denotes a homotopy pullback of functors to
+spaces. It imposes compatibility together with its homotopy, rather
+than equality only on isomorphism classes.
+
+\begin{theorem}\label{v4-arith:coefficients:thm:selmer-tangent}
+Suppose each chosen local functor has tangent complex \(L_v[1]\),
+and its morphism to \(\mathcal D_v\) induces a chain map
+\(g_v:L_v\to C^\bullet(G_{K_v},\mathrm{ad}^0\bar\rho)\).
+Then
+\[
+ T\mathcal D_{\mathcal L}
+ \simeq C^\bullet_{\mathcal L}
+          (G_{K,S},\mathrm{ad}^0\bar\rho)[1],
+\]
+where the complex on the right is
+\eqref{v4-arith:coefficients:eq:selmer-complex} with these actual
+maps. Geometric representability and Noetherianity are additional
+conditions on this formal deformation functor.
+\end{theorem}
+\begin{proof}
+Evaluate \eqref{v4-arith:coefficients:eq:selmer-functor} on every
+square-zero coefficient extension and take the fiber at its base
+point. Homotopy limits commute with homotopy limits, so this operation
+preserves the displayed pullback. The associated tangent spectra,
+and thus their complexes, give the fiber of
+\[
+ C^\bullet(G_{K,S},\mathrm{ad}^0\bar\rho)[1]
+ \oplus\prod_vL_v[1]
+ \longrightarrow
+ \prod_vC^\bullet(G_{K_v},\mathrm{ad}^0\bar\rho)[1].
+\]
+The arrow is restriction minus the chosen local map. Its mapping
+fiber is exactly \eqref{v4-arith:coefficients:eq:selmer-complex},
+shifted by one.
+\end{proof}
+
+If each \(g_v\) is an inclusion of complexes, the quotient complex
+\(C^\bullet(G_{K_v},\mathrm{ad}^0\bar\rho)/L_v\) gives an equivalent
+description of the same fiber. Without such inclusions the quotient
+notation has no supplied meaning. The mapping cone remains valid.
+The unramified deformation condition gives a concrete example when
+both the residual local representation and \(\delta|_v\) are
+unramified: inflate the deformation functor of \(G_{K_v}/I_v\). Its tangent map is the
+inflation map of \eqref{v4-arith:coefficients:eq:unramified}.
+
+The tangent coefficients do not usually carry an associative product.
+In rank two the trace-zero matrices \(E_{12}\) and \(E_{21}\) have
+product \(E_{11}\), whose trace is one. Thus
+\(\mathrm{ad}^0\bar\rho\) is not an associative subalgebra of
+\(M_2(k)\). A Selmer tangent complex therefore does not acquire the
+associative bar construction merely from its deformation-theoretic
+name. A separate coefficient algebra, and a comparison respecting its
+operations, are needed.
+
+Representability, Noetherianity, perfectness, and cotangent amplitude
+are further conditions on the deformation problem. Obstructions in
+\(H^2_{\mathcal L}\), which appear in tangent degree one, do not
+by themselves rule out quasi-smoothness. For a derived scheme,
+quasi-smoothness means that its cotangent complex is perfect of
+amplitude \([-1,0]\). This permits tangent degree one.
+
+\begin{example}\label{v4-arith:coefficients:ex:quasismooth}
+Let \(A=k[x]/(x^2)\). The element \(x^2\) is a non-zero-divisor
+in \(k[x]\), so \(\operatorname{Spec}A\) is a local complete
+intersection and is quasi-smooth. Its cotangent complex is
+\[
+ \mathbb L_{A/k}\simeq
+ [A\xrightarrow{\,2x\,}A],
+\]
+in degrees \(-1,0\). At \(x=0\) the differential vanishes, and
+the tangent has \(H^1=k\).
+
+This example works also in characteristic
+two. Hence vanishing of the obstruction space is not equivalent to
+quasi-smoothness. Stack automorphisms require their own amplitude
+convention in addition to this scheme calculation.
+\end{example}
+
+\section{Real places and the range of cohomology}
+\label{v4-arith:coefficients:sec:real}
+
+Only finite places entered the relative product above. A theory of
+compact support over a number field must also specify its complexes
+at archimedean places, including any modified Tate-cohomology
+convention. At a complex place the absolute Galois group is trivial.
+At a real place it is \(C_2\), the group of order two. Coefficients
+of characteristic two make the latter distinction unavoidable.
+
+\begin{proposition}\label{v4-arith:coefficients:prop:real-two}
+For the trivial \(C_2\)-module \(k=\mathbb F_2\),
+\(H^n(C_2,k)=k\) for every \(n\geq0\).
+\end{proposition}
+\begin{proof}
+If \(\sigma\) generates \(C_2\), set \(\eta=\sigma-1\).
+Then \(k[C_2]=k[\eta]/(\eta^2)\). A free resolution of the
+trivial module is
+\[
+ \cdots\xrightarrow{\eta}k[C_2]\xrightarrow{\eta}k[C_2]
+ \xrightarrow{\eta}k[C_2]\longrightarrow k\longrightarrow0.
+\]
+The kernel and image of multiplication by \(\eta\) are both
+\(k\eta\), so the resolution is exact. Applying
+\(\operatorname{Hom}_{k[C_2]}(-,k)\) makes every differential zero.
+\end{proof}
+
+Consequently the unmodified real local cochains cannot be assigned a
+cohomological bound of two at the coefficient prime two. Neither a
+finite-place calculation nor a formal Selmer pullback supplies the
+missing archimedean convention. A comparison with de Rham or chiral
+objects at infinity must also specify its scalar field and geometric
+carrier.
+
+\section{Tame symbols and their recipients}
+\label{v4-arith:coefficients:sec:symbols}
+
+Residues provide arithmetic operations with explicitly different
+targets at different places. For a field \(F\), the Milnor group
+\(K^M_2(F)\) is the abelian group generated by symbols
+\(\{a,b\}\), for \(a,b\in F^\times\). Its defining relations
+are bilinearity in the multiplicative arguments and the Steinberg
+relation \(\{a,1-a\}=0\) for \(a\ne0,1\).
+
+Let \(v:F^\times\to\mathbb Z\)
+be a discrete valuation with residue field \(\kappa_v\).
+Write \(a=\pi^m u\) and \(b=\pi^n w\), where \(\pi\) is a
+uniformizer and \(u,w\) are units. Set
+\begin{equation}\label{v4-arith:coefficients:eq:tame}
+ \partial_v\{a,b\}=(-1)^{mn}\overline{w}^{m}
+                                  \overline{u}^{-n}
+ \in\kappa_v^\times.
+\end{equation}
+This convention gives \(\partial_v\{\pi,u\}=\bar u\).
+
+\begin{proposition}\label{v4-arith:coefficients:prop:tame}
+Formula~\eqref{v4-arith:coefficients:eq:tame} is independent of
+the uniformizer and defines a homomorphism
+\(K^M_2(F)\to\kappa_v^\times\).
+\end{proposition}
+\begin{proof}
+Replacing \(\pi\) by \(\pi t\) replaces the unit parts by
+\(ut^{-m}\) and \(wt^{-n}\). The extra powers of \(\bar t\)
+cancel. Addition of valuations and multiplication of unit parts
+prove bilinearity. It remains to evaluate \(\{a,1-a\}\).
+
+If \(v(a)>0\), then \(1-a\) is a unit of residue one, so the
+symbol is one. If \(v(a)=0\), both arguments are units unless
+\(v(1-a)>0\). In that case \(\bar a=1\), with the same result.
+If \(m=v(a)<0\), then \(v(1-a)=m\) and the ratio of their
+unit parts has residue \(-1\). The symbol becomes
+\((-1)^{m^2+m}=1\). Thus every Steinberg relation is respected.
+\end{proof}
+
+For \(F=\mathbb Q\), the finite symbols land in
+\(\bigoplus_p\mathbb F_p^\times\), where all but finitely many
+components are one. There is also a real sign symbol
+\[
+ h_\infty\{a,b\}=
+ \begin{cases}-1,&a<0\text{ and }b<0,\\1,&\text{otherwise}.
+ \end{cases}
+\]
+Signs make it bilinear, and \(a\) and \(1-a\) cannot both be
+negative, so it too respects the Steinberg relation.
+
+\begin{theorem}[Tate's rational-field calculation]
+\label{v4-arith:coefficients:thm:tate}
+The combined homomorphism is an isomorphism
+\[
+ (h_\infty,(\partial_p)_p):K^M_2(\mathbb Q)
+ \xrightarrow{\sim}
+ \{\pm1\}\oplus\bigoplus_p\mathbb F_p^\times.
+\]
+\end{theorem}
+
+This is the classical computation of \(K_2(\mathbb Q)\), using
+the identification of field \(K_2\) with its Milnor presentation.\footnote{
+C. Weibel, \emph{The K-book}, Chapter III, \S6, especially
+Theorem 6.5.1 and the real symbol on pp.~231--234.}
+The finite symbols alone omit the order-two class \(\{-1,-1\}\):
+each finite valuation of its arguments is zero, while its real symbol
+is \(-1\). The real factor is therefore necessary even before any
+comparison with geometric residues is attempted.
+
+A product formula needs a common recipient. On the rational function
+field \(F(t)\), the normed tame symbols satisfy
+\begin{equation}\label{v4-arith:coefficients:eq:curve-reciprocity}
+ \prod_{x\in|\mathbb P^1_F|}
+ N_{\kappa(x)/F}\bigl(\partial_x\xi\bigr)=1
+ \quad(\xi\in K^M_2(F(t))).
+\end{equation}
+Here every factor belongs to \(F^\times\), the point at infinity
+is included, and only finitely many factors differ from one.
+This is the tame-symbol reciprocity theorem for the projective
+line.\footnote{Weibel, \emph{The K-book}, Chapter III,
+Example 6.5.3, p.~236.}
+
+For example, if
+\(\xi=\{t,u\}\), with \(u\in F^\times\), the symbols at zero
+and infinity are \(u\) and \(u^{-1}\). All others are one.
+
+The finite residue fields of a number field do not come with these
+norm maps to a single ground field. Multiplying elements of
+\(\mathbb F_p^\times\) for varying \(p\) without a specified
+recipient is not a reciprocity law. Furthermore,
+\(\operatorname{Spec}\mathcal O_K\) has no codimension-two points.
+Its dimension-one residue diagram cannot be relabelled as the
+two-step flag diagram of an arithmetic surface. The latter requires
+an actual surface, its flags, and the corresponding successive residue
+and norm maps.
+
+One can choose the incidence poset of finite subsets of finite places,
+with inclusions as arrows. It records which places occur together.
+It is distinct from the scheme configuration functor of pairwise
+disjoint sections of a curve. In particular it supplies neither
+collision differential forms nor their operation homotopies.
+Comparing the Steinberg and geometric Arnold relations requires a map
+between their complexes. Its compatibility with the relevant operations
+must also be proved.
+
+\section{Iwasawa coefficients and coalgebra length}
+\label{v4-arith:coefficients:sec:iwasawa}
+
+For a procyclic group \(\Gamma\cong\mathbb Z_\ell\), fix a
+topological generator \(\gamma\). Its completed group ring is
+\[
+ \Lambda=\mathbb Z_\ell[[\Gamma]]
+ :=\varprojlim_{r,n}R_r[\Gamma/\ell^n\Gamma].
+\]
+The choice of \(\gamma\) identifies this ring with a power-series
+ring. If \(\Gamma\) comes from a cyclotomic extension, this means
+its chosen procyclic factor. The full cyclotomic group can also have
+a finite factor. In \(\mathbb Z_\ell^\times\), the standard
+procyclic subgroup is \(1+\ell\mathbb Z_\ell\) for odd \(\ell\),
+and \(1+4\mathbb Z_2\) for \(\ell=2\).
+
+\begin{proposition}\label{v4-arith:coefficients:prop:iwasawa}
+The map \(\gamma\mapsto1+T\) induces a topological ring
+isomorphism \(\Lambda\cong\mathbb Z_\ell[[T]]\).
+\end{proposition}
+\begin{proof}
+The finite quotients are
+\[
+ R_r[T]\big/\bigl((1+T)^{\ell^n}-1\bigr).
+\]
+The ideals \((\ell^r,(1+T)^{\ell^n}-1)\) are cofinal with
+the powers of \((\ell,T)\). To see one inclusion, fix a power
+\((\ell,T)^N\), take \(r\geq N\), and increase \(n\).
+For each \(1\leq j<N\), the identity
+\[
+ \binom{\ell^n}{j}=\frac{\ell^n}{j}
+                         \binom{\ell^n-1}{j-1}
+\]
+gives valuation at least \(n-v_\ell(j)\). Thus every coefficient
+of degree below \(N\) lies in the required power of \(\ell\).
+
+Conversely, modulo the displayed ideal,
+\(T^{\ell^n}\) belongs to \(\ell R_r[T]\), because every
+intermediate binomial coefficient is divisible by \(\ell\).
+Hence \(T^{r\ell^n}=0\), and also \(\ell^r=0\).
+A sufficiently large power of \((\ell,T)\) therefore vanishes in
+each finite quotient. The two completions agree, and completion of
+\(\mathbb Z[T]\) at \((\ell,T)\) is \(\mathbb Z_\ell[[T]]\).
+\end{proof}
+
+An augmented dg \(\Lambda\)-algebra has the coefficient bar of
+Chapter~\ref{v4-ch:bar-cobar-topology}. Any additional completion must
+again name its tensor target. A trace class in Hochschild homology
+does not, by itself, provide that algebra or its augmentation.
+
+For a finitely generated torsion \(\Lambda\)-module \(M\), define
+\[
+ \mu(M)=\operatorname{length}_{\Lambda_{(\ell)}}M_{(\ell)}.
+\]
+The localization \(\Lambda_{(\ell)}\) is a discrete valuation ring
+with uniformizer \(\ell\). This invariant concerns a module.
+Conilpotence concerns iterated reduced coproducts of a coaugmented
+coalgebra. Even for elementary ordinary \(\Lambda\)-coalgebras,
+the two conditions are independent.
+
+\begin{proposition}\label{v4-arith:coefficients:prop:mu}
+There is a conilpotent coaugmented \(\Lambda\)-coalgebra whose
+coaugmentation quotient has \(\mu=1\). There is also a
+nonconilpotent one whose quotient has \(\mu=0\).
+\end{proposition}
+\begin{proof}
+For the first example take
+\(C=\Lambda\oplus M\), with \(M=\Lambda/(\ell)\), counit
+projection, and every element of \(M\) primitive:
+\(\Delta(m)=1\otimes m+m\otimes1\). Its reduced coproduct is
+zero, while \(M_{(\ell)}\) has length one.
+
+For the second take \(C=\Lambda\oplus Mx\), with
+\(M=\Lambda/(T)\), and set
+\[
+ \Delta(x)=1\otimes x+x\otimes1+x\otimes x,
+ \qquad \epsilon(x)=0.
+\]
+The relation \(Tx=0\) is respected by this formula.
+The element \(1+x\) is group-like, which proves coassociativity.
+The counit identities follow directly. Every iterated reduced
+coproduct of \(x\) is a nonzero tensor power, because
+\(M^{\otimes_\Lambda n}=M\). But \(T\) is invertible in
+\(\Lambda_{(\ell)}\), so \(M_{(\ell)}=0\) and \(\mu(M)=0\).
+\end{proof}
+
+These are ordinary coalgebras over \(\Lambda\). Their quotient
+modules are not required to be flat. They rule out using the module
+condition \(\mu=0\) as a definition of conilpotence in this category.
+A duality theorem with Iwasawa coefficients must specify its algebra
+and coalgebra classes, tensor, and completion. It must then identify
+the unit and counit maps it claims to invert.

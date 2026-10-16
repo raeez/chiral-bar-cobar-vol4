@@ -1,0 +1,1015 @@
+\chapter{Marked finite quantum dilogarithms}
+\label{v4-arith:mf:chapter}
+\chaptermark{Marked finite quantum dilogarithms}
+
+Consider two simple objects \(\mathbf1,\rho\) with
+\[
+ \rho\otimes\rho\simeq\mathbf1\oplus\rho.
+\]
+An additive strong tensor functor to ordinary finite-dimensional vector
+spaces would give a positive integer \(D\) satisfying \(D^2=1+D\).
+No such integer exists. Nevertheless, the rule has a realization by
+finite bimodules, whose tensor product is balanced over an algebra
+with two idempotents. Its associativity maps retain information that
+the dimension equation forgets.
+
+A real quadratic unit produces a family of such examples. The input
+is a finite function obtained from a meromorphic quantum
+dilogarithm. Its values become coefficients of explicit fusion maps.
+A normalized network recovers those values from the category.
+We construct the category over the field of its normalized arithmetic
+values, then construct its finite bimodule realization. Along the way,
+a rank-one correction separates a finite operator identity from the
+categorical pentagon.
+
+\section{The arithmetic function}
+\label{v4-arith:mf:arithmetic}
+
+Write \(\mathrm e(z)=\exp(2\pi iz)\).
+For \(|q|\ne1\), define the \(q\)-Pochhammer symbol by
+\[
+ (x;q)_\infty=
+ \begin{cases}
+  \displaystyle\prod_{j\ge0}(1-xq^j),&|q|<1,\\[2mm]
+  \displaystyle\prod_{j\ge1}(1-xq^{-j})^{-1},&|q|>1.
+ \end{cases}
+\]
+The first product converges locally uniformly in \(x\).
+The second defines a meromorphic function of \(x\).
+For
+\(\gamma=\left(\begin{smallmatrix}a_\gamma&b_\gamma\\
+c_\gamma&d_\gamma\end{smallmatrix}\right)\in SL_2(\mathbb Z)\)
+and integers \(m,n\), put
+\begin{equation}\label{v4-arith:mf:modular-quotient}
+ \Phi_{\gamma,m,n}(z;\tau)
+ =
+ \frac{(q^m\mathrm e(z);q)_\infty}
+ {(\widetilde q^{\,n}
+       \mathrm e(z/(c_\gamma\tau+d_\gamma));\widetilde q)_\infty},
+ \qquad
+ q=\mathrm e(\tau),\quad
+ \widetilde q=\mathrm e(\gamma\tau).
+\end{equation}
+Initially \(\tau\notin\mathbb R\), and the quotient is interpreted
+meromorphically in \(z\).
+
+The modular quantum dilogarithm has a meromorphic continuation to
+\[
+ (z,\tau)\in\mathbb C^2,\qquad
+ c_\gamma\tau+d_\gamma\notin\mathbb R_{\le0}.
+\]
+We use the continuation of
+Radchenko--Wheeler, equation~(1) and Section~2.2.\footnote{
+D.~Radchenko and C.~Wheeler,
+\emph{Real quadratic fields and finite quantum dilogarithms I}.
+Version~2. \href{https://arxiv.org/abs/2609.21892v2}{arXiv:2609.21892v2}.
+
+The product conventions are in Appendix~A.1.
+The arithmetic identities are in Theorems~1--2 and Section~4.
+The fusion reconstruction is Theorem~12 and Appendix~B.}
+
+For \(c_\gamma>0\), fix the Dedekind eta multiplier
+\[
+ \mu_\gamma=
+ \frac{\eta(\gamma w)}
+      {\eta(w)\sqrt{c_\gamma w+d_\gamma}},
+ \qquad w\in\mathbb H,
+\]
+using the holomorphic square root with positive value on the
+positive real axis. Here
+\(\eta(w)=\mathrm e(w/24)\prod_{r\ge1}(1-\mathrm e(rw))\).
+The quotient defining \(\mu_\gamma\) is independent of \(w\)
+and is a twenty-fourth root of unity.
+
+\subsection{A quadratic lattice and its finite group}
+
+Fix a real quadratic field \(K\subset\mathbb R\).
+Write \(x'\) for the other real embedding of \(x\in K\).
+Let \(I\subset K\) be a free abelian subgroup of rank two.
+Choose a totally positive unit \(\varepsilon>1\) satisfying
+\(\varepsilon I=I\). Its norm is one.
+
+Define
+\begin{equation}\label{v4-arith:mf:group}
+ G_I=(\varepsilon-1)^{-1}I/I,\qquad
+ N=|G_I|=\operatorname{Tr}_{K/\mathbb Q}(\varepsilon)-2.
+\end{equation}
+Indeed, multiplication by \(\varepsilon-1\) identifies this group
+with \(I/(\varepsilon-1)I\).
+The absolute determinant is
+\(\lvert\operatorname{Nm}(\varepsilon-1)\rvert
+=\operatorname{Tr}(\varepsilon)-2>0\).
+
+An oriented basis \((\beta_1,\beta_2)\) of \(I\) satisfies
+\(\beta_1\beta'_2-\beta'_1\beta_2>0\).
+Choose one with \(\beta_2\) totally positive, and write
+\[
+ \varepsilon\beta_1=a_\gamma\beta_1+b_\gamma\beta_2,\qquad
+ \varepsilon\beta_2=c_\gamma\beta_1+d_\gamma\beta_2.
+\]
+The resulting matrix \(\gamma\) lies in \(SL_2(\mathbb Z)\).
+For \(\tau=\beta_1/\beta_2\), one has
+\[
+ \gamma\tau=\tau,\qquad c_\gamma\tau+d_\gamma=\varepsilon,
+ \qquad
+ c_\gamma=\frac{\varepsilon-\varepsilon^{-1}}{\tau-\tau'}>0.
+\]
+Thus \(\tau\) is the attractive real fixed point, inside the domain
+of the continued function.
+
+For \(x\in G_I\), choose a representative in \(K\).
+There are unique integers \(u,v\) with
+\[
+ (\varepsilon^{-1}-1)x=u\beta_1+v\beta_2.
+\]
+For a nonzero class define
+\begin{equation}\label{v4-arith:mf:E}
+ E_I(x)=
+ \mu_\gamma\Phi_{\gamma,u,0}(x/\beta_2;\tau),
+ \qquad E_I(0)=\sqrt{\varepsilon}>0.
+\end{equation}
+The continuation in
+\eqref{v4-arith:mf:modular-quotient} precedes this evaluation.
+At the real fixed point the two separate products need not converge.
+Their formally matching arguments therefore cannot be cancelled.
+
+The representative and oriented-basis independence of
+\eqref{v4-arith:mf:E} follows from the modular cocycle and its
+index-shift identities. We use the precise lattice formulation and
+change-of-basis theorem of the reciprocity paper.\footnote{
+\emph{Stark units for real quadratic fields and reciprocity laws},
+4 October 2026, Definition~1, Theorems~1--2, Proposition~1
+and Appendix~B,
+\url{https://www.danrad.net/papers/stark-reciprocity.pdf}.}
+In particular, the prescribed meromorphic function selects the
+arithmetic values. The scalar identities below do not alone specify
+that selection.
+
+\subsection{The Gaussian and Fourier normalization}
+
+Let \(\omega_I:I\times I\to\mathbb Z\) be the alternating form with
+\(\omega_I(\beta_1,\beta_2)=1\), extended
+\(\mathbb Q\)-bilinearly to \(K\).
+For \(t\in I\), set
+\[
+ \vartheta_I(t)=
+ \begin{cases}
+  1,&t\in2I,\\
+  -1,&t\notin2I.
+ \end{cases}
+\]
+The Gaussian and its polarization are
+\begin{align}
+ Q_I(x)
+ &=\vartheta_I((\varepsilon-1)x)
+       \mathrm e\!\left(\tfrac12\omega_I(x,\varepsilon x)\right),
+       \label{v4-arith:mf:gaussian}\\
+ \chi_I(x,y)
+ &=\frac{Q_I(x+y)}{Q_I(x)Q_I(y)}
+   =\mathrm e\bigl(\omega_I(x-\varepsilon x,y)\bigr).
+       \label{v4-arith:mf:chi}
+\end{align}
+Both are well defined on \(G_I\).
+
+To see the descent of \(Q_I\), use
+\[
+ \vartheta_I(t+s)\vartheta_I(t)\vartheta_I(s)
+       =(-1)^{\omega_I(t,s)},\qquad t,s\in I,
+\]
+and \(\omega_I(\varepsilon x,\varepsilon y)=\omega_I(x,y)\).
+Replacing \(x\) by \(x+t\) changes the sign and exponential
+by inverse factors. The same calculation gives
+\eqref{v4-arith:mf:chi}.
+One has \(Q_I(0)=1\), \(Q_I(-x)=Q_I(x)\), and all values
+of \(Q_I\) are roots of unity.
+
+The bicharacter \(\chi_I\) is nondegenerate.
+Indeed,
+\[
+ \omega_I(x-\varepsilon x,y)
+       =\omega_I(\varepsilon x,(\varepsilon-1)y).
+\]
+If its exponential is one for every
+\(y\in(\varepsilon-1)^{-1}I\), unimodularity of \(\omega_I\)
+gives \(\varepsilon x\in I\). Hence \(x\in I\).
+
+For a function \(f:G_I\to\mathbb C\), use the Fourier transform
+\[
+ \widehat f(y)=\frac1{\sqrt N}
+        \sum_{x\in G_I}f(x)\chi_I(x,-y),
+\]
+with the positive square root of \(N\).
+Orthogonality of the characters gives
+\(\widehat{\widehat f}(x)=f(-x)\).
+
+\begin{theorem}[Arithmetic input]\label{v4-arith:mf:arithmetic-input}
+Let \(E=E_I\), \(Q=Q_I\), and \(\chi=\chi_I\).
+For a twenty-fourth root of unity \(\lambda\), the arithmetic
+values satisfy
+\begin{align}
+ E(g)E(-g)&=Q(g)^{-1}\qquad(g\ne0),\label{v4-arith:mf:reflection}\\
+ \widehat E(g)&=\lambda Q(g)E(g),\label{v4-arith:mf:fourier}\\
+ \chi(x,y)E(x)E(y)
+ &=-\widehat E(0)+\frac1{\sqrt N}
+      \sum_t E(y-t)E(t)Q(t)E(x-t).
+       \label{v4-arith:mf:cubic}
+\end{align}
+At zero the separate normalization is
+\begin{equation}\label{v4-arith:mf:zero-normalization}
+ E(0)^2=\sqrt N\,E(0)+1.
+\end{equation}
+Every \(E(g)\) is an algebraic unit.
+
+Let \(m\) be the exponent of \(G_I\), and let
+\(\mathcal O=(I:I)=\mathbb Z+c\mathcal O_K\).
+The normalized values
+\(e_{I,g}=E_I(g)/E_I(0)\) belong to
+\(\mathcal O_L^\times\), where \(L=H^+_{\mathcal O,m}\)
+is the narrow ray class field modulo \(m\mathcal O\).
+For an integral invertible \(\mathcal O\)-ideal \(\mathfrak a\)
+prime to \(cm\),
+\begin{equation}\label{v4-arith:mf:artin-input}
+ \operatorname{Art}(\mathfrak a)(e_{I,g})
+       =e_{\mathfrak a^{-1}I,g}.
+\end{equation}
+The right-hand label is the class of the same representative.
+The Artin symbol uses arithmetic Frobenius.
+\end{theorem}
+
+The scalar identities and algebraicity are the
+Radchenko--Wheeler theorems.
+The unit and reciprocity assertions are Theorems~1--2 of the
+reciprocity paper. These are imported arithmetic results.
+The identity \eqref{v4-arith:mf:zero-normalization} also follows
+directly from
+\(\varepsilon+\varepsilon^{-1}=N+2\).
+It remains part of the input when \(N\le4\), where a bare cubic
+equation can have additional solutions.
+
+\section{The arithmetic coefficient field}
+\label{v4-arith:mf:coefficients}
+
+Suppress \(I\) in the notation. Put
+\(u=\sqrt\varepsilon>0\) and \(s=\sqrt N>0\).
+Then \(s=u-u^{-1}\). Define
+\begin{equation}\label{v4-arith:mf:b}
+ b_g=\frac{E(g)}s,\qquad
+ b_0=\frac{\varepsilon}{\varepsilon-1}
+      =\frac{\varepsilon-1}{N},\qquad b_g=b_0e_g.
+\end{equation}
+
+Consequently the coefficient field is
+\[
+ F_I=K(b_g:g\in G_I)=K(e_g:g\in G_I)\subseteq L.
+\]
+Neither \(u\) nor \(s\) needs to belong to \(F_I\).
+Every coefficient used in the algebraic construction below does.
+
+Set
+\begin{equation}\label{v4-arith:mf:parameters}
+ d=-b_0^{-1}=\varepsilon^{-1}-1,\qquad
+ \beta=\sum_gb_g,\qquad
+ a=\frac{\beta}{Nb_0},\qquad c_1=\frac{b_0}{\beta}.
+\end{equation}
+Fourier evaluation at zero gives \(\beta=\lambda u\ne0\).
+Thus \(a=\lambda/s\), \(c_1=\lambda^{-1}/s\), and
+\(ac_1=1/N\). The notation \(c_1\) distinguishes this coefficient
+from the conductor \(c\).
+
+Reflection recovers the Gaussian over the same field:
+\[
+ Q(0)=1,\qquad
+ Q(g)=\frac1{Nb_gb_{-g}}\quad(g\ne0).
+\]
+Its polarization therefore has values in \(F_I\).
+The arithmetic identities become
+\begin{align}
+ b_0^2-b_0&=1/N,\qquad d^2=N(d+1),\label{v4-arith:mf:scalar}\\
+ \sum_x b_x\chi(x,-y)&=NaQ(y)b_y,\label{v4-arith:mf:fourier-b}\\
+ \sum_t b_{y-t}b_tQ(t)b_{x-t}-\chi(x,y)b_xb_y
+       &=\beta/N.\label{v4-arith:mf:cubic-b}
+\end{align}
+These follow by substituting \(E(g)=s b_g\).
+In particular, the constant in
+\eqref{v4-arith:mf:cubic-b} retains the Fourier normalization.
+
+\begin{example}\label{v4-arith:mf:fibonacci}
+Take \(I=\mathbb Z[\varepsilon]\) with
+\(\varepsilon=(3+\sqrt5)/2\).
+Then \(N=1\), \(G_I\) is trivial, and
+\[
+ b_0=\frac{1+\sqrt5}{2},\qquad
+ d=\frac{1-\sqrt5}{2},\qquad a=c_1=1.
+\]
+The fusion rule will be \(\rho^2\simeq\mathbf1\oplus\rho\).
+The roots \(b_0,d\) will give its positive dimension and the
+specified duality closure, respectively.
+\end{example}
+
+\section{The Leavitt presentation}
+\label{v4-arith:mf:leavitt}
+
+Let \(\mathcal B_I\) be the unital \(F_I\)-algebra generated by
+\[
+ X_g,\ X'_g,\ T_g,\ T'_g,\qquad g\in G_I,
+\]
+with relations
+\begin{align}
+ X'_gX_h=T'_gT_h&=\delta_{g,h}1,&
+ X'_gT_h=T'_gX_h&=0,\label{v4-arith:mf:leavitt-relations}\\
+ \sum_g(X_gX'_g+T_gT'_g)&=1.&&\notag
+\end{align}
+Primes denote algebraic dual generators, without any
+complex-conjugate or adjoint operation.
+This is the Leavitt algebra on \(2N\) generator pairs.
+
+For \(g\in G_I\), define
+\begin{align*}
+ \alpha_g(X_h)&=X_{g+h},&
+ \alpha_g(X'_h)&=X'_{g+h},\\
+ \alpha_g(T_h)&=\chi(g,h)^{-1}T_h,&
+ \alpha_g(T'_h)&=\chi(g,h)T'_h.
+\end{align*}
+These formulas preserve the relations and give
+\(\alpha_g\alpha_h=\alpha_{g+h}\).
+Also define
+\begin{equation}\label{v4-arith:mf:U}
+ U_g=\sum_h\chi(g,h)^{-1}X_hX'_h
+           +\sum_h T_{h-g}T'_h.
+\end{equation}
+Direct multiplication gives
+\[
+ U_0=1,\qquad U_gU_h=U_{g+h},\qquad
+ \alpha_g(U_h)=\chi(g,h)U_h.
+\]
+Thus each \(U_g\) is invertible, with inverse \(U_{-g}\).
+
+The noninvertible generator of the category is an endomorphism
+\(\rho\) of \(\mathcal B_I\).
+Its four families of images are
+\begin{align}
+ \rho(X_g)
+ &=U_g\left(d^{-1}\sum_hX_h+
+              \sum_h Q(h)T_hT_{-h}\right)U_{-g},
+       \label{v4-arith:mf:rho-X}\\
+ \rho(X'_g)
+ &=d^{-1}U_g\left(\sum_hX'_h+
+              \sum_h Q(h)^{-1}T'_{-h}T'_h\right)U_{-g},
+       \label{v4-arith:mf:rho-Xprime}\\
+ \rho(T_g)
+ &=\frac ad\sum_{h,k}\chi(h-g,k)X_hT'_k
+   +\frac{c_1}{Q(g)}
+       \sum_{h,k}\chi(g+h,k)^{-1}T_kX_hX'_h
+       \notag\\
+ &\quad+\sum_{h,k}Q(h)b_{h+g}\chi(g,k)^{-1}
+                       T_{h+k}T_{-h}T'_k,
+       \label{v4-arith:mf:rho-T}\\
+ \rho(T'_g)
+ &=c_1\sum_{h,k}\chi(h-g,k)^{-1}T_kX'_h
+   +aQ(g)\sum_{h,k}\chi(g+h,k)X_hX'_hT'_k
+       \notag\\
+ &\quad+\sum_{h,k}\frac{Q(g+h)}{Q(h)}
+          b_{-h-g}\chi(g,k)T_kT'_{-h}T'_{h+k}.
+       \label{v4-arith:mf:rho-Tprime}
+\end{align}
+All sums run over \(G_I\).
+All four formulas are over \(F_I\).
+
+\subsection{The tensor category and its duality}
+
+For unital endomorphisms \(\sigma,\tau\) of \(\mathcal B_I\), put
+\[
+ \operatorname{Hom}(\sigma,\tau)=
+ \{x\in\mathcal B_I:
+       x\sigma(z)=\tau(z)x\text{ for every }z\in\mathcal B_I\}.
+\]
+Composition is multiplication, and tensor product of objects is
+composition of endomorphisms. For
+\(x:\sigma\to\sigma'\) and \(y:\tau\to\tau'\), set
+\begin{equation}\label{v4-arith:mf:tensor-map}
+ x\otimes y=x\sigma(y)=\sigma'(y)x:
+                \sigma\tau\longrightarrow\sigma'\tau'.
+\end{equation}
+This gives a strict tensor category.
+Let \(\mathcal C_I\) be the additive idempotent completion of its
+subcategory generated by the \(\alpha_g\) and \(\rho\).
+
+A fusion category is a rigid semisimple linear tensor category
+with finitely many simple objects, finite-dimensional Hom spaces
+and a simple tensor unit. It is split over \(F_I\) when the
+endomorphism field of every simple object is \(F_I\).
+
+\begin{theorem}\label{v4-arith:mf:fusion}
+Equations \eqref{v4-arith:mf:rho-X}--\eqref{v4-arith:mf:rho-Tprime}
+define a unital endomorphism.
+The category \(\mathcal C_I\) is a split rigid fusion category
+over \(F_I\).
+Its simple objects are the pairwise distinct
+\(\alpha_g\), \(g\in G_I\), and \(\rho\), with rules
+\begin{equation}\label{v4-arith:mf:fusion-rule}
+ \alpha_g\alpha_h=\alpha_{g+h},\qquad
+ \alpha_g\rho\simeq\rho\simeq\rho\alpha_g,\qquad
+ \rho^2\simeq\bigoplus_g\alpha_g\oplus\rho^{\oplus N}.
+\end{equation}
+For \(\rho^\vee=\rho\), one may choose coevaluation \(X_0\)
+and evaluation \(dX'_0\).
+\end{theorem}
+
+\begin{proof}
+Start with the complex Leavitt reconstruction of
+Radchenko--Wheeler, Section~5.4, Theorem~12 and Appendix~B.
+In its notation make the change
+\[
+ X_g=\sqrt d\,S_g,\qquad X'_g=S'_g/\sqrt d.
+\]
+The Leavitt relations are unchanged.
+Substitution gives exactly
+\eqref{v4-arith:mf:rho-X}--\eqref{v4-arith:mf:rho-Tprime}.
+The two mixed coefficients in \(\rho(T_g)\) become \(a/d,c_1\).
+Those in \(\rho(T'_g)\) become \(c_1,a\).
+The quadratic terms in \(\rho(X_g)\) lose their square root,
+and both terms in \(\rho(X'_g)\) acquire \(d^{-1}\).
+
+The reconstruction theorem proves the defining relations and
+\begin{equation}\label{v4-arith:mf:endo-identities}
+ \alpha_g\rho=\rho,\qquad
+ \rho\alpha_g=\operatorname{Ad}(U_g)\rho,\qquad
+ \rho^2(z)=\sum_gX_g\alpha_g(z)X'_g+
+                     \sum_hT_h\rho(z)T'_h.
+\end{equation}
+Faithful extension of scalars from \(F_I\) to \(\mathbb C\)
+descends these equalities.
+
+The same extension descends the Hom calculation.
+The intertwiner equations need only be imposed on the \(4N\)
+algebra generators. Each Hom space is consequently the kernel
+of one \(F_I\)-linear map
+\[
+ \mathcal B_I\longrightarrow\mathcal B_I^{\,4N}.
+\]
+A field extension preserves this kernel, even though
+\(\mathcal B_I\) is infinite-dimensional.
+The complex calculation therefore gives
+\(\operatorname{End}(\alpha_g)=\operatorname{End}(\rho)=F_I\)
+and zero Hom spaces between distinct displayed simples.
+
+The last formula in \eqref{v4-arith:mf:endo-identities}
+splits \(\rho^2\), with inclusions \(X_g,T_h\)
+and projections \(X'_g,T'_h\).
+The Leavitt relations give their orthogonality and completeness.
+Every tensor word therefore splits into the listed simples.
+Finite sums and idempotent summands give a split semisimple
+category with finite-dimensional Hom spaces.
+
+The dual of \(\alpha_g\) is \(\alpha_{-g}\), with both maps \(1\).
+For \(\rho\), the two snake equations are
+\[
+ dX'_0\rho(X_0)=1,\qquad \rho(dX'_0)X_0=1.
+\]
+For the first, the \(X_0\) term contributes
+\(d\,d^{-1}=1\), and every \(T\)-term vanishes.
+The second follows by the dual contraction in
+\eqref{v4-arith:mf:rho-Xprime}.
+This proves rigidity over the stated field.
+\end{proof}
+
+For the fusion rules above, the Frobenius--Perron dimension is
+the positive dimension function assigning dimension one to each
+invertible simple object.
+
+\begin{proposition}\label{v4-arith:mf:dimension}
+The Frobenius--Perron dimension of \(\rho\) is
+\(\delta=\varepsilon-1=Nb_0\), while the specified duality
+closure of \(1_\rho\) is \(d=\varepsilon^{-1}-1<0\).
+Moreover,
+\[
+ \varepsilon=1+Nb_0=\frac{b_0}{b_0-1},\qquad
+ K=\mathbb Q(b_0).
+\]
+There is no additive strong tensor functor from \(\mathcal C_I\)
+to ordinary finite-dimensional vector spaces over any field.
+\end{proposition}
+
+\begin{proof}
+The positive dimension satisfies \(\delta^2=N(1+\delta)\).
+The identity \((\varepsilon-1)^2=N\varepsilon\)
+selects \(\delta=\varepsilon-1\).
+The other root is \(d\).
+The chosen cup and cap have composite \(dX'_0X_0=d\).
+Formula \eqref{v4-arith:mf:b} recovers the period and its
+quadratic field.
+
+Under the proposed tensor functor, every invertible \(\alpha_g\)
+would have dimension one.
+The image of \(\rho\) would have a nonzero integer dimension \(D\),
+since its square contains the tensor unit.
+Then \(D^2=N(D+1)\).
+It follows that \(D+1\) divides \(D^2\), hence divides \(1\),
+which is impossible for \(D>0\).
+No faithfulness assumption is needed.
+\end{proof}
+
+
+\subsection{An integral coefficient algebra}
+
+Put \(\mathcal S=\mathcal O_L[1/N]\).
+The normalized units \(e_g\) and
+\(b_0(b_0-1)=1/N\) show that every \(b_g\) is a unit of
+\(\mathcal S\). Also \(\beta=\lambda u\) is an algebraic unit.
+Since \(\beta\in L\), it belongs to \(\mathcal O_L^\times\).
+Thus \(d,a,c_1,Q(g)\) and all their required inverses lie in
+\(\mathcal S\).
+
+\begin{proposition}\label{v4-arith:mf:integral}
+The Leavitt presentation and all four formulas for \(\rho\)
+are defined over \(\mathcal S\).
+The underlying Leavitt algebra is free as an \(\mathcal S\)-module.
+Its extension to \(L\) agrees with the extension of the
+\(F_I\)-presentation to \(L\).
+\end{proposition}
+
+\begin{proof}
+For the freeness assertion, combine the \(X\) and \(T\) generators
+into \(s_1,\ldots,s_{2N}\), with dual generators
+\(t_1,\ldots,t_{2N}\).
+Use the reduction rules
+\[
+ t_i s_j\longmapsto\delta_{ij},\qquad
+ s_{2N}t_{2N}\longmapsto
+       1-\sum_{i<2N}s_it_i.
+\]
+Choose a length and lexicographic order with \(s_{2N}\)
+larger than the other positive generators.
+Every reduction decreases this order.
+The irreducible words are \(1\), pure positive or negative words,
+and positive words followed by negative words without the
+forbidden middle pair \(s_{2N}t_{2N}\).
+
+The only nontrivial overlap types are
+\(t_i s_{2N}t_{2N}\) and \(s_{2N}t_{2N}s_j\).
+Reducing either end of the first gives
+\(\delta_{i,2N}t_{2N}\).
+Reducing either end of the second gives
+\(\delta_{2N,j}s_{2N}\).
+Disjoint reductions commute. Hence the irreducible words give a
+basis over any coefficient ring.
+
+All displayed coefficients lie in \(\mathcal S\).
+The free normal form embeds this algebra into its scalar extension
+over \(L\). The endomorphism identities already hold there,
+so they hold over \(\mathcal S\).
+\end{proof}
+
+This integral model permits specialization away from \(N\).
+It makes no semisimplicity assertion about the resulting category
+over a residue field. Primes dividing \(N\) require an additional
+integral construction.
+
+\section{Fusion bases and the arithmetic network}
+\label{v4-arith:mf:network-section}
+
+The fusion rule alone does not specify associativity coefficients.
+Here the Leavitt intertwiners give complete labeled splitting maps.
+For simple objects \(i,j,k\), let
+\(v_{ij}^{k,\mu}:k\to i\otimes j\) and
+\(\bar v_{ij}^{k,\mu}:i\otimes j\to k\)
+denote dual inclusions and projections.
+Choose them as follows:
+\[
+\begin{array}{c|c|c}
+ i\otimes j,\ k&v_{ij}^{k,\mu}&\bar v_{ij}^{k,\mu}\\ \hline
+ \alpha_g\alpha_h,\ \alpha_{g+h}&1&1\\
+ \alpha_g\rho,\ \rho&1&1\\
+ \rho\alpha_g,\ \rho&U_g&U_{-g}\\
+ \rho^2,\ \alpha_g&X_g&X'_g\\
+ \rho^2,\ \rho\text{ in channel }h&T_h&T'_h
+\end{array}
+\]
+They satisfy
+\[
+ \bar v_{ij}^{k,\mu}v_{ij}^{l,\nu}
+       =\delta_{kl}\delta_{\mu\nu}1_k,\qquad
+ \sum_{k,\mu}v_{ij}^{k,\mu}\bar v_{ij}^{k,\mu}
+       =1_{i\otimes j}.
+\]
+
+For four simple objects \(i,j,k,l\), form bases of
+\(\operatorname{Hom}(l,i\otimes j\otimes k)\):
+\[
+ L_{p,\mu,\nu}
+   =(v_{ij}^{p,\mu}\otimes1_k)v_{pk}^{l,\nu},\qquad
+ R_{q,\alpha,\beta}
+   =(1_i\otimes v_{jk}^{q,\alpha})v_{iq}^{l,\beta}.
+\]
+Their dual projections are denoted by \(\bar L,\bar R\).
+The full recoupling matrix is
+\begin{equation}\label{v4-arith:mf:F}
+ F^l_{ijk}[(q,\alpha,\beta),(p,\mu,\nu)]
+       =\bar R_{q,\alpha,\beta}L_{p,\mu,\nu},
+ \qquad
+ (F^{-1})[(p,\mu,\nu),(q,\alpha,\beta)]=\bar L_{p,\mu,\nu}R_{q,\alpha,\beta}.
+\end{equation}
+Each entry is a scalar in \(\operatorname{End}(l)=F_I\).
+Formula \eqref{v4-arith:mf:tensor-map} and Leavitt reduction
+compute every entry from the stated generators.
+
+The completeness identities give \(F^{-1}F=FF^{-1}=1\).
+For four tensor factors, every composite of successive changes
+of basis equals the direct change between its first and last
+fusion trees. The two routes around the pentagon therefore agree.
+The unit choices give the triangle equations in the same way.
+A strict endomorphism presentation thus produces nontrivial
+recoupling matrices on its chosen simple-object skeleton.
+
+\subsection{Recovering the normalized values}
+
+Consider the endomorphism of \(\rho\)
+\begin{equation}\label{v4-arith:mf:network}
+ \mathcal N_g
+ =T'_0(T'_0\otimes1_\rho)(1_\rho\otimes T_g)T_0
+ =T'_0T'_0\rho(T_g)T_0.
+\end{equation}
+The second expression is in the strict presentation.
+In a general presentation the first expression includes its
+specified associativity maps.
+
+\begin{proposition}\label{v4-arith:mf:network-value}
+The network satisfies
+\[
+ \mathcal N_g=b_g1_\rho,\qquad
+ \mathcal N_g\mathcal N_0^{-1}=e_g1_\rho.
+\]
+The scalars are intrinsic to the category with labeled invertible
+simples. They are preserved by linear tensor equivalences respecting
+those labels.
+\end{proposition}
+
+\begin{proof}
+Substitute \eqref{v4-arith:mf:rho-T}.
+Every mixed \(X\)-term vanishes.
+The right contraction forces \(k=0\), and the next forces \(h=0\).
+The remaining coefficient is \(b_g\).
+
+To recover the marking, choose isomorphisms
+\(a_g:\alpha_g\otimes\rho\to\rho\).
+The equations
+\[
+ (a_g\otimes1_\rho)(1_{\alpha_g}\otimes T_0)=T_0a_g
+       \quad\text{for every }g
+\]
+define a line in \(\operatorname{Hom}(\rho,\rho^2)\).
+In the explicit basis the action is
+\(T_h\mapsto\chi(g,h)^{-1}T_h\).
+Nondegeneracy of \(\chi\) makes the common invariant space
+exactly \(F_IT_0\).
+
+Choose \(u_g:\rho\to\rho\otimes\alpha_g\).
+Normalize it so that
+\[
+ (1_\rho\otimes a_g)(u_g\otimes1_\rho)
+\]
+acts identically on \(\operatorname{Hom}(\mathbf1,\rho^2)\).
+This fixes the endomorphism \(U_g\).
+
+Set \(T_g=U_{-g}T_0\), and choose the dual projections \(T'_g\).
+Only a common rescaling of the \(T_g\) remains.
+Its two factors cancel the two inverse factors in
+\eqref{v4-arith:mf:network}.
+The construction is therefore preserved by the stated equivalences.
+\end{proof}
+
+The unit summand normalizes \(U_g\), but \(T_0\) itself belongs to
+\(\operatorname{Hom}(\rho,\rho^2)\).
+These are different channels. The specified duality closure is
+\begin{equation}\label{v4-arith:mf:closure}
+ dX'_0(1_\rho\otimes\mathcal N_g)X_0
+       =d\,b_g=-e_g.
+\end{equation}
+Thus the closure recovers a normalized arithmetic unit, with its
+negative sign.
+
+This closure cannot be replaced by a normalized cyclic functional
+on the ambient Leavitt algebra.
+Indeed,
+\[
+ \sum_{i=1}^{2N}[t_i,s_i]=(2N-1)1.
+\]
+In characteristic zero, the unit has zero image in
+\[
+ HH_0(\mathcal B_I)=
+       \mathcal B_I/[\mathcal B_I,\mathcal B_I].
+\]
+Every linear functional vanishing on commutators therefore sends
+\(1\) to zero. The marked categorical closure in
+\eqref{v4-arith:mf:closure} has a different domain.
+
+Relabelling invertible simples relabels \(b_g\).
+A semilinear tensor equivalence applies its field embedding to each
+network coefficient. Recovering the unnormalized \(E(g)\) also
+requires the chosen \(\sqrt N\). The normalized coefficients
+and their ratios are already defined over \(F_I\).
+
+\section{The finite Heisenberg operators}
+\label{v4-arith:mf:operators}
+
+The multiplicity space
+\[
+ H_I=\operatorname{Hom}(\rho,\rho^2)
+       =\bigoplus_{h\in G_I}F_IT_h
+\]
+carries two group actions:
+\begin{equation}\label{v4-arith:mf:heisenberg}
+ p^g(T_h)=U_gT_h=T_{h-g},\qquad
+ q^g(T_h)=\alpha_{-g}(T_h)=\chi(g,h)T_h.
+\end{equation}
+Their commutation rule is
+\[
+ p^gq^h=\chi(g,h)q^hp^g.
+\]
+Because \(Q(g+h)=Q(g)Q(h)\chi(g,h)\), the formula
+\[
+ (p+q)^g=Q(g)q^gp^g
+\]
+also gives a group action. Here \(p+q\) denotes this action,
+rather than the sum of two operators.
+
+For any group action \(r\) and function \(f:G_I\to F_I\), define
+\begin{equation}\label{v4-arith:mf:functional-calculus}
+ f(r)=\frac1N\sum_{x,y\in G_I}f(y)\chi(x,-y)r^x.
+\end{equation}
+Character orthogonality gives \(f(q)T_h=f(h)T_h\).
+Let \(\delta_0\) denote the indicator of zero, and put
+\[
+ P_0=\delta_0(q),\qquad
+ P_{\mathrm{av}}=\delta_0(p),\qquad D=P_0P_{\mathrm{av}}.
+\]
+The first two are projections, respectively onto \(F_IT_0\)
+and the invariant vectors for translation.
+Their product acts by
+\begin{equation}\label{v4-arith:mf:D}
+ D\!\left(\sum_hv_hT_h\right)
+       =\frac1N\left(\sum_hv_h\right)T_0,\qquad
+ D^2=\frac DN,\qquad \operatorname{Tr}(D)=\frac1N.
+\end{equation}
+For \(N>1\), the rank-one operator \(D\) is not an idempotent.
+
+Although \(E\) need not be \(F_I\)-valued, its Fourier transform is:
+\[
+ \eta(g):=\widehat E(g)=NaQ(g)b_g\in F_I.
+\]
+
+\begin{theorem}\label{v4-arith:mf:corrected-identity}
+On \(H_I\), one has
+\begin{equation}\label{v4-arith:mf:corrected-formula}
+ \eta(p)\eta(q)-\eta(q)\eta(p+q)\eta(p)=-N\beta D.
+\end{equation}
+The tensor-unit projection of \(\rho^2\) acts as zero on \(H_I\),
+whereas \(D\ne0\).
+\end{theorem}
+
+\begin{proof}
+Fourier inversion and \eqref{v4-arith:mf:functional-calculus} give
+\[
+ \eta(p)=\sum_xb_xp^{-x},\qquad
+ \eta(q)=\sum_yb_yq^{-y},\qquad
+ \eta(p+q)=\sum_tb_tQ(t)q^{-t}p^{-t}.
+\]
+Order every term as \(q^{-y}p^{-x}\).
+The coefficient of that term in the difference is
+\[
+ \chi(x,y)b_xb_y
+       -\sum_tb_{y-t}b_tQ(t)b_{x-t}
+       =-\frac{\beta}{N},
+\]
+by \eqref{v4-arith:mf:cubic-b}.
+On the other hand,
+\[
+ D=\frac1{N^2}\sum_{x,y}q^{-y}p^{-x}.
+\]
+This proves the factor \(N\) in
+\eqref{v4-arith:mf:corrected-formula}.
+
+The tensor-unit projection is \(X_0X'_0\).
+For every \(v:\rho\to\rho^2\),
+the composite \(X'_0v\) lies in
+\(\operatorname{Hom}(\rho,\mathbf1)=0\).
+Its action on \(H_I\) vanishes.
+By contrast, \(D(T_0)=T_0/N\ne0\).
+\end{proof}
+
+\begin{example}\label{v4-arith:mf:order-two}
+Let \(I=\mathbb Z[\sqrt3]\), \(\varepsilon=2+\sqrt3\),
+and orient \(I\) by \((\sqrt3,1)\).
+The nonzero class of \(G_I\simeq\mathbb Z/2\)
+is represented by \(x=(\sqrt3-1)/2\).
+Since
+\[
+ (\varepsilon-1)x=1,\qquad
+ \omega_I(x,\varepsilon x)=\frac12,
+\]
+formula \eqref{v4-arith:mf:gaussian} gives \(Q(x)=-i\).
+
+Reflection gives \(2b_1^2=i\).
+Among its two signs, the Fourier condition
+\(\lvert\beta\rvert=\sqrt\varepsilon\) selects
+\[
+ b_0=\frac{1+\sqrt3}{2},\qquad
+ b_1=\frac{1+i}{2},\qquad
+ \beta=1+\frac{\sqrt3+i}{2}.
+\]
+
+In the basis \(T_0,T_1\),
+\[
+ \eta(p)=
+ \begin{pmatrix}b_0&b_1\\b_1&b_0\end{pmatrix},\qquad
+ \eta(q)=
+ \begin{pmatrix}\beta&0\\0&b_0-b_1\end{pmatrix}.
+\]
+Put \(Q_q=\operatorname{diag}(1,-i)\).
+Then \(\eta(p+q)=Q_q^{-1}\eta(p)Q_q\), and multiplication yields
+\[
+ \eta(p)\eta(q)-\eta(q)\eta(p+q)\eta(p)
+  =-\beta\begin{pmatrix}1&1\\0&0\end{pmatrix}
+  =-2\beta D.
+\]
+In particular, both the chosen multiplicity space and the
+normalization of the correction are visible in two dimensions.
+\end{example}
+
+The identity \eqref{v4-arith:mf:corrected-formula}
+is not an associativity failure of \(\mathcal C_I\).
+Its recoupling matrices satisfy the categorical pentagon.
+Moreover, the nonzero correction cannot be the image of a boundary
+under a chain map to \(\operatorname{End}(H_I[0])\).
+That target has no term in degree \(-1\).
+A comparison with supported chiral operations must retain a larger
+complex and specify its reduction to this multiplicity space.
+
+\section{Finite bimodule realization}
+\label{v4-arith:mf:finite}
+
+We now construct the finite realization promised at the beginning.
+Let \(k\) be a field of characteristic zero, and let
+\(\mathcal C\) be a split fusion category over \(k\).
+Choose simple representatives \((S_i)_{i\in\mathcal I}\),
+with \(S_0=\mathbf1\), and set
+\[
+ A=\bigoplus_{i\in\mathcal I}ke_i,\qquad
+ \omega(X)_{ij}=
+       \operatorname{Hom}_{\mathcal C}(S_i,X\otimes S_j).
+\]
+Declare \(e_i\omega(X)e_j=\omega(X)_{ij}\).
+For \(f:X\to X'\), the map \(\omega(f)\) is postcomposition
+with \(f\otimes1\).
+Each \(\omega(X)\) is a finite-dimensional \(A\)-bimodule.
+
+Write
+\[
+ a_{X,Y,Z}:(X\otimes Y)\otimes Z\longrightarrow
+                   X\otimes(Y\otimes Z)
+\]
+for the associator of \(\mathcal C\).
+For \(u:S_i\to X\otimes S_j\) and
+\(v:S_j\to Y\otimes S_k\), define
+\begin{equation}\label{v4-arith:mf:tensorator}
+ \Phi_{X,Y}(u\otimes_Av)
+       =a^{-1}_{X,Y,S_k}(1_X\otimes v)u.
+\end{equation}
+The output belongs to
+\(\operatorname{Hom}(S_i,(X\otimes Y)\otimes S_k)\).
+The balanced tensor retains precisely the matching middle labels.
+
+\begin{theorem}\label{v4-arith:mf:finite-functor}
+The maps \(\Phi_{X,Y}\) are isomorphisms.
+Together with \(\omega(\mathbf1)\simeq A\), they make
+\[
+ \omega:\mathcal C\longrightarrow\operatorname{Bimod}^{\mathrm{fd}}_A
+\]
+a faithful exact strong monoidal functor.
+It need not be full.
+\end{theorem}
+
+\begin{proof}
+For each \(Y\otimes S_k\), choose splitting maps
+\[
+ v_{j\alpha}:S_j\longrightarrow Y\otimes S_k,\qquad
+ w_{j\alpha}:Y\otimes S_k\longrightarrow S_j
+\]
+with
+\[
+ w_{j\alpha}v_{l\beta}
+       =\delta_{jl}\delta_{\alpha\beta}1_{S_j},
+ \qquad \sum_{j,\alpha}v_{j\alpha}w_{j\alpha}=1.
+\]
+The inverse to \eqref{v4-arith:mf:tensorator} is
+\begin{equation}\label{v4-arith:mf:tensorator-inverse}
+ h\longmapsto
+ \sum_{j,\alpha}
+ (1_X\otimes w_{j\alpha})a_{X,Y,S_k}h\otimes_Av_{j\alpha}.
+\end{equation}
+Composing in one order uses the sum of the splitting idempotents.
+Composing in the other uses their pairwise orthogonality.
+A change of splitting basis acts by inverse matrices on the two
+factors, so the displayed sum is independent of that choice.
+
+For three objects, both iterated tensorators compose the same
+three maps from simple objects.
+The associator pentagon equates the two parenthesizations.
+The same argument handles every finite tensor string, and the
+unitors give \(\omega(\mathbf1)\simeq A\).
+The column \(j=0\) is
+\(\bigoplus_i\operatorname{Hom}(S_i,X)\).
+It detects every morphism out of \(X\), proving faithfulness.
+Split semisimplicity gives exactness.
+
+Finally, \(\operatorname{End}_{A-A}(A)=A\),
+whereas \(\operatorname{End}_{\mathcal C}(\mathbf1)=k\).
+For more than one simple label, the induced map on these endomorphism
+spaces is not surjective.
+\end{proof}
+
+\subsection{An associator detected by its endpoint}
+
+Take the pointed category with labels \(\mathbb Z/2\)
+and scalar associator
+\[
+ c(g,h,l)=(-1)^{ghl}.
+\]
+Its pentagon is the mod-two three-cocycle equation.
+
+The bimodule \(\omega(g)\) has one-dimensional entries at
+\(i=g+j\). On the component with right endpoint \(r\),
+the tensorator is multiplication by \(c(g,h,r)^{-1}\).
+Its coherence equation is
+\[
+ c(g,h,l)c(g,h,l+r)^{-1}c(g+h,l,r)^{-1}
+       =c(h,l,r)^{-1}c(g,h+l,r)^{-1}.
+\]
+At \(g=h=l=1\), forgetting the endpoint factors would leave
+the false equality \(-1=1\).
+The strict ambient category of bimodules thus retains the
+nontrivial source associator through its tensorator.
+
+\subsection{The finite arithmetic detector}
+
+Apply the construction to \(\mathcal C_I\) over \(k=F_I\),
+with labels \(\mathcal I=G_I\sqcup\{\rho\}\).
+Let \(W_X\) be the matrix with entries
+\((W_X)_{ij}=\dim_k\omega(X)_{ij}\).
+The fusion rule gives
+\begin{equation}\label{v4-arith:mf:multiplicities}
+ W_{\alpha_g}=P_g\oplus[1],\qquad
+ W_\rho=
+ \begin{pmatrix}
+  0_{N\times N}&\mathbf1\\
+  \mathbf1^t&N
+ \end{pmatrix},
+\end{equation}
+where \(P_g\) is the translation permutation on \(G_I\).
+Matrix multiplication records the balanced tensor product:
+\[
+ W_\rho^2=\sum_gW_{\alpha_g}+NW_\rho,\qquad
+ \dim_k\omega(\rho)=3N.
+\]
+
+For \(N=2\), this is
+\[
+ W_\rho=\begin{pmatrix}0&0&1\\0&0&1\\1&1&2\end{pmatrix}.
+\]
+Its entries sum to \(6\), while the entries of \(W_\rho^2\)
+sum to \(18\).
+The ordinary vector-space tensor square would have dimension \(36\).
+
+Transport every map in \eqref{v4-arith:mf:network}
+through \(\omega\), using \(\Phi\) for each tensor product.
+The resulting endomorphism \(M_g\) of \(\omega(\rho)\) satisfies
+\begin{equation}\label{v4-arith:mf:matrix-detector}
+ M_g=b_g1_{\omega(\rho)},\qquad
+ b_g=\frac{\operatorname{Tr}_k(M_g)}{3N},\qquad
+ E(g)=\frac{\sqrt N}{3N}\operatorname{Tr}_k(M_g).
+\end{equation}
+The first recovery takes place over \(F_I\).
+The second uses the chosen radical. Ratios recover \(e_g\)
+without it.
+
+This matrix trace works because the specified composite ends in
+the simple object \(\rho\) and is scalar there.
+It does not identify ordinary matrix trace with the duality
+closure \eqref{v4-arith:mf:closure} on arbitrary diagrams.
+The finite realization also keeps its chosen categorical
+intertwiners, rather than every bimodule map.
+
+Finally, it is not a finite-dimensional unital representation of
+\(\mathcal B_I\).
+Such a representation on \(V\) would give
+\(V\simeq V^{\oplus2N}\) from the Leavitt generators.
+Equivalently, matrix trace applied to
+\(\sum_i[t_i,s_i]=(2N-1)1\) gives
+\(0=(2N-1)\dim_kV\), impossible in characteristic zero.
+
+The arithmetic values have therefore been retained by actual
+fusion maps, a normalized network and a finite balanced tensor.
+A further field realization must transport these maps and their
+duality, rather than only the scalar detector.
+Its supported operation complex must also explain how the
+correction \(-N\beta D\) arises after reduction.

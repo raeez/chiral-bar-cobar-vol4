@@ -1,0 +1,653 @@
+\chapter{The Archimedean Tate Positivity Conjecture: A Direct Elementary Obstruction}
+\label{v4-arith:w6-a:ATP-direct-obstruction}
+
+The digamma kernel
+\(g(t)=\operatorname{Re}\psi(1/4+it/2)+\log\pi\) has one positive
+zero. Splitting its quadratic integral at that zero gives two
+non-negative energies \(A[f]\) and \(B[f]\), and the exact identity
+\(G(f)=(B[f]-A[f])/(2\pi)\). An explicit high-frequency dominance
+condition proves \(G(f)\geq0\) on a non-empty class of tests.
+
+This auxiliary form differs from the signed archimedean term in the
+Weil formula. With the Fourier convention of
+Chapter~\ref{v4-arith:w5-a:chapter}, that term is
+\(W_\infty(f*\widetilde f)=2\log\pi\|f\|_2^2-G(f)\).
+Consequently full Weil positivity requires
+\(A[f]/(2\pi)+2\log\pi\|f\|_2^2\leq B[f]/(2\pi)+R[f]\),
+where \(R[f]\) retains the polar and finite-prime terms.
+The kernel calculation proves neither this full inequality nor its
+arithmetic comparison with a Koszul pairing.
+
+\section{Kernel and Obstruction}
+\label{v4-arith:w6-a:context}
+
+Chapter~\ref{v4-arith:w5-a:chapter} established the following. The
+fixed-\(F\) Mellin--Rankin--Selberg comparison does not close the zeta
+finite-prime term
+(Theorem~\ref{v4-arith:w5-a:thm:prime-side}). The polar terms
+\(\widehat{f*\widetilde{f}}(\pm 1/(2i))\) are explicit finite Taylor
+corrections (Proposition~\ref{v4-arith:w5-a:rem:H3-removable}). The irreducible
+residual is A-TP
+(Conjecture~\ref{v4-arith:w5-a:conj:archimedean-tate-positivity}), which
+Theorem~\ref{v4-arith:w5-a:thm:ATP-equals-weil-positivity} establishes is
+strictly equivalent to the Weil positivity form of RH.
+
+\begin{definition}[the archimedean digamma kernel]
+\label{v4-arith:w6-a:def:g}
+Set
+\begin{equation}
+\label{v4-arith:w6-a:eq:g-definition}
+g(t)\;:=\;\mathrm{Re}\,\psi\!\left(\tfrac{1}{4}+\tfrac{it}{2}\right)+\log\pi,
+\qquad t\in\mathbb{R},
+\end{equation}
+where \(\psi(z)=\Gamma'(z)/\Gamma(z)\) is the digamma function. The auxiliary quadratic form, with
+\(\widehat f(t)=\int_{\mathbb R}f(u)e^{itu}\,du\), is
+\begin{equation}
+\label{v4-arith:w6-a:eq:W-arch-as-g}
+G(f)
+\;=\;\frac{1}{2\pi}\int_{-\infty}^{\infty}|\widehat{f}(t)|^{2}\,g(t)\,dt.
+\end{equation}
+The signed Weil contribution in
+\eqref{v4-arith:w5-a:eq:weil-archimedean} instead has density
+\(k(t)=\log\pi-\operatorname{Re}\psi(1/4+it/2)\). Since
+\(k+g=2\log\pi\), Plancherel gives
+\[
+W_\infty(f*\widetilde f)=2\log\pi\|f\|_2^2-G(f).
+\]
+\end{definition}
+
+We analyse the sign of \eqref{v4-arith:w6-a:eq:W-arch-as-g} and
+separate the positivity forced by the kernel \(g\) from the positivity
+equivalent to RH.
+
+\subsection{Domain}
+\label{v4-arith:w6-a:domain}
+
+Work on \(\mathscr A=C_c^\infty(\mathbb R,\mathbb C)\), with the
+Fourier transform fixed above and convolution involution
+\(\widetilde f(u)=\overline{f(-u)}\). Its Fourier transforms are
+entire and rapidly decreasing on the real axis, so all kernel
+integrals below converge. If an arithmetic application imposes an
+additional test class \(\mathrm{PW}^{\mathrm{hol}}_F\), use its
+intersection with the classes constructed here. Non-emptiness of
+that further intersection requires a separate check.
+
+The elementary objects are:
+\begin{itemize}
+\item elementary analysis of \(g(t)\) via the Hurwitz series for \(\psi\)
+and the Gauss summation at rational arguments;
+\item decomposition of the auxiliary form \(G(f)\) into a
+low-frequency core integral and a high-frequency tail integral;
+\item unconditional non-negativity of \(G\) on an explicit
+dominance sub-class;
+\item reduction of full A-TP to a bounded-interval archimedean
+inequality coupled to \(R[f]\).
+\end{itemize}
+
+No elementary argument below supplies the RH-equivalent full A-TP
+inequality. The irreducible location is
+\S\ref{v4-arith:w6-a:bounded-interval}.
+
+\subsection{Analytic Ingredients}
+\label{v4-arith:w6-a:sources}
+
+The elementary obstruction uses four classical sources.
+
+\begin{description}
+\item[Hurwitz 1882.] Hurwitz, A. \emph{Einige Eigenschaften der
+Dirichlet'schen Functionen.} \emph{Zeitschrift f\"ur Mathematik und
+Physik} 27 (1882). Hurwitz series representation
+\(\psi(a)=-\gamma_{E}+\sum_{n\geq 0}[1/(n+1)-1/(n+a)]\); monotonicity of
+individual terms.
+\item[Gauss 1813.] Gauss, C.F. \emph{Disquisitiones generales circa
+seriem infinitam \(1+\cdots\)}. \emph{Comment.~Soc.~Reg.~Sci.~Gottingensis
+Recentiores} 2 (1813). Reflection relation
+\(\psi(1-x)-\psi(x)=\pi\cot(\pi x)\) at rational \(x\); explicit values
+\(\psi(1/4)=-\gamma_{E}-\pi/2-3\log 2\),
+\(\psi(3/4)=-\gamma_{E}+\pi/2-3\log 2\).
+\item[Whittaker--Watson 1927.] Whittaker, E.T.; Watson, G.N. \emph{A
+Course of Modern Analysis} (4th ed., Cambridge 1927), Ch.~XII.
+Stirling asymptotic for \(\psi\):
+\(\psi(z)=\log z-1/(2z)-\sum_{k=1}^{N}B_{2k}/(2k z^{2k})+O(|z|^{-2N-2})\).
+\item[Boas 1954.] Boas, R.P. \emph{Entire Functions}.
+Academic Press 1954, Ch.~6. Paley--Wiener characterization of entire
+functions of exponential type; the Plancherel--P\'olya theorem giving
+\(\int_{\mathbb{R}}|\widehat{f}(t)|^{2}\,dt=2\pi\int_{\mathbb{R}}|f(u)|^{2}\,du\)
+for \(f\in\mathrm{PW}\).
+\end{description}
+
+The kernel estimates use the Hurwitz series, the rational digamma
+value, Stirling asymptotics and Plancherel. Their relation to the
+full signed Weil form is the explicit identity stated above.
+
+\section{The Digamma Kernel \(g(t)\)}
+\label{v4-arith:w6-a:digamma-kernel}
+
+The sign structure of \(g\) controls whether
+\(G(f)\) can be positive, negative, or zero.
+All statements below are unconditional.
+
+\subsection{Hurwitz Series Representation}
+\label{v4-arith:w6-a:digamma-kernel:hurwitz}
+
+\begin{lemma}[Hurwitz series for \(g\)]
+\label{v4-arith:w6-a:lem:g-hurwitz}
+For every \(t\in\mathbb{R}\),
+\begin{equation}
+\label{v4-arith:w6-a:eq:g-hurwitz}
+g(t)\;=\;-\gamma_{E}+\log\pi+\sum_{n=0}^{\infty}\!\left[\frac{1}{n+1}-\frac{n+1/4}{(n+1/4)^{2}+t^{2}/4}\right].
+\end{equation}
+The series converges absolutely and uniformly on compact sets.
+\end{lemma}
+
+\begin{proof}
+Hurwitz's series
+\(\psi(a)=-\gamma_{E}+\sum_{n\geq 0}[1/(n+1)-1/(n+a)]\) (Hurwitz 1882;
+Whittaker--Watson 1927 \S12.31) applied at \(a=1/4+it/2\):
+\[
+\frac{1}{n+1/4+it/2}=\frac{(n+1/4)-it/2}{(n+1/4)^{2}+t^{2}/4}.
+\]
+Real part: \((n+1/4)/[(n+1/4)^{2}+t^{2}/4]\). Adding \(\log\pi\) gives
+\eqref{v4-arith:w6-a:eq:g-hurwitz}. Absolute convergence follows from
+the large-\(n\) asymptotic
+\(1/(n+1)-1/(n+1/4)=-(3/4)/[(n+1)(n+1/4)]=O(n^{-2})\).
+\end{proof}
+
+\begin{lemma}[strict monotonicity of \(g\) in \(|t|\)]
+\label{v4-arith:w6-a:lem:g-monotone}
+The map \(t\mapsto g(t)\) is even and
+continuously differentiable on \(\mathbb{R}\), with
+\begin{equation}
+\label{v4-arith:w6-a:eq:g-derivative}
+g'(t)\;=\;\sum_{n=0}^{\infty}\frac{(n+1/4)\,t/2}{\bigl[(n+1/4)^{2}+t^{2}/4\bigr]^{2}}.
+\end{equation}
+In particular \(g'(t)>0\) for \(t>0\), so \(g\) is strictly increasing in
+\(|t|\) on \([0,\infty)\).
+\end{lemma}
+
+\begin{proof}
+Evenness follows from \eqref{v4-arith:w6-a:eq:g-hurwitz}: each term
+depends on \(t\) only through \(t^{2}\). For each \(n\geq 0\), with
+\(c:=n+1/4\),
+\[
+\frac{d}{dt}\!\left[-\frac{c}{c^{2}+t^{2}/4}\right]
+\;=\;-c\cdot\frac{-(t/2)}{[c^{2}+t^{2}/4]^{2}}
+\;=\;\frac{c\cdot t/2}{[c^{2}+t^{2}/4]^{2}}.
+\]
+Summing over \(n\) and using uniform convergence on compact sets of
+the differentiated series
+(dominant bound \(\leq(n+1/4)\cdot|t|/2\cdot(n+1/4)^{-4}=O(n^{-3})\)
+uniformly in \(|t|\leq T\)) gives
+\eqref{v4-arith:w6-a:eq:g-derivative}. Each summand is non-negative
+for \(t\geq 0\) and strictly positive for \(t>0\); hence \(g'(t)>0\) for
+\(t>0\), giving strict monotonicity in \(|t|\) on \([0,\infty)\).
+Continuity of \(g'\) follows from uniform convergence on compacts.
+\end{proof}
+
+\begin{proposition}[boundary values of \(g\)]
+\label{v4-arith:w6-a:prop:g-boundary}
+The kernel \(g\) satisfies
+\begin{align}
+\label{v4-arith:w6-a:eq:g-at-zero}
+g(0)&\;=\;-\gamma_{E}-\frac{\pi}{2}-3\log 2+\log\pi\;\approx\;-3.0827,\\
+\label{v4-arith:w6-a:eq:g-at-infinity}
+g(t)&\;\sim\;\tfrac{1}{2}\log(t^{2}/4)+\log\pi\;=\;\log(|t|\pi/2),\qquad|t|\to\infty.
+\end{align}
+In particular \(g(0)<0<\lim_{|t|\to\infty}g(t)/\log|t|=1\).
+\end{proposition}
+
+\begin{proof}
+\eqref{v4-arith:w6-a:eq:g-at-zero} follows from the Gauss value
+\(\psi(1/4)=-\gamma_{E}-\pi/2-3\log 2\) (Gauss 1813; Whittaker--Watson
+\S12.31 ex.~1). Numerical evaluation:
+\(-0.5772-1.5708-2.0794+1.1447=-3.0827\).
+
+\eqref{v4-arith:w6-a:eq:g-at-infinity} follows from the Stirling
+asymptotic \(\psi(z)=\log z-1/(2z)+O(|z|^{-2})\) applied at
+\(z=1/4+it/2\): \(\log z=\tfrac{1}{2}\log(1/16+t^{2}/4)+i\arctan(2t)\),
+\(\mathrm{Re}\,\log z\sim\tfrac{1}{2}\log(t^{2}/4)\) as \(|t|\to\infty\),
+and \(-1/(2z)\to 0\).
+\end{proof}
+
+\subsection{The Unique Sign Change \(t_{\ast}\)}
+\label{v4-arith:w6-a:digamma-kernel:sign-change}
+
+\begin{theorem}[existence and uniqueness of the sign change]
+\label{v4-arith:w6-a:thm:t-star}
+There is a unique \(t_{\ast}\in(0,\infty)\)
+with \(g(t_{\ast})=0\). The map \(t\mapsto g(t)\) is strictly negative on
+\((-t_{\ast},t_{\ast})\) and strictly positive on
+\((-\infty,-t_{\ast})\cup(t_{\ast},\infty)\).
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{v4-arith:w6-a:lem:g-monotone}, \(g\) is continuous, even, and
+strictly increasing in \(|t|\) on \([0,\infty)\).
+Proposition~\ref{v4-arith:w6-a:prop:g-boundary} gives \(g(0)=-3.0827<0\) and
+\(g(t)\to+\infty\). The intermediate value theorem and strict
+monotonicity supply a unique \(t_{\ast}>0\) with \(g(t_{\ast})=0\); by
+evenness \(g(-t_{\ast})=0\) as well.
+\end{proof}
+
+\begin{proposition}[certified interval for the sign change]
+\label{v4-arith:w6-a:prop:t-star-numerical}
+The zero satisfies \(0.84<t_*<0.86\).
+\end{proposition}
+\begin{proof}
+Subtract the Hurwitz series at zero. With \(a=t^2/4\) and
+\(c_n=n+1/4\), the positive-tail representation is
+\[
+ g(t)=g(0)+\sum_{n\geq0}\frac{a}{c_n(c_n^2+a)}.
+\]
+For \(S_N(t)=g(0)+\sum_{n=0}^Na/[c_n(c_n^2+a)]\), monotonicity
+of \(x^{-3}\) gives
+\[
+ 0\leq g(t)-S_N(t)
+ \leq a\sum_{n>N}(n+1/4)^{-3}
+ \leq \frac{a}{2(N+1/4)^2}.
+\]
+At \(N=20\), rational arithmetic with
+\(0.577<\gamma_E<0.578\), \(3.1415<\pi<3.1416\),
+\(0.6931<\log2<0.6932\) and \(1.1447<\log\pi<1.1448\)
+gives
+\(-0.024<S_{20}(0.84)<-0.020\) and
+\(0.017<S_{20}(0.86)<0.020\). The positive tails are less than
+\(0.00023\) at both endpoints. Thus the signs are opposite,
+and strict monotonicity places the zero between them.
+\end{proof}
+
+\begin{remark}[numerical refinement]
+\label{v4-arith:w6-a:rem:t-star-refinement}
+Bisection with the same positive-tail bound can refine the
+certified interval. The value \(t_*\approx0.85066\) is a numerical
+approximation; all exact inequalities below use the zero defined
+by \(g(t_*)=0\), or certified upper and lower bounds for it.
+\end{remark}
+
+\section{Decomposition of the Auxiliary Form}
+\label{v4-arith:w6-a:decomposition}
+
+\begin{definition}[low-frequency core and high-frequency tail]
+\label{v4-arith:w6-a:def:core-tail}
+For \(f\in\mathscr A\), define
+the non-negative quantities
+\begin{align}
+\label{v4-arith:w6-a:eq:A-core}
+A[f]&\;:=\;\int_{|t|<t_{\ast}}|\widehat{f}(t)|^{2}\cdot(-g(t))\,dt,\\
+\label{v4-arith:w6-a:eq:B-tail}
+B[f]&\;:=\;\int_{|t|>t_{\ast}}|\widehat{f}(t)|^{2}\cdot g(t)\,dt.
+\end{align}
+By Theorem~\ref{v4-arith:w6-a:thm:t-star}, both \(A[f]\geq 0\) and \(B[f]\geq 0\)
+with strict inequality whenever \(\widehat{f}\) does not vanish
+identically on the respective domain.
+\end{definition}
+
+\begin{lemma}[archimedean decomposition]
+\label{v4-arith:w6-a:lem:decomposition}
+For every \(f\in\mathscr A\),
+\begin{equation}
+\label{v4-arith:w6-a:eq:decomposition}
+G(f)\;=\;\frac{1}{2\pi}\bigl(B[f]-A[f]\bigr).
+\end{equation}
+In particular \(G(f)\geq 0\) if and only if
+\(B[f]\geq A[f]\).
+\end{lemma}
+
+\begin{proof}
+Definition~\ref{v4-arith:w6-a:def:g} gives
+\(G(f)=(2\pi)^{-1}\int_{\mathbb{R}}|\widehat{f}(t)|^{2}g(t)\,dt\).
+Split the integral at \(|t|=t_{\ast}\):
+\[
+\int_{\mathbb{R}}|\widehat{f}(t)|^{2}g(t)\,dt
+=\int_{|t|<t_{\ast}}|\widehat{f}(t)|^{2}g(t)\,dt+\int_{|t|>t_{\ast}}|\widehat{f}(t)|^{2}g(t)\,dt.
+\]
+By Theorem~\ref{v4-arith:w6-a:thm:t-star}, \(g(t)<0\) on \(|t|<t_{\ast}\) and
+\(g(t)>0\) on \(|t|>t_{\ast}\). The first integral equals \(-A[f]\) and the
+second equals \(B[f]\), giving
+\eqref{v4-arith:w6-a:eq:decomposition}.
+\end{proof}
+
+\begin{remark}[the exact split]
+\label{v4-arith:w6-a:rem:why-not-more}
+The identity \(G(f)=(B[f]-A[f])/(2\pi)\) implies
+\(G(f)\geq0\) exactly when \(B[f]\geq A[f]\). It imposes no
+restriction on finer subdivisions or stronger estimates. Full
+Weil positivity requires the additional signed inequality of
+Theorem~\ref{v4-arith:w6-a:thm:bounded-reduction}.
+\end{remark}
+
+\section{Auxiliary Positivity on the High-Frequency Dominance Class}
+\label{v4-arith:w6-a:HFD-subclass}
+
+The condition \(B[f]\geq A[f]\) holds unconditionally whenever the
+spectral mass of \(\widehat{f}\) above \(|t|>t_{\ast}\) dominates the
+core supremum by an explicit factor. This dominance sub-class is
+non-empty and admits a closed-form sufficient condition.
+
+\subsection{The Sub-Class \(\mathscr A_{\mathrm{HFD}}\)}
+\label{v4-arith:w6-a:HFD-subclass:def}
+
+\begin{definition}[high-frequency dominance class]
+\label{v4-arith:w6-a:def:HFD-class}
+Define the \emph{high-frequency dominance
+sub-class} \(\mathscr A_{\mathrm{HFD}}\subset\mathscr A\)
+as the subset of \(f\in\mathscr A\) satisfying
+\begin{equation}
+\label{v4-arith:w6-a:eq:HFD-condition}
+\sup_{|t|\leq t_{\ast}}|\widehat{f}(t)|^{2}\cdot 2t_{\ast}\cdot\|{-}g\|_{L^{\infty}[-t_{\ast},t_{\ast}]}
+\;\leq\;
+\int_{|t|>t_{\ast}}|\widehat{f}(t)|^{2}\,g(t)\,dt.
+\end{equation}
+The left-hand side is a crude upper bound for \(A[f]\); the right-hand
+side is \(B[f]\).
+\end{definition}
+
+\begin{lemma}[the Plancherel--P\'olya bound inside the core]
+\label{v4-arith:w6-a:lem:PP-bound}
+For \(f\in\mathscr A\) supported
+in \([-T,T]\),
+\begin{equation}
+\label{v4-arith:w6-a:eq:PP-inside-core}
+\sup_{|t|\leq t_{\ast}}|\widehat{f}(t)|^{2}\;\leq\;2T\int_{-T}^{T}|f(u)|^{2}\,du.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+\(|\widehat{f}(t)|=|\int_{-T}^{T}f(u)e^{itu}du|\leq(2T)^{1/2}\|f\|_{L^{2}}\)
+by Cauchy--Schwarz; squaring gives
+\eqref{v4-arith:w6-a:eq:PP-inside-core}. This is the
+Plancherel--P\'olya dimension bound (Boas 1954 \S6.8) applied inside
+the core.
+\end{proof}
+
+\begin{theorem}[unconditional \(G\)-positivity on \(\mathscr A_{\mathrm{HFD}}\)]
+\label{v4-arith:w6-a:thm:HFD-ATP}
+For every \(f\in\mathscr A_{\mathrm{HFD}}\),
+\begin{equation}
+\label{v4-arith:w6-a:eq:HFD-ATP-conclusion}
+G(f)\;\geq\;0.
+\end{equation}
+Full A-TP follows on the sublocus where, in addition,
+\(R[f]+G(f)\geq2\log\pi\|f\|_2^2\) for \(R[f]\) as in
+Equation~\ref{v4-arith:w6-a:eq:R-definition}.
+\end{theorem}
+
+\begin{proof}
+Condition \eqref{v4-arith:w6-a:eq:HFD-condition} combined with the
+obvious bound
+\(A[f]\leq\sup_{|t|\leq t_{\ast}}|\widehat{f}(t)|^{2}\cdot 2t_{\ast}\cdot\|{-}g\|_{L^{\infty}[-t_{\ast},t_{\ast}]}\)
+and the identity \(B[f]=\int_{|t|>t_{\ast}}|\widehat{f}(t)|^{2}g(t)\,dt\)
+gives \(A[f]\leq B[f]\). Lemma~\ref{v4-arith:w6-a:lem:decomposition} converts
+to \(G(f)\geq 0\). The last sentence is
+Theorem~\ref{v4-arith:w6-a:thm:bounded-reduction} on the sublocus
+\(R[f]+G(f)\geq2\log\pi\|f\|_2^2\).
+\end{proof}
+
+\begin{remark}[smooth high-frequency tests]
+\label{v4-arith:w6-a:rem:HFD-nonempty}
+Choose a nonzero real even \(\chi\in C_c^\infty(\mathbb R)\)
+with \(\int\chi\ne0\), and set \(f_M(u)=\chi(u)\cos(Mu)\).
+Then
+\begin{equation}
+\label{v4-arith:w6-a:eq:HFD-concentration}
+ \widehat f_M(t)=\tfrac12\bigl(\widehat\chi(t+M)+\widehat\chi(t-M)\bigr).
+\end{equation}
+Schwartz decay gives
+\(\sup_{|t|\leq t_*}|\widehat f_M(t)|=O(M^{-K})\) for every
+\(K>0\). Since \(\widehat\chi(0)\ne0\), choose \(\delta>0\)
+on which its modulus is bounded below. On \(|t-M|<\delta\),
+the other translate tends uniformly to zero, while
+\(g(t)\sim\log M\). Hence \(B[f_M]\geq c\log M\) for some
+\(c>0\) and sufficiently large \(M\). This proves the quantitative
+HFD condition for nonzero smooth tests with fixed support.
+\end{remark}
+
+\begin{remark}[tests outside the dominance class]
+\label{v4-arith:w6-a:rem:HFD-strict}
+With the same \(\chi\), put \(f_L(u)=L^{-1/2}\chi(u/L)\),
+\(L\geq1\). Then \(\widehat f_L(t)=\sqrt L\widehat\chi(Lt)\), so
+\[
+ G(f_L)=\frac1{2\pi}\int_{\mathbb R}|\widehat\chi(s)|^2g(s/L)\,ds
+ \longrightarrow g(0)\|\chi\|_2^2<0.
+\]
+Dominated convergence applies because \(g\) has logarithmic growth
+and \(\widehat\chi\) is Schwartz. Thus \(f_L\notin\mathscr A_{\mathrm{HFD}}\)
+for large \(L\), proving that the dominance class is proper in
+\(\mathscr A\). This construction widens spatial support and
+concentrates Fourier mass near zero.
+\end{remark}
+
+\subsection{An Explicit Sufficient Condition}
+\label{v4-arith:w6-a:HFD-subclass:explicit}
+
+The definitional condition \eqref{v4-arith:w6-a:eq:HFD-condition}
+depends on \(\|{-}g\|_{L^{\infty}[-t_{\ast},t_{\ast}]}\), which equals
+\(|g(0)|=\gamma_{E}+\pi/2+3\log 2-\log\pi\approx 3.0827\) by
+Proposition~\ref{v4-arith:w6-a:prop:g-boundary} and strict monotonicity. We
+reformulate the sufficient condition without the supremum.
+
+\begin{corollary}[explicit sufficient condition]
+\label{v4-arith:w6-a:cor:HFD-explicit}
+Suppose \(f\in\mathscr A\)
+satisfies
+\begin{equation}
+\label{v4-arith:w6-a:eq:HFD-explicit}
+2t_{\ast}\cdot|g(0)|\cdot\|\widehat{f}\|_{L^{\infty}[-t_{\ast},t_{\ast}]}^{2}
+\;\leq\;
+\int_{|t|>t_{\ast}}|\widehat{f}(t)|^{2}\,g(t)\,dt.
+\end{equation}
+Then \(G(f)\geq 0\). For illustration only, with
+\(t_{\ast}\approx 0.8507\) and \(|g(0)|\approx 3.083\), the prefactor
+\(2t_{\ast}|g(0)|\approx 5.245\), the rounded display is
+\begin{equation}
+\label{v4-arith:w6-a:eq:HFD-explicit-numerical}
+\|\widehat{f}\|_{L^{\infty}[-0.8507,0.8507]}^{2}\;\leq\;\frac{1}{5.245}\int_{|t|>0.8507}|\widehat{f}(t)|^{2}\,g(t)\,dt.
+\end{equation}
+This rounded display is not a certified sufficient condition; use
+\eqref{v4-arith:w6-a:eq:HFD-explicit} with the exact constants.
+\end{corollary}
+
+\begin{proof}
+\(A[f]\leq 2t_{\ast}\cdot|g(0)|\cdot\|\widehat{f}\|_{L^{\infty}[-t_{\ast},t_{\ast}]}^{2}\)
+by \(|g(t)|\leq|g(0)|\) on \(|t|\leq t_{\ast}\). Combine with
+Lemma~\ref{v4-arith:w6-a:lem:decomposition}.
+\end{proof}
+
+\begin{remark}[interpretation]
+\label{v4-arith:w6-a:rem:HFD-interpretation}
+The sufficient condition \eqref{v4-arith:w6-a:eq:HFD-explicit}
+asserts: the peak core \(L^{\infty}\)-norm of \(\widehat{f}\), scaled by
+a fixed constant depending only on \(t_{\ast}\) and \(g(0)\), is
+dominated by the high-frequency tail \(L^{2}\)-mass weighted by \(g\).
+Every \(f\in\mathscr A\) satisfying the displayed quantitative
+dominance condition lies in \(\mathscr A_{\mathrm{HFD}}\), and
+Theorem~\ref{v4-arith:w6-a:thm:HFD-ATP} gives \(G(f)\geq 0\).
+\end{remark}
+
+\section{The Full Signed Weil Inequality}
+\label{v4-arith:w6-a:bounded-interval}
+
+\subsection{Core, Tail and Arithmetic Terms}
+\label{v4-arith:w6-a:bounded-interval:reduction}
+
+\begin{theorem}[signed core-tail reduction]
+\label{v4-arith:w6-a:thm:bounded-reduction}
+On the test domain of the Weil formula, put
+\begin{equation}
+\label{v4-arith:w6-a:eq:R-definition}
+R[f]=\widehat{f*\widetilde f}(1/(2i))
+ +\widehat{f*\widetilde f}(-1/(2i))-W_{\mathrm{fin}}(f*\widetilde f).
+\end{equation}
+Then \(W(f*\widetilde f)\geq0\) is equivalent to
+\begin{equation}
+\label{v4-arith:w6-a:eq:bounded-reduction-star}
+\frac{A[f]}{2\pi}+2\log\pi\|f\|_2^2
+ \leq \frac{B[f]}{2\pi}+R[f].
+\tag{\(\star\)}
+\end{equation}
+Thus A-TP on a specified full test class is the assertion that
+\((\star)\) holds for every test in that class. Any equivalence with
+RH uses the full test class in
+Theorem~\ref{v4-arith:w5-a:thm:ATP-equals-weil-positivity}; restriction
+to one smaller class is not automatically an equivalent criterion.
+\end{theorem}
+
+\begin{proof}
+All integrals are defined on the stated test domain: the digamma
+densities grow logarithmically and the Fourier transforms decrease
+rapidly. The signed Weil formula and Plancherel give
+\begin{equation}
+\label{v4-arith:w6-a:eq:weil-rearranged}
+\begin{split}
+W(f*\widetilde f)
+ &=R[f]-W_\infty(f*\widetilde f)\\
+ &=R[f]-2\log\pi\|f\|_2^2+G(f)\\
+ &=R[f]-2\log\pi\|f\|_2^2+\frac{B[f]-A[f]}{2\pi}.
+\end{split}
+\end{equation}
+Rearranging this equality proves both directions of \((\star)\).
+No positive zero-square sum is assumed in this calculation.
+\end{proof}
+
+\begin{remark}[the zero-side functional]
+\label{v4-arith:w6-a:rem:zero-sum-consequence}
+The Weil functional is evaluated on the actual zero divisor
+\(z_\rho=-i(\rho-1/2)\). Replacing it by
+\(\sum_\rho|\widehat f(\gamma_\rho)|^2\) uses the critical-line
+specialization \(z_\rho=\gamma_\rho\in\mathbb R\). The unconditional
+identity used here is \eqref{v4-arith:w6-a:eq:weil-rearranged}.
+\end{remark}
+
+\begin{remark}[the remaining inequality]
+\label{v4-arith:w6-a:rem:bounded-residual}
+The negative part of the auxiliary kernel is supported on
+\([-t_*,t_*]\), but the signed Weil inequality also includes the
+full norm term \(2\log\pi\|f\|_2^2\), the polar terms and the
+finite-prime functional. Positivity of \(G(f)\) alone does not
+control their sum. On the high-frequency dominance class it gives
+\(W(f*\widetilde f)\geq R[f]-2\log\pi\|f\|_2^2\); a sufficient
+additional condition is \(R[f]\geq2\log\pi\|f\|_2^2\).
+\end{remark}
+
+\subsection{Three Elementary Estimates and Their Limits}
+\label{v4-arith:w6-a:bounded-interval:ruled-out}
+
+\begin{proposition}[projection to compact Fourier support]
+\label{v4-arith:w6-a:prop:rule-out-projection}
+If a Paley--Wiener Fourier transform vanishes for every real
+\(t>t_*\), it is identically zero. Thus exact projection to
+core-supported Fourier transforms leaves only the zero test in
+this entire-function class.
+\end{proposition}
+\begin{proof}
+The Fourier transform is entire. Its zeros on the open real interval
+\((t_*,\infty)\) have accumulation points in its domain, so the
+identity theorem applies.
+\end{proof}
+
+\begin{proposition}[a majorant gives a sufficient bound]
+\label{v4-arith:w6-a:prop:rule-out-majorant}
+For any non-negative measurable \(h\geq-g\) on \([-t_*,t_*]\),
+put \(A_h[f]=\int_{-t_*}^{t_*}|\widehat f(t)|^2h(t)\,dt\), assuming
+this integral is finite. Then \(A[f]\leq A_h[f]\). Consequently
+\[
+\frac{A_h[f]}{2\pi}+2\log\pi\|f\|_2^2
+ \leq\frac{B[f]}{2\pi}+R[f]
+\]
+is sufficient for \((\star)\). It is not asserted to be necessary.
+\end{proposition}
+\begin{proof}
+Integrate the pointwise inequality against \(|\widehat f|^2\geq0\).
+Replacing the left-hand side by a larger quantity proves the stated
+implication. For the constant majorant \(h=|g(0)|\), this also gives
+\(A[f]\leq2t_*|g(0)|\sup_{|t|\leq t_*}|\widehat f(t)|^2\),
+the bound used in the high-frequency dominance condition.
+\end{proof}
+
+\begin{proposition}[support bound]
+\label{v4-arith:w6-a:prop:rule-out-pw-shrinkage}
+If \(f\) is supported in \([-T',T']\), then
+\(\sup_t|\widehat f(t)|^2\leq2T'\|f\|_2^2\). In particular
+\(A[f]\leq4t_*T'|g(0)|\|f\|_2^2\).
+These estimates alone give no bound on \(R[f]\).
+\end{proposition}
+\begin{proof}
+Cauchy--Schwarz gives the Fourier supremum bound, and substitution
+in the preceding majorant estimate gives the bound for \(A[f]\).
+The calculation has used only \(f\), its support and the kernel
+\(g\); it has not estimated the polar or finite-prime terms in \(R[f]\).
+\end{proof}
+
+\begin{remark}[scope of the estimates]
+\label{v4-arith:w6-a:rem:three-rule-outs}
+The projection statement is an obstruction to exact compact Fourier
+support. The majorant and support estimates are useful sufficient
+bounds. They do not exclude other elementary estimates or prove
+that every approach to \((\star)\) must take a prescribed form.
+\end{remark}
+
+\section{Auxiliary Positivity and Full Weil Positivity}
+\label{v4-arith:w6-a:irreducible}
+
+\begin{theorem}[auxiliary positivity and the remaining signed form]
+\label{v4-arith:w6-a:thm:irreducible-ATP}
+On \(\mathscr A_{\mathrm{HFD}}\), one has
+\(G(f)\geq0\). On the full Weil test domain, positivity of
+\(W(f*\widetilde f)\) is equivalent to \((\star)\), including its
+norm, polar and finite-prime terms. The first assertion does not
+establish the second.
+\end{theorem}
+\begin{proof}
+The first assertion is Theorem~\ref{v4-arith:w6-a:thm:HFD-ATP}.
+The second is the signed identity
+\eqref{v4-arith:w6-a:eq:weil-rearranged}.
+\end{proof}
+
+\begin{remark}[constructed quantities]
+\label{v4-arith:w6-a:rem:honest-form}
+The Hurwitz series proves monotonicity of \(g\), and its unique
+positive zero defines the non-negative energies \(A[f]\) and
+\(B[f]\). Their difference computes \(G(f)\) exactly. The
+high-frequency dominance estimate proves positivity of this
+auxiliary form on its stated class. The full inequality
+\((\star)\) remains a separate question on the full Weil test class.
+\end{remark}
+
+\subsection{Further Comparison Problems}
+\label{v4-arith:w6-a:irreducible:open-obstructions}
+
+\begin{remark}[zero distributions, Gaussian tests and spectral spaces]
+\label{v4-arith:w6-a:rem:live-constructions}
+Three natural further constructions concern the actual zero divisor,
+Gaussian families, and Hermite--Biehler or de Branges spaces. A
+zero-distribution argument must estimate the unconditional functional
+in \eqref{v4-arith:w6-a:eq:weil-rearranged}, before specializing the
+zeros to real ordinates. Gaussian calculations must retain the
+finite-prime and polar terms and justify passage from their test
+family to the desired full class. A spectral-space approach requires
+an actual positive kernel and a map identifying its form with the
+signed Weil functional; writing a kernel formula alone proves no
+such identification. None of these comparisons is supplied by the
+core-tail decomposition.
+\end{remark}
+
+\begin{remark}[relation to the full Weil form]
+\label{v4-arith:w6-a:rem:compare-w5}
+Chapter~\ref{v4-arith:w5-a:chapter} fixes the signed normalization.
+The present kernel calculation adds explicit estimates for \(G\).
+To use them for full positivity one must still establish
+\(R[f]+G(f)\geq2\log\pi\|f\|_2^2\) on the required full test class.
+\end{remark}
+
+\section{The Remaining Construction}
+\label{v4-arith:w6-a:summary}
+
+\begin{remark}[the exact positivity problem]
+\label{v4-arith:w6-a:rem:beilinson-closing}
+The positive result is the explicit auxiliary-form estimate on the
+high-frequency dominance class. The original problem is positivity
+of the full signed Weil form, with its polar and finite-prime
+terms, on the full test class. Its equivalence with RH does not turn
+the auxiliary estimate into a proof. A further construction must
+control \(R[f]+G(f)-2\log\pi\|f\|_2^2\) on that domain.
+\end{remark}

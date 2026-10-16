@@ -1,0 +1,660 @@
+\chapter{Bar--cobar and coefficient topology}
+\label{v4-ch:bar-cobar-topology}
+
+A nonempty ordered configuration of \(n\) positions has \(n-1\) gaps.
+A word of positive geometric factors therefore has length at most
+\(n\). This bound makes the cut bar and cobar finite at each
+configuration. It does not bound the length of a resolution inside
+one coefficient module. Such a resolution can be infinite even at
+the empty configuration, where there are no geometric gaps.
+
+We first prove the duality controlled by positive cuts. We then
+construct the coefficient bar with its signs and augmentation,
+and determine when it computes a derived tensor. The final sections
+compare three ways of allowing infinite words. A series may
+terminate at every finite precision while having unbounded length.
+An unrestricted product permits still more series but can destroy
+the continuity of an otherwise valid comparison.
+
+\section{Positive words and finite duality}
+\label{v4-sec:bar-positive}
+
+Use the word category \(\mathcal W_X\), cut product
+\(\star_{\mathrm{cut}}\), and empty unit \(K\) of
+Chapter~\ref{v4-ch:words-collisions-units}. Write \(\star\) for this
+product throughout the present section. For \(p\geq0\), put
+\[
+ \mathcal W_{\geq p}=\{F\in\mathcal W_X:F_n=0\text{ for }n<p\}.
+\]
+Thus \(\mathcal W_{\geq1}\) consists of the positive systems.
+
+\begin{lemma}[Finite positive words]\label{v4-lem:bar-finite-words}
+The cut product sends
+\(\mathcal W_{\geq p}\times\mathcal W_{\geq q}\) to
+\(\mathcal W_{\geq p+q}\). In particular,
+\(F_1\star\cdots\star F_r\star M\) vanishes in arity \(n<r\)
+when all \(F_i\) are positive, whether or not \(M\) is positive.
+If \(V_r\in\mathcal W_{\geq r}\), then
+\[
+ \bigoplus_{r\geq0}V_r\ \xrightarrow{\sim}\ \prod_{r\geq0}V_r,
+ \qquad
+ \left(\bigoplus_{r\geq0}V_r\right)_n
+       =\bigoplus_{r=0}^n(V_r)_n.
+\]
+\end{lemma}
+
+\begin{proof}
+A nonzero summand in a cut product assigns at least \(p\) positions
+to its first factor and \(q\) to its second. The mixed assertion
+uses one position for each positive factor and none necessarily
+for \(M\).
+
+The finite sums \(V_n=\bigoplus_{r\leq n}(V_r)_n\) form a word
+system: for a monotone surjection \([n]\twoheadrightarrow[m]\),
+exact extraordinary pullback takes this sum to
+\(\bigoplus_{r\leq n}(V_r)_m\), whose terms with \(r>m\) vanish.
+Since these pullbacks preserve colimits, \(V\) is the coproduct.
+A family of maps \(T\to V_r\) gives, in each arity, a map to the
+finite product defining \(V_n\). These maps commute with collisions
+after every projection, and hence commute with them as maps to
+\(V\). The same argument applies to coherent homotopies. It proves
+the product universal property. No assertion about pullback of an
+arbitrary infinite product is used.
+\end{proof}
+
+An augmented associative algebra in \(\mathcal W_X\) is an
+associative algebra object \(A\) with an algebra map \(A\to K\).
+It is \emph{connected} if this map is an equivalence at the empty
+configuration. Its augmentation ideal
+\(a=\operatorname{fib}(A\to K)\) is then positive, and the unit
+splits \(A\simeq K\oplus a\). For a connected coaugmented coalgebra
+\(C\), put \(c=\operatorname{cofib}(K\to C)\).
+All algebra and coalgebra objects in this section retain their
+higher associativity or coassociativity homotopies.
+
+The \emph{cut bar} \(B_{\mathrm{cut}}A\) is the geometric
+realization of the two-sided simplicial bar of \(K,A,K\).
+Its faces multiply or augment, and its degeneracies insert the
+unit. The \emph{cut cobar} \(\Omega_{\mathrm{cut}}C\) is the
+totalization of the dual cosimplicial construction, whose cofaces
+comultiply or coaugment and whose codegeneracies apply the counit.
+For positive reduced parts their normalized terms are
+\begin{equation}\label{v4-eq:bar-cut-normalized}
+ \begin{split}
+ B_{\mathrm{cut}}A&=K\oplus\bigoplus_{r\geq1}(a[1])^{\star r},\\
+ \Omega_{\mathrm{cut}}C&=K\oplus\bigoplus_{r\geq1}(c[-1])^{\star r}.
+ \end{split}
+\end{equation}
+These expressions include the normalized differentials and higher
+attaching maps. They do not replace a homotopy-coherent algebra by
+its graded object with zero differential.
+
+\begin{theorem}[Finite cut duality]\label{v4-thm:bar-cut-duality}
+Cut bar and cut cobar induce inverse equivalences between connected
+augmented associative algebras and connected coaugmented
+coassociative coalgebras in \((\mathcal W_X,\star,K)\).
+Each normalized construction in arity \(n\) has at most \(n\)
+positive factors. No global bound on word length or on coefficient
+cohomological degrees is imposed.
+\end{theorem}
+
+\begin{proof}
+The differential-module categories are presentable, and the
+extraordinary pullbacks defining \(\mathcal W_X\) are accessible
+and preserve colimits. Their limit is presentable. The associative
+bar--cobar adjunction therefore supplies coherent maps
+\[
+ u_A:A\longrightarrow\Omega_{\mathrm{cut}}B_{\mathrm{cut}}A,
+ \qquad
+ v_C:B_{\mathrm{cut}}\Omega_{\mathrm{cut}}C\longrightarrow C.
+\]
+Here bar is left adjoint to totalized cobar. This adjunction uses
+the full mapping spaces of algebra and coalgebra objects.\footnote{
+J.~Lurie, \emph{Higher Algebra}, Theorem~5.2.2.17 and
+Remark~5.2.2.19, pp.~827--828,
+\href{https://people.math.harvard.edu/~lurie/papers/HA.pdf}{author's text}.
+Warning~5.2.2.16 explains why no preservation of both arbitrary
+realizations and totalizations by the tensor product is assumed.}
+
+Splitting off the unit removes the degenerate simplicial terms;
+the normalized term in degree \(r\) is \(a^{\star r}[r]\).
+The normalized cosimplicial term is \(c^{\star r}[-r]\).
+By Lemma~\ref{v4-lem:bar-finite-words}, the latter totalization
+tower stabilizes at step \(n\) in arity \(n\). Its finite limits
+commute with collision pullback. The resulting compatible family
+is the totalization in \(\mathcal W_X\): maps into a word system
+are the limit of its component mapping spaces, and that limit
+commutes with the cosimplicial limit. This proves
+\eqref{v4-eq:bar-cut-normalized} on the stated carrier.
+
+Filter \(A\) increasingly by \(F_0A=K\), \(F_rA=A\) for
+\(r\geq1\). In its associated graded, \(a\) has weight one and
+zero multiplication. The induced filtration on
+\(\Omega_{\mathrm{cut}}B_{\mathrm{cut}}A\) counts original
+\(a\)-factors. At two factors, the single gap is either inside a
+bar block or between two cobar factors. Splitting the block joins
+these two copies of the coefficient by an identity map, with its
+suspension sign. For \(r\) factors there are \(r-1\) such gaps.
+The coefficient differential and block splitting preserve
+\(r\); multiplication of original factors lowers it. The
+associated graded is thus the cube that changes an inside gap to
+an outside gap, with an identity map on the common coefficient at
+each edge. The suspension signs give opposite signs around each
+square. It is the tensor product of \(r-1\) two-term identity
+complexes, tensored with the shifted coefficient
+\(a^{\star r}\). For \(r>1\) it is contractible. The weights zero
+and one are \(K\) and \(a\), and the associated graded map of
+\(u_A\) is the identity on these terms.
+
+For \(C\), use the decreasing filtration
+\(F^0C=C\), \(F^1C=c\), \(F^2C=0\), where the splitting by the
+counit regards \(c\) as a subobject. The associated graded reduced
+coalgebra is primitive. In \(B_{\mathrm{cut}}\Omega_{\mathrm{cut}}C\),
+the corresponding filtration counts original \(c\)-factors.
+Cobar splitting increases this count, while bar multiplication
+preserves it. On the associated graded the same gap cube runs from
+outside bar cuts to inside product gaps. Its weights greater than
+one are contractible; \(v_C\) is the identity on the surviving
+weights zero and one.
+
+After evaluation in arity \(n\), both filtrations are finite:
+terms with more than \(n\) original positive factors vanish.
+Their cofiber sequences prove that \(u_A\) and \(v_C\) are
+equivalences there. Component evaluation is jointly conservative,
+so they are equivalences of word systems. The construction in
+filtered objects retains coherent maps. Higher products lower the
+first filtration and higher coproducts raise the second; the same
+associated graded calculation applies. The adjunction gives the
+triangle identities and hence the asserted equivalence.
+\end{proof}
+
+\begin{corollary}\label{v4-cor:bar-vacuum-under}
+For the vacuum coalgebra \(J\) of
+Proposition~\ref{v4-prop:word-vacuum-coalgebra}, connected cut
+coalgebras equipped with a coalgebra map \(J\to C\) correspond to
+connected augmented cut algebras equipped with an algebra map
+\(\Omega_{\mathrm{cut}}J\to A\).
+\end{corollary}
+
+\begin{proof}
+An equivalence of categories induces an equivalence on the
+categories of objects under any fixed object. Apply
+Theorem~\ref{v4-thm:bar-cut-duality} to the object \(J\).
+\end{proof}
+
+Thus the local vacuum marking survives as an algebra map with
+source \(\Omega_{\mathrm{cut}}J\). It is different from the
+augmentation \(A\to K\). The theorem concerns the cut tensor on
+words. A comparison with the full ordered atlas, or with prescribed
+field operations, must preserve the additional geometry and maps
+identified in Chapter~\ref{v4-ch:words-collisions-units}.
+
+\section{The coefficient bar and its twisting maps}
+\label{v4-sec:bar-coefficients}
+
+Let \(R\) be a commutative ring and \(A\) a unital differential
+graded \(R\)-algebra with a specified augmentation
+\(\epsilon:A\to R\). Write \(\bar A=\ker\epsilon\), so
+\(A=R\oplus\bar A\) as a complex. All tensor products in this
+section are ordinary tensors over \(R\). The cohomological
+differential has degree one. Put \(sV=V[1]\) and \(tV=V[-1]\);
+the maps \(s\) and \(t\) have degrees minus one and one.
+
+The \emph{coefficient bar} is
+\begin{equation}\label{v4-eq:bar-coefficient}
+ B_R A=T_R^c(s\bar A)
+       =R\oplus\bigoplus_{r\geq1}(s\bar A)^{\otimes_R r}.
+\end{equation}
+The superscript \(c\) denotes the tensor coalgebra: its coproduct
+deconcatenates each word at every position, including both ends.
+The empty word gives the coaugmentation and counit. Its reduced
+coproduct \(\bar\Delta\) omits the end cuts. A coaugmented
+coalgebra is \emph{conilpotent} if every element of its reduced
+part is killed by a sufficiently long iterated reduced coproduct.
+This property is called \emph{conilpotence}.
+Finite words make \(T_R^c(s\bar A)\) conilpotent.
+
+Define its differential as the coderivation whose components with
+one output factor are
+\begin{equation}\label{v4-eq:bar-coefficient-signs}
+ b_1(sa)=-s(d_Aa),\qquad
+ b_2(sa,sb)=(-1)^{|a|}s(ab).
+\end{equation}
+Inserting either degree-one component after
+\(w_1,\ldots,w_i\) has sign
+\((-1)^{|w_1|+\cdots+|w_i|}\). On degree-zero algebra inputs,
+the multiplication differential is therefore
+\[
+ b[a_1|\cdots|a_r]
+    =\sum_{i=1}^{r-1}(-1)^{i-1}
+                 [a_1|\cdots|a_ia_{i+1}|\cdots|a_r].
+\]
+The notation \([a_1|\cdots|a_r]\) abbreviates the tensor of the
+suspended entries; its degree is \(\sum_i|a_i|-r\).
+
+For a coaugmented counital differential graded coalgebra \(C\),
+write \(\bar C=\ker(C\to R)\). Its direct-sum coefficient cobar is
+the tensor algebra
+\begin{equation}\label{v4-eq:bar-coefficient-cobar}
+ \Omega_R C=T_R(t\bar C),\qquad
+ d(tc)=-t(d_Cc)+
+       \sum_{\bar\Delta c=\sum c'\otimes c''}
+                    (-1)^{|c'|+1}(tc')(tc'').
+\end{equation}
+The displayed map extends by the graded Leibniz rule. The
+coalgebra coproduct takes values in the ordinary algebraic tensor,
+so it gives a finite sum on each element.
+
+\begin{proposition}\label{v4-prop:bar-coefficient-identities}
+The differentials in \eqref{v4-eq:bar-coefficient-signs} and
+\eqref{v4-eq:bar-coefficient-cobar} square to zero. For conilpotent
+\(C\), there are natural bijections
+\[
+ \operatorname{Hom}_{\mathrm{dgAlg}_R}(\Omega_R C,A)
+ \cong\operatorname{Tw}_R(C,A)
+ \cong\operatorname{Hom}_{\mathrm{dgCoalg}_R}(C,B_RA),
+\]
+where algebra maps preserve augmentations, coalgebra maps preserve
+coaugmentations and counits, and \(\operatorname{Tw}_R(C,A)\)
+consists of degree-one maps \(\tau:\bar C\to\bar A\) satisfying
+\begin{equation}\label{v4-eq:bar-twisting}
+ d_A\tau+\tau d_C+\mu_A(\tau\otimes\tau)\bar\Delta=0.
+\end{equation}
+The tensor of the two degree-one maps contributes
+\((-1)^{|c'|}\) on \(c'\otimes c''\).
+\end{proposition}
+
+\begin{proof}
+For the bar square, disjoint insertions cancel by their degree-one
+signs. The overlapping multiplication terms on three inputs give
+\((-1)^{|b|}s((ab)c-a(bc))\). Mixed terms vanish by the Leibniz
+identity for \(d_A\), and the internal square is zero. These are
+all possibilities. The corresponding cobar calculation uses that
+\(\bar\Delta\) is a chain map and is coassociative: the two orders
+of splitting one factor have opposite signs. Coderivation and
+derivation compatibility hold by construction.
+
+A map from the tensor algebra \(\Omega_RC\) is determined by
+\(tc\mapsto\tau(c)\). Substitution in
+\eqref{v4-eq:bar-coefficient-cobar} shows that its chain-map
+condition is exactly \eqref{v4-eq:bar-twisting}. A coalgebra map
+to the tensor coalgebra is determined by its length-one component
+\(s\tau\); its length-\(r\) component must be
+\[
+ (s\tau)^{\otimes r}\bar\Delta^{(r-1)}.
+\]
+Conilpotence makes the sum of these components finite on each
+input. Coassociativity proves the coalgebra identity. The
+length-one part of its chain-map equation is
+\eqref{v4-eq:bar-twisting}, with
+\eqref{v4-eq:bar-coefficient-signs}; the coderivation identity
+then proves the equation in every length. These constructions are
+inverse and natural.
+\end{proof}
+
+This is a strict adjunction \(\Omega_R\dashv B_R\) for algebraic
+tensor constructions and conilpotent coalgebras. It is distinct
+from the general enhanced adjunction between geometric bar and
+totalized cobar used in the finite cut theorem. On positive word
+systems the finiteness theorem makes both comparisons equivalences.
+
+\begin{proposition}[An algebra resolution]\label{v4-prop:bar-cobar-resolution}
+For every augmented differential graded \(R\)-algebra \(A\),
+the algebra map
+\(\varepsilon_A:\Omega_RB_RA\to A\) that sends \(t(sa)\) to
+\(a\), and a cobar generator represented by a longer bar word
+to zero, is a quasi-isomorphism.
+\end{proposition}
+
+\begin{proof}
+The desuspension \(B_RA\to A\) is a twisting map, so the preceding
+proposition gives \(\varepsilon_A\). Filter by the number \(r\)
+of original \(\bar A\)-entries. The target filtration is
+\(F_0A=R\), \(F_rA=A\) for \(r\geq1\). The associated graded
+source is the gap cube of the finite cut proof, now with
+coefficient \(\bar A^{\otimes_R r}\). Each gap contributes a
+two-term identity complex. Contracting the first gap contracts
+their tensor product for \(r>1\), over any ring \(R\), without
+a flatness hypothesis. In weights zero and one,
+\(\varepsilon_A\) is the identity. Induction through the finite
+filtration stages proves a quasi-isomorphism at each stage.
+Every element belongs to some stage, and filtered unions of
+\(R\)-modules are exact. Passing to that union proves the result.
+No convergence of an infinite product is asserted.
+\end{proof}
+
+\section{Which derived tensor the bar computes}
+\label{v4-sec:bar-derived-tensor}
+
+A complex \(V\) of \(R\)-modules is \emph{\(K\)-flat} if
+\(N\otimes_R V\) is acyclic for every acyclic complex \(N\).
+This condition concerns the whole complex; for an unbounded
+complex, degreewise flatness alone does not suffice.
+
+\begin{proposition}\label{v4-prop:bar-derived-tensor}
+If \(\bar A\) is \(K\)-flat over \(R\), then
+\[
+ B_RA\simeq R\otimes_A^{\mathbf L}R.
+\]
+The two modules \(R\) use the specified augmentation of \(A\).
+\end{proposition}
+
+\begin{proof}
+Let \(\tau:B_RA\to A\) desuspend a word of length one and vanish
+elsewhere. On \(L=A\otimes_R B_RA\), put
+\[
+ d_L(a\otimes c)=d_Aa\otimes c+(-1)^{|a|}a\otimes bc
+      -(-1)^{|a|}\sum a\tau(c_{(1)})\otimes c_{(2)}.
+\]
+The twisting identity proves \(d_L^2=0\). Let
+\(\epsilon_L:L\to R\) augment the length-zero term and vanish
+on positive lengths. With \(\bar a=a-\epsilon(a)1\), define
+\[
+ h\bigl(a\otimes[ a_1|\cdots|a_r]\bigr)
+       =-1\otimes[\bar a|a_1|\cdots|a_r].
+\]
+The internal terms cancel in \(d_Lh+hd_L\), as do contractions
+away from the first slot. The first-slot term gives
+\(\bar a\otimes c\); if \(r>0\), the terms that merge the
+inserted slot with the next one leave \(\epsilon(a)\otimes c\).
+Thus \(d_Lh+hd_L=1-\iota\epsilon_L\), where \(\iota\) includes
+the empty word. This proves \(L\simeq R\).
+
+The increasing length filtration has quotients
+\(A\otimes_R(s\bar A)^{\otimes_R r}\). Tensoring one with an
+acyclic right \(A\)-module \(N\) gives
+\(N\otimes_R(s\bar A)^{\otimes_R r}\), which is acyclic by
+\(K\)-flatness. The filtration is split on graded modules;
+induction and exact filtered unions show that \(L\) is a
+\(K\)-flat left \(A\)-resolution. Tensoring it with the right
+augmentation module kills the first-slot term and leaves \(B_RA\).
+\end{proof}
+
+For a nonunital differential graded algebra \(P\), the tensor bar
+on \(sP\) means the reduced bar of the unitization \(R\oplus P\),
+augmented to \(R\). It need not be the reduced bar of a unital
+algebra structure already present on \(P\). Indeed, if \(P\) has
+a closed unit \(e\), inserting \(se\) at the beginning of a
+nonempty word contracts this tensor bar onto \(R\):
+\(b(se\otimes c)+se\otimes bc=c\). A reduced bar of \(P\)
+itself instead requires a chosen augmentation and its kernel.
+This distinction determines the meaning of the endpoint bars in
+Chapter~\ref{v4-arith:gluing:chapter}.
+
+\begin{example}[An infinite bar at the empty configuration]
+\label{v4-ex:bar-empty-infinite}
+Take \(A=k\oplus ka\), with \(|a|=1\), zero differential and
+\(a^2=0\). Then \(v=sa\) has degree zero and
+\[
+ B_kA=\bigoplus_{r\geq0}kv^{\otimes r},\qquad b=0.
+\]
+Put this algebra at the empty component of \(\mathcal W_X\)
+and zero at every positive arity. Its cut bar is exactly this
+coefficient bar at the empty component. The augmentation is not
+an equivalence there, so the algebra is outside the connected
+class of Theorem~\ref{v4-thm:bar-cut-duality}. Arbitrarily long
+coefficient words survive in the same cohomological degree.
+\end{example}
+
+\section{Length products and continuous Taylor maps}
+\label{v4-sec:bar-length-completion}
+
+For \(R\)-modules \(V_n\), the direct sum \(\bigoplus_nV_n\) contains
+finite sums of words, whereas \(\prod_nV_n\) contains an arbitrary
+word in every length. Give each \(V_n\) the discrete topology and
+the product its product topology. A linear map of direct sums
+has components \(F_{mn}:V_n\to W_m\).
+
+\begin{proposition}[Continuity in length]\label{v4-prop:bar-row-finite}
+A linear map \(F:\bigoplus_nV_n\to\bigoplus_mW_m\) extends to
+a continuous map of the products of discrete modules if and only
+if, for every \(m\), only finitely many \(F_{mn}\) are nonzero.
+Such an extension is unique.
+
+More generally, for a prime \(\ell\), let \(R=\mathbb Z_\ell\), give each \(V_n\) its
+\(\ell\)-adic topology, and assume every \(W_m\) is separated
+and complete for that topology. An \(R\)-linear \(F\) extends
+continuously to the products if and only if, for each \(m,j\),
+\[
+ F_{mn}(V_n)\subseteq\ell^jW_m
+       \quad\text{for all but finitely many }n.
+\]
+\end{proposition}
+
+\begin{proof}
+Continuity of the \(m\)-th coordinate at zero implies that its
+kernel contains a basic product neighborhood. Outside finitely
+many input coordinates that neighborhood contains each whole
+module, so the corresponding \(F_{mn}\) vanish. Conversely,
+finite row sums define a continuous map coordinate by coordinate.
+
+For the adic statement, apply the same argument to the \(m\)-th
+output modulo \(\ell^jW_m\). The asserted condition makes
+\(\sum_nF_{mn}(x_n)\) converge in \(W_m\), uniformly modulo each
+\(\ell^j\); the finite remaining terms are continuous because
+they are \(R\)-linear. This constructs the extension. The direct
+sum is dense in the product, and the target is separated, proving
+uniqueness in both cases.
+\end{proof}
+
+A degree-zero coaugmentation-preserving map between tensor
+coalgebras is specified by its Taylor components
+\(f_r:V^{\otimes r}\to W\). Its value on a
+word is the sum over consecutive subdivisions, applying one
+\(f_r\) to each block. Every finite word has finitely many
+subdivisions, but an output of length one can receive inputs of
+every length. Proposition~\ref{v4-prop:bar-row-finite} detects
+precisely this possible failure of continuity.
+
+For example, let \(V=\mathbb Z v\) in degree zero and set
+\(f_r(v^{\otimes r})=v\) for every \(r\geq1\). The resulting
+coalgebra map is defined on finite words. The sums
+\(z_N=\sum_{r=1}^Nv^{\otimes r}\) converge in the product of
+discrete length spaces, but the length-one output is \(Nv\),
+which does not converge. In the relative identity example of
+Proposition~\ref{v4-arith:gluing:prop:noncontinuity}, these are
+the Taylor components of the actual endpoint comparison.
+
+A product also changes the recipient of deconcatenation. For
+\(\widehat T(V)=\prod_{r\geq0}V^{\otimes r}\), the natural
+recipient is
+\[
+ \prod_{p,q\geq0}(V^{\otimes p}\otimes V^{\otimes q}),
+\]
+with \((p,q)\)-component given by cutting length \(p+q\). It
+need not be \(\widehat T(V)\otimes\widehat T(V)\).
+Over a characteristic-zero field, take \(V=kv\) and the element
+\(z=\sum_{r\geq0}r!v^{\otimes r}\). Its coproduct coefficient
+matrix is \(((p+q)!)_{p,q\geq0}\). The leading \(d\)-square
+minor has determinant
+\[
+ \det\bigl((p+q)!\bigr)_{0\leq p,q<d}
+          =\prod_{i=0}^{d-1}(i!)^2\ne0.
+\]
+To see this, factor \(p!\) from row \(p\); the \(q\)-th column
+is then a monic polynomial of degree \(q\) in \(p\), so its
+determinant is the Vandermonde determinant. Every element of an
+algebraic tensor is a finite sum of separated tensors and gives
+a finite-rank coefficient matrix. Thus \(\Delta z\) cannot
+belong to that algebraic tensor.
+
+\section{Finite precision and derived inverse limits}
+\label{v4-sec:bar-adic-completion}
+
+Put \(R_j=\mathbb Z/\ell^j\), and let \(A_j\) be a compatible
+tower of augmented differential graded \(R_j\)-algebras. Write
+\(B_j=B_{R_j}A_j\). Define
+\begin{equation}\label{v4-eq:bar-adic-completion}
+ \widehat B=\varprojlim_jB_j,
+ \qquad
+ \widehat B\,\widehat\otimes\,\widehat B
+       :=\varprojlim_j(B_j\otimes_{R_j}B_j).
+\end{equation}
+These are specified inverse limits, with discrete finite-precision
+terms. No identification with another completed tensor is implicit.
+The recipient of an iterated coproduct with \(r\) outputs is
+\(\varprojlim_j B_j^{\otimes_{R_j}r}\).
+An element has only finitely many nonzero lengths at each
+precision, although that finite set can grow with \(j\).
+
+\begin{proposition}\label{v4-prop:bar-adic-maps}
+A compatible family of differential graded coalgebra maps
+\(F_j:B_j\to B'_j\) induces a continuous map
+\(\widehat F:\widehat B\to\widehat B'\) preserving the
+coproduct with the recipients in
+\eqref{v4-eq:bar-adic-completion}. If every \(F_j\) has a
+compatible strict inverse, then \(\widehat F\) is a continuous
+isomorphism.
+\end{proposition}
+
+\begin{proof}
+Define the map by its projections. The chain and coproduct
+identities hold after every projection and therefore in the
+inverse limit. The output at precision \(j\) depends only on
+the input at that precision, proving continuity. The compatible
+inverses define its continuous inverse in the same way.
+\end{proof}
+
+For \(A_j=R_j\oplus R_ja\) with the square-zero structure of
+Example~\ref{v4-ex:bar-empty-infinite}, the element
+\[
+ z=\sum_{r\geq1}\ell^rv^{\otimes r}
+\]
+belongs to \(\widehat B\). It is not elementwise conilpotent:
+for any number of cuts, a sufficiently long word has a nonzero
+coefficient in the corresponding tensor recipient. The Taylor
+map with \(f_r(v^{\otimes r})=v\) is nevertheless continuous
+on this restricted inverse limit. Its length-one value on \(z\)
+is \(\ell(1-\ell)^{-1}v\). At precision \(j\) this is a finite
+sum, so no analytic summation is part of its definition.
+
+The preceding proposition is about strict maps of complexes. A
+claim about their cohomology requires a different argument. For
+a countable tower of complexes \(M_j\), with transition maps
+\(q_j:M_{j+1}\to M_j\), define
+\[
+ R\!\varprojlim_jM_j
+   =\operatorname{Cone}\left(
+       \prod_jM_j\xrightarrow{1-T}\prod_jM_j\right)[-1],
+ \qquad (Tx)_j=q_jx_{j+1}.
+\]
+This is the derived inverse limit of the tower of module complexes.
+
+\begin{proposition}\label{v4-prop:bar-milnor}
+If every \(q_j\) is surjective in each cohomological degree,
+then the ordinary inverse limit represents this derived inverse
+limit. For each \(q\) there is an exact sequence
+\[
+ 0\longrightarrow\varprojlim{}^{1}_j H^{q-1}(M_j)
+ \longrightarrow H^q(\varprojlim_jM_j)
+ \longrightarrow\varprojlim_jH^q(M_j)\longrightarrow0,
+\]
+where \(\varprojlim{}^1\) is the cokernel of \(1-T\) on the
+product of the indicated cohomology groups.
+\end{proposition}
+
+\begin{proof}
+Surjectivity permits the recursive solution of
+\(x_j-q_jx_{j+1}=y_j\), starting with any \(x_1\). Thus
+\(1-T\) is degreewise surjective and its kernel is the ordinary
+inverse limit. The resulting short exact sequence of complexes
+identifies this kernel with the shifted cone. Products of modules
+are exact, so their cohomology is the product of the cohomologies.
+The long exact sequence of the cone gives the displayed sequence.
+\end{proof}
+
+In particular, commuting cohomology with the limit requires the
+stated \(\varprojlim{}^1\) term to vanish. Scalar extension need
+not commute with the limit either:
+\[
+ \mathbb Q_\ell\otimes_{\mathbb Z_\ell}
+       \varprojlim_j\mathbb Z_\ell/\ell^j=\mathbb Q_\ell,
+ \qquad
+ \varprojlim_j\left(
+       \mathbb Q_\ell\otimes_{\mathbb Z_\ell}
+                    \mathbb Z_\ell/\ell^j\right)=0.
+\]
+The first identity uses \(\ell\)-adic completeness; in the
+second, inverting \(\ell\) kills each finite quotient.
+
+\section{Analytic bounds and the other bar constructions}
+\label{v4-sec:bar-analytic-transverse}
+
+There is a useful analytic counterpart to the continuity criterion.
+For real or complex Banach spaces \(V,W\), use the completed
+projective tensor powers \(V^{\widehat\otimes_\pi r}\). For
+\(\rho>0\), let
+\[
+ T^1_\rho(V)=
+ \left\{(x_r)_{r\geq0}:
+          \sum_{r\geq0}\rho^r\|x_r\|_\pi<\infty\right\}.
+\]
+The displayed weighted sum is its norm, and the length-zero
+summand is the scalar field. Suppose continuous
+Taylor maps \(f_r:V^{\widehat\otimes_\pi r}\to W\) satisfy
+\(\|f_r\|\leq ML^{r-1}\) for constants \(M,L>0\).
+
+\begin{proposition}\label{v4-prop:bar-analytic-bound}
+The subdivision map determined by these Taylor maps, acting as
+the identity in length zero, extends to a bounded linear map
+\(T^1_\rho(V)\to T^1_\sigma(W)\) whenever
+\(L+\sigma M\leq\rho\). Its norm is at most one, and on the
+positive-length part it is at most \(\sigma M/\rho\).
+\end{proposition}
+
+\begin{proof}
+There are \(\binom{r-1}{m-1}\) consecutive subdivisions of a
+length-\(r\) word into \(m\) nonempty blocks. Each corresponding
+operator has norm at most \(M^mL^{r-m}\). Hence its entire
+weighted output has norm at most
+\[
+ \sum_{m=1}^r\binom{r-1}{m-1}
+       (\sigma M)^mL^{r-m}\|x_r\|_\pi
+   =\sigma M(L+\sigma M)^{r-1}\|x_r\|_\pi
+   \leq\frac{\sigma M}{\rho}\rho^r\|x_r\|_\pi.
+\]
+Sum over \(r\), retaining the scalar term separately. Finite
+words are dense, so the bounded extension is unique.
+\end{proof}
+
+This estimate concerns the Taylor map. Continuity of the
+differential and coproduct in the chosen recipients must also be
+checked. For example, give the completed two-index tensor the norm
+\(\sum_{p,q\geq0}\sigma^{p+q}\|z_{pq}\|_\pi\).
+Deconcatenation from radius \(\rho\) to this recipient, for
+\(\sigma<\rho\), is bounded by
+\(\sup_{r\geq0}(r+1)(\sigma/\rho)^r\). At equal radii that
+bound need not be finite. Algebraic identities on finite words
+extend when all maps in those identities have continuous
+extensions to a common domain and a separated target.
+
+A \emph{transverse bar} uses another specified monoidal category
+\((\mathcal E,\otimes_{\mathrm{tr}},\mathbf1_{\mathrm{tr}})\)
+and an augmented associative algebra \(T\) for that tensor.
+If geometric realizations exist and the tensor preserves them,
+its two-sided bar is
+\[
+ B_{\mathrm{tr}}T
+     =\mathbf1_{\mathrm{tr}}
+          \otimes_T^{\mathbf L}\mathbf1_{\mathrm{tr}}.
+\]
+Its augmentation, coefficient category and convergence refer to
+this tensor. The positive-cut bound applies to it only if an
+additional compatible positive filtration is supplied.
+
+Finally, for a covariant diagram \(F\) of complexes of \(k\)-vector
+spaces on a small category \(\mathcal I\), its simplicial
+replacement has terms
+\[
+ B_n(\mathcal I,F)
+       =\bigoplus_{i_0\to\cdots\to i_n}F(i_0).
+\]
+Its direct-sum total complex has
+\(\operatorname{Tot}^q=\bigoplus_{n\geq0}B_n^{q+n}\) and
+differential \((-1)^n d_{\mathrm{int}}+\sum_i(-1)^id_i\), where
+the \(d_i\) are the simplicial faces. It computes the derived colimit. In
+Chapter~\ref{v4-arith:3d-acs-E1bar}, the ordered incidence construction
+is of this kind. It needs an actual coefficient diagram on its
+indexing category. Identifying that derived colimit with the
+homology of a geometric or physical field theory is a further
+comparison.

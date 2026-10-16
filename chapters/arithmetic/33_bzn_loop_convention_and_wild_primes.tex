@@ -1,0 +1,1059 @@
+\chapter{BZN\({}^{\mathrm{Ar}}\): Loop-Space Convention and Wild-Prime Summands}
+\label{v4-arith:bzn-rcompletion}
+
+The arithmetic trace comparison has two separate requirements. First,
+the internal mapping stack
+\(\underline{\mathrm{Map}}(B\widehat{\mathbb Z},\mathcal X)\)
+must be compared with finite-quotient and ind-completed loop models
+under explicit formal-convergence hypotheses. Second, local arithmetic
+categories at the primes two and three must be constructed with their
+coefficient rings, extension groups and trace maps.
+
+The finite-algebra calculations below show why the second requirement
+cannot be replaced by a Loewy-length argument. A radical-square-zero
+algebra can have nonzero Ext in arbitrarily high degrees. Even when
+two local trace complexes are concentrated in degrees zero and one,
+their tensor over a common field can have a nonzero degree-two term.
+An integral distinct-primary model behaves differently, but needs
+actual integral carriers and flatness hypotheses. These calculations
+constrain the proposed arithmetic comparison; they do not construct
+its categories, trace maps or completed global assembly.
+
+\section{The Two Loop-Convention and Wild-Prime Conditions}
+\label{v4-arith:bzn-rcompletion:context}
+
+\subsection{Origin of the Two Conditions}
+
+The structural comparison of Chapter~\ref{v4-arith:comparison} at
+\S\ref{v4-arith:sw:wave2} contains four conditions in the F3.BZN\({}^{\mathrm{Ar}}\)
+reduction. Three of these (the formal-Noetherian
+extension of Gaitsgory--Rozenblyum; the cotangent-complex check for
+the Emerton--Gee stack; and the R1 relabeling) were absorbed into
+the R1 split \(\mathrm{R1.fin\text{-}type}+\mathrm{R1.formal}\)
+stated in Chapter~\ref{v4-arith:comparison}. The remaining two,
+not absorbed into the existing reduction, are:
+\begin{itemize}
+\item \textbf{R3.} Ambiguity in the loop-space convention.
+Three candidate definitions of
+\(L^{\mathrm{Ar}}\mathcal{X}=\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X})\)
+are in play:
+\begin{itemize}
+\item[\textbf{(a)}] \emph{Cofiltered-limit convention.}
+\(L^{\mathrm{Ar}}_{\mathrm{cofilt}}\mathcal{X}:=\varprojlim_{n}\mathrm{Map}(B(\mathbb{Z}/n),\mathcal{X})\),
+the limit over finite quotients of \(\widehat{\mathbb{Z}}\).
+\item[\textbf{(b)}] \emph{Internal-Hom convention.}
+\(L^{\mathrm{Ar}}_{\mathrm{intHom}}\mathcal{X}:=\underline{\mathrm{Map}}_{\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}}(B\widehat{\mathbb{Z}},\mathcal{X})\),
+the internal mapping stack in the \(\infty\)-category of formal
+Noetherian derived stacks.
+\item[\textbf{(c)}] \emph{Ind-construction convention.}
+\(L^{\mathrm{Ar}}_{\mathrm{ind}}\mathcal{X}:=\varinjlim_{n}\mathrm{Ind}\bigl(\mathrm{Map}(B(\mathbb{Z}/n),\mathcal{X}^{\mathrm{perf}})\bigr)\),
+the ind-completion over finite quotients, applied to the perfect
+locus and re-ind-extended.
+\end{itemize}
+These agree for \(\mathcal{X}\) finite-type smooth, but the formal
+Noetherian setting is sensitive to the order of limits and
+ind-completions.
+
+\item \textbf{R4.} Local arithmetic extension and trace data.
+For the proposed exceptional contributions at \(p=2,3\), specify
+the coefficient categories, compute their extensions and construct
+maps to their trace complexes. A positive-degree trace contribution
+is not a formal consequence of non-semisimplicity. Its global effect
+also depends on the common coefficient ring and tensor product.
+\end{itemize}
+
+\subsection{Logical Structure}
+
+R3 is a convention plus a convergence hypothesis: the internal Hom is
+the chosen definition, and comparison with the other two definitions
+requires compactness and formal-colimit compatibility. R4 includes
+the local categories, trace comparisons and tensor assembly. The
+explicit algebra calculations in Section~\ref{v4-arith:bzn-rcompletion:R4}
+show the additional hypotheses needed for a degree-one-only answer.
+
+\subsection{Notation}
+
+Throughout this chapter:
+\begin{itemize}
+\item \(\widehat{\mathbb{Z}}=\prod_{p}\mathbb{Z}_{p}\), the profinite
+completion of \(\mathbb{Z}\).
+\item \(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\): the
+\(\infty\)-category of formal Noetherian derived (pro-\'etale)
+stacks in the sense of Gaitsgory--Rozenblyum's AMS DAG monographs
+Vol.~II Part~III. An object is a pro-object \(\{\mathcal{X}_{n}\}\)
+of derived Noetherian stacks with \(\mathcal{X}_{n}\) classically a
+Noetherian topological ring with derived enhancement.
+\item For \(\mathcal{X}\in\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\),
+its formal completion \(\mathcal{X}^{\wedge}\) is the image of
+\(\mathcal{X}\) under the reflective embedding into the
+formal-Noetherian \(\infty\)-category.
+\item \(\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},p}\): the Iwahori Hecke
+category at the prime \(p\) (Bezrukavnikov arXiv:1209.0403).
+\item The coefficient field is specified in each calculation.
+The field \(\overline{\mathbb Q}_\ell\) has characteristic zero,
+whereas \(\overline{\mathbb F}_\ell\) has characteristic \(\ell\).
+An integral calculation below uses \(R=\mathbb Z\) instead.
+\item \(\mathrm{Ext}^{1}_{\mathcal{A}}\): \(\mathrm{Ext}^{1}\) in the
+abelian category \(\mathcal{A}\); subscripts indicate the ambient
+category.
+\end{itemize}
+
+\section{Structure of the Argument}
+\label{v4-arith:bzn-rcompletion:table}
+
+The argument for R3 has three parts; the argument for R4 has three
+further parts. For R3: the three candidate definitions are compared
+with explicit fibre-product formulas
+(Proposition~\ref{v4-arith:bzn-rcompletion:prop:R3-three-computations}); the fibre-product formulas
+are conditionally identified on formal Noetherian derived algebraic
+stacks via Gaitsgory--Rozenblyum and Postnikov-tower convergence
+(Theorem~\ref{v4-arith:bzn-rcompletion:thm:R3-three-agree}); the internal-Hom convention is
+adopted as canonical and confirmed consistent with Chapter~\ref{v4-arith:arith-bzn}
+(Definition~\ref{v4-arith:bzn-rcompletion:def:canonical-L-Ar},
+Proposition~\ref{v4-arith:bzn-rcompletion:prop:R3-matches-ch28}).
+For R4, the periodic resolution and the path-count formula compute
+extensions over explicit finite algebras. The four-term tensor
+formula then distinguishes common-field and distinct-primary integral
+assembly. Questions~\ref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2}
+and~\ref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3} specify the
+arithmetic comparisons that these elementary calculations leave open.
+
+\section{R3: Arithmetic Loop-Space Convention}
+\label{v4-arith:bzn-rcompletion:R3}
+
+\subsection{The Three Candidate Definitions}
+
+Throughout this section \(\mathcal{X}\in\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\)
+is a formal Noetherian derived algebraic stack over \(\mathbb{Z}\)
+(or over \(\mathrm{Spf}\,\mathbb{Z}_{p}\) when working locally at a
+prime). We demand:
+\begin{itemize}
+\item \(\mathcal{X}\) is locally presented as the formal completion
+of a derived Noetherian affine scheme
+\(\mathcal{X}_{0}=\mathrm{Spec}\,A_{0}^{\bullet}\) along an ideal
+\(I\subset\pi_{0}(A_{0}^{\bullet})\);
+\item the cotangent complex \(\mathbb{L}_{\mathcal{X}}\) has finite
+Tor-amplitude \([a,b]\) over the structure sheaf;
+\item the Postnikov tower \(\pi_{\leq n}\mathcal{X}\to\mathcal{X}\)
+stabilises in each tor-layer (equivalently, \(\mathcal{X}\) is
+\(t\)-bounded in the sense of Gaitsgory--Rozenblyum Vol.~I~\S2).
+\end{itemize}
+For the arithmetic target these conditions must be checked
+for the Selmer-derived stack
+\(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\); the local
+Emerton--Gee theorem supplies only the local formal inputs.
+
+\begin{definition}[the three candidate arithmetic free loop spaces]
+\label{v4-arith:bzn-rcompletion:def:three-candidates}
+For \(\mathcal{X}\in\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\), define
+\begin{align}
+L^{\mathrm{Ar}}_{\mathrm{cofilt}}\mathcal{X}
+&\;:=\;\varprojlim_{n\geq 1}\mathrm{Map}\bigl(B(\mathbb{Z}/n\mathbb{Z}),\mathcal{X}\bigr),\\
+L^{\mathrm{Ar}}_{\mathrm{intHom}}\mathcal{X}
+&\;:=\;\underline{\mathrm{Map}}_{\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}}\bigl(B\widehat{\mathbb{Z}},\mathcal{X}\bigr),\\
+L^{\mathrm{Ar}}_{\mathrm{ind}}\mathcal{X}
+&\;:=\;\varinjlim_{n\geq 1}\mathrm{Ind}\bigl(\mathrm{Map}(B(\mathbb{Z}/n\mathbb{Z}),\mathcal{X}^{\mathrm{perf}})\bigr),
+\end{align}
+where:
+\begin{itemize}
+\item in (a) the limit is along the cofiltered system
+\(\{\mathbb{Z}/n\}_{n\in\mathbb{N}}\) under divisibility;
+\item in (b) the internal mapping stack is computed in the
+\(\infty\)-category \(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\) of
+formal Noetherian derived pro-\'etale stacks;
+\item in (c) \(\mathcal{X}^{\mathrm{perf}}\) denotes the perfect
+locus (dualisable objects in the formal quasi-coherent
+derived category), and \(\mathrm{Ind}\) is the ind-completion in
+stable presentable \(\infty\)-categories.
+\end{itemize}
+\end{definition}
+
+\subsection{Explicit Computation of the Three Candidate Definitions}
+
+\begin{proposition}[three candidate loop-space formulas]
+\label{v4-arith:bzn-rcompletion:prop:R3-three-computations}
+\emph{Conjectural statement.} Let \(\mathcal{X}\in\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\)
+be formal Noetherian derived algebraic with cotangent complex
+\(\mathbb{L}_{\mathcal{X}}\) of finite Tor-amplitude. Then:
+\begin{enumerate}
+\item \emph{Cofiltered-limit formula.}
+\begin{equation}
+L^{\mathrm{Ar}}_{\mathrm{cofilt}}\mathcal{X}
+\;=\;\varprojlim_{n}\Bigl(\mathcal{X}\times_{\mathcal{X}\times\mathcal{X}}\mathcal{X}_{(n)}\Bigr),
+\end{equation}
+where \(\mathcal{X}_{(n)}\subset\mathcal{X}\times\mathcal{X}\) is the
+\(n\)-th formal neighbourhood of the diagonal.
+\item \emph{Internal-Hom formula.}
+\begin{equation}
+L^{\mathrm{Ar}}_{\mathrm{intHom}}\mathcal{X}
+\;=\;\mathcal{X}\times_{\mathcal{X}\times\mathcal{X}}^{\mathrm{d},\wedge}\mathcal{X},
+\end{equation}
+the derived formal self-intersection of \(\mathcal{X}\) along its
+diagonal, computed in \(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\)
+with the derived tensor product taken over the formal diagonal.
+\item \emph{Ind-construction formula.}
+\begin{equation}
+L^{\mathrm{Ar}}_{\mathrm{ind}}\mathcal{X}
+\;=\;\mathrm{Ind}\Bigl(\varinjlim_{n}\mathcal{X}^{\mathrm{perf}}\times_{\mathcal{X}^{\mathrm{perf}}\times\mathcal{X}^{\mathrm{perf}}}\mathcal{X}^{\mathrm{perf}}_{(n)}\Bigr).
+\end{equation}
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Evidence]
+(1) The mapping stack from \(B(\mathbb{Z}/n)\) to \(\mathcal{X}\) is
+the fixed-point locus of the order-\(n\) automorphism action, which
+is the derived fibre product along the \(n\)-th iterate of the
+diagonal. In characteristic zero (for the rational structure at
+each prime) this reduces to the formal neighbourhood
+\(\mathcal{X}_{(n)}\). Taking the limit over \(n\) under divisibility
+restricts to the formal self-intersection in the limit.
+
+(2) Internal Hom in \(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\) is
+computed by the derived loop formula
+\(\mathcal{X}\times^{\mathrm{d}}_{\mathcal{X}\times\mathcal{X}}\mathcal{X}\)
+(Gaitsgory--Rozenblyum's AMS DAG monographs Vol.~I Ch.~8
+Thm.~8.1.1.9); the formal-Noetherian decoration adds a
+completion along the diagonal, yielding the indicated
+\(\times^{\mathrm{d},\wedge}\).
+
+(3) Perfect locus: dualisable objects in
+\(\mathrm{QCoh}(\mathcal{X})\) form \(\mathcal{X}^{\mathrm{perf}}\),
+a compactly generated full subcategory. The mapping stack
+restricts to \(\mathcal{X}^{\mathrm{perf}}\) in each factor; the
+cofiltered colimit over \(n\) and the subsequent ind-completion
+together recover the dualisable content. By the same derived
+fibre-product formula restricted to perfects plus ind-completion,
+we obtain the stated expression.
+\end{proof}
+
+\begin{remark}[separation of the three limits]
+\label{v4-arith:bzn-rcompletion:rem:three-formulas}
+The three formulas differ in the order of \((\varinjlim/\varprojlim)\)
+operations and in whether they apply to \(\mathcal{X}\) or to
+\(\mathcal{X}^{\mathrm{perf}}\). Equality of the three models
+requires convergence of the Postnikov tower, generation by perfect
+objects under ind-completion, and compatibility of formal completion
+with the profinite limit.
+\end{remark}
+
+\subsection{Conventions for the Three Loop Models}
+
+\paragraph{Conventions.} Derived mapping stack
+convention follows Gaitsgory--Rozenblyum Vol.~I Ch.~8; profinite
+classifying-stack convention follows Deligne 1990 \S 5; the two are
+compatible via
+\(B\widehat{\mathbb{Z}}=\varprojlim_{n}B(\mathbb{Z}/n)\).
+
+\paragraph{Ambient category.} All three candidate
+constructions take values in the \(\infty\)-category
+\(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\) of formal Noetherian
+derived pro-\'etale stacks. Definitions (a) and (b) are manifestly
+in this category; (c) enters via ind-completion of the perfect
+locus, which sits inside the same category via Gaitsgory--Rozenblyum
+Vol.~I Ch.~5.
+
+\paragraph{Hypotheses.} Finite Tor-amplitude of
+\(\mathbb{L}_{\mathcal{X}}\) and \(t\)-boundedness of the Postnikov
+tower are explicit hypotheses of
+Proposition~\ref{v4-arith:bzn-rcompletion:prop:R3-three-computations}.
+
+\subsection{Equivalence of the Three Definitions on Formal Noetherian Derived Stacks}
+
+\begin{theorem}[conditional comparison of the three arithmetic loop spaces]
+\label{v4-arith:bzn-rcompletion:thm:R3-three-agree}
+\emph{Conditional statement.} Let \(\mathcal{X}\in\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\)
+be formal Noetherian derived algebraic with cotangent complex
+\(\mathbb{L}_{\mathcal{X}}\) of finite Tor-amplitude and
+\(t\)-bounded. Assume:
+\begin{enumerate}
+\item \(B\widehat{\mathbb Z}\)-mapping stacks are computed by the
+profinite limit of the finite cyclic mapping stacks on \(\mathcal X\);
+\item formal completion along the diagonal commutes with the relevant
+derived tensor products;
+\item the perfect locus generates the same loop object after
+ind-completion.
+\end{enumerate}
+Then there are canonical equivalences of formal
+Noetherian derived stacks
+\begin{equation}
+\label{v4-arith:bzn-rcompletion:eq:three-agree}
+L^{\mathrm{Ar}}_{\mathrm{cofilt}}\mathcal{X}
+\;\xleftarrow{\;\sim\;}\;L^{\mathrm{Ar}}_{\mathrm{intHom}}\mathcal{X}
+\;\xrightarrow{\;\sim\;}\;L^{\mathrm{Ar}}_{\mathrm{ind}}\mathcal{X}.
+\end{equation}
+All three express the derived formal self-intersection of
+\(\mathcal{X}\) along its diagonal.
+\end{theorem}
+
+\begin{proof}
+Under the first two hypotheses,
+\(L^{\mathrm{Ar}}_{\mathrm{cofilt}}\mathcal X\) and
+\(L^{\mathrm{Ar}}_{\mathrm{intHom}}\mathcal X\) compute the same
+completed derived self-intersection of the diagonal. Under the third
+hypothesis, the ind-construction gives the ind-completion of the same
+self-intersection on the perfect locus. The maps are the canonical
+comparison maps induced by the universal property of internal Hom,
+formal completion, and ind-completion.
+\end{proof}
+
+\begin{remark}[what fails without the hypotheses]
+\label{v4-arith:bzn-rcompletion:rem:hyp-failures}
+Noetherianness, \(t\)-boundedness, and finite Tor-amplitude do not by
+themselves identify all three loop models. They are the natural
+ambient hypotheses under which the three comparison maps can be
+asked to be equivalences.
+\end{remark}
+
+\begin{corollary}[application to the Selmer-derived target]
+\label{v4-arith:bzn-rcompletion:cor:R3-for-EG}
+\emph{Comparison hypothesis.} If the Selmer-derived target
+\(\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\) satisfies
+the formal-Noetherian and bounded cotangent hypotheses of
+Theorem~\ref{v4-arith:bzn-rcompletion:thm:R3-three-agree}, then the three
+candidate definitions of
+\(L^{\mathrm{Ar}}\mathcal{X}^{\mathrm{Sel}}_{\bar\rho,\det,\mathcal{L}}\)
+all compute the derived formal self-intersection along the diagonal
+and agree canonically.
+\end{corollary}
+
+\subsection{Hypotheses of the Loop Comparison}
+
+\paragraph{Conventions.} Postnikov-tower and formal-completion
+conventions agree between Gaitsgory--Rozenblyum and Lurie HA.
+
+\paragraph{Ambient category.} All three constructions sit in
+\(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\); their equivalence is
+an equivalence in that ambient.
+
+\paragraph{Hypotheses.} Finite Tor-amplitude, \(t\)-boundedness,
+Noetherianness are stated in the hypothesis set of
+Theorem~\ref{v4-arith:bzn-rcompletion:thm:R3-three-agree}.
+
+\paragraph{Functoriality.} The zig-zag
+(\ref{v4-arith:bzn-rcompletion:eq:three-agree})
+is functorial in \(\mathcal{X}\): each arrow is a canonical natural
+transformation between functors
+\(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\to\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\).
+
+\paragraph{Named theorems.} Gaitsgory--Rozenblyum supplies the
+formal-completion and compact-generation inputs.  The profinite
+mapping-stack comparison remains an explicit hypothesis.
+
+The equivalence of
+Theorem~\ref{v4-arith:bzn-rcompletion:thm:R3-three-agree} is conditional on
+the stated hypotheses.
+
+\subsection{Canonical Choice and Consistency with Chapter~\ref{v4-arith:arith-bzn}}
+
+\begin{definition}[canonical arithmetic free loop space]
+\label{v4-arith:bzn-rcompletion:def:canonical-L-Ar}
+For \(\mathcal{X}\in\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\) formal
+Noetherian derived algebraic with the hypotheses of
+Theorem~\ref{v4-arith:bzn-rcompletion:thm:R3-three-agree}, the
+\emph{canonical arithmetic free loop space of \(\mathcal{X}\)} is
+\begin{equation}
+L^{\mathrm{Ar}}\mathcal{X}\;:=\;L^{\mathrm{Ar}}_{\mathrm{intHom}}\mathcal{X}
+\;=\;\underline{\mathrm{Map}}_{\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}}\bigl(B\widehat{\mathbb{Z}},\mathcal{X}\bigr).
+\end{equation}
+Under
+Theorem~\ref{v4-arith:bzn-rcompletion:thm:R3-three-agree},
+\(L^{\mathrm{Ar}}\mathcal{X}\) is canonically equivalent to both
+\(L^{\mathrm{Ar}}_{\mathrm{cofilt}}\mathcal{X}\) and
+\(L^{\mathrm{Ar}}_{\mathrm{ind}}\mathcal{X}\); we adopt the internal
+Hom as definitional.
+\end{definition}
+
+\begin{remark}[why internal Hom is canonical]
+\label{v4-arith:bzn-rcompletion:rem:why-intHom}
+The internal Hom construction is canonical in two senses:
+\begin{enumerate}
+\item \emph{Functoriality in the source.} \(\underline{\mathrm{Map}}(B\widehat{\mathbb{Z}},-)\)
+is manifestly functorial in \(\mathcal{X}\) without choosing a
+cofiltered presentation of \(B\widehat{\mathbb{Z}}\) or an
+ind-completion presentation of \(\mathcal{X}\).
+\item \emph{Universal property.} By the standard closed-monoidal
+structure on \(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\) (Lurie HTT
+\S 7.3, transported via Gaitsgory--Rozenblyum Vol.~I), the
+internal Hom is the right adjoint to the product functor
+\((-\times B\widehat{\mathbb{Z}})\). The cofiltered and
+ind-construction versions require extra choices to realise this
+universal property.
+\end{enumerate}
+\end{remark}
+
+\begin{proposition}[consistency with Chapter~\ref{v4-arith:arith-bzn}]
+\label{v4-arith:bzn-rcompletion:prop:R3-matches-ch28}
+The canonical convention of
+Definition~\ref{v4-arith:bzn-rcompletion:def:canonical-L-Ar} coincides with
+the arithmetic free loop space of
+Definition~\ref{v4-arith:bzn:def:L-ar} in
+Chapter~\ref{v4-arith:arith-bzn}: both define \(L^{\mathrm{Ar}}\mathcal{X}\)
+as the internal mapping stack
+\(\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X})\) in the
+\(\infty\)-category of formal Noetherian derived pro-\'etale
+stacks.
+\end{proposition}
+
+\begin{proof}
+Compare Definition~\ref{v4-arith:bzn-rcompletion:def:canonical-L-Ar} with
+Definition~\ref{v4-arith:bzn:def:L-ar}: both read
+\(L^{\mathrm{Ar}}\mathcal{X}=\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X})\)
+computed as internal Hom in
+\(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\). The definitions are
+literally identical. Chapter~\ref{v4-arith:arith-bzn}'s usage
+in Sections~\ref{v4-arith:bzn:free-loop-space} and
+\ref{v4-arith:bzn:HH-arith} (Theorem~\ref{v4-arith:bzn:thm:HH-IndCoh-arith})
+matches this internal-Hom interpretation.
+\end{proof}
+
+\subsection{Internal Hom and Its Universal Property}
+
+\paragraph{Conventions.} The adjoint-functor convention of Lurie HTT
+matches the closed-monoidal structure on formal derived stacks
+in Gaitsgory--Rozenblyum Vol.~I.
+
+\paragraph{Ambient category.} \(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\)
+is the same as in Chapter~\ref{v4-arith:arith-bzn}.
+
+\paragraph{Hypotheses.} The closed-monoidal
+structure requires only that \(\mathrm{dSt}^{\wedge}_{\mathrm{Noeth}}\)
+have arbitrary small colimits and products; both are standard.
+
+\paragraph{Functoriality and universal property.}
+Functoriality in \(\mathcal{X}\) is the defining property of the
+internal Hom; its universal property is Lurie HTT \S 7.3.
+
+The canonical-choice result
+Proposition~\ref{v4-arith:bzn-rcompletion:prop:R3-matches-ch28} is a statement
+about notation. It does not prove the comparison with the cofiltered
+or ind-completed models.
+
+\subsection{R3 Boundary}
+
+R3 has two parts. The canonical choice is the internal Hom
+(Definition~\ref{v4-arith:bzn-rcompletion:def:canonical-L-Ar}); and this
+choice is consistent with Chapter~\ref{v4-arith:arith-bzn}'s
+usage (Proposition~\ref{v4-arith:bzn-rcompletion:prop:R3-matches-ch28}). The
+comparison with the cofiltered and ind-completed models is the
+conditional statement of
+Theorem~\ref{v4-arith:bzn-rcompletion:thm:R3-three-agree}.
+
+\section{Wild-Prime Extension and Trace Comparisons}
+\label{v4-arith:bzn-rcompletion:R4}
+
+A Yoneda extension is computed in a specified abelian category; a
+Hochschild class belongs to a specified trace complex. Relating the two
+requires a map, not just equality of dimensions. Two elementary
+calculations also constrain the possible degrees of a global trace:
+a radical-square-zero algebra can have higher Ext, and tensoring two
+complexes supported in degrees zero and one can produce degree two.
+We first make these calculations over explicit coefficient rings.
+Their arithmetic realization remains a separate comparison problem.
+
+\subsection{Finite Algebras and Higher Extensions}
+
+\begin{lemma}[degreewise finiteness of extensions]
+\label{v4-arith:bzn-rcompletion:lem:EO-ext}
+Let \(A\) be a finite-dimensional algebra over a field \(k\).
+There are finitely many isomorphism classes of simple right
+\(A\)-modules, and \(\operatorname{Ext}^n_A(M,N)\) is finite-dimensional
+for finite-dimensional \(M,N\) and each \(n\ge0\).
+The total graded Ext space need not be finite-dimensional.
+No identification with Hochschild homology is included in this statement.
+\end{lemma}
+\begin{proof}
+Every simple module is a quotient of the regular module, whose finite
+composition series contains only finitely many simple factors.
+A finite-dimensional module admits a surjection from a finite sum of
+copies of \(A\). Its kernel is finite-dimensional; repeating constructs
+a resolution with a finite-dimensional projective term in each degree.
+Applying \(\operatorname{Hom}_A(-,N)\) gives a finite-dimensional space
+in each degree, hence finite-dimensional cohomology. The following
+example proves the final assertion about total dimension.
+\end{proof}
+
+\begin{proposition}[a periodic resolution]
+\label{v4-arith:wild:dual-numbers}
+For \(A=k[\epsilon]/(\epsilon^2)\) and \(S=A/(\epsilon)\),
+\[
+ \operatorname{Ext}^n_A(S,S)=k\qquad(n\ge0).
+\]
+Thus Loewy length two does not imply projective dimension one.
+In characteristic two, \(A\cong k[C_2]\), so the finite tensor category
+of finite-dimensional \(k[C_2]\)-modules also has infinite-dimensional
+total Yoneda algebra.
+\end{proposition}
+\begin{proof}
+Multiplication by \(\epsilon\) has kernel and image both equal to
+\(k\epsilon\). The augmentation kernel is the same subspace. Hence
+\[
+ \cdots\xrightarrow{\epsilon}A\xrightarrow{\epsilon}A
+ \xrightarrow{\epsilon}A\longrightarrow S\longrightarrow0
+\]
+is an exact free resolution. Applying \(\operatorname{Hom}_A(-,S)\)
+gives one copy of \(k\) in every nonnegative degree, with zero
+differential because \(\epsilon\) acts trivially on \(S\).
+If \(\operatorname{char}k=2\), writing \(\epsilon=g-1\) for the
+generator of \(C_2\) gives \(\epsilon^2=g^2-2g+1=0\).
+The two-dimensional algebras are therefore isomorphic.
+The group-algebra coproduct gives its usual tensor category.
+\end{proof}
+
+\begin{proposition}[paths and radical-square-zero Ext]
+\label{v4-arith:wild:path-count}
+Let \(Q\) be a finite quiver, \(J\) its arrow ideal, and
+\(B=kQ/J^2\). Use right modules and concatenate paths from left to
+right. For the simple \(S_i=e_iB/e_iJ\),
+\[
+ \dim_k\operatorname{Ext}^n_B(S_i,S_j)
+ =\#\{\text{oriented paths of length }n\text{ from }i\text{ to }j\}.
+\]
+Consequently all \(\operatorname{Ext}^{n\ge2}\) between simples vanish
+if and only if \(Q\) has no composable pair of arrows.
+\end{proposition}
+\begin{proof}
+The projective cover is \(P_i=e_iB\), and its radical has one copy
+of \(S_j\) for each arrow \(i\to j\), because every product of two
+arrows is zero. Thus
+\(\Omega S_i=\bigoplus_{i\to j}S_j\).
+Iteration gives one copy of \(S_j\) in \(\Omega^nS_i\) for each
+length-\(n\) path. The resulting minimal projective resolution has
+its differentials in the radicals. Every map from a projective to a
+simple kills that radical, so applying \(\operatorname{Hom}_B(-,S_j)\)
+gives zero differentials. This proves the formula, including \(n=0\).
+A composable pair gives a nonzero degree-two group. If no such pair
+exists, there are no paths of any length at least two.
+\end{proof}
+
+\begin{example}[a three-vertex block and its Yoneda product]
+\label{v4-arith:wild:three-vertex}
+Take \(Q=(0\xrightarrow{a}1\xrightarrow{b}2)\) and \(B=kQ/(ab)\).
+The right projectives have bases
+\(P_0=\langle e_0,a\rangle\), \(P_1=\langle e_1,b\rangle\),
+and \(P_2=\langle e_2\rangle\). There is an exact resolution
+\[
+ 0\longrightarrow P_2\xrightarrow{e_2\mapsto b}P_1
+ \xrightarrow{e_1\mapsto a}P_0\longrightarrow S_0\longrightarrow0.
+\]
+Indeed the middle map kills \(b\), since \(ab=0\); its kernel is
+\(kb\), and its image is the augmentation kernel \(ka\).
+It follows that
+\[
+ \operatorname{Ext}^1_B(S_0,S_1)=k,\qquad
+ \operatorname{Ext}^1_B(S_1,S_2)=k,\qquad
+ \operatorname{Ext}^2_B(S_0,S_2)=k.
+\]
+The product of the two adjacent degree-one classes is the nonzero
+degree-two class: the short exact sequence
+\(0\to S_1\to P_0\to S_0\to0\) gives the dimension-shifting
+isomorphism
+\(\operatorname{Ext}^1_B(S_1,S_2)\cong\operatorname{Ext}^2_B(S_0,S_2)\),
+whose connecting map is Yoneda composition.
+Thus the relation \(ab=0\) in \(B\) does not make the corresponding
+Yoneda product zero. Reversing all arrows reverses the ordered pairs
+in the Ext groups; it does not eliminate degree two.
+
+For comparison, the unquotiented path algebra \(kQ\) has
+\(\operatorname{rad}P_0\cong P_1\) and
+\(\operatorname{rad}P_1\cong P_2\), hence length-one projective
+resolutions of its simples. This is a different algebra; its
+\(P_0\) has Loewy length three. An arithmetic identification with
+one of these algebras must specify which relations it preserves.
+\end{example}
+
+\subsection{Regular Hochschild Homology of the Finite Models}
+
+The same two algebras permit complete trace calculations. They show
+that extensions between simples and regular Hochschild homology
+can behave differently even in these small examples. Throughout
+this subsection \(k\) is any field, the algebras are ordinary and
+ungraded, and all tensors are algebraic. For an algebra \(R\), put
+\(R^e=R\otimes_k R^{\mathrm{op}}\) and
+\(HH_n(R)=\operatorname{Tor}^{R^e}_n(R,R)\), with regular
+coefficients. This is Hochschild homology, not the cohomology
+of derivations used for the Bost--Connes algebra.
+
+\begin{proposition}[the regular trace of the dual numbers]
+\label{v4-arith:wild:HH-dual-numbers}
+For \(A=k[\epsilon]/(\epsilon^2)\),
+\begin{align*}
+ HH_0(A)&=A,\\
+ HH_{2r+1}(A)&=A/(2\epsilon A) &&(r\ge0),\\
+ HH_{2r}(A)&=\operatorname{ann}_A(2\epsilon) &&(r\ge1).
+\end{align*}
+If \(\operatorname{char}k\ne2\), each positive-degree group has
+dimension one; odd groups are \(A/(\epsilon)\) and positive even
+groups are \(\epsilon A\). If \(\operatorname{char}k=2\), then
+\(HH_n(A)=A\) for every \(n\ge0\).
+\end{proposition}
+\begin{proof}
+Identify \(A^e=k[x,y]/(x^2,y^2)\), with \(x\) acting on the left
+and \(y\) on the right. Set \(u=x-y\), \(v=x+y\). Consider
+\[
+ \cdots\xrightarrow{u}A^e\xrightarrow{v}A^e
+ \xrightarrow{u}A^e\xrightarrow{\mu}A\longrightarrow0,
+ \qquad \mu(x)=\mu(y)=\epsilon.
+\]
+There is one free term in each nonnegative degree; the differential
+from an odd degree is multiplication by \(u\), and from a positive
+even degree multiplication by \(v\). The composites vanish because
+\(uv=vu=0\). For \(r=\alpha+\beta x+\gamma y+\eta xy\),
+\[
+ ur=\alpha(x-y)+(\gamma-\beta)xy,\qquad
+ vr=\alpha(x+y)+(\beta+\gamma)xy.
+\]
+Hence \(\ker u=\langle x+y,xy\rangle=\operatorname{im}v\),
+\(\ker v=\langle x-y,xy\rangle=\operatorname{im}u\), and
+\(\ker\mu=\langle x-y,xy\rangle\). Both images have dimension
+two, including in characteristic two. This is an exact free
+bimodule resolution.
+
+Tensoring with the regular \(A\) makes \(u\) zero and \(v\)
+multiplication by \(2\epsilon\). Thus the odd differentials are
+zero and the positive even differentials are \(2\epsilon\), giving
+the asserted quotients and annihilators. If two is invertible,
+\(\operatorname{ann}_A(2\epsilon)=\epsilon A\); if two is zero,
+all differentials vanish.
+
+The normalized Hochschild complex checks the signs directly.
+Since \(A/k1=k\epsilon\), its degree-\(n\) term is
+\(A\otimes(k\epsilon)^{\otimes n}\). Interior products vanish,
+and the first and cyclic last faces give
+\[
+ b_n(c\otimes\epsilon^{\otimes n})
+  =(1+(-1)^n)c\epsilon\otimes\epsilon^{\otimes(n-1)}.
+\]
+This is the same alternating zero and \(2\epsilon\) differential.
+\end{proof}
+
+The simple-module calculation in
+Proposition~\ref{v4-arith:wild:dual-numbers} gives
+\(\operatorname{Ext}^n_A(S,S)=k\) in every degree and characteristic.
+In characteristic two its dimension is one, whereas the regular
+Hochschild group has dimension two. The two calculations use
+different resolutions and different coefficient carriers.
+
+\begin{proposition}[the regular trace of the directed three-vertex model]
+\label{v4-arith:wild:HH-three-vertex}
+For \(B=k(0\xrightarrow a1\xrightarrow b2)/(ab)\),
+\[
+ HH_0(B)=ke_0\oplus ke_1\oplus ke_2,\qquad
+ HH_n(B)=0\quad(n\ge1).
+\]
+Thus the nonzero Ext groups and Yoneda product of
+Example~\ref{v4-arith:wild:three-vertex} do not force nonzero
+positive-degree regular Hochschild homology.
+\end{proposition}
+\begin{proof}
+Let \(S=ke_0\oplus ke_1\oplus ke_2\), \(J=ka\oplus kb\).
+Then \(B=S\oplus J\), \(J^2=0\), and
+\(J\otimes_SJ=k(a\otimes b)\); there are no composable triples.
+The relative normalized bimodule bar terms are
+\(P_n=B\otimes_SJ^{\otimes_Sn}\otimes_SB\), with
+\begin{align*}
+ P_0&=\bigoplus_{i=0}^2 Be_i\otimes_k e_iB,\\
+ P_1&=(Be_0\otimes_k e_1B)\oplus(Be_1\otimes_k e_2B),\\
+ P_2&=Be_0\otimes_k e_2B.
+\end{align*}
+Each is a projective bimodule: each summand is an idempotent direct
+summand of the free bimodule \(B\otimes_kB\).
+The differentials, retaining arrows in the bar notation, are
+\begin{align*}
+ d_1(l\otimes j\otimes r)&=lj\otimes r-l\otimes jr,\\
+ d_2(l\otimes a\otimes b\otimes r)
+ &=la\otimes b\otimes r+l\otimes a\otimes br.
+\end{align*}
+The missing middle term is \(-l\otimes ab\otimes r=0\).
+
+Here is a direct exactness check. The dimensions of
+\(P_0,P_1,P_2\) are \(8,4,1\), and a basis of \(P_1\) is
+\begin{align*}
+ q_1&=e_0\otimes a\otimes e_1,&
+ q_2&=e_0\otimes a\otimes b,\\
+ q_3&=e_1\otimes b\otimes e_2,&
+ q_4&=a\otimes b\otimes e_2.
+\end{align*}
+Their \(d_1\)-images are respectively
+\[
+ a\otimes e_1-e_0\otimes a,\quad a\otimes b,\quad
+ b\otimes e_2-e_1\otimes b,\quad -a\otimes b.
+\]
+The first three are independent, so \(\ker d_1=k(q_2+q_4)\).
+The generator \(e_0\otimes a\otimes b\otimes e_2\) of \(P_2\)
+maps to \(q_2+q_4\); hence \(d_2\) is injective and exactness
+holds at \(P_1\). Multiplication \(P_0\to B\) is surjective,
+annihilates \(\operatorname{im}d_1\), and has kernel of dimension
+\(8-5=3\). This proves exactness also at \(P_0\), in every
+characteristic. Thus \(0\to P_2\to P_1\to P_0\to B\to0\)
+is a projective bimodule resolution.
+
+The regular trace of a summand is
+\[
+ B\otimes_{B^e}(Be_i\otimes_k e_jB)\cong e_jBe_i.
+\]
+The map sends the class of \(c\otimes(l\otimes r)\) to \(rcl\);
+its inverse sends \(t\in e_jBe_i\) to the class of
+\(t\otimes(e_i\otimes e_j)\). Balancing verifies that these
+maps are well defined and inverse. A path from \(i\) to \(j\)
+can therefore contribute only if there is a return path from
+\(j\) to \(i\). Here
+\(e_1Be_0=e_2Be_1=e_2Be_0=0\) and \(e_iBe_i=ke_i\).
+The traced complex is \(k^3\) in degree zero and zero in every
+positive degree, as asserted.
+\end{proof}
+
+In this example the relation \(ab=0\) contributes a genuine
+bimodule-resolution term in degree two, but regular trace kills
+it because its endpoints differ. Extension groups between simples
+retain the directed paths; Hochschild homology requires cyclic
+endpoint matching. Neither calculation constructs the arithmetic
+Ext-to-trace comparison in the following questions.
+
+\subsection{The Local Arithmetic Comparisons}
+
+\begin{remark}[non-semisimplicity and the coefficient category]
+\label{v4-arith:bzn-rcompletion:prop:non-ss-wild}
+The example \(k[C_2]\) in characteristic two is non-semisimple:
+\(0\to S\to A\to S\to0\) is not split. Transferring such a result
+to an arithmetic Iwahori block requires that block, its coefficient
+ring and its relation to the finite algebra to be specified.
+The primes \(2,3\) alone do not determine a coefficient category.
+The fields \(\overline{\mathbb Q}_\ell\) and
+\(\overline{\mathbb F}_\ell\) have characteristics zero and \(\ell\),
+respectively, and require different specialization arguments.
+\end{remark}
+
+\begin{question}[the proposed contribution at two]
+\label{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2}
+Construct the arithmetic block and its trace complex
+\(C_2^{\mathrm{wild}}\), with a comparison realizing the proposed
+one-dimensional degree-one contribution
+\begin{equation}
+\label{v4-arith:bzn-rcompletion:eq:Ext1-p2}
+ H_1(C_2^{\mathrm{wild}})\cong W_2,\qquad W_2\cong k.
+\end{equation}
+The coefficient field and the map from extension data to this trace
+homology are part of the construction. In characteristic two, the
+trivial and sign characters of \(C_2\) are the same character,
+since \(-1=1\). They cannot serve as two distinct simples in an
+off-diagonal Ext calculation. The dual-number model does give a
+one-dimensional self-Ext in degree one, but it also gives nonzero
+Ext in every higher degree. A claim of local amplitude at most one
+therefore needs an actual resolution or a trace calculation that
+accounts for the higher extension classes.
+\end{question}
+
+\begin{question}[the proposed contribution at three]
+\label{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3}
+Construct the arithmetic block, coefficient field and comparison
+maps that would realize
+\begin{equation}
+\label{v4-arith:bzn-rcompletion:eq:Ext1-p3}
+ H_1(C_3^{\mathrm{wild}})\cong W_3,\qquad W_3\cong k\oplus k.
+\end{equation}
+In the explicit three-vertex algebra of
+Example~\ref{v4-arith:wild:three-vertex}, the two classes are in
+\(\operatorname{Ext}^1(S_0,S_1)\) and
+\(\operatorname{Ext}^1(S_1,S_2)\), with the fixed right-module
+convention, and they have a nonzero Yoneda product in degree two.
+An arithmetic comparison must preserve these directions and account
+for that product. In characteristic three,
+\(X^3-1=(X-1)^3\), so there is no primitive third root of unity.
+A primitive-cube-root specialization in characteristic zero is a
+different model, requiring an explicit comparison with a modular
+coefficient category. Neither a choice of root nor a
+Calabi--Yau or Frobenius structure by itself constructs the map
+from Yoneda extensions to Hochschild homology.
+\end{question}
+
+\begin{hypothesis}[the large-prime trace datum]
+\label{v4-arith:bzn-rcompletion:thm:bez-ss-large-p}
+For the chosen common coefficient ring \(R\), suppose that the
+arithmetic local trace complexes \(C_p\) have been constructed and
+that, for every \(p\ge5\), there is a specified equivalence
+\(C_p\simeq B_p[0]\) with an \(R\)-module \(B_p\).
+This is a hypothesis on the actual trace complexes, including their
+arithmetic comparison; it is not inferred solely from an assertion
+about a Yoneda algebra or a numerical prime threshold.
+\end{hypothesis}
+
+\begin{corollary}[conditional large-prime vanishing]
+\label{v4-arith:bzn-rcompletion:cor:vanishing-at-large-p}
+Under Hypothesis~\ref{v4-arith:bzn-rcompletion:thm:bez-ss-large-p},
+\(H_i(C_p)=0\) for every \(i>0\) and \(p\ge5\).
+\end{corollary}
+\begin{proof}
+The specified equivalence identifies the homology with that of a
+module placed in degree zero.
+\end{proof}
+
+\begin{corollary}[conditional vanishing of the large-prime wild part]
+\label{v4-arith:bzn-rcompletion:thm:R4-correction-vanishes-p-large}
+If a wild summand is specified inside such a \(C_p\), its
+positive-degree homology vanishes for \(p\ge5\).
+\end{corollary}
+\begin{proof}
+Homology preserves a direct-sum decomposition, so the summand's
+positive-degree homology is a direct summand of zero.
+\end{proof}
+
+\subsection{The Four Terms in a Derived Tensor Product}
+
+Complexes are now homologically graded: the differential lowers
+degree, and \(M[i]\) places a module \(M\) in degree \(i\).
+All tensors in this subsection are algebraic derived tensors over
+the displayed common ring. A completed tensor requires its own
+continuity and exactness assertions.
+
+\begin{lemma}[two split local complexes]
+\label{v4-arith:wild:four-term-tensor}
+For a commutative ring \(R\), suppose
+\(C_2\simeq B_2\oplus W_2[1]\) and
+\(C_3\simeq B_3\oplus W_3[1]\) in \(D(R)\), with specified splittings.
+Then
+\begin{equation}
+\label{v4-arith:wild:eq:four-term-tensor}
+\begin{aligned}
+ C_2\otimes_R^{\mathrm L}C_3\simeq{}&
+ (B_2\otimes_R^{\mathrm L}B_3)\\
+ &\oplus\bigl((W_2\otimes_R^{\mathrm L}B_3)
+        \oplus(B_2\otimes_R^{\mathrm L}W_3)\bigr)[1]\\
+ &\oplus(W_2\otimes_R^{\mathrm L}W_3)[2].
+\end{aligned}
+\end{equation}
+Over a field, with \(B_2=B_3=k\), \(W_2=k\), and \(W_3=k^2\), this is
+\(k\oplus k^3[1]\oplus k^2[2]\).
+\end{lemma}
+\begin{proof}
+Choose projective resolutions of the four modules. Distributing
+the tensor of the two finite direct sums gives the four displayed
+terms and their shifts. Over a field the modules are already flat,
+so the zero-differential representatives compute the derived tensor.
+The total differential is
+\(d(x\otimes y)=dx\otimes y+(-1)^{|x|}x\otimes dy=0\).
+For a basis vector \(x\) of \(W_2\) and a basis \(y,z\) of \(W_3\),
+\(x\otimes y\) and \(x\otimes z\) are independent degree-two
+cycles and cannot be boundaries. More generally, the tensor of two
+nonzero vector spaces over a field is nonzero: linear functionals
+nonzero on chosen vectors detect a nonzero elementary tensor.
+Graded commutativity does not cancel products between different factors.
+\end{proof}
+
+\begin{lemma}[distinct-primary integral coefficients]
+\label{v4-arith:wild:distinct-primary}
+If \(M_2\) is a \(2\)-primary torsion abelian group and \(M_3\)
+is a \(3\)-primary torsion abelian group, then
+\(M_2\otimes_{\mathbb Z}^{\mathrm L}M_3=0\).
+If \(B_2,B_3\) are flat abelian groups in degree zero, it follows that
+\((B_2\oplus M_2[1])\otimes_{\mathbb Z}^{\mathrm L}
+ (B_3\oplus M_3[1])\) is concentrated in degrees zero and one.
+For \(B_2=B_3=\mathbb Z\), \(M_2=\mathbb Z/2\), and
+\(M_3=(\mathbb Z/3)^2\), it is
+\(\mathbb Z\oplus(\mathbb Z/2\oplus(\mathbb Z/3)^2)[1]\).
+\end{lemma}
+\begin{proof}
+Resolve \(\mathbb Z/2^a\) by
+\([\mathbb Z\xrightarrow{2^a}\mathbb Z]\).
+After tensoring with \(\mathbb Z/3^b\), its differential is an
+isomorphism, so the complex is acyclic. Finite primary groups
+are finite direct sums of cyclic primary groups. Arbitrary primary
+torsion groups are filtered unions of finite subgroups; tensor and
+Tor commute with these filtered colimits. There is no higher Tor
+beyond degree one over \(\mathbb Z\), since the kernel of a
+surjection from a free abelian group is free.
+This proves the first assertion. Flatness of \(B_2,B_3\) removes
+higher Tor from the other three terms in
+\eqref{v4-arith:wild:eq:four-term-tensor}, proving the remaining claims.
+Without flat degree-zero factors, those terms can carry additional
+homology. Completion is not part of this algebraic argument.
+\end{proof}
+
+\subsection{The Arithmetic Assembly Problem}
+
+\begin{question}[the full-target arithmetic trace comparison]
+\label{v4-arith:bzn-rcompletion:thm:F3-BZN-Ar-corrected}
+Construct compatible local arithmetic categories and trace complexes,
+a common coefficient ring, their completed restricted-tensor assembly,
+and a comparison with the full Weil/\((\varphi,\Gamma)\) target, of the form
+\begin{equation}
+\label{v4-arith:bzn-rcompletion:eq:F3-BZN-Ar-corrected}
+ \mathrm{HH}_{\bullet}(\mathrm{Hk}^{\mathrm{Iw}}_{GL_2,\mathrm{glob}})
+ \simeq \mathcal O(\mathrm{LocSys}^{W,\varphi\Gamma}_{GL_2})^{\mathrm{flat}}
+ \oplus\mathcal W.
+\end{equation}
+Here \(\mathcal W\), its coefficient carrier and its degrees must be
+computed from that construction. The procyclic \(B\widehat{\mathbb Z}\)
+model records only the inertia comparison, not the full target.
+The formal-loop hypotheses, F1, F2, and local degree-zero comparisons
+remain necessary parts of the proposed construction; their names do
+not supply a completed K\"unneth map.
+
+If actual local traces over a common field split as
+\(k\oplus k[1]\) and \(k\oplus k^2[1]\), the full two-prime tensor
+has the degree-two term of Lemma~\ref{v4-arith:wild:four-term-tensor}.
+Its additive degree-one part is
+\begin{equation}
+\label{v4-arith:bzn-rcompletion:eq:wild-summand}
+ \mathcal W_{\le1}=k[1]\oplus(k\oplus k)[1].
+\end{equation}
+This can describe the positive part of a specified degree-at-most-one
+truncation, or a quotient killing the mixed product. It is not the full
+wild tensor contribution. To realize such a truncation or quotient
+arithmetically, its map and compatibility with the operations must
+also be constructed.
+\end{question}
+
+\begin{remark}[remaining degree-zero factors]
+\label{v4-arith:bzn-rcompletion:rem:domain}
+If the restricted tensor of the other primes is a degree-zero module
+\(D\), every term of \eqref{v4-arith:wild:eq:four-term-tensor} must
+also be tensored with \(D\). Thus even the degree-one terms carry
+all complementary degree-zero factors. Taking units at almost every
+prime permits non-unit entries at both two and three; it does not
+remove their mixed term. A common-field calculation cannot be
+replaced by the distinct-primary integral calculation without actual
+integral models and their comparison maps.
+\end{remark}
+
+\begin{corollary}[conditions for degree-one assembly]
+\label{v4-arith:bzn-rcompletion:cor:F3-corrected-closes}
+Suppose actual local trace complexes over \(R\) have the two specified
+splittings, all remaining factors assemble into a flat degree-zero
+module \(D\), and a proved assembly map identifies the global trace
+with \(D\otimes_R^{\mathrm L}C_2\otimes_R^{\mathrm L}C_3\).
+If \(B_2,B_3\) are flat and
+\(W_2\otimes_R^{\mathrm L}W_3=0\), its homology is concentrated in
+degrees zero and one, with underlying split complex
+\[
+ D\otimes_R B_2\otimes_R B_3
+ \ \oplus\
+ D\otimes_R\bigl((W_2\otimes_R B_3)
+          \oplus(B_2\otimes_R W_3)\bigr)[1].
+\]
+Any completed or arithmetic sheaf interpretation additionally requires
+that the realization and completion preserve these identifications.
+\end{corollary}
+\begin{proof}
+Apply Lemma~\ref{v4-arith:wild:four-term-tensor}.
+The mixed term vanishes by hypothesis, and flatness removes higher
+Tor from the remaining terms and from tensoring with \(D\).
+The specified assembly map then transports this decomposition.
+\end{proof}
+
+\section{Consistency with Chapter~\ref{v4-arith:arith-bzn}}
+\label{v4-arith:bzn-rcompletion:consistency}
+
+\subsection{R3 Consistency}
+
+Chapter~\ref{v4-arith:arith-bzn}'s
+Definition~\ref{v4-arith:bzn:def:L-ar} reads: for an \(n\)-geometric derived
+pro-\'etale stack \(\mathcal{X}\), \(L^{\mathrm{Ar}}\mathcal{X}=\mathrm{Map}(B\widehat{\mathbb{Z}},\mathcal{X})\),
+the internal mapping stack in the \(\infty\)-category of derived
+pro-\'etale stacks. Definition~\ref{v4-arith:bzn-rcompletion:def:canonical-L-Ar}
+specialises this to formal Noetherian derived algebraic stacks
+and commits to the internal-Hom convention. The two definitions
+are identical on the intersection of their domains (formal
+Noetherian derived algebraic stacks that are \(n\)-geometric and
+pro-\'etale). The Emerton--Gee stack lies in this intersection
+(Corollary~\ref{v4-arith:bzn-rcompletion:cor:R3-for-EG}).
+
+\subsection{R4 Consistency}
+
+An extension of the comparison in Chapter~\ref{v4-arith:arith-bzn}
+must preserve the local trace complexes and the chosen tensor
+assembly. A degree-zero comparison does not determine the
+positive-degree part, and a list of local Ext dimensions does not
+supply a trace comparison.
+
+\begin{proposition}[the tensor terms required by a local comparison]
+\label{v4-arith:bzn-rcompletion:prop:minimal-amendment}
+Suppose an arithmetic comparison identifies its two exceptional
+local traces over a field with \(k\oplus k[1]\) and
+\(k\oplus k^2[1]\), and identifies their assembly with their full
+derived tensor. Then that assembly is
+\(k\oplus k^3[1]\oplus k^2[2]\).
+If the remaining factors assemble into a degree-zero vector space
+\(D\), all three terms must also be tensored with \(D\).
+The additive expression in
+\eqref{v4-arith:bzn-rcompletion:eq:wild-summand} describes only the
+positive part through degree one. A degree-one-only global answer
+requires extra vanishing hypotheses, as in
+Corollary~\ref{v4-arith:bzn-rcompletion:cor:F3-corrected-closes},
+or a specified truncation or quotient.
+\end{proposition}
+\begin{proof}
+Apply Lemma~\ref{v4-arith:wild:four-term-tensor} to the specified
+local equivalences. Tensoring with \(D\) is exact over a field.
+The two independent degree-two classes persist whenever \(D\ne0\).
+\end{proof}
+
+\section{Boundary Conditions}
+\label{v4-arith:bzn-rcompletion:residuals}
+
+\subsection{R3 Boundary}
+
+The internal-Hom convention is fixed.  Its comparison with the
+cofiltered and ind-completed models is conditional on the three
+formal-convergence hypotheses in
+Theorem~\ref{v4-arith:bzn-rcompletion:thm:R3-three-agree}.
+
+\subsection{R4 Boundary}
+
+\begin{question}[functoriality of the arithmetic wild contribution]
+\label{v4-arith:bzn-rcompletion:conj:wild-langlands-functorial}
+Construct coefficient-compatible local Langlands comparison maps
+carrying the relevant arithmetic extension classes to specified
+trace classes. Determine how their Yoneda products correspond to
+operations on the trace complexes and how these maps interact with
+the full tensor assembly. If the desired degree-one expression is
+obtained by truncation or quotient, construct that map and its
+functoriality as well.
+\end{question}
+
+A refinement of a local correspondence can address this question
+only after the coefficient category, extension directions and
+trace complex have been specified. Equality of local dimensions
+alone proves neither functoriality nor a global comparison.
+
+\subsection{Logical Form for Chapter~\ref{v4-arith:comparison}}
+
+\begin{itemize}
+\item \textbf{R3:} internal-Hom convention fixed by
+Definition~\ref{v4-arith:bzn-rcompletion:def:canonical-L-Ar} and matched with
+Chapter~\ref{v4-arith:arith-bzn} by
+Proposition~\ref{v4-arith:bzn-rcompletion:prop:R3-matches-ch28}; comparison with
+the two other models remains conditional on
+Theorem~\ref{v4-arith:bzn-rcompletion:thm:R3-three-agree}.
+\item \textbf{R4:} the finite-algebra Ext calculations and the
+four-term derived tensor formula are proved above. Their arithmetic
+realization requires local categories, coefficient comparisons,
+Ext-to-trace maps and a compatible completed assembly. The proposed
+local degree-one contributions remain the comparison problems in
+Questions~\ref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p2}
+and~\ref{v4-arith:bzn-rcompletion:prop:R4-Ext1-p3}.
+\end{itemize}
+
+\section{Loop-Convention Boundary}
+\label{v4-arith:bzn-rcompletion:summary}
+
+\begin{enumerate}
+\item \textbf{R3 (loop-space convention).}
+The canonical choice is the derived internal Hom
+(Definition~\ref{v4-arith:bzn-rcompletion:def:canonical-L-Ar}); this
+matches Chapter~\ref{v4-arith:arith-bzn}'s convention
+(Proposition~\ref{v4-arith:bzn-rcompletion:prop:R3-matches-ch28}). The
+comparison with the cofiltered and ind-completed models is conditional
+on Theorem~\ref{v4-arith:bzn-rcompletion:thm:R3-three-agree}.
+\item \textbf{R4 (extensions and assembly).}
+Loewy length two does not bound Ext by degree one.
+The common-field local model has a nonzero mixed degree-two term.
+The distinct-primary integral model removes that term only on its
+specified integral carrier. The degree-one criterion above assumes flat degree-zero factors;
+a completed arithmetic realization also needs a comparison preserving
+the displayed decomposition.
+\item \textbf{The arithmetic target.}
+The full Weil/\((\varphi,\Gamma)\) trace comparison in
+Question~\ref{v4-arith:bzn-rcompletion:thm:F3-BZN-Ar-corrected}
+requires F1, F2, the formal-loop comparison and the actual local
+trace data. The elementary computations do not establish these maps.
+\end{enumerate}

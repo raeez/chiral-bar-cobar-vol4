@@ -1,0 +1,568 @@
+\chapter{Gaussian Tests for the Signed Gamma Form}
+\label{v4-arith:w7-d:chapter}
+
+A Gaussian decays fast enough for every term of the explicit formula,
+although it is not compactly supported. This extension requires
+exponential control in the logarithmic variable. Ordinary Schwartz
+continuity cannot control the uncentered critical prime measure.
+
+\section{An exponential test space}
+\begin{definition}[rapid exponential decay]
+Let $\mathscr G$ consist of all smooth functions $f$ such that
+\[
+ p_{a,N,j}(f)=\sup_{t\in\mathbb R}
+ e^{a|t|}(1+|t|)^N|f^{(j)}(t)|<\infty
+ \quad(a,N,j\in\mathbb N).
+\]
+Give $\mathscr G$ the topology of these seminorms. Use
+$h_f(z)=\int f(t)e^{izt}dt$ and $f^*(t)=\overline{f(-t)}$.
+\end{definition}
+
+\begin{proposition}[extension of the explicit formula]
+\label{v4-arith:sc:gaussian-extension}
+The space $\mathscr G$ is a convolution algebra with continuous
+involution. Compact smooth functions are dense in $\mathscr G$.
+The explicit formula, its signed pairing, and both polar moments
+extend continuously to $\mathscr G$.
+In particular, for $f,g\in\mathscr G$,
+\[
+ W(f*g^*)=\sum_\rho h_f(z_\rho)\overline{h_g(\bar z_\rho)}
+ =P(f*g^*)-W_\infty(f*g^*)-W_{\mathrm{fin}}(f*g^*).
+\]
+The zero and prime sums are absolutely convergent. Positivity on
+all squares in $\mathscr G$ is equivalent to positivity on all
+squares in $\mathscr A$.
+\end{proposition}
+\begin{proof}
+The inequality $|t|\le|v|+|t-v|$, together with the corresponding
+polynomial weight inequality, bounds every convolution seminorm
+by a weighted supremum seminorm times a weighted integral seminorm.
+An additional exponential weight bounds that integral. This proves
+continuity of convolution. Reflection proves continuity of $*$.
+For a compact smooth cutoff $\chi=1$ near zero, put
+$f_R(t)=\chi(t/R)f(t)$. Leibniz's rule and one extra exponential
+weight give $p_{a,N,j}(f-f_R)\to0$ for every seminorm.
+
+Integration by parts gives rapid decay of $h_f$ in each fixed
+horizontal strip, continuously in these seminorms. The zero count
+then bounds the zero sum. The polar evaluations are continuous.
+The gamma density has logarithmic growth, so its integral is
+continuous. Finally, for example,
+\[
+ \sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}|f(\pm\log n)|
+ \le p_{2,0,0}(f)\sum_{n\ge2}\frac{\log n}{n^{5/2}}.
+\]
+The compact explicit formula therefore passes to the limit $f_R$.
+Convolution continuity gives the paired identity and passage of
+positivity. The reverse positivity implication uses
+$\mathscr A\subset\mathscr G$.
+\end{proof}
+
+\section{The normalized scalar integral}
+\begin{lemma}[Gaussian Fourier transform]
+For $\lambda>0$ set $f_\lambda(t)=e^{-\lambda t^2/2}$. Then
+\[
+ h_{f_\lambda}(u)=\sqrt{\frac{2\pi}{\lambda}}
+ e^{-u^2/(2\lambda)},\qquad
+ (f_\lambda*f_\lambda)(t)=\sqrt{\frac\pi\lambda}
+ e^{-\lambda t^2/4}.
+\]
+Consequently, with $k(u)=\log\pi-\Re\psi_\Gamma(1/4+iu/2)$,
+\[
+ W_\infty(f_\lambda*f_\lambda)
+ =\sqrt{\frac\pi\lambda}\,H(\lambda),\qquad
+ H(\lambda)=\frac1{\sqrt{\pi\lambda}}
+             \int e^{-u^2/\lambda}k(u)du.
+\]
+\end{lemma}
+\begin{proof}
+Completing the square gives both Gaussian integrals.
+Insert $|h_{f_\lambda}|^2=(2\pi/\lambda)e^{-u^2/\lambda}$
+in the gamma pairing with its coefficient $1/(2\pi)$.
+\end{proof}
+
+\begin{theorem}[convergent error-function series]
+\label{v4-arith:sc:erfc}
+Let $c_n=n+1/4$ and
+$\operatorname{erfc}(x)=\frac2{\sqrt\pi}\int_x^\infty e^{-v^2}dv$.
+For every $\lambda>0$,
+\[
+ H(\lambda)=k(0)-\sum_{n=0}^\infty
+ \left[\frac1{c_n}-\frac{2\sqrt\pi}{\sqrt\lambda}
+ e^{4c_n^2/\lambda}\operatorname{erfc}(2c_n/\sqrt\lambda)\right].
+\]
+Each bracket is nonnegative and at most $\lambda/(8c_n^3)$.
+The series converges uniformly on compact $\lambda$-intervals.
+\end{theorem}
+\begin{proof}
+The digamma series gives
+$k(0)-k(u)=\sum_n (u^2/4)/(c_n(c_n^2+u^2/4))$.
+Tonelli's theorem exchanges this nonnegative sum and the Gaussian
+integral. For $a>0$,
+\[
+ \int_{\mathbb R}\frac{e^{-u^2/\lambda}}{u^2+a^2}du
+ =\sqrt\pi\int_0^\infty\frac{e^{-a^2r}}{\sqrt{r+1/\lambda}}dr
+ =\frac\pi a e^{a^2/\lambda}\operatorname{erfc}(a/\sqrt\lambda).
+\]
+The first equality follows by integrating
+$\int_0^\infty e^{-r(u^2+a^2)}dr$ in either order.
+The substitution $v=a\sqrt{r+1/\lambda}$ gives the second.
+Set $a=2c_n$ and use
+$\int e^{-u^2/\lambda}u^2du=\sqrt\pi\lambda^{3/2}/2$.
+The estimate on each bracket follows by replacing
+$c_n^2+u^2/4$ by $c_n^2$. It proves uniform convergence.
+\end{proof}
+
+\begin{theorem}[the exact Gaussian sign range]
+\label{v4-arith:w7-d:thm:gauss-ATP}
+The continuous function $H$ is strictly decreasing on $(0,\infty)$,
+with limits $k(0)>0$ at zero and $-\infty$ at infinity.
+There is a unique $\lambda_c>0$ with $H(\lambda_c)=0$, and
+\[
+ W_\infty(f_\lambda*f_\lambda)\ge0
+ \quad\Longleftrightarrow\quad 0<\lambda\le\lambda_c.
+\]
+\end{theorem}
+\begin{proof}
+After $u=\sqrt\lambda v$,
+$H(\lambda)=\pi^{-1/2}\int e^{-v^2}k(\sqrt\lambda v)dv$.
+Strict radial decrease of $k$ gives strict decrease of this integral.
+Logarithmic growth gives a common integrable majorant on each compact
+$\lambda$-interval and on $0<\lambda\le1$.
+Thus $H$ is continuous and tends to $k(0)$ at zero.
+For each $v\ne0$, the nonnegative quantity
+$k(0)-k(\sqrt\lambda v)$ increases to infinity.
+Monotone convergence gives the limit at infinity.
+The intermediate value theorem completes the proof.
+\end{proof}
+
+\section{The arithmetic inequality on Gaussian squares}
+For these Gaussian tests the polar and prime contributions are
+\[
+ P(f_\lambda*f_\lambda)=\frac{4\pi}{\lambda}e^{1/(4\lambda)},
+ \qquad
+ W_{\mathrm{fin}}(f_\lambda*f_\lambda)
+ =2\sqrt{\frac\pi\lambda}\sum_{n\ge2}
+   \frac{\Lambda(n)}{\sqrt n}e^{-\lambda(\log n)^2/4}.
+\]
+These expressions converge for every $\lambda>0$ and give the
+complete value of $W(f_\lambda*f_\lambda)$ after subtracting the
+prime and gamma terms from the polar term.
+The gamma sign theorem alone does not determine that value.
+
+\begin{proposition}[a single Gaussian parameter does not test a quadratic form]
+For a Hermitian form, nonnegative values on a spanning collection
+of vectors do not imply nonnegative values on its linear span.
+In particular, Gaussian cross terms require their own comparison.
+\end{proposition}
+\begin{proof}
+The Hermitian matrix
+$\left(\begin{smallmatrix}1&2\\2&1\end{smallmatrix}\right)$
+is positive on each coordinate vector but has value $-2$ on $(1,-1)$.
+More generally, $q(f+g,f+g)=q(f,f)+q(g,g)+2\Re q(f,g)$.
+The signed arithmetic representation determines these cross terms
+on $\mathscr G$, but positivity of individual Gaussian squares
+does not bound them.
+\end{proof}
+
+\section{The auxiliary digamma integral and Fourier normalization}
+
+The signed kernel \(k\) and the auxiliary kernel
+\(g(u)=\Re\psi_\Gamma(1/4+iu/2)+\log\pi\) satisfy
+\(k(u)+g(u)=2\log\pi\). To compare scalar calculations, use a separate
+parameter \(L>0\) and define
+\[
+ I(L)=\int_{\mathbb R}e^{-2\pi u^2/L}g(u)\,du,\qquad m_L=\sqrt{L/2}.
+\]
+Direct substitution in the definition of \(H\) gives
+\begin{equation}
+ \frac{I(L)}{m_L}=2\log\pi-H\left(\frac{L}{2\pi}\right).
+ \label{v4-arith:w7-d:eq:J-normalised}
+\end{equation}
+Thus the zero of \(I\) is a level \(H=2\log\pi\), distinct from the
+signed threshold \(H=0\).
+
+\begin{proposition}[the auxiliary error-function series]
+\label{v4-arith:w7-d:prop:term-by-term}
+\label{v4-arith:w7-d:thm:erfc-series}
+With \(c_n=n+1/4\), put
+\begin{align}
+ J_n(L)&=\int_{\mathbb R}e^{-2\pi u^2/L}
+                 \frac{c_n}{c_n^2+u^2/4}\,du,
+ \label{v4-arith:w7-d:eq:Jn-def}\\
+ &=2\pi e^{8\pi c_n^2/L}
+       \operatorname{erfc}\left(2c_n\sqrt{2\pi/L}\right).
+ \label{v4-arith:w7-d:eq:Jn-closed}
+\end{align}
+Then the paired series
+\begin{equation}
+ I(L)=m_L(-\gamma_E+\log\pi)
+       +\sum_{n\ge0}\left(\frac{m_L}{n+1}-J_n(L)\right)
+ \label{v4-arith:w7-d:eq:I-erfc-series}
+\end{equation}
+converges absolutely. The accelerated series is
+\[
+ \frac{I(L)}{m_L}=g(0)+\sum_{n\ge0}
+       \left(\frac1{c_n}-\frac{J_n(L)}{m_L}\right),\qquad
+ 0\le\frac1{c_n}-\frac{J_n(L)}{m_L}
+       \le\frac{L}{16\pi c_n^3}.
+\]
+In particular its tail from \(n=N\ge1\) is at most
+\(L/[32\pi(N-3/4)^2]\).
+\end{proposition}
+\begin{proof}
+The digamma series is
+\begin{equation}
+ g(u)=-\gamma_E+\log\pi+
+ \sum_{n\ge0}\left(\frac1{n+1}-\frac{c_n}{c_n^2+u^2/4}\right).
+ \label{v4-arith:w7-d:eq:g-hurwitz-recall}
+\end{equation}
+Subtract its value at zero. The resulting nonnegative summands
+permit Tonelli's theorem. The error-function integral in
+Theorem~\ref{v4-arith:sc:erfc}, with \(\lambda=L/(2\pi)\), gives
+\(J_n\) and the accelerated bound. The difference
+\(1/(n+1)-1/c_n\) is absolutely summable, so regrouping gives
+\eqref{v4-arith:w7-d:eq:I-erfc-series}.
+Finally \(\sum_{n=N}^\infty(n+1/4)^{-3}
+\le\int_{N-1}^\infty(x+1/4)^{-3}dx\) proves the tail estimate.
+The unaccelerated paired summands are \(O_L(n^{-2})\), since
+\(J_n(L)=m_L/c_n+O_L(c_n^{-3})\).
+\end{proof}
+
+\begin{remark}[the real and complex Gaussian integrals]
+\label{v4-arith:w7-d:lem:erfc}
+The integral used above, for \(a,\alpha>0\), is
+\begin{equation}
+ \int_{\mathbb R}\frac{e^{-\alpha u^2}}{a^2+u^2}\,du
+ =\frac\pi a e^{\alpha a^2}\operatorname{erfc}(a\sqrt\alpha).
+ \label{v4-arith:w7-d:eq:erfc-identity}
+\end{equation}
+Also
+\begin{equation}
+ \int_{\mathbb R}\frac{e^{-\alpha u^2}}{a-iu}\,du
+ =\pi e^{\alpha a^2}\operatorname{erfc}(a\sqrt\alpha).
+ \label{v4-arith:w7-d:eq:erfc-imag-axis}
+\end{equation}
+Indeed \((a-iu)^{-1}=(a+iu)/(a^2+u^2)\); the imaginary term is odd
+and integrates to zero. The real integral was proved by a Laplace
+integral in Theorem~\ref{v4-arith:sc:erfc}.
+\end{remark}
+
+\begin{proposition}[the auxiliary limits and threshold]
+\label{v4-arith:w7-d:prop:narrow}
+\label{v4-arith:w7-d:prop:wide}
+\label{v4-arith:w7-d:thm:lambda-c}
+As \(L\downarrow0\),
+\[
+ I(L)=m_L\left(g(0)+\frac{L}{8\pi}g''(0)+O(L^2)\right),
+ \qquad g(0)=\log\pi-\gamma_E-\frac\pi2-3\log2<0.
+\]
+As \(L\to\infty\), \(I(L)\sim\tfrac12m_L\log L\).
+The normalized integral \(I(L)/m_L\) is strictly increasing and
+has a unique zero \(L_g>0\), characterized by
+\(H(L_g/(2\pi))=2\log\pi\).
+\end{proposition}
+\begin{proof}
+Write \(u=\sqrt{L/(2\pi)}v\) and use the probability density
+\(\pi^{-1/2}e^{-v^2}\). Its second moment is \(1/2\).
+The even Taylor expansion of \(g\), with fourth-order remainder
+near zero and logarithmic growth away from zero, gives the narrow
+expansion. The Gaussian tail outside a fixed neighborhood is smaller
+than every power of \(L\). The value at zero follows from the
+reflection and duplication identities for \(\psi_\Gamma\).
+For the wide limit, \(g(u)=\log|u|+O(1)\) for \(|u|\ge1\).
+Split the scaled integral at \(|v|=\sqrt{2\pi/L}\).
+On the complement, \(\log|v|\) is integrable against the Gaussian.
+On the small interval, boundedness of \(g\) gives an
+\(O(L^{-1/2}\log L)\) error after subtracting \(\tfrac12\log L\).
+Thus \(I(L)/m_L=\tfrac12\log L+O(1)\).
+Finally \eqref{v4-arith:w7-d:eq:J-normalised} and the strict decrease
+of \(H\) give monotonicity and uniqueness.
+\end{proof}
+
+The time Gaussian \(F_L(x)=e^{-\pi Lx^2}\) has the Fourier transform
+\begin{equation}
+ \widehat F_{L,2\pi}(u)=\int F_L(x)e^{-2\pi iux}\,dx
+       =L^{-1/2}e^{-\pi u^2/L}.
+ \label{v4-arith:w7-d:eq:gaussian-FT}
+\end{equation}
+Since \(F_L=f_{2\pi L}\), its signed pairing is
+\[
+ W_\infty(F_L*F_L)=\frac1{\sqrt{2L}}H(2\pi L).
+\]
+More generally, \(\mathcal F_+\phi(2\pi u)=\widehat\phi_{2\pi}(-u)\),
+so evenness of \(k\) and a change of variables give
+\[
+ W_\infty(\phi)=\int_{\mathbb R}\widehat\phi_{2\pi}(u)k(2\pi u)\,du.
+\]
+This conversion includes both the kernel argument and the measure factor.
+The parameter in the auxiliary identity
+\eqref{v4-arith:w7-d:eq:J-normalised} is therefore not the physical
+Gaussian parameter in this last pairing.
+
+\section{Cross terms and the positive Gaussian cone}
+\begin{proposition}[the signed gamma form on positive Gaussian sums]
+\label{v4-arith:w7-d:thm:positive-cone}
+For \(\lambda,\mu>0\), put \(\nu=2\lambda\mu/(\lambda+\mu)\).
+Then
+\begin{align*}
+ (f_\lambda*f_\mu)(t)
+ &=\sqrt{\frac{2\pi}{\lambda+\mu}}
+           e^{-\lambda\mu t^2/[2(\lambda+\mu)]},\\
+ W_\infty(f_\lambda*f_\mu)
+ &=\sqrt{\frac{2\pi}{\lambda+\mu}}H(\nu).
+\end{align*}
+Consequently, on the cone
+\begin{equation}
+ \mathcal C^+_{\mathrm{Gauss}}=
+ \left\{\sum_{j=1}^N a_jf_{\lambda_j}:
+ N\ge1,\ a_j\ge0,\ 0<\lambda_j\le\lambda_c\right\},
+ \label{v4-arith:w7-d:eq:positive-cone}
+\end{equation}
+one has \(W_\infty(f*f^*)\ge0\).
+\end{proposition}
+\begin{proof}
+Complete the square in the convolution integral.
+The Fourier product is
+\((2\pi/\sqrt{\lambda\mu})e^{-u^2/\nu}\).
+Integrating it against \(k(u)/(2\pi)\) gives the displayed pairing.
+For \(\lambda,\mu\le\lambda_c\), their harmonic mean satisfies
+\(\nu\le\lambda_c\), so every cross pairing is nonnegative.
+Expand the finite sum with coefficients \(a_i a_j\ge0\).
+\end{proof}
+
+\begin{proposition}[continuity and carrier boundaries]
+\label{v4-arith:w7-d:lem:W-arch-continuous}
+\label{v4-arith:w7-d:cor:gauss-dense}
+\label{v4-arith:w7-d:prop:compare-HFD}
+The signed gamma distribution extends continuously to the Schwartz
+space. Its quadratic pairing is continuous there as well.
+The linear span of the centered Gaussians lies in the closed even
+subspace and is not dense in the full Schwartz space.
+Every nonzero element of \(\mathcal C^+_{\mathrm{Gauss}}\) is positive
+on all of \(\mathbb R\), so it is not compactly supported.
+Its Fourier transform is not in \(\mathcal F_+\mathscr A\).
+Both compact tests and these Gaussians belong to \(\mathscr G\).
+\end{proposition}
+\begin{proof}
+Logarithmic growth of \(k\) bounds its Fourier pairing by a Schwartz
+seminorm. The Fourier transform, convolution and involution are
+continuous on Schwartz space. Reflection is continuous, so its
+fixed subspace is closed and excludes nonzero odd Schwartz functions.
+Each Gaussian is strictly positive, which proves the support claim
+for nonzero positive combinations. Fourier injectivity would force
+a compact preimage to equal this noncompact function.
+Membership in \(\mathscr G\) follows directly from the defining
+seminorms. Continuity of the complete arithmetic functional uses
+that exponential topology, as proved above.
+\end{proof}
+
+The positive Gaussian cone controls the signed gamma term only.
+The full Weil form still subtracts this term and the prime term
+from the polar term. Neither positivity of the gamma cone nor its
+comparison with a compact or automorphic test class proves the
+full arithmetic inequality.
+
+\section{The auxiliary Schwartz form and its Gaussian cone}
+\label{v4-arith:pres74:aux-form}
+
+The auxiliary integral also defines a quadratic form, but it is not
+the signed gamma form. On the complex Schwartz space use the convention
+$\widehat f(u)=\int_{\mathbb R}f(x)e^{-2\pi iux}\,dx$ and set
+\[
+ \mathcal T_g(\phi)=\frac1{2\pi}\int_{\mathbb R}\widehat\phi(u)g(u)\,du,
+ \qquad
+ Q_g(f,h)=\frac1{2\pi}\int_{\mathbb R}
+              \widehat f(u)\overline{\widehat h(u)}g(u)\,du.
+\]
+Thus $\mathcal T_g$ is complex linear and $Q_g$ is Hermitian,
+linear in its first argument, with $Q_g(f,h)=\mathcal T_g(f*h^*)$.
+The value of $\mathcal T_g$ is real when its Fourier argument is real,
+in particular for real even tests. No real-valuedness is claimed
+for arbitrary complex tests.
+
+\begin{proposition}[continuity and the two normalizations]
+\label{v4-arith:pres74:aux-continuity}
+The functional $\mathcal T_g$ and the sesquilinear form $Q_g$ are
+continuous on Schwartz space. The function $I$ is smooth on
+$(0,\infty)$. With $\langle f,h\rangle_2=\int f\bar h$, one has
+\begin{align*}
+ \frac1{2\pi}\int\widehat f(u)\overline{\widehat h(u)}k(u)\,du
+   &=\frac{\log\pi}{\pi}\langle f,h\rangle_2-Q_g(f,h),\\
+ W_\infty(f*h^*)&=\int\widehat f(u)\overline{\widehat h(u)}k(2\pi u)\,du.
+\end{align*}
+The second equality denotes the signed gamma extension; it does not
+extend the full prime functional to arbitrary Schwartz tests.
+\end{proposition}
+\begin{proof}
+The function $g$ is smooth at zero and has at most logarithmic growth.
+Bound its integral by a weighted supremum seminorm of $\widehat\phi$;
+for the form use the product of such seminorms of $\widehat f$ and
+$\widehat h$. The integrable majorant can be taken proportional to
+$(1+|u|)^{-2}$. Fourier transform is continuous on Schwartz space.
+On each compact interval of positive $L$, every $L$-derivative of
+$e^{-2\pi u^2/L}$ is bounded by a polynomial in $u$ times a fixed
+Gaussian. Multiplication by $g(u)$ is integrable against this bound,
+so differentiation under the integral proves $I\in C^\infty$.
+The first identity uses $k+g=2\log\pi$ and Plancherel in the
+$2\pi$ convention. The second uses
+$h_f(2\pi u)=\widehat f(-u)$ and the change of measure
+$du_{\mathrm{old}}=2\pi\,du$, followed by evenness of $k$.
+\end{proof}
+
+\begin{theorem}[auxiliary Gaussian pairings and the exact cone]
+\label{v4-arith:pres74:aux-cone}
+For $F_L(x)=e^{-\pi Lx^2}$, $L,M>0$, let $H_{LM}=2LM/(L+M)$.
+Then
+\[
+ Q_g(F_L,F_M)=\frac{I(H_{LM})}{2\pi\sqrt{LM}},\qquad
+ Q_g(F_L,F_L)=\frac{I(L)}{2\pi L}.
+\]
+Consequently
+\[
+ \{L>0:Q_g(F_L,F_L)\ge0\}=[L_g,\infty),
+ \qquad Q_g(F_L,F_L)=0\ \Longleftrightarrow\ L=L_g,
+\]
+where $H(L_g/(2\pi))=2\log\pi$.
+On the nonempty cone
+\[
+ \mathcal C_g^+=\left\{\sum_{j=1}^N a_jF_{L_j}:
+                   a_j\ge0,\ L_j\ge L_g,\ N\ge1\right\}
+\]
+one has $Q_g(f,f)\ge0$. A nonzero element has zero value precisely
+when every parameter with nonzero coefficient equals $L_g$.
+The same nonnegativity holds on the closure of this cone in
+Schwartz topology.
+\end{theorem}
+\begin{proof}
+The product of the two Fourier Gaussians is
+$(LM)^{-1/2}e^{-\pi u^2(1/L+1/M)}$, which gives the first identity.
+The sign and equality statements follow from the strict increase of
+$I(L)/m_L$ and its unique zero proved above.
+If $L,M\ge L_g$, then
+$H_{LM}^{-1}=(L^{-1}+M^{-1})/2\le L_g^{-1}$.
+Thus every cross pairing is nonnegative. Expanding the square of a
+finite sum gives
+\[
+ Q_g(f,f)=\sum_{i,j}a_i a_j
+             \frac{I(H_{L_iL_j})}{2\pi\sqrt{L_iL_j}}\ge0.
+\]
+If some $a_j>0$ has $L_j>L_g$, its diagonal term is strictly
+positive and none of the other terms can cancel it. Otherwise all
+active parameters equal $L_g$ and every term vanishes.
+The closure statement is continuity of $Q_g$. Nonemptiness follows
+from any $F_L$ with $L\ge L_g$.
+\end{proof}
+
+\begin{example}[two auxiliary Gaussian scales]
+\label{v4-arith:pres74:two-gaussians}
+For real $a,b$,
+\[
+ Q_g(aF_L+bF_M,aF_L+bF_M)
+ =\frac1{2\pi}\left(\frac{a^2I(L)}L
+   +\frac{2abI(H_{LM})}{\sqrt{LM}}+\frac{b^2I(M)}M\right).
+\]
+Choose $L_g/2<L<L_g$ and
+$M>L_gL/(2L-L_g)$. Then $M>L_g$ and $H_{LM}>L_g$, while
+$I(L)<0$. Taking $a=1$ and $b>0$ sufficiently small gives a
+negative value by continuity in $b$. This example mixes one
+negative and one positive Gaussian; it does not contradict the
+positive-cone theorem, whose parameters all lie above $L_g$.
+Nor does that theorem assert positivity for every complex linear
+combination of its generators.
+\end{example}
+
+\subsection{High-frequency dominance on a specified carrier}
+\label{v4-arith:pres74:hfd}
+Let $t_g>0$ be the unique zero of $g$: existence follows from
+$g(0)<0$, logarithmic growth and strict increase on $(0,\infty)$.
+Indeed the differentiated Hurwitz series has positive summands
+$c_nu/[2(c_n^2+u^2/4)^2]$ for $u>0$, uniformly convergent on compact
+intervals. For $f\in\mathcal S(\mathbb R)$ define
+\[
+ A_g(f)=\int_{|u|\le t_g}|\widehat f(u)|^2(-g(u))\,du,\qquad
+ B_g(f)=\int_{|u|>t_g}|\widehat f(u)|^2g(u)\,du.
+\]
+The high-frequency dominance condition, in this Fourier convention, is
+\[
+ 2t_g|g(0)|\sup_{|u|\le t_g}|\widehat f(u)|^2\le B_g(f).
+\]
+It implies $A_g(f)\le B_g(f)$ and hence
+$Q_g(f,f)=(B_g(f)-A_g(f))/(2\pi)\ge0$.
+This is the auxiliary inequality associated with the condition in
+\Cref{v4-arith:w6-a:def:HFD-class}; changing the Fourier convention
+requires its explicit frequency rescaling, and does not turn $g$ into $k$.
+
+For a specified restricted compact test space $E\subset\mathscr A$,
+put $E_{\mathrm{HFD}}=\{f\in E:f\text{ satisfies this condition}\}$.
+Every nonzero element of $\mathcal C_g^+$ is positive on all of
+$\mathbb R$, so $\mathcal C_g^+\cap E=\{0\}$; both sets contain zero.
+The assertion that $E_{\mathrm{HFD}}$ has a nonzero element requires
+a construction within the actual restrictions defining $E$.
+It is a separate question whether a chosen automorphic subspace
+admits such tests and a norm comparison. A noncompact Gaussian is
+not an example in that compact space.
+
+\paragraph{Other positive classes and the full inequality.}
+\label{v4-arith:pres74:routes}
+One may ask for other positive subspaces of $Q_g$, including
+nonconic combinations controlled by a de Branges or Connes--Deninger
+construction, compact smooth tests, or a spectral-density comparison
+with the Gaussian moments of $g$. No assertion that these exhaust
+all possible methods is made. The cone is a proper subset of its
+complex linear span: $-F_L$ belongs to that span for $L\ge L_g$
+but cannot be a nonnegative sum of strictly positive Gaussians.
+For comparison, if functions $\varphi_j$ are positive definite,
+then $\sum_jc_j\varphi_j$ is positive definite for $c_j\ge0$:
+each of its finite Gram forms is the same nonnegative combination
+of the Gram forms of the $\varphi_j$. This elementary fact does
+not identify positive-definite functions with vectors on which
+$Q_g$ is nonnegative. Closure of a positive cone follows
+from quadratic continuity; linear density of positive individual
+vectors alone does not control cross terms.
+
+The signed cone and $\mathcal C_g^+$ prove different gamma
+inequalities. Both lie in $\mathscr G$, where the full arithmetic
+identity is defined. For a specified $E\subset\mathscr G$ and
+$S\subset E$, positivity of the full Weil form on $E$ is equivalent
+to positivity on $E\setminus S$ only after positivity on $S$ is
+established. This is the elementary partition of the quantifier
+over $E$. Auxiliary positivity on $S$ does not supply that premise,
+since the polar and prime terms remain. RH equivalence then requires
+a proved comparison of $E$ with the full compact test criterion.
+
+\section{Bibliography}
+\label{v4-arith:w7-d:bibliography}
+
+\begin{description}
+\item[Erd\'elyi--Magnus--Oberhettinger--Tricomi 1953.] \emph{Higher
+Transcendental Functions} (Bateman Manuscript Project) Vol.~II,
+Ch.~IX. McGraw--Hill. Erfc integrals, parabolic cylinder functions.
+
+\item[Gradshteyn--Ryzhik 1965.] \emph{Tables of Integrals, Series,
+and Products}. Academic Press. \S 3.323 Gaussian integrals, \S 4.335
+log-weight Gaussian, \S 7.4 erfc tables, \S 8.251 complementary error
+function identities.
+
+\item[Titchmarsh 1948.] \emph{Introduction to the Theory of Fourier
+Integrals} (2nd edn, Oxford). Fourier normalisations and continuity of
+tempered-distribution functionals.
+
+\item[Rudin 1973.] \emph{Functional Analysis}, McGraw--Hill.
+Ch.~7 distributions, Paley--Wiener spaces, \(L^{2}\) continuity
+of tempered pairings.
+
+\item[Hurwitz 1882.] Hurwitz, A. \emph{Einige Eigenschaften der
+Dirichlet'schen Functionen.} Z.~Math.~Phys.~27. Hurwitz series
+for the digamma function (cross-reference to the earlier analysis of
+Chapter~\ref{v4-arith:w6-a:ATP-direct-obstruction}).
+
+\item[Abramowitz--Stegun 1964.] Abramowitz, M.; Stegun, I.A.
+\emph{Handbook of Mathematical Functions}. National Bureau of
+Standards Applied Math.~Series 55. \S 7 error functions (tables and
+asymptotics); \S 6 gamma and digamma asymptotics.
+
+\item[Weil 1952.] (Cross-reference.) Sur les formules explicites de
+la th\'eorie des nombres premiers. Oeuvres Scientifiques Vol.~II.
+Used as the Weil-explicit-formula input.
+\end{description}

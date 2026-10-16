@@ -1,0 +1,231 @@
+\section{Positive sectors of the Weil form}
+\label{intake:weil:section}
+
+The full compact-test functional $W$ of
+Theorem~\ref{v4-arith:w5-a:thm:weil-explicit} has positive sectors
+without assuming its positivity on the entire test algebra.
+Its prime-power terms couple test functions on separated intervals.
+A sufficiently small width makes the archimedean contribution dominate these couplings.
+This gives a positive space of functions with infinitely many independent directions,
+while retaining the full arithmetic functional.
+
+\subsection{Conventions and the full form}
+For $f\in C_c^\infty(\mathbb R)$ use
+\[
+ \widehat f(t)=\int_\mathbb R f(u)e^{itu}\,du,\qquad
+ f^*(u)=\overline{f(-u)},\qquad
+ (f*g)(u)=\int_\mathbb R f(v)g(u-v)\,dv.
+\]
+Let $\Lambda(n)$ be the von Mangoldt function: it is $\log p$ for $n=p^a$ and zero otherwise. Put
+\[
+ k_\infty(t)=\operatorname{Re}\psi(1/4+it/2)-\log\pi,
+\]
+where $\psi=\Gamma'/\Gamma$. Define the full arithmetic functional by
+\begin{equation}\label{intake:weil:eq:Weil}
+\begin{split}
+ L_\zeta(h)={}&\widehat h(i/2)+\widehat h(-i/2)
+ +\frac1{2\pi}\int_\mathbb R\widehat h(t)k_\infty(t)\,dt\\
+ &-\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}
+          \bigl(h(\log n)+h(-\log n)\bigr).
+\end{split}
+\end{equation}
+With the preceding sign convention, $L_\zeta(h)=W(h)$.
+For compact smooth $h$ the prime sum is finite and the Fourier integral converges. Define
+\[
+ B_\zeta(f,g)=L_\zeta(f^**g),\qquad Q_\zeta(f)=B_\zeta(f,f).
+\]
+The form is conjugate-linear in its first argument, linear in its second and Hermitian. The estimates below use this displayed functional directly.
+
+\subsection{A coercive estimate on one narrow interval}
+The convergent digamma series gives
+\begin{equation}\label{intake:weil:eq:digamma-positive}
+ k_\infty(t)=k_\infty(0)+\sum_{n\ge0}
+ \left(\frac1{n+1/4}
+ -\frac{n+1/4}{(n+1/4)^2+t^2/4}\right).
+\end{equation}
+Every summand is nonnegative and increasing with $|t|$. Also
+\[
+ k_\infty(0)=-\gamma-\frac\pi2-3\log2-\log\pi>-6.
+\]
+For example $\gamma<1$, $\pi<22/7$, $\log2<7/10$ and $\log\pi<6/5$ suffice. The last two exponential inequalities follow from their finite positive Taylor lower bounds. Finally $k_\infty(T)\to+\infty$: for $n+1/4\le T/2$, the corresponding summand in \eqref{intake:weil:eq:digamma-positive} is at least $1/(2(n+1/4))$, whose partial sums diverge.
+
+Let $f$ have support in an interval of length $L$. Cauchy--Schwarz gives $|\widehat f(t)|^2\le L\|f\|_2^2$, and Plancherel gives
+\[
+ \frac1{2\pi}\int_{-T}^T|\widehat f(t)|^2dt
+       \le\frac{LT}{\pi}\|f\|_2^2,\qquad
+ \frac1{2\pi}\int_\mathbb R|\widehat f(t)|^2dt=\|f\|_2^2.
+\]
+Let $T>0$ and $M\ge-6$ satisfy $k_\infty(T)\ge M$.
+The archimedean contribution is then at least
+\[
+ \left(M-(M+6)\frac{LT}{\pi}\right)\|f\|_2^2.
+\]
+When $L<\log2$, the support of $f^**f$ contains no nonzero prime-power logarithm, so its prime contribution is zero. The polar term is bounded below by $-2Le^{L/2}\|f\|_2^2$: translate the interval to be centred at zero and apply Cauchy--Schwarz to $\int f(u)e^{u/2}du$ and $\int f(u)e^{-u/2}du$. The translation factors cancel between these two integrals. Consequently
+\begin{equation}\label{intake:weil:eq:local-coercivity}
+ Q_\zeta(f)\ge c(L,T,M)\|f\|_2^2,
+ \qquad c(L,T,M)=M-(M+6)\frac{LT}{\pi}-2Le^{L/2}.
+\end{equation}
+The estimate holds uniformly over all smooth functions in the interval.
+
+\subsection{The cross-window kernel retains the arithmetic primes}
+Away from zero, the distribution given by the sum of the polar and archimedean contributions in \eqref{intake:weil:eq:Weil} is the smooth even kernel
+\begin{equation}\label{intake:weil:eq:cross-K}
+ K(u)=2\cosh(u/2)-\frac{e^{-|u|/2}}{1-e^{-2|u|}}\qquad(u\ne0).
+\end{equation}
+To verify it, use the integral expression
+\[
+ \psi(a+it/2)=-\gamma+
+ \int_0^\infty\frac{e^{-v}-e^{-(a+it/2)v}}{1-e^{-v}}\,dv.
+\]
+Test on a smooth function supported away from zero. Terms constant in $t$ vanish on that test. Fourier inversion of the cosine term, followed by $v=2|u|$, gives the negative second summand in \eqref{intake:weil:eq:cross-K}. The two polar evaluations give $2\cosh(u/2)$. This argument is on separated supports; it does not ignore a delta term at zero in the diagonal form.
+
+Fix distinct positions $a_1,\ldots,a_N$. Let $I_L=(-L/2,L/2)$ and
+\[
+ F(u)=\sum_{j=1}^N f_j(u-a_j),\qquad f_j\in C_c^\infty(I_L).
+\]
+Choose $L$ so small that these supports are disjoint and each difference interval contains a prime-power logarithm only if its centre equals that logarithm. This is possible because there are only finitely many prime powers in a bounded interval. Put
+\[
+ w_{ij}=\begin{cases}
+ \Lambda(n)/\sqrt n,&|a_i-a_j|=\log n\text{ for an integer }n\ge2,\\
+ 0,&\text{otherwise}.
+ \end{cases}
+\]
+For a resonant pair its prime term is exactly $-w_{ij}\int f_j(v)\overline{f_i(v)}dv$. The smooth part is the integral kernel \eqref{intake:weil:eq:cross-K} evaluated at $a_j-a_i+v-u$. If $M_{ij}$ bounds $|K|$ there, its absolute value is at most $LM_{ij}\|f_i\|_2\|f_j\|_2$. Thus
+\begin{equation}\label{intake:weil:eq:matrix-bound}
+ Q_\zeta(F)\ge
+ \left(c(L,T,M)-\max_i\sum_{j\ne i}(w_{ij}+LM_{ij})\right)
+       \sum_i\|f_i\|_2^2.
+\end{equation}
+Apply $2ab\le a^2+b^2$ to each unordered pair to obtain this bound.
+
+\begin{theorem}[Positive arithmetic windows of arbitrary finite multiplicity]\label{intake:weil:thm:any-windows}
+For any fixed finite set of distinct real positions $a_1,\ldots,a_N$, there exists $L>0$ such that the full Weil form is positive definite on the infinite-dimensional space
+\[
+ \bigoplus_{j=1}^N C_c^\infty(a_j+I_L).
+\]
+It has a uniform strictly positive lower bound by the $L^2$ norm. All prime-power terms in \eqref{intake:weil:eq:Weil} are retained.
+\end{theorem}
+\begin{proof}
+The finite row sums of the $w_{ij}$ are fixed. Choose $M$ larger than their maximum plus two, and then $T$ with $k_\infty(T)\ge M$. For sufficiently small $L$, the separation requirements hold, $LT$ and $Le^{L/2}$ tend to zero, and the $M_{ij}$ remain bounded because their arguments stay away from zero. The coefficient in \eqref{intake:weil:eq:matrix-bound} is then positive, in fact larger than one after making $L$ smaller. 
+\end{proof}
+
+\subsection{An explicit four-window theorem with a prime-power coupling}
+Choose
+\[
+ (a_0,a_1,a_2,a_3)=(0,\log2,\log3,\log4),\qquad L=10^{-3}.
+\]
+The resonant pairs are $(0,1),(0,2),(0,3),(1,3)$; their weights are respectively
+\[
+ \frac{\log2}{\sqrt2},\quad\frac{\log3}{\sqrt3},\quad
+ \frac{\log2}{2},\quad\frac{\log2}{\sqrt2}.
+\]
+In particular the $\log4$ term is a genuine prime-power term, not $\log4/2$. Every other logarithmic difference is separated from prime-power logarithms by more than $L$.
+
+\begin{theorem}[A quantitative positive sector]\label{intake:weil:thm:four-windows}
+For arbitrary $f_j\in C_c^\infty((-1/2000,1/2000))$, the function
+\[
+ F(u)=f_0(u)+f_1(u-\log2)+f_2(u-\log3)+f_3(u-\log4)
+\]
+satisfies
+\begin{equation}\label{intake:weil:eq:four-window}
+ \boxed{\displaystyle Q_\zeta(F)\ge\frac15\sum_{j=0}^3\|f_j\|_2^2.}
+\end{equation}
+\end{theorem}
+\begin{proof}
+A finite rational calculation gives
+\[
+ \sum_{n=0}^{99}\left(\frac1{n+1/4}
+ -\frac{n+1/4}{(n+1/4)^2+2500}\right)>8.
+\]
+For an explicit integer calculation, put
+\[
+ d_n=(4n+1)((4n+1)^2+40000),\qquad
+ b_j=\sum_{n=10j}^{10j+9}\left\lfloor\frac{1600000000}{d_n}\right\rfloor.
+\]
+The values for $j=0,\ldots,9$ are
+\[
+ (b_0,\ldots,b_9)=(64860,6514,3300,1958,1248,832,574,411,300,226).
+\]
+Their sum is $80223$. The rational partial sum is therefore at least
+$80223/10000>8$. Since all later summands are nonnegative and $k_\infty(0)>-6$, we have $k_\infty(100)>2$. Equation \eqref{intake:weil:eq:local-coercivity}, $\pi>3$, and $e^{1/2000}<3/2$ give a diagonal lower bound
+\[
+ 2-\frac8{30}-\frac3{1000}=\frac{5191}{3000}.
+\]
+All cross-kernel arguments have absolute value between $\log(4/3)-10^{-3}$ and $\log4+10^{-3}$. On this interval each of the two positive terms in \eqref{intake:weil:eq:cross-K} is less than three. For the denominator term, $\log(4/3)>1/4$ and $\log(3/2)<1/2-1/8+1/24<0.498$ imply $1-e^{-2|u|}>1/3$. For the polar term use $2\cosh((\log4+10^{-3})/2)<2(1.001)+1/2<3$. Thus $|K(u)|<3$, and the smooth row cost is less than $9/1000$.
+
+The largest prime row sum is bounded by
+\[
+ \frac12+\frac{11}{17}+\frac7{20}=\frac{509}{340},
+\]
+using $\log2<7/10$, $\sqrt2>7/5$, $\log3<11/10$, $\sqrt3>17/10$. Substitution into \eqref{intake:weil:eq:matrix-bound} gives
+\[
+ \frac{5191}{3000}-\frac9{1000}-\frac{509}{340}=\frac{5719}{25500}>\frac15.
+\]
+This proves \eqref{intake:weil:eq:four-window} for the entire stated infinite-dimensional space.
+\end{proof}
+
+This sector is not a convolution algebra. Its support windows are not preserved under repeated convolution, and the permissible window width in Theorem~\ref{intake:weil:thm:any-windows} depends on the whole finite set of positions. Neither theorem supplies a dense convolution-stable exhaustion with one uniform estimate. That missing extension is exactly where the global Weil-positivity problem remains. Global positivity on the full convolution algebra is not a consequence of these estimates.
+
+
+\subsection{Finite-rank operators from the arithmetic pairing}
+
+Let $\mathscr H$ be the Hilbert completion of this four-window space for
+$B_\zeta$, with the inner product conjugate-linear in its first argument.
+For $f,g\in\mathscr H$, define the bounded rank-one operator
+$\Theta_{f,g}h=B_\zeta(g,h)f$. Direct substitution gives
+\[
+ \Theta_{f,g}\Theta_{u,v}=B_\zeta(g,u)\Theta_{f,v},\qquad
+ \Theta_{f,g}^*=\Theta_{g,f},\qquad
+ \operatorname{Tr}(\Theta_{f,g}\Theta_{u,v})
+ =B_\zeta(g,u)B_\zeta(v,f).
+\]
+The trace identity follows from
+$\operatorname{Tr}(\Theta_{f,v})=B_\zeta(v,f)$ in an orthonormal basis.
+For vectors in the original test space, every displayed contraction has
+its prime, archimedean and polar terms given by the full functional above.
+These operators represent the selected quadratic pairing. A representation
+of convolution would additionally require compatible operators for every
+convolution multiplier on a common invariant domain.
+
+
+For a finite-dimensional flavour subspace $V\subset\mathscr H$, take the
+charged fermion space
+\[
+ \mathcal F_V=\Lambda_{\mathbb C}\!\left(
+ \bigoplus_{r\in\mathbb Z_{>0}-1/2}(V\oplus\overline V)t^r\right).
+\]
+Use its algebraic finite-particle domain and the induced positive Hermitian form.
+Exterior multiplication and its adjoint satisfy the canonical
+anticommutation relations with contraction $B_\zeta$.
+Writing the resulting charged fields as $\psi_f(z)$, linear in $f$,
+and $\psi_g^*(w)$, conjugate-linear in $g$,
+the vacuum contraction in the expansion $|w|<|z|$ is
+\[
+ B_\zeta(g,f)\sum_{k\ge0}z^{-k-1}w^k
+ =\frac{B_\zeta(g,f)}{z-w}.
+\]
+For a finite-rank $A$, choose $V$ containing the ranges of $A$ and $A^*$,
+and define $J_{\Theta_{f,g}}(z)=:\psi_f(z)\psi_g^*(z):$, extending linearly in $A$.
+Normal ordering places creation operators to the left, with fermion signs.
+The singular operator product is
+\[
+ J_A(z)J_B(w)\sim
+ \frac{\operatorname{Tr}(AB)}{(z-w)^2}
+ +\frac{J_{[A,B]}(w)}{z-w}.
+\]
+Indeed the two single contractions compose the matrices in their two
+orders, with opposite fermion signs. The double contraction sums their
+closed index pair and gives $\operatorname{Tr}(AB)$.
+Equivalently, the current modes satisfy
+\[
+ [J_A(m),J_B(n)]=J_{[A,B]}(m+n)
+ +m\delta_{m+n,0}\operatorname{Tr}(AB)I.
+\]
+For $m>0$, exactly $m$ half-integer modes cross the vacuum in the scalar
+term. Antisymmetry determines the remaining signs.
+For fixed mode and finite-energy vector, only finitely many creation
+terms survive. Enlarging $V$ preserves these identities, so they apply
+to every finite set of finite-rank operators on $\mathscr H$.
+The arithmetic pairing thus occurs as the contraction of singular
+currents on this specified positive sector. Its support is still not
+stable under convolution.

@@ -1,0 +1,2501 @@
+\chapter{Arithmetic Chern--Simons and boundary realization}
+\label{v4-arith:cs:chapter}
+
+A gauge theory assigns an amplitude to a field and sums over fields when
+regions are glued. These are two different operations. For the group
+\(C_2=\{1,-1\}\), the sign representation has Wilson values \(1\) and \(-1\)
+on the two circle holonomies. With trivial action their normalized average
+is zero. Specifying one holonomy instead gives one of the two values. An
+arithmetic Wilson comparison must determine which operation produces the
+Frobenius trace.
+
+Finite gauge groups make the distinction exact. Automorphisms determine the
+integration measure, a three-cocycle determines the action, and
+transgression determines the boundary line. Over a number field, arithmetic
+duality supplies a different integration map in cohomological degree three.
+It gives a scalar Chern--Simons invariant and torsors over local
+representation spaces. In the abelian case it also gives a linking pairing
+whose Gaussian sum computes Wilson correlations. These are constructions on
+specified arithmetic objects.
+
+We develop these finite theories before passing to congruence towers. The
+transition maps expose the lifting measures required by a profinite limit. A
+free holomorphic--topological model then supplies an explicit physical
+boundary comparison, with its current algebra, coefficient complex and
+Gaussian cap. The final question is to construct arithmetic bulk and
+boundary objects for which these operations agree. Neither an Euler product
+nor a boundary character supplies those maps.
+
+The prerequisites are group cohomology, finite groupoids and the coefficient
+and trace distinctions of Chapters~\ref{v4-arith:coefficients:chapter}
+and~\ref{v4-arith:traces:chapter}. Continuous cochains are used for
+profinite groups. Tensor products are algebraic unless a completion is
+specified.
+
+\section{Finite gauge fields and their integration}
+\label{v4-arith:cs:finite}
+
+A \emph{finite groupoid} is a groupoid with finitely many isomorphism
+classes and finite automorphism groups. Its integral of an
+isomorphism-invariant complex function is
+\begin{equation}
+ \int_{\mathcal X} f
+ =\sum_{[x]\in\pi_0\mathcal X}
+       \frac{f(x)}{|\operatorname{Aut}_{\mathcal X}(x)|},
+ \qquad
+ |\mathcal X|=\int_{\mathcal X}1.
+ \label{v4-arith:cs:eq:integral}
+\end{equation}
+The symbol \(BG\) denotes the one-object groupoid with automorphism group
+\(G\). Thus \(|BG|=1/|G|\). For a finite \(G\)-set \(X\), the action
+groupoid \(X//G\) has objects \(X\) and arrows the action of \(G\).
+Orbit--stabilizer gives
+\begin{equation}
+ \int_{X//G}f=\frac1{|G|}\sum_{x\in X}f(x).
+ \label{v4-arith:cs:eq:action-integral}
+\end{equation}
+
+For a connected space with fundamental group \(\Gamma\), finite gauge fields
+with group \(G\) form \(\mathcal F_G=\operatorname{Hom}(\Gamma,G)//G\),
+whenever this groupoid is finite. An object is a homomorphism \(\sigma\).
+Its automorphism group is the centralizer of \(\sigma(\Gamma)\). In the
+arithmetic case \(\Gamma\) is a specified profinite fundamental group and
+the homomorphisms are continuous. Ramification conditions are part of that
+specification. They cannot be recovered from the finite group alone.
+
+\subsection{Integration over homotopy fibers}
+
+Let \(p:\mathcal X\to\mathcal Y\) be a functor of finite groupoids. Its
+\emph{homotopy fiber} at \(y\) has objects \((x,\phi)\), where
+\(\phi:p(x)\xrightarrow{\sim}y\). An arrow \(a:(x,\phi)\to(x',\phi')\)
+satisfies \(\phi' p(a)=\phi\). Define
+\[
+ (p_!f)(y)=\int_{\mathcal X_y}f(x),\qquad
+ (p^*g)(x)=g(p(x)).
+\]
+Keeping \(\phi\) is necessary for the measure.
+
+\begin{theorem}[Finite integration]
+\label{v4-arith:cs:thm:fubini}
+For functors of finite groupoids the following identities hold:
+\[
+ \int_{\mathcal Y}p_!f=\int_{\mathcal X}f,
+ \qquad (q p)_!=q_!p_!,
+ \qquad p_!(f\,p^*g)=(p_!f)g.
+\]
+In a homotopy Cartesian square
+\[
+\begin{tikzcd}
+ \mathcal X' \ar[r,"q'"]\ar[d,"p'"']&
+ \mathcal X\ar[d,"p"]\\
+ \mathcal Y'\ar[r,"q"']&\mathcal Y,
+\end{tikzcd}
+\] one has \(q^*p_!=p'_!q'^*\).
+\end{theorem}
+
+\begin{proof}
+Fix an isomorphism class \([x]\) and a representative \(y\) of \([p(x)]\).
+The set \(\operatorname{Iso}(p(x),y)\) has \(|\operatorname{Aut}y|\)
+elements. The contribution of the component over \([x]\) to \(\mathcal X_y\)
+is its action groupoid under \(\operatorname{Aut}x\), and hence has mass
+\(|\operatorname{Aut}y|/|\operatorname{Aut}x|\). Integration over \([y]\)
+cancels the numerator and gives \eqref{v4-arith:cs:eq:integral}.
+
+For a composite, an object in an iterated fiber consists of \(x,y\), an
+isomorphism \(p(x)\to y\), and an isomorphism \(q(y)\to z\). Composing the
+latter with the image of the former identifies the iterated fiber with the
+fiber of \(qp\), with its automorphisms. Applying the same count proves
+composition. The projection formula follows because \(g(p(x))=g(y)\) in the
+fiber. Finally, the fiber of \(p'\) at \(y'\) is equivalent to \(\mathcal
+X_{q(y')}\). This equivalence preserves the integrand and proves base
+change.
+\end{proof}
+
+For example, \(\mathrm{pt}\times^h_{BG}\mathrm{pt}\) is the discrete set
+\(G\). The two trivial objects must be supplied with an isomorphism, and
+that is an element of \(G\). Its mass is \(|G|\). The pullback of the two
+sets of isomorphism classes is one point and has mass one. It gives the
+wrong gluing factor as soon as \(G\) is nontrivial.
+
+\subsection{Boundary lines and adjoints}
+
+A Hermitian line \(L\) on a groupoid \(\mathcal Y\) assigns a Hermitian
+one-dimensional space to each object and unitary transport to each arrow.
+The transport is functorial. Its invariant sections form a Hilbert space
+\begin{equation}
+ H(\mathcal Y,L)=\Gamma(\mathcal Y,L),\qquad
+ \langle s,t\rangle
+ =\sum_{[y]}\frac{\langle s(y),t(y)\rangle_{L_y}}
+                         {|\operatorname{Aut}y|}.
+ \label{v4-arith:cs:eq:boundary-hilbert}
+\end{equation}
+The pairing is linear in its first variable. If an automorphism acts
+nontrivially on \(L_y\), every invariant section vanishes at \(y\). The
+corresponding component contributes no state.
+
+Pullback of sections along \(p\) has an adjoint. For \(s\in H(\mathcal
+X,p^*L)\), it is
+\begin{equation}
+ (p_!s)(y)=
+ \sum_{[(x,\phi)]\in\pi_0\mathcal X_y}
+  \frac{L(\phi)s(x)}{|\operatorname{Aut}(x,\phi)|}.
+ \label{v4-arith:cs:eq:line-push}
+\end{equation}
+The transport makes each summand lie in \(L_y\). Fubini and unitarity give
+\(\langle p_!s,t\rangle=\langle s,p^*t\rangle\). Thus orientation reversal,
+when it conjugates the action and reverses the field span, reverses the
+corresponding operator by its Hilbert adjoint.
+
+This integral is distinct from categorical pushforward of a representation.
+For \(p:BG\to\mathrm{pt}\), the invariants of the trivial complex
+representation are \(\mathbb C\), of dimension one. The integral of the
+constant function is \(1/|G|\). Both operations exist. Identifying one with
+a trace of the other requires a specified trace construction and
+normalization.
+
+\subsection{Circle and surface counts}
+
+For the circle, \(\mathcal F_G(S^1)=G//G\), with conjugation action, so its
+mass is one. The space of class functions on this groupoid has dimension the
+number of conjugacy classes. These two numbers already distinguish a
+partition mass from a state-space dimension.
+
+For a closed oriented genus-\(g\) surface, the untwisted mass is
+\begin{equation}
+ |\mathcal F_G(\Sigma_g)|
+ =\frac1{|G|}\#\left\{(a_i,b_i)_{i=1}^g:
+              \prod_i[a_i,b_i]=1\right\}
+ =|G|^{2g-2}\sum_{\rho\in\widehat G}
+                      (\dim\rho)^{2-2g}.
+ \label{v4-arith:cs:eq:genus}
+\end{equation}
+Here \(\widehat G\) is the set of irreducible complex representations.
+
+To verify the formula, put \(K=\sum_{a,b\in G}[a,b]\in\mathbb C[G]\). For an
+irreducible representation of dimension \(d\), averaging
+\(\rho(a)\rho(b)\rho(a)^{-1}\) over \(a\) gives \(|G|\chi_\rho(b)I/d\).
+Character orthogonality then gives \(\rho(K)=|G|^2I/d^2\). The coefficient
+of the identity in \(K^g\) is \(|G|^{-1}\) times its regular trace. Since
+\(\rho\) occurs \(d\) times in the regular representation, division by the
+additional \(|G|\) gives \eqref{v4-arith:cs:eq:genus}.
+
+For \(S_3\), whose irreducible dimensions are \(1,1,2\), the torus and
+genus-two masses are respectively \(3\) and \(81\). In three dimensions a
+different count occurs:
+\[
+ |\mathcal F_G(T^3)|
+ =\frac{\#\{(a,b,c):a,b,c\text{ commute pairwise}\}}{|G|}
+ =\sum_{[a]}\#\widehat{C_G(a)}.
+\]
+For fixed \(a\), the number of commuting pairs in its centralizer is
+\(|C_G(a)|\) times the number of its conjugacy classes. Summing over the
+class of \(a\) proves the equality. For \(S_3\) the three centralizers are
+\(S_3,C_2,C_3\), and the answer is \(3+2+3=8\).
+
+\section{Three-cocycles and finite topological gluing}
+\label{v4-arith:cs:topological}
+
+Let \(G\) be finite. A normalized multiplicative three-cocycle
+\(\omega:G^3\to U(1)\) is one when any argument is the identity and
+satisfies
+\begin{equation}
+ \omega(h,k,l)\omega(g,hk,l)\omega(g,h,k)
+ =\omega(gh,k,l)\omega(g,h,kl).
+ \label{v4-arith:cs:eq:cocycle}
+\end{equation}
+For an oriented triangulated closed three-manifold, assign \(g_{ij}\in G\)
+to oriented edges, with \(g_{ji}=g_{ij}^{-1}\) and \(g_{ij}g_{jk}=g_{ik}\)
+on each face. The action phase is
+\[
+ a(g)=\prod_{[0123]}
+           \omega(g_{01},g_{12},g_{23})^{\epsilon_{0123}},
+ \qquad
+ Z_\omega(M)=|G|^{-N_0}\sum_{\text{flat }g}a(g),
+\]
+where \(N_0\) is the number of vertices and \(\epsilon_{0123}\) records
+orientation. The factor \(|G|^{-N_0}\) integrates the action of vertex gauge
+transformations. It remains necessary when the action has stabilizers.
+
+The two-to-three Pachner identity is precisely
+\eqref{v4-arith:cs:eq:cocycle}. In a one-to-four move, an extension of a
+fixed flat boundary field has \(|G|\) choices for the new vertex label. The
+cocycle identity makes each extended phase equal to the original phase, and
+the new vertex factor cancels these choices. Normalization handles
+degenerate simplices. This gives the finite Dijkgraaf--Witten state sum.
+Boundary amplitudes require the line determined by the same cocycle.
+
+\subsection{The degree of transgression}
+
+Suppose a space \(K\) and its field space admit an evaluation map
+\(\mathrm{ev}:K\times\mathcal F_G(K)\to BG\). For a chain \(c\in C_d(K)\),
+define the transgression of an additive cochain \(u\) by
+\((\tau_cu)(a)=\mathrm{ev}^*u(c\times a)\). The cross-product boundary
+formula gives
+\begin{equation}
+ \delta\tau_cu=(-1)^d
+                  \bigl(\tau_c\delta u-\tau_{\partial c}u\bigr).
+ \label{v4-arith:cs:eq:transgression}
+\end{equation}
+Indeed, evaluating \(\delta u\) on \(c\times a\) gives \(u(\partial c\times
+a)+(-1)^du(c\times\partial a)\). Solving for the second term proves the
+identity.
+
+For a degree-three cocycle, integration over a closed three-manifold gives a
+degree-zero phase. Over a closed surface it gives a degree-one cocycle,
+hence a flat line on the field groupoid. Over a circle it gives a degree-two
+cocycle, hence twisting data for representations of that field groupoid. At
+a point the degree-three class supplies an associator.
+
+The degrees are
+\[
+\begin{array}{c|c|c}
+ \text{dimension integrated}&\text{degree remaining}&\text{recipient}\\\hline
+ 3&0&\text{action phase}\\
+ 2&1&\text{line on fields}\\
+ 1&2&\text{twisted representation category}\\
+ 0&3&\text{monoidal associator}.
+\end{array}
+\]
+
+In particular, the boundary of a tubular neighborhood of a line in a
+three-manifold is a surface. Its transgression is a line on surface fields.
+The twisted category belongs one categorical degree lower, at a circle, with
+the indicated transgression.
+
+For a three-chain with boundary, \eqref{v4-arith:cs:eq:transgression} says
+that the boundary of its action cochain is the boundary-line cocycle. Its
+exponential is therefore a section of that line, rather than an invariant
+scalar on unrestricted boundary fields. Changing the orientation conjugates
+the line and the phase. These constructions are the finite topological ones
+of Freed--Quinn, Theorems~1.7 and~2.13. They use oriented manifolds and the
+actual integration of their chains. An arithmetic analogue must supply its
+own duality and boundary integration.
+
+\begin{theorem}[Finite gluing on specified field data]
+\label{v4-arith:cs:thm:gluing}
+Suppose regions have finite field groupoids, boundary Hermitian lines, and
+invariant action sections. Assume gluing regions gives the homotopy pullback
+of their field groupoids, and that the action sections contract under the
+boundary-line pairing.
+
+Assign to a boundary its Hilbert space
+\eqref{v4-arith:cs:eq:boundary-hilbert}. For a region from \(\Sigma_0\) to
+\(\Sigma_1\), let \(r_i\) be restriction of fields and let \(a\) be the
+section of \(r_0^*L_0^*\otimes r_1^*L_1\). Then
+\begin{equation}
+ T_Ms=(r_1)_!\bigl(a\,r_0^*s\bigr)
+ \label{v4-arith:cs:eq:region-operator}
+\end{equation}
+composes under gluing.
+
+A cylinder whose field restriction is the identity and whose section is the
+identity gives the identity operator. Disjoint unions give tensor products.
+Reversing a region and conjugating its action gives \(T_M^*\).
+\end{theorem}
+
+\begin{proof}
+In the composite of two expressions \eqref{v4-arith:cs:eq:region-operator},
+base change replaces restriction followed by integration with integration
+over the homotopy pullback. The two action sections multiply and contract
+there to the glued section. Fubini combines the two integrations. The
+cylinder and disjoint-union assertions follow from the identity functor and
+multiplication of automorphism orders. Finally,
+\eqref{v4-arith:cs:eq:line-push} is adjoint to pullback, and the adjoint of
+multiplication by a line section uses its Hermitian conjugate. This reverses
+the span and proves the last assertion.
+\end{proof}
+
+Descent of fields supplies the homotopy pullback in this theorem. The action
+sections and their contraction are additional hypotheses. An equality of
+field groupoids without those sections does not determine the glued
+amplitude.
+
+\section{The arithmetic action and its boundary torsor}
+\label{v4-arith:cs:arithmetic-action}
+
+Let \(F\) be a totally imaginary number field containing \(\mu_n\), put
+\(X=\operatorname{Spec}\mathcal O_F\), and fix \(\zeta:\mathbb
+Z/n\xrightarrow{\sim}\mu_n\). Arithmetic duality gives an invariant map
+\[
+ \operatorname{inv}_\zeta:H^3_{\mathrm{\acute et}}(X,\mathbb Z/n)
+       \xrightarrow{\sim}\tfrac1n\mathbb Z/\mathbb Z.
+\]
+The choice of \(\zeta\) identifies the constant coefficients with the
+roots-of-unity coefficients in this map.
+
+Write \(\pi=\pi_1^{\mathrm{\acute et}}(X)\). For a finite group \(G\) and
+\(c\in Z^3(G,\mathbb Z/n)\), define
+\begin{equation}
+ \operatorname{CS}_c(\sigma)
+ =\operatorname{inv}_\zeta\bigl(j^3\sigma^*[c]\bigr),
+ \qquad
+ j^3:H^3_{\mathrm{cont}}(\pi,\mathbb Z/n)
+                \longrightarrow H^3_{\mathrm{\acute et}}(X,\mathbb Z/n).
+ \label{v4-arith:cs:eq:kim}
+\end{equation}
+This is Kim's finite arithmetic action. The displayed comparison \(j^3\) is
+used as a map. No equivalence between the entire group cohomology and
+\'{e}tale cohomology is needed.
+
+The value in \eqref{v4-arith:cs:eq:kim} is a scalar in \(\tfrac1n\mathbb
+Z/\mathbb Z\). Before evaluation, the input is a degree-three class. The
+coefficient sheaf \(\mathbb G_m\) appearing in arithmetic duality is not the
+finite gauge group \(G\). Nor does cohomological degree three make the
+one-dimensional scheme \(X\) a real three-manifold.
+
+Conjugation acts trivially on the pulled-back cohomology class, so the
+action descends to the finite field groupoid
+\(\operatorname{Hom}_{\mathrm{cont}}(\pi,G)//G\). Its finite partition
+value, with the measure already fixed, is
+\begin{equation}
+ Z_{G,c}(X)=\sum_{[\sigma]}
+ \frac{\exp(2\pi i\operatorname{CS}_c(\sigma))}
+      {|C_G(\sigma(\pi))|}.
+ \label{v4-arith:cs:eq:arithmetic-sum}
+\end{equation}
+Finiteness here is the arithmetic finiteness of the specified representation
+set, as follows from bounded-degree extension finiteness with the stated
+ramification conditions. A different arithmetic region needs its own such
+assertion.
+
+\subsection{An explicit gauge homotopy}
+
+The boundary construction needs conjugation on cochains, including its
+composition. Use the inhomogeneous differential with trivial \(G\)-action on
+\(\mathbb Z/n\). For a two-cochain \(b\),
+\[
+ (db)(g,h,k)=b(h,k)-b(gh,k)+b(g,hk)-b(g,h).
+\]
+
+Put \(\operatorname{Ad}_a g=aga^{-1}\). For a normalized three-cocycle
+\(c\), define
+\begin{align}
+ h_a(g,h)={}&c(a^{-1},\operatorname{Ad}_ag,\operatorname{Ad}_ah)
+       -c(g,a^{-1},\operatorname{Ad}_ah)
+       +c(g,h,a^{-1}),
+ \label{v4-arith:cs:eq:prism}\\
+ H_{a,b}(g)={}&c(b^{-1},a^{-1},\operatorname{Ad}_{ab}g)
+       -c(b^{-1},\operatorname{Ad}_bg,a^{-1})
+       +c(g,b^{-1},a^{-1}).\notag
+\end{align}
+The cochain identities are
+\begin{equation}
+ dh_a=c\circ\operatorname{Ad}_a-c,
+ \qquad
+ h_{ab}-h_a\circ\operatorname{Ad}_b-h_b=dH_{a,b}.
+ \label{v4-arith:cs:eq:prism-identities}
+\end{equation}
+
+They follow by expanding the differential and cancelling the three-cocycle
+identities on the successive simplices of a prism. The alternating signs in
+\eqref{v4-arith:cs:eq:prism} are essential. These are also the explicit
+conjugation homotopies in Chung--Kim--Kim--Park--Yoo, Appendix~B, in the
+inhomogeneous convention above.
+
+If \(db=\sigma^*c\), conjugation by \(a\) sends the primitive to
+\(b+\sigma^*h_a\), a primitive for \((\operatorname{Ad}_a\sigma)^*c\). The
+second identity in \eqref{v4-arith:cs:eq:prism-identities} makes these maps
+compose after quotienting primitives by two-coboundaries. Thus the
+construction retains the gauge action on the torsor itself.
+
+\subsection{Local torsors and the global section}
+
+Let \(S\) be a nonempty finite set of finite places containing every place
+dividing \(n\). Put
+\[
+ U=\operatorname{Spec}\mathcal O_F[1/S],\qquad
+ \pi_S=\pi_1^{\mathrm{\acute et}}(U).
+\]
+
+Choose
+restriction maps from \(\pi_v=\operatorname{Gal}(\overline F_v/F_v)\) to
+\(\pi_S\). For a local field
+\(\sigma_v:\pi_v\to G\), consider
+\begin{equation}
+ P_v(\sigma_v)=
+ \{b_v\in C^2(\pi_v,\mathbb Z/n):db_v=\sigma_v^*c\}/B^2.
+ \label{v4-arith:cs:eq:local-torsor}
+\end{equation}
+Local cohomological dimension gives \(H^3(\pi_v,\mathbb Z/n)=0\), so this
+set is nonempty. The difference of two primitives is a two-cocycle.
+Consequently \(P_v(\sigma_v)\) is a torsor for \(H^2(\pi_v,\mathbb Z/n)\),
+identified by local duality and \(\zeta\) with \(\tfrac1n\mathbb Z/\mathbb
+Z\).
+
+Take the product of these torsors and push it out along the sum of the local
+invariant maps. The result is a \(\tfrac1n\mathbb Z/\mathbb Z\)-torsor
+\(P_S(\sigma_S)\). Here the pushout of a torsor means its contracted product
+along the specified homomorphism of acting groups. Exponentiation along
+\(t\mapsto e^{2\pi it}\) makes the associated Hermitian complex line.
+Formula~\eqref{v4-arith:cs:eq:prism} defines its maps under local
+conjugations.
+
+For a global \(\sigma:\pi_S\to G\), the same cohomological dimension theorem
+gives a primitive \(b_+\) with \(db_+=\sigma^*c\). Its local restrictions
+determine an element
+\begin{equation}
+ \operatorname{CS}_{U,c}(\sigma)
+       =[\operatorname{res}_v b_+]_{v\in S}
+       \quad\text{in }P_S(\operatorname{res}\sigma).
+ \label{v4-arith:cs:eq:boundary-section}
+\end{equation}
+Changing \(b_+\) by a global two-cocycle does not change this element:
+global reciprocity says that the sum of its local invariants is zero.
+Changing it by a coboundary already has no effect in
+\eqref{v4-arith:cs:eq:local-torsor}. The gauge homotopies make
+\eqref{v4-arith:cs:eq:boundary-section} an invariant section over the
+restriction functor from global to local fields.
+
+The arithmetic input is vanishing in degree three, local invariants in
+degree two, and reciprocity for restrictions of global degree-two classes.
+It supplies the torsor and its section. Gluing arbitrary arithmetic bordisms
+would add the corresponding regions, field descent and compatible
+action-section identifications of Theorem~\ref{v4-arith:cs:thm:gluing}.
+
+\subsection{The decomposition formula}
+
+Suppose now that \(\sigma\) is unramified on \(X\). At each \(v\in S\), its
+local restriction factors through \(\pi_v/I_v\cong\widehat{\mathbb Z}\).
+This group has cohomological dimension one for the finite coefficients in
+use. Thus its degree-three cocycle has a primitive \(b_{-,v}\) unique modulo
+two-coboundaries. Inflation gives a canonical class of unramified local
+primitives in \eqref{v4-arith:cs:eq:local-torsor}.
+
+\begin{theorem}[Arithmetic decomposition]
+\label{v4-arith:cs:thm:decomposition}
+With the coefficients and hypotheses above,
+\begin{equation}
+ \operatorname{CS}_c(\sigma)
+  =\sum_{v\in S}\operatorname{inv}_v
+          [b_{-,v}-\operatorname{res}_v b_+].
+ \label{v4-arith:cs:eq:decomposition}
+\end{equation}
+Each bracket is a two-cocycle class. The right side is independent of the
+chosen global primitive and of the representatives of the local primitive
+classes.
+\end{theorem}
+
+\begin{proof}
+Use the compact-support mapping fiber, with differential
+\[
+ C_c^j=C^j(\pi_S,\mathbb Z/n)
+             \oplus\prod_{v\in S}C^{j-1}(\pi_v,\mathbb Z/n),
+ \qquad
+ d(a,b)=(da,\operatorname{res}a-db).
+\]
+The pair \((\sigma^*c,b_-)\) represents the unramified class on \(X\).
+Subtracting \(d(b_+,0)\) gives \((0,b_--\operatorname{res}b_+)\). Arithmetic
+duality identifies its invariant with the sum of the displayed local
+invariants. Reciprocity removes a change in \(b_+\), and local coboundaries
+remove a change in \(b_-\). This is the mapping-fiber proof of
+Chung--Kim--Kim--Park--Yoo, Theorem~1.1 and \S4.
+\end{proof}
+
+Both primitive classes belong to the same boundary torsor. Their difference
+is a scalar. Reversing the difference reverses the action, so the
+compact-support differential fixes a necessary sign.
+
+\subsection{Compact \(p\)-adic coefficients}
+
+There is also a torsor construction with compact coefficients. For an odd
+prime \(p\), write \(\Gamma=\mathbb Z_p^\times=\Delta\times\Gamma_1\), where
+\(\Delta\) has order \(p-1\) and \(\Gamma_1=1+p\mathbb Z_p\). Let \(A\) be a
+\(p\)-adic Lie group with a homomorphism \(t:A\to\Gamma\), and let \(\chi\)
+be the cyclotomic character. Fix an actual continuous automorphism
+\(\sigma\) of \(\Gamma\) and restrict to representations \(\rho\) satisfying
+\(t\rho=\sigma\chi\). Gauge transformations are taken in \(\ker t\).
+
+Let \(\mathbb Z_p[[\Gamma]]_\rho\) have the left action through \(t\rho\). A
+compatible choice of roots of unity gives a basis \(\zeta\) of \(\mathbb
+Z_p(1)\). There is an equivariant isomorphism
+\begin{equation}
+ \mathbb Z_p[[\Gamma]]_\rho
+   \longrightarrow
+ \Lambda=\mathbb Z_p[[\Gamma]]\widehat\otimes\mathbb Z_p(1),
+ \qquad
+ [\gamma]\longmapsto
+ [\sigma^{-1}\gamma]\otimes(\sigma^{-1}\gamma)\zeta.
+ \label{v4-arith:cs:eq:padic-coefficients}
+\end{equation}
+The first factor on the right has left action through \(\chi\), and the
+second has the Tate action. To check equivariance, put \(u=\chi(g)\). The
+image of \([\sigma(u)\gamma]\) is \([u\sigma^{-1}\gamma]\otimes
+u(\sigma^{-1}\gamma)\zeta\), which is exactly the action of \(g\) on the
+displayed image.
+
+For a continuous class \(c\in H^3(A,\mathbb Z_p[[\Gamma]])\), use
+\eqref{v4-arith:cs:eq:padic-coefficients} on the pulled-back cocycle. Under
+vanishing of degree-three continuous cohomology with these compact
+coefficients, its local primitives form \(H^2(\pi_v,\Lambda)\)-torsors. The
+augmentation \(\Lambda\to\mathbb Z_p(1)\), followed by the local invariant
+\(H^2(\pi_v,\mathbb Z_p(1))\cong\mathbb Z_p\), pushes their product to a
+\(\mathbb Z_p\)-torsor. A global primitive gives a section by the same
+reciprocity argument. Gauge maps use the conjugation prism with this
+coefficient action.
+
+A sufficient setting uses finite quotient modules that compute the
+continuous compact-coefficient cochains by an inverse sequence. Assume
+finite degree-two cohomology and vanishing degree-three cohomology. The
+finite degree-two systems satisfy the Mittag--Leffler condition. The derived
+inverse-limit exact sequence then gives degree-three vanishing. The
+augmentations, local duality and reciprocity must be compatible with this
+sequence. These hypotheses describe the coefficient passage used in the
+\(p\)-adic construction of Arithmetic Chern--Simons II, \S3.
+
+The automorphism condition in \eqref{v4-arith:cs:eq:padic-coefficients}
+matters. A \(p\)-adic unit exponent acts invertibly on \(\Gamma_1\), but
+does not automatically define an automorphism of the full \(\Gamma\). At
+\(p=5\), the integer exponent \(2\) is a \(5\)-adic unit and sends \(-1\) to
+\(1\).
+
+For an integer exponent \(m\), the full power map is an automorphism
+precisely when \(\gcd(m,p(p-1))=1\). One may instead specify a power
+automorphism on \(\Gamma_1\) and an independent automorphism on \(\Delta\).
+The resulting torsor construction is positive on this domain. It supplies no
+complex Hilbert measure without additional scalar and pairing data.
+
+\section{Abelian linking and Wilson correlations}
+\label{v4-arith:cs:linking}
+
+The abelian theory has a computable arithmetic correlation, beyond the
+definition of a finite sum. Assume now \(\mu_{n^2}\subset F\) and retain the
+trivialization \(\zeta\). Put
+\[
+ V=H^1(X,\mathbb Z/n),\qquad
+ V^\vee=\operatorname{Hom}(V,\tfrac1n\mathbb Z/\mathbb Z).
+\]
+Artin--Verdier duality identifies \(V^\vee\) with
+\(\operatorname{Ext}^2_X(\mathbb Z/n,\mathbb G_m)\) and with
+\(\operatorname{Cl}(F)/n\). Let \(\delta\) be the Bockstein from
+\(0\to\mu_n\to\mu_{n^2}\to\mu_n\to0\). Define \(D:V\to V^\vee\) by
+\begin{equation}
+ (Dy)(x)=B(x,y)
+   :=\operatorname{inv}_\zeta\bigl(x\smile\delta(\zeta_*y)\bigr),
+ \label{v4-arith:cs:eq:linking-form}
+\end{equation}
+where the notation for the invariant includes the indicated coefficient
+pairing.
+
+\begin{proposition}[Arithmetic linking pairing]
+\label{v4-arith:cs:prop:linking}
+The form \(B\) is symmetric. Its radical is \(K=\ker D\). For
+\(\xi,\eta\in\operatorname{im}D\), the expression
+\[
+ \operatorname{ht}_n(\xi,\eta)=B(x,y),
+ \qquad Dx=\xi,\quad Dy=\eta,
+\]
+is well defined and symmetric. A homologically \(n\)-trivial ideal means an
+ideal whose class modulo \(n\) lies in \(\operatorname{im}D\). It need not
+have zero class modulo \(n\).
+\end{proposition}
+
+\begin{proof}
+The compatible trivialization modulo \(n^2\) identifies the constant and
+roots-of-unity Bocksteins. Their cup-product identity in degree one is
+\[
+ \delta_2(x\smile\zeta_*y)
+   =\delta' x\smile\zeta_*y-x\smile\delta(\zeta_*y).
+\]
+
+In this arithmetic setting \(\delta_2=0\). Indeed the \(n\)-adic duality
+group \(H^3(X,\mathbb Z_n(1))\cong\mathbb Z_n\) is torsion free, so
+reduction in degree two from \(\mathbb Z_n(1)\) to \(\mu_n\) is surjective.
+It factors through \(\mu_{n^2}\), which makes the Bockstein zero. Graded
+commutativity between degrees two and one now gives \(B(x,y)=B(y,x)\). This
+is the argument of Chung--Kim--Kim--Pappas--Park--Yoo, Lemmas~2.1--2.2.
+
+Perfect duality shows that \(B(x,y)=0\) for all \(x\) exactly when \(Dy=0\).
+Symmetry gives the same radical in the other variable. Changing either lift
+by an element of \(K\) therefore leaves the height unchanged.
+\end{proof}
+
+Let \(G=\mathbb Z/n\), and let \(u\in H^1(G,\mathbb Z/n)\) be the identity
+character. For the three-class \(c=u\smile\delta'u\), naturality of the
+Bockstein identifies the arithmetic action with
+\(\operatorname{CS}_c(x)=B(x,x)\). An ideal class \(\xi\in V^\vee\) supplies
+the Wilson character
+\[
+ W_\xi(x)=\exp(2\pi i\langle x,\xi\rangle).
+\]
+Under class field theory this evaluates the unramified character \(x\) on
+the Artin class of the ideal. Its correlation in the quadratic action is
+therefore an actual arithmetic finite sum.
+
+\begin{theorem}[Finite Gaussian correlation]
+\label{v4-arith:cs:thm:gaussian}
+Let \(p\) be odd and let \(V\) be an \(a\)-dimensional \(\mathbb
+F_p\)-vector space. Let \(B:V\times V\to\mathbb F_p\) be symmetric with
+radical \(K\) of dimension \(b\). Write \(\psi(t)=e^{2\pi it/p}\),
+\(r=a-b\), and \(G_p=\sum_{t\in\mathbb F_p}\psi(t^2)\). For \(\lambda\in
+V^*\), put
+\[
+ S(\lambda)=\sum_{x\in V}\psi\bigl(B(x,x)+\lambda(x)\bigr).
+\]
+
+If \(\lambda|_K\ne0\), then \(S(\lambda)=0\). Otherwise choose \(z\) with
+\(\lambda(x)=B(x,z)\). If \(\overline B\) is the induced nondegenerate form
+on \(V/K\), then
+\begin{equation}
+ S(\lambda)=p^b
+       \left(\frac{\det\overline B}{p}\right)
+       G_p^r\,\psi\bigl(-B(z,z)/4\bigr).
+ \label{v4-arith:cs:eq:gaussian}
+\end{equation}
+
+The determinant is taken in a basis of \(V/K\). Its Legendre symbol is
+independent of that basis. The empty determinant and \(G_p^0\) are one.
+\end{theorem}
+
+\begin{proof}
+On a coset of \(K\), the quadratic term is constant. The sum of the additive
+character \(\psi\lambda\) over \(K\) is zero unless \(\lambda|_K=0\). In the
+latter case, nondegeneracy on \(V/K\) supplies \(z\), unique modulo \(K\).
+
+Since \(2\) is invertible,
+\[
+ B(x,x)+B(x,z)=B(x+z/2,x+z/2)-B(z,z)/4.
+\]
+Translation leaves the sum unchanged.
+
+Diagonalize \(\overline B\) over \(\mathbb F_p\). Each diagonal coefficient
+\(d\ne0\) contributes \(\sum_t\psi(dt^2)=(d/p)G_p\): counting square roots
+of an element gives \(1+(u/p)\), and the substitution \(u\mapsto du\) proves
+this identity. The radical contributes \(p^b\). Multiplying proves
+\eqref{v4-arith:cs:eq:gaussian}.
+\end{proof}
+
+The classical Gauss evaluation is \(G_p=\epsilon_p\sqrt p\), with
+\(\epsilon_p=1\) for \(p\equiv1\pmod4\) and \(\epsilon_p=i\) for
+\(p\equiv3\pmod4\), for the displayed additive character and the positive
+real square root. Thus the magnitude in \eqref{v4-arith:cs:eq:gaussian} is
+\(p^{(a+b)/2}\). The formula with this constant is Theorem~1.1 of the
+abelian arithmetic Chern--Simons paper.
+
+Apply the theorem to \eqref{v4-arith:cs:eq:linking-form}, after identifying
+\(\tfrac1p\mathbb Z/\mathbb Z\) with \(\mathbb F_p\). If each
+\(\xi_j=Dz_j\), then \(z=\sum_jz_j\) represents \(\lambda=\sum_j\xi_j\), and
+\begin{equation}
+ \frac{S(\sum_j\xi_j)}{S(0)}
+ =\psi\left(-\frac14\sum_{i,j}
+                  \operatorname{ht}_p(\xi_i,\xi_j)\right).
+ \label{v4-arith:cs:eq:wilson-linking}
+\end{equation}
+
+Here \(S(0)\ne0\). In the action groupoid every abelian field has
+automorphism group \(\mathbb Z/p\), so the absolute amplitude is
+\(S(\lambda)/p\). This factor cancels in the normalized correlation. The
+factor \(1/4\), the radical selection rule and the distinction between
+absolute and normalized amplitudes are all forced by the calculation.
+
+At \(p=2\), this completion of the square is unavailable. A quadratic
+refinement requires separate treatment.
+
+The linking form also has a class-field description. A \(\mathbb
+Z/n\)-torsor on \(X\) determines the invertible \(\mathcal O_F\)-module on
+which the group acts through \(\zeta\). Its ideal class is the
+class-invariant map \(\Psi:V\to\operatorname{Cl}(F)\). With the Artin
+convention of the duality pairing, the map \(D\) is \(\Psi\) followed by
+reduction modulo \(n\). Thus the pairing is the evaluation of one unramified
+character on the class invariant of the other.
+
+The proof in the same paper, Theorem~4.1, identifies the dual Bockstein with
+\(\operatorname{Cl}(F)[n]\to\operatorname{Cl}(F)/n\) by Yoneda products.
+This gives the same arithmetic action, with its coefficient trivialization
+retained.
+
+\subsection{Local boundary conditions for linking}
+
+There is a relative version on \(U\). For coefficient objects \(G\) on
+\(U\), \(F_S\) on its specified local boundary, and a map \(f:F_S\to i^*G\),
+its cochain complex is
+\[
+ C^j(U,G\times_SF_S)
+ =C^j(U,G)\oplus C^j(\partial U,F_S)
+                    \oplus C^{j-1}(\partial U,i^*G),
+\]
+with
+\[
+ d(c,b,a)=(dc,db,da+(-1)^j(fb-\operatorname{res}c)).
+\]
+For degrees \(i,j\), one cup product is
+\begin{equation}
+ (c,b,a)\smile(c',b',a')
+ =\bigl(c\smile c',b\smile b',
+       (-1)^j a\smile f(b')+\operatorname{res}(c)\smile a'\bigr).
+ \label{v4-arith:cs:eq:relative-cup}
+\end{equation}
+Expanding the differential verifies its Leibniz identity. Replacing the
+third component by \((-1)^j a\smile\operatorname{res}(c')+f(b)\smile a'\)
+changes the product of cocycles by \(d(0,0,(-1)^ia\smile a')\). Thus the two
+choices induce the same product in cohomology.
+
+Take \(G=\mathbb Z/n\), \(F_S=\mu_{n^2}\), and let \(f\) be reduction
+followed by \(\zeta^{-1}\), with all places dividing \(n\) in \(S\). The
+resulting degree-one classes specify characters with chosen local lifts to
+\(\mu_{n^2}\). Their connecting map lands in \(H_c^2(U,\mathbb Z/n)\). The
+relative duality pairing and this connecting map define the height as above.
+The degree-two connecting map vanishes in this setting, and the Bockstein
+product identity proves symmetry. This is the relative construction in \S3
+of the same paper.
+
+It also gives a local computation without confusing a knot longitude with
+inertia. If an ideal class \([I]\) is the connecting image of a character
+\(x\), its height against \(J=\prod_{v\notin S}\mathfrak p_v^{e_v}\) is
+\[
+ \operatorname{ht}_{S,n}(I,J)
+       =\sum_{v\notin S}e_v\,x(\operatorname{Art}_v(\varpi_v)).
+\]
+The Artin maps here use the normalization paired with the chosen duality
+invariant. If \(x\) is represented by a Kummer class, each summand is the
+corresponding local norm-residue symbol with that same normalization. The
+connecting image and reciprocity map must be fixed before replacing this
+formula by a Hilbert-symbol convention.
+
+\section{Wilson values and Frobenius}
+\label{v4-arith:cs:wilson}
+
+Let \(\sigma:\Gamma\to G\) be a gauge field and let
+\(\tau:G\to\operatorname{GL}(V_\tau)\) be a representation over a specified
+field. These maps have different sources. For a specified conjugacy class of
+loops \(\gamma\) in \(\Gamma\), the Wilson function is
+\begin{equation}
+ W_{\tau,\gamma}(\sigma)
+       =\operatorname{tr}\tau(\sigma(\gamma)).
+ \label{v4-arith:cs:eq:wilson-value}
+\end{equation}
+It is invariant under gauge conjugation.
+
+For a complex gauge representation and an invariant phase \(a\), its
+normalized expectation is
+\begin{equation}
+ \langle W_{\tau,\gamma}\rangle_a
+    =\frac{\displaystyle\int_{\mathcal F_G}aW_{\tau,\gamma}}
+           {\displaystyle\int_{\mathcal F_G}a},
+ \qquad \int_{\mathcal F_G}a\ne0.
+ \label{v4-arith:cs:eq:wilson-expectation}
+\end{equation}
+The denominator condition is part of the definition. A complex phase can
+make it vanish: two discrete fields with phases \(1\) and \(-1\) already
+give zero.
+
+At trivial action, \eqref{v4-arith:cs:eq:wilson-expectation} is a groupoid
+average. It equals a selected field value when the observable is constant on
+the support of the weighted sum. Conditioning on one field component also
+gives its value. It does not concentrate on a chosen field merely because
+the action is zero. On \(\mathcal F_{C_2}(S^1)=C_2//C_2\), each holonomy has
+weight \(1/2\), so the sign character has expectation zero and square
+expectation one.
+
+For fixed fields, the tensor identity is
+\(W_{\tau\otimes\nu,\gamma}=W_{\tau,\gamma}W_{\nu,\gamma}\). Its expectation
+is the correlation of the two observables, not generally the product of
+their expectations. The sign character example proves this distinction in
+dimension one.
+
+\subsection{The unramified quotient}
+
+For a nonarchimedean local field \(F_v\) with residue field \(\mathbb F_q\),
+write
+\[
+ 1\longrightarrow I_v\longrightarrow G_{F_v}
+       \longrightarrow\widehat{\mathbb Z}\longrightarrow1.
+\]
+Arithmetic Frobenius is the element of the quotient acting as \(x\mapsto
+x^q\) on residue-field extensions. Geometric Frobenius is its inverse. A
+lift to \(G_{F_v}\) is well defined modulo inertia. Its image in an
+unramified representation is therefore well defined up to conjugacy.
+
+The tame inertia quotient is \(I_v/P_v\cong\prod_{\ell\ne p}\mathbb
+Z_\ell(1)\), where \(P_v\) is wild inertia and \(p\) is the residue
+characteristic. It is not the unramified quotient \(\widehat{\mathbb Z}\).
+In the knot analogy, inertia gives a meridian and a Frobenius lift gives a
+longitude. On an unramified rank-\(d\) representation every inertia element
+has trace \(d\), while the Frobenius trace can be different.
+
+Nor does \(p\nmid N\) make a representation into
+\(\operatorname{GL}_d(\mathbb Z/N)\) unramified. The quadratic extension
+\(\mathbb Q_3(\sqrt3)/\mathbb Q_3\) is totally ramified. Its quadratic
+character has values \(\{\pm1\}\subset\mathbb F_5^\times\), although
+\(3\nmid5\). Unramifiedness is a condition on the kernel of the
+representation.
+
+Let \(E_w/F_v\) have residue degree \(f\). Its arithmetic Frobenius maps to
+the \(f\)-th power of Frobenius on the unramified quotient of \(F_v\). The
+same power rule holds in geometric convention. It gives the corresponding
+trace-of-power identity on an unramified carrier. A map between arbitrary
+formal neighborhoods at different rational primes has no such
+interpretation. Indeed, when \(p\ne q\), there is no unital \(\mathbb
+Z\)-algebra map \(\mathbb Z_p\to\mathbb Z_q\): the integer \(q\) is a unit
+in the source and not in the target.
+
+The closed immersion \(\operatorname{Spec}\mathbb
+F_p\hookrightarrow\operatorname{Spec}\mathbb Z\) has scheme codimension one.
+The knot analogy is a comparison of cohomology, fundamental groups and local
+duality. It does not change that codimension or furnish a topological
+tubular neighborhood with all its gauge-theoretic operations.
+
+\subsection{Coefficient fields and congruences}
+
+The tautological representation of \(\operatorname{GL}_d(\mathbb Z/N)\) has
+trace in \(\mathbb Z/N\). For \(N>1\), there is no unital ring map from this
+ring to \(\mathbb C\). Thus it is not itself a complex Wilson label. A
+complex representation of the same finite group has its own character, which
+must be compared to the modular matrix trace by additional data.
+
+A continuous \(\ell\)-adic representation on a finite-dimensional
+\(E\)-vector space, with \(E/\mathbb Q_\ell\) finite, admits a stable
+\(\mathcal O_E\)-lattice when its image is compact. Fix such a lattice \(L\)
+and a uniformizer \(\varpi\). The traces on \(L/\varpi^rL\) are compatible
+and satisfy
+\[
+ \operatorname{tr}\rho(g)
+       =\varprojlim_r\operatorname{tr}
+              \bigl(\rho(g)\mid L/\varpi^rL\bigr)
+       \quad\text{in }\mathcal O_E.
+\]
+This is one \(\ell\)-adic congruence tower. It does not produce reductions
+modulo every integer or complex characters of every congruence group.
+
+If a trace lies in a number field, one can specify its \(\ell\)-adic and
+complex embeddings. The topology still matters. Under any field embedding
+fixing \(\mathbb Q\), the sequence \(\ell^r\), which tends to zero
+\(\ell\)-adically, maps to the same real integers and diverges in \(\mathbb
+C\). An abstract scalar embedding therefore cannot turn \(\ell\)-adic
+convergence into complex convergence.
+
+An arithmetic Wilson identity now has a precise form. Choose a gauge
+representation \(\tau_N\), a Frobenius longitude and a scalar realization.
+Then compare its normalized expectation with the trace of the arithmetic
+representation. A profinite version additionally needs the actual transition
+maps and convergence in the chosen scalar topology. Equality of ranks
+supplies none of these identities.
+
+\subsection{Power traces and Euler factors}
+
+Let \(F\) be an endomorphism of a \(d\)-dimensional vector space over a
+characteristic-zero field. In formal power series,
+\begin{equation}
+ \det(1-TF)^{-1}
+   =\exp\left(\sum_{m\ge1}\frac{\operatorname{tr}(F^m)}mT^m\right).
+ \label{v4-arith:cs:eq:euler-traces}
+\end{equation}
+After scalar extension, put \(F\) in triangular form. Multiplying
+\((1-T\alpha_i)^{-1}\) and expanding its logarithm gives the right side.
+Equivalently, differentiating logarithmically and fixing the constant term
+proves the identity over the original field.
+
+Thus all power traces determine the Euler polynomial and the semisimple
+conjugacy class over an algebraic closure. A single trace does not. The
+finite-order matrices \(\operatorname{diag}(1,-1)\) and
+\(\operatorname{diag}(i,-i)\) both have trace zero, but their polynomials
+are \(1-T^2\) and \(1+T^2\). Even all power traces do not detect a Jordan
+extension: \(I_2\) and a nontrivial unipotent Jordan block have trace two in
+every positive power.
+
+Characteristic zero is also necessary for this reconstruction from
+unrestricted power traces. Over \(\mathbb F_3\), the matrices \(I_3\) and
+\(-I_3\) have all power traces zero, while their Euler polynomials are
+\(1-T^3\) and \(1+T^3\). Division by \(m\) in
+\eqref{v4-arith:cs:eq:euler-traces} cannot be performed in that coefficient
+ring. Integral Witt coordinates retain additional data beyond their ghost
+traces.
+
+For an unramified \(\ell\)-adic representation at \(v\), \(\ell\ne p\), the
+chosen geometric Frobenius gives
+\[
+ L_v(s,\rho)=\det(1-q^{-s}\rho(\operatorname{Frob}^{\mathrm{geom}}_v))^{-1}.
+\]
+A Wilson formula for every power would determine this factor after the
+coefficient comparison. A Wilson formula for the first trace alone would
+not.
+
+For a Weil--Deligne representation \((r,N)\) at a ramified place, the local
+factor instead uses the Frobenius-stable space \((\ker N)^{I_v}\):
+\[
+ L_v(s,r,N)=\det(1-q^{-s}r(\operatorname{Frob}^{\mathrm{geom}}_v)
+                                 \mid(\ker N)^{I_v})^{-1}.
+\]
+The conductor and epsilon factor are further local data. In particular an
+epsilon factor also depends on the additive character and measure
+convention. It is not inserted into this determinant as an unspecified
+correction to the first trace.
+
+If a realization is pure of motivic weight \(m\), its complex Frobenius
+eigenvalues have absolute value \(q^{m/2}\). Unitary normalization
+multiplies them by \(q^{-m/2}\). This normalization is separate from a
+functional-equation center of a global \(L\)-function and from an energy
+grading on a Fock space. For example \(\mathbb Q_\ell(-1)\) has motivic
+weight two in the cohomological geometric convention. A formal scaling
+parameter labeled one does not change it.
+
+\subsection{An elliptic curve at five}
+
+The curve \(E:y^2=x^3-x\) over \(\mathbb F_5\) has affine fiber sizes
+\(1,1,2,2,1\) over \(x=0,1,2,3,4\). The point at infinity gives
+\(\#E(\mathbb F_5)=8\), so \(a_5=5+1-8=-2\). For \(\ell\ne5\), arithmetic
+Frobenius on \(V_\ell E=T_\ell E\otimes\mathbb Q_\ell\) has trace \(-2\) and
+determinant \(5\). Its inverse has trace \(-2/5\) and determinant \(1/5\).
+
+The cohomological carrier
+\[
+ H^1_{\mathrm{\acute et}}(E_{\overline{\mathbb F}_5},\mathbb Q_\ell)
+       =\operatorname{Hom}(V_\ell E,\mathbb Q_\ell)
+\]
+therefore has geometric Frobenius trace \(-2\) and determinant \(5\). Its
+local Euler polynomial is \(1+2T+5T^2\). Inertia on the good-reduction
+representation is trivial and has trace two, so the meridian and longitude
+give different observables in this example.
+
+The Tate-module polarization takes values in \(\mathbb Q_\ell(1)\).
+Dualizing gives a cohomological polarization with paired geometric
+eigenvalue product \(5\).
+
+For a genus-\(g\) Jacobian the corresponding cohomological rank is \(2g\).
+In a Siegel setting the standard and spin representations instead have ranks
+\(2g+1\) and \(2^g\). Their Wilson labels and Euler factors must use the
+actual representation.
+
+The substitution \(g=0\) gives a rank-zero Jacobian carrier, whose trace is
+zero and whose symmetric-algebra character is one. A nontrivial rank-two
+arithmetic gauge sector requires a separate representation.
+
+For any finite-dimensional carrier \(V\), the graded trace on
+\(\operatorname{Sym}(V)\) is the inverse determinant in
+\eqref{v4-arith:cs:eq:euler-traces}. A Heisenberg Fock space with creation
+modes at every positive energy has the different character
+\(\prod_{r\ge1}\det(1-q^rF)^{-1}\), when the trace is defined. The
+oscillator grading must therefore be specified before either expression is
+called a boundary character. The arithmetic equality between such a
+character and an Euler factor remains a map and trace comparison on the
+chosen realization.
+
+\section{Congruence towers and Hilbert limits}
+\label{v4-arith:cs:towers}
+
+For a fixed rank \(d\), reduction gives surjections
+\(G_N=\operatorname{GL}_d(\mathbb Z/N)\to G_M\) when \(M\mid N\). Their
+group limit is \(\operatorname{GL}_d(\widehat{\mathbb Z})\). Passing from
+groups to fields, actions and state spaces requires more maps. In
+particular, a field at level \(M\) can fail to lift to level \(N\).
+
+For a prime-power step, put \(G_r=\operatorname{GL}_d(\mathbb Z/\ell^r)\),
+\(r\ge1\). Then
+\begin{equation}
+ |G_r|=\ell^{d^2(r-1)}
+                  \prod_{j=0}^{d-1}(\ell^d-\ell^j),
+ \qquad
+ \ker(G_{r+1}\to G_r)=1+\ell^rM_d(\mathbb F_\ell).
+ \label{v4-arith:cs:eq:congruence}
+\end{equation}
+The kernel has the additive multiplication law of \(M_d(\mathbb F_\ell)\),
+since \(2r\ge r+1\). It is abelian but generally not central: conjugation by
+the permutation matrix exchanging two basis vectors sends \(E_{12}\) to
+\(E_{21}\). The cardinality formula follows by counting ordered independent
+columns modulo \(\ell\) and then lifting each matrix entry. An invertible
+matrix modulo \(\ell\) remains invertible over \(\mathbb Z/\ell^r\).
+
+\subsection{The lifting measure}
+
+Consider an extension of finite groups \(1\to K\to E\xrightarrow{p}G\to1\),
+and a finitely presented group \(\Gamma\), or a profinite group with the
+specified finite representation sets. For \(\rho:\Gamma\to G\), let
+\(\mathcal L_\rho\) be the homotopy fiber of
+\(\operatorname{Hom}(\Gamma,E)//E\to \operatorname{Hom}(\Gamma,G)//G\). The
+isomorphism to \(\rho\) is part of this fiber.
+
+\begin{proposition}[Lifting mass]
+\label{v4-arith:cs:prop:lifting}
+Suppose \(K\) is abelian. If \(\rho\) has a lift, conjugation through a lift
+defines a \(\Gamma\)-module \(K_\rho\), and
+\begin{equation}
+ |\mathcal L_\rho|
+       =\frac{|H^1(\Gamma,K_\rho)|}{|H^0(\Gamma,K_\rho)|}.
+ \label{v4-arith:cs:eq:lifting-mass}
+\end{equation}
+If there is no lift, the mass is zero. For compatible action phases
+\(a_E=p^*a_G\), finite integration gives
+\begin{equation}
+ Z_E=\sum_{[\rho]}
+      \frac{a_G(\rho)|\mathcal L_\rho|}
+           {|C_G(\rho(\Gamma))|}.
+ \label{v4-arith:cs:eq:tower-fubini}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Choose a lift \(\widetilde\rho\). Any other lift has the form
+\(z(g)\widetilde\rho(g)\), and the homomorphism law is precisely the
+one-cocycle equation for \(z\) with values in \(K_\rho\). The homotopy fiber
+is equivalent to these lifts modulo \(K\)-conjugation. Lift an isomorphism
+to the target field into \(E\) to make it the identity.
+
+Conjugation changes \(z\) by a one-coboundary. Its stabilizer is
+\(H^0(\Gamma,K_\rho)\). This proves the mass formula.
+
+The empty case is immediate. Equation \eqref{v4-arith:cs:eq:tower-fubini} is
+Theorem~\ref{v4-arith:cs:thm:fubini} with the phase constant on each fiber.
+\end{proof}
+
+For a central kernel \(K=(\mathbb F_\ell)^e\) with trivial action, the mass
+is \(|K|^{b_1-b_0}\), where the \(b_i\) are the dimensions of
+\(H^i(\Gamma,\mathbb F_\ell)\). For the point it is \(1/|K|\), not one.
+
+Centrality also does not remove the obstruction to lifting. Take \(E=C_4\),
+\(G=C_2\), and \(\Gamma=C_2\). The trivial homomorphism to \(G\) has two
+lifts, each with two automorphisms in the fiber, so its mass is one. The
+identity homomorphism has no lift: an odd element of \(C_4\) cannot be the
+image of an element of order two. Its mass is zero. No constant fiber factor
+works for both fields.
+
+If all masses equal a specified \(m_{N,M}\), then \(Z_N=m_{N,M}Z_M\). For
+the chosen normalization \(\widetilde Z_N=|G_N|^{-\chi}Z_N\), one obtains
+\[
+ \widetilde Z_N=|K|^{-\chi}m_{N,M}\widetilde Z_M.
+\]
+The exponent \(\chi\) must come from a specified cohomology theory.
+Compatibility requires the displayed factor to be one. The equation uses no
+division by a possibly zero partition value, and a scalar equality alone
+does not define transition maps on state spaces.
+
+The phases also require compatible levels. Pullback of a fixed cocycle from
+a quotient gives one such datum on all finer quotients. If one instead
+requires \(c_N=p_{N,M}^*c_M\) for every \(M\mid N\), including \(M=1\),
+every normalized three-class is zero, since the bottom group is trivial.
+Nontrivial continuous finite-coefficient classes are naturally represented
+on a sufficiently fine finite quotient and pulled back above it. More
+general transition laws require their own cochains and coherences. A complex
+scalar called a level is not by itself such a family of finite-group
+three-classes.
+
+\subsection{A positive profinite Hilbert construction}
+
+There is a direct limit of finite Hilbert spaces when the measure and
+transition maps are known. Let \(G_{r+1}\twoheadrightarrow G_r\) be a
+sequence of finite groups, with kernels \(K_r\), and use uniform probability
+measure on each group. Set
+\[
+ H_r=L^2(G_r,|G_r|^{-1}\text{ counting measure}),\qquad
+ (i_rf)(g)=f(p_rg).
+\]
+Then \(i_r\) is an isometry. Its adjoint is conditional averaging,
+\begin{equation}
+ (P_rf)(h)=\frac1{|K_r|}\sum_{p_rg=h}f(g),
+ \qquad P_ri_r=1.
+ \label{v4-arith:cs:eq:conditional-average}
+\end{equation}
+Both assertions follow by partitioning \(G_{r+1}\) into its equally sized
+fibers.
+
+\begin{theorem}[Haar realization]
+\label{v4-arith:cs:thm:haar}
+For \(G=\varprojlim_rG_r\), normalized Haar measure \(\mu\) has the given
+uniform measures as its finite pushforwards. Pullback identifies the Hilbert
+completion of \(\operatorname{colim}_r(H_r,i_r)\) with \(L^2(G,\mu)\). The
+finite conjugation-invariant subspaces have dense union in the
+conjugation-invariant subspace of \(L^2(G,\mu)\).
+\end{theorem}
+
+\begin{proof}
+The compatible uniform measures assign mass \(1/|G_r|\) to each cylinder
+over a point of \(G_r\). They define the normalized invariant measure on the
+compact profinite group. Every finite pullback is isometric by this cylinder
+formula. Locally constant cylinder functions separate points and are dense
+in continuous functions, hence in \(L^2(G,\mu)\). This proves the completion
+statement.
+
+The conditional expectation onto level \(r\) commutes with conjugation,
+because its fibers and Haar measure do. These orthogonal projections
+converge strongly to the identity on the dense union just described.
+Applying them to an invariant function proves density in the invariant
+subspace.
+\end{proof}
+
+This construction uses probability on the group elements. It does not
+replace the groupoid measure on arithmetic representations or the action
+phase in \eqref{v4-arith:cs:eq:tower-fubini}. To apply it to arithmetic
+states one must construct equally precise measures, isometries and adjoints
+there.
+
+\subsection{The bounded part of an inverse system}
+
+An inverse diagram always defines a pro-object in its specified category. A
+topological inverse limit need not have a Hilbert norm. For example, the
+coordinate projections \(\mathbb C^{r+1}\to\mathbb C^r\) have inverse limit
+\(\mathbb C^{\mathbb N}\) with its product topology. Every basic
+neighborhood constrains finitely many coordinates and contains a whole line
+in an unconstrained coordinate. It cannot be a bounded neighborhood for any
+norm inducing that topology. Passing to the associated condensed vector
+spaces does not supply a missing Hilbert topology.
+
+The orthogonal projections above do have a distinguished Hilbert part. The
+following statement also applies to finite-dimensional state spaces once
+isometric transitions have been constructed.
+
+\begin{proposition}[Bounded compatible vectors]
+\label{v4-arith:cs:prop:martingale}
+Let \(H_r\) be Hilbert spaces with isometric maps \(i_r\), let
+\(P_r=i_r^*\), and let \(H\) be the Hilbert completion of their increasing
+union. Then
+\begin{equation}
+ H\xrightarrow{\sim}
+ \left\{(x_r):P_rx_{r+1}=x_r,
+                   \sup_r\|x_r\|<\infty\right\},
+ \qquad
+ \|x\|^2=\lim_r\|x_r\|^2,
+ \label{v4-arith:cs:eq:bounded-limit}
+\end{equation}
+is an isometric isomorphism, using the projections from \(H\) on the left
+and the displayed norm on the right.
+\end{proposition}
+
+\begin{proof}
+The projections onto the increasing closed subspaces \(H_r\) converge
+strongly to the identity of \(H\). They give a compatible sequence with the
+asserted norm.
+
+Conversely, view a compatible sequence in the increasing union. For \(s\ge
+r\), orthogonality gives
+\[
+ \|x_s-x_r\|^2=\|x_s\|^2-\|x_r\|^2.
+\]
+The squared norms increase and are bounded, so this sequence is Cauchy. Its
+limit has projections \(x_r\), and its norm is the stated limit. This is
+inverse to the first map.
+\end{proof}
+
+For the coordinate system, the bounded part is \(\ell^2\), a proper subspace
+of the product limit. Specifying this norm condition is a substantive part
+of the construction. A Hilbert limit does not ensure trace continuity. The
+identity on \(\mathbb C^r\) has trace \(r\), while the identity on
+\(\ell^2\) is not trace class. Coherent finite operators alone do not define
+an infinite partition trace.
+
+\section{Twisted traces and a finite modular example}
+\label{v4-arith:cs:twisted-trace}
+
+The degree-two transgression on circle fields has a categorical recipient.
+Let \(\mathcal X\) be a finite groupoid and let \(\tau\) be a normalized
+complex multiplicative two-cocycle on its composable arrows. Its twisted
+groupoid algebra has basis \(u_a\), one element for each arrow, and
+multiplication
+\[
+ u_a u_b=\tau(a,b)u_{ab}
+       \quad\text{when }a,b\text{ are composable},
+ \qquad u_a u_b=0\quad\text{otherwise}.
+\]
+The cocycle identity gives associativity, and the identity arrows give its
+unit. A finite skeleton may be used if the groupoid has more than finitely
+many objects.
+
+The \emph{inertia groupoid} \(I\mathcal X\) has objects \((x,g)\), with
+\(g\in\operatorname{Aut}(x)\), and arrows \(h:(x,g)\to(y,hgh^{-1})\).
+Conjugation in the twisted algebra gives a line on this groupoid. On a
+one-object component its transport is
+\begin{equation}
+ u_g\longmapsto
+ \frac{\tau(h,g)\tau(hg,h^{-1})}{\tau(h,h^{-1})}
+                 u_{hgh^{-1}}.
+ \label{v4-arith:cs:eq:inertia-line}
+\end{equation}
+The same formula applies to composable arrows. Denote this line by
+\(L_\tau\). Its degree-zero homology means the direct sum of its fibers
+modulo these transport relations.
+
+\begin{proposition}[Finite twisted Hochschild trace]
+\label{v4-arith:cs:prop:twisted-hh}
+Over \(\mathbb C\), the twisted groupoid algebra satisfies
+\begin{equation}
+ \operatorname{HH}_0(\mathbb C_\tau[\mathcal X])
+       \cong H_0(I\mathcal X,L_\tau),
+ \qquad
+ \operatorname{HH}_j(\mathbb C_\tau[\mathcal X])=0
+                  \quad(j>0).
+ \label{v4-arith:cs:eq:twisted-hh}
+\end{equation}
+The same degree-zero trace is obtained from its category of perfect modules.
+\end{proposition}
+
+\begin{proof}
+Degree-zero Hochschild homology is the quotient of the algebra by
+commutators. Commuting with the identity idempotents kills every non-loop
+arrow. For a loop, \([u_h,u_gu_h^{-1}]\) identifies its class with the
+conjugate loop in \eqref{v4-arith:cs:eq:inertia-line}. Conversely the cyclic
+relation between any two composable arrows is one of these transported loop
+relations. This gives the first isomorphism.
+
+Each connected component is Morita equivalent to a twisted algebra of a
+finite automorphism group \(H\). It is semisimple: average a linear
+projection onto a submodule over conjugation by the invertible operators
+\(u_h\). Projective scalar factors cancel under conjugation, so the average
+is module-linear. Equivalently, the element
+\[
+ \frac1{|H|}\sum_{h\in H}u_h\otimes u_h^{-1}
+\]
+splits multiplication as a bimodule map. The algebra is therefore projective
+over its enveloping algebra, and positive Hochschild homology vanishes.
+Morita invariance proves the remaining assertions.
+\end{proof}
+
+The characteristic assumption is essential. Over \(\mathbb F_p\), the
+untwisted algebra of \(C_p\) is \(\mathbb F_p[\epsilon]/(\epsilon^p)\),
+whose module of differentials, and hence its first Hochschild homology, is
+nonzero. A derived trace cannot then be replaced by its degree-zero inertia
+quotient.
+
+For the finite topological theory, \(\mathcal X\) can be the groupoid of
+circle fields, with \(\tau\) the transgression of its three-cocycle. Its
+category of twisted representations and its Hochschild trace have the types
+just described. A trace comparison with an arithmetic Hecke category still
+requires that arithmetic category, its coefficient realization and the
+actual map on cyclic complexes. Equal dimensions would not define such a
+map.
+
+\subsection{The double of \(C_2\)}
+
+The simplest nontrivial modular example can be given without an arithmetic
+hypothesis. Let \(A=C_2\), written additively, and let \(\widehat A\) be its
+two complex characters. Consider finite-dimensional vector spaces graded by
+\(A\times\widehat A\). Simple objects are \((a,\chi)\), tensor product adds
+\(a\) and multiplies characters, and the associator is the identity. On
+simple objects set
+\[
+ c_{(a,\chi),(b,\psi)}=\chi(b),\qquad
+ \theta_{(a,\chi)}=\chi(a).
+\]
+
+The bicharacter law gives both hexagon identities. The balancing identity is
+\[
+ (\chi\psi)(a+b)
+       =\chi(a)\psi(b)\chi(b)\psi(a),
+\]
+so these data give a ribbon category with all simple dimensions one.
+
+If a simple object has trivial monodromy with every simple, varying \(b\) forces
+\(\chi=1\) and varying \(\psi\) forces \(a=0\). Thus the braiding is
+nondegenerate.
+
+In the order \((0,1),(0,\mathrm{sgn}),(1,1),(1,\mathrm{sgn})\), the
+normalized matrices are
+\begin{equation}
+ S=\frac12
+ \begin{pmatrix}
+ 1&1&1&1\\1&1&-1&-1\\1&-1&1&-1\\1&-1&-1&1
+ \end{pmatrix},
+ \qquad
+ T=\operatorname{diag}(1,1,1,-1).
+ \label{v4-arith:cs:eq:c2-modular}
+\end{equation}
+Character orthogonality gives \(S^2=1\), and direct multiplication gives
+\((ST)^3=1\).
+
+These matrices can also be obtained from the untwisted finite gauge states
+on a torus. Its four fields are \((a,b)\in A^2\), each with automorphism
+group \(A\). Normalize their delta functions by the measure
+\eqref{v4-arith:cs:eq:boundary-hilbert} and Fourier transform in the second
+holonomy. The resulting basis is indexed by \((a,\chi)\).
+
+Exchanging the two holonomies acts by
+\(S_{(a,\chi),(b,\psi)}=\chi(b)\psi(a)/2\), while a Dehn twist acts by
+\(\chi(a)\). This constructs the displayed comparison of finite gauge and
+modular data. Its dimension is four, agreeing with \(|\mathcal
+F_{C_2}(T^3)|=8/2=4\).
+
+A finite semisimple complex category has finite-dimensional
+\(\operatorname{HH}_0\), with one basis vector for each simple object. It
+cannot be isomorphic as a vector space to a target containing a nonzero
+polynomial Fock space with infinitely many independent creation states. This
+excludes that literal finite-category trace lift. It leaves open an infinite
+category, an appropriate completion, a selected finite trace sector, or a
+compatible family of finite categories. Each choice changes the recipient
+and requires its own trace map.
+
+\section{Ordered incidence and local current algebras}
+\label{v4-arith:cs:incidence}
+
+An order on places gives an algebraic bar construction before it gives an
+arithmetic field theory. Fix a finite ordered set \(S=\{s_1<\cdots<s_r\}\).
+An interval partition of \(S\) is determined by a subset of the \(r-1\)
+possible cuts. Let \(\mathcal I_S\) have these partitions as objects and one
+arrow from a partition to each coarsening obtained by deleting cuts. The
+one-block partition \(t_S\) is terminal.
+
+Let \(D_S:\mathcal I_S\to\mathrm{Ch}(k)\) be any covariant diagram of chain
+complexes. Its simplicial replacement has
+\[
+ B_n(D_S)=\bigoplus_{P_0\to\cdots\to P_n}D_S(P_0).
+\]
+
+The first face applies the first diagram map. The other faces omit an
+intermediate object or the last object. Degeneracies insert identities.
+Write \(\partial=\sum_i(-1)^id_i\). With internal homological degree \(q\),
+the direct-sum totalization has degree \(n+q\) and differential
+\(\partial+(-1)^n d_{\mathrm{int}}\).
+
+\begin{proposition}[Contraction of the incidence bar]
+\label{v4-arith:cs:prop:incidence}
+The augmentation induced by \(P\to t_S\) is a quasi-isomorphism
+\begin{equation}
+ \operatorname{Tot}_{\oplus}B_\bullet(D_S)
+              \longrightarrow D_S(t_S).
+ \label{v4-arith:cs:eq:incidence-contraction}
+\end{equation}
+It holds for unbounded internal complexes. If the indexing category is the
+disjoint union of the \(\mathcal I_S\), its homotopy colimit is
+\(\bigoplus_SD_S(t_S)\).
+\end{proposition}
+
+\begin{proof}
+Include \(D_S(t_S)\) as the terminal summand in degree zero. On a simplex of
+degree \(n\), append its unique arrow to \(t_S\) and multiply by
+\((-1)^{n+1}\). Denote this map by \(h_n\). The faces cancel in pairs,
+except the last face, and in degree zero the terminal augmentation.
+Consequently \(\partial h+h\partial=1-i\epsilon\).
+
+The internal differential commutes with appending a terminal arrow. Its
+totalization signs in adjacent simplicial degrees are opposite, so the same
+identity holds for the total differential. Every vector uses finitely many
+simplices in the direct sum. No convergence or lower bound on internal
+degree is used. The contraction preserves \(S\), proving the final
+assertion.
+\end{proof}
+
+For example, if all coefficient complexes are \(k\) and the available places
+are \(p,q\), the nonempty components \(\{p\},\{q\},\{p,q\}\) give \(k^3\).
+The restricted tensor product of the two copies of \(k\), with unit
+reference vectors, is \(k\). The incidence category has no arrows inserting
+a new place. Such arrows must be supplied before its colimit can express
+restricted tensor assembly.
+
+The simplicial replacement also records partitions of one ordered set, not
+all collision diagrams on a curve. Its order is the chosen combinatorial
+order on places. A comparison with physical time order or with factorization
+on collision strata requires maps that preserve those additional operations.
+
+\subsection{An actual tensor construction of vertex algebras}
+
+There is a positive local construction once current algebras have been
+supplied. For every place \(p\), choose a finite-dimensional complex Lie
+algebra \(\mathfrak g_p\), an invariant symmetric bilinear form and a level
+\(k_p\). The affine brackets are
+\[
+ [x_m,y_n]=[x,y]_{m+n}
+       +m\delta_{m+n,0}k_p(x,y).
+\]
+The induced vacuum module \(V^{k_p}(\mathfrak g_p)\) is a vertex algebra at
+every level. For a finite set \(S\), take its tensor product over \(p\in
+S\). Inserting the chosen vacua gives maps for inclusions of finite sets,
+and hence a restricted tensor vertex algebra
+\begin{equation}
+ V_{\mathrm{res}}=\operatorname{colim}_{S\text{ finite}}
+                    \bigotimes_{p\in S}V^{k_p}(\mathfrak g_p).
+ \label{v4-arith:cs:eq:restricted-current}
+\end{equation}
+
+Every vector and every pair of inputs belong to one finite tensor stage.
+Their vertex operation, translation and vacuum identities are defined there,
+are preserved by enlargement, and therefore define the colimit. Locality for
+a pair is the finite tensor locality bound at that stage. This proves the
+construction without forming an infinite product of fields on one input.
+
+A conformal vector needs more. For a simple Lie algebra with the standard
+normalization, Sugawara requires \(k_p+h_p^\vee\ne0\). A relation between
+two shifted levels, \(\kappa_p+\kappa_p^!=0\), does not imply either is
+nonzero. Moreover the sum of conformal vectors over infinitely many
+nontrivial places need not belong to the algebraic restricted tensor
+product. A conformal completion must be specified if that sum is intended.
+
+Satake eigenvalues do not themselves supply these Lie algebras, levels,
+vacuum modules or conformal vectors. They can give a finite-dimensional
+Frobenius carrier and its symmetric-algebra trace. Identifying that carrier
+with a current-algebra sector, and identifying
+\eqref{v4-arith:cs:eq:restricted-current} with an arithmetic Hochschild
+trace realization, are separate construction problems.
+
+\section{An explicit physical boundary model}
+\label{v4-arith:cs:physical}
+
+A physical boundary comparison should identify cochains and operations
+before taking a character. The free abelian holomorphic--topological theory
+gives such an example. Its base is the actual half-space
+\(M=[0,\infty)_t\times\mathbb C_z\), with incoming orientation \(-dt\wedge
+dx\wedge dy\), where \(z=x+iy\).
+
+Partial forms use \(dt,d\bar z\), with
+\[
+ D=dt\,\partial_t+d\bar z\,\partial_{\bar z},\qquad
+ \partial=\partial_z,
+ \qquad
+ \tau_+(a)=\frac1{2\pi i}\int_M^{dt\,dx\,dy}dz\wedge a.
+\]
+The subscript records the auxiliary positive orientation used in the
+integral. Take superfields \(\Phi,\eta\) of total degrees zero and one.
+
+The incoming action and boundary condition are
+\begin{equation}
+ S_\kappa=-\tau_+\left(\eta D\Phi+
+                            \frac\kappa2\eta\partial\eta\right),
+ \qquad i^*\eta=0.
+ \label{v4-arith:cs:eq:physical-action}
+\end{equation}
+We fix \(\kappa\in\mathbb C^\times\) and \(\hbar=1\) for the Wilson-jet
+comparison below. The action is quadratic. No interacting arithmetic field
+theory is being inferred from it.
+
+\subsection{Regular observables and the ending line}
+
+The tangent fields are \(E=\Omega_{\mathrm{HT}}^\bullet e_\Phi
+\oplus\Omega_{\mathrm{HT}}^\bullet e_\eta\), with \(|e_\Phi|=0\),
+\(|e_\eta|=-1\), and
+\begin{align*}
+ Q(\alpha e_\Phi)&=D\alpha e_\Phi,\\
+ Q(\beta e_\eta)&=D\beta e_\eta+
+                  (-1)^{\deg\beta+1}\kappa\partial\beta e_\Phi.
+\end{align*}
+Compactly supported fields may meet \(t=0\), with the relative condition on
+every tangential \(e_\eta\) component. The incoming pairing is
+\[
+ B_-(\alpha e_\Phi,\beta e_\eta)=-\tau_+(\alpha\beta),
+ \qquad
+ B_-(\beta e_\eta,\alpha e_\Phi)
+                    =(-1)^{\deg\alpha}\tau_+(\beta\alpha),
+\]
+and vanishes on equal summands. On the suspension, \(|s\xi|=|\xi|-1\), put
+\(d(s\xi)=-sQ\xi\) and
+\(b_-(s\xi,s\upsilon)=(-1)^{|\xi|+1}B_-(\xi,\upsilon)\).
+
+For \(U=[0,\infty)\times V\), let \(\mathcal
+O(U)=\bigoplus_{m\ge0}\operatorname{Sym}_b^m(E_c(U)[1])\). At each field
+number, complete the smooth joint kernels in the projective topology at
+fixed compact support. Then take the limit over compact supports. The sum
+over field numbers is algebraic.
+
+Let \(\Delta_{b_-}\) contract unordered pairs once, with Koszul signs. The
+quantum differential is \(d+\Delta_{b_-}\). Smoothness makes its diagonal
+contractions defined. A point-supported composite is outside this space.
+
+Write a test field as \(\gamma(t)+dt\,\beta(t)\), and let a superscript
+\((0)\) mean Dolbeault degree zero. For \(n\ge0\), the ray and endpoint
+derivations are
+\begin{align}
+ \ell_n(s\xi)&=\frac1{n!}\int_0^\infty
+                 \partial_z^n\beta_\eta^{(0)}(t,0)\,dt,
+       &|\ell_n|&=1,\notag\\
+ r_n(s\xi)&=\frac1{n!}\int_0^\infty
+                 \partial_z^n\beta_\Phi^{(0)}(t,0)\,dt,
+       &|r_n|&=0,\notag\\
+ e_n(s\xi)&=\frac1{n!}\partial_z^n
+                    \gamma_\Phi^{(0)}(0,0),
+       &|e_n|&=1.
+ \label{v4-arith:cs:eq:ray-derivations}
+\end{align}
+Extend them as constant derivations on kernels.
+
+Integration of the normal derivative gives
+\begin{equation}
+ [d,\ell_n]=[d,e_n]=0,
+ \qquad [d,r_n]=\kappa(n+1)\ell_{n+1}-e_n.
+ \label{v4-arith:cs:eq:endpoint-identity}
+\end{equation}
+The first two identities use the relative boundary condition. The minus sign
+in the last uses \(\int_0^\infty\partial_t\gamma(t)\,dt=-\gamma(0)\). All
+constant derivations graded-commute with one another and with
+\(\Delta_{b_-}\).
+
+For a finite \(F\subset\mathbb Z_{>0}\), introduce the commutative
+differential graded coefficient algebra
+\begin{equation}
+ Y_F=\mathbb C[B_0,B_n:n\in F]
+             \otimes\Lambda(c_{n-1}:n\in F),
+ \quad
+ Q_YB_n=\kappa n c_{n-1},\quad Q_YB_0=Q_Yc_j=0.
+ \label{v4-arith:cs:eq:line-coefficients}
+\end{equation}
+The \(B_n\) have degree zero and the \(c_j\) degree one. Coefficients in
+operator expressions act by graded left multiplication. The module has the
+regular right \(Y_F\)-action. All tensors with these coefficients are
+algebraic.
+
+\begin{proposition}[The endpoint correction]
+\label{v4-arith:cs:prop:source-correction}
+Put
+\begin{align*}
+ D_0&=d+\Delta_{b_-}+Q_Y+B_0\ell_0,\\
+ L_F&=\sum_{n\in F}\frac{B_n}{\kappa n}r_{n-1},\\
+ D_F&=D_0+\sum_{n\in F}
+       \left(B_n\ell_n+c_{n-1}r_{n-1}
+                        -\frac{B_n}{\kappa n}e_{n-1}\right).
+\end{align*}
+Then \(D_F=e^{-L_F}D_0e^{L_F}\), so \(D_F^2=0\). The exponential is finite
+on each input and fixes the unit and the right coefficient action. Omitting
+the endpoint term gives the nonzero square \(\sum_{n\in F}c_{n-1}e_{n-1}\).
+\end{proposition}
+
+\begin{proof}
+The coefficient differential of \(B_n\ell_n\) gives \(\kappa n
+c_{n-1}\ell_n\). The commutator of \(d\) with \(c_{n-1}r_{n-1}\) gives its
+negative plus \(c_{n-1}e_{n-1}\), by
+\eqref{v4-arith:cs:eq:endpoint-identity}. The endpoint correction cancels
+the latter term.
+
+More precisely, \([D_0,L_F]=D_F-D_0\), and its commutator with \(L_F\) is
+zero. The conjugation formula follows. Each \(r_n\) lowers field number and
+kills the unit, so its exponential terminates and is right-linear. For
+\(F=\{1\}\), a suspended \(e_\Phi\) test function equal to one near the
+endpoint detects the omitted-term defect as \(c_0\).
+\end{proof}
+
+\subsection{All jets with corrected transition maps}
+
+For \(F\subset F'\), coefficient inclusion alone need not commute with the
+source differential. The corrected map is
+\[
+ j_{F,F'}=e^{-(L_{F'}-L_F)}\iota_{F,F'}.
+\]
+The \(L_F\) commute, so these maps are injective cochain maps and satisfy
+\(j_{F',F''}j_{F,F'}=j_{F,F''}\).
+
+For \(Y_\infty=\operatorname{colim}_FY_F\), there is an explicit isomorphism
+\begin{equation}
+ \operatorname{colim}_F(\mathcal O(U)\otimes Y_F,D_F)
+       \xrightarrow{\sim}(\mathcal O(U)\otimes Y_\infty,D_0),
+ \qquad [u]_F\longmapsto e^{L_F}u.
+ \label{v4-arith:cs:eq:corrected-limit}
+\end{equation}
+
+The inverse takes \(v\) to \([e^{-L_F}v]_F\) at any finite stage containing
+its coefficients. Enlarging the stage leaves this class unchanged. Each map
+is continuous at fixed field number and support, and preserves products on
+tangentially disjoint opens.
+
+This is not the literal all-jets differential on an unchanged smooth
+observable. On a small disk, choose a compact test whose ray derivatives all
+equal one. Its raw source term contains \(\sum_{n>0}c_{n-1}\), which is not
+in the polynomial coefficient algebra.
+Formula~\eqref{v4-arith:cs:eq:corrected-limit} instead compares the
+representatives \(u-\sum_{n\in F}B_n/(\kappa n)\) at different cutoffs.
+Their differentials agree under the corrected maps.
+
+\subsection{The boundary period map}
+
+Normal contraction reduces \(D_0\) to the boundary complex
+\begin{equation}
+ \mathcal A(V)=
+ \left(\operatorname{Sym}_b(\Omega_c^{0,\bullet}(V)[1])
+              \otimes Y_\infty,
+     d_1+\Delta_\mu+B_0\epsilon_0+Q_Y\right),
+ \label{v4-arith:cs:eq:boundary-complex}
+\end{equation}
+where \(d_1(s\alpha)=-s\bar\partial\alpha\), \(\epsilon_0(s\phi)=\phi(0)\)
+on functions, and \(\epsilon_0\) vanishes on top forms. The boundary pairing
+is \(\mu(s\phi,s\psi)=-\kappa\tau_{\mathbb C} (\phi\partial\psi)\), for a
+function \(\phi\) and a \((0,1)\)-form \(\psi\), with \(\tau_{\mathbb
+C}(a)=(2\pi i)^{-1}\int dz\wedge a\). The reversed order is given by graded
+symmetry.
+
+Here the normal contraction can be constructed with compact support. Choose
+a smooth compact profile \(\rho(t)\) of integral one and set
+\(F_\rho(t)=\int_0^t\rho(r)\,dr\). On the complementary \(e_\eta\) boundary
+component the linear maps are
+\begin{align*}
+ P_N(\gamma+dt\,\beta)&=\int_0^\infty\beta_\eta(r)\,dr,\\
+ I_Ng&=dt\,\rho g+(F_\rho-1)Q_{\mathrm{rel}}g,\\
+ h_N(\gamma+dt\,\beta)&=-\int_t^\infty\beta(r)\,dr
+          +(1-F_\rho(t))\int_0^\infty\beta_\eta(r)\,dr.
+\end{align*}
+In the last term the result lies in the \(e_\eta\) summand, and
+\(Q_{\mathrm{rel}}=Q-D\). The fundamental theorem of calculus gives
+\(P_NI_N=1\) and \(Qh_N+h_NQ=1-I_NP_N\). The correction in \(h_N\) makes its
+relative boundary value zero and keeps its normal support compact.
+
+For a boundary form \(a\) of Dolbeault degree \(j\), set
+\(i(sa)=sI_N((-1)^jae_\eta)\). On a test field with Dolbeault degree \(j\),
+put \(p(s\xi)=s((-1)^jP_N\xi)\), and set \(h(s\xi)=-s h_N\xi\). Then
+\(pi=1\), \(dh+hd=1-ip\), and \(hi=ph=h^2=0\).
+
+Let \(H_2\) be the graded symmetrization of \(h\otimes1+ip\otimes h\), and
+put \(P_2=-b_-H_2\). Its Hom differential is \(b_--p^*\mu\). Thus
+\(p_0=\operatorname{Sym}(p)e^{\partial_{P_2}}\) is the quantum normal
+projection to \eqref{v4-arith:cs:eq:boundary-complex}.
+
+The exponential contracts pairs and is finite on each field-polynomial
+input. Conjugating the linear contraction gives a homotopy inverse. On the
+kernel summand, the symmetric-algebra homotopy is obtained by dividing the
+derivation induced by \(h\) by the positive number of kernel factors. These
+formulas give a continuous contraction on the stated smooth joint kernels
+and commute with disjoint products.
+
+For a disk \(D_R\) centered at zero, define the exterior germ space
+\[
+ \mathscr P(D_R)=\operatorname{colim}_{r<R}
+  \left\{\sum_{n\ge1}a_nw^{-n}:
+                     \sum_n|a_n|r^{-n}<\infty\right\}.
+\]
+Each stage has the displayed weighted \(\ell^1\) norm. The linking maps for
+increasing radii are compact.
+
+For a compact top form \(a\), its Cauchy transform is
+\[
+ \mathcal C(a)(w)=\tau_z\frac{a(z)}{w-z},
+\]
+expanded outside its support. Set \(\mathcal C=0\) on shifted functions.
+
+The compact Dolbeault complex maps to this germ space by a continuous
+quasi-isomorphism. Explicitly, a germ has representative
+\(s(\bar\partial\chi)f\) on a slightly larger annulus, where \(\chi\) is one
+near the inner disk. If the exterior germ of a top form is zero, Cauchy
+convolution is its compact primitive. Cauchy estimates on two separated
+radii make both maps continuous. Applying this contraction in each kernel
+variable and averaging over permutations proves the statement for every
+completed symmetric power.
+
+Let \(k_1(z)=1/z\) as a locally integrable distribution and
+\(k_2=-\partial_zk_1\). Put
+\[
+ P(sa,sb)=\kappa\tau_z\tau_w
+                  \bigl(k_2(z-w)a(z)b(w)\bigr),
+ \qquad \gamma(sa)=\tau_z(a(z)/z)
+\]
+on top forms and zero on other degrees. The distributional Cauchy identity
+gives \(d_{\mathrm{Hom}}P=\mu\) and \(d_{\mathrm{Hom}}\gamma=\epsilon_0\).
+Consequently \(N_{B_0}=e^{\partial_P+B_0\partial_\gamma}\) conjugates the
+boundary differential to \(d_1+Q_Y\). Only finitely many contractions act on
+each input, and the distributions are paired with smooth kernels in
+independent variables.
+
+The resulting period map on the corrected limit is
+\begin{equation}
+ \Pi[u]_F=\operatorname{Sym}(\mathcal C)
+               N_{B_0}p_0e^{L_F}u.
+ \label{v4-arith:cs:eq:physical-period}
+\end{equation}
+Its target is the algebraic sum of completed symmetric powers of \(\mathscr
+P(D_R)\), tensored algebraically with \(Y_\infty\).
+
+\begin{theorem}[Rotation-finite boundary comparison]
+\label{v4-arith:cs:thm:physical-period}
+Rotate \(z\) and its form factors geometrically, with an additional weight
+one on \(e_\Phi\). Give \(B_n\) and \(c_{n-1}\) weight \(n\), and \(B_0\)
+weight zero. Let \(\mathcal J_{\mathrm{rot}}(D_R)\) be the algebraic sum of
+the circle eigenspaces of the corrected source. Then
+\eqref{v4-arith:cs:eq:physical-period} restricts to a continuous right
+\(Y_\infty\)-linear quasi-isomorphism
+\begin{equation}
+ \Pi_{\mathrm{rot}}:\mathcal J_{\mathrm{rot}}(D_R)
+       \longrightarrow
+ (F_{\mathrm{pol}}\otimes Y_\infty,Q_Y),
+ \qquad F_{\mathrm{pol}}=\mathbb C[x_1,x_2,\ldots].
+ \label{v4-arith:cs:eq:polynomial-period}
+\end{equation}
+It sends \(1\) to \(1\), is compatible with centered disk inclusions, and
+carries separated contour currents to
+\begin{equation}
+ J_{-n}=x_n,\qquad J_n=\kappa n\partial_{x_n}\quad(n>0),
+ \qquad J_0=B_0.
+ \label{v4-arith:cs:eq:current-modes}
+\end{equation}
+For every algebraic differential graded left \(Y_\infty\)-module \(L\),
+ordinary tensoring over \(Y_\infty\) computes the derived tensor product and
+preserves this quasi-isomorphism.
+\end{theorem}
+
+\begin{proof}
+The corrected transition isomorphism, normal contraction, Gaussian
+conjugation and compact Dolbeault contraction prove the comparison on the
+full germ target. They commute with rotations. A monomial \(w_1^{-n_1}\cdots
+w_m^{-n_m}\) has weight \(-\sum n_i\). For a fixed sum, only finitely many
+symmetric monomials occur, and \(m\) is bounded by that sum. Thus the
+finite-circle-spectrum part of the germ target is exactly
+\(F_{\mathrm{pol}}\). Each input has finitely many coefficient monomials, so
+adjoining \(Y_\infty\) preserves this conclusion.
+
+To restrict the quasi-isomorphism, take a cocycle of finite circle spectrum
+in its acyclic mapping cone. Choose a primitive in the full cone and apply
+the finite Fourier projector onto the cocycle's weights. The rotated compact
+support stays in one larger compact disk. The integral therefore exists in a
+single smooth-kernel or germ stage and commutes with the differential. It
+gives a primitive of finite spectrum.
+
+A current smeared on an outer circle has period
+\[
+ \sum_{n>0}x_nz^{n-1}+B_0z^{-1}
+                     +\kappa\sum_{n>0}n z^{-n-1}\partial_{x_n}.
+\]
+The uncontracted insertion gives the first sum, its charge contraction gives
+the middle term, and \(P(sa_z,sa)=-\kappa\partial_z\mathcal C(a)(z)\) gives
+the last. Contour coefficients yield \eqref{v4-arith:cs:eq:current-modes}.
+Moving the circle without crossing the inner support gives a cochain
+homotopy by Stokes' formula.
+
+Finally filter the source by field number. Its differential does not raise
+that number. Every associated graded piece is a complex of vector spaces
+tensored with the regular coefficient algebra, and is homotopically flat
+over that algebra. The exhaustive, bounded-below filtration and exact
+filtered unions give homotopical flatness of the source. The target is free
+as a graded coefficient module. Tensoring the quasi-isomorphism with any
+algebraic differential graded module therefore preserves it, including
+unbounded modules.
+\end{proof}
+
+\subsection{The Gaussian cap}
+
+On the boundary write \(\Phi_\Sigma=\phi+d\bar z\,\phi_b\) and
+\(\eta_\Sigma=c+d\bar z\,a_b\). Here \(c(z)\) is the boundary ghost. The
+\(c_j\) in \eqref{v4-arith:cs:eq:line-coefficients} are line coefficients.
+Put \(x_n=\partial_z^{n-1}\phi(0)/(n-1)!\). The incoming boundary charge,
+including the endpoint, is
+\begin{align*}
+ S_{\mathrm{in}}^F
+  &=-\frac1\pi\int c(\partial_{\bar z}\phi+
+                           \kappa\partial_z a_b)\,dx\,dy+\mu_F(0),\\
+ \mu_F(0)
+  &=B_0c(0)+\sum_{n\in F}
+       \left(\frac{B_n\partial_z^nc(0)}{n!}+c_{n-1}x_n\right).
+\end{align*}
+
+The coefficient differential \(Q_Y\) is external to the boundary Poisson
+bracket, since the line coefficients are Casimirs. Its contribution
+\(\pi\kappa n c_{n-1}\partial_z^ng(0)/n!\) to the square on \(\phi_b(g)\)
+cancels the contribution \(-\pi\kappa c_{n-1}\partial_z^ng(0)/(n-1)!\) from
+the line-ghost term. The remaining square is zero on every field generator.
+
+Let \(\mathcal P_{\mathrm{sm}}(V)\) be the polynomial functionals of
+\(\phi,\phi_b\) with compact smooth kernels. For a finite jet set \(F\)
+and \(N\ge\max(F\cup\{1\})\), set
+\[
+ W_{F,N}=Y_F[[x_1,\ldots,x_N]],\qquad
+ \mathcal H_{\mathrm{in}}^F
+   =\operatorname{colim}_N
+       \bigl(\mathcal P_{\mathrm{sm}}(V)\otimes_{\mathbb C}W_{F,N}\bigr).
+\]
+Completion is by jet weight, \(\operatorname{wt}x_n=n\), before taking the
+union in \(N\). Each weight coefficient is polynomial in the line
+coefficients. The tensor with smooth functionals is algebraic.
+
+In the incoming polarization, momenta act as
+\(\widehat a_b=\pi\delta/\delta\phi\) and
+\(\widehat c=\pi\delta/\delta\phi_b\), with derivatives on the right.
+Quantizing the charge defines \(\Omega_{\mathrm{in}}^F\) on this space.
+A mixed contraction differentiates one of the finitely many jet variables
+and lowers weight by at most \(N\). Its other factor takes finitely many
+derivatives of a smooth kernel at the junction. Smooth-field contractions
+restrict smooth joint kernels to diagonals. The operator is therefore
+defined and continuous at each fixed \(N\).
+
+The square of \(Q_Y+\Omega_{\mathrm{in}}^F\) is zero. Each pair of charge
+terms shares at most one position--momentum contraction, so its commutator
+quantizes the classical bracket. The two-bulk-term contribution pairs a
+symmetric mixed-derivative kernel with two antisymmetric ghosts and
+vanishes. The endpoint bracket cancels \(Q_Y\mu_F(0)\) by the displayed
+factorial identity.
+
+On the pure junction subspace \(W_F=\operatorname{colim}_NW_{F,N}\), every
+momentum term contains \(\delta/\delta\phi_b\) and vanishes. The resulting
+differential is
+\[
+ D_{\mathrm{cap}}=Q_Y+\sum_{n\in F}x_nc_{n-1}.
+\]
+Its multiplication term is the ghost part of the endpoint charge. Omitting
+it would violate the relative master equation of the coupled boundary and
+line system.
+
+Consider a cap \(e^f\) with \(f\) polynomial in finitely many \(x_n\),
+normalized by \(f|_{x=0}=0\). It is closed precisely when
+\[
+ f=-\sum_{n\in F}\frac{B_nx_n}{\kappa n}+h,
+ \qquad h\in\mathbb C[B_0,x_1,x_2,\ldots].
+\]
+Indeed \(D_{\mathrm{cap}}e^f=e^f (Q_Yf+\sum x_nc_{n-1})\), so the displayed
+equation integrates the coefficient derivatives.
+
+Under rotation, \(x_n\) has weight \(-n\). The first sum has weight zero and
+every nonconstant monomial of \(h\) has negative weight. Thus the unique
+rotation-invariant normalized cap in this class is
+\begin{equation}
+ G_F=\exp\left(-\sum_{n\in F}\frac{B_nx_n}{\kappa n}\right).
+ \label{v4-arith:cs:eq:cap}
+\end{equation}
+
+The constant state is not closed when \(F\ne\varnothing\). Gluing the linear
+exponent of \(G_F\) by the BV pairing produces exactly \(-\sum(B_n/(\kappa
+n))e_{n-1}\), the endpoint correction of
+Proposition~\ref{v4-arith:cs:prop:source-correction}. Changing its sign
+leaves square \(2\sum c_{n-1}e_{n-1}\).
+
+For all jets, use the degreewise creation-weight completion
+\(\prod_{N\ge0}(F_N\otimes Y_\infty^d)\), where \(F_N\subset
+F_{\mathrm{pol}}\) has creation weight \(N\). In it set
+\[
+ G=\exp\left(-\sum_{n>0}\frac{x_nB_n}{\kappa n}\right),
+ \qquad \mathsf P_\kappa=G(F_{\mathrm{pol}}\otimes Y_\infty).
+\]
+Every weight coefficient is finite. On this specified image, multiplication
+by \(G\) is an invertible cochain map from \(Q_Y\) to
+\(D_G=Q_Y+\sum_{n>0}x_nc_{n-1}\). Hence \(G\Pi_{\mathrm{rot}}\) sends the
+supported unit to the cap and carries the currents to
+\[
+ \widehat J_{-n}=x_n,\qquad
+ \widehat J_n=\kappa n\partial_{x_n}+B_n,\qquad
+ \widehat J_0=B_0.
+\]
+
+Coefficientwise differentiation proves \(D_G(Gf)=GQ_Yf\) and \(\widehat
+J_n(Gf)=G\kappa n\partial_{x_n}f\). The chosen image \(\mathsf P_\kappa\),
+the full completion and the raw polynomial complex are different carriers.
+
+The same formulas detect a possible Ward error. For \(m>0\), the raw
+operator \(O_m=-(\widehat J_m+B_m)\) has
+\[
+ [D_G,O_m]=-\kappa m c_{m-1},\qquad
+ O_mG=-B_mG.
+\]
+Adding the coefficient term \(B_m\) gives the cochain map \(-\widehat J_m\).
+A residue identity for a raw insertion therefore cannot replace the
+correction that makes the operation a cochain map.
+
+The order of state completion also matters. If all jet variables are
+completed before adjoining smooth functionals, take a smooth test equal to
+\((1-z)^{-1}\) near the endpoint. Applying the two-momentum part of the
+boundary operator to \(\phi_b(g)\sum_{n=1}^Mx_n\) has scalar term
+\(\pi\kappa M(M+1)/2\). It does not stabilize even in weight zero. The
+finite-jet completion used to construct the cap avoids this undefined
+operation.
+
+\subsection{Rigidity in the regular polynomial class}
+
+The cap also explains which local choices survive rotation. Let \(\mathfrak
+J\) be the complex of constant derivations obtained by taking finitely many
+normal, holomorphic and antiholomorphic derivatives of test fields at the
+endpoint. Its differential is \([d,-]\). The relative boundary condition
+makes its cohomology
+\[
+ H^1(\mathfrak J)=\bigoplus_{n\ge0}\mathbb C[e_n],
+ \qquad H^j(\mathfrak J)=0\quad(j\ne1).
+\]
+
+To see this, take the restricted dual of formal field jets, graded by normal
+and antiholomorphic order and rotation weight. Each piece is finite. The
+relative \(e_\eta\) normal complex \(t\mathbb C[[t]]\xrightarrow{\partial_t}
+\mathbb C[[t]]dt\) is acyclic. The unrestricted \(e_\Phi\) normal complex
+has constant cohomology, and its formal Dolbeault complex has cohomology
+\(\mathbb C[[z]]\). Dualizing gives precisely the holomorphic evaluation
+classes \([e_n]\).
+
+Consider junction corrections of degree one in \((Y_F\otimes\mathfrak
+J)\oplus Y_F\), the second summand acting by multiplication. Write
+\(X_F^0=-\sum(B_n/(\kappa n))e_{n-1}\). The square-zero corrections are
+exactly
+\begin{equation}
+ X=X_F^0+\partial Y+\sum_{n\ge0}h_ne_n-Q_Y(q),
+ \label{v4-arith:cs:eq:junction-rigidity}
+\end{equation}
+where \(\partial=Q_Y+[d,-]\), \(Y\) is a degree-zero coefficient-valued
+constant derivation, the sum is finite, \(h_n\in\mathbb C[B_0]\), and
+\(q\in\mathbb C[B_0,B_n:n\in F]\). Indeed the square is
+\(\partial(X-X_F^0)\). The polynomial de Rham contraction gives
+\(H(Y_F)=\mathbb C[B_0]\), and the preceding jet calculation identifies all
+its degree-one classes. This proves
+\eqref{v4-arith:cs:eq:junction-rigidity}.
+
+The term \(\partial Y\) is removed by the finite conjugation \(e^Y\), which
+fixes the unit and the regular right action. The classes \(h_ne_n\) have
+weight \(-(n+1)\), and a nonzero \(Q_Y(q)\) has positive coefficient weight.
+Rotation invariance therefore forces both to vanish and permits a
+weight-zero \(Y\). In this regular polynomial class, a rotation-invariant
+junction is isomorphic to the one used in
+Theorem~\ref{v4-arith:cs:thm:physical-period}. The conclusion concerns this
+local source and its admissible corrections. It is not a generation theorem
+for every boundary module.
+
+A coefficient twist can change the polynomial ground. With correction
+\(X_F^0-Q_Y(q)\) and \(q\notin\mathbb C[B_0]\), the period differential
+becomes \(Q_Y-Q_Y(q)\). A polynomial ground killed by all positive currents
+would satisfy \(\partial_{B_n}f=(\partial_{B_n}q)f\).
+
+For a variable with \(\partial_{B_n}q\ne0\), the right side has total
+polynomial degree at least that of nonzero \(f\), while the left side has
+smaller degree. Thus no normalized polynomial ground exists.
+
+Completing in the positive \(B_n\) permits the ground
+\(e^{q-q|_{B_{>0}=0}}\). This repairs the comparison on a different
+coefficient space and changes the selected vector.
+
+\section{Sewing states and evaluating the formal comparison}
+\label{v4-arith:cs:sewing}
+
+For an algebraic differential graded line module \(L\), write
+\(\Phi_\kappa(L)=F_{\mathrm{pol}}\otimes L\) with its differential and the
+currents \eqref{v4-arith:cs:eq:current-modes}. Two endpoints carry two
+copies of the coefficient algebra. On \(U=M\otimes N'\), their zero modes
+commute. Put \(N=B'_0B''_0/\kappa\). The state family for boundary fusion
+has carrier \(F_{\mathrm{pol}}\otimes U\) and connection
+\begin{equation}
+ \nabla_{\mathrm{st}}=d+\rho(N)\,d\log z,
+ \label{v4-arith:cs:eq:state-connection}
+\end{equation}
+where \(\rho\) denotes the coefficient action and \(z\ne0\) is the
+separation.
+
+For scalar charges \(a,b\), its normalized current operation on the first
+ground state is
+\begin{equation}
+ K_{a,b}(z)f(x)|b\rangle
+ =\exp\left(\frac a\kappa
+                 \sum_{n>0}\frac{x_nz^n}{n}\right)
+       f(x_n-az^{-n})|a+b\rangle.
+ \label{v4-arith:cs:eq:normalized-sewing}
+\end{equation}
+The output is completed in creation weight. Each weight coefficient on a
+polynomial input is a Laurent polynomial in \(z\). Commuting \(\kappa
+m\partial_{x_m}\) and \(x_m\) through the two factors verifies \([
+J_m,K_{a,b}(z)]=az^mK_{a,b}(z)\), where the commutator uses the input and
+output current actions.
+
+Negative-current descendants of the first input are determined by the
+normal-ordered insertion rule
+\[
+ I(J_{-n}u,z)=
+ \frac{\partial_z^{n-1}J^-(z)}{(n-1)!}I(u,z)
+ +I(u,z)\frac{\partial_z^{n-1}J^+(z)}{(n-1)!}.
+\]
+Here \(J^-\) contains negative modes and \(J^+\) nonnegative modes.
+Truncation on polynomial inputs and completion of output weight make each
+expression defined.
+
+Removing \(K_{a,b}\) from an operation satisfying these identities leaves a
+map commuting with all nonzero oscillators. It is determined by the image of
+the ground state. More generally, for a coefficient module with locally
+nilpotent positive modes and positive-mode truncation on each vector, the
+oscillator decomposition is \(F_{\mathrm{pol}}\otimes\Omega_+\), where
+\(\Omega_+=\bigcap_{m>0}\ker J_m\). Thus normalized Ward operations are
+represented by the state family above.
+
+On the charge-\(a\) Fock space, translation is
+\[
+ L_{-1}^{(a)}=\frac a\kappa x_1+
+                    \sum_{n>0}n x_{n+1}\partial_{x_n}.
+\]
+Substituting \eqref{v4-arith:cs:eq:normalized-sewing} into translation
+covariance makes its ground coefficient satisfy \(\partial_z h=(N/z)h\). Its
+connection is therefore \(d-\rho(N)d\log z\). Formally at \(z=1\), its
+normalized horizontal coefficient is \(\exp(N\log(1+(z-1)))\).
+
+For scalar charges it becomes \(z^{ab/\kappa}\) on a logarithmic cover. A
+counterclockwise half-loop transports states by \(e^{-\pi iab/\kappa}\) and
+operations by \(e^{\pi iab/\kappa}\). The ordinary tensor product of two
+level-\(\kappa\) Heisenberg representations has level \(2\kappa\) under the
+diagonal current. The fusion just specified remains at level \(\kappa\) and
+adds the charges.
+
+\subsection{The jet twist}
+
+The classical Gauss constraint alone does not impose the holomorphic Ward
+identity. On a disk of radius \(R\) with two smaller disks of radii
+\(r',r''\) removed, the partial connection \(a=d\bar t\) is closed. With
+zero sources its mode-one contour defect is \(\kappa(R^2-r'^2-r''^2)\). This
+follows from \(\oint(t-c)d\bar t=-2\pi i r^2\) around a counterclockwise
+circle. At \(\kappa=2\), \(R=2\), \(r'=r''=1/4\), the defect is \(31/4\).
+The quantum comparison above uses the constructed current operations, not
+that constraint alone.
+
+The line-side family has an additional jet twist. In the two coefficient
+algebras set
+\begin{equation}
+ s(z)=\frac1\kappa
+   \sum_{p+m\ge1}(-1)^{p+1}\binom{p+m}{p}
+       \frac{B'_pB''_m}{(p+m)z^{p+m}},
+ \qquad r=Q_Ys,
+ \qquad h=\frac Nz+\partial_zs.
+ \label{v4-arith:cs:eq:jet-twist}
+\end{equation}
+Both indices are nonnegative. Coefficients outside a chosen finite jet set
+are zero when that restriction is imposed. For all jets the sum is a power
+series of positive order in \(q=z^{-1}\).
+
+Each coefficient is a finite sum. Its generating scalar is
+\(\kappa^{-1}\log(1+(u-v)/z)\), with \(u^p v^m\) replaced by \(B'_pB''_m\).
+In particular \(Q_Ys=r\) and \(\partial_zs=h-N/z\), with all signs fixed.
+
+\begin{theorem}[Formal line-to-state comparison]
+\label{v4-arith:cs:thm:formal-sewing}
+Replace the coefficient complex \(U\) degreewise by \(U^d((q))\), the
+Laurent series with a finite lower bound and arbitrary coefficient vectors.
+On \(F_{\mathrm{pol}}\otimes U((q))\), the map
+\begin{equation}
+ E(q)=e^{-\rho(s(z))}
+ \label{v4-arith:cs:eq:sewing-map}
+\end{equation}
+is an isomorphism from the differential \(d_U\) and connection
+\(\partial_z+\rho(N)/z\) to \(d_U+\rho(r)\) and \(\partial_z+\rho(h)\). It
+commutes with the currents and their rooted residue operations, and
+preserves the identity action of the vertex vacuum. It need not fix a chosen
+cyclic vector.
+\end{theorem}
+
+\begin{proof}
+The differential graded module identity gives \([d_U,\rho(s)]=\rho(r)\). The
+even operator \(\rho(s)\) commutes with \(\rho(r)\) and \(\rho(h)\), because
+the coefficient algebra is graded commutative. Thus
+\[
+ e^{\rho(s)}(d_U+\rho(r))e^{-\rho(s)}=d_U,
+ \qquad
+ e^{\rho(s)}(\partial_z+\rho(h))e^{-\rho(s)}
+                         =\partial_z+\rho(N)/z.
+\]
+
+There are no further commutators. Positive \(q\)-order makes each
+coefficient of the exponential and its inverse finite. This proves the
+formulas on the stated Laurent completion for every algebraic module.
+
+The map acts only on coefficients and commutes with all oscillator modes and
+the total zero mode. It therefore commutes with normal-ordered current
+operations and their residues. Applied to a ground vector \(u\), it gives
+\(e^{-\rho(s)}u\), which proves the final distinction.
+\end{proof}
+
+For finitely many endpoints, the pair twists commute. On a common formal
+separation domain, the exponential of their sum is independent of
+parenthesization. After removing it, the state connection is
+\[
+ d+\sum_{i<j}\frac{B^{(i)}_0B^{(j)}_0}{\kappa}
+                                      d\log(z_i-z_j).
+\]
+This proves formal refinement coherence on that domain. It does not evaluate
+an arbitrary all-jets series at numerical separations.
+
+\subsection{An exact evaluation criterion}
+
+Fix finitely many jets and write \(\rho(s)=S(q)=\sum_{k=1}^KA_kq^k\), with
+commuting degree-zero operators \(A_k\). In this paragraph, an exponential
+is defined when its partial sums on each vector converge within a
+finite-dimensional subspace. The operators are \emph{jointly locally finite}
+when \(\mathbb C[A_1,\ldots,A_K]u\) is finite dimensional for every \(u\).
+
+\begin{proposition}[Algebraic evaluation]
+\label{v4-arith:cs:prop:evaluation}
+At a fixed nonzero separation, \(e^{-S(q)}\) is defined on algebraic states
+exactly when \(S(q)\) is locally finite. The formal map preserves
+\(U\otimes\mathbb C((q))\) exactly when the \(A_k\) are jointly locally
+finite. This is equivalent to evaluation being defined at every nonzero
+separation. Evaluation at \(K\) distinct nonzero values of \(q\) already
+suffices. On this domain a removable singularity of the comparison at
+\(z=0\) occurs exactly when every \(A_k\) vanishes, in which case the
+comparison is the identity.
+\end{proposition}
+
+\begin{proof}
+Successive differences of partial sums on \(u\) recover \(S(q)^nu/n!\).
+Their finite-dimensional convergence is therefore equivalent to local
+finiteness, and the inverse is the matrix exponential on each finite orbit.
+These orbits may be enlarged by those of \(d_Uu,\rho(r)u,\rho(r)d_Uu\). The
+relations \([d_U,S]=\rho(r)\), \([S,\rho(r)]=0\) and \(\rho(r)^2=0\) then
+justify the cochain identity on a finite-dimensional stable space.
+
+A vector-valued series lies in the algebraic scalar extension precisely when
+its coefficients span a finite-dimensional space. A finite joint orbit
+clearly suffices.
+
+For necessity, identify the cyclic coefficient module of a nonzero \(u\)
+with the quotient
+\[
+ B=\mathbb C[t_1,\ldots,t_K]/\operatorname{Ann}(u).
+\]
+If the coefficients of \(\exp(-\sum q^kt_k)\) span a finite space,
+evaluation at characters of \(B\) puts all scalar functions
+\(\exp(-\sum q^k\chi(t_k))\) in a finite-dimensional space.
+
+Exponentials of distinct polynomials with zero constant term are linearly
+independent. Choose a ray avoiding the finitely many leading real-part
+coincidences. Divide a dependence by its fastest growing term and let the
+radius tend to infinity. Proceed inductively.
+
+Thus \(B\) has finitely many characters. The Nullstellensatz makes each
+polynomial \(\prod_\chi(t_k-\chi(t_k))\) nilpotent in \(B\). A power is a
+monic relation for \(t_k\), so reducing all exponents shows that \(B\) is
+finite dimensional.
+
+If \(S(q_j)\) are locally finite at \(K\) distinct nonzero \(q_j\), their
+commuting joint orbit is finite on each vector, by their monic relations.
+The matrix \((q_j^k)\) is invertible, so each \(A_k\) is a linear
+combination of these operators. This proves joint local finiteness. Finally
+on each finite joint orbit \(e^{-S(q)}\) is entire in \(q\). Removability at
+\(z=0\) makes its entries bounded at infinity. Liouville's theorem makes it
+the constant identity, and the formal logarithm gives \(S=0\).
+\end{proof}
+
+The coefficientwise completion is strictly larger in a basic example. Let
+\(M=\mathbb C[b]\otimes\Lambda(c)\), \(d_M=\kappa c\partial_b\), with
+\(B_0=0\), \(B_1=b\), \(c_0=c\), and all higher coefficients zero. Take a
+second module of scalar charge one. Then \(s=b/(\kappa z)\), \(r=c/z\), and
+\[
+ e^{-s}1=\sum_{n\ge0}
+              \frac{(-1)^nb^nq^n}{n!\kappa^n}
+\]
+lies in \(M((q))\) but not in \(M\otimes\mathbb C((q))\).
+
+At fixed \(z\ne0\), the untwisted degree-zero cohomology is \(\mathbb C\).
+The twisted equation \(\kappa f'(b)+f(b)/z=0\) has no nonzero polynomial
+solution, by its highest coefficient. The two algebraic complexes are not
+quasi-isomorphic. The formal theorem remains valid on its larger coefficient
+space.
+
+\subsection{Coincidence and nested regions}
+
+Universal coefficients also admit a distributional interpretation with fixed
+normalization. For \(k\ge1\), define
+\[
+ T_k=\frac{(-1)^{k-1}}{(k-1)!}
+                   \partial_z^{k-1}(1/z).
+\]
+It extends \(z^{-k}\) and satisfies \(\bar\partial T_k=
+\pi(-1)^{k-1}\partial_z^{k-1}\delta_0/(k-1)!\). At finite jet set, complete
+the coefficient algebra in the positive-jet ideal. Each coefficient of
+\(e^{-s}\) is a finite linear combination of powers \(z^{-k}\), so this
+formula extends it coefficientwise and fixes its contact derivatives. It
+does not multiply distributions with the same singular support or evaluate
+the whole coefficient series on an arbitrary module.
+
+For a smooth radial approximate identity \(\rho_r\) of mass one, these fixed
+coefficients satisfy \(T_k*\rho_r\to T_k\) with error \(O(r^2)\) on each
+compact smooth test. Taylor expansion of the test function has no
+first-moment contribution by radial symmetry. A finite-order distribution
+bound controls the second remainder. This gives a precise local smoothing
+statement with the same contact normalization.
+
+Composition of Laurent expansions has its own domain. For example,
+\[
+ \frac1{(z_1-z_2)^2}
+  =\sum_{n\ge0}(n+1)\frac{z_2^n}{z_1^{n+2}}
+       \qquad (|z_2|<|z_1|).
+\]
+The series converges with all derivatives on compact subsets of this nested
+region.
+
+No distributional convergence holds on an open set crossing the boundary. In
+the ratio variable, take a radial test centered at a point of modulus
+greater than one. Holomorphicity makes its integral the value at the center,
+which does not tend to zero. The existence of the distribution
+\(T_2(z_1-z_2)\) does not enlarge the convergence domain of this particular
+composition series. Wick products inherit the corresponding nested domains,
+while their formal refinement identities use the common coefficient
+completion specified above.
+
+Finally, the comparison map and the binary operation have different
+coincidence behavior. All positive coefficients may act by zero, making
+\(E=1\), while the current operation still has a pole. For scalar charges
+with \(ab/\kappa\notin\mathbb Z\), the state connection has monodromy
+\(e^{-2\pi iab/\kappa}\), and \(z^{ab/\kappa}K_{a,b}\) is defined on
+branches. It has no single-valued distributional extension across a disk
+about zero agreeing with those branches. These are conditions on the
+operation and its coefficient local system, not a failure of the formal
+coefficient isomorphism.
+
+\section{Arithmetic bulk and boundary comparisons}
+\label{v4-arith:cs:comparisons}
+
+The finite arithmetic torsor, the topological state sum and the free
+physical boundary complex have now been constructed on their stated domains.
+An arithmetic bulk theory relating them needs a common geometric and
+categorical recipient. Write \(\mathscr X\) for a specified arithmetic site
+and \(j:\mathscr B_\infty\to\mathscr X\) for a proposed archimedean boundary
+morphism. An orientation consists of a dualizing coefficient object and a
+trace in its specified degree. In a suitable coefficient theory, it is a map
+\(R\Gamma_c(\mathscr X,\omega_{\mathscr X})\to k[-3]\). It must be
+compatible with the restriction and relative duality used by the action.
+
+At the boundary, distinguish a linear category \(\mathcal B\), its
+Hochschild complex, a marked trace class, and a chosen state realization
+\(E_\infty\). For example, the intended primary arithmetic datum can be a
+marked class in the Hochschild trace of a specified Iwahori--Hecke category.
+Extracting \(E_\infty\) from that trace requires its degree, coefficient
+theory and completion. The trace class is not a vertex algebra or a category
+of its own modules. A boundary comparison must give maps of these actual
+objects preserving the marked class and the operations under consideration.
+
+Three arithmetic identities then have different content. The boundary
+identity compares the designated trace or state realizations. The Wilson
+identity compares normalized field integrals with Frobenius traces in the
+chosen coefficients. The partition identity compares a defined scalar trace
+with a completed \(L\)-function.
+
+For the Riemann normalization the latter function is
+\[
+ \xi(s)=\tfrac12s(s-1)\pi^{-s/2}
+                       \Gamma(s/2)\zeta(s).
+\]
+Its polar-removal factor cannot be omitted when the comparison is made with
+\(\xi\) rather than \(\pi^{-s/2}\Gamma(s/2)\zeta(s)\). An identity as a
+function of \(s\) needs an analytic family of observables or traces and a
+common domain. Renaming a fixed finite-group level \(s\) does not produce
+such a family.
+
+\subsection{Finite towers}
+
+A tower construction starts with actual finite field functors and coherent
+transition maps on their states and actions.
+Proposition~\ref{v4-arith:cs:prop:lifting} computes the measure required by
+a reduction. A coherent inverse diagram defines a pro-object in the chosen
+functor category. If a represented limit exists and its composition maps
+preserve the finite gluing identities, it defines the corresponding limiting
+assignment.
+
+A Hilbert realization can be constructed under the isometric and boundedness
+hypotheses of Theorem~\ref{v4-arith:cs:thm:haar} and
+Proposition~\ref{v4-arith:cs:prop:martingale}. Arithmetic field spaces need
+their own measures and maps satisfying those hypotheses. The boundary,
+Wilson and partition comparisons are further identities on that limit.
+
+Even the untwisted closed arithmetic example distinguishes the finite sum
+from a zeta partition formula. The \'{e}tale fundamental group of
+\(\operatorname{Spec}\mathbb Z\) is trivial: a nontrivial finite extension
+unramified at all finite primes would contradict the discriminant bound. Its
+finite \(G\)-field groupoid is \(BG\), so its untwisted mass is \(1/|G|\).
+Additional ramification, boundary or analytic data are needed for a
+nonconstant arithmetic partition family.
+
+\subsection{Modular categories}
+
+A finite semisimple ribbon category with nondegenerate braiding gives the
+algebraic input to a Reshetikhin--Turaev theory, together with its anomaly
+and tangential structure. The \(C_2\) example above provides explicit such
+data. To apply \(Z_{\mathrm{RT}}\) to arithmetic objects, construct an
+arithmetic bordism category. Supply also a symmetric monoidal functor \(C\)
+into the appropriate topological bordism category. Their composition
+\(Z_{\mathrm{RT}}C\) is then an arithmetic assignment.
+
+This composition preserves the monoidal and gluing identities by
+functoriality. Its boundary trace and Wilson labels agree with the intended
+arithmetic ones only under maps establishing those equalities. An arithmetic
+decomposition of a closed object could identify its amplitude with an
+operator trace. A separate character formula could then identify that trace
+with \(\xi(s)\). A modular category alone supplies neither the arithmetic
+bordism functor nor the analytic character identity. If the target contains
+infinitely many Fock states, the finite trace restriction following
+\eqref{v4-arith:cs:eq:c2-modular} must also be addressed.
+
+\subsection{Factorization from fields}
+
+There is a useful positive construction before imposing factorization
+descent. Suppose \(U\mapsto\mathcal F(U)\) is a contravariant field-groupoid
+functor on opens, finite on the regions in use, and takes finite disjoint
+unions to products. Define \(A(U)=\mathbb C^{\pi_0\mathcal F(U)}\). For
+disjoint \(U_i\subset V\), set
+\begin{equation}
+ \mu_{U_i,V}(f_1\otimes\cdots\otimes f_r)(b)
+             =\prod_i f_i(b|_{U_i}).
+ \label{v4-arith:cs:eq:field-prefactorization}
+\end{equation}
+
+Restriction of fields and multiplication of functions prove associativity of
+these maps, their symmetry and the empty-input unit. Thus they define a
+prefactorization algebra of finite field functions. Weighted integration is
+an additional functional on it. Compatibility of that functional with gluing
+uses the action and the homotopy-fiber measure.
+
+Descent of the field groupoids does not ensure factorization descent of
+these function spaces. A circle gives a counterexample. Take finite
+\(C_2\)-bundles and the cover by all complements of one point. It is a Weiss
+cover: every finite set of points lies in one member. Each nonempty finite
+intersection is a finite union of intervals and has one isomorphism class of
+bundles, although it retains automorphisms.
+
+Every function space in its \v{C}ech diagram is therefore \(\mathbb C\),
+with identity transition maps. The cover nerve has every finite simplex, so
+its homotopy colimit is \(\mathbb C\).
+
+On the circle itself there are two holonomies, and the function space is
+\(\mathbb C^2\). The descent map has image the constants and misses the sign
+character.
+
+Consequently the arithmetic factorization problem can begin with the maps
+\eqref{v4-arith:cs:eq:field-prefactorization}, but must construct or replace
+their descent in the intended recipient. Derived or categorical coefficients
+can retain data lost by functions on isomorphism classes. Their
+factorization maps, support and continuity still need a proof. This issue
+already occurs before an archimedean Hilbert extension.
+
+\subsection{Fully dualizable objects}
+
+The framed cobordism hypothesis starts from a symmetric monoidal
+\((\infty,3)\)-category and a fully dualizable object. It uses the object's
+dual, evaluation, coevaluation and the required adjoints through the
+morphism levels, with their coherences. For the Morita three-category of
+finite tensor categories, Douglas--Schommer-Pries--Snyder prove that
+separable tensor categories are fully dualizable. In characteristic zero
+this includes finite semisimple tensor categories. Their theorem gives a
+framed three-dimensional theory. An oriented extension uses the appropriate
+homotopy fixed-point structure.
+
+A categorical arithmetic recipient with trace and restricted-tensor
+conditions must itself be constructed: composition must exist and preserve
+those conditions. A monoidal comparison with the ordinary Morita category
+must transport the actual duality and adjunction data. A list of candidate
+objects and bimodules does not prove these facts. Once they hold, the framed
+theory exists in that target. An arithmetic bordism comparison, the boundary
+trace map and the Frobenius labels remain separate inputs. Agreement with a
+proposed RT theory requires comparison of their extended data in a common
+category.
+
+\subsection{A six-functor trace}
+
+Suppose an arithmetic space \(X^\diamond\) has coefficient categories
+\(\mathcal C(-)\). Let its structure morphism \(f:X^\diamond\to\mathrm{pt}\)
+admit the required functors. For \(B\in\mathcal C(\mathrm{pt})\), the
+expression \(f_!f^!B\) then has a definite type. If it is dualizable, its
+identity has trace
+\[
+ \operatorname{Tr}(1_{f_!f^!B})
+          \in\operatorname{End}_{\mathcal C(\mathrm{pt})}(1).
+\]
+A scalar value uses a specified map from this endomorphism ring to the
+scalar field. A regularized trace, if needed in place of dualizability,
+requires its own domain and normalization.
+
+This produces a trace expression on the supplied geometry. The global
+arithmetic diamond and its archimedean boundary are additional inputs. So
+are the realization of the Hecke trace as \(B\) and the Euler-product trace
+identity. Local geometric Langlands and local diamond geometry provide
+arithmetic objects that a comparison may use. They do not by themselves
+define all of this global data.
+
+\subsection{Comparing Hilbert realizations}
+
+A common positive pairing does give a strong comparison once the state
+spaces have been constructed. Let \(E_\infty\) be a specified complex trace
+realization, with a positive semidefinite Hermitian form \(q_\infty\). Write
+its nullspace as \(N_q\).
+
+\begin{proposition}[Boundary Hilbert transport]
+\label{v4-arith:cs:prop:hilbert-transport}
+Suppose \(I_B:E_\infty\to H_B\) and \(I_P:E_\infty\to H_P\) have dense
+ranges and satisfy
+\[
+ \langle I_Bv,I_Bw\rangle
+   =q_\infty(v,w)
+   =\langle I_Pv,I_Pw\rangle.
+\]
+There is a unique unitary \(T:H_B\to H_P\) with \(TI_B=I_P\). If closed
+operators \(A_B,A_P\) have cores \(I_B\mathcal D\), \(I_P\mathcal D\),
+respectively, and \(TA_BI_Bv=A_PI_Pv\) for \(v\in\mathcal D\), then
+\[
+ T\operatorname{Dom}A_B
+        =\operatorname{Dom}A_P,
+ \qquad TA_B=A_PT.
+\]
+For normal operators this also intertwines their bounded spectral functions.
+\end{proposition}
+
+\begin{proof}
+Cauchy--Schwarz makes \(N_q\) orthogonal to all of \(E_\infty\). Both
+realization kernels equal \(N_q\), so \(I_Bv\mapsto I_Pv\) is a well-defined
+isometry on dense subspaces. It extends uniquely onto \(H_P\). The graph of
+each closed operator is the closure of its graph on the specified core.
+Applying \(T\oplus T\) gives the domain identity and the full intertwining
+relation. The normal functional calculus then proves the last assertion.
+\end{proof}
+
+Boundary operations must preserve \(N_q\) to descend even algebraically.
+Their closed generators need the domains in this proposition. A further
+identification with logarithmic scaling on \(L^2(\mathbb R_{>0},dx/x)\)
+requires another unitary with its domain identity. Polynomial Fock energy
+has eigenvectors, whereas the full-line logarithmic translation generator
+has none. Those representations cannot be identified by a unitary preserving
+these generators.
+
+Positive Hilbert descent is also distinct from the complete Weil pairing.
+Let \(\mathcal T\) be the chosen Weil test algebra with involution \(*\).
+Its complete signed functional \(W\) includes the polar, archimedean and
+prime terms.
+
+If a map \(J:\mathcal T\to E_\infty\) satisfies
+\begin{equation}
+ q_\infty(Jf,Jg)=W(f*g^*)
+                \qquad(f,g\in\mathcal T),
+ \label{v4-arith:cs:eq:weil-comparison}
+\end{equation}
+then \(W(f*f^*)\ge0\). This follows by setting \(g=f\). The substantive
+assertion is \eqref{v4-arith:cs:eq:weil-comparison} on the full required
+test domain, with its completion and normalization. A positive form on an
+auxiliary finite gauge or oscillator space does not supply it. Conversely,
+positivity of the full Weil form does not construct the arithmetic bordism
+functor.
+
+\section{Other physical realizations and the remaining maps}
+\label{v4-arith:cs:remaining}
+
+Arithmetic Chern--Simons is one possible physical formulation. It does not
+exclude others. The class-\(\mathcal S\) construction compactifies the
+six-dimensional \((2,0)\) theory on a complex curve, with its twist and
+defect data, to obtain four-dimensional \(\mathcal N=2\) theories.
+
+For an unpunctured complex curve its Hitchin base uses
+\(\bigoplus_iH^0(C,K_C^{d_i})\). Punctures change the allowed poles.
+Replacing \(K_C\) by a metrized arithmetic dualizing line does not specify a
+Higgs field, Hitchin equations or a six-dimensional compactification. Krull
+dimension cannot be added to a real manifold dimension to prove that every
+arithmetic version is impossible. The question is to construct the geometry,
+fields and comparison that would make such a version defined.
+
+Likewise, a local Hecke character is a label, not the one-dimensional defect
+carrying it. Local class field theory relates its appropriate finite or Weil
+realization to local arithmetic data. Turning it into a boundary module
+requires a functor to the specified defect category, including its ramified
+action. The local character space can itself have positive-dimensional
+families. Choosing a point in it does not assign a dimension to the physical
+defect.
+
+The protected chiral construction of
+Beem--Lemos--Liendo--Peelaers--Rastelli--van Rees starts with an actual
+four-dimensional superconformal theory and its protected cohomology. Its
+algebra and Schur trace retain those fields and symmetries. An arithmetic
+Euler trace has a simpler independent construction: on the finite occupation
+states with energies \(\sum_pn_p\log p\), the trace of \(e^{-sH}\) is
+\(\prod_p(1-p^{-s})^{-1}\) for \(\operatorname{Re}s>1\). This does not
+identify the space with protected cohomology. Frobenius is an endomorphism,
+not automatically an integer grading. A symbol \(t^{\operatorname{Frob}}\)
+requires a defined functional calculus or a specified graded realization.
+
+The arithmetic comparison therefore remains an object and map problem. The
+required data are the arithmetic bulk geometry, field action, coherent
+measures and gluing. One must construct the boundary trace realization, its
+pairing and the Frobenius Wilson comparison. The partition trace also
+requires its analytic domain.
+
+The finite torsors, abelian linking correlations, Haar realization and free
+physical period map give positive constructions in four specified settings.
+Their extension to one arithmetic theory requires the maps just identified.
+The full Weil comparison adds a further identity on its complete test
+algebra.
+
+\section*{Sources}
+
+\begin{itemize}
+\item D.~Freed and F.~Quinn,
+\emph{Chern--Simons theory with finite gauge group}. \emph{Communications in
+Mathematical Physics} 156 (1993), 435--472. Theorems~1.7 and~2.13 and
+Lemma~2.4 give the finite topological theory.
+\url{https://arxiv.org/abs/hep-th/9111004}.
+\item M.~Kim, \emph{Arithmetic Chern--Simons theory I}, \S\S1--2.
+The finite arithmetic action is defined there.
+\url{https://arxiv.org/abs/1510.05818}.
+\item H.-J.~Chung, D.~Kim, M.~Kim, J.~Park and H.~Yoo.
+\emph{Arithmetic Chern--Simons theory II}, \S\S2--4 and Appendix~B. These
+contain the boundary torsor, compact-coefficient construction, decomposition
+formula and gauge prisms. \url{https://arxiv.org/abs/1609.03012}.
+\item H.-J.~Chung, D.~Kim, M.~Kim, G.~Pappas, J.~Park and H.~Yoo.
+\emph{Abelian arithmetic Chern--Simons theory and arithmetic linking
+numbers}. Theorems~1.1 and~4.1 and \S3 give the linking pairing, Gaussian
+correlation, relative construction and class invariant.
+\url{https://arxiv.org/abs/1706.03336}.
+\item C.~Douglas, C.~Schommer-Pries and N.~Snyder,
+\emph{Dualizable tensor categories}. See Theorem~3.4.3 and
+Corollaries~3.4.6--3.4.8 for the framed tensor-category field theory.
+\url{https://arxiv.org/abs/1312.7188}.
+\item The Stacks Project, Theorem~10.34.1,
+\url{https://stacks.math.columbia.edu/tag/00FV}. This is the Nullstellensatz
+used in the finite-orbit argument.
+\item D.~Gaiotto, \emph{\(\mathcal N=2\) dualities},
+\url{https://arxiv.org/abs/0904.2715}. For the class-\(\mathcal S\) and
+protected chiral constructions, see also
+Beem--Lemos--Liendo--Peelaers--Rastelli--van Rees, \emph{Infinite chiral
+symmetry in four dimensions}, \S6.1, \url{https://arxiv.org/abs/1312.5344}.
+\end{itemize}

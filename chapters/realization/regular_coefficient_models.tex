@@ -1,0 +1,1328 @@
+\chapter{Regular coefficient models}
+\label{v4-ch:regular-coefficient-models}
+
+An associative coefficient algebra already produces fields:
+translate the first input and multiply it by the second.
+Their products have no poles. Nevertheless, their realization
+on collision strata must retain the order of the inputs.
+For the matrix units
+\[
+ a=c=E_{12},\qquad b=E_{21},
+ \qquad ac=0,\qquad abc=E_{12},
+\]
+combining the outer coefficients before allowing the middle one
+to act changes a nonzero operation into zero. The obstruction
+concerns a partial collision, where the first and third positions
+agree and the second remains separate.
+
+We construct coefficients on every such stratum by retaining each
+consecutive run of a position in the original word. Their
+principal-parts maps form a complex, and their collision and cut
+maps are coherent. A specified presentation permits recovery of
+the original differential algebra. We then construct a different
+coefficient system using an explicit exchange. It compresses the
+runs while retaining their evaluated products. The compression
+has a computable kernel; it need not be an equivalence.
+
+\section{Regular fields and the information in a word}
+\label{v4-sec:regular-fields}
+
+Fix a field \(k\) of characteristic zero and \(X=\mathbb A^1_k\)
+with coordinate \(z\). A \emph{differential coefficient algebra}
+is a unital differential graded associative \(k\)-algebra
+\((B,d,\mu,1)\), with \(1\ne0\), together with a degree-zero
+derivation \(T\) commuting with \(d\). No finite-dimensionality
+or boundedness condition is imposed on \(B\). Tensor products
+in this chapter are algebraic over \(k\), unless another
+coefficient category is specified.
+
+Put
+\begin{equation}\label{v4-eq:regular-field}
+ Y_B(a,u)b=(e^{uT}a)b
+          =\sum_{r\geq0}\frac{u^r}{r!}(T^ra)b
+          \quad\text{in }B[[u]].
+\end{equation}
+This is a formal power series, even when \(T\) is not locally
+nilpotent. Its coefficient in every fixed degree is defined.
+Writing \(Y_B(a,u)b=\sum_{n\in\mathbb Z}a_{(n)}b\,u^{-n-1}\),
+we obtain
+\[
+ a_{(-r-1)}b=\frac{(T^ra)b}{r!}\quad(r\geq0),
+ \qquad a_{(n)}b=0\quad(n\geq0).
+\]
+In particular, \(a_{(-1)}b=ab\).
+
+\begin{proposition}\label{v4-prop:regular-field-identities}
+The fields \eqref{v4-eq:regular-field} preserve the differential
+and satisfy the vacuum and translation identities
+\[
+ Y_B(1,u)b=b,\qquad Y_B(a,u)1=e^{uT}a,
+ \qquad Y_B(Ta,u)b=\partial_uY_B(a,u)b,
+\]
+\[
+ T(Y_B(a,u)b)=Y_B(Ta,u)b+Y_B(a,u)Tb.
+\]
+Their simultaneous product, rooted at the last position, is
+\begin{equation}\label{v4-eq:regular-simultaneous}
+ m_n(b_1,\ldots,b_n;z)
+       =\prod_{i=1}^n e^{(z_i-z_n)T}b_i
+\end{equation}
+in the original order. Consecutive substitutions give this
+same power series.
+\end{proposition}
+
+\begin{proof}
+The unit and derivation identities give the displayed formulas
+coefficient by coefficient. For example,
+\[
+ \begin{split}
+ Y_B(Y_B(a,u)b,v)c
+   &=e^{vT}\bigl((e^{uT}a)b\bigr)c\\
+   &=(e^{(u+v)T}a)(e^{vT}b)c
+     =Y_B(a,u+v)Y_B(b,v)c.
+ \end{split}
+\]
+There are no negative powers to obstruct the substitution.
+At several consecutive blocks, the same derivation identity
+moves each block to the common root. Associativity removes
+the parentheses. The graded Leibniz rule and \(dT=Td\)
+prove compatibility with the differential.
+\end{proof}
+
+The order in \eqref{v4-eq:regular-simultaneous} remains part
+of the operation. For constant fields, changing it replaces
+\(ab\) by \(ba\). A rule relating those expressions requires
+additional maps.
+
+To measure the information between occurrences, leave \(r\)
+inputs open and define
+\begin{equation}\label{v4-eq:regular-open-slots}
+ \Gamma_{B,r}:B^{\otimes(r+1)}
+       \longrightarrow\operatorname{Hom}_k(B^{\otimes r},B),
+ \qquad
+ \Gamma_{B,r}(a_0,\ldots,a_r)(x_1,\ldots,x_r)
+       =a_0x_1a_1\cdots x_ra_r .
+\end{equation}
+
+\begin{proposition}[Matrix coefficients with open inputs]
+\label{v4-prop:regular-matrix-context}
+For \(B=\operatorname{Mat}_d(k)\), the map
+\(\Gamma_{B,r}\) is an isomorphism. A linear encoding of its
+source that retains every evaluation therefore has dimension
+at least \(d^{2r+2}\). For \(r=1\) and \(d>1\), one copy of
+\(B\) cannot supply that encoding.
+\end{proposition}
+
+\begin{proof}
+On matrix units, the value is
+\[
+ \Gamma_{B,r}(E_{i_0j_0},\ldots,E_{i_rj_r})
+       (E_{p_1q_1},\ldots,E_{p_rq_r})
+ =\left(\prod_{\ell=1}^r
+        \delta_{j_{\ell-1},p_\ell}\delta_{q_\ell,i_\ell}\right)
+         E_{i_0j_r}.
+\]
+Every elementary linear map between the indicated tensor bases
+occurs exactly once. This proves the isomorphism. If
+\(\Gamma_{B,r}\) factors as \(B^{\otimes(r+1)}\to L\to
+\operatorname{Hom}_k(B^{\otimes r},B)\), its first map is
+injective, which proves the dimension bound.
+\end{proof}
+
+There is a stronger constraint when the encoding is required
+to be natural in the coefficient algebra.
+
+\begin{proposition}[Naturality retains the open word]
+\label{v4-prop:regular-natural-context}
+Suppose a quotient
+\[
+ q_B:B^{\otimes(r+1)}\twoheadrightarrow Q_B
+\]
+is given for every differential coefficient algebra, is natural
+under injective unital maps commuting with \(d,T\), and permits
+\(\Gamma_{B,r}\) to factor through it. Then every \(q_B\) is
+an isomorphism. For finite-dimensional ordinary algebras, it
+suffices to require naturality under injections into other
+finite-dimensional algebras.
+\end{proposition}
+
+\begin{proof}
+Adjoin noncommuting symbols \(X_1,\ldots,X_r\) with
+\(dX_i=TX_i=0\). The free \(B\)-algebra on these symbols is
+the tensor algebra over \(B\) of
+\(B\otimes_k k\{X_1,\ldots,X_r\}\otimes_k B\).
+Its summand with symbol word \(X_1\cdots X_r\) is a copy
+of \(B^{\otimes(r+1)}\). Thus
+\[
+ a_0\otimes\cdots\otimes a_r
+       \longmapsto a_0X_1a_1\cdots X_ra_r
+\]
+is injective. If \(w\in\ker q_B\), naturality sends \(w\)
+into the kernel of the corresponding quotient for the free
+algebra. Evaluating its open inputs at \(X_1,\ldots,X_r\)
+therefore gives zero. Injectivity implies \(w=0\).
+For finite-dimensional \(B\), quotient the free algebra by
+symbol words of length greater than \(r\). This algebra is
+finite-dimensional and retains both the injection of \(B\)
+and the separating summand.
+\end{proof}
+
+At one fixed algebra the kernel can be nonzero.
+For \(B=k[\epsilon]/(\epsilon^2)\),
+\(\epsilon\otimes1-1\otimes\epsilon\) evaluates to zero
+on every element of \(B\). Under
+\(\epsilon\mapsto E_{12}\), its evaluation on \(E_{21}\)
+becomes \(E_{11}-E_{22}\). Enlarging the allowed intermediate
+inputs reveals information that the original evaluations lost.
+
+\section{Run coefficients and their residue maps}
+\label{v4-sec:regular-runs}
+
+Use the word category \(\mathcal W_X\) and its cut product
+from Chapter~\ref{v4-ch:words-collisions-units}.
+For a partition \(\pi\) of an ordered set \(I\), read its
+equality blocks along the word and remove only adjacent
+repetitions. The resulting list is the list of \emph{runs}.
+Write \(\ell(\pi)\) for its length and \(\beta_\pi(r)\)
+for the block occupied by run \(r\). At three positions,
+\[
+ \begin{array}{c|c|c}
+ \pi&\text{run list}&\text{coefficient}\\ \hline
+ 12|3&(12,3)&B^{\otimes2}\\
+ 1|23&(1,23)&B^{\otimes2}\\
+ 13|2&(13,2,13)&B^{\otimes3}.
+ \end{array}
+\]
+The equality \(z_1=z_3\) does not make those two occurrences
+adjacent in the original word.
+
+A coarsening \(\pi\leq\rho\) relabels every run by its
+\(\rho\)-block. Multiply the factors in each newly consecutive
+run, retaining their order. This defines
+\begin{equation}\label{v4-eq:regular-run-map}
+ p_{\pi\rho}:B^{\otimes\ell(\pi)}
+       \longrightarrow B^{\otimes\ell(\rho)}.
+\end{equation}
+For example, \(p_{1|2|3,13|2}\) is the identity and
+\(p_{13|2,123}(a,b,c)=abc\).
+
+\begin{lemma}\label{v4-lem:regular-run-functor}
+The maps \eqref{v4-eq:regular-run-map} are chain maps and obey
+\[
+ p_{\rho\sigma}p_{\pi\rho}=p_{\pi\sigma}.
+\]
+For each block \(C\) of \(\pi\), put
+\(T_C=\sum_{\beta_\pi(r)=C}T^{(r)}\).
+Along a merger, \(p_{\pi\rho}\) intertwines the sum of
+the input block translations with the output block translation.
+\end{lemma}
+
+\begin{proof}
+A final run is an interval of the original word. An intermediate
+coarsening merely parenthesizes the ordered product on that
+interval. Associativity gives the composition identity.
+The two derivation identities give the assertions for \(d\)
+and \(T\). No coefficient factors are permuted in this argument.
+\end{proof}
+
+Let \(X^\pi\) have one coordinate per equality block,
+ordered by first occurrence. Let
+\[
+ i_\pi:X^\pi\hookrightarrow X^I,\qquad
+ j_\pi:\operatorname{Conf}_\pi(X)\hookrightarrow X^\pi
+\]
+be the diagonal embedding and the open subset where different
+blocks occupy distinct positions. On \(X^\pi\), set
+\[
+ M_\pi(B)=\omega_{X^\pi}\otimes_k B^{\otimes\ell(\pi)}.
+\]
+The right differential-module structure is
+\begin{equation}\label{v4-eq:regular-run-connection}
+ (f\,\omega_\pi\otimes\mathbf b)\partial_{z_C}
+       =-\partial_{z_C}f\,\omega_\pi\otimes\mathbf b
+        -f\,\omega_\pi\otimes T_C\mathbf b,
+ \qquad
+ \omega_\pi=dz_{C_1}\wedge\cdots\wedge dz_{C_{|\pi|}}.
+\end{equation}
+Define the graded object
+\begin{equation}\label{v4-eq:regular-run-complex}
+ C_I^{\mathrm{run}}(B)
+    =\bigoplus_{\pi\in\Pi(I)}
+       i_{\pi,*}j_{\pi,*}j_\pi^*M_\pi(B)[|\pi|],
+ \qquad C_\varnothing^{\mathrm{run}}(B)=k.
+\end{equation}
+The sum is finite for each \(I\). A coefficient of internal
+degree \(q\) in its \(r\)-block term has total degree \(q-r\).
+
+We specify the boundary, including its normal module.
+For a normal coordinate \(u\), let \(e_j\), \(j\geq0\),
+denote the class of \(u^{-j-1}\) times its normal density.
+In right-module notation,
+\[
+ e_0u=0,\qquad e_ju=e_{j-1}\ (j>0),\qquad
+ e_j\partial_u=(j+1)e_{j+1}.
+\]
+Writing \(\delta=e_0\), equivalently
+\(e_j=\delta\partial_u^j/j!\).
+The map \(\operatorname{pp}_u\) takes the negative part
+of a Laurent expansion to this full normal module. It retains
+all negative powers.
+
+For an elementary merger of blocks \(i<j\), take
+\(u=z_{C_i}-z_{C_j}\), retain \(z_{C_j}\) as the merged
+coordinate, and put the merged block in position \(i\).
+The face on unshifted coefficients is
+\begin{equation}\label{v4-eq:regular-run-face}
+ D_{\pi\rho}(f\otimes\mathbf b)
+       =(-1)^{j-2}\operatorname{pp}_u
+          \bigl(f\,p_{\pi\rho}e^{uT_{C_i}}\mathbf b\bigr).
+\end{equation}
+All other differences are expanded normally before taking
+principal parts. The sign is fixed by
+\(\omega_\pi=(-1)^{j-2}du\wedge\omega_\rho\).
+Normal transfer extends this formula to the indicated
+diagonal direct image. A fixed localized input has a finite
+pole order, so only finitely many terms of the exponential
+contribute to its principal part. The output therefore has
+algebraic coefficients even for unrestricted \(T\).
+
+On the \(r\)-block summand the internal differential is
+\((-1)^r d_{B^{\otimes\ell(\pi)}}\). The total differential
+is this map plus the sum of the elementary faces.
+It has degree one. To prove that it squares to zero, the
+normal contacts must first be compared in a common target.
+
+\subsection{The three normal channels}
+
+Put \(s=z_1-z_3\), \(t=z_2-z_3\) and \(r=s-t\).
+For any vector space \(P\), take
+\[
+ \mathcal G(P)=P[[s,t]][(st(s-t))^{-1}].
+\]
+Power series are formed before localization, so an element
+has a finite pole bound but can have infinitely many
+independent state coefficients. The full contact module
+\(E_{s,t}(P)\) consists of finite sums of
+\(p\,s^{-a}t^{-b}\), \(a,b\geq1\), with their normal
+densities and right differential actions.
+
+The change from contact coordinates \((r,t)\) to \((s,t)\)
+is
+\begin{equation}\label{v4-eq:regular-contact-transfer}
+ J(r^{-a}t^{-b})
+       =\sum_{j=0}^{b-1}\binom{a+j-1}{j}
+                   s^{-a-j}t^{-b+j}.
+\end{equation}
+Indeed, \(J\) sends the simple contact to \(s^{-1}t^{-1}\),
+the derivative in \(r\) to that in \(s\), and the old
+derivative in \(t\) to \(\partial_s+\partial_t\).
+Applying those derivatives gives the displayed formula.
+Define
+\[
+ \begin{aligned}
+ L(F)&=J\operatorname{pp}_t\operatorname{pp}_rF(r+t,t)
+                                      &&(r\ll t),\\
+ R(F)&=\operatorname{pp}_s\operatorname{pp}_tF(s,t)
+                                      &&(t\ll s),\\
+ N(F)&=\operatorname{pp}_t\operatorname{pp}_sF(s,t)
+                                      &&(s\ll t).
+ \end{aligned}
+\]
+The first principal part in each expression is the rightmost
+one. These are the channels \(12\), \(23\) and \(13\),
+expressed in one contact module.
+
+\begin{lemma}\label{v4-lem:regular-three-channel}
+For every \(F\in\mathcal G(P)\),
+\[
+                         L(F)-R(F)+N(F)=0.
+\]
+\end{lemma}
+
+\begin{proof}
+Write \(F=G/(s^at^b(s-t)^c)\). A monomial surviving two
+principal parts has total degree at most \(-2\).
+Consequently numerator terms of degree greater than
+\(a+b+c-2\) contribute to none of the three maps.
+Only a finite polynomial part of \(G\) matters.
+
+Over \(k[t,t^{-1}]\), the polynomials \(s\) and \(s-t\)
+are coprime. Partial fractions reduce to polynomials in
+\(s\), terms \(a_j(t)s^{-j}\), and terms
+\(b_j(t)(s-t)^{-j}\), with Laurent coefficients in \(t\).
+A polynomial in \(s\) gives zero. For \(a_j(t)s^{-j}\),
+the expansion at \(r=0\) is regular, so \(L=0\) and
+\(R=N=s^{-j}\operatorname{pp}_t(a_j)\).
+
+For \(b_j(t)(s-t)^{-j}\), the expansion in \(s\ll t\)
+is regular in \(s\), so \(N=0\). In the other chamber,
+\[
+ (s-t)^{-j}
+       =\sum_{n\geq0}\binom{j+n-1}{n}s^{-j-n}t^n.
+\]
+A term \(t^{-\beta}\) of \(b_j\), with \(\beta\geq1\),
+therefore gives
+\(\sum_{n<\beta}\binom{j+n-1}{n}s^{-j-n}t^{n-\beta}\)
+in \(R\). This is exactly \(J(r^{-j}t^{-\beta})\),
+its contribution to \(L\). The identity follows.
+\end{proof}
+
+For \(F=1/(s(s-t))\), the three values are
+\(s^{-1}t^{-1},0,-s^{-1}t^{-1}\).
+Deleting the outer channel leaves a nonzero defect.
+For \(F=1/((s-t)^2t^2)\), they are
+\[
+ L(F)=R(F)=s^{-2}t^{-2}+2s^{-3}t^{-1},
+ \qquad N(F)=0.
+\]
+The second term comes from the normal-coordinate transfer;
+keeping only the scalar residue would lose it.
+
+\begin{theorem}[The regular residue complex]
+\label{v4-thm:regular-residue-complex}
+The total differential on
+\eqref{v4-eq:regular-run-complex} is differential-linear
+and squares to zero. Unital differential algebra maps
+commuting with \(T\) induce chain maps by their tensor
+powers on the runs.
+\end{theorem}
+
+\begin{proof}
+The derivative of \(e^{uT_{C_i}}\) is
+\(T_{C_i}e^{uT_{C_i}}\). Together with
+\eqref{v4-eq:regular-run-connection} and
+Lemma~\ref{v4-lem:regular-run-functor}, this identifies the
+input and output tangential connections in every face.
+In the normal direction,
+\(\operatorname{pp}_u(-\partial_u f)\) is right
+multiplication by \(\partial_u\); differentiation of the
+Taylor factor gives precisely the input translation term.
+Multiplication by \(u\) agrees with the lowering action
+on the \(e_j\). Thus the face extends to a
+differential-module map.
+
+The internal square is zero. Each unshifted face is a chain
+map, and the two adjacent block numbers have opposite
+internal signs. The mixed terms therefore cancel.
+Two successive mergers either join disjoint pairs or join
+three blocks. For a final partition \(\sigma\), translate
+each original run from its original block coordinate to
+the retained coordinate of its \(\sigma\)-block. Denote
+this formal Taylor operator by \(E_{\pi/\sigma}\).
+The derivation identity gives, for every intermediate \(\rho\),
+\[
+ p_{\rho\sigma}E_{\rho/\sigma}\,
+ p_{\pi\rho}E_{\pi/\rho}
+       =p_{\pi\sigma}E_{\pi/\sigma}.
+\]
+Intermediate products only parenthesize the same factors,
+and their translation displacements add. On a fixed
+localized input, each compared contact uses finitely many
+Taylor coefficients, so this formal identity determines
+the actual normal distributions.
+
+The common coefficient can now be taken through every
+route. For disjoint pairs the two normal orientations
+have opposite signs. For three blocks the oriented sum
+is the identity of Lemma~\ref{v4-lem:regular-three-channel},
+with any remaining coefficients as spectators. These
+two cases exhaust the square of the boundary.
+Maps of differential algebras preserve every product,
+Taylor coefficient and internal differential in these
+formulas, proving the final assertion.
+\end{proof}
+
+\section{Collision coherence and framed recognition}
+\label{v4-sec:regular-recognition}
+
+The complexes just constructed live on the actual position
+charts. To obtain an object of \(\mathcal W_X\), their
+exceptional collision comparisons must also be supplied.
+
+\begin{theorem}\label{v4-thm:regular-word-realization}
+The complexes \(C_I^{\mathrm{run}}(B)\) have canonical
+coherent equivalences
+\[
+ d_\alpha^!C_I^{\mathrm{run}}(B)
+       \simeq C_J^{\mathrm{run}}(B)
+\]
+for every monotone surjection \(\alpha:I\twoheadrightarrow J\).
+They form a connected coaugmented cut coalgebra. The
+construction is functorial in differential coefficient algebras
+and preserves quasi-isomorphisms.
+\end{theorem}
+
+\begin{proof}
+A partition term survives \(d_\alpha^!\) only when each
+\(\alpha\)-fibre lies in one equality block. Otherwise that
+collision lands in a diagonal removed by \(j_\pi\), and
+the exceptional pullback vanishes by \(i^!j_*=0\).
+A surviving partition is uniquely
+\(\pi=\alpha^{-1}(\bar\pi)\). Since the fibres of \(\alpha\)
+are consecutive, deleting their repetitions identifies
+the run lists of \(\pi\) and \(\bar\pi\).
+The closed diagonal \(i_\pi\) factors through \(d_\alpha\);
+the closed-embedding identity \(d_\alpha^!d_{\alpha,*}
+\simeq\mathrm{id}\) and open base change identify the
+surviving coefficient with its \(\bar\pi\)-term. Its
+density and shift are still \(\omega_{X^{\bar\pi}}\)
+and \([|\bar\pi|]\). Formula
+\eqref{v4-eq:regular-run-face} identifies the surviving
+differentials.
+
+Under two collisions, the same partitions survive as
+under their composite, and the same adjacent repetitions
+are deleted. The transitivity maps for closed direct
+image and open base change therefore give all collision
+coherences.
+
+For a consecutive cut \(I=A|D\), restrict to the open
+where every position in \(A\) differs from every position
+in \(D\). A partition with a block crossing the cut has
+empty support there. Every surviving partition is
+\(\pi_A\sqcup\pi_D\), and its runs are the concatenation
+of the two run lists. Thus there is an equivalence
+\[
+ C_I^{\mathrm{run}}(B)|_{U_{A,D}}
+   \simeq
+ \bigl(C_A^{\mathrm{run}}(B)\boxtimes
+       C_D^{\mathrm{run}}(B)\bigr)|_{U_{A,D}}.
+\]
+Use the canonical tensor-shift isomorphisms when
+identifying the differentials. Explicitly, the map
+from \(M[a]\otimes N[b]\) to \((M\otimes N)[a+b]\)
+multiplies \(x\otimes y\), with \(x\) of unshifted
+degree \(|x|\), by \((-1)^{b|x|}\).
+The block densities occur in their concatenated order.
+
+Localization followed by this equivalence, summed over
+cuts, defines the coproduct. For three or more output
+blocks every parenthesization restricts to the same
+disjoint-block open and concatenates the same run
+coefficients. This proves coassociativity and its
+compatibility with collisions. Empty cuts are identity
+maps on the nonempty coefficient and use
+\(C_\varnothing=k\), giving the counit and coaugmentation.
+More than \(|I|\) positive output blocks are impossible.
+
+Finally filter by the number of equality blocks, using
+the terms with at most \(r\) blocks for the \(r\)-th
+stage. The differential preserves this finite filtration.
+On its associated graded, a quasi-isomorphism of \(B\)'s
+acts by finite tensor powers over a field, followed by
+derived coefficient functors. It is a quasi-isomorphism
+on every term, and hence on the finite total object.
+\end{proof}
+
+The four-point partial strata display the coherence before
+the general proof is needed again:
+\[
+ \begin{array}{c|c|c}
+ \pi&\text{run pattern}&\text{coarsening from }1|2|3|4\\ \hline
+ 12|34&AABB& a\otimes b\otimes c\otimes d\mapsto ab\otimes cd\\
+ 13|24&ABAB& a\otimes b\otimes c\otimes d\mapsto a\otimes b\otimes c\otimes d\\
+ 14|23&ABBA& a\otimes b\otimes c\otimes d\mapsto a\otimes bc\otimes d.
+ \end{array}
+\]
+Merging either pair first gives the displayed map.
+The final collision gives \(abcd\) in every case.
+The corresponding normal residue routes still carry
+their orientation signs.
+
+The coefficient unit \(k\to B\) supplies a coalgebra map
+\(C^{\mathrm{run}}(k)\to C^{\mathrm{run}}(B)\).
+On each partition it inserts the coefficient unit in
+every run. This source retains nonempty coefficients:
+already its singleton is \(\omega_X[1]\).
+It is distinct from the isolated empty unit \(K\).
+The singleton unit and every tested regular mode are
+therefore retained without assigning the empty
+coefficient the value \(B\).
+
+Theorem~\ref{v4-thm:bar-cut-duality} now gives an associative
+geometric algebra
+\[
+ A^{\mathrm{run}}(B)
+      =\Omega_{\mathrm{cut}}C^{\mathrm{run}}(B),
+ \qquad
+ B_{\mathrm{cut}}A^{\mathrm{run}}(B)
+      \simeq C^{\mathrm{run}}(B).
+\]
+Its multiplication is cobar concatenation. The field
+multiplication of \(B\) is recovered instead from the
+framed two-point boundary
+\[
+ r_B(f;a,b)=\operatorname{pp}_u\bigl(f(e^{uT}a)b\bigr),
+ \qquad
+ a_{(n)}b=[e_0]\,r_B(u^n;a,b).
+\]
+The test \(u^{-1}\) recovers \(ab\); all negative-index
+modes are retained in the same way. This recovery uses
+the full normal module, not evaluation of a distribution
+at \(u=0\).
+
+\begin{definition}\label{v4-def:regular-split-presentation}
+A \emph{split presentation with run coefficients} consists
+of the following data for a complex \(E\) with a commuting
+degree-zero operator \(T\):
+the literal direct sums
+\eqref{v4-eq:regular-run-complex} with \(E\) in every run;
+the connections \eqref{v4-eq:regular-run-connection};
+a nonzero closed degree-zero singleton vector \(1\) with \(T1=0\);
+the saturated-partition collision identifications of
+Theorem~\ref{v4-thm:regular-word-realization}, including
+their transitivity; and the cut maps given by concatenation.
+It also has a differential extending the shifted
+internal differential and a binary contact \(r\).
+The contact is \emph{regular} when
+\([e_0]r(u^n;a,b)=0\) for every \(n\geq0\).
+A morphism is the literal tensor power, on each run
+coefficient, of one singleton chain map commuting with
+\(T\) and \(1\), compatible with all the displayed maps.
+Morphisms are not identified up to chain homotopy.
+\end{definition}
+
+The definition supplies the carrier and its comparisons.
+It does not assume a multiplication on \(E\). Recover
+the candidate product by
+\(\mu(a,b)=[e_0]r(u^{-1};a,b)\).
+
+\begin{theorem}[Recognition with a specified presentation]
+\label{v4-thm:regular-framed-recognition}
+A split presentation with regular binary contact is
+isomorphic to \(C^{\mathrm{run}}(B)\) as a framed
+presentation exactly when the following equations hold:
+\(\mu\) is associative with unit \(1\); \(d\) and \(T\)
+are derivations of \(\mu\); every elementary face is
+\eqref{v4-eq:regular-run-face} for this product; and
+the total differential has no further components.
+The inverse construction is \(B=(E,d,T,\mu,1)\).
+These constructions give an equivalence of the stated
+strict categories.
+\end{theorem}
+
+\begin{proof}
+Every condition holds for the constructed realization.
+Conversely the first two conditions make \(E\) a
+differential coefficient algebra. Its fields are
+\((e^{uT}a)b\). The face equations identify every
+normal contact, and the condition on the remaining
+components identifies the full differential.
+The prescribed splitting identifies the coefficient
+modules, their shifts and connections. The prescribed
+saturation and cut maps identify the exceptional
+comparisons, their coherences and the coproduct.
+This gives an isomorphism of all the framed data.
+
+A morphism of presentations recovers its singleton
+map. Compatibility with \(r(u^{-1};a,b)\) makes this
+map multiplicative, while the other singleton
+requirements preserve \(d,T,1\). Conversely such an
+algebra map preserves every construction. The two
+assignments are inverse on morphisms as well as objects.
+\end{proof}
+
+Prescribing the collision comparisons is necessary.
+In the scalar presentation, multiply the comparison
+for \(\alpha:I\twoheadrightarrow J\) by
+\(\lambda^{|I|-|J|}\), where \(\lambda\in k^\times\).
+The exponents add under composition and under cut
+decomposition, so all their coherences remain valid.
+The coefficients and differentials are unchanged.
+For \(\lambda\ne1\), no unital singleton map \(k\to k\)
+induces a framed isomorphism with the original presentation.
+
+Even the unframed word carrier has coefficients invisible
+in arities one and two. Choose distinct \(a,b\in k\).
+For a rational point \(p\in X^n\), let \(\delta_p\)
+be its differential-module direct image. The system
+\[
+ F_0=0,\qquad
+ F_n=\bigoplus_{\substack{r_1,r_2,r_3\geq1\\
+                          r_1+r_2+r_3=n}}
+           \delta_{a^{r_1}b^{r_2}a^{r_3}}
+\]
+has canonical monotone-collision comparisons. Indeed,
+the exceptional pullback of a summand vanishes unless
+the point is constant on each collision fibre.
+Every surviving point is the unique expansion of a
+corresponding point of the shorter word, and closed
+direct image gives the transitive identifications.
+Thus \(F_1=F_2=0\) but \(F_3=\delta_{(a,b,a)}\ne0\).
+There are \(\binom{n-1}{2}\) summands for \(n\geq3\).
+Binary data alone are not conservative on this carrier.
+
+\subsection{Strict differentials retain higher products}
+
+The recognition theorem is a statement about literal
+presentations. For
+\[
+ B=k1\oplus(ku\xrightarrow{d}kv),\qquad
+ |u|=-1,\quad |v|=0,\quad du=v,\quad dv=0,\quad T=0,
+\]
+give the second summand square-zero multiplication.
+The unital maps that multiply \(u,v\) by a scalar
+\(\lambda\) are distinct strict algebra maps.
+The augmentation \(B\to k\) is a quasi-isomorphism
+and has the same composite with every such map.
+Consequently these maps all become the identity after
+localization. Strict faithfulness does not imply
+faithfulness of strict maps into a derived category.
+This example does not decide the faithfulness of the
+functor from the already localized source.
+
+The cubic algebra in the prologue supplies a different
+test. Its strict endomorphism algebra \(E\), with
+\(T=0\), is an allowed coefficient algebra. Hence
+\(C^{\mathrm{run}}(E)\) is defined with no finite
+state truncation. The two-point contact recovers
+composition in \(E\), and its coefficient differential
+retains the identities
+\[
+ DU=DV=0,\qquad U^2=DH,\qquad UH+HU=-V.
+\]
+In particular the single-valued product
+\(\langle[U],[U],[U]\rangle=\{-[V]\}\) from
+\eqref{v4-prologue:eq:massey} remains encoded by the
+product and its primitive. It is nonzero.
+Replacing \(E\) by its graded cohomology algebra with
+zero differential would replace that product by zero.
+
+There is therefore no zigzag of framed quasi-isomorphisms
+between these two presentations: taking the singleton
+and its recovered product would give a zigzag of
+quasi-isomorphisms of differential graded algebras,
+contradicting the computed Massey product.
+A higher presentation can express the same information
+in a ternary operation. A strict presentation expresses
+it in the differential and the chosen primitives.
+Neither description justifies discarding it.
+
+\section{An exchange that permits contextual compression}
+\label{v4-sec:regular-contextual-exchange}
+
+Retaining every run is one construction. A different one
+keeps one coefficient for each occupied position and
+allows the intervening coefficients to enter a merger.
+Its basic map is
+\begin{equation}\label{v4-eq:regular-exchange}
+ c_B(a\otimes b)=ab\otimes1+1\otimes ab-a\otimes b.
+\end{equation}
+This is the \(R_{1,1,1}\) member of the
+D\u{a}sc\u{a}lescu--Nichita operators.\footnote{
+G.~Massuyeau and F.~F.~Nichita,
+\emph{Yang--Baxter operators arising from algebra
+structures and the Alexander polynomial of knots},
+Theorem~2.3, p.~2;
+\href{https://arxiv.org/abs/math/0404010}{arXiv:math/0404010}.}
+We shall need its multiplication identities as well as
+its braid relation.
+
+\begin{lemma}\label{v4-lem:regular-contextual-exchange}
+For every unital differential graded algebra \(B\),
+\(c_B\) is a degree-zero chain map, natural in unital
+algebra maps, and
+\[
+ \begin{gathered}
+ c_B^2=1,\qquad \mu c_B=\mu,\qquad
+ c_B(a\otimes1)=1\otimes a,\qquad
+ c_B(1\otimes a)=a\otimes1,\\
+ (c_B)_{12}(c_B)_{23}(c_B)_{12}
+       =(c_B)_{23}(c_B)_{12}(c_B)_{23},\\
+ c_B(1\otimes\mu)
+       =(\mu\otimes1)(1\otimes c_B)(c_B\otimes1),\\
+ c_B(\mu\otimes1)
+       =(1\otimes\mu)(c_B\otimes1)(1\otimes c_B).
+ \end{gathered}
+\]
+\end{lemma}
+
+\begin{proof}
+Multiplication and insertion of the closed unit are
+degree-zero chain maps. They give chain compatibility
+and naturality. The first line follows by substitution.
+Both braid words on \(a\otimes b\otimes c\) reduce to
+\[
+ \begin{split}
+ &abc\otimes1\otimes1+1\otimes ab\otimes c
+       +a\otimes bc\otimes1+1\otimes1\otimes abc\\
+ &\hspace{12mm}
+       -ab\otimes c\otimes1-1\otimes a\otimes bc
+       -a\otimes b\otimes c.
+ \end{split}
+\]
+The last two identities reduce, respectively, to
+\(abc\otimes1+1\otimes abc-a\otimes bc\) and
+\(abc\otimes1+1\otimes abc-ab\otimes c\).
+Only associativity and the unit have been used.
+\end{proof}
+
+Adjacent \(c_B\)'s therefore give an action of the
+symmetric group on each \(B^{\otimes n}\).
+Multiplication is invariant under these specified
+crossings. This assertion does not replace \(c_B\)
+by the usual graded flip.
+
+For a coarsening \(\pi\leq\rho\), start with one
+\(B\)-factor per \(\pi\)-block. Stably group the
+blocks belonging to the same \(\rho\)-block by
+adjacent \(c_B\)'s, then multiply each group in order.
+Denote the resulting map by
+\[
+ q_{\pi\rho}:B^{\otimes|\pi|}
+                  \longrightarrow B^{\otimes|\rho|}.
+\]
+Sorting the runs of each \(\pi\)-block together and
+multiplying them similarly gives
+\(\kappa_\pi:B^{\otimes\ell(\pi)}\to B^{\otimes|\pi|}\).
+
+\begin{proposition}\label{v4-prop:regular-contextual-coherence}
+These maps are independent of the adjacent-transposition
+expressions used for the prescribed grouping and obey
+\[
+ q_{\rho\sigma}q_{\pi\rho}=q_{\pi\sigma},
+ \qquad
+ \kappa_\rho p_{\pi\rho}=q_{\pi\rho}\kappa_\pi.
+\]
+They are compatible with reordering the blocks by
+the specified symmetric-group action.
+\end{proposition}
+
+\begin{proof}
+The braid, involution and distant-commutation relations
+identify all words for a fixed permutation. Crossings
+inside a group disappear after multiplication because
+\(\mu c_B=\mu\). The two multiplication identities
+in Lemma~\ref{v4-lem:regular-contextual-exchange}
+move a merger through a crossing.
+
+Apply these identities to two successive grouping
+diagrams. Move crossings before the mergers and combine
+successive multiplications by associativity. The result
+groups the original inputs directly into their final
+blocks. This proves the first identity. Applying the
+same argument to the original run list proves the
+second. Starting with a reordered list instead gives
+the stated order compatibility.
+\end{proof}
+
+At the first nonconsecutive collision this gives
+\begin{equation}\label{v4-eq:regular-contextual-three}
+ \kappa_{13|2}(a,b,c)
+       =abc\otimes1+a\otimes bc-ab\otimes c,
+ \qquad
+ \mu\kappa_{13|2}(a,b,c)=abc.
+\end{equation}
+For \(a=c=E_{12}\), \(b=E_{21}\), the result is
+\[
+ E_{12}\otimes1+E_{12}\otimes E_{22}
+                  -E_{11}\otimes E_{12}.
+\]
+Its product is \(E_{12}\). Each term has used the
+middle input, so this map does not factor through
+the blind outer multiplication \(a\otimes c\mapsto ac\).
+The units in the formula are coefficient units at
+retained positions; they do not remove a position.
+
+For two interlaced pairs,
+\begin{equation}\label{v4-eq:regular-contextual-four}
+ q_{13|24}(a,b,c,d)
+       =abc\otimes d+a\otimes bcd-ab\otimes cd.
+\end{equation}
+Its product is \(abcd\). Taking
+\(a=c=E_{12}\) and \(b=d=E_{21}\) gives
+\[
+ 2E_{12}\otimes E_{21}-E_{11}\otimes E_{11},
+ \qquad \mu q_{13|24}=E_{11},
+\]
+whereas \(ac\otimes bd=0\).
+For the nested pair pattern,
+\[
+ q_{14|23}(a,b,c,d)
+       =abcd\otimes1+a\otimes bcd-abc\otimes d.
+\]
+Both orders of the two mergers give these formulas,
+by the proved grouping identities.
+
+\subsection{The exchange contains more than its product}
+
+For \(B=k[x]/(x^2)\), both \(c_B\) and the usual flip
+\(\tau\) have the same composite with multiplication.
+In the basis \(1\otimes1,1\otimes x,x\otimes1,x\otimes x\),
+\(c_B\) fixes the first vector, exchanges the middle
+two and negates the last. Hence
+\[
+ \operatorname{Tr}c_B=0,\qquad \operatorname{Tr}\tau=2.
+\]
+The two exchanges are not linearly conjugate.
+
+One can measure the difference from the ordinary flip
+for every finite-dimensional ordinary algebra. Put
+\(n=\dim B\), \(a_n=n(n-1)/2\), \(q=\dim[B,B]\), and
+\[
+ s(b)=b\otimes1+1\otimes b,\qquad R_B=\tau c_B=s\mu-\tau.
+\]
+Here \([B,B]\) is the linear span of all commutators.
+Write \(J_m(\lambda)\) for a Jordan block of size \(m\)
+with eigenvalue \(\lambda\).
+
+\begin{proposition}\label{v4-prop:regular-exchange-jordan}
+The operator \(R_B^2-1\) is square-zero and has rank \(q\).
+The Jordan form of \(R_B\) is
+\[
+ qJ_2(1)\ \oplus\
+ (n+a_n-2q)J_1(1)\ \oplus\ a_nJ_1(-1).
+\]
+Consequently
+\[
+ \operatorname{rank}(R_B-1)=a_n+q,\qquad
+ \operatorname{Tr}R_B=n,\qquad
+ R_B^2=1\ \Longleftrightarrow\ B\text{ is commutative}.
+\]
+\end{proposition}
+
+\begin{proof}
+Since \(\tau s=s\) and \(\mu s=2\,\mathrm{id}\),
+\[
+ R_B^2-1=s(\mu-\mu\tau).
+\]
+The map \(s\) is injective and
+\((\mu-\mu\tau)s=0\). This proves the square-zero
+and rank assertions.
+
+On \(\operatorname{Sym}^2B\), the map \(s\mu/2\)
+is a projection onto \(sB\). The operator \(R_B\)
+is \(1\) on this image and \(-1\) on its kernel,
+which has dimension \(a_n\).
+On \(\bigwedge^2B\), it is \(1+s\mu\), with
+\(s\mu\) taking values in \(sB\) and having rank \(q\).
+Thus \(R_B\) restricts to identity plus a square-zero
+operator of rank \(q\) on
+\(sB\oplus\bigwedge^2B\), a space of dimension \(n+a_n\).
+This gives the displayed blocks and all their consequences.
+\end{proof}
+
+For \(B=\operatorname{Mat}_d(k)\), commutators span
+the trace-zero matrices, so \(q=d^2-1\).
+At \(d=2\), the multiplicities of
+\(J_2(1),J_1(1),J_1(-1)\) are \(3,4,6\).
+These are invariants of the specified coefficient
+exchange. Equality after multiplication forgets them.
+
+\section{Descent and the kernel of compression}
+\label{v4-sec:regular-descent}
+
+First take \(T=0\). On each word chart of the ordered
+atlas \(\mathscr R_I\) of
+Section~\ref{v4-sec:word-ordered-atlas}, replace the
+run coefficient in \eqref{v4-eq:regular-run-complex}
+by \(B^{\otimes|\pi|}\). In its faces replace
+\(p_{\pi\rho}\) by \(q_{\pi\rho}\).
+Call the resulting chart complex \(C_I^{\mathrm{ctx}}(B)\).
+The same three-channel identity proves that its
+differential squares to zero: every route to a final
+partition has the single coefficient map \(q_{\pi\sigma}\).
+
+On an overlap of two charts, a surviving equality
+block has the same internal order in both charts.
+Only its order relative to other, separated blocks
+can change. Use the action generated by \(c_B\)
+to change that block order, together with the
+corresponding density and tensor-shift identifications.
+These are specified transition maps.
+
+\begin{theorem}\label{v4-thm:regular-contextual-descent}
+For \(T=0\), these transitions glue the chart complexes
+to a coherent exceptional collision system on
+\(\mathscr R_I\). It is a connected coaugmented
+coalgebra for the atlas convolution \(\star\).
+The maps \(\kappa_\pi\) define a natural map of
+cut coalgebras
+\begin{equation}\label{v4-eq:regular-compression}
+ C^{\mathrm{run}}(B)
+       \longrightarrow\operatorname{res}
+                              C^{\mathrm{ctx}}(B),
+\end{equation}
+where restriction uses the colax comparison of
+Proposition~\ref{v4-prop:word-atlas-comparison}.
+The map is an isomorphism in arities one and two.
+\end{theorem}
+
+\begin{proof}
+The symmetric-group relations prove the transition
+cocycle on every triple overlap. The grouping
+identities make transitions commute with all
+surviving faces. A target stratum absent from an
+overlap has zero restricted face. Hence these are
+chain isomorphisms on the full overlaps.
+
+For an ordered-fibre collision, choose an expanded
+chart where its fibres are consecutive. The saturated
+partitions are precisely the pullbacks of partitions
+of the shorter word. Their densities, shifts and
+block coefficients agree. The argument in
+Theorem~\ref{v4-thm:regular-word-realization} therefore
+gives the exceptional comparison there. Compatibility
+with transitions makes it a comparison on the actual
+atlas collision map, and saturation under composite
+collisions proves transitivity.
+
+On an arbitrary cross-disjoint decomposition
+\(I=A\sqcup D\), the surviving partitions are
+\(\pi_A\sqcup\pi_D\). Regroup their coefficient
+blocks using \(c_B\). This is invertible, and
+localization into the resulting external product
+defines the coproduct. All iterates use the same
+final disjoint open and the same regrouping.
+The braid and multiplication identities give
+coassociativity, collision compatibility and the
+empty-unit identities.
+
+The identity
+\(\kappa_\rho p_{\pi\rho}=q_{\pi\rho}\kappa_\pi\)
+proves that \eqref{v4-eq:regular-compression} is
+a chain map and preserves collisions.
+On a consecutive cut, sorting the runs splits
+into the sorting on its two sides; this proves
+compatibility with the cut coproduct.
+At one or two positions every run list has
+one occurrence of each equality block, so
+each \(\kappa_\pi\) is the identity.
+\end{proof}
+
+This construction supplies a chosen exchange.
+It does not extend a different prescribed overlap
+map by leaving it unchanged.
+
+\begin{proposition}[A split compression kernel]
+\label{v4-prop:regular-compression-kernel}
+The coefficient map \(\kappa=\kappa_{13|2}\) is
+a split surjection for every unital differential
+graded algebra. A section and the resulting
+projection onto its kernel are
+\[
+ s_0(x\otimes y)=x\otimes y\otimes1,
+ \qquad P=1-s_0\kappa.
+\]
+Explicitly,
+\[
+ \begin{split}
+ P(a,b,c)={}&a\otimes b\otimes c
+      -abc\otimes1\otimes1-a\otimes bc\otimes1\\
+      &+ab\otimes c\otimes1.
+ \end{split}
+\]
+For an ordinary algebra of finite dimension \(d\),
+\(\dim\ker\kappa=d^3-d^2\).
+\end{proposition}
+
+\begin{proof}
+Substituting \(c=1\) in
+\eqref{v4-eq:regular-contextual-three} gives
+\(\kappa s_0=\mathrm{id}\).
+Thus \(P^2=P\), \(\kappa P=0\), and \(P\) is
+identity on \(\ker\kappa\).
+All maps commute with the differential.
+The dimension follows from the split surjection.
+\end{proof}
+
+On the open equality stratum
+\(S=\{z_1=z_3\ne z_2\}\), all other partition terms
+vanish under exceptional restriction. Both remaining
+terms have shift \([2]\). Consequently
+\[
+ i_S^!\operatorname{Cone}
+ \bigl(C_3^{\mathrm{run}}(B)\to
+       (\operatorname{res}C^{\mathrm{ctx}}(B))_3\bigr)
+       \simeq\omega_S\otimes\ker\kappa[3].
+\]
+The extra shift is the shift of a kernel in the
+cone of a split surjection. For \(d>1\), this
+proves that compression is not an equivalence.
+
+\begin{proposition}[An obstruction to unchanged descent]
+\label{v4-prop:regular-unchanged-descent}
+Let \(B\) be an ordinary finite-dimensional
+algebra with \(T=0\) and \(\dim B=d>1\).
+The run complexes on the separate word charts
+cannot descend to \(\mathscr R_I\) with their
+chart objects unchanged.
+\end{proposition}
+
+\begin{proof}
+The charts \(123\) and \(132\) overlap wherever
+\(z_2\ne z_3\), and both contain \(S\).
+The run list of \(13|2\) is \(ABA\) in the
+first chart and \(AB\) in the second.
+Their exceptional restrictions to \(S\) are
+\[
+ \omega_S[2]\otimes B^{\otimes3},
+ \qquad
+ \omega_S[2]\otimes B^{\otimes2}.
+\]
+They have ranks \(d^3\) and \(d^2\) in the
+same degree. An overlap equivalence would
+induce a quasi-isomorphism between them,
+which is impossible.
+\end{proof}
+
+For a differential graded algebra the comparison
+must use cohomology, not the dimensions of the
+underlying complexes. The same argument applies
+when \(H^*(B)\) has finite total dimension
+greater than one. In contrast, the square-zero
+contractible extension of \(k\) considered above
+has run complexes quasi-isomorphic to the scalar
+ones. Its underlying state dimensions give no
+obstruction of this kind.
+
+\section{Translation frames and the algebraic boundary}
+\label{v4-sec:regular-translation}
+
+The run construction allowed every derivation \(T\).
+For contextual descent, translation also enters the
+overlap maps. Suppose first that \(T\) is locally
+nilpotent, meaning that for each \(b\in B\) some
+power \(T^Nb\) is zero. Then
+\[
+ E_z=e^{zT}:\mathcal O_X\otimes B
+                  \longrightarrow\mathcal O_X\otimes B
+\]
+is an algebraic change of frame, with inverse
+\(E_{-z}\), and
+\[
+                  \partial_z E_z=E_z(\partial_z+T).
+\]
+This is an identity of operators on sections.
+It changes the translation connection to the
+constant connection.
+
+Conversely, an algebraic horizontal frame \(E(z)\)
+with \(E(0)=1\) is necessarily this one.
+Writing \(E(z)=\sum_n z^nE_n\) on each input,
+horizontality gives
+\((n+1)E_{n+1}=E_nT\), hence \(E_n=T^n/n!\).
+Polynomiality on every vector is exactly local
+nilpotence. Thus the hypothesis is precise for
+this method of constructing an algebraic frame.
+
+On a partition put
+\[
+ E_{\pi,\mathrm{run}}
+       =\bigotimes_{r=1}^{\ell(\pi)}
+                         e^{z_{\beta_\pi(r)}T},
+ \qquad
+ E_{\pi,\mathrm{block}}
+       =\bigotimes_{C\in\pi}e^{z_CT}.
+\]
+Conjugate every contextual face and overlap map
+by its source and target frames, and set
+\begin{equation}\label{v4-eq:regular-translated-compression}
+ \kappa_\pi^T
+       =E_{\pi,\mathrm{block}}^{-1}
+                         \kappa_\pi E_{\pi,\mathrm{run}}.
+\end{equation}
+
+\begin{theorem}\label{v4-thm:regular-translated-descent}
+For locally nilpotent \(T\), the contextual chart
+complexes with these conjugated maps descend to
+the ordered atlas and form a connected
+\(\star\)-coalgebra. Formula
+\eqref{v4-eq:regular-translated-compression}
+gives a map of cut coalgebras from
+\(C^{\mathrm{run}}(B)\) to its restriction.
+It retains every regular field coefficient.
+\end{theorem}
+
+\begin{proof}
+All frames are algebraic and invertible on
+sections and commute with \(d\).
+At a merged position,
+\[
+                  e^{zT}\mu=\mu(e^{zT}\otimes e^{zT}).
+\]
+Conjugating a face therefore gives exactly its
+normal Taylor transport. Intermediate frames
+cancel in every composition identity, including
+the transition cocycle, the grouping equations
+and the collision and coproduct comparisons.
+Thus Theorem~\ref{v4-thm:regular-contextual-descent}
+applies in the translation frames.
+At two positions the resulting contact is
+\(\operatorname{pp}_u(f(e^{uT}a)b)\), so its
+Laurent tests recover all the original modes.
+\end{proof}
+
+For two positions \(t,0\), written in the exchanged
+order \(0,t\), the transition is
+\begin{equation}\label{v4-eq:regular-spectral-exchange}
+ \begin{split}
+ c_T(t)(a\otimes b)
+       ={}&(e^{tT}a)b\otimes1
+           +1\otimes a(e^{-tT}b)\\
+         &-(e^{tT}a)\otimes(e^{-tT}b).
+ \end{split}
+\end{equation}
+The reverse transition uses \(-t\). Conjugating
+the constant relations proves
+\[
+ c_T(-t)c_T(t)=1,
+ \qquad
+ c_{12}(v)c_{23}(u+v)c_{12}(u)
+       =c_{23}(u)c_{12}(u+v)c_{23}(v).
+\]
+These identities hold on all states; they are
+the cancellation of intermediate Taylor frames
+around the two placed diagrams.
+
+At the partial collision with coordinates
+\((t,0,t)\), formula
+\eqref{v4-eq:regular-translated-compression} becomes
+\begin{equation}\label{v4-eq:regular-translated-three}
+ \begin{split}
+ \kappa_{13|2}^T(a,b,c;t)
+       ={}&a(e^{-tT}b)c\otimes1
+                +a\otimes b(e^{tT}c)\\
+          &-a(e^{-tT}b)\otimes e^{tT}c.
+ \end{split}
+\end{equation}
+The binary evaluation
+\(x\otimes y\mapsto(e^{tT}x)y\)
+gives \((e^{tT}a)b(e^{tT}c)\):
+the second and third terms cancel, and the first
+gives that ordered product. Local nilpotence
+makes the displayed coefficient algebraic.
+
+\begin{example}[A nonconstant polynomial exchange]
+\label{v4-ex:regular-polynomial-exchange}
+Take \(B=k\langle x,y\rangle\), \(Tx=0\), \(Ty=x\).
+Translation lowers the number of \(y\)'s in a word,
+so it is locally nilpotent. Here
+\(Y_B(y,t)y=y^2+txy\), and
+\[
+ \begin{split}
+ c_T(t)(y\otimes y)
+       ={}&y^2\otimes1+1\otimes y^2-y\otimes y\\
+          &+t(xy\otimes1-1\otimes yx
+                         -x\otimes y+y\otimes x)
+             +t^2x\otimes x.
+ \end{split}
+\]
+This is a polynomial transition on the original
+algebraic overlap, with the proved braid and
+reverse-transition identities. Its position
+dependence is given by the stated Taylor frames;
+no nontrivial full-turn monodromy follows from it.
+\end{example}
+
+For a derivation that is not locally nilpotent,
+the same formula can instead be only formal.
+For example, on \(B=\operatorname{Mat}_2(k)\)
+take \(T=\operatorname{ad}\operatorname{diag}(1,0)\).
+Then
+\[
+ c_T(t)(E_{12}\otimes E_{21})
+       =e^tE_{11}\otimes1+e^t1\otimes E_{11}
+                       -e^{2t}E_{12}\otimes E_{21}.
+\]
+Its formal coefficients satisfy the same identities.
+They are not algebraic functions on
+\(\mathbb A^2\setminus\Delta\). The run construction
+still exists, because each of its normal faces
+uses only a finite Taylor jet.
+
+\subsection{A compression excluded by unrestricted translation}
+
+An \emph{algebraic two-state expression} for an output
+at positions \(t,0\), rooted at zero, is a finite sum
+with coefficients in \(k((t))\) of
+\[
+ E_t^{\mathrm L}(x,y)=(e^{tT}x)y,\qquad
+ E_t^{\mathrm R}(x,y)=x(e^{tT}y),
+\]
+where the pairs \(x,y\in B\) are fixed states.
+A coefficientwise series in
+\((B\otimes B)[[t]]\) is a different permitted input.
+
+\begin{theorem}\label{v4-thm:regular-unrestricted-obstruction}
+Let
+\[
+ B=k\langle a_i,b_i,c_i\mid i\geq0\rangle,\qquad
+ Ta_i=a_{i+1},\quad Tb_i=b_{i+1},\quad Tc_i=c_{i+1}.
+\]
+The ordered output
+\[
+                      F(t)=(e^{tT}a_0)b_0(e^{tT}c_0)
+\]
+has no algebraic two-state expression.
+\end{theorem}
+
+\begin{proof}
+Project to the span of words \(a_i b_j c_k\) and
+identify that span with \(k[p,q,r]\) by
+\(a_i b_j c_k\mapsto p^iq^jr^k\).
+The output becomes \(e^{t(p+r)}\).
+In a binary expression, the translated state
+is a contiguous prefix or suffix of the output
+word. Its projection is therefore a finite sum
+of terms
+\[
+ f(t)P(p,q,r)e^{tL},\qquad
+ L\in\{0,p,p+q,p+q+r,r,q+r\},
+\]
+with polynomial \(P\) and Laurent \(f\).
+This includes empty factors and arbitrary
+descendants in the two fixed states.
+Other generator patterns contribute zero.
+
+Set \(D=\partial_p+2\partial_q+4\partial_r\).
+The six exponential eigenvalues are
+\(st\), \(s\in S=\{0,1,3,4,6,7\}\).
+If all the finitely many polynomials \(P\)
+have degree at most \(d\), the commuting operator
+\[
+                       \prod_{s\in S}(D-st)^{d+1}
+\]
+kills the proposed expression. Applied to
+\(e^{t(p+r)}\), it instead gives
+\[
+          (80t^6)^{d+1}e^{t(p+r)}\ne0,
+\]
+since \(D\) has eigenvalue \(5t\) there.
+These calculations hold in
+\(k((t))[[p,q,r]]\). They contradict the proposed
+finite expression.
+\end{proof}
+
+The obstruction fixes the binary coefficient
+class in advance. It does not exclude every
+compression for a non-nilpotent translation.
+For a commutative coefficient algebra, multiplying
+the runs of each block already gives horizontal
+block coefficients, using the ordinary flip.
+The derivation and commutativity identities make
+these maps compatible with all coarsenings.
+For instance, \(B=k[x]\), \(Tx=x\), has no
+polynomial horizontal frame, yet
+\[
+           (e^{tT}a)b(e^{tT}c)=(e^{tT}(ac))b
+\]
+is a two-state expression.
+
+For general \(B\), allowing the formal expression
+\eqref{v4-eq:regular-translated-three} changes the
+coefficient tensor and its completion. Descent then
+requires actual continuous collision functors and
+overlap maps on that coefficient category, together
+with a comparison preserving all the field modes,
+vacuum data and cut maps. The algebraic obstruction
+above leaves that completed comparison open.
+The regular run construction itself needs none of
+those additional choices.
+
+The next construction introduces a specified singular
+local field factor. Its poles alter the normal
+principal parts. The ordered coefficient words,
+their run maps and the distinctions between the
+empty unit, the local vacuum and a prescribed
+state remain necessary.

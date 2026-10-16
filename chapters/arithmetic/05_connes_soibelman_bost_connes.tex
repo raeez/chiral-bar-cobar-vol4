@@ -1,0 +1,1006 @@
+\chapter{Bost--Connes Operators and Hochschild Trace Classes}
+\label{v4-arith:connes-soibelman}
+
+Multiplication by a prime raises its occupation number by one.
+This arithmetic shift is a normalized creation operator on a bosonic
+Fock space. Together with the phases indexed by
+$\mathbb Q/\mathbb Z$, it gives a faithful representation of the
+Bost--Connes $C^*$-algebra.
+The object $\mathcal V^{\mathrm{prim}}$ is a Hochschild trace class.
+Relating it to this representation requires a specified comparison map,
+pairing and completion.
+
+\section{The Bost--Connes \(C^{*}\)-Algebra}
+\label{v4-arith:cs:bost-connes-explicit}
+
+\begin{definition}[Bost--Connes presentation]
+\label{v4-arith:def:bost-connes-algebra}
+The Bost--Connes Q-lattice \(C^{*}\)-algebra \(C_{\mathbb{Q}}^{*}\) has
+generators
+\begin{align}
+\{\mu_{n}\}_{n\in\mathbb{N}^{\times}},\quad
+\{\mu_{n}^{*}\}_{n\in\mathbb{N}^{\times}},\quad
+\{e(\gamma)\}_{\gamma\in\mathbb{Q}/\mathbb{Z}},
+\end{align}
+with relations
+\begin{align}
+\mu_1\;&=\;1,\qquad e(0)=1,\qquad e(\gamma)^*=e(-\gamma), \\
+\mu_m^*\mu_n\;&=\;\mu_n\mu_m^*\quad\text{if }\gcd(m,n)=1, \\
+\mu_{n}\mu_{m}\;&=\;\mu_{nm}, \\
+\mu_{n}^{*}\mu_{n}\;&=\;1, \\
+\mu_{n}\mu_{n}^{*}\;&=\;e_{n}\;=\;\frac{1}{n}\sum_{\gamma:n\gamma=0}e(\gamma), \\
+e(\gamma_{1})e(\gamma_{2})\;&=\;e(\gamma_{1}+\gamma_{2}), \\
+\mu_{n}e(\gamma)\mu_{n}^{*}\;&=\;\rho_{n}(e(\gamma))\;=\;\frac{1}{n}\sum_{\delta:n\delta=\gamma}e(\delta).
+\end{align}
+The \(e(\gamma)\) generate the group \(C^{*}\)-algebra
+\(C^{*}(\mathbb{Q}/\mathbb{Z})\); the \(\mu_{n}\) furnish an endomorphism
+semigroup action; \(\mu_{n}^{*}\mu_{n}=1\), \(\mu_{n}\mu_{n}^{*}=e_{n}\)
+makes \(\mu_{n}\) a Toeplitz isometry. The crossed product
+\(C^{*}(\mathbb{Q}/\mathbb{Z})\rtimes\mathbb{N}^{\times}\) yields
+\(C_{\mathbb{Q}}^{*}\).
+\end{definition}
+
+\begin{theorem}[KMS states and the partition function, Bost--Connes~Prop.~3.3 and Thm~5.4]
+\label{v4-arith:thm:BC-KMS}
+The KMS\({}_{\beta}\) state \(\varphi_{\beta}\)
+on \(C_{\mathbb{Q}}^{*}\) is unique for \(0<\beta\leq1\). For
+\(\beta>1\) the KMS\({}_{\beta}\) states form a simplex with extremal
+points indexed by the symmetry-broken arithmetic boundary. In the
+standard Gibbs representation, for \(\beta>1\), the partition function is
+\begin{equation}
+Z_{\mathrm{BC}}(\beta)\;=\;\mathrm{tr}(e^{-\beta H})\;=\;\sum_{n\geq 1}n^{-\beta}\;=\;\zeta(\beta),
+\end{equation}
+where \(H=\log N\) generates \(\sigma_{t}(\mu_{n})=n^{it}\mu_{n}\). The
+\(\zeta\)-partition function is explicitly motivated by Julia's
+primon gas (\emph{Statistical theory of numbers}, Springer
+Proc.~Phys.~47, 1990).
+\end{theorem}
+
+\section{Prime occupations and oscillator operators}
+\label{v4-arith:cs:type-mismatch}
+
+\begin{definition}[Prime occupation space]
+\label{v4-arith:def:zero-mode-lattice}
+For each prime $p$, let $\mathscr F_p=\ell^2(\mathbb N_0)$ over
+$\mathbb C$, with orthonormal states $|r\rangle_p$ and vacuum $|0\rangle_p$.
+Let $L_{\mathrm{alg}}$ be the complex span of tensors
+$|\mathbf r\rangle=\bigotimes_p|r_p\rangle_p$ with finitely many
+nonzero occupations. Declare this basis orthonormal and write $L$
+for its Hilbert completion.
+On $L_{\mathrm{alg}}$, define
+\[
+ a_p|\mathbf r\rangle
+   =\sqrt{r_p}\,|\mathbf r-\mathbf e_p\rangle,\qquad
+ a_p^\dagger|\mathbf r\rangle
+   =\sqrt{r_p+1}\,|\mathbf r+\mathbf e_p\rangle,\qquad
+ N_p=a_p^\dagger a_p,
+\]
+where $\mathbf e_p$ has occupation one at $p$ and zero elsewhere.
+The first expression is zero when $r_p=0$.
+On this common invariant dense domain,
+\[
+ [a_p,a_q^\dagger]=\delta_{pq}1,\qquad
+ \langle a_pv,w\rangle=\langle v,a_p^\dagger w\rangle.
+\]
+In particular,
+$|r\rangle_p=(a_p^\dagger)^r|0\rangle_p/\sqrt{r!}$.
+In a vacuum Heisenberg module these are occupations of the
+mode $a_{-1}^{(p)}$, rather than charges of the zero mode $a_0^{(p)}$.
+\end{definition}
+
+\begin{proposition}[Arithmetic shifts on the occupation space]
+\label{v4-arith:obs:CCR-vs-Cuntz-Toeplitz}
+\label{v4-arith:cor:fock-projections-determine-rep}
+
+Let $v_p(m)$ denote the exponent of $p$ in $m$.
+The map
+\[
+ U:\ell^2(\mathbb N^\times)\longrightarrow L,\qquad
+ U\delta_m=\bigotimes_p|v_p(m)\rangle_p
+\]
+is unitary. Define $\mu_n\delta_m=\delta_{nm}$ on
+$\ell^2(\mathbb N^\times)$.
+For each prime,
+\[
+ U\mu_pU^{-1}=a_p^\dagger(N_p+1)^{-1/2},
+\]
+where the right side is first evaluated on $L_{\mathrm{alg}}$
+and then extended boundedly.
+For every $n\geq1$, $\mu_n^*\mu_n=1$.
+The operator $\mu_n\mu_n^*$ is the orthogonal projection onto
+the closed span of $\delta_m$ with $n\mid m$.
+Its spectrum is $\{0,1\}$ for $n>1$ and $\{1\}$ for $n=1$.
+\end{proposition}
+\begin{proof}
+Unique factorization gives a bijection of the two orthonormal bases,
+so $U$ extends to a unitary.
+The diagonal factor $(N_p+1)^{-1/2}$ cancels the creation coefficient
+$\sqrt{r_p+1}$. The resulting operator raises $r_p$ by one
+with coefficient one. It preserves the norm on $L_{\mathrm{alg}}$
+and therefore has a unique isometric extension.
+Directly,
+\[
+ \mu_n^*\delta_m=
+ \begin{cases}\delta_{m/n},&n\mid m,\\0,&n\nmid m.\end{cases}
+\]
+This proves both projection identities.
+For $n>1$, $\delta_n$ belongs to the range and $\delta_1$
+belongs to its orthogonal complement. Both spectral values occur.
+\end{proof}
+
+\section{Arithmetic phases and the comparison carrier}
+\label{v4-arith:cs:zero-mode-action}
+
+\begin{proposition}[Bost--Connes operators on $L$]
+\label{v4-arith:thm:BC-acts-on-L}
+
+Fix the character $\chi(\gamma)=e^{2\pi i\gamma}$ of
+$\mathbb Q/\mathbb Z$.
+Together with the transported shifts, the operators
+\[
+ e(\gamma)U\delta_m=\chi(m\gamma)U\delta_m
+\]
+give a faithful representation of $C_{\mathbb Q}^*$ on $L$.
+\end{proposition}
+\begin{proof}
+The phase operators are unitary and multiply by addition of their
+indices. The finite character sum is
+\[
+ \frac1n\sum_{n\delta=\gamma}\chi(m\delta)=
+ \begin{cases}
+ \chi((m/n)\gamma),&n\mid m,\\
+ 0,&n\nmid m.
+ \end{cases}
+\]
+These are exactly the diagonal entries of
+$\mu_ne(\gamma)\mu_n^*$.
+The semigroup and coprime adjoint relations hold on the occupation
+basis. Thus the universal presentation defines a representation $\pi$.
+
+For faithfulness, give
+$K=\operatorname{Hom}(\mathbb Q_{>0}^{\times},U(1))$
+its compact product topology, with one circle for each prime.
+Its gauge action $\alpha$ fixes $e(\gamma)$ and sends $\mu_n$ to
+$z(n)\mu_n$. These formulas preserve every defining relation.
+The linear span of $\mu_r e(\gamma)\mu_s^*$ is dense in
+$C_{\mathbb Q}^*$.
+Indeed, the transfer relation implies
+$e(\gamma)\mu_n=\mu_ne(n\gamma)$ and its adjoint identity.
+Writing $r=dr'$, $s=ds'$ with $\gcd(r',s')=1$ gives
+$\mu_r^*\mu_s=\mu_{s'}\mu_{r'}^*$.
+These identities reduce products of normal terms to the same form.
+A normal term has gauge degree zero exactly when $r=s$.
+The transfer relation then puts it in the phase algebra.
+Thus Haar averaging
+$E(a)=\int_K\alpha_z(a)\,dz$ is a conditional expectation onto
+the phase algebra $D$.
+
+The universal group algebra $C^*(\mathbb Q/\mathbb Z)$ maps onto $D$.
+Its representation on $\ell^2(\mathbb N^\times)$ evaluates
+$C(\widehat{\mathbb Z})$ at the positive integers.
+Every residue class modulo every positive integer contains a positive
+integer, so these evaluation points are dense.
+This representation is faithful, and hence
+$D=C^*(\mathbb Q/\mathbb Z)=C(\widehat{\mathbb Z})$.
+
+The expectation $E$ is faithful.
+For $a\geq0$ and any state $\omega$, the function
+$z\mapsto\omega(\alpha_z(a))$ is continuous and nonnegative.
+If $E(a)=0$, its integral is zero and its value at the identity is zero.
+States separate positive elements, so $a=0$.
+Finally, $V_z\delta_m=z(m)\delta_m$ implements the gauge action
+in $\pi$ before transport through $U$.
+If $\pi(a)=0$, gauge equivariance gives $\pi(E(a^*a))=0$.
+Faithfulness on $D$ gives $E(a^*a)=0$, and faithful averaging gives $a=0$.
+\end{proof}
+
+\begin{remark}[The map to a Hochschild trace class]
+\label{v4-arith:obs:zero-mode-action-maximal}
+The preceding construction takes place on $L$.
+A Hilbert realization from Hochschild homology requires a specified
+complex $(C_\bullet,b)$ over $\mathbb C$, a degree $d$, and a map
+$J:L_{\mathrm{alg}}\to Z_d(C_\bullet,b)$.
+It also requires a positive sesquilinear form $q$ on
+$H_d(C_\bullet,b)$, a null space $\mathcal N_q$, and the completion
+\[
+ \mathcal H_q=\overline{H_d(C_\bullet,b)/\mathcal N_q}.
+\]
+The identity
+$q([Jv],[Jw])=\langle v,w\rangle_L$ extends $J$ isometrically
+to $L\to\mathcal H_q$.
+Surjectivity onto a proposed closed sector requires density of the image.
+Identifying that sector or a class in it with
+$\mathcal V^{\mathrm{prim}}$ is further data.
+An action on this homology and its intertwining with $J$ must also
+be specified. The occupation-space construction supplies none of
+these Hochschild comparison data.
+\end{remark}
+
+\begin{example}[A coherent state in the arithmetic representation]
+For a prime $p$ and $z\in\mathbb C$, the vector
+\[
+ e^{-|z|^2/2}\sum_{k\geq0}\frac{z^k}{\sqrt{k!}}U\delta_{p^k}
+\]
+has norm one and lies in $L$.
+It is the image of $U\delta_1$ under
+$e^{-|z|^2/2}\sum_{k\geq0}z^k(U\mu_pU^{-1})^k/\sqrt{k!}$.
+This operator series converges in norm, since the ratio of successive
+coefficient magnitudes is $|z|/\sqrt{k+1}$.
+Thus the coherent state belongs to the arithmetic algebra orbit
+of the vacuum.
+\end{example}
+
+\section{The tensor decomposition by current modes}
+\label{v4-arith:cs:tensor-decomposition}
+
+\begin{proposition}[Mode-one and higher-mode factors]
+\label{v4-arith:thm:BC-tensor-placement}
+
+For a finite set $F$ of primes, let
+$\mathscr F_F^{\mathrm{cur}}=\Gamma_s(\ell^2(F\times\mathbb N_{\geq1}))$
+be the complex bosonic Fock space, where $\Gamma_s$ is the Hilbert
+direct sum of the symmetric tensor powers.
+This model has one oscillator per prime and mode.
+The mode index $j\geq1$ corresponds to $a_{-j}^{(p)}/\sqrt j$.
+Splitting the one-particle space into $j=1$ and $j\geq2$ gives
+the canonical unitary
+\[
+ \mathscr F_F^{\mathrm{cur}}
+ \cong L_F\widehat\otimes\mathscr F_F^{\geq2},\qquad
+ L_F=\widehat\bigotimes_{p\in F}\mathscr F_p,\qquad
+ \mathscr F_F^{\geq2}=\Gamma_s(\ell^2(F\times\mathbb N_{\geq2})).
+\]
+On algebraic number states it also preserves the grading that assigns
+degree $j$ to a mode-$j$ creation operator.
+Let $\mathbb N_F$ consist of the positive integers supported on $F$.
+The formulas $\mu_n\delta_m=\delta_{nm}$ for $n,m\in\mathbb N_F$
+and $e(\gamma)\delta_m=\chi(m\gamma)\delta_m$ act on
+$L_F\cong\ell^2(\mathbb N_F)$.
+They extend to the displayed tensor product by the identity on
+$\mathscr F_F^{\geq2}$.
+\end{proposition}
+\begin{proof}
+Each normalized current number state determines a unique pair of
+occupation arrays, for modes one and modes at least two.
+This orthonormal basis bijection gives the unitary and preserves
+the sum of the mode degrees.
+The subspace $\ell^2(\mathbb N_F)\subset\ell^2(\mathbb N^\times)$
+is invariant under the phases and under $\mu_n,\mu_n^*$ for
+$n\in\mathbb N_F$.
+Restricting these operators and tensoring with the identity preserves
+their relations.
+\end{proof}
+
+\begin{corollary}[Stable descendant sectors]
+\label{v4-arith:cor:arithmetic-content-on-lattice}
+
+For every closed subspace $K\subset\mathscr F_F^{\geq2}$,
+the subspace $L_F\widehat\otimes K$ is invariant under the extended
+arithmetic representation and its adjoints.
+If $F\ne\varnothing$, the higher-mode vacuum sector is therefore
+not a maximal stable subspace.
+\end{corollary}
+\begin{proof}
+Each operator has the form $A\otimes1$ and preserves
+$L_F\widehat\otimes K$ together with its adjoint.
+When $F\ne\varnothing$, the higher-mode space contains both the
+vacuum and a nonzero mode-two state. The vacuum sector is properly
+contained in the full stable tensor product.
+\end{proof}
+
+\section{Kesten--McKay = Plancherel of Unramified \(GL_{2}(\mathbb{Q}_{p})\)}
+\label{v4-arith:cs:kesten-mckay-plancherel}
+
+\begin{theorem}[Kesten 1959; McKay 1981; Lubotzky 1994~Thm~7.4.5]
+\label{v4-arith:thm:kesten-mckay-plancherel}
+The Kesten--McKay distribution on
+\([-2\sqrt{p},2\sqrt{p}]\) for \(q=p\) prime,
+\begin{equation}
+d\nu_{p}(x)\;=\;\frac{(p+1)\sqrt{4p-x^{2}}}{2\pi((p+1)^{2}-x^{2})}\,dx,
+\end{equation}
+is the spectral measure of the adjacency operator on the
+\((p+1)\)-regular tree, equivalently the \(p\)-adic Bruhat--Tits tree
+of \(\mathrm{PGL}_{2}(\mathbb{Q}_{p})\), equivalently the Plancherel
+measure of the spherical-function algebra on the tree.
+\end{theorem}
+
+\begin{corollary}
+\label{v4-arith:cor:kesten-mckay-is-local-hecke}
+The Kesten--McKay averaging is the
+Plancherel decomposition of the \(GL_{2}(\mathbb{Q}_{p})\) spherical
+Hecke algebra, not a spectral theorem for the \(GL_{1}\) Bost--Connes
+semigroup algebra. Any map from the Julia--Bost--Connes partition
+function to \(\nu_{p}\) must pass through a specified \(GL_{1}\to GL_{2}\)
+correspondence.
+\end{corollary}
+
+\begin{remark}[arithmetic averaging and Plancherel comparison]
+\label{v4-arith:rem:arithmetic-averaging-plancherel}
+The finite occupation-phase operator \(A_S\) of
+Definition~\ref{v4-arith:def:averaging-naive} acts on a polynomial oscillator
+space. It does not construct the proposed arithmetic carrier or
+quotient for \(\mathrm{av}^{\mathrm{arith}}\).
+An arithmetic Plancherel interpretation requires a specified
+representation, its spectral transform, and an intertwining map from
+the intended arithmetic object. The operadic averaging
+\(\mathfrak g^{E_1}\to\mathfrak g^{\mathrm{mod}}\) of Vol~I instead
+acts on chiral cohomology. A common integral form does not identify
+these carriers or supply a map between them.
+\end{remark}
+
+\section{The Soibelman Cohomological Hall Algebra Reading}
+\label{v4-arith:cs:soibelman-coha}
+
+A rank-\(n\) representation of the Jordan quiver over
+\(\mathbb F_q\) is an endomorphism of \(\mathbb F_q^n\).
+Change of basis acts by conjugation. Its finite groupoid mass weights
+each isomorphism class by the reciprocal of its automorphism-group order.
+
+\begin{proposition}[finite-field mass of Jordan-quiver representations]
+\label{v4-arith:thm:KS-CoHA-adelic}
+For a prime power \(q\) and \(n\geq1\),
+\[
+ \sum_{[A]\subset M_n(\mathbb F_q)}
+ \frac{1}{|\operatorname{Cent}_{GL_n(\mathbb F_q)}(A)|}
+ =\frac{q^{n^2}}{|GL_n(\mathbb F_q)|}
+ =\prod_{i=1}^n(1-q^{-i})^{-1}.
+\]
+The sum is over conjugacy classes of matrices. In rank one its value
+is \(q/(q-1)\).
+\end{proposition}
+\begin{proof}
+An orbit of \(A\) has
+\(|GL_n(\mathbb F_q)|/|\operatorname{Cent}_{GL_n(\mathbb F_q)}(A)|\)
+elements. Summing orbit sizes gives \(|M_n(\mathbb F_q)|=q^{n^2}\).
+Counting successive independent columns gives
+\[
+ |GL_n(\mathbb F_q)|=\prod_{j=0}^{n-1}(q^n-q^j)
+ =q^{n^2}\prod_{i=1}^n(1-q^{-i}).
+\]
+Division proves the formula and its rank-one specialization.
+\end{proof}
+
+This scalar groupoid mass is not a real spectral measure.
+A comparison with the Kesten--McKay measure requires a specified
+operator, state and moment or spectral-transform map. A Behrend-weighted
+or vanishing-cycle refinement also requires its own normalization.
+Kontsevich--Soibelman, arXiv:1006.2706, \S\S2.4--2.5, constructs the
+cohomological Hall product and its shuffle expression. That construction
+does not supply the spectral comparison described here.
+
+\begin{proposition}[three-way comparison obstruction]
+\label{v4-arith:prop:HY-BC-Soibelman-dictionary}
+The composed arrow
+\begin{equation*}
+\text{Julia primon gas}
+\xrightarrow{\text{Plancherel}}
+\mathrm{Bost\text{-}Connes\,Hecke\text{-}Plancherel}
+\xrightarrow{\text{CoHA-motivic}}
+\mathrm{Soibelman\,DT\,on}\,\mathcal{Q}_{\mathrm{Jordan}}
+\end{equation*}
+is not defined by the preceding theorems. The Bost--Connes algebra is
+a \(GL_{1}\) semigroup system, the Kesten--McKay measure is a
+\(GL_{2}\) spherical Plancherel measure, and the Jordan-quiver CoHA is
+a motivic Hall algebra. Equality of Euler factors can be asserted only
+after a functor between these three structures has been constructed.
+\end{proposition}
+
+\section{Gauge Derivations and Smooth Domains}
+\label{v4-arith:cs:HH-comparison}
+
+The occupation representation supplies bounded arithmetic shifts and
+phases. Its time derivative is unbounded, so a Hochschild calculation
+must specify an algebra on which that derivative is defined. We use
+the finite normal-term algebra to construct gauge classes and their
+cup products. Smoothness under finite prime-circle actions gives a
+continuous version; smoothness under the time evolution gives a
+different coefficient algebra. Their distinction is visible on an
+explicit norm-convergent series. None of these constructions identifies
+an arithmetic Hochschild trace carrier.
+
+Put \(A=C_{\mathbb Q}^*\) over \(\mathbb C\), represented faithfully
+on \(\mathcal L=\ell^2(\mathbb N^\times)\) as in
+Proposition~\ref{v4-arith:thm:BC-acts-on-L}. Write its orthonormal
+basis as \(e_m\), so that
+\(\mu_n e_m=e_{nm}\) and
+\(e(\gamma)e_m=\exp(2\pi i m\gamma)e_m\).
+Define the complex vector space of finite sums
+\[
+ A_{\mathrm{alg}}=
+ \operatorname{span}_{\mathbb C}
+ \{\mu_r e(\gamma)\mu_s^*:r,s\ge1,\ \gamma\in\mathbb Q/\mathbb Z\}.
+\]
+It is a dense unital \(*\)-subalgebra of \(A\). Indeed, if
+\(d=\gcd(s,u)\), \(s=ds'\), and \(u=du'\), the defining relations give
+\begin{align*}
+ &(\mu_r e(\gamma)\mu_s^*)(\mu_u e(\eta)\mu_v^*)\\
+ &\hspace{2em}=\mu_{ru'}e(u'\gamma+s'\eta)\mu_{vs'}^*.
+\end{align*}
+Here \(\mu_s^*\mu_u=\mu_{u'}\mu_{s'}^*\),
+\(e(\gamma)\mu_{u'}=\mu_{u'}e(u'\gamma)\), and
+\(\mu_{s'}^*e(\eta)=e(s'\eta)\mu_{s'}^*\).
+Adjoint exchanges \(r,s\) and negates \(\gamma\).
+Thus the displayed span is closed under multiplication and adjoint,
+and it contains all generators.
+
+\begin{theorem}[gauge classes in algebraic Hochschild cohomology]
+\label{v4-arith:thm:CM-HH-BC}
+Use algebraic \(\mathbb C\)-multilinear Hochschild cochains of
+\(A_{\mathrm{alg}}\), with coefficients in its regular bimodule.
+For every \(\lambda=(\lambda_p)_{p\ \mathrm{prime}}
+\in\prod_p\mathbb C\), the formula
+\[
+ D_\lambda(\mu_r e(\gamma)\mu_s^*)
+ =\left(\sum_p(v_p(r)-v_p(s))\lambda_p\right)
+       \mu_r e(\gamma)\mu_s^*
+\]
+defines a derivation. There is an injective linear map
+\[
+ \prod_p\mathbb C\longhookrightarrow
+ HH^1_{\mathrm{alg}}(A_{\mathrm{alg}},A_{\mathrm{alg}}),
+ \qquad \lambda\longmapsto[D_\lambda].
+\]
+No boundedness or summability condition on the family is required.
+Every nonzero \(D_\lambda\) is unbounded for the inherited
+\(C^*\)-norm and cannot be implemented by a bounded operator on
+\(\mathcal L\). Moreover
+\(HH^0_{\mathrm{alg}}(A_{\mathrm{alg}},A_{\mathrm{alg}})=\mathbb C\).
+This is a lower bound in degree one, not a complete Hochschild calculation.
+\end{theorem}
+\begin{proof}
+Let \(K=\prod_p U(1)\), and for \(z\in K\) put
+\(z(n)=\prod_p z_p^{v_p(n)}\).
+The assignments \(\alpha_z(\mu_n)=z(n)\mu_n\) and
+\(\alpha_z(e(\gamma))=e(\gamma)\) preserve the relations and define
+an action by \(*\)-automorphisms. It is norm continuous in \(z\)
+on each finite normal sum, and hence on \(A\) by uniform
+approximation and isometry. A normal term has character \(z(r/s)\).
+Haar integration against the inverse character projects onto its
+homogeneous component; distinct rational degrees therefore give
+\[
+ A_{\mathrm{alg}}=\bigoplus_{g\in\mathbb Q_{>0}^{\times}}
+ (A_{\mathrm{alg}})_g,
+ \qquad (A_{\mathrm{alg}})_g(A_{\mathrm{alg}})_h
+ \subseteq(A_{\mathrm{alg}})_{gh}.
+\]
+This does not assert independence of normal terms of the same degree.
+Unique factorization makes
+\(\lambda(g)=\sum_pv_p(g)\lambda_p\) an additive character of the
+multiplicative rational group: \(\lambda(gh)=\lambda(g)+\lambda(h)\).
+All these sums are finite. Define \(D_\lambda\) on a homogeneous
+element of degree \(g\) by multiplication by \(\lambda(g)\).
+The direct-sum decomposition proves well-definedness, and the character
+identity proves the Leibniz rule. In particular it annihilates the
+phases and sends \(\mu_n\) to \(\lambda(n)\mu_n\) and
+\(\mu_n^*\) to \(-\lambda(n)\mu_n^*\).
+
+Algebraic Hochschild one-cocycles are precisely derivations and
+one-coboundaries are inner derivations. If \(D_\lambda=[b,-]\)
+for a bounded operator \(b\), the isometry \(\mu_p^k\) gives
+\[
+ k|\lambda_p|=\|D_\lambda(\mu_p^k)\|
+ =\|[b,\mu_p^k]\|\le2\|b\|\qquad(k\ge1).
+\]
+Hence every \(\lambda_p=0\). Applying this to differences proves
+injectivity on Hochschild classes. The same estimate on the
+norm-one sequence \(\mu_p^k\) proves unboundedness whenever a
+prime value is nonzero, and excludes a bounded extension \(A\to A\).
+
+An operator commuting with all phases has vanishing matrix entries
+between distinct \(e_m,e_n\): some \(\gamma\in\mathbb Q/\mathbb Z\)
+has different characters at \(m,n\). It is therefore diagonal,
+say \(Te_m=t_me_m\). Commutation with \(\mu_n\) gives
+\(t_{nm}=t_m\); setting \(m=1\) makes all entries equal.
+Thus the represented commutant is scalar. Faithfulness implies
+\(Z(A_{\mathrm{alg}})=\mathbb C\), which is its Hochschild degree zero.
+\end{proof}
+
+The product \(\prod_p\mathbb C\) parametrizes actual derivations,
+not convergent infinite operator sums: every input has finite
+homogeneous support. A derivation in this family preserves adjoint
+exactly when every \(\lambda_p\) is purely imaginary, as follows
+by comparing its values on \(\mu_p\) and \(\mu_p^*\).
+The preceding algebraic result does not compute continuous
+Hochschild cohomology of the Banach algebra \(A\).
+
+\subsection{Higher Gauge Cup Products}
+
+The degree-one classes also detect higher cohomology. To prove this,
+we use a scalar character to change coefficients and then evaluate
+cup products on explicit finite cycles. This coefficient change is
+part of the argument; it is not an identification with Hochschild
+homology with regular coefficients.
+
+There is a character \(\varepsilon:A\to\mathbb C\) defined by
+\[
+ \varepsilon(\mu_n)=\varepsilon(\mu_n^*)=
+ \varepsilon(e(\gamma))=1.
+\]
+These values respect the unit, involution, phase multiplication,
+semigroup, coprime-adjoint and isometry relations. The transfer
+relation becomes one equal to the average of \(n\) ones.
+The universal property therefore gives a unital \(*\)-homomorphism,
+of norm one. It is not the vacuum vector state: the latter takes
+\(\mu_p\) to zero.
+
+Let \(\mathbb C_\varepsilon\) be the bimodule with
+\(a\cdot c\cdot b=\varepsilon(a)c\varepsilon(b)\).
+Our algebraic cochains have differential
+\begin{align*}
+ (bF)(a_1,\ldots,a_{n+1})={}&a_1F(a_2,\ldots,a_{n+1})\\
+ &+\sum_{i=1}^n(-1)^iF(a_1,\ldots,a_ia_{i+1},\ldots,a_{n+1})\\
+ &+(-1)^{n+1}F(a_1,\ldots,a_n)a_{n+1}.
+\end{align*}
+Composition with \(\varepsilon\) is a cochain map from regular
+coefficients to \(\mathbb C_\varepsilon\), by multiplicativity.
+For scalar-coefficient chains, written \(c[a_1|\cdots|a_n]\), use
+\begin{align*}
+ b(c[a_1|\cdots|a_n])={}&c\varepsilon(a_1)[a_2|\cdots|a_n]\\
+ &+\sum_{i=1}^{n-1}(-1)^ic[a_1|\cdots|a_ia_{i+1}|\cdots|a_n]\\
+ &+(-1)^n\varepsilon(a_n)c[a_1|\cdots|a_{n-1}].
+\end{align*}
+Evaluation makes these two differential formulas dual.
+
+\begin{lemma}[finite detecting cycles]
+\label{v4-arith:bc:gauge-cycles}
+For distinct primes \(P=(p_1,\ldots,p_n)\), put \(s_j=\mu_{p_j}\).
+Then
+\[
+ c_P=\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+           1[s_{\sigma(1)}|\cdots|s_{\sigma(n)}]
+\]
+is a cycle with coefficients in \(\mathbb C_\varepsilon\).
+Consequently the functional on regular-coefficient cochains
+\[
+ L_P(F)=\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+ \varepsilon\bigl(F(s_{\sigma(1)},\ldots,s_{\sigma(n)})\bigr)
+\]
+annihilates Hochschild coboundaries.
+\end{lemma}
+\begin{proof}
+For each interior face, pair a permutation with the one exchanging
+the adjacent multiplied factors. Their signs are opposite and the
+boundary terms agree, since the \(s_j\) commute. Pair the first face
+of \((j_1,\ldots,j_n)\) with the last face of its cyclic rotation
+\((j_2,\ldots,j_n,j_1)\). Rotation has sign \((-1)^{n-1}\),
+whereas the last boundary sign is \((-1)^n\); the terms cancel
+because \(\varepsilon(s_j)=1\). For \(n=1\), the boundary is
+\(\varepsilon(s_1)-\varepsilon(s_1)=0\).
+The cochain map and the dual differential formulas now show that
+evaluation on \(c_P\) vanishes on every regular-coefficient coboundary.
+\end{proof}
+
+\begin{theorem}[an algebraic exterior-algebra injection]
+\label{v4-arith:bc:exterior-injection}
+Let \(W=\operatorname{Hom}_{\mathbb Z}
+ (\mathbb Q_{>0}^{\times},(\mathbb C,+))=\prod_p\mathbb C\).
+The gauge derivations give an injective graded-algebra map
+\[
+ \Lambda_{\mathbb C}^*W\longhookrightarrow
+ HH^*_{\mathrm{alg}}(A_{\mathrm{alg}},A_{\mathrm{alg}}),
+ \qquad \lambda\longmapsto[D_\lambda].
+\]
+The exterior algebra here is algebraic: its elements are finite
+sums of finite wedges, without completion. In particular the
+Hochschild cohomology is nonzero in every nonnegative degree.
+\end{theorem}
+\begin{proof}
+The cup of \(n\) derivations is
+\[
+ F_{\lambda_1,\ldots,\lambda_n}(a_1,\ldots,a_n)
+   =D_{\lambda_1}(a_1)\cdots D_{\lambda_n}(a_n).
+\]
+Substitution into the differential gives
+\(b(F\smile G)=bF\smile G+(-1)^{\deg F}F\smile bG\): the
+interior terms cancel except the two indicated coboundaries.
+Each derivation is a cocycle, so their cup is a cocycle.
+Using \(D_{\lambda_i}(s_j)=\lambda_i(p_j)s_j\) gives
+\[
+ L_P(F_{\lambda_1,\ldots,\lambda_n})
+       =\det\bigl(\lambda_i(p_j)\bigr)_{1\le i,j\le n}.
+\]
+For two derivations \(D,E\), their composition is a one-cochain.
+Expanding both Leibniz rules yields
+\[
+ b(DE)(a,b)=-D(a)E(b)-E(a)D(b).
+\]
+Thus their cohomology classes anticommute, and each square vanishes
+in characteristic zero. This defines the exterior-algebra map.
+
+An exterior element involves a finite-dimensional subspace
+\(U\subset W\). Prime-coordinate functionals separate its points;
+their span is \(U^*\), since otherwise their common annihilator
+would contain a nonzero element with all prime coordinates zero.
+A finite subset therefore spans \(U^*\), and wedges of its
+coordinates span \((\Lambda^nU)^*\). Every nonzero degree-\(n\)
+exterior element pairs nontrivially with some wedge of distinct
+prime coordinates. The corresponding determinant functional \(L_P\)
+detects its image in Hochschild cohomology. Degree zero is detected
+by \(\varepsilon(1)=1\).
+\end{proof}
+
+\begin{example}[degrees two and three]
+For distinct primes \(p,q\), the chain
+\(1[\mu_p|\mu_q]-1[\mu_q|\mu_p]\) has boundary
+\[
+ 1[\mu_q]-1[\mu_p\mu_q]+1[\mu_p]
+ -1[\mu_p]+1[\mu_q\mu_p]-1[\mu_q]=0.
+\]
+Here \(D_p\) denotes the family with value one at \(p\) and zero
+elsewhere. The evaluation
+\(L_{(p,q)}(D_p\smile D_q)=1\) proves this cup is not a coboundary.
+For three distinct primes, among the six terms defining
+\(L_{(p,q,r)}(D_p\smile D_q\smile D_r)\), only the identity
+assignment is nonzero, and its value is one. These are explicit
+higher classes, not a classification of all Hochschild classes.
+\end{example}
+
+The time evolution is \(\sigma_t(\mu_n)=n^{it}\mu_n\), fixing the
+phases. Its norm-generator domain consists of those \(a\in A\) for
+which \(\lim_{t\to0}(\sigma_t(a)-a)/t\) exists in norm; call that
+generator \(\delta\), and write \(A_\sigma^\infty\) for its
+norm-smooth orbit algebra. Its closedness and smooth topology are
+proved below.
+
+\subsection{Finite-Prime and All-Prime Gauge Smoothness}
+
+For a finite prime set \(F\), let \(\mathbb T^F\subset K\) act by
+setting the other coordinates to one. Define
+\[
+ B_F=\{a\in A:z\mapsto\alpha_z(a)
+                   \text{ is norm-smooth on }\mathbb T^F\}.
+\]
+For angular differentiation in the \(p\)-coordinate write
+\(\delta_p\); thus \(\delta_p(\mu_q)=i\delta_{pq}\mu_q\) and
+\(D_p=\delta_p/i\). For nonnegative multiindices \(\alpha\) supported
+in \(F\), put \(q_\alpha(a)=\|\delta^\alpha a\|\), including
+\(q_0(a)=\|a\|\). Define also
+\[
+ B_{\mathrm g}=\bigcap_{F\ \mathrm{finite}}B_F
+\]
+with all finite-support multiindex seminorms. This definition uses
+ordinary smoothness on each finite-dimensional torus; it makes no
+unspecified infinite-dimensional differentiability assumption.
+
+\begin{proposition}[smooth gauge algebras and their cup classes]
+\label{v4-arith:bc:gauge-smooth}
+The algebras \(B_F\) and \(B_{\mathrm g}\) are Fr\'echet
+\(*\)-algebras, dense in \(A\) for its \(C^*\)-norm.
+The derivations \(D_p\), for \(p\in F\) on \(B_F\) and all primes
+on \(B_{\mathrm g}\), are continuous. With jointly continuous
+complex multilinear cochains and regular coefficients, there are
+injections
+\begin{align*}
+ \Lambda_{\mathbb C}^*\operatorname{span}_{\mathbb C}\{D_p:p\in F\}
+  &\longhookrightarrow HH^*_{\mathrm{cont}}(B_F,B_F),\\
+ \Lambda_{\mathbb C}^*\left(\bigoplus_p\mathbb C D_p\right)
+  &\longhookrightarrow HH^*_{\mathrm{cont}}(B_{\mathrm g},B_{\mathrm g}).
+\end{align*}
+\end{proposition}
+\begin{proof}
+If \(a_j\) is Cauchy for every \(q_\alpha\) on \(B_F\), its
+orbit maps \(f_j(z)=\alpha_z(a_j)\) are Cauchy in every uniform
+derivative norm, since
+\(\partial^\alpha f_j(z)=\alpha_z(\delta^\alpha a_j)\)
+and the action is isometric. The space of smooth Banach-valued
+functions on the torus is complete: the fundamental theorem of
+calculus in coordinate charts shows that uniform limits of functions
+and their first derivatives retain those derivatives, and iteration
+gives the assertion at every order. The limit \(f\) has
+\(f(z)=\alpha_z(a)\), where \(a=\lim_j a_j\) in norm, by continuity
+of each automorphism. Thus \(a\in B_F\) and all seminorms converge.
+The iterated product rule
+\[
+ \delta^\alpha(ab)=\sum_{\beta\le\alpha}\binom\alpha\beta
+       (\delta^\beta a)(\delta^{\alpha-\beta}b)
+\]
+proves continuous multiplication. Adjoint commutes with real angular
+derivatives and is continuous; mixed derivatives commute by smoothness.
+
+There are countably many finite prime sets and finite-support
+multiindices. A sequence Cauchy in all seminorms of \(B_{\mathrm g}\)
+converges in every \(B_F\); the limits coincide with its norm limit
+in \(A\). This proves completeness of \(B_{\mathrm g}\), and the
+same product rule proves its Fr\'echet algebra structure.
+Finite normal sums belong to every \(B_F\), giving norm density.
+For \(p\) and finite \(F\), differentiate the orbit for
+\(\mathbb T^{F\cup\{p\}}\) and restrict to \(\mathbb T^F\).
+This shows that \(\delta_p\) preserves \(B_{\mathrm g}\), with
+\(q_\alpha(\delta_p a)=q_{\alpha+e_p}(a)\); the assertion on
+\(B_F\) is identical for \(p\in F\).
+
+The finite cup cochains are continuous by these estimates and
+continuity of multiplication. The character is continuous because
+\(|\varepsilon(a)|\le q_0(a)\). The finite cycles of
+Lemma~\ref{v4-arith:bc:gauge-cycles} therefore annihilate every
+continuous coboundary as well. Their determinant evaluations prove
+the two injections. No completed chain-complex comparison is needed.
+\end{proof}
+
+\begin{proposition}[which algebraic gauge derivations extend continuously]
+\label{v4-arith:bc:gauge-continuity}
+An algebraic gauge derivation \(D_\lambda\) extends to a continuous
+linear map \(B_{\mathrm g}\to A\) exactly when \(\lambda\) has
+finite support. In that case it extends as a continuous derivation
+\(B_{\mathrm g}\to B_{\mathrm g}\). For \(B_F\), the analogous
+criterion is that \(\lambda\) be supported in \(F\).
+\end{proposition}
+\begin{proof}
+Continuity of an extension \(T:B_{\mathrm g}\to A\) gives
+\[
+ \|T(a)\|\le C\max_{\alpha\in E}q_\alpha(a)
+\]
+for a finite set \(E\) of multiindices, enlarged to include zero.
+Let \(F\) contain their supports. If a prime \(q\notin F\), then
+\(q_0(\mu_q^k)=1\), whereas every positive derivative in \(E\)
+is zero. Thus \(k|\lambda_q|\le C\) for every \(k\), forcing
+\(\lambda_q=0\). Conversely a finite linear combination of the
+continuous \(D_p\) is continuous into \(B_{\mathrm g}\).
+The same argument on \(B_F\) proves the second criterion.
+These criteria concern this family of algebraic derivations;
+they do not classify all continuous derivations.
+\end{proof}
+
+\begin{example}[gauge smoothness does not imply time differentiability]
+Enumerate distinct primes \(p_j\), and put
+\[
+ a=\sum_{j\ge1}2^{-j}\mu_{p_j}^{2^j}.
+\]
+The series converges in norm. For each finite \(F\), only finitely
+many summands move under \(\mathbb T^F\), while the remaining
+norm-convergent sum is fixed. Hence \(a\in B_{\mathrm g}\).
+If its time derivative existed in norm, its value on \(e_1\)
+would have coordinate \(i\log p_j\) at each distinct state
+\(e_{p_j^{2^j}}\). These coordinates are not square summable.
+Thus \(a\notin\operatorname{Dom}(\delta)\), and
+\(B_{\mathrm g}\) is not contained in \(A_\sigma^\infty\).
+The time family \(\lambda_p=i\log p\) also fails the finite-support
+continuity criterion. Gauge-smooth and time-smooth Hochschild
+complexes are therefore different specified constructions.
+\end{example}
+
+\begin{proposition}[the closed time generator and its proper domain]
+\label{v4-arith:obs:CM-stricter-than-H-arith}
+For \(\sigma_t(\mu_n)=n^{it}\mu_n\) and
+\(\sigma_t(e(\gamma))=e(\gamma)\), let
+\[
+ \operatorname{Dom}(\delta)=
+ \left\{a\in A:\lim_{t\to0}\frac{\sigma_t(a)-a}{t}
+                    \text{ exists in }A\right\}.
+\]
+The norm generator \(\delta\) is closed and densely defined, its
+domain is proper, and its restriction to \(A_{\mathrm{alg}}\) is
+\(D_{(i\log p)_p}\).
+\end{proposition}
+\begin{proof}
+The gauge action makes \(\sigma\) pointwise norm continuous.
+Every normal term is entire analytic, with derivative
+\(i\log(r/s)\mu_r e(\gamma)\mu_s^*\); hence the domain contains
+the dense normal algebra. Fix a prime \(p\). The series
+\[
+ a=\sum_{j\ge1}2^{-j}\mu_p^{2^j}
+\]
+converges in norm because the summand norms sum to one. Applied
+to \(e_1\), its orbit difference quotient has coordinate
+\[
+ 2^{-j}\frac{\exp(it2^j\log p)-1}{t}
+ \longrightarrow i\log p
+\]
+at \(e_{p^{2^j}}\). If the quotient converged in operator norm,
+its value on \(e_1\) would converge to an \(\ell^2\) vector having
+this same nonzero coordinate at infinitely many orthonormal states.
+This is impossible, so \(a\notin\operatorname{Dom}(\delta)\).
+
+For a domain element, differentiation along the norm-continuous
+orbit gives the Bochner integral identity
+\[
+ \sigma_t(a)-a=\int_0^t\sigma_s(\delta a)\,ds.
+\]
+If \(a_n\to a\) and \(\delta a_n\to b\) in norm, isometry permits
+passage to the limit in this identity. Dividing by \(t\) and using
+norm continuity of \(\sigma_s(b)\) gives \(\delta a=b\).
+This proves closedness.
+\end{proof}
+
+\begin{proposition}[a smooth Hochschild class]
+\label{v4-arith:bc:smooth-HH1}
+The algebra of norm-smooth elements is
+\[
+ A_\sigma^\infty=\bigcap_{j\ge0}\operatorname{Dom}(\delta^j),
+ \qquad p_k(a)=\sum_{j=0}^k\|\delta^j a\|.
+\]
+With these seminorms it is a Fr\'echet algebra, dense in \(A\).
+The derivation \(\delta:A_\sigma^\infty\to A_\sigma^\infty\)
+is continuous and represents a nonzero class in continuous
+Hochschild degree one with coefficients in this same smooth algebra.
+\end{proposition}
+\begin{proof}
+Repeated differentiation of the orbit identifies smoothness with
+membership in every generator domain. If a sequence is Cauchy for
+every \(p_k\), each \(\delta^j a_n\) has a norm limit. Closedness
+of \(\delta\), applied successively, identifies these limits as
+\(\delta^j a\). Thus the seminorm topology is complete. The
+iterated Leibniz rule
+\[
+ \delta^j(ab)=\sum_{i=0}^j\binom ji(\delta^i a)(\delta^{j-i}b)
+\]
+proves closure under multiplication and its continuity; the generator
+also commutes with adjoint. The normal algebra consists of smooth
+elements and is norm dense in \(A\). Finally
+\(p_k(\delta a)\le p_{k+1}(a)\) proves continuity. An inner
+implementer in this smooth algebra would be a bounded element of
+\(A\), contrary to the power estimate in
+Theorem~\ref{v4-arith:thm:CM-HH-BC} with \(\lambda_p=i\log p\).
+\end{proof}
+
+\begin{proposition}[the occupation Hamiltonian and represented closure]
+\label{v4-arith:bc:H-domain-and-closure}
+On \(\mathcal L\) let \(He_m=(\log m)e_m\), with maximal domain
+\[
+ \operatorname{Dom}(H)=
+ \left\{\xi\in\mathcal L:\sum_m(\log m)^2|\xi_m|^2<\infty\right\}.
+\]
+This diagonal operator is self-adjoint, with finite-support core.
+Normal terms preserve its domain, and there
+\[
+ [H,\mu_r e(\gamma)\mu_s^*]
+ =\log(r/s)\mu_r e(\gamma)\mu_s^*.
+\]
+The unitaries \(e^{itH}\) implement \(\sigma_t\), and the represented
+von Neumann closure of \(A\) is \(B(\mathcal L)\).
+\end{proposition}
+\begin{proof}
+For a real diagonal multiplier, testing the adjoint against basis
+vectors gives precisely the stated square-summability domain;
+thus the maximal operator equals its adjoint. Truncating a vector
+in both the norm and weighted norm proves the core assertion.
+A normal term vanishes unless \(s\mid m\), and otherwise sends
+\(e_m\) to a phase times \(e_{rm/s}\). The logarithmic weights
+change by the constant \(\log(r/s)\), which proves domain preservation
+and the commutator identity. Equivalently, prove the identity on
+the core and pass to graph limits by closedness. Exponentiating the
+diagonal weights gives the asserted implementation. The scalar
+commutant computed in Theorem~\ref{v4-arith:thm:CM-HH-BC} and the
+bicommutant theorem give the represented closure \(B(\mathcal L)\).
+\end{proof}
+
+Thus \(\delta=i[H,-]\) on \(A_{\mathrm{alg}}\) has an unbounded
+spatial implementer. The prime-power norm estimate in
+Theorem~\ref{v4-arith:thm:CM-HH-BC} excludes every bounded implementer,
+so \(\delta\) is outer on \(A_{\mathrm{alg}}\) and
+\(A_\sigma^\infty\). This occupation
+closure is a type-I-infinity factor. A factor obtained from another
+state by a KMS--GNS construction is a different carrier. Its type
+identifies none of the algebraic, Banach or Fr\'echet Hochschild
+complexes above. The algebraic and all-prime gauge-smooth lower bounds above
+are nonzero in every degree. They do not classify the full cohomology
+on these carriers or compute the other Hochschild theories.
+
+\begin{question}[the arithmetic Hochschild comparison]
+\label{v4-arith:thm:H-arith-corrected}
+Construct the arithmetic category or algebra whose Hochschild
+invariants are to realize \(\mathcal V^{\mathrm{prim}}\), specifying
+its coefficient ring, bimodule or categorical trace, topology,
+grading and completion. Construct the comparison with the
+Bost--Connes normal algebra or a specified smooth algebra and the
+cycle pairing of Remark~\ref{v4-arith:obs:zero-mode-action-maximal}.
+Determine which gauge classes survive under that comparison and
+whether an integral degree-one carrier generated by logarithmic
+prime data exists. Any proposed degree-two relation to a Witt
+cotangent complex requires its actual map and coefficient comparison.
+A trace class alone defines no Hochschild cochain algebra, and the
+complex injection above establishes neither an integral lattice nor
+concentration of the arithmetic theory in degrees zero through two.
+\end{question}
+
+\section{Vertex-Algebraic Invariants of the Heisenberg Covers}
+\label{v4-arith:cs:new-content}
+
+\begin{theorem}[universal Heisenberg-cover invariants]
+\label{v4-arith:thm:universal-non-arithmetic}
+The finite Heisenberg cover
+\(\mathcal{H}^{\otimes \pi(N)}\) of
+\(\mathcal{V}^{\mathrm{prim}}_{N}\) is a rank-\(\pi(N)\) Heisenberg
+vertex algebra. It lies in the Heisenberg archetype \(\mathsf{G}\) of
+the Vol~I landscape census, with cover central charge
+\(\kappa=\pi(N)\), depth \(r_{\max}=2\), and chiral Hochschild
+cohomology concentrated in degrees \(\{0,1,2\}\). These are invariants
+of the cover, not of the trace class.
+\end{theorem}
+
+\begin{corollary}[placement of the finite covers]
+\label{v4-arith:cor:placement-G-archetype}
+The finite Heisenberg covers of
+\(\mathcal{V}^{\mathrm{prim}}\) lie in archetype \(\mathsf{G}\)
+(Heisenberg / Gaussian), with \(\kappa_{N}=\pi(N)\). The Hilbert comparison with the Hochschild trace class
+requires the map, pairing and completion of
+Remark~\ref{v4-arith:obs:zero-mode-action-maximal}.
+\end{corollary}
+
+\section{The Fock representation and the trace comparison}
+\label{v4-arith:cs:correct-identification}
+
+\begin{corollary}[Finite current Fock representation]
+\label{v4-arith:thm:CS-corrected-placement}
+
+The finite current Fock space has the Hilbert tensor decomposition
+of Proposition~\ref{v4-arith:thm:BC-tensor-placement}.
+Its arithmetic shifts and phases act on the mode-one factor and
+extend by the identity on the higher-mode factor.
+\end{corollary}
+\begin{proof}
+Apply Proposition~\ref{v4-arith:thm:BC-tensor-placement} to the given finite
+set of primes.
+\end{proof}
+
+\begin{remark}[Scope of the module structure]
+The tensor decomposition is a statement about current Fock spaces.
+It induces no tensor decomposition of a Hochschild trace class
+without a compatible comparison.
+The higher-mode factor alone is not the full vacuum Heisenberg
+vertex algebra: it omits all mode-one creations.
+Nor does the finite-prime restriction assert faithfulness for all
+arithmetic phases. If $q\notin F$, the nonzero Bost--Connes projection
+$e_q=q^{-1}\sum_{j=0}^{q-1}e(j/q)$ acts by zero on $L_F$,
+since $q$ divides no element of $\mathbb N_F$.
+\end{remark}
+
+\begin{remark}[the \(\mathsf{B}\)-row threshold]
+A proposed arithmetic chiral algebra should encode Hecke eigenvalues
+in its stress tensor. Comparing its chiral Hochschild cohomology with
+Bost--Connes cohomology requires a specified algebraic or smooth
+coefficient algebra and an actual subquotient map. The gauge classes
+above do not construct this map.
+Placement in the Borcherds/BKM \(\mathsf{B}\)-row further requires
+verification of the hypotheses of the Vol~III classification theorem
+(Theorem~C, BKM column), whose corresponding value is \(K^\kappa=8\).
+The proposed passage from the Heisenberg-cover \(\mathsf{G}\)-row
+uses a Borcherds-product encoding of Hecke data in the stress tensor,
+with the target relation \(\Phi_N=c_N(0)/2\). Prime indexing alone
+supplies neither that encoding nor the Hochschild comparison.
+\end{remark}
+
+\section{Structural Conclusions}
+\label{v4-arith:cs:summary}
+
+\begin{enumerate}
+\item Bost--Connes \(C^{*}_{\mathbb{Q}}\) carries \(\zeta(\beta)\) as
+Gibbs partition function for \(\beta>1\)
+(Theorem~\ref{v4-arith:thm:BC-KMS}).
+\item The oscillator operators and bounded arithmetic shifts act
+on the same prime occupation space. The shift is normalized
+creation, as in
+Proposition~\ref{v4-arith:cor:fock-projections-determine-rep}.
+\item The arithmetic phases and shifts give the faithful
+representation of Proposition~\ref{v4-arith:thm:BC-acts-on-L}.
+Its identification with a Hochschild trace class requires the
+map, pairing and completion of
+Remark~\ref{v4-arith:obs:zero-mode-action-maximal}.
+\item The current Fock space splits into mode-one and higher-mode
+factors. The arithmetic representation extends over the latter,
+with the stable sectors of
+Corollary~\ref{v4-arith:cor:arithmetic-content-on-lattice}.
+
+\item The Kesten--McKay measure describes the spherical
+\(GL_2(\mathbb Q_p)\) Hecke spectrum. Relating it to the
+\(GL_1\) Bost--Connes system or the Jordan-quiver CoHA requires
+the comparison maps described in
+Corollary~\ref{v4-arith:cor:kesten-mckay-is-local-hecke} and
+Proposition~\ref{v4-arith:prop:HY-BC-Soibelman-dictionary}.
+\item The normal-term algebra has the independent gauge classes of
+Theorem~\ref{v4-arith:thm:CM-HH-BC}. The time derivative requires
+its specified algebraic or smooth domain; the algebraic and all-prime gauge-smooth cup products are nonzero
+in every degree, without a full Hochschild classification.
+\item The finite Heisenberg covers lie in archetype \(\mathsf{G}\)
+with \(\kappa=\pi(N)\), \(r_{\max}=2\); the \(\mathsf{B}\)-row threshold
+requires Borcherds-product encoding of Hecke data
+(Corollary~\ref{v4-arith:cor:placement-G-archetype}).
+\end{enumerate}
+
+The vertex algebra structure is universal and non-arithmetic because
+it belongs only to the finite Heisenberg covers. The Bost--Connes representation gives the arithmetic shifts, phases
+and Gibbs partition function. Its relation to the Hochschild trace
+class requires the comparison of
+Remark~\ref{v4-arith:obs:zero-mode-action-maximal}. A genuine VA-arithmetic object encoding Hecke
+eigenvalues in the stress tensor would be a new object, not
+\(\mathcal{V}^{\mathrm{prim}}\).

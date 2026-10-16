@@ -1,0 +1,430 @@
+\chapter{Relative coefficient envelopes}
+\label{v4-ch:relative-coefficient-envelopes}
+
+A coefficient algebra records which intermediate states may be
+composed. Passing to a scalar trace can erase that information.
+To retain it in a geometric realization, we shall attach the
+coefficient algebra to a fixed geometric algebra and transport
+bimodules together with their compositions.
+
+The first calculation already determines the construction.
+Let \(A\) and \(E\) be ordinary unital associative algebras over a field
+\(k\), let \(P\) be a right \(E\)-module, and let \(Q\) be a left
+\(E\)-module. Then
+\[
+ (A\otimes_kP)\otimes_{A\otimes_kE}(A\otimes_kQ)
+ \longrightarrow A\otimes_k(P\otimes_EQ),
+ \qquad
+ (a\otimes p)\otimes(a'\otimes q)\longmapsto
+ aa'\otimes(p\otimes q)
+\]
+is an isomorphism. Its inverse sends
+\(a\otimes(p\otimes q)\) to
+\((a\otimes p)\otimes(1_A\otimes q)\).
+Balancing moves the second \(A\)-factor into the first without
+interchanging them. Thus \(A\) need not be commutative.
+
+For complexes, derived tensors retain the higher relations among
+the coefficients. For geometric objects, the same calculation
+uses the given geometric multiplication. We will construct the
+comparison on the two-sided bars that define those derived
+tensors. This specifies its signs, its unit, and its compatibility
+with any finite string of interfaces.
+
+\section{Coefficients in a monoidal category}
+\label{v4-sec:relative-coefficient-setting}
+
+Fix a commutative ring \(k\). Write \(D(k)\) for the stable
+\(\infty\)-category of cochain complexes of \(k\)-modules
+with quasi-isomorphisms inverted. Differentials have degree
+\(1\); the shift satisfies
+\(M[n]^i=M^{i+n}\).
+
+Let \((\mathcal C,\star,K)\) be a stable presentable monoidal
+\(\infty\)-category. Assume that \(\star\) preserves colimits separately in
+both variables and that \(D(k)\) acts centrally on \(\mathcal C\).
+Here centrality means that a scalar complex can pass through a
+geometric factor, with the usual coherent Koszul interchange.
+It supplies no interchange of two geometric factors.
+We write \(X\otimes_kV\) for the action of \(V\in D(k)\) on
+\(X\in\mathcal C\), and
+\[
+ \underline V=K\otimes_kV
+\]
+for the corresponding scalar object of \(\mathcal C\).
+All tensor products in this chapter are derived unless an
+ordinary representative is specified. Element formulas refer
+to flat dg representatives of the structural maps.
+
+Fix a unital associative algebra object \(A\) in \(\mathcal C\).
+For a unital dg \(k\)-algebra \(B\), define
+\begin{equation}\label{v4-eq:relative-algebra}
+ R_B=A\otimes_kB.
+\end{equation}
+We call \(R_B\) the \emph{relative coefficient envelope}
+with background \(A\).
+The product uses central interchange followed by the two
+multiplications. On homogeneous representatives it is
+\[
+ (a\otimes b)(a'\otimes b')
+   =(-1)^{|b||a'|}aa'\otimes bb'.
+\]
+The algebra unit is the composite
+\(K\to A\to A\otimes_kB\) obtained from the units of \(A\) and
+\(B\). The object \(K\) remains the monoidal unit.
+
+For another unital dg \(k\)-algebra \(E\),
+a dg \(B\)--\(E\) bimodule \(P\) gives an
+\(R_B\)--\(R_E\) bimodule
+\begin{equation}\label{v4-eq:relative-interface}
+ J_{B,E}(P)=A\otimes_kP
+\end{equation}
+with differential and actions
+\begin{align}
+ d(a\otimes p)
+   &=d_Aa\otimes p+(-1)^{|a|}a\otimes d_Pp,
+       \label{v4-eq:relative-differential}\\
+ (a\otimes b)(x\otimes p)
+   &=(-1)^{|b||x|}ax\otimes bp,
+       \label{v4-eq:relative-left-action}\\
+ (x\otimes p)(a'\otimes e)
+   &=(-1)^{|p||a'|}xa'\otimes pe.
+       \label{v4-eq:relative-right-action}
+\end{align}
+We call such a bimodule an \emph{interface} from its left
+algebra to its right algebra. Two interfaces compose by
+balanced tensor over their common algebra.
+
+The signs in
+\eqref{v4-eq:relative-left-action}--\eqref{v4-eq:relative-right-action}
+are forced by the positions of the factors. For example, in a
+right action the coefficient \(p\) passes through \(a'\), so an
+odd \(p\) and an odd \(a'\) contribute a minus sign. A degree-\(r\)
+coefficient bimodule map \(f:P\to P'\) is transported by
+\begin{equation}\label{v4-eq:relative-map}
+ J(f)(a\otimes p)=(-1)^{r|a|}a\otimes f(p).
+\end{equation}
+Associativity, the commuting left and right coefficient
+actions, and the Koszul rule verify the bimodule and dg-functor
+identities.
+
+\section{The comparison of the two bars}
+\label{v4-sec:relative-composition}
+
+Let \(B,E,D\) be unital dg \(k\)-algebras, and let
+\({}_BP_E\) and \({}_EQ_D\) be dg bimodules. The coefficient
+derived tensor \(P\otimes_E^{\mathbb L}Q\) is the realization of
+the simplicial two-sided bar
+\begin{equation}\label{v4-eq:coefficient-bar}
+ \mathcal B_n(P,E,Q)=P\otimes_kE^{\otimes_kn}\otimes_kQ.
+\end{equation}
+For \(n\geq1\), the faces are the right action on \(P\), the
+\(n-1\) adjacent products in \(E\), and the left action on
+\(Q\), in that order. Degeneracies insert \(1_E\).
+In dg representatives we use the direct-sum total
+\begin{equation}\label{v4-eq:bar-total}
+ |\mathcal B_\bullet|
+   =\bigoplus_{n\geq0}\mathcal B_n[n],
+ \qquad
+ d_{\mathrm{tot}}\big|_{\mathcal B_n[n]}
+   =(-1)^nd_{\mathrm{int}}+\sum_{i=0}^{n}(-1)^id_i,
+\end{equation}
+where the face differential out of column \(0\) is zero.
+The module structure on each shifted column is the shifted
+module structure. In particular, a left action of degree
+\(r\) acquires the sign \((-1)^{nr}\) in column \(n\).
+
+Independently, the geometric balanced tensor
+\[
+ J_{B,E}(P)\star_{R_E}^{\mathbb L}J_{E,D}(Q)
+\]
+is the realization of
+\begin{equation}\label{v4-eq:geometric-interface-bar}
+ \mathcal L_n
+   =(A\otimes_kP)\star
+      (A\otimes_kE)^{\star n}\star(A\otimes_kQ).
+\end{equation}
+Its factors are in their displayed order. Define
+\(\phi_n:\mathcal L_n\to A\otimes_k\mathcal B_n(P,E,Q)\) by
+\begin{equation}\label{v4-eq:relative-bar-map}
+\begin{split}
+ &(a_0\otimes p)|(a_1\otimes e_1)|\cdots|
+       (a_n\otimes e_n)|(a_{n+1}\otimes q)\\
+ &\qquad\longmapsto
+ (-1)^{\epsilon}(a_0a_1\cdots a_{n+1})
+       \otimes(p|e_1|\cdots|e_n|q),\\
+ &\epsilon
+   =|p|\sum_{i=1}^{n+1}|a_i|
+      +\sum_{j=1}^{n}|e_j|
+          \sum_{i=j+1}^{n+1}|a_i|.
+\end{split}
+\end{equation}
+Each summand in \(\epsilon\) records one scalar factor passing
+through a later geometric factor. The \(A\)-factors are
+multiplied in their original order.
+
+\begin{lemma}\label{v4-lem:relative-bar-map}
+The maps \(\phi_n\) form a simplicial dg bimodule map.
+After realization they give a natural comparison
+\[
+ \Phi_{P,Q}:
+ J_{B,E}(P)\star_{R_E}^{\mathbb L}J_{E,D}(Q)
+ \longrightarrow
+ J_{B,D}(P\otimes_E^{\mathbb L}Q).
+\]
+\end{lemma}
+
+\begin{proof}
+Consider an interior face, which combines the pairs
+\((a_j,e_j)\) and \((a_{j+1},e_{j+1})\).
+Multiplication before the shuffle contributes
+\(|e_j||a_{j+1}|\). After multiplication these two entries
+have degrees \(|a_j|+|a_{j+1}|\) and
+\(|e_j|+|e_{j+1}|\). The difference between the two crossing
+counts is exactly \(|e_j||a_{j+1}|\). Hence the face commutes
+with \(\phi_n\). At the first and last faces the same count
+gives the right and left module-action signs. Degeneracies
+insert closed units of degree zero.
+
+Central interchange and multiplication in \(A\) are chain
+maps. They therefore commute with the internal differential.
+The endpoint actions also commute with the map: both routes
+move the same scalar factors through the same geometric
+factors and then apply the same ordered product.
+
+One totalization sign remains. The canonical chain map
+\[
+ |A\otimes_k\mathcal B_\bullet|
+       \longrightarrow A\otimes_k|\mathcal B_\bullet|
+\]
+multiplies a term with geometric degree \(|a|\) in column
+\(n\) by \((-1)^{n|a|}\).
+For the differential of \(A\), changing \(|a|\) by one
+contributes \((-1)^n\), as required by
+\eqref{v4-eq:bar-total}. For a face, changing \(n\) to \(n-1\)
+contributes \((-1)^{|a|}\), the tensor-differential sign on
+the target. The internal coefficient differential is
+unchanged. Composing this identification with
+\(|\phi_\bullet|\) gives the asserted dg bimodule map.
+\end{proof}
+
+\begin{theorem}[Relative coefficient composition]
+\label{v4-thm:relative-composition}
+Under the hypotheses of
+Section~\ref{v4-sec:relative-coefficient-setting},
+the comparison \(\Phi_{P,Q}\) is an equivalence.
+For every finite string of coefficient bimodules, the
+comparisons satisfy the associativity and unit coherences.
+The identity coefficient bimodule \(B\) is sent to the
+regular interface \(R_B\).
+\end{theorem}
+
+\begin{proof}
+Resolve \(Q\) by the augmented free left-\(E\) bar
+\[
+ F_n=E\otimes_kE^{\otimes_kn}\otimes_kQ
+       \longrightarrow Q.
+\]
+After forgetting its left \(E\)-action, insertion of \(1_E\)
+at the left gives an extra degeneracy. The augmented
+simplicial identities contract its realization, so
+\(|F_\bullet|\simeq Q\).
+
+Tensoring with \(A\) gives a resolution of \(J_{E,D}(Q)\).
+Its term in degree \(n\) is the free left-\(R_E\) module
+\[
+ R_E\star\underline{E^{\otimes_kn}\otimes_kQ}.
+\]
+Balancing it with \(J_{B,E}(P)\) leaves
+\[
+ A\otimes_kP\otimes_kE^{\otimes_kn}\otimes_kQ.
+\]
+The resulting faces are exactly the faces of
+\eqref{v4-eq:coefficient-bar}. Their realization is
+\(J_{B,D}(P\otimes_E^{\mathbb L}Q)\).
+
+To identify the particular comparison, map the full free
+\(R_E\)-bar resolution of \(J(Q)\) to \(A\otimes_kF_\bullet\)
+by multiplying its \(A\)-entries in order.
+The crossing signs are those in
+\eqref{v4-eq:relative-bar-map}. The preceding lemma verifies
+the faces, degeneracies, differentials, and outer actions.
+Both augmentations are equivalences; hence the realized
+comparison between the resolutions is an equivalence.
+Derived balancing preserves this equivalence. The resulting
+map is \(\Phi_{P,Q}\).
+
+For three interfaces, use their common bisimplicial bar.
+Both parenthesizations move each scalar coefficient through
+every later geometric entry and then multiply the geometric
+entries in order. Already in bar degree zero the exponents
+are
+\[
+ |p||a'|+(|p|+|q|)|a''|
+ \quad\text{and}\quad
+ |q||a''|+|p|(|a'|+|a''|),
+\]
+which agree. In arbitrary bar degrees the two exponents count
+the same pairs of entries.
+
+The same construction on the common multisimplicial bar of
+any finite string gives one comparison before a
+parenthesization is chosen. Every parenthesization induces
+that comparison, so all associativity diagrams commute.
+For units, \(J_{B,B}(B)=R_B\) with its regular actions, and
+the two unit comparisons are the augmentations contracted
+by insertion of \(1_B\). These are the same degeneracies
+in every multibar. Realization therefore supplies the unit
+and associativity coherences together.
+\end{proof}
+
+The proof uses the geometric product of \(A\), scalar
+interchange, and colimits. Consequently, any additional
+operation that commutes with these maps commutes with
+\(\Phi_{P,Q}\). In a collision model this requires the
+specified collision comparisons for \(A\); the algebraic
+formula alone does not construct them.
+
+\section{Recovery at the empty configuration}
+\label{v4-sec:relative-empty-recovery}
+
+Suppose that \(\mathcal C\) has a colimit-preserving strong
+monoidal functor
+\[
+ e_0:\mathcal C\longrightarrow D(k)
+\]
+compatible with scalar action, and fix an algebra
+equivalence \(e_0(A)\simeq k\). In a word-convolution
+category, \(e_0\) is evaluation at the empty configuration.
+
+\begin{proposition}\label{v4-prop:relative-retraction}
+There are natural identifications
+\[
+ e_0(R_B)\simeq B,\qquad e_0(J_{B,E}(P))\simeq P.
+\]
+Under these identifications,
+\(e_0(\Phi_{P,Q})\) is the identity comparison on
+\(P\otimes_E^{\mathbb L}Q\).
+Empty evaluation also recovers every transported coefficient
+map and every diagram of such maps.
+\end{proposition}
+
+\begin{proof}
+Compatibility with scalar action gives
+\(e_0(A\otimes_kP)\simeq e_0(A)\otimes_kP\simeq P\).
+Since \(e_0\) is strong monoidal and preserves colimits,
+it carries the geometric bar to the coefficient bar.
+The product of the \(A\)-entries in
+\eqref{v4-eq:relative-bar-map} becomes multiplication of
+copies of the scalar unit. The comparison is therefore
+the identity under the canonical unit identifications.
+The same argument applied to
+\eqref{v4-eq:relative-map} recovers coefficient maps and
+their compositions.
+\end{proof}
+
+In particular, a homotopy between two transported coefficient
+maps gives a homotopy between the original maps by applying
+\(e_0\). Recovery does
+not assert that every geometric bimodule map is induced
+by a coefficient map. The geometric category can contain
+additional maps.
+
+The empty algebra of \(R_B\) is \(B\). This retained
+coefficient is the reason that arbitrary coefficient
+interfaces compose with their original units. Replacing
+it by \(k\) changes the comparison problem.
+
+\section{Endomorphisms and the orientation of composition}
+\label{v4-sec:endomorphism-interfaces}
+
+A useful coefficient system is supplied by endomorphisms
+of one algebra. Let \(B\) be an ordinary unital
+\(k\)-algebra, and let \(\alpha:B\to B\) be a unital
+endomorphism. Define
+\[
+ Q_\alpha={}_\alpha B_1,
+ \qquad b\cdot x\cdot c=\alpha(b)xc.
+\]
+For endomorphisms \(\alpha,\beta\), an element \(t\in B\)
+satisfying
+\[
+ t\alpha(b)=\beta(b)t\qquad(b\in B)
+\]
+defines a bimodule map \(Q_\alpha\to Q_\beta\),
+\(x\mapsto tx\). Thus actual intertwiners, including their
+relations, become maps of interfaces.
+
+\begin{proposition}\label{v4-prop:endomorphism-composition}
+There is a natural bimodule isomorphism
+\[
+ Q_\alpha\otimes_BQ_\beta
+       \xrightarrow{\ \sim\ }Q_{\beta\circ\alpha},
+ \qquad x\otimes y\longmapsto\beta(x)y.
+\]
+It also computes the derived tensor. Consequently,
+\[
+ J(Q_\alpha)\star_{R_B}^{\mathbb L}J(Q_\beta)
+       \simeq J(Q_{\beta\circ\alpha})
+\]
+with the coherences of
+Theorem~\ref{v4-thm:relative-composition}.
+\end{proposition}
+
+\begin{proof}
+The balancing relation is
+\(xb\otimes y=x\otimes\beta(b)y\).
+Its two images are both \(\beta(x)\beta(b)y\).
+The left action of \(b\) on the image is
+\(\beta(\alpha(b))\), and the right action is unchanged.
+The inverse is \(y\mapsto1_B\otimes y\).
+The right \(B\)-module underlying \(Q_\alpha\) is free
+of rank one, so its ordinary tensor computes the
+derived tensor. The last assertion is the relative
+composition theorem.
+\end{proof}
+
+Composition is therefore \(\beta\circ\alpha\) in the
+displayed order. A tensor category of endomorphisms using
+\(\alpha\circ\beta\) must have its tensor order reversed
+before this functor is called monoidal. This convention
+also determines how associators and duality maps are
+transported.
+
+Every specified identity among intertwiner diagrams
+survives under \(J\), including pentagon and evaluation
+identities when they occur in the input. Neither a
+braiding nor a tensor product of independent
+representations is supplied by balanced interface
+composition.
+
+\section{Scalar change}
+\label{v4-sec:relative-scalar-change}
+
+Let \(k\to k'\) be a map of commutative rings.
+Assume that a colimit-preserving monoidal scalar-change
+functor from \(\mathcal C\) to a corresponding category
+\(\mathcal C'\) is given and is compatible with the
+central scalar actions. Denote it by \(X\mapsto X_{k'}\).
+Then
+\[
+ (R_B)_{k'}
+   \simeq A_{k'}\otimes_{k'}
+                (B\otimes_k^{\mathbb L}k'),
+ \qquad
+ J(P)_{k'}
+   \simeq A_{k'}\otimes_{k'}
+                (P\otimes_k^{\mathbb L}k').
+\]
+These identifications preserve \(\Phi_{P,Q}\).
+Indeed, scalar change preserves the two bar realizations
+and their common crossing map. Its coherence with a
+second scalar change follows on the same diagrams.
+
+For arithmetic coefficient towers, this supplies each
+finite-precision comparison once the geometric
+scalar-change functors have been constructed.
+Continuity of an inverse limit is a further statement:
+it requires the chosen completed tensor and the
+corresponding limit comparison. The finite bar formulas
+do not interchange an arbitrary limit with realization.

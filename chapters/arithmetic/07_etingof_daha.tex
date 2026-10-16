@@ -1,0 +1,347 @@
+\section{Prime-indexed Macdonald and Hall constructions}
+\label{v4-arith:etingof}
+
+The decomposition by closed points suggests a comparison with
+symmetric functions at each prime. This construction has two
+independent choices: the set of tensor factors and the parameters
+inside each factor. A single pair of parameters cannot equal
+several distinct pairs simultaneously. This elementary fact does
+not prohibit a family of Macdonald spaces or a map of their
+underlying algebras. The relevant obstruction appears only after
+specifying which gradings and operations the map must preserve.
+
+\subsection{Pairings and the degree obstruction}
+\label{v4-arith:et:macdonald-qt}
+
+Let $K=\mathbb Q(q_p,t_p:p\text{ prime})$ be the field of
+rational functions in algebraically independent variables $q_p,t_p$.
+Each rational function involves finitely many variables. Put
+$\Lambda_{(p)}=K[p_1^{(p)},p_2^{(p)},\ldots]$, with
+$\deg p_r^{(p)}=r$.
+For a partition $\lambda$, let $m_r(\lambda)$ be the number of
+parts equal to $r$, and set
+\[
+ p_\lambda^{(p)}=\prod_r(p_r^{(p)})^{m_r(\lambda)},\qquad
+ z_\lambda=\prod_r r^{m_r(\lambda)}m_r(\lambda)!.
+\]
+
+\begin{definition}[Macdonald pairing]
+\label{v4-arith:thm:macdonald-norm}
+The symmetric bilinear form on $\Lambda_{(p)}$ is specified by
+\[
+ \langle p_\lambda^{(p)},p_\mu^{(p)}\rangle_p
+ =\delta_{\lambda\mu}z_\lambda
+   \prod_{j=1}^{\ell(\lambda)}
+        \frac{1-q_p^{\lambda_j}}{1-t_p^{\lambda_j}}.
+\]
+This is the normalization of Macdonald,
+\emph{Symmetric Functions and Hall Polynomials}, VI, equation (1.5).
+\end{definition}
+
+\begin{definition}
+\label{v4-arith:def:per-prime-macdonald}
+Define
+\[
+ \Lambda^{\mathrm{prim}}=\bigotimes_p'\Lambda_{(p)}
+   =K[p_r^{(p)}:p\text{ prime},\ r\geq1].
+\]
+The prime denotes the algebraic tensor product with unit $1$ in
+all but finitely many factors. Give it the tensor product pairing
+and total degree $\deg p_r^{(p)}=r$.
+\end{definition}
+
+The form is nondegenerate. Every polynomial lies in a finite tensor
+product, where its power-sum monomials have nonzero diagonal norms.
+For real parameters $0<q_p,t_p<1$, the same diagonal formula
+defines a positive Hermitian form on the complex polynomial space,
+with conjugation in the first argument. Positivity holds for every finite linear combination. It
+requires no infinite tensor product completion.
+
+\begin{proposition}\label{v4-arith:obs:domain-mismatch-macdonald}
+Let $\Lambda=K[p_1,p_2,\ldots]$, graded by $\deg p_r=r$.
+A tensor product of two or more $\Lambda_{(p)}$ admits no
+injective degree-preserving $K$-linear map to $\Lambda$.
+After forgetting degree, $\Lambda^{\mathrm{prim}}$ and $\Lambda$
+are isomorphic as $K$-algebras.
+\end{proposition}
+\begin{proof}
+The degree-one space of $\Lambda$ has dimension one. Each retained
+prime contributes an independent degree-one generator to the
+source, proving the obstruction. For the second assertion, choose
+a bijection $b$ from the pairs $(p,r)$ to the positive integers.
+The assignments $p_r^{(p)}\mapsto p_{b(p,r)}$ and their inverse
+extend uniquely to mutually inverse polynomial algebra maps.
+They need not preserve degree, the pairing or any marked operator.
+\end{proof}
+
+Thus $q_p=p^{-s}$ and $t_p=p^{-s-1}$, for real $s>0$, give a
+well-defined family of positive pairings. They do not specify one
+constant pair $(q,t)$ independent of $p$. An arithmetic comparison
+must say whether it preserves these pairings and the prime labels.
+Parameter variation alone is not a nonexistence theorem.
+
+\subsection{Adjoints, weights and Macdonald bases}
+\label{v4-arith:et:logp-not-in-qt}
+
+Write $c_{p,r}=(1-q_p^r)/(1-t_p^r)$. Let $M_{p,r}$ denote
+multiplication by $p_r^{(p)}$. Its adjoint is
+\[
+ D_{p,r}=r c_{p,r}\partial_{p_r^{(p)}},\qquad
+ [D_{p,r},M_{\ell,s}]
+ =\delta_{p\ell}\delta_{rs}r c_{p,r}I.
+\]
+Indeed, the squared norm of $(p_r^{(p)})^m$ is
+$m!(r c_{p,r})^m$. Comparing consecutive norms proves adjunction.
+This also identifies exactly which coefficient changes when the
+pairing changes.
+
+\begin{proposition}\label{v4-arith:thm:free-fermion-match}
+At $t_p=q_p$, one has $c_{p,r}=1$. Along $t_p=q_p^2$,
+\[
+ c_{p,r}=\frac1{1+q_p^r}\longrightarrow1
+ \quad\text{as }q_p\longrightarrow0.
+\]
+Both give the ordinary Heisenberg squared norm $r$ for $p_r^{(p)}$
+in the stated specialization or limit. For any positive numbers $w_p$, replacing
+$c_{p,r}$ by $w_p^r$ defines another positive form, with
+\[
+ \|p_\lambda^{(p)}\|^2=z_\lambda w_p^{|\lambda|}.
+\]
+\end{proposition}
+\begin{proof}
+The two formulas for $c_{p,r}$ follow by cancellation. Every
+power-sum monomial then has the claimed factorial norm.
+All its factors are positive in the weighted form.
+\end{proof}
+
+The choice $w_p=\log p$ yields
+$\|p_r^{(p)}\|^2=r(\log p)^r$.
+It is extra metric data. Over the real numbers, the map
+$p_r^{(p)}\mapsto w_p^{r/2}p_r^{(p)}$ is an algebra isometry from
+this weighted space to the ordinary Hall inner-product space.
+It need not commute with the usual translation
+$T p_r^{(p)}=r p_{r+1}^{(p)}$: its two orders of application give
+factors $w_p^{r/2}$ and $w_p^{(r+1)/2}$.
+A conformal comparison must also transport translation and the
+chosen conformal vector.
+
+\begin{example}\label{v4-arith:comp:norm-vs-kesten-mckay}
+In the ordinary Heisenberg pairing, $p_r^{(p)}/\sqrt r$ has norm
+one. This is a statement about a Fock vector. For adjacency on the
+$(p+1)$-regular tree, the root spectral measure instead has moments
+\[
+ \int x^2\,d\nu_p=p+1,\qquad
+ \int x^4\,d\nu_p=(p+1)(2p+1).
+\]
+
+There are $p+1$ two-step returns. A four-step return either returns
+at step two, giving $(p+1)^2$ paths, or first reaches distance two,
+giving $(p+1)p$ paths. Odd moments vanish because the tree is
+bipartite. These state moments differ from the norms of individual
+power-sum vectors. Their Hecke recurrence is the one in
+Proposition~\ref{v4-arith:hecke:prop:distance}.
+\end{example}
+
+\subsection{The tensor product basis}
+\label{v4-arith:et:arithmetic-macdonald}
+
+Let $m_\lambda$ be the monomial symmetric function. In dominance
+order, $\mu\leq\lambda$ means
+$\sum_{i\leq j}\mu_i\leq\sum_{i\leq j}\lambda_i$ for every $j$,
+with equal total size. Macdonald's theorem, VI (4.7), gives the
+unique orthogonal basis $P_\lambda(x;q,t)$ over $\mathbb Q(q,t)$
+which is monic triangular in $m_\lambda$ for this order.
+At specialized parameters the coefficients must remain defined.
+
+\begin{definition}\label{v4-arith:def:arithmetic-macdonald-poly}
+For a family of partitions with finite support, put
+\[
+ P^{\mathrm{arith}}_{(\lambda_p)}
+ =\bigotimes_p'P_{\lambda_p}(x^{(p)};q_p,t_p),
+ \qquad P_\varnothing=1.
+\]
+\end{definition}
+
+These tensors form an orthogonal $K$-basis. Both expansion and
+linear independence reduce to a finite set of prime factors.
+For two primes, the degree-two basis consists of
+\[
+ \begin{gathered}
+ P_{(2)}\otimes1,\quad P_{(1,1)}\otimes1,\quad
+ P_{(1)}\otimes P_{(1)},\\
+ 1\otimes P_{(2)},\quad1\otimes P_{(1,1)}.
+ \end{gathered}
+\]
+A single symmetric-function space has degree-two dimension two,
+with basis $p_2,p_1^2$. Symmetric polynomials in two variables also
+have dimension two in that degree. The three ordinary monomials
+$x_1^2,x_1x_2,x_2^2$ belong to the full polynomial space, whose
+symmetric subspace has basis $x_1^2+x_2^2,x_1x_2$.
+
+\subsection{DAHA and its geometric comparisons}
+\label{v4-arith:et:no-prime-daha}
+
+The double affine Hecke algebra, abbreviated DAHA, acts on a fixed
+number of Laurent variables. This number is independent of the
+set of primes indexing a tensor product. The distinction can be
+seen directly in its polynomial representation.
+
+\begin{theorem}[Polynomial representation]
+\label{v4-arith:thm:DAHA-rank}
+Over $K_0=\mathbb Q(q^{1/2},t^{1/2})$, the DAHA of type
+$\operatorname{GL}_n$ has a faithful representation on
+$K_0[x_1^{\pm1},\ldots,x_n^{\pm1}]$. In the convention of
+Schiffmann--Vasserot, arXiv:0905.2555, section 1.4, its operators are
+\[
+ \begin{split}
+ X_i&=x_i,\\
+ T_i&=t^{1/2}s_i+
+       \frac{t^{-1/2}-t^{1/2}}{x_i/x_{i+1}-1}(s_i-1),\\
+ Y_i&=T_i\cdots T_{n-1}\omega T_1^{-1}\cdots T_{i-1}^{-1}.
+ \end{split}
+\]
+Here $s_i$ exchanges $x_i,x_{i+1}$,
+$\partial_i f(x)=f(x_1,\ldots,qx_i,\ldots,x_n)$ and
+$\omega=s_{n-1}\cdots s_1\partial_1$.
+The spherical subalgebra is $e\mathbb H_ne$, where $e$ is the
+normalized finite Hecke symmetrizer.
+\end{theorem}
+
+This is the standard faithful polynomial representation theorem.
+The displayed divided difference preserves Laurent polynomials,
+since $(s_i-1)f$ is divisible by $x_i-x_{i+1}$.
+On symmetric polynomials the first spherical operator becomes
+\[
+ \sum_{i=1}^n
+  \left(\prod_{j\ne i}
+       \frac{t^{-1/2}x_i-t^{1/2}x_j}{x_i-x_j}\right)\partial_i.
+\]
+Its eigenvectors are $P_\lambda(x;q,t^{-1})$, in this convention,
+with eigenvalues $t^{-(n-1)/2}\sum_iq^{\lambda_i}t^{i-1}$.
+The inverse in the second Macdonald parameter is part of the
+normalization.
+
+\begin{remark}\label{v4-arith:obs:DAHA-Adams-incompatible}
+The Weyl group acts inside each alphabet. Adams operations can
+also be defined factor by factor by
+$\psi_m(p_r^{(p)})=p_{mr}^{(p)}$, fixing the coefficient field.
+Operators on distinct tensor factors commute. These definitions
+pose no incompatibility between prime labels and DAHA rank.
+An intertwiner between the two operator families remains additional
+data, as does a geometric interpretation of the factorwise
+Adams operations.
+\end{remark}
+
+Two geometric results specify which Hall algebra enters this
+comparison. Let $T=(\mathbb C^\times)^2$ act on the affine plane,
+and let $L=\bigoplus_{n\geq0}K_T(\operatorname{Hilb}^n\mathbb A^2)$
+with equivariant parameters localized to their fraction field.
+Let $H$ be the convolution algebra generated by the tautological
+line-bundle powers on adjacent nested Hilbert schemes and the
+Adams operations of the tautological bundles.
+
+\begin{theorem}[Schiffmann--Vasserot]
+\label{v4-arith:thm:SV-at-q-to-1}
+In arXiv:0905.2555, Theorem 3.1 identifies $H$ with the central
+specialization $\mathcal E_c$ of the elliptic Hall algebra at
+$c=(1,q^{1/2}t^{1/2})$. Its representation on $L$ is the standard
+symmetric-function representation.
+
+The stable centrally extended degenerate spherical DAHA
+$\mathrm{SH}^c$ of arXiv:1202.2756 has an integral form at
+$\kappa=1$. For its specialization $\mathrm{SH}^c_1$,
+Theorem F.10 gives
+\[
+ \mathrm{SH}^c_1\cong
+ U(W_{1+\infty})\otimes_{\mathbb C}
+                  \mathbb C[c_1,c_2,\ldots].
+\]
+Here $W_{1+\infty}$ is the universal central extension of the Lie
+algebra of regular differential operators on the circle.
+\end{theorem}
+
+The second construction uses the degeneration
+$q,t\longrightarrow1$ with $t=q^{-\kappa}$, together with its
+integral form and central parameters. Its result is an enveloping
+algebra. A bare substitution $q=1$ in a rational shuffle formula
+does not specify this degeneration. Neither geometric theorem
+constructs the arithmetic Hochschild trace class
+$\mathcal V^{\mathrm{prim}}$.
+
+\subsection{A rational shuffle construction}
+\label{v4-arith:et:shuffle-uncoupled}
+
+One can construct a prime-indexed shuffle algebra without making
+the geometric identification. In the field $K$ above, put
+\[
+ \omega_p(x,y)=
+ \frac{(1-q_px/y)(1-t_p^{-1}x/y)}
+      {(1-x/y)(1-q_pt_p^{-1}x/y)}.
+\]
+For $n\geq0$, let $\mathscr S_{p,n}=K(x_1,\ldots,x_n)^{S_n}$,
+with $\mathscr S_{p,0}=K$. For symmetric rational functions
+$f\in\mathscr S_{p,r}$ and $g\in\mathscr S_{p,s}$, define
+\[
+ (f*g)(x_1,\ldots,x_{r+s})=
+ \sum_{\substack{I\sqcup J=\{1,\ldots,r+s\}\\|I|=r}}
+ f(x_I)g(x_J)\prod_{i\in I,\,j\in J}\omega_p(x_i,x_j).
+\]
+This is the sum over subsets, with no factorial normalization.
+
+\begin{definition}\label{v4-arith:def:arithmetic-hall}
+Set $\mathscr S_p=\bigoplus_{n\geq0}\mathscr S_{p,n}$ and
+$\mathscr S^{\mathrm{prim}}=\bigotimes_p'\mathscr S_p$, with
+unit $1$ in degree zero. Separately, a specified family of
+spherical elliptic Hall algebras $\mathrm{SH}(q_p,t_p)$ defines
+\[
+ \mathbb H^{\mathrm{arith}}=
+       \bigotimes_p'\mathrm{SH}(q_p,t_p).
+\]
+All factors are extended to the common coefficient field.
+\end{definition}
+
+\begin{proposition}\label{v4-arith:thm:shuffle-uncoupled}
+The displayed shuffle product is associative and unital.
+In $\mathscr S^{\mathrm{prim}}$, factors at distinct primes commute,
+and their cross-prime shuffle coefficient is one. The same
+commutation holds in $\mathbb H^{\mathrm{arith}}$ by its tensor
+product definition.
+\end{proposition}
+\begin{proof}
+Both orders of a triple shuffle sum over ordered decompositions
+$I\sqcup J\sqcup L$. Their summand is $f(x_I)g(x_J)h(x_L)$
+times the kernels for $I\times J$, $I\times L$ and $J\times L$.
+Each pair occurs once in both expressions. The scalar kernels
+commute, proving associativity. The empty block proves the unit
+law. Multiplication in distinct tensor factors introduces no kernel.
+\end{proof}
+
+This proves a property of the specified tensor product. It does
+not forbid other arithmetic constructions with cross-prime
+operations. Identifying a shuffle subalgebra with a positive
+elliptic Hall half requires its presentation and wheel conditions.
+Recovering the full algebra also requires the negative and Cartan
+parts and their relations. Associativity of the rational kernel
+alone proves none of these identifications.
+
+\begin{proposition}\label{v4-arith:thm:parameter-non-uniformity}
+The algebraic prime tensor space carries the nondegenerate
+Macdonald pairing, the tensor Macdonald basis and the factorwise
+Adams operations above. Its independent parameters are compatible
+with a prime-indexed family of shuffle or spherical Hall algebras.
+For the rational shuffle construction, there are no mixed-prime
+coefficients beyond tensor multiplication.
+\end{proposition}
+\begin{proof}
+Each tensor and each operation uses finitely many factors.
+Nondegeneracy and the basis assertion reduce to those factors.
+The Adams substitutions preserve polynomial multiplication and
+satisfy $\psi_m\psi_n=\psi_{mn}$. The final assertion is
+Proposition~\ref{v4-arith:thm:shuffle-uncoupled}.
+\end{proof}
+
+An arithmetic realization must still construct a map to the
+Hochschild trace carrier and state which operators, pairing,
+grading and trace functional it preserves. The polynomial space
+and its prime labels supply a possible domain for such a map.
+They do not identify its target.

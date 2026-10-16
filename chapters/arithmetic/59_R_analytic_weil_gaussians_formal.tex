@@ -1,0 +1,989 @@
+\chapter{Zero counts, Gaussian tests and formal completion}
+\label{v4-arith:w5-i:chapter}
+
+Three calculations fix distinct parts of the arithmetic comparison.
+The Riemann--von Mangoldt formula retains its argument term:
+\[
+N(T)=\frac{T}{2\pi}\log\frac{T}{2\pi e}+\frac78+S(T)+O(1/T),
+\qquad S(T)=O(\log T).
+\]
+The balanced Weil explicit formula is evaluated on the Gaussian family
+\(f_{\lambda}(x)=e^{-\pi x^{2}/\lambda}\). Its ordinary convergent
+terms give the tested functional. Positivity is an additional assertion.
+
+Artin--Rees controls induced filtrations on finite modules over the
+Iwasawa algebra. Comparisons for formal mapping stacks require
+additional constructions. The positivity and linear-growth assertions in
+\(\mathrm{R}_{\mathrm{analytic}}\) are not consequences of these three
+calculations.
+
+\section{Primary Sources}
+\label{v4-arith:w5-i:sources}
+
+The zero count and explicit formula have their classical analytic
+normalizations. The argument estimate is imported in the precise form
+named below. The finite-module filtration theorem is proved by its
+Rees module. Positivity and moment determinacy require separate inputs.
+
+\begin{description}
+\item[Riemann and von Mangoldt.] Riemann's 1859 memoir introduces the
+zero-counting problem. Von Mangoldt's 1895 paper gives a complete proof
+of the asymptotic formula. The normalization below retains the
+horizontal argument variation.
+\item[Hasanalizade--Shen--Wong.]
+\emph{Counting zeros of the Riemann zeta function},
+\href{https://arxiv.org/abs/2107.06506}{arXiv:2107.06506},
+Theorem~1.3 and Corollary~1.4 give the argument bound used here.
+\item[Selberg, Avh.~Norske Vid.~Akad.~Oslo (1944) 1--27.] Refined
+mean-square estimates on \(S(T)\).
+\item[Weil.] \emph{Sur les formules explicites de la th\'eorie des
+nombres premiers}, Lund, volume suppl\'ementaire
+(1952), 252--265. The complete signed functional below uses both polar
+values, the gamma term and every prime power.
+\item[Tate.] PhD thesis, Princeton 1950 (printed in Cassels--Fr\"ohlich,
+\emph{Algebraic Number Theory}, 1967, Ch.~XV). Adelic
+Mellin-transform treatment of \(\xi\); self-dual Gaussian under the
+archimedean factor.
+\item[Atiyah--Macdonald.] \emph{Introduction to Commutative Algebra}
+(Addison-Wesley 1969), Chapter~10: filtrations and completions of
+Noetherian modules.
+\item[Bourbaki, \emph{Alg\`ebre Commutative} (Ch.~III \S3, Masson
+1961).] Artin--Rees and Noetherian filtered
+rings.
+\end{description}
+
+\section{Riemann--von Mangoldt Density of Zeros}
+\label{v4-arith:w5-i:rvm}
+
+\subsection{Statement}
+\label{v4-arith:w5-i:rvm-statement}
+
+\begin{theorem}[Riemann--von Mangoldt zero count]
+\label{v4-arith:w5-i:thm:rvm}
+Let \(N(T)\) count the nontrivial zeros
+\(\rho=\beta+i\gamma\) with \(0<\gamma\le T\), including multiplicity.
+For \(T\ge2\) away from zero ordinates,
+\begin{equation}
+\label{v4-arith:w5-i:eq:rvm}
+ N(T)=\frac{T}{2\pi}\log\frac{T}{2\pi e}
+                   +\frac78+S(T)+R(T),\qquad R(T)=O(T^{-1}).
+\end{equation}
+Here
+\begin{equation}
+\label{v4-arith:w5-i:eq:ST-def}
+ S(T)=\frac1\pi\Delta_{\,2\to2+iT\to1/2+iT}\arg\zeta,
+\end{equation}
+with argument starting at zero at \(s=2\). At a zero ordinate,
+the convention \(\gamma\le T\) uses the right limit of \(S\).
+The formula is unconditional.
+\end{theorem}
+
+\subsection{Proof}
+\label{v4-arith:w5-i:rvm-proof}
+
+\begin{proof}
+The completed function is
+\begin{equation}
+\label{v4-arith:w5-i:eq:xi-factorisation}
+ \xi(s)=\tfrac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s).
+\end{equation}
+It is entire, has no real zeros, and obeys
+\(\xi(s)=\xi(1-s)\) and
+\(\xi(\bar s)=\overline{\xi(s)}\).
+These properties and its zero strip are proved in
+Section~\ref{v4-arith:weil:theta}.
+
+For a height \(T\) away from zero ordinates, use the rectangle
+\(R_T=\{-1\le\operatorname{Re}s\le2,\ 0\le\operatorname{Im}s\le T\}\).
+The argument principle gives
+\begin{equation}
+\label{v4-arith:w5-i:eq:contour}
+ \frac1{2\pi i}\oint_{\partial R_T}\frac{\xi'(s)}{\xi(s)}\,ds=N(T).
+\end{equation}
+The logarithmic derivative satisfies
+\begin{equation}
+\label{v4-arith:w5-i:eq:log-der-sym}
+ \frac{\xi'(s)}{\xi(s)}+
+                 \frac{\xi'(1-s)}{\xi(1-s)}=0.
+\end{equation}
+The real bottom edge has zero argument change.
+
+Reflection about \(\operatorname{Re}s=1/2\), together with conjugation,
+makes the remaining change twice that on the path
+\(C_T:2\to2+iT\to1/2+iT\). Consequently,
+\begin{equation}
+\label{v4-arith:w5-i:eq:vert-sum}
+ N(T)=\frac1\pi\Delta_{C_T}\arg\xi.
+\end{equation}
+The horizontal part of \(C_T\) is retained in this expression.
+
+Logarithmic differentiation gives
+\begin{equation}
+\label{v4-arith:w5-i:eq:log-xi-prime}
+ \frac{\xi'}\xi(s)=\frac1s+\frac1{s-1}-\frac12\log\pi
+             +\frac12\frac{\Gamma'}\Gamma(s/2)+\frac{\zeta'}\zeta(s).
+\end{equation}
+At the endpoint of \(C_T\), the continuous arguments of \(s\) and
+\(s-1\) sum to \(\pi\). Thus
+\[
+ N(T)=1+\frac{\vartheta(T)}\pi+S(T),\qquad
+ \vartheta(T)=\operatorname{Im}\log\Gamma(1/4+iT/2)-\frac T2\log\pi.
+\]
+The logarithm of gamma is analytic on the right half-plane and real on
+the positive axis.
+
+Stirling's expansion gives
+\begin{equation}
+\label{v4-arith:w5-i:eq:stirling-gamma}
+ \vartheta(T)=\frac T2\log\frac{T}{2\pi}-\frac T2
+                     -\frac\pi8+\frac1{48T}+O(T^{-3}).
+\end{equation}
+Combining the two identities proves the assertion away from zero
+ordinates. Right limits give the stated convention at those heights.
+\end{proof}
+
+\begin{remark}[The constant \(7/8\)]
+\label{v4-arith:w5-i:rem:78}
+The factor \(s(s-1)\) contributes \(1\) to \(N(T)\).
+For \(z=1/4+iT/2\), the imaginary part of
+\((z-1/2)\log z-z\) has constant term \(-\pi/8\).
+Dividing by \(\pi\) gives \(7/8=1-1/8\).
+This is an asymptotic argument calculation at large height.
+The positive real number \(\Gamma(1/4)\) has real logarithm and does
+not contribute that imaginary constant.
+\end{remark}
+
+\subsection{The unconditional argument bound}
+\label{v4-arith:w5-i:ST-bound}
+
+\begin{theorem}[The classical argument estimate]
+\label{v4-arith:w5-i:thm:ST-bound}
+The function in \eqref{v4-arith:w5-i:eq:ST-def}, with its stated
+one-sided convention, satisfies
+\begin{equation}
+\label{v4-arith:w5-i:eq:ST-bound}
+ |S(T)|\le C\log T\qquad(T\ge2)
+\end{equation}
+for an absolute constant \(C\). In particular, the number
+\(\mathcal N(T,1)\) of zeros with ordinates in \((T-1,T+1]\) obeys
+\begin{equation}
+\label{v4-arith:w5-i:eq:jensen-count}
+ \mathcal N(T,1)=O(\log T).
+\end{equation}
+\end{theorem}
+\begin{proof}
+The argument estimate is the classical analytic theorem.
+A precise primary bound is Hasanalizade--Shen--Wong,
+\emph{Counting zeros of the Riemann zeta function},
+Theorem~1.3 and Corollary~1.4,
+\href{https://arxiv.org/abs/2107.06506}{arXiv:2107.06506}.
+The estimate remains valid under one-sided limits.
+Subtract \eqref{v4-arith:w5-i:eq:rvm} at \(T-1\) and \(T+1\).
+The change of its smooth main term is \(O(\log T)\), and the two
+argument terms have the same bound. This proves the local count.
+\end{proof}
+
+\begin{corollary}[\(N(T)\) to main term, \(\log T\) precision]
+\label{v4-arith:w5-i:cor:NT-sharp}
+Combining \eqref{v4-arith:w5-i:eq:rvm} and
+\eqref{v4-arith:w5-i:eq:ST-bound},
+\begin{equation}
+\label{v4-arith:w5-i:eq:NT-main-error}
+N(T)\;=\;\frac{T}{2\pi}\log\!\frac{T}{2\pi e}+O(\log T),
+\end{equation}
+unconditionally, using the functional equation, Stirling expansion
+and the classical argument estimate.
+\end{corollary}
+
+\begin{proof}
+Substitute the \(S(T)\) bound into \eqref{v4-arith:w5-i:eq:rvm} and
+absorb the \(7/8\) and \(O(1/T)\) into the \(O(\log T)\) bound.
+\end{proof}
+
+\subsection{Consequence for \(\mathrm{R}_{\mathrm{analytic}}\)}
+\label{v4-arith:w5-i:R-analytic-closure}
+
+\begin{proposition}[Finite positive-power sums of ordinates]
+\label{v4-arith:w5-i:prop:R-analytic-density}
+Let \(N(T)\) count the positive ordinates \(\gamma\) of nontrivial
+zeros with multiplicity. For each fixed integer \(n\geq0\), put
+\(S_n(T)=\sum_{0<\gamma\leq T}(1/4+\gamma^2)^n\). Then
+\begin{align*}
+ S_n(T)={}&\frac{T^{2n+1}}{2\pi(2n+1)}\log\frac{T}{2\pi}
+ -\frac{T^{2n+1}}{2\pi(2n+1)^2}
+ +O_n(T^{2n}\log T).
+\end{align*}
+In particular every \(S_n(T)\) diverges. Under RH these are the
+corresponding positive-power sums of the real zero parameters.
+\end{proposition}
+\begin{proof}
+For \(n=0\) this is the Riemann--von Mangoldt formula. For
+\(n\geq1\), Stieltjes integration by parts gives
+\[
+ S_n(T)=(1/4+T^2)^nN(T)
+ -\int_0^T2nt(1/4+t^2)^{n-1}N(t)\,dt.
+\]
+Write \(N(t)=F(t)+O(\log(2+t))\), where
+\(F(t)=t\log(t/(2\pi))/(2\pi)-t/(2\pi)\), and absorb a fixed
+initial interval in the error. The endpoint and integrated errors
+are \(O_n(T^{2n}\log T)\). The main term is
+\((2\pi)^{-1}\int^T(1/4+t^2)^n\log(t/(2\pi))\,dt\).
+Replacing the polynomial by \(t^{2n}\) costs
+\(O_n(T^{2n-1}\log T)\). Integrating this last monomial gives
+the two displayed terms. Its leading term is positive and divergent.
+\end{proof}
+\begin{remark}[Finite measures and the regularization problem]
+\label{v4-arith:w5-i:rem:density-closure-domain}
+The finite positive measure
+\[
+ \nu_T=\frac12\sum_{0<\gamma\leq T}
+ \left(\delta_{\sqrt{1/4+\gamma^2}}+
+       \delta_{-\sqrt{1/4+\gamma^2}}\right)
+\]
+has odd moments zero and even moments \(S_n(T)\). It is compactly
+supported and determinate, but its mass tends to infinity.
+Consequently the unregularized integral over all ordinates has no
+finite moment saddle. To obtain the proposed arithmetic Hamburger
+functional one must specify a common linear regularization and prove
+its positivity and growth. If that regularization gives moments
+\(M_{2k}\) of \(\gamma\), its shifted moments must satisfy
+\[
+ \mu_{2n}=\sum_{k=0}^n\binom nk4^{-(n-k)}M_{2k}.
+\]
+This compatibility is a consequence of linearity, not a construction
+of the regularization or an estimate for its moments.
+\end{remark}
+
+\section{Weil Explicit Formula at Gaussian Test Functions}
+\label{v4-arith:w5-i:weil-gaussians}
+
+\subsection{The Weil Explicit Formula: Recall}
+\label{v4-arith:w5-i:weil-recall}
+
+The arithmetic expression and the sum over zeros use different variables.
+Their relation fixes the scale at which the prime powers sample a test
+function. The following conventions make this relation explicit.
+
+\begin{lemma}[The normalized explicit formula]
+\label{v4-arith:w5-i:lem:weil}
+
+For $b>\pi$, let
+\[
+ \mathcal T_b=\left\{f\in C^\infty(\mathbb R;\mathbb C):
+ \int_{\mathbb R}e^{b|x|}|f^{(j)}(x)|\,dx<\infty
+ \text{ for every }j\geq0\right\},\qquad
+ \mathcal T=\bigcup_{b>\pi}\mathcal T_b.
+\]
+Use Lebesgue measure and define
+\[
+ \widehat f(t)=\int_{\mathbb R}f(x)e^{-2\pi ixt}\,dx,\qquad
+ f^\sharp(x)=\overline{f(-x)},\qquad
+ (f\star h)(x)=\int_{\mathbb R}f(y)h(x-y)\,dy.
+\]
+These operations make $\mathcal T$ a complex convolution
+$*$-algebra. For $f\in\mathcal T_b$, the transform is holomorphic
+on $|\operatorname{Im}t|<b/(2\pi)$.
+Put $\psi=\Gamma'/\Gamma$ and $z_\rho=-i(\rho-1/2)$,
+with nontrivial zeta zeros counted with multiplicity. Define
+\begin{align}
+ \Phi_\infty(f)
+ &=\frac1{2\pi}\int_{\mathbb R}\widehat f(t)
+ \left[\operatorname{Re}\psi(1/4+it/2)-\log\pi\right]dt,
+ \label{v4-arith:w5-i:eq:phi-arch}\\
+ \Phi_{\mathrm{fin}}(f)
+ &=-\frac1{2\pi}\sum_p\sum_{k\geq1}
+ \frac{\log p}{p^{k/2}}
+ \left[f\left(\frac{k\log p}{2\pi}\right)
+       +f\left(-\frac{k\log p}{2\pi}\right)\right].
+ \label{v4-arith:w5-i:eq:phi-fin}
+\end{align}
+These expressions converge absolutely. The arithmetic functional is
+\[
+ L_{2\pi}(f)=\widehat f(i/2)+\widehat f(-i/2)
+                  +\Phi_\infty(f)+\Phi_{\mathrm{fin}}(f).
+\]
+The explicit formula states
+\[
+ L_{2\pi}(f)=\sum_\rho\widehat f(z_\rho),
+\]
+with absolute convergence. Consequently the balanced expression is
+\begin{equation}
+ W(f):=L_{2\pi}(f)-\sum_\rho\widehat f(z_\rho)=0.
+ \label{v4-arith:w5-i:eq:weil-def}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Set $g_f(u)=(2\pi)^{-1}f(-u/(2\pi))$ and $a=b/(2\pi)>1/2$.
+Every derivative of $g_f$ is integrable with weight $e^{a|u|}$.
+The change of variables $u=-2\pi x$ gives
+\[
+ \int_{\mathbb R}g_f(u)e^{itu}\,du=\widehat f(t),\qquad
+ g_{f\star h}=g_f\star g_h,\qquad
+ g_{f^\sharp}(u)=\overline{g_f(-u)}.
+\]
+Weighted Young's inequality and differentiation under convolution
+prove closure of $\mathcal T$ under these operations.
+Weighted integrability of $f'$ gives
+$|f(x)|\leq C e^{-b|x|}$ by integrating from the appropriate infinity.
+Integration by parts gives rapid transform decay in every closed
+strip $|\operatorname{Im}t|\leq\eta<b/(2\pi)$.
+The zero count $N(T)=O(T\log(T+2))$ therefore gives absolute
+convergence of the zero sum.
+The prime sum is bounded by a constant times
+$\sum_{n\geq2}(\log n)n^{-1/2-a}$, which converges.
+The gamma integral converges because its bracket is
+$O(\log(2+|t|))$.
+
+Here is the contour calculation in the rescaled variable.
+Write $g=g_f$ and
+\[
+ F_g(s)=\int_{\mathbb R}g(u)e^{(s-1/2)u}\,du,
+ \quad \Gamma_{\mathbb R}(s)=\pi^{-s/2}\Gamma(s/2),
+ \quad H(s)=\frac{d}{ds}\log\bigl(\Gamma_{\mathbb R}(s)\zeta(s)\bigr).
+\]
+Thus $F_g(s)=\widehat f(-i(s-1/2))$.
+Choose $1<c<\min(a+1/2,3/2)$.
+The functional equation gives $H(1-s)=-H(s)$.
+The residues of $H$ are the multiplicities of the nontrivial zeros
+and $-1$ at each of $0,1$.
+Integrate $H(s)F_g(s)$ on the counterclockwise rectangle with
+vertical sides $1-c,c$ and heights $\pm T$.
+Choose heights tending to infinity away from the zero ordinates.
+For example, the bound $O(T\log(T+2))$ permits a choice in each
+$[T,T+1]$ at distance at least $c_0/(T\log(T+2))$ from every
+nearby ordinate, for sufficiently small fixed $c_0>0$.
+The logarithmic derivative expansion of the Hadamard product of
+$\xi$ then gives a polynomial bound for $H$ on these horizontal
+segments. Its nearby terms are bounded by the zero count times
+the inverse distance. For distant zeros the paired product terms
+are $O(T/|\rho|^2)$ and summable.
+The rapid decay of $F_g$ eliminates both horizontal integrals.
+Reflection of the left side gives
+\[
+ \sum_\rho F_g(\rho)-F_g(0)-F_g(1)
+ =\frac1{2\pi i}\int_{\operatorname{Re}s=c}
+ H(s)\bigl(F_g(s)+F_g(1-s)\bigr)\,ds.
+\]
+On this line,
+$\zeta'/\zeta(s)=-\sum_{n\geq2}\Lambda_{\mathrm{vM}}(n)n^{-s}$,
+where $\Lambda_{\mathrm{vM}}(p^k)=\log p$ and is zero otherwise.
+Absolute convergence permits termwise integration.
+Fourier inversion gives
+\[
+ \frac1{2\pi i}\int_{\operatorname{Re}s=c}n^{-s}F_g(s)\,ds
+ =n^{-1/2}g(\log n).
+\]
+The reflected test gives $n^{-1/2}g(-\log n)$.
+Since $g(\pm\log n)=(2\pi)^{-1}f(\mp\log n/(2\pi))$,
+these are exactly the stated prime terms with their negative sign.
+For the gamma term, move the integration line to $1/2$.
+Its logarithmic derivative is holomorphic between these lines,
+and rapid test decay eliminates the horizontal integrals.
+Combining the two reflected terms uses
+\[
+ 2\operatorname{Re}\frac{\Gamma_{\mathbb R}'}{\Gamma_{\mathbb R}}(1/2+it)
+ =\operatorname{Re}\psi(1/4+it/2)-\log\pi.
+\]
+The two pole values are $\widehat f(i/2)$ and $\widehat f(-i/2)$.
+This proves the formula, including its constants and signs.
+Equivalently, if $L_\zeta$ denotes the arithmetic functional for
+the transform $\int g(u)e^{itu}\,du$, the comparison is
+$L_{2\pi}(f)=L_\zeta(g_f)$.
+\end{proof}
+
+\subsection{The Gaussian Test Family}
+\label{v4-arith:w5-i:gauss-family}
+
+\begin{definition}[Gaussian test family]
+\label{v4-arith:w5-i:def:gaussian-family}
+For \(\lambda>0\), set
+\begin{equation}
+\label{v4-arith:w5-i:eq:f-lambda}
+f_{\lambda}(x)\;:=\;e^{-\pi x^{2}/\lambda}.
+\end{equation}
+This is a Schwartz function; its Fourier transform is
+\begin{equation}
+\label{v4-arith:w5-i:eq:f-lambda-hat}
+\widehat{f}_{\lambda}(y)\;=\;\sqrt{\lambda}\,e^{-\pi\lambda y^{2}}
+\end{equation}
+by the classical Gaussian-self-duality identity: indeed, at
+\(\lambda=1\), \(\widehat{f}_{1}(y)=f_{1}(y)\) and the general case
+follows by scaling \(x\mapsto x/\sqrt{\lambda}\) and the Plancherel
+change-of-variables \(\widehat{f(\cdot/a)}(y)=a\widehat{f}(ay)\).
+The transform is again a Gaussian with full support.
+\end{definition}
+
+\begin{remark}[Gaussian admissibility]
+\label{v4-arith:w5-i:rem:gauss-admissibility}
+Every derivative of $f_\lambda$ is a polynomial times a Gaussian.
+Thus $f_\lambda\in\mathcal T_b$ for every $b>\pi$.
+Its Fourier transform has full support, as permitted by
+Lemma~\ref{v4-arith:w5-i:lem:weil}.
+All terms are ordinary convergent integrals or sums.
+\end{remark}
+
+\subsection{Closed-Form Evaluation of \(W(f_{\lambda})\)}
+\label{v4-arith:w5-i:weil-gauss-closed-form}
+
+We evaluate each term of \(W(f_{\lambda})\) in closed form.
+
+\begin{lemma}[pole and zero terms for Gaussians]
+\label{v4-arith:w5-i:lem:pole-zero}
+For the Gaussian \(f_{\lambda}\) of
+Definition~\ref{v4-arith:w5-i:def:gaussian-family},
+\begin{equation}
+\label{v4-arith:w5-i:eq:pole-zero}
+\widehat{f}_{\lambda}(i/2)+\widehat{f}_{\lambda}(-i/2)\;=\;2\sqrt{\lambda}e^{\pi\lambda/4}.
+\end{equation}
+Moreover
+\[
+\sum_{\rho}\widehat{f}_{\lambda}(z_{\rho})
+=\sqrt{\lambda}\sum_{\rho}e^{-\pi\lambda z_{\rho}^{2}},
+\qquad z_{\rho}=-i(\rho-\tfrac12),
+\]
+and this zero sum is absolutely convergent.
+\end{lemma}
+
+\begin{proof}
+By \eqref{v4-arith:w5-i:eq:f-lambda-hat},
+\(\widehat{f}_{\lambda}(\pm i/2)=\sqrt{\lambda}e^{\pi\lambda/4}\).
+For \(\rho=\beta+i\gamma\) in the critical strip,
+\(|e^{-\pi\lambda z_{\rho}^{2}}|
+\leq e^{\pi\lambda/4}e^{-\pi\lambda\gamma^{2}}\). The
+Riemann--von Mangoldt bound \(N(T)=O(T\log T)\) gives absolute
+convergence.
+\end{proof}
+
+\begin{lemma}[The prime contribution on Gaussians]
+\label{v4-arith:w5-i:lem:prime-side}
+
+For $\lambda>0$,
+\begin{equation}
+ \Phi_{\mathrm{fin}}(f_\lambda)
+ =-\frac1\pi\sum_p\sum_{k\geq1}\frac{\log p}{p^{k/2}}
+       \exp\left(-\frac{(k\log p)^2}{4\pi\lambda}\right).
+ \label{v4-arith:w5-i:eq:phi-fin-eval}
+\end{equation}
+The sum is absolutely convergent and smooth in $\lambda>0$.
+\end{lemma}
+\begin{proof}
+Insert the even Gaussian into \eqref{v4-arith:w5-i:eq:phi-fin}.
+On any compact interval $[\lambda_0,\lambda_1]\subset(0,\infty)$,
+each parameter derivative is bounded by a polynomial in $\log n$
+times $n^{-1/2}\exp[-(\log n)^2/(4\pi\lambda_1)]$.
+This is summable over integers $n\geq2$.
+For every fixed $M$, the exponential is at most $n^{-M}$
+for all sufficiently large $n$.
+Uniform domination proves convergence and differentiation term by term.
+\end{proof}
+
+\begin{lemma}[The archimedean contribution on Gaussians]
+\label{v4-arith:w5-i:lem:arch}
+
+For $\lambda>0$,
+\begin{equation}
+ \Phi_\infty(f_\lambda)=-\frac{\log\pi}{2\pi}+A_\Gamma(\lambda),
+ \label{v4-arith:w5-i:eq:phi-arch-eval}
+\end{equation}
+where
+\begin{equation}
+ A_\Gamma(\lambda)=\frac{\sqrt\lambda}{2\pi}
+ \int_{\mathbb R}e^{-\pi\lambda t^2}
+                \operatorname{Re}\psi(1/4+it/2)\,dt.
+ \label{v4-arith:w5-i:eq:A-gamma}
+\end{equation}
+This ordinary integral is absolutely convergent.
+\end{lemma}
+\begin{proof}
+Substitute $\widehat f_\lambda(t)=\sqrt\lambda e^{-\pi\lambda t^2}$
+into \eqref{v4-arith:w5-i:eq:phi-arch}.
+The Gaussian integral gives
+$\int_{\mathbb R}\widehat f_\lambda(t)\,dt=f_\lambda(0)=1$.
+The digamma factor is smooth on the real integration line and
+is $O(\log(2+|t|))$ at infinity.
+Gaussian decay gives absolute convergence.
+The same bound with polynomial factors proves smooth parameter
+variation on compact subintervals of $(0,\infty)$.
+\end{proof}
+
+\begin{theorem}[The Weil formula on Gaussians]
+\label{v4-arith:w5-i:thm:weil-gauss-closed}
+
+For $\lambda>0$,
+\begin{equation}
+\begin{split}
+ W(f_\lambda)={}&2\sqrt\lambda e^{\pi\lambda/4}-\mathcal Z(\lambda)
+ -\frac{\log\pi}{2\pi}\\
+ &+A_\Gamma(\lambda)-\frac1\pi\mathcal P(\lambda)=0,
+\end{split}
+\label{v4-arith:w5-i:eq:weil-gauss-closed}
+\end{equation}
+where
+\begin{align}
+ \mathcal Z(\lambda)
+ &=\sqrt\lambda\sum_\rho e^{-\pi\lambda z_\rho^2},\qquad
+ z_\rho=-i(\rho-1/2),\label{v4-arith:w5-i:eq:Z-lambda}\\
+ \mathcal P(\lambda)
+ &=\sum_p\sum_{k\geq1}\frac{\log p}{p^{k/2}}
+       \exp\left(-\frac{(k\log p)^2}{4\pi\lambda}\right).
+ \label{v4-arith:w5-i:eq:P-lambda}
+\end{align}
+The integral $A_\Gamma$ is defined in \eqref{v4-arith:w5-i:eq:A-gamma}.
+Equivalently,
+\begin{equation}
+ \mathcal Z(\lambda)=2\sqrt\lambda e^{\pi\lambda/4}
+ -\frac{\log\pi}{2\pi}+A_\Gamma(\lambda)-\frac1\pi\mathcal P(\lambda).
+ \label{v4-arith:w5-i:eq:weil-id-gauss}
+\end{equation}
+\end{theorem}
+\begin{proof}
+Substitute Lemma~\ref{v4-arith:w5-i:lem:pole-zero},
+Lemma~\ref{v4-arith:w5-i:lem:prime-side}, and
+Lemma~\ref{v4-arith:w5-i:lem:arch} into
+Lemma~\ref{v4-arith:w5-i:lem:weil}.
+Gaussian admissibility was proved in
+Remark~\ref{v4-arith:w5-i:rem:gauss-admissibility}.
+Rearranging the balanced formula gives
+\eqref{v4-arith:w5-i:eq:weil-id-gauss}.
+\end{proof}
+
+\begin{remark}[Poisson summation embedding]
+\label{v4-arith:w5-i:rem:poisson}
+The self-duality \(\widehat{f}_{1}=f_{1}\) of the standard Gaussian
+at \(\lambda=1\) is the archimedean input to Tate's thesis. Poisson
+summation for the standard Gaussian gives
+\[
+\theta(i\tau)\;:=\;\sum_{n\in\mathbb{Z}}e^{-\pi n^{2}\tau}\;=\;\tau^{-1/2}\theta(i/\tau),
+\]
+the classical modular transformation of the Jacobi theta. The
+identity \eqref{v4-arith:w5-i:eq:weil-id-gauss} can be viewed as the
+arithmetic Weil analogue: the zero sum \(\mathcal{Z}(\lambda)\) is the
+arithmetic theta analogue, and the RHS is the corresponding
+archimedean-plus-prime expansion.
+\end{remark}
+
+\subsection{Gaussian Convolutions and the Balanced Weil Functional}
+\label{v4-arith:w5-i:positivity-test}
+
+The functional $W$ in \eqref{v4-arith:w5-i:eq:weil-def} is the
+balanced difference, and it vanishes by the explicit formula.
+The associated sesquilinear form is instead
+\[
+ B_{2\pi}(f,h)=L_{2\pi}(h^\sharp\star f),\qquad f,h\in\mathcal T.
+\]
+The change of variables $f\mapsto g_f$ preserves convolution and
+involution, so this is the same form as
+$L_\zeta(g_h^*\star g_f)$ in the logarithmic variable.
+Its diagonal values involve the arithmetic functional $L_{2\pi}$,
+rather than the identically zero balanced difference $W$.
+Positivity on the full test algebra remains the Weil positivity
+question. The Gaussian convolution identity below does not settle it.
+
+\begin{definition}[Gaussian convolution sub-class]
+\label{v4-arith:w5-i:def:gauss-conv-class}
+The \emph{Gaussian convolution sub-class}
+is the set
+\[
+\mathcal{G}\;:=\;\{f_{\lambda}\star f_{\mu}^{\sharp}\,:\,\lambda,\mu>0\}.
+\]
+Since \(f_{\lambda}\) is real and even, \(f_{\mu}^{\sharp}=f_{\mu}\), so
+\(\mathcal{G}=\{f_{\lambda}\star f_{\mu}\,:\,\lambda,\mu>0\}\).
+\end{definition}
+
+\begin{lemma}[Gaussian convolution is Gaussian]
+\label{v4-arith:w5-i:lem:gauss-conv}
+For \(\lambda,\mu>0\),
+\begin{equation}
+\label{v4-arith:w5-i:eq:gauss-conv}
+f_{\lambda}\star f_{\mu}(x)\;=\;\sqrt{\frac{\lambda\mu}{\lambda+\mu}}\cdot f_{\lambda+\mu}(x).
+\end{equation}
+Equivalently, in Fourier:
+\(\widehat{f_{\lambda}\star f_{\mu}}=\widehat{f}_{\lambda}\cdot\widehat{f}_{\mu}=\sqrt{\lambda\mu}\,e^{-\pi(\lambda+\mu)y^{2}}=\sqrt{\lambda\mu/({\lambda+\mu})}\cdot\sqrt{\lambda+\mu}\,e^{-\pi(\lambda+\mu)y^{2}}\),
+consistent with \(\widehat{f_{\lambda}\star f_{\mu}}=\sqrt{\lambda\mu/(\lambda+\mu)}\cdot\widehat{f}_{\lambda+\mu}\). In particular,
+\(f_{\lambda}\star f_{\lambda}(x)=\sqrt{\lambda/2}\cdot f_{2\lambda}(x)\).
+\end{lemma}
+
+\begin{proof}
+\begin{align*}
+f_{\lambda}\star f_{\mu}(x)
+&\;=\;\int_{\mathbb{R}}e^{-\pi t^{2}/\lambda}e^{-\pi(x-t)^{2}/\mu}\,dt.
+\end{align*}
+Completing the square in \(t\):
+\begin{align*}
+\frac{t^{2}}{\lambda}+\frac{(x-t)^{2}}{\mu}
+&\;=\;\frac{\mu t^{2}+\lambda(x-t)^{2}}{\lambda\mu}\\
+&\;=\;\frac{(\lambda+\mu)t^{2}-2\lambda t x+\lambda x^{2}}{\lambda\mu}\\
+&\;=\;\frac{(\lambda+\mu)}{\lambda\mu}\!\left(t-\frac{\lambda x}{\lambda+\mu}\right)^{2}+\frac{x^{2}}{\lambda+\mu}.
+\end{align*}
+Hence
+\begin{align*}
+f_{\lambda}\star f_{\mu}(x)
+&\;=\;e^{-\pi x^{2}/(\lambda+\mu)}\cdot\int_{\mathbb{R}}e^{-\pi(\lambda+\mu)u^{2}/(\lambda\mu)}\,du\\
+&\;=\;e^{-\pi x^{2}/(\lambda+\mu)}\cdot\sqrt{\frac{\lambda\mu}{\lambda+\mu}}
+\;=\;\sqrt{\frac{\lambda\mu}{\lambda+\mu}}\cdot f_{\lambda+\mu}(x),
+\end{align*}
+as claimed.
+\end{proof}
+
+\begin{proposition}[balanced Weil identity on Gaussian convolutions]
+\label{v4-arith:w5-i:prop:gauss-pos}
+For every \(\lambda,\mu>0\),
+\begin{equation}
+\label{v4-arith:w5-i:eq:gauss-pos}
+W(f_{\lambda}\star f_{\mu})\;=\;\sqrt{\frac{\lambda\mu}{\lambda+\mu}}\cdot W(f_{\lambda+\mu})\;=\;0.
+\end{equation}
+This is an explicit-formula identity, not a proof of Weil positivity on
+the Gaussian convolution sub-class \(\mathcal{G}\).
+\end{proposition}
+
+\begin{proof}
+Lemma~\ref{v4-arith:w5-i:lem:gauss-conv} expresses
+\(f_{\lambda}\star f_{\mu}\) as a scalar multiple of
+\(f_{\lambda+\mu}\). The Weil functional \(W\) is linear, so
+\[
+W(f_{\lambda}\star f_{\mu})\;=\;\sqrt{\lambda\mu/(\lambda+\mu)}\cdot W(f_{\lambda+\mu}).
+\]
+By Theorem~\ref{v4-arith:w5-i:thm:weil-gauss-closed} applied to
+\(\lambda+\mu\) in place of \(\lambda\), and by the classical Weil
+explicit-formula identity \(W(f_{\lambda+\mu})=0\), the result is zero.
+\end{proof}
+
+\begin{remark}[The Gaussian pairing]
+\label{v4-arith:w5-i:rem:gauss-pos-domain}
+The Gaussian functions are real and even, so
+\begin{equation*}
+ B_{2\pi}(f_\lambda,f_\mu)
+ =\sqrt{\frac{\lambda\mu}{\lambda+\mu}}\,
+       L_{2\pi}(f_{\lambda+\mu}).
+\end{equation*}
+Thus \eqref{v4-arith:w5-i:eq:weil-id-gauss} evaluates this pairing
+by ordinary convergent arithmetic terms.
+The equality $W(f_\lambda\star f_\mu)=0$ expresses the balanced
+explicit formula and supplies no sign inequality for $B_{2\pi}$.
+Positivity on the full test algebra remains a separate assertion.
+\end{remark}
+
+\begin{remark}[Gaussian identities and operator traces]
+\label{v4-arith:w5-i:rem:H-closure}
+The proposed arithmetic trace comparison in
+Corollary~\ref{v4-arith:hpar-det:cor:wave3-structure} requires an operator realization,
+a common domain and a trace or weight.
+The identity \eqref{v4-arith:w5-i:eq:weil-id-gauss} computes its
+arithmetic scalar on the Gaussian family.
+It supplies no operator trace comparison and no positivity statement
+for $B_{2\pi}$ on the full test algebra.
+\end{remark}
+
+\section{Finite modules and formal comparisons}
+\label{v4-arith:w5-i:formal-noetherian}
+
+The arithmetic-loop comparisons in
+Propositions~\ref{v4-arith:bzn-sub:prop:R1-formal-b-domain}
+and~\ref{v4-arith:bzn-sub:prop:R1-formal-c-domain}
+involve mapping objects, filtered colimits and formal completion.
+Artin--Rees gives a precise theorem for a finite module and its
+submodule. To apply it to those comparisons, one must construct the
+modules and prove that they control the required maps.
+
+\subsection{The Iwasawa coefficient ring}
+\label{v4-arith:w5-i:iwasawa}
+
+\begin{definition}[The Iwasawa algebra]
+\label{v4-arith:w5-i:def:iwasawa}
+Choose \(\Gamma\cong\mathbb Z_p\) and a topological generator
+\(\gamma\). Its completed group ring is
+\[
+ \Lambda=\mathbb Z_p[[\Gamma]]
+  =\varprojlim_{r,n}(\mathbb Z/p^r)[\Gamma/p^n\Gamma]
+  \cong\mathbb Z_p[[T]],\qquad \gamma\longmapsto1+T.
+\]
+The coefficient variable \(T\) is different from the zero-counting
+height used earlier in this chapter.
+\end{definition}
+
+\begin{lemma}[Noetherian local structure]
+\label{v4-arith:w5-i:lem:iwasawa-noeth}
+The ring \(\Lambda\) is regular local and Noetherian of dimension two,
+with maximal ideal \(\mathfrak m=(p,T)\) and residue field
+\(\mathbb F_p\). Its \(\mathfrak m\)-adic topology is the topology
+of the displayed finite group-ring quotients.
+\end{lemma}
+\begin{proof}
+The formal power-series ring over the discrete valuation ring
+\(\mathbb Z_p\) is Noetherian. Its maximal ideal is generated by
+\(p,T\), and the chain \((0)\subset(p)\subset(p,T)\), together with
+the power-series dimension theorem, gives dimension two.
+The two generators form a regular system of parameters.
+
+The finite group-ring quotient has defining ideal
+\(J_{r,n}=(p^r,(1+T)^{p^n}-1)\).
+For a fixed \(k\), take \(r\ge k\) and \(n\) sufficiently large.
+For \(1\le j<k\),
+\[
+ v_p\binom{p^n}{j}\ge n-v_p(j),
+\]
+by \(\binom{p^n}{j}=p^n\binom{p^n-1}{j-1}/j\).
+Every term of \((1+T)^{p^n}-1\) then lies in \(\mathfrak m^k\).
+Thus \(J_{r,n}\subset\mathfrak m^k\).
+
+Conversely, modulo \(J_{r,n}\), one has \(p^r=0\) and
+\(T^{p^n}\in(p)\). Hence \((p,T)\) is nilpotent in that finite
+quotient, and some \(\mathfrak m^k\) lies in \(J_{r,n}\).
+The two ideal systems are cofinal, proving the topology and
+completed-ring identification.
+\end{proof}
+
+\subsection{Induced filtrations on finite modules}
+\label{v4-arith:w5-i:artin-rees}
+
+\begin{lemma}[Artin--Rees]
+\label{v4-arith:w5-i:lem:artin-rees}
+Let \(R\) be a Noetherian ring, \(\mathfrak a\subset R\) an ideal,
+\(M\) a finite \(R\)-module, and \(N\subset M\) a submodule.
+There is \(k\ge0\) such that, for all \(n\ge k\),
+\begin{equation}
+\label{v4-arith:w5-i:eq:artin-rees}
+ \mathfrak a^nM\cap N
+       =\mathfrak a^{n-k}(\mathfrak a^kM\cap N).
+\end{equation}
+In particular, the induced filtration on \(N\) is cofinal with
+its \(\mathfrak a\)-adic filtration.
+\end{lemma}
+\begin{proof}
+The Rees algebra \(\mathcal R=\bigoplus_{n\ge0}\mathfrak a^nt^n\)
+is generated over \(R\) by finitely many elements of degree one,
+so it is Noetherian. The Rees module
+\(\bigoplus_{n\ge0}\mathfrak a^nMt^n\) is finite over \(\mathcal R\).
+Its graded submodule
+\[
+ \bigoplus_{n\ge0}(\mathfrak a^nM\cap N)t^n
+\]
+is therefore finitely generated. Choose homogeneous generators of
+degrees at most \(k\).
+
+In degree \(n\ge k\), a generator of degree
+\(j\le k\) is multiplied by \(\mathfrak a^{n-j}\).
+Factor this as \(\mathfrak a^{n-k}\mathfrak a^{k-j}\).
+The second factor sends that generator into
+\(\mathfrak a^kM\cap N\), proving one inclusion in the formula.
+The reverse inclusion follows from \(N\) being a submodule.
+
+Finally,
+\(\mathfrak a^nN\subset\mathfrak a^nM\cap N
+\subset\mathfrak a^{n-k}N\), which gives cofinality.
+\end{proof}
+
+\subsection{Arithmetic loops and filtered colimits}
+\label{v4-arith:w5-i:R1-formal-b-closure}
+
+\begin{question}[The specified formal presentation]
+\label{v4-arith:w5-i:prop:b2-closure}
+For a derived formal arithmetic stack with presentation
+\(\mathcal X=\operatorname{colim}_i\mathcal X_i\), determine the
+coefficient, topology and transition hypotheses under which
+\[
+ \operatorname{colim}_i
+       \mathrm{Map}(B\widehat{\mathbb Z},\mathcal X_i)
+ \longrightarrow
+       \mathrm{Map}(B\widehat{\mathbb Z},\mathcal X)
+\]
+is an equivalence. The question includes the
+\(\mathfrak m\)-adically complete sector and its finite-type pieces.
+\end{question}
+
+A profinite presentation of \(\widehat{\mathbb Z}\) uses all finite
+cyclic quotients with their divisibility transition maps.
+The \(p\)-power quotients instead describe \(\mathbb Z_p\).
+Finite cardinality of a group does not make its classifying space
+compact in every category of targets. Nor does an inverse limit of
+compact objects automatically remain compact.
+
+\begin{question}[The mapping functor on a target category]
+\label{v4-arith:w5-i:cor:b1-closure}
+For which category \(\mathcal C\) of complete derived arithmetic
+stacks does the internal functor
+\(\mathrm{Map}(B\widehat{\mathbb Z},-)\) preserve the filtered
+colimits under consideration?
+\end{question}
+
+Ordinary compactness of \(K\) in an infinity category means that the
+space-valued functor \(\operatorname{Map}(K,-)\) preserves filtered
+colimits. Preservation by an internal mapping object is a separate
+assertion, to be checked after evaluation on all test objects.
+Artin--Rees alone proves neither statement.
+
+\begin{proposition}[A conditional arithmetic-loop comparison]
+\label{v4-arith:w5-i:thm:R1-formal-b-closes}
+Fix the category of targets and an internal arithmetic-loop functor
+\(L^{\mathrm{Ar}}\mathcal Y=
+\mathrm{Map}(B\widehat{\mathbb Z},\mathcal Y)\).
+If this functor preserves a specified presentation
+\(\mathcal X=\operatorname{colim}_i\mathcal X_i\), then
+\[
+ L^{\mathrm{Ar}}\mathcal X
+       \simeq\operatorname{colim}_iL^{\mathrm{Ar}}\mathcal X_i.
+\]
+No preservation hypothesis is supplied merely by adic completeness
+of the target.
+\end{proposition}
+\begin{proof}
+The assumed comparison is exactly the displayed map after substituting
+the definition of \(L^{\mathrm{Ar}}\).
+\end{proof}
+
+The order of completion and filtered colimit is a concrete issue even
+for modules. Let \(R=\mathbb Z_p[[T]]\), \(\mathfrak m=(p,T)\), and
+\(M_i=\bigoplus_{j=1}^iR\). Each \(M_i\) is adically complete, but
+\begin{equation}
+ \operatorname{colim}_i\varprojlim_n M_i/\mathfrak m^nM_i
+  =\bigoplus_{j\ge1}R
+  \quad\subsetneq\quad
+ \varprojlim_n\operatorname{colim}_i M_i/\mathfrak m^nM_i.
+ \label{v4-arith:weil:eq:completion-counterexample}
+\end{equation}
+
+The right side is the space of sequences \((a_j)\in\prod_jR\) such
+that, for every \(n\), all but finitely many \(a_j\) lie in
+\(\mathfrak m^n\). Indeed, reduction modulo each power has finite
+support, and compatibility recovers each coordinate by completeness
+of \(R\). The sequence \(a_j=p^j\) belongs to this right side and
+not to the direct sum.
+
+Every fixed quotient has a finite support bound,
+but no one bound works at every precision. This example isolates a
+limit exchange that a formal-stack argument must justify. It is not
+an obstruction to every possible arithmetic-loop comparison.
+
+\subsection{The flat subcategory}
+\label{v4-arith:w5-i:R1-formal-c-closure}
+
+\begin{question}[Flat objects in a formal colimit]
+\label{v4-arith:w5-i:prop:c2-closure}
+Construct the proposed flat object or full subcategory on
+\(L^{\mathrm{Ar}}\mathcal X\), with its transition maps, and determine
+when the comparison
+\[
+ \operatorname{colim}_i(L^{\mathrm{Ar}}\mathcal X_i)^{\mathrm{flat}}
+       \longrightarrow(L^{\mathrm{Ar}}\mathcal X)^{\mathrm{flat}}
+\]
+is an equivalence. Specify whether the two sides are stacks,
+categories of sheaves or categories of modules before forming the map.
+\end{question}
+
+A flat subcategory is not a submodule of a coordinate ring merely by
+being full. Applying Artin--Rees requires an actual finite module
+\(M\) and submodule \(N\), together with a theorem identifying their
+induced filtrations with the proposed geometric condition.
+A criterion using all adic truncations also requires its own
+completeness and flatness hypotheses.
+
+\begin{remark}[Two further geometric comparisons]
+\label{v4-arith:w5-i:rem:c1-c3-open}
+The extension of nilpotent singular support to the specified formal
+stacks and its comparison with a Fargues--Scholze
+\((\varphi,\Gamma)\)-module locus are additional geometric questions.
+Neither is a consequence of the finite-module filtration theorem.
+Their coefficient categories and functors must be specified separately.
+\end{remark}
+
+\subsection{The finite-module consequence}
+\label{v4-arith:w5-i:formal-conclusion}
+
+\begin{proposition}[Adic completions of finite submodules]
+\label{v4-arith:w5-i:thm:formal-summary}
+For a finite \(\Lambda\)-module \(M\) and submodule \(N\), the
+intrinsic \(\mathfrak m\)-adic completion of \(N\) agrees with its
+completion for the induced filtration \(N\cap\mathfrak m^nM\).
+The arithmetic-loop and flat-subcategory comparisons above remain
+separate assertions. The categorical trace statement of
+Theorem~\ref{v4-arith:bzn-sub:thm:R1-formal-a-closes} retains its stated
+categorical colimit hypothesis.
+\end{proposition}
+\begin{proof}
+Artin--Rees makes the two filtrations cofinal, so their inverse-limit
+completions are canonically isomorphic. The lemma concerns finite
+modules and provides no mapping-stack or categorical colimit identity.
+\end{proof}
+
+\section{Consequences}
+\label{v4-arith:w5-i:summary}
+
+\begin{proposition}[three exact inputs]
+\label{v4-arith:w5-i:prop:three-exact-inputs}
+
+The following assertions hold.
+
+\begin{enumerate}
+\item The sharp Riemann--von Mangoldt identity
+\eqref{v4-arith:w5-i:eq:rvm} with \(|S(T)|=O(\log T)\) is
+unconditional
+(Theorem~\ref{v4-arith:w5-i:thm:rvm},
+Theorem~\ref{v4-arith:w5-i:thm:ST-bound},
+Corollary~\ref{v4-arith:w5-i:cor:NT-sharp}). This proves the density estimate
+entering \(\mathrm{R}_{\mathrm{analytic}}\), but not the positivity or
+linear-growth assertions.
+\item The Gaussian specialization of the balanced Weil explicit formula
+uses the ordinary convergent terms in
+\eqref{v4-arith:w5-i:eq:weil-gauss-closed} and
+\eqref{v4-arith:w5-i:eq:weil-id-gauss}. The convolution
+identity \eqref{v4-arith:w5-i:eq:gauss-pos} is only the balanced
+explicit formula and is not a Weil-positivity statement
+(Remark~\ref{v4-arith:w5-i:rem:gauss-pos-domain}).
+\item Artin--Rees identifies the intrinsic and induced adic
+completions of a finite Iwasawa submodule
+(Proposition~\ref{v4-arith:w5-i:thm:formal-summary}).
+The arithmetic-loop and flat-subcategory maps require their
+separate preservation and geometric hypotheses.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+The first assertion is Theorem~\ref{v4-arith:w5-i:thm:rvm} together with
+Theorem~\ref{v4-arith:w5-i:thm:ST-bound}. The second assertion is
+Theorem~\ref{v4-arith:w5-i:thm:weil-gauss-closed} and
+Proposition~\ref{v4-arith:w5-i:prop:gauss-pos}. The third assertion is
+Proposition~\ref{v4-arith:w5-i:thm:formal-summary}.
+None of these assertions proves Weil positivity, a Hilbert--P\'olya
+realization or the proposed formal arithmetic comparisons.
+\end{proof}
+
+\section{Bibliography}
+\label{v4-arith:w5-i:bibliography}
+
+Primary sources for this chapter:
+
+\begin{description}
+\item[Riemann 1859:] \"Uber die Anzahl der Primzahlen unter einer
+gegebenen Gr\"o{\ss}e. Monatsber.~Berlin Akad.
+\item[von Mangoldt 1895:] Zu Riemann's Abhandlung \"Uber die Anzahl
+der Primzahlen unter einer gegebenen Gr\"o{\ss}e.
+J.~Reine Angew.~Math.~114, 255--305.
+\item[Selberg 1944:] On the remainder in the formula for \(N(T)\),
+the number of zeros of \(\zeta(s)\) in the strip \(0<t<T\).
+Avh.~Norske Vid.~Akad.~Oslo, 1--27.
+\item[Titchmarsh 1986:] \emph{The Theory of the Riemann Zeta-Function}
+(2nd edn, rev.~Heath--Brown, Oxford).
+\item[Weil 1952:] Sur les formules explicites de la th\'eorie des
+nombres premiers. Comm.~S\'em.~Math.~Univ.~Lund, Tome suppl\'em.,
+252--265.
+\item[Tate 1950:] Fourier analysis in number fields and Hecke's
+zeta-functions. PhD thesis, Princeton; in Cassels--Fr\"ohlich,
+\emph{Algebraic Number Theory} (1967), Ch.~XV.
+\item[Burnol 2000:] Sur certains espaces de Hilbert de fonctions
+enti\`eres, li\'es \`a la transformation de Fourier.
+C.~R.~Acad.~Sci.~Paris S\'er.~I 331, 919--924.
+\item[Cartier--Voros 1990:] Une nouvelle interpr\'etation de la formule
+des traces de Selberg. In \emph{The Grothendieck Festschrift} Vol.~II,
+Progr.~Math.~87, 1--67.
+\item[Atiyah--Macdonald 1969:] \emph{Introduction to Commutative
+Algebra} (Addison-Wesley), Ch.~10.
+\item[Bourbaki 1961:] \emph{Alg\`ebre Commutative}, Ch.~III \S3
+(Masson).
+\item[Lang 1994:] \emph{Algebraic Number Theory} (2nd edn, Springer),
+Ch.~VII \S5.
+\item[Edwards 1974:] \emph{Riemann's Zeta Function} (Academic Press).
+\end{description}
+
+The explicit-formula identities, moment positivity and Noetherian
+completion statements concern different mathematical data; none of
+these constructions supplies the missing comparison maps by itself.

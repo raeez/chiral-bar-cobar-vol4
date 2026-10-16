@@ -1,0 +1,728 @@
+\chapter{Connected descent and seam corings}
+\label{v4-ch:connected-descent}
+
+Over a field \(k\), relative coefficient envelopes retain the coefficient algebra at the empty
+configuration. A connected envelope instead has empty coefficient \(k\).
+This change is already visible when two relative regular interfaces are
+restricted to a connected envelope and composed:
+their empty coefficient is \(B\otimes_k B\), and comparison with composition
+over the relative envelope applies multiplication
+\[
+ B\otimes_k B\longrightarrow B.
+\]
+For \(B=\operatorname{Mat}_2(k)\), the source has dimension sixteen and the
+target dimension four. The twelve-dimensional kernel survives although
+every \(B\)-module is projective.
+
+The object that records this difference is an extension--restriction coring.
+It occurs at every junction of restricted interfaces. We first construct
+it and compute its counit defect. A separate matrix calculation then shows
+that the failure cannot be removed by choosing a different strong unital
+lift to the same connected envelopes. Finally, under explicit hypotheses
+on the arity filtration, we reconstruct connected modules from the whole
+coring coaction. Reconstruction uses all its iterates; multiplication alone
+does not retain the required data.
+
+\section{The coring of an algebra map}
+\label{v4-sec:seam-coring}
+
+Let \((\mathcal C,\star,K)\) be a stable presentable monoidal
+\(\infty\)-category whose product preserves colimits separately in
+each variable. Fix a unital associative algebra map
+\[
+ f:G\longrightarrow R
+\]
+in \(\mathcal C\). Module categories and tensor products are derived.
+We write \(X\star_G Y\) for the realization of the two-sided bar of a
+right \(G\)-module \(X\) and a left \(G\)-module \(Y\). Thus
+\[
+ X\star_G Y
+ =
+ \left|[n]\longmapsto X\star G^{\star n}\star Y\right|.
+\]
+No interchange of two geometric factors is part of this definition.
+
+Define the \(R\)--\(R\) bimodule
+\[
+ T_f=R\star_G R.
+\]
+Its outer actions multiply the two outside \(R\)-factors. Multiplication
+gives a bimodule map
+\[
+ \epsilon:T_f\longrightarrow R.
+\]
+To define a coproduct, insert \(f\) into the middle of
+\(R\star_G G\star_G R\):
+\begin{equation}\label{v4-eq:seam-coproduct}
+\Delta:T_f\longrightarrow
+ R\star_G R\star_G R
+ \simeq T_f\star_R T_f.
+\end{equation}
+This map is called the \emph{comultiplication} of the coring.
+On an ordinary flat representative, this is the familiar formula
+\[
+ r\otimes s\longmapsto
+ (r\otimes1)\otimes_R(1\otimes s).
+\]
+Equation~\eqref{v4-eq:seam-coproduct}, rather than an underived tensor
+formula, specifies the map in general.
+
+\begin{proposition}\label{v4-prop:seam-coring}
+The maps \(\Delta\) and \(\epsilon\) make \(T_f\) a counital
+coassociative coring in \(R\)-bimodules, with all higher coherences.
+For the extension--restriction adjunction
+\[
+ F=R\star_G-:\operatorname{Mod}_G(\mathcal C)
+ \ \rightleftarrows\
+ \operatorname{Mod}_R(\mathcal C):U,
+\]
+the comonad \(FU\) is \(T_f\star_R-\).
+\end{proposition}
+
+\begin{proof}
+Two successive insertions of \(f\) give the same ordered tensor
+\(R\star_G R\star_G R\star_G R\). Applying \(\epsilon\) on either
+side of \(\Delta\) removes one inserted unit and gives the identity.
+For any number of insertions, the comparisons are induced by the same
+multisimplicial bar. Its unit and associativity maps give the coherences
+after realization.
+
+For an \(R\)-module \(N\), associativity of the balanced tensor gives
+\[
+ FU(N)=R\star_G U(N)
+ \simeq (R\star_G R)\star_R N.
+\]
+The adjunction counit is the action of \(R\), hence is induced by
+\(\epsilon\). If \(\eta:\operatorname{Id}\to UF\) is the adjunction
+unit, the comultiplication \(F\eta U\) inserts \(f\) and is induced by
+\(\Delta\). These identify the comonad structure as well as its functor.
+\end{proof}
+
+A coring coaction on \(N\) is a map
+\(N\to T_f\star_R N\) with its counit, coassociativity, and higher
+compatibilities. We use this coherent notion throughout.
+The coring need not have a bimodule coaugmentation
+\(R\to T_f\). For example, at a scalar extension \(k\to B\), the
+map \(b\mapsto b\otimes1\) is left \(B\)-linear but generally fails
+right \(B\)-linearity.
+
+\section{Composition after restriction}
+\label{v4-sec:restricted-composition}
+
+Let \(X\) be a right \(R\)-module and \(Y\) a left \(R\)-module.
+We also write \(U\) for restriction of right modules.
+Restriction gives a natural comparison
+\[
+ \chi_{X,Y}:U(X)\star_G U(Y)\longrightarrow X\star_R Y.
+\]
+It applies \(f\) to every intermediate \(G\)-factor in the two-sided bar.
+Let \(D_f=\operatorname{cofib}(\epsilon:T_f\to R)\).
+
+\begin{theorem}[Composition with its seam coring]
+\label{v4-thm:seam-composition}
+There are natural equivalences
+\begin{align}
+ U(X)\star_G U(Y)
+ &\simeq X\star_R T_f\star_R Y,
+ \label{v4-eq:seam-composition}\\
+ \operatorname{cofib}(\chi_{X,Y})
+ &\simeq X\star_R D_f\star_R Y.
+ \label{v4-eq:seam-defect}
+\end{align}
+Under the first equivalence, \(\chi_{X,Y}\) applies the counit at the
+middle factor. For a finite string of restricted bimodules, one copy
+of the corresponding coring occurs at every intermediate algebra.
+These identifications are compatible with regrouping the string.
+\end{theorem}
+
+\begin{proof}
+Insert the regular \(R\)-modules next to \(X\) and \(Y\):
+\[
+ X\star_R(R\star_G R)\star_R Y
+ \simeq
+ (X\star_R R)\star_G(R\star_R Y)
+ \simeq U(X)\star_G U(Y).
+\]
+The equivalences follow by realizing the common multibar, in which
+all factors remain in their displayed order. Multiplication of the
+middle two \(R\)-factors is exactly the bar comparison defining
+\(\chi_{X,Y}\). Derived tensoring preserves cofibres, giving
+\eqref{v4-eq:seam-defect}. The same multibar proves the assertion for
+every finite string and all its parenthesizations.
+\end{proof}
+
+Apply this to the relative envelopes of
+Chapter~\ref{v4-ch:relative-coefficient-envelopes}.
+Suppose actual unital comparison maps
+\[
+ \theta_B:G_B\longrightarrow R_B=A\otimes_k B
+\]
+have been supplied for the coefficient algebras under consideration.
+For a \(B\)--\(E\) bimodule \(P\), restrict
+\(J_{B,E}(P)=A\otimes_k P\) along both endpoint maps and denote the
+result by \(I^\theta_{B,E}(P)\).
+For a composable \(E\)--\(D\) bimodule \(Q\),
+\begin{equation}\label{v4-eq:coefficient-seam}
+ I^\theta(P)\star_{G_E}I^\theta(Q)
+ \simeq
+ \operatorname{Res}\bigl(
+ J(P)\star_{R_E}T_{\theta_E}\star_{R_E}J(Q)\bigr).
+\end{equation}
+The comparison to \(I^\theta(P\otimes_E^{\mathbb L}Q)\) applies the
+counit and then Theorem~\ref{v4-thm:relative-composition}.
+Its unit comparison is \(\theta_B:G_B\to R_B\).
+Consequently restriction gives a lax composition law. For a selected
+pair \(P,Q\), this law is an equivalence exactly when the right-hand
+side of \eqref{v4-eq:seam-defect} vanishes for \(X=J(P)\), \(Y=J(Q)\).
+A nonzero \(D_{\theta_E}\) does not by itself decide every such pair.
+
+\section{The empty coefficient and noncommutative differentials}
+\label{v4-sec:empty-seam}
+
+For this section, let \(k\) be a field. Assume a colimit-preserving
+strong monoidal functor \(e_0:\mathcal C\to\mathcal D(k)\) is given, and that
+\[
+ e_0(G)=k,\qquad e_0(R)=B,\qquad e_0(f)=(k\longrightarrow B),
+\]
+where \(B\) is an ordinary nonzero unital \(k\)-algebra.
+Since \(e_0\) preserves the balanced bar,
+\[
+ e_0(T_f)=B\otimes_k B,\qquad e_0(\epsilon)=\mu_B.
+\]
+Here \(\mu_B(b\otimes c)=bc\).
+
+Define the bimodule of noncommutative one-forms by
+\[
+ \Omega^1_{\mathrm{nc}}(B/k)
+ =\ker\bigl(\mu_B:B\otimes_k B\to B\bigr),
+\]
+with outer \(B\)-actions, and put
+\[
+ d_{\mathrm{nc}}b=1\otimes b-b\otimes1.
+\]
+Commutativity of \(B\) does not require the two actions on this bimodule
+to coincide; it does not identify it with the K\"ahler differential module.
+
+\begin{proposition}\label{v4-prop:empty-seam-defect}
+There is an equivalence
+\[
+ e_0(D_f)\simeq \Omega^1_{\mathrm{nc}}(B/k)[1].
+\]
+The kernel is zero exactly when the unit \(k\to B\) is an isomorphism.
+If \(\dim_kB=r<\infty\), then
+\[
+ \dim_k\Omega^1_{\mathrm{nc}}(B/k)=r^2-r.
+\]
+In particular this dimension is \(d^4-d^2\) for
+\(B=\operatorname{Mat}_d(k)\).
+\end{proposition}
+
+\begin{proof}
+Multiplication has the \(k\)-linear section \(b\mapsto1\otimes b\).
+Its cofibre is therefore its kernel shifted by one, and its rank is
+\(\dim_kB\). This proves the equivalence and the finite-dimensional
+formula.
+
+Choose a \(k\)-linear functional \(\lambda:B\to k\) with
+\(\lambda(1)=1\). If the kernel vanishes, then
+\(1\otimes b-b\otimes1=0\) for every \(b\).
+Applying \(\lambda\otimes\operatorname{id}\) gives \(b=\lambda(b)1\).
+Thus \(B=k1\). The converse follows from multiplication in \(k\).
+\end{proof}
+
+The universal property explains which information this kernel carries.
+For a derivation \(D:B\to M\) into a \(B\)-bimodule, define
+\[
+ h_D\left(\sum_i a_i\otimes b_i\right)=\sum_i a_iD(b_i)
+ \quad\text{when }\sum_i a_ib_i=0.
+\]
+The derivation identity makes \(h_D\) right \(B\)-linear; left
+linearity is immediate. Moreover
+\(h_D(d_{\mathrm{nc}}b)=D(b)\), and
+\[
+ \sum_i a_i\,d_{\mathrm{nc}}b_i
+ =\sum_i a_i\otimes b_i
+\]
+on the kernel. These formulas prove existence and uniqueness of the
+factorization \(D=h_Dd_{\mathrm{nc}}\).
+For a nonscalar \(b\), the tensor \(d_{\mathrm{nc}}b\) is nonzero:
+a functional vanishing on \(1\) and taking \(b\) to \(1\), applied
+to its first factor, gives \(-1\).
+
+Thus \(B\ne k\) prevents the global counit \(T_f\to R\) from being
+an equivalence. The converse requires information about the positive
+configurations. In a family for which \(G_k=R_k\) and
+\(\theta_k=\operatorname{id}\), it holds: the counit is then
+\(R_k\star_{R_k}R_k\simeq R_k\). Empty evaluation alone proves no
+such converse for an arbitrary map \(G\to R\).
+
+\section{A matrix obstruction to strong connected transport}
+\label{v4-sec:connected-Morita-obstruction}
+
+The preceding defect concerns the specified restriction along \(f\).
+We now test whether some other assignment could preserve all
+coefficient bimodule compositions while keeping the connected
+envelopes.
+
+Let \(k\) have characteristic zero, let \(X=\mathbb A^1_k\), and
+write \(\mathcal D(X)\) for the derived category of right differential
+modules on \(X\), enhanced as a stable \(\infty\)-category.
+Consider
+\[
+ \mathcal T_X=\mathcal D(k)\times\mathcal D(X)
+\]
+with symmetric monoidal product
+\begin{equation}\label{v4-eq:square-zero-truncation}
+ (U,M)\odot(V,N)
+ =
+ (U\otimes_k V,\ U\otimes_k N\oplus M\otimes_k V).
+\end{equation}
+The two components have arities zero and one. Two arity-one
+factors have zero product in this category. The symmetry only
+moves scalar complexes past differential modules, with Koszul signs.
+It is not a statement that an intrinsic tensor product of two
+differential modules vanishes.
+
+Suppose a colimit-preserving strong monoidal truncation
+\(\tau_{\leq1}:\mathcal C\to\mathcal T_X\) is given.
+It sends balanced bars to balanced bars and therefore preserves
+inverse bimodule interfaces.
+
+For a unital algebra \(S\) in \(\mathcal T_X\), let
+\(\operatorname{CH}(S;L)\) be its Hochschild chain object with
+coefficients in an \(S\)-bimodule \(L\).
+It is the realization of the cyclic bar with term
+\(L\odot S^{\odot n}\) in degree \(n\). The last face uses the
+symmetry to act at the left endpoint.
+
+\begin{lemma}\label{v4-lem:singleton-chains}
+For \(S=(k,M)\), with its scalar unit and actions, the arity-one
+component is
+\[
+ \operatorname{CH}(S;S)_1\simeq M\oplus M[1].
+\]
+\end{lemma}
+
+\begin{proof}
+The unit splits, with reduced object \(\overline S=(0,M)\).
+The normalized bar terms are
+\(S\odot\overline S^{\odot n}[n]\).
+At arity one only \(n=0,1\) survive. They are \(M\) and \(M[1]\),
+and their boundary is \(1m-m1=0\).
+The split unit-degenerate subcomplex is contractible. Thus the
+normalization computes the full realization and retains the
+internal differential on both copies of \(M\).
+\end{proof}
+
+\begin{lemma}\label{v4-lem:cyclic-two-bar}
+For bimodules \({}_SP_T\) and \({}_TQ_S\) in \(\mathcal T_X\),
+there is a natural equivalence
+\[
+ \operatorname{CH}(S;P\odot_T Q)
+ \simeq
+ \operatorname{CH}(T;Q\odot_S P).
+\]
+Consequently inverse bimodule interfaces preserve the Hochschild
+chain object.
+\end{lemma}
+
+\begin{proof}
+Resolve the balanced tensor and the Hochschild chains independently.
+The resulting bisimplicial terms on the two sides are
+\[
+ P\odot T^{\odot q}\odot Q\odot S^{\odot p},
+ \qquad
+ Q\odot S^{\odot p}\odot P\odot T^{\odot q}.
+\]
+Rotate the two displayed blocks. On homogeneous tensors the sign is
+\[
+ (-1)^{(|p_0|+\sum_j|t_j|)(|q_0|+\sum_i|s_i|)},
+\]
+where \(p_0\in P\) and \(q_0\in Q\).
+Interior faces multiply the same adjacent factors.
+The two endpoint faces in the \(T\)-direction use the right action
+on \(P\) and the left action on \(Q\); after rotation one becomes
+the cyclic endpoint face. The \(S\)-direction uses the other two
+actions in the same way. The Koszul symmetry supplies exactly
+their endpoint signs, and inserted units have degree zero.
+Thus the diagrams agree after their two indices are exchanged.
+
+For the totalization convention
+\eqref{v4-eq:bar-total}, exchanging degrees \(p,q\) adds
+\((-1)^{pq}\). Indeed, their two bar differentials have signs
+\(b_p+(-1)^p b_q\) before the exchange and
+\(b_q+(-1)^q b_p\) afterwards.
+The internal differential has sign \((-1)^{p+q}\) on both sides.
+This verifies the chain comparison. Iterated realizations commute.
+If \(P\odot_T Q\simeq S\) and \(Q\odot_S P\simeq T\),
+substitution proves the last assertion.
+\end{proof}
+
+Let \(\omega_X\) denote the right differential module of top forms,
+placed in cohomological degree zero.
+
+\begin{theorem}\label{v4-thm:connected-Morita-obstruction}
+Suppose connected envelopes \(G_B\), for ordinary unital
+\(k\)-algebras \(B\), satisfy
+\[
+ \tau_{\leq1}(G_B)=(k,\omega_X\otimes_k B)
+\]
+with the indicated unit and scalar actions.
+There is no assignment on all coefficient bimodules, their maps,
+and equivalences that sends the regular bimodule \(B\) to \(G_B\)
+and every derived coefficient composition to an equivalence of
+composites over these envelopes.
+The obstruction already occurs for \(\operatorname{Mat}_d(k)\)
+and \(k\), with \(d\geq2\).
+\end{theorem}
+
+\begin{proof}
+Set \(B=\operatorname{Mat}_d(k)\), \(e=E_{11}\),
+\(P=Be\), and \(Q=eB\).
+Matrix multiplication gives
+\[
+ P\otimes_k Q\simeq B,\qquad Q\otimes_B P\simeq k.
+\]
+For the first map the basis tensors
+\(E_{i1}\otimes E_{1j}\) map to \(E_{ij}\).
+For the second,
+\(E_{1i}\otimes E_{j1}=\delta_{ij}(e\otimes e)\);
+the inverse sends \(1\) to \(e\otimes e\).
+All modules are projective on the balanced sides, so these also
+compute the derived tensors. Associativity of matrix multiplication
+gives their two Morita triangle identities.
+
+The proposed assignment would yield inverse bimodule interfaces
+between \(G_B\) and \(G_k\). Applying \(\tau_{\leq1}\) and
+Lemma~\ref{v4-lem:cyclic-two-bar} would identify their Hochschild
+chain objects. By Lemma~\ref{v4-lem:singleton-chains}, the arity-one
+components would be
+\[
+ (\omega_X\otimes_k B)\oplus(\omega_X\otimes_k B)[1]
+ \simeq \omega_X\oplus\omega_X[1].
+\]
+Their degree-zero cohomology differential modules have underlying
+\(\mathcal O_X\)-ranks \(d^2\) and \(1\), which is impossible.
+\end{proof}
+
+This obstruction applies to every assignment with the stated
+composition and unit requirements. It does not require its empty
+component to equal the original bimodule.
+It leaves the relative construction, lax restriction, and
+restricted classes of coefficient interfaces available.
+
+\section{Reconstruction along an arity filtration}
+\label{v4-sec:arity-reconstruction}
+
+Reconstruction asks whether the extended module
+\(F(M)\), equipped with its canonical coring coaction, determines \(M\).
+The answer below permits unbounded cohomological degrees. Its
+convergence comes from arity.
+
+For this section \(k\) is any field.
+Assume that objects of \(\mathcal C\) have nonnegative arities and
+that truncation to arities at most \(N\) gives exact strong monoidal
+functors
+\[
+ q_N:\mathcal C\longrightarrow\mathcal C_{\leq N}.
+\]
+Assume \(\mathcal C_{\leq0}=\mathcal D(k)\), with \(K\) supported
+at arity zero and \(K_0=k\).
+Assume these functors preserve limits and colimits, jointly detect
+equivalences, and have the same properties on the module and
+bimodule categories in use. Products add lower bounds on arity:
+a product of \(r\) positive-arity objects vanishes in arities
+less than \(r\).
+These are hypotheses on the enhanced carrier. They must be
+verified before applying the theorem to a geometric coefficient
+system.
+
+Let \(G\to K\) be an algebra augmentation inducing \(G_0=k\) at
+arity zero. Regard \(K\) as a \(G\)-bimodule through this
+augmentation. Assume also that a \(G\)-bimodule map to \(K\)
+is null whenever its arity-zero
+component is null as a \(k\)-bimodule map.
+This holds if extension by zero at arity zero is right adjoint
+to arity-zero evaluation on \(G\)-bimodules.
+
+Let \(f:G\to R\) be a unital algebra map whose arity-zero unit
+\(k\to R_0\) splits in \(\mathcal D(k)\). Put
+\begin{equation}\label{v4-eq:descent-fibres}
+ I=\operatorname{fib}(G\to R),\qquad
+ u:I\to G,\qquad
+ J=\operatorname{fib}(G\to K).
+\end{equation}
+Here \(J\) has positive arity. In this section every power of
+\(I\) or \(J\) is balanced over \(G\), in its written order.
+
+\begin{lemma}\label{v4-lem:arity-nilpotence}
+The map \(u\) factors through \(J\), and
+\begin{equation}\label{v4-eq:arity-nilpotence}
+ q_N\bigl(u^{\star_G(N+1)}:
+ I^{\star_G(N+1)}\longrightarrow G\bigr)=0.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The splitting of \(k\to R_0\) makes the fibre map \(I_0\to k\)
+null. The assumption on maps to \(K\) therefore makes the composite
+\(I\to G\to K\) null as a bimodule map. The fibre sequence
+defining \(J\) gives the factorization.
+
+Each term of the multibar for \(J^{\star_G r}\) contains \(r\)
+positive-arity \(J\)-factors separated by nonnegative-arity
+\(G\)-factors. It vanishes below arity \(r\).
+Truncation preserves its realization, so
+\(q_N(J^{\star_G(N+1)})=0\).
+Tensoring the factorization of \(u\) with itself proves
+\eqref{v4-eq:arity-nilpotence}.
+\end{proof}
+
+The nilpotence concerns a map. Its source need not vanish.
+For example, for \(k\to\operatorname{Mat}_2(k)\) at arity zero,
+\[
+ I_0\simeq(\operatorname{Mat}_2(k)/k)[-1],\qquad
+ \dim_k H^r(I_0^{\otimes r})=3^r .
+\]
+Every one of these tensor powers is nonzero, while the fibre map
+to \(k\) is null.
+
+For a left \(G\)-module \(M\), and \(r\geq1\), form the punctured
+ordered cube
+\begin{equation}\label{v4-eq:punctured-descent-cube}
+ Q_r(M)=
+ \lim_{\varnothing\ne S\subseteq\{1,\ldots,r\}}
+ E_1(S)\star_G\cdots\star_G E_r(S)\star_G M,
+ \qquad
+ E_j(S)=
+ \begin{cases}
+ R,&j\in S,\\
+ G,&j\notin S.
+ \end{cases}
+\end{equation}
+The arrows insert \(f\). Restriction to subsets of
+\(\{1,\ldots,r\}\) gives \(Q_{r+1}(M)\to Q_r(M)\).
+
+\begin{theorem}[Ordered reconstruction]
+\label{v4-thm:ordered-reconstruction}
+Under the stated arity and splitting hypotheses, there are natural
+fibre sequences
+\[
+ I^{\star_G r}\star_G M\longrightarrow M\longrightarrow Q_r(M),
+\]
+and a natural equivalence
+\[
+ M\simeq\lim_r Q_r(M).
+\]
+Consequently \(F=R\star_G-\) detects equivalences.
+\end{theorem}
+
+\begin{proof}
+Adjoin the empty subset to the cube. Its initial vertex is \(M\).
+Taking a fibre in each of its \(r\) directions replaces that
+direction's \(G\to R\) by \(I\). Exactness of balanced tensor
+therefore identifies the total fibre with
+\(I^{\star_G r}\star_G M\). This proves the fibre sequence.
+
+A transition on these fibres applies \(u\) to one terminal
+\(I\)-factor. After \(q_N\), any \(N+1\) successive transitions
+are null by \eqref{v4-eq:arity-nilpotence}.
+The inverse limit of this fibre tower is zero.
+Indeed, mapping any test object into it gives a tower of spectra
+whose homotopy groups have uniformly zero transition composites.
+Both the inverse limit and the first derived inverse limit of
+each such group tower vanish. The Milnor exact sequence makes
+the limit mapping spectrum contractible.
+Preservation of limits by \(q_N\) and joint detection now give
+the reconstruction equivalence.
+
+If \(FM=0\), choose the rightmost \(R\)-factor in any nonempty
+vertex of \eqref{v4-eq:punctured-descent-cube}.
+All factors to its right are regular \(G\)-modules, so that
+vertex contains \(R\star_G M=0\). Every \(Q_r(M)\) is zero,
+and reconstruction gives \(M=0\).
+Apply this to the fibre of a map to prove detection of
+equivalences.
+\end{proof}
+
+There is no uniform nilpotence exponent in this argument:
+the bound \(N+1\) is applied at fixed arity before taking the
+arity limit. Nor does it bound coefficient resolution length.
+That length can remain infinite even at arity zero.
+
+\section{Effective coring descent}
+\label{v4-sec:effective-coring-descent}
+
+Conservativity of extension of scalars detects equivalences, but it does
+not alone imply that every coherent coring coaction is effective.
+The remaining condition is preservation of the totalizations
+that become split after extension.
+
+A split augmented cosimplicial object has an extra codegeneracy
+contracting its augmentation. A tower is called \emph{pro-constant}
+if its formal inverse system is equivalent to a constant object
+in the pro-category. For towers, the mapping spaces there are
+\[
+ \operatorname{Map}_{\operatorname{Pro}}(\{X_i\},\{Y_j\})
+ =
+ \lim_j\operatorname*{colim}_i\operatorname{Map}(X_i,Y_j).
+\]
+Two facts will be used. Constant pro-objects in a stable
+idempotent-complete category are closed under finite cofibres,
+shifts, and retracts. Also, the partial-totalization tower of a
+split augmented cosimplicial object is pro-constant at its
+augmentation object. The latter follows because the split
+augmentation remains a limit diagram under every functor;
+applying the constant embedding into the pro-category gives
+the assertion for the tower of finite totalizations.\footnote{See
+A.~Mathew, \emph{The Galois group of a stable homotopy theory},
+Example~3.11 and the proof of Proposition~3.22,
+\href{https://arxiv.org/abs/1404.2156}{arXiv:1404.2156}.}
+
+\begin{lemma}\label{v4-lem:split-totalizations}
+At fixed arity at most \(N\), let \(Z^\bullet\) be a
+cosimplicial \(G\)-module such that \(FZ^\bullet\) extends to a
+split augmented cosimplicial \(R\)-module.
+The partial-totalization tower of \(Z^\bullet\) is pro-constant.
+Every exact functor preserves its totalization.
+\end{lemma}
+
+\begin{proof}
+Work in the truncated module category and suppress \(q_N\).
+Call a \(G\)--\(G\) bimodule \(P\) admissible if
+\[
+ \{\operatorname{Tot}_n(P\star_G Z^\bullet)\}_n
+\]
+is pro-constant. Since finite totalizations are finite stable
+limits, admissible bimodules are closed under finite cofibres,
+shifts, and retracts. The split augmentation makes \(R\)
+admissible.
+
+If \(P\) is admissible and \(Q\) is any bimodule,
+the exact functor \(Q\star_G-\) preserves each finite
+totalization. Its extension to pro-objects carries a constant
+tower to a constant tower. Hence \(Q\star_G P\) is admissible.
+
+Put \(d=N+1\). Factor the null map \(u^{\star_G d}\) through
+\[
+ I^{\star_G d}\longrightarrow I^{\star_G(d-1)}
+ \longrightarrow\cdots\longrightarrow I\longrightarrow G,
+\]
+applying \(u\) on the right.
+The successive cofibres are
+\(I^{\star_G j}\star_G R\), \(0\leq j<d\).
+They are admissible. The cofibre of the composite is a finite
+extension of them, and \(G\) is a retract of this cofibre because
+the composite is null. Thus \(G\) is admissible.
+
+A pro-constant tower has inverse limit equal to its constant
+value. An exact functor preserves finite totalizations and
+carries that formal constant tower to the corresponding
+constant tower of its image. It therefore preserves this
+totalization, without needing to preserve arbitrary products.
+\end{proof}
+
+For an \(F\)-split cosimplicial object in the full category,
+apply the lemma after each \(q_N\).
+Since \(q_N\) preserves limits and balanced tensors, it
+identifies the image of the comparison
+\begin{equation}\label{v4-eq:descent-limit-comparison}
+ F\operatorname{Tot}Z^\bullet
+ \longrightarrow \operatorname{Tot}FZ^\bullet
+\end{equation}
+with the equivalence in the truncated category.
+Joint detection proves \eqref{v4-eq:descent-limit-comparison}
+is an equivalence in the full category.
+
+Write \(K_f=FU=T_f\star_R-\). A coherent \(T_f\)-comodule means
+a coalgebra for this comonad; denote its category by
+\(\operatorname{Coalg}_{K_f}(\operatorname{Mod}_R(\mathcal C))\).
+
+\begin{theorem}[Effective descent]
+\label{v4-thm:effective-descent}
+Under the hypotheses of Section~\ref{v4-sec:arity-reconstruction},
+extension of scalars with its canonical coaction gives an equivalence
+\[
+ \operatorname{Mod}_G(\mathcal C)
+ \simeq
+ \operatorname{Coalg}_{K_f}
+       \bigl(\operatorname{Mod}_R(\mathcal C)\bigr),
+ \qquad
+ M\longmapsto(FM,F\eta_M).
+\]
+For a coherent comodule \((N,\gamma)\), its inverse is
+\begin{equation}\label{v4-eq:descent-inverse}
+ \mathcal R_f(N,\gamma)
+ =
+ \operatorname{Tot}_{[n]\in\Delta}UK_f^nN.
+\end{equation}
+No cohomological boundedness assumption is imposed.
+\end{theorem}
+
+\begin{proof}
+The adjunction supplies the comonad counit
+\(\epsilon:K_f\to\operatorname{Id}\) and comultiplication
+\(\delta=F\eta U\).
+In the cosimplicial object of \eqref{v4-eq:descent-inverse},
+the cofaces out of degree \(n\) are
+\[
+ d^0=\eta_{UK_f^nN},\qquad
+ d^i=UK_f^{i-1}\delta_{K_f^{n-i}N}\ (1\leq i\leq n),
+ \qquad d^{n+1}=UK_f^n\gamma.
+\]
+The codegeneracies apply the counit in each possible position.
+Adjunction and coaction coherences give the entire cosimplicial
+diagram.
+
+Mapping a \(G\)-module into its totalization and applying the
+adjunction at each vertex identifies the resulting mapping
+space with maps of coherent \(K_f\)-coalgebras from
+\((FM,F\eta_M)\) to \((N,\gamma)\).
+Thus \(\mathcal R_f\) is right adjoint to the comparison functor.
+
+After \(F\), the defining diagram has the split augmentation
+\[
+ N\xrightarrow{\gamma}K_fN
+ \rightrightarrows K_f^2N\longrightarrow\cdots,
+\]
+whose extra codegeneracy is the counit at the left end.
+The limit comparison already proved gives an equivalence
+\[
+ F\operatorname{Tot}UK_f^\bullet N
+ \simeq \operatorname{Tot}K_f^{\bullet+1}N
+ \simeq N .
+\]
+It respects coactions because it is induced by the full
+cosimplicial diagram. This is the counit of the comparison
+adjunction. It is therefore an equivalence.
+
+The triangle identity shows that the comparison functor sends
+its unit to an equivalence. The underlying functor of the
+comparison is \(F\), which detects equivalences by
+Theorem~\ref{v4-thm:ordered-reconstruction}.
+Hence the unit is also an equivalence, proving the theorem.
+\end{proof}
+
+The totalization in \eqref{v4-eq:descent-inverse} is a limit.
+Let \(\mathrm N^n\) denote cosimplicial normalization in degree \(n\).
+In dg representatives the totalization uses the product
+\[
+ \prod_{n\geq0}\mathrm N^n(UK_f^\bullet N)[-n].
+\]
+This product belongs to the descent construction; it is not a
+replacement of the direct-sum realizations used to define
+balanced tensor products. The counit of the equivalence is the
+map from this whole totalization. It is generally different
+from the individual map \(K_fN\to N\).
+
+Over a field, a nonacyclic unital dg algebra \(R_0\) has a split
+unit as a complex. Indeed its unit cannot be a boundary: a
+primitive for \(1\), multiplied by any cocycle, would make
+every cocycle a boundary. Splitting complexes over the field
+then supplies a chain map \(R_0\to k\) taking \(1\) to \(1\).
+Thus, on a carrier satisfying the arity hypotheses and the
+hypothesis on maps to \(K\), every such \(G\to R\) has effective
+coring descent. Over a general arity-zero algebra \(S\), the
+corresponding argument requires a splitting of \(S\to R_0\)
+in \(\mathcal D(S\text{-}S)\). A splitting of underlying scalar complexes
+does not supply that bimodule splitting.

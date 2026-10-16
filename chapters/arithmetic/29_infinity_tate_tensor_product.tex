@@ -1,0 +1,1395 @@
+\chapter{The \(\infty\)-Categorical Tate Restricted Tensor Product}
+\label{v4-arith:tate-tensor}
+
+The restricted-tensor assertion F2.c is a formal assembly theorem.
+Its inputs are stable presentable categories with specified
+operadic structures and the actual pointing
+maps of Setup~\ref{v4-arith:tate:setup:data}(D2). Finite tensor
+products of these maps form an operadic diagram. HA~3.2.3.1
+constructs its filtered colimit on the underlying categorical
+colimit. No arithmetic input is used in that construction.
+
+Applying it to arithmetic Iwahori categories still requires the
+local \(E_2\)-structures and the specified pointing maps. Neither
+an invariant vector nor a central idempotent alone supplies those
+maps. The assembly theorem does not construct geometric collision
+comparisons or an identification with an independently defined
+global Hecke category.
+
+\section{Statement of (F2.c)}
+\label{v4-arith:tate:statement}
+
+\subsection{Setup and Definition}
+
+Fix a small one-coloured \(\infty\)-operad \(\mathcal{O}^{\otimes}\) (the chief cases
+are \(\mathcal{O}=E_{n}\) for \(n\geq 1\)). Fix an indexing set \(V\) of
+\emph{places}: in the target application \(V=|\overline{C}|\) is the
+set of places of \(\overline{\mathrm{Spec}\,\mathbb{Z}}\), but the
+statement is place-agnostic.
+
+Write \(\mathrm{Pr}^{\mathrm L}_{\mathrm{st}}\) for the
+\(\infty\)-category of stable presentable \(\infty\)-categories and
+colimit-preserving functors. Its tensor product represents
+functors preserving colimits in each input. The tensor unit is
+\(\mathrm{Sp}\), the \(\infty\)-category of spectra, and
+\(\mathbb S\in\mathrm{Sp}\) is the sphere spectrum. In particular,
+an empty tensor of categories means \(\mathrm{Sp}\).
+
+\begin{setup}[F2.c data]
+\label{v4-arith:tate:setup:data}
+\leavevmode
+\begin{enumerate}
+\item[(D1)] For each \(v\in V\), a stable presentable \(\infty\)-category
+\(\mathcal{C}_{v}\in\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\) equipped
+with an \(\mathcal{O}\)-monoidal structure compatible with colimits in
+each variable: \(\mathcal{C}_{v}^{\otimes}\to\mathcal{O}^{\otimes}\)
+exhibits \(\mathcal{C}_{v}\) as an \(\mathcal{O}\)-algebra in
+\(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\).
+\item[(D2)] A cofinite subset \(V^{\mathrm{sph}}\subseteq V\) and,
+for each \(v\in V^{\mathrm{sph}}\), a specified morphism
+\[
+ \eta_v:\mathrm{Sp}\longrightarrow\mathcal C_v
+ \quad\text{in}\quad
+ \mathrm{Alg}_{\mathcal O}(\mathrm{Pr}^{\mathrm L}_{\mathrm{st}}).
+\]
+Write \(u_v=\eta_v(\mathbb S)\). The morphism includes compatibility
+with every operation, including nullary operations, and all their
+coherences. Throughout this chapter, pointed spherical data means
+these maps, not merely their values on \(\mathbb S\).
+
+In the unital
+\(E_n\) cases, \(n\geq1\), necessarily
+\(u_v\simeq\mathbb 1_{\mathcal C_v}\). A non-unit central idempotent
+under \(\mathbb 1_{\mathcal C_v}\) does not give such a map into
+\(\mathcal C_v\). A construction using it would require a different
+unital target or a different notion of morphism.
+\end{enumerate}
+Write \(\mathrm{Fin}(V)\) for the filtered poset of finite subsets of
+\(V\) ordered by inclusion, and \(\mathrm{Fin}^{\mathrm{sph}}(V)\) for
+the cofinal subposet consisting of finite \(S\subseteq V\) with
+\(V\setminus S\subseteq V^{\mathrm{sph}}\).
+\end{setup}
+
+\begin{definition}[Tate restricted tensor product]
+\label{v4-arith:tate:def:restricted-tensor}
+Under Setup~\ref{v4-arith:tate:setup:data}, the \emph{Tate restricted
+tensor product} of \(\{\mathcal{C}_{v}\}_{v}\) with pointed spherical
+data \(\{(\eta_{v},u_{v})\}_{v\in V^{\mathrm{sph}}}\) is the colimit
+\begin{equation}
+\label{v4-arith:tate:eq:restricted-def}
+\bigotimes_{v\in V}^{\prime}(\mathcal{C}_{v},u_{v})
+\;:=\;
+\varinjlim_{S\in\mathrm{Fin}^{\mathrm{sph}}(V)}
+\Bigl(\bigotimes_{v\in S}\mathcal{C}_{v}\Bigr)
+\end{equation}
+in \(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\). The transition
+morphism for \(S\subseteq S'\) uses the pointing at each
+\(v\in S'\setminus S\):
+\begin{equation}
+\label{v4-arith:tate:eq:unital-extension}
+\iota_{S\subseteq S'}\;:\;
+\bigotimes_{v\in S}\mathcal{C}_{v}
+\;\xrightarrow{\;\mathrm{id}\otimes\bigotimes_{v\in S'\setminus S} \eta_{v}\;}\;
+\bigotimes_{v\in S'}\mathcal{C}_{v},
+\qquad
+X\mapsto X\otimes\Bigl(\bigotimes_{v\in S'\setminus S}u_{v}\Bigr).
+\end{equation}
+\end{definition}
+
+The right-hand side uses the Lurie tensor product in
+\(\mathrm{Pr}^{\mathrm{L}}\) of HA~4.8.1. It restricts to a
+symmetric monoidal structure on \(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\)
+by HA~4.8.2.18.
+
+\begin{theorem}[F2.c: \(\infty\)-categorical Tate restricted \(\mathcal{O}\)-tensor]
+\label{v4-arith:tate:thm:F2c-main}
+\ClaimStatusProvedHere Fix a small coherent \(\infty\)-operad
+\(\mathcal O^{\otimes}\). This includes \(E_n\) for \(n\geq1\)
+and \(E_\infty\). Under Setup~\ref{v4-arith:tate:setup:data},
+the restricted tensor product~\eqref{v4-arith:tate:eq:restricted-def}
+carries a canonical \(\mathcal{O}\)-monoidal structure such that:
+\begin{enumerate}
+\item[(M1)] For each \(S\in\mathrm{Fin}^{\mathrm{sph}}(V)\), the
+canonical map
+\[
+\iota_{S}\;:\;\bigotimes_{v\in S}\mathcal{C}_{v}\;\longrightarrow\;\bigotimes_{v\in V}^{\prime}(\mathcal{C}_{v},u_{v})
+\]
+is an \(\mathcal{O}\)-monoidal functor.
+\item[(M2)] If \(V\setminus\{v\}\subseteq V^{\mathrm{sph}}\), the
+canonical functor
+\(\mathcal{C}_{v}\to\bigotimes'_{w\in V}(\mathcal{C}_{w},u_{w})\)
+is \(\mathcal{O}\)-monoidal. For a general \(v\), the same
+construction requires specified \(\mathcal O\)-algebra maps
+\(\mathrm{Sp}\to\mathcal C_w\) at the finitely many remaining
+places \(w\in V\setminus(V^{\mathrm{sph}}\cup\{v\})\).
+\item[(M3)] Fix the full diagram of finite tensor products and
+specified pointing maps, and fix its underlying colimit cocone in
+\(\mathrm{Pr}^{\mathrm L}_{\mathrm{st}}\). The space of lifts of
+this entire cocone, including all higher coherences, to a colimit
+cocone in
+\(\mathrm{Alg}_{\mathcal O}(\mathrm{Pr}^{\mathrm L}_{\mathrm{st}})\)
+is contractible.
+\end{enumerate}
+\end{theorem}
+
+Applied with \(\mathcal{O}=E_{2}\) and
+\(\mathcal{C}_{v}=\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},v}\) and
+the pointing maps of (D2), this proves the formal transport step
+(F2.c) in Theorem~\ref{v4-arith:thm:F2-reduction}. Both the local
+Iwahori \(E_2\)-structures and any identification
+\(|0\rangle_v\simeq\eta_v(\mathbb S)\) remain required inputs.
+
+\subsection{Tensor Products and Factorization Homology}
+The tensor-product construction of Theorem~\ref{v4-arith:tate:thm:F2c-main}
+uses Lurie~HA~4.8 and the integral \(E_n\)-operads discussed by Fresse.
+Dunn additivity (HA~5.1.2.4; Dunn~1988), Ayala--Francis factorization
+homology, and Ginot's account of factorization algebras provide related
+descriptions of the monoidal structures
+(Section~\ref{v4-arith:tate:verification}). Applying these descriptions
+requires the same units, coefficient category and colimit conventions.
+
+\section{Obstructions and Their Resolutions}
+\label{v4-arith:tate:table}
+
+Six questions isolate the ingredients of
+Theorem~\ref{v4-arith:tate:thm:F2c-main}: operadic insertion, filtered
+colimits, discrete factorization, additivity, cocone uniqueness
+and the cofinite pointing condition.
+
+\subsection{The Pointing Required for Unit Insertion}
+
+\begin{obstruction}[operadic insertion]
+Does a distinguished object \(u_v\), or a central idempotent under
+the unit, suffice to make insertion an \(\mathcal O\)-monoidal
+functor?
+\end{obstruction}
+
+\begin{correction}[actual pointing maps]
+The required datum is the morphism \(\eta_v\) in
+Setup~\ref{v4-arith:tate:setup:data}(D2). Tensoring these morphisms
+with identities gives the insertion functors, including their
+nullary and higher compatibilities. For unital \(E_n\), a strong
+\(E_n\)-monoidal functor preserves the unit, so its value on
+\(\mathbb S\) cannot be a non-unit central idempotent. For a nonzero
+field \(k\), the object \((k,0)\) of \(\mathcal D(k\times k)\)
+is compact, central and idempotent under the unit \((k,k)\).
+Insertion of \((k,0)\) from \(\mathrm{Sp}\) is not unital monoidal.
+Lemma~\ref{v4-arith:tate:lem:unital-incl-is-monoidal} uses the
+specified maps, not an implication from central idempotence.
+\end{correction}
+
+\subsection{\(\mathcal{O}\)-Algebra Structure under Filtered Colimits}
+
+\begin{obstruction}[filtered colimit of \(\mathcal{O}\)-algebras]
+\eqref{v4-arith:tate:eq:restricted-def} is a filtered colimit in
+\(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\). Does the
+\(\mathcal{O}\)-algebra structure propagate through such a colimit?
+\end{obstruction}
+
+\begin{correction}[colimit preservation]
+Lurie~HA~3.2.3.1, applied to the \(\infty\)-operad
+\(\mathcal{O}^{\otimes}\) and the symmetric monoidal
+\(\infty\)-category \((\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}},\otimes)\),
+which admits filtered colimits preserved by tensoring in each variable:
+the forgetful functor
+\(\mathrm{Alg}_{\mathcal{O}}(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}})\to\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\)
+preserves filtered colimits. Hence the colimit
+\(\varinjlim_{S}(\otimes_{v\in S}\mathcal{C}_{v})\) taken in
+\(\mathrm{Alg}_{\mathcal{O}}(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}})\)
+coincides with the colimit in \(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\),
+and the \(\mathcal{O}\)-algebra structure is preserved. Detailed in
+Proposition~\ref{v4-arith:tate:prop:colim-preserves-O-alg}.
+\end{correction}
+
+\subsection{Factorization for Disjoint Subsets of \(V\)}
+
+\begin{obstruction}[factorization axiom]
+Does the finite tensor diagram underlying
+\eqref{v4-arith:tate:eq:restricted-def} respect disjoint unions
+of place labels, and what geometric data does this supply?
+\end{obstruction}
+
+\begin{correction}[discreteness of \(V\)]
+The associator identifies the tensor for \(S\sqcup T\) with the
+tensor of the two separate values whenever \(S\cap T=\varnothing\).
+Spherical-unit insertions respect these identifications on the
+inclusions for which they are defined. This is the discrete
+factorization of Corollary~\ref{v4-arith:cor:no-nontrivial-factorization}.
+It specifies no position diagonal or normal coefficient. A comparison
+with a geometric factorization system must supply those data separately.
+\end{correction}
+
+\subsection{Dunn Additivity and the Restricted Tensor Product}
+
+\begin{obstruction}[Dunn additivity compatibility]
+For \(\mathcal{O}=E_{n_{1}}\) and \(\mathcal{O}'=E_{n_{2}}\) with
+\(n_{1}+n_{2}=n\), Dunn additivity (HA~5.1.2.4) gives
+\(E_{n_{1}}\otimes E_{n_{2}}\simeq E_{n_{1}+n_{2}}\), with the tensor
+product of \(\infty\)-operads. The
+restricted tensor product of \(E_{n_{1}}\)-categories composed with
+the restricted tensor product of \(E_{n_{2}}\)-categories should give
+the restricted tensor product of \(E_{n_{1}+n_{2}}\)-categories. Does
+Theorem~\ref{v4-arith:tate:thm:F2c-main} respect this composition?
+\end{obstruction}
+
+\begin{correction}[operad-variable functoriality]
+Dunn additivity concerns the operad \(E_n\) itself (HA~5.1.2.4).
+For an operad product \(\mathcal O\otimes\mathcal O'\), the
+restricted-tensor construction agrees with its iterated form.
+Both supplied structures and their interchange coherences must
+be retained. The corresponding algebra equivalence identifies
+the finite tensor diagrams and their filtered colimits.
+Proposition~\ref{v4-arith:tate:prop:dunn-compat} gives the
+comparison for the little-cubes operads.
+\end{correction}
+
+\subsection{Cofinality Invariance of the \(\mathcal{O}\)-Structure}
+
+\begin{obstruction}[uniqueness modulo cofinal filtration]
+The proof of Theorem~\ref{v4-arith:tate:thm:F2c-main}(M3) claims uniqueness
+of the \(\mathcal{O}\)-monoidal structure up to contractible choice.
+Does this uniqueness hold unconditionally, or only modulo the choice
+of cofinal filtration \(\mathrm{Fin}^{\mathrm{sph}}(V)\)?
+\end{obstruction}
+
+\begin{correction}[cofinality invariance]
+A cofinal replacement of the filtered indexing category does not
+change the colimit of its operadic diagram. The resulting
+equivalence is the one compatible with the complete colimit
+cocones. Colimit cocones are initial objects in the appropriate
+cocone category, so their space of choices is contractible.
+This uses the universal property of colimits, not an
+\(\infty\)-topos structure on \(\mathrm{Cat}_\infty\).
+See Proposition~\ref{v4-arith:tate:prop:uniqueness}.
+\end{correction}
+
+\subsection{Ramified Places without a Spherical Unit}
+
+\begin{obstruction}[ramified archimedean places]
+Setup~\ref{v4-arith:tate:setup:data} asks for a distinguished
+spherical unit \(u_{v}\) at \emph{almost all} places \(v\in V\). At a
+finite number of ramified places (for \(GL_{2}/\mathbb{Q}\) typically
+the archimedean place and a finite set of primes where the Iwahori
+level is nontrivial), no spherical unit need exist. Does
+Theorem~\ref{v4-arith:tate:thm:F2c-main} still apply?
+\end{obstruction}
+
+\begin{correction}[cofinite spherical locus]
+Every \(S\in\mathrm{Fin}^{\mathrm{sph}}(V)\) contains the finite
+complement \(V\setminus V^{\mathrm{sph}}\). Thus every newly added
+place has a specified pointing map, and the finite-stage diagram
+is defined without choosing pointing maps at the remaining
+places. This does not supply every singleton map: the precise
+condition is (M2). An archimedean invariant vector does not by
+itself verify (D2). An actual operadic pointing is still required
+before that place can be inserted.
+\end{correction}
+
+\section{\(\infty\)-Operadic Preliminaries}
+\label{v4-arith:tate:operadic-prelim}
+
+The proof of Theorem~\ref{v4-arith:tate:thm:F2c-main} draws on three
+ingredients from Lurie~HA and Fresse, recorded here with their
+precise references. Numbering follows the 2017 version of
+Lurie's \emph{Higher Algebra}.
+
+\subsection{Symmetric Monoidal Structure on \(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\)}
+\label{v4-arith:tate:prelim-prl}
+
+\begin{theorem}[HA~4.8.1.15, HA~4.8.2.18]
+\label{v4-arith:tate:thm:prl-symmetric-monoidal}
+\ClaimStatusProvedElsewhere The \(\infty\)-category
+\(\mathrm{Pr}^{\mathrm{L}}\) of presentable \(\infty\)-categories and
+colimit-preserving functors carries a canonical symmetric monoidal
+structure. Its tensor product is characterized by the universal property
+\[
+\mathrm{Fun}^{\mathrm{L}}(\mathcal{C}\otimes\mathcal{D},\mathcal{E})
+\;\simeq\;
+\mathrm{Fun}^{\mathrm{L},\mathrm{L}}(\mathcal{C}\times\mathcal{D},\mathcal{E})
+\]
+(colimit-preserving functors of tensor products \(=\)
+bi-colimit-preserving functors of products). The full subcategory
+\(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\) of stable presentable
+\(\infty\)-categories is closed under this tensor product and carries
+a canonical symmetric monoidal structure with unit \(\mathrm{Sp}\) (the
+\(\infty\)-category of spectra).
+\end{theorem}
+
+\begin{corollary}[HA~4.8.1.24 and HA~4.8.2.18]
+\label{v4-arith:tate:cor:prl-admits-colimits}
+\ClaimStatusProvedElsewhere The \(\infty\)-category
+\(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\) admits small colimits, and
+the tensor product \(\otimes\) preserves colimits separately in each
+variable. In particular, \(\otimes\) preserves filtered colimits in
+each variable.
+\end{corollary}
+
+\subsection{Algebras over an \(\infty\)-Operad in a Presentable Symmetric Monoidal \(\infty\)-Category}
+\label{v4-arith:tate:prelim-alg}
+
+\begin{theorem}[HA~3.2.3.1 and 3.2.3.5]
+\label{v4-arith:tate:thm:alg-O-presentable}
+\ClaimStatusProvedElsewhere For a small coherent \(\infty\)-operad
+\(\mathcal{O}^{\otimes}\) and a presentable symmetric monoidal
+\(\infty\)-category \(\mathcal{E}^{\otimes}\) with
+\(\otimes_{\mathcal{E}}\) preserving colimits separately in each
+variable:
+\begin{enumerate}
+\item \(\mathrm{Alg}_{\mathcal{O}}(\mathcal{E})\) is presentable;
+\item the forgetful functor
+\(\mathrm{Alg}_{\mathcal{O}}(\mathcal{E})\to\mathcal{E}\) preserves
+sifted colimits (and in particular filtered colimits).
+\end{enumerate}
+\end{theorem}
+
+Stability of \(\mathcal E\) does not imply stability of its algebra
+category. For example, for a nonzero field \(k\), the initial object
+of \(\mathrm{Alg}_{E_1}(\mathcal D(k))\) is \(k\) and its terminal
+object is the zero algebra. They are not equivalent, so this
+category is not pointed and cannot be stable.
+
+For the restricted tensor product, we need only filtered colimits.
+Corollary~\ref{v4-arith:tate:cor:prl-admits-colimits} supplies these
+in \(\mathrm{Pr}^{\mathrm L}_{\mathrm{st}}\), compatibly with tensor
+products. Proposition~\ref{v4-arith:tate:prop:filtered-colim-operadic}
+then constructs the colimit of the algebra diagram on its underlying
+colimit. This application uses no presentability assertion about
+\(\mathrm{Pr}^{\mathrm L}_{\mathrm{st}}\) itself.
+
+\subsection{\(E_{n}\)-Operad and Integral Structure}
+\label{v4-arith:tate:prelim-En}
+
+\begin{theorem}[Fresse~2017 \emph{Homotopy of Operads} I.4.1; Lurie HA~5.1.0.4]
+\label{v4-arith:tate:thm:En-operad}
+\ClaimStatusProvedElsewhere For each \(n\geq 0\), let
+\(E_n^{\otimes}\) be the little \(n\)-cubes \(\infty\)-operad.
+Its \(k\)-ary operations are parametrized by the space
+\(\mathrm{Conf}_{k}(\mathbb{R}^{n})\) of configurations of \(k\) ordered
+little \(n\)-cubes in the unit \(n\)-cube. This \(\infty\)-operad is
+coherent in the sense of HA~3.3.1.1. The standard inclusion
+\(E_n^{\otimes}\to E_{n+1}^{\otimes}\) induces restriction from
+\(E_{n+1}\)-algebras to \(E_n\)-algebras. The relation with iterated
+algebra structures is the Dunn additivity equivalence below,
+not a forgetful morphism \(E_{n+1}\to E_n\).
+\end{theorem}
+
+\begin{theorem}[Dunn additivity; HA~5.1.2.4; Dunn~1988 JPAA~50]
+\label{v4-arith:tate:thm:dunn-additivity}
+\ClaimStatusProvedElsewhere For any \(n_{1},n_{2}\geq 0\),
+\[
+E_{n_{1}}^{\otimes}\otimes E_{n_{2}}^{\otimes}\;\simeq\;E_{n_{1}+n_{2}}^{\otimes}
+\]
+as \(\infty\)-operads, where \(\otimes\) is the tensor product of
+\(\infty\)-operads (HA~2.2.5.6). In particular, an
+\(E_{n_{1}+n_{2}}\)-algebra in \(\mathcal{E}\) is the same datum as an
+\(E_{n_{1}}\)-algebra in \(E_{n_{2}}\)-algebras in \(\mathcal{E}\).
+\end{theorem}
+
+\subsection{Compatibility of a Specified Pointing}
+\label{v4-arith:tate:prelim-central}
+
+\begin{theorem}[operadic pointing compatibility]
+\label{v4-arith:tate:thm:unit-central}
+Let \(\eta:\mathrm{Sp}\to\mathcal C\) be a morphism in
+\(\mathrm{Alg}_{\mathcal O}(\mathrm{Pr}^{\mathrm L}_{\mathrm{st}})\).
+For every \(\mathcal O\)-operation, its compatibility with
+\(\eta\), together with all substitution coherences, is part of
+this morphism. For unital \(E_n\), \(n\geq1\), its nullary
+compatibility gives \(\eta(\mathbb S)\simeq\mathbb 1_{\mathcal C}\).
+\end{theorem}
+
+\begin{proof}
+A morphism of operadic algebras commutes with the operation maps
+and their coherences. The nullary operation of the canonical
+unital \(E_n\)-algebra \(\mathrm{Sp}\) is the identity
+\(\mathrm{Sp}\to\mathrm{Sp}\). That of \(\mathcal C\) is its unit
+functor. Compatibility identifies \(\eta\) with that unit functor
+and gives the stated equivalence on \(\mathbb S\).
+\end{proof}
+
+This is the pointing compatibility used in
+Lemma~\ref{v4-arith:tate:lem:unital-incl-is-monoidal}. It asserts
+no mapping-space identity involving the identity functor as an
+object of \(\mathcal C\).
+
+\subsection{Filtered Colimits of \(\infty\)-Operadic Algebras}
+
+\begin{proposition}[HA~3.2.3.1]
+\label{v4-arith:tate:prop:filtered-colim-operadic}
+\ClaimStatusProvedElsewhere Let \(\mathcal{O}^{\otimes}\) be a small
+one-coloured coherent \(\infty\)-operad, and let
+\(\mathcal{E}^{\otimes}\) be a symmetric monoidal \(\infty\)-category
+admitting small filtered colimits. Suppose
+\(\otimes_{\mathcal{E}}\) preserves these colimits in each variable.
+Then the forgetful functor
+\[
+U_{\mathcal{O}}\;:\;\mathrm{Alg}_{\mathcal{O}}(\mathcal{E})\;\longrightarrow\;\mathcal{E}
+\]
+preserves and creates filtered colimits. Concretely: a filtered
+diagram \(F:I\to\mathrm{Alg}_{\mathcal{O}}(\mathcal{E})\) has colimit
+whose underlying object in \(\mathcal{E}\) is \(\varinjlim_{i}U_{\mathcal{O}}F(i)\),
+with \(\mathcal{O}\)-algebra structure induced levelwise.
+\end{proposition}
+
+This is the mechanism of colimit-preservation
+(\S\ref{v4-arith:tate:colim-preservation}).
+
+\section{Unital Inclusion Functors}
+\label{v4-arith:tate:unital-inclusion}
+
+Inserting a spherical unit at a new place gives an
+\(\mathcal{O}\)-monoidal functor; the following lemma makes this precise.
+
+\begin{lemma}[unit insertion is \(\mathcal{O}\)-monoidal]
+\label{v4-arith:tate:lem:unital-incl-is-monoidal}
+\ClaimStatusProvedHere Let \(\mathcal{O}^{\otimes}\) be a coherent
+\(\infty\)-operad, and let \(\mathcal{C}_{1},\ldots,\mathcal{C}_{k}\)
+and \(\mathcal{C}_{k+1},\ldots,\mathcal{C}_{m}\) be
+\(\mathcal{O}\)-algebras in \(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\)
+for some \(k\leq m\). For \(i>k\) choose a spherical unit
+\(u_{i}\in\mathcal{C}_{i}\) in the sense of
+Setup~\ref{v4-arith:tate:setup:data}(D2). Then the functor
+\begin{equation}
+\label{v4-arith:tate:eq:unital-incl}
+\iota_{\{1,\ldots,k\}\subseteq\{1,\ldots,m\}}\;:\;
+\bigotimes_{i=1}^{k}\mathcal{C}_{i}\;\longrightarrow\;\bigotimes_{i=1}^{m}\mathcal{C}_{i}
+\end{equation}
+defined by inserting \(u_{i}\) at position \(i\) for \(i>k\) is an
+\(\mathcal{O}\)-monoidal functor.
+\end{lemma}
+
+\begin{proof}
+The symmetric monoidal tensor product on
+\(\mathrm{Alg}_{\mathcal O}(\mathrm{Pr}^{\mathrm L}_{\mathrm{st}})\)
+is induced by the ambient tensor product. The insertion is the
+morphism
+\[
+ \bigotimes_{i\leq k}\mathcal C_i
+ \simeq
+ \Bigl(\bigotimes_{i\leq k}\mathcal C_i\Bigr)
+       \otimes\mathrm{Sp}^{\otimes(m-k)}
+ \xrightarrow{\ \mathrm{id}\otimes\bigotimes_{i>k}\eta_i\ }
+ \bigotimes_{i\leq m}\mathcal C_i.
+\]
+Every \(\eta_i\) is a specified morphism of \(\mathcal O\)-algebras,
+so this is also such a morphism. In particular, writing \(A\) and
+\(B\) for the source and target, respectively, each operation
+\(c\in\mathcal O(r)\) satisfies
+\begin{equation}
+\label{v4-arith:tate:eq:unital-incl-commute}
+ \iota\circ\mu_c^A\simeq\mu_c^B\circ\iota^{\otimes r}.
+\end{equation}
+
+For \(r=0\) this is unit compatibility. The higher compatibilities
+are inherited from the supplied morphisms and the symmetric
+monoidal structure, rather than chosen independently for each
+operation. Tensor associativity supplies the compatible
+composites for every chain of finite subsets.
+\end{proof}
+
+\begin{corollary}[restriction of \(\iota\)]
+\label{v4-arith:tate:cor:iota-restriction}
+\ClaimStatusProvedHere Assume the hypotheses of
+Lemma~\ref{v4-arith:tate:lem:unital-incl-is-monoidal}. For every
+sub-triangle \(\{1,\ldots,k\}\subseteq\{1,\ldots,k'\}\subseteq\{1,\ldots,m\}\)
+the composite \(\iota_{\{1,\ldots,k\}\subseteq\{1,\ldots,m\}}\) equals
+\(\iota_{\{1,\ldots,k'\}\subseteq\{1,\ldots,m\}}\circ\iota_{\{1,\ldots,k\}\subseteq\{1,\ldots,k'\}}\)
+as \(\mathcal{O}\)-monoidal functors under the comparison supplied
+by tensor associativity and the fixed pointing maps. These
+comparisons are coherent for longer chains.
+\end{corollary}
+
+\begin{proof}
+Both sides are tensor products of the same identities and supplied
+maps \(\eta_i\) at the same positions. The associativity and unit
+coherences of the symmetric monoidal algebra category identify
+these composites, compatibly with longer chains. This is the
+specified coherent comparison, not an assertion that arbitrary
+homotopies between the underlying functors form a contractible
+space.
+\end{proof}
+
+\begin{remark}[two cells of the full diagram system]
+\label{v4-arith:tate:rem:iota-2cells}
+Lemma~\ref{v4-arith:tate:lem:unital-incl-is-monoidal} together with
+Corollary~\ref{v4-arith:tate:cor:iota-restriction} upgrades the system
+\(\{\iota_{S\subseteq S'}\}_{S\subseteq S'}\) to a diagram
+\[
+\Phi_{\{\mathcal{C}_{v},u_{v}\}}\;:\;\mathrm{Fin}^{\mathrm{sph}}(V)\;\longrightarrow\;\mathrm{Alg}_{\mathcal{O}}(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}})
+\]
+covariant in the filtered poset ordered by inclusion. Its map for
+\(S\subseteq S'\) inserts the specified spherical units in
+\(S'\setminus S\).
+This is the diagram on which
+Proposition~\ref{v4-arith:tate:prop:colim-preserves-O-alg} will
+take colimits.
+\end{remark}
+
+\section{Colimit Preservation}
+\label{v4-arith:tate:colim-preservation}
+
+\begin{proposition}[\(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\) of \(\mathcal{O}\)-categories is cocomplete under filtered colimits]
+\label{v4-arith:tate:prop:colim-preserves-O-alg}
+\ClaimStatusProvedHere Let \(\mathcal{O}^{\otimes}\) be a small
+one-coloured coherent \(\infty\)-operad. For every small
+filtered \(\infty\)-category \(I\) and every functor
+\(\Phi:I\to\mathrm{Alg}_{\mathcal{O}}(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}})\),
+the colimit \(\varinjlim_{i}\Phi(i)\) exists in
+\(\mathrm{Alg}_{\mathcal{O}}(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}})\),
+and its underlying presentable stable \(\infty\)-category is
+\(\varinjlim_{i}(U_{\mathcal{O}}\Phi(i))\) in
+\(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\). Every \(\mathcal{O}\)-operation
+on the colimit is computed levelwise: given
+\(c\in\mathcal{O}(r)\), the operation
+\[
+\mu_{c}^{(\mathrm{colim})}\;:\;\prod_{j=1}^{r}\Bigl(\varinjlim_{i}\Phi(i)\Bigr)\;\longrightarrow\;\varinjlim_{i}\Phi(i)
+\]
+is the filtered colimit of the family
+\(\{\mu_{c}^{(\Phi(i))}\}_{i}\).
+\end{proposition}
+
+\begin{proof}
+Put \(\mathcal C_i=U_{\mathcal O}\Phi(i)\) and
+\(\mathcal C=\varinjlim_i\mathcal C_i\) in
+\(\mathrm{Pr}^{\mathrm L}_{\mathrm{st}}\).
+Corollary~\ref{v4-arith:tate:cor:prl-admits-colimits} gives
+this colimit and preservation by tensoring. Hence
+Proposition~\ref{v4-arith:tate:prop:filtered-colim-operadic},
+with \(\mathcal E=\mathrm{Pr}^{\mathrm L}_{\mathrm{st}}\), gives
+an algebra colimit whose underlying object is \(\mathcal C\).
+
+The operations can be seen directly. For \(r>0\), the diagonal
+\(I\to I^r\) is cofinal because \(I\) is filtered. Therefore
+\[
+ \mathcal C^{\otimes r}
+ \simeq\varinjlim_{(i_1,\ldots,i_r)\in I^r}
+       \mathcal C_{i_1}\otimes\cdots\otimes\mathcal C_{i_r}
+ \simeq\varinjlim_{i\in I}\mathcal C_i^{\otimes r}.
+\]
+For \(c\in\mathcal O(r)\), take the colimit of
+\(\mu_c^{(i)}:\mathcal C_i^{\otimes r}\to\mathcal C_i\).
+The resulting map is the displayed operation on \(\mathcal C\),
+viewed as a functor preserving colimits in each input.
+Nullary operations pass through the coherent cocone from
+\(\mathrm{Sp}\); the nerve of a filtered category is contractible.
+Operadic composition and its homotopies pass through these same
+colimit comparisons. Thus the construction retains the full
+algebra structure, as asserted by HA~3.2.3.1.
+\end{proof}
+
+\begin{corollary}[restricted tensor product as colimit in \(\mathrm{Alg}_{\mathcal{O}}\)]
+\label{v4-arith:tate:cor:rtp-as-colimit-in-alg}
+\ClaimStatusProvedHere The diagram
+\(\Phi_{\{\mathcal{C}_{v},u_{v}\}}:\mathrm{Fin}^{\mathrm{sph}}(V)\to\mathrm{Alg}_{\mathcal{O}}(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}})\)
+of
+Remark~\ref{v4-arith:tate:rem:iota-2cells} admits a colimit in
+\(\mathrm{Alg}_{\mathcal{O}}(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}})\),
+whose underlying presentable stable \(\infty\)-category is
+\(\bigotimes'_{v\in V}(\mathcal{C}_{v},u_{v})\) of
+Definition~\ref{v4-arith:tate:def:restricted-tensor}.
+\end{corollary}
+
+\begin{proof}
+\(\mathrm{Fin}^{\mathrm{sph}}(V)\) is a filtered \(\infty\)-poset
+(union of finite subsets is again finite; the empty set, or any
+initial element of \(\mathrm{Fin}^{\mathrm{sph}}(V)\), gives
+non-emptiness). Apply
+Proposition~\ref{v4-arith:tate:prop:colim-preserves-O-alg}.
+\end{proof}
+
+\section{Proof of the Main Theorem}
+\label{v4-arith:tate:main-proof}
+
+\begin{proof}[Proof of Theorem~\ref{v4-arith:tate:thm:F2c-main}]
+
+\medskip\noindent\textbf{Step 1 (construction of the diagram).}
+Given the data of Setup~\ref{v4-arith:tate:setup:data}, construct
+the diagram
+\[
+\Phi\;:\;\mathrm{Fin}^{\mathrm{sph}}(V)\;\longrightarrow\;\mathrm{Alg}_{\mathcal{O}}(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}),
+\qquad\Phi(S)\;:=\;\bigotimes_{v\in S}\mathcal{C}_{v}
+\]
+with transition maps \(\iota_{S\subseteq S'}\) of
+\eqref{v4-arith:tate:eq:unital-extension}. By
+Lemma~\ref{v4-arith:tate:lem:unital-incl-is-monoidal}, each
+\(\iota_{S\subseteq S'}\) is an \(\mathcal{O}\)-monoidal functor.
+For every chain of inclusions, each composite tensors with the
+same supplied maps \(\eta_v\) at the same positions. Coherence of
+the tensor product gives all composition homotopies and their
+compatibilities; the triangular identity is
+Corollary~\ref{v4-arith:tate:cor:iota-restriction}. Thus \(\Phi\) is a functor
+from the filtered \(\infty\)-poset
+\(\mathrm{Fin}^{\mathrm{sph}}(V)\) into
+\(\mathrm{Alg}_{\mathcal{O}}(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}})\).
+
+\medskip\noindent\textbf{Step 2 (existence of the \(\mathcal{O}\)-structured colimit).}
+By
+Corollary~\ref{v4-arith:tate:cor:rtp-as-colimit-in-alg}, the colimit
+\(\varinjlim_{S}\Phi(S)\) exists in
+\(\mathrm{Alg}_{\mathcal{O}}(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}})\),
+and its underlying object in
+\(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\) is
+\(\bigotimes'_{v\in V}(\mathcal{C}_{v},u_{v})\) by
+Definition~\ref{v4-arith:tate:def:restricted-tensor}. This supplies the
+\(\mathcal{O}\)-monoidal structure promised in
+Theorem~\ref{v4-arith:tate:thm:F2c-main}.
+
+\medskip\noindent\textbf{Step 3 (property (M1): each \(\iota_{S}\) is \(\mathcal{O}\)-monoidal).}
+The canonical map
+\(\iota_{S}:\Phi(S)\to\varinjlim_{S'}\Phi(S')\) is a morphism in
+\(\mathrm{Alg}_{\mathcal{O}}(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}})\)
+by the universal property of the colimit applied inside the
+\(\infty\)-category of \(\mathcal{O}\)-algebras. Hence \(\iota_{S}\) is
+\(\mathcal{O}\)-monoidal. This is (M1).
+
+\medskip\noindent\textbf{Step 4 (property (M2): a single-place map).}
+If \(V\setminus\{v\}\subseteq V^{\mathrm{sph}}\), the singleton
+\(\{v\}\) belongs to \(\mathrm{Fin}^{\mathrm{sph}}(V)\), so Step~3
+applies directly. Otherwise put
+\(E=V\setminus V^{\mathrm{sph}}\) and choose the additional maps
+in (M2). They give an \(\mathcal O\)-algebra map
+\[
+\mathcal C_v\longrightarrow
+\bigotimes_{w\in E\cup\{v\}}\mathcal C_w
+\xrightarrow{\,\iota_{E\cup\{v\}}\,}
+\bigotimes'_{w\in V}(\mathcal C_w,u_w).
+\]
+The first arrow tensors with the chosen maps at \(E\setminus\{v\}\);
+the second is supplied by (M1). Passing to a larger admissible
+finite set inserts only the original spherical-unit maps, so
+tensor coherence and the colimit cocone identify the composites.
+The resulting functor depends on the extra choices. Full
+faithfulness is not part of (M2).
+
+\medskip\noindent\textbf{Step 5 (property (M3): uniqueness up to contractible space of choices).}
+By Step~2, the structured colimit is initial among cocones under
+\(\Phi\) in
+\(\mathrm{Alg}_{\mathcal O}(\mathrm{Pr}^{\mathrm L}_{\mathrm{st}})\).
+Here compatibility with \((\iota_S)\) includes the whole coherent
+cocone. Let another such structure be given on the fixed underlying
+colimit. Initiality supplies a contractible space of maps to its
+cocone. After forgetting the algebra structure, each is the
+equivalence determined by the two colimit cocones. The forgetful
+functor detects equivalences, so the structured map is itself an
+equivalence. Consequently every compatible structured cocone is
+initial, and the space of them is contractible. This proves (M3).
+
+Steps~1--5 together prove Theorem~\ref{v4-arith:tate:thm:F2c-main}.
+\end{proof}
+
+\begin{remark}[categorical content]
+\label{v4-arith:tate:rem:cat-content}
+The proof displays the \(\infty\)-categorical Tate restricted tensor
+product as a filtered colimit in the \(\infty\)-category
+\(\mathrm{Alg}_{\mathcal{O}}(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}})\).
+This is the \(\infty\)-categorical analogue of the classical Tate
+restricted direct product of locally compact abelian groups:
+\[
+\prod_{v\in V}^{\prime}G_{v}\;:=\;\varinjlim_{S\text{ finite}}\prod_{v\in S}G_{v}\times\prod_{v\notin S}K_{v}
+\]
+with \(K_{v}\subseteq G_{v}\) compact-open, via filtered union over
+finite ramification sets. Here a transition uses the inclusions
+\(K_v\hookrightarrow G_v\) at the newly unrestricted places; the
+categorical tensor instead inserts the specified objects \(u_v\).
+The common filtered indexing does not identify these different
+transition maps or their colimits.
+\end{remark}
+
+\section{Discrete Factorization and Geometric Comparison}
+\label{v4-arith:tate:bd-factorization}
+
+Finite tensor products carry coherent decomposition maps for
+disjoint sets of place labels. We construct these maps together
+with the allowed unit insertions. A comparison with geometric
+factorization must also specify the coefficients and maps at
+colliding positions.
+
+\subsection{Factorization on Finite Sets of Places}
+
+\begin{setup}[finite subsets and multisets of \(V\)]
+\label{v4-arith:tate:setup:ran-discrete}
+For the set \(V\), let \(\mathrm{Fin}_{+}(V)\) be its nonempty
+finite subsets. The set of nonempty finite multisets is instead
+\(\coprod_{n\geq1}V^n/\mathfrak S_n\). Forgetting multiplicities
+maps the latter onto the former. The diagram below is indexed by
+finite subsets, including the empty set, with explicitly specified
+arrows; no transition between symmetric powers is needed.
+\end{setup}
+
+\begin{definition}[Discrete factorization with specified unit insertions]
+\label{v4-arith:tate:def:factorization-discrete}
+Let \(\mathrm{Fin}^{u}(V)\) have all finite subsets as objects,
+with an arrow \(S\to T\) when \(S\subseteq T\) and
+\(T\setminus S\subseteq V^{\mathrm{sph}}\). Thus only places
+with a specified spherical-unit map may be inserted. A discrete
+factorization datum in the category of
+\(\mathcal{O}\)-algebras in \(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}}\)
+is a diagram
+\[
+\mathcal{A}\;:\;\mathrm{Fin}^{u}(V)\;\longrightarrow\;\mathrm{Alg}_{\mathcal{O}}(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}})
+\]
+satisfying the factorization axiom: for every pair of disjoint
+finite subsets \(S_{1},S_{2}\subset V\),
+\[
+\mathcal{A}(S_{1}\sqcup S_{2})\;\simeq\;\mathcal{A}(S_{1})\otimes\mathcal{A}(S_{2})
+\]
+as \(\mathcal{O}\)-algebras, coherently associative and symmetric,
+and natural in the allowed inclusions of disjoint subsets.
+\end{definition}
+
+\begin{theorem}[Finite tensors give discrete factorization]
+\label{v4-arith:tate:thm:BD-automatic-discrete}
+\ClaimStatusProvedHere Under Setup~\ref{v4-arith:tate:setup:data},
+the finite tensors define a discrete factorization datum in the
+sense of Definition~\ref{v4-arith:tate:def:factorization-discrete}.
+Its restriction to \(\mathrm{Fin}^{\mathrm{sph}}(V)\) is the
+diagram \(\Phi_{\{\mathcal C_v,u_v\}}\) of
+Remark~\ref{v4-arith:tate:rem:iota-2cells}. Its value
+on \(S=\{v_{1},\ldots,v_{k}\}\) is
+\(\bigotimes_{i=1}^{k}\mathcal{C}_{v_{i}}\), and on a disjoint union
+\(S_{1}\sqcup S_{2}\) is
+\(\mathcal{A}(S_{1})\otimes\mathcal{A}(S_{2})\) by associativity of
+the tensor product.
+\end{theorem}
+
+\begin{proof}
+For each allowed inclusion, insert the maps \(\eta_v\) at the
+new places. Composing two inclusions inserts the same maps at the
+same places, giving the diagram. Associativity of the finite
+tensor identifies the value on a disjoint union with the tensor
+of its two values. Tensor coherence proves all refinements and
+permutations of this identification. On
+\(\mathrm{Fin}^{\mathrm{sph}}(V)\), these maps are precisely the
+transitions defining \(\Phi\).
+\end{proof}
+
+\begin{corollary}[Filtered assembly of the finite tensors]
+\label{v4-arith:tate:cor:tate-is-factorization-globals}
+\ClaimStatusProvedHere Under the hypotheses of
+Theorem~\ref{v4-arith:tate:thm:F2c-main},
+\[
+\bigotimes_{v\in V}^{\prime}(\mathcal{C}_{v},u_{v})\;=\;\varinjlim_{S\in\mathrm{Fin}^{\mathrm{sph}}(V)}\Phi(S).
+\]
+The colimit assembles the discrete factorization datum of
+Theorem~\ref{v4-arith:tate:thm:BD-automatic-discrete} along its
+spherical-unit insertions. Identifying it with sections or homology
+of a geometric Ran object requires a separate comparison.
+\end{corollary}
+
+\begin{remark}[Position geometry is additional]
+\label{v4-arith:tate:rem:factorization-trivial}
+The discrete construction proves the disjoint tensor identities
+and their unit-insertion coherences. It does not compute the
+coefficient on a position diagonal. The formal-disc and derived
+closed-point models of Proposition~\ref{v4-prop:word-finite-place-models}
+retain different normal data at a finite place. A geometric
+arithmetic realization must select and compare its local models,
+including the archimedean one in
+Remark~\ref{v4-arith:thm:CG-conclusion}.
+\end{remark}
+
+\subsection{Compatibility with Dunn Additivity}
+\label{v4-arith:tate:subsec:dunn-compat}
+
+The restricted tensor product commutes with Dunn additivity
+(Theorem~\ref{v4-arith:tate:thm:dunn-additivity}) in the following precise sense.
+
+\begin{proposition}[Dunn additivity commutes with restricted tensor product]
+\label{v4-arith:tate:prop:dunn-compat}
+\ClaimStatusProvedHere Fix \(n_{1},n_{2}\geq 0\). Let
+\(\{\mathcal{C}_{v}\}_{v\in V}\) be a family of
+\(E_{n_{1}+n_{2}}\)-monoidal stable presentable \(\infty\)-categories
+with the pointing maps of Setup~\ref{v4-arith:tate:setup:data}(D2)
+for \(E_{n_1+n_2}\). Then the
+restricted tensor product
+\(\bigotimes'_{v}(\mathcal{C}_{v},u_{v})\) constructed via
+Theorem~\ref{v4-arith:tate:thm:F2c-main} with
+\(\mathcal{O}=E_{n_{1}+n_{2}}\) coincides, as an
+\(E_{n_{1}+n_{2}}\)-monoidal \(\infty\)-category, with the iterated
+construction:
+\begin{enumerate}
+\item[(a)] View each \(\mathcal{C}_{v}\) as an \(E_{n_{1}}\)-algebra in
+\(E_{n_{2}}\)-monoidal stable presentable \(\infty\)-categories (via
+Theorem~\ref{v4-arith:tate:thm:dunn-additivity}).
+\item[(b)] Apply Theorem~\ref{v4-arith:tate:thm:F2c-main} with
+\(\mathcal{O}=E_{n_{2}}\) to the underlying family to get
+\(\bigotimes'_{v}\mathcal{C}_{v}\) as an \(E_{n_{2}}\)-category;
+\item[(c)] View the result as an \(E_{n_{1}}\)-algebra in
+\(E_{n_{2}}\)-categories, by functoriality of the restricted tensor
+product.
+\end{enumerate}
+Via Theorem~\ref{v4-arith:tate:thm:dunn-additivity}, this is an
+\(E_{n_{1}+n_{2}}\)-monoidal structure. It agrees with the
+\(E_{n_{1}+n_{2}}\)-structure of
+Theorem~\ref{v4-arith:tate:thm:F2c-main} applied directly.
+\end{proposition}
+
+\begin{proof}
+Both constructions yield filtered colimits in the same
+\(\infty\)-category. The key is that the tensor product
+of \(\infty\)-operads \(E_{n_{1}}\otimes E_{n_{2}}\)
+(Theorem~\ref{v4-arith:tate:thm:dunn-additivity}) encodes the two supplied
+structures together with their interchange coherences. The
+colimit over \(S\) preserves these operations and coherences
+(Proposition~\ref{v4-arith:tate:prop:colim-preserves-O-alg}). The
+induced \(E_{n_{1}+n_{2}}\)-structure on the colimit equals the
+\(E_{n_{1}+n_{2}}\)-structure of the direct construction.
+Formally: the forgetful functor
+\(\mathrm{Alg}_{E_{n_{1}+n_{2}}}\simeq\mathrm{Alg}_{E_{n_{1}}\otimes E_{n_{2}}}\to\mathrm{Alg}_{E_{n_{2}}}\)
+commutes with filtered colimits
+(Proposition~\ref{v4-arith:tate:prop:filtered-colim-operadic}), so both
+iterated colimit computations agree.
+\end{proof}
+
+\begin{corollary}[special case: \(E_{1}\otimes E_{1}=E_{2}\)]
+\label{v4-arith:tate:cor:dunn-E1-E2}
+\ClaimStatusProvedHere Suppose each \(\mathcal{C}_{v}\) is
+\(E_{1}\)-monoidal in \(E_{1}\)-monoidal presentable stable
+\(\infty\)-categories (equivalently,
+\(E_{2}\)-monoidal by
+Theorem~\ref{v4-arith:tate:thm:dunn-additivity}). Suppose the supplied
+pointings are maps for that entire structure. Then the restricted
+tensor product is \(E_{2}\)-monoidal. It is computed either by direct
+\(E_{2}\)-application of Theorem~\ref{v4-arith:tate:thm:F2c-main} or by
+nested \(E_{1}\)-applications.
+\end{corollary}
+
+\begin{remark}[role for F2]
+\label{v4-arith:tate:rem:dunn-F2-role}
+In the F2 application, suppose
+\(\mathcal{C}_{v}=\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},v}\) has the
+required \(E_2\)-structure and pointing maps. Dunn additivity gives a
+factorization as an \(E_{1}\)-algebra in \(E_{1}\)-categories. The
+compatibility of Proposition~\ref{v4-arith:tate:prop:dunn-compat} confirms
+that the global \(E_{2}\)-structure on
+\(\bigotimes'_{v}\mathrm{Hk}^{\mathrm{Iw}}_{GL_{2},v}\) is
+well-defined either via direct \(E_{2}\)-restricted-tensor or via
+nested \(E_{1}\)-restricted-tensors.
+\end{remark}
+
+\section{Application to the Iwahori Hecke Category}
+\label{v4-arith:tate:iwahori-application}
+
+\subsection{The Conditional Local Data}
+
+\begin{setup}[Iwahori Hecke family]
+\label{v4-arith:tate:setup:iwahori-Hecke-data}
+Fix \(V=\mathbb P\cup\{\infty\}\). Suppose a stable presentable
+model \(\mathcal C_v=\mathrm{Hk}^{\mathrm{Iw}}_{GL_2,v}\), its
+colimit-compatible \(E_2\)-monoidal structure, and the actual
+pointing maps of Setup~\ref{v4-arith:tate:setup:data}(D2) have
+been specified. Write \(|0\rangle_v=\eta_v(\mathbb S)\) where the
+pointing is supplied. These are inputs. A class of a double
+coset or a fixed vector does not by itself construct such a
+categorical pointing.
+\end{setup}
+
+\begin{lemma}[the archimedean unit identification required for insertion]
+\label{v4-arith:tate:lem:iwahori-sph-arch}
+Suppose \(\mathcal C_\infty\) has the specified stable presentable
+\(E_2\)-monoidal structure. Its unit functor
+\(\eta_\infty:\mathrm{Sp}\to\mathcal C_\infty\) is an
+\(E_2\)-algebra morphism. To use a chosen object
+\(|0\rangle_\infty\) as its value on \(\mathbb S\), a unit
+identification \(|0\rangle_\infty\simeq\mathbb 1_{\mathcal C_\infty}\)
+is required. Existence of an \(O(2)\)-fixed vector alone does not
+supply this identification.
+\end{lemma}
+
+\begin{proof}
+The unit functor sends a spectrum \(E\) to its canonical spectral
+action on \(\mathbb 1_{\mathcal C_\infty}\). Applying an operation
+commutes with the spectral action in each input, by colimit
+preservation. The unit identities then identify its value with
+the smash product of the input spectra acting on
+\(\mathbb 1_{\mathcal C_\infty}\).
+The operadic coherences give the same identifications under
+substitution, including the nullary operation. Thus the functor
+is \(E_2\)-monoidal, and its value on \(\mathbb S\) is the unit.
+This identifies the extra datum needed for a chosen
+object to serve as that value.
+\end{proof}
+
+\subsection{The Conditional Assembly Corollary}
+
+\begin{corollary}[restricted-tensor \(E_2\) transfer]
+\label{v4-arith:tate:cor:F2-closed}
+Under Setup~\ref{v4-arith:tate:setup:iwahori-Hecke-data}, define
+\[
+ \mathrm{Hk}^{\mathrm{Iw}}_{GL_2,\mathrm{glob}}
+ :=\bigotimes_{v\in V}'(\mathcal C_v,|0\rangle_v).
+\]
+This object has the \(E_2\)-monoidal structure and admissible
+finite-stage maps of
+Theorem~\ref{v4-arith:tate:thm:F2c-main}. A singleton map is
+available under exactly its condition (M2), including any
+additional pointing maps required there. Uniqueness is relative
+to the complete specified colimit cocone. The displayed formula
+is a definition, not a comparison with a separately constructed
+global arithmetic Hecke category.
+\end{corollary}
+
+\begin{proof}
+The hypotheses give the diagram in
+\(\mathrm{Alg}_{E_2}(\mathrm{Pr}^{\mathrm L}_{\mathrm{st}})\).
+Apply Theorem~\ref{v4-arith:tate:thm:F2c-main}, including its
+singleton and cocone qualifications. The proof supplies neither
+the local \(E_2\)-structures nor pointing maps whose existence has
+not been assumed.
+\end{proof}
+
+\begin{remark}[local operations and geometric comparison remain inputs]
+\label{v4-arith:tate:rem:archimedean-vs-finite-E2}
+Discrete place labels do not construct the local \(E_2\)-operations,
+nor do they identify operations at geometric collision strata.
+Dunn additivity compares supplied operadic structures. It does
+not supply missing local structures from the discreteness of the
+place set. These requirements remain separate from F2.c.
+\end{remark}
+
+\begin{remark}[archimedean pointing]
+\label{v4-arith:tate:rem:archimedean}
+The archimedean factor may be included in every admissible finite
+stage without a pointing. Inserting that factor, or forming a
+singleton map that must insert it, requires the actual
+\(E_2\)-algebra map into that factor. A spherical vector in a
+representation or in a Fock-space presentation is not a proof
+of this categorical datum.
+\end{remark}
+
+\section{Uniqueness of the \(E_n\) Structure}
+\label{v4-arith:tate:uniqueness}
+
+\begin{proposition}[uniqueness for a fixed cocone]
+\label{v4-arith:tate:prop:uniqueness}
+Fix the full diagram
+\(\Phi:\mathrm{Fin}^{\mathrm{sph}}(V)\to
+\mathrm{Alg}_{\mathcal O}(\mathrm{Pr}^{\mathrm L}_{\mathrm{st}})\)
+and an underlying colimit cocone with vertex
+\(C=\operatorname*{colim}U\Phi\). The space of lifts of this whole
+cocone to a colimit cocone of \(\mathcal O\)-algebras is
+contractible. The lift of
+Theorem~\ref{v4-arith:tate:thm:F2c-main} is one such lift.
+\end{proposition}
+
+\begin{proof}
+HA~3.2.3.1, in the form of
+Proposition~\ref{v4-arith:tate:prop:filtered-colim-operadic}, creates
+the filtered colimit and detects a colimit cocone on underlying
+objects. Thus every lift of the fixed underlying colimit cocone
+is a structured colimit cocone. Any two structured colimit
+cocones have a contractible space of equivalences respecting
+the complete cocone. Forgetting the structure gives the
+corresponding equivalences of underlying colimit cocones, whose
+space is also contractible. Taking the fiber over the fixed
+underlying cocone proves the assertion. Merely specifying
+individual arrows or commuting triangles would not specify that
+complete cocone.
+\end{proof}
+
+\begin{corollary}[compatibility of available singleton maps]
+\label{v4-arith:tate:cor:uniqueness-fibers}
+If \(V\setminus\{v\}\subseteq V^{\mathrm{sph}}\), the singleton
+map \(\iota_v:\mathcal C_v\to C\) is \(\mathcal O\)-monoidal.
+For a general \(v\), the same assertion holds after the additional
+pointing maps required by (M2) have been specified. In either
+case \(\iota_v\) intertwines the local and global operations,
+with the coherences of its specified operadic cocone. No full
+faithfulness or identification of \(\mathcal C_v\) with its image
+is asserted.
+\end{corollary}
+
+\begin{proof}
+In the first case \(\{v\}\) is an admissible finite stage, so (M1)
+applies. In the second case insert the additionally supplied
+pointings to reach an admissible stage and apply (M1).
+For example, for two places with categories \(\mathrm{Sp}\) and
+\(\mathrm{Mod}_{H\mathbb Q}\) and their unit maps, the singleton
+map from \(\mathrm{Sp}\) is rationalization. It is not fully
+faithful: for any prime \(p\), the nonzero spectrum
+\(H\mathbb F_p\) maps to zero. It is nevertheless symmetric
+monoidal. Thus recovery of a local category from its image
+cannot follow from uniqueness.
+\end{proof}
+
+\section{Base Change and Functoriality}
+\label{v4-arith:tate:base-change}
+
+The restricted tensor product is functorial in the family
+\(\{\mathcal{C}_{v}\}\) and covariant under base change.
+
+\begin{proposition}[functoriality in the pointed family]
+\label{v4-arith:tate:prop:functoriality-family}
+Let two families over the same set \(V\) satisfy
+Setup~\ref{v4-arith:tate:setup:data}, and let
+\(f_v:\mathcal C_v\to\mathcal C'_v\) be
+\(\mathcal O\)-algebra morphisms. At every place where both
+pointings are supplied, require a specified equivalence
+\(f_v\eta_v\simeq\eta'_v\) as morphisms of \(\mathcal O\)-algebras.
+Then these pointed morphisms induce an \(\mathcal O\)-algebra map
+\[
+ \bigotimes_v' f_v:
+ \bigotimes_v'(\mathcal C_v,u_v)\longrightarrow
+ \bigotimes_v'(\mathcal C'_v,u'_v).
+\]
+This construction is \(\infty\)-functorial in the pointed family.
+An equivalence of the objects \(f_v(u_v)\) and \(u'_v\) without
+compatibility with the specified operadic pointings is not the
+hypothesis for a general \(\mathcal O\).
+\end{proposition}
+
+\begin{proof}
+Use the common cofinal index consisting of finite subsets
+containing
+\((V\setminus V^{\mathrm{sph}})\cup
+ (V\setminus V'^{\mathrm{sph}})\).
+The finite tensor products \(\bigotimes_{v\in S}f_v\), together
+with the given pointed equivalences, form a natural
+transformation of the complete operadic diagrams. Taking its
+colimit gives the asserted map. Functoriality follows from the
+functoriality of tensor products and of the colimit functor on
+diagram categories.
+\end{proof}
+
+\begin{proposition}[base change along a colimit-preserving symmetric monoidal functor]
+\label{v4-arith:tate:prop:base-change}
+Let
+\(F^{\otimes}:(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}},\otimes)\to(\mathrm{Pr}^{\mathrm{L}}_{\mathrm{st}},\otimes)\)
+be a symmetric monoidal colimit-preserving functor. For a family
+as in Setup~\ref{v4-arith:tate:setup:data}, define its transported
+pointing and distinguished object by
+\[
+ \eta_v^F:\mathrm{Sp}\simeq F(\mathrm{Sp})
+       \xrightarrow{F(\eta_v)}F(\mathcal C_v),
+ \qquad u_v^F=\eta_v^F(\mathbb S).
+\]
+Then
+\[
+F\bigl(\bigotimes_{v}^{\prime}(\mathcal{C}_{v},u_{v})\bigr)\;\simeq\;\bigotimes_{v}^{\prime}(F\mathcal{C}_{v},u_v^F)
+\]
+as \(\mathcal{O}\)-monoidal \(\infty\)-categories.
+\end{proposition}
+
+\begin{proof}
+\(F\) preserves both filtered colimits (colimit-preservation) and
+tensor products (symmetric monoidality). Both operations are
+separately applied to the colimit diagram \(\Phi\); their
+commutativity gives the equivalence. Formally:
+\[
+F\bigl(\varinjlim_{S}\bigotimes_{v\in S}\mathcal{C}_{v}\bigr)\;\simeq\;\varinjlim_{S}F\bigl(\bigotimes_{v\in S}\mathcal{C}_{v}\bigr)\;\simeq\;\varinjlim_{S}\bigotimes_{v\in S}F\mathcal{C}_{v}
+\]
+by symmetric monoidality of \(F\), and the transition maps
+\(F\iota_{S\subseteq S'}=\iota^{(F)}_{S\subseteq S'}\) by functoriality
+of \(F\) applied to the pointed spherical maps \(\eta_{v}\).
+\end{proof}
+
+\begin{remark}[scope of categorical base change]
+\label{v4-arith:tate:rem:vol-I-coherence}
+Proposition~\ref{v4-arith:tate:prop:base-change} applies to a specified functor
+on stable presentable categories and to its transported pointing
+maps. It supplies an arithmetic change of base only after those
+categorical data have been constructed. The bar--cobar base-change
+comparisons in Volume~I concern their own coefficient systems
+and hypotheses. Relating the two constructions requires a map
+between their carriers that preserves the relevant operations.
+Formal commutation with tensor products and colimits alone does
+not identify them.
+\end{remark}
+
+\section{Examples}
+\label{v4-arith:tate:examples}
+
+\subsection{Example 1: Module Categories and the Spectral Tensor Product}
+
+\begin{example}[the tensor colimit of module categories]
+\label{v4-arith:tate:ex:discrete-recover}
+Let \(R_v\) be discrete commutative rings, put \(A_v=H R_v\),
+and give \(\mathcal C_v=\mathrm{Mod}_{A_v}\) its usual symmetric
+monoidal structure and unit pointing. Define
+\[
+ A_{\mathrm{tens}}=
+ \operatorname*{colim}_{S\in\mathrm{Fin}(V)}
+       \bigotimes_{v\in S,\,\mathbb S} A_v
+ \quad\text{in}\quad\mathrm{CAlg}(\mathrm{Sp}),
+\]
+with unit insertions as transition maps and empty tensor
+\(\mathbb S\). Then
+\[
+ \bigotimes_{v\in V}'(\mathrm{Mod}_{A_v},A_v)
+       \simeq\mathrm{Mod}_{A_{\mathrm{tens}}}
+\]
+as symmetric monoidal stable presentable categories.
+This is a spectral tensor-colimit formula. It is not an
+identification with a profinite completion or with a classical
+adelic restricted product.
+\end{example}
+
+\begin{proof}
+The module-category tensor equivalence identifies each finite
+stage with modules over \(\bigotimes_{v\in S,\mathbb S}A_v\),
+and identifies the transition functors with extension of scalars.
+The module-category functor preserves filtered colimits
+(HA~4.8.5.13), with tensor compatibility given by HA~4.8.5.16.
+These identifications preserve the symmetric monoidal structures
+and unit maps, so passage to the filtered colimit gives the formula.
+
+For example, if \(V=\mathbb P\) and \(R_p=\mathbb Z_p\), every
+prime \(\ell\) becomes invertible in \(A_{\mathrm{tens}}\): add
+any factor \(H\mathbb Z_p\) with \(p\ne\ell\). Thus the output
+is rational, whereas \(H\widehat{\mathbb Z}\) is not. In
+particular this construction does not recover
+\(\mathrm{Mod}_{H\widehat{\mathbb Z}}\). The classical finite
+adeles also use integral subrings at the unramified places.
+That restricted-product diagram is not the diagram above with
+\(A_p=H\mathbb Q_p\).
+\end{proof}
+
+\subsection{Example 2: Conditional Function-Field Application}
+
+\begin{example}[function-field assembly]
+\label{v4-arith:tate:ex:function-field}
+Let \(V=|X|\) for a smooth projective curve over \(\mathbb F_q\).
+A family of stable presentable \(E_2\)-monoidal local categories
+with actual pointing maps satisfying (D2) has the restricted
+\(E_2\)-tensor product of
+Theorem~\ref{v4-arith:tate:thm:F2c-main}. To apply this to chosen
+Hecke categories, their local \(E_2\)-structures and those maps
+must first be supplied. A comparison with Beilinson--Drinfeld
+factorization requires its geometric coefficients, collision
+maps and higher coherences separately. Discretizing \(|X|\)
+does not provide that comparison or its missing operations.
+\end{example}
+
+\begin{remark}[no automatic comparison between arithmetic bases]
+\label{v4-arith:tate:rem:ff-vs-arith}
+The filtered-colimit theorem applies over either indexing set
+once its categorical inputs are supplied. It gives no
+function-field-to-arithmetic comparison functor. Such a
+comparison must specify the functor, its pointing compatibility,
+and any required geometric factorization data.
+\end{remark}
+
+\subsection{Example 3: Conditional Arithmetic Iwahori Assembly}
+
+\begin{example}[arithmetic Iwahori application]
+\label{v4-arith:tate:ex:arith-iwahori}
+Under Setup~\ref{v4-arith:tate:setup:iwahori-Hecke-data},
+Corollary~\ref{v4-arith:tate:cor:F2-closed} gives an
+\(E_2\)-structure on the categorical restricted tensor product.
+The notation \(\mathrm{Hk}^{\mathrm{Iw}}_{GL_2,\mathrm{glob}}\)
+in that corollary denotes this defined object. An independently
+defined global arithmetic Hecke category requires a separate
+comparison. So does a restricted tensor product of representations.
+Neither comparison follows from filtered colimits.
+\end{example}
+
+\section{The Finite Labeled-Disk Description}
+\label{v4-arith:tate:verification}
+
+\begin{setup}[finite labeled coefficients]
+\label{v4-arith:tate:setup:factorization-homology}
+Take \(\mathcal O=E_n\), \(n\geq1\), and the data of
+Setup~\ref{v4-arith:tate:setup:data}. For a finite set \(S\),
+write \(M_S=\coprod_{v\in S}\mathbb R^n_v\), retaining each
+place label. Assign coefficient \(\mathcal C_v\) to its own
+labeled component. The finite labeled-disk value is
+\[
+ F^{\mathrm{lab}}(M_S):=\bigotimes_{v\in S}\mathcal C_v.
+\]
+
+This is a family of coefficients, not the single constant
+coefficient \(\bigotimes_{v\in S}\mathcal C_v\) on every disk.
+For admissible inclusions insert the specified maps \(\eta_v\).
+Only this finite labeled diagram and its filtered colimit are
+being defined. No presentability assertion about
+\(\mathrm{Pr}^{\mathrm L}_{\mathrm{st}}\) itself is used.
+\end{setup}
+
+\begin{theorem}[comparison with the finite labeled-disk diagram]
+\label{v4-arith:tate:thm:verification-via-factorization-homology}
+The diagram \(F^{\mathrm{lab}}\) on
+\(\mathrm{Fin}^{\mathrm{sph}}(V)\), with its specified
+insertions, is the finite tensor diagram \(\Phi\) used in
+Theorem~\ref{v4-arith:tate:thm:F2c-main}. Hence
+\[
+ \operatorname*{colim}_{S\in\mathrm{Fin}^{\mathrm{sph}}(V)}
+       F^{\mathrm{lab}}(M_S)
+ \simeq\bigotimes_{v\in V}'(\mathcal C_v,u_v)
+\]
+as \(E_n\)-algebras in
+\(\mathrm{Pr}^{\mathrm L}_{\mathrm{st}}\), compatibly with the
+complete colimit cocones.
+\end{theorem}
+
+\begin{proof}
+At each finite stage the values are identical. On each inclusion
+the morphisms are the same tensor products of identities and
+supplied \(\eta_v\). Their higher compatibilities come from the
+same symmetric monoidal structure and the same pointing maps.
+Thus this is the same operadic diagram, and taking its filtered
+colimit gives the assertion.
+\end{proof}
+
+For comparison, ordinary factorization homology on framed disks
+with a single coefficient algebra \(A\), when defined, satisfies
+\[
+\int_{\coprod_{v\in S}\mathbb R^n}A\simeq A^{\otimes |S|}.
+\]
+The disk overcategory has a terminal object. Applying the
+symmetric monoidal disk algebra gives the displayed tensor
+power. See Ayala--Francis, \emph{A factorization homology primer},
+Definitions~3.5 and~3.7.
+
+Putting \(A=\bigotimes_{v\in S}\mathcal C_v\) in this formula
+therefore does not give \(\bigotimes_{v\in S}\mathcal C_v\).
+Nor is an integral with a single coefficient
+\(A_V=\bigotimes'_v\mathcal C_v\) over all the disks a
+replacement for the labeled diagram. The usual factorization
+homology construction is a left Kan extension of a disk algebra.
+Disk normalization and disjoint-union compatibility alone do
+not characterize its values on general manifolds.
+
+\begin{remark}[scope of the description]
+\label{v4-arith:tate:rem:ginot-ext-verification}
+The labeled-disk description uses exactly the same finite
+diagram and colimit argument as the restricted tensor theorem.
+It is not a second independent proof, an Ext comparison, or a
+construction of geometric collision operations. A comparison
+with a factorization algebra on a geometric space requires its
+coefficient system and comparison morphisms separately.
+\end{remark}
+
+\section{Remarks on Operadic Coherence}
+\label{v4-arith:tate:coherence-remarks}
+
+\subsection{Hypotheses Used by the Filtered-Colimit Argument}
+
+The application of HA~3.2.3.1 uses a small operad and filtered
+colimits in the ambient symmetric monoidal category.
+Tensoring must preserve those colimits in each variable.
+It requires neither operadic coherence in the sense of
+HA~3.3.1.1 nor presentability of the ambient category. The
+coherence assumption retained in some statements above is an
+extra hypothesis, not a premise needed for this argument.
+The separate presentability result HA~3.2.3.5 is not being
+applied to \(\mathrm{Pr}^{\mathrm L}_{\mathrm{st}}\) itself.
+The preservation of higher operation coherences follows from
+taking the colimit of the supplied operadic diagram, not from
+recognizing operations in its cohomology.
+
+\subsection{Alternative Pointing Maps}
+
+\begin{remark}[non-spherical insertion]
+\label{v4-arith:tate:rem:non-spherical-insertion}
+A replacement pointing must be an actual morphism
+\(\widetilde\eta_v:\mathrm{Sp}\to\mathcal C_v\) in
+\(\mathrm{Alg}_{\mathcal O}(\mathrm{Pr}^{\mathrm L}_{\mathrm{st}})\),
+with \(\widetilde u_v=\widetilde\eta_v(\mathbb S)\).
+Specified equivalences between pointing maps, in that mapping
+space, induce equivalences of the diagrams and their colimits.
+Equivalence of the underlying central objects alone is not the
+general operadic compatibility required. In the unital \(E_n\)
+cases every such pointing sends \(\mathbb S\) to the actual
+monoidal unit. Thus a non-unit central object is not an alternative
+pointing of this kind.
+\end{remark}
+
+\subsection{Iterated Restricted Tensor Products}
+
+\begin{proposition}[iterated restricted tensor products]
+\label{v4-arith:tate:prop:iterated-restricted}
+\ClaimStatusProvedHere Let \(V=V_{1}\sqcup V_{2}\) be a partition,
+with spherical data restricting to each \(V_{i}\). Then
+\[
+\bigotimes_{v\in V}^{\prime}(\mathcal{C}_{v},u_{v})\;\simeq\;\Bigl(\bigotimes_{v\in V_{1}}^{\prime}(\mathcal{C}_{v},u_{v})\Bigr)\otimes\Bigl(\bigotimes_{v\in V_{2}}^{\prime}(\mathcal{C}_{v},u_{v})\Bigr)
+\]
+as \(\mathcal{O}\)-monoidal \(\infty\)-categories.
+\end{proposition}
+
+\begin{proof}
+Intersection with \(V_1\) and \(V_2\) identifies the indexing
+poset with
+\(\mathrm{Fin}^{\mathrm{sph}}(V_1)\times
+\mathrm{Fin}^{\mathrm{sph}}(V_2)\).
+At each pair of finite stages, tensor associativity identifies
+the two values and their pointing maps. Separate preservation
+of filtered colimits by tensor products, from
+Corollary~\ref{v4-arith:tate:cor:prl-admits-colimits}, identifies
+the underlying colimits. The same comparison preserves every
+operation in the supplied diagrams, so it is an equivalence
+of \(\mathcal O\)-algebras.
+\end{proof}
+
+\section{Completeness of F2.c and Residual Local Input}
+\label{v4-arith:tate:completeness-F2}
+
+\begin{theorem}[F2.c assembly for supplied local Iwahori data]
+\label{v4-arith:tate:thm:F2-closure}
+F2.c proves the restricted-tensor assembly step for local
+Iwahori categories satisfying
+Setup~\ref{v4-arith:tate:setup:iwahori-Hecke-data}, including
+the specified \(E_2\)-algebra pointings. Its uniqueness is
+relative to the complete colimit cocone. It does not construct
+any of these local inputs.
+\end{theorem}
+
+\begin{proof}
+Apply Corollary~\ref{v4-arith:tate:cor:F2-closed} with its full
+hypotheses, which in turn is the \(E_2\) specialization of
+Theorem~\ref{v4-arith:tate:thm:F2c-main}.
+\end{proof}
+
+\begin{remark}[scope of the F2 conclusion]
+\label{v4-arith:tate:rem:F2-form-final}
+F2.c is the formal assembly theorem. An arithmetic application
+requires the local \(E_2\)-enhancement F2.b and all pointing data
+of (D2). These remain hypotheses wherever they have not been constructed.
+Identifying the defined tensor colimit with an independently
+specified global geometric object remains a separate comparison.
+\end{remark}
+
+\begin{corollary}[F3 after formal F2.c assembly]
+\label{v4-arith:tate:cor:F3-reduces-with-F2-closed}
+Assume the full local \(E_2\) and pointing hypotheses.
+Then F2.c supplies the formal restricted-tensor construction
+in the reduction of \(F3\). The
+local input F2.b and any unverified pointing or global comparison
+requirements remain. F2.c also leaves the other hypotheses of
+Theorem~\ref{v4-arith:thm:F3-reduction} unchanged.
+\end{corollary}
+
+\begin{proof}
+Substitute Theorem~\ref{v4-arith:tate:thm:F2-closure} only for
+its formal assembly conclusion in the cited reduction.
+That theorem assumes the local pointed operadic diagram and
+makes no independent arithmetic comparison.
+\end{proof}
+
+\section{Tate Tensor Boundary}
+\label{v4-arith:tate:summary}
+
+The categorical restricted tensor product is the filtered
+colimit of the finite tensor diagram of supplied
+\(\mathcal O\)-algebras and actual operadic pointing maps.
+HA~3.2.3.1 applies because the ambient categorical tensor product
+preserves filtered colimits separately. Presentability of
+\(\mathrm{Pr}^{\mathrm L}_{\mathrm{st}}\) itself is not needed.
+
+The whole colimit cocone has a contractible space of structured
+lifts. This does not assert full faithfulness of singleton maps,
+and a singleton map requires the precise pointing condition
+(M2). The construction is functorial in pointed families.
+It commutes with the stated symmetric monoidal base changes and
+iterated tensor products, and respects Dunn additivity for
+supplied structures.
+
+The finite labeled-disk description is the same diagram, not
+an independent derivation. The module-category example computes
+a spectral tensor colimit, not a profinite or adelic restricted
+product. Neither example supplies geometric collision maps.
+
+F2.c is therefore a proved formal assembly theorem under its
+full hypotheses. The local arithmetic \(E_2\)-structures,
+pointing maps and any independent global comparison remain
+required inputs. The arithmetic comparison in F3 is likewise
+not absorbed by this categorical construction.

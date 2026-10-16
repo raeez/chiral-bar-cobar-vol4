@@ -1,0 +1,824 @@
+\chapter{Integral Relative Galois Cochains and Their Bar Coalgebras}
+\label{v4-arith:relative-bar:chapter}
+
+\section{The relative arithmetic problem}
+
+A global Galois cochain can become a coboundary at every specified local
+field. The local primitives belong to the data of its relative class.
+For a restriction map of cochain algebras $f:A\to B$, a relative cocycle
+is therefore a pair
+\[
+ (a,y),\qquad da=0,\qquad f(a)=dy.
+\]
+Products of such pairs must retain a local primitive. If $a$ has degree
+$n$, the expression $(-1)^nf(a)y'$ is a primitive for $f(aa')$.
+This observation determines the associative product used below.
+
+Fix a number field $K$, a rational prime $\ell$, and a finite set $S$
+of places containing the archimedean places and all places above $\ell$.
+Write $S_f$ for its finite places. Let $G_{K,S}$ be the Galois group of
+the maximal extension unramified outside $S$, and let $G_{K_v}$ be the
+absolute Galois group of the completion at $v$. Fix the embeddings of
+algebraic closures that define homomorphisms
+\[
+ j_v:G_{K_v}\longrightarrow G_{K,S}\qquad(v\in S_f).
+\]
+They need not be injective. All strict functoriality statements refer to
+these fixed homomorphisms. Conjugate choices require the corresponding
+cochain homotopies.
+
+Put $R_r=\mathbb{Z}/\ell^r\mathbb{Z}$ for $r\geq1$, with trivial Galois action and
+discrete topology. The continuous cochain model is classical.\footnote{J. S. Milne, \emph{Class Field Theory}, version 4.03 (2020), Chapter II, \S4, pp.~86--89.}
+The cochains below are continuous normalized
+inhomogeneous cochains. They compute continuous group cohomology by
+definition. Only finite local places enter the relative complex.
+An identification with a compact-support theory requires its own
+archimedean conventions.
+
+Complexes are cohomologically graded. The differential has degree $1$.
+For homogeneous maps and elements, the tensor convention is
+\[
+ (u\otimes v)(x\otimes y)=(-1)^{|v||x|}u(x)\otimes v(y).
+\]
+We write $sM=M[1]$ and $|sa|=|a|-1$. Tensor products are algebraic
+over the displayed coefficient ring until a completion is explicitly
+introduced.
+
+\section{Continuous cochains and the path fiber}
+
+For a profinite group $G$ and a discrete commutative ring $R$, let
+$C^n(G,R)$ consist of continuous functions $G^n\to R$ that vanish
+when any argument is the identity. Set $C^0(G,R)=R$ and $C^n=0$ for
+$n<0$. The trivial action gives
+\begin{align}
+ (dc)(g_1,\ldots,g_{n+1})
+ ={}&c(g_2,\ldots,g_{n+1})\nonumber\\
+ &+\sum_{i=1}^{n}(-1)^i
+ c(g_1,\ldots,g_ig_{i+1},\ldots,g_{n+1})\nonumber\\
+ &+(-1)^{n+1}c(g_1,\ldots,g_n).
+ \label{v4-arith:relative-bar:eq:cochains}
+\end{align}
+The product of degrees $n,m$ is
+\[
+ (cc')(g_1,\ldots,g_{n+m})
+ =c(g_1,\ldots,g_n)c'(g_{n+1},\ldots,g_{n+m}).
+\]
+
+\begin{lemma}\label{v4-arith:relative-bar:lem:cochains}
+These formulas define a unital differential graded $R$-algebra.
+Precomposition with a continuous homomorphism of profinite groups is
+a morphism of such algebras.
+\end{lemma}
+\begin{proof}
+The terms in $d^2$ cancel in pairs. Deleting or multiplying the $i$th
+entry and then the $j$th entry agrees with the operation in reverse
+order with the shifted index. The two alternating signs differ by
+$-1$. Associativity handles the pair of adjacent multiplications.
+If an argument is the identity, its two adjacent terms cancel, so
+normalization is preserved. In $d(cc')$, the terms before the cut at
+$n$ are $(dc)c'$. The terms after that cut are $(-1)^nc(dc')$.
+The two extra terms at the cut cancel. This proves the Leibniz rule.
+Both bracketings of a triple product evaluate the same three
+consecutive argument blocks. The constant $1$ in degree zero is the
+unit. Precomposition respects each formula term by term.
+\end{proof}
+
+Apply this lemma to
+\[
+ A_r=C^\bullet(G_{K,S},R_r),\qquad
+ B_r=\prod_{v\in S_f}C^\bullet(G_{K_v},R_r),\qquad
+ f_r=(j_v^*)_v:A_r\longrightarrow B_r.
+\]
+The finite product in $B_r$ uses componentwise multiplication.
+
+\begin{theorem}\label{v4-arith:relative-bar:thm:fiber}
+Let $f:A\to B$ be a morphism of differential graded algebras over a
+commutative ring $R$. The formulas
+\begin{align}
+ P(f)^n&=A^n\oplus B^{n-1},&
+ D(a,y)&=(da,f(a)-dy),\label{v4-arith:relative-bar:eq:fiber-d}\\
+ (a,y)(a',y')&=(aa',(-1)^nf(a)y')&&(|(a,y)|=n)
+ \label{v4-arith:relative-bar:eq:fiber-product}
+\end{align}
+define an associative nonunital differential graded algebra. Its
+underlying complex is the relative complex $\operatorname{Cone}(f)[-1]$ with
+the sign convention in \eqref{v4-arith:relative-bar:eq:fiber-d}.
+\end{theorem}
+\begin{proof}
+The square of $D$ has second component $f(da)-df(a)=0$.
+For three inputs of degrees $n,m,k$, either bracketing has second
+component $(-1)^{n+m}f(a)f(a')y''$. The first components agree by
+associativity in $A$. The second component of
+$D((a,y)(a',y'))$ is
+\[
+ f(a)f(a')-(-1)^nf(da)y'-f(a)dy'.
+\]
+The expression $D(a,y)(a',y')+(-1)^n(a,y)D(a',y')$ gives the same
+formula. The first components agree by the Leibniz rule in $A$.
+The cone statement follows from the displayed differential.
+\end{proof}
+
+The product is asymmetric on chains. An interval algebra explains both
+this asymmetry and the sign. Define $I_R$ by
+\[
+ I_R^0=Re_0\oplus Re_1,\quad I_R^1=Rh,\quad
+ de_0=-h,\quad de_1=h,\quad dh=0,
+\]
+with products
+\[
+ e_ie_j=\delta_{ij}e_i,\qquad e_0h=h=he_1,
+ \qquad e_1h=he_0=h^2=0.
+\]
+Its unit is $e_0+e_1$. The evaluations $\operatorname{ev}_i$ send
+$e_i$ to $1$, the other idempotent to $0$, and $h$ to $0$.
+
+\begin{proposition}\label{v4-arith:relative-bar:prop:interval}
+The algebra $I_R$ is a differential graded algebra. There is a strict
+isomorphism of nonunital differential graded algebras
+\[
+ P(f)\longrightarrow
+ \{(a,\beta)\in A\times(B\otimes I_R):
+ (\mathrm{id}\otimes\operatorname{ev}_0)\beta=f(a),\
+ (\mathrm{id}\otimes\operatorname{ev}_1)\beta=0\},
+\]
+given in degree $n$ by
+\[
+ (a,y)\longmapsto(a,f(a)e_0+(-1)^nyh).
+\]
+Here $be_i$ denotes $b\otimes e_i$.
+\end{proposition}
+\begin{proof}
+The relations identify the graded algebra with the path algebra of
+the single directed edge $0\to1$, where that edge has degree one.
+Thus multiplication is associative. Checking the four idempotent
+products and the products with $h$ verifies the Leibniz rule.
+Every element on the right has the unique indicated form.
+The coefficient of $h$ in its differential is
+$(-1)^{n+1}f(a)+(-1)^ndy$, which equals
+$(-1)^{n+1}(f(a)-dy)$.
+In a product of two such elements, only $e_0h=h$ contributes an
+edge term. That coefficient is $(-1)^mf(a)y'$. This equals
+$(-1)^{n+m}$ times the second component in
+\eqref{v4-arith:relative-bar:eq:fiber-product}.
+\end{proof}
+
+The constant inclusion $R\to I_R$ is a quasi-isomorphism: its quotient
+has differential an isomorphism between two rank-one modules. Thus
+the interval description is an integral path-fiber construction.
+It requires no polynomial integration or division by integers.
+
+The opposite choice of endpoint gives a second relative product.
+Its relation to the first can be computed without changing the
+underlying cochain complex.
+
+\begin{proposition}\label{v4-arith:relative-bar:prop:two-products}
+On $P(f)$ the formula
+\[
+ \mu_R((a,y),(a',y'))=(aa',y f(a'))
+\]
+also defines an associative differential graded product. Let $\mu_L$
+denote \eqref{v4-arith:relative-bar:eq:fiber-product}. The degree-minus-one bilinear map
+\[
+ K((a,y),(a',y'))=(0,(-1)^{n+1}yy'),\qquad |(a,y)|=n,
+\]
+satisfies
+\[
+ DK+K(D\otimes1+1\otimes D)=\mu_L-\mu_R.
+\]
+Consequently both products induce the same product on relative
+cohomology.
+\end{proposition}
+\begin{proof}
+For $\mu_R$, both triple products have second component
+$y f(a')f(a'')$. Its Leibniz rule follows by expanding
+$d(y f(a'))$ with $|y|=n-1$. For the homotopy identity, the three
+second components on the left are
+\[
+ \begin{split}
+ &(-1)^n dy\,y'-y\,dy',\\
+ &(-1)^n(f(a)-dy)y',\\
+ &-y(f(a')-dy').
+ \end{split}
+\]
+Their sum is $(-1)^nf(a)y'-y f(a')$, as required.
+On cocycles the difference of products is a boundary.
+\end{proof}
+
+The right product is the specialization with vanishing second local
+term of the gluing-cone product
+\[
+ (u,a,b)(u',a',b')
+ =(uu',aa',b\,r(u')+(-1)^{|u|}s(a)b').
+\]
+Here $r$ and $s$ are differential graded algebra maps to the same
+target, and the cone differential is
+$(du,da,r(u)-s(a)-db)$. Proposition~\ref{v4-arith:relative-bar:prop:two-products} compares
+the induced relative cohomology products. Theorem~\ref{v4-arith:endpoint:thm:main} extends this binary comparison to an isomorphism of the full bar coalgebras.
+
+\begin{corollary}\label{v4-arith:relative-bar:cor:relative}
+Put $P_r=P(f_r)$. Its cohomology is the relative global-to-finite-local
+continuous Galois cohomology, with the exact sequence
+\[
+ \cdots\to H^{n-1}(B_r)\to H^n(P_r)\to H^n(A_r)
+ \xrightarrow{H^n(f_r)}H^n(B_r)\to\cdots.
+\]
+For $S_f\ne\varnothing$, $H^0(P_r)=0$, and
+\[
+ 0\longrightarrow R_r^{S_f}/R_r
+ \longrightarrow H^1(P_r)
+ \longrightarrow\ker(H^1(A_r)\to H^1(B_r))
+ \longrightarrow0,
+\]
+where $R_r\to R_r^{S_f}$ is the diagonal inclusion.
+\end{corollary}
+\begin{proof}
+The short exact sequence $B_r[-1]\to P_r\to A_r$ gives the long
+exact sequence. Both global and local degree-zero cohomology consist
+of constants, and their restriction is the diagonal inclusion.
+\end{proof}
+
+\section{The bar coalgebra and its universal map}
+
+The relative product supplies the multiplication needed for a bar
+differential. The tensor bar and its twisting-cochain description are classical.\footnote{J.-L. Loday and B. Vallette, \emph{Algebraic Operads} (2012), \S2.2. The proof below fixes the cohomological signs and works over the displayed commutative ring.} For any nonunital differential graded $R$-algebra $P$,
+its unitization is
+\[
+ U=R\oplus P,\qquad
+ (r,p)(t,q)=(rt,rq+tp+pq),\qquad\epsilon(r,p)=r.
+\]
+The differential is zero on $R$ and equals $D$ on $P$. In particular
+$P=\ker\epsilon$. Define the tensor coalgebra
+\[
+ \mathcal{B}(U)=\bigoplus_{j\ge0}(sP)^{\otimes j},\qquad
+ \Delta[v_1|\cdots|v_j]
+ =\sum_{i=0}^j[v_1|\cdots|v_i]\otimes[v_{i+1}|\cdots|v_j].
+\]
+The empty word is $1$, the counit projects onto its coefficient,
+and the coaugmentation includes it. The reduced coproduct
+$\bar\Delta$ omits its two end terms. Repeated reduced coproducts
+vanish on each word, which is the conilpotence convention used here.
+
+\begin{theorem}\label{v4-arith:relative-bar:thm:bar}
+There is a unique coderivation $b$ on $\mathcal{B}(U)$ with $b(1)=0$
+whose projections to $sP$ are
+\[
+ b_1(sa)=-s(Da),\qquad
+ b_2(sa\otimes sb)=(-1)^{|a|}s(ab),\qquad b_j=0\quad(j>2).
+\]
+It has degree one and satisfies $b^2=0$ over every commutative ring.
+Consequently $\mathcal{B}(U)$ is a conilpotent differential graded coalgebra.
+\end{theorem}
+\begin{proof}
+On a word, insert $b_1$ in every one-letter position and $b_2$ in
+every adjacent two-letter position. An insertion after $v_1,\ldots,v_i$
+has sign $(-1)^{|v_1|+\cdots+|v_i|}$. Cutting a word before or after
+the inserted block proves the coderivation identity. Conversely that
+identity and projection to one-letter words determine the formula.
+
+In the square, two insertions with disjoint supports cancel: reversing
+their order crosses two degree-one operations. The overlapping
+insertions have supports of lengths one, two, or three. On one letter
+the result is $sD^2a=0$. On two letters, the three terms are
+\[
+ (-1)^{|a|+1}sD(ab)
+ +(-1)^{|a|}s((Da)b)+s(aDb)=0.
+\]
+On three letters, the two terms are
+\[
+ (-1)^{|b|}s((ab)c)-(-1)^{|b|}s(a(bc))=0.
+\]
+They vanish by the Leibniz rule and associativity. Every term in the
+square is of one of these types, so the proof covers every word length.
+It uses cancellation of opposite signs, including in characteristic two,
+and never divides by two.
+\end{proof}
+
+A twisting cochain packages the compatibility between a differential
+and a multiplication. For a coaugmented conilpotent differential
+graded coalgebra $C$ and an augmented differential graded algebra $U$,
+it is a degree-one map $t:C\to U$ with $t(1)=0$, $\epsilon t=0$, and
+\begin{equation}\label{v4-arith:relative-bar:eq:twist}
+ d_Ut+t d_C+\mu(t\otimes t)\bar\Delta=0.
+\end{equation}
+The tensor sign in this formula is part of the stated convention.
+
+\begin{theorem}\label{v4-arith:relative-bar:thm:universal}
+The map $\tau:\mathcal{B}(U)\to U$ sending $sa$ to $a$ and all other
+lengths to zero is a twisting cochain. Composition with $\tau$ gives
+a bijection between differential graded coalgebra maps
+$C\to\mathcal{B}(U)$ preserving coaugmentation and twisting cochains
+$C\to U$.
+\end{theorem}
+\begin{proof}
+On length one, \eqref{v4-arith:relative-bar:eq:twist} reads $Da-Da=0$.
+On length two, its last two terms are
+$(-1)^{|a|}ab$ and $(-1)^{|a|-1}ab$. Other lengths contribute zero.
+For a twisting cochain $t$, define
+\[
+ F_t(c)=\epsilon_C(c)1+
+ \sum_{j\ge1}(st)^{\otimes j}\bar\Delta^{(j-1)}(\bar c),
+ \qquad\bar c=c-\epsilon_C(c)1.
+\]
+Conilpotence makes the sum finite for each $c$. Coassociativity gives
+$\Delta F_t=(F_t\otimes F_t)\Delta$, and its one-letter projection
+is $st$. Those properties also prove uniqueness by applying repeated
+reduced coproducts and then projecting every output to length one.
+The difference $bF_t-F_td_C$ satisfies the coderivation identity
+relative to $F_t$. Its one-letter projection is zero precisely when
+\eqref{v4-arith:relative-bar:eq:twist} holds. Repeated reduced coproducts show that a relative
+coderivation with zero one-letter projection is zero. This proves that
+$F_t$ commutes with differentials and proves both directions.
+\end{proof}
+
+\section{Changing the endpoint in every arity}
+
+A binary homotopy compares two products, but a bar map must also
+compare their compositions on longer words. Ordered products of the
+local primitives supply all the required components.
+For the identity map $f:R\to R$, put $u=s(1,0)$ and $v=s(0,1)$.
+Their degrees are $-1$ and $0$. The bar conventions above give
+\[
+ b_1u=-v,\qquad b_1v=0,\qquad
+ b_{2,L}(u,v)=v,\qquad b_{2,R}(v,u)=-v.
+\]
+Both binary operations send $(u,u)$ to $u$; their other values on
+these generators vanish. The comparison below sends
+\[
+ [v|v]\longmapsto[v|v]+[v],\qquad
+ [v|v|v]\longmapsto[v|v|v]+2[v|v]+[v].
+\]
+Each term contracts consecutive blocks of local primitives. This
+ordered contraction makes sense without commutativity of the algebras.
+
+Let $R$ be any commutative ring. Consider a cospan of associative
+differential graded $R$-algebras
+\[
+ A\xrightarrow{\ f\ }B\xleftarrow{\ g\ }C.
+\]
+Put
+\begin{equation}\label{v4-arith:endpoint:eq:gluingcomplex}
+ P^n=A^n\oplus C^n\oplus B^{n-1},\qquad
+ D(a,c,y)=(d_Aa,d_Cc,f(a)-g(c)-d_By).
+\end{equation}
+For $x=(a,c,y)$ of degree $p$ define
+\begin{align}
+ \mu_L(x,x')&=(aa',cc',(-1)^p f(a)y'+y g(c')),\label{v4-arith:endpoint:eq:glueL}\\
+ \mu_R(x,x')&=(aa',cc',y f(a')+(-1)^p g(c)y').\label{v4-arith:endpoint:eq:glueR}
+\end{align}
+The relative case is obtained by taking $C=0$ in the category of nonunital algebras. If $f,g$ are unital, $(1_A,1_C,0)$ is a unit for both gluing products.
+
+\begin{lemma}\label{v4-arith:endpoint:lem:dg}
+The two formulas \eqref{v4-arith:endpoint:eq:glueL} and \eqref{v4-arith:endpoint:eq:glueR} define differential graded associative algebras on \eqref{v4-arith:endpoint:eq:gluingcomplex}.
+\end{lemma}
+\begin{proof}
+The square of $D$ vanishes because $f$ and $g$ commute with differentials. Write the degrees of three inputs as $p,q,r$. The third component of either parenthesization of $\mu_L$ is
+\[
+ (-1)^{p+q}f(a)f(a')y''+
+ (-1)^p f(a)y'g(c'')+y g(c')g(c'').
+\]
+For $\mu_R$ the corresponding common component is
+\[
+ y f(a')f(a'')+(-1)^p g(c)y'f(a'')
+       +(-1)^{p+q}g(c)g(c')y''.
+\]
+The first two components are associative by assumption.
+
+For the Leibniz identity of $\mu_L$, the third component of $D\mu_L(x,x')$ is
+\begin{align*}
+ f(a)f(a')-g(c)g(c')
+ &-(-1)^p f(d_Aa)y'-f(a)d_By'\\
+ &-d_By\,g(c')+(-1)^p y g(d_Cc').
+\end{align*}
+Expanding $\mu_L(Dx,x')+(-1)^p\mu_L(x,Dx')$ gives this expression; the terms $f(a)g(c')$ cancel. For $\mu_R$, the third component of $D\mu_R(x,x')$ is
+\begin{align*}
+ f(a)f(a')-g(c)g(c')
+ &-d_By\,f(a')+(-1)^p y f(d_Aa')\\
+ &-(-1)^p g(d_Cc)y'-g(c)d_By'.
+\end{align*}
+The same expansion on the Leibniz side gives these terms, with the two occurrences of $g(c)f(a')$ cancelling. The first two components obey the original Leibniz identities. This proves the assertion over $R$ without division.
+\end{proof}
+
+\subsection{The endpoint isomorphism}
+For either product, first regard $P$ as a nonunital algebra and use its augmented unitization $U=R\oplus P$. This fixes the meaning of the normalized bar even when the gluing algebra already has a unit. The normalized bar is
+\[
+ \mathcal{B}_L=T^c_R(sP)=\bigoplus_{n\geq0}(sP)^{\otimes_R n},
+ \qquad \mathcal{B}_R=T^c_R(sP),
+\]
+where $s:P\to P[1]$ has degree $-1$. Its coproduct is deconcatenation; the summand $R$ is the empty word, counit target, and coaugmentation source. Its coderivation is determined by
+\begin{equation}\label{v4-arith:endpoint:eq:bar}
+ b_1(sx)=-sDx,\qquad
+ b_{2,L/R}(sx,sx')=(-1)^{|x|}s\mu_{L/R}(x,x').
+\end{equation}
+Higher Taylor coefficients of these differentials vanish. Lemma~\ref{v4-arith:endpoint:lem:dg} implies $b_L^2=b_R^2=0$ by the one-, two-, and three-input checks.
+
+We identify the suspended module with
+\[
+ W=sP=sA\oplus sC\oplus B,
+ \qquad s(a,c,y)\longleftrightarrow(sa,sc,y).
+\]
+Thus, if $w_i=s(a_i,c_i,y_i)$ has degree $q_i$, then $|y_i|=q_i$. Define degree-zero maps $F_n:W^{\otimes n}\to W$ by
+\begin{equation}\label{v4-arith:endpoint:eq:F}
+ F_1=\mathrm{id}_W,\qquad
+ F_n(w_1,\ldots,w_n)=s(0,0,y_1y_2\cdots y_n)\quad(n\geq2).
+\end{equation}
+The multiplication in the last expression is the ordered multiplication of $B$. In particular, it introduces no reordering sign. Equation~\eqref{v4-arith:endpoint:eq:F} uses the suspended convention \eqref{v4-arith:endpoint:eq:bar}; signs in an unsuspended convention must be obtained by the tensor rule, not copied without change.
+
+\begin{theorem}[Integral endpoint change]\label{v4-arith:endpoint:thm:main}
+For every cospan of differential graded associative algebras over $R$, the maps \eqref{v4-arith:endpoint:eq:F} are the corestrictions of a coaugmentation- and counit-preserving isomorphism
+\[
+ \mathcal{F}:(\mathcal{B}_L,b_L,\Delta_{\mathrm{dec}})
+       \xrightarrow{\ \cong\ }
+       (\mathcal{B}_R,b_R,\Delta_{\mathrm{dec}})
+\]
+of differential graded coalgebras. Its inverse $\mathcal{G}$ has corestrictions
+\begin{equation}\label{v4-arith:endpoint:eq:G}
+ G_1=\mathrm{id}_W,\qquad
+ G_n(w_1,\ldots,w_n)=(-1)^{n-1}s(0,0,y_1\cdots y_n)
+ \quad(n\geq2).
+\end{equation}
+Both maps preserve the increasing filtration by word length. They are defined over the integers and require no division. In particular they are valid in characteristics two and three and over $\mathbb Z/\ell^r$.
+\end{theorem}
+
+\begin{proof}
+\emph{The full coalgebra maps.}
+For a word of length $N>0$, partition its inputs into consecutive nonempty blocks. Explicitly,
+\begin{equation}\label{v4-arith:endpoint:eq:block}
+ \mathcal{F}[w_1|\cdots|w_N]
+ =\sum_{N=n_1+\cdots+n_k}
+ [F_{n_1}(w_1,\ldots,w_{n_1})|\cdots|
+ F_{n_k}(w_{N-n_k+1},\ldots,w_N)].
+\end{equation}
+Here $k\geq1$, all $n_i\geq1$, and $\mathcal{F}(1)=1$. There are $2^{N-1}$ terms before any vanish. Cutting the output between two blocks is equivalent to first cutting the input there and independently partitioning the two resulting words. This proves
+\[
+ \Delta_{\mathrm{dec}}\mathcal{F}=(\mathcal{F}\otimes\mathcal{F})\Delta_{\mathrm{dec}}.
+\]
+It also proves that \eqref{v4-arith:endpoint:eq:block} is the coalgebra map with the indicated corestrictions. The same construction gives $\mathcal{G}$. Since only finitely many partitions occur, algebraic tensor products and direct sums suffice.
+
+\emph{The chain equation in every arity.}
+Let $\pi_1:T^c(W)\to W$ be projection to length one. Both $b_R\mathcal{F}$ and $\mathcal{F} b_L$ are coderivations relative to $\mathcal{F}$. Equality of their corestrictions therefore implies equality of the full maps. In this tensor coalgebra the implication can also be proved by induction on input length: all reduced coproduct terms of a difference are determined by shorter input words, leaving only a primitive difference; a primitive element of $T^c(W)$ with zero length-one component is zero.
+
+Set
+\[
+ Q_j=q_1+\cdots+q_j,\qquad Q_0=0.
+\]
+In the coordinates above, the unary differential is
+\begin{equation}\label{v4-arith:endpoint:eq:unary}
+ b_1(sa,sc,y)=(-s d_Aa,-s d_Cc,d_By-f(a)+g(c)).
+\end{equation}
+Here $b_1^{\mathrm{tens}}$ inserts $b_1$ at position $j$ with sign
+$(-1)^{Q_{j-1}}$. For $n\geq2$, write
+$U_n=b_1F_n-F_nb_1^{\mathrm{tens}}$. Its first two components vanish,
+and its third component is
+\begin{equation}\label{v4-arith:endpoint:eq:unarydefect}
+ \sum_{j=1}^n(-1)^{Q_{j-1}}
+ y_1\cdots y_{j-1}\bigl(f(a_j)-g(c_j)\bigr)y_{j+1}\cdots y_n.
+\end{equation}
+Indeed, the terms containing $d_By_j$ cancel by the graded Leibniz rule in $B$. This cancellation is the source of the higher comparison.
+
+For $n=1$ the chain equation holds because $F_1$ is the identity and the unary differentials agree. For $n=2$, the third components of the binary bar operations are
+\begin{align*}
+ b_{2,L}(w_1,w_2)_B
+ &=f(a_1)y_2-(-1)^{q_1}y_1g(c_2),\\
+ b_{2,R}(w_1,w_2)_B
+ &=-(-1)^{q_1}y_1f(a_2)+g(c_1)y_2.
+\end{align*}
+Their first two components agree. Hence, as maps $W^{\otimes2}\to W$,
+\[
+ b_{2,L}-b_{2,R}=U_2.
+\]
+Thus
+\[
+ b_1F_2+b_{2,R}=F_2b_1^{\mathrm{tens}}+b_{2,L}.
+\]
+
+Now let $n\geq3$. The third component of the target binary contribution
+$\sum_{i=1}^{n-1}b_{2,R}(F_i,F_{n-i})$ is
+\begin{equation}\label{v4-arith:endpoint:eq:target}
+ g(c_1)y_2\cdots y_n
+ -(-1)^{Q_{n-1}}y_1\cdots y_{n-1}f(a_n).
+\end{equation}
+All interior splits vanish: both outputs then have only a $B$ component, whose binary product in the gluing cone is zero. The third component of the source binary contribution is
+\begin{align}\label{v4-arith:endpoint:eq:source}
+ &\sum_{j=1}^{n-1}(-1)^{Q_{j-1}}
+ y_1\cdots y_{j-1} f(a_j)y_{j+1}\cdots y_n\notag\\
+ &\hspace{5mm}-\sum_{j=2}^{n}(-1)^{Q_{j-1}}
+ y_1\cdots y_{j-1} g(c_j)y_{j+1}\cdots y_n.
+\end{align}
+To see the second sum, move the sign of the inserted degree-one $b_2$ past its preceding suspended inputs, and then use the second term of $b_{2,L}$. No input factors are permuted.
+
+Adding \eqref{v4-arith:endpoint:eq:target} to \eqref{v4-arith:endpoint:eq:unarydefect} gives exactly \eqref{v4-arith:endpoint:eq:source}. The $f$ term with $j=n$ and the $g$ term with $j=1$ are cancelled by the two endpoints. For $n\geq3$ all first and second components of the remaining terms vanish. This proves the corestriction equation in every arity, and hence
+\[
+ b_R\mathcal{F}=\mathcal{F} b_L.
+\]
+
+\emph{The inverse.}
+The length-one component of either composite is the identity. For length $n\geq2$, every contribution to its corestriction is an ordered product $y_1\cdots y_n$ in the third component. An input with a vanishing local component gives zero in all such contributions. For $\mathcal{F}\mathcal{G}$, a partition into $k$ blocks contributes sign $(-1)^{n-k}$, and there are $\binom{n-1}{k-1}$ such partitions. The total coefficient is
+\[
+ \sum_{k=1}^n\binom{n-1}{k-1}(-1)^{n-k}=(1-1)^{n-1}=0.
+\]
+For $\mathcal{G}\mathcal{F}$, the outer coefficient instead gives $(-1)^{k-1}$ and the same binomial cancellation applies. Thus both composites have exactly the identity corestrictions. Formula~\eqref{v4-arith:endpoint:eq:block} proves that the full composites are identities. Since $\mathcal{F}$ is a chain map and $\mathcal{G}$ is its inverse, $\mathcal{G}$ is a chain map as well. \end{proof}
+
+\begin{corollary}\label{v4-arith:endpoint:cor:relative}
+The two relative algebras of Proposition~\ref{v4-arith:relative-bar:prop:two-products} are $A_\infty$-isomorphic with identity first component, and their normalized bar coalgebras are isomorphic over $R$. If the gluing maps are unital, all higher components vanish when any input is the native gluing unit $(1_A,1_C,0)$.
+\end{corollary}
+\begin{proof}
+The relative case is the specialization $C=0$. A coalgebra map satisfying the bar chain equation is exactly an $A_\infty$ map in the convention \eqref{v4-arith:endpoint:eq:bar}. The explicit inverse makes it an isomorphism in that sense. The higher coefficients depend on every local component; the local component of the native unit is zero.
+\end{proof}
+
+The isomorphism $\mathcal{F}$ preserves differential, deconcatenation, coaugmentation, counit, and the increasing word filtration. It does \emph{not} say that the identity of $P$ is a strict multiplicative map. Nor does it preserve the two original universal twisting cochains by an identity: if $\tau_R$ extracts a single suspended letter, then $\tau_R\mathcal{F}$ has higher components $(0,0,y_1\cdots y_n)$. Those components are part of the comparison, not terms to discard.
+
+\subsection{Strict naturality}
+A strict map of cospans consists of maps $\alpha:A\to A'$, $\gamma:C\to C'$, and $\beta:B\to B'$ with
+\[
+ \beta f=f'\alpha,\qquad \beta g=g'\gamma.
+\]
+It induces $(a,c,y)\mapsto(\alpha a,\gamma c,\beta y)$ on the gluing cones. Because $\beta(y_1\cdots y_n)=\beta(y_1)\cdots\beta(y_n)$, it commutes with every $F_n$ and $G_n$, and therefore with both full coalgebra maps. If $H_L$ and $H_R$ denote the induced tensorwise bar maps, then
+\[
+\begin{array}{ccc}
+ \mathcal{B}_L &\xrightarrow{\mathcal{F}}&\mathcal{B}_R\\
+ {\scriptstyle H_L}\downarrow &&\downarrow{\scriptstyle H_R}\\
+ \mathcal{B}'_L&\xrightarrow{\mathcal{F}'}&\mathcal{B}'_R
+\end{array}
+\]
+commutes. For a ring map $R\to S$, the canonical identifications
+$S\otimes_R\mathcal{B}_{L/R}\cong\mathcal{B}_{L/R}(S\otimes_RP)$
+identify $S\otimes_R\mathcal{F}$ and $S\otimes_R\mathcal{G}$ with
+the corresponding maps after scalar extension. Tensor powers and direct
+sums commute with this extension, so no flatness assumption is needed.
+The same formulas commute with compatible coefficient reductions. An arbitrary square commuting only up to an unspecified chain homotopy is not covered by this argument.
+
+
+\section{The derived tensor interpretation and its hypothesis}
+
+The underlying relative complex computes the cohomology in
+Corollary~\ref{v4-arith:relative-bar:cor:relative}. The bar coalgebra has a different
+homological interpretation, for which flatness of complexes matters.
+A complex $M$ over $R$ is called $K$-flat if $N\otimes_R M$ is
+acyclic for every acyclic complex $N$. Degreewise flatness alone is
+not substituted for this condition on an unbounded complex.
+
+\begin{theorem}\label{v4-arith:relative-bar:thm:tor}
+Let $U=R\oplus P$ as above, and assume that the underlying complex
+$P$ is $K$-flat over $R$. Then $\mathcal{B}(U)$ represents
+$R\otimes_U^{\mathbf L}R$.
+Without this hypothesis, Theorems~\ref{v4-arith:relative-bar:thm:bar} and
+\ref{v4-arith:relative-bar:thm:universal} still construct the coalgebra and its universal
+twisting cochain, but this derived tensor assertion is not made.
+\end{theorem}
+\begin{proof}
+On $L=U\otimes_R\mathcal{B}(U)$ put
+\begin{align*}
+ d_L(u\otimes c)={}&d_Uu\otimes c+(-1)^{|u|}u\otimes bc\\
+ &-(-1)^{|u|}\sum u\tau(c_{(1)})\otimes c_{(2)},
+\end{align*}
+where $\Delta c=\sum c_{(1)}\otimes c_{(2)}$. The twisting equation
+implies $d_L^2=0$ by expansion. In word notation, the last sum removes
+only the first letter. The augmentation $L\to R$ is $\epsilon_U$ on
+length zero and zero elsewhere.
+
+Write $\bar u=u-\epsilon_U(u)1$. An $R$-linear homotopy of degree
+$-1$ is
+\[
+ h(u\otimes[sa_1|\cdots|sa_j])
+ =-1\otimes[s\bar u|sa_1|\cdots|sa_j].
+\]
+An entry $s0$ gives zero. In $d_Lh+hd_L$, the internal differential
+on $\bar u$ cancels, as do insertions within the remaining word.
+The first multiplication gives $\bar u\otimes c$. The two terms
+that join $\bar u$ to $a_1$ leave $\epsilon_U(u)\otimes c$ when
+$j>0$. Thus $d_Lh+hd_L=\mathrm{id}-\iota\epsilon_L$, including $j=0$.
+This proves that $L\to R$ is a quasi-isomorphism.
+
+Filter $L$ by word length at most $j$. Its successive quotients are
+$U\otimes_R(sP)^{\otimes j}$ with their internal differentials.
+If $N$ is an acyclic right $U$-module, their tensors with $N$ are
+$N\otimes_R(sP)^{\otimes j}$, which are acyclic by $K$-flatness.
+The filtration sequences are split on graded modules. Induction and
+exactness of filtered unions show that $N\otimes_U L$ is acyclic.
+Hence $L$ is $K$-flat as a left $U$-module. Tensoring this resolution
+with the right augmentation module $R$ kills its first-letter term
+and leaves exactly $(\mathcal{B}(U),b)$.
+\end{proof}
+
+For the arithmetic algebra $U_r=R_r\oplus P_r$, define
+$\mathcal{B}_r=\mathcal{B}(U_r)$. Its construction and functoriality do not require
+a $K$-flat replacement. Theorem~\ref{v4-arith:relative-bar:thm:tor} applies if such a
+hypothesis is established for the chosen arithmetic model. No
+identification of its bar cohomology with relative Galois cohomology
+is asserted: the latter is the cohomology of $P_r$ itself.
+
+\section{Coefficient maps and completion}
+
+A commuting square of differential graded algebra maps
+\[
+ \alpha:A\to A',\qquad\beta:B\to B',\qquad\beta f=f'\alpha
+\]
+induces $(a,y)\mapsto(\alpha(a),\beta(y))$ on the relative algebras.
+The formulas for $D$, multiplication, and $b$ prove functoriality
+directly. This includes coefficient maps and compatible diagrams
+of continuous group homomorphisms. Changing a local embedding by
+conjugation does not give such a strictly commuting square without
+additional choices.
+
+A comparison of resolutions may commute only up to cochain homotopy.
+The correction to the relative map then has a measurable product defect.
+
+\begin{proposition}\label{v4-arith:relative-bar:prop:homotopy}
+Let $\alpha:A\to A'$ and $\beta:B\to B'$ be differential graded
+algebra maps, and let $H:A\to B'$ have degree $-1$ with
+$f'\alpha-\beta f=dH+Hd$. Then
+\[
+ F:P(f)\to P(f'),\qquad F(a,y)=(\alpha(a),\beta(y)+H(a))
+\]
+is a cochain map. For $x=(a,y)$ of degree $n$ and $x'=(a',y')$,
+the first component of $F(x)F(x')-F(xx')$ is zero. Its second
+component is
+\begin{align*}
+ &(-1)^n(f'\alpha-\beta f)(a)\beta(y')\\
+ &\hspace{8mm}+(-1)^nf'\alpha(a)H(a')-H(aa').
+\end{align*}
+In particular $F$ induces the strict bar map constructed above if
+and only if this expression vanishes for every pair of inputs.
+\end{proposition}
+\begin{proof}
+The second component of $D'F-FD$ is
+$(f'\alpha-\beta f)(a)-dH(a)-H(da)=0$.
+Expanding the two products in \eqref{v4-arith:relative-bar:eq:fiber-product} gives the
+displayed defect. A cochain map induces the tensorwise strict bar
+map precisely when it preserves the binary multiplication: projection
+of the bar-map equation on two letters is that identity. On one
+letter it is the cochain-map equation, and all other Taylor
+coefficients vanish.
+\end{proof}
+
+Thus cochain transport of a local primitive can preserve relative
+classes without supplying the multiplicativity required by the bar
+construction. A sheaf-cochain comparison must also control this defect
+or supply coherent higher components.
+
+\begin{proposition}\label{v4-arith:relative-bar:prop:coefficients}
+For the Galois cochains with finite coefficients, reduction gives
+degreewise surjections and canonical isomorphisms
+\[
+ P_{r+1}\otimes_{R_{r+1}}R_r\cong P_r,
+ \qquad
+ \mathcal{B}_{r+1}\otimes_{R_{r+1}}R_r\cong\mathcal{B}_r.
+\]
+They preserve differentials, relative products, coproducts, and
+universal twisting cochains.
+\end{proposition}
+\begin{proof}
+A continuous map from a compact space to a finite discrete ring is
+constant on the parts of a finite clopen partition. Lift each of its
+values to $R_{r+1}$. A normalized cochain has value zero on every
+degenerate tuple, and choosing the zero lift preserves normalization.
+If a cochain reduces to zero, divide its finitely many values by
+$\ell^r$ and choose lifts. Its kernel is therefore exactly
+$\ell^r C^n(G,R_{r+1})$. This proves the cochain assertion.
+Finite products and the two summands of $P_r$ commute with reduction.
+Tensor powers and direct sums do also. Every defining formula uses
+addition and multiplication of coefficients, which proves all the
+compatibilities.
+Each cochain module is also flat over its finite coefficient ring.
+Indeed, normalized functions constant on a fixed finite clopen partition
+form a finite free module: omit the cells meeting the degenerate tuples.
+Refining partitions gives a filtered union equal to all normalized
+cochains. Filtered colimits of flat modules are flat, since tensoring
+and filtered colimits preserve exact sequences. Thus every degree of
+$P_r$ and $\mathcal{B}_r$ is flat. This statement concerns modules in each
+degree, not $K$-flatness of the whole complex.
+\end{proof}
+
+Continuous $\mathbb{Z}_\ell$-valued cochains are the inverse limits of these
+finite cochains. Define the degreewise inverse limit
+\[
+ \widehat{\mathcal{B}}=\varprojlim_r\mathcal{B}_r.
+\]
+Its tensor target is specified as
+\[
+ \widehat{\mathcal{B}}\,\widehat\otimes\,\widehat{\mathcal{B}}
+ :=\varprojlim_r(\mathcal{B}_r\otimes_{R_r}\mathcal{B}_r).
+\]
+This is the completion used for the coproduct; it makes no implicit
+identification with another completed tensor product.
+
+\begin{theorem}\label{v4-arith:relative-bar:thm:completion}
+The compatible maps on $\mathcal{B}_r$ give a continuous square-zero
+differential and a coassociative counital coproduct on
+$\widehat{\mathcal{B}}$. The coderivation identity holds in the displayed
+completed tensor target. Each reduction is conilpotent. Ordinary
+conilpotence of $\widehat{\mathcal{B}}$ need not hold.
+\end{theorem}
+\begin{proof}
+Every identity holds after every projection to $r$. Equality in an
+inverse limit is componentwise equality, so all the stated identities
+follow. Degreewise surjectivity of the transitions allows each element
+of $\mathcal{B}_r$ to be lifted successively to all higher indices.
+Moreover the kernel of the projection is $\ell^r\widehat{\mathcal{B}}$:
+in coefficients modulo $\ell^{r+k}$ divide a kernel element by
+$\ell^r$ and reduce modulo $\ell^k$. These divided elements are
+well-defined because degreewise flatness identifies the annihilator
+of $\ell^r$ with $\ell^k\mathcal{B}_{r+k}$. They are compatible as $k$
+varies. Thus the projections are the coefficient
+reductions.
+
+For failure of ordinary conilpotence, take $R=\mathbb{Z}_\ell$, a free
+rank-one $P=Ra$ in degree one with zero differential and zero product.
+In its completed bar, $z=\sum_{j\ge1}\ell^j(sa)^{\otimes j}$
+is defined because it has finite support modulo every $\ell^r$.
+Every iterated reduced coproduct of $z$ has a nonzero component of
+sufficient word length. Hence $z$ is not conilpotent.
+\end{proof}
+
+The theorem concerns identities in the completed complex. An exchange
+of cohomology with inverse limit needs a separate vanishing statement
+for the corresponding $\varprojlim{}^1$ of cohomology groups. No such
+exchange enters the construction.
+
+\begin{corollary}[Restricted adic completion]\label{v4-arith:endpoint:cor:adic}
+For the relative Galois algebras $P_r$, let $\mathcal{B}_{r,L}$ and $\mathcal{B}_{r,R}$ use the two endpoint products. The maps of Theorem~\ref{v4-arith:endpoint:thm:main} induce a continuous isomorphism
+\[
+ \widehat{\mathcal{F}}:\varprojlim_r\mathcal{B}_{r,L}
+   \xrightarrow{\ \cong\ }\varprojlim_r\mathcal{B}_{r,R},
+\]
+whose inverse is $\varprojlim_r\mathcal{G}_r$. It preserves the completed differential and coproduct in
+\[
+ \varprojlim_r(\mathcal{B}_{r,R}\otimes_{R_r}\mathcal{B}_{r,R}).
+\]
+\end{corollary}
+\begin{proof}
+The maps and inverses commute with each transition. Their two composite identities and their differential and coproduct identities hold at every finite coefficient stage. Equality in the inverse limit is componentwise equality. The maps are continuous for the inverse-limit topology because their composites with the projections factor through the corresponding finite stage. No exchange of cohomology with inverse limit is used.
+\end{proof}
+
+
+A map preserving the \emph{increasing} filtration by word length need not be continuous for the \emph{decreasing} filtration defining an unrestricted product of word lengths. The endpoint-change map supplies a minimal test.
+
+\begin{proposition}\label{v4-arith:endpoint:prop:noncontinuous}
+In general $\mathcal{F}$ has no continuous extension from $T^c_R(W)$ to
+\[
+ \prod_{n\geq0}W^{\otimes_R n}
+\]
+with discrete word coordinates, even for the identity map $f:\mathbb Z\to\mathbb Z$ concentrated in degree zero.
+\end{proposition}
+\begin{proof}
+Take the relative map $f:R\to R$ to be the identity and let
+\[
+ v=s(0,1)\in sP.
+\]
+Its degree is zero and $F_n(v^{\otimes n})=v$ for all $n\geq1$. The partial sums
+\[
+ z_N=\sum_{n=1}^N v^{\otimes n}
+\]
+converge in the word-length product topology: each word coordinate eventually stabilizes. But the length-one coordinate of $\mathcal{F}(z_N)$ is $Nv$, which is not eventually constant in the discrete module $Rv$. Hence the image sequence does not converge and no continuous extension agreeing with $\mathcal{F}$ can exist.
+\end{proof}
+
+By contrast, $z=\sum_{n\geq1}\ell^n v^{\otimes n}$ belongs to the restricted adic completion: modulo every $\ell^r$ only finitely many word lengths occur. The length-one coordinate of its image is the well-defined $\ell$-adic sum
+\[
+ \sum_{n\geq1}\ell^n v=\frac{\ell}{1-\ell}\,v.
+\]
+The denominator here is a unit in $\mathbb Z_\ell$. It is not a division used in the definition of the coalgebra map. This example distinguishes two completions on the very same generators.
+
+
+\section{Corestriction and arithmetic comparison}
+
+Coefficient reduction changes the ring while preserving the cochain products.
+Corestriction along a field extension has a different multiplicative behavior.
+For coefficients $\mathbb Z_\ell$, cochains mean the inverse limits of the finite coefficient cochains.
+
+\begin{proposition}\label{v4-arith:relative-bar:prop:transfer}
+Let $H\subset G$ be an open subgroup of index $n>1$. With trivial
+$\mathbb{Z}_\ell$ coefficients, corestriction cannot be induced by a
+multiplicative cochain map on the ordinary cochain algebras. Nor can
+it be the first component of an $A_\infty$ morphism inducing
+corestriction on cohomology. For index $\ell$, the multiplicativity
+obstruction remains nonzero modulo $\ell^2$.
+\end{proposition}
+\begin{proof}
+Corestriction in degree zero sums over the cosets, so it sends
+$1\in H^0(H,\mathbb{Z}_\ell)$ to $n\in H^0(G,\mathbb{Z}_\ell)$.
+Multiplicativity would imply $n=n^2$, which is false in
+$\mathbb{Z}_\ell$. An $A_\infty$ morphism has a multiplicative map on
+cohomology, since its second identity makes its product defect a
+boundary. It therefore has the same obstruction. For $n=\ell$,
+$n^2-n$ has $\ell$-adic valuation one. The defects are $2$ modulo
+$4$ and $6$ modulo $9$ for $\ell=2,3$.
+\end{proof}
+
+Thus a coefficient inverse limit of bar coalgebras does not supply a
+multiplicative corestriction limit over a cyclotomic field tower.
+An arithmetic Hecke trace class $\mathcal V^{\mathrm{prim}}$ requires a
+separate comparison with these relative Galois algebras. Such a comparison
+must specify a chain algebra, augmentation, coefficient maps, and compatible
+local products. The algebraic bar constructed here has a square-zero
+differential and endpoint-independent coalgebra type. Identifying it with an
+arithmetic chiral bar additionally requires geometric operations and their
+compatibility with residue maps and completion.
+
+A finite arithmetic Chern--Simons action instead evaluates a Galois
+cohomology class against arithmetic duality data. Chapter~\ref{v4-arith:gaiotto}
+addresses that action and its proposed quantum boundary extension.
+The relative complex here records finite-local primitives; it supplies
+neither archimedean compact-support conventions nor an arithmetic
+fundamental-class pairing. A comparison with states, operators, or the full
+Weil functional requires further maps preserving the corresponding pairings
+and analytic domains.

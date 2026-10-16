@@ -1,0 +1,390 @@
+\chapter{Trace Formula, Ordered Bar, and the Statistical Upside}
+\label{v4-arith:tfe-gutzwiller}
+
+\section{The Trace Formula Target}
+\label{v4-arith:tfe:weil}
+
+Arithmetic Koszul duality assembles an ordered-incidence
+bar complex whose regularised character reproduces the Euler product of
+\(\xi(s)\). The question it faces is: does this Euler-product data
+already determine the zero distribution of \(\xi\), or does it leave
+open a spectral problem? To answer precisely, fix the target.
+
+\begin{definition}[Weil test-function class]
+\label{v4-arith:tfe:defn:test-class}
+\ClaimStatusDefinitional. Let \(\mathcal H\) be a standard Weil
+test-function class: even Schwartz functions \(h : \mathbb{R} \to \mathbb{C}\)
+whose Fourier transforms \(\widehat h(\tau) = \int_{-\infty}^\infty h(t) e^{i\tau t}\,dt\)
+are compactly supported and sufficiently regular for the explicit
+formula. The exact analytic class depends on the chosen normalization
+of the Weil--Guinand formula.
+\end{definition}
+
+\begin{theorem}[Weil--Guinand explicit formula]
+\label{v4-arith:tfe:thm:weil}
+\ClaimStatusProvedElsewhere. Let \(\rho\) range over all nontrivial
+zeros of the completed Riemann zeta function \(\xi(s)\), with no
+critical-line parametrization assumed.
+For \(h \in \mathcal H\), the completed zeta function satisfies the
+distributional identity
+\begin{equation}
+\label{v4-arith:tfe:eq:weil}
+\sum_\rho H(\rho)
+=
+W_\infty(h)+W_{\mathrm{pol}}(h)
+-\sum_{p}\sum_{k\geq 1}
+(\log p)p^{-k/2}
+\bigl(\widehat h(k\log p)+\widehat h(-k\log p)\bigr),
+\end{equation}
+where \(H\) is the complex test function corresponding to \(h\), and
+\(W_\infty(h)\) is the archimedean gamma-factor contribution
+and \(W_{\mathrm{pol}}(h)\) is the contribution of the polar and
+trivial zeros. Denote their sum by
+\(W_{\mathrm{arch+pol}}(h) := W_\infty(h) + W_{\mathrm{pol}}(h)\).
+\end{theorem}
+
+\begin{remark}[three descriptions of the prime-power index set]
+\label{v4-arith:tfe:rem:weil-sketch}
+The geometric side of \eqref{v4-arith:tfe:eq:weil} is a sum over
+prime powers \((p,k)\). In the Morishita dictionary this is a sum
+over iterates \(K_p^k\) of the prime knot \(K_p\), with length
+\(k\log p\). In a Gutzwiller language it is the periodic-orbit side.
+In the ordered-bar language it is the logarithmic derivative of the
+Euler-product character. These are three descriptions of the same
+prime-power index set; none supplies the zero-side determinant-trace
+operator.
+\end{remark}
+
+\section{Connes' Trace Formula}
+\label{v4-arith:tfe:connes}
+
+The Weil explicit formula is a distributional identity; the question
+is whether the zero sum on its left side admits a determinant-trace
+interpretation, i.e., whether some natural normal operator has
+determinant divisor \(\mathrm{div}\,\xi_{\mathbb R}\) and
+Weil--Connes trace supported at the ordinates \(\gamma_\rho\) after
+zero-placement. Connes' adele-class-space construction provides a
+partial answer.
+
+\begin{theorem}[Connes--Meyer scaling trace]
+\label{v4-arith:tfe:thm:connes-meyer}
+\ClaimStatusProvedElsewhere. Connes' adele-class-space construction,
+in Meyer's trace-formula formulation, realizes the Weil distribution
+as a distributional scaling trace on the appropriate cokernel space
+of the adele class space \(\mathbb{A}/\mathbb{Q}^*\):
+\begin{equation}
+\label{v4-arith:tfe:eq:connes-trace}
+\operatorname{Tr}_{\mathrm{Connes}}(h)
+=
+\sum_\rho H(\rho)
+\end{equation}
+distributionally, where \(\rho\) ranges over the non-trivial zeros and
+\(H\) is the Mellin transform paired with the test function \(h\). The
+same prime-power and archimedean terms as \eqref{v4-arith:tfe:eq:weil}
+occur. The scaling operator is not thereby a self-adjoint Hilbert-space
+operator whose normal translate has determinant \(\xi(s)\); the
+distributional trace is not by itself a spectral measure.
+\end{theorem}
+
+\section{Ordered-Bar Euler Skeleton}
+\label{v4-arith:tfe:3d-acs}
+
+The Connes--Meyer trace recovers the full Weil distribution
+\eqref{v4-arith:tfe:eq:weil} as an operator trace. The ordered-incidence
+bar complex approaches the same object from the Koszul-duality side:
+its regularised character computes the Euler product. The question is
+whether that character calculation closes the gap left by Connes.
+
+\begin{proposition}[ordered-bar Euler skeleton]
+\label{v4-arith:tfe:lem:ord-bar}
+\ClaimStatusProvedHereConditional \emph{(on the ordered-incidence
+model of \Cref{v4-arith:3d-acs:thm:chi-hom-bar} and on the chosen
+regularised character)}. Let \(\chi_\infty(s)\) denote the
+archimedean Euler factor arising from the regularisation at the
+archimedean place of \(\overline{\mathrm{Spec}\,\mathbb{Z}}\). The
+ordered-incidence bar complex
+\(B^{\mathrm{ord}}_\bullet(\mathcal{V}^{\mathrm{prim}})\),
+where \(\mathcal{V}^{\mathrm{prim}}\) is the Hochschild trace class
+of the identity on the global arithmetic Iwahori--Hecke category of
+\(GL_2\), has regularised character
+\begin{equation}
+\label{v4-arith:tfe:eq:ord-bar-product}
+\operatorname{ch}_{\mathrm{reg}}
+H_\bullet(B^{\mathrm{ord}}_\bullet(\mathcal V^{\mathrm{prim}}))
+=
+\chi_\infty(s)\prod_p(1-p^{-s})^{-1},
+\end{equation}
+with the completed \(\xi(s)\) obtained only after the archimedean and
+polar normalisations are inserted.
+\end{proposition}
+
+\begin{proof}
+This is the Euler-character computation of the ordered-incidence model:
+finite prime factors contribute the Bost--Connes Euler factors, while
+the archimedean and polar pieces are part of the regularisation data.
+The statement is a character calculation, not a Lefschetz trace formula.
+\end{proof}
+
+\begin{remark}[canonical quantisation boundary]
+\label{v4-arith:tfe:rem:canq}
+If the profinite ACS theory and boundary comparison are assumed, the
+same regularised character can be read as a boundary partition function.
+That reading is conditional on
+\Cref{v4-arith:3d-acs:conj:qu-acs} and
+\Cref{v4-arith:3d-acs:thm:bulk-boundary-Vprim}.
+\end{remark}
+
+\section{Trace-Formula Equivalence}
+\label{v4-arith:tfe:equiv}
+
+The Euler-product character of Proposition~\ref{v4-arith:tfe:lem:ord-bar}
+yields $\xi(s)$ only after regularisation. Under the regularised
+character equality of \Cref{v4-arith:3d-acs:cor:partition-bar}, which
+sets $Z(s) = \xi(s)$ in the ACS framework, the argument principle
+converts the logarithmic derivative of $\xi$ into the zero sum; the
+Weil--Guinand explicit formula then identifies this with the full Weil
+distribution. The three trace functionals are conditionally equal.
+
+\begin{theorem}[conditional equivalence of trace functionals]
+\label{v4-arith:tfe:thm:equiv}
+\ClaimStatusConditional \emph{(on
+\Cref{v4-arith:3d-acs:conj:qu-acs},
+\Cref{v4-arith:3d-acs:cor:BDCG-ordered-comparison}, and the
+regularised character equality
+\Cref{v4-arith:3d-acs:cor:partition-bar})}. Let \(\Gamma_T\) be a
+positively oriented rectangle enclosing the zeros of \(\xi\) with
+\(|\operatorname{Im}s|\leq T\), avoiding zeros on the boundary. The ACS argument-principle functional
+\begin{equation}
+\label{v4-arith:tfe:eq:z-pairing}
+\mathcal Z_h:=
+\frac{1}{2\pi i}\int_{\Gamma_T}
+H(s)\frac{Z'(s)}{Z(s)}\,ds
+\end{equation}
+converges, after the standard \(T\to\infty\) limiting procedure and
+the polar and trivial-zero subtractions, to the Weil explicit-formula
+functional \eqref{v4-arith:tfe:eq:weil} whenever \(Z(s)=\xi(s)\) is
+assumed.
+\end{theorem}
+
+\begin{proof}
+Under the stated assumptions \(Z=\xi\). Applying the argument
+principle to \(\xi'/\xi\) inside \(\Gamma_T\) gives the zero sum
+\(\sum_{|\operatorname{Im}\rho|\leq T}H(\rho)\), together with polar
+and trivial-zero residues. Expanding \(\xi'/\xi\) in the
+half-plane \(\operatorname{Re}(s) > 1\) of absolute convergence
+and performing the standard explicit-formula contour shift yields
+the prime-power side of \eqref{v4-arith:tfe:eq:weil}. The equality
+is inherited from the classical Weil--Guinand explicit formula.
+\end{proof}
+
+\begin{corollary}[equality of the ACS and Connes--Meyer distributions on \(\mathcal{H}\)]
+\label{v4-arith:tfe:cor:info-equiv}
+\ClaimStatusConditional \emph{(on the hypotheses of
+\Cref{v4-arith:tfe:thm:equiv})}. For every \(h \in \mathcal H\), the
+ACS functional \(\mathcal{Z}_h\) and the Connes--Meyer scaling trace
+\(\operatorname{Tr}_{\mathrm{Connes}}(h)\) are equal.
+\end{corollary}
+
+\section{The Bar Reorganises, Not Locates}
+\label{v4-arith:tfe:no-free}
+
+The equivalence of the three trace functionals established conditionally
+in Section~\ref{v4-arith:tfe:equiv} raises a sharper question: does the
+ordered-bar construction supply an independent mechanism for placing the
+zero ordinates $\gamma_n$ on the critical line, beyond what $\xi(s)$
+itself encodes? The bar computation reorganises the zero data of $\xi$;
+it does not add new data.
+
+\begin{theorem}[bar computation reorganises zero data]
+\label{v4-arith:tfe:thm:no-free-zeros}
+\ClaimStatusProvedHere. The ordered-incidence bar complex determines
+the individual zero ordinates \(\gamma_n\) only through the scalar
+function \(\xi\): no additional self-adjoint operator or positivity
+mechanism is produced by the bar calculation.
+\end{theorem}
+
+\begin{proof}
+The bar supplies the Euler-product character and, after conditional
+regularisation, the scalar function \(\xi\). The zero ordinates are
+then the zero set of that scalar function. The bar calculation
+produces no self-adjoint operator, spectral theorem, or positivity
+input beyond what \(\xi\) already carries.
+\end{proof}
+
+\begin{remark}[the Hilbert--P\'{o}lya obstruction]
+\label{v4-arith:tfe:rem:hilbert-polya}
+A self-adjoint operator with spectrum $\{\gamma_n\}$ would place the
+zeros on the critical line by the spectral theorem. Constructing such
+an operator is precisely the spectral-flow obstruction of
+\Cref{v4-arith:3d-acs:conj:spectral-flow}.
+\end{remark}
+
+\section{Arithmetic Gutzwiller}
+\label{v4-arith:tfe:gutzwiller}
+
+The zero ordinates $\gamma_n$ appear on the zero side of
+\eqref{v4-arith:tfe:eq:weil} and, conditionally, as the spectrum of
+the Hilbert--P\'{o}lya operator. The prime-power sum on the geometric
+side of \eqref{v4-arith:tfe:eq:weil} takes the same form as the
+periodic-orbit sum in the Gutzwiller trace formula: lengths $k\log p$
+and amplitudes $(\log p) p^{-k/2}$. The prime-power side of the Weil formula is a periodic-orbit sum in
+Gutzwiller's sense, conditional on the existence of an arithmetic
+Hamiltonian whose primitive periodic orbits are the primes.
+
+\begin{theorem}[classical Gutzwiller trace formula]
+\label{v4-arith:tfe:thm:gutzwiller}
+\ClaimStatusProvedElsewhere. Let $H$ be a quantum Hamiltonian whose
+classical limit is chaotic with isolated primitive periodic orbits
+$\gamma$. Write $d_{\mathrm{osc}}(E)$ for the oscillatory part of the
+density of states $\sum_n \delta(E - E_n)$, $T_\gamma$ for the period
+of orbit $\gamma$, $A_\gamma$ for its stability amplitude
+(Maslov--Gutzwiller amplitude, incorporating the stability matrix
+determinant), and $\mu_\gamma$ for its Maslov index. Then
+\begin{equation}
+\label{v4-arith:tfe:eq:gutzwiller}
+d_{\mathrm{osc}}(E)\sim
+\sum_\gamma A_\gamma
+\exp(iET_\gamma-i\mu_\gamma\pi/2),
+\end{equation}
+asymptotically as $\hbar \to 0$.
+\end{theorem}
+
+\begin{theorem}[arithmetic Gutzwiller hypothesis]
+\label{v4-arith:tfe:thm:arith-gutzwiller}
+\ClaimStatusConditional \emph{(on a semiclassical ACS Hamiltonian,
+an arithmetic phase space, and a prime-orbit correspondence)}. Call the
+amplitudes \(A_p = (\log p)p^{-1/2}\) and lengths \(T_p = \log p\) the
+\emph{Weil amplitudes} for the prime \(p\). If the ACS boundary
+Hamiltonian has a classical chaotic limit whose primitive periodic
+orbits are indexed by primes \(p\) with primitive period \(\log p\) and
+stability amplitude \(A_p\), then the periodic-orbit expansion has the
+desired form
+\begin{equation}
+\label{v4-arith:tfe:eq:arith-gutz}
+\sum_p\sum_{k\geq 1}
+(\log p)p^{-k/2}e^{itk\log p}
+\quad+\quad\text{complex conjugate and archimedean terms}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+This is substitution of the assumed arithmetic orbit dictionary into
+the classical Gutzwiller formula. The proof is formal because the
+semiclassical ACS phase space, the chaotic flow, and the amplitude
+calculation are all hypotheses.
+\end{proof}
+
+\section{Connes--Meyer and the Gutzwiller Gap}
+\label{v4-arith:tfe:connes-obstruction}
+
+The arithmetic Gutzwiller hypothesis of the previous section requires a
+smooth symplectic Hamiltonian system with a chaotic classical limit.
+The question is whether the Connes--Meyer construction already supplies
+this structure, or whether the Gutzwiller construction is genuinely new input.
+
+\begin{theorem}[Connes--Meyer as distributional trace, not Gutzwiller system]
+\label{v4-arith:tfe:thm:no-gutzwiller-connes}
+\ClaimStatusProvedHere. The standard adele-class-space realization
+used in the Connes--Meyer trace formula is a noncommutative scaling
+trace construction. It is distinct from a smooth symplectic Hamiltonian
+system of the kind required by the classical Gutzwiller theorem.
+\end{theorem}
+
+\begin{proof}
+The adele class space \(\mathbb{A}/\mathbb{Q}^*\) is modeled by a
+noncommutative quotient; its $C^*$-algebraic description gives an
+operator-algebraic trace. The Gutzwiller formula requires a smooth
+symplectic phase space, a Hamiltonian flow, isolated primitive periodic
+orbits, and monodromy matrix determinants. None of these are part of
+the Connes--Meyer construction as stated.
+\end{proof}
+
+\begin{remark}[other geometrisations remain open]
+\label{v4-arith:tfe:rem:partial-geom}
+Other geometrisations of the adele class space may supply a symplectic
+structure; the theorem records only that the standard Connes--Meyer
+trace formula is not itself a Gutzwiller mechanism. An arithmetic
+Gutzwiller system, if it exists, is new structure beyond Connes--Meyer.
+\end{remark}
+
+\section{Statistical Upside}
+\label{v4-arith:tfe:bgs}
+
+The explicit formula \eqref{v4-arith:tfe:eq:weil} is a distributional
+identity; it does not determine the individual zero ordinates $\gamma_n$
+beyond what $\xi(s)$ already encodes. A Hilbert--P\'{o}lya operator, if
+it exists, would put the determinant divisor on the critical line by
+self-adjointness. The further statistical prediction, that the local
+spacing statistics of the $\gamma_n$ follow the Gaussian Unitary
+Ensemble (GUE), is not implied by either the explicit formula or
+self-adjointness alone. It requires a dynamical mechanism: the
+Bohigas--Giannoni--Schmit (BGS) principle connecting chaotic classical
+dynamics to random-matrix statistics. The relevant symmetry class is
+GUE because $\xi(s)$ has no anti-unitary time-reversal symmetry;
+the unitary symmetry class applies. Let $R_2(u)$ denote the two-point
+level spacing correlation function.
+
+\begin{theorem}[Bohigas--Giannoni--Schmit principle]
+\label{v4-arith:tfe:thm:bgs}
+\ClaimStatusConjectured. Quantum systems whose classical limits are
+chaotic are expected, after symmetry class is fixed, to exhibit random
+matrix local spectral statistics. For the unitary symmetry class (GUE),
+the two-point correlation function is
+\begin{equation}
+\label{v4-arith:tfe:eq:gue}
+R_2(u)=1-\left(\frac{\sin \pi u}{\pi u}\right)^2.
+\end{equation}
+\end{theorem}
+
+\begin{theorem}[conditional statistical upside]
+\label{v4-arith:tfe:thm:stat-upside}
+\ClaimStatusConditional \emph{(on
+\Cref{v4-arith:3d-acs:conj:spectral-flow},
+\Cref{v4-arith:tfe:thm:arith-gutzwiller},
+arithmetic quantum chaos, and the BGS universality theorem
+\Cref{v4-arith:tfe:thm:bgs})}. If the ACS Hamiltonian
+of \Cref{v4-arith:3d-acs:conj:spectral-flow} has a chaotic
+semiclassical limit with prime periodic orbits, then the local
+statistics of the zero ordinates are governed by the corresponding
+random-matrix ensemble; in the expected zeta case by GUE statistics
+\eqref{v4-arith:tfe:eq:gue}.
+\end{theorem}
+
+\begin{proof}
+Spectral flow supplies the zero-divisor determinant and, after
+zero-placement, the Hamiltonian trace supported at the ordinates. Arithmetic
+Gutzwiller identifies the classical periodic orbits with prime powers.
+The BGS principle then transfers chaotic spectral statistics to the
+zero ordinates. Every substantive step is one of the stated
+hypotheses.
+\end{proof}
+
+\begin{remark}[GUE statistics as new content beyond the explicit formula]
+\label{v4-arith:tfe:rem:content-added}
+The Weil explicit formula establishes a distributional equality between
+the zero ordinates and the prime-power sum; it implies neither
+Montgomery pair correlation nor GUE spacing statistics. A 3D
+Hamiltonian realization of the arithmetic ACS theory adds that
+statistical mechanism, conditional on the semiclassical and
+spectral-flow hypotheses of \Cref{v4-arith:3d-acs:conj:spectral-flow}.
+\end{remark}
+
+\begin{remark}[open conditions as explicit hypotheses]
+\label{v4-arith:tfe:rem:residual}
+\Cref{v4-arith:tfe:thm:stat-upside} rests on seven open conditions:
+(1) the profinite quantum ACS on \(\overline{\mathrm{Spec}\,\mathbb{Z}}\);
+(2) the Bezrukavnikov--Finkelberg and Costello--Gwilliam comparison
+    with the ordered-incidence model;
+(3) the regularised character equality \(Z=\xi\);
+(4) the spectral-flow operator realizing Hilbert--P\'{o}lya;
+(5) the full Weil--Guinand contour shift from the Euler skeleton;
+(6) the arithmetic semiclassical phase space and Hamiltonian flow;
+(7) chaos and random-matrix universality for that flow.
+These are the explicit hypotheses of \Cref{v4-arith:tfe:thm:stat-upside}.
+The ordered bar supplies the finite Euler skeleton
+\eqref{v4-arith:tfe:eq:ord-bar-product}; the equality \(Z=\xi\) also
+requires the archimedean, polar, and regularised character inputs.
+Conditions~(1), (4), (6),
+and~(7) constitute the spectral-flow problem of
+\Cref{v4-arith:3d-acs:conj:spectral-flow}.
+\end{remark}
